@@ -1,0 +1,85 @@
+inherited cxSchedulerRecurrenceEventEditorForm1: TcxSchedulerRecurrenceEventEditorForm1
+  Caption = 'cxSchedulerRecurrenceEventEditorForm1'
+  TextHeight = 13
+  inherited lcMain: TdxLayoutControl
+    ExplicitWidth = 557
+    ExplicitHeight = 650
+    inherited rbEndBy: TcxRadioButton
+      Width = 93
+      ExplicitWidth = 93
+    end
+    inherited deEndBy: TcxDateEdit
+      Left = 292
+      ExplicitLeft = 292
+    end
+    inherited rbDaily: TcxRadioButton
+      Caption = 'T'#228'glichj'
+    end
+    inherited meNumMonth: TcxMaskEdit
+      Left = 148
+      ExplicitLeft = 148
+    end
+    inherited meNumMonth1: TcxMaskEdit
+      Left = 279
+      ExplicitLeft = 279
+    end
+    inherited rbEvery: TcxRadioButton
+      Top = 123
+      AutoSize = True
+      ExplicitTop = 123
+      ExplicitWidth = 50
+      ExplicitHeight = 19
+    end
+    inherited meDay: TcxMaskEdit
+      Left = 184
+      ExplicitLeft = 184
+    end
+    inherited rbEveryWeekday: TcxRadioButton
+      Width = 119
+      ExplicitWidth = 119
+    end
+    inherited cbMonths: TcxComboBox
+      Left = 98
+      Top = 6
+      ExplicitLeft = 98
+      ExplicitTop = 6
+    end
+    inherited meDayOfMonth: TcxMaskEdit
+      Left = 60
+      Top = 6
+      ExplicitLeft = 60
+      ExplicitTop = 6
+    end
+    inherited lbOccurrences: TdxLayoutItem
+      Left = 356
+    end
+    inherited dxLayoutItem6: TdxLayoutItem
+      ControlOptions.OriginalWidth = 93
+    end
+    inherited gbRange: TdxLayoutGroup
+      Top = 135
+    end
+    inherited lbMonths: TdxLayoutItem
+      Left = 183
+    end
+    inherited lbMonths1: TdxLayoutItem
+      Left = 317
+    end
+    inherited dxLayoutItem15: TdxLayoutItem
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 50
+    end
+    inherited lbDay: TdxLayoutItem
+      Left = 127
+    end
+    inherited gbTime: TdxLayoutGroup
+      Left = 9
+      Top = 182
+    end
+  end
+  inherited dxLayoutLookAndFeelList: TdxLayoutLookAndFeelList
+    inherited dxLayoutCxLookAndFeel: TdxLayoutCxLookAndFeel
+      PixelsPerInch = 96
+    end
+  end
+end
