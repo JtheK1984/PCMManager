@@ -212,7 +212,7 @@ const
   PCM_Logname = 'PCMManager';
   PCM_Connectionname =  'manager';
   PCM_Programmnummer =  1;
-
+  sSQLInsertintoPushNotification = 'Insert Into service_pushnotifications (ID_Benutzer, Message) values (:ID_Benutzer, :Message)';
 
 implementation
 

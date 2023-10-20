@@ -1416,6 +1416,10 @@ procedure Tfrm_Contact.btn_KontaktDeleteClick(Sender: TObject);
 begin
   if qry_Kontakte.FieldByName('ID').AsInteger > 0 then
   begin
+    dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+    dm_PCM.qry_work.ParamByName('Message').AsString:= 'Kontakt ' + qry_Kontakte.FieldByName('Vorname').AsString + ' ' + qry_Kontakte.FieldByName('Nachname').AsString + ' wurde gelöscht';
+    dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_work.execsql;
     qry_Kontakte.Delete;
   end;
 end;
@@ -1500,6 +1504,10 @@ begin
     dm_PCM.qry_work.open;
     iID_Kontakt:= dm_PCM.qry_work.FieldByName('ID').AsInteger;
     dm_PCM.qry_work.Close;
+    dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+    dm_PCM.qry_work.ParamByName('Message').AsString:= 'Neuer Kontakt ' + sVorname + ' ' + sName + ' wurde angelegt';
+    dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_work.execsql;
     pc_Kontakte_Kontakte.ActivePageIndex:= 1;
     qry_Kontakte.Refresh;
     qry_Kontakte.Locate('ID',iID_Kontakt,[]);
@@ -1528,6 +1536,10 @@ begin
   if qry_Kontakte.State in [dsInsert, dsEdit] then
   begin
     qry_Kontakte.Post;
+    dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+    dm_PCM.qry_work.ParamByName('Message').AsString:= 'Kontakt ' + qry_Kontakte.FieldByName('Vorname').AsString + ' ' + qry_Kontakte.FieldByName('Nachname').AsString + ' wurde geändert';
+    dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_work.execsql;
   end;
 
   dm_PCM.qry_work.SQL.Text:= 'DELETE FROM manager_kalender WHERE Caption = :Caption';

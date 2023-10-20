@@ -198,6 +198,7 @@ type
   private
     { Private-Deklarationen }
 //    rep: TDmReports;
+    bnew: boolean;
     SaveGridViewEin,SaveGridViewAus,SaveGridViewVerf: TSavedGridView;
     procedure SetGridViews(Show:boolean);
     procedure InitializeRights;
@@ -292,12 +293,18 @@ begin
 end;
 procedure Tfrm_finanzen.btn_FinAusCancelClick(Sender: TObject);
 begin
+  bnew:= False;
   qAusgaben.Cancel;
 end;
 procedure Tfrm_finanzen.btn_FinAusDeleteClick(Sender: TObject);
 begin
+  bNew:= false;
   if qAusgaben.FieldByName('ID').AsInteger > 0 then
   begin
+    dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+    dm_PCM.qry_work.ParamByName('Message').AsString:= 'Ausgabe ' + qAusgaben.FieldByName('Name').asString + ' wurde gelöscht';
+    dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_work.execsql;
     qAusgaben.Delete;
   end
 end;
@@ -327,6 +334,7 @@ begin
     cbx_FinAusJahr.Enabled:= true;
   end;
   edt_FinAusName.SetFocus;
+  bNew:= true;
 end;
 procedure Tfrm_finanzen.btn_FinAusSaveClick(Sender: TObject);
 begin
@@ -340,18 +348,38 @@ begin
     edt_FinAusBIC.PostEditValue;
     edt_FinAusVerwendung.PostEditValue;
     qAusgaben.Post;
-  end;
+    if bnew then
+    begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Neue Ausgabe ' + qAusgaben.FieldByName('Name').asString + ' wurde angelegt';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+    end
+    else begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Ausgabe ' + qAusgaben.FieldByName('Name').asString + ' wurde geändert';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+    end;
+    bNew:= false;
+    end;
 end;
 procedure Tfrm_finanzen.btn_FinEinCancelClick(Sender: TObject);
 begin
+  bnew:= False;
   qEinnahmen.Cancel;
 end;
 procedure Tfrm_finanzen.btn_FinEinDeleteClick(Sender: TObject);
 begin
+  bNew:= false;
   if qEinnahmen.FieldByName('ID').AsInteger > 0 then
   begin
+    dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+    dm_PCM.qry_work.ParamByName('Message').AsString:= 'Einnahme ' + qEinnahmen.FieldByName('Quelle').asString + ' wurde gelöscht';
+    dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_work.execsql;
     qEinnahmen.Delete;
-  end
+  end;
 end;
 procedure Tfrm_finanzen.btn_FinEinNewClick(Sender: TObject);
 begin
@@ -367,6 +395,7 @@ begin
     edt_FinEinBetrag.enabled:= true;
   end;
   edt_FinEinAbsender.SetFocus;
+  bNew:= true;
 end;
 procedure Tfrm_finanzen.btn_FinEinSaveClick(Sender: TObject);
 begin
@@ -376,6 +405,20 @@ begin
     edt_FinEinBEz.PostEditValue;
     edt_FinEinBetrag.PostEditValue;
     qEinnahmen.Post;
+    if bnew then
+    begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Neuer Einnahme ' + qEinnahmen.FieldByName('Quelle').asString + ' wurde angelegt';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+    end
+    else begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Einnahme ' + qEinnahmen.FieldByName('Quelle').asString + ' wurde geändert';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+    end;
+    bNew:= false;
   end;
 end;
 procedure Tfrm_finanzen.chkbx_FinAusFixkostenPropertiesChange(Sender: TObject);

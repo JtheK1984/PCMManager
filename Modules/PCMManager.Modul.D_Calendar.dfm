@@ -57,8 +57,6 @@ object frm_Calendar: Tfrm_Calendar
       object ts_A_kalender: TcxTabSheet
         Caption = 'Kalender'
         ImageIndex = 10
-        ExplicitTop = 24
-        ExplicitHeight = 912
         object spl_Kalender: TcxSplitter
           Left = 0
           Top = 58
@@ -74,8 +72,6 @@ object frm_Calendar: Tfrm_Calendar
           Color = clBlack
           ParentColor = False
           Visible = False
-          ExplicitTop = 46
-          ExplicitHeight = 866
         end
         object brdckctrl_Kalender: TdxBarDockControl
           Left = 0
@@ -135,8 +131,6 @@ object frm_Calendar: Tfrm_Calendar
           OnGetEventEditProperties = sched_KalenderGetEventEditProperties
           OnGetEventHintText = sched_KalenderGetEventHintText
           OnKeyDown = sched_KalenderKeyDown
-          ExplicitTop = 46
-          ExplicitHeight = 866
           Selection = 7
           Splitters = {
             950000007E0000008406000083000000EF05000001000000F405000054030000}
@@ -146,8 +140,6 @@ object frm_Calendar: Tfrm_Calendar
       object ts_B_Aufgaben: TcxTabSheet
         Caption = 'Aufgaben'
         ImageIndex = 58
-        ExplicitTop = 24
-        ExplicitHeight = 912
         object cxTreeList1: TcxTreeList
           Left = 0
           Top = 0
@@ -900,8 +892,6 @@ object frm_Calendar: Tfrm_Calendar
       object ts_C_Stundenplan: TcxTabSheet
         Caption = 'Stundenplan'
         ImageIndex = 14
-        ExplicitTop = 24
-        ExplicitHeight = 912
         object grpbx_Stundenplanuebersicht: TcxGroupBox
           Left = 0
           Top = 0
@@ -1103,7 +1093,6 @@ object frm_Calendar: Tfrm_Calendar
           Align = alClient
           Caption = 'Stundenplan'
           TabOrder = 1
-          ExplicitHeight = 711
           Height = 710
           Width = 1676
           object pnl_Stundenplandetail: TcxGroupBox
@@ -2623,7 +2612,7 @@ object frm_Calendar: Tfrm_Calendar
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 45201.561609375000000000
+      ReportDocument.CreationDate = 45218.433745902780000000
       OptionsSize.AutoWidth = True
       PixelsPerInch = 96
       BuiltInReportLink = True

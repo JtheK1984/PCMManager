@@ -1891,7 +1891,7 @@ begin
                              'WHERE Date(start) < Date(Now()) and Kalendername = ''Geburtstag''';
   dm_PCM.qry_Work.ExecSQL;
   dm_PCM.qry_Work.SQL.Text:=  'Delete FROM manager_kalender ' +
-                            'WHERE Date(start) < Date(Now()) and (Kalendername = ''Müll'' or Kalendername like ''Feiertage %'')' ;
+                            'WHERE Date(start) < Date(Now()) and (Kalendername like ''Müll %'' or Kalendername like ''Feiertage %'')' ;
   dm_PCM.qry_Work.ExecSQL;
 
   defaultLabelColor:= 13083265;
@@ -2268,6 +2268,12 @@ begin
     ibuttonSelected := MessageDlg('Möchten sie den Termin wirklich löschen?',mtWarning, mbYesNo, 0);
     if ibuttonSelected = mrYes then
     begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Termin ' + sched_Kalender.SelectedEvents[0].Caption + ' von  '  +
+                                                        DateTimeToStr(sched_Kalender.SelectedEvents[0].Start) + ' bis ' +
+                                                        DateTimeToStr(sched_Kalender.SelectedEvents[0].Finish) + ' wurde gelöscht';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
       dm_PCM.qry_work.SQL.Text:='Delete From manager_Kalender Where ID = :ID';
       dm_PCM.qry_work.ParamByName('ID').AsInteger:= sched_Kalender.SelectedEvents[0].ID;
       dm_PCM.qry_work.ExecSQL;

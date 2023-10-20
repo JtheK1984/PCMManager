@@ -641,6 +641,7 @@ var
   TagBegin, MonatBegin, JahrBegin: String;
   TagEnd, MonatEnd, JahrEnd: String;
   sganzerTag,TimeBegin, TimeEnd,sWiederHolungCount: String;
+  sPushMessage: string;
 begin
   ipos:= Pos('COUNT=',Wiederholung);
   if ipos > 0 then
@@ -913,6 +914,17 @@ begin
     end;
     if FIdNachricht > 0 then
     begin
+      if typ = ntNachricht then
+        sPushMessage:= 'Nachricht ' + teBetreff.Text + ' wurde geändert';
+      if typ = ntAufgabe then
+        sPushMessage:= 'Aufgabe ' + teBetreff.Text + ' von  '  + DateBegin + ' bis ' + DateEnd + ' wurde geändert';
+      if typ = ntTermin then
+        sPushMessage:= 'Termin ' + teBetreff.Text + ' von  '  + DateBegin + ' bis ' + DateEnd + ' wurde geändert';
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= sPushMessage;
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+
       dm_PCM.qry_work.SQL.Text:= 'Update manager_kalender SEt CompleteDay = :ganzerTag, wiederholung_text:= :wiederholung_text, location = :location, kalendername = ''manuell'',' +
                          'ID_Benutzer= :ID_Benutzer,ID_Adr_Wurzel= :ID_Adr_Wurzel,' +
                          'ID_Ansprechpartner= :ID_Ansprechpartner,Typ= :Typ,GesendetAm= :GesendetAm,'+
@@ -986,6 +998,17 @@ begin
     end
     else
     begin
+      if typ = ntNachricht then
+        sPushMessage:= 'Neue Nachricht ' + teBetreff.Text + ' wurde angelegt';
+      if typ = ntAufgabe then
+        sPushMessage:= 'Neue Aufgabe ' + teBetreff.Text + ' von  '  + DateBegin + ' bis ' + DateEnd + ' wurde angelegt';
+      if typ = ntTermin then
+        sPushMessage:= 'Neue Termin ' + teBetreff.Text + ' von  '  + DateBegin + ' bis ' + DateEnd + ' wurde angelegt';
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= sPushMessage;
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+
       dm_PCM.qry_work.SQL.Text:= 'INSERT INTO manager_kalender (CompleteDay,wiederholung_text,location,kalendername,ID_Benutzer,ID_Adr_Wurzel,ID_Ansprechpartner,Typ,GesendetAm,'+
                          'Start,Finish,Caption,Message,Aufgabenstatus,Jira_Ticket,ID_IC_Prioritaeten,ID_IC_AufgabenArten,'+
                          'Reminder,ReminderMinutesBeforeStart,ReminderDate,options,EventType,'+

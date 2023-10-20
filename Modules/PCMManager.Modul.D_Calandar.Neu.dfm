@@ -110,6 +110,8 @@ object fNeu: TfNeu
         Style.Font.Style = []
         Style.IsFontAssigned = True
         TabOrder = 1
+        ExplicitWidth = 706
+        ExplicitHeight = 445
         Height = 446
         Width = 710
       end
@@ -130,6 +132,7 @@ object fNeu: TfNeu
         PanelStyle.Active = True
         Style.BorderStyle = ebsNone
         TabOrder = 0
+        ExplicitWidth = 899
         Height = 258
         Width = 903
         object cbTyp: TcxImageComboBox
@@ -727,6 +730,7 @@ object fNeu: TfNeu
         Style.BorderStyle = ebsFlat
         TabOrder = 2
         ExplicitLeft = 714
+        ExplicitHeight = 445
         Height = 446
         Width = 185
         object cxGrid1: TcxGrid

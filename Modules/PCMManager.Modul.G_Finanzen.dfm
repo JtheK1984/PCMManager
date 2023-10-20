@@ -1298,10 +1298,6 @@ object frm_finanzen: Tfrm_finanzen
         Caption = 'Verf'#252'gung'
         ImageIndex = 8
         TabVisible = False
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object gbx_Finanzen_Verf: TGroupBox
           Left = 0
           Top = 66

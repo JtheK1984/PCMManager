@@ -159,6 +159,7 @@ type
     procedure FormPaint(Sender: TObject);
   private
     { Private-Deklarationen }
+    bNew: boolean;
     bol_PWDShow: boolean;
     SaveGridViewPWD,SaveGridViewSer,SaveGridViewSerDet: TSavedGridView;
     procedure SetGridViews(Show:boolean);
@@ -215,12 +216,18 @@ begin
 end;
 procedure Tfrm_password.btn_PasswortCancelClick(Sender: TObject);
 begin
+  bnew:= False;
   qry_pwd.Cancel;
 end;
 procedure Tfrm_password.btn_PasswortDeleteClick(Sender: TObject);
 begin
+  bNew:= false;
   if qry_PWD.FieldByName('ID').AsInteger > 0 then
   begin
+    dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+    dm_PCM.qry_work.ParamByName('Message').AsString:= 'Passwort ' + qry_PWD.FieldByName('Bezeichnung').asString + ' wurde gelöscht';
+    dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_work.execsql;
     qry_PWD.Delete;
   end;
 end;
@@ -251,9 +258,9 @@ begin
     edt_Passwort_EmailOutboxServer.Enabled:= true;
     edt_Passwort_EmailOutboxPort.Enabled:= true;
     edt_Passwort_EmailOutboxSSL.Enabled:= true;
-
   end;
   edt_Passwort_Bezeichnung.SetFocus;
+  bNew:= true;
 end;
 procedure Tfrm_password.btn_PasswortSaveClick(Sender: TObject);
 begin
@@ -264,6 +271,20 @@ begin
     edt_Passwort_Passwort.PostEditValue;
     edt_Passwort_Link.PostEditValue;
     qry_PWD.Post;
+    if bnew then
+    begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Neuer Passwort ' + qry_PWD.FieldByName('Bezeichnung').asString + ' wurde angelegt';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+    end
+    else begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Passwort ' + qry_PWD.FieldByName('Bezeichnung').asString + ' wurde geändert';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+    end;
+    bNew:= false;
   end;
 end;
 procedure Tfrm_password.btn_Passwort_PasswortShowClick(Sender: TObject);
@@ -280,13 +301,20 @@ begin
 end;
 procedure Tfrm_password.btn_SerialCancelClick(Sender: TObject);
 begin
+  bNew:= false;
   qry_Serial.Cancel;
 end;
 procedure Tfrm_password.btn_SerialDeleteClick(Sender: TObject);
 begin
   if qry_Serial.FieldByName('ID').asInteger > 0 then
   begin
+    bNew:= false;
+    dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+    dm_PCM.qry_work.ParamByName('Message').AsString:= 'Serial ' + qry_PWD.FieldByName('App').asString + ' wurde gelöscht';
+    dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_work.execsql;
     qry_Serial.Delete;
+
   end;
 end;
 procedure Tfrm_password.btn_SerialNewClick(Sender: TObject);
@@ -304,6 +332,7 @@ begin
     lucbx_Programs_Typ.Enabled:= true;
   end;
   edt_Programs_Bez.SetFocus;
+  bNew:= true;
 end;
 procedure Tfrm_password.btn_SerialSaveClick(Sender: TObject);
 begin
@@ -311,6 +340,20 @@ begin
   begin
     edt_Programs_Bez.PostEditValue;
     qry_Serial.Post;
+    if bnew then
+    begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Neue Serial ' + qry_Serial.FieldByName('App').asString + ' wurde angelegt';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+    end
+    else begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Serial ' + qry_Serial.FieldByName('App').asString + ' wurde geändert';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+    end;
+    bNew:= false;
   end;
 end;
 procedure Tfrm_password.btn_SerialSCancelClick(Sender: TObject);
@@ -359,7 +402,6 @@ procedure Tfrm_password.FormDestroy(Sender: TObject);
 begin
   SetGridViews(False);
 end;
-
 procedure Tfrm_password.FormPaint(Sender: TObject);
 begin
   pc_passwoerter.align:= ALclient;

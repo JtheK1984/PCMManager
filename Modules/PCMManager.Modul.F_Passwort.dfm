@@ -1203,9 +1203,9 @@ object frm_password: Tfrm_password
       Width = 125
     end
     object btn_SerialSave: TdxBarLargeButton
-      Caption = 'Programm anlegen'
+      Caption = 'Programm speichern'
       Category = 0
-      Hint = 'Programm anlegen'
+      Hint = 'Programm speichern'
       Visible = ivAlways
       OnClick = btn_SerialSaveClick
       AutoGrayScale = False
