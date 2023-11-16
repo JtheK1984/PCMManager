@@ -547,8 +547,8 @@ begin
   pAufgabeTermin.Visible := Typ in [ntAufgabe,ntTermin];
   if (Typ = ntAufgabe) or (Typ = ntTermin) then
   begin
-    pTop.Height:= 268;
-    pnlTop.Height:= 116;
+    pTop.Height:= Round(268 * dm_PCM.iScale);
+    pnlTop.Height:= Round(116 * dm_PCM.iScale);
     chkbx_CompleteDay.Visible:= False;
     btn_SetRecurringEv.Visible:= False;
     btn_DelRecurringEv.Visible:= False;
@@ -563,7 +563,7 @@ begin
   else
   begin
 //    pAll.Top := 50;//pAufgabeTermin.Top + pAufgabeTermin.Height + 4;
-    pnlTop.Height:= 48;
+    pnlTop.Height:= Round(48 * dm_PCM.iScale);
   end;
   //pTop.Height := pAll.Top + pAll.Height + 8;
 
