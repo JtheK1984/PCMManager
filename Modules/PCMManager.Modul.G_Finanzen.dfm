@@ -25,9 +25,9 @@ object frm_finanzen: Tfrm_finanzen
     Height = 815
     Width = 987
     object AG_pc_Finanzen: TcxPageControl
-      Left = 2
-      Top = 2
-      Width = 983
+      Left = 3
+      Top = 3
+      Width = 981
       Height = 777
       Align = alTop
       Color = clBtnFace
@@ -40,13 +40,17 @@ object frm_finanzen: Tfrm_finanzen
       Properties.TabSlants.Kind = skCutCorner
       Properties.TabWidth = 100
       OnChange = AG_pc_FinanzenChange
-      ClientRectBottom = 773
-      ClientRectLeft = 4
-      ClientRectRight = 979
-      ClientRectTop = 25
+      ClientRectBottom = 771
+      ClientRectLeft = 2
+      ClientRectRight = 975
+      ClientRectTop = 28
       object A_ts_MU: TcxTabSheet
         Caption = 'Monats'#252'bersicht'
         ImageIndex = 3
+        ExplicitLeft = 4
+        ExplicitTop = 25
+        ExplicitWidth = 975
+        ExplicitHeight = 748
         object grpbx_FinanzenUebersicht: TcxGroupBox
           Left = 0
           Top = 0
@@ -60,8 +64,10 @@ object frm_finanzen: Tfrm_finanzen
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
           TabOrder = 0
-          Height = 748
-          Width = 975
+          ExplicitWidth = 975
+          ExplicitHeight = 748
+          Height = 743
+          Width = 973
           object ckbx_EditReport: TCheckBox
             Left = 6
             Top = 324
@@ -94,8 +100,8 @@ object frm_finanzen: Tfrm_finanzen
           end
           object grpbx_FinanzenEinnahmen: TcxGroupBox
             AlignWithMargins = True
-            Left = 7
-            Top = 27
+            Left = 8
+            Top = 24
             Margins.Left = 5
             Margins.Top = 6
             Margins.Right = 5
@@ -110,8 +116,10 @@ object frm_finanzen: Tfrm_finanzen
             Style.Font.Style = [fsBold]
             Style.IsFontAssigned = True
             TabOrder = 2
+            ExplicitTop = 2
+            ExplicitWidth = 959
             Height = 53
-            Width = 961
+            Width = 957
             object lbl_Einnahmen: TcxLabel
               Left = 798
               Top = 24
@@ -146,8 +154,8 @@ object frm_finanzen: Tfrm_finanzen
           end
           object grpbx_FinanzenGesamt: TcxGroupBox
             AlignWithMargins = True
-            Left = 7
-            Top = 204
+            Left = 8
+            Top = 201
             Margins.Left = 5
             Margins.Top = 6
             Margins.Right = 5
@@ -162,8 +170,10 @@ object frm_finanzen: Tfrm_finanzen
             Style.Font.Style = [fsBold]
             Style.IsFontAssigned = True
             TabOrder = 3
+            ExplicitTop = 179
+            ExplicitWidth = 959
             Height = 110
-            Width = 961
+            Width = 957
             object lbl_Einnahmen_summe: TcxLabel
               Left = 798
               Top = 24
@@ -300,8 +310,8 @@ object frm_finanzen: Tfrm_finanzen
           end
           object grpbx_FinanzenFixKosten: TcxGroupBox
             AlignWithMargins = True
-            Left = 7
-            Top = 145
+            Left = 8
+            Top = 142
             Margins.Left = 5
             Margins.Top = 6
             Margins.Right = 5
@@ -316,8 +326,10 @@ object frm_finanzen: Tfrm_finanzen
             Style.Font.Style = [fsBold]
             Style.IsFontAssigned = True
             TabOrder = 4
+            ExplicitTop = 120
+            ExplicitWidth = 959
             Height = 53
-            Width = 961
+            Width = 957
             object lbl_fixKosten: TcxLabel
               Left = 798
               Top = 24
@@ -352,8 +364,8 @@ object frm_finanzen: Tfrm_finanzen
           end
           object grpbx_FinanzenVarKosten: TcxGroupBox
             AlignWithMargins = True
-            Left = 7
-            Top = 86
+            Left = 8
+            Top = 83
             Margins.Left = 5
             Margins.Top = 6
             Margins.Right = 5
@@ -368,8 +380,10 @@ object frm_finanzen: Tfrm_finanzen
             Style.Font.Style = [fsBold]
             Style.IsFontAssigned = True
             TabOrder = 5
+            ExplicitTop = 61
+            ExplicitWidth = 959
             Height = 53
-            Width = 961
+            Width = 957
             object lbl_varKosten: TcxLabel
               Left = 798
               Top = 24
@@ -409,15 +423,18 @@ object frm_finanzen: Tfrm_finanzen
         ImageIndex = 6
         object gbx_Finanzen_Einnahmen_Quelle: TcxGroupBox
           Left = 0
-          Top = 58
+          Top = 63
           Align = alClient
           Caption = 'Einnahmequellen:'
           TabOrder = 0
-          Height = 690
-          Width = 975
+          ExplicitTop = 58
+          ExplicitWidth = 975
+          ExplicitHeight = 690
+          Height = 680
+          Width = 973
           object pnl_Finanzen_Einnahmen: TcxGroupBox
-            Left = 2
-            Top = 18
+            Left = 3
+            Top = 15
             Align = alTop
             PanelStyle.Active = True
             ParentFont = False
@@ -429,8 +446,10 @@ object frm_finanzen: Tfrm_finanzen
             Style.Font.Style = []
             Style.IsFontAssigned = True
             TabOrder = 0
+            ExplicitTop = -4
+            ExplicitWidth = 969
             Height = 98
-            Width = 971
+            Width = 967
             object edt_FinEinAbsender: TcxDBTextEdit
               Left = 96
               Top = 8
@@ -558,10 +577,10 @@ object frm_finanzen: Tfrm_finanzen
             end
           end
           object grd_Finanzen_Einnahmen: TcxGrid
-            Left = 2
-            Top = 116
-            Width = 971
-            Height = 572
+            Left = 3
+            Top = 113
+            Width = 967
+            Height = 558
             Align = alClient
             BevelInner = bvLowered
             BevelKind = bkFlat
@@ -575,6 +594,10 @@ object frm_finanzen: Tfrm_finanzen
             TabOrder = 1
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
+            ExplicitLeft = 2
+            ExplicitTop = 116
+            ExplicitWidth = 971
+            ExplicitHeight = 572
             object tv_Einnahmen: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -643,8 +666,8 @@ object frm_finanzen: Tfrm_finanzen
         object dxBarDockControl1: TdxBarDockControl
           Left = 0
           Top = 0
-          Width = 975
-          Height = 58
+          Width = 973
+          Height = 63
           Align = dalTop
           BarManager = dxBarManager1
         end
@@ -654,21 +677,23 @@ object frm_finanzen: Tfrm_finanzen
         ImageIndex = 5
         object gbx_Finanzen_Ausgaben: TcxGroupBox
           Left = 0
-          Top = 58
+          Top = 63
           Align = alClient
           Caption = 'Ausgaben'
           TabOrder = 0
-          Height = 690
-          Width = 975
+          ExplicitTop = 58
+          ExplicitHeight = 685
+          Height = 680
+          Width = 973
           object pnl_Finanzen_Ausgaben: TcxGroupBox
-            Left = 2
-            Top = 18
+            Left = 3
+            Top = 15
             Align = alTop
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 0
             Height = 122
-            Width = 971
+            Width = 967
             object lbl_FinAusBetrag: TcxLabel
               Left = 8
               Top = 37
@@ -1113,10 +1138,10 @@ object frm_finanzen: Tfrm_finanzen
             end
           end
           object grd_Finanzen_Ausgaben: TcxGrid
-            Left = 2
-            Top = 140
-            Width = 971
-            Height = 548
+            Left = 3
+            Top = 137
+            Width = 967
+            Height = 534
             Align = alClient
             BevelInner = bvLowered
             BevelKind = bkFlat
@@ -1130,6 +1155,7 @@ object frm_finanzen: Tfrm_finanzen
             TabOrder = 1
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
+            ExplicitHeight = 539
             object tv_Ausgaben: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -1288,8 +1314,8 @@ object frm_finanzen: Tfrm_finanzen
         object dxBarDockControl2: TdxBarDockControl
           Left = 0
           Top = 0
-          Width = 975
-          Height = 58
+          Width = 973
+          Height = 63
           Align = dalTop
           BarManager = dxBarManager1
         end
@@ -1298,6 +1324,10 @@ object frm_finanzen: Tfrm_finanzen
         Caption = 'Verf'#252'gung'
         ImageIndex = 8
         TabVisible = False
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object gbx_Finanzen_Verf: TGroupBox
           Left = 0
           Top = 66
@@ -1829,6 +1859,7 @@ object frm_finanzen: Tfrm_finanzen
     ImageOptions.UseLargeImagesForLargeIcons = True
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 616
     Top = 392

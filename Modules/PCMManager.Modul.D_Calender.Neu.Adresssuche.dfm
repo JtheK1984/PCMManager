@@ -20,9 +20,9 @@ object fAdressSuche: TfAdressSuche
   TextHeight = 13
   object pcTyp: TcxPageControl
     Left = 0
-    Top = 168
+    Top = 173
     Width = 946
-    Height = 446
+    Height = 441
     Align = alClient
     TabOrder = 0
     Properties.ActivePage = tshAdresssuche
@@ -31,28 +31,27 @@ object fAdressSuche: TfAdressSuche
     Properties.Style = 9
     Properties.TabSlants.Kind = skCutCorner
     LookAndFeel.Kind = lfUltraFlat
-    ExplicitWidth = 942
-    ExplicitHeight = 445
-    ClientRectBottom = 446
+    ExplicitTop = 168
+    ExplicitHeight = 446
+    ClientRectBottom = 441
     ClientRectRight = 946
     ClientRectTop = 20
     object tshAdresssuche: TcxTabSheet
       Caption = 'Adressen'
       ImageIndex = 0
-      ExplicitWidth = 942
-      ExplicitHeight = 425
+      ExplicitHeight = 426
     end
   end
   object cxGrid1: TcxGrid
     Left = 0
-    Top = 168
+    Top = 173
     Width = 946
-    Height = 446
+    Height = 441
     Align = alClient
     TabOrder = 1
     LookAndFeel.NativeStyle = False
-    ExplicitWidth = 942
-    ExplicitHeight = 445
+    ExplicitTop = 168
+    ExplicitHeight = 446
     object tvAdressen: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = True
@@ -124,7 +123,7 @@ object fAdressSuche: TfAdressSuche
   end
   object cxGroupBox2: TcxGroupBox
     Left = 0
-    Top = 58
+    Top = 63
     Align = alTop
     Caption = 'Filter-Kriterien'
     ParentFont = False
@@ -135,7 +134,7 @@ object fAdressSuche: TfAdressSuche
     Style.Font.Style = []
     Style.IsFontAssigned = True
     TabOrder = 2
-    ExplicitWidth = 942
+    ExplicitTop = 58
     Height = 71
     Width = 946
     object teName: TcxTextEdit
@@ -196,7 +195,7 @@ object fAdressSuche: TfAdressSuche
   end
   object cxGroupBox1: TcxGroupBox
     Left = 0
-    Top = 129
+    Top = 134
     Align = alTop
     PanelStyle.Active = True
     ParentFont = False
@@ -207,7 +206,7 @@ object fAdressSuche: TfAdressSuche
     Style.Font.Style = []
     Style.IsFontAssigned = True
     TabOrder = 7
-    ExplicitWidth = 942
+    ExplicitTop = 129
     Height = 39
     Width = 946
     object bAdressenZeigen: TcxButton
@@ -293,6 +292,7 @@ object fAdressSuche: TfAdressSuche
     ImageOptions.LargeImages = dm_PCM.imglst_32x32
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
     UseFullReset = True
     UseSystemFont = True
     Left = 472
@@ -301,7 +301,7 @@ object fAdressSuche: TfAdressSuche
     DockControlHeights = (
       0
       0
-      58
+      63
       0)
     object dxBarManager1Bar1: TdxBar
       Caption = 'Custom 1'

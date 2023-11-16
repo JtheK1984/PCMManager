@@ -50,9 +50,8 @@ object frm_Calendar: Tfrm_Calendar
       Properties.TabSlants.Kind = skCutCorner
       Properties.TabWidth = 100
       OnClick = pc_KalenderClick
-      ClientRectBottom = 936
-      ClientRectLeft = 4
-      ClientRectRight = 1680
+      ClientRectBottom = 940
+      ClientRectRight = 1684
       ClientRectTop = 25
       object ts_A_kalender: TcxTabSheet
         Caption = 'Kalender'
@@ -61,7 +60,7 @@ object frm_Calendar: Tfrm_Calendar
           Left = 0
           Top = 58
           Width = 8
-          Height = 853
+          Height = 857
           HotZoneClassName = 'TcxSimpleStyle'
           HotZone.ArrowColor = clGrayText
           HotZone.ArrowHighlightColor = clGrayText
@@ -76,7 +75,7 @@ object frm_Calendar: Tfrm_Calendar
         object brdckctrl_Kalender: TdxBarDockControl
           Left = 0
           Top = 0
-          Width = 1676
+          Width = 1684
           Height = 58
           Align = dalTop
           BarManager = brmgr_Kalendar
@@ -84,8 +83,8 @@ object frm_Calendar: Tfrm_Calendar
         object sched_Kalender: TcxScheduler
           Left = 8
           Top = 58
-          Width = 1668
-          Height = 853
+          Width = 1676
+          Height = 857
           DateNavigator.RowCount = 6
           ViewDay.Active = True
           ViewDay.AlwaysShowEventTime = True
@@ -133,8 +132,8 @@ object frm_Calendar: Tfrm_Calendar
           OnKeyDown = sched_KalenderKeyDown
           Selection = 7
           Splitters = {
-            950000007E0000008406000083000000EF05000001000000F405000054030000}
-          StoredClientBounds = {01000000010000008306000054030000}
+            950000007E0000008406000083000000F705000001000000FC05000058030000}
+          StoredClientBounds = {01000000010000008B06000058030000}
         end
       end
       object ts_B_Aufgaben: TcxTabSheet
@@ -143,7 +142,7 @@ object frm_Calendar: Tfrm_Calendar
         object cxTreeList1: TcxTreeList
           Left = 0
           Top = 0
-          Width = 1676
+          Width = 1684
           Height = 107
           Align = alTop
           Bands = <
@@ -153,6 +152,7 @@ object frm_Calendar: Tfrm_Calendar
           ScrollbarAnnotations.CustomAnnotations = <>
           TabOrder = 1
           OnClick = cxTreeList1Click
+          ExplicitWidth = 1676
           Data = {
             00000500200100000F00000044617461436F6E74726F6C6C6572310200000012
             000000546378537472696E6756616C7565547970651200000054637853747269
@@ -190,7 +190,7 @@ object frm_Calendar: Tfrm_Calendar
         object brdckctrl_Aufgaben: TdxBarDockControl
           Left = 0
           Top = 107
-          Width = 1676
+          Width = 1684
           Height = 58
           Align = dalTop
           BarManager = brmgr_Kalendar
@@ -202,16 +202,20 @@ object frm_Calendar: Tfrm_Calendar
           PanelStyle.Active = True
           Style.BorderStyle = ebsNone
           TabOrder = 0
-          Height = 746
-          Width = 1676
+          ExplicitWidth = 1674
+          ExplicitHeight = 736
+          Height = 750
+          Width = 1684
           object cxGrid1: TcxGrid
             Left = 2
             Top = 32
-            Width = 1672
-            Height = 384
+            Width = 1680
+            Height = 388
             Align = alClient
             TabOrder = 1
             LookAndFeel.NativeStyle = False
+            ExplicitWidth = 1672
+            ExplicitHeight = 384
             object tvNachrichten: TcxGridDBTableView
               OnDblClick = tvNachrichtenDblClick
               Navigator.Buttons.CustomButtons = <>
@@ -513,23 +517,26 @@ object frm_Calendar: Tfrm_Calendar
           end
           object cxSplitter1: TcxSplitter
             Left = 2
-            Top = 416
-            Width = 1672
+            Top = 420
+            Width = 1680
             Height = 8
             HotZoneClassName = 'TcxSimpleStyle'
             AlignSplitter = salBottom
             Control = pnlDetails
+            ExplicitTop = 416
             ExplicitWidth = 8
           end
           object pnlDetails: TcxGroupBox
             Left = 2
-            Top = 424
+            Top = 428
             Align = alBottom
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 2
+            ExplicitTop = 424
+            ExplicitWidth = 1668
             Height = 320
-            Width = 1672
+            Width = 1680
             object cxGroupBox8: TcxGroupBox
               Left = 2
               Top = 2
@@ -537,8 +544,9 @@ object frm_Calendar: Tfrm_Calendar
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 0
+              ExplicitWidth = 1662
               Height = 62
-              Width = 1668
+              Width = 1676
               object Label2: TLabel
                 Left = 0
                 Top = 8
@@ -667,24 +675,29 @@ object frm_Calendar: Tfrm_Calendar
               Style.Font.Style = []
               Style.IsFontAssigned = True
               TabOrder = 1
+              ExplicitWidth = 1475
+              ExplicitHeight = 252
               Height = 254
-              Width = 1478
+              Width = 1486
             end
             object cxSplitter4: TcxSplitter
-              Left = 1480
+              Left = 1488
               Top = 64
               Width = 8
               Height = 254
               HotZoneClassName = 'TcxSimpleStyle'
               Control = pAnhaenge
+              ExplicitLeft = 1480
             end
             object pAnhaenge: TcxGroupBox
-              Left = 1488
+              Left = 1496
               Top = 64
               Align = alRight
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 3
+              ExplicitLeft = 1488
+              ExplicitHeight = 252
               Height = 254
               Width = 182
               object cxGrid5: TcxGrid
@@ -762,6 +775,7 @@ object frm_Calendar: Tfrm_Calendar
                 PanelStyle.Active = True
                 Style.BorderStyle = ebsNone
                 TabOrder = 1
+                ExplicitWidth = 176
                 Height = 42
                 Width = 178
                 object lTypeName: TcxLabel
@@ -791,6 +805,7 @@ object frm_Calendar: Tfrm_Calendar
                   Style.BorderStyle = ebsNone
                   TabOrder = 1
                   Transparent = True
+                  ExplicitHeight = 36
                   Height = 38
                   Width = 32
                 end
@@ -839,8 +854,9 @@ object frm_Calendar: Tfrm_Calendar
             PanelStyle.Active = True
             Style.BorderStyle = ebsFlat
             TabOrder = 0
+            ExplicitWidth = 1668
             Height = 30
-            Width = 1672
+            Width = 1680
             object cxImage1: TcxImage
               Left = 2
               Top = 2
@@ -883,8 +899,10 @@ object frm_Calendar: Tfrm_Calendar
               TabOrder = 1
               OnEnter = edSucheEnter
               OnExit = edSucheExit
+              ExplicitWidth = 1642
+              ExplicitHeight = 24
               Height = 26
-              Width = 1648
+              Width = 1656
             end
           end
         end
@@ -899,7 +917,7 @@ object frm_Calendar: Tfrm_Calendar
           Caption = 'Stundenplan'#252'bersicht'
           TabOrder = 0
           Height = 201
-          Width = 1676
+          Width = 1684
           object edt_Stundenplan_Klasse: TcxDBTextEdit
             Left = 838
             Top = 87
@@ -954,7 +972,7 @@ object frm_Calendar: Tfrm_Calendar
           object grd_Stundenplanuebersicht: TcxGrid
             Left = 2
             Top = 118
-            Width = 1672
+            Width = 1680
             Height = 81
             Align = alBottom
             BevelInner = bvLowered
@@ -969,6 +987,7 @@ object frm_Calendar: Tfrm_Calendar
             TabOrder = 3
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
+            ExplicitWidth = 1672
             object grdDBTblView_Stundenplanuebersicht: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -1081,7 +1100,7 @@ object frm_Calendar: Tfrm_Calendar
           object brdckctrl_Stundenplan: TdxBarDockControl
             Left = 2
             Top = 18
-            Width = 1672
+            Width = 1680
             Height = 58
             Align = dalTop
             BarManager = brmgr_Kalendar
@@ -1093,16 +1112,18 @@ object frm_Calendar: Tfrm_Calendar
           Align = alClient
           Caption = 'Stundenplan'
           TabOrder = 1
-          Height = 710
-          Width = 1676
+          Height = 714
+          Width = 1684
           object pnl_Stundenplandetail: TcxGroupBox
             Left = 2
             Top = 76
             Align = alTop
             PanelStyle.Active = True
             TabOrder = 0
+            ExplicitTop = 81
+            ExplicitWidth = 1670
             Height = 60
-            Width = 1672
+            Width = 1680
             object lbl_Stundenplan_Bis: TcxLabel
               Left = 82
               Top = 8
@@ -1383,8 +1404,8 @@ object frm_Calendar: Tfrm_Calendar
           object grd_StundenplanFach: TcxGrid
             Left = 2
             Top = 136
-            Width = 1672
-            Height = 572
+            Width = 1680
+            Height = 576
             Align = alClient
             BevelInner = bvLowered
             BevelKind = bkFlat
@@ -1398,6 +1419,8 @@ object frm_Calendar: Tfrm_Calendar
             TabOrder = 1
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
+            ExplicitWidth = 1672
+            ExplicitHeight = 572
             object grdDBTblView_Stundenplan: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -1534,7 +1557,7 @@ object frm_Calendar: Tfrm_Calendar
           object brdckCtrl_StundenplanFach: TdxBarDockControl
             Left = 2
             Top = 18
-            Width = 1672
+            Width = 1680
             Height = 58
             Align = dalTop
             BarManager = brmgr_Kalendar
@@ -1662,6 +1685,7 @@ object frm_Calendar: Tfrm_Calendar
     ImageOptions.UseLargeImagesForLargeIcons = True
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
     UseF10ForMenu = False
     UseSystemFont = True
     Left = 1205
@@ -2612,7 +2636,7 @@ object frm_Calendar: Tfrm_Calendar
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 45218.433745902780000000
+      ReportDocument.CreationDate = 45246.574747627320000000
       OptionsSize.AutoWidth = True
       PixelsPerInch = 96
       BuiltInReportLink = True
@@ -2749,7 +2773,6 @@ object frm_Calendar: Tfrm_Calendar
       FieldName = 'ID'
       Origin = 'ID'
       ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
     end
     object qWF_Nachrichten_AnhaengeID_IC_Nachrichten: TIntegerField
       FieldName = 'ID_IC_Nachrichten'

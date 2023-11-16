@@ -22,6 +22,8 @@ object frm_Mail: Tfrm_Mail
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 4
+    ExplicitTop = 58
+    ExplicitHeight = 755
     Height = 750
     Width = 1240
     object grpbx_Mail: TcxGroupBox
@@ -30,6 +32,7 @@ object frm_Mail: Tfrm_Mail
       Align = alClient
       PanelStyle.Active = True
       TabOrder = 0
+      ExplicitHeight = 729
       Height = 724
       Width = 984
       object grd_Mail: TcxGrid
@@ -42,6 +45,7 @@ object frm_Mail: Tfrm_Mail
         BevelKind = bkFlat
         BorderStyle = cxcbsNone
         TabOrder = 0
+        ExplicitHeight = 208
         object grdDBTblView_Mails: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           FilterBox.CustomizeDialog = False
@@ -140,6 +144,7 @@ object frm_Mail: Tfrm_Mail
         PanelStyle.Active = True
         TabOrder = 1
         Visible = False
+        ExplicitTop = 216
         Height = 510
         Width = 978
         object webbwr_Mail: TWebBrowser
@@ -165,6 +170,7 @@ object frm_Mail: Tfrm_Mail
         Cursor = crVSplit
         AlignSplitter = salBottom
         Control = grpbx_MailVorschau
+        ExplicitTop = 211
       end
     end
     object grpbx_Postfach: TcxGroupBox
@@ -173,6 +179,7 @@ object frm_Mail: Tfrm_Mail
       Align = alLeft
       PanelStyle.Active = True
       TabOrder = 1
+      ExplicitHeight = 729
       Height = 724
       Width = 250
       object trlst_EmailFolder: TcxTreeList
@@ -192,6 +199,7 @@ object frm_Mail: Tfrm_Mail
         OptionsData.Deleting = False
         ScrollbarAnnotations.CustomAnnotations = <>
         TabOrder = 0
+        ExplicitHeight = 723
         Data = {
           00000500F40000000F00000044617461436F6E74726F6C6C6572310200000012
           000000546378537472696E6756616C7565547970651200000054637853747269
@@ -262,6 +270,7 @@ object frm_Mail: Tfrm_Mail
       Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ExplicitTop = 732
     end
   end
   object ds_Mail: TDataSource
@@ -297,6 +306,7 @@ object frm_Mail: Tfrm_Mail
     ImageOptions.UseLargeImagesForLargeIcons = True
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 728
     Top = 376

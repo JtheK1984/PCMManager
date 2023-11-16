@@ -22,8 +22,6 @@ object frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
-    ExplicitWidth = 276
-    ExplicitHeight = 84
     Height = 83
     Width = 268
     object btn_PCManagerChooseDate_Cancel: TcxButton

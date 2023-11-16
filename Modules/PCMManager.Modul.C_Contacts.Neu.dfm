@@ -21,8 +21,6 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
-    ExplicitWidth = 335
-    ExplicitHeight = 131
     Height = 130
     Width = 327
     object lbl_Anrede: TcxLabel

@@ -23,7 +23,8 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue, cxLabel, cxGroupBox, system.UITypes;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, cxLabel, cxGroupBox, system.UITypes,
+  dxSkinWXI;
 
 type
   Tfrm_PCManagerNewContact = class(TForm)

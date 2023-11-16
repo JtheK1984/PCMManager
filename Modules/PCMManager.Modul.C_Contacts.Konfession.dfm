@@ -34,8 +34,6 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
     LockedStateImageOptions.Effect = lsieDark
     LookAndFeel.Kind = lfFlat
     LookAndFeel.NativeStyle = False
-    ExplicitWidth = 496
-    ExplicitHeight = 163
     object grdDBTblView_Konfession: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       FilterBox.CustomizeDialog = False

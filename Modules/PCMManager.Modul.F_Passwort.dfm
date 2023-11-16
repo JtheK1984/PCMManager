@@ -25,9 +25,9 @@ object frm_password: Tfrm_password
     Height = 749
     Width = 1172
     object pc_passwoerter: TcxPageControl
-      Left = 2
-      Top = 2
-      Width = 1168
+      Left = 3
+      Top = 3
+      Width = 1166
       Height = 749
       Align = alTop
       Color = clBtnFace
@@ -41,26 +41,28 @@ object frm_password: Tfrm_password
       Properties.TabSlants.Kind = skCutCorner
       Properties.TabWidth = 100
       OnClick = pc_passwoerterClick
-      ClientRectBottom = 745
-      ClientRectLeft = 4
-      ClientRectRight = 1164
-      ClientRectTop = 25
+      ClientRectBottom = 743
+      ClientRectLeft = 2
+      ClientRectRight = 1160
+      ClientRectTop = 28
       object ts_A_PW: TcxTabSheet
         Caption = 'Passw'#246'rter'
         ImageIndex = 9
         object grpbx_Passwort: TcxGroupBox
           Left = 0
-          Top = 58
+          Top = 63
           Align = alClient
           Caption = 'Passwortdetails'
           TabOrder = 0
-          Height = 662
-          Width = 1160
+          ExplicitTop = 58
+          ExplicitHeight = 657
+          Height = 652
+          Width = 1158
           object grd_Passwort: TcxGrid
-            Left = 2
-            Top = 194
-            Width = 1156
-            Height = 466
+            Left = 3
+            Top = 191
+            Width = 1152
+            Height = 452
             Align = alClient
             BevelInner = bvLowered
             BevelKind = bkFlat
@@ -74,6 +76,7 @@ object frm_password: Tfrm_password
             TabOrder = 0
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
+            ExplicitHeight = 457
             object tv_Passwort: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -210,14 +213,14 @@ object frm_password: Tfrm_password
             end
           end
           object pnl_Passwort: TcxGroupBox
-            Left = 2
-            Top = 18
+            Left = 3
+            Top = 15
             Align = alTop
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 1
             Height = 176
-            Width = 1156
+            Width = 1152
             object lbl_Passwort_Benutzer: TcxLabel
               Left = 8
               Top = 38
@@ -677,8 +680,8 @@ object frm_password: Tfrm_password
         object dxBarDockControl1: TdxBarDockControl
           Left = 0
           Top = 0
-          Width = 1160
-          Height = 58
+          Width = 1158
+          Height = 63
           Align = dalTop
           BarManager = brmgr_Passwort
         end
@@ -693,11 +696,11 @@ object frm_password: Tfrm_password
           Caption = 'Programme / Spiele / Sonstiges'
           TabOrder = 0
           Height = 406
-          Width = 1160
+          Width = 1158
           object grd_Programs: TcxGrid
-            Left = 2
-            Top = 118
-            Width = 1156
+            Left = 3
+            Top = 111
+            Width = 1152
             Height = 286
             Align = alBottom
             BevelInner = bvLowered
@@ -712,6 +715,9 @@ object frm_password: Tfrm_password
             TabOrder = 2
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
+            ExplicitLeft = 2
+            ExplicitTop = 118
+            ExplicitWidth = 1156
             object tv_Programs: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -855,10 +861,10 @@ object frm_password: Tfrm_password
             Transparent = True
           end
           object dxBarDockControl2: TdxBarDockControl
-            Left = 2
-            Top = 18
-            Width = 1156
-            Height = 58
+            Left = 3
+            Top = 15
+            Width = 1152
+            Height = 63
             Align = dalTop
             BarManager = brmgr_Passwort
           end
@@ -869,13 +875,13 @@ object frm_password: Tfrm_password
           Align = alClient
           Caption = 'Serials'
           TabOrder = 1
-          Height = 314
-          Width = 1160
+          Height = 309
+          Width = 1158
           object cxGrid1: TcxGrid
-            Left = 2
-            Top = 109
-            Width = 1156
-            Height = 203
+            Left = 3
+            Top = 111
+            Width = 1152
+            Height = 189
             Align = alClient
             BevelInner = bvLowered
             BevelKind = bkFlat
@@ -889,6 +895,10 @@ object frm_password: Tfrm_password
             TabOrder = 0
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
+            ExplicitLeft = 2
+            ExplicitTop = 109
+            ExplicitWidth = 1156
+            ExplicitHeight = 203
             object cxGridDBTableView1: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -942,14 +952,16 @@ object frm_password: Tfrm_password
             end
           end
           object cxGroupBox1: TcxGroupBox
-            Left = 2
-            Top = 76
+            Left = 3
+            Top = 78
             Align = alTop
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 1
+            ExplicitTop = 54
+            ExplicitWidth = 1154
             Height = 33
-            Width = 1156
+            Width = 1152
             object edt_SerialsBez: TcxDBTextEdit
               Left = 78
               Top = 8
@@ -1009,10 +1021,10 @@ object frm_password: Tfrm_password
             end
           end
           object dxBarDockControl3: TdxBarDockControl
-            Left = 2
-            Top = 18
-            Width = 1156
-            Height = 58
+            Left = 3
+            Top = 15
+            Width = 1152
+            Height = 63
             Align = dalTop
             BarManager = brmgr_Passwort
           end
@@ -1037,6 +1049,7 @@ object frm_password: Tfrm_password
     ImageOptions.UseLargeImagesForLargeIcons = True
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 576
     Top = 360

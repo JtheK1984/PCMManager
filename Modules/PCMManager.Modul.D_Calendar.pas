@@ -2319,7 +2319,7 @@ begin
   aData:= nil;
   asRecurrence:='';
   dm_PCM.qry_work.SQL.Text:= 'Select ID, Kalender,Link,Benutzer,Passwort, Erinnerung, ErinnerungVor,LabelColor,Fontcolor,ID_Benutzer ' +
-                   'From manager_kalender_config Where ID_Benutzer = :ID_Benutzer';
+                   'From manager_kalender_konfiguration Where ID_Benutzer = :ID_Benutzer';
   dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
   dm_PCM.qry_work.open;
   while not dm_PCM.qry_work.eof do
@@ -2791,7 +2791,7 @@ var
   strlstICS,strlstListe: TStringList;
   i: integer;
 begin
-  dm_PCM.qry_work1.SQL.Text:= 'Select ID,url,user,passwort,kalendername,ID_Benutzer From manager_kalender_config_ftp Where ID_Benutzer = :ID_Benutzer ';;
+  dm_PCM.qry_work1.SQL.Text:= 'Select ID,url,user,passwort,kalendername,ID_Benutzer From manager_kalender_Konfiguration_ftp Where ID_Benutzer = :ID_Benutzer ';;
   dm_PCM.qry_work1.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
   dm_PCM.qry_work1.open;
   sFilename:=  GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\'+ dm_PCM.qry_work1.FieldByName('kalendername').asString + '.ics';

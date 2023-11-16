@@ -117,6 +117,9 @@ type
     chkbx_CompleteDay: TcxCheckBox;
     stbr_New: TdxStatusBar;
     odAnhang: TdxOpenFileDialog;
+    pnClient: TcxGroupBox;
+    pnlTopLeft: TcxGroupBox;
+    pnlTop: TcxGroupBox;
     procedure bSendClick(Sender: TObject);
     procedure btnAnhangHinzufuegenClick(Sender: TObject);
     procedure btnAnhangLoeschenClick(Sender: TObject);
@@ -544,8 +547,8 @@ begin
   pAufgabeTermin.Visible := Typ in [ntAufgabe,ntTermin];
   if (Typ = ntAufgabe) or (Typ = ntTermin) then
   begin
-    pAll.Top := 120;
-    pTop.Height:= 258;
+    pTop.Height:= 268;
+    pnlTop.Height:= 116;
     chkbx_CompleteDay.Visible:= False;
     btn_SetRecurringEv.Visible:= False;
     btn_DelRecurringEv.Visible:= False;
@@ -559,8 +562,8 @@ begin
   end
   else
   begin
-    pAll.Top := 50;//pAufgabeTermin.Top + pAufgabeTermin.Height + 4;
-    pTop.Height:= 258 - 70;
+//    pAll.Top := 50;//pAufgabeTermin.Top + pAufgabeTermin.Height + 4;
+    pnlTop.Height:= 48;
   end;
   //pTop.Height := pAll.Top + pAll.Height + 8;
 

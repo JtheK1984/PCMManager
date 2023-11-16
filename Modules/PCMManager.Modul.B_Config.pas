@@ -39,7 +39,8 @@ uses
   IdExplicitTLSClientServerBase,System.UITypes,
   dxBar, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
   IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient, IdMessageClient,
-  IdSMTPBase, cxCurrencyEdit, Vcl.OleServer, OutlookXP,PCM.Functions, dxSkinWXI;
+  IdSMTPBase, cxCurrencyEdit, Vcl.OleServer, OutlookXP,PCM.Functions, dxSkinWXI,
+  Vcl.VirtualImage, Vcl.BaseImageCollection, Vcl.ImageCollection;
 
 type
   Tfrm_Config = class(TForm)
@@ -159,7 +160,6 @@ type
     ts_E_Design: TcxTabSheet;
     grpbx_DesignStyle: TcxGroupBox;
     grpbx_vorschau: TcxGroupBox;
-    img_Vorschau: TcxImage;
     pnl_Vorschau: TcxGroupBox;
     des_ToolButton3: TcxButton;
     des_ToolButton2: TcxButton;
@@ -333,7 +333,8 @@ type
     lbl_AufgabenSonstigesAccToDo: TcxLabel;
     edt_AufgabenSonstigesAccMail: TcxDBTextEdit;
     pnl_Design: TcxGroupBox;
-    cxImageList1: TcxImageList;
+    img_Vorschau: TVirtualImage;
+    ImageCollection1: TImageCollection;
     procedure FormShow(Sender: TObject);
     procedure btn_DesignSaveClick(Sender: TObject);
     procedure btn_CalConfigNew1Click(Sender: TObject);
@@ -1275,7 +1276,7 @@ end;
 procedure Tfrm_Config.cbx_StylePropertiesChange(Sender: TObject);
 begin
   if cmbbx_Style.ItemIndex > -1 then
-    cximagelist1.GetIcon(cmbbx_Style.ItemIndex, img_Vorschau.Picture.Icon);
+    img_Vorschau.imageindex:= cmbbx_Style.ItemIndex;
 end;
 procedure Tfrm_Config.btn_AufgabenOptionenSaveClick(Sender: TObject);
 begin
@@ -1775,8 +1776,6 @@ begin
   if frm_PCM_main.bStyle then
     pc_Options.ActivePage := ts_E_Design;
   SetButtons;
-  img_Vorschau.Width:= Round(img_Vorschau.Width * dm_PCM.iscale);
-  img_Vorschau.height:= Round(img_Vorschau.height * dm_PCM.iscale);
   SetGridViews(True);
 end;
 
