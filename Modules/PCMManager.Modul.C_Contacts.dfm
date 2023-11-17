@@ -13,7 +13,6 @@
   Font.Style = []
   WindowState = wsMaximized
   OnDestroy = FormDestroy
-  OnPaint = FormPaint
   OnShow = FormShow
   TextHeight = 13
   object pnl_Design: TcxGroupBox
@@ -23,8 +22,6 @@
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 4
-    ExplicitTop = 58
-    ExplicitHeight = 728
     Height = 723
     Width = 1181
     object pc_Kontakte_Kontakte: TcxPageControl
@@ -700,8 +697,6 @@
           Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
           Properties.TabSlants.Kind = skCutCorner
           Properties.TabWidth = 100
-          ExplicitWidth = 775
-          ExplicitHeight = 661
           ClientRectBottom = 650
           ClientRectLeft = 2
           ClientRectRight = 767
@@ -719,8 +714,6 @@
               Align = alClient
               Caption = 'Sonstige Informationen'
               TabOrder = 1
-              ExplicitWidth = 767
-              ExplicitHeight = 446
               Height = 436
               Width = 765
               object mem_KontakteZusatzSonstige: TcxDBMemo
@@ -748,7 +741,6 @@
               Align = alTop
               Caption = 'Zusatzinformation'
               TabOrder = 0
-              ExplicitWidth = 767
               Height = 187
               Width = 765
               object lbl_KontaktZusatzFamilienstand: TcxLabel
@@ -991,18 +983,12 @@
           object ts_B_Geschaeftlich: TcxTabSheet
             Caption = 'Gesch'#228'ftlich'
             ImageIndex = 2
-            ExplicitLeft = 4
-            ExplicitTop = 24
-            ExplicitWidth = 767
-            ExplicitHeight = 633
             object grpbx_KontakteGeschaeftlich: TcxGroupBox
               Left = 0
               Top = 0
               Align = alClient
               Caption = 'Kontakdaten Gesch'#228'ftlich'
               TabOrder = 0
-              ExplicitWidth = 767
-              ExplicitHeight = 633
               Height = 623
               Width = 765
               object btn_KontaktGeschaeftlichSendMail: TcxButton
@@ -1361,18 +1347,12 @@
           object ts_C_Sonstiges: TcxTabSheet
             Caption = 'Sonstige Info'
             ImageIndex = 3
-            ExplicitLeft = 4
-            ExplicitTop = 24
-            ExplicitWidth = 767
-            ExplicitHeight = 633
             object grpbx_KontakteSonstiges: TcxGroupBox
               Left = 0
               Top = 0
               Align = alClient
               Caption = 'Messenger / Soziale Netzwerke'
               TabOrder = 0
-              ExplicitWidth = 767
-              ExplicitHeight = 633
               Height = 623
               Width = 765
               object edt_KontakteSonstigesFacebook: TcxDBTextEdit
@@ -1475,7 +1455,6 @@
           Align = alLeft
           Caption = 'Kontakt'
           TabOrder = 0
-          ExplicitHeight = 661
           Height = 656
           Width = 394
           object btn_KontaktEmail1Send: TcxButton

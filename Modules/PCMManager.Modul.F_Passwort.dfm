@@ -12,7 +12,6 @@ object frm_password: Tfrm_password
   Font.Name = 'Tahoma'
   Font.Style = []
   OnDestroy = FormDestroy
-  OnPaint = FormPaint
   OnShow = FormShow
   TextHeight = 13
   object pnl_Design: TcxGroupBox
@@ -54,8 +53,6 @@ object frm_password: Tfrm_password
           Align = alClient
           Caption = 'Passwortdetails'
           TabOrder = 0
-          ExplicitTop = 58
-          ExplicitHeight = 657
           Height = 652
           Width = 1158
           object grd_Passwort: TcxGrid
@@ -76,7 +73,6 @@ object frm_password: Tfrm_password
             TabOrder = 0
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
-            ExplicitHeight = 457
             object tv_Passwort: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -219,6 +215,7 @@ object frm_password: Tfrm_password
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 1
+            ExplicitTop = -4
             Height = 176
             Width = 1152
             object lbl_Passwort_Benutzer: TcxLabel
@@ -958,8 +955,7 @@ object frm_password: Tfrm_password
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 1
-            ExplicitTop = 54
-            ExplicitWidth = 1154
+            ExplicitTop = 59
             Height = 33
             Width = 1152
             object edt_SerialsBez: TcxDBTextEdit

@@ -194,7 +194,6 @@ type
     procedure dxBarLargeButton4Click(Sender: TObject);
     procedure dxBarLargeButton3Click(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure FormPaint(Sender: TObject);
   private
     { Private-Deklarationen }
 //    rep: TDmReports;
@@ -238,23 +237,6 @@ procedure Tfrm_finanzen.FormDestroy(Sender: TObject);
 begin
   SetGridViews(false);
 end;
-procedure Tfrm_finanzen.FormPaint(Sender: TObject);
-begin
- AG_pc_Finanzen.Align:= alclient;
-  OpenData;
-  InitializeRights;
-  SetButtons;
-  case iActiveTab of
-  1: AG_pc_Finanzen.ActivePage:= A_ts_MU;
-  2: AG_pc_Finanzen.ActivePage:= B_ts_Ein;
-  3: AG_pc_Finanzen.ActivePage:= C_ts_Aus;
-  4: AG_pc_Finanzen.ActivePage:= ts_verf;
-  end;
-  AG_pc_Finanzen.OnChange:= AG_pc_FinanzenChange;
-  SetFinanzUebersicht;
-  SetGridViews(True);
-end;
-
 procedure Tfrm_finanzen.FormShow(Sender: TObject);
 begin
   AG_pc_Finanzen.Align:= alclient;

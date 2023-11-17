@@ -388,7 +388,6 @@ type
       APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord;
       ANewItemRecordFocusingChanged: Boolean);
     procedure FormDestroy(Sender: TObject);
-    procedure FormPaint(Sender: TObject);
   private
     { Private-Deklarationen }
 //    rep : TDmReports;
@@ -1181,14 +1180,12 @@ begin
 
   sFilter:= '';
   case iCurrTableView of
+  0:
+    sfilter:= 'Typ = 2';
   1:
-    begin
-      sfilter:= 'Typ <> 0';
-    end;
+    sfilter:= 'Typ = 1';
   2:
-    begin
-      sFilter:= 'Typ = 0';
-    end;
+    sFilter:= 'Typ = 0';
   end;
   dm_PCM.qry_Kalender_Kalender.Refresh;
   dm_PCM.qry_Kalender_Aufgaben.refresh;
@@ -1480,7 +1477,11 @@ begin
    end
    else begin
      view := tvAuf;
-     iCurrTableview:= 1;
+
+     if sItem = 'Aufgaben' then
+       iCurrTableview:= 1;
+     if sItem = 'Termine' then
+        iCurrTableview:= 0;
 //     dm_PCM.qry_Kalender_Aufgaben.Filter:= 'Typ <> 0';
 //     dm_PCM.qry_Kalender_Aufgaben.Filtered:= true;
    end;
@@ -1781,88 +1782,6 @@ end;
 procedure Tfrm_Calendar.FormDestroy(Sender: TObject);
 begin
   SetGridViews(False);
-end;
-
-procedure Tfrm_Calendar.FormPaint(Sender: TObject);
-begin
- pc_kalender.Align:= alClient;
-  OpenData;
-//  AddAndGet;
-  InitializeRights;
-  SetButtons;
-  dm_PCM.qry_Work.SQL.Text:=  'UPDATE manager_kalender ' +
-                            'SET START = TIMESTAMPADD(Year, Year(NOW()) - Year(START) , START), ' +
-                            'Finish = TIMESTAMPADD(Year, Year(NOW()) - Year(Finish) , Finish), ' +
-                            'Reminderdate  = TIMESTAMPADD(Year, Year(NOW()) - Year(Reminderdate) , Reminderdate) ' +
-                            'WHERE Kalendername = ''Geburtstag''';
-  dm_PCM.qry_Work.ExecSQL;
-  dm_PCM.qry_Work.SQL.Text:=  'UPDATE manager_kalender ' +
-                            'SET START = TIMESTAMPADD(Year, Year(NOW()) - Year(START)+1 , START), ' +
-                            'Finish = TIMESTAMPADD(Year, Year(NOW()) - Year(Finish)+1 , Finish), ' +
-                            'Reminderdate  = TIMESTAMPADD(Year, Year(NOW()) - Year(Reminderdate) , Reminderdate) ' +
-                             'WHERE Date(start) < Date(Now()) and Kalendername = ''Geburtstag''';
-  dm_PCM.qry_Work.ExecSQL;
-  dm_PCM.qry_Work.SQL.Text:=  'UPDATE manager_kalender ' +
-                            'SET Bearbeitetam = Now() ' +
-                            'WHERE Date(start) < Date(Now()) and (Kalendername = ''Müll'' or Kalendername like ''Feiertage %'')' ;
-  dm_PCM.qry_Work.ExecSQL;
-
-  defaultLabelColor:= 13083265;
-  defaultFontColor:= 0;
-  FormResize(Self);
-  if (iTag = 4) and (iActiveTab = 1) then
-  begin
-    Application.ProcessMessages;
-    sched_Kalender.SelectDays(Date, Date, True);
-    Application.ProcessMessages;
-    dm_PCM.qry_Kalender_Benutzer.SQL.Text:= 'Select ID, CONCAT(Nachname, ' + QuotedStr(', ') + ' ,Vorname) as Name '+'From Benutzer Where ID = :ID';
-    dm_PCM.qry_Kalender_Benutzer.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
-    dm_PCM.qry_Kalender_Benutzer.Open;
-    Application.ProcessMessages;
-//    grdDBTblView_KalenderRessource.DataController.SelectRows(grdDBTblView_KalenderRessource.DataController.GetRowIndexByRecordIndex(
-//    grdDBTblView_KalenderRessource.DataController.FindRecordIndexByKey(dm_PCM.iIDBenutzerPCM), True),
-//    grdDBTblView_KalenderRessource.DataController.GetRowIndexByRecordIndex(
-//    grdDBTblView_KalenderRessource.DataController.FindRecordIndexByKey(dm_PCM.iIDBenutzerPCM), True));
-    Application.ProcessMessages;
-    dm_PCM.qry_Kalender_Kalender.SQL.Text:=  'Select ID,EventType,Caption,Location,Message,Start,' +
-                          'Finish,Options,CompleteDay,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'+
-                          'ReminderMinutesBeforeStart,LabelColor,FontColor,ID_Benutzer,ID_kontakte From manager_Kalender ' +
-                          'Where Typ = 2 and ID_Benutzer = :ID';;
-    dm_PCM.qry_Kalender_Kalender.ParamByName('ID').asBlob:= AnsiString(IntToStr(dm_PCM.iIDBenutzerPCM));
-    dm_PCM.qry_Kalender_Kalender.Open;
-//    qry_BenutzerRes.Filter:= 'ID = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-//    qry_BenutzerRes.Filtered:= true;
-//    qry_BenutzerRes.Open;
-    try
-      Application.ProcessMessages;
-      ReadICSAutomatic;
-      Application.ProcessMessages;
-      WriteICSAutomatic;
-    except
-    end;
-    Application.ProcessMessages;
-    btn_CalArbeitswocheClick(Self);
-    btn_CalArbeitswoche.LargeImageIndex:= 16;
-    btn_CalTag.LargeImageIndex:= 39;
-    btn_CalWoche.LargeImageIndex:= 41;
-    btn_CalMonat.LargeImageIndex:= 42;
-    btn_CalJahr.LargeImageIndex:= 44;
-    schedDBStrg_Kalender.Reminders.Active:= true;
-    pc_Kalender.ActivePage:= ts_A_kalender;
-  end
-  else begin
-    if iActiveTab = 2 then
-      pc_Kalender.ActivePage:= ts_C_Stundenplan
-    else
-      pc_Kalender.ActivePage:= ts_B_Aufgaben;
-  end;
-//  tvauf.DataController.Filter.Active:= false;
-//  tvauf.DataController.Filter.Root.Clear;
-//  tvauf.DataController.Filter.BeginUpdate;
-//  tvauf.DataController.Filter.AddItem(AItemlist, tvAufStatus,foNotEqual,'Bearbeitet','Bearbeitet');
-//  tvauf.DataController.Filter.EndUpdate;
-//  tvauf.DataController.Filter.Active:= true;
-  SetGridViews(True);
 end;
 
 procedure Tfrm_Calendar.FormResize(Sender: TObject);

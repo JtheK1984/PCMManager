@@ -288,7 +288,6 @@ type
     procedure cxButton2Click(Sender: TObject);
     procedure cxButton1Click(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure FormPaint(Sender: TObject);
   private
     { Private-Deklarationen }
     bButtons: boolean;
@@ -1078,34 +1077,6 @@ end;
 procedure Tfrm_Contact.FormDestroy(Sender: TObject);
 begin
   SetGridViews(False);
-end;
-
-procedure Tfrm_Contact.FormPaint(Sender: TObject);
-begin
-//  pc_Kontakte_Kontakte.Align:= alclient;
-//  cmbbx_KontaktSucheArt.clear;
-//  dm_PCM.qry_Work.SQL.Text:= 'SELECT ID, Bezeichnung FROM manager_kontaktart order by Bezeichnung asc';
-//  dm_PCM.qry_Work.open;
-//  dm_PCM.qry_Work.First;
-//  while not dm_PCM.qry_Work.EOF do begin
-//    cmbbx_KontaktSucheArt.Properties.Items.AddObject(dm_PCM.qry_Work.FieldByName('Bezeichnung').AsString, TObject(dm_PCM.qry_Work.FieldByName('ID').AsInteger));
-//    dm_PCM.qry_Work.Next;
-//  end;
-//  dm_PCM.qry_Work.Close;
-//  OpenData;
-//  InitializeRights;
-//  SetButtons;
-//  btn_KontaktSave.Enabled:= false;
-//  btn_KontaktCancel.Enabled:= false;
-//  btn_KontaktDelete.Enabled:= false;
-//  btn_KontaktFirst.Enabled:= false;
-//  btn_KontaktLast.Enabled:= false;
-//  btn_KontaktPrev.Enabled:= false;
-//  btn_KontaktNext.Enabled:= false;
-//  btn_KontaktImport.Enabled := true;
-////  pc_Kontakte_Kontakte.ActivePage:= ts_A_Kontakte_Kontakte_Suche;
-////  pc_Kontakte_Kontakte_Adressen.ActivePage:= ts_A_zusatz;
-//	SetGridViews(True);
 end;
 
 procedure Tfrm_Contact.FormShow(Sender: TObject);

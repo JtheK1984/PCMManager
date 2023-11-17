@@ -97,7 +97,6 @@ type
     procedure qMailAfterScroll(DataSet: TDataSet);
     procedure dxBarLargeButton4Click(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure FormPaint(Sender: TObject);
   private
     { Private-Deklarationen }
     AAccount: string;
@@ -1191,22 +1190,6 @@ procedure Tfrm_Mail.FormDestroy(Sender: TObject);
 begin
   SetGridViews(false);
 end;
-procedure Tfrm_Mail.FormPaint(Sender: TObject);
-begin
-  AAccount:= '';
-  dm_PCM.qry_Work.SQL.Text:= 'DELETE FROM manager_emails where ID_Benutzer = :ID_Benutzer';
-  dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= iIDMail;
-  dm_PCM.qry_Work.ExecSQL;
-  qry_Mail.SQL.Text:= 'SELECT * FROM manager_emails Where ID_Benutzer = :ID_Benutzer';
-  qry_Mail.ParamByName('ID_Benutzer').AsInteger:= iIDMail;
-  qry_Mail.open;
-  trlst_EmailFolder.Clear;
-  m_currentpath := GetCurrentDir();
-  m_uidlfile := m_currentpath + '\uidl.txt';
-  IMAPStart;
-  SetGridViews(True)
-end;
-
 procedure Tfrm_Mail.SetGridViews(Show:boolean);
 begin
   if Show then

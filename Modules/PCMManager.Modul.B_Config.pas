@@ -385,7 +385,6 @@ type
     procedure btn_AufgabenPrioDeleteClick(Sender: TObject);
     procedure btn_AufgabenOptionenSaveClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure FormPaint(Sender: TObject);
   private
     { Private-Deklarationen }
 //    m_bCancel: WordBool;
@@ -1748,27 +1747,9 @@ procedure Tfrm_Config.FormDestroy(Sender: TObject);
 begin
   SetGridViews(false);
 end;
-
-procedure Tfrm_Config.FormPaint(Sender: TObject);
-begin
-  pc_options.Align:= alclient;
-  dm_PCM.ReadServerAdress;
-  cmbbx_Design.ItemIndex := cmbbx_Design.Properties.Items.IndexOf(dm_PCM.sDesign);
-  cmbbx_Style.ItemIndex := cmbbx_Style.Properties.Items.IndexOf(dm_PCM.sStyle);
-  OpenData;
-  InitializeRights;
-  if frm_PCM_main.bStyle then
-    pc_Options.ActivePage := ts_E_Design;
-  SetButtons;
-  img_Vorschau.Width:= Round(img_Vorschau.Width * dm_PCM.iscale);
-  img_Vorschau.height:= Round(img_Vorschau.height * dm_PCM.iscale);
-  SetGridViews(True);
-end;
-
 procedure Tfrm_Config.FormShow(Sender: TObject);
 begin
   pc_options.Align:= alclient;
-  dm_PCM.ReadServerAdress;
   cmbbx_Design.ItemIndex := cmbbx_Design.Properties.Items.IndexOf(dm_PCM.sDesign);
   cmbbx_Style.ItemIndex := cmbbx_Style.Properties.Items.IndexOf(dm_PCM.sStyle);
   OpenData;

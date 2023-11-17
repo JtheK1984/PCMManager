@@ -156,7 +156,6 @@ type
     procedure btn_SerialSCancelClick(Sender: TObject);
     procedure SetButtonsEnabledVisible(DataSet: TDataSet);
     procedure FormDestroy(Sender: TObject);
-    procedure FormPaint(Sender: TObject);
   private
     { Private-Deklarationen }
     bNew: boolean;
@@ -402,15 +401,6 @@ procedure Tfrm_password.FormDestroy(Sender: TObject);
 begin
   SetGridViews(False);
 end;
-procedure Tfrm_password.FormPaint(Sender: TObject);
-begin
-  pc_passwoerter.align:= ALclient;
-  OpenData;
-  InitializeRights;
-  SetButtons;
-  SetGridViews(true);
-end;
-
 procedure Tfrm_password.FormShow(Sender: TObject);
 begin
   pc_passwoerter.align:= ALclient;
