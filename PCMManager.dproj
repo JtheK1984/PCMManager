@@ -1221,7 +1221,7 @@
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
-    <Target Name="CompressWin32">
+        <Target Name="CompressWin32">
         <Exec Command="$(Program_Compress) $(DCC_ExeOutput)\$(SanitizedProjectName).exe"/>
     </Target>
     <Target Name="CompressWin64">
