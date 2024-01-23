@@ -3715,8 +3715,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
     View = 14
     OptionsImage.SmallImages = dm_PCM.imglst_16x16
     OptionsStyle.CustomStyles.Background = navbrStyleIt_main
-    ExplicitLeft = 2
-    ExplicitTop = 32
     object navbrgrp_Optionen: TdxNavBarGroup
       Caption = 'Optionen'
       SelectedLinkIndex = -1
@@ -4184,6 +4182,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AllowCloseButton = False
             Caption = 'Aufgaben / Termine'
             ImageIndex = 58
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object pnl_DashboardCalToDO: TcxGroupBox
               Left = 0
               Top = 0
@@ -4349,6 +4351,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AllowCloseButton = False
             Caption = 'Passw'#246'rter'
             ImageIndex = 9
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object pnl_DashboardPWDSerial: TcxGroupBox
               Left = 0
               Top = 0
@@ -4660,6 +4666,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taRightJustify
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                     Height = 17
                     Width = 80
                     AnchorX = 286
@@ -4681,6 +4689,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                   end
                 end
                 object pnl_FixSoll: TcxGroupBox
@@ -4723,6 +4733,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taRightJustify
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                     Height = 17
                     Width = 80
                     AnchorX = 286
@@ -4744,6 +4756,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                   end
                 end
                 object pnl_VarISoll: TcxGroupBox
@@ -4786,6 +4800,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taRightJustify
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                     Height = 17
                     Width = 80
                     AnchorX = 286
@@ -4807,6 +4823,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                   end
                 end
                 object pnl_GesSoll: TcxGroupBox
@@ -4841,6 +4859,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 0
+                    ExplicitTop = 67
                     Height = 23
                     Width = 288
                     object lbl_SollSumLabel: TcxLabel
@@ -4897,6 +4916,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 1
+                    ExplicitTop = -4
                     Height = 23
                     Width = 288
                     object lbl_EinSollSumLabel: TcxLabel
@@ -4953,6 +4973,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 2
+                    ExplicitTop = 19
                     Height = 23
                     Width = 288
                     object lbl_AusVarSollSumLabel: TcxLabel
@@ -5023,6 +5044,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 4
+                    ExplicitTop = 42
                     Height = 23
                     Width = 288
                     object lbl_AusFixSollSumLabel: TcxLabel
@@ -5130,6 +5152,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taRightJustify
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                     Height = 17
                     Width = 80
                     AnchorX = 518
@@ -5151,6 +5175,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                   end
                 end
                 object pnl_FixIst: TcxGroupBox
@@ -5193,6 +5219,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taRightJustify
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                     Height = 17
                     Width = 80
                     AnchorX = 518
@@ -5214,6 +5242,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                   end
                 end
                 object pnl_VarISt: TcxGroupBox
@@ -5256,6 +5286,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taRightJustify
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                     Height = 17
                     Width = 80
                     AnchorX = 518
@@ -5277,6 +5309,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                   end
                 end
                 object pnl_GesIst: TcxGroupBox
@@ -5311,6 +5345,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 0
+                    ExplicitTop = 67
                     Height = 23
                     Width = 520
                     object lbl_IstSumLabel: TcxLabel
@@ -5367,6 +5402,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 1
+                    ExplicitTop = -4
                     Height = 23
                     Width = 520
                     object lbl_EinIstSumLabel: TcxLabel
@@ -5423,6 +5459,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 2
+                    ExplicitTop = 19
                     Height = 23
                     Width = 520
                     object lbl_AusvarIstSumLabel: TcxLabel
@@ -5493,6 +5530,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 4
+                    ExplicitTop = 42
                     Height = 23
                     Width = 520
                     object lbl_AusFixIstSumLabel: TcxLabel
@@ -5600,6 +5638,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taRightJustify
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                     Height = 17
                     Width = 80
                     AnchorX = 178
@@ -5621,6 +5661,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                   end
                 end
                 object pnl_FixDiff: TcxGroupBox
@@ -5663,6 +5705,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taRightJustify
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                     Height = 17
                     Width = 80
                     AnchorX = 178
@@ -5684,6 +5728,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                   end
                 end
                 object pnl_VarIDiff: TcxGroupBox
@@ -5726,6 +5772,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taRightJustify
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                     Height = 17
                     Width = 80
                     AnchorX = 178
@@ -5747,6 +5795,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                   end
                 end
                 object pnl_GesDiff: TcxGroupBox
@@ -5781,6 +5831,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 0
+                    ExplicitTop = 67
                     Height = 23
                     Width = 180
                     object lbl_SollDiff: TcxLabel
@@ -5837,6 +5888,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 1
+                    ExplicitTop = -4
                     Height = 23
                     Width = 180
                     object lbl_EinDiffSumLabel: TcxLabel
@@ -5893,6 +5945,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 2
+                    ExplicitTop = 19
                     Height = 23
                     Width = 180
                     object lbl_AusvarDiffSumLabel: TcxLabel
@@ -5963,6 +6016,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 4
+                    ExplicitTop = 42
                     Height = 23
                     Width = 180
                     object lbl_AusFixDiffSumLabel: TcxLabel

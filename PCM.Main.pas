@@ -322,7 +322,6 @@ type
     procedure BarResize;
     procedure RegisterNavBarItems;
     procedure CloseModules;
-    procedure Handbuch;
     function CurrentModule: TForm;
     procedure LoadSQLs;
     procedure Abmelden;
@@ -910,10 +909,6 @@ begin
   dm_PCM.qry_work.Fieldbyname('AufgabenTermine').asString + ' ungelesene Aufgaben und Termine' + slinebreak +
   dm_PCM.qry_work.Fieldbyname('Nachrichten').asString + ' ungelesene Nachrichten';
   dm_PCM.qry_work.close;
-end;
-procedure Tfrm_PCM_Main.Handbuch;
-begin
-  ShellExecute(0, 'Open', PChar(PCM_Logname + '.pdf'), nil, '', SW_SHOWNORMAL);
 end;
 function Tfrm_PCM_Main.CurrentModule: TForm;
 begin
