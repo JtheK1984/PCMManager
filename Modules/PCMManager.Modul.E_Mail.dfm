@@ -37,8 +37,6 @@ object frm_Mail: Tfrm_Mail
         Width = 978
         Height = 203
         Align = alClient
-        BevelInner = bvLowered
-        BevelKind = bkFlat
         BorderStyle = cxcbsNone
         TabOrder = 0
         object grdDBTblView_Mails: TcxGridDBTableView
@@ -362,6 +360,7 @@ object frm_Mail: Tfrm_Mail
       Visible = ivAlways
       AutoGrayScale = False
       LargeImageIndex = 49
+      Width = 125
       SyncImageIndex = False
       ImageIndex = -1
     end
@@ -383,6 +382,7 @@ object frm_Mail: Tfrm_Mail
       OnClick = dxBarLargeButton3Click
       AutoGrayScale = False
       LargeImageIndex = 50
+      Width = 125
       SyncImageIndex = False
       ImageIndex = -1
     end
@@ -394,6 +394,7 @@ object frm_Mail: Tfrm_Mail
       OnClick = dxBarLargeButton4Click
       AutoGrayScale = False
       LargeImageIndex = 55
+      Width = 125
       SyncImageIndex = False
       ImageIndex = -1
     end
@@ -404,6 +405,7 @@ object frm_Mail: Tfrm_Mail
       Visible = ivAlways
       AutoGrayScale = False
       LargeImageIndex = 51
+      Width = 125
       SyncImageIndex = False
       ImageIndex = -1
     end
@@ -414,6 +416,7 @@ object frm_Mail: Tfrm_Mail
       Visible = ivAlways
       AutoGrayScale = False
       LargeImageIndex = 54
+      Width = 125
       SyncImageIndex = False
       ImageIndex = -1
     end
@@ -424,6 +427,7 @@ object frm_Mail: Tfrm_Mail
       Visible = ivAlways
       AutoGrayScale = False
       LargeImageIndex = 52
+      Width = 125
       SyncImageIndex = False
       ImageIndex = -1
     end
@@ -435,6 +439,7 @@ object frm_Mail: Tfrm_Mail
       OnClick = dxBarLargeButton8Click
       AutoGrayScale = False
       LargeImageIndex = 57
+      Width = 125
       SyncImageIndex = False
       ImageIndex = -1
     end

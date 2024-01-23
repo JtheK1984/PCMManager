@@ -156,6 +156,7 @@ type
     procedure btn_SerialSCancelClick(Sender: TObject);
     procedure SetButtonsEnabledVisible(DataSet: TDataSet);
     procedure FormDestroy(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private-Deklarationen }
     bNew: boolean;
@@ -167,8 +168,6 @@ type
     procedure OpenData;
   public
     { Public-Deklarationen }
-    iTag: integer;
-    procedure Execute(ATag,AActiveTab: integer);
   end;
 
 var
@@ -178,7 +177,7 @@ implementation
 
 {$R *.dfm}
 
-uses  PCM.Data;
+uses  PCM.Data,PCM.Strings;
 
 procedure Tfrm_password.OpenData;
 begin
@@ -191,6 +190,14 @@ begin
   qry_PWD.Filtered:= true;
   qry_Serial.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
   qry_Serial.Filtered:= true;
+  tv_ProgramsAPP.Caption := rs_PCM_Bezeichnung;
+  tv_ProgramsiD_typ.Caption := rs_PCMManager_SerialTyp;
+  cxGridDBTableView1USer.Caption:=  rs_PCMBenutzerverwaltung_Benutzer;
+  cxGridDBTableView1Serial.Caption:= rs_PCMManager_Serial;
+  tv_PasswortBezeichnung.Caption:= rs_PCM_Bezeichnung;
+  tv_Passwortlink.Caption:= rs_PCMManager_Link;
+  tv_Passwortuser.Caption:= rs_PCMBenutzerverwaltung_Benutzer;
+  tv_Passwortpassword.Caption:= rs_PCM_Passwort;
 end;
 procedure Tfrm_password.qry_SerialAfterScroll(DataSet: TDataSet);
 var
@@ -389,13 +396,9 @@ begin
     qry_Serial_keys.Post;
   end;
 end;
-procedure Tfrm_password.Execute(ATag,AActiveTab: integer);
+procedure Tfrm_password.FormActivate(Sender: TObject);
 begin
-  iTag:= ATag;
-  case AActiveTab of
-  1: pc_passwoerter.ActivePage:= ts_A_pw;
-  2: pc_passwoerter.ActivePage:= ts_B_Serials1;
-  end;
+  FormShow(Self);
 end;
 procedure Tfrm_password.FormDestroy(Sender: TObject);
 begin
@@ -403,7 +406,10 @@ begin
 end;
 procedure Tfrm_password.FormShow(Sender: TObject);
 begin
-  pc_passwoerter.align:= ALclient;
+  case dm_PCM.iModulTab of
+  1: pc_passwoerter.ActivePage:= ts_A_pw;
+  2: pc_passwoerter.ActivePage:= ts_B_Serials1;
+  end;
   OpenData;
   InitializeRights;
   SetButtons;
@@ -429,7 +435,6 @@ begin
     SaveGridViewSerDet.Free;
   end;
 end;
-
 procedure Tfrm_password.InitializeRights;
 begin
   if dm_PCM.iPassword >= 2 then
@@ -572,7 +577,4 @@ begin
 
 
 end;
-
-
-
 end.

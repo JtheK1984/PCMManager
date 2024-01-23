@@ -2,9 +2,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
   Left = 0
   Top = 0
   AlphaBlend = True
+  BorderStyle = bsSingle
   Caption = 'PCM - Manager'
-  ClientHeight = 746
-  ClientWidth = 1016
+  ClientHeight = 761
+  ClientWidth = 1264
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -3694,32 +3695,41 @@ object frm_PCM_Main: Tfrm_PCM_Main
   Position = poScreenCenter
   WindowState = wsMaximized
   OnClose = FormClose
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnHide = FormHide
+  OnKeyPress = FormKeyPress
+  OnKeyUp = FormKeyUp
   OnResize = FormResize
   OnShow = FormShow
   TextHeight = 13
   object navbr_main: TdxNavBar
     Left = 0
-    Top = 0
+    Top = 35
     Width = 200
-    Height = 746
+    Height = 726
     Align = alLeft
-    ActiveGroupIndex = 1
+    ActiveGroupIndex = 0
     TabOrder = 0
     LookAndFeel.Kind = lfFlat
     View = 14
     OptionsImage.SmallImages = dm_PCM.imglst_16x16
     OptionsStyle.CustomStyles.Background = navbrStyleIt_main
-    ExplicitHeight = 745
+    ExplicitLeft = 2
+    ExplicitTop = 32
     object navbrgrp_Optionen: TdxNavBarGroup
       Caption = 'Optionen'
       SelectedLinkIndex = -1
       TopVisibleLinkIndex = 0
       Links = <
         item
-          Item = navbrit_Benutzer
+          Item = iBenutzerverwaltung
         end
         item
-          Item = navbrit_Konfiguration
+          Item = iKonfiguration
+        end
+        item
+          Item = iDesign
         end>
     end
     object navbrgrp_Kontake: TdxNavBarGroup
@@ -3728,7 +3738,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
       TopVisibleLinkIndex = 0
       Links = <
         item
-          Item = navbrit_Kontakte
+          Item = iKontakte
         end>
     end
     object navbrgrp_Kalender: TdxNavBarGroup
@@ -3737,16 +3747,16 @@ object frm_PCM_Main: Tfrm_PCM_Main
       TopVisibleLinkIndex = 0
       Links = <
         item
-          Item = navbrit_Kalender
+          Item = iKalender
         end
         item
-          Item = navbrit_Aufgaben
+          Item = iAufgaben
         end
         item
-          Item = navbrit_Stundenplan
+          Item = iStundenplan
         end
         item
-          Item = navbrit_EMail
+          Item = iEMails
         end>
     end
     object navbrgrp_Passwort: TdxNavBarGroup
@@ -3755,10 +3765,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
       TopVisibleLinkIndex = 0
       Links = <
         item
-          Item = navbrit_Passwort
+          Item = iPasswoerter
         end
         item
-          Item = navbrit_Serials
+          Item = iSerials
         end>
     end
     object navbrgrp_Finanzen: TdxNavBarGroup
@@ -3767,13 +3777,13 @@ object frm_PCM_Main: Tfrm_PCM_Main
       TopVisibleLinkIndex = 0
       Links = <
         item
-          Item = navbrit_Monatsuebersicht
+          Item = iMonatsuebersicht
         end
         item
-          Item = navbrit_Einnahmen
+          Item = iEinnahmen
         end
         item
-          Item = navbrit_Ausgaben
+          Item = iAusgaben
         end
         item
           Item = navbrit_Belege
@@ -3791,10 +3801,13 @@ object frm_PCM_Main: Tfrm_PCM_Main
       TopVisibleLinkIndex = 0
       Links = <
         item
-          Item = navbrit_Systeminfo
+          Item = iSysteminfo
         end
         item
-          Item = navbrit_Programminfo
+          Item = iInfo
+        end
+        item
+          Item = iHandbuch
         end>
     end
     object navbrgrp_Programm: TdxNavBarGroup
@@ -3803,111 +3816,113 @@ object frm_PCM_Main: Tfrm_PCM_Main
       TopVisibleLinkIndex = 0
       Links = <
         item
+          Item = iSprache
+        end
+        item
           Item = navbrit_ChangePW
         end
         item
-          Item = navbrit_Abmelden
+          Item = iAbmelden
         end
         item
-          Item = navbrit_Beenden
+          Item = iBeenden
         end>
     end
-    object navbrit_Kontakte: TdxNavBarItem
+    object iKontakte: TdxNavBarItem
       Caption = 'Kontakte'
       SmallImageIndex = 11
-      OnClick = navbrit_KontakteClick
+      OnClick = NavBarClick
     end
-    object navbrit_Passwort: TdxNavBarItem
+    object iPasswoerter: TdxNavBarItem
       Caption = 'Passw'#246'rter'
       LargeImageIndex = 9
       SmallImageIndex = 9
-      OnClick = navbrit_PasswortClick
+      OnClick = NavBarClick
     end
-    object navbrit_Systeminfo: TdxNavBarItem
+    object iSysteminfo: TdxNavBarItem
       Caption = 'Systeminfo'
       LargeImageIndex = 4
       SmallImageIndex = 21
-      OnClick = navbrit_SysteminfoClick
+      OnClick = NavBarClick
     end
-    object navbrit_Beenden: TdxNavBarItem
+    object iBeenden: TdxNavBarItem
       Caption = 'Beenden'
       LargeImageIndex = 0
       SmallImageIndex = 0
-      OnClick = navbrit_BeendenClick
+      OnClick = NavBarClick
     end
-    object navbrit_Monatsuebersicht: TdxNavBarItem
+    object iMonatsuebersicht: TdxNavBarItem
       Caption = 'Monats'#252'bersicht'
       LargeImageIndex = 3
       SmallImageIndex = 3
-      OnClick = navbrit_MonatsuebersichtClick
+      OnClick = NavBarClick
     end
-    object navbrit_Ausgaben: TdxNavBarItem
+    object iAusgaben: TdxNavBarItem
       Caption = 'Ausgaben'
       LargeImageIndex = 5
       SmallImageIndex = 5
-      OnClick = navbrit_AusgabenClick
+      OnClick = NavBarClick
     end
-    object navbrit_Einnahmen: TdxNavBarItem
+    object iEinnahmen: TdxNavBarItem
       Caption = 'Einnahmen'
       LargeImageIndex = 6
       SmallImageIndex = 6
-      OnClick = navbrit_EinnahmenClick
+      OnClick = NavBarClick
     end
-    object navbrit_Serials: TdxNavBarItem
+    object iSerials: TdxNavBarItem
       Caption = 'Serials'
       LargeImageIndex = 12
       SmallImageIndex = 12
-      OnClick = navbrit_SerialsClick
+      OnClick = NavBarClick
     end
-    object navbrit_Benutzer: TdxNavBarItem
+    object iBenutzerverwaltung: TdxNavBarItem
       Caption = 'Benutzerverwaltung'
       LargeImageIndex = 0
       SmallImageIndex = 1
-      OnClick = navbrit_BenutzerClick
+      OnClick = NavBarClick
     end
-    object navbrit_Konfiguration: TdxNavBarItem
+    object iKonfiguration: TdxNavBarItem
       Caption = 'Konfiguration'
       LargeImageIndex = 2
       SmallImageIndex = 2
-      OnClick = navbrit_KonfigurationClick
+      OnClick = NavBarClick
     end
-    object navbrit_Programminfo: TdxNavBarItem
+    object iInfo: TdxNavBarItem
       Caption = 'Info'
       LargeImageIndex = 7
       SmallImageIndex = 7
-      OnClick = navbrit_ProgramminfoClick
+      OnClick = NavBarClick
     end
     object navbrit_Verfuegung: TdxNavBarItem
       Caption = 'Verf'#252'gung'
       SmallImageIndex = 8
-      OnClick = navbrit_VerfuegungClick
+      Visible = False
     end
-    object navbrit_Kalender: TdxNavBarItem
+    object iKalender: TdxNavBarItem
       Caption = 'Kalender'
       SmallImageIndex = 10
-      OnClick = navbrit_KalenderClick
+      OnClick = NavBarClick
     end
-    object navbrit_Stundenplan: TdxNavBarItem
+    object iStundenplan: TdxNavBarItem
       Caption = 'Stundenplan'
       SmallImageIndex = 14
-      OnClick = navbrit_StundenplanClick
+      OnClick = NavBarClick
     end
-    object navbrit_EMail: TdxNavBarItem
+    object iEMails: TdxNavBarItem
       Caption = 'E-Mail'
       LargeImageIndex = 0
       SmallImageIndex = 15
-      OnClick = navbrit_EMailClick
+      OnClick = NavBarClick
     end
-    object navbrit_Abmelden: TdxNavBarItem
+    object iAbmelden: TdxNavBarItem
       Caption = 'Abmelden'
       SmallImageIndex = 23
-      OnClick = navbrit_AbmeldenClick
+      OnClick = NavBarClick
     end
     object navbrit_ChangePW: TdxNavBarItem
       Caption = 'Passwort '#228'ndern'
       SmallImageIndex = 23
       Visible = False
-      OnClick = navbrit_ChangePWClick
     end
     object navbrit_Belege: TdxNavBarItem
       Caption = 'Belege'
@@ -3917,10 +3932,25 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Caption = 'Gutscheine'
       Visible = False
     end
-    object navbrit_Aufgaben: TdxNavBarItem
+    object iAufgaben: TdxNavBarItem
       Caption = 'Aufgaben'
       SmallImageIndex = 58
-      OnClick = navbrit_AufgabenClick
+      OnClick = NavBarClick
+    end
+    object iHandbuch: TdxNavBarItem
+      Caption = 'Handbuch'
+      SmallImageIndex = 80
+      OnClick = NavBarClick
+    end
+    object iSprache: TdxNavBarItem
+      Caption = 'Sprache'
+      SmallImageIndex = 81
+      OnClick = iSpracheClick
+    end
+    object iDesign: TdxNavBarItem
+      Caption = 'Design'
+      SmallImageIndex = 82
+      OnClick = NavBarClick
     end
     object navbrStyleIt_main: TdxNavBarStyleItem
       Style.BackColor = clGray
@@ -3935,20 +3965,18 @@ object frm_PCM_Main: Tfrm_PCM_Main
   end
   object pnl_Design: TcxGroupBox
     Left = 200
-    Top = 0
+    Top = 35
     Align = alClient
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 1
-    ExplicitWidth = 812
-    ExplicitHeight = 745
-    Height = 746
-    Width = 816
+    Height = 726
+    Width = 1064
     object pcmain: TcxPageControl
       Left = 3
       Top = 3
-      Width = 810
-      Height = 740
+      Width = 1058
+      Height = 720
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -3959,28 +3987,23 @@ object frm_PCM_Main: Tfrm_PCM_Main
       ParentColor = False
       TabOrder = 0
       Properties.ActivePage = td_Dashboard
-      Properties.CloseButtonMode = cbmEveryTab
       Properties.CustomButtons.Buttons = <>
       Properties.Images = dm_PCM.imglst_16x16
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
-      OnCanCloseEx = pcmainCanCloseEx
-      ExplicitWidth = 806
-      ExplicitHeight = 739
-      ClientRectBottom = 734
+      OnPageChanging = pcmainPageChanging
+      ClientRectBottom = 714
       ClientRectLeft = 2
-      ClientRectRight = 804
+      ClientRectRight = 1052
       ClientRectTop = 28
       object td_Dashboard: TcxTabSheet
         AllowCloseButton = False
         Caption = 'Dashboard'
         ImageIndex = 79
-        ExplicitWidth = 798
-        ExplicitHeight = 705
         object pc_Chart: TcxPageControl
           Left = 0
           Top = 0
-          Width = 802
-          Height = 706
+          Width = 1050
+          Height = 686
           Margins.Left = 0
           Margins.Top = 0
           Margins.Right = 0
@@ -3995,19 +4018,14 @@ object frm_PCM_Main: Tfrm_PCM_Main
           Properties.CustomButtons.Buttons = <>
           Properties.Images = dm_PCM.imglst_16x16
           Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
-          OnCanCloseEx = pcmainCanCloseEx
-          ExplicitWidth = 798
-          ExplicitHeight = 705
-          ClientRectBottom = 700
+          ClientRectBottom = 680
           ClientRectLeft = 2
-          ClientRectRight = 796
+          ClientRectRight = 1044
           ClientRectTop = 28
           object ts_A_ContactChart: TcxTabSheet
             AllowCloseButton = False
             Caption = 'Kontakte'
             ImageIndex = 11
-            ExplicitWidth = 790
-            ExplicitHeight = 671
             object pnl_DashboardContacts: TcxGroupBox
               Left = 0
               Top = 0
@@ -4016,10 +4034,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
               Style.BorderStyle = ebsNone
               Style.Edges = [bLeft, bTop, bRight, bBottom]
               TabOrder = 0
-              ExplicitWidth = 790
-              ExplicitHeight = 671
-              Height = 672
-              Width = 794
+              Height = 652
+              Width = 1042
               object pnl_ContactTop: TcxGroupBox
                 Left = 3
                 Top = 3
@@ -4028,20 +4044,17 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 Style.BorderStyle = ebsFlat
                 Style.Edges = [bLeft, bTop, bRight, bBottom]
                 TabOrder = 0
-                OnDblClick = pnl_CalToDOtopDblClick
-                ExplicitWidth = 784
                 Height = 305
-                Width = 788
+                Width = 1036
                 object chartctrl_Birthday: TdxChartControl
                   Left = 3
                   Top = 15
-                  Width = 782
+                  Width = 1030
                   Height = 281
                   Align = alClient
                   BorderStyle = cxcbsNone
                   Legend.Title.Visible = False
                   Titles = <>
-                  ExplicitWidth = 778
                   object chartctrl_BirthdayChart: TdxChartSimpleDiagram
                     Title.Visible = False
                     Layout = Horizontal
@@ -4065,11 +4078,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
               object spl_ChartContactsMain: TcxSplitter
                 Left = 3
                 Top = 308
-                Width = 788
+                Width = 1036
                 Height = 5
                 AlignSplitter = salBottom
                 Control = pnl_ContactTop
-                ExplicitWidth = 784
               end
               object pnl_Contactmiddle: TcxGroupBox
                 Left = 3
@@ -4079,20 +4091,17 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 Style.BorderStyle = ebsFlat
                 Style.Edges = [bLeft, bTop, bRight, bBottom]
                 TabOrder = 2
-                OnClick = pnl_CalToDOMiddleClick
-                ExplicitHeight = 355
-                Height = 356
+                Height = 336
                 Width = 491
                 object chartctrl_Contact: TdxChartControl
                   Left = 3
                   Top = 15
                   Width = 485
-                  Height = 332
+                  Height = 312
                   Align = alClient
                   BorderStyle = cxcbsNone
                   Legend.Title.Visible = False
                   Titles = <>
-                  ExplicitHeight = 331
                   object chartctrl_ContactChart: TdxChartSimpleDiagram
                     Title.Visible = False
                     Layout = Horizontal
@@ -4124,22 +4133,17 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 Style.BorderStyle = ebsFlat
                 Style.Edges = [bLeft, bTop, bRight, bBottom]
                 TabOrder = 3
-                OnDblClick = pnl_CalToDORightDblClick
-                ExplicitWidth = 293
-                ExplicitHeight = 355
-                Height = 356
-                Width = 297
+                Height = 336
+                Width = 545
                 object chartctrl_Adresses: TdxChartControl
                   Left = 8
                   Top = 15
-                  Width = 286
-                  Height = 332
+                  Width = 534
+                  Height = 312
                   Align = alClient
                   BorderStyle = cxcbsNone
                   Legend.Title.Visible = False
                   Titles = <>
-                  ExplicitWidth = 282
-                  ExplicitHeight = 331
                   object chartctrl_AdressesChart: TdxChartSimpleDiagram
                     Title.Visible = False
                     Layout = Horizontal
@@ -4170,9 +4174,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                   Left = 3
                   Top = 15
                   Width = 5
-                  Height = 332
+                  Height = 312
                   Control = pnl_Contactmiddle
-                  ExplicitHeight = 331
                 end
               end
             end
@@ -4189,8 +4192,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
               Style.BorderStyle = ebsNone
               Style.Edges = [bLeft, bTop, bRight, bBottom]
               TabOrder = 0
-              Height = 672
-              Width = 794
+              Height = 652
+              Width = 1042
               object pnl_CalToDOMiddle: TcxGroupBox
                 Left = 3
                 Top = 294
@@ -4199,14 +4202,13 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 Style.BorderStyle = ebsFlat
                 Style.Edges = [bLeft, bTop, bRight, bBottom]
                 TabOrder = 0
-                OnClick = pnl_CalToDOMiddleClick
-                Height = 375
+                Height = 355
                 Width = 491
                 object chartctrl_Cal: TdxChartControl
                   Left = 3
                   Top = 15
                   Width = 485
-                  Height = 351
+                  Height = 331
                   Align = alClient
                   BorderStyle = cxcbsNone
                   Legend.Title.Visible = False
@@ -4242,14 +4244,13 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 Style.BorderStyle = ebsFlat
                 Style.Edges = [bLeft, bTop, bRight, bBottom]
                 TabOrder = 1
-                OnDblClick = pnl_CalToDORightDblClick
-                Height = 375
-                Width = 297
+                Height = 355
+                Width = 545
                 object chartctrl_CalCategories: TdxChartControl
                   Left = 8
                   Top = 15
-                  Width = 286
-                  Height = 351
+                  Width = 534
+                  Height = 331
                   Align = alClient
                   BorderStyle = cxcbsNone
                   Legend.Title.Visible = False
@@ -4284,7 +4285,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                   Left = 3
                   Top = 15
                   Width = 5
-                  Height = 351
+                  Height = 331
                   Control = pnl_CalToDOMiddle
                 end
               end
@@ -4296,13 +4297,12 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 Style.BorderStyle = ebsFlat
                 Style.Edges = [bLeft, bTop, bRight, bBottom]
                 TabOrder = 2
-                OnDblClick = pnl_CalToDOtopDblClick
                 Height = 286
-                Width = 788
+                Width = 1036
                 object chartctrl_ToDo: TdxChartControl
                   Left = 3
                   Top = 15
-                  Width = 782
+                  Width = 1030
                   Height = 262
                   Align = alClient
                   BorderStyle = cxcbsNone
@@ -4338,7 +4338,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
               object spl_ChartCalToDoMain: TcxSplitter
                 Left = 3
                 Top = 289
-                Width = 788
+                Width = 1036
                 Height = 5
                 AlignSplitter = salBottom
                 Control = pnl_CalToDOtop
@@ -4357,8 +4357,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
               Style.BorderStyle = ebsNone
               Style.Edges = [bLeft, bTop, bRight, bBottom]
               TabOrder = 0
-              Height = 672
-              Width = 794
+              Height = 652
+              Width = 1042
               object pnl_PWDSerialmiddle: TcxGroupBox
                 Left = 3
                 Top = 294
@@ -4367,14 +4367,13 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 Style.BorderStyle = ebsFlat
                 Style.Edges = [bLeft, bTop, bRight, bBottom]
                 TabOrder = 0
-                OnClick = pnl_CalToDOMiddleClick
-                Height = 375
+                Height = 355
                 Width = 491
                 object chartctrl_PWDCategories: TdxChartControl
                   Left = 3
                   Top = 15
                   Width = 485
-                  Height = 351
+                  Height = 331
                   Align = alClient
                   BorderStyle = cxcbsNone
                   Legend.Title.Visible = False
@@ -4410,21 +4409,20 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 Style.BorderStyle = ebsFlat
                 Style.Edges = [bLeft, bTop, bRight, bBottom]
                 TabOrder = 1
-                OnDblClick = pnl_CalToDORightDblClick
-                Height = 375
-                Width = 297
+                Height = 355
+                Width = 545
                 object spl_ChartPWDSerialLeft: TcxSplitter
                   Left = 3
                   Top = 15
                   Width = 5
-                  Height = 351
+                  Height = 331
                   Control = pnl_PWDSerialmiddle
                 end
                 object chartctrl_SerialsCategories: TdxChartControl
                   Left = 8
                   Top = 15
-                  Width = 286
-                  Height = 351
+                  Width = 534
+                  Height = 331
                   Align = alClient
                   BorderStyle = cxcbsNone
                   Legend.Title.Visible = False
@@ -4460,13 +4458,12 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 Style.BorderStyle = ebsFlat
                 Style.Edges = [bLeft, bTop, bRight, bBottom]
                 TabOrder = 2
-                OnDblClick = pnl_CalToDOtopDblClick
                 Height = 286
-                Width = 788
+                Width = 1036
                 object chartctrl_PWDSerials: TdxChartControl
                   Left = 3
                   Top = 15
-                  Width = 782
+                  Width = 1030
                   Height = 262
                   Align = alClient
                   BorderStyle = cxcbsNone
@@ -4502,7 +4499,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
               object spl_ChartPWDSerialMain: TcxSplitter
                 Left = 3
                 Top = 289
-                Width = 788
+                Width = 1036
                 Height = 5
                 AlignSplitter = salBottom
                 Control = pnl_PWDSerialTop
@@ -4526,13 +4523,13 @@ object frm_PCM_Main: Tfrm_PCM_Main
               Style.Edges = [bLeft, bTop, bRight, bBottom]
               Style.Shadow = False
               TabOrder = 0
-              Height = 404
-              Width = 782
+              Height = 384
+              Width = 1030
               object chartctrl_Finance: TdxChartControl
                 Left = 3
                 Top = 15
-                Width = 776
-                Height = 380
+                Width = 1024
+                Height = 360
                 Align = alClient
                 BorderStyle = cxcbsNone
                 Legend.Visible = False
@@ -4585,7 +4582,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             object grpbx_FinanzenUebersicht: TcxGroupBox
               AlignWithMargins = True
               Left = 6
-              Top = 407
+              Top = 387
               Margins.Left = 6
               Margins.Top = 0
               Margins.Right = 6
@@ -4602,7 +4599,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
               Style.IsFontAssigned = True
               TabOrder = 1
               Height = 265
-              Width = 782
+              Width = 1030
               object grpbx_FinanzenUebersicht_Left: TcxGroupBox
                 Left = 3
                 Top = 3
@@ -4684,8 +4681,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
                   end
                 end
                 object pnl_FixSoll: TcxGroupBox
@@ -4749,8 +4744,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
                   end
                 end
                 object pnl_VarISoll: TcxGroupBox
@@ -4814,8 +4807,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
                   end
                 end
                 object pnl_GesSoll: TcxGroupBox
@@ -5098,7 +5089,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 Style.IsFontAssigned = True
                 TabOrder = 1
                 Height = 259
-                Width = 284
+                Width = 532
                 object pnl_EinIst: TcxGroupBox
                   AlignWithMargins = True
                   Left = 3
@@ -5119,10 +5110,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
                   Style.IsFontAssigned = True
                   TabOrder = 0
                   Height = 45
-                  Width = 278
+                  Width = 526
                   object lbl_EinIst: TcxLabel
                     AlignWithMargins = True
-                    Left = 190
+                    Left = 438
                     Top = 16
                     Margins.Left = 0
                     Margins.Top = 1
@@ -5141,7 +5132,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Transparent = True
                     Height = 17
                     Width = 80
-                    AnchorX = 270
+                    AnchorX = 518
                   end
                   object lbl_EinIstLabel: TcxLabel
                     AlignWithMargins = True
@@ -5160,8 +5151,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
                   end
                 end
                 object pnl_FixIst: TcxGroupBox
@@ -5184,10 +5173,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
                   Style.IsFontAssigned = True
                   TabOrder = 1
                   Height = 45
-                  Width = 278
+                  Width = 526
                   object lbl_AusFixIst: TcxLabel
                     AlignWithMargins = True
-                    Left = 190
+                    Left = 438
                     Top = 16
                     Margins.Left = 0
                     Margins.Top = 1
@@ -5206,7 +5195,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Transparent = True
                     Height = 17
                     Width = 80
-                    AnchorX = 270
+                    AnchorX = 518
                   end
                   object lbl_AusFixIstLabel: TcxLabel
                     AlignWithMargins = True
@@ -5225,8 +5214,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
                   end
                 end
                 object pnl_VarISt: TcxGroupBox
@@ -5249,10 +5236,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
                   Style.IsFontAssigned = True
                   TabOrder = 2
                   Height = 45
-                  Width = 278
+                  Width = 526
                   object lbl_AusvarIst: TcxLabel
                     AlignWithMargins = True
-                    Left = 190
+                    Left = 438
                     Top = 16
                     Margins.Left = 0
                     Margins.Top = 1
@@ -5271,7 +5258,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Transparent = True
                     Height = 17
                     Width = 80
-                    AnchorX = 270
+                    AnchorX = 518
                   end
                   object lbl_AusVarIstLabel: TcxLabel
                     AlignWithMargins = True
@@ -5290,8 +5277,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
                   end
                 end
                 object pnl_GesIst: TcxGroupBox
@@ -5314,7 +5299,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                   Style.IsFontAssigned = True
                   TabOrder = 3
                   Height = 121
-                  Width = 278
+                  Width = 526
                   object pnl_VerfIst: TcxGroupBox
                     Left = 3
                     Top = 86
@@ -5327,7 +5312,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.BorderStyle = ebsNone
                     TabOrder = 0
                     Height = 23
-                    Width = 272
+                    Width = 520
                     object lbl_IstSumLabel: TcxLabel
                       AlignWithMargins = True
                       Left = 13
@@ -5348,7 +5333,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     end
                     object lbl_IstSum: TcxLabel
                       AlignWithMargins = True
-                      Left = 184
+                      Left = 432
                       Top = 3
                       Margins.Left = 0
                       Margins.Top = 0
@@ -5368,7 +5353,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                       Transparent = True
                       Height = 17
                       Width = 80
-                      AnchorX = 264
+                      AnchorX = 512
                     end
                   end
                   object pnl_VerfEinIst: TcxGroupBox
@@ -5383,7 +5368,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.BorderStyle = ebsNone
                     TabOrder = 1
                     Height = 23
-                    Width = 272
+                    Width = 520
                     object lbl_EinIstSumLabel: TcxLabel
                       AlignWithMargins = True
                       Left = 13
@@ -5404,7 +5389,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     end
                     object lbl_EinIstSum: TcxLabel
                       AlignWithMargins = True
-                      Left = 184
+                      Left = 432
                       Top = 3
                       Margins.Left = 0
                       Margins.Top = 0
@@ -5424,7 +5409,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                       Transparent = True
                       Height = 17
                       Width = 80
-                      AnchorX = 264
+                      AnchorX = 512
                     end
                   end
                   object pnl_VerfvarIst: TcxGroupBox
@@ -5439,7 +5424,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.BorderStyle = ebsNone
                     TabOrder = 2
                     Height = 23
-                    Width = 272
+                    Width = 520
                     object lbl_AusvarIstSumLabel: TcxLabel
                       AlignWithMargins = True
                       Left = 13
@@ -5460,7 +5445,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     end
                     object lbl_AusvarIstSum: TcxLabel
                       AlignWithMargins = True
-                      Left = 184
+                      Left = 432
                       Top = 3
                       Margins.Left = 0
                       Margins.Top = 0
@@ -5480,14 +5465,14 @@ object frm_PCM_Main: Tfrm_PCM_Main
                       Transparent = True
                       Height = 17
                       Width = 80
-                      AnchorX = 264
+                      AnchorX = 512
                     end
                   end
                   object pnl_TrennIst: TPanel
                     AlignWithMargins = True
                     Left = 16
                     Top = 84
-                    Width = 259
+                    Width = 507
                     Height = 2
                     Margins.Left = 13
                     Margins.Top = 0
@@ -5509,7 +5494,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.BorderStyle = ebsNone
                     TabOrder = 4
                     Height = 23
-                    Width = 272
+                    Width = 520
                     object lbl_AusFixIstSumLabel: TcxLabel
                       AlignWithMargins = True
                       Left = 13
@@ -5530,7 +5515,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     end
                     object lbl_AusFixIstSum: TcxLabel
                       AlignWithMargins = True
-                      Left = 184
+                      Left = 432
                       Top = 3
                       Margins.Left = 0
                       Margins.Top = 0
@@ -5550,13 +5535,13 @@ object frm_PCM_Main: Tfrm_PCM_Main
                       Transparent = True
                       Height = 17
                       Width = 80
-                      AnchorX = 264
+                      AnchorX = 512
                     end
                   end
                 end
               end
               object grpbx_FinanzenUebersicht_middle: TcxGroupBox
-                Left = 587
+                Left = 835
                 Top = 3
                 Margins.Left = 0
                 Margins.Top = 0
@@ -5636,8 +5621,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
                   end
                 end
                 object pnl_FixDiff: TcxGroupBox
@@ -5701,8 +5684,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
                   end
                 end
                 object pnl_VarIDiff: TcxGroupBox
@@ -5766,8 +5747,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
                   end
                 end
                 object pnl_GesDiff: TcxGroupBox
@@ -6041,8 +6020,136 @@ object frm_PCM_Main: Tfrm_PCM_Main
     Left = 1368
     Top = 344
     Bitmap = {
-      494C010103000800040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
-      0000000000003600000028000000400000001000000001002000000000000010
+      494C010104000800040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      0000000000003600000028000000400000002000000001002000000000000020
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000041A0A7E083012F6020F05460000000000000000000000000000
       00000000000000000000000000000000000000000000000000000D0802265737
@@ -6050,130 +6157,134 @@ object frm_PCM_Main: Tfrm_PCM_Main
       01264C2F08FF0B07012600000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000140D05284C3211A5764F1EE98A6028FF825A26F44A32
+      109A0503010B0000000000000000000000000000000000000000000000000000
       000003130657104B1FFE39BF5AFF062A0EDD0001000900000000000000000000
       000000000000000000000000000000000000000000000E09022659390EFFA96F
       25FF57370DFF0D080226000000000000000000000000000000000C0701264F31
       09FFA76E24FF4D2F08FF0B070126000000000000000000000000000000000000
       00010716255D112D4DC4214972F5315881FE365271E52E3D4EA5161A1E3B0000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000000000000000000000000000010B
+      0000000000000000000000000000000000000000000000000000160F0429150E
+      042A000000003A260D718D6022F9DC9B47FFF8B661FFFABD6EFFFFD698FFD1A8
+      75FF3B2504BF0301000A0000000000000000000000000000000000000000010B
       0435083514F53CC961FF46E16EFF1F7836FF041B0A8500000000000000000000
       0000000000000000000000000000000000000E0902265C3B10FFCA8A38FFF5B4
       62FFC28435FF58380EFF0D08022600000000000000000C08022653340BFFC386
       38FFF5B461FFC58534FF4E3009FF0B07012600000000000000000102040E0F2D
       4CBC1F548DFF3472B5FF4982C2FF6294CBFF7DA9DAFF91B3D8FF8C9FB2FE545A
-      61A40507080E0000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000000000000000000001060221052B
+      61A40507080E0000000000000000000000000000000000000000684517DF8664
+      35F6472D0CAE916121FFD29646FFBE8232FFC98832FFDB973DFFEDA74DFFFFE1
+      AEFF8D6736FF341E02C20302000C00000000000000000000000001060221052B
       10E733AF52FF3DCB62FF3BC75FFF3FD565FF0A3B17F9010A032C000000000000
       0000000000000000000000000000000000005E3D10FFAE772EFFE5A552FFE9A6
       4FFFEEAE5CFFBF8233FF59380EFF0D0802260D08022655360CFFC08334FFEEAE
       5CFFE8A54EFFE29C40FFA36A20FF4E3009FF000000000000000312304FBF2761
       A2FF3A78BAFF5286C2FF87ACD5FFAAC5E5FFB9D0ECFFC4DAF4FFD5EBFFFFC1D3
-      E6FF616C78D208090B1500000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000000000000004011805250EDB2997
+      E6FF616C78D208090B15000000000000000000000000000000006F4B1AE7D4AC
+      77FF7B4D10FFB8833DFF9B631CFFAB7227FFB77A29FFC8862EFFDB9334FFFBC5
+      81FFD5A96FFF74460BFF392305C60402000C000000000004011805250EDB2997
       46FF3AC65FFF35B556FF36B658FF3BC760FF2EA64DFF04250ECA000000030000
       0000000000000000000000000000000000000E0903265E3D10FFC18940FFDE9F
       4EFFE09D47FFE5A553FFBB7F30FF59380EFF58380EFFBC7F31FFE5A554FFDF9D
       46FFD9943BFFB67928FF51320AFF0C070126000000000D1E316F2A5D97FF4980
       BFFF9FBBDBFFDFE6F1FFFDFCFDFFCBD2DBFFBCC7D2FFF1F2F5FFF0F6FFFFE3F1
-      FFFFAFC5E3FF4F5C6CCB05060912000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000004011704240DD321853BFF38C1
+      FFFFAFC5E3FF4F5C6CCB05060912000000000000000000000000734F1DECD1A6
+      6FFF74460AFF825112FF905E1BFF996219FFAA6F1FFF93601DFF7D531BFA7D56
+      21FAF1A441FFBB7D28FF7A4C10FF2F1D06930004011704240DD321853BFF38C1
       5CFF30AC51FF2CA14AFF45A960FF3EB85EFF3CCD60FF19682CFF0318097B0000
       000000000000000000000000000000000000000000000E0903265F3E11FFBB85
       3EFFD6994AFFD7933EFFDC9A47FFB77A2CFFB87B2CFFDC9B48FFD7933DFFD18C
       34FFB37525FF54350CFF0C080226000000000001020626466BE85687C6FFA5B9
       D6FFCFD5DFFFFFFFFCFF4487B1FF1D9BDDFF5EB0ECFF6496C1FFBCC7D3FFF2F5
-      FAFFCBD8EBFF95ACCCFF60779AFE242F42890000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      00000000000000000000000000000000000006270FD125793CFF42B660FF35A7
+      FAFFCBD8EBFF95ACCCFF60779AFE242F428900000000000000007A521EF1CBA0
+      67FF714611FF7E5218FF7D4C0DFF8A5610FF6B4511FE38240B93030201070D09
+      031D754D1AF7D49037FFC07F28FF5E3C11E906270FD125793CFF42B660FF35A7
       53FF2B9E4AFF0F4B1FFF1B542BFF58BA71FF39B559FF38C55BFF0A3915F90109
       03320000000000000000000000000000000000000000000000000E090326603E
       11FFB8833DFFCF9246FFCE8A34FFD3903CFFD3903CFFCE8A34FFC8842EFFAF72
       23FF57370DFF0D08022600000000000000000E16204F426A9EFF849DC7FFA2A8
       B6FFFBF7F2FF6492B5FF109BF0FF307AC7FF3D78B5FF62AAF2FF6497C7FFEAEE
-      EDFFFFFFFFFF93A9CCFF28509EFF486185F60000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000052C0FE8489A5EFF59AB6EFF49A4
+      EDFFFFFFFFFF93A9CCFF28509EFF486185F600000000000000007F5620F6C196
+      5CFF704917FF6E440DFF724309FF7B4909FF5F3A09FE2717048001010006140C
+      01453C2407C9684414FFA56F26FF714A18F0052C0FE8489A5EFF59AB6EFF49A4
       60FF135323FF041D0AA0021F0BC53C8550FF4CB067FF35B656FF2BA349FF0524
       0DD90002000C0000000000000000000000000000000000000000000000000E09
       0326603F11FFB37E39FFBE7D2DFFC37E2CFFC37E2CFFBC7A28FFA96F21FF5939
       0EFF0D080226000000000000000000000000283B56C77191C3FF586A8FFFB9B7
       B4FFCCC6C3FF0E74B8FF1E67B2FF19130DFF050000FF445C71FF60A6EEFF98AF
-      C3FFFFFFFFFF8E9EADFF355598FF496489F50000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      000000000000000000000000000000000000010E0445093513FC57A16BFF1653
+      C3FFFFFFFFFF8E9EADFF355598FF496489F500000000000000007F551BFAB68A
+      52FF5C380BFF643C08FF623A08FF593406FF563508FF53350DF8603D0EFA6A42
+      0CFF6F440EFF6E440FFF422A08D11B100347010E0445093513FC57A16BFF1653
       26FF031D0BAE0000000300080225052E0EF455A369FF41A95DFF35BD58FF1D76
       33FF041D0CA30000000000000000000000000000000000000000000000000F0A
       0326624012FFA46A21FFAA6F23FFAE6F23FFAE6F23FFA96F23FFA1681FFF5B3A
       0FFF0D0802260000000000000000000000003B5175E94D72A4FF667485FF9896
       94FFAFADABFF004179FF03325FFF000000FF000000FF5A646DFF4493E3FF87A3
-      BCFFE6E5E2FF44515FFF859BBFFF32435CC00000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000002160775053312FE031E
+      BCFFE6E5E2FF44515FFF859BBFFF32435CC049310FAC5D3F17CA7E541DFE9B74
+      3EFF755020FF795320FE5A3A0FFF81561BFF96611DFFAA722BFFAA742DFFAA7A
+      39FFAD7E42FF7A4C12FF2B1A0583000000000000000002160775053312FE031E
       0BAB00010005000000000000000002130667154921FF5CAD72FF3CAA59FF35C1
       59FF114E21FF03150767000000000000000000000000000000000F0A03266442
       13FFA56D28FFA9702AFF9E6620FF9A651FFF9B6721FF9E6721FFAA702BFF9F68
       23FF5C3B10FF0E0902260000000000000000242F43976989BEFF305C8AFF5B6C
       7CFFA6A09BFF30526FFF002954FF8C9299FFA5A6A6FF7D95ACFF1260A9FF7880
-      85FF54595EFF9FB2C9FF7593C0FF1D25326C0000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      00000000000000000000000000000000000000000000000000000006021F0000
+      85FF54595EFF9FB2C9FF7593C0FF1D25326C7C5826F4D6A565FF885A1CFF6946
+      17F5100B0424432D0F9CA06C27FFD99F54FFC89045FFB97F35FFB8823EFFBA89
+      49FFA36921FF774C14FF2115055B0000000000000000000000000006021F0000
       000100000000000000000000000000000000021E09AD2E6A3DFF59AD70FF38AE
       57FF2FAF50FF093714F8010C043A00000000000000000F0A0326674414FF9E6A
       28FFA46F30FF996425FF915D1DFF93601CFF9D6F33FF9E6F35FF9C6728FFA570
       32FF986423FF5C3B10FF0E09022600000000090C1227536991FB7C9DD1FF315C
       8DFF264C74FF3D556FFF365068FF6D7C8AFF758698FF66819AFF385F84FF7E8C
-      A1FFC2D4EDFFAAC7EFFF526584EB0304050D0000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      A1FFC2D4EDFFAAC7EFFF526584EB0304050D946D38FFDCAC6EFF8F5E1BFFAD74
+      26FF7B521AF6100B0324553710DC8A5F27FFC78D41FFC58A3CFFC6904AFFBC86
+      41FFAD7122FF774D15FF140D0333000000000000000000000000000000000000
       0000000000000000000000000000000000000002011000240ADD4A8B5AFF51AC
       69FF32AA52FF279744FF052A0FE80006021F100B03266A4616FF986627FF9767
       2DFF8D5C23FF85551BFF8D5B1BFF634113FF624012FF9B7038FF996F3EFF9061
       28FF98682FFF916022FF5D3C10FF0E090226000000002733448F6D8AB6FF94B1
       E0FF819FC7FF5E83A9FF4D739CFF4D739BFF6587ACFF8DA6C4FFC2D1E5FFE5F3
-      FFFFC2DAF9FF7E94B3FF232A3461000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      FFFFC2DAF9FF7E94B3FF232A3461000000008B6433EBFACA8CFF9A6A2CFF8D5C
+      1CFF905F1EFF684619FA895818FFAE7935FFDDA155FFD39749FFCC9045FFBD7E
+      2BFFBB7B29FF744D18FE0603010C000000000000000000000000000000000000
       0000000000000000000000000000000000000000000001080331042F0EF55AA1
       6CFF48A862FF2EA34CFF22833CFF06260FCF6C4817FF9C6B2BFF9A7345FF8D65
       35FF855C2DFF8A5B1FFF664314FF0F0A03260F0A0326624012FF9A713DFF9571
       47FF875C29FF8B5F2AFF8E5C1DFF5D3C10FF000000000101020739485EC17793
       BDFF95B4E1FFA3BDE5FFB7CDEDFFC6D8F3FFCDE1F7FFD3E5FAFFD6EAFEFFDBEF
-      FFFF96ABC3FF3C44529400000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      FFFF96ABC3FF3C4452940000000000000000513A1C8ECE9E60FFEFB061FFB077
+      2CFFAE7427FFBB7B2AFFD09549FFEDAC59FFE4A351FFDB9B47FFD38D35FFCC89
+      32FFCD8931FF6A4518E800000000000000000000000000000000000000000000
       00000000000000000000000000000000000000000000000000000211065B103F
       1DFE61AC75FF44A45CFF268E42FF072E11EA100B04266D4817FF926B38FF8E71
       4EFF8E642FFF684515FF0F0A032600000000000000000F0A0326634113FF9A74
       42FF907350FF815620FF5F3E11FF0E09022600000000000000000203030A3440
       51A16D82A2FE96B0D8FFAAC6EBFFB4CDEFFFC0D6F5FFCDE2FDFFC0D2E5FF8F9D
-      A9F7393F46770000000100000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      A9F7393F467700000001000000000000000003020106614421A0AF7F40FEECAC
+      5AFFF8C889FFFDCA88FFFAB660FFF4AF56FFEDA54AFFE89E3FFFD28E39FF7E57
+      22FCA5722DFF603F16C600000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000219
       08871D532BFF46935AFF052E11F1010B043900000000100B04266E4918FF976B
       2FFF6C4717FF100A0326000000000000000000000000000000000F0A03266441
       13FF976C33FF624012FF0E090326000000000000000000000000000000000000
       000014181E3C394351A65F6C81E57A8AA0FE7E8D9FFB646E7CD83F474D8E1011
-      1121000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      112100000000000000000000000000000000000000000000000024190C376F4E
+      25BBB68648FFF1C58BFFFFDEACFFFFC982FFFAB356FFC68938FF725021D2140E
+      052534230E63291C085800000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0001041D0AA204290EED010B043B000000000000000000000000110B04266E49
       18FF100B03260000000000000000000000000000000000000000000000000F0A
       0326644213FF0F0A032600000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
-      0000000000000000000000000000000000000000000000000000000000000000
+      000024190B3C63431BB9936B36F38F6A39FA755429D63F2D1471040201070000
       000000000000000000000000000000000000424D3E000000000000003E000000
-      2800000040000000100000000100010000000000800000000000000000000000
+      2800000040000000200000000100010000000000000100000000000000000000
       000000000000000000000000FFFFFF0000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -6182,12 +6293,11 @@ object frm_PCM_Main: Tfrm_PCM_Main
   end
   object loc_Lang: TcxLocalizer
     FileName = '.\cxLocalLang.ini'
-    Left = 88
-    Top = 24
+    Left = 272
+    Top = 232
   end
   object lafCtrl_Main: TcxLookAndFeelController
     Kind = lfFlat
-    NativeStyle = False
     ScrollbarMode = sbmClassic
     SkinName = 'DevExpressDarkStyle'
     RenderMode = rmGDIPlus
@@ -9893,6 +10003,11 @@ object frm_PCM_Main: Tfrm_PCM_Main
       ImageIndex = 2
       OnClick = ppmbtn_KonfigurationClick
     end
+    object ppmbtn_Design: TMenuItem
+      Caption = 'Design'
+      ImageIndex = 82
+      OnClick = ppmbtn_DesignClick
+    end
     object ppmbtn_Trenn1: TMenuItem
       Caption = '-'
     end
@@ -9963,18 +10078,184 @@ object frm_PCM_Main: Tfrm_PCM_Main
       ImageIndex = 21
       OnClick = ppmbtn_SysteminfoClick
     end
-    object ppmbtn_Programminfo: TMenuItem
+    object ppmbtn_Info: TMenuItem
       Caption = 'Info'
       ImageIndex = 7
-      OnClick = ppmbtn_ProgramminfoClick
+      OnClick = ppmbtn_InfoClick
+    end
+    object ppmbtn_Handbuch: TMenuItem
+      Caption = 'Handbuch'
+      ImageIndex = 80
+      OnClick = ppmbtn_HandbuchClick
     end
     object ppmbtn_Trenn6: TMenuItem
       Caption = '-'
+    end
+    object ppmbtn_Sprache: TMenuItem
+      Caption = 'Sprache'
+      ImageIndex = 81
+      OnClick = ppmbtn_SpracheClick
+    end
+    object ppmbtn_Abmelden: TMenuItem
+      Caption = 'Abmelden'
+      ImageIndex = 23
+      OnClick = ppmbtn_AbmeldenClick
     end
     object ppmbtn_Beenden: TMenuItem
       Caption = 'Beenden'
       ImageIndex = 0
       OnClick = ppmbtn_BeendenClick
+    end
+  end
+  object dxBarManager1: TdxBarManager
+    AutoHideEmptyBars = True
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    CanCustomize = False
+    Categories.Strings = (
+      'Default'
+      'pmModullisteOptionen')
+    Categories.ItemsVisibles = (
+      2
+      2)
+    Categories.Visibles = (
+      True
+      True)
+    ImageOptions.ImageListBkColor = clBlack
+    ImageOptions.Images = img_Icons
+    ImageOptions.LargeImages = img_Icons
+    ImageOptions.StretchGlyphs = False
+    LargeButtonArrowWidth = 16
+    LookAndFeel.Kind = lfFlat
+    LookAndFeel.NativeStyle = False
+    MenusShowRecentItemsFirst = False
+    NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
+    PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
+    UseSystemFont = True
+    Left = 472
+    Top = 192
+    PixelsPerInch = 96
+    DockControlHeights = (
+      0
+      0
+      35
+      0)
+    object dxBarManager1Bar1: TdxBar
+      AllowClose = False
+      AllowCustomizing = False
+      AllowQuickCustomizing = False
+      Caption = 'Hauptbar'
+      CaptionButtons = <>
+      DockedDockingStyle = dsTop
+      DockedLeft = 0
+      DockedTop = 0
+      DockingStyle = dsTop
+      FloatLeft = 669
+      FloatTop = 8
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btnModulleiste'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'barOpenModule'
+        end
+        item
+          Visible = True
+          ItemName = 'barUser'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'btnRefreshRights'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'btnCloseModul'
+        end>
+      NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
+      OneOnRow = True
+      Row = 0
+      ShowMark = False
+      SizeGrip = False
+      UseOwnFont = False
+      UseRecentItems = False
+      UseRestSpace = True
+      Visible = True
+      WholeRow = False
+    end
+    object barOpenModule: TdxBarStatic
+      Caption = '__'
+      Category = 0
+      Hint = '__'
+      Visible = ivAlways
+      Width = 573
+    end
+    object btnModulleiste: TdxBarLargeButton
+      Caption = 'Modulliste verstecken'
+      Category = 0
+      Hint = 'Modulliste verstecken'
+      Visible = ivAlways
+      OnClick = btnModulleisteClick
+      AutoGrayScale = False
+      GlyphLayout = glLeft
+      Width = 185
+      SyncImageIndex = False
+      ImageIndex = -1
+    end
+    object btnRefreshRights: TdxBarLargeButton
+      Category = 0
+      Hint = 'Rechte und Modul neu laden'
+      Visible = ivAlways
+      OnClick = btnRefreshRightsClick
+      AutoGrayScale = False
+      GlyphLayout = glLeft
+      LargeImageIndex = 3
+      Width = 25
+    end
+    object btnCloseModul: TdxBarLargeButton
+      Category = 0
+      Hint = 'Modul schlie'#223'en'
+      Visible = ivAlways
+      OnClick = btnCloseModulClick
+      AutoGrayScale = False
+      GlyphLayout = glLeft
+      LargeImageIndex = 1
+      Width = 25
+      SyncImageIndex = False
+      ImageIndex = 57
+    end
+    object barUser: TdxBarStatic
+      Caption = 'User'
+      Category = 0
+      Hint = 'User'
+      Visible = ivAlways
+      Width = 150
+    end
+    object dxBarButton1: TdxBarButton
+      Caption = 'Modulleiste ein-/ausblenden'
+      Category = 1
+      Hint = 'Modulleiste ein-/ausblenden'
+      Visible = ivAlways
+    end
+    object Menuezurueck: TdxBarButton
+      Caption = 'Men'#252' zur'#252'cksetzen'
+      Category = 1
+      Hint = 'Men'#252' zur'#252'cksetzen'
+      Visible = ivAlways
+    end
+    object dxBarGroup1: TdxBarGroup
+      Items = (
+        'btnModulleiste')
     end
   end
 end

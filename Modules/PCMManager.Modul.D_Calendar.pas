@@ -188,11 +188,7 @@ type
     cxGrid1: TcxGrid;
     tvNachrichten: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
-    Label2: TLabel;
-    Label5: TLabel;
     cxDBTextEdit6: TcxDBTextEdit;
-    Label6: TLabel;
-    Label8: TLabel;
     edtJiraTicketNr: TcxDBTextEdit;
     btnGoToJira: TcxButton;
     cxGrid5: TcxGrid;
@@ -292,6 +288,10 @@ type
     qWF_Nachrichten_AnhaengeDateiname: TStringField;
     qWF_Nachrichten_AnhaengeDateinameSave: TStringField;
     sched_Kalender: TcxScheduler;
+    Label5: TcxLabel;
+    Label2: TcxLabel;
+    Label6: TcxLabel;
+    Label8: TcxLabel;
     procedure btn_CalNewClick(Sender: TObject);
     procedure btn_CalTagClick(Sender: TObject);
     procedure btn_CalArbeitswocheClick(Sender: TObject);
@@ -388,6 +388,7 @@ type
       APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord;
       ANewItemRecordFocusingChanged: Boolean);
     procedure FormDestroy(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private-Deklarationen }
 //    rep : TDmReports;
@@ -411,11 +412,9 @@ type
     function GetAttachmentFilename(s: string): string;
   public
     { Public-Deklarationen }
-
     bol_allday: boolean;
     bol_VollBildCal: boolean;
     iCopyEventId: Integer;
-    iTag,iActiveTab: integer;
     RecurrenceInfo: TcxSchedulerCustomRecurrenceInfoData;
     FSearchType : TSearchType;
     FResult: boolEan;
@@ -433,7 +432,6 @@ type
     procedure RefreshCalender;
     procedure SearchDoSearch(ASearchString : String);
     procedure RefreshTerminundAUfgaben;
-    procedure Execute(ATag,AActiveTab: integer);
 
   end;
 
@@ -452,7 +450,8 @@ uses  PCM.Main,
       PCMManager.Modul.D_Calendar.Import,
       PCM.Functions.Synch.Wait,
       PCMManager.Helper.Calendar.Ical,
-      PCM.Data;
+      PCM.Data,
+      PCM.Strings;
 
 function Tfrm_Calendar.GetRecurrenceInfoOutlook(AArt,AInterval,ADayOfWeeks,AAnzahlWiederholung:integer;AWiederholungStart,AWiederholungEnde,AInstanz:string): string;
 var
@@ -783,32 +782,29 @@ begin
   except
     on e: system.sysutils.Exception do
     begin
-        Writelog(PCM_Logname,'Kontakte: Verbindung mit Outlook kann nicht hergestellt werden. Grund: ' + e.Message, 2);
+        Writelog(PCM_Logname,rs_PCMManager_Kontakte + rs_PCMManager_KeineVerbindung + e.Message, 2);
       exit;
     end;
   end;
-  Writelog(PCM_Logname, 'Kontakte: Namespace ermitteln', 0);
+  Writelog(PCM_Logname, rs_PCMManager_Kontakte + rs_PCMManager_Namespace, 0);
   try
     olvarNameSpace := Outlook.GetNameSpace('MAPI');
-//    olvarNameSpace.Logon('Outlook','NhJh2084+2',True,False);
   except
     on e: system.sysutils.Exception do
     begin
-      Writelog(PCM_Logname,'Kontakte: Namespace konnt nicht ermittelt werden. Grund: ' + e.Message, 2);
+      Writelog(PCM_Logname,rs_PCMManager_Kontakte + rs_PCMManager_NamespaceErmitteln + e.Message, 2);
       exit;
     end;
   end;
-  Writelog(PCM_Logname, 'Kontakte: ContactsRoot ermitteln: ' + Auser, 0);
+	Writelog(PCM_Logname, rs_PCMManager_Kontakte + rs_PCMManager_ContactsRootErmitteln + Auser, 0);
   try
     objOwner := olvarNameSpace.CreateRecipient(AUser);
     olvarTermine := olvarNameSpace.GetSharedDefaultFolder(objOwner,olFolderCalendars);
-    ShowWaitForm(TForm(Self), PWideChar('Termine aus Outlook importieren'), olvarTermine.items.count, ClientWidth, Height);
+    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineImportieren), olvarTermine.items.count, ClientWidth, Height);
     for i := 1 to olvarTermine.items.count do
     begin
       Termin:= olvarTermine.items.item[i];
       SUMMARY:=  Termin.Subject;
-      if SUMMARY = 'Ticketanfrage Di Blasi - falls heute zu wenig Zeit' then ShowMessage('2');
-
       WaitFormStep;
       Rule:='';
       DTSTART:=  DateTimeToStr(Termin.Start);
@@ -988,7 +984,7 @@ begin
   except
     on e: system.sysutils.Exception do
     begin
-      Writelog(PCM_Logname, 'Termine konnten importiert werden. Grund: ' + e.Message, 2);
+      Writelog(PCM_Logname, rs_PCMManager_TerminenichtErmitteln + e.Message, 2);
       exit;
     end;
   end;
@@ -1047,26 +1043,25 @@ begin
   except
     on e: system.sysutils.Exception do
     begin
-        Writelog(PCM_Logname,'Kontakte: Verbindung mit Outlook kann nicht hergestellt werden. Grund: ' + e.Message, 2);
+        Writelog(PCM_Logname,rs_PCMManager_Kontakte + rs_PCMManager_KeineVerbindung + e.Message, 2);
       exit;
     end;
   end;
-  Writelog(PCM_Logname, 'Kontakte: Namespace ermitteln', 0);
+  Writelog(PCM_Logname, rs_PCMManager_Kontakte + rs_PCMManager_Namespace, 0);
   try
     olvarNameSpace := Outlook.GetNameSpace('MAPI');
-//    olvarNameSpace.Logon('Outlook','NhJh2084+2',True,False);
   except
     on e: system.sysutils.Exception do
     begin
-      Writelog(PCM_Logname,'Kontakte: Namespace konnt nicht ermittelt werden. Grund: ' + e.Message, 2);
+      Writelog(PCM_Logname,rs_PCMManager_Kontakte + rs_PCMManager_NamespaceErmitteln + e.Message, 2);
       exit;
     end;
   end;
-  Writelog(PCM_Logname, 'Kontakte: ContactsRoot ermitteln: ' + AUser, 0);
+  Writelog(PCM_Logname, rs_PCMManager_Kontakte + rs_PCMManager_ContactsRootErmitteln + AUser, 0);
   try
     objOwner := olvarNameSpace.CreateRecipient(AUser);
     olvarTermine := olvarNameSpace.GetSharedDefaultFolder(objOwner,olFolderCalendars);
-    ShowWaitForm(TForm(Self), PWideChar('Termine aus Outlook importieren'), olvarTermine.items.count, ClientWidth, Height);
+    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineImportieren), olvarTermine.items.count, ClientWidth, Height);
     for i := 1 to olvarTermine.items.count do
     begin
       Termin:= olvarTermine.items.item[i];
@@ -1157,7 +1152,7 @@ begin
   except
     on e: system.sysutils.Exception do
     begin
-      Writelog(PCM_Logname, 'Aufgaben konnten importiert werden. Grund: ' + e.Message, 2);
+      Writelog(PCM_Logname, rs_PCMManager_AufgabennichtErmitteln + e.Message, 2);
       exit;
     end;
   end;
@@ -1271,6 +1266,28 @@ begin
   dm_PCM.qry_Kalender_Aufgaben.Filter:= 'bearbeitetam = null and ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
   dm_PCM.qry_Kalender_Aufgaben.Filtered:= true;
   RefreshTerminundAUfgaben;
+  tvNachrichtenCaption.Caption:= rs_PCMManager_Betreff;
+  tvNachrichtenGelesenAm.Caption:= rs_PCMManager_GelesenAM;
+  tvNachrichtenGesendetAm.Caption:= rs_PCMManager_GesendetAm;
+  tvNachrichtenID_ADR_Wurzel.Caption:= rs_PCMManager_Adresse;
+  tvNachrichtenID_Ansprechpartner.Caption:= rs_PCMManager_Ansprechpartner;
+  tvNachrichtenJira_Ticket.Caption:= rs_PCMManager_JiraTicket;
+  tvNachrichtenLocation.Caption:= rs_PCMLizenzgenerator_KundeORT;
+  tvNachrichtenStatus.Caption:= rs_PCMManager_Status;
+  tvNachrichtenTyp.Caption:= rs_PCMManager_Typ;
+  grdDBTblView_StundenplanuebersichtID_Benutzer.Caption:= rs_PCMBenutzerverwaltung_Benutzer;
+  grdDBTblView_StundenplanuebersichtKlasse.Caption:= rs_PCMManager_Klasse;
+  grdDBTblView_StundenplanuebersichtSchule.Caption:= rs_PCMManager_Schule;
+  grdDBTblView_StundenplanuebersichtSchuljahr.Caption:= rs_PCMManager_Schuljahr;
+  grdDBTblView_StundenplanBegin.Caption:= rs_PCM_Beginn;
+  grdDBTblView_StundenplanDienstag.Caption:= rs_PCM_Dienstag;
+  grdDBTblView_StundenplanDonnerstag.Caption:= rs_PCM_Donnerstag;
+  grdDBTblView_StundenplanEnd.Caption:= rs_PCM_EndeZeit;
+  grdDBTblView_StundenplanFreitag.Caption:= rs_PCM_Freitag;
+  grdDBTblView_StundenplanMittwoch.Caption:= rs_PCM_Mittwoch;
+  grdDBTblView_StundenplanMontag.Caption:= rs_PCM_Montag;
+  grdDBTblView_StundenplanSamstag.Caption:= rs_PCM_Samstag;
+
 end;
 procedure Tfrm_Calendar.OpenAttachement;
 var
@@ -1291,7 +1308,6 @@ function Tfrm_Calendar.GetAttachmentFilename(s: string): string;
 begin
   Result := ExpandFilename(ExtractFilePath(ParamStr(0)) + 'Files\' + s)
 end;
-
 procedure Tfrm_Calendar.cxButton1Click(Sender: TObject);
 begin
   saveAttachement;
@@ -1496,13 +1512,13 @@ begin
 end;
 procedure Tfrm_Calendar.pmmbtn_YearViewClick(Sender: TObject);
 begin
-  compPrint_Cal.PreviewOptions.Caption := 'Terminkalender - Jahresansicht';
+  compPrint_Cal.PreviewOptions.Caption := rs_PCMManager_Kalenderjahr;
   compPrint_CalLink1.PrintStyles.Yearly.Active := True;
   compPrint_CalLink1.Preview(True);
 end;
 procedure Tfrm_Calendar.pmmbtn_AgendaClick(Sender: TObject);
 begin
-  compPrint_Cal.PreviewOptions.Caption := 'Terminkalender - Agendaansicht';
+  compPrint_Cal.PreviewOptions.Caption := rs_PCMManager_Kalenderagenda;
   compPrint_CalLink1.PrintStyles.Agenda.Active := True;
   compPrint_CalLink1.Preview(True);
 end;
@@ -1535,7 +1551,7 @@ begin
   if btn_JobsDone.tag = 0 then
   begin
     btn_JobsDone.tag:= 1;
-    btn_JobsDone.Caption:= 'aktuelle Aufgaben';
+    btn_JobsDone.Caption:= rs_PCMManager_aktAufgaben;
     btn_JobsDone.largeimageindex:= 124;
     btn_JobUndone.enabled:= true;
     dm_PCM.qry_Kalender_Aufgaben.Filter:= 'bearbeitetam <> null and ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
@@ -1543,7 +1559,7 @@ begin
   end
   else begin
     btn_JobsDone.tag:= 0;
-    btn_JobsDone.Caption:= 'bearbeitete Aufgaben';
+    btn_JobsDone.Caption:= rs_PCMManager_bearbAufgaben;
     btn_JobsDone.largeimageindex:= 123;
     btn_JobUndone.enabled:= false;
     dm_PCM.qry_Kalender_Aufgaben.Filter:= 'bearbeitetam = null and ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
@@ -1558,7 +1574,7 @@ begin
     frm_PCM_main.navbr_main.Width:= 0;
     frm_PCM_main.pcmain.properties.HideTabs:= true;
     pc_kalender.properties.HideTabs:= true;
-    btn_CalAnsicht.Caption:= 'norm. Ansicht';
+    btn_CalAnsicht.Caption:= rs_PCMManager_normAnsicht;
     btn_CalAnsicht.LargeImageIndex:= 31;
     cxTreeList1.Height:= 107;
   end
@@ -1567,7 +1583,7 @@ begin
     frm_PCM_main.navbr_main.Width:= 200;
     frm_PCM_main.pcmain.properties.HideTabs:= false;
     pc_kalender.properties.HideTabs:= false;
-    btn_CalAnsicht.Caption:= 'max. Ansicht';
+    btn_CalAnsicht.Caption:= rs_PCMManager_maxAnsicht;
     btn_CalAnsicht.LargeImageIndex:= 32;
     cxTreeList1.Height:= 107;
   end;
@@ -1665,7 +1681,7 @@ var
   view : TcxGridTableView;
   col : TcxGridColumn;
   AMessageIds : Array of Integer;
-  sMsgBoxMessage: String;
+  sMsgDlgMessage: String;
 begin
   iRecCount:=0;
   // Entsprechend der Ansicht View auswählen um selektiete Datensätze zu wählen
@@ -1690,18 +1706,17 @@ begin
 
   if iRecCount > 1 then
   begin
-    sMsgBoxMessage := 'Einträge sind noch nicht als gelesen markiert. '#13#10
-      + 'Möchten Sie die ' + IntToStr(iRecCount) + ' Einträge wirklich als Bearbeitet markieren?';
+    sMsgDlgMessage := rs_PCMManager_Eintraegenichterledigt1 + slinebreak
+      + rs_PCMManager_Eintraegenichterledigt2 + IntToStr(iRecCount) + rs_PCMManager_Eintraegenichterledigt3;
   end
   else
   begin
-    sMsgBoxMessage := 'Der Eintrag ist noch nicht als gelesen markiert. '#13#10
-      + 'Möchten Sie ihn wirklich als Bearbeitet markieren?';
+    sMsgDlgMessage := rs_PCMManager_Eintragnichterledigt1 + slinebreak
+      + rs_PCMManager_Eintragnichterledigt2;
   end;
 
   if dm_PCM.qry_Kalender_Aufgaben.FieldByName('GelesenAm').IsNull then
-    if Application.MessageBox(PWideChar(sMsgBoxMessage),
-      'Als Bearbeitet markieren', MB_YESNO or MB_ICONQUESTION) = IDNO then
+    if MessageDlg(sMsgDlgMessage + slinebreak + rs_PCMManager_AlsBearbeitet,mtwarning,[mbYes,mbNo],0) = IDNO then
       Exit;
 
   ID := dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID').asInteger;
@@ -1731,16 +1746,6 @@ begin
   //if edSuche.Text = '' then edSuche.Text := SearchTypeToStr(FSearchType);
   SearchBoxSetStyle();
   edSuche.Properties.OnChange := edSuchePropertiesChange;
-end;
-procedure Tfrm_Calendar.Execute(ATag,AActiveTab: integer);
-begin
-  iTag:= ATag;
-  iActiveTab:= AActiveTab;
-  case AActiveTab of
-  1: pc_Kalender.ActivePage:= ts_A_kalender;
-  2: pc_Kalender.ActivePage:= ts_C_Stundenplan;
-  3: pc_Kalender.ActivePage:= ts_B_Aufgaben;
-  end;
 end;
 function Tfrm_Calendar.copyEvent : boolean;
 var
@@ -1779,22 +1784,26 @@ begin
   btn_CalJahr.LargeImageIndex:= 44;
   sched_Kalender.ViewAgenda.Active := True;
 end;
+procedure Tfrm_Calendar.FormActivate(Sender: TObject);
+begin
+  FormShow(Self);
+end;
 procedure Tfrm_Calendar.FormDestroy(Sender: TObject);
 begin
   SetGridViews(False);
 end;
-
 procedure Tfrm_Calendar.FormResize(Sender: TObject);
 begin
   cxTreeList1Column1.Width:= cxtreelist1.Width - (8 + cxTreeList1Column2.Width) ;
 end;
 procedure Tfrm_Calendar.FormShow(Sender: TObject);
-//var
-//  AItemList: TcxFilterCriteriaItemList;
 begin
-  pc_kalender.Align:= alClient;
+  case dm_PCM.iModulTab of
+  1: pc_Kalender.ActivePage:= ts_A_kalender;
+  2: pc_Kalender.ActivePage:= ts_C_Stundenplan;
+  3: pc_Kalender.ActivePage:= ts_B_Aufgaben;
+  end;
   OpenData;
-//  AddAndGet;
   InitializeRights;
   SetButtons;
   dm_PCM.qry_Work.SQL.Text:=  'UPDATE manager_kalender ' +
@@ -1816,7 +1825,7 @@ begin
   defaultLabelColor:= 13083265;
   defaultFontColor:= 0;
   FormResize(Self);
-  if (iTag = 4) and (iActiveTab = 1) then
+  if (dm_PCM.iModulTab = 1) then
   begin
     Application.ProcessMessages;
     sched_Kalender.SelectDays(Date, Date, True);
@@ -1854,7 +1863,7 @@ begin
     pc_Kalender.ActivePage:= ts_A_kalender;
   end
   else begin
-    if iActiveTab = 2 then
+    if dm_PCM.iModulTab = 2 then
       pc_Kalender.ActivePage:= ts_C_Stundenplan
     else
       pc_Kalender.ActivePage:= ts_B_Aufgaben;
@@ -2274,7 +2283,7 @@ begin
         dm_PCM.qry_work1.ParamByName('Kalender').AsString:= sKalender;
         dm_PCM.qry_work1.ExecSQL;
         dm_PCM.qry_work1.close;
-        ShowWaitForm(TForm(Self), PWideChar('Termine importieren'), alist.Count-1, ClientWidth, Height);
+        ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineImportieren), alist.Count-1, ClientWidth, Height);
         Application.ProcessMessages;
         Screen.Cursor:= crHourGlass;
         Application.ProcessMessages;
@@ -2886,7 +2895,6 @@ procedure Tfrm_Calendar.SetButtonsEnabledVisible(DataSet: TDataSet);
 begin
   SetButtons;
 end;
-
 procedure Tfrm_Calendar.qry_StundenplanAfterScroll(DataSet: TDataSet);
 var
   iID_Stundenplan: integer;
@@ -2939,7 +2947,6 @@ begin
     end;
   end;
 end;
-
 procedure Tfrm_Calendar.pc_KalenderClick(Sender: TObject);
 begin
   if pc_Kalender.Properties.ActivePage = ts_A_kalender then
@@ -2984,7 +2991,7 @@ begin
     frm_PCM_main.navbr_main.Width:= 0;
     frm_PCM_main.pcmain.properties.HideTabs:= true;
     pc_kalender.properties.HideTabs:= true;
-    btn_CalAnsicht.Caption:= 'norm. Ansicht';
+    btn_CalAnsicht.Caption:= rs_PCMManager_normAnsicht;
     btn_CalAnsicht.LargeImageIndex:= 31;
 //    nbk_main.Left:= 0;
 //    nbk_main.Width:= dm_PCM.clientWidth;
@@ -2994,7 +3001,7 @@ begin
     frm_PCM_main.navbr_main.Width:= 200;
     frm_PCM_main.pcmain.properties.HideTabs:= false;
     pc_kalender.properties.HideTabs:= false;
-    btn_CalAnsicht.Caption:= 'max. Ansicht';
+    btn_CalAnsicht.Caption:= rs_PCMManager_maxAnsicht;
     btn_CalAnsicht.LargeImageIndex:= 32;
 //    nbk_Main.Left:= 200;
 //    nbk_main.Width:= dm_PCM.ClientWidth - 200;
@@ -3005,8 +3012,8 @@ begin
   FKalenderDateButton := True;
   tag := Round(sched_Kalender.SelectedDays.Count / 2);
   sched_Kalender.SelectWorkDays(sched_Kalender.SelectedDays[tag]);
-  btn_CalZurueck.Hint := 'Eine Arbeitswoche zurück springen';
-  btn_CalVor.Hint := 'Eine Arbeitswoche vor springen';
+  btn_CalZurueck.Hint := rs_PCMManager_ArbWocheZurueck;
+  btn_CalVor.Hint := rs_PCMManager_ArbWocheVor;
   btn_CalTag.LargeImageIndex:= 39;
   btn_CalArbeitswoche.LargeImageIndex:= 16;
   btn_CalWoche.LargeImageIndex:= 41;
@@ -3042,38 +3049,6 @@ begin
   dm_PCM.qry_Work.Close;
   AddOutlookEvents(sKalPriv,sKalGes);
 end;
-//procedure Tfrm_Calendar.AddAndGet;
-//var
-//  sKalPriv,sKalGes: String;
-//begin
-////  try
-////    dm_PCM.qry_Work.sql.text:= 'Select Account_Privat,Account_Geschaeftlich From manager_kalender_optionen Where ID_Benutzer =:ID_Benutzer';
-////    dm_PCM.qry_Work.ParamByName('ID_benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-////    dm_PCM.qry_Work.Open;
-////    sKalPriv:= dm_PCM.qry_Work.FieldByName('Account_Privat').asString;
-////    sKalGes:= dm_PCM.qry_Work.FieldByName('Account_Geschaeftlich').asString;
-////    dm_PCM.qry_Work.Close;
-////    AddOutlookEvents(sKalPriv,sKalGes);
-////    AddOutlookToDo(sKalPriv,sKalGes);
-////
-////    dm_PCM.qry_work.SQL.Text:= 'Delete from manager_kalender Where Typ = 2 and Kalendername = :Kalendername';
-////    dm_PCM.qry_work.ParamByName('Kalendername').AsString:=sKalGes;
-////    dm_PCM.qry_work.execsql;
-////    GetOutlookEvents(sKalGes);
-////
-////    dm_PCM.qry_work.SQL.Text:= 'Delete from manager_kalender Where Typ = 1 and Kalendername = :Kalendername';
-////    dm_PCM.qry_work.ParamByName('Kalendername').AsString:= sKalPriv;
-////    dm_PCM.qry_work.execsql;
-////    GetOutlookToDO(sKalPriv);
-////
-////  except
-////
-////  end;
-////  RefreshTerminundAUfgaben;
-//
-//
-//end;
-
 procedure Tfrm_Calendar.AddOutlookEvents(AuserPriv,AuserGes: String);
 const
   olFolderCalendars = $00000009;
@@ -3098,34 +3073,34 @@ var
 //  sID_Benutzer,APath: string;
 begin
 //  Atyp:= True;
-  Writelog(PCM_Logname, 'Termine alle: Mit Outlook verbinden', 0);
+  Writelog(PCM_Logname, rs_PCMManager_Terminealle + rs_PCMManager_OutlookVerbinden, 0);
   try
     Outlook.connect;
   except
     on e: System.sysutils.Exception do
     begin
-      Writelog(PCM_Logname,'Termine alle: Verbindung mit Outlook kann nicht hergestellt werden.Grund: ' + e.Message, 2);
+      Writelog(PCM_Logname,rs_PCMManager_Terminealle + rs_PCMManager_KeineVerbindung + e.Message, 2);
       exit;
     end;
   end;
-  Writelog(PCM_Logname, 'Termine alle: Namespace ermitteln', 0);
+  Writelog(PCM_Logname, rs_PCMManager_Terminealle +rs_PCMManager_Namespace, 0);
   try
     NameSpace := Outlook.GetNameSpace('MAPI');
   except
     on e: System.sysutils.Exception do
     begin
-      Writelog(PCM_Logname, 'Termine alle: Namespace konnt nicht ermittelt werden. Grund: ' + e.Message, 2);
+      Writelog(PCM_Logname, rs_PCMManager_Terminealle + rs_PCMManager_NamespaceErmitteln + e.Message, 2);
       exit;
     end;
   end;
-  Writelog(PCM_Logname, 'Termine alle: CalendarsRoot ermitteln: ' + AuserPriv, 0);
+  Writelog(PCM_Logname, rs_PCMManager_Terminealle + rs_PCMManager_CalendarsRoot + AuserPriv, 0);
   try
     objOwner := NameSpace.CreateRecipient(AuserPriv);
     CalendarsRoot := NameSpace.GetSharedDefaultFolder(objOwner,olFolderCalendars);
   except
     on e: System.sysutils.Exception do
     begin
-      Writelog(PCM_Logname,'Termine alle: CalendarsRoot konnte nicht ermittelt werden. Grund: ' +  e.Message, 2);
+      Writelog(PCM_Logname,rs_PCMManager_Terminealle + rs_PCMManager_CalendarsRootErmitteln +  e.Message, 2);
       exit;
     end;
   end;
@@ -3166,7 +3141,7 @@ begin
 //    end;
 //  end;
   i := 1;
-  ShowWaitForm(TForm(Self), PWideChar('Termine aus Outlook löschen'), CalendarsFolder.Items.Count, frm_PCM_main.ClientWidth, frm_PCM_main.Height);
+  ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineLoeschen), CalendarsFolder.Items.Count, frm_PCM_main.ClientWidth, frm_PCM_main.Height);
   for iCOunt := 1 to CalendarsFolder.Items.Count do
   begin
     Application.ProcessMessages;
@@ -3201,7 +3176,7 @@ begin
 
   dm_PCM.qry_Work.sql.Text := dm_PCM.qry_Work.sql.Text + ' and mgr_Cal.ID_Benutzer IN ( ' + IntToStr(dm_PCM.iIDBenutzerPCM) + ') order by StartDatum asc';
   dm_PCM.qry_Work.Open;
-  ShowWaitForm(TForm(Self), PWideChar('Termine importieren'), dm_PCM.qry_Work.RecordCount, frm_PCM_main.ClientWidth, frm_PCM_main.Height);
+  ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineImportieren), dm_PCM.qry_Work.RecordCount, frm_PCM_main.ClientWidth, frm_PCM_main.Height);
   while not dm_PCM.qry_Work.eof do
   begin
 //    Inc(i2);
@@ -3241,7 +3216,6 @@ begin
   Application.ProcessMessages;
   Outlook.Disconnect;
 end;
-// Aufgaben importieren
 procedure Tfrm_Calendar.AddOutlookTODO(AuserPriv,AuserGes: String);
 var
   aMapi: Variant;
@@ -3258,40 +3232,40 @@ var
 //  sID_ADressen: String;
   i: integer;
 begin
-  Writelog(PCM_Logname, 'Aufgaben: Mit Outlook verbinden', 0);
+  Writelog(PCM_Logname, rs_PCMManager_Aufgaben + rs_PCMManager_OutlookVerbinden, 0);
   try
     Outlook.connect;
   except
     on e: System.sysutils.Exception do
     begin
-      Writelog(PCM_Logname,'Aufgaben: Verbindung mit Outlook kann nicht hergestellt werden. Grund: ' + e.Message, 2);
+      Writelog(PCM_Logname,rs_PCMManager_Aufgaben + rs_PCMManager_KeineVerbindung + e.Message, 2);
       exit;
     end;
   end;
-  Writelog(PCM_Logname, 'Aufgaben: Namespace ermitteln', 0);
+  Writelog(PCM_Logname, rs_PCMManager_Aufgaben + rs_PCMManager_Namespace, 0);
   try
     aMapi := Outlook.GetNameSpace('MAPI');
   except
     on e: System.sysutils.Exception do
     begin
-      Writelog(PCM_Logname,'Aufgaben: Namespace konnt nicht ermittelt werden. Grund: ' + e.Message, 2);
+      Writelog(PCM_Logname,rs_PCMManager_Aufgaben + rs_PCMManager_NamespaceErmitteln + e.Message, 2);
       exit;
     end;
   end;
-  Writelog(PCM_Logname, 'Aufgaben: CalendarsRoot ermitteln: ' + AUserPriv, 0);
+  Writelog(PCM_Logname, rs_PCMManager_Aufgaben + rs_PCMManager_CalendarsRoot + AUserPriv, 0);
   try
     objOwner := aMapi.CreateRecipient(AUserPriv);
     aTask := aMapi.GetSharedDefaultFolder(objOwner,$0000000D);
   except
     on e: System.sysutils.Exception do
     begin
-      Writelog(PCM_Logname,'Aufgaben: CalendarsRoot konnte nicht ermittelt werden. Grund: ' + e.Message, 2);
+      Writelog(PCM_Logname,rs_PCMManager_Aufgaben + rs_PCMManager_CalendarsRootErmitteln + e.Message, 2);
       exit;
     end;
   end;
 
   i := 1;
-  ShowWaitForm(TForm(Self), PWideChar('Aufgaben aus Outlook löschen'), aTask.Items.Count, frm_PCM_main.ClientWidth, frm_PCM_main.Height);
+  ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_AufgabenLoeschen), aTask.Items.Count, frm_PCM_main.ClientWidth, frm_PCM_main.Height);
   for iCOunt := 1 to aTask.Items.Count do
   begin
     Application.ProcessMessages;
@@ -3327,7 +3301,7 @@ begin
   dm_PCM.qry_Work.ParamByName('End').AsDateTime:= Now() + 365;
   dm_PCM.qry_Work.sql.Text := dm_PCM.qry_Work.sql.Text + ' and icn.ID_benutzer IN ( ' + IntToStr(dm_PCM.iIDBenutzerPCM) + ') order by StartDatum asc';
 
-  ShowWaitForm(TForm(Self), PWideChar('Aufgaben importieren'), dm_PCM.qry_work.RecordCount, frm_PCM_main.ClientWidth, frm_PCM_main.Height);
+  ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_AufgabenImportieren), dm_PCM.qry_work.RecordCount, frm_PCM_main.ClientWidth, frm_PCM_main.Height);
 
   dm_PCM.qry_Work.Open;
   while not dm_PCM.qry_Work.eof do
@@ -3356,7 +3330,6 @@ begin
   CloseWaitForm;
   Outlook.Disconnect;
 end;
-
 procedure Tfrm_Calendar.btn_CalFilterClick(Sender: TObject);
 var
   sKalenderFilter: string;
@@ -3396,8 +3369,8 @@ procedure Tfrm_Calendar.btn_CalJahrClick(Sender: TObject);
 begin
   FKalenderDateButton := True;
   sched_Kalender.ViewYear.Active := True;
-  btn_CalZurueck.Hint := 'Ein Jahr zurück springen';
-  btn_CalVor.Hint := 'Ein Jahr vor springen';
+  btn_CalZurueck.Hint := rs_PCMManager_JahrZurueck;
+  btn_CalVor.Hint := rs_PCMManager_JahrVor;
   btn_CalTag.LargeImageIndex:= 39;
   btn_CalArbeitswoche.LargeImageIndex:= 40;
   btn_CalWoche.LargeImageIndex:= 41;
@@ -3408,8 +3381,8 @@ procedure Tfrm_Calendar.btn_CalMonatClick(Sender: TObject);
 begin
   FKalenderDateButton := True;
   sched_Kalender.GoToDate(sched_Kalender.SelectedDays[0], vmMonth);
-  btn_CalZurueck.Hint := 'Einen Monat zurück springen';
-  btn_CalVor.Hint := 'Einen Monat vor springen';
+  btn_CalZurueck.Hint := rs_PCMManager_MonatZurueck;
+  btn_CalVor.Hint := rs_PCMManager_Monatvor;
   btn_CalTag.LargeImageIndex:= 39;
   btn_CalArbeitswoche.LargeImageIndex:= 40;
   btn_CalWoche.LargeImageIndex:= 41;
@@ -3430,8 +3403,8 @@ begin
   FKalenderDateButton := True;
   sched_Kalender.ViewDay.Active := True;
   sched_Kalender.SelectDays(sched_Kalender.SelectedDays[0], sched_Kalender.SelectedDays[0], True);
-  btn_CalZurueck.Hint := 'Einen Tag zurück springen';
-  btn_CalVor.Hint := 'Einen Tag vor springen';
+  btn_CalZurueck.Hint := rs_PCMManager_TagZurueck;
+  btn_CalVor.Hint := rs_PCMManager_Tagvor;
   btn_CalTag.LargeImageIndex:= 15;
   btn_CalArbeitswoche.LargeImageIndex:= 40;
   btn_CalWoche.LargeImageIndex:= 41;
@@ -3466,8 +3439,8 @@ procedure Tfrm_Calendar.btn_CalWocheClick(Sender: TObject);
 begin
   FKalenderDateButton := True;
   sched_Kalender.ViewWeek.Active := True;
-  btn_CalZurueck.Hint := 'Eine Woche zurück springen';
-  btn_CalVor.Hint := 'Eine Woche vor springen';
+  btn_CalZurueck.Hint := rs_PCMManager_WocheZurueck;
+  btn_CalVor.Hint := rs_PCMManager_Wochevor;
   btn_CalTag.LargeImageIndex:= 39;
   btn_CalArbeitswoche.LargeImageIndex:= 40;
   btn_CalWoche.LargeImageIndex:= 17;
@@ -3605,7 +3578,6 @@ begin
   dm_PCM.qry_Work.Close;
   AddOutlookToDO(sKalPriv,sKalGes);
 end;
-
 procedure Tfrm_Calendar.pmmbtn_JobsImportOutlookClick(Sender: TObject);
 var
   sKalPriv,sKalGes: String;
@@ -3760,22 +3732,21 @@ begin
   qWF_Nachrichten_Anhaenge.Params[0].AsInteger := ID_IC_Nachrichten;
   qWF_Nachrichten_Anhaenge.Open;
 end;
-
 procedure Tfrm_Calendar.btn_MonatsAnsichtClick(Sender: TObject);
 begin
-  compPrint_Cal.PreviewOptions.Caption := 'Terminkalender - Monatsansicht';
+  compPrint_Cal.PreviewOptions.Caption := rs_PCMManager_KalenderMonat;
   compPrint_CalLink1.PrintStyles.Monthly.Active := True;
   compPrint_CalLink1.Preview(True);
 end;
 procedure Tfrm_Calendar.btn_TagesAnsichtClick(Sender: TObject);
 begin
-  compPrint_Cal.PreviewOptions.Caption := 'Terminkalender - Tagesansicht';
+  compPrint_Cal.PreviewOptions.Caption := rs_PCMManager_KalenderTag;
   compPrint_CalLink1.PrintStyles.Daily.Active := True;
   compPrint_CalLink1.Preview(True);
 end;
 procedure Tfrm_Calendar.btn_WochenAnsichtClick(Sender: TObject);
 begin
-  compPrint_Cal.PreviewOptions.Caption := 'Terminkalender - Wochenansicht';
+  compPrint_Cal.PreviewOptions.Caption := rs_PCMManager_KalenderWoche;
   compPrint_CalLink1.PrintStyles. Weekly.Active := True;
   compPrint_CalLink1.Preview(True);
 end;
@@ -4177,13 +4148,10 @@ begin
     btn_JobChange.Click;
   end;
 end;
-procedure Tfrm_Calendar.tvAufFocusedRecordChanged(
-  Sender: TcxCustomGridTableView; APrevFocusedRecord,
-  AFocusedRecord: TcxCustomGridRecord; ANewItemRecordFocusingChanged: Boolean);
+procedure Tfrm_Calendar.tvAufFocusedRecordChanged(Sender: TcxCustomGridTableView; APrevFocusedRecord,AFocusedRecord: TcxCustomGridRecord; ANewItemRecordFocusingChanged: Boolean);
 begin
   NachrichtenAnhaengeLaden(dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID').AsInteger);
 end;
-
 procedure Tfrm_Calendar.tvNachrichtenCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 var
   Status: Variant;
@@ -4210,13 +4178,10 @@ begin
     btn_JobChange.Click;
   end;
 end;
-procedure Tfrm_Calendar.tvNachrichtenFocusedRecordChanged(
-  Sender: TcxCustomGridTableView; APrevFocusedRecord,
-  AFocusedRecord: TcxCustomGridRecord; ANewItemRecordFocusingChanged: Boolean);
+procedure Tfrm_Calendar.tvNachrichtenFocusedRecordChanged(Sender: TcxCustomGridTableView; APrevFocusedRecord,AFocusedRecord: TcxCustomGridRecord; ANewItemRecordFocusingChanged: Boolean);
 begin
   NachrichtenAnhaengeLaden(dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID').AsInteger);
 end;
-
 procedure Tfrm_Calendar.grdDBTblView_StundenplanBeginCustomDrawCell(  Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;  AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 begin
   try

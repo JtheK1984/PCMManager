@@ -3,10 +3,9 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
   Top = 212
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  BorderWidth = 8
   Caption = 'Staatsangeh'#246'rigkeit bearbeiten'
-  ClientHeight = 228
-  ClientWidth = 642
+  ClientHeight = 244
+  ClientWidth = 658
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -14,15 +13,14 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
   Font.Name = 'Segoe UI Light'
   Font.Style = []
   Position = poScreenCenter
+  OnShow = FormShow
   TextHeight = 25
   object grd_Staatsangehoerigkeit: TcxGrid
     Left = 0
     Top = 63
-    Width = 642
-    Height = 165
+    Width = 658
+    Height = 181
     Align = alClient
-    BevelInner = bvLowered
-    BevelKind = bkFlat
     BorderStyle = cxcbsNone
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -34,8 +32,6 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
     LockedStateImageOptions.Effect = lsieDark
     LookAndFeel.Kind = lfFlat
     LookAndFeel.NativeStyle = False
-    ExplicitTop = 58
-    ExplicitHeight = 170
     object grdDBTblView_Staatsangehoerigkeit: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       FilterBox.CustomizeDialog = False
@@ -147,7 +143,7 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
       WholeRow = False
     end
     object btn_StaatsangehoerigkeitNew: TdxBarLargeButton
-      Caption = 'Staatsangeh'#246'rigkeit &anlegen'
+      Caption = 'Staatsangeh'#246'rigkeit anlegen'
       Category = 0
       Hint = 'Staatsangeh'#246'rigkeit anlegen'
       Visible = ivAlways
@@ -156,7 +152,7 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
       LargeImageIndex = 27
     end
     object btn_StaatsangehoerigkeitCancel: TdxBarLargeButton
-      Caption = '&Abbrechen'
+      Caption = 'Abbrechen'
       Category = 0
       Hint = 'Abbrechen'
       Visible = ivAlways
@@ -165,7 +161,7 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
       LargeImageIndex = 0
     end
     object btn_StaatsangehoerigkeitSave: TdxBarLargeButton
-      Caption = 'Staatsangeh'#246'rigkeit &speichern'
+      Caption = 'Staatsangeh'#246'rigkeit speichern'
       Category = 0
       Hint = 'Staatsangeh'#246'rigkeit speichern'
       Visible = ivAlways
@@ -174,7 +170,7 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
       LargeImageIndex = 12
     end
     object btn_StaatsangehoerigkeitClose: TdxBarLargeButton
-      Caption = 'S&chlie'#223'en'
+      Caption = 'Schlie'#223'en'
       Category = 0
       Hint = 'Schlie'#223'en'
       Visible = ivAlways
@@ -183,7 +179,7 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
       LargeImageIndex = 23
     end
     object btn_StaatsangehoerigkeitDelete: TdxBarLargeButton
-      Caption = 'Staatsangeh'#246'rigkeit &l'#246'schen'
+      Caption = 'Staatsangeh'#246'rigkeit l'#246'schen'
       Category = 0
       Hint = 'Staatsangeh'#246'rigkeit l'#246'schen'
       Visible = ivAlways

@@ -29,7 +29,8 @@ uses
   dxSkinXmas2008Blue, cxLabel, cxGroupBox, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,cxdateutils,system.UItypes;
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,cxdateutils,system.UItypes,
+  dxSkinWXI;
 
 type
   Tfrm_PCM_Import = class(TForm)
@@ -78,7 +79,8 @@ implementation
 {$R *.dfm}
 
 Uses  PCM.Data,
-      PCMManager.Helper.Calendar.Ical;
+      PCMManager.Helper.Calendar.Ical,
+      PCM.Strings;
 
 
 function Tfrm_PCM_Import.GetRecurrence(var Rule, Start:  string) : string;
@@ -219,12 +221,12 @@ var
 begin
   if edt_CalNewPfad.Text= '' then
   begin
-    MessageDlg('Bitte Datei auswählen.', mtWarning, [mbOk], 0);
+    MessageDlg(rs_PCMManager_Dateiwaehlen, mtWarning, [mbOk], 0);
     exit;
   end;
   if edt_CalNewName.Text= '' then
   begin
-    MessageDlg('Bitte Kalendername eingeben.', mtWarning, [mbOk], 0);
+    MessageDlg(rs_PCMManager_Kalendereingebn, mtWarning, [mbOk], 0);
     exit;
   end;
   aData := TiCalPackage.Create(edt_CalNewPfad.Text,frm_PCM_Import);
@@ -433,10 +435,6 @@ begin
             aData.Location:= 'Beim Kunden';
           end;
         end;
-
-
-
-
         if ReplaceStr(aData.Location,':','') = 'beim Kunden' then
         begin
           Color := IntToStr(12566527);

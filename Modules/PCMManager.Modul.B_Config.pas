@@ -385,6 +385,7 @@ type
     procedure btn_AufgabenPrioDeleteClick(Sender: TObject);
     procedure btn_AufgabenOptionenSaveClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private-Deklarationen }
 //    m_bCancel: WordBool;
@@ -423,7 +424,7 @@ implementation
 uses PCM.Main,
      PCMManager.Modul.B_Config.Kalender.Feiertage.Neu,
      PCMManager.Modul.B_Config.Kalender.Feiertage.Aktualisieren,
-     PCM.Functions.Synch.Wait, PCM.Data;
+     PCM.Functions.Synch.Wait, PCM.Data, PCM.Strings;
 
 procedure Tfrm_Config.OpenData;
 var
@@ -440,7 +441,6 @@ begin
     dm_PCM.qry_work.ParamByname('ID_Benutzer').asInteger:= dm_PCM.iIDBenutzerPCM;
     dm_PCM.qry_work.Execsql;
   end;
-
   qry_CalConfig.Open;
   qry_CalConfigFTP.Open;
   qry_CalConfig.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
@@ -471,6 +471,47 @@ begin
   qry_Konfiguration_Kalender_Optionen.Open;
   qry_Konfiguration_Kalender_Optionen.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
   qry_Konfiguration_Kalender_Optionen.Filtered := true;
+  grdDBTblView_calconfigKalender.Caption := rs_PCM_Kalender;
+  grdDBTblView_calconfigLink.Caption := rs_PCMManager_Link;
+  grdDBTblView_calconfigBenutzer.Caption := rs_PCMBenutzerverwaltung_Benutzer;
+  grdDBTblView_calconfigPasswort.Caption := rs_PCM_Passwort;
+  grdDBTblView_calconfigErinnerung.Caption := rs_PCM_Erinnerung;
+  grdDBTblView_calconfigErinnerungVor.Caption := rs_PCM_ErinnerungVor;
+  grdDBTblView_calconfigLabelColor.Caption := rs_PCM_Terminfarbe;
+  grdDBTblView_calconfigFontcolor.Caption := rs_PCM_Schriftfarbe;
+  grdDBTblView_calconfigID_Benutzer.Caption :=rs_PCMBenutzerverwaltung_Benutzer;
+  grdDBTblView_FeiertageJahr.Caption := rs_PCM_Jahr;
+  grdDBTblView_FeiertageMonat.Caption:= rs_PCM_Monat;
+  grdDBTblView_FeiertageTag.Caption:= rs_PCM_Tag;
+  grdDBTblView_FeiertageBezeichnung.Caption:= rs_PCM_Bezeichnung;
+  grdDBTblView_FTPConfigurl.Caption := rs_PCM_Host;
+  grdDBTblView_FTPConfigkalendername.Caption := rs_PCM_Dateiname;
+  grdDBTblView_FTPConfiguser.Caption := rs_PCMBenutzerverwaltung_Benutzer;
+  grdDBTblView_FTPConfigpasswort.Caption := rs_PCM_Passwort;
+  grdDBTblView_AufgabenartenBezeichnung.Caption:= rs_PCM_Bezeichnung;
+  grdDBTblView_AufgabenartenFarbe.Caption:= rs_PCM_Farbe;
+  grdDBTblView_AufgabenPrioPrioritaet.Caption := rs_PCM_Prioritaet;
+  grdDBTblView_AufgabenPrioBezeichnung.Caption := rs_PCM_Bezeichnung;
+  grdDBTblView_StundenplanConfigBezeichnung.Caption := rs_PCM_Bezeichnung;
+  grdDBTblView_StundenplanConfigFarbe.Caption := rs_PCM_Farbe;
+  grdDBTblView_StundenplanConfigSchriftfarbe.Caption := rs_PCM_Schriftfarbe;
+  grdDBTblView_StundenplanConfigUhrFarbe.Caption :=  rs_PCM_Farbe;
+  grdDBTblView_StundenplanConfigUhrSchriftfarbe.Caption := rs_PCM_Schriftfarbe;
+  grdDBTblView_emailConfigEMail.Caption:= rs_PCM_EMailadresse;
+  grdDBTblView_emailConfigKontotyp.Caption:= rs_PCM_Kontotyp;
+  grdDBTblView_emailConfigPostEingangsserver.Caption:= rs_PCM_Posteingangsserver;
+  grdDBTblView_emailConfigPortEingangsserver.Caption:= rs_PCM_PortEingang;
+  grdDBTblView_emailConfigBenutzer.Caption:= rs_PCMBenutzerverwaltung_Benutzer;
+  grdDBTblView_emailConfigSSLActive.Caption:= rs_PCM_SSLAktiv;
+  grdDBTblViewl_PostfachmainPostfach.Caption:= rs_PCM_Postfach;
+  grdDBTblViewl_PostfachmainAnzeige.Caption:= rs_PCM_anzeige;
+  grdDBTblViewl_PostfachmainAbonnieren.Caption:= rs_PCM_Abonnieren;
+  grdDBTblViewl_PostfachmainSortierung.Caption:= rs_PCM_Sortierung;
+  grdDBTblViewl_PostfachSubPostfach.Caption:= rs_PCM_Postfach;
+  grdDBTblViewl_PostfachSubAnzeige.Caption:= rs_PCM_anzeige;
+  grdDBTblViewl_PostfachSubParent.Caption:= rs_PCM_Hauptpostfach;
+  grdDBTblViewl_PostfachSubAbonnieren.Caption:= rs_PCM_Abonnieren;
+  grdDBTblViewl_PostfachSubSortierung.Caption:= rs_PCM_Sortierung;
 end;
 procedure Tfrm_Config.qry_EmailConfigAfterScroll(DataSet: TDataSet);
 begin
@@ -497,7 +538,6 @@ procedure Tfrm_Config.SetButtonsEnableVisible(DataSet: TDataSet);
 begin
   SetButtons;
 end;
-
 procedure Tfrm_Config.SetGridViews(Show: boolean);
 begin
   if Show then
@@ -547,7 +587,6 @@ begin
     SaveGridViewUnterPostfach.Free;
   end;
 end;
-
 procedure Tfrm_Config.InitializeRights;
 begin
   if dm_PCM.iKonfiguration = 1 then
@@ -1025,7 +1064,7 @@ begin
     dm_PCM.qry_work1.ParamByName('Von').AsDateTime := datTimVon;
     dm_PCM.qry_work1.ParamByName('Bis').AsDateTime := datTimbis;
     dm_PCM.qry_work1.Open;
-    ShowWaitForm(TForm(Self), PWideChar('Feiertag eintragen'), dm_PCM.qry_work1.RecordCount, ClientWidth, Height);
+    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_Feiertageintragen), dm_PCM.qry_work1.RecordCount, ClientWidth, Height);
     Application.ProcessMessages;
     Screen.Cursor := crHourGlass;
     while not dm_PCM.qry_work1.Eof do
@@ -1090,7 +1129,7 @@ procedure Tfrm_Config.btn_CalFTNewClick(Sender: TObject);
 begin
   Application.CreateForm(TfFeiertageBerechnen, fFeiertageBerechnen);
   if fFeiertageBerechnen.Execute(true, dm_PCM.iIDBenutzerPCM) then;
-  qry_FT1.Refresh;
+    qry_FT1.Refresh;
   fFeiertageBerechnen.Free;
 end;
 procedure Tfrm_Config.btn_EmailConfigCancelClick(Sender: TObject);
@@ -1161,11 +1200,11 @@ begin
   IdIMAP_Mail.Password := qry_EmailConfig.FieldByName('Passwort').AsString;
   try
     IdIMAP_Mail.Connect;
-    lbl_EmailConfig_PortEingangTest.Caption:= 'Posteingang: Verbindung erfolgreich';
+    lbl_EmailConfig_PortEingangTest.Caption:= rs_PCMManager_posteingangerfolgreich;
     lbl_EmailConfig_PortEingangTest.Style.Font.Color:= clgreen;
     IdIMAP_Mail.Disconnect;
   except
-    lbl_EmailConfig_PortEingangTest.Caption:= 'Posteingang: Einstellungen für den Posteingang prüfen';
+    lbl_EmailConfig_PortEingangTest.Caption:= rs_PCMManager_posteingangnichterfolgreich;
     lbl_EmailConfig_PortEingangTest.Style.Font.Color:= clred;
   end;
   idSSLIOHndOPSSLMail.Free;
@@ -1187,8 +1226,8 @@ begin
       idSmtpMail.IOHandler := idSSLIOHndOPSSLpostfach;
       idSmtpMail.UseTLS := utUseRequireTLS;
       idmsgMail.Recipients.EMailAddresses := qry_EmailConfig.FieldByName('Email').AsString;
-      idmsgMail.Subject := 'Testmail' ;
-      idmsgMail.Body.Text := 'Das ist eine Testmail';
+      idmsgMail.Subject := rs_PCMManager_Testmail ;
+      idmsgMail.Body.Text := rs_PCMManager_TestmailBody;
       idmsgMail.From.Address := idSmtpMail.Username;
       idSmtpMail.Connect;
       idSmtpMail.Send(idmsgMail);
@@ -1197,11 +1236,11 @@ begin
       idmsgMail.Free;
       idSSLIOHndOPSSLpostfach.Free;
       idSmtpMail.Free;
-      lbl_EmailConfig_PortAusgangTest.Caption:= 'Postausgang: E-Mail erfolgreich versendet.';
+      lbl_EmailConfig_PortAusgangTest.Caption:= rs_PCMManager_postausgangerfolgreich;
       lbl_EmailConfig_PortAusgangTest.Style.Font.Color:= clgreen;
     end;
   except
-    lbl_EmailConfig_PortAusgangTest.Caption:= 'Postausgang: Einstellungen für den Postausgang prüfen';
+    lbl_EmailConfig_PortAusgangTest.Caption:= rs_PCMManager_postausgangnichterfolgreich;
     lbl_EmailConfig_PortAusgangTest.Style.Font.Color:= clred;
   end;
 end;
@@ -1287,7 +1326,6 @@ begin
   end;
 
 end;
-
 procedure Tfrm_Config.btn_AufgabenNewClick(Sender: TObject);
 begin
   if qry_AufgabenArten.State in [dsInsert, dsEdit] then
@@ -1303,12 +1341,10 @@ begin
   end;
   edt_Aufgabenart.SetFocus
 end;
-
 procedure Tfrm_Config.btn_AufgabenPrioCancelClick(Sender: TObject);
 begin
   qry_prio.Cancel;
 end;
-
 procedure Tfrm_Config.btn_AufgabenPrioDeleteClick(Sender: TObject);
 begin
   if qry_Prio.FieldByName('ID').asInteger > 0 then
@@ -1316,7 +1352,6 @@ begin
     qry_Prio.Delete;
   end;
 end;
-
 procedure Tfrm_Config.btn_AufgabenPrioNewClick(Sender: TObject);
 begin
   if qry_Prio.State in [dsInsert, dsEdit] then
@@ -1332,7 +1367,6 @@ begin
   end;
   edt_PrioNumber.SetFocus
 end;
-
 procedure Tfrm_Config.btn_AufgabenPrioSaveClick(Sender: TObject);
 begin
   if qry_prio.State in [dsInsert, dsEdit] then
@@ -1342,12 +1376,10 @@ begin
     qry_prio.Post;
   end;
 end;
-
 procedure Tfrm_Config.btn_AufgabenCancelClick(Sender: TObject);
 begin
   qry_AufgabenArten.Cancel;
 end;
-
 procedure Tfrm_Config.btn_AufgabenSaveClick(Sender: TObject);
 begin
   if qry_AufgabenArten.State in [dsInsert, dsEdit] then
@@ -1357,7 +1389,6 @@ begin
   end;
 
 end;
-
 procedure Tfrm_Config.btn_AufgabenDeleteClick(Sender: TObject);
 begin
   if qry_AufgabenArten.FieldByName('ID').asInteger > 0 then
@@ -1365,7 +1396,6 @@ begin
     qry_AufgabenArten.Delete;
   end;
 end;
-
 procedure Tfrm_Config.btn_PostfachMainbottomClick(Sender: TObject);
 begin
   SortierungFirstLastMain(false);
@@ -1382,10 +1412,12 @@ begin
     if dm_PCM.sStyle <> cmbbx_Style.Properties.Items[cmbbx_Style.ItemIndex]
     then
     begin
-      if MessageDlg('Soll der gewählte Style sofort übernommen werden? ' + slinebreak + 'Bei Ja wird das Programm neu gestartet.', mtInformation,[mbYes, mbNo], 0) = mrYes then
+      if MessageDlg(rs_PCM_Style1 + slinebreak + rs_PCM_Style2, mtInformation,[mbYes, mbNo], 0) = mrYes then
       begin
-        frm_PCM_main.bStyle := true;
+        dm_PCM.bStyle := true;
         TStyleManager.TRYSetStyle(cmbbx_Style.Properties.Items[cmbbx_Style.ItemIndex]);
+        dm_PCM.sDesign:= cmbbx_Design.Properties.Items[cmbbx_Design.ItemIndex];
+        dm_PCM.sStyle:= cmbbx_Style.Properties.Items[cmbbx_Style.ItemIndex];
       end;
     end;
   finally
@@ -1627,7 +1659,7 @@ begin
     bRet := AIdIMAP41.ListMailBoxes(strlstUsersFolders);
     Application.ProcessMessages;
     if bRet = False then begin
-      MessageDlg('Order können nicht ausgelesen werden.', mtWarning, [mbOk], 0);
+      MessageDlg(rs_PCMManager_OrdnerNichtGelesen, mtWarning, [mbOk], 0);
     end;
     Application.ProcessMessages;
     for i := 0 to strlstUsersFolders.Count-1 do begin
@@ -1700,7 +1732,7 @@ begin
   except
     on ep:system.sysutils.Exception do
     begin
-      MessageDlg('Fehler:'+ep.Message, mtError, [mbOk], 0);
+      MessageDlg(rs_PCM_Fehler + ep.Message, mtError, [mbOk], 0);
     end;
   end;
 end;
@@ -1727,7 +1759,7 @@ begin
     on ep:system.sysutils.Exception do
     begin
         IdIMAP_Mail.Disconnect;
-        MessageDlg('Fehler:'+ep.Message, mtError, [mbOk], 0);
+        MessageDlg(rs_PCM_Fehler + ep.Message, mtError, [mbOk], 0);
     end;
   end;
 end;
@@ -1743,19 +1775,20 @@ begin
   qry_EmailPostfachMain.Cancel;
   qry_EmailPostfachSub.Cancel;
 end;
+procedure Tfrm_Config.FormActivate(Sender: TObject);
+begin
+  FormShow(Self);
+end;
 procedure Tfrm_Config.FormDestroy(Sender: TObject);
 begin
   SetGridViews(false);
 end;
 procedure Tfrm_Config.FormShow(Sender: TObject);
 begin
-  pc_options.Align:= alclient;
   cmbbx_Design.ItemIndex := cmbbx_Design.Properties.Items.IndexOf(dm_PCM.sDesign);
   cmbbx_Style.ItemIndex := cmbbx_Style.Properties.Items.IndexOf(dm_PCM.sStyle);
   OpenData;
   InitializeRights;
-  if frm_PCM_main.bStyle then
-    pc_Options.ActivePage := ts_E_Design;
   SetButtons;
   SetGridViews(True);
 end;

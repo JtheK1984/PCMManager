@@ -39,7 +39,7 @@ uses
   dxSkinWhiteprint, dxSkinXmas2008Blue, dxBar, cxGroupBox, cxLabel, cxImage,
   System.ImageList, dxStatusBar,cxSchedulerDBStorage,
   DateUtils, CommCtrl,  ShellApi, dxShellDialogs,
-  PCMManager.Helper.Calendar.Neu.Wiederholung, dxSkinWXI;
+  PCMManager.Helper.Calendar.Neu.Wiederholung, dxSkinWXI, System.uitypes;
 
 type
   TfNeu = class(TForm)
@@ -202,18 +202,19 @@ const
 implementation
 
 uses  PCMManager.Modul.D_Calender.Neu.Adresssuche,
-      PCM.Data;
+      PCM.Data,
+      PCM.Strings;
 
 
 {$R *.dfm}
 
 function TfNeu.cxMyGetRecurrenceDescriptionString(ARecurrenceInfo: TcxSchedulerEventRecurrenceInfo; AFullDescription: Boolean = False): string;
 const
-  Weeks: array[1..5] of string = ('ersten', 'zweiten', 'dritten', 'vierten', 'letzten');
-  Days: array[cxdtEveryDay..cxdtWeekEndDay] of string = ('Tag', 'Wochentag', 'Wochenend-Tag');
-  EveryDays: array[Boolean] of string = ('alle %d Tage', 'jeden Tag');
-  EveryMonths1: array[Boolean] of string = ('Tag %d jedes %d Monats', 'Tag %d jeden Monats');
-  EveryMonths2: array[Boolean] of string = ('den %s %s jedes %d Monats', 'den %s %s jeden Monats');
+  Weeks: array[1..5] of string = (rs_PCM_ersten, rs_PCM_zweiten, rs_PCM_dritten, rs_PCM_vierten, rs_PCM_letzten);
+  Days: array[cxdtEveryDay..cxdtWeekEndDay] of string = (rs_PCM_Tag, rs_PCM_Wochentag, rs_PCM_Wochenend_Tag);
+  EveryDays: array[Boolean] of string = (rs_PCMManager_alleTage, rs_PCMManager_jedenTag);
+  EveryMonths1: array[Boolean] of string = (rs_PCMManager_TagjedesMonats, rs_PCMManager_TagjedenMonats);
+  EveryMonths2: array[Boolean] of string = (rs_PCMManager_denjedesMonats, rs_PCMManager_denjedenMonats);
 
   procedure GetDateParts(out ADayStr, AWeekStr: string);
   begin
@@ -396,13 +397,9 @@ const
 
 var
   ADayStr, AWeekStr, AMonthStr: string;
-  APattern: TcxSchedulerEvent;
-  iWeek,iDow,i,iCount: integer;
-  dDate, dCheckDate: TDate;
+//  APattern: TcxSchedulerEvent;
+  iCount: integer;
   sDays: string;
-  sDayDOW: string;
-  iJahr,iMonat,iTag: word;
-  iJahrStart,iMonatStart,iTagStart: word;
   sBysetPos: string;
 begin
   Result := '';
@@ -519,14 +516,14 @@ begin
           end;
         end;
     end;
-    if Event.EventType = etPattern then
-      APattern := Event
-    else
-    begin
-      APattern := Event.Pattern;
-      if APattern = nil then
-        APattern := Event;
-    end;
+//    if Event.EventType = etPattern then
+//      APattern := Event
+//    else
+//    begin
+//      APattern := Event.Pattern;
+//      if APattern = nil then
+//        APattern := Event;
+//    end;
   end;
 end;
 procedure TfNeu.ZeigeWiederholungsInfo();
@@ -570,23 +567,23 @@ begin
   case Typ of
     ntNachricht:
       begin
-        Caption := 'Nachricht bearbeiten';
+        Caption := rs_PCMManager_Nachrichtbearbeiten;
       end;
     ntAufgabe:
       begin
-        Caption := 'Aufgabe bearbeiten';
-        lArt.Caption := 'Art der Aufgabe:';
-        cbReminderAufgabe.Caption:= 'an die Aufgabe erinnern:';
-        Label10.Caption:=  'Aufgabenstatus:';
-        lblAufgabe.Caption:= 'vor der Aufgabe';
+        Caption := rs_PCMManager_Aufgabebearbeiten;
+        lArt.Caption := rs_PCMManager_artderAufgabe;
+        cbReminderAufgabe.Caption:= rs_PCMManager_anAufgabeerinnern;
+        Label10.Caption:= rs_PCMManager_Aufgabenstatus;
+        lblAufgabe.Caption:= rs_PCMManager_vorAufgabe;
       end;
     ntTermin:
       begin
-        Caption := 'Termin bearbeiten';
-        lArt.Caption := 'Art des Termin:';
-        cbReminderAufgabe.Caption:= 'an den Termin erinnern:';
-        Label10.Caption:=  'Terminstatus:';
-        lblAufgabe.Caption:= 'vor dem Termin';
+        Caption := rs_PCMManager_Terminbearbeiten;
+        lArt.Caption := rs_PCMManager_ArtTermin;
+        cbReminderAufgabe.Caption:= rs_PCMManager_anTerminerinnern;
+        Label10.Caption:= rs_PCMManager_Terminstatus;
+        lblAufgabe.Caption:= rs_PCMManager_vorTermin;
       end;
   end;
 
@@ -728,17 +725,17 @@ begin
     0:
     begin
       rbDauerInMinuten.Checked := true;
-      lblDauer.Caption := 'Dauer (Min.):'
+      lblDauer.Caption := rs_PCMManager_Dauermin;
     end;
     1:
     begin
       rbDauerInStunden.Checked := true;
-      lblDauer.Caption := 'Dauer (Std.):'
+      lblDauer.Caption := rs_PCMManager_DauerStd;
     end;
     2:
     begin
       rbDauerInTagen.Checked := true;
-      lblDauer.Caption := 'Dauer (Tag.):';
+      lblDauer.Caption := rs_PCMManager_DauerTag;
     end;
   end;
 
@@ -1097,7 +1094,7 @@ end;
 procedure TfNeu.bSendClick(Sender: TObject);
   procedure Hinweis(s: string);
   begin
-    Application.MessageBox(PChar(s), 'Hinweis', MB_OK or MB_ICONINFORMATION);
+    MessageDlg(s,mtwarning, [mbOk],0);
   end;
 var
   typ: integer;
@@ -1108,28 +1105,28 @@ begin
 
   typ := cbTyp.EditValue;
   if ((cbAufgabenArt.EditValue = 0) or (cbAufgabenArt.EditValue = null)) AND (typ = ntAufgabe) then
-    Hinweis('Bitte wählen Sie eine Aufgaben-Art aus.')
+    Hinweis(rs_PCMManager_AufgabenArtWaehlen)
   else if teBetreff.Text = '' then
-    Hinweis('Bitte geben Sie einen Betreff ein.')
+    Hinweis(rs_PCMManager_BetreffEingeben)
   // 5.9.6.21
   else if (typ = ntAufgabe) AND (deStart.Date > deEndeAufgabe.Date) then
   begin
-      Hinweis('Das Beginn-Datum muss vor dem Ende-Datum liegen.')
+      Hinweis(rs_PCMManager_DatumBisVon)
   end
   // 5.9.6.8 - Gesonderte Fehlermeldung für Uhrzeit
   // 5.9.6.20 Änderungen der Datumsprüfung
   else if (typ = ntAufgabe) AND ((deStart.Date + teStart.Time) >= (deEndeAufgabe.Date + teEndeAufgabe.Time)) AND
           (teStart.Time >= teEndeAufgabe.Time) then
   begin
-      Hinweis('Die Beginn-Uhrzeit muss vor der Ende-Uhrzeit liegen.')
+      Hinweis(rs_PCMManager_DatumBisVon)
   end
   else if (typ = ntTermin) AND (deEndeAufgabe.Date + teEndeAufgabe.Time < Now) then
   begin
-    Hinweis('Das Ende des Termins darf nicht in der Vergangenheit liegen.');
+    Hinweis(rs_PCMManager_EndeInVergangenheit);
   end
   else if (typ = ntAufgabe) AND (deEndeAufgabe.Date + teEndeAufgabe.Time < Now) then
   begin
-    Hinweis('Das Ende der Aufgabe darf nicht in der Vergangenheit liegen.');
+    Hinweis(rs_PCMManager_EndeInVergangenheit);
   end
   else
   begin
@@ -1137,10 +1134,8 @@ begin
     begin
       if (typ = ntAufgabe) AND ((deEndeAufgabe.Date + teEndeAufgabe.Time) < Now) then
       begin
-          if Application.MessageBox('Die Aufgabe ist in der Vergangenheit fällig! ' +
-            'Möchten Sie wirklich fortfahren?', PChar(bSend.Caption), MB_YESNO or
-            MB_ICONQUESTION) <> IDYES then
-              Exit;
+        if MessageDlg(rs_PCMManager_AufgabeInVergangenheit,mtwarning, [TMsgDlgBtn.mbYes,TMsgDlgBtn.mbNo],0) <> IDYES then
+          exit;
       end
       else
       begin
@@ -1148,18 +1143,18 @@ begin
         // Eingestellte Standardfälligkeit bei Aufgaben beachten
         if (typ = ntAufgabe) AND (dm_PCM.qry_Optionen.FieldByName('Standard_Faelligkeit_Aufgaben_In_Tagen').AsInteger > 0) AND
            (DaysBetween(Now, deEndeAufgabe.Date) < dm_PCM.qry_Optionen.FieldByName('Standard_Faelligkeit_Aufgaben_In_Tagen').AsInteger - 1) then
-          s := 'Die Fälligkeit entspricht nicht der hinterlegten Standardfälligkeit von ' +
-            IntToStr(dm_PCM.qry_Optionen.FieldByName('Standard_Faelligkeit_Aufgaben_In_Tagen').AsInteger) + ' Tagen. ' +
-            'Möchten Sie wirklich fortfahren?'
+          s := rs_PCMManager_FaelligkeitStandard +
+            IntToStr(dm_PCM.qry_Optionen.FieldByName('Standard_Faelligkeit_Aufgaben_In_Tagen').AsInteger) + rs_PCMManager_FaelligkeitStandardTage +
+            rs_PCMManager_Fortfahren
         else if (typ = ntAufgabe) AND ((deEndeAufgabe.Date + teEndeAufgabe.Time) < IncMinute(Now, 60 * 4)) then
           s :=
-            'Die Aufgabe ist in weniger als 4 Stunden fällig. ' +
-            'Möchten Sie wirklich fortfahren?';
+            rs_PCMManager_Faelligkeit4Stunden +
+            rs_PCMManager_Fortfahren;
+
 
         if s <> '' then
-          if Application.MessageBox(PChar(s), PChar(bSend.Caption), MB_YESNO or
-            MB_ICONQUESTION) <> IDYES then
-            Exit
+          if MessageDlg(s,TMsgDlgType.mtWarning,[mbyes,mbno],0) = IDYes then
+            exit;
       end;
     end;
     ModalResult := mrOk;
@@ -1174,8 +1169,6 @@ begin
   tAnhaengeDeleteOrigFile.AsBoolean := bDelete;
   tAnhaenge.Post;
   except
-    on e:Exception do
-    ShowMessage(e.Message);
   end;
 end;
 procedure TfNeu.btnEraseFirmaClick(Sender: TObject);
@@ -1185,8 +1178,8 @@ begin
   edtFirma.Text := '';
 end;
 procedure TfNeu.btnGoToJiraClick(Sender: TObject);
-var
-  sURL: String;
+//var
+//  sURL: String;
 begin
 //  if (edtJiraTicket.EditValue <> '') and (not VarIsNull(edtJiraTicket.EditValue)) and (fIC_Main.FOptions.Jira_Basic_URL <> '') then
 //  begin
@@ -1202,7 +1195,7 @@ begin
 //  //if (cbVorgang.EditValue = 0) or (cbVorgang.EditValue = null) then
 //  if FID_Vorgaenge < 1 then
 //  begin
-//    Application.MessageBox('Bitte wählen Sie eine Vorgang aus.', 'Hinweis', MB_OK or MB_ICONINFORMATION);
+//    Application.Messagedlg('Bitte wählen Sie eine Vorgang aus.', 'Hinweis', MB_OK or MB_ICONINFORMATION);
 //    exit;
 //  end;
 //  sAnzeigeName := edtVorgang.Text; //cbVorgang.EditText;
@@ -1397,10 +1390,7 @@ begin
   begin
     if cbErledigungsgrad.ItemIndex = 10 then
     begin
-      if (MessageBox(0, 'Wenn der Erledigungsgrad auf 100% gesetzt wird, wird die Aufgabe oder der Termin '+
-         #13+#10+'nach dem Speichern als ''Bearbeitet'' gekennzeichnet.'+
-         #13+#10+''+#13+#10+'Möchten Sie fortfahren?', 'Aufgabe erledigt?',
-         MB_ICONQUESTION or MB_OKCANCEL or MB_TASKMODAL) = idOk) then
+      if (MessageDlg(rs_PCMManager_Erledigungsgrad1 + slinebreak + rs_PCMManager_Erledigungsgrad2 + slinebreak + slinebreak + rs_PCMManager_Fortfahren + slinebreak + rs_PCMManager_Erledigungsgrad3,TMsgDlgType.mtWarning, [mbOk,mbCancel],0) = idOk) then
       begin
         //showmessage('aufgabe erledigt');
       end
@@ -1430,7 +1420,6 @@ end;
 procedure TfNeu.meDauerKeyPress(Sender: TObject; var Key: Char);
 begin
   if not CharinSet(Key, [#8, '0'..'9', FormatSettings.DecimalSeparator]) then
-//  if not (Key in [#8, '0'..'9', FormatSettings.DecimalSeparator]) then begin
   begin
     Key := #0;
   end
@@ -1440,12 +1429,9 @@ begin
 end;
 procedure TfNeu.meDauerPropertiesEditValueChanged(Sender: TObject);
 var
-//  v: Integer;
-//  Ende: TDateTime;
   fCalc : double;
   s : string;
 begin
-  // Enddatum durch dauern errechen (nur bei Terminen, nicht bei Aufgaben)
   s := meDauer.EditValue;
   if not TryStrToFloat(s,fCalc) then
     fCalc := 0;
@@ -1453,17 +1439,17 @@ begin
   if rbDauerInMinuten.Checked then
   begin
     meDauer.tag := round(dauerUmrechnenInMinute(0, fCalc));
-    lblDauer.Caption := 'Dauer (Min.):'
+    lblDauer.Caption := rs_PCMManager_DauerMin;
   end
   else if rbDauerInStunden.Checked then
   begin
     meDauer.tag := round(dauerUmrechnenInMinute(1, fCalc));
-    lblDauer.Caption := 'Dauer (Std.):'
+    lblDauer.Caption := rs_PCMManager_DauerStd;
   end
   else
   begin
     meDauer.tag := round(dauerUmrechnenInMinute(2, fCalc));
-    lblDauer.Caption := 'Dauer (Tag):'
+    lblDauer.Caption := rs_PCMManager_DauerTag;
   end;
 
 end;
@@ -1486,14 +1472,9 @@ begin
     deStart.Date := deEndeAufgabe.Date;
 end;
 procedure TfNeu.deStartPropertiesEditValueChanged(Sender: TObject);
-//var
-//  v: Integer;
-//  Ende: TDateTime;
 begin
   if deStart.EditModified then
   begin
-//    v := meDauer.EditValue;
-//    Ende := IncMinute(deStart.EditValue + teStart.EditValue, v);
     if deEndeAufgabe.Date < deStart.Date then
       deEndeAufgabe.Date  := deStart.Date;
   end;
@@ -1517,12 +1498,8 @@ procedure TfNeu.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   if ModalResult = mrCancel then
   begin
-    // Temporär erstellte Dokumente löschen
     loescheTempDoks();
   end;
-//  qryAnsprechpartner.Close;
-//  qry_Prio.Close;
-//  qry_AufgabenArten.close;
 end;
 procedure TfNeu.FormShow(Sender: TObject);
 begin
@@ -1535,24 +1512,14 @@ begin
   icbReminderAufgabe.Enabled := cbReminderAufgabe.EditValue = True;
 end;
 procedure TfNeu.btnSearchFirmaClick(Sender: TObject);
-//var
-//  bAdressValid: Boolean;
 begin
   Application.CreateForm(TfAdressSuche, fAdressSuche);
   FID_Adr_Wurzel := fAdressSuche.ShowModal;
   fAdressSuche.Free;
-//  if FID_Adr_Wurzel > 0 then
-//  begin
-//    qryWork.SQL.Text := 'SELECT Firma as Name, Strasse_ges, PLZ_ges, Ort_ges From manager_kontakte WHERE ID = :ID_Adr_Wurzel ORDER BY firma';
-//    qryWork.ParamByName('ID_Adr_Wurzel').AsInteger := FID_Adr_Wurzel;
-//    qryWork.Open;
-    edtFirma.Text := FFirma;//qryWork.FieldByName('Name').AsString;
-//    qryWork.Close;
-//  end;
+  edtFirma.Text := FFirma;//qryWork.FieldByName('Name').AsString;
 end;
 procedure TfNeu.btn_DelRecurringEvClick(Sender: TObject);
 begin
-  // Wiederholungs-Event entfernen
   if AEvent <> nil then
   begin
     AEvent := nil;

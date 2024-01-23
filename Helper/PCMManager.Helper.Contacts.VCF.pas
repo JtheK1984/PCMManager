@@ -78,9 +78,7 @@ begin
       aMemo.Add(Reader.ReadLine);
     aList := TStringList.create;
     readMemo;
-  end
-  Else
-    ShowMessage('File not Found: ' + Filename);
+  end;
   Reader.Free;
 end;
 
@@ -125,9 +123,7 @@ begin
     aMemo := stringlist;;
     aList := TStringList.create;
     readMemo;
-  end
-  Else
-    ShowMessage('Stream is nil: ');
+  end;
 end;
 destructor TVCFPackage.Destroy;
 begin

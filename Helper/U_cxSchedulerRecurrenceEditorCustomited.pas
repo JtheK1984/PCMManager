@@ -69,7 +69,6 @@ procedure TcxSchedulerRecurrenceEventEditorForm1.FormShow(Sender: TObject);
 
 begin
   inherited;
-  ShowMessage('Ä');
   gbTime.Caption:= 'wiederholender Termin';
   SelectDaysOfWeek(Event.RecurrenceInfo.OccurDays);
   // Interval

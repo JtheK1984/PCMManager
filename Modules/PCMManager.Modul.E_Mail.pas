@@ -112,7 +112,7 @@ type
 //    function GetAttachmentTempFolder(filePath: WideString): WideString;
   public
     { Public-Deklarationen }
-    iIDMail: integer;
+//    iIDMail: integer;
     iKontotyp: integer;
     sHost: String;
     iPort: integer;
@@ -122,7 +122,6 @@ type
     m_currentpath: WideString;
     m_uidlfile: WideString;
     CurrNode: TcxTreelistnode;
-    procedure Execute(AIDMail: integer);
   end;
 
 var
@@ -136,12 +135,9 @@ implementation
 
 uses  PCM.Data,
       PCMManager.Modul.E_Mail.Show,
-      PCMManager.Modul.E_Mail.Mailbox;
+      PCMManager.Modul.E_Mail.Mailbox, PCM.Strings;
 
-procedure Tfrm_Mail.Execute(AIDMail: integer);
-begin
-  iIDMail:= AIDMail;
-end;
+
 procedure Tfrm_Mail.CreateFullFolder( folder: String );
 var
   s: String;
@@ -178,7 +174,7 @@ begin
   idImap_Mail.UIDDeleteMsg(qry_Mail.FieldByName('UIDL').asString);
   dm_PCM.qry_Work.sql.Text:= 'Delete From manager_emails Where ID = :ID and ID_Benutzer =:ID_Benutzer';
   dm_PCM.qry_Work.ParamByName('ID').AsInteger:= qry_Mail.FieldByName('ID').AsInteger;
-  dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= iIDMAIl;
+  dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
   dm_PCM.qry_Work.ExecSQL;
   qry_Mail.AfterScroll:= nil;
   qry_Mail.Refresh;
@@ -212,7 +208,6 @@ var
   iIDPostfach: integer;
 begin
   Application.CreateForm(Tfrm_PCM_MailShow_Ordner,frm_PCM_MailShow_Ordner);
-//  ShowMessage(sAccount);
   dm_PCM.qry_Work.SQL.Text:= 'SELECT ID,Anzeige ' +
                       'FROM manager_email_postfach ' +
                       'WHERE ID_Manager_email = (SELECT ID FROM manager_emailkonfiguration WHERE Email = :acc) AND abonnieren = TRUE ' +
@@ -490,10 +485,8 @@ begin
 
     if MailA.MessageParts.Count > 0 then
     begin
-//      ShowMessage(IntToStr(Maila.MessageParts.AttachmentCount));
       for i := 0 to MailA.MessageParts.Count-1 do
       begin
-//        ShowMessage(Maila.MessageParts.Items[i].FileName);
         if MailA.MessageParts.Items[i] is TIdText then
         begin
           TIdText(MailA.MessageParts.Items[i]).Body.SaveToFile(folder + '\mail.html');
@@ -954,7 +947,7 @@ begin
   sCheckUser:=  trlst_EmailFolder.FocusedNode.Values[0];
   dm_PCM.qry_Work.SQL.Text:= 'Select Count(*) as Anzahl FROM manager_emailkonfiguration Where Benutzer = :Benutzer and ID_Benutzer = :ID_Benutzer';
   dm_PCM.qry_Work.ParamByName('Benutzer').AsString:= sCheckUser;
-  dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= iIDMail;
+  dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= dm_pcm.iIDBenutzerPCM;
   dm_PCM.qry_Work.open;
   iCount:=  dm_PCM.qry_Work.FieldByName('Anzahl').AsInteger;
   dm_PCM.qry_Work.Close;
@@ -962,7 +955,7 @@ begin
     exit;
 
   dm_PCM.qry_Work.SQL.Text:= 'DELETE FROM manager_emails where ID_Benutzer = :ID_Benutzer';
-  dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= iIDMail;
+  dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= dm_pcm.iIDBenutzerPCM;
   dm_PCM.qry_Work.ExecSQL;
   qry_Mail.Open;
 
@@ -998,7 +991,7 @@ begin
   end;
 
   dm_PCM.qry_work.SQL.Text:= 'SELECT ID, EMail,Kontotyp,PostEingangsserver,PortEingangsserver,PostAusgangsserver,PortAusgangsserver,Benutzer,Passwort,SSLActive From manager_emailkonfiguration where Benutzer = :Benutzer and id_Benutzer = :ID';
-  dm_PCM.qry_work.ParamByName('ID').AsInteger:= iIDMail;
+  dm_PCM.qry_work.ParamByName('ID').AsInteger:= dm_pcm.iIDBenutzerPCM;
   dm_PCM.qry_work.ParamByName('Benutzer').AsString:= sAccount;
   dm_PCM.qry_work.Open;
   IdSSLIOHandlerSocket := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
@@ -1069,7 +1062,7 @@ begin
         dm_PCM.qry_Work.ParamByName('readEmail').asInteger := 0
       else
         dm_PCM.qry_Work.ParamByName('readEmail').asInteger := 1;
-      dm_PCM.qry_Work.ParamByName('ID_Benutzer').asInteger:= iIDMail;
+      dm_PCM.qry_Work.ParamByName('ID_Benutzer').asInteger:= dm_pcm.iIDBenutzerPCM;
       dm_PCM.qry_Work.ExecSQL;
       qry_Mail.Refresh;
 
@@ -1085,7 +1078,7 @@ begin
 
     dm_PCM.qry_Work.SQL.Text:= 'SELECT COUNT(*) as anzahl FROM manager_emails Where readEmail = :reaaad and ID_Benutzer = :ID_Benutzer';
     dm_PCM.qry_Work.ParamByName('reaaad').AsString:= '0';
-    dm_PCM.qry_Work.ParamByName('ID_Benutzer').asInteger:= iIDMail;
+    dm_PCM.qry_Work.ParamByName('ID_Benutzer').asInteger:= dm_pcm.iIDBenutzerPCM;
     dm_PCM.qry_Work.open;
     iAnzahlCount:= dm_PCM.qry_Work.FieldByName('anzahl').AsInteger;
     dm_PCM.qry_Work.Close;
@@ -1120,7 +1113,7 @@ begin
   trlst_EmailFolder.Clear;
   trlst_EmailFolder.BeginUpdate;
   dm_pcm.qry_work.SQL.Text:= 'SELECT ID, EMail,Kontotyp,PostEingangsserver,PortEingangsserver,PostAusgangsserver,PortAusgangsserver,Benutzer,Passwort,SSLActive From manager_emailkonfiguration where id_Benutzer = :ID';
-  dm_pcm.qry_work.ParamByName('ID').AsInteger:= iIDMail;
+  dm_pcm.qry_work.ParamByName('ID').AsInteger:= dm_pcm.iIDBenutzerPCM;
   dm_pcm.qry_work.Open;
   while not dm_pcm.qry_work.eof do
   begin
@@ -1204,12 +1197,16 @@ begin
 end;
 procedure Tfrm_Mail.FormShow(Sender: TObject);
 begin
+  grdDBTblView_MailsBetreff.Caption:= rs_PCMManager_Betreff;
+  grdDBTblView_MailsErhalten.Caption:= rs_PCMManager_Erhalten;
+  grdDBTblView_MailsGroesse.Caption:= rs_PCMManager_Groeﬂe;
+  grdDBTblView_MailsVon.Caption:= rs_PCMManager_Absender;
   AAccount:= '';
   dm_PCM.qry_Work.SQL.Text:= 'DELETE FROM manager_emails where ID_Benutzer = :ID_Benutzer';
-  dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= iIDMail;
+  dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= dm_pcm.iIDBenutzerPCM;
   dm_PCM.qry_Work.ExecSQL;
   qry_Mail.SQL.Text:= 'SELECT * FROM manager_emails Where ID_Benutzer = :ID_Benutzer';
-  qry_Mail.ParamByName('ID_Benutzer').AsInteger:= iIDMail;
+  qry_Mail.ParamByName('ID_Benutzer').AsInteger:= dm_pcm.iIDBenutzerPCM;
   qry_Mail.open;
   trlst_EmailFolder.Clear;
   m_currentpath := GetCurrentDir();

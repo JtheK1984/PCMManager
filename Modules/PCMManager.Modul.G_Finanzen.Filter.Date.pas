@@ -55,7 +55,7 @@ implementation
 
 uses
       PCM.Data,
-      PCMManager.Modul.G_Finanzen;
+      PCMManager.Modul.G_Finanzen, PCM.Strings;
 
 function Tfrm_PCManagerChooseDate.Execute(const AShowModal: Boolean;out AMonat, AJahr: integer) : boolean;
 begin
@@ -74,7 +74,6 @@ begin
     end;
   end;
 end;
-
 procedure Tfrm_PCManagerChooseDate.FormCreate(Sender: TObject);
 var
   str_Year: string;
@@ -85,29 +84,21 @@ begin
   str_Year:=FormatDateTime('yyyy', now);
   cbx_PCManagerChooseDate_Year.ItemIndex := cbx_PCManagerChooseDate_Year.properties.Items.IndexOf(str_year);
 end;
-
 procedure Tfrm_PCManagerChooseDate.btn_PCManagerChooseDate_OkClick(Sender: TObject);
-//var
-//  dbl_Einnahmen: Double;
-//  dbl_varKosten: Double;
-//  dbl_fixKosten: Double;
-//  str_Monat: string;
-//  str_Jahr: string;
 begin
   if cbx_PCManagerChooseDate_Month.ItemIndex = -1 then
   begin
-    MessageDlg('Bitte Monat wählen.', mtWarning, [mbOk], 0);
+    MessageDlg(rs_PCMManager_Monatwaehlen, mtWarning, [mbOk], 0);
     exit;
   end;
 
   if cbx_PCManagerChooseDate_Year.ItemIndex = -1 then
   begin
-   MessageDlg('Bitte Jahr wählen.', mtWarning, [mbOk], 0);
+   MessageDlg(rs_PCMManager_Jahrwaehlen, mtWarning, [mbOk], 0);
    exit;
   end;
   Modalresult:= mrOk;
 end;
-
 procedure Tfrm_PCManagerChooseDate.btn_PCManagerChooseDate_CancelClick(Sender: TObject);
 begin
   Modalresult:= mrOk;

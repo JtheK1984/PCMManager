@@ -80,9 +80,7 @@ begin
       aMemo.Add(Reader.ReadLine);
     aList := TStringList.create;
     readMemo;
-  end
-  Else
-    ShowMessage('File not Found: ' + Filename);
+  end;
   Reader.Free;
 end;
 
@@ -128,8 +126,6 @@ begin
     aList := TStringList.create;
     readMemo;
   end
-  Else
-    ShowMessage('Stream is nil: ');
 end;
 destructor TiCalPackage.Destroy;
 begin

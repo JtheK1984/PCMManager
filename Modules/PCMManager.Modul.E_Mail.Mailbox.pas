@@ -23,7 +23,7 @@ uses
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, cxTextEdit, cxMaskEdit, cxDropDownEdit, Vcl.Menus,
-  Vcl.StdCtrls, cxButtons,system.uitypes;
+  Vcl.StdCtrls, cxButtons,system.uitypes, dxSkinWXI;
 
 type
   Tfrm_PCM_MailShow_Ordner = class(TForm)

@@ -27,7 +27,8 @@ uses
   System.ImageList, Vcl.ImgList, cxImageList, dxmdaset, Vcl.StdCtrls, cxButtons,
   cxLabel, cxDBLabel, Vcl.ExtCtrls, cxGridLevel, cxGridCustomTableView,
   cxGridTableView, cxGridDBTableView, cxGridCustomView, cxGrid, cxGroupBox,
-  dxBar, cxClasses, Vcl.ComCtrls, cxListView,shellapi, System.TypInfo, winapi.Commctrl;
+  dxBar, cxClasses, Vcl.ComCtrls, cxListView,shellapi, System.TypInfo, winapi.Commctrl,
+  dxSkinWXI;
 
 type
   Tfrm_PCM_MailShow = class(TForm)

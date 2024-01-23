@@ -12,6 +12,7 @@
   Font.Name = 'Tahoma'
   Font.Style = []
   WindowState = wsMaximized
+  OnActivate = FormActivate
   OnDestroy = FormDestroy
   OnShow = FormShow
   TextHeight = 13
@@ -28,8 +29,8 @@
       Left = 3
       Top = 3
       Width = 1175
-      Height = 690
-      Align = alTop
+      Height = 717
+      Align = alClient
       Color = clBtnFace
       ParentBackground = False
       ParentColor = False
@@ -41,7 +42,7 @@
       Properties.TabSlants.Kind = skCutCorner
       Properties.TabWidth = 100
       OnChange = pc_Kontakte_KontakteChange
-      ClientRectBottom = 684
+      ClientRectBottom = 711
       ClientRectLeft = 2
       ClientRectRight = 1169
       ClientRectTop = 28
@@ -52,7 +53,7 @@
           Left = 0
           Top = 148
           Width = 1167
-          Height = 508
+          Height = 535
           Align = alClient
           BevelInner = bvNone
           BevelOuter = bvNone
@@ -676,15 +677,11 @@
       object ts_B_Kontakte_Kontakte_Detail: TcxTabSheet
         Caption = 'Kontakte'
         ImageIndex = 11
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object pc_Kontakte_Kontakte_Adressen: TcxPageControl
           Left = 394
           Top = 0
           Width = 773
-          Height = 656
+          Height = 683
           Align = alClient
           BiDiMode = bdLeftToRight
           Color = clBtnFace
@@ -697,24 +694,20 @@
           Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
           Properties.TabSlants.Kind = skCutCorner
           Properties.TabWidth = 100
-          ClientRectBottom = 650
+          ClientRectBottom = 677
           ClientRectLeft = 2
           ClientRectRight = 767
           ClientRectTop = 27
           object ts_A_Zusatz: TcxTabSheet
             Caption = 'Zusatz'
             ImageIndex = 0
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object grpbx_KontakteZusatzSonstige: TcxGroupBox
               Left = 0
               Top = 187
               Align = alClient
               Caption = 'Sonstige Informationen'
               TabOrder = 1
-              Height = 436
+              Height = 463
               Width = 765
               object mem_KontakteZusatzSonstige: TcxDBMemo
                 Left = 8
@@ -989,7 +982,7 @@
               Align = alClient
               Caption = 'Kontakdaten Gesch'#228'ftlich'
               TabOrder = 0
-              Height = 623
+              Height = 650
               Width = 765
               object btn_KontaktGeschaeftlichSendMail: TcxButton
                 Left = 627
@@ -1353,7 +1346,7 @@
               Align = alClient
               Caption = 'Messenger / Soziale Netzwerke'
               TabOrder = 0
-              Height = 623
+              Height = 650
               Width = 765
               object edt_KontakteSonstigesFacebook: TcxDBTextEdit
                 Left = 113
@@ -1455,7 +1448,7 @@
           Align = alLeft
           Caption = 'Kontakt'
           TabOrder = 0
-          Height = 656
+          Height = 683
           Width = 394
           object btn_KontaktEmail1Send: TcxButton
             Left = 364
@@ -2099,7 +2092,7 @@
       WholeRow = False
     end
     object btn_KontaktNew: TdxBarLargeButton
-      Caption = 'Kontakt a&nlegen'
+      Caption = 'Kontakt anlegen'
       Category = 0
       Hint = 'Kontakt anlegen'
       Visible = ivAlways
@@ -2111,7 +2104,7 @@
       ImageIndex = -1
     end
     object btn_KontaktNext: TdxBarLargeButton
-      Caption = '&n'#228'chster Kontakt'
+      Caption = 'n'#228'chster Kontakt'
       Category = 0
       Hint = 'n'#228'chster Kontakt'
       Visible = ivAlways
@@ -2123,7 +2116,7 @@
       ImageIndex = -1
     end
     object btn_Kontaktprev: TdxBarLargeButton
-      Caption = '&vorheriger Kontakt'
+      Caption = 'vorheriger Kontakt'
       Category = 0
       Hint = 'vorheriger Kontakt'
       Visible = ivAlways
@@ -2135,7 +2128,7 @@
       ImageIndex = -1
     end
     object btn_KontaktFirst: TdxBarLargeButton
-      Caption = '&erster Kontakt'
+      Caption = 'erster Kontakt'
       Category = 0
       Hint = 'erster Kontakt'
       Visible = ivAlways
@@ -2147,7 +2140,7 @@
       ImageIndex = -1
     end
     object btn_KontaktDelete: TdxBarLargeButton
-      Caption = 'Kontakt &l'#246'schen'
+      Caption = 'Kontakt l'#246'schen'
       Category = 0
       Hint = 'Kontakt l'#246'schen'
       Visible = ivAlways
@@ -2159,7 +2152,7 @@
       ImageIndex = -1
     end
     object btn_KontaktCancel: TdxBarLargeButton
-      Caption = '&Abbrechen'
+      Caption = 'Abbrechen'
       Category = 0
       Hint = 'Abbrechen'
       Visible = ivAlways
@@ -2171,7 +2164,7 @@
       ImageIndex = -1
     end
     object btn_KontaktSave: TdxBarLargeButton
-      Caption = 'Kontakt &speichern'
+      Caption = 'Kontakt speichern'
       Category = 0
       Hint = 'Kontakt speichern'
       Visible = ivAlways
@@ -2183,7 +2176,7 @@
       ImageIndex = -1
     end
     object btn_KontaktLast: TdxBarLargeButton
-      Caption = '&letzter Kontakt'
+      Caption = 'letzter Kontakt'
       Category = 0
       Hint = 'letzter Kontakt'
       Visible = ivAlways
@@ -2222,7 +2215,7 @@
       ImageIndex = 65
     end
     object btn_Export: TdxBarButton
-      Caption = 'Exporteieren'
+      Caption = 'Exportieren'
       Category = 2
       Hint = 'Exportieren'
       Visible = ivAlways
@@ -2246,6 +2239,7 @@
       Category = 3
       Hint = 'VCard erstellen'
       Visible = ivAlways
+      ImageIndex = 64
       OnClick = ppmbtn_ExportVCFClick
     end
   end

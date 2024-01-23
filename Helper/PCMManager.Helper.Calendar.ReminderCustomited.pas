@@ -26,7 +26,7 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinWXI;
 
 type
   TcxSchedulerReminderFormCustomized = class(TcxSchedulerReminderForm)
@@ -45,7 +45,8 @@ var
 
 implementation
 
-uses pcm.Main;
+uses PCM.Main,
+     PCM.Strings;
 
 {$R *.dfm}
 
@@ -67,7 +68,7 @@ procedure TcxSchedulerReminderFormCustomized.lvItemsSelectItem(Sender: TObject; 
 begin
   inherited;
   begin
-    btnOpenItem.Caption := 'Termin öffnen';
+    btnOpenItem.Caption := rs_PCMManager_Terminopen;
   end;
 end;
 

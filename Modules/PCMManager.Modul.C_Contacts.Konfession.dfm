@@ -3,10 +3,9 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
   Top = 212
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  BorderWidth = 8
   Caption = 'Konfession bearbeiten'
-  ClientHeight = 227
-  ClientWidth = 500
+  ClientHeight = 243
+  ClientWidth = 516
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -14,15 +13,14 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
   Font.Name = 'Segoe UI Light'
   Font.Style = []
   Position = poScreenCenter
+  OnShow = FormShow
   TextHeight = 25
   object grd_Konfession: TcxGrid
     Left = 0
     Top = 63
-    Width = 500
-    Height = 164
+    Width = 516
+    Height = 180
     Align = alClient
-    BevelInner = bvLowered
-    BevelKind = bkFlat
     BorderStyle = cxcbsNone
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -146,7 +144,7 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
       WholeRow = False
     end
     object btn_KonfessionNew: TdxBarLargeButton
-      Caption = 'Konfession &anlegen'
+      Caption = 'Konfession anlegen'
       Category = 0
       Hint = 'Konfession anlegen'
       Visible = ivAlways
@@ -155,7 +153,7 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
       LargeImageIndex = 27
     end
     object btn_KonfessionSave: TdxBarLargeButton
-      Caption = 'Konfession &speichern'
+      Caption = 'Konfession speichern'
       Category = 0
       Hint = 'Konfession speichern'
       Visible = ivAlways
@@ -164,7 +162,7 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
       LargeImageIndex = 12
     end
     object btn_KonfessionClose: TdxBarLargeButton
-      Caption = 'S&chlie'#223'en'
+      Caption = 'Schlie'#223'en'
       Category = 0
       Hint = 'Schlie'#223'en'
       Visible = ivAlways
@@ -173,7 +171,7 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
       LargeImageIndex = 23
     end
     object btn_KonfessionCancel: TdxBarLargeButton
-      Caption = '&Abbrechen'
+      Caption = 'Abbrechen'
       Category = 0
       Hint = 'Abbrechen'
       Visible = ivAlways
@@ -182,7 +180,7 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
       LargeImageIndex = 0
     end
     object btn_KonfessionDelete: TdxBarLargeButton
-      Caption = 'Konfession &l'#246'schen'
+      Caption = 'Konfession l'#246'schen'
       Category = 0
       Hint = 'Konfession l'#246'schen'
       Visible = ivAlways

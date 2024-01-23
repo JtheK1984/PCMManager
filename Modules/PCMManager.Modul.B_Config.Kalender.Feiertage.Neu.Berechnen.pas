@@ -282,10 +282,6 @@ begin
   begin
     Dat := Encodedate(Y, 10, 31);
     Feiertag[TagImJahr(Dat)] := 18;
-
-
-
-
   end;
 
   // WeltfrauenTag mit aufnehmen / Bundesland Feiertag prüfen ggf. erweitern

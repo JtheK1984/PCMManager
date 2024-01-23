@@ -3,14 +3,15 @@ object frm_Config: Tfrm_Config
   Top = 0
   BorderStyle = bsNone
   Caption = 'frm_Config'
-  ClientHeight = 922
-  ClientWidth = 1195
+  ClientHeight = 800
+  ClientWidth = 1280
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  OnActivate = FormActivate
   OnDestroy = FormDestroy
   OnShow = FormShow
   TextHeight = 13
@@ -21,39 +22,39 @@ object frm_Config: Tfrm_Config
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
-    Height = 922
-    Width = 1195
+    Height = 800
+    Width = 1280
     object pc_Options: TcxPageControl
       Left = 3
       Top = 3
-      Width = 1189
-      Height = 922
-      Align = alTop
+      Width = 1274
+      Height = 794
+      Align = alClient
       Color = clBtnFace
       ParentBackground = False
       ParentColor = False
       TabOrder = 0
-      Properties.ActivePage = ts_A_KalenderConfig
+      Properties.ActivePage = ts_E_Design
       Properties.CustomButtons.Buttons = <>
       Properties.Images = dm_PCM.imglst_16x16
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
       Properties.TabSlants.Kind = skCutCorner
       Properties.TabWidth = 100
-      ClientRectBottom = 916
+      ClientRectBottom = 788
       ClientRectLeft = 2
-      ClientRectRight = 1183
+      ClientRectRight = 1268
       ClientRectTop = 28
       object ts_A_KalenderConfig: TcxTabSheet
         Caption = 'Kalender'
         ImageIndex = 10
         object grpbx_FTPConfig: TcxGroupBox
           Left = 0
-          Top = 661
+          Top = 533
           Align = alBottom
           Caption = 'FTP-Zugangsdaten'
           TabOrder = 2
           Height = 227
-          Width = 1181
+          Width = 1266
           object edt_CalConfigFTP_Benutzer: TcxDBTextEdit
             Left = 81
             Top = 122
@@ -127,7 +128,7 @@ object frm_Config: Tfrm_Config
           object grd_FTPConfig: TcxGrid
             Left = 3
             Top = 149
-            Width = 1175
+            Width = 1260
             Height = 69
             Align = alBottom
             BorderStyle = cxcbsNone
@@ -139,6 +140,9 @@ object frm_Config: Tfrm_Config
             ParentFont = False
             TabOrder = 4
             LockedStateImageOptions.Effect = lsieDark
+            ExplicitLeft = 2
+            ExplicitTop = 156
+            ExplicitWidth = 1272
             object grdDBTblView_FTPConfig: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -278,7 +282,7 @@ object frm_Config: Tfrm_Config
           object brdckctrl_FTP: TdxBarDockControl
             Left = 3
             Top = 15
-            Width = 1175
+            Width = 1260
             Height = 63
             Align = dalTop
             BarManager = brmgr_Config
@@ -291,7 +295,7 @@ object frm_Config: Tfrm_Config
           Caption = 'abonnierte Kalender'
           TabOrder = 0
           Height = 266
-          Width = 1181
+          Width = 1266
           object lbl_CalConfig_Benutzer: TcxLabel
             Left = 571
             Top = 84
@@ -443,7 +447,7 @@ object frm_Config: Tfrm_Config
           object grd_CalConfig: TcxGrid
             Left = 3
             Top = 189
-            Width = 1175
+            Width = 1260
             Height = 68
             Align = alBottom
             BorderStyle = cxcbsNone
@@ -456,6 +460,9 @@ object frm_Config: Tfrm_Config
             TabOrder = 14
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
+            ExplicitLeft = 2
+            ExplicitTop = 196
+            ExplicitWidth = 1272
             object grdDBTblView_calconfig: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -758,7 +765,7 @@ object frm_Config: Tfrm_Config
           object bardckctrl_Kalender: TdxBarDockControl
             Left = 3
             Top = 15
-            Width = 1175
+            Width = 1260
             Height = 63
             Align = dalTop
             AllowDocking = False
@@ -771,13 +778,13 @@ object frm_Config: Tfrm_Config
           Align = alClient
           Caption = 'Feiertage'
           TabOrder = 1
-          Height = 395
-          Width = 1181
+          Height = 267
+          Width = 1266
           object grd_Feiertage: TcxGrid
             Left = 3
             Top = 78
-            Width = 1175
-            Height = 308
+            Width = 1260
+            Height = 180
             Align = alClient
             BorderStyle = cxcbsNone
             Font.Charset = DEFAULT_CHARSET
@@ -789,6 +796,10 @@ object frm_Config: Tfrm_Config
             TabOrder = 0
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
+            ExplicitLeft = 2
+            ExplicitTop = 76
+            ExplicitWidth = 1272
+            ExplicitHeight = 200
             object grdDBTblView_Feiertage: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -857,7 +868,7 @@ object frm_Config: Tfrm_Config
           object brdckctrl_Feiertage: TdxBarDockControl
             Left = 3
             Top = 15
-            Width = 1175
+            Width = 1260
             Height = 63
             Align = dalTop
             AllowDocking = False
@@ -874,13 +885,13 @@ object frm_Config: Tfrm_Config
           Align = alClient
           Caption = 'Priorit'#228't'
           TabOrder = 1
-          Height = 387
-          Width = 1181
+          Height = 259
+          Width = 1266
           object grd_AufgabenPrio: TcxGrid
             Left = 3
             Top = 113
-            Width = 1175
-            Height = 265
+            Width = 1260
+            Height = 137
             Align = alClient
             BorderStyle = cxcbsNone
             Font.Charset = DEFAULT_CHARSET
@@ -892,6 +903,10 @@ object frm_Config: Tfrm_Config
             TabOrder = 1
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
+            ExplicitLeft = 2
+            ExplicitTop = 111
+            ExplicitWidth = 1272
+            ExplicitHeight = 157
             object grdDBTblView_AufgabenPrio: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -927,6 +942,7 @@ object frm_Config: Tfrm_Config
               OptionsView.HeaderFilterButtonShowMode = fbmButton
               OptionsView.IndicatorWidth = 14
               object grdDBTblView_AufgabenPrioPrioritaet: TcxGridDBColumn
+                Caption = 'Priorit'#228't'
                 DataBinding.FieldName = 'Prioritaet'
                 DataBinding.IsNullValueType = True
                 Width = 200
@@ -944,7 +960,7 @@ object frm_Config: Tfrm_Config
           object bardckctrl_AufgabenPrio: TdxBarDockControl
             Left = 3
             Top = 15
-            Width = 1175
+            Width = 1260
             Height = 63
             Align = dalTop
             AllowDocking = False
@@ -957,9 +973,10 @@ object frm_Config: Tfrm_Config
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 0
-            ExplicitTop = 59
+            ExplicitTop = 54
+            ExplicitWidth = 1270
             Height = 35
-            Width = 1175
+            Width = 1260
             object lbl_AufgabenPrioBezeichnung: TcxLabel
               Left = 569
               Top = 7
@@ -1029,7 +1046,7 @@ object frm_Config: Tfrm_Config
           Caption = 'Aufgabenarten'
           TabOrder = 0
           Height = 300
-          Width = 1181
+          Width = 1266
           object lbl_AufgabenartenColor: TcxLabel
             Left = 571
             Top = 84
@@ -1076,7 +1093,7 @@ object frm_Config: Tfrm_Config
           object grd_Aufgabenarten: TcxGrid
             Left = 3
             Top = 105
-            Width = 1175
+            Width = 1260
             Height = 186
             Align = alBottom
             BorderStyle = cxcbsNone
@@ -1089,6 +1106,9 @@ object frm_Config: Tfrm_Config
             TabOrder = 2
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
+            ExplicitLeft = 2
+            ExplicitTop = 112
+            ExplicitWidth = 1272
             object grdDBTblView_Aufgabenarten: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -1164,7 +1184,7 @@ object frm_Config: Tfrm_Config
           object bardckctrl_Aufgabenarten: TdxBarDockControl
             Left = 3
             Top = 15
-            Width = 1175
+            Width = 1260
             Height = 63
             Align = dalTop
             AllowDocking = False
@@ -1173,12 +1193,12 @@ object frm_Config: Tfrm_Config
         end
         object pnl_AufgabenSonstiges: TcxGroupBox
           Left = 0
-          Top = 687
+          Top = 559
           Align = alBottom
           Caption = 'Sonstige Einstellungen'
           TabOrder = 2
           Height = 201
-          Width = 1181
+          Width = 1266
           object cmbbx_AufgabenSonstigesAdresseFirma: TcxDBLookupComboBox
             AlignWithMargins = True
             Left = 663
@@ -1222,7 +1242,7 @@ object frm_Config: Tfrm_Config
           object bardckctrl_AufgabenSonstiges: TdxBarDockControl
             Left = 3
             Top = 15
-            Width = 1175
+            Width = 1260
             Height = 63
             Align = dalTop
             BarManager = brmgr_Config
@@ -1353,13 +1373,13 @@ object frm_Config: Tfrm_Config
           Align = alClient
           Caption = 'Anzeige Schulf'#228'cher'
           TabOrder = 0
-          Height = 693
-          Width = 1181
+          Height = 565
+          Width = 1266
           object grd_StundenplanConfig: TcxGrid
             Left = 3
             Top = 142
-            Width = 1175
-            Height = 542
+            Width = 1260
+            Height = 414
             Align = alClient
             BorderStyle = cxcbsNone
             Font.Charset = DEFAULT_CHARSET
@@ -1371,6 +1391,10 @@ object frm_Config: Tfrm_Config
             TabOrder = 1
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
+            ExplicitLeft = 2
+            ExplicitTop = 140
+            ExplicitWidth = 1272
+            ExplicitHeight = 434
             object grdDBTblView_StundenplanConfig: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -1443,9 +1467,10 @@ object frm_Config: Tfrm_Config
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 0
-            ExplicitTop = 59
+            ExplicitTop = 54
+            ExplicitWidth = 1270
             Height = 64
-            Width = 1175
+            Width = 1260
             object colcmbbx_StundenplanConfig_FontColor: TcxDBColorComboBox
               Left = 641
               Top = 35
@@ -1548,7 +1573,7 @@ object frm_Config: Tfrm_Config
           object brdckctrl_Schulfach: TdxBarDockControl
             Left = 3
             Top = 15
-            Width = 1175
+            Width = 1260
             Height = 63
             Align = dalTop
             BarManager = brmgr_Config
@@ -1556,12 +1581,12 @@ object frm_Config: Tfrm_Config
         end
         object grpbx_FachUhr: TcxGroupBox
           Left = 0
-          Top = 693
+          Top = 565
           Align = alBottom
           Caption = 'Anzeige Uhrzeiten'
           TabOrder = 1
           Height = 195
-          Width = 1181
+          Width = 1266
           object colcmbbx_StundenplanConfigUhr_FontColor: TcxDBColorComboBox
             Left = 641
             Top = 83
@@ -1607,7 +1632,7 @@ object frm_Config: Tfrm_Config
           object grd_StundenplanConfigUhr: TcxGrid
             Left = 3
             Top = 111
-            Width = 1175
+            Width = 1260
             Height = 75
             Align = alBottom
             BorderStyle = cxcbsNone
@@ -1620,6 +1645,9 @@ object frm_Config: Tfrm_Config
             TabOrder = 2
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
+            ExplicitLeft = 2
+            ExplicitTop = 118
+            ExplicitWidth = 1272
             object grdDBTblView_StundenplanConfigUhr: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -1704,7 +1732,7 @@ object frm_Config: Tfrm_Config
           object brdckctrl_SchulfachUhr: TdxBarDockControl
             Left = 3
             Top = 15
-            Width = 1175
+            Width = 1260
             Height = 63
             Align = dalTop
             BarManager = brmgr_Config
@@ -1720,13 +1748,16 @@ object frm_Config: Tfrm_Config
           Align = alClient
           Caption = 'E-Mailkonfiguration'
           TabOrder = 0
-          Height = 429
-          Width = 1181
+          ExplicitTop = 58
+          ExplicitWidth = 1276
+          ExplicitHeight = 317
+          Height = 301
+          Width = 1266
           object grd_EmailConfig: TcxGrid
             Left = 3
             Top = 249
-            Width = 1175
-            Height = 171
+            Width = 1260
+            Height = 43
             Align = alClient
             BorderStyle = cxcbsNone
             Font.Charset = DEFAULT_CHARSET
@@ -1738,6 +1769,10 @@ object frm_Config: Tfrm_Config
             TabOrder = 1
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
+            ExplicitLeft = 2
+            ExplicitTop = 252
+            ExplicitWidth = 1272
+            ExplicitHeight = 63
             object grdDBTblView_emailConfig: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -1828,8 +1863,9 @@ object frm_Config: Tfrm_Config
             Style.BorderStyle = ebsNone
             TabOrder = 0
             ExplicitTop = -4
+            ExplicitWidth = 1270
             Height = 234
-            Width = 1175
+            Width = 1260
             object btn_EmailConfig_Test: TcxButton
               Left = 3
               Top = 161
@@ -2196,23 +2232,23 @@ object frm_Config: Tfrm_Config
         object brdckctrl_Email: TdxBarDockControl
           Left = 0
           Top = 0
-          Width = 1181
+          Width = 1266
           Height = 63
           Align = dalTop
           BarManager = brmgr_Config
         end
         object grpbx_postfach: TcxGroupBox
           Left = 0
-          Top = 492
+          Top = 364
           Align = alBottom
           Caption = 'E-Mail Postf'#228'cher'
           TabOrder = 1
           Height = 396
-          Width = 1181
+          Width = 1266
           object dxBarDockControl1: TdxBarDockControl
             Left = 3
             Top = 15
-            Width = 1175
+            Width = 1260
             Height = 63
             Align = dalTop
             BarManager = brmgr_Config
@@ -2223,14 +2259,20 @@ object frm_Config: Tfrm_Config
             Align = alBottom
             Caption = 'Hauptpostf'#228'cher'
             TabOrder = 0
+            ExplicitLeft = 2
+            ExplicitTop = 94
+            ExplicitWidth = 1272
             Height = 150
-            Width = 1175
+            Width = 1260
             object grpbx_PostfachMainSort: TcxGroupBox
-              Left = 1146
+              Left = 1231
               Top = 15
               Align = alRight
               PanelStyle.Active = True
               TabOrder = 0
+              ExplicitLeft = 1244
+              ExplicitTop = 18
+              ExplicitHeight = 130
               Height = 126
               Width = 26
               object btn_PostfachMainbottom: TcxButton
@@ -2265,6 +2307,9 @@ object frm_Config: Tfrm_Config
                   EB7C93A1EABC6E0000000049454E44AE426082}
                 TabOrder = 3
                 OnClick = btn_PostfachMainbottomClick
+                ExplicitLeft = 2
+                ExplicitTop = 62
+                ExplicitWidth = 22
               end
               object btn_PostfachMaindown: TcxButton
                 Left = 3
@@ -2293,6 +2338,9 @@ object frm_Config: Tfrm_Config
                   80779755FCCF7803E8D0E0915AAA27200000000049454E44AE426082}
                 TabOrder = 2
                 OnClick = btn_PostfachMaindownClick
+                ExplicitLeft = 2
+                ExplicitTop = 42
+                ExplicitWidth = 22
               end
               object btn_PostfachMainUp: TcxButton
                 Left = 3
@@ -2322,6 +2370,9 @@ object frm_Config: Tfrm_Config
                   454E44AE426082}
                 TabOrder = 1
                 OnClick = btn_PostfachMainUpClick
+                ExplicitLeft = 2
+                ExplicitTop = 22
+                ExplicitWidth = 22
               end
               object btn_PostfachMainTop: TcxButton
                 Left = 3
@@ -2355,12 +2406,15 @@ object frm_Config: Tfrm_Config
                   44AE426082}
                 TabOrder = 0
                 OnClick = btn_PostfachMainTopClick
+                ExplicitLeft = 2
+                ExplicitTop = 2
+                ExplicitWidth = 22
               end
             end
             object grd_Postfachmain: TcxGrid
               Left = 3
               Top = 15
-              Width = 1143
+              Width = 1228
               Height = 126
               Align = alClient
               BorderStyle = cxcbsNone
@@ -2373,6 +2427,10 @@ object frm_Config: Tfrm_Config
               TabOrder = 1
               TabStop = False
               LockedStateImageOptions.Effect = lsieDark
+              ExplicitLeft = 2
+              ExplicitTop = 18
+              ExplicitWidth = 1242
+              ExplicitHeight = 130
               object grdDBTblViewl_Postfachmain: TcxGridDBTableView
                 Navigator.Buttons.CustomButtons = <>
                 FilterBox.CustomizeDialog = False
@@ -2447,14 +2505,20 @@ object frm_Config: Tfrm_Config
             Align = alBottom
             Caption = 'Unterpostf'#228'cher'
             TabOrder = 1
+            ExplicitLeft = 2
+            ExplicitTop = 244
+            ExplicitWidth = 1272
             Height = 150
-            Width = 1175
+            Width = 1260
             object grpbx_PostfachMainSub: TcxGroupBox
-              Left = 1146
+              Left = 1231
               Top = 15
               Align = alRight
               PanelStyle.Active = True
               TabOrder = 0
+              ExplicitLeft = 1244
+              ExplicitTop = 18
+              ExplicitHeight = 130
               Height = 126
               Width = 26
               object btn_PostfachSubbottom: TcxButton
@@ -2489,6 +2553,9 @@ object frm_Config: Tfrm_Config
                   EB7C93A1EABC6E0000000049454E44AE426082}
                 TabOrder = 3
                 OnClick = btn_PostfachSubbottomClick
+                ExplicitLeft = 2
+                ExplicitTop = 62
+                ExplicitWidth = 22
               end
               object btn_PostfachSubDown: TcxButton
                 Left = 3
@@ -2517,6 +2584,9 @@ object frm_Config: Tfrm_Config
                   80779755FCCF7803E8D0E0915AAA27200000000049454E44AE426082}
                 TabOrder = 2
                 OnClick = btn_PostfachSubDownClick
+                ExplicitLeft = 2
+                ExplicitTop = 42
+                ExplicitWidth = 22
               end
               object btn_PostfachSubUp: TcxButton
                 Left = 3
@@ -2546,6 +2616,9 @@ object frm_Config: Tfrm_Config
                   454E44AE426082}
                 TabOrder = 1
                 OnClick = btn_PostfachSubUpClick
+                ExplicitLeft = 2
+                ExplicitTop = 22
+                ExplicitWidth = 22
               end
               object btn_PostfachSubTop: TcxButton
                 Left = 3
@@ -2579,12 +2652,15 @@ object frm_Config: Tfrm_Config
                   44AE426082}
                 TabOrder = 0
                 OnClick = btn_PostfachSubTopClick
+                ExplicitLeft = 2
+                ExplicitTop = 2
+                ExplicitWidth = 22
               end
             end
             object grd_postfachSub: TcxGrid
               Left = 3
               Top = 15
-              Width = 1143
+              Width = 1228
               Height = 126
               Align = alClient
               BorderStyle = cxcbsNone
@@ -2597,6 +2673,10 @@ object frm_Config: Tfrm_Config
               TabOrder = 1
               TabStop = False
               LockedStateImageOptions.Effect = lsieDark
+              ExplicitLeft = 2
+              ExplicitTop = 18
+              ExplicitWidth = 1242
+              ExplicitHeight = 130
               object grdDBTblViewl_PostfachSub: TcxGridDBTableView
                 Navigator.Buttons.CustomButtons = <>
                 FilterBox.CustomizeDialog = False
@@ -2690,23 +2770,27 @@ object frm_Config: Tfrm_Config
           Align = alClient
           Caption = 'Programmdesign'
           TabOrder = 0
-          Height = 825
-          Width = 1181
+          ExplicitTop = 58
+          ExplicitWidth = 1276
+          ExplicitHeight = 713
+          Height = 697
+          Width = 1266
           object grpbx_vorschau: TcxGroupBox
             AlignWithMargins = True
             Left = 3
             Top = 77
             Margins.Left = 0
             Margins.Top = 0
-            Margins.Right = 0
+            Margins.Right = 7
             Margins.Bottom = 0
             Align = alClient
             Caption = 'Vorschau'
             TabOrder = 2
             ExplicitTop = 58
-            ExplicitHeight = 758
-            Height = 739
-            Width = 1175
+            ExplicitWidth = 1263
+            ExplicitHeight = 646
+            Height = 611
+            Width = 1253
             object img_Vorschau: TVirtualImage
               Left = 3
               Top = 20
@@ -2877,17 +2961,18 @@ object frm_Config: Tfrm_Config
             Style.BorderStyle = ebsNone
             TabOrder = 1
             ExplicitTop = 27
+            ExplicitWidth = 1270
             Height = 31
-            Width = 1175
+            Width = 1260
             object cmbbx_Style: TcxComboBox
               AlignWithMargins = True
               Left = 127
               Top = 5
               Margins.Left = 8
               Margins.Top = 2
-              Margins.Right = 8
+              Margins.Right = 5
               Margins.Bottom = 2
-              Align = alLeft
+              Align = alClient
               Properties.DropDownListStyle = lsEditFixedList
               Properties.DropDownRows = 20
               Properties.Items.Strings = (
@@ -2897,50 +2982,68 @@ object frm_Config: Tfrm_Config
                 'Aqua Light Slate'
                 'Auric'
                 'Calypso'
-                'Calypso LE'
-                'Calypso SE'
-                'Calypso SLE'
                 'Carbon'
                 'Charcoal Dark Slate'
                 'Cobalt XEMedia'
+                'Copper'
+                'CopperDark'
+                'Coral'
                 'Cyan Dusk'
                 'Cyan Night'
+                'Diamond'
                 'Emerald Light Slate'
+                'Emerald'
                 'Flat UI Light'
                 'Glossy'
                 'Glow'
                 'Golden Graphite'
                 'Iceberg Classico'
+                'Jet'
                 'Lavender Classico'
                 'Light'
                 'Luna'
-                'Material Oxford Blue'
                 'Material Oxford Blue SE'
-                'Metropolis UI Black'
-                'Metropolis UI Blue'
-                'Metropolis UI Dark'
-                'Metropolis UI Green'
+                'Material Oxford Blue'
                 'Obsidian'
                 'Onyx Blue'
+                'Puerto Rico'
+                'Radiant'
                 'Ruby Graphite'
                 'Sapphire Kamri'
                 'Silver'
                 'Sky'
                 'Slate Classico'
                 'Smokey Quartz Kamri'
+                'Stellar Dark'
+                'Stellar'
+                'Sterling'
                 'Tablet Dark'
                 'Tablet Light'
                 'Turquoise Gray'
-                'Windows10'
+                'Vapor'
+                'Wedgewood Light'
+                'Windows10 BlackPearl'
+                'Windows10 Blue Whale'
                 'Windows10 Blue'
+                'Windows10 Charcoal'
+                'Windows10 Clear Day'
                 'Windows10 Dark'
                 'Windows10 Green'
+                'Windows10 Malibu'
                 'Windows10 Purple'
-                'Windows10 SlateGray')
+                'Windows10 SlateGray'
+                'Windows10'
+                'Windows11 Modern Dark'
+                'Windows11 Modern Light'
+                'Windows11 Polar Dark'
+                'Windows11 Polar Light')
               Properties.OnChange = cbx_StylePropertiesChange
               Style.BorderStyle = ebsFlat
               TabOrder = 0
-              Width = 617
+              ExplicitLeft = 126
+              ExplicitTop = 4
+              ExplicitWidth = 1139
+              Width = 1125
             end
             object lbl_Style: TcxLabel
               AlignWithMargins = True
@@ -2966,8 +3069,9 @@ object frm_Config: Tfrm_Config
             Style.BorderStyle = ebsNone
             TabOrder = 0
             ExplicitTop = -4
+            ExplicitWidth = 1270
             Height = 31
-            Width = 1175
+            Width = 1260
             object lbl_design: TcxLabel
               AlignWithMargins = True
               Left = 10
@@ -2989,9 +3093,9 @@ object frm_Config: Tfrm_Config
               Top = 5
               Margins.Left = 8
               Margins.Top = 2
-              Margins.Right = 8
+              Margins.Right = 5
               Margins.Bottom = 2
-              Align = alLeft
+              Align = alClient
               Properties.DropDownRows = 20
               Properties.Items.Strings = (
                 'Basic'
@@ -3054,14 +3158,17 @@ object frm_Config: Tfrm_Config
               Properties.OnChange = cbx_DesignPropertiesChange
               Style.BorderStyle = ebsFlat
               TabOrder = 0
-              Width = 617
+              ExplicitLeft = 126
+              ExplicitTop = 4
+              ExplicitWidth = 1139
+              Width = 1125
             end
           end
         end
         object dckctrl_Design: TdxBarDockControl
           Left = 0
           Top = 0
-          Width = 1181
+          Width = 1266
           Height = 63
           Align = dalTop
           BarManager = brmgr_Config
@@ -3587,7 +3694,7 @@ object frm_Config: Tfrm_Config
       WholeRow = False
     end
     object btn_CalConfigNew: TdxBarLargeButton
-      Caption = 'Kalender a&nlegen'
+      Caption = 'Kalender anlegen'
       Category = 0
       Hint = 'Kalender anlegen'
       Visible = ivAlways
@@ -3597,7 +3704,7 @@ object frm_Config: Tfrm_Config
       Width = 125
     end
     object btn_CalConfigSave: TdxBarLargeButton
-      Caption = 'Kalender &speichern'
+      Caption = 'Kalender speichern'
       Category = 0
       Hint = 'Kalender speichern'
       Visible = ivAlways
@@ -3607,7 +3714,7 @@ object frm_Config: Tfrm_Config
       Width = 125
     end
     object btn_CalConfigCancel: TdxBarLargeButton
-      Caption = '&Abbrechen'
+      Caption = 'Abbrechen'
       Category = 0
       Hint = 'Abbrechen'
       Visible = ivAlways
@@ -3617,7 +3724,7 @@ object frm_Config: Tfrm_Config
       Width = 125
     end
     object btn_CalConfigDelete: TdxBarLargeButton
-      Caption = 'Kalender &l'#246'schen'
+      Caption = 'Kalender l'#246'schen'
       Category = 0
       Hint = 'Kalender l'#246'schen'
       Visible = ivAlways
@@ -3707,7 +3814,7 @@ object frm_Config: Tfrm_Config
       Width = 125
     end
     object btn_FachUCancel: TdxBarLargeButton
-      Caption = '&Abbrechen'
+      Caption = 'Abbrechen'
       Category = 0
       Hint = 'Abbrechen'
       Visible = ivAlways
@@ -3717,7 +3824,7 @@ object frm_Config: Tfrm_Config
       Width = 125
     end
     object btn_FachNew: TdxBarLargeButton
-      Caption = 'Schulfach a&nlegen'
+      Caption = 'Schulfach anlegen'
       Category = 0
       Hint = 'Schulfach anlegen'
       Visible = ivAlways
@@ -3727,7 +3834,7 @@ object frm_Config: Tfrm_Config
       Width = 125
     end
     object btn_FachDelete: TdxBarLargeButton
-      Caption = 'Schulfach &l'#246'schen'
+      Caption = 'Schulfach l'#246'schen'
       Category = 0
       Hint = 'Schulfach l'#246'schen'
       Visible = ivAlways
@@ -3737,7 +3844,7 @@ object frm_Config: Tfrm_Config
       Width = 125
     end
     object btn_FachCancel: TdxBarLargeButton
-      Caption = '&Abbrechen'
+      Caption = 'Abbrechen'
       Category = 0
       Hint = 'Abbrechen'
       Visible = ivAlways
@@ -3747,7 +3854,7 @@ object frm_Config: Tfrm_Config
       Width = 125
     end
     object btn_FachSave: TdxBarLargeButton
-      Caption = 'Schulfach &speichern'
+      Caption = 'Schulfach speichern'
       Category = 0
       Hint = 'Schulfach speichern'
       Visible = ivAlways
@@ -3757,7 +3864,7 @@ object frm_Config: Tfrm_Config
       Width = 125
     end
     object btn_DesignSave: TdxBarLargeButton
-      Caption = '&Speichern'
+      Caption = 'Speichern'
       Category = 0
       Hint = 'Speichern'
       Visible = ivAlways
@@ -3767,7 +3874,7 @@ object frm_Config: Tfrm_Config
       Width = 125
     end
     object btn_EmailConfigDelete: TdxBarLargeButton
-      Caption = 'E-Mail &l'#246'schen'
+      Caption = 'E-Mail l'#246'schen'
       Category = 0
       Hint = 'E-Mail l'#246'schen'
       Visible = ivAlways
@@ -3777,7 +3884,7 @@ object frm_Config: Tfrm_Config
       Width = 125
     end
     object btn_EmailConfigCancel: TdxBarLargeButton
-      Caption = '&Abbrechen'
+      Caption = 'Abbrechen'
       Category = 0
       Hint = 'Abbrechen'
       Visible = ivAlways
@@ -3787,7 +3894,7 @@ object frm_Config: Tfrm_Config
       Width = 125
     end
     object btn_EmailConfigSave: TdxBarLargeButton
-      Caption = 'E-Mail &speichern'
+      Caption = 'E-Mail speichern'
       Category = 0
       Hint = 'E-Mail speichern'
       Visible = ivAlways
@@ -3797,7 +3904,7 @@ object frm_Config: Tfrm_Config
       Width = 125
     end
     object btn_EmailConfigNew: TdxBarLargeButton
-      Caption = 'E-Mail a&nlegen'
+      Caption = 'E-Mail anlegen'
       Category = 0
       Hint = 'E-Mail anlegen'
       Visible = ivAlways

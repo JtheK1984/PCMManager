@@ -3,63 +3,10 @@
 interface
 
 uses
-  SYSTEM.uitypes,Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxStyles, cxClasses, System.ImageList,
-  Vcl.ImgList, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
-  cxNavigator, dxDateRanges, dxScrollbarAnnotations, Data.DB, cxDBData,
-  cxDBLookupComboBox, cxCheckBox, cxContainer, dxBarBuiltInMenu, cxDropDownEdit,
-  cxCalendar, cxDBEdit, Vcl.Buttons, cxPC, cxLookupEdit,
-  cxDBLookupEdit, cxTextEdit, cxMaskEdit, cxSpinEdit, cxTimeEdit, cxGridLevel,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridCustomView,
-  cxGrid, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.ToolWin, Vcl.ExtCtrls, dxNavBarCollns,
-  dxNavBarBase, dxNavBar, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
-  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
-  FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
-  FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  Vcl.Menus, cxScheduler, cxSchedulerStorage, cxSchedulerCustomControls,
-  cxSchedulerCustomResourceView, cxSchedulerDayView, cxSchedulerAgendaView,
-  cxSchedulerDateNavigator, cxSchedulerHolidays, cxSchedulerTimeGridView,
-  cxSchedulerUtils, cxSchedulerWeekView, cxSchedulerYearView,
-  cxSchedulerGanttView, cxSchedulerRecurrence,
-  cxSchedulerRibbonStyleEventEditor, cxSchedulerTreeListBrowser, cxSplitter,
-  cxProgressBar, cxButtons, dxGDIPlusClasses, cxCurrencyEdit, Vcl.DBCtrls,
-  cxImage, cxColorComboBox, cxDBColorComboBox,
-  Vcl.Mask,
-  dxNavBarStyles, cxSchedulerDBStorage, cxLocalization,
-  cxExtEditRepositoryItems, IdIOHandler, IdIOHandlerSocket,
-  IdIOHandlerStack, IdSSL, IdSSLOpenSSL, IdBaseComponent, IdComponent,
-  IdTCPConnection, IdTCPClient, IdHTTP, Strutils, DateUtils,shellapi,
-  IdExplicitTLSClientServerBase, IdFTP, dxScreenTip, dxCustomHint, cxHint,
-  cxImageComboBox, cxGridCustomPopupMenu, cxGridPopupMenu, dxPSGlbl, dxPSUtl,
-  dxPSEngn, dxPrnPg, dxBkgnd, dxWrap, dxPrnDev, dxPSCompsProvider,
-  dxPSFillPatterns, dxPSEdgePatterns, dxPSPDFExportCore, dxPSPDFExport,
-  cxDrawTextUtils, dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon,
-  dxPScxPageControlProducer, dxPScxSchedulerLnk, dxPScxGridLnk,
-  dxPScxGridLayoutViewLnk, dxPScxEditorProducers, dxPScxExtEditorProducers,
-  dxPScxCommon, dxPSCore,IdIMAP4,IDpop3,idsmtp,IdMessage, IdMessageClient, idAttachment,IdText,NetEncoding,inifiles,
-  dxmdaset,cxSchedulerICalendar,cxdateutils, VCL.imaging.jpeg,VCL.imaging.pngimage,cxGroupBox,
-  dxSkinsCore, dxSkinMetropolisDark, cxMemo, cxListView, dxSkinBasic,
-  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
-  dxSkinDarkroom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
-  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
-  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
-  dxSkinMcSkin, dxSkinMetropolis, dxSkinMoneyTwins, dxSkinOffice2007Black,
-  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
-  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
-  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
-  dxSkinOffice2019Black, dxSkinOffice2019Colorful, dxSkinOffice2019DarkGray,
-  dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
-  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringtime, dxSkinStardust,
-  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
-  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
-  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue,  Vcl.Themes, cxLabel, dxBar, dxRibbon,
-  dxRibbonMiniToolbar, dxStatusBar, cxRadioGroup, cxImageList, dxCore,
-  dxSkinsForm,
-  FireDAC.Phys.ADSDef, FireDAC.Phys.MSSQLDef,
+  SYSTEM.uitypes, Winapi.Windows, Winapi.Messages, System.SysUtils,
+  System.Variants, System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+  Vcl.ImgList, Vcl.Menus, NTTranslator, Strutils, DateUtils,shellapi, Vcl.Themes,
+  FireDAC.Phys.ADSDef, FireDAC.Phys.MSSQLDef, FireDAC.Stan.Param,
   FireDAC.Phys.ODBCBase, FireDAC.Phys.MSSQL, FireDAC.Phys.ADS,
   VclTee.TeeGDIPlus, VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs,
   VCLTee.Chart, VCLTee.DBChart, cxGeometry, cxVariants, dxCustomData,
@@ -68,16 +15,58 @@ uses
   dxChartXYSeriesAreaView, dxChartMarkers, dxChartXYSeriesBarView,
   dxChartDBData, dxCoreClasses, dxChartControl, VCLTee.TeeDBCrossTab,
   cxGridChartView, cxPivotGridChartConnection, cxCustomPivotGrid, cxDBPivotGrid,
-  PCM.Functions,
-  PCM.Functions.ChangePW,
-  PCM.Functions.Appinfo,
-  PCM.Benutzerverwaltung,
-  PCMManager.Modul.B_Config,
-  PCMManager.Modul.C_Contacts,
-  PCMManager.Modul.D_Calendar,
-  PCMManager.Modul.E_Mail,
-  PCMManager.Modul.F_Passwort,
-  PCMManager.Modul.G_Finanzen, dxSkinWXI;
+  dxSkinWXI, dxBarExtItems, cxBarEditItem,
+  cxSplitter, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxEdit, cxClasses, System.ImageList, cxContainer, dxBarBuiltInMenu,
+  Vcl.ExtCtrls, cxPC, dxNavBarCollns, dxNavBarBase, dxNavBar, dxSkinsCore,
+  dxSkinBasic, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinOffice2019Black, dxSkinOffice2019Colorful,
+  dxSkinOffice2019DarkGray, dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven,
+  dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
+  dxSkinSpringtime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
+  dxSkinTheBezier, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, dxBar, cxLocalization, cxLabel, cxGroupBox, dxNavBarStyles,inifiles;
+
+type
+  TdxBarControlAccess = class(TdxBarControl);
+  TdxBarAccess = class(TdxBar);
+  TdxBarManagerAccess = class(TdxBarManager);
+
+type
+  TMethod = procedure of object;
+  TModuleType = (mtForm, mtEvent);
+  TModule = class(TCollectionItem)
+  protected
+    FFormClass: TFormClass;
+    FInstance: Pointer;
+    FEvent: TMethod;
+    FType: TModuleType;
+    FRight: Integer;
+    FModuleName: String;
+    FImageIndex: Integer;
+
+    procedure SetFormClass(Value: TFormClass);
+    procedure SetEvent(Value: TMethod);
+  public
+    property FormClass: TFormClass read FFormClass write SetFormClass;
+    property Instance: Pointer read FInstance write FInstance;
+    property Event: TMethod read FEvent write SetEvent;
+    property Typ: TModuleType read FType;
+    property Right: Integer read FRight write FRight;
+    property ModuleName: String read FModuleName write FModuleName;
+    property ImageIndex: Integer read FImageIndex write FImageIndex;
+  end;
+
 type
   TIC_Options = record
     StundenProArbeitstag: Double;
@@ -85,11 +74,6 @@ type
     AdressSelf, AdressGes: integer;
     EVENTS,TODO:String;
   end;
-
-type
-  TcxSchedulerAccess = class (TcxScheduler);
-  TcxSchedulerClipboardControllerAccess = class (TcxSchedulerClipboardController);
-  TcxPageControlPropertiesAccess = class(TcxPageControlProperties);
 
 type
   Tfrm_PCM_Main = class(TForm)
@@ -104,28 +88,28 @@ type
     navbrgrp_Finanzen: TdxNavBarGroup;
     navbrgrp_Info: TdxNavBarGroup;
     navbrgrp_Programm: TdxNavBarGroup;
-    navbrit_Kontakte: TdxNavBarItem;
-    navbrit_Passwort: TdxNavBarItem;
-    navbrit_Systeminfo: TdxNavBarItem;
-    navbrit_Beenden: TdxNavBarItem;
-    navbrit_Monatsuebersicht: TdxNavBarItem;
-    navbrit_Ausgaben: TdxNavBarItem;
-    navbrit_Einnahmen: TdxNavBarItem;
-    navbrit_Serials: TdxNavBarItem;
-    navbrit_Benutzer: TdxNavBarItem;
-    navbrit_Konfiguration: TdxNavBarItem;
-    navbrit_Programminfo: TdxNavBarItem;
+    iKontakte: TdxNavBarItem;
+    iPasswoerter: TdxNavBarItem;
+    iSysteminfo: TdxNavBarItem;
+    iBeenden: TdxNavBarItem;
+    iMonatsuebersicht: TdxNavBarItem;
+    iAusgaben: TdxNavBarItem;
+    iEinnahmen: TdxNavBarItem;
+    iSerials: TdxNavBarItem;
+    iBenutzerverwaltung: TdxNavBarItem;
+    iKonfiguration: TdxNavBarItem;
+    iInfo: TdxNavBarItem;
     navbrit_Verfuegung: TdxNavBarItem;
-    navbrit_Kalender: TdxNavBarItem;
-    navbrit_Stundenplan: TdxNavBarItem;
-    navbrit_EMail: TdxNavBarItem;
-    navbrit_Abmelden: TdxNavBarItem;
+    iKalender: TdxNavBarItem;
+    iStundenplan: TdxNavBarItem;
+    iEMails: TdxNavBarItem;
+    iAbmelden: TdxNavBarItem;
     navbrit_ChangePW: TdxNavBarItem;
     navbrStyleIt_main: TdxNavBarStyleItem;
     pcmain: TcxPageControl;
     navbrit_Belege: TdxNavBarItem;
     navbrit_Gutscheine: TdxNavBarItem;
-    navbrit_Aufgaben: TdxNavBarItem;
+    iAufgaben: TdxNavBarItem;
     td_Dashboard: TcxTabSheet;
     pnl_chartBottom: TcxGroupBox;
     chartctrl_Finance: TdxChartControl;
@@ -276,36 +260,34 @@ type
     ppmbtn_Ausgaben: TMenuItem;
     ppmbtn_Trenn5: TMenuItem;
     ppmbtn_Systeminfo: TMenuItem;
-    ppmbtn_Programminfo: TMenuItem;
+    ppmbtn_Info: TMenuItem;
     ppmbtn_Beenden: TMenuItem;
     ppmbtn_Trenn6: TMenuItem;
+    iHandbuch: TdxNavBarItem;
+    ppmbtn_Handbuch: TMenuItem;
+    iSprache: TdxNavBarItem;
+    ppmbtn_Sprache: TMenuItem;
+    ppmbtn_Abmelden: TMenuItem;
+    dxBarManager1: TdxBarManager;
+    dxBarManager1Bar1: TdxBar;
+    barOpenModule: TdxBarStatic;
+    btnModulleiste: TdxBarLargeButton;
+    btnRefreshRights: TdxBarLargeButton;
+    btnCloseModul: TdxBarLargeButton;
+    barUser: TdxBarStatic;
+    dxBarButton1: TdxBarButton;
+    Menuezurueck: TdxBarButton;
+    dxBarGroup1: TdxBarGroup;
+    ppmbtn_Design: TMenuItem;
+    iDesign: TdxNavBarItem;
     procedure FormShow(Sender: TObject);
-    procedure navbrit_BenutzerClick(Sender: TObject);
-    procedure navbrit_KonfigurationClick(Sender: TObject);
-    procedure navbrit_KontakteClick(Sender: TObject);
-    procedure navbrit_KalenderClick(Sender: TObject);
-    procedure navbrit_StundenplanClick(Sender: TObject);
-    procedure navbrit_EMailClick(Sender: TObject);
-    procedure navbrit_PasswortClick(Sender: TObject);
-    procedure navbrit_SerialsClick(Sender: TObject);
-    procedure navbrit_MonatsuebersichtClick(Sender: TObject);
-    procedure navbrit_EinnahmenClick(Sender: TObject);
-    procedure navbrit_AusgabenClick(Sender: TObject);
-    procedure navbrit_VerfuegungClick(Sender: TObject);
-    procedure navbrit_ProgramminfoClick(Sender: TObject);
-    procedure navbrit_SysteminfoClick(Sender: TObject);
-    procedure navbrit_ChangePWClick(Sender: TObject);
-    procedure navbrit_AbmeldenClick(Sender: TObject);
-    procedure Abmelden;
-    procedure navbrit_BeendenClick(Sender: TObject);
-    procedure InitializeRights;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure pcmainCanCloseEx(Sender: TObject; ATabIndex: Integer; var ACanClose: Boolean);
-    procedure navbrit_AufgabenClick(Sender: TObject);
     procedure FormResize(Sender: TObject);
-    procedure pnl_CalToDOtopDblClick(Sender: TObject);
-    procedure pnl_CalToDOMiddleClick(Sender: TObject);
-    procedure pnl_CalToDORightDblClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure FormHide(Sender: TObject);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormCreate(Sender: TObject);
     procedure ppmbtn_BenutzerClick(Sender: TObject);
     procedure ppmbtn_KonfigurationClick(Sender: TObject);
     procedure ppmbtn_ContactsClick(Sender: TObject);
@@ -319,30 +301,36 @@ type
     procedure ppmbtn_EinnahmenClick(Sender: TObject);
     procedure ppmbtn_AusgabenClick(Sender: TObject);
     procedure ppmbtn_SysteminfoClick(Sender: TObject);
-    procedure ppmbtn_ProgramminfoClick(Sender: TObject);
-    procedure Abmelden1Click(Sender: TObject);
+    procedure ppmbtn_InfoClick(Sender: TObject);
+    procedure ppmbtn_AbmeldenClick(Sender: TObject);
     procedure ppmbtn_BeendenClick(Sender: TObject);
+    procedure ppmbtn_HandbuchClick(Sender: TObject);
+    procedure ppmbtn_SpracheClick(Sender: TObject);
+    procedure NavBarClick(Sender: TObject);
+    procedure pcmainPageChanging(Sender: TObject; NewPage: TcxTabSheet; var AllowChange: Boolean);
+    procedure btnModulleisteClick(Sender: TObject);
+    procedure btnRefreshRightsClick(Sender: TObject);
+    procedure btnCloseModulClick(Sender: TObject);
+    procedure iSpracheClick(Sender: TObject);
+    procedure btnCloseAllGroupsClick(Sender: TObject);
+    procedure ppmbtn_DesignClick(Sender: TObject);
   private
     { Private-Deklarationen }
-    FfrmModulBenutzer: array of Tfrm_User;
-    FfrmModulConfig: array of Tfrm_config;
-    FfrmModulContact: array of Tfrm_contact;
-    FfrmModulCalendar: array of Tfrm_Calendar;
-    FfrmModulMail: array of Tfrm_Mail;
-    FfrmModulPWD: array of Tfrm_password;
-    FfrmModulFinanz: array of Tfrm_finanzen;
-    FfrmModulSysinfo: array of Tfrm_PCM_System;
-    FfrmModulAppinfo: array of Tfrm_PCM_InfoApp;
-    FfrmModulChangePW: array of TfrM_PCM_ChangePW;
+    Modules: TCollection;
+    procedure RegisterForm(SideBarItemName: string; FormClass: TFormClass; Instance: Pointer; Right: Integer);
+    procedure RegisterEvent(SideBarItemName: string; Event: TMethod);
+    procedure BarResize;
+    procedure RegisterNavBarItems;
+    procedure CloseModules;
+    procedure Handbuch;
+    function CurrentModule: TForm;
     procedure LoadSQLs;
-    procedure AddTabsheet(APageControl: TcxPAgeCOntrol; ACaption: string;ATag: Integer);
-    function CheckTabExist(sTabName: String) : integer;
+    procedure Abmelden;
+    procedure InitializeRights;
   public
     { Public-Deklarationen }
     FOptions: TIC_Options;
-    bStyle: boolean;
     bAbmelden: Boolean;
-    procedure CloseTab(APage: integer);
   end;
 
 var
@@ -352,70 +340,213 @@ implementation
 
 {$R *.dfm}
 
-uses  PCM.Functions.Login,
-      PCM.Data;
+uses  PCM.Benutzerverwaltung,
+      PCM.Data,
+      PCM.Design,
+      PCM.Functions,
+      PCM.Functions.Appinfo,
+      PCM.Functions.ChangePW,
+      PCM.Functions.Languages,
+      PCM.Functions.Login,
+      PCM.Handbuch,
+      PCM.Helper,
+			PCM.Strings,
+      PCM.SQL,
+      PCMManager.Modul.B_Config,
+      PCMManager.Modul.C_Contacts,
+      PCMManager.Modul.D_Calendar,
+      PCMManager.Modul.E_Mail,
+      PCMManager.Modul.F_Passwort,
+      PCMManager.Modul.G_Finanzen;
+
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
+procedure TModule.SetFormClass(Value: TFormClass);
+begin
+  if Value <> FFormClass then
+  begin
+    FFormClass := Value;
+    FType := mtForm;
+  end;
+end;
+procedure TModule.SetEvent(Value: TMethod);
+begin
+  if @Value <> @FEvent then
+  begin
+    FEvent := Value;
+    FType := mtEvent;
+  end;
+end;
+procedure Tfrm_PCM_Main.btnModulleisteClick(Sender: TObject);
+begin
+  navbr_main.Visible := not navbr_main.Visible;
+  if navbr_main.Visible then
+    btnModulleiste.Caption := rs_PCM_Modulliste_verstecken
+  else
+    btnModulleiste.Caption := rs_PCM_Modulliste_anzeigen;
+end;
+procedure Tfrm_PCM_Main.BarResize;
+var
+  rRect: TRect;
+  iTemp, iUsedSpace: Integer;
+  BarControl: TdxBarControlAccess;
+begin
+  if (dxBarManager1.Bars[0] <> nil) and (dxBarManager1.Bars[0].Control <> nil) then
+  begin
+    BarControl := TdxBarControlAccess(dxBarManager1.Bars[0].Control);
 
+    iUsedSpace := 0;
 
-function Tfrm_PCM_Main.CheckTabExist(sTabName: String) : integer;
+    barOpenModule.Width := 0;
+
+    for iTemp := 0 to BarControl.Bar.ItemLinks.Count - 1 do
+    begin
+      if BarControl.Bar.ItemLinks.Items[iTemp].Item = btnModulleiste then
+      begin
+        Inc(iUsedSpace, 0);
+      end
+      else
+      begin
+        if BarControl.Bar.ItemLinks.Items[iTemp].Item <> barOpenModule then
+        begin
+          Inc(iUsedSpace, BarControl.Bar.ItemLinks.Items[iTemp].ItemRect.Width);
+        end;
+      end;
+    end;
+
+    if BarControl.MarkExists then
+    begin
+      rRect := BarControl.MarkRect;
+      Inc(iUsedSpace, rRect.Right - rRect.Left);
+    end;
+     dxBarManager1.BeginUpdate;
+    Try
+      barOpenModule.Width := (dxBarManager1.Bars[0].Control as TdxBarControl).Width -  iUsedSpace - btnModulleiste.Width  - 45;
+    Finally
+      dxBarManager1.EndUpdate();
+    End;
+  end;
+end;
+procedure Tfrm_PCM_Main.RegisterForm(SideBarItemName: string; FormClass: TFormClass; Instance: Pointer; Right: Integer);
+var
+  NewModule: TModule;
+  Item: TdxNavBarItem;
+begin
+  Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(SideBarItemName).index];
+  if Assigned(Item) then
+  begin
+    NewModule := TModule(Modules.Add);
+    Item.Tag := NewModule.ID;
+    NewModule.FormClass := FormClass;
+    NewModule.Instance := Instance;
+    NewModule.Right := Right;
+    NewModule.ModuleName := SideBarItemName;
+    NewModule.ImageIndex := Item.SmallImageIndex;
+  end;
+end;
+procedure Tfrm_PCM_Main.RegisterNavBarItems;
+begin
+  Modules.Clear;
+  RegisterForm('iBenutzerverwaltung', Tfrm_User, @frm_User, 1);
+  RegisterForm('iKonfiguration', Tfrm_config, @frm_config, 1);
+  RegisterForm('iKontakte',Tfrm_Contact, @frm_Contact, 1);
+  RegisterForm('iKalender',Tfrm_Calendar, @frm_Calendar, 1);
+  RegisterForm('iAufgaben',Tfrm_Calendar, @frm_Calendar, 1);
+  RegisterForm('iStundenplan',Tfrm_Calendar, @frm_Calendar, 1);
+  RegisterForm('iEMails',Tfrm_mail, @frm_mail, 1);
+  RegisterForm('iPasswoerter',Tfrm_password, @frm_password, 1);
+  RegisterForm('iSerials',Tfrm_password, @frm_password, 1);
+  RegisterForm('iMonatsuebersicht',Tfrm_finanzen, @frm_finanzen, 1);
+  RegisterForm('iEinnahmen',Tfrm_finanzen, @frm_finanzen, 1);
+  RegisterForm('iAusgaben',Tfrm_finanzen, @frm_finanzen, 1);
+  RegisterForm('iSysteminfo',Tfrm_PCM_System, @frm_PCM_System, 1);
+  RegisterForm('iInfo',Tfrm_PCM_InfoApp, @frm_PCM_InfoApp, 1);
+  RegisterForm('iHandbuch',Tfrm_Handbuch, @frm_Handbuch, 1);
+  RegisterEvent('iAbmelden', Abmelden);
+  RegisterEvent('iBeenden', Close);
+end;
+procedure Tfrm_PCM_Main.RegisterEvent(SideBarItemName: string; Event: TMethod);
+var
+  NewModule: TModule;
+  Item: TdxNavBarItem;
+begin
+  Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(SideBarItemName).index];
+  if Assigned(Item) then
+  begin
+    NewModule := TModule(Modules.Add);
+    Item.Tag := NewModule.ID;
+    NewModule.Event := Event;
+    NewModule.ModuleName := SideBarItemName;
+  end
+end;
+procedure Tfrm_PCM_Main.CloseModules;
+var
+  iPage: Integer;
+begin
+  for iPage := pcMain.PageCount - 1 downto 1 do
+  begin
+    try
+      TForm(pcMain.Pages[iPage].Controls[0]).Close;
+      TForm(pcMain.Pages[iPage].Controls[0]).Free;
+    except
+    end;
+    pcMain.Pages[iPage].Free;
+  end;
+end;
+procedure Tfrm_PCM_Main.pcmainPageChanging(Sender: TObject; NewPage: TcxTabSheet; var AllowChange: Boolean);
+begin
+  barOpenModule.Caption := NewPage.Caption;
+end;
+procedure Tfrm_PCM_Main.btnRefreshRightsClick(Sender: TObject);
+var
+  Item: TdxNavBarItem;
+  Module: TModule;
+begin
+  btnRefreshRights.Enabled := False;
+  try
+    if pcMain.PageCount > 1 then
+    begin
+      Module := TModule(Modules.FindItemID(pcMain.ActivePage.Tag));
+      if Module.Typ = mtForm then
+      begin
+        Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(Module.ModuleName).index];
+        TForm(pcMain.ActivePage.Controls[0]).Close;
+        TForm(pcMain.ActivePage.Controls[0]).Free;
+        pcMain.ActivePage.Free;
+        NavBarClick(Item);
+      end;
+    end;
+  finally
+    btnRefreshRights.Enabled := True;
+  end;
+end;
+procedure Tfrm_PCM_Main.btnCloseAllGroupsClick(Sender: TObject);
 var
   iCount: Integer;
 begin
-  Result := -1;
-  for iCount := 0 to pcMain.PageCount -1 do
+  for iCount := 1 to navbr_main.Groups.Count -1 do
   begin
-    if pcMain.Pages[iCount].Name = sTabName then
-    begin
-      Result := iCount;
-      Break;
-    end;
+    navbr_main.Groups[iCount].Expanded := False;
   end;
 end;
-procedure Tfrm_PCM_Main.CloseTab(APage: integer);
+procedure Tfrm_PCM_Main.btnCloseModulClick(Sender: TObject);
 begin
-  frm_PCM_ChangePW.Free;
-  TcxPageControlPropertiesAccess(pcmain.Properties).DoCloseTab(APage);
+  if pcMain.PageCount > 1 then
+  begin
+    TForm(pcMain.ActivePage.Controls[0]).Close;
+    TForm(pcMain.ActivePage.Controls[0]).Free;
+    pcMain.ActivePage.Free;
+  end;
 end;
-procedure Tfrm_PCM_Main.ppmbtn_EmailClick(Sender: TObject);
-begin
-  navbrit_EMailClick(Self);
-  WindowState:= TWindowState.wsMaximized;
-  SetForegroundWindow(frm_PCM_main.Handle);
-end;
-
-procedure Tfrm_PCM_Main.ppmbtn_PasswoerterClick(Sender: TObject);
-begin
-  navbrit_PasswortClick(Self);
-  WindowState:= TWindowState.wsMaximized;
-  SetForegroundWindow(frm_PCM_main.Handle);
-end;
-
-procedure Tfrm_PCM_Main.ppmbtn_EinnahmenClick(Sender: TObject);
-begin
-  navbrit_EinnahmenClick(Self);
-  WindowState:= TWindowState.wsMaximized;
-  SetForegroundWindow(frm_PCM_main.Handle);
-end;
-
-procedure Tfrm_PCM_Main.ppmbtn_AusgabenClick(Sender: TObject);
-begin
-  navbrit_AusgabenClick(Self);
-  WindowState:= TWindowState.wsMaximized;
-  SetForegroundWindow(frm_PCM_main.Handle);
-end;
-
 procedure Tfrm_PCM_Main.InitializeRights;
 begin
-  dm_PCM.qry_Work.SQL.Text:=  'SELECT mr.Benutzer,mr.Konfiguration,mr.ma_Kontakte as Kontakte,mr.ma_Kalender as Kalender,mr.ma_Stundenplan as Stundenplan,'+
-                              'mr.ma_Email as Email,mr.ma_Password as Password,mr.ma_Serials as Serials,mr.ma_Monatsuebersicht as Monatsuebersicht,'+
-                              'mr.ma_Verfuegung as Verfuegung,mr.ma_Einnahmen as Einnahmen,mr.ma_Ausgaben as Ausgaben '+
-                              'FROM benutzer mb LEFT OUTER JOIN rechte mr ON mr.ID = mb.ID_rechte WHERE mb.id = :ID';
+  dm_PCM.qry_Work.SQL.Text:=  ASSQL_GetAllRights[dm_PCM.iDBType];
   dm_PCM.qry_Work.ParamByName('ID').AsInteger := dm_PCM.iIDBenutzerPCM;
   dm_PCM.qry_Work.Open;
-  dm_PCM.int_optionenrecht:= dm_PCM.qry_Work.FieldByName('Benutzer').asInteger;
+  dm_PCM.iBenutzer:= dm_PCM.qry_Work.FieldByName('Benutzer').asInteger;
   dm_PCM.iKonfiguration:= dm_PCM.qry_Work.FieldByName('Konfiguration').asInteger;
+  dm_PCM.iDesign:= dm_PCM.qry_Work.FieldByName('Design').asInteger;
   dm_PCM.iKontakte:= dm_PCM.qry_Work.FieldByName('Kontakte').asInteger;
   dm_PCM.iKalender:= dm_PCM.qry_Work.FieldByName('Kalender').asInteger;
   dm_PCM.iStundenplan:= dm_PCM.qry_Work.FieldByName('Stundenplan').asInteger;
@@ -429,278 +560,126 @@ begin
   dm_PCM.qry_Work.Close;
 
   // Benutzerverwaltung / Kein Recht
-  if (dm_PCM.int_optionenrecht = 0) and (dm_PCM.iKonfiguration = 0) then
+  if (dm_PCM.iBenutzer = 0) and (dm_PCM.iKonfiguration = 0) and (dm_PCM.iDesign = 0) then
   begin
-    navbrgrp_Optionen.Visible:= false
+    navbrgrp_Optionen.Visible:= false;
+    iBenutzerverwaltung.Visible:= false;
+    iKonfiguration.Visible:= false;
   end;
 
-  if (dm_PCM.int_optionenrecht = 0) then
-  begin
-    navbrit_Benutzer.Visible:= false
-  end;
-  // Benutzerverwaltung / Lesen
-  if dm_PCM.int_optionenrecht = 1 then
-  begin
-    navbrgrp_Optionen.Visible:= true;
-    navbrit_Benutzer.Visible:= true;
-  end;
-  // Benutzerverwaltung / Ändern
-  if dm_PCM.int_optionenrecht = 2 then
-  begin
-    navbrgrp_Optionen.Visible:= true;
-    navbrit_Benutzer.Visible:= true;
-  end;
-  // Benutzerverwaltung / Vollzugriff
-  if dm_PCM.int_optionenrecht = 3 then
-  begin
-    navbrgrp_Optionen.Visible:= true;
-    navbrit_Benutzer.Visible:= true;
+  // Benutzerverwaltung / Lesen / Ändern / Vollzugriff
+  case dm_PCM.iBenutzer of
+  0: iBenutzerverwaltung.Visible:= false;
+  1,2,3:
+    begin
+      navbrgrp_Optionen.Visible:= true;
+      iBenutzerverwaltung.Visible:= true;
+    end;
   end;
 
-  // Optionen / Kein Recht
-  if dm_PCM.iKonfiguration = 0 then
-  begin
-    navbrit_Konfiguration.Visible:= false;
-  end;
-  // Optionen / Lesen
-  if dm_PCM.iKonfiguration = 1 then
-  begin
-    navbrit_Konfiguration.Visible:= true;
-  end;
-  // Optionen / Ändern
-  if dm_PCM.iKonfiguration = 2 then
-  begin
-    navbrit_Konfiguration.Visible:= true;
-  end;
-  // Optionen / Vollzugriff
-  if dm_PCM.iKonfiguration = 3 then
-  begin
-    navbrit_Konfiguration.Visible:= true;
+  // Optionen / Lesen / Ändern / Vollzugriff
+  case dm_PCM.iKonfiguration of
+  0: iKonfiguration.Visible:= false;
+  1,2,3:
+    begin
+      navbrgrp_Optionen.Visible:= true;
+      iKonfiguration.Visible:= true;
+    end;
   end;
 
   // Kontakte / Kein Recht
-  if dm_PCM.iKontakte = 0 then
-  begin
-    navbrgrp_Kontake.Visible:= false;
-  end;
-  // Kontakte / Lesen
-  if dm_PCM.iKontakte = 1 then
-  begin
-    navbrgrp_Kontake.Visible:= true;
-  end;
-    // Kontakte / Ändern
-  if dm_PCM.iKontakte = 2 then
-  begin
-  end;
-  // Kontakte / Vollzugriff
-  if dm_PCM.iKontakte = 3 then
-  begin
-    navbrgrp_Kontake.Visible:= true;
+  case dm_PCM.iKontakte of
+  0: navbrgrp_Kontake.Visible:= false;
+  // Kontakte / Lesen / Ändern / Vollzugriff
+  1,2,3: navbrgrp_Kontake.Visible:= true;
   end;
 
   // Kalender / Stundenplan / Mail
   if (dm_PCM.iKalender = 0) and (dm_PCM.iStundenplan = 0) and (dm_PCM.iEmail = 0) then
   begin
     navbrgrp_Kalender.Visible:= false;
+    iKalender.Visible:= false;
+    iAufgaben.Visible:= false;
+    iStundenplan.Visible:= false;
   end;
-
-
   // Kalender / Kein Recht
-  if dm_PCM.iKalender = 0 then
-  begin
-    navbrit_Kalender.Visible:= false;
+  case dm_PCM.iKalender of
+  0: iKalender.Visible:= false;
+  // Kalender / Lesen / Schreiben / Vollzugriff
+  1,2,3:
+    begin
+      navbrgrp_Kalender.Visible:= true;
+      iKalender.Visible:= true;
+    end;
   end;
-
-  // Kalender / Lesen
-  if dm_PCM.iKalender = 1 then
-  begin
-    navbrgrp_Kalender.Visible:= true;
-    navbrit_Kalender.Visible:= true;
-  end;
-  // Kalender / Schreiben
-  if dm_PCM.iKalender = 2 then
-  begin
-    navbrgrp_Kalender.Visible:= true;
-    navbrit_Kalender.Visible:= true;
-  end;
-  // Kalender / Vollzugriff
-  if dm_PCM.iKalender = 3 then
-  begin
-    navbrgrp_Kalender.Visible:= true;
-    navbrit_Kalender.Visible:= true;
-  end;
-
 
   // Stundenplan / Kein Recht
-  if dm_PCM.iStundenplan = 0 then
-  begin
-    navbrit_Stundenplan.Visible:= false;
-  end;
-
-  // Stundenplan / Lesen
-  if dm_PCM.iStundenplan = 1 then
-  begin
-    navbrgrp_Kalender.Visible:= true;
-    navbrit_Stundenplan.Visible:= true;
-  end;
-   // Stundenplan / Schreiben
-  if dm_PCM.iStundenplan = 2 then
-  begin
-    navbrgrp_Kalender.Visible:= true;
-    navbrit_Stundenplan.Visible:= true;
-  end;
-  // Stundenplan / Vollzugriff
-  if dm_PCM.iStundenplan = 3 then
-  begin
-    navbrgrp_Kalender.Visible:= true;
-    navbrit_Stundenplan.Visible:= true;
+  case dm_PCM.iStundenplan of
+  0: iStundenplan.Visible:= false;
+  // Stundenplan / Lesen / Schreiben / Vollzugriff
+  1,2,3:
+    begin
+      navbrgrp_Kalender.Visible:= true;
+      iStundenplan.Visible:= true;
+    end;
   end;
 
   // Mails / Kein Recht
-  if dm_PCM.iEmail = 0 then
-  begin
-    navbrit_EMail.Visible:= false;
-  end;
-
-  // Mails / Lesen
-  if dm_PCM.iEmail = 1 then
-  begin
-    navbrgrp_Kalender.Visible:= true;
-    navbrit_EMail.Visible:= true;
-  end;
-
-  // Mails / Schreiben
-  if dm_PCM.iEmail = 2 then
-  begin
-    navbrgrp_Kalender.Visible:= true;
-    navbrit_EMail.Visible:= true;
-  end;
-
-  // Mails / Vollzugriff
-  if dm_PCM.iEmail = 3 then
-  begin
-    navbrgrp_Kalender.Visible:= true;
-    navbrit_EMail.Visible:= true;
+  case dm_PCM.iEmail of
+  0: iEMails.Visible:= false;
+  // Mails / Lesen / Schreiben / Vollzugriff
+  1,2,3:
+    begin
+      navbrgrp_Kalender.Visible:= true;
+      iEMails.Visible:= true;
+    end;
   end;
 
   // Passwörter / Serials
   if (dm_PCM.iPassword = 0) and (dm_PCM.iSerials = 0)  then
   begin
     navbrgrp_Passwort.Visible:= false;
+    iPasswoerter.Visible:= false;
+    iSerials.Visible:= false;
   end;
 
-  // Passwort / kein
-  if dm_PCM.iPassword = 0 then
-  begin
-    navbrit_Passwort.Visible:= false;
+  // Passwort / kein Recht
+  case dm_PCM.iPassword of
+  0: iPasswoerter.Visible:= false;
+  // Passwort / Lesen / Schreiben / Vollzugriff
+  1,2,3:
+    begin
+      iPasswoerter.Visible:= true;
+      navbrgrp_Passwort.Visible:= true;
+    end;
   end;
 
-  // Passwort / Lesen
-  if dm_PCM.iPassword = 1 then
-  begin
-    navbrit_Passwort.Visible:= true;
-    navbrgrp_Passwort.Visible:= true;
+  // Serial / Kein Recht
+  case dm_PCM.iSerials of
+  0: iSerials.Visible:= false;
+  // Serials / Lesen / Schreiben / Vollzugriff
+  1,2,3:
+    begin
+      iSerials.Visible:= true;
+      navbrgrp_Passwort.Visible:= true;
+    end;
   end;
 
-    // Passwort / Schreiben
-  if dm_PCM.iPassword = 2 then
-  begin
-    navbrit_Passwort.Visible:= true;
-    navbrgrp_Passwort.Visible:= true;
-  end;
-
-  // Passwort / Vollzugriff
-  if dm_PCM.iPassword = 3 then
-  begin
-    navbrit_Passwort.Visible:= true;
-    navbrgrp_Passwort.Visible:= true;
-  end;
-
-  // Serial / Kein
-  if dm_PCM.iSerials = 0 then
-  begin
-    navbrit_Serials.Visible:= false;
-  end;
-
-  // Serials / Lesen
-  if dm_PCM.iSerials = 1 then
-  begin
-    navbrit_Serials.Visible:= true;
-    navbrgrp_Passwort.Visible:= true;
-  end;
-
-  // Serials / Schreiben
-  if dm_PCM.iSerials = 2 then
-  begin
-    navbrit_Serials.Visible:= true;
-    navbrgrp_Passwort.Visible:= true;
-  end;
-
-  // Serials / Vollzugriff
-  if dm_PCM.iSerials = 3 then
-  begin
-    navbrit_Serials.Visible:= true;
-    navbrgrp_Passwort.Visible:= true;
-
-  end;
-
-  // FINANZEN / Kein Recht
-  if dm_PCM.iMonatsuebersicht = 0 then
-  begin
-    navbrgrp_Finanzen.Visible:= false;
-  end;
-
-    // FINANZEN / LeEsen
-  if dm_PCM.iMonatsuebersicht = 1 then
-  begin
-    navbrgrp_Finanzen.Visible:= true;
-  end;
-
-  // FINANZEN / Schreiben
-  if dm_PCM.iMonatsuebersicht = 2 then
-  begin
-    navbrgrp_Finanzen.Visible:= true;
-   end;
-  // FINANZEN / Vollzugriff
-  if dm_PCM.iMonatsuebersicht = 2 then
-  begin
-    navbrgrp_Finanzen.Visible:= true;
+  // Finanzen / Kein Recht
+  case dm_PCM.iMonatsuebersicht of
+  0: navbrgrp_Finanzen.Visible:= false;
+  // Finanzen / Lesen / Schreiben / Vollzugriff
+  1,2,3:  navbrgrp_Finanzen.Visible:= true;
   end;
 end;
 procedure Tfrm_PCM_Main.Abmelden;
 begin
   bAbmelden := True;
   dm_PCM.bLogin := false;
-  bStyle:= false;
+  dm_PCM.bStyle:= false;
   Hide;
   Show;
 end;
-
-procedure Tfrm_PCM_Main.Abmelden1Click(Sender: TObject);
-begin
-  navbrit_AbmeldenClick(Self);
-  WindowState:= TWindowState.wsMaximized;
-  SetForegroundWindow(frm_PCM_main.Handle);
-end;
-
-procedure Tfrm_PCM_Main.AddTabsheet(APageControl: TcxPAgeControl; ACaption: string;ATag: Integer);
-var
-  ts_Create: TcxTabSheet;
-begin
-  ts_Create:= TcxTabSheet.Create(APageControl);
-  ts_Create.Caption:= ACaption;
-  ts_Create.Name:= 'tshModul_' + IntToStr(ATag);
-  ts_Create.Tag:= ATag;
-  ts_Create.PageIndex:= ATag;
-  ts_Create.PageControl:= APageControl;
-end;
-procedure Tfrm_PCM_Main.ppmbtn_BeendenClick(Sender: TObject);
-begin
-  navbrit_BeendenClick(Self);
-  WindowState:= TWindowState.wsMaximized;
-  SetForegroundWindow(frm_PCM_main.Handle);
-end;
-
 procedure Tfrm_PCM_Main.LoadSQLs;
 var
   iZaehler: integer;
@@ -709,6 +688,12 @@ var
   dKostenFixSoll, dKostenFixIst: Double;
   iAnzahl: integer;
 begin
+  dm_PCM.qry_Work.SQL.Text:= 'Select Benutzer from Benutzer Where ID = :ID';
+  dm_PCM.qry_Work.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
+  dm_PCM.qry_Work.Open;
+  barUser.Caption:= dm_PCM.qry_Work.FieldByName('Benutzer').AsString;
+  dm_PCM.qry_Work.Close;
+
   dEinnahmeSoll:=0;
   dEinnahmeIst:=0;
   dKostenVarSoll:=0;
@@ -786,7 +771,6 @@ begin
     dm_PCM.qry_ChartAdressen.Filtered:= true;
   end;
 
-
   if dm_PCM.qry_ChartKalender.Active then
   begin
     dm_PCM.qry_ChartKalender.Refresh;
@@ -863,8 +847,6 @@ begin
     dm_PCM.qry_ChartFinance.Open;
   end;
 
-
-
   dm_PCM.qry_ChartFinance.First;
   iZaehler:= 0;
   while not dm_PCM.qry_ChartFinance.eof do
@@ -918,21 +900,271 @@ begin
   lbl_SollSum.caption:= Format('%.2f €',[dEinnahmeSoll - dKostenFixSoll - dKostenvarSoll]);
   lbl_IstSum.caption:= Format('%.2f €',[dEinnahmeist - dKostenFixIst - dKostenvarIst]);
   lbl_DiffSUm.caption:= Format('%.2f €',[(dEinnahmeSoll - dEinnahmeist) - (dKostenFixSoll - dKostenFixIst) -  (dKostenvarSoll - dKostenvarIst)]);
-
+  dm_PCM.qry_Kalender_Aufgaben.Filter:= '';
+  dm_PCM.qry_work.sql.text:= 'Select COUNT(*) AS AufgabenTermine , ('+
+                             'Select COUNT(*) From manager_kalender Where gelesenam is null and bearbeitetam is NULL AND Typ IN (0) and ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM) +' ) AS Nachrichten ' +
+                              'From manager_Kalender ' +
+                              'Where ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM) +' and  gelesenam is null and bearbeitetam is NULL AND Typ IN (1,2)';
+  dm_PCM.qry_work.open;
+  trayIC_Main.Hint:= PCM_Programmname + slinebreak + slinebreak +
+  dm_PCM.qry_work.Fieldbyname('AufgabenTermine').asString + ' ungelesene Aufgaben und Termine' + slinebreak +
+  dm_PCM.qry_work.Fieldbyname('Nachrichten').asString + ' ungelesene Nachrichten';
+  dm_PCM.qry_work.close;
 end;
-procedure Tfrm_PCM_Main.ppmbtn_MonatsuebersichtClick(Sender: TObject);
+procedure Tfrm_PCM_Main.Handbuch;
 begin
-  navbrit_MonatsuebersichtClick(Self);
-  WindowState:= TWindowState.wsMaximized;
-  SetForegroundWindow(frm_PCM_main.Handle);
+  ShellExecute(0, 'Open', PChar(PCM_Logname + '.pdf'), nil, '', SW_SHOWNORMAL);
 end;
-
+function Tfrm_PCM_Main.CurrentModule: TForm;
+begin
+  if pcMain.ControlCount > 0 then
+    Result := TForm(pcMain.ActivePage.Controls[0])
+  else
+    Result := nil;
+end;
 ////////////////////////////////////////////////////////////////////////////////
-// Hilfsfunktionen                                                            //
+// Navbarfunktionen                                                           //
+////////////////////////////////////////////////////////////////////////////////
+procedure Tfrm_PCM_Main.NavBarClick(Sender: TObject);
+var
+  Module: TModule;
+  fTabForm: TForm;
+  iPageIndex: Integer;
+
+  function TabExist(sTabName: String): Integer;
+  var
+    iCount: Integer;
+  begin
+    Result := -1;
+    for iCount := 0 to pcMain.PageCount -1 do
+    begin
+      if pcMain.Pages[iCount].Name = sTabName then
+      begin
+        Result := iCount;
+        Break;
+      end;
+    end;
+  end;
+
+  function CreateNewTabSheet(sTabName: String): Integer;
+  var
+    tshNew: TcxTabSheet;
+  begin
+    tshNew := TcxTabSheet.Create(pcMain);
+    tshNew.PageControl := pcMain;
+    tshNew.Name := sTabName;
+    pcMain.ActivePage := tshNew;
+    Result := pcMain.ActivePageIndex;
+  end;
+var
+  sModul,sModulCaption: String;
+begin
+  if navbr_main.Enabled then
+  begin
+    navbr_main.Enabled := False;
+    TRY
+      Module := TModule(Modules.FindItemID((Sender AS TdxNavBarItem).Tag));
+      if Assigned(Module) then
+      begin
+        sModul:= Module.ModuleName;
+        sModulCaption:= Module.ModuleName;
+        case AnsiIndexStr(sModul, ['iBenutzerverwaltung','iKonfiguration','iDesign','iKontakte','iKalender','iAufgaben','iStundenplan','iEMails','iPasswoerter','iSerials','iMonatsuebersicht','iEinnahmen','iAusgaben','iSysteminfo','iInfo','iHandbuch']) of
+        0:
+          begin
+            sModulCaption := 'i'  + rs_PCM_Benutzerverwaltung;
+            dm_PCM.iModulTab:= 1;
+          end;
+        1:
+          begin
+            sModulCaption := 'i'  + rs_PCM_Konfiguration ;
+            dm_PCM.iModulTab:= 1;
+          end;
+        2:
+          begin
+            sModulCaption := 'i'  + rs_PCM_Design;
+            dm_PCM.iModulTab:= 1;
+          end;
+        3:
+          begin
+            sModulCaption := 'i'  + rs_PCMManager_Kontakt;
+            dm_PCM.iModulTab:= 1;
+          end;
+        4:
+          begin
+            sModul:= 'Kalender_Aufgaben_Stundenplan';
+            sModulCaption := 'i'  + rs_PCMManager_KalenderStundenplan;
+            dm_PCM.iModulTab:= 1;
+          end;
+        5:
+          begin
+            sModul:= 'Kalender_Aufgaben_Stundenplan';
+            sModulCaption := 'i'  + rs_PCMManager_KalenderStundenplan;
+            dm_PCM.iModulTab:= 3;
+          end;
+        6:
+          begin
+            sModul:= 'Kalender_Aufgaben_Stundenplan';
+            sModulCaption := 'i'  + rs_PCMManager_KalenderStundenplan;
+            dm_PCM.iModulTab:= 2;
+          end;
+        7:
+          begin
+            sModul:= 'Email';
+            sModulCaption := 'i'  + rs_PCMManager_EMails;
+          end;
+        8:
+          begin
+            sModul:= 'Passwort_Serials';
+            sModulCaption := 'i'  + rs_PCMManager_Passwoerter_Serialkeys;
+            dm_PCM.iModulTab:= 1;
+          end;
+        9:
+          begin
+            sModul:= 'Passwort_Serials';
+            sModulCaption := 'i'  + rs_PCMManager_Passwoerter_Serialkeys;
+            dm_PCM.iModulTab:= 2;
+          end;
+        10:
+          begin
+            sModul:= 'Finanzen';
+            sModulCaption := 'i'  + rs_PCMManager_Finanzuebersicht;
+            dm_PCM.iModulTab:= 1;
+          end;
+        11:
+          begin
+            sModul:= 'Finanzen';
+            sModulCaption := 'i'  + rs_PCMManager_Finanzuebersicht;
+            dm_PCM.iModulTab:= 2;
+          end;
+        12:
+          begin
+            sModul:= 'Finanzen';
+            sModulCaption := 'i'  + rs_PCMManager_Finanzuebersicht;
+            dm_PCM.iModulTab:= 3;
+          end;
+        13:
+          begin
+            sModulCaption := 'i'  + rs_PCM_Systeminformation;
+            dm_PCM.iModulTab:= 3;
+          end;
+        14:
+          begin
+            sModulCaption := 'i'  + rs_PCM_Programminfo;
+            dm_PCM.iModulTab:= 3;
+          end;
+        15:
+          begin
+            sModulCaption := 'i'  + rs_PCM_Handbuch;
+            dm_PCM.iModulTab:= 3;
+          end;
+        end;
+        iPageIndex := TabExist('tsh' + sModul);
+        if iPageIndex > -1 then
+        begin
+          pcMain.ActivePageIndex := iPageIndex;
+          fTabForm := CurrentModule;
+          if fTabForm <> nil then
+            if not fTabForm.Focused then
+              if Assigned(fTabForm.OnActivate) then
+              begin
+                fTabForm.OnActivate(Sender);
+                barOpenModule.Caption := Copy(sModulCaption, 2, Length(sModulCaption));
+              end;
+          Exit;
+        end;
+        if Module.Typ = mtForm then
+        begin
+          Screen.Cursor := crHourglass;
+          try
+            TForm(Module.Instance^) := Module.FormClass.Create(Nil);
+          finally
+            Screen.Cursor := crDefault;
+          end;
+          fTabForm := TForm((Module.Instance)^);
+          iPageIndex := CreateNewTabSheet('tsh' + sModul);
+          fTabForm.Parent := pcMain.Pages[iPageIndex];
+          pcMain.Pages[iPageIndex].Caption := Copy(sModulCaption, 2, Length(sModulCaption));
+          pcMain.Pages[iPageIndex].Tag := (Sender AS TdxNavBarItem).Tag;
+          pcMain.Pages[iPageIndex].ImageIndex := Module.ImageIndex;
+          pcMain.Pages[iPageIndex].InsertComponent(fTabForm);
+          fTabForm.BorderStyle := bsNone;
+          fTabForm.ALign:= AlClient;
+          fTabForm.Enabled := True;
+          fTabForm.Show;
+          barOpenModule.Caption := Copy(sModulCaption, 2, Length(sModulCaption));
+        end
+        else
+          if Module.Typ = mtEvent then
+          begin
+            Module.Event;
+          end;
+      end
+    FINALLY
+      navbr_main.Enabled := True;
+      Application.ProcessMessages;
+    END;
+  end;
+end;
+procedure Tfrm_PCM_Main.iSpracheClick(Sender: TObject);
+var
+  iniFile: TIniFile;
+begin
+  Application.CreateForm(Tfrm_Language,frm_Language);
+  frm_Language.Position:= poScreenCenter;
+  frm_Language.ClientHeight:= 214;
+  frm_Language.ShowModal;
+  TNtTranslator.SetNew(dm_PCM.slocale,[],'de');
+  TNtTranslator.TranslateForms;
+  iniFile := TIniFile.Create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
+  try
+    iniFile.WriteString(PCM_Logname, 'Language', dm_PCm.sLocale);
+  finally
+    iniFile.Free;
+  end;
+  Caption:= PCM_Programmname;
+  trayic_Main.popupmenu:= ppm_Main;
+  LoadSQLs;
+  btnRefreshRightsClick(Self);
+end;
+////////////////////////////////////////////////////////////////////////////////
+// Formfunktionen                                                             //
 ////////////////////////////////////////////////////////////////////////////////
 procedure Tfrm_PCM_Main.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  WriteLog(PCM_Logname,'Programm beendet',0);
+  CloseModules;
+  WriteLog(PCM_Logname,rs_PCM_Beenden,0);
+end;
+procedure Tfrm_PCM_Main.FormCreate(Sender: TObject);
+begin
+  Modules := TCollection.Create(TModule);
+end;
+procedure Tfrm_PCM_Main.FormDestroy(Sender: TObject);
+begin
+  Modules.Free;
+end;
+procedure Tfrm_PCM_Main.FormHide(Sender: TObject);
+begin
+  CloseModules;
+end;
+procedure Tfrm_PCM_Main.FormKeyPress(Sender: TObject; var Key: Char);
+var
+  m: TForm;
+begin
+  m := CurrentModule;
+  if m <> nil then
+    if not m.Focused then
+      if Assigned(m.OnKeyPress) then
+        m.OnKeyPress(Sender, Key);
+end;
+procedure Tfrm_PCM_Main.FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+var
+  m: TForm;
+begin
+  m := CurrentModule;
+  if m <> nil then
+    if not m.Focused then
+      if Assigned(m.OnKeyUp) then
+        m.OnKeyUp(Sender, Key, Shift);
 end;
 procedure Tfrm_PCM_Main.FormResize(Sender: TObject);
 begin
@@ -957,56 +1189,47 @@ begin
   grpbx_FinanzenUebersicht_Left.width:= Trunc((grpbx_FinanzenUebersicht.width - 8) / 3);
   grpbx_FinanzenUebersicht_middle.width:= Trunc((grpbx_FinanzenUebersicht.width - 8) / 3);
   grpbx_FinanzenUebersicht_Right.width:= Trunc((grpbx_FinanzenUebersicht.width - 8) / 3);
-
+  BarResize;
 end;
 procedure Tfrm_PCM_Main.FormShow(Sender: TObject);
-var
-  iIndex: integer;
 begin
+  {$ifdef WIn32}
+  navbr_mainItem2.Visible:= false;
+  Sprachewechseln1.Visible:= false;
+  {$endif}
+  lafCtrl_Main.NativeStyle:= false;
   trayIC_Main.Hint:= PCM_Programmname;
   dm_PCM.iDBType:= 0;
-  if not dm_PCM.ReadServerAdress then
+  if not ReadServerAdress then
   begin
     Application.Terminate;
   end
   else begin
-      lafCtrl_Main.SkinName:= dm_PCM.sDesign;
+  	lafCtrl_Main.SkinName:= dm_PCM.sDesign;
     try
-
       loc_lang.LoadFromFile(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\cxLocalLang.ini');
       loc_lang.LanguageIndex := 1;
     except
       on e:Exception do
       begin
-        MessageDlg('Sprachdatei kann nicht geladen werden.', mtWarning, [mbOk], 0);
+        MessageDlg(rs_PCM_Sprachdatei, mtWarning, [mbOk], 0);
       end
     end;
-    if bStyle then
+    if dm_PCM.bStyle then
     begin
-      iIndex:= CheckTabExist('tshModul_2');
-      if iIndex <> -1 then
-      begin
-        pcMain.ActivePageIndex:= iIndex;
-        Screen.Cursor:= crDefault;
-      end
-      else begin
-        AddTabsheet(pcMain,'Konfiguration',2);
-        SetLength(FfrmModulConfig, Length(FfrmModulConfig) +1);
-        FfrmModulConfig[High(FfrmModulConfig)] := Tfrm_Config.Create(Self);
-        FfrmModulConfig[High(FfrmModulConfig)].BorderStyle := bsNone;
-        FfrmModulConfig[High(FfrmModulConfig)].ALign:= ALCLient;
-        FfrmModulConfig[High(FfrmModulConfig)].Parent :=  pcMain.Pages[pcMain.PageCount -1 ];
-        FfrmModulConfig[High(FfrmModulConfig)].Show;
-        pcMain.ActivePageIndex:= pcMain.PageCount -1;
-      end;
+      NavBarClick(iKonfiguration);
     end
     else begin
       dm_PCM.bNewLiceneCheck:= false;
-      dm_pcm.CheckLizenzNew;
+      CheckLizenzNew;
       if dm_PCm.bNewLiceneCheck = false then
-        Application.Terminate;
+      begin
+        CheckLizenzNew;
+        if dm_PCm.bNewLiceneCheck = false then
+          Application.Terminate;
+      end;
       if not bAbmelden then
-        dm_PCM.bLogin := dm_pcm.Autologin
+        dm_PCM.bLogin := Autologin
       else
         dm_PCM.bLogin := false;
       if not dm_PCM.bLogin then
@@ -1021,567 +1244,130 @@ begin
       InitializeRights;
       LoadSQLs;
       FormResize(Self);
-      WriteLog(PCM_Logname,'Programm gestartet',0);
+      WriteLog(PCM_Logname,rs_PCM_Start,0);
       Caption:= PCM_Programmname;
-      dm_PCM.qry_Kalender_Aufgaben.Filter:= '';
-      dm_PCM.qry_work.sql.text:= 'Select COUNT(*) AS AufgabenTermine , ('+
-                                 'Select COUNT(*) From manager_kalender Where gelesenam is null and bearbeitetam is NULL AND Typ IN (0) and ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM) +' ) AS Nachrichten ' +
-                                 'From manager_Kalender ' +
-                                 'Where ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM) +' and  gelesenam is null and bearbeitetam is NULL AND Typ IN (1,2)';
-      dm_PCM.qry_work.open;
-      trayIC_Main.Hint:= PCM_Programmname + slinebreak + slinebreak +
-      dm_PCM.qry_work.Fieldbyname('AufgabenTermine').asString + ' ungelesene Aufgaben und Termine' + slinebreak +
-      dm_PCM.qry_work.Fieldbyname('Nachrichten').asString + ' ungelesene Nachrichten';
-      dm_PCM.qry_work.close;
+
       trayIC_Main.PopupMenu:= ppm_main;
       if dm_PCM.bDemo then
-        Caption:=PCM_Programmname + ' - Demolizenz gültig bis ' + DateTostr(dm_PCM.dtGueltig);
+        Caption:=PCM_Programmname + rs_PCM_Demolizenz + DateTostr(dm_PCM.dtGueltig);
+      BarResize;
+      RegisterNavBarItems;
     end;
   end;
 end;
-procedure Tfrm_PCM_Main.navbrit_AusgabenClick(Sender: TObject);
-var
-  iIndex: integer;
-begin
-  iIndex:= CheckTabExist('tshModul_8');
-  if iIndex <> -1 then
-  begin
-    pcMain.ActivePageIndex:= iIndex;
-    Screen.Cursor:= crDefault;
-    FfrmModulFinanz[High(FfrmModulFinanz)].Execute(8,3);
-  end
-  else begin
-    AddTabsheet(pcMain,'Finanzübersicht',8);
-    SetLength(FfrmModulFinanz, Length(FfrmModulFinanz) +1);
-    FfrmModulFinanz[High(FfrmModulFinanz)] := Tfrm_finanzen.Create(Self);
-    FfrmModulFinanz[High(FfrmModulFinanz)].BorderStyle := bsNone;
-    FfrmModulFinanz[High(FfrmModulFinanz)].ALign:= ALCLient;
-    FfrmModulFinanz[High(FfrmModulFinanz)].Parent :=  pcMain.Pages[pcMain.PageCount -1 ];
-    pcMain.ActivePageIndex:= pcMain.PageCount -1;
-    FfrmModulFinanz[High(FfrmModulFinanz)].Execute(8,3);
-    FfrmModulFinanz[High(FfrmModulFinanz)].Show;
-    pcMain.ActivePage.ImageIndex:= 3;
-  end;
-end;
-procedure Tfrm_PCM_Main.navbrit_BeendenClick(Sender: TObject);
-begin
-  dm_PCM.bclose:= true;
-  Application.Terminate;
-end;
-procedure Tfrm_PCM_Main.navbrit_BenutzerClick(Sender: TObject);
-var
-  iIndex: integer;
-begin
-  iIndex:= CheckTabExist('tshModul_1');
-  if iIndex <> -1 then
-  begin
-    pcMain.ActivePageIndex:= iIndex;
-    Screen.Cursor:= crDefault;
-  end
-  else begin
-    AddTabsheet(pcMain,'Benutzerverwaltung',1);
-    SetLength(FfrmModulBenutzer, Length(FfrmModulBenutzer) +1);
-    FfrmModulBenutzer[High(FfrmModulBenutzer)] := Tfrm_User.Create(Self);
-    FfrmModulBenutzer[High(FfrmModulBenutzer)].BorderStyle := bsNone;
-    FfrmModulBenutzer[High(FfrmModulBenutzer)].ALign:= ALCLient;
-    FfrmModulBenutzer[High(FfrmModulBenutzer)].Parent :=  pcMain.Pages[pcMain.PageCount -1 ];
-    FfrmModulBenutzer[High(FfrmModulBenutzer)].Show;
-    pcMain.ActivePageIndex:= pcMain.PageCount -1;
-    pcMain.ActivePage.ImageIndex:= 1;
-  end;
-end;
-procedure Tfrm_PCM_Main.navbrit_EinnahmenClick(Sender: TObject);
-var
-  iIndex: integer;
-begin
-  iIndex:= CheckTabExist('tshModul_8');
-  if iIndex <> -1 then
-  begin
-    pcMain.ActivePageIndex:= iIndex;
-    Screen.Cursor:= crDefault;
-    FfrmModulFinanz[High(FfrmModulFinanz)].Execute(8,2);
-  end
-  else begin
-    AddTabsheet(pcMain,'Finanzübersicht',8);
-    SetLength(FfrmModulFinanz, Length(FfrmModulFinanz) +1);
-    FfrmModulFinanz[High(FfrmModulFinanz)] := Tfrm_finanzen.Create(Self);
-    FfrmModulFinanz[High(FfrmModulFinanz)].BorderStyle := bsNone;
-    FfrmModulFinanz[High(FfrmModulFinanz)].ALign:= ALCLient;
-    FfrmModulFinanz[High(FfrmModulFinanz)].Parent :=  pcMain.Pages[pcMain.PageCount -1 ];
-    pcMain.ActivePageIndex:= pcMain.PageCount -1;
-    FfrmModulFinanz[High(FfrmModulFinanz)].Execute(8,2);
-    FfrmModulFinanz[High(FfrmModulFinanz)].Show;
-    pcMain.ActivePage.ImageIndex:= 3;
-  end;
-end;
-procedure Tfrm_PCM_Main.navbrit_EMailClick(Sender: TObject);
-var
-  iIndex: integer;
-begin
-  iIndex:= CheckTabExist('tshModul_6');
-  if iIndex <> -1 then
-  begin
-    pcMain.ActivePageIndex:= iIndex;
-    Screen.Cursor:= crDefault;
-  end
-  else begin
-    AddTabsheet(pcMain,'E-Mails',6);
-    SetLength(FfrmModulMail, Length(FfrmModulMail) +1);
-    FfrmModulMail[High(FfrmModulMail)] := Tfrm_mail.Create(Self);
-    FfrmModulMail[High(FfrmModulMail)].BorderStyle := bsNone;
-    FfrmModulMail[High(FfrmModulMail)].ALign:= ALCLient;
-    FfrmModulMail[High(FfrmModulMail)].Parent :=  pcMain.Pages[pcMain.PageCount -1 ];
-    pcMain.ActivePageIndex:= pcMain.PageCount -1;
-    FfrmModulMail[High(FfrmModulMail)].Execute(dm_PCM.iIDBenutzerPCM);
-    FfrmModulMail[High(FfrmModulMail)].Show;
-    pcMain.ActivePage.ImageIndex:= 15;
-  end;
-end;
-procedure Tfrm_PCM_Main.navbrit_KalenderClick(Sender: TObject);
-var
-  iIndex: integer;
-begin
-  iIndex:= CheckTabExist('tshModul_4');
-  if iIndex <> -1 then
-  begin
-    pcMain.ActivePageIndex:= iIndex;
-    Screen.Cursor:= crDefault;
-    FfrmModulCalendar[High(FfrmModulCalendar)].Execute(4,1);
-  end
-  else begin
-    AddTabsheet(pcMain,'Kalender / Stundenplan',4);
-    SetLength(FfrmModulCalendar, Length(FfrmModulCalendar) +1);
-    FfrmModulCalendar[High(FfrmModulCalendar)] := Tfrm_Calendar.Create(Self);
-    FfrmModulCalendar[High(FfrmModulCalendar)].BorderStyle := bsNone;
-    FfrmModulCalendar[High(FfrmModulCalendar)].ALign:= ALCLient;
-    FfrmModulCalendar[High(FfrmModulCalendar)].Parent :=  pcMain.Pages[pcMain.PageCount -1 ];
-    pcMain.ActivePageIndex:= pcMain.PageCount -1;
-    FfrmModulCalendar[High(FfrmModulCalendar)].Execute(4,1);
-    FfrmModulCalendar[High(FfrmModulCalendar)].Show;
-    pcMain.ActivePage.ImageIndex:= 10;
-  end;
-end;
-procedure Tfrm_PCM_Main.navbrit_KonfigurationClick(Sender: TObject);
-var
-  iIndex: integer;
-begin
-  iIndex:= CheckTabExist('tshModul_2');
-  if iIndex <> -1 then
-  begin
-    pcMain.ActivePageIndex:= iIndex;
-    Screen.Cursor:= crDefault;
-  end
-  else begin
-    AddTabsheet(pcMain,'Konfiguration',2);
-    SetLength(FfrmModulConfig, Length(FfrmModulConfig) +1);
-    FfrmModulConfig[High(FfrmModulConfig)] := Tfrm_Config.Create(Self);
-    FfrmModulConfig[High(FfrmModulConfig)].BorderStyle := bsNone;
-    FfrmModulConfig[High(FfrmModulConfig)].ALign:= ALCLient;
-    FfrmModulConfig[High(FfrmModulConfig)].Parent :=  pcMain.Pages[pcMain.PageCount -1 ];
-    FfrmModulConfig[High(FfrmModulConfig)].Show;
-    pcMain.ActivePageIndex:= pcMain.PageCount -1;
-    pcMain.ActivePage.ImageIndex:= 2;
-  end;
-end;
-procedure Tfrm_PCM_Main.navbrit_KontakteClick(Sender: TObject);
-var
-  iIndex: integer;
-begin
-  iIndex:= CheckTabExist('tshModul_3');
-  if iIndex <> -1 then
-  begin
-    pcMain.ActivePageIndex:= iIndex;
-    Screen.Cursor:= crDefault;
-  end
-  else begin
-    AddTabsheet(pcMain,'Kontakte',3);
-    SetLength(FfrmModulContact, Length(FfrmModulContact) +1);
-    FfrmModulContact[High(FfrmModulContact)] := Tfrm_Contact.Create(Self);
-    FfrmModulContact[High(FfrmModulContact)].BorderStyle := bsNone;
-    FfrmModulContact[High(FfrmModulContact)].ALign:= ALCLient;
-    FfrmModulContact[High(FfrmModulContact)].Parent :=  pcMain.Pages[pcMain.PageCount -1 ];
-    FfrmModulContact[High(FfrmModulContact)].Show;
-    pcMain.ActivePageIndex:= pcMain.PageCount -1;
-    pcMain.ActivePage.ImageIndex:= 11;
-  end;
-end;
-procedure Tfrm_PCM_Main.navbrit_MonatsuebersichtClick(Sender: TObject);
-var
-  iIndex: integer;
-begin
-  iIndex:= CheckTabExist('tshModul_8');
-  if iIndex <> -1 then
-  begin
-    pcMain.ActivePageIndex:= iIndex;
-    Screen.Cursor:= crDefault;
-    FfrmModulFinanz[High(FfrmModulFinanz)].Execute(8,1);
-  end
-  else begin
-    AddTabsheet(pcMain,'Finanzübersicht',8);
-    SetLength(FfrmModulFinanz, Length(FfrmModulFinanz) +1);
-    FfrmModulFinanz[High(FfrmModulFinanz)] := Tfrm_finanzen.Create(Self);
-    FfrmModulFinanz[High(FfrmModulFinanz)].BorderStyle := bsNone;
-    FfrmModulFinanz[High(FfrmModulFinanz)].ALign:= ALCLient;
-    FfrmModulFinanz[High(FfrmModulFinanz)].Parent :=  pcMain.Pages[pcMain.PageCount -1 ];
-    pcMain.ActivePageIndex:= pcMain.PageCount -1;
-    FfrmModulFinanz[High(FfrmModulFinanz)].Execute(8,1);
-    FfrmModulFinanz[High(FfrmModulFinanz)].Show;
-    pcMain.ActivePage.ImageIndex:= 3;
-  end;
-end;
-procedure Tfrm_PCM_Main.navbrit_PasswortClick(Sender: TObject);
-var
-  iIndex: integer;
-begin
-  iIndex:= CheckTabExist('tshModul_7');
-  if iIndex <> -1 then
-  begin
-    pcMain.ActivePageIndex:= iIndex;
-    Screen.Cursor:= crDefault;
-    FfrmModulPWD[High(FfrmModulPWD)].Execute(7,1);
-  end
-  else begin
-    AddTabsheet(pcMain,'Passwörter / Serialkeys',7);
-    SetLength(FfrmModulPWD, Length(FfrmModulPWD) +1);
-    FfrmModulPWD[High(FfrmModulPWD)] := Tfrm_password.Create(Self);
-    FfrmModulPWD[High(FfrmModulPWD)].BorderStyle := bsNone;
-    FfrmModulPWD[High(FfrmModulPWD)].ALign:= ALCLient;
-    FfrmModulPWD[High(FfrmModulPWD)].Parent :=  pcMain.Pages[pcMain.PageCount -1 ];
-    pcMain.ActivePageIndex:= pcMain.PageCount -1;
-    FfrmModulPWD[High(FfrmModulPWD)].Execute(7,1);
-    FfrmModulPWD[High(FfrmModulPWD)].Show;
-    pcMain.ActivePage.ImageIndex:= 9;
-  end;
-end;
-procedure Tfrm_PCM_Main.navbrit_ProgramminfoClick(Sender: TObject);
-var
-  iIndex: integer;
-begin
-  iIndex:= CheckTabExist('tshModul_10');
-  if iIndex <> -1 then
-  begin
-    pcMain.ActivePageIndex:= iIndex;
-    Screen.Cursor:= crDefault;
-  end
-  else begin
-    AddTabsheet(pcMain,'Programminfo',10);
-    SetLength(FfrmModulAppinfo, Length(FfrmModulAppinfo) +1);
-    FfrmModulAppinfo[High(FfrmModulAppinfo)] := Tfrm_PCM_InfoApp.Create(Self);
-    FfrmModulAppinfo[High(FfrmModulAppinfo)].BorderStyle := bsNone;
-    FfrmModulAppinfo[High(FfrmModulAppinfo)].ALign:= ALCLient;
-    FfrmModulAppinfo[High(FfrmModulAppinfo)].Parent :=  pcMain.Pages[pcMain.PageCount -1 ];
-    pcMain.ActivePageIndex:= pcMain.PageCount -1;
-    FfrmModulAppinfo[High(FfrmModulAppinfo)].Show;
-    pcMain.ActivePage.ImageIndex:= 7;
-  end;
-end;
-procedure Tfrm_PCM_Main.navbrit_SerialsClick(Sender: TObject);
-var
-  iIndex: integer;
-begin
-  iIndex:= CheckTabExist('tshModul_7');
-  if iIndex <> -1 then
-  begin
-    pcMain.ActivePageIndex:= iIndex;
-    Screen.Cursor:= crDefault;
-    FfrmModulPWD[High(FfrmModulPWD)].Execute(7,2);
-  end
-  else begin
-    AddTabsheet(pcMain,'Passwörter / Serialkeys',7);
-    SetLength(FfrmModulPWD, Length(FfrmModulPWD) +1);
-    FfrmModulPWD[High(FfrmModulPWD)] := Tfrm_password.Create(Self);
-    FfrmModulPWD[High(FfrmModulPWD)].BorderStyle := bsNone;
-    FfrmModulPWD[High(FfrmModulPWD)].ALign:= ALCLient;
-    FfrmModulPWD[High(FfrmModulPWD)].Parent :=  pcMain.Pages[pcMain.PageCount -1 ];
-    pcMain.ActivePageIndex:= pcMain.PageCount -1;
-    FfrmModulPWD[High(FfrmModulPWD)].Execute(7,2);
-    FfrmModulPWD[High(FfrmModulPWD)].Show;
-    pcMain.ActivePage.ImageIndex:= 9;
-  end;
-end;
-procedure Tfrm_PCM_Main.navbrit_StundenplanClick(Sender: TObject);
-var
-  iIndex: integer;
-begin
-  iIndex:= CheckTabExist('tshModul_4');
-  if iIndex <> -1 then
-  begin
-    pcMain.ActivePageIndex:= iIndex;
-    Screen.Cursor:= crDefault;
-    FfrmModulCalendar[High(FfrmModulCalendar)].Execute(4,2);
-  end
-  else begin
-    AddTabsheet(pcMain,'Kalender / Stundenplan',4);
-    SetLength(FfrmModulCalendar, Length(FfrmModulCalendar) +1);
-    FfrmModulCalendar[High(FfrmModulCalendar)] := Tfrm_Calendar.Create(Self);
-    FfrmModulCalendar[High(FfrmModulCalendar)].BorderStyle := bsNone;
-    FfrmModulCalendar[High(FfrmModulCalendar)].ALign:= ALCLient;
-    FfrmModulCalendar[High(FfrmModulCalendar)].Parent :=  pcMain.Pages[pcMain.PageCount -1 ];
-    pcMain.ActivePageIndex:= pcMain.PageCount -1;
-    FfrmModulCalendar[High(FfrmModulCalendar)].Execute(4,2);
-    FfrmModulCalendar[High(FfrmModulCalendar)].Show;
-    pcMain.ActivePage.ImageIndex:= 10;
-  end;
-end;
-procedure Tfrm_PCM_Main.navbrit_SysteminfoClick(Sender: TObject);
-var
-  iIndex: integer;
-begin
-  iIndex:= CheckTabExist('tshModul_9');
-  if iIndex <> -1 then
-  begin
-    pcMain.ActivePageIndex:= iIndex;
-    Screen.Cursor:= crDefault;
-  end
-  else begin
-    AddTabsheet(pcMain,'Systeminformation',9);
-    SetLength(FfrmModulSysinfo, Length(FfrmModulSysinfo) +1);
-    FfrmModulSysinfo[High(FfrmModulSysinfo)] := Tfrm_PCM_System.Create(Self);
-    FfrmModulSysinfo[High(FfrmModulSysinfo)].BorderStyle := bsNone;
-    FfrmModulSysinfo[High(FfrmModulSysinfo)].ALign:= ALCLient;
-    FfrmModulSysinfo[High(FfrmModulSysinfo)].Parent :=  pcMain.Pages[pcMain.PageCount -1 ];
-    pcMain.ActivePageIndex:= pcMain.PageCount -1;
-    FfrmModulSysinfo[High(FfrmModulSysinfo)].Show;
-    pcMain.ActivePage.ImageIndex:= 21;
-  end;
-end;
-procedure Tfrm_PCM_Main.navbrit_VerfuegungClick(Sender: TObject);
-var
-  iIndex: integer;
-begin
-  iIndex:= CheckTabExist('tshModul_8');
-  if iIndex <> -1 then
-  begin
-    pcMain.ActivePageIndex:= iIndex;
-    Screen.Cursor:= crDefault;
-    FfrmModulFinanz[High(FfrmModulFinanz)].Execute(8,4);
-  end
-  else begin
-    AddTabsheet(pcMain,'Finanzübersicht',8);
-    SetLength(FfrmModulFinanz, Length(FfrmModulFinanz) +1);
-    FfrmModulFinanz[High(FfrmModulFinanz)] := Tfrm_finanzen.Create(Self);
-    FfrmModulFinanz[High(FfrmModulFinanz)].BorderStyle := bsNone;
-    FfrmModulFinanz[High(FfrmModulFinanz)].ALign:= ALCLient;
-    FfrmModulFinanz[High(FfrmModulFinanz)].Parent :=  pcMain.Pages[pcMain.PageCount -1 ];
-    pcMain.ActivePageIndex:= pcMain.PageCount -1;
-    FfrmModulFinanz[High(FfrmModulFinanz)].Execute(8,4);
-    FfrmModulFinanz[High(FfrmModulFinanz)].Show;
-    pcMain.ActivePage.ImageIndex:= 3;
-  end;
-end;
-procedure Tfrm_PCM_Main.navbrit_AufgabenClick(Sender: TObject);
-var
-  iIndex: integer;
-begin
-  iIndex:= CheckTabExist('tshModul_4');
-  if iIndex <> -1 then
-  begin
-    pcMain.ActivePageIndex:= iIndex;
-    Screen.Cursor:= crDefault;
-    FfrmModulCalendar[High(FfrmModulCalendar)].Execute(4,3);
-  end
-  else begin
-    AddTabsheet(pcMain,'Kalender / Stundenplan',4);
-    SetLength(FfrmModulCalendar, Length(FfrmModulCalendar) +1);
-    FfrmModulCalendar[High(FfrmModulCalendar)] := Tfrm_Calendar.Create(Self);
-
-    FfrmModulCalendar[High(FfrmModulCalendar)].BorderStyle := bsNone;
-    FfrmModulCalendar[High(FfrmModulCalendar)].ALign:= ALCLient;
-    FfrmModulCalendar[High(FfrmModulCalendar)].Parent := pcMain.Pages[pcMain.PageCount -1 ];
-    FfrmModulCalendar[High(FfrmModulCalendar)].Execute(4,3);
-    pcMain.ActivePageIndex:= pcMain.PageCount -1;
-    FfrmModulCalendar[High(FfrmModulCalendar)].Show;
-    pcMain.ActivePage.ImageIndex:= 10;
-  end;
-end;
-
-procedure Tfrm_PCM_Main.navbrit_AbmeldenClick(Sender: TObject);
-begin
-  Abmelden;
-end;
-procedure Tfrm_PCM_Main.navbrit_ChangePWClick(Sender: TObject);
-var
-  iIndex: integer;
-begin
-  iIndex:= CheckTabExist('tshModul_11');
-  if iIndex <> -1 then
-  begin
-    pcMain.ActivePageIndex:= iIndex;
-    Screen.Cursor:= crDefault;
-  end
-  else begin
-    AddTabsheet(pcMain,'Passwort ändern',11);
-    SetLength(FfrmModulChangePW, Length(FfrmModulChangePW) +1);
-    FfrmModulChangePW[High(FfrmModulChangePW)] := TfrM_PCM_ChangePW.Create(Self);
-    FfrmModulChangePW[High(FfrmModulChangePW)].BorderStyle := bsNone;
-    FfrmModulChangePW[High(FfrmModulChangePW)].ALign:= ALCLient;
-    FfrmModulChangePW[High(FfrmModulChangePW)].Parent :=  pcMain.Pages[pcMain.PageCount -1 ];
-    pcMain.ActivePageIndex:= pcMain.PageCount -1;
-    FfrmModulChangePW[High(FfrmModulChangePW)].Execute(true);
-    FfrmModulChangePW[High(FfrmModulChangePW)].Show;
-  end;
-end;
-procedure Tfrm_PCM_Main.pcmainCanCloseEx(Sender: TObject; ATabIndex: Integer;  var ACanClose: Boolean);
-begin
-  case pcmain.ActivePage.tag of
-  1: frm_User.Free;
-  2: frm_Config.Free;
-  3:
-    begin
-      frm_Contact.Free;
-      dm_PCM.qry_ChartAdressen.refresh;
-      dm_PCM.qry_ChartKontaktart.refresh;
-    end;
-  4:
-    begin
-      frm_calendar.Free;
-      dm_PCM.qry_ChartKalender.refresh;
-      dm_PCM.qry_ChartAufgabe.refresh;
-      dm_PCM.qry_ChartKategorie.refresh;
-    end;
-  5: frm_Mail.Free;
-  7: frm_Password.Free;
-  8: frm_finanzen.Free;
-  9: frm_PCM_System.Free;
-  end;
-  ACanClose:= true;
-  LoadSQLs;
-end;
-
-procedure Tfrm_PCM_Main.pnl_CalToDOMiddleClick(Sender: TObject);
-begin
-  navbrit_KalenderClick(Self);
-end;
-
-procedure Tfrm_PCM_Main.pnl_CalToDORightDblClick(Sender: TObject);
-begin
-  navbrit_KalenderClick(Self);
-end;
-
-procedure Tfrm_PCM_Main.pnl_CalToDOtopDblClick(Sender: TObject);
-begin
-  navbrit_AufgabenClick(Self);
-end;
-
+////////////////////////////////////////////////////////////////////////////////
+// Traymenü                                                                   //
+////////////////////////////////////////////////////////////////////////////////
 procedure Tfrm_PCM_Main.ppmbtn_BenutzerClick(Sender: TObject);
 begin
-  navbrit_BenutzerClick(SELF);
+  navbarclick(iBenutzerverwaltung);
   WindowState:= TWindowState.wsMaximized;
   SetForegroundWindow(frm_PCM_main.Handle);
 end;
-
+procedure Tfrm_PCM_Main.ppmbtn_KonfigurationClick(Sender: TObject);
+begin
+  NavBarClick(iKonfiguration);
+  WindowState:= TWindowState.wsMaximized;
+  SetForegroundWindow(frm_PCM_main.Handle);
+end;
 procedure Tfrm_PCM_Main.ppmbtn_ContactsClick(Sender: TObject);
 begin
-  navbrit_KontakteClick(SELF);
+  navbarclick(ikontakte);
+  WindowState:= TWindowState.wsMaximized;
+  SetForegroundWindow(frm_PCM_main.Handle);
+end;
+procedure Tfrm_PCM_Main.ppmbtn_DesignClick(Sender: TObject);
+begin
+  NavBarClick(iDesign);
   WindowState:= TWindowState.wsMaximized;
   SetForegroundWindow(frm_PCM_main.Handle);
 end;
 
 procedure Tfrm_PCM_Main.ppmbtn_kalenderClick(Sender: TObject);
 begin
-  navbrit_KalenderClick(SELF);
+  navbarclick(iKalender);
   WindowState:= TWindowState.wsMaximized;
   SetForegroundWindow(frm_PCM_main.Handle);
 end;
-
-procedure Tfrm_PCM_Main.ppmbtn_KonfigurationClick(Sender: TObject);
-begin
-  navbrit_KonfigurationClick(SELF);
-  WindowState:= TWindowState.wsMaximized;
-  SetForegroundWindow(frm_PCM_main.Handle);
-end;
-
-procedure Tfrm_PCM_Main.ppmbtn_ProgramminfoClick(Sender: TObject);
-begin
-  navbrit_ProgramminfoClick(Self);
-  WindowState:= TWindowState.wsMaximized;
-  SetForegroundWindow(frm_PCM_main.Handle);
-end;
-
-procedure Tfrm_PCM_Main.ppmbtn_SerialsClick(Sender: TObject);
-begin
-  navbrit_SerialsClick(Self);
-  WindowState:= TWindowState.wsMaximized;
-  SetForegroundWindow(frm_PCM_main.Handle);
-end;
-
-procedure Tfrm_PCM_Main.ppmbtn_SysteminfoClick(Sender: TObject);
-begin
-  navbrit_SysteminfoClick(Self);
-  WindowState:= TWindowState.wsMaximized;
-  SetForegroundWindow(frm_PCM_main.Handle);
-end;
-
 procedure Tfrm_PCM_Main.ppmbtn_AufgabenClick(Sender: TObject);
 begin
-  navbrit_AufgabenClick(SELF);
+  navbarclick(iAufgaben);
   WindowState:= TWindowState.wsMaximized;
   SetForegroundWindow(frm_PCM_main.Handle);
 end;
-
 procedure Tfrm_PCM_Main.ppmbtn_StundenplanClick(Sender: TObject);
 begin
-  navbrit_StundenplanClick(SELF);
+  navbarclick(iStundenplan);
   WindowState:= TWindowState.wsMaximized;
   SetForegroundWindow(frm_PCM_main.Handle);
 end;
-
-function ForceForegroundWindow(hwnd: THandle): boolean;
-const
-  SPI_GETFOREGROUNDLOCKTIMEOUT = $2000;
-  SPI_SETFOREGROUNDLOCKTIMEOUT = $2001;
-var
-  ForegroundThreadID: DWORD;
-  ThisThreadID: DWORD;
-  timeout: DWORD;
+procedure Tfrm_PCM_Main.ppmbtn_EmailClick(Sender: TObject);
 begin
-  if IsIconic(hwnd) then
-    ShowWindow(hwnd, SW_RESTORE);
-
-  if GetForegroundWindow = hwnd then
-    Result := true
-  else
-  begin
-    // Windows 98/2000 doesn't want to foreground a window when some other
-    // window has keyboard focus
-    if ((Win32Platform = VER_PLATFORM_WIN32_NT) and (Win32MajorVersion > 4)) or
-      ((Win32Platform = VER_PLATFORM_WIN32_WINDOWS) and
-      ((Win32MajorVersion > 4) or ((Win32MajorVersion = 4) and
-      (Win32MinorVersion > 0)))) then
-    begin
-      // Code from Karl E. Peterson, www.mvps.org/vb/sample.htm
-      // Converted to Delphi by Ray Lischner
-      // Published in The Delphi Magazine 55, page 16
-      Result := false;
-      ForegroundThreadID := GetWindowThreadProcessID(GetForegroundWindow, nil);
-      ThisThreadID := GetWindowThreadPRocessId(hwnd, nil);
-      if AttachThreadInput(ThisThreadID, ForegroundThreadID, true) then
-      begin
-        BringWindowToTop(hwnd); // IE 5.5 related hack
-        SetForegroundWindow(hwnd);
-        AttachThreadInput(ThisThreadID, ForegroundThreadID, false);
-        Result := (GetForegroundWindow = hwnd);
-      end;
-      if not Result then
-      begin
-        // Code by Daniel P. Stasinski
-        SystemParametersInfo(SPI_GETFOREGROUNDLOCKTIMEOUT, 0, @timeout, 0);
-        SystemParametersInfo(SPI_SETFOREGROUNDLOCKTIMEOUT, 0, TObject(0),
-          SPIF_SENDCHANGE);
-        BringWindowToTop(hwnd); // IE 5.5 related hack
-        SetForegroundWindow(hWnd);
-        SystemParametersInfo(SPI_SETFOREGROUNDLOCKTIMEOUT, 0,
-          TObject(timeout), SPIF_SENDCHANGE);
-      end;
-    end
-    else
-    begin
-      BringWindowToTop(hwnd); // IE 5.5 related hack
-      SetForegroundWindow(hwnd);
-    end;
-
-    Result := (GetForegroundWindow = hwnd);
-  end;
+  navbarclick(iEMails);
+  WindowState:= TWindowState.wsMaximized;
+  SetForegroundWindow(frm_PCM_main.Handle);
+end;
+procedure Tfrm_PCM_Main.ppmbtn_PasswoerterClick(Sender: TObject);
+begin
+  navbarclick(iPasswoerter);
+  WindowState:= TWindowState.wsMaximized;
+  SetForegroundWindow(frm_PCM_main.Handle);
+end;
+procedure Tfrm_PCM_Main.ppmbtn_SerialsClick(Sender: TObject);
+begin
+  navbarclick(iSerials);
+  WindowState:= TWindowState.wsMaximized;
+  SetForegroundWindow(frm_PCM_main.Handle);
+end;
+procedure Tfrm_PCM_Main.ppmbtn_MonatsuebersichtClick(Sender: TObject);
+begin
+  navbarclick(iMonatsuebersicht);
+  WindowState:= TWindowState.wsMaximized;
+  SetForegroundWindow(frm_PCM_main.Handle);
+end;
+procedure Tfrm_PCM_Main.ppmbtn_EinnahmenClick(Sender: TObject);
+begin
+  navbarclick(iEinnahmen);
+  WindowState:= TWindowState.wsMaximized;
+  SetForegroundWindow(frm_PCM_main.Handle);
+end;
+procedure Tfrm_PCM_Main.ppmbtn_AusgabenClick(Sender: TObject);
+begin
+  navbarclick(iAusgaben);
+  WindowState:= TWindowState.wsMaximized;
+  SetForegroundWindow(frm_PCM_main.Handle);
+end;
+procedure Tfrm_PCM_Main.ppmbtn_SysteminfoClick(Sender: TObject);
+begin
+  navbarclick(iSysteminfo);
+  WindowState:= TWindowState.wsMaximized;
+  SetForegroundWindow(frm_PCM_main.Handle);
+end;
+procedure Tfrm_PCM_Main.ppmbtn_InfoClick(Sender: TObject);
+begin
+  navbarclick(iInfo);
+  WindowState:= TWindowState.wsMaximized;
+  SetForegroundWindow(frm_PCM_main.Handle);
+end;
+procedure Tfrm_PCM_Main.ppmbtn_HandbuchClick(Sender: TObject);
+begin
+  navbarclick(iHandbuch);
+  WindowState:= TWindowState.wsMaximized;
+  SetForegroundWindow(frm_PCM_main.Handle);
+end;
+procedure Tfrm_PCM_Main.ppmbtn_SpracheClick(Sender: TObject);
+begin
+  navbarclick(iSprache);
+  WindowState:= TWindowState.wsMaximized;
+  SetForegroundWindow(frm_PCM_main.Handle);
+end;
+procedure Tfrm_PCM_Main.ppmbtn_AbmeldenClick(Sender: TObject);
+begin
+  Abmelden
+end;
+procedure Tfrm_PCM_Main.ppmbtn_BeendenClick(Sender: TObject);
+begin
+  Close;
 end;
 
 end.

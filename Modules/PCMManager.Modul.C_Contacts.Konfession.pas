@@ -50,6 +50,7 @@ type
     procedure btn_KonfessionCancelClick(Sender: TObject);
     procedure btn_KonfessionDeleteClick(Sender: TObject);
     procedure btn_KonfessionNewClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private-Deklarationen }
   public
@@ -67,7 +68,7 @@ implementation
 {$R *.dfm}
 
 uses  PCMManager.Modul.C_Contacts,
-      PCM.Data;
+      PCM.Data,PCM.Strings;
 
 procedure Tfrm_PCM_Konfession.btn_KonfessionCancelClick(Sender: TObject);
 begin
@@ -87,7 +88,6 @@ begin
   dm_PCM.qry_Contact_Konfession.Append;
   dm_PCM.qry_Contact_Konfession.Insert;
 end;
-
 procedure Tfrm_PCM_Konfession.btn_NotenNewClick(Sender: TObject);
 begin
   if dm_PCM.qry_Contact_Konfession.State in [dsInsert, dsedit] then
@@ -132,6 +132,10 @@ begin
   ShowModal;
   result:= true;
   Release;
+end;
+procedure Tfrm_PCM_Konfession.FormShow(Sender: TObject);
+begin
+  grdDBTblView_KonfessionBezeichnung.Caption := rs_PCMManager_Konfession;
 end;
 procedure Tfrm_PCM_Konfession.btn_KonfessionCloseClick(Sender: TObject);
 begin

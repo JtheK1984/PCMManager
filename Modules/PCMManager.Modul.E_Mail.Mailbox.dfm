@@ -24,7 +24,6 @@ object frm_PCM_MailShow_Ordner: Tfrm_PCM_MailShow_Ordner
     Margins.Bottom = 8
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 608
     Width = 604
   end
   object cxButton1: TcxButton

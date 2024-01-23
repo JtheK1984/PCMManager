@@ -23,8 +23,6 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
-    ExplicitWidth = 418
-    ExplicitHeight = 458
     Height = 459
     Width = 422
     object Bevel1: TBevel
@@ -67,7 +65,7 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
       Top = 424
       Width = 195
       Height = 25
-      Caption = '&Gew'#228'hlte Feiertage '#252'bernehmen'
+      Caption = 'Gew'#228'hlte Feiertage '#252'bernehmen'
       OptionsImage.ImageIndex = 56
       OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 4

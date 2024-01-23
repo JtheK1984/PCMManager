@@ -21,8 +21,6 @@ object frm_PCM_KalenderFilter: Tfrm_PCM_KalenderFilter
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
-    ExplicitWidth = 500
-    ExplicitHeight = 297
     Height = 298
     Width = 504
     object btn_Ok: TcxButton
@@ -76,7 +74,6 @@ object frm_PCM_KalenderFilter: Tfrm_PCM_KalenderFilter
       ParentFont = False
       TabOrder = 0
       LockedStateImageOptions.Effect = lsieDark
-      ExplicitWidth = 496
       object grdDBTblView_Stundenplanuebersicht: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         FilterBox.CustomizeDialog = False

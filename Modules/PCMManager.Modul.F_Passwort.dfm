@@ -11,6 +11,7 @@ object frm_password: Tfrm_password
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  OnActivate = FormActivate
   OnDestroy = FormDestroy
   OnShow = FormShow
   TextHeight = 13
@@ -27,8 +28,8 @@ object frm_password: Tfrm_password
       Left = 3
       Top = 3
       Width = 1166
-      Height = 749
-      Align = alTop
+      Height = 743
+      Align = alClient
       Color = clBtnFace
       ParentBackground = False
       ParentColor = False
@@ -40,7 +41,7 @@ object frm_password: Tfrm_password
       Properties.TabSlants.Kind = skCutCorner
       Properties.TabWidth = 100
       OnClick = pc_passwoerterClick
-      ClientRectBottom = 743
+      ClientRectBottom = 737
       ClientRectLeft = 2
       ClientRectRight = 1160
       ClientRectTop = 28
@@ -53,16 +54,14 @@ object frm_password: Tfrm_password
           Align = alClient
           Caption = 'Passwortdetails'
           TabOrder = 0
-          Height = 652
+          Height = 646
           Width = 1158
           object grd_Passwort: TcxGrid
             Left = 3
             Top = 191
             Width = 1152
-            Height = 452
+            Height = 446
             Align = alClient
-            BevelInner = bvLowered
-            BevelKind = bkFlat
             BorderStyle = cxcbsNone
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -215,7 +214,6 @@ object frm_password: Tfrm_password
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 1
-            ExplicitTop = -4
             Height = 176
             Width = 1152
             object lbl_Passwort_Benutzer: TcxLabel
@@ -700,8 +698,6 @@ object frm_password: Tfrm_password
             Width = 1152
             Height = 286
             Align = alBottom
-            BevelInner = bvLowered
-            BevelKind = bkFlat
             BorderStyle = cxcbsNone
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -712,9 +708,6 @@ object frm_password: Tfrm_password
             TabOrder = 2
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
-            ExplicitLeft = 2
-            ExplicitTop = 118
-            ExplicitWidth = 1156
             object tv_Programs: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -872,16 +865,14 @@ object frm_password: Tfrm_password
           Align = alClient
           Caption = 'Serials'
           TabOrder = 1
-          Height = 309
+          Height = 303
           Width = 1158
           object cxGrid1: TcxGrid
             Left = 3
             Top = 111
             Width = 1152
-            Height = 189
+            Height = 183
             Align = alClient
-            BevelInner = bvLowered
-            BevelKind = bkFlat
             BorderStyle = cxcbsNone
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -892,10 +883,6 @@ object frm_password: Tfrm_password
             TabOrder = 0
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
-            ExplicitLeft = 2
-            ExplicitTop = 109
-            ExplicitWidth = 1156
-            ExplicitHeight = 203
             object cxGridDBTableView1: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -955,7 +942,6 @@ object frm_password: Tfrm_password
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 1
-            ExplicitTop = 59
             Height = 33
             Width = 1152
             object edt_SerialsBez: TcxDBTextEdit
@@ -1162,7 +1148,7 @@ object frm_password: Tfrm_password
       WholeRow = False
     end
     object btn_PasswortNew: TdxBarLargeButton
-      Caption = 'Passwort a&nlegen'
+      Caption = 'Passwort anlegen'
       Category = 0
       Hint = 'Passwort anlegen'
       Visible = ivAlways
@@ -1172,7 +1158,7 @@ object frm_password: Tfrm_password
       Width = 125
     end
     object btn_PasswortDelete: TdxBarLargeButton
-      Caption = 'Passwort &l'#246'schen'
+      Caption = 'Passwort l'#246'schen'
       Category = 0
       Hint = 'Passwort l'#246'schen'
       Visible = ivAlways
@@ -1182,7 +1168,7 @@ object frm_password: Tfrm_password
       Width = 125
     end
     object btn_PasswortCancel: TdxBarLargeButton
-      Caption = '&Abbrechen'
+      Caption = 'Abbrechen'
       Category = 0
       Hint = 'Abbrechen'
       Visible = ivAlways
@@ -1192,7 +1178,7 @@ object frm_password: Tfrm_password
       Width = 125
     end
     object btn_PasswortSave: TdxBarLargeButton
-      Caption = 'Passwort &speichern'
+      Caption = 'Passwort speichern'
       Category = 0
       Hint = 'Passwort speichern'
       Visible = ivAlways
@@ -1222,7 +1208,7 @@ object frm_password: Tfrm_password
       Width = 125
     end
     object btn_SerialCancel: TdxBarLargeButton
-      Caption = '&Abbrechen'
+      Caption = 'Abbrechen'
       Category = 0
       Hint = 'Abbrechen'
       Visible = ivAlways
@@ -1242,7 +1228,7 @@ object frm_password: Tfrm_password
       Width = 125
     end
     object btn_SerialSNew: TdxBarLargeButton
-      Caption = 'Serial a&nlegen'
+      Caption = 'Serial anlegen'
       Category = 0
       Hint = 'Serial anlegen'
       Visible = ivAlways
@@ -1252,7 +1238,7 @@ object frm_password: Tfrm_password
       Width = 125
     end
     object btn_SerialSSave: TdxBarLargeButton
-      Caption = 'Serial &speichern'
+      Caption = 'Serial speichern'
       Category = 0
       Hint = 'Serial speichern'
       Visible = ivAlways
@@ -1262,7 +1248,7 @@ object frm_password: Tfrm_password
       Width = 125
     end
     object btn_SerialSCancel: TdxBarLargeButton
-      Caption = '&Abbrechen'
+      Caption = 'Abbrechen'
       Category = 0
       Hint = 'Abbrechen'
       Visible = ivAlways
@@ -1272,7 +1258,7 @@ object frm_password: Tfrm_password
       Width = 125
     end
     object btn_SerialSDelete: TdxBarLargeButton
-      Caption = 'Serial &l'#246'schen'
+      Caption = 'Serial l'#246'schen'
       Category = 0
       Hint = 'Serial l'#246'schen'
       Visible = ivAlways

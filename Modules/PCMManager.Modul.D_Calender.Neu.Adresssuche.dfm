@@ -31,15 +31,15 @@ object fAdressSuche: TfAdressSuche
     Properties.Style = 9
     Properties.TabSlants.Kind = skCutCorner
     LookAndFeel.Kind = lfUltraFlat
-    ExplicitTop = 168
-    ExplicitHeight = 446
     ClientRectBottom = 441
     ClientRectRight = 946
     ClientRectTop = 20
     object tshAdresssuche: TcxTabSheet
       Caption = 'Adressen'
       ImageIndex = 0
-      ExplicitHeight = 426
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
   end
   object cxGrid1: TcxGrid
@@ -50,8 +50,6 @@ object fAdressSuche: TfAdressSuche
     Align = alClient
     TabOrder = 1
     LookAndFeel.NativeStyle = False
-    ExplicitTop = 168
-    ExplicitHeight = 446
     object tvAdressen: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = True
@@ -134,7 +132,6 @@ object fAdressSuche: TfAdressSuche
     Style.Font.Style = []
     Style.IsFontAssigned = True
     TabOrder = 2
-    ExplicitTop = 58
     Height = 71
     Width = 946
     object teName: TcxTextEdit
@@ -206,7 +203,6 @@ object fAdressSuche: TfAdressSuche
     Style.Font.Style = []
     Style.IsFontAssigned = True
     TabOrder = 7
-    ExplicitTop = 129
     Height = 39
     Width = 946
     object bAdressenZeigen: TcxButton
@@ -333,7 +329,7 @@ object fAdressSuche: TfAdressSuche
       WholeRow = False
     end
     object btnOK: TdxBarLargeButton
-      Caption = #220'&bernehmen'
+      Caption = #220'bernehmen'
       Category = 0
       Hint = #220'bernehmen'
       Visible = ivAlways
@@ -343,7 +339,7 @@ object fAdressSuche: TfAdressSuche
       Width = 125
     end
     object dxBarLargeButton2: TdxBarLargeButton
-      Caption = '&Abbrechen'
+      Caption = 'Abbrechen'
       Category = 0
       Hint = 'Abbrechen'
       Visible = ivAlways

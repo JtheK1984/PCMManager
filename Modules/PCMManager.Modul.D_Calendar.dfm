@@ -13,6 +13,7 @@ object frm_Calendar: Tfrm_Calendar
   Font.Name = 'Tahoma'
   Font.Style = []
   WindowState = wsMaximized
+  OnActivate = FormActivate
   OnDestroy = FormDestroy
   OnResize = FormResize
   OnShow = FormShow
@@ -30,8 +31,8 @@ object frm_Calendar: Tfrm_Calendar
       Left = 3
       Top = 3
       Width = 1682
-      Height = 940
-      Align = alTop
+      Height = 934
+      Align = alClient
       Color = clBtnFace
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -42,14 +43,14 @@ object frm_Calendar: Tfrm_Calendar
       ParentColor = False
       ParentFont = False
       TabOrder = 0
-      Properties.ActivePage = ts_B_Aufgaben
+      Properties.ActivePage = ts_A_kalender
       Properties.CustomButtons.Buttons = <>
       Properties.Images = dm_PCM.imglst_16x16
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
       Properties.TabSlants.Kind = skCutCorner
       Properties.TabWidth = 100
       OnClick = pc_KalenderClick
-      ClientRectBottom = 934
+      ClientRectBottom = 928
       ClientRectLeft = 2
       ClientRectRight = 1676
       ClientRectTop = 28
@@ -60,7 +61,7 @@ object frm_Calendar: Tfrm_Calendar
           Left = 0
           Top = 63
           Width = 5
-          Height = 843
+          Height = 837
           HotZoneClassName = 'TcxSimpleStyle'
           HotZone.ArrowColor = clGrayText
           HotZone.ArrowHighlightColor = clGrayText
@@ -84,7 +85,7 @@ object frm_Calendar: Tfrm_Calendar
           Left = 5
           Top = 63
           Width = 1669
-          Height = 843
+          Height = 837
           DateNavigator.RowCount = 6
           ViewDay.Active = True
           ViewDay.AlwaysShowEventTime = True
@@ -132,8 +133,8 @@ object frm_Calendar: Tfrm_Calendar
           OnKeyDown = sched_KalenderKeyDown
           Selection = 7
           Splitters = {
-            950000007E0000008406000083000000F005000001000000F50500004A030000}
-          StoredClientBounds = {0100000001000000840600004A030000}
+            950000007E0000008406000083000000F005000001000000F505000044030000}
+          StoredClientBounds = {01000000010000008406000044030000}
         end
       end
       object ts_B_Aufgaben: TcxTabSheet
@@ -201,13 +202,13 @@ object frm_Calendar: Tfrm_Calendar
           PanelStyle.Active = True
           Style.BorderStyle = ebsNone
           TabOrder = 0
-          Height = 736
+          Height = 730
           Width = 1674
           object cxGrid1: TcxGrid
             Left = 3
             Top = 33
             Width = 1668
-            Height = 375
+            Height = 369
             Align = alClient
             TabOrder = 1
             LookAndFeel.NativeStyle = False
@@ -512,7 +513,7 @@ object frm_Calendar: Tfrm_Calendar
           end
           object cxSplitter1: TcxSplitter
             Left = 3
-            Top = 408
+            Top = 402
             Width = 1668
             Height = 5
             HotZoneClassName = 'TcxSimpleStyle'
@@ -522,7 +523,7 @@ object frm_Calendar: Tfrm_Calendar
           end
           object pnlDetails: TcxGroupBox
             Left = 3
-            Top = 413
+            Top = 407
             Align = alBottom
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
@@ -538,34 +539,6 @@ object frm_Calendar: Tfrm_Calendar
               TabOrder = 0
               Height = 62
               Width = 1662
-              object Label2: TLabel
-                Left = 0
-                Top = 8
-                Width = 38
-                Height = 13
-                Caption = 'Betreff:'
-              end
-              object Label5: TLabel
-                Left = 540
-                Top = 8
-                Width = 85
-                Height = 13
-                Caption = 'Ansprechpartner:'
-              end
-              object Label6: TLabel
-                Left = 0
-                Top = 37
-                Width = 43
-                Height = 13
-                Caption = 'Adresse:'
-              end
-              object Label8: TLabel
-                Left = 540
-                Top = 35
-                Width = 71
-                Height = 13
-                Caption = 'Jira Ticket-Nr.:'
-              end
               object cxDBTextEdit6: TcxDBTextEdit
                 Left = 76
                 Top = 5
@@ -579,8 +552,8 @@ object frm_Calendar: Tfrm_Calendar
                 Width = 441
               end
               object btnGoToJira: TcxButton
-                Left = 1045
-                Top = 32
+                Left = 1052
+                Top = 34
                 Width = 25
                 Height = 21
                 OptionsImage.ImageIndex = 47
@@ -589,8 +562,8 @@ object frm_Calendar: Tfrm_Calendar
                 OnClick = btnGoToJiraClick
               end
               object edtJiraTicketNr: TcxDBTextEdit
-                Left = 629
-                Top = 32
+                Left = 636
+                Top = 34
                 TabStop = False
                 DataBinding.DataField = 'Jira_Ticket'
                 DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
@@ -632,8 +605,8 @@ object frm_Calendar: Tfrm_Calendar
                 Width = 441
               end
               object cbxAns: TcxDBLookupComboBox
-                Left = 629
-                Top = 5
+                Left = 636
+                Top = 6
                 TabStop = False
                 DataBinding.DataField = 'ID_Ansprechpartner'
                 DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
@@ -647,6 +620,30 @@ object frm_Calendar: Tfrm_Calendar
                 Style.TransparentBorder = True
                 TabOrder = 2
                 Width = 441
+              end
+              object Label5: TcxLabel
+                Left = 540
+                Top = 8
+                Caption = 'Ansprechpartner:'
+                Transparent = True
+              end
+              object Label2: TcxLabel
+                Left = 0
+                Top = 8
+                Caption = 'Betreff:'
+                Transparent = True
+              end
+              object Label6: TcxLabel
+                Left = 0
+                Top = 37
+                Caption = 'Adresse:'
+                Transparent = True
+              end
+              object Label8: TcxLabel
+                Left = 540
+                Top = 35
+                Caption = 'Jira Ticket-Nr.:'
+                Transparent = True
               end
             end
             object cxDBMemo1: TcxDBRichEdit
@@ -956,8 +953,6 @@ object frm_Calendar: Tfrm_Calendar
             Width = 1668
             Height = 81
             Align = alBottom
-            BevelInner = bvLowered
-            BevelKind = bkFlat
             BorderStyle = cxcbsNone
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -968,6 +963,7 @@ object frm_Calendar: Tfrm_Calendar
             TabOrder = 3
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
+            LookAndFeel.NativeStyle = False
             object grdDBTblView_Stundenplanuebersicht: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -1092,7 +1088,7 @@ object frm_Calendar: Tfrm_Calendar
           Align = alClient
           Caption = 'Stundenplan'
           TabOrder = 1
-          Height = 705
+          Height = 699
           Width = 1674
           object pnl_Stundenplandetail: TcxGroupBox
             Left = 3
@@ -1384,10 +1380,8 @@ object frm_Calendar: Tfrm_Calendar
             Left = 3
             Top = 138
             Width = 1668
-            Height = 558
+            Height = 552
             Align = alClient
-            BevelInner = bvLowered
-            BevelKind = bkFlat
             BorderStyle = cxcbsNone
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -1398,6 +1392,7 @@ object frm_Calendar: Tfrm_Calendar
             TabOrder = 1
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
+            LookAndFeel.NativeStyle = False
             object grdDBTblView_Stundenplan: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -1926,7 +1921,7 @@ object frm_Calendar: Tfrm_Calendar
       ImageIndex = -1
     end
     object btn_CalMonat: TdxBarLargeButton
-      Caption = '&Monat'
+      Caption = 'Monat'
       Category = 0
       Hint = 'Monat'
       Visible = ivAlways
@@ -1938,7 +1933,7 @@ object frm_Calendar: Tfrm_Calendar
       ImageIndex = -1
     end
     object btn_CalWoche: TdxBarLargeButton
-      Caption = '&Woche'
+      Caption = 'Woche'
       Category = 0
       Hint = 'Woche'
       Visible = ivAlways
@@ -1950,7 +1945,7 @@ object frm_Calendar: Tfrm_Calendar
       ImageIndex = -1
     end
     object btn_CalArbeitswoche: TdxBarLargeButton
-      Caption = '&Arbeitswoche'
+      Caption = 'Arbeitswoche'
       Category = 0
       Hint = 'Arbeitswoche'
       Visible = ivAlways
@@ -1962,7 +1957,7 @@ object frm_Calendar: Tfrm_Calendar
       ImageIndex = -1
     end
     object btn_CalTag: TdxBarLargeButton
-      Caption = '&Tag'
+      Caption = 'Tag'
       Category = 0
       Hint = 'Tag'
       Visible = ivAlways
@@ -1974,7 +1969,7 @@ object frm_Calendar: Tfrm_Calendar
       ImageIndex = -1
     end
     object btn_CalJahr: TdxBarLargeButton
-      Caption = '&Jahr'
+      Caption = 'Jahr'
       Category = 0
       Hint = 'Jahr'
       Visible = ivAlways
@@ -1986,7 +1981,7 @@ object frm_Calendar: Tfrm_Calendar
       ImageIndex = -1
     end
     object btn_CalAgenda: TdxBarLargeButton
-      Caption = 'Ag&enda'
+      Caption = 'Agenda'
       Category = 0
       Hint = 'Agenda'
       Visible = ivAlways
@@ -1998,7 +1993,7 @@ object frm_Calendar: Tfrm_Calendar
       ImageIndex = -1
     end
     object btn_CalCompleteday: TdxBarLargeButton
-      Caption = '&Ganzer Tag'
+      Caption = 'Ganzer Tag'
       Category = 0
       Hint = 'Ganzer Tag'
       Visible = ivAlways
@@ -2010,7 +2005,7 @@ object frm_Calendar: Tfrm_Calendar
       ImageIndex = -1
     end
     object btn_CalZurueck: TdxBarLargeButton
-      Caption = '&Zur'#252'ck'
+      Caption = 'Zur'#252'ck'
       Category = 0
       Hint = 'Zur'#252'ck'
       Visible = ivAlways
@@ -2022,7 +2017,7 @@ object frm_Calendar: Tfrm_Calendar
       ImageIndex = -1
     end
     object btn_CalVor: TdxBarLargeButton
-      Caption = '&Vor'
+      Caption = 'Vor'
       Category = 0
       Hint = 'Vor'
       Visible = ivAlways
@@ -2034,7 +2029,7 @@ object frm_Calendar: Tfrm_Calendar
       ImageIndex = -1
     end
     object btn_CalFilter: TdxBarLargeButton
-      Caption = '&Filter'
+      Caption = 'Filter'
       Category = 0
       Hint = 'Filter'
       Visible = ivAlways
@@ -2046,7 +2041,7 @@ object frm_Calendar: Tfrm_Calendar
       ImageIndex = -1
     end
     object btn_CalPrint: TdxBarLargeButton
-      Caption = '&Drucken'
+      Caption = 'Drucken'
       Category = 0
       Hint = 'Drucken'
       Visible = ivAlways
@@ -2059,7 +2054,7 @@ object frm_Calendar: Tfrm_Calendar
       ImageIndex = -1
     end
     object btn_CalImport: TdxBarLargeButton
-      Caption = '&Import/Export'
+      Caption = 'Import/Export'
       Category = 0
       Hint = 'Import/Export'
       Visible = ivAlways
@@ -2073,7 +2068,7 @@ object frm_Calendar: Tfrm_Calendar
     end
     object btn_CalAnsicht: TdxBarLargeButton
       Align = iaRight
-      Caption = '&max. Ansicht'
+      Caption = 'max. Ansicht'
       Category = 0
       Hint = 'max. Ansicht'
       Visible = ivAlways
@@ -2145,7 +2140,7 @@ object frm_Calendar: Tfrm_Calendar
       ImageIndex = -1
     end
     object btn_StundeNew: TdxBarLargeButton
-      Caption = 'Stunde a&nlegen'
+      Caption = 'Stunde anlegen'
       Category = 0
       Hint = 'Stunde anlegen'
       Visible = ivAlways
@@ -2157,7 +2152,7 @@ object frm_Calendar: Tfrm_Calendar
       ImageIndex = -1
     end
     object btn_StundeDelete: TdxBarLargeButton
-      Caption = 'Stunde &l'#246'schen'
+      Caption = 'Stunde l'#246'schen'
       Category = 0
       Hint = 'Stunde l'#246'schen'
       Visible = ivAlways
@@ -2169,7 +2164,7 @@ object frm_Calendar: Tfrm_Calendar
       ImageIndex = -1
     end
     object btn_StundeCancel: TdxBarLargeButton
-      Caption = '&Abbrechen'
+      Caption = 'Abbrechen'
       Category = 0
       Hint = 'Abbrechen'
       Visible = ivAlways
@@ -2301,7 +2296,7 @@ object frm_Calendar: Tfrm_Calendar
       ImageIndex = -1
     end
     object btn_JobsImportExportAufgaben: TdxBarLargeButton
-      Caption = '&Import/Export'
+      Caption = 'Import/Export'
       Category = 0
       Hint = 'Import/Export'
       Visible = ivAlways
@@ -2613,7 +2608,7 @@ object frm_Calendar: Tfrm_Calendar
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 45247.407147025460000000
+      ReportDocument.CreationDate = 45314.463097060190000000
       OptionsSize.AutoWidth = True
       PixelsPerInch = 96
       BuiltInReportLink = True

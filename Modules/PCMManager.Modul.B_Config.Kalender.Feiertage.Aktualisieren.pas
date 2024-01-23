@@ -23,7 +23,7 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue, cxLabel, dxSkinWXI;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, cxLabel, dxSkinWXI,System.UITypes;
 
 type
   Tfrm_FeiertageAktualisieren = class(TForm)
@@ -55,7 +55,8 @@ implementation
 
 uses
   PCM.Data,
-  DateUtils;
+  DateUtils,
+  PCM.Strings;
 
 function Tfrm_FeiertageAktualisieren.Execute(out von, bis: TDateTime): Boolean;
 begin
@@ -73,15 +74,14 @@ end;
 procedure Tfrm_FeiertageAktualisieren.btn_OKClick(Sender: TObject);
 begin
   if (dedt_Von.EditValue = Null) or (dEdt_Bis.EditValue = Null) then
-    Application.MessageBox(PChar('Bitte geben Sie ein "Von"- und ein "Bis"-Datum an.'), PChar('Datum ungültig.'), MB_OK or MB_ICONINFORMATION)
+    MessageDlg(rs_PCMManager_DatumUngueltig + rs_PCMManager_DatumVonBis,mtWarning, [mbOk],0)
   else if dedt_Von.Date < dEdt_Bis.Date then
     ModalResult := mrOk
   else
-    Application.MessageBox(PChar('"Von" ist größer als "Bis" - bitte korrigieren.'), PChar('Datum ungültig.'), MB_OK or MB_ICONINFORMATION);
+    MessageDlg(rs_PCMManager_DatumUngueltig + rs_PCMManager_DatumBisVon,mtWarning, [mbOk],0);
 end;
 procedure Tfrm_FeiertageAktualisieren.btn_AbortClick(Sender: TObject);
 begin
-  // 5.9.0.29
   ModalResult := mrCancel;
 end;
 

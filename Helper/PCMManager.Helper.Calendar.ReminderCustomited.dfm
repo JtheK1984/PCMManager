@@ -1,6 +1,7 @@
 inherited cxSchedulerReminderFormCustomized: TcxSchedulerReminderFormCustomized
   Caption = 'cxSchedulerReminderFormCustomized'
   Position = poScreenCenter
+  StyleElements = [seFont, seClient, seBorder]
   OnShow = FormShow
   TextHeight = 13
   inherited lcMain: TdxLayoutControl

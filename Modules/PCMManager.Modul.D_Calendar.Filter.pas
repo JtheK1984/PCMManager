@@ -60,7 +60,7 @@ implementation
 {$R *.dfm}
 
 uses  PCMManager.Modul.D_Calendar,
-      PCM.Data;
+      PCM.Data,PCM.Strings;
 
 function Tfrm_PCM_KalenderFilter.Execute(const AShowModal: Boolean; AID: integer; out AKalender: string) : boolean;
 begin
@@ -92,6 +92,7 @@ end;
 procedure Tfrm_PCM_KalenderFilter.FormShow(Sender: TObject);
 begin
   sKalenderFilter:= '';
+  grdDBTblView_StundenplanuebersichtKalendername.caption := rs_PCMManager_Kalendername;
 end;
 
 end.

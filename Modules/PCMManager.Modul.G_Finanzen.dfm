@@ -11,6 +11,7 @@ object frm_finanzen: Tfrm_finanzen
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  OnActivate = FormActivate
   OnDestroy = FormDestroy
   OnShow = FormShow
   TextHeight = 13
@@ -27,8 +28,8 @@ object frm_finanzen: Tfrm_finanzen
       Left = 3
       Top = 3
       Width = 981
-      Height = 777
-      Align = alTop
+      Height = 809
+      Align = alClient
       Color = clBtnFace
       ParentBackground = False
       ParentColor = False
@@ -39,7 +40,7 @@ object frm_finanzen: Tfrm_finanzen
       Properties.TabSlants.Kind = skCutCorner
       Properties.TabWidth = 100
       OnChange = AG_pc_FinanzenChange
-      ClientRectBottom = 771
+      ClientRectBottom = 803
       ClientRectLeft = 2
       ClientRectRight = 975
       ClientRectTop = 28
@@ -59,7 +60,7 @@ object frm_finanzen: Tfrm_finanzen
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
           TabOrder = 0
-          Height = 743
+          Height = 775
           Width = 973
           object ckbx_EditReport: TCheckBox
             Left = 6
@@ -416,7 +417,7 @@ object frm_finanzen: Tfrm_finanzen
           Align = alClient
           Caption = 'Einnahmequellen:'
           TabOrder = 0
-          Height = 680
+          Height = 712
           Width = 973
           object pnl_Finanzen_Einnahmen: TcxGroupBox
             Left = 3
@@ -432,7 +433,6 @@ object frm_finanzen: Tfrm_finanzen
             Style.Font.Style = []
             Style.IsFontAssigned = True
             TabOrder = 0
-            ExplicitTop = -4
             Height = 98
             Width = 967
             object edt_FinEinAbsender: TcxDBTextEdit
@@ -565,10 +565,8 @@ object frm_finanzen: Tfrm_finanzen
             Left = 3
             Top = 113
             Width = 967
-            Height = 558
+            Height = 590
             Align = alClient
-            BevelInner = bvLowered
-            BevelKind = bkFlat
             BorderStyle = cxcbsNone
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -579,10 +577,6 @@ object frm_finanzen: Tfrm_finanzen
             TabOrder = 1
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
-            ExplicitLeft = 2
-            ExplicitTop = 116
-            ExplicitWidth = 971
-            ExplicitHeight = 572
             object tv_Einnahmen: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -666,7 +660,7 @@ object frm_finanzen: Tfrm_finanzen
           Align = alClient
           Caption = 'Ausgaben'
           TabOrder = 0
-          Height = 680
+          Height = 712
           Width = 973
           object pnl_Finanzen_Ausgaben: TcxGroupBox
             Left = 3
@@ -675,7 +669,6 @@ object frm_finanzen: Tfrm_finanzen
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 0
-            ExplicitTop = -4
             Height = 122
             Width = 967
             object lbl_FinAusBetrag: TcxLabel
@@ -1125,10 +1118,8 @@ object frm_finanzen: Tfrm_finanzen
             Left = 3
             Top = 137
             Width = 967
-            Height = 534
+            Height = 566
             Align = alClient
-            BevelInner = bvLowered
-            BevelKind = bkFlat
             BorderStyle = cxcbsNone
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -1310,7 +1301,7 @@ object frm_finanzen: Tfrm_finanzen
         ExplicitLeft = 0
         ExplicitTop = 0
         ExplicitWidth = 0
-        ExplicitHeight = 0
+        ExplicitHeight = 752
         object gbx_Finanzen_Verf: TGroupBox
           Left = 0
           Top = 66
@@ -1962,7 +1953,7 @@ object frm_finanzen: Tfrm_finanzen
       ImageIndex = -1
     end
     object btn_FinEinCancel: TdxBarLargeButton
-      Caption = '&Abbrechen'
+      Caption = 'Abbrechen'
       Category = 0
       Hint = 'Abbrechen'
       Visible = ivAlways
@@ -2010,7 +2001,7 @@ object frm_finanzen: Tfrm_finanzen
       ImageIndex = -1
     end
     object btn_FinAusCancel: TdxBarLargeButton
-      Caption = '&Abbrechen'
+      Caption = 'Abbrechen'
       Category = 0
       Hint = 'Abbrechen'
       Visible = ivAlways

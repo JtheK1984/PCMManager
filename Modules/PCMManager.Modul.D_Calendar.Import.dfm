@@ -29,8 +29,6 @@ object frm_PCM_Import: Tfrm_PCM_Import
     Align = alClient
     Style.BorderStyle = ebsNone
     TabOrder = 1
-    ExplicitWidth = 570
-    ExplicitHeight = 225
     Height = 224
     Width = 562
     object btn_CAlImportNew: TcxButton

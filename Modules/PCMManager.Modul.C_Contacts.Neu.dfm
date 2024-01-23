@@ -5,7 +5,7 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
   BorderStyle = bsSingle
   Caption = 'Neuen Kontakt anlegen'
   ClientHeight = 130
-  ClientWidth = 327
+  ClientWidth = 342
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,8 +21,9 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
+    ExplicitWidth = 327
     Height = 130
-    Width = 327
+    Width = 342
     object lbl_Anrede: TcxLabel
       Left = 109
       Top = 19

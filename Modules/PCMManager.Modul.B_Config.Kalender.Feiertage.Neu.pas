@@ -95,7 +95,7 @@ implementation
 
 uses  PCMManager.Modul.B_Config,
       PCMManager.Modul.B_Config.Kalender.Feiertage.Neu.Berechnen,
-      PCM.Data;
+      PCM.Data,PCM.Strings;
 
 procedure TfFeiertageBerechnen.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
@@ -113,6 +113,9 @@ begin
   edt_Jahr.EditValue := Jahr + 1;
 
   memData_Feiertage.Open;
+  tvFeiertageTag.Caption := rs_PCM_Tag;
+  tvFeiertageMonat.Caption := rs_PCM_Monat;
+  tvFeiertageBezeichnung.Caption := rs_PCM_Bezeichnung;
 end;
 procedure TfFeiertageBerechnen.btn_AbortClick(Sender: TObject);
 begin
@@ -194,7 +197,7 @@ var
   Jahr, Monat, Tag: Word;
 begin
   if cmbbx_Bundesland.ItemIndex = -1 then
-    MessageDlg('Bitte wählen Sie ain Bundesland aus.', mtWarning, [mbOk], 0)
+    MessageDlg(rs_PCMManager_Bundeslandwaehlen, mtWarning, [mbOk], 0)
   else
   begin
     // Jahr holen
@@ -255,7 +258,7 @@ begin
     if not Sender.IsNull then
     begin
       if not (Sender.AsInteger in [1..12]) then
-        Text := 'Undefiniert'
+        Text := rs_PCMManager_Undefiniert
       else
         Text := FormatDateTime('mmmm', EncodeDate(2000, Sender.AsInteger, 1));
     end;

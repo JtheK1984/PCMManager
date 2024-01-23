@@ -33,7 +33,7 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue, dxBar, cxLabel,pcm.Functions, dxSkinWXI;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, dxBar, cxLabel,pcm.Functions, dxSkinWXI, System.UITypes;
 
 type
   TAdressSucheTyp = (astAdressen, astAnsprechpartner);
@@ -97,7 +97,7 @@ implementation
 {$R *.DFM}
 
 uses  PCM.Data,
-      PCMManager.Modul.D_Calandar.Neu;
+      PCMManager.Modul.D_Calandar.Neu,PCM.Strings;
 
 procedure TfAdressSuche.SetGridViews(Show:boolean);
 begin
@@ -135,7 +135,7 @@ begin
   dm_PCM.Qry_work.SQL.Text := dm_PCM.Qry_work.SQL.Text + sWhere + ' ORDER BY Firma';
   dm_PCM.Qry_work.Open;
 
-  lCount.Caption := 'Es wurden ' + IntToStr(dm_PCM.Qry_work.RecordCount) + ' Adressen gefunden!';
+  lCount.Caption := IntToStr(dm_PCM.Qry_work.RecordCount) + rs_PCMManager_Adresseengefunden;
   lCount.Show;
 end;
 procedure TfAdressSuche.bFilterLoeschenClick(Sender: TObject);
@@ -163,6 +163,10 @@ begin
 end;
 procedure TfAdressSuche.FormShow(Sender: TObject);
 begin
+  tvAdressenName.Caption:= rs_PCMManager_Firma;
+  tvAdressenStrasse.Caption:= rs_PCMLizenzgenerator_KundeStrasse;
+  tvAdressenplz.Caption:= rs_PCMLizenzgenerator_KundePLZ;
+  tvAdressenOrt.Caption:= rs_PCMLizenzgenerator_KundeORT;
   recSelected := False;
   teName.SetFocus;
   SetGridViews(True);
@@ -177,9 +181,7 @@ begin
 
   end else
   begin
-    Application.MessageBox(
-    'Bitte wählen Sie eine Adresse aus.', 'Adresswahl',
-    MB_OK);
+    MessageDlg(rs_PCMManager_AdresseWaehlen,mtwarning,[mbOK],0);
   end;
 end;
 procedure TfAdressSuche.ToolButton2Click(Sender: TObject);

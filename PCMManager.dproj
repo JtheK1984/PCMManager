@@ -4,9 +4,10 @@
         <ProjectVersion>20.1</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <Program_Compress>E:\Inno\Setupfiles\Programme\PCMService\UPX\UPX.exe</Program_Compress>
+        <Program_Soluling>E:\Solu\SoluMake.exe</Program_Soluling>
         <MainSource>PCMManager.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Win64</Platform>
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -73,10 +74,10 @@
         <SanitizedProjectName>PCMManager</SanitizedProjectName>
         <Custom_Styles>&quot;Aqua Light Slate|VCLSTYLE|$(BDSCOMMONDIR)\Styles\AquaLightSlate.vsf&quot;;Copper|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Copper.vsf;CopperDark|VCLSTYLE|$(BDSCOMMONDIR)\Styles\CopperDark.vsf;Coral|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Coral.vsf;Diamond|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Diamond.vsf;Emerald|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Emerald.vsf;Glow|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Glow.vsf;&quot;Iceberg Classico|VCLSTYLE|$(BDSCOMMONDIR)\Styles\IcebergClassico.vsf&quot;;Jet|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Jet.vsf;&quot;Lavender Classico|VCLSTYLE|$(BDSCOMMONDIR)\Styles\LavenderClassico.vsf&quot;;Radiant|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Radiant.vsf;Sky|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Sky.vsf;&quot;Slate Classico|VCLSTYLE|$(BDSCOMMONDIR)\Styles\SlateClassico.vsf&quot;;Sterling|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Sterling.vsf;&quot;Tablet Dark|VCLSTYLE|$(BDSCOMMONDIR)\Styles\TabletDark.vsf&quot;;&quot;Tablet Light|VCLSTYLE|$(BDSCOMMONDIR)\Styles\TabletLight.vsf&quot;;Vapor|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Vapor.vsf;Windows10|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows10.vsf;&quot;Windows10 Blue|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows10Blue.vsf&quot;;&quot;Windows10 Charcoal|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows10_Charcoal.vsf&quot;;&quot;Windows10 Dark|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows10Dark.vsf&quot;;&quot;Windows10 Green|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows10Green.vsf&quot;;&quot;Windows10 Purple|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows10Purple.vsf&quot;;&quot;Windows10 SlateGray|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows10SlateGray.vsf&quot;;&quot;Windows11 Modern Dark|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows11_Modern_Dark.vsf&quot;;&quot;Windows11 Modern Light|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows11_Modern_Light.vsf&quot;;&quot;Windows11 Polar Dark|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows11_Polar_Dark.vsf&quot;;&quot;Windows11 Polar Light|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows11_Polar_Light.vsf&quot;;Amakrits|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Amakrits.vsf;&quot;Amethyst Kamri|VCLSTYLE|$(BDSCOMMONDIR)\Styles\AmethystKamri.vsf&quot;;&quot;Aqua Graphite|VCLSTYLE|$(BDSCOMMONDIR)\Styles\AquaGraphite.vsf&quot;;Auric|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Auric.vsf;Carbon|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Carbon.vsf;&quot;Charcoal Dark Slate|VCLSTYLE|$(BDSCOMMONDIR)\Styles\CharcoalDarkSlate.vsf&quot;;&quot;Cobalt XEMedia|VCLSTYLE|$(BDSCOMMONDIR)\Styles\CobaltXEMedia.vsf&quot;;&quot;Cyan Dusk|VCLSTYLE|$(BDSCOMMONDIR)\Styles\CyanDusk.vsf&quot;;&quot;Cyan Night|VCLSTYLE|$(BDSCOMMONDIR)\Styles\CyanNight.vsf&quot;;&quot;Emerald Light Slate|VCLSTYLE|$(BDSCOMMONDIR)\Styles\EmeraldLightSlate.vsf&quot;;&quot;Golden Graphite|VCLSTYLE|$(BDSCOMMONDIR)\Styles\GoldenGraphite.vsf&quot;;Light|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Light.vsf;Luna|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Luna.vsf;Obsidian|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Obsidian.vsf;&quot;Onyx Blue|VCLSTYLE|$(BDSCOMMONDIR)\Styles\OnyxBlue.vsf&quot;;&quot;Ruby Graphite|VCLSTYLE|$(BDSCOMMONDIR)\Styles\RubyGraphite.vsf&quot;;&quot;Sapphire Kamri|VCLSTYLE|$(BDSCOMMONDIR)\Styles\SapphireKamri.vsf&quot;;Silver|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Silver.vsf;&quot;Smokey Quartz Kamri|VCLSTYLE|$(BDSCOMMONDIR)\Styles\SmokeyQuartzKamri.vsf&quot;;&quot;Turquoise Gray|VCLSTYLE|$(BDSCOMMONDIR)\Styles\TurquoiseGray.vsf&quot;;Calypso|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Calypso.vsf;&quot;Calypso LE|VCLSTYLE|$(BDSCOMMONDIR)\Styles\CalypsoLE.vsf&quot;;&quot;Calypso SE|VCLSTYLE|$(BDSCOMMONDIR)\Styles\CalypsoSE.vsf&quot;;&quot;Calypso SLE|VCLSTYLE|$(BDSCOMMONDIR)\Styles\CalypsoSLE.vsf&quot;;&quot;Flat UI Light|VCLSTYLE|$(BDSCOMMONDIR)\Styles\FlatUILight.vsf&quot;;Glossy|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Glossy.vsf;&quot;Material Oxford Blue|VCLSTYLE|$(BDSCOMMONDIR)\Styles\MaterialOxfordBlue.vsf&quot;;&quot;Material Oxford Blue SE|VCLSTYLE|$(BDSCOMMONDIR)\Styles\MaterialOxfordBlueSE.vsf&quot;;&quot;Puerto Rico|VCLSTYLE|$(BDSCOMMONDIR)\Styles\PuertoRico.vsf&quot;;Stellar|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Stellar.vsf;&quot;Stellar Dark|VCLSTYLE|$(BDSCOMMONDIR)\Styles\StellarDark.vsf&quot;;&quot;Wedgewood Light|VCLSTYLE|$(BDSCOMMONDIR)\Styles\WedgewoodLight.vsf&quot;;&quot;Windows10 BlackPearl|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows10BlackPearl.vsf&quot;;&quot;Windows10 Blue Whale|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows10BlueWhale.vsf&quot;;&quot;Windows10 Blue Whale LE|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows10BlueWhaleLE.vsf&quot;;&quot;Windows10 Clear Day|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows10ClearDay.vsf&quot;;&quot;Windows10 Malibu|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows10Malibu.vsf&quot;</Custom_Styles>
         <VerInfo_Locale>1031</VerInfo_Locale>
-        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.1;InternalName=PCM Manager;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager;ProductName=$(MSBuildProjectName);ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.2;InternalName=PCM Manager;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager;ProductName=$(MSBuildProjectName);ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_MinorVer>6</VerInfo_MinorVer>
-        <VerInfo_Build>1</VerInfo_Build>
+        <VerInfo_Build>2</VerInfo_Build>
         <DCC_OutputDRCFile>true</DCC_OutputDRCFile>
         <DCC_UnitSearchPath>PCMFunctions;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
@@ -87,7 +88,7 @@
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <Icon_MainIcon>PCMManager_Icon.ico</Icon_MainIcon>
         <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
-        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.1;InternalName=PCM Manager 32-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 32-Bit;ProductName=$(MSBuildProjectName) 32-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.2;InternalName=PCM Manager 32-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 32-Bit;ProductName=$(MSBuildProjectName) 32-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
         <DCC_DcuOutput>.\DCU32</DCC_DcuOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
@@ -97,7 +98,7 @@
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <Icon_MainIcon>PCMManager_Icon.ico</Icon_MainIcon>
         <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
-        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.1;InternalName=PCM Manager 64-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 64-Bit;ProductName=$(MSBuildProjectName) 64-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.2;InternalName=PCM Manager 64-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 64-Bit;ProductName=$(MSBuildProjectName) 64-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
         <DCC_DcuOutput>.\DCU64</DCC_DcuOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
@@ -112,13 +113,13 @@
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <Icon_MainIcon>PCMManager_Icon.ico</Icon_MainIcon>
-        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.1;InternalName=PCM Manager 32-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 32-Bit;ProductName=$(MSBuildProjectName) 32-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.2;InternalName=PCM Manager 32-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 32-Bit;ProductName=$(MSBuildProjectName) 32-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <Icon_MainIcon>PCMManager_Icon.ico</Icon_MainIcon>
         <DCC_OutputDRCFile>true</DCC_OutputDRCFile>
-        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.1;InternalName=PCM Manager 64-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 64-Bit;ProductName=$(MSBuildProjectName) 64-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.2;InternalName=PCM Manager 64-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 64-Bit;ProductName=$(MSBuildProjectName) 64-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -129,12 +130,12 @@
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <Icon_MainIcon>PCMManager_Icon.ico</Icon_MainIcon>
-        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.1;InternalName=PCM Manager 32-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 32-Bit;ProductName=$(MSBuildProjectName) 32-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.2;InternalName=PCM Manager 32-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 32-Bit;ProductName=$(MSBuildProjectName) 32-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <Icon_MainIcon>PCMManager_Icon.ico</Icon_MainIcon>
-        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.1;InternalName=PCM Manager 64-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 64-Bit;ProductName=$(MSBuildProjectName) 64-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.2;InternalName=PCM Manager 64-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 64-Bit;ProductName=$(MSBuildProjectName) 64-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -253,9 +254,9 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Win64\Debug\PCMManager.rsm" Configuration="Debug" Class="DebugSymbols">
+                <DeployFile LocalName="Win64\Release\PCMManager.exe" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win64">
-                        <RemoteName>PCMManager.rsm</RemoteName>
+                        <RemoteName>PCMManager.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -1220,8 +1221,15 @@
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>
-    <Target Name="Compress">
+    <Target Name="CompressWin32">
         <Exec Command="$(Program_Compress) $(DCC_ExeOutput)\$(SanitizedProjectName).exe"/>
+    </Target>
+    <Target Name="CompressWin64">
+        <Exec Command="$(Program_Compress) $(DCC_ExeOutput)\$(SanitizedProjectName).exe"/>
+    </Target>
+    <Target Name="Localize">
+        <Exec Command="$(Program_Soluling) -lang:de build $(DCC_ExeOutput)\$(SanitizedProjectName).ntp"/>
+        <Exec Command="$(Program_Soluling) -lang:en build $(DCC_ExeOutput)\$(SanitizedProjectName).ntp"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
     <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>

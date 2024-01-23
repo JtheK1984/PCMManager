@@ -288,6 +288,7 @@ type
     procedure cxButton2Click(Sender: TObject);
     procedure cxButton1Click(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private-Deklarationen }
     bButtons: boolean;
@@ -315,7 +316,8 @@ uses  PCM.Data,
       PCMManager.Modul.C_Contacts.Staatsangehoerigkeit,
       PCMManager.Modul.C_Contacts.Konfession,
       PCM.Functions.Synch.Wait,
-      PCMManager.Helper.Contacts.VCF;
+      PCMManager.Helper.Contacts.VCF,
+      PCM.Strings;
 
 
 procedure Tfrm_Contact.OpenData;
@@ -328,7 +330,40 @@ begin
   dm_PCM.qry_Contact_Konfession.Open;
   qry_Kontakte.SQL.Text:= 'SELECT * From Manager_kontakte Where ID_Benutzer = :ID_Benutzer order by Vorname,nachname asc';
   qry_Kontakte.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-//  qry_Kontakte.Open;
+  grdDBTblView_KontakteID_Anrede.Caption:= rs_PCMManager_Anrede;
+  grdDBTblView_KontakteVorname.Caption:= rs_PCMManager_Vorname1;
+  grdDBTblView_KontakteNachname.Caption:= rs_PCMManager_Nachname1;
+  grdDBTblView_KontakteGeburtsname.Caption:= rs_PCMManager_Geburtsname;
+  grdDBTblView_KontakteGeburtsland.Caption:= rs_PCMManager_Geburtsland;
+  grdDBTblView_KontakteZusatz.Caption:= rs_PCMManager_Zusatz;
+  grdDBTblView_KontakteBild.Caption:= rs_PCMManager_Bild;
+  grdDBTblView_KontakteStrasse_Privat.Caption:= rs_PCMManager_StrassePrivat;
+  grdDBTblView_KontaktePLZ_Privat.Caption:= rs_PCMManager_PlzPrivat;
+  grdDBTblView_KontakteOrt_Privat.Caption:= rs_PCMManager_OrtPrivat;
+  grdDBTblView_KontakteID_Kontaktart.Caption:= rs_PCMManager_Kontaktart;
+  grdDBTblView_KontakteTelefon_Privat.Caption:= rs_PCMManager_TelefonPrivat;
+  grdDBTblView_KontakteTelefon_Privat1.Caption:= rs_PCMManager_TelefonPrivat1;
+  grdDBTblView_KontakteHandy_privat.Caption:= rs_PCMManager_HandyPrivat;
+  grdDBTblView_KontakteE_Mail_Privat.Caption:= rs_PCMManager_MailPrivat;
+  grdDBTblView_KontakteE_Mail_Privat1.Caption:= rs_PCMManager_MailPrivat1;
+  grdDBTblView_KontakteInternet_Privat.Caption:= rs_PCMManager_InternetPrivat;
+  grdDBTblView_KontakteGeburtsdatum.Caption:= rs_PCMManager_Geburtsdatum;
+  grdDBTblView_KontakteID_Geschlecht.Caption:= rs_PCMManager_Geschlecht;
+  grdDBTblView_KontakteID_Familienstand.Caption:= rs_PCMManager_Familienstand;
+  grdDBTblView_KontakteID_Staatsangehoerigkeit.Caption:= rs_PCMManager_Staatsangehoerigkeit;
+  grdDBTblView_KontakteID_Konfession.Caption:= rs_PCMManager_Konfession;
+  grdDBTblView_KontakteInfo.Caption:= rs_PCMManager_Info;
+  grdDBTblView_KontakteFirma.Caption:= rs_PCMManager_Firma;
+  grdDBTblView_KontakteStrasse_Ges.Caption:= rs_PCMManager_StrasseGes;
+  grdDBTblView_KontaktePLZ_Ges.Caption:= rs_PCMManager_PLZGes;
+  grdDBTblView_KontakteOrt_Ges.Caption:= rs_PCMManager_OrtGes;
+  grdDBTblView_KontakteAbteilung_Ges.Caption:= rs_PCMManager_Abteilung;
+  grdDBTblView_KontakteFunktion_Ges.Caption:= rs_PCMManager_Funktion;
+  grdDBTblView_KontakteZentrale_Ges.Caption:= rs_PCMManager_Zentrale;
+  grdDBTblView_KontakteTelefon_Ges.Caption:= rs_PCMManager_Durchwahl;
+  grdDBTblView_KontakteHandy_Ges.Caption:= rs_PCMManager_HandyGes;
+  grdDBTblView_KontakteE_Mail_Ges.Caption:= rs_PCMManager_MailGes;
+  grdDBTblView_KontakteInternet_Ges.Caption:= rs_PCMManager_InternetGes;
 end;
 procedure Tfrm_Contact.SetButtonsEnabledVisible(DataSet: TDataSet);
 begin
@@ -432,16 +467,12 @@ begin
   iADRTyp:= 0;
   if dlgFOpen_VCF.Execute then
   begin
-//    tsExport:= TStringList.Create;
-//    tsExport.Add('Adresse Privat | Adresse Geschäftlich | Abteilung | Firma | Nachname | Vorname | Email P | Email G | TEL P | TEl M | Tel G');
-
     tsVCF:= TStringList.Create;
     tsVCF.LoadFromFile(dlgFOpen_VCF.FileName);
     tsVCF.Text := AnsiReplaceStr(tsVCF.Text, #13#10#32, '');
     tsVCF.Text := AnsiReplaceStr(tsVCF.Text, #13#10#9, '');
     tsVCF.SaveToFile('C:\Temp\test');
-    ShowWaitForm(TForm(Self), PWideChar('Kontakte importieren'), tsVCF.Count,ClientWidth, Height);
-
+    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_KontakteImportieren), tsVCF.Count,ClientWidth, Height);
     for i := 0 to tsVCF.Count-1 do
     begin
       Application.ProcessMessages;
@@ -1074,14 +1105,16 @@ begin
     qry_Kontakte.Open;
   end;
 end;
+procedure Tfrm_Contact.FormActivate(Sender: TObject);
+begin
+  FormShow(Self);
+end;
 procedure Tfrm_Contact.FormDestroy(Sender: TObject);
 begin
   SetGridViews(False);
 end;
-
 procedure Tfrm_Contact.FormShow(Sender: TObject);
 begin
-  pc_Kontakte_Kontakte.Align:= alclient;
   cmbbx_KontaktSucheArt.clear;
   dm_PCM.qry_Work.SQL.Text:= 'SELECT ID, Bezeichnung FROM manager_kontaktart order by Bezeichnung asc';
   dm_PCM.qry_Work.open;
@@ -1279,7 +1312,7 @@ begin
   if dlgsave_Personal.Execute then
   begin
     ExportGridToExcel(dlgsave_Personal.FileName, grd_Kontaktesuche);
-    MessageDlg('Daten wurden  in ' + dlgsave_Personal.FileName +  ' exportiert', mtInformation, [mbOk], 0);
+    MessageDlg(rs_PCMManager_GridExport1 + dlgsave_Personal.FileName +  rs_PCMManager_GridExport2, mtInformation, [mbOk], 0);
   end;
 end;
 procedure Tfrm_Contact.SetButtons;
@@ -1348,7 +1381,7 @@ if pc_Kontakte_Kontakte.ActivePageIndex = 0 then
       end
       else begin
         pc_Kontakte_Kontakte.ActivePage:= ts_A_Kontakte_Kontakte_Suche;
-        MessageDlg('Keine Kontakte gefunden!', mtWarning,[mbOk],0);
+        MessageDlg(rs_PCMManager_KeineKontakte, mtWarning,[mbOk],0);
       end;
     end
     else begin
@@ -1373,7 +1406,7 @@ if pc_Kontakte_Kontakte.ActivePageIndex = 0 then
       end
       else begin
         pc_Kontakte_Kontakte.ActivePageIndex := 0;
-        MessageDlg('Keine Kontakte gefunden!', mtWarning,[mbOk],0);
+        MessageDlg(rs_PCMManager_KeineKontakte, mtWarning,[mbOk],0);
       end;
     end;
   end;
@@ -1411,18 +1444,15 @@ procedure Tfrm_Contact.btn_KontaktEmail1SendClick(Sender: TObject);
 var
   ExecStr : String;
 begin
-  ExecStr := Format('mailto:%s?subject=',
-             [qry_Kontakte.FieldByName('E_Mail_Privat').AsString]);
+  ExecStr := Format('mailto:%s?subject=',[qry_Kontakte.FieldByName('E_Mail_Privat').AsString]);
   ShellExecute(0,'open', PChar(ExecStr), NIL, NIL, SW_SHOWNORMAL);
 end;
 procedure Tfrm_Contact.btn_KontaktEmail2SendClick(Sender: TObject);
 var
   ExecStr : String;
 begin
-  ExecStr := Format('mailto:%s?subject=',
-             [qry_Kontakte.FieldByName('E_Mail_Privat1').AsString]);
+  ExecStr := Format('mailto:%s?subject=',[qry_Kontakte.FieldByName('E_Mail_Privat1').AsString]);
   ShellExecute(0,'open', PChar(ExecStr), NIL, NIL, SW_SHOWNORMAL);
-
 end;
 procedure Tfrm_Contact.btn_KontaktFirstClick(Sender: TObject);
 begin
@@ -1433,14 +1463,13 @@ procedure Tfrm_Contact.btn_KontaktGeschaeftlichSendMailClick(Sender: TObject);
 var
   ExecStr : String;
 begin
-  ExecStr := Format('mailto:%s?subject=',
-             [qry_Kontakte.FieldByName('E_Mail_Ges').AsString]);
+  ExecStr := Format('mailto:%s?subject=',[qry_Kontakte.FieldByName('E_Mail_Ges').AsString]);
   ShellExecute(0,'open', PChar(ExecStr), NIL, NIL, SW_SHOWNORMAL);
 end;
 procedure Tfrm_Contact.btn_KontaktKonfessionEditClick(Sender: TObject);
 begin
    Application.CreateForm(Tfrm_PCM_Konfession, frm_PCM_Konfession);
-   if frm_PCM_Konfession.Execute('Konfeesion bearbeiten',dm_PCM.iKontakte) then
+   if frm_PCM_Konfession.Execute(rs_PCMManager_Konfessionbearbeiten,dm_PCM.iKontakte) then
      dm_PCM.qry_Contact_Konfession.Refresh;
 end;
 procedure Tfrm_Contact.btn_KontaktLastClick(Sender: TObject);
@@ -1580,7 +1609,7 @@ end;
 procedure Tfrm_Contact.btn_KontaktStaatsangehörigkeitEditClick(Sender: TObject);
 begin
   Application.CreateForm(Tfrm_PCM_Staatsangehoerigkeit, frm_PCM_Staatsangehoerigkeit);
-  if frm_PCM_Staatsangehoerigkeit.Execute('Staatsangehörigkeit bearbeiten', dm_PCM.iKontakte) then
+  if frm_PCM_Staatsangehoerigkeit.Execute(rs_PCMManager_Staatsangehoerigkeitbearbeiten, dm_PCM.iKontakte) then
     dm_PCM.qry_Contact_Staatsangehoerigkeit.refresh;
 end;
 procedure Tfrm_Contact.btn_kontaktsuchenClick(Sender: TObject);
@@ -1661,7 +1690,6 @@ begin
     ShellExecute(self.WindowHandle,'open', PWideChar(sURL) ,nil,nil, SW_SHOWNORMAL);
   end;
 end;
-
 procedure Tfrm_Contact.cxButton2Click(Sender: TObject);
 var
   sURL: string;
@@ -1672,7 +1700,6 @@ begin
     ShellExecute(self.WindowHandle,'open', PWideChar(sURL) ,nil,nil, SW_SHOWNORMAL);
   end;
 end;
-
 procedure Tfrm_Contact.ppmbtn_ExportVCFClick(Sender: TObject);
   function FormatEncode(AValue: string) : String;
   begin
@@ -1697,12 +1724,10 @@ var
   slExport: TStringlist;
   bmPicture: TPicture;
 begin
-
   if dlgSave_VCF.Execute then
     sFilename:= dlgSave_VCF.FileName;
   if Pos('.vcf',sFilename) = 0 then
     sFilename:= sFilename + '.vcf';
-
   if sFilename <> '' then
   begin
     slExport:= TStringlist.Create;
@@ -1711,7 +1736,6 @@ begin
     begin
       slExport.add('BEGIN:VCARD');
       slExport.add('VERSION:2.1');
-
       if qry_Kontakte.FieldByName('ID_Anrede').AsString = '1' then sAnrede:= 'Herr ';
       if qry_Kontakte.FieldByName('ID_Anrede').AsString = '2' then sAnrede:= 'Frau ';
       slExport.add('N;CHARSET=ANSI;ENCODING=QUOTED-PRINTABLE:' + FormatEncode(qry_Kontakte.FieldByName('Nachname').AsString + ';' + qry_Kontakte.FieldByName('Vorname').AsString + ';;'+ sAnrede +';'));
@@ -1748,8 +1772,6 @@ begin
           bmPicture.Free;
         end;
       except
-        on e:Exception do
-          ShowMessage(e.Message)
       end;
 
       //PHOTO
@@ -1759,7 +1781,7 @@ begin
     end;
     slExport.SaveToFile(sFilename,Tencoding.GetEncoding(1256));
     slExport.Free;
-    MessageDlg('Kontakte in VCard exportiert', mtInformation, [mbOk], 0);
+    MessageDlg(rs_PCMManager_KontakteinVCard, mtInformation, [mbOk], 0);
   end;
 end;
 procedure Tfrm_Contact.edt_KontaktSucheNachnameKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);

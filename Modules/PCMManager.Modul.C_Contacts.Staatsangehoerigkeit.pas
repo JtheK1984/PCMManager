@@ -29,7 +29,7 @@ uses
   dxSkinVisualStudio2013Light, dxBar, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client;
+  FireDAC.Comp.Client, dxSkinWXI;
 
 type
   Tfrm_PCM_Staatsangehoerigkeit = class(TForm)
@@ -49,6 +49,7 @@ type
     procedure btn_StaatsangehoerigkeitSaveClick(Sender: TObject);
     procedure btn_StaatsangehoerigkeitCancelClick(Sender: TObject);
     procedure btn_StaatsangehoerigkeitDeleteClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private-Deklarationen }
   public
@@ -66,7 +67,7 @@ implementation
 {$R *.dfm}
 
 uses PCMManager.Modul.C_Contacts,
-     PCM.Data;
+     PCM.Data,PCM.Strings;
 
 procedure Tfrm_PCM_Staatsangehoerigkeit.btn_StaatsangehoerigkeitCancelClick(Sender: TObject);
 begin
@@ -124,6 +125,10 @@ begin
   ShowModal;
   result:= true;
   Release;
+end;
+procedure Tfrm_PCM_Staatsangehoerigkeit.FormShow(Sender: TObject);
+begin
+  grdDBTblView_StaatsangehoerigkeitBezeichnung.Caption := rs_PCMManager_Staatsangehoerigkeit;
 end;
 procedure Tfrm_PCM_Staatsangehoerigkeit.btn_StaatsangehoerigkeitCloseClick(Sender: TObject);
 begin

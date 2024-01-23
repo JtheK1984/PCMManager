@@ -194,6 +194,7 @@ type
     procedure dxBarLargeButton4Click(Sender: TObject);
     procedure dxBarLargeButton3Click(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private-Deklarationen }
 //    rep: TDmReports;
@@ -220,7 +221,7 @@ implementation
 
 uses  PCM.Data,
       PCMManager.Modul.G_Finanzen.Filter.Date,
-      PCMManager.Modul.G_Finanzen.Report;
+      PCMManager.Modul.G_Finanzen.Report,PCM.Strings;
 
 procedure Tfrm_finanzen.Execute(ATag,AActiveTab: integer);
 begin
@@ -233,17 +234,20 @@ begin
   4: AG_pc_Finanzen.ActivePage:= ts_verf;
   end;
 end;
+procedure Tfrm_finanzen.FormActivate(Sender: TObject);
+begin
+  FormShow(Self);
+end;
 procedure Tfrm_finanzen.FormDestroy(Sender: TObject);
 begin
   SetGridViews(false);
 end;
 procedure Tfrm_finanzen.FormShow(Sender: TObject);
 begin
-  AG_pc_Finanzen.Align:= alclient;
   OpenData;
   InitializeRights;
   SetButtons;
-  case iActiveTab of
+  case dm_PCM.iModulTab of
   1: AG_pc_Finanzen.ActivePage:= A_ts_MU;
   2: AG_pc_Finanzen.ActivePage:= B_ts_Ein;
   3: AG_pc_Finanzen.ActivePage:= C_ts_Aus;
@@ -546,7 +550,7 @@ begin
   if sdlg_Ausgaben.Execute then
   begin
     ExportGridToExcel(sdlg_Ausgaben.FileName, grd_Finanzen_Ausgaben);
-    MessageDlg('Daten wurden  in ' + sdlg_Ausgaben.FileName +  ' exportiert', mtInformation, [mbOk], 0);
+    MessageDlg(rs_PCMManager_GridExport1 + sdlg_Ausgaben.FileName +  rs_PCMManager_GridExport2, mtInformation, [mbOk], 0);
   end;
 end;
 procedure Tfrm_finanzen.NachExcelexportieren1Click(Sender: TObject);
@@ -554,7 +558,7 @@ begin
   if sdlg_Einnahmen.Execute then
   begin
     ExportGridToExcel(sdlg_Einnahmen.FileName, grd_Finanzen_Einnahmen);
-    MessageDlg('Daten wurden  in ' + sdlg_Einnahmen.FileName +  ' exportiert', mtInformation, [mbOk], 0);
+    MessageDlg(rs_PCMManager_GridExport1 + sdlg_Einnahmen.FileName +  rs_PCMManager_GridExport2, mtInformation, [mbOk], 0);
   end;
 end;
 procedure Tfrm_finanzen.SetButtons;
@@ -629,6 +633,19 @@ begin
   qEinnahmen.Filtered:= true;
   qAusgaben.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
   qAusgaben.Filtered:= true;
+  tv_AusgabenName.Caption := rs_PCMManager_AusgabenEmpfaenger;
+  tv_AusgabenBeschreibung.Caption := rs_PCM_Beschreibung;
+  tv_Ausgabenverwendungszweck.Caption := rs_PCMManager_Verwendungszweck;
+  tv_Ausgabenbetrag.Caption := rs_PCM_Betrag;
+  tv_AusgabenFixBetrag.Caption := rs_PCM_FixBetrag;
+  tv_Ausgabenfixkosten.Caption := rs_PCM_FixKosten;
+  tv_AusgabenGueltig_monat.Caption := rs_PCM_Monat;
+  tv_AusgabenGueltig_Jahr.Caption := rs_PCM_Jahr;
+  tv_EinnahmenQuelle.Caption := rs_PCM_Absender;
+  tv_EinnahmenBezeichnung.Caption := rs_PCM_Beschreibung;
+  tv_EinnahmenBetrag.Caption := rs_PCM_Betrag;
+  tv_EinnahmenFixBetrag.Caption := rs_PCM_FixBetrag;
+
 end;
 procedure Tfrm_finanzen.SetButtonsEnableVisible(DataSet: TDataSet);
 begin
@@ -671,32 +688,30 @@ begin
   dm_PCM.qry_work.Close;
   lbl_restsumme.Caption:= Format('%.2f €',[dbl_Einnahmen - dbl_varKosten - dbl_fixKosten]);
 end;
-
 procedure Tfrm_finanzen.AG_pc_FinanzenChange(Sender: TObject);
 var
   dbl_Einnahmen,dbl_varKosten,dbl_FixKosten: double;
   sMonat: string;
 begin
-
   if AG_pc_Finanzen.Properties.ActivePage = A_ts_mu then
   begin
     Application.CreateForm(Tfrm_PCManagerChooseDate,frm_PCManagerChooseDate);
     frm_PCManagerChooseDate.Execute(True,iMonat,iJahr);
     case iMonat of
-    1: sMonat:='Januar';
-    2: sMonat:='Februar';
-    3: sMonat:='März';
-    4: sMonat:='April';
-    5: sMonat:='Mai';
-    6: sMonat:='Juni';
-    7: sMonat:='Juli';
-    8: sMonat:='August';
-    9: sMonat:='September';
-    10: sMonat:='Oktober';
-    11: sMonat:='November';
-    12: sMonat:='Dezeber';
+    1: sMonat:=rs_PCM_Januar;
+    2: sMonat:=rs_PCM_Februar;
+    3: sMonat:=rs_PCM_Maerz;
+    4: sMonat:=rs_PCM_April;
+    5: sMonat:=rs_PCM_Mai;
+    6: sMonat:=rs_PCM_Juni;
+    7: sMonat:=rs_PCM_Juli;
+    8: sMonat:=rs_PCM_August;
+    9: sMonat:=rs_PCM_September;
+    10: sMonat:=rs_PCM_Oktober;
+    11: sMonat:=rs_PCM_November;
+    12: sMonat:=rs_PCM_Dezember;
     end;
-    grpbx_FinanzenUebersicht.Caption:= 'Übersicht ' + sMonat + ' ' + IntToStr(iJahr);
+    grpbx_FinanzenUebersicht.Caption:= rs_PCM_Uebersicht + sMonat + ' ' + IntToStr(iJahr);
     // Einnahmen
     dm_PCM.qry_work.SQL.text:= 'Select IFnull(Sum(Betrag),0)as Einnahmen From manager_finanzen_einnahmen where ID_Benutzer = :ID_Benutzer ';
     dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
@@ -1053,8 +1068,6 @@ begin
     frm_PCM_Finanzreport.ShowModal;
 
   except
-    on e:Exception do
-    ShowMessage(e.Message);
   end;
 end;
 end.

@@ -21,8 +21,6 @@ object frm_FeiertageAktualisieren: Tfrm_FeiertageAktualisieren
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
-    ExplicitWidth = 324
-    ExplicitHeight = 175
     Height = 176
     Width = 328
     object grpbx_Data: TcxGroupBox
@@ -116,7 +114,7 @@ object frm_FeiertageAktualisieren: Tfrm_FeiertageAktualisieren
       Top = 142
       Width = 90
       Height = 25
-      Caption = 'OK'
+      Caption = 'Ok'
       OptionsImage.ImageIndex = 56
       OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 2

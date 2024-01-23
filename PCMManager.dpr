@@ -1,6 +1,7 @@
 program PCMManager;
 
 uses
+  NtTranslator,
   inifiles,
   Vcl.Forms,
   System.SysUtils,
@@ -40,11 +41,15 @@ uses
 var
   iniFile: TIniFile;
   sStyle: String;
-
+  slocale: String;
 begin
   iniFile:=TIniFile.create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
   sStyle:= iniFile.ReadString('PCMManager','Style','Windows');
+  slocale:= iniFile.ReadString('PCMManager','Language','de');
   iniFile.Free;
+  {$IFDEF WIN64}
+  TNtTranslator.SetNew(slocale,[],'de');
+  {$ENDIF}
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   {$IFDEF WIN64}

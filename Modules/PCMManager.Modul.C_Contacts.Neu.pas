@@ -55,7 +55,7 @@ implementation
 
 {$R *.dfm}
 
-uses PCM.Data;
+uses PCM.Data, PCM.Strings;
 
 
 procedure Tfrm_PCManagerNewContact.btn_PCManagerLogin_OkClick(Sender: TObject);
@@ -87,7 +87,7 @@ begin
         Anrede := 0;
       if edt_SurName.Text = '' then
       begin
-        MessageDlg('Bitte Vorname eingeben!',mtWarning,[mbOk],0);
+        MessageDlg(rs_PCMManager_Vorname,mtWarning,[mbOk],0);
         exit;
       end
       else begin
@@ -95,7 +95,7 @@ begin
       end;
       if edt_Name.Text = '' then
       begin
-        MessageDlg('Bitte Nachnname eingeben!',mtWarning,[mbOk],0);
+        MessageDlg(rs_PCMManager_nachname,mtWarning,[mbOk],0);
         exit;
       end
       else begin

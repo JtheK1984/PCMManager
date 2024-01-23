@@ -1,18 +1,18 @@
 call "C:\Program Files (x86)\Embarcadero\Studio\23.0\bin\rsvars.bat"
 echo "Build erstellen"
-msbuild E:/Projekte/Windows/PCMManager/PCMManager.dproj /t:Clean;Build;Compress /p:config=Release /p:platform=Win32
-msbuild E:/Projekte/Windows/PCMManager/PCMManager.dproj /t:Clean;Build;Compress /p:config=Release /p:platform=Win64
+msbuild E:/Projekte/Windows/PCMManager/PCMManager.dproj /t:Clean;Build;CompressWin32 /p:config=Release /p:platform=Win32
+msbuild E:/Projekte/Windows/PCMManager/PCMManager.dproj /t:Clean;Build;Localize;CompressWin64 /p:config=Release /p:platform=Win64
 
 echo "Kopiere Datei ins Setupverzeichnis"
-copy /y /v E:\Projekte\Windows\PCMManager\Win32\Release\PCMManager.exe "e:\Inno\Setupfiles\Programme\PCMManager"
 copy /y /v E:\Projekte\Windows\PCMManager\Win64\Release\PCMManager.exe "e:\Inno\Setupfiles\Programme\PCMManager_x64"
+copy /y /v E:\Projekte\Windows\PCMManager\Win32\Release\PCMManager.exe "e:\Inno\Setupfiles\Programme\PCMManager"
 
-echo "Git aktualisieren"
-cd "E:\Projekte\Windows\PCMManager"
-git commit -am 'Release'
-git push origin 
+copy /y /v E:\Projekte\Windows\PCMManager\Win64\Release\PCMManager.DE "e:\Inno\Setupfiles\Programme\PCMManager_x64"
+copy /y /v E:\Projekte\Windows\PCMManager\Win64\Release\PCMManager.EN "e:\Inno\Setupfiles\Programme\PCMManager_x64"
+
+copy /y /v E:\Projekte\Windows\PCMManager\PCMManager.docx "e:\Inno\Setupfiles\Programme\PCMManager"
+copy /y /v E:\Projekte\Windows\PCMManager\PCMManager.pdf "e:\Inno\Setupfiles\Programme\PCMManager"
+copy /y /v E:\Projekte\Windows\PCMManager\PCMManager.htm "e:\Inno\Setupfiles\Programme\PCMManager"
 
 echo "Demolizenz erstellen"
-call "E:\Inno\Setupfiles\Programme\PCMLizenzgenerator\PCMLizenzgenerator.exe" /PCM-Manager /1.6 /E:\Inno\Setupfiles\Programme\PCMManager
-
-pause
+call "E:\Inno\Setupfiles\Programme\PCMLizenzgenerator\PCMLizenzgenerator.exe" /PCM-Manager /1.6 /E:\Inno\Setupfiles\Programme\PCMManager_x64

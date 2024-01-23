@@ -16,19 +16,19 @@ object fNeu: TfNeu
   TextHeight = 13
   object dsHost: TdxDockSite
     Left = 0
-    Top = 58
+    Top = 63
     Width = 920
-    Height = 708
+    Height = 703
     AllowDockClients = []
     Align = alClient
     DockingType = 5
     OriginalWidth = 920
-    OriginalHeight = 708
+    OriginalHeight = 703
     object dxLayoutDockSite1: TdxLayoutDockSite
       Left = 0
       Top = 0
       Width = 920
-      Height = 708
+      Height = 703
       DockingType = 0
       OriginalWidth = 300
       OriginalHeight = 200
@@ -37,7 +37,7 @@ object fNeu: TfNeu
       Left = 0
       Top = 0
       Width = 920
-      Height = 708
+      Height = 703
       AllowDock = []
       AllowDockClients = []
       AllowFloating = False
@@ -95,11 +95,11 @@ object fNeu: TfNeu
         Style.BorderStyle = ebsNone
         TabOrder = 0
         Height = 268
-        Width = 916
+        Width = 912
         object pAll: TcxGroupBox
           AlignWithMargins = True
-          Left = 4
-          Top = 139
+          Left = 5
+          Top = 140
           Margins.Left = 2
           Margins.Top = 0
           Margins.Bottom = 0
@@ -108,7 +108,7 @@ object fNeu: TfNeu
           Style.BorderStyle = ebsNone
           TabOrder = 0
           Height = 137
-          Width = 907
+          Width = 901
           object btnEraseFirma: TcxButton
             Left = 416
             Top = 20
@@ -224,8 +224,8 @@ object fNeu: TfNeu
         end
         object chkbx_CompleteDay: TcxCheckBox
           AlignWithMargins = True
-          Left = 136
-          Top = 118
+          Left = 137
+          Top = 119
           Margins.Left = 134
           Margins.Top = 0
           Margins.Bottom = 0
@@ -239,25 +239,25 @@ object fNeu: TfNeu
           Transparent = True
           Visible = False
           Height = 21
-          Width = 775
+          Width = 769
         end
         object pnlTop: TcxGroupBox
-          Left = 2
-          Top = 2
+          Left = 3
+          Top = 3
           Align = alTop
           PanelStyle.Active = True
           Style.BorderStyle = ebsNone
           TabOrder = 2
           Height = 116
-          Width = 912
+          Width = 906
           object pnlTopLeft: TcxGroupBox
-            Left = 2
-            Top = 2
+            Left = 3
+            Top = 3
             Align = alLeft
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 0
-            Height = 112
+            Height = 110
             Width = 131
             object btn_DelRecurringEv: TcxButton
               Left = 0
@@ -318,14 +318,14 @@ object fNeu: TfNeu
             end
           end
           object pAufgabeTermin: TcxGroupBox
-            Left = 133
-            Top = 2
+            Left = 134
+            Top = 3
             Align = alClient
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 1
-            Height = 112
-            Width = 777
+            Height = 110
+            Width = 769
             object cbAufgabenArt: TcxLookupComboBox
               Left = 551
               Top = 16
@@ -726,19 +726,19 @@ object fNeu: TfNeu
         PanelStyle.Active = True
         Style.BorderStyle = ebsNone
         TabOrder = 2
-        Height = 436
-        Width = 906
+        Height = 427
+        Width = 902
         object cxSplitter1: TcxSplitter
-          Left = 711
-          Top = 2
-          Width = 8
-          Height = 432
+          Left = 709
+          Top = 3
+          Width = 5
+          Height = 421
           HotZoneClassName = 'TcxSimpleStyle'
           Control = panel6
         end
         object mNachricht: TcxRichEdit
-          Left = 2
-          Top = 2
+          Left = 3
+          Top = 3
           Align = alClient
           ParentFont = False
           Properties.AutoURLDetect = True
@@ -753,23 +753,23 @@ object fNeu: TfNeu
           Style.Font.Style = []
           Style.IsFontAssigned = True
           TabOrder = 1
-          Height = 432
-          Width = 709
+          Height = 421
+          Width = 706
         end
         object panel6: TcxGroupBox
-          Left = 719
-          Top = 2
+          Left = 714
+          Top = 3
           Align = alRight
           PanelStyle.Active = True
           Style.BorderStyle = ebsFlat
           TabOrder = 2
-          Height = 432
+          Height = 421
           Width = 185
           object cxGrid1: TcxGrid
-            Left = 2
-            Top = 2
-            Width = 181
-            Height = 386
+            Left = 3
+            Top = 3
+            Width = 179
+            Height = 373
             Align = alClient
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -824,18 +824,18 @@ object fNeu: TfNeu
             end
           end
           object pAnhaengeView: TcxGroupBox
-            Left = 2
-            Top = 388
+            Left = 3
+            Top = 376
             Align = alBottom
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 1
             Height = 42
-            Width = 181
+            Width = 179
             object Image1: TcxImage
               AlignWithMargins = True
-              Left = 7
-              Top = 4
+              Left = 8
+              Top = 5
               Margins.Left = 5
               Margins.Top = 2
               Margins.Right = 0
@@ -847,13 +847,13 @@ object fNeu: TfNeu
               Style.BorderStyle = ebsNone
               TabOrder = 3
               Transparent = True
-              Height = 34
+              Height = 32
               Width = 32
             end
             object lTypeName: TcxLabel
               AlignWithMargins = True
-              Left = 43
-              Top = 6
+              Left = 44
+              Top = 7
               Margins.Left = 4
               Margins.Top = 4
               Margins.Right = 0
@@ -869,15 +869,15 @@ object fNeu: TfNeu
               Style.IsFontAssigned = True
               Properties.WordWrap = True
               Transparent = True
-              Height = 19
+              Height = 17
               Width = 60
             end
             object btnAnhangOeffnen: TcxButton
               AlignWithMargins = True
-              Left = 156
-              Top = 8
+              Left = 153
+              Top = 9
               Width = 23
-              Height = 26
+              Height = 24
               Margins.Left = 0
               Margins.Top = 6
               Margins.Right = 0
@@ -892,10 +892,10 @@ object fNeu: TfNeu
             end
             object btnAnhangLoeschen: TcxButton
               AlignWithMargins = True
-              Left = 133
-              Top = 8
+              Left = 130
+              Top = 9
               Width = 23
-              Height = 26
+              Height = 24
               Margins.Left = 0
               Margins.Top = 6
               Margins.Right = 0
@@ -928,10 +928,10 @@ object fNeu: TfNeu
             end
             object btnAnhangHinzufuegen: TcxButton
               AlignWithMargins = True
-              Left = 110
-              Top = 8
+              Left = 107
+              Top = 9
               Width = 23
-              Height = 26
+              Height = 24
               Margins.Left = 0
               Margins.Top = 6
               Margins.Right = 0
@@ -1038,7 +1038,7 @@ object fNeu: TfNeu
     DockControlHeights = (
       0
       0
-      58
+      63
       0)
     object dxBarManager1Bar1: TdxBar
       Caption = 'Custom 1'
