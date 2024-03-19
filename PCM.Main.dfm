@@ -3751,6 +3751,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
           Item = iAufgaben
         end
         item
+          Item = iJira
+        end
+        item
           Item = iStundenplan
         end
         item
@@ -3948,6 +3951,11 @@ object frm_PCM_Main: Tfrm_PCM_Main
     object iDesign: TdxNavBarItem
       Caption = 'Design'
       SmallImageIndex = 82
+      OnClick = NavBarClick
+    end
+    object iJira: TdxNavBarItem
+      Caption = 'Jira'
+      SmallImageIndex = 83
       OnClick = NavBarClick
     end
     object navbrStyleIt_main: TdxNavBarStyleItem

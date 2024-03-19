@@ -280,6 +280,7 @@ type
     dxBarGroup1: TdxBarGroup;
     ppmbtn_Design: TMenuItem;
     iDesign: TdxNavBarItem;
+    iJira: TdxNavBarItem;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormResize(Sender: TObject);
@@ -452,6 +453,7 @@ begin
   RegisterForm('iKontakte',Tfrm_Contact, @frm_Contact, 1);
   RegisterForm('iKalender',Tfrm_Calendar, @frm_Calendar, 1);
   RegisterForm('iAufgaben',Tfrm_Calendar, @frm_Calendar, 1);
+  RegisterForm('iJira',Tfrm_Calendar, @frm_Calendar, 1);
   RegisterForm('iStundenplan',Tfrm_Calendar, @frm_Calendar, 1);
   RegisterForm('iEMails',Tfrm_mail, @frm_mail, 1);
   RegisterForm('iPasswoerter',Tfrm_password, @frm_password, 1);
@@ -963,7 +965,7 @@ begin
       begin
         sModul:= Module.ModuleName;
         sModulCaption:= Module.ModuleName;
-        case AnsiIndexStr(sModul, ['iBenutzerverwaltung','iKonfiguration','iDesign','iKontakte','iKalender','iAufgaben','iStundenplan','iEMails','iPasswoerter','iSerials','iMonatsuebersicht','iEinnahmen','iAusgaben','iSysteminfo','iInfo','iHandbuch']) of
+        case AnsiIndexStr(sModul, ['iBenutzerverwaltung','iKonfiguration','iDesign','iKontakte','iKalender','iAufgaben','iStundenplan','iEMails','iPasswoerter','iSerials','iMonatsuebersicht','iEinnahmen','iAusgaben','iSysteminfo','iInfo','iHandbuch','iJira']) of
         0:
           begin
             sModulCaption := 'i'  + rs_PCM_Benutzerverwaltung;
@@ -986,21 +988,21 @@ begin
           end;
         4:
           begin
-            sModul:= 'Kalender_Aufgaben_Stundenplan';
+            sModul:= 'Kalender_Aufgaben_Jira_Stundenplan';
             sModulCaption := 'i'  + rs_PCMManager_KalenderStundenplan;
             dm_PCM.iModulTab:= 1;
           end;
         5:
           begin
-            sModul:= 'Kalender_Aufgaben_Stundenplan';
+            sModul:= 'Kalender_Aufgaben_Jira_Stundenplan';
             sModulCaption := 'i'  + rs_PCMManager_KalenderStundenplan;
-            dm_PCM.iModulTab:= 3;
+            dm_PCM.iModulTab:= 2;
           end;
         6:
           begin
-            sModul:= 'Kalender_Aufgaben_Stundenplan';
+            sModul:= 'Kalender_AuKalender_Aufgaben_Jira_Stundenplanfgaben_Stundenplan';
             sModulCaption := 'i'  + rs_PCMManager_KalenderStundenplan;
-            dm_PCM.iModulTab:= 2;
+            dm_PCM.iModulTab:= 4;
           end;
         7:
           begin
@@ -1050,6 +1052,12 @@ begin
         15:
           begin
             sModulCaption := 'i'  + rs_PCM_Handbuch;
+            dm_PCM.iModulTab:= 3;
+          end;
+        16:
+          begin
+            sModul:= 'Kalender_AuKalender_Aufgaben_Jira_Stundenplanfgaben_Stundenplan';
+            sModulCaption := 'i'  + rs_PCMManager_KalenderStundenplan;
             dm_PCM.iModulTab:= 3;
           end;
         end;

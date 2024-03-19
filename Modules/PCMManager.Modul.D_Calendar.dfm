@@ -43,13 +43,17 @@ object frm_Calendar: Tfrm_Calendar
       ParentColor = False
       ParentFont = False
       TabOrder = 0
-      Properties.ActivePage = ts_A_kalender
+      Properties.ActivePage = ts_C_Jira
       Properties.CustomButtons.Buttons = <>
       Properties.Images = dm_PCM.imglst_16x16
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
       Properties.TabSlants.Kind = skCutCorner
       Properties.TabWidth = 100
       OnClick = pc_KalenderClick
+      ExplicitLeft = 2
+      ExplicitTop = 2
+      ExplicitWidth = 1684
+      ExplicitHeight = 936
       ClientRectBottom = 928
       ClientRectLeft = 2
       ClientRectRight = 1676
@@ -57,6 +61,10 @@ object frm_Calendar: Tfrm_Calendar
       object ts_A_kalender: TcxTabSheet
         Caption = 'Kalender'
         ImageIndex = 10
+        ExplicitLeft = 0
+        ExplicitTop = 25
+        ExplicitWidth = 1684
+        ExplicitHeight = 911
         object spl_Kalender: TcxSplitter
           Left = 0
           Top = 63
@@ -72,6 +80,8 @@ object frm_Calendar: Tfrm_Calendar
           Color = clBlack
           ParentColor = False
           Visible = False
+          ExplicitTop = 58
+          ExplicitHeight = 842
         end
         object brdckctrl_Kalender: TdxBarDockControl
           Left = 0
@@ -131,6 +141,10 @@ object frm_Calendar: Tfrm_Calendar
           OnGetEventEditProperties = sched_KalenderGetEventEditProperties
           OnGetEventHintText = sched_KalenderGetEventHintText
           OnKeyDown = sched_KalenderKeyDown
+          ExplicitLeft = 8
+          ExplicitTop = 58
+          ExplicitWidth = 1676
+          ExplicitHeight = 853
           Selection = 7
           Splitters = {
             950000007E0000008406000083000000F005000001000000F505000044030000}
@@ -140,6 +154,10 @@ object frm_Calendar: Tfrm_Calendar
       object ts_B_Aufgaben: TcxTabSheet
         Caption = 'Aufgaben'
         ImageIndex = 58
+        ExplicitLeft = 0
+        ExplicitTop = 25
+        ExplicitWidth = 1684
+        ExplicitHeight = 911
         object cxTreeList1: TcxTreeList
           Left = 0
           Top = 0
@@ -153,6 +171,7 @@ object frm_Calendar: Tfrm_Calendar
           ScrollbarAnnotations.CustomAnnotations = <>
           TabOrder = 1
           OnClick = cxTreeList1Click
+          ExplicitWidth = 1684
           Data = {
             00000500430100000F00000044617461436F6E74726F6C6C6572310200000012
             000000546378537472696E6756616C7565547970651200000054637853747269
@@ -202,6 +221,9 @@ object frm_Calendar: Tfrm_Calendar
           PanelStyle.Active = True
           Style.BorderStyle = ebsNone
           TabOrder = 0
+          ExplicitTop = 165
+          ExplicitWidth = 1684
+          ExplicitHeight = 746
           Height = 730
           Width = 1674
           object cxGrid1: TcxGrid
@@ -212,6 +234,10 @@ object frm_Calendar: Tfrm_Calendar
             Align = alClient
             TabOrder = 1
             LookAndFeel.NativeStyle = False
+            ExplicitLeft = 2
+            ExplicitTop = 32
+            ExplicitWidth = 1680
+            ExplicitHeight = 384
             object tvNachrichten: TcxGridDBTableView
               OnDblClick = tvNachrichtenDblClick
               Navigator.Buttons.CustomButtons = <>
@@ -519,7 +545,7 @@ object frm_Calendar: Tfrm_Calendar
             HotZoneClassName = 'TcxSimpleStyle'
             AlignSplitter = salBottom
             Control = pnlDetails
-            ExplicitWidth = 5
+            ExplicitTop = 404
           end
           object pnlDetails: TcxGroupBox
             Left = 3
@@ -528,6 +554,9 @@ object frm_Calendar: Tfrm_Calendar
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 2
+            ExplicitLeft = 2
+            ExplicitTop = 424
+            ExplicitWidth = 1680
             Height = 320
             Width = 1668
             object cxGroupBox8: TcxGroupBox
@@ -537,6 +566,9 @@ object frm_Calendar: Tfrm_Calendar
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 0
+              ExplicitLeft = 2
+              ExplicitTop = 2
+              ExplicitWidth = 1676
               Height = 62
               Width = 1662
               object cxDBTextEdit6: TcxDBTextEdit
@@ -663,6 +695,10 @@ object frm_Calendar: Tfrm_Calendar
               Style.Font.Style = []
               Style.IsFontAssigned = True
               TabOrder = 1
+              ExplicitLeft = 2
+              ExplicitTop = 64
+              ExplicitWidth = 1486
+              ExplicitHeight = 254
               Height = 252
               Width = 1475
             end
@@ -673,6 +709,7 @@ object frm_Calendar: Tfrm_Calendar
               Height = 252
               HotZoneClassName = 'TcxSimpleStyle'
               Control = pAnhaenge
+              ExplicitLeft = 1475
             end
             object pAnhaenge: TcxGroupBox
               Left = 1483
@@ -681,6 +718,9 @@ object frm_Calendar: Tfrm_Calendar
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 3
+              ExplicitLeft = 1496
+              ExplicitTop = 64
+              ExplicitHeight = 254
               Height = 252
               Width = 182
               object cxGrid5: TcxGrid
@@ -691,6 +731,10 @@ object frm_Calendar: Tfrm_Calendar
                 Align = alClient
                 TabOrder = 0
                 LookAndFeel.NativeStyle = False
+                ExplicitLeft = 2
+                ExplicitTop = 2
+                ExplicitWidth = 178
+                ExplicitHeight = 208
                 object cxGrid5DBTableView1: TcxGridDBTableView
                   Navigator.Buttons.CustomButtons = <>
                   Navigator.Buttons.First.Visible = True
@@ -758,6 +802,9 @@ object frm_Calendar: Tfrm_Calendar
                 PanelStyle.Active = True
                 Style.BorderStyle = ebsNone
                 TabOrder = 1
+                ExplicitLeft = 2
+                ExplicitTop = 210
+                ExplicitWidth = 178
                 Height = 42
                 Width = 176
                 object lTypeName: TcxLabel
@@ -774,6 +821,9 @@ object frm_Calendar: Tfrm_Calendar
                   Style.IsFontAssigned = True
                   Properties.WordWrap = True
                   Transparent = True
+                  ExplicitLeft = 34
+                  ExplicitTop = 2
+                  ExplicitHeight = 38
                   Height = 36
                   Width = 90
                 end
@@ -787,6 +837,9 @@ object frm_Calendar: Tfrm_Calendar
                   Style.BorderStyle = ebsNone
                   TabOrder = 1
                   Transparent = True
+                  ExplicitLeft = 2
+                  ExplicitTop = 2
+                  ExplicitHeight = 38
                   Height = 36
                   Width = 32
                 end
@@ -806,6 +859,9 @@ object frm_Calendar: Tfrm_Calendar
                   PaintStyle = bpsGlyph
                   TabOrder = 2
                   OnClick = cxButton1Click
+                  ExplicitLeft = 153
+                  ExplicitTop = 8
+                  ExplicitHeight = 26
                 end
                 object cxButton2: TcxButton
                   AlignWithMargins = True
@@ -824,6 +880,9 @@ object frm_Calendar: Tfrm_Calendar
                   PaintStyle = bpsGlyph
                   TabOrder = 3
                   OnClick = cxButton2Click
+                  ExplicitLeft = 130
+                  ExplicitTop = 8
+                  ExplicitHeight = 26
                 end
               end
             end
@@ -835,6 +894,9 @@ object frm_Calendar: Tfrm_Calendar
             PanelStyle.Active = True
             Style.BorderStyle = ebsFlat
             TabOrder = 0
+            ExplicitLeft = 2
+            ExplicitTop = 2
+            ExplicitWidth = 1680
             Height = 30
             Width = 1668
             object cxImage1: TcxImage
@@ -861,6 +923,9 @@ object frm_Calendar: Tfrm_Calendar
               StyleHot.BorderStyle = ebsNone
               TabOrder = 0
               Transparent = True
+              ExplicitLeft = 2
+              ExplicitTop = 2
+              ExplicitHeight = 26
             end
             object edSuche: TcxButtonEdit
               Left = 23
@@ -879,21 +944,847 @@ object frm_Calendar: Tfrm_Calendar
               TabOrder = 1
               OnEnter = edSucheEnter
               OnExit = edSucheExit
+              ExplicitLeft = 22
+              ExplicitTop = 2
+              ExplicitWidth = 1656
+              ExplicitHeight = 26
               Height = 24
               Width = 1642
             end
           end
         end
       end
-      object ts_C_Stundenplan: TcxTabSheet
+      object ts_C_Jira: TcxTabSheet
+        Caption = 'Jira'
+        ImageIndex = 83
+        ExplicitLeft = 0
+        ExplicitTop = 25
+        ExplicitWidth = 1684
+        ExplicitHeight = 911
+        object cxPageControl1: TcxPageControl
+          Left = 0
+          Top = 63
+          Width = 1674
+          Height = 817
+          Align = alClient
+          TabOrder = 0
+          Properties.ActivePage = cxTabSheet3
+          Properties.CustomButtons.Buttons = <>
+          ExplicitTop = 58
+          ExplicitWidth = 1684
+          ExplicitHeight = 833
+          ClientRectBottom = 811
+          ClientRectLeft = 2
+          ClientRectRight = 1668
+          ClientRectTop = 27
+          object cxTabSheet1: TcxTabSheet
+            Caption = #220'bersicht'
+            ImageIndex = 0
+            ExplicitLeft = 0
+            ExplicitTop = 24
+            ExplicitWidth = 1684
+            ExplicitHeight = 809
+            object cxComboBox1: TcxComboBox
+              AlignWithMargins = True
+              Left = 6
+              Top = 6
+              Margins.Left = 6
+              Margins.Top = 6
+              Margins.Right = 6
+              Margins.Bottom = 6
+              Align = alTop
+              TabOrder = 0
+              Text = 'cxComboBox1'
+              ExplicitWidth = 1672
+              Width = 1654
+            end
+            object chartctrl_Birthday: TdxChartControl
+              Left = 0
+              Top = 33
+              Width = 1666
+              Height = 751
+              Align = alClient
+              BorderStyle = cxcbsNone
+              Legend.Title.Visible = False
+              Titles = <>
+              ExplicitWidth = 1684
+              ExplicitHeight = 776
+              object chartctrl_BirthdayChart: TdxChartSimpleDiagram
+                Title.Visible = False
+                Layout = Horizontal
+                object chartctrl_BirthdaySeries: TdxChartSimpleSeries
+                  Caption = 'Wert'
+                  DataBindingType = 'DB'
+                  DataBinding.DataSource = dm_PCM.ds_ChartGeburtstage
+                  DataBinding.ArgumentField.FieldName = 'Monatbes'
+                  DataBinding.ValueField.FieldName = 'Wert'
+                  ViewType = 'Pie'
+                  View.SweepDirection = Counterclockwise
+                  View.ValueLabels.LineLength = 10.000000000000000000
+                  View.ValueLabels.Visible = True
+                  View.ValueLabels.Position = Outside
+                  SortBy = Value
+                  ColorSchemeIndex = 0
+                end
+              end
+            end
+          end
+          object cxTabSheet2: TcxTabSheet
+            Caption = 'Details'
+            ImageIndex = 1
+            ExplicitLeft = 0
+            ExplicitTop = 24
+            ExplicitWidth = 1684
+            ExplicitHeight = 809
+            object cxGrid2: TcxGrid
+              Left = 0
+              Top = 0
+              Width = 1666
+              Height = 200
+              Align = alTop
+              TabOrder = 0
+              ExplicitTop = 2
+              ExplicitWidth = 1684
+              object cxGrid2DBTableView1: TcxGridDBTableView
+                Navigator.Buttons.CustomButtons = <>
+                ScrollbarAnnotations.CustomAnnotations = <>
+                DataController.DataSource = ds_Tickets
+                DataController.Summary.DefaultGroupSummaryItems = <>
+                DataController.Summary.FooterSummaryItems = <>
+                DataController.Summary.SummaryGroups = <>
+                OptionsData.CancelOnExit = False
+                OptionsData.Deleting = False
+                OptionsData.DeletingConfirmation = False
+                OptionsData.Editing = False
+                OptionsData.Inserting = False
+                OptionsSelection.CellSelect = False
+                object cxGrid2DBTableView1ID: TcxGridDBColumn
+                  DataBinding.FieldName = 'ID'
+                  Visible = False
+                  VisibleForCustomization = False
+                end
+                object cxGrid2DBTableView1Epic: TcxGridDBColumn
+                  DataBinding.FieldName = 'Epic'
+                  Width = 70
+                end
+                object cxGrid2DBTableView1Ticket_Nr: TcxGridDBColumn
+                  Caption = 'Ticket-Nr.'
+                  DataBinding.FieldName = 'Ticket_Nr'
+                  Width = 70
+                end
+                object cxGrid2DBTableView1Betreff: TcxGridDBColumn
+                  DataBinding.FieldName = 'Betreff'
+                  Width = 400
+                end
+                object cxGrid2DBTableView1Nr: TcxGridDBColumn
+                  DataBinding.FieldName = 'Nr'
+                  Visible = False
+                  SortIndex = 0
+                  SortOrder = soAscending
+                  VisibleForCustomization = False
+                end
+                object cxGrid2DBTableView1ID_tickets_priority: TcxGridDBColumn
+                  Caption = 'Priorit'#228't'
+                  DataBinding.FieldName = 'ID_tickets_priority'
+                  PropertiesClassName = 'TcxImageComboBoxProperties'
+                  Properties.Alignment.Horz = taLeftJustify
+                  Properties.Images = cxImageList1
+                  Properties.Items = <
+                    item
+                      Description = 'Blocker'
+                      ImageIndex = 0
+                      Value = 1
+                    end
+                    item
+                      Description = 'Kritisch'
+                      ImageIndex = 1
+                      Value = 2
+                    end
+                    item
+                      Description = 'Schwerwiegend'
+                      ImageIndex = 2
+                      Value = 3
+                    end
+                    item
+                      Description = 'Geringf'#252'gig'
+                      ImageIndex = 3
+                      Value = 4
+                    end
+                    item
+                      Description = 'Unwesentlich'
+                      ImageIndex = 4
+                      Value = 5
+                    end>
+                  Width = 120
+                end
+                object cxGrid2DBTableView1Stichwort: TcxGridDBColumn
+                  DataBinding.FieldName = 'Stichwort'
+                  Width = 100
+                end
+                object cxGrid2DBTableView1Status: TcxGridDBColumn
+                  DataBinding.FieldName = 'Status'
+                  Width = 70
+                end
+                object cxGrid2DBTableView1Komponenten: TcxGridDBColumn
+                  DataBinding.FieldName = 'Komponenten'
+                  Width = 70
+                end
+                object cxGrid2DBTableView1Board: TcxGridDBColumn
+                  DataBinding.FieldName = 'Board'
+                  Width = 20
+                end
+                object cxGrid2DBTableView1Type: TcxGridDBColumn
+                  DataBinding.FieldName = 'Type'
+                  Width = 100
+                end
+                object cxGrid2DBTableView1App: TcxGridDBColumn
+                  DataBinding.FieldName = 'App'
+                  Width = 100
+                end
+                object cxGrid2DBTableView1FixVersion: TcxGridDBColumn
+                  DataBinding.FieldName = 'FixVersion'
+                  Width = 100
+                end
+                object cxGrid2DBTableView1Beschreibung: TcxGridDBColumn
+                  DataBinding.FieldName = 'Beschreibung'
+                end
+              end
+              object cxGrid2Level1: TcxGridLevel
+                GridView = cxGrid2DBTableView1
+              end
+            end
+            object pnl_Ticket: TcxGroupBox
+              Left = 0
+              Top = 205
+              Align = alClient
+              Caption = 'Ticketdetails'
+              TabOrder = 1
+              ExplicitTop = 208
+              ExplicitWidth = 1678
+              ExplicitHeight = 603
+              Height = 579
+              Width = 1666
+              object cxGroupBox2: TcxGroupBox
+                Left = 1463
+                Top = 15
+                Align = alRight
+                Caption = 'Ticketdetails'
+                TabOrder = 0
+                ExplicitLeft = 1475
+                ExplicitHeight = 579
+                Height = 555
+                Width = 200
+              end
+              object cxGroupBox4: TcxGroupBox
+                AlignWithMargins = True
+                Left = 3
+                Top = 15
+                Margins.Left = 0
+                Margins.Top = 0
+                Margins.Right = 0
+                Margins.Bottom = 0
+                Align = alClient
+                PanelStyle.Active = True
+                Style.BorderStyle = ebsNone
+                TabOrder = 1
+                ExplicitLeft = 2
+                ExplicitTop = 18
+                ExplicitWidth = 1480
+                ExplicitHeight = 581
+                Height = 555
+                Width = 1460
+                object cxGroupBox1: TcxGroupBox
+                  AlignWithMargins = True
+                  Left = 3
+                  Top = 8
+                  Margins.Left = 0
+                  Margins.Top = 5
+                  Margins.Right = 0
+                  Margins.Bottom = 0
+                  Align = alTop
+                  PanelStyle.Active = True
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 0
+                  ExplicitLeft = 2
+                  ExplicitTop = 7
+                  ExplicitWidth = 1476
+                  Height = 29
+                  Width = 1454
+                  object cxLabel2: TcxLabel
+                    AlignWithMargins = True
+                    Left = 3
+                    Top = 6
+                    Margins.Left = 0
+                    Margins.Right = 0
+                    Align = alLeft
+                    AutoSize = False
+                    Caption = 'Priorit'#228't'
+                    Transparent = True
+                    ExplicitLeft = 2
+                    ExplicitTop = 5
+                    ExplicitHeight = 19
+                    Height = 17
+                    Width = 100
+                  end
+                  object cxLabel3: TcxLabel
+                    Left = 232
+                    Top = 64
+                    Caption = 'cxLabel3'
+                  end
+                  object cxTextEdit1: TcxDBImageComboBox
+                    AlignWithMargins = True
+                    Left = 111
+                    Top = 4
+                    Margins.Left = 8
+                    Margins.Top = 1
+                    Margins.Right = 8
+                    Margins.Bottom = 1
+                    Align = alClient
+                    DataBinding.DataField = 'ID_tickets_priority'
+                    DataBinding.DataSource = ds_Tickets
+                    Properties.Alignment.Horz = taLeftJustify
+                    Properties.Images = cxImageList1
+                    Properties.Items = <
+                      item
+                        Description = 'Blocker'
+                        ImageIndex = 0
+                        Value = 1
+                      end
+                      item
+                        Description = 'Kritisch'
+                        ImageIndex = 1
+                        Value = 2
+                      end
+                      item
+                        Description = 'Schwerwiegend'
+                        ImageIndex = 2
+                        Value = 3
+                      end
+                      item
+                        Description = 'Geringf'#252'gig'
+                        ImageIndex = 3
+                        Value = 4
+                      end
+                      item
+                        Description = 'Unwesentlich'
+                        ImageIndex = 4
+                        Value = 5
+                      end>
+                    TabOrder = 2
+                    ExplicitLeft = 110
+                    ExplicitTop = 3
+                    ExplicitWidth = 1356
+                    Width = 1332
+                  end
+                end
+                object cxGroupBox6: TcxGroupBox
+                  AlignWithMargins = True
+                  Left = 3
+                  Top = 42
+                  Margins.Left = 0
+                  Margins.Top = 5
+                  Margins.Right = 0
+                  Margins.Bottom = 0
+                  Align = alTop
+                  PanelStyle.Active = True
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 1
+                  ExplicitLeft = 2
+                  ExplicitTop = 41
+                  ExplicitWidth = 1476
+                  Height = 29
+                  Width = 1454
+                  object cxLabel4: TcxLabel
+                    AlignWithMargins = True
+                    Left = 3
+                    Top = 6
+                    Margins.Left = 0
+                    Margins.Right = 0
+                    Align = alLeft
+                    AutoSize = False
+                    Caption = 'Epic Link'
+                    Transparent = True
+                    ExplicitLeft = 2
+                    ExplicitTop = 5
+                    ExplicitHeight = 19
+                    Height = 17
+                    Width = 100
+                  end
+                  object cxLabel5: TcxLabel
+                    Left = 232
+                    Top = 64
+                    Caption = 'cxLabel3'
+                  end
+                  object cxDBTextEdit1: TcxDBTextEdit
+                    AlignWithMargins = True
+                    Left = 111
+                    Top = 4
+                    Margins.Left = 8
+                    Margins.Top = 1
+                    Margins.Right = 8
+                    Margins.Bottom = 1
+                    Align = alClient
+                    DataBinding.DataField = 'Epic'
+                    DataBinding.DataSource = ds_Tickets
+                    Properties.ReadOnly = True
+                    TabOrder = 2
+                    ExplicitLeft = 110
+                    ExplicitTop = 3
+                    ExplicitWidth = 1356
+                    ExplicitHeight = 23
+                    Width = 1332
+                  end
+                end
+                object cxGroupBox7: TcxGroupBox
+                  AlignWithMargins = True
+                  Left = 3
+                  Top = 76
+                  Margins.Left = 0
+                  Margins.Top = 5
+                  Margins.Right = 0
+                  Margins.Bottom = 0
+                  Align = alTop
+                  PanelStyle.Active = True
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 2
+                  ExplicitLeft = 2
+                  ExplicitTop = 75
+                  ExplicitWidth = 1476
+                  Height = 29
+                  Width = 1454
+                  object cxLabel1: TcxLabel
+                    AlignWithMargins = True
+                    Left = 3
+                    Top = 6
+                    Margins.Left = 0
+                    Margins.Right = 0
+                    Align = alLeft
+                    AutoSize = False
+                    Caption = 'Stichwort'
+                    Transparent = True
+                    ExplicitLeft = 2
+                    ExplicitTop = 5
+                    ExplicitHeight = 19
+                    Height = 17
+                    Width = 100
+                  end
+                  object cxLabel6: TcxLabel
+                    Left = 232
+                    Top = 64
+                    Caption = 'cxLabel3'
+                  end
+                  object cxDBTextEdit2: TcxDBTextEdit
+                    AlignWithMargins = True
+                    Left = 111
+                    Top = 4
+                    Margins.Left = 8
+                    Margins.Top = 1
+                    Margins.Right = 8
+                    Margins.Bottom = 1
+                    Align = alClient
+                    DataBinding.DataField = 'Stichwort'
+                    DataBinding.DataSource = ds_Tickets
+                    Properties.ReadOnly = True
+                    TabOrder = 2
+                    ExplicitLeft = 110
+                    ExplicitTop = 3
+                    ExplicitWidth = 1356
+                    ExplicitHeight = 23
+                    Width = 1332
+                  end
+                end
+                object cxGroupBox9: TcxGroupBox
+                  AlignWithMargins = True
+                  Left = 3
+                  Top = 110
+                  Margins.Left = 0
+                  Margins.Top = 5
+                  Margins.Right = 0
+                  Margins.Bottom = 0
+                  Align = alTop
+                  PanelStyle.Active = True
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 3
+                  ExplicitLeft = 2
+                  ExplicitTop = 109
+                  ExplicitWidth = 1476
+                  Height = 29
+                  Width = 1454
+                  object cxLabel7: TcxLabel
+                    AlignWithMargins = True
+                    Left = 3
+                    Top = 6
+                    Margins.Left = 0
+                    Margins.Right = 0
+                    Align = alLeft
+                    AutoSize = False
+                    Caption = 'Komponenten'
+                    Transparent = True
+                    ExplicitLeft = 2
+                    ExplicitTop = 5
+                    ExplicitHeight = 19
+                    Height = 17
+                    Width = 100
+                  end
+                  object cxLabel8: TcxLabel
+                    Left = 232
+                    Top = 64
+                    Caption = 'cxLabel3'
+                  end
+                  object cxDBTextEdit3: TcxDBTextEdit
+                    AlignWithMargins = True
+                    Left = 111
+                    Top = 4
+                    Margins.Left = 8
+                    Margins.Top = 1
+                    Margins.Right = 8
+                    Margins.Bottom = 1
+                    Align = alClient
+                    DataBinding.DataField = 'App'
+                    DataBinding.DataSource = ds_Tickets
+                    Properties.ReadOnly = True
+                    TabOrder = 2
+                    ExplicitLeft = 110
+                    ExplicitTop = 3
+                    ExplicitWidth = 1356
+                    ExplicitHeight = 23
+                    Width = 1332
+                  end
+                end
+                object cxGroupBox10: TcxGroupBox
+                  AlignWithMargins = True
+                  Left = 3
+                  Top = 144
+                  Margins.Left = 0
+                  Margins.Top = 5
+                  Margins.Right = 0
+                  Margins.Bottom = 0
+                  Align = alTop
+                  PanelStyle.Active = True
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 4
+                  ExplicitLeft = 2
+                  ExplicitTop = 143
+                  ExplicitWidth = 1476
+                  Height = 29
+                  Width = 1454
+                  object cxLabel9: TcxLabel
+                    AlignWithMargins = True
+                    Left = 3
+                    Top = 6
+                    Margins.Left = 0
+                    Margins.Right = 0
+                    Align = alLeft
+                    AutoSize = False
+                    Caption = 'L'#246'sungsversionen'
+                    Transparent = True
+                    ExplicitLeft = 2
+                    ExplicitTop = 5
+                    ExplicitHeight = 19
+                    Height = 17
+                    Width = 100
+                  end
+                  object cxLabel10: TcxLabel
+                    Left = 232
+                    Top = 64
+                    Caption = 'cxLabel3'
+                  end
+                  object cxDBTextEdit5: TcxDBTextEdit
+                    AlignWithMargins = True
+                    Left = 111
+                    Top = 4
+                    Margins.Left = 8
+                    Margins.Top = 1
+                    Margins.Right = 8
+                    Margins.Bottom = 1
+                    Align = alClient
+                    DataBinding.DataField = 'FixVersion'
+                    DataBinding.DataSource = ds_Tickets
+                    Properties.ReadOnly = True
+                    TabOrder = 2
+                    ExplicitLeft = 110
+                    ExplicitTop = 3
+                    ExplicitWidth = 1356
+                    ExplicitHeight = 23
+                    Width = 1332
+                  end
+                end
+                object cxGroupBox12: TcxGroupBox
+                  AlignWithMargins = True
+                  Left = 3
+                  Top = 178
+                  Margins.Left = 0
+                  Margins.Top = 5
+                  Margins.Right = 0
+                  Margins.Bottom = 0
+                  Align = alClient
+                  PanelStyle.Active = True
+                  Style.BorderStyle = ebsNone
+                  TabOrder = 5
+                  ExplicitLeft = 2
+                  ExplicitTop = 177
+                  ExplicitWidth = 1476
+                  ExplicitHeight = 402
+                  Height = 374
+                  Width = 1454
+                  object cxLabel11: TcxLabel
+                    AlignWithMargins = True
+                    Left = 3
+                    Top = 6
+                    Margins.Left = 0
+                    Margins.Right = 0
+                    Align = alLeft
+                    AutoSize = False
+                    Caption = 'L'#246'sungsversionen'
+                    Transparent = True
+                    ExplicitLeft = 2
+                    ExplicitTop = 5
+                    ExplicitHeight = 392
+                    Height = 362
+                    Width = 100
+                  end
+                  object cxDBRichEdit1: TcxDBRichEdit
+                    Left = 103
+                    Top = 3
+                    Align = alClient
+                    DataBinding.DataField = 'Beschreibung'
+                    DataBinding.DataSource = ds_Tickets
+                    TabOrder = 1
+                    ExplicitLeft = 102
+                    ExplicitTop = 2
+                    ExplicitWidth = 1372
+                    ExplicitHeight = 398
+                    Height = 368
+                    Width = 1348
+                  end
+                end
+              end
+            end
+            object cxSplitter2: TcxSplitter
+              Left = 0
+              Top = 200
+              Width = 1666
+              Height = 5
+              AlignSplitter = salTop
+              Control = cxGrid2
+            end
+          end
+          object cxTabSheet3: TcxTabSheet
+            Caption = 'cxTabSheet3'
+            ImageIndex = 2
+            ExplicitLeft = 0
+            ExplicitTop = 24
+            ExplicitWidth = 1684
+            ExplicitHeight = 809
+            object dxLayoutControl1: TdxLayoutControl
+              AlignWithMargins = True
+              Left = 0
+              Top = 0
+              Width = 1666
+              Height = 784
+              Margins.Left = 0
+              Margins.Top = 0
+              Margins.Right = 0
+              Margins.Bottom = 0
+              Align = alClient
+              TabOrder = 0
+              LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
+              ExplicitWidth = 817
+              ExplicitHeight = 728
+              object edt_Stichwort: TcxDBTextEdit
+                AlignWithMargins = True
+                Left = 126
+                Top = 116
+                Margins.Left = 8
+                Margins.Top = 1
+                Margins.Right = 8
+                Margins.Bottom = 1
+                DataBinding.DataField = 'Stichwort'
+                Properties.ReadOnly = True
+                Style.HotTrack = False
+                Style.TransparentBorder = False
+                TabOrder = 2
+                Width = 1215
+              end
+              object dt: TcxDBTextEdit
+                AlignWithMargins = True
+                Left = 126
+                Top = 81
+                Margins.Left = 8
+                Margins.Top = 1
+                Margins.Right = 8
+                Margins.Bottom = 1
+                DataBinding.DataField = 'Faelligkeit'
+                Properties.ReadOnly = True
+                Style.HotTrack = False
+                Style.TransparentBorder = False
+                TabOrder = 1
+                Width = 1215
+              end
+              object lucmbbx_Prio: TcxDBLookupComboBox
+                Left = 126
+                Top = 46
+                DataBinding.DataField = 'ID_jira_priorty'
+                Properties.KeyFieldNames = 'Nr'
+                Properties.ListColumns = <
+                  item
+                    FieldName = 'Bezeichnung'
+                  end>
+                Properties.ListSource = ds_prio
+                Style.HotTrack = False
+                Style.TransparentBorder = False
+                TabOrder = 0
+                Width = 1215
+              end
+              object dxLayoutControl1Group_Root: TdxLayoutGroup
+                AlignHorz = ahClient
+                AlignVert = avClient
+                LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
+                SizeOptions.Height = 600
+                Hidden = True
+                LayoutDirection = ldHorizontal
+                ShowBorder = False
+                Index = -1
+              end
+              object dxLayoutGroup1: TdxLayoutGroup
+                Parent = dxLayoutControl1Group_Root
+                AlignHorz = ahClient
+                AlignVert = avClient
+                CaptionOptions.Text = 'New Group'
+                SizeOptions.Height = 300
+                SizeOptions.Width = 300
+                LayoutDirection = ldHorizontal
+                ShowBorder = False
+                Index = 0
+              end
+              object dxLayoutGroup3: TdxLayoutGroup
+                Parent = dxLayoutGroup1
+                AlignHorz = ahRight
+                AlignVert = avClient
+                CaptionOptions.Text = 'rechts'
+                SizeOptions.Height = 300
+                SizeOptions.Width = 300
+                ButtonOptions.ShowExpandButton = True
+                Index = 1
+              end
+              object dxLayoutGroup5: TdxLayoutGroup
+                Parent = dxLayoutAutoCreatedGroup1
+                AlignHorz = ahClient
+                AlignVert = avClient
+                CaptionOptions.Text = 'Ticketdetails'
+                LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
+                ButtonOptions.ShowExpandButton = True
+                ItemIndex = 1
+                Index = 0
+              end
+              object dxLayoutItem2: TdxLayoutItem
+                Parent = dxLayoutGroup5
+                Padding.Bottom = 5
+                Padding.Top = 5
+                Padding.AssignedValues = [lpavBottom, lpavTop]
+                CaptionOptions.Text = 'F'#228'lligkeitsdatum:'
+                Control = dt
+                ControlOptions.OriginalHeight = 19
+                ControlOptions.OriginalWidth = 481
+                ControlOptions.ShowBorder = False
+                Index = 1
+              end
+              object dxLayoutItem3: TdxLayoutItem
+                CaptionOptions.Text = 'New Item'
+                Index = -1
+              end
+              object dxLayoutGroup2: TdxLayoutGroup
+                Parent = dxLayoutAutoCreatedGroup1
+                CaptionOptions.Text = 'New Group'
+                Visible = False
+                Index = 1
+              end
+              object dxLayoutAutoCreatedGroup1: TdxLayoutAutoCreatedGroup
+                Parent = dxLayoutGroup1
+                AlignHorz = ahClient
+                Index = 0
+              end
+              object dxLayoutItem4: TdxLayoutItem
+                Parent = dxLayoutGroup5
+                LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
+                Padding.Bottom = 5
+                Padding.Top = 5
+                Padding.AssignedValues = [lpavBottom, lpavRight, lpavTop]
+                CaptionOptions.Text = 'cxLookupComboBox1'
+                Control = lucmbbx_Prio
+                ControlOptions.OriginalHeight = 19
+                ControlOptions.OriginalWidth = 145
+                ControlOptions.ShowBorder = False
+                Index = 0
+              end
+              object dxLayoutItem1: TdxLayoutItem
+                Parent = dxLayoutGroup5
+                Padding.Bottom = 5
+                Padding.Top = 5
+                Padding.AssignedValues = [lpavBottom, lpavTop]
+                CaptionOptions.Text = 'Stichwort:'
+                Control = edt_Stichwort
+                ControlOptions.OriginalHeight = 19
+                ControlOptions.OriginalWidth = 481
+                ControlOptions.ShowBorder = False
+                Index = 2
+              end
+            end
+          end
+        end
+        object dxBarDockControl1: TdxBarDockControl
+          Left = 0
+          Top = 0
+          Width = 1674
+          Height = 63
+          Align = dalTop
+          BarManager = brmgr_Kalendar
+        end
+        object stbr_main: TdxStatusBar
+          Left = 0
+          Top = 880
+          Width = 1674
+          Height = 20
+          Panels = <
+            item
+              PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
+              Text = 'aktuelles Board: ID Diacos'
+              Width = 300
+            end
+            item
+              PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
+              Text = 'Tickets:'
+              Width = 300
+            end
+            item
+              PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
+              Text = 'aktuelles Ticket:'
+              Width = 300
+            end>
+          PaintStyle = stpsUseLookAndFeel
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ExplicitTop = 891
+          ExplicitWidth = 1684
+        end
+      end
+      object ts_D_Stundenplan: TcxTabSheet
         Caption = 'Stundenplan'
         ImageIndex = 14
+        ExplicitLeft = 0
+        ExplicitTop = 25
+        ExplicitWidth = 1684
+        ExplicitHeight = 911
         object grpbx_Stundenplanuebersicht: TcxGroupBox
           Left = 0
           Top = 0
           Align = alTop
           Caption = 'Stundenplan'#252'bersicht'
           TabOrder = 0
+          ExplicitWidth = 1680
           Height = 201
           Width = 1674
           object edt_Stundenplan_Klasse: TcxDBTextEdit
@@ -964,6 +1855,9 @@ object frm_Calendar: Tfrm_Calendar
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
             LookAndFeel.NativeStyle = False
+            ExplicitLeft = 2
+            ExplicitTop = 118
+            ExplicitWidth = 1680
             object grdDBTblView_Stundenplanuebersicht: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -1088,6 +1982,8 @@ object frm_Calendar: Tfrm_Calendar
           Align = alClient
           Caption = 'Stundenplan'
           TabOrder = 1
+          ExplicitWidth = 1680
+          ExplicitHeight = 710
           Height = 699
           Width = 1674
           object pnl_Stundenplandetail: TcxGroupBox
@@ -1096,7 +1992,9 @@ object frm_Calendar: Tfrm_Calendar
             Align = alTop
             PanelStyle.Active = True
             TabOrder = 0
-            ExplicitTop = 59
+            ExplicitLeft = 2
+            ExplicitTop = 76
+            ExplicitWidth = 1680
             Height = 60
             Width = 1668
             object lbl_Stundenplan_Bis: TcxLabel
@@ -1393,6 +2291,10 @@ object frm_Calendar: Tfrm_Calendar
             TabStop = False
             LockedStateImageOptions.Effect = lsieDark
             LookAndFeel.NativeStyle = False
+            ExplicitLeft = 2
+            ExplicitTop = 136
+            ExplicitWidth = 1680
+            ExplicitHeight = 572
             object grdDBTblView_Stundenplan: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -1887,6 +2789,31 @@ object frm_Calendar: Tfrm_Calendar
       Visible = True
       WholeRow = False
     end
+    object brmgr_KalendarBar1: TdxBar
+      Caption = 'Custom 4'
+      CaptionButtons = <>
+      DockControl = dxBarDockControl1
+      DockedDockControl = dxBarDockControl1
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 1700
+      FloatTop = 2
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btn_ReadTickets'
+        end>
+      OneOnRow = True
+      Row = 0
+      ShowMark = False
+      SizeGrip = False
+      UseOwnFont = False
+      UseRestSpace = True
+      Visible = True
+      WholeRow = False
+    end
     object btn_TagesAnsicht: TdxBarButton
       Caption = 'Tagesansicht'
       Category = 0
@@ -2333,6 +3260,16 @@ object frm_Calendar: Tfrm_Calendar
       AutoGrayScale = False
       LargeImageIndex = 6
     end
+    object btn_ReadTickets: TdxBarLargeButton
+      Caption = 'Aktualisieren'
+      Category = 0
+      Hint = 'Aktualisieren'
+      Visible = ivAlways
+      OnClick = btn_ReadTicketsClick
+      AutoGrayScale = False
+      LargeImageIndex = 6
+      Width = 125
+    end
     object btn_CalTerminImport: TdxBarButton
       Caption = 'Importieren (ICAL)'
       Category = 1
@@ -2608,7 +3545,7 @@ object frm_Calendar: Tfrm_Calendar
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 45314.463097060190000000
+      ReportDocument.CreationDate = 45329.562277824070000000
       OptionsSize.AutoWidth = True
       PixelsPerInch = 96
       BuiltInReportLink = True
@@ -2771,5 +3708,155 @@ object frm_Calendar: Tfrm_Calendar
   object SaveDialog1: TdxSaveFileDialog
     Left = 365
     Top = 608
+  end
+  object RESTClient_jira: TRESTClient
+    Authenticator = httpAuth_Jira
+    BaseURL = 'http://'#39'https://pcm-software.atlassian.net/rest'
+    Params = <>
+    SynchronizedEvents = False
+    Left = 152
+    Top = 240
+  end
+  object httpAuth_Jira: THTTPBasicAuthenticator
+    Username = 'Jens.Henske@outlook.com'
+    Password = 
+      'ATATT3xFfGF0tVpc1MPdKU2d1603BU3gMBJJmOuwcsnC3Q2lLS9rW4bY_pZU5W2K' +
+      'QCCTQh_z_SEJ88szd3KTfFmsrQwriV9uqVhxaBbWfxIBIQ2lAFzdPV0Nfm99p6F1' +
+      'FgFmjnyx5jJlioraphhrMOFkH_4XOQ6oZNKovYtsk04-Y72oNOzzvSA=C0E898E3'
+    Left = 152
+    Top = 184
+  end
+  object ds_Tickets: TDataSource
+    DataSet = qry_Tickets
+    Left = 208
+    Top = 136
+  end
+  object qry_Tickets: TFDQuery
+    Active = True
+    AfterScroll = qry_TicketsAfterScroll
+    Connection = dm_PCM.con_PCM
+    SQL.Strings = (
+      'Select * From manager_tickets')
+    Left = 152
+    Top = 128
+  end
+  object cxGridPopupMenu1: TcxGridPopupMenu
+    Grid = cxGrid2
+    PopupMenus = <>
+    Left = 951
+    Top = 305
+  end
+  object qry_prio: TFDQuery
+    Active = True
+    AfterScroll = qry_TicketsAfterScroll
+    Connection = dm_PCM.con_PCM
+    SQL.Strings = (
+      'Select * From manager_tickets')
+    Left = 424
+    Top = 144
+  end
+  object ds_prio: TDataSource
+    DataSet = qry_prio
+    Left = 480
+    Top = 152
+  end
+  object cxImageList1: TcxImageList
+    SourceDPI = 96
+    FormatVersion = 1
+    DesignInfo = 29885248
+    ImageInfo = <
+      item
+        ImageClass = 'TdxPNGImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D4948445200000010000000100803000000282D0F
+          530000004E504C5445000000FF512EFF592CFF5535FF5730FF552FFF582EFF57
+          32FF552FFF5731FF5631FF5530FF5631FF5730FF5630FF5630FF5530FF5630FF
+          5630FF5530FF5630FF5630FF5630FF5630FF5630FFFFFF711C451F0000001874
+          524E5300161718353637385758595A83848586CECFD0D1F2F3F4FEACDEC44400
+          000001624B474419EC6EB588000000644944415418196DC1591283201045D12B
+          6690C42948C3DBFF4A63515D161F9EC3AD714BA5A435E03E458D459A6F95AB91
+          D368BA5800367516E0502701A607EEA50C989EB8B73270A8F30356756620982E
+          79E014AB5C9D68A2A9C9132E2CBBD93E0FDCF903A7830C7495B19E8100000000
+          49454E44AE426082}
+      end
+      item
+        ImageClass = 'TdxPNGImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          6100000006624B474400FF00FF00FFA0BDA7930000010049444154388DC58F31
+          4B426114869F73F9CE15CCA5C1DF908138180D814B5B636D1104CDA25028D678
+          D770302282A62008DA6A6B7468889686B6107F41E05C439E064BEF35AFDE28E8
+          59CFFB3EBC07A6602006322D137BB4CDE2064873E0B1865C3D5E2712D8CE4A8E
+          776B016B63A73662BB72F1F03451605BA579525E0056065CCCB03EC225464DCE
+          EF5E880433FE3DC642DC4B9F78C036B00C2C46054E6795C3E486B590E007FD11
+          7F28D07F5FE0FC5F0A26BD20DC0060AC275810113C83ECC9C1C92D801D9657E9
+          CB1142615CE085045D9CF650ADF09ACD7F950164FFB4CD5B7609D50A4E7B38ED
+          7C9B62CDFA9C9D05E9B8A9C35C10F8765C4DCDCA25E603CBDF3A64A12E6C3700
+          00000049454E44AE426082}
+      end
+      item
+        ImageClass = 'TdxPNGImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          6100000006624B474400FF00FF00FFA0BDA793000001F249444154388DA5923F
+          68535114C67FE7BEA828B5852282A0A2D0526349A8552C080EA238F8B72554EA
+          E0A88215D3E68FD4A96F5014797D350E76290A82101A8906D1A5BBA0A009145D
+          5488838398A1358328BE771CF2526D5245F42C977B0EDF77EEF7E3C27F96FC6E
+          A043D13E7C330178A84948EEE58BBF32D0C1EE7624340E320C5841DB47F41EBE
+          494AAEF8695903B531BCDA7116D1CB403BF005E42AB012F462EDA482708970E9
+          B6D8F84B0D4EF4CC02076A170A588C48B65406D0D8CE6D58DE2D605FB0F791CC
+          148F019886406F508E48AED4CF86CE8F9A8E8D697A2045245266A6B41FF414F0
+          01F5D7FC11A2A662474133C0D6A0F50E888B937F5C8FDB14014047073BB0BC0C
+          7028683D035600BDC1BE02216F44AE3D2CD7358B1134154B60797381B882729A
+          96E81EDE5BBB41E3A09F418FF3DDBCD6D4C0852603448703D2537856974CE4A7
+          695DE866EFE62E711EDCC47861200BAC0639DF6CE0CB612C898A933FC7A68DA8
+          9BC820A688C79C4E26EFB2BEF39B38F993F8D28B5AFDCB4254DB36B456CF205C
+          61F12F60805540059131E65BEE886DFBCD0CDCD15DB4559F234CD5C45A006F3B
+          C6448059601DAAD3B4559FEA64BAA7AE0BFD646072C016E02DBEC625E93EF9E5
+          7107D54D0D21EA027DE0DF073A9632506EA02458581B6910D7FC134E96AFA130
+          C23870BD71FECFF5039449A8DF61106A1F0000000049454E44AE426082}
+      end
+      item
+        ImageClass = 'TdxPNGImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          6100000006624B474400FF00FF00FFA0BDA793000001F349444154388DA5923F
+          6853511487BF73F31AC12CBA3888E0604CB45450471111754C06C5380862A54D
+          945614454A555A2B8DC10E8936C5D0A405C13F8B2248898B2828BA0A55B1AD75
+          6E10419A6A6A91BCBEE3D0F7B44DE2D4DF74EEB9BFFB71CEB9075629F182685E
+          DBD5B0C5B218787A4ACA8DCCB147EA5F9825A1B0E6D96949039865A86E946EDB
+          66329AD7E3B58F23C37A70A1CC7B8421112E7A79CB0B1695C3461846D9A3C2C3
+          4841DB8C8F8EAAC3BC51D2C031D7FA018733752D00A02A91515A516E021B80DF
+          800D0404E614AE554ADC79D527B6F7E46F0BA1946E0BA6D8558CCB5DAB893042
+          D6AD3000146DA1A59890C1929F6030A5CD7500751833CABBAD37F4F1C40C8162
+          5CCEABB0C31876171312FDFC9D9FE1A40EE2F0D1383CAF0308DC16F825CA5160
+          32D4AF17E667F832D6C67828A9272C9B2985738003E41ACE607B52372F0A1994
+          236E6A1CA8007BDDF34B0C67A7AFC8543D20A63ED663284835DCAF075418029A
+          5D5709B83C7D55EE51A37F80767D81D082D2C528F78359FCE6079D2204AC2AB7
+          3EF54985B81E02B2C0374664FF4A40429F2C2BFD35860EF232E1C23721648098
+          7BFF8611D957330315E29C040658DA812A4A1AA10CF4B0F49D7308BD6C2487BB
+          0B2B1709A055D761711DA113F07974E0014D749193AF8D6750ABB8EE0432C05A
+          844B14E4ED7FBDABD11F4B8CAAD5B4B8228B0000000049454E44AE426082}
+      end
+      item
+        ImageClass = 'TdxPNGImage'
+        Image.Data = {
+          89504E470D0A1A0A0000000D4948445200000010000000100803000000282D0F
+          530000006C504C54450000008080AA6D929276899D80809277889980809F7887
+          9676899D7B849776899B7B88987986997B879A7986987B879A7A85997B87997A
+          85987B86997A86997A87987A86997A869A7A86997A86997B86997A86997A8799
+          7A86997A87997A86997A86997A86997A8699FFFFFF010CE7E00000002274524E
+          530006070D0E0F10111A1B1C4F505152536B6C6D6EC6C7C8C9CDCFD0D7D8D9DA
+          F2F3F43CC9915300000001624B4744232A626C3A000000724944415418198DC1
+          091282301004C0C9A11101B9C4106EE6FF8F94DDE20174E31EDBC5E3F8B51697
+          F7489532283B72CA9D2B662603D1717AE214163610913954C91E62A783F2DC20
+          763AA8073788C802AA620FD1720E38859535844D5C4AEF3F2B07039525AAE185
+          8B69FA7DFBD606B7FC017D61086BE97ABE260000000049454E44AE426082}
+      end>
+  end
+  object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
+    object dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel
+      PixelsPerInch = 96
+    end
   end
 end

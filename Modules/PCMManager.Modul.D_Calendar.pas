@@ -48,13 +48,19 @@ uses
   IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient,
   IdExplicitTLSClientServerBase, IdFTP,System.UITypes, cxMemo, dxmdaset,
   cxImageComboBox, Vcl.ExtCtrls,
-  cxCalendar,
+  cxCalendar, system.JSON,
   cxRichEdit, cxDBRichEdit, dxGDIPlusClasses, cxImage, Vcl.ComCtrls, Vcl.ToolWin,
   cxBarEditItem, System.ImageList, Vcl.ImgList, cxTL,
   cxTLdxBarBuiltInMenu, cxTreeView, cxInplaceContainer, cxButtonEdit, shellapi,
   cxGridCustomPopupMenu, cxGridPopupMenu, Vcl.OleServer, OutlookXP,
   REST.Types, REST.Client, REST.Authenticator.Basic, Data.Bind.Components,
-  Data.Bind.ObjectScope, dxShellDialogs,PCM.Functions, dxSkinWXI;
+  Data.Bind.ObjectScope, dxShellDialogs,PCM.Functions, dxSkinWXI, cxGeometry,
+  cxVariants, dxCustomData, cxCustomCanvas, dxCoreGraphics, dxChartCore,
+  dxChartData, dxChartLegend, dxChartSimpleDiagram, dxChartXYDiagram,
+  dxChartXYSeriesLineView, dxChartXYSeriesAreaView, dxChartMarkers,
+  dxChartXYSeriesBarView, dxChartDBData, dxCoreClasses, dxChartControl,
+  dxStatusBar, cxImageList, dxLayoutContainer, dxLayoutLookAndFeels,
+  dxLayoutControl, dxLayoutcxEditAdapters;
 
 
 type
@@ -81,7 +87,7 @@ type
     pc_Kalender: TcxPageControl;
     ts_A_kalender: TcxTabSheet;
     spl_Kalender: TcxSplitter;
-    ts_C_Stundenplan: TcxTabSheet;
+    ts_D_Stundenplan: TcxTabSheet;
     grpbx_Stundenplanuebersicht: TcxGroupBox;
     edt_Stundenplan_Klasse: TcxDBTextEdit;
     edt_Stundenplan_Schule: TcxDBTextEdit;
@@ -292,6 +298,87 @@ type
     Label2: TcxLabel;
     Label6: TcxLabel;
     Label8: TcxLabel;
+    ts_C_Jira: TcxTabSheet;
+    cxPageControl1: TcxPageControl;
+    cxTabSheet1: TcxTabSheet;
+    cxTabSheet2: TcxTabSheet;
+    cxComboBox1: TcxComboBox;
+    chartctrl_Birthday: TdxChartControl;
+    chartctrl_BirthdayChart: TdxChartSimpleDiagram;
+    chartctrl_BirthdaySeries: TdxChartSimpleSeries;
+    cxGrid2DBTableView1: TcxGridDBTableView;
+    cxGrid2Level1: TcxGridLevel;
+    cxGrid2: TcxGrid;
+    pnl_Ticket: TcxGroupBox;
+    cxGroupBox2: TcxGroupBox;
+    cxGroupBox4: TcxGroupBox;
+    dxBarDockControl1: TdxBarDockControl;
+    brmgr_KalendarBar1: TdxBar;
+    btn_ReadTickets: TdxBarLargeButton;
+    RESTClient_jira: TRESTClient;
+    httpAuth_Jira: THTTPBasicAuthenticator;
+    stbr_main: TdxStatusBar;
+    cxGrid2DBTableView1ID: TcxGridDBColumn;
+    cxGrid2DBTableView1Ticket_Nr: TcxGridDBColumn;
+    cxGrid2DBTableView1Nr: TcxGridDBColumn;
+    cxGrid2DBTableView1Status: TcxGridDBColumn;
+    cxGrid2DBTableView1Epic: TcxGridDBColumn;
+    cxGrid2DBTableView1Komponenten: TcxGridDBColumn;
+    cxGrid2DBTableView1Betreff: TcxGridDBColumn;
+    cxGrid2DBTableView1Board: TcxGridDBColumn;
+    ds_Tickets: TDataSource;
+    qry_Tickets: TFDQuery;
+    cxSplitter2: TcxSplitter;
+    cxGroupBox1: TcxGroupBox;
+    cxLabel2: TcxLabel;
+    cxLabel3: TcxLabel;
+    cxGroupBox6: TcxGroupBox;
+    cxLabel4: TcxLabel;
+    cxLabel5: TcxLabel;
+    cxDBTextEdit1: TcxDBTextEdit;
+    cxGroupBox7: TcxGroupBox;
+    cxLabel1: TcxLabel;
+    cxLabel6: TcxLabel;
+    cxDBTextEdit2: TcxDBTextEdit;
+    cxGrid2DBTableView1Stichwort: TcxGridDBColumn;
+    cxGrid2DBTableView1Type: TcxGridDBColumn;
+    cxGridPopupMenu1: TcxGridPopupMenu;
+    cxGrid2DBTableView1App: TcxGridDBColumn;
+    cxGroupBox9: TcxGroupBox;
+    cxLabel7: TcxLabel;
+    cxLabel8: TcxLabel;
+    cxDBTextEdit3: TcxDBTextEdit;
+    cxGroupBox10: TcxGroupBox;
+    cxLabel9: TcxLabel;
+    cxLabel10: TcxLabel;
+    cxDBTextEdit5: TcxDBTextEdit;
+    cxGroupBox12: TcxGroupBox;
+    cxLabel11: TcxLabel;
+    cxDBRichEdit1: TcxDBRichEdit;
+    qry_prio: TFDQuery;
+    ds_prio: TDataSource;
+    cxGrid2DBTableView1FixVersion: TcxGridDBColumn;
+    cxGrid2DBTableView1Beschreibung: TcxGridDBColumn;
+    cxGrid2DBTableView1ID_tickets_priority: TcxGridDBColumn;
+    cxImageList1: TcxImageList;
+    cxTextEdit1: TcxDBImageComboBox;
+    cxTabSheet3: TcxTabSheet;
+    dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
+    dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel;
+    dxLayoutControl1: TdxLayoutControl;
+    edt_Stichwort: TcxDBTextEdit;
+    dt: TcxDBTextEdit;
+    lucmbbx_Prio: TcxDBLookupComboBox;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutGroup1: TdxLayoutGroup;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutAutoCreatedGroup1: TdxLayoutAutoCreatedGroup;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutItem1: TdxLayoutItem;
     procedure btn_CalNewClick(Sender: TObject);
     procedure btn_CalTagClick(Sender: TObject);
     procedure btn_CalArbeitswocheClick(Sender: TObject);
@@ -389,6 +476,8 @@ type
       ANewItemRecordFocusingChanged: Boolean);
     procedure FormDestroy(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure btn_ReadTicketsClick(Sender: TObject);
+    procedure qry_TicketsAfterScroll(DataSet: TDataSet);
   private
     { Private-Deklarationen }
 //    rep : TDmReports;
@@ -433,12 +522,18 @@ type
     procedure SearchDoSearch(ASearchString : String);
     procedure RefreshTerminundAUfgaben;
 
+    function API_Auth_Jira(AMethod: TRESTRequestMethod = rmPost): TJSONObject;
+    function RestRequest(ABaseUrl: String; ARestclient: TRestClient; ARequestBody: TJSONObject; AResource: String; AGETPOST: TRESTRequestMethod = rmPost): TJSONObject;
+    procedure WriteInDB(ATicketInt: Integer;ATicket,AStatus,ABetreff,AType,AEpic,ASprint,APrio,AFixVersion,AApp,ALabel,Adesc,AAssignee: String);
   end;
 
 
 var
   frm_Calendar: Tfrm_Calendar;
 
+const
+  user = 'J.Henske@id-berlin.de';
+  password = 'ATATT3xFfGF0aEJ1a-nyUpNVocMIqcMQtlP2mn0HbR_mpaJ5OCy5BYgmIiSYUdLlHgGcXVm7N8dSR8Jqoa06cqRRTOfpwdy2VcX4qgyQkgmD-_tsLmKNv3TjZ92azgm2XC4IeitOjnfQY6Ijz4vc7kDk0iG5T-rb8vWPOcIr2Ea1SROOgc1TnIw=8AA4CA05';
 
 implementation
 
@@ -452,6 +547,325 @@ uses  PCM.Main,
       PCMManager.Helper.Calendar.Ical,
       PCM.Data,
       PCM.Strings;
+
+////////////////////////////////////////////////////////////////////////////////
+// TAB Jira                                                                   //
+////////////////////////////////////////////////////////////////////////////////
+function Tfrm_Calendar.API_Auth_Jira(AMethod: TRESTRequestMethod = rmPost): TJSONObject;
+var
+  RestRequest: TRESTRequest;
+  joResult: TJSONObject;
+  joLogin: TJSONObject;
+begin
+  RESTClient_Jira.BaseURL := 'https://id-berlin.atlassian.net/rest/auth/1/session';
+  HTTPAuth_Jira.Password := password;
+  httpAuth_Jira.Username := user;
+  joLogin := TJSONObject.Create;
+  joLogin.AddPair(TJSONPair.Create('username', user));
+  joLogin.AddPair(TJSONPair.Create('password', password));
+  RestRequest := TRESTRequest.Create(nil);
+  try
+    RestRequest.Client := RESTClient_Jira;
+    RestRequest.Method := rmGet;
+    RestRequest.Timeout := 600000;
+    if joLogin <> nil then
+    begin
+      RestRequest.Body.Add(joLogin);
+    end;
+    RestRequest.Execute;
+    joResult := TJSONObject.Create;
+    result := TJSONObject.ParseJSONValue(RestRequest.Response.JSONText) as TJSONObject;
+  finally
+    RestRequest.Free;
+  end;
+end;
+function Tfrm_Calendar.RestRequest(ABaseUrl: String; ArestClient: TRestClient; ARequestBody: TJSONObject; AResource: String; AGETPOST: TRESTRequestMethod = rmPost): TJSONObject;
+var
+  RestRequest: TRESTRequest;
+  sTest: String;
+  joResult: TJSONObject;
+begin
+  ArestClient.BaseURL := ABaseURl;
+  RestRequest := TRESTRequest.Create(nil);
+  try
+    RestRequest.Client := ArestClient;
+    RestRequest.Method := AGETPOST;
+    RestRequest.Resource := AResource;
+    RestRequest.Timeout := 600000;
+    if ARequestBody <> nil then
+    begin
+      RestRequest.Body.Add(ARequestBody);
+    end;
+    RestRequest.Execute;
+    joResult := TJSONObject.ParseJSONValue(RestRequest.Response.JSONText) as TJSONObject;
+    sTest:= joResult.ToString;
+    Result := joResult;
+  finally
+    RestRequest.Free;
+  end;
+end;
+procedure Tfrm_Calendar.WriteInDB(ATicketInt: Integer;ATicket,AStatus,ABetreff,AType,AEpic,ASprint,APrio,AFixVersion,AApp,ALabel,Adesc,AAssignee: String);
+var
+  iID,iCounter,iCounterEpic,iIDEpic,iIDPrio: Integer;
+begin
+  if (AEpic <> '') and (AEpic <> 'kein Epic') then
+  begin
+    dm_PCM.qry_Work.SQL.Text:= 'Select Count(*) as Anzahl From  manager_tickets Where Ticket_Nr = :Ticket_Nr';
+    dm_PCM.qry_Work.ParamByName('Ticket_Nr').asString:= AEpic;
+    dm_PCM.qry_Work.open;
+    iCounterEpic:= dm_PCM.qry_Work.FieldByName('Anzahl').AsInteger;
+    dm_PCM.qry_Work.Close;
+    if iCounterEpic > 0 then
+    begin
+      dm_PCM.qry_Work.SQL.Text:= 'Select ID From  manager_tickets Where Ticket_Nr = :Ticket_Nr';
+      dm_PCM.qry_Work.ParamByName('Ticket_Nr').asString:= AEpic;
+      dm_PCM.qry_Work.open;
+      iIDEpic:= dm_PCM.qry_Work.FieldByName('ID').AsInteger;
+      dm_PCM.qry_Work.Close;
+    end
+    else begin
+      iIDEpic:= 0;
+    end;
+  end
+  else begin
+    iIDEpic:= 0;
+  end;
+  dm_PCM.qry_Work.SQL.Text:= 'Select ID From  manager_tickets_priority Where Bezeichnung = :Bezeichnung';
+  dm_PCM.qry_Work.ParamByName('Bezeichnung').asString:= APrio;
+  dm_PCM.qry_Work.open;
+  iIDPrio:= dm_PCM.qry_Work.FieldByName('ID').AsInteger;
+  dm_PCM.qry_Work.Close;
+
+
+
+  dm_PCM.qry_Work.SQL.Text:= 'Select Count(*) as Anzahl From manager_tickets Where Nr = :Ticket_Nr';
+  dm_PCM.qry_Work.ParamByName('Ticket_Nr').AsInteger:= ATicketInt;
+  dm_PCM.qry_Work.open;
+  iCounter:= dm_PCM.qry_Work.FieldByName('Anzahl').AsInteger;
+  dm_PCM.qry_Work.Close;
+  if iCounter = 0 then
+  begin
+    dm_PCM.qry_Work.SQL.Text:= 'Insert into manager_tickets ' +
+                               ' (Ticket_Nr,Nr,STATUS,ID_tickets_priority,Epic,Board,Betreff,Stichwort,TYPE,App,FixVersion,Beschreibung,ID_Ticket) ' +
+                               'Values' +
+                               ' (:Ticket_Nr,:Nr,:STATUS,:ID_tickets_priority,:Epic,:Board,:Betreff,:Stichwort,:TYPE,:App,:FixVersion,:Beschreibung,:ID_Ticket)';
+    dm_PCM.qry_Work.ParamByName('Ticket_Nr').AsString:= ATicket;
+    dm_PCM.qry_Work.ParamByName('Nr').AsInteger:= ATicketInt;
+    dm_PCM.qry_Work.ParamByName('ID_Ticket').AsInteger:= iIDEpic;
+    dm_PCM.qry_Work.ParamByName('STATUS').AsString:= AStatus;
+    dm_PCM.qry_Work.ParamByName('ID_tickets_priority').asInteger:= iIDPrio;
+    dm_PCM.qry_Work.ParamByName('Epic').AsString:= AEpic;
+    dm_PCM.qry_Work.ParamByName('Betreff').AsString:= ABetreff;
+    dm_PCM.qry_Work.ParamByName('TYPE').AsString:= AType;
+//
+//    dm_PCM.qry_Work.ParamByName('Sprint').AsString:= ASprint;
+//
+    dm_PCM.qry_Work.ParamByName('FixVersion').AsString:= AFixVersion;
+    dm_PCM.qry_Work.ParamByName('App').AsString:= AApp;
+    dm_PCM.qry_Work.ParamByName('Stichwort').AsString:= ALabel;
+    dm_PCM.qry_Work.ParamByName('Beschreibung').AsMemo:= ADesc;
+//    dm_PCM.qry_Work.ParamByName('Zugewiesen').AsString:= AAssignee;
+    dm_PCM.qry_Work.ParamByName('Board').AsString:= 'ID Diacos';
+    dm_PCM.qry_Work.ExecSQL;
+  end
+  else
+  begin
+    dm_PCM.qry_Work.SQL.Text:= 'Select ID From manager_tickets Where Ticket_Nr = :Ticket_Nr';
+    dm_PCM.qry_Work.ParamByName('Ticket_Nr').AsString:= ATicket;
+    dm_PCM.qry_Work.open;
+    iID:= dm_PCM.qry_Work.FieldByName('ID').AsInteger;
+    dm_PCM.qry_Work.Close;
+    dm_PCM.qry_Work.SQL.Text:= 'Update manager_tickets ' +
+    ' Set Ticket_Nr = :Ticket_Nr,' +
+    'Nr = :Nr,'  +
+    'ID_Ticket = :ID_Ticket, ' +
+    'STATUS = :STATUS,' +
+    'Betreff = :Betreff,' +
+    'Epic = :Epic, ' +
+    'ID_tickets_priority = :ID_tickets_priority, ' +
+    'TYPE = :TYPE, ' +
+    //    'Sprint = :Sprint, ' +
+
+    'FixVersion = :FixVersion, ' +
+    'App = :App, ' +
+    'Stichwort = :Stichwort, ' +
+    'Beschreibung = :Beschreibung, ' +
+//    'Zugewiesen = :Zugewiesen, ' +
+    'Board = :Board ' +
+    'Where ID = :ID';
+    dm_PCM.qry_Work.ParamByName('Ticket_Nr').AsString:= ATicket;
+    dm_PCM.qry_Work.ParamByName('Nr').AsInteger:= ATicketInt;
+    dm_PCM.qry_Work.ParamByName('ID_Ticket').AsInteger:= iIDEpic;
+    dm_PCM.qry_Work.ParamByName('STATUS').AsString:= AStatus;
+    dm_PCM.qry_Work.ParamByName('ID_tickets_priority').asInteger:= iIDPrio;
+    dm_PCM.qry_Work.ParamByName('Epic').AsString:= AEpic;
+    dm_PCM.qry_Work.ParamByName('Betreff').AsString:= ABetreff;
+    dm_PCM.qry_Work.ParamByName('TYPE').AsString:= AType;
+//
+//    dm_PCM.qry_Work.ParamByName('Sprint').AsString:= ASprint;
+//
+    dm_PCM.qry_Work.ParamByName('FixVersion').AsString:= AFixVersion;
+    dm_PCM.qry_Work.ParamByName('App').AsString:= AApp;
+    dm_PCM.qry_Work.ParamByName('Stichwort').AsString:= ALabel;
+    dm_PCM.qry_Work.ParamByName('Beschreibung').AsMemo:= ADesc;
+//    dm_PCM.qry_Work.ParamByName('Zugewiesen').AsString:= AAssignee;
+    dm_PCM.qry_Work.ParamByName('Board').AsString:= 'ID Diacos';
+    dm_PCM.qry_Work.ParamByName('ID').AsInteger:= iID;
+    dm_PCM.qry_Work.ExecSQL;
+  end;
+  qry_Tickets.refresh;
+end;
+
+procedure Tfrm_Calendar.btn_ReadTicketsClick(Sender: TObject);
+var
+  joBody, joResult: TJSONObject;
+  jArray: TJSONArray;
+  joFields: TJSONObject;
+  joCustom4, joCustom3,joCustom2,joCustom1,joFixVersion,jopriority,josprint,joStatus,joIssuetype, joTemp,joParent: TJSONObject;
+  jaCustom2, jaCustom1,  jaCustom: TJSONArray;
+  sDesc,sAssi,sname,sApp,sFixVersion,sPrio, sEpic,sType, sBetreff,sStatus, sSprint, sTicket, sProcessNummer, sTemp, s,sJob: String;
+  iProcessNummer, iJob: Integer;
+  i,i1, iTicket: integer;
+  sJText: string;
+begin
+//  qry_Tickets.close;
+  Screen.Cursor := crHourGlass;
+  API_Auth_Jira;
+  joFields:= nil;
+  joCustom4:= nil;
+  joCustom3:= nil;
+  joCustom2:= nil;
+  joCustom1:= nil;
+  joFixVersion:= nil;
+  jopriority:= nil;
+  josprint:= nil;
+  joStatus:= nil;
+  joIssuetype:= nil;
+  joTemp:= nil;
+  joParent:= nil;
+  Application.ProcessMessages;
+  sJText:='{"jql": "project IN (' + QuotedStr('ID Diacos') + ') and status in (1,3,4,5,10015,10044,10003) and assignee = ' + QuotedStr('j.henske@id-berlin.de') + ' ORDER BY issue aSC", "startAt": 0, "maxResults": 100 }';
+  joBody := TJSONObject.ParseJSONValue(sJText) as TJSONObject;
+  joResult := RestRequest('https://id-berlin.atlassian.net/rest',RESTClient_jira,joBody, '/api/2/search');
+  joResult.TryGetValue<TJSONArray>('issues', jArray);
+
+    for i := 0 to jArray.Size - 1 do
+    begin
+      joResult := TJSONObject.ParseJSONValue(jArray.Get(i).ToString) as TJSONObject;
+      sBetreff:= '';
+      sApp:= '';
+      sFixVersion:= '';
+
+
+
+
+      sStatus:= '';
+      sType:= '';
+
+
+
+
+
+      sDesc:= '';
+      sAssi:= '';
+      if (joResult.GetValue('key').Null) OR (not joResult.TryGetValue<String>('key', sTicket)) then
+        sTicket:= '';
+      iTicket:= StrToInt(StringReplace(sTicket,'DCS-','',[rfReplaceAll, rfIgnoreCase]));
+
+      Application.ProcessMessages;
+      joResult.TryGetValue<TJSONObject>('fields', joFields);
+      joFields.TryGetValue<String>('summary', sBetreff);
+
+      Application.ProcessMessages;
+      stbr_main.Panels[1].Text:= 'Tickets ' + IntToStr(i + 1) + ' von ' + IntToStr(jArray.Size) + ' wird eingelesen';
+      stbr_main.Panels[2].Text:= 'aktuelles Tickets: ' + sTicket + ' - ' + sBetreff;
+
+      Application.ProcessMessages;
+      joFields.TryGetValue<TJSONObject>('status', joStatus);
+      joStatus.TryGetValue<String>('name', sStatus);
+
+      Application.ProcessMessages;
+      joFields.TryGetValue<TJSONObject>('issuetype',joIssuetype);
+      joIssuetype.TryGetValue<String>('name', sType);
+
+      joFields.TryGetValue<TJSONObject>('parent',joParent);
+
+      if joParent <> nil then
+        joParent.TryGetValue<String>('key', sEpic)
+      else
+        sEpic:= 'kein Epic';
+
+      if sType = 'Epic' then
+        sEpic:= 'Ohne';
+
+      joFields.TryGetValue<TJSONObject>('sprint',josprint);
+      if joSprint <> nil  then
+        josprint.TryGetValue<String>('name', sSprint)
+      else
+        sSprint:= '';
+
+      joFields.TryGetValue<TJSONObject>('priority',jopriority);
+      if jopriority <> nil  then
+        jopriority.TryGetValue<String>('name', sPrio)
+      else
+        sPrio:= '';
+
+      try
+        joFields.TryGetValue<TJSonArray>('fixVersions',jaCustom);
+        for i1 := 0 to jaCustom.Size - 1 do
+        begin
+          joFixVersion := TJSONObject.ParseJSONValue(jaCustom.Get(i1).ToString) as TJSONObject;
+          joFixVersion.TryGetValue<String>('name',sFixVersion);
+        end;
+      except
+      end;
+      try
+        joFields.TryGetValue<TJSonArray>('labels',jaCustom1);
+        sname:= '';
+        for i1 := 0 to jaCustom1.Size - 1 do
+        begin
+          sname:= StringReplace(jaCustom1.Get(i1).ToString,'"','',[rfreplaceall]);
+        end;
+      except
+      end;
+      try
+        joFields.TryGetValue<String>('description', sDesc);
+      except
+      end;
+      try
+
+        joFields.TryGetValue<TJSonArray>('components',jaCustom);
+        for i1 := 0 to jaCustom.Size - 1 do
+        begin
+          joCustom4 := TJSONObject.ParseJSONValue(jaCustom.Get(i1).ToString) as TJSONObject;
+          joCustom4.TryGetValue<String>('name',sApp);
+        end;
+
+        joFields.TryGetValue<TJSONObject>('assignee',joCustom3);
+        joCustom3.TryGetValue<String>('displayName', sAssi);
+      except
+      end;
+//      sDesc:= StringReplace(sDesc,#$A#$A,'',[rfReplaceall]);
+//      sDesc:= StringReplace(sDesc,'{panel:bgColor=#ffebe6}'+#$A,'',[rfReplaceall]);
+//      sDesc:= StringReplace(sDesc,'{panel}{panel:bgColor=#fffae6}','',[rfReplaceall]);
+//      sDesc:= StringReplace(sDesc,'{panel}{panel:bgColor=#deebff}','',[rfReplaceall]);
+//      sDesc:= StringReplace(sDesc,'{panel}{panel:bgColor=#eae6ff}','',[rfReplaceall]);
+//      sDesc:= StringReplace(sDesc,'{panel}{panel:bgColor=#e3fcef}','',[rfReplaceall]);
+//      sDesc:= StringReplace(sDesc,'Dev:','Dev:'+#$A,[rfReplaceall]);
+//      sDesc:= StringReplace(sDesc,'Abhängigkeiten:','Abhängigkeiten:'+#$A,[rfReplaceall]);
+//      sDesc:= StringReplace(sDesc,'QM:','QM:'+#$A,[rfReplaceall]);
+//      sDesc:= StringReplace(sDesc,'Notiz:','Notiz:'+#$A,[rfReplaceall]);
+//      sDesc:= StringReplace(sDesc,'Ready:','Ready:'+#$A,[rfReplaceall]);
+//      sDesc:= StringReplace(sDesc,'{panel}','',[rfReplaceall]);
+      WriteInDB(iTicket,sTicket,sStatus,sBetreff,sType,sEpic,sSprint,sPrio,sFixVersion,sApp,sName,sdesc,Sassi);
+    end;
+
+  Screen.Cursor := crDefault;
+end;
+procedure Tfrm_Calendar.qry_TicketsAfterScroll(DataSet: TDataSet);
+begin
+  pnl_Ticket.Caption:= 'Projekte / ' + qry_Tickets.FieldByName('Epic').asString + ' / ' + qry_Tickets.FieldByName('Ticket_nr').asString
+end;
 
 function Tfrm_Calendar.GetRecurrenceInfoOutlook(AArt,AInterval,ADayOfWeeks,AAnzahlWiederholung:integer;AWiederholungStart,AWiederholungEnde,AInstanz:string): string;
 var
@@ -1287,7 +1701,7 @@ begin
   grdDBTblView_StundenplanMittwoch.Caption:= rs_PCM_Mittwoch;
   grdDBTblView_StundenplanMontag.Caption:= rs_PCM_Montag;
   grdDBTblView_StundenplanSamstag.Caption:= rs_PCM_Samstag;
-
+  qry_Tickets.open;
 end;
 procedure Tfrm_Calendar.OpenAttachement;
 var
@@ -1800,8 +2214,9 @@ procedure Tfrm_Calendar.FormShow(Sender: TObject);
 begin
   case dm_PCM.iModulTab of
   1: pc_Kalender.ActivePage:= ts_A_kalender;
-  2: pc_Kalender.ActivePage:= ts_C_Stundenplan;
-  3: pc_Kalender.ActivePage:= ts_B_Aufgaben;
+  2: pc_Kalender.ActivePage:= ts_B_Aufgaben;
+  3: pc_Kalender.ActivePage:= ts_C_jira;
+  4: pc_Kalender.ActivePage:= ts_D_Stundenplan;
   end;
   OpenData;
   InitializeRights;
@@ -1861,12 +2276,12 @@ begin
     btn_CalJahr.LargeImageIndex:= 44;
     schedDBStrg_Kalender.Reminders.Active:= true;
     pc_Kalender.ActivePage:= ts_A_kalender;
-  end
-  else begin
-    if dm_PCM.iModulTab = 2 then
-      pc_Kalender.ActivePage:= ts_C_Stundenplan
-    else
-      pc_Kalender.ActivePage:= ts_B_Aufgaben;
+//  end
+//  else begin
+//    if dm_PCM.iModulTab = 2 then
+//      pc_Kalender.ActivePage:= ts_C_Stundenplan
+//    else
+//      pc_Kalender.ActivePage:= ts_B_Aufgaben;
   end;
 //  tvauf.DataController.Filter.Active:= false;
 //  tvauf.DataController.Filter.Root.Clear;
@@ -3641,13 +4056,13 @@ begin
   // Stundenplan / Kein Recht
   if dm_PCM.iStundenplan = 0 then
   begin
-    ts_C_Stundenplan.TabVisible:= false;
+    ts_D_Stundenplan.TabVisible:= false;
   end;
 
   // Stundenplan / Lesen
   if dm_PCM.iStundenplan = 1 then
   begin
-    ts_C_Stundenplan.TabVisible:= true;
+    ts_D_Stundenplan.TabVisible:= true;
     // Toolbar
     btn_StundenplanNew.Enabled:= false;
     btn_StundenplanSave.Enabled:= false;
@@ -3673,7 +4088,7 @@ begin
    // Stundenplan / Schreiben
   if dm_PCM.iStundenplan = 2 then
   begin
-    ts_c_Stundenplan.TabVisible:= true;
+    ts_D_Stundenplan.TabVisible:= true;
     // Toolbar
     btn_StundenplanNew.Enabled:= true;
     btn_StundenplanSave.Enabled:= true;
@@ -3699,7 +4114,7 @@ begin
   // Stundenplan / Vollzugriff
   if dm_PCM.iStundenplan = 3 then
   begin
-    ts_c_Stundenplan.TabVisible:= true;
+    ts_D_Stundenplan.TabVisible:= true;
     // Toolbar
     btn_StundenplanNew.Enabled:= true;
     btn_StundenplanSave.Enabled:= true;

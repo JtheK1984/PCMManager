@@ -156,6 +156,8 @@ type
     ds_ChartSerialKategorie: TDataSource;
     qry_ChartSerialKategorie: TFDQuery;
     qry_work2: TFDQuery;
+    DataSource1: TDataSource;
+    FDQuery1: TFDQuery;
     procedure con_PCMBeforeConnect(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
   private
