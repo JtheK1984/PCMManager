@@ -157,32 +157,6 @@ type
     lbl_EmailConfig_PostEingangServer: TcxLabel;
     lbl_EmailConfig_Serverinformationen: TcxLabel;
     lucmbbx_EmailConfig_Kontptyp: TcxDBLookupComboBox;
-    ts_E_Design: TcxTabSheet;
-    grpbx_DesignStyle: TcxGroupBox;
-    grpbx_vorschau: TcxGroupBox;
-    pnl_Vorschau: TcxGroupBox;
-    des_ToolButton3: TcxButton;
-    des_ToolButton2: TcxButton;
-    des_ToolButton1: TcxButton;
-    des_Label1: TcxLabel;
-    des_Edit1: TcxTextEdit;
-    des_CheckBox1: TcxCheckBox;
-    des_RadioButton1: TcxRadioButton;
-    des_Button1: TcxButton;
-    des_Button2: TcxButton;
-    des_Button3: TcxButton;
-    des_grid: TcxGrid;
-    des_gridDBTableView1: TcxGridDBTableView;
-    des_gridDBTableView1Column1: TcxGridDBColumn;
-    des_gridDBTableView1Column2: TcxGridDBColumn;
-    des_gridDBTableView1Column3: TcxGridDBColumn;
-    des_gridLevel1: TcxGridLevel;
-    grpbx_Style: TcxGroupBox;
-    cmbbx_Style: TcxComboBox;
-    lbl_Style: TcxLabel;
-    grpbx_Design: TcxGroupBox;
-    lbl_design: TcxLabel;
-    cmbbx_Design: TcxComboBox;
     qry_CalConfig: TFDQuery;
     qry_CalConfigFTP: TFDQuery;
     ds_CalConfig: TDataSource;
@@ -224,10 +198,7 @@ type
     btn_FachCancel: TdxBarLargeButton;
     btn_FachSave: TdxBarLargeButton;
     brdckctrl_Email: TdxBarDockControl;
-    dckctrl_Design: TdxBarDockControl;
     tb_email: TdxBar;
-    tb_Design: TdxBar;
-    btn_DesignSave: TdxBarLargeButton;
     btn_EmailConfigDelete: TdxBarLargeButton;
     btn_EmailConfigCancel: TdxBarLargeButton;
     btn_EmailConfigSave: TdxBarLargeButton;
@@ -333,10 +304,8 @@ type
     lbl_AufgabenSonstigesAccToDo: TcxLabel;
     edt_AufgabenSonstigesAccMail: TcxDBTextEdit;
     pnl_Design: TcxGroupBox;
-    img_Vorschau: TVirtualImage;
     ImageCollection1: TImageCollection;
     procedure FormShow(Sender: TObject);
-    procedure btn_DesignSaveClick(Sender: TObject);
     procedure btn_CalConfigNew1Click(Sender: TObject);
     procedure btn_CalConfigSave1Click(Sender: TObject);
     procedure btn_CalConfigCancel1Click(Sender: TObject);
@@ -359,8 +328,6 @@ type
     procedure btn_EmailConfigSaveClick(Sender: TObject);
     procedure btn_EmailConfigNewClick(Sender: TObject);
     procedure btn_EmailConfig_TestClick(Sender: TObject);
-    procedure cbx_DesignPropertiesChange(Sender: TObject);
-    procedure cbx_StylePropertiesChange(Sender: TObject);
     procedure qry_EmailConfigAfterScroll(DataSet: TDataSet);
     procedure btn_PostfachNewClick(Sender: TObject);
     procedure btn_PostfachMainTopClick(Sender: TObject);
@@ -400,14 +367,11 @@ type
     SaveGridViewPostfach,
     SaveGridViewUnterPostfach : TSavedGridView;
     procedure SetGridViews(Show:boolean);
-    procedure OpenData;
-    procedure InitializeRights;
     procedure SetButtons;
     procedure SortierungFirstLastMain(bUpDown: Boolean);
     procedure SortierungAendernMain(bUpDown: Boolean);
     procedure SortierungFirstLastSub(bUpDown: Boolean);
     procedure SortierungAendernSub(bUpDown: Boolean);
-    procedure ShowFolders(AIdIMAP41: Tidimap4);
   public
     iID_Benutzer: integer;
     iMaxSortierung: integer;
@@ -426,118 +390,10 @@ uses PCM.Main,
      PCMManager.Modul.B_Config.Kalender.Feiertage.Aktualisieren,
      PCM.Functions.Synch.Wait, PCM.Data, PCM.Strings;
 
-procedure Tfrm_Config.OpenData;
-var
-  iAnzahl: Integer;
-begin
-  dm_PCM.qry_work.sql.Text:= 'Select COunt(*) as  Anzahl From manager_stundenplan_konfiguration Where ID_Benutzer = :ID_Benutzer';
-  dm_PCM.qry_work.ParamByname('ID_Benutzer').asInteger:= dm_PCM.iIDBenutzerPCM;
-  dm_PCM.qry_work.Open;
-  iAnzahl:= dm_PCM.qry_work.FieldByname('Anzahl').asInteger;
-  dm_PCM.qry_work.Close;
-  if iAnzahl = 0  then
-  begin
-    dm_PCM.qry_work.sql.Text:= 'Insert Into manager_stundenplan_konfiguration (Farbe, Schriftfarbe,ID_Benutzer) values (12632256, 0,:ID_Benutzer)';
-    dm_PCM.qry_work.ParamByname('ID_Benutzer').asInteger:= dm_PCM.iIDBenutzerPCM;
-    dm_PCM.qry_work.Execsql;
-  end;
-  qry_CalConfig.Open;
-  qry_CalConfigFTP.Open;
-  qry_CalConfig.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-  qry_CalConfig.Filtered := true;
-  qry_CalConfigFTP.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-  qry_CalConfigFTP.Filtered := true;
-  dm_PCM.qry_Config_Benutzer.Open;
-  qry_FT1.Open;
-  qry_FT1.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-  qry_FT1.Filtered := true;
-  qry_SchulFaecher.Open;
-  qry_SchulFaecher.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-  qry_SchulFaecher.Filtered := true;
-  qry_SchulFaecher_Config.Open;
-  qry_SchulFaecher_Config.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-  qry_SchulFaecher_Config.Filtered := true;
-  dm_PCM.qry_Config_EmailConfigTyp.Open;
-  qry_EmailConfig.Open;
-  qry_EmailConfig.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-  qry_EmailConfig.Filtered := true;
-  qry_EmailPostfachMain.Open;
-  dm_PCM.qry_Config_EmailPostfachLU.Open;
-  qry_AufgabenArten.Open;
-  qry_Prio.Open;
-  dm_PCM.qry_Config_Ansprechpartner.Open;
-  dm_PCM.qry_Config_Firmen.Open;
-  dm_PCM.qry_Config_Bundesland.Open;
-  qry_Konfiguration_Kalender_Optionen.Open;
-  qry_Konfiguration_Kalender_Optionen.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-  qry_Konfiguration_Kalender_Optionen.Filtered := true;
-  grdDBTblView_calconfigKalender.Caption := rs_PCM_Kalender;
-  grdDBTblView_calconfigLink.Caption := rs_PCMManager_Link;
-  grdDBTblView_calconfigBenutzer.Caption := rs_PCMBenutzerverwaltung_Benutzer;
-  grdDBTblView_calconfigPasswort.Caption := rs_PCM_Passwort;
-  grdDBTblView_calconfigErinnerung.Caption := rs_PCM_Erinnerung;
-  grdDBTblView_calconfigErinnerungVor.Caption := rs_PCM_ErinnerungVor;
-  grdDBTblView_calconfigLabelColor.Caption := rs_PCM_Terminfarbe;
-  grdDBTblView_calconfigFontcolor.Caption := rs_PCM_Schriftfarbe;
-  grdDBTblView_calconfigID_Benutzer.Caption :=rs_PCMBenutzerverwaltung_Benutzer;
-  grdDBTblView_FeiertageJahr.Caption := rs_PCM_Jahr;
-  grdDBTblView_FeiertageMonat.Caption:= rs_PCM_Monat;
-  grdDBTblView_FeiertageTag.Caption:= rs_PCM_Tag;
-  grdDBTblView_FeiertageBezeichnung.Caption:= rs_PCM_Bezeichnung;
-  grdDBTblView_FTPConfigurl.Caption := rs_PCM_Host;
-  grdDBTblView_FTPConfigkalendername.Caption := rs_PCM_Dateiname;
-  grdDBTblView_FTPConfiguser.Caption := rs_PCMBenutzerverwaltung_Benutzer;
-  grdDBTblView_FTPConfigpasswort.Caption := rs_PCM_Passwort;
-  grdDBTblView_AufgabenartenBezeichnung.Caption:= rs_PCM_Bezeichnung;
-  grdDBTblView_AufgabenartenFarbe.Caption:= rs_PCM_Farbe;
-  grdDBTblView_AufgabenPrioPrioritaet.Caption := rs_PCM_Prioritaet;
-  grdDBTblView_AufgabenPrioBezeichnung.Caption := rs_PCM_Bezeichnung;
-  grdDBTblView_StundenplanConfigBezeichnung.Caption := rs_PCM_Bezeichnung;
-  grdDBTblView_StundenplanConfigFarbe.Caption := rs_PCM_Farbe;
-  grdDBTblView_StundenplanConfigSchriftfarbe.Caption := rs_PCM_Schriftfarbe;
-  grdDBTblView_StundenplanConfigUhrFarbe.Caption :=  rs_PCM_Farbe;
-  grdDBTblView_StundenplanConfigUhrSchriftfarbe.Caption := rs_PCM_Schriftfarbe;
-  grdDBTblView_emailConfigEMail.Caption:= rs_PCM_EMailadresse;
-  grdDBTblView_emailConfigKontotyp.Caption:= rs_PCM_Kontotyp;
-  grdDBTblView_emailConfigPostEingangsserver.Caption:= rs_PCM_Posteingangsserver;
-  grdDBTblView_emailConfigPortEingangsserver.Caption:= rs_PCM_PortEingang;
-  grdDBTblView_emailConfigBenutzer.Caption:= rs_PCMBenutzerverwaltung_Benutzer;
-  grdDBTblView_emailConfigSSLActive.Caption:= rs_PCM_SSLAktiv;
-  grdDBTblViewl_PostfachmainPostfach.Caption:= rs_PCM_Postfach;
-  grdDBTblViewl_PostfachmainAnzeige.Caption:= rs_PCM_anzeige;
-  grdDBTblViewl_PostfachmainAbonnieren.Caption:= rs_PCM_Abonnieren;
-  grdDBTblViewl_PostfachmainSortierung.Caption:= rs_PCM_Sortierung;
-  grdDBTblViewl_PostfachSubPostfach.Caption:= rs_PCM_Postfach;
-  grdDBTblViewl_PostfachSubAnzeige.Caption:= rs_PCM_anzeige;
-  grdDBTblViewl_PostfachSubParent.Caption:= rs_PCM_Hauptpostfach;
-  grdDBTblViewl_PostfachSubAbonnieren.Caption:= rs_PCM_Abonnieren;
-  grdDBTblViewl_PostfachSubSortierung.Caption:= rs_PCM_Sortierung;
-end;
-procedure Tfrm_Config.qry_EmailConfigAfterScroll(DataSet: TDataSet);
-begin
-  SetButtons;
-  qry_EmailPostfachMain.SQL.text := 'SELECT ID,Postfach,Anzeige,Sortierung, Typ, Parent, Abonnieren, ID_manager_email FROM manager_email_postfach WHERE typ = 0 and ID_MANAGER_Email = :ID';
-  qry_EmailPostfachMain.ParamByName('ID').asInteger := qry_EmailConfig.FieldByName('ID').asInteger;
-  qry_EmailPostfachMain.Open;
-  qry_EmailPostfachSub.SQL.text := 'SELECT ID,Postfach,Anzeige,Sortierung, Typ, Parent, Abonnieren, ID_manager_email FROM manager_email_postfach WHERE parent = :parent and ID_MANAGER_Email = :ID';
-  qry_EmailPostfachSub.ParamByName('parent').asInteger := qry_EmailPostfachMain.FieldByName('ID').asInteger;
-  qry_EmailPostfachSub.ParamByName('ID').asInteger := qry_EmailConfig.FieldByName('ID').asInteger;
-  qry_EmailPostfachSub.Open;
-  dm_PCM.qry_Config_EmailPostfachLU.SQL.text := 'SELECT ID,Postfach,Anzeige,Sortierung, Typ, Parent, Abonnieren, ID_manager_email FROM manager_email_postfach WHERE ID_MANAGER_Email = :ID';
-  dm_PCM.qry_Config_EmailPostfachLU.ParamByName('ID').asInteger := qry_EmailConfig.FieldByName('ID').asInteger;
-  dm_PCM.qry_Config_EmailPostfachLU.Open;
-end;
-procedure Tfrm_Config.qry_EmailPostfachMainAfterScroll(DataSet: TDataSet);
-begin
-  SetButtons;
-  qry_EmailPostfachSub.SQL.text := 'SELECT ID,Postfach,Anzeige,Sortierung, Typ, Parent, Abonnieren, ID_manager_email FROM manager_email_postfach WHERE parent = :parent';
-  qry_EmailPostfachSub.ParamByName('parent').asInteger := qry_EmailPostfachMain.FieldByName('ID').asInteger;
-  qry_EmailPostfachSub.Open;
-end;
-procedure Tfrm_Config.SetButtonsEnableVisible(DataSet: TDataSet);
-begin
-  SetButtons;
-end;
+{$Region TabAufgaben}
+////////////////////////////////////////////////////////////////////////////////
+// Hilfsfunktionen                                                            //
+////////////////////////////////////////////////////////////////////////////////
 procedure Tfrm_Config.SetGridViews(Show: boolean);
 begin
   if Show then
@@ -585,227 +441,6 @@ begin
     SaveGridViewPostfach.Free;
     SaveGridViewUnterPostfach.SaveView(0);
     SaveGridViewUnterPostfach.Free;
-  end;
-end;
-procedure Tfrm_Config.InitializeRights;
-begin
-  if dm_PCM.iKonfiguration = 1 then
-  begin
-    /// / Kalender
-    // Toolbar
-    btn_CalConfigNew.enabled := false;
-    btn_CalConfigSave.enabled := false;
-    btn_CalConfigCancel.enabled := false;
-    btn_CalConfigDelete.enabled := false;
-    btn_CalConfigFTPNew.enabled := false;
-    btn_CalConfigFTPSave.enabled := false;
-    btn_CalConfigFTPCancel.enabled := false;
-    btn_CalConfigFTPDelete.enabled := false;
-    // Editfelder
-    edt_CalConfig_Kalender.enabled := false;
-    edt_CalConfig_Link.enabled := false;
-    edt_CalConfig_Benutzer.enabled := false;
-    edt_CalConfig_Passwort.enabled := false;
-    colcmbbx_CalConfigLabelColor.enabled := false;
-    colcmbbx_CalConfigFontColor.enabled := false;
-    cmbbx_CalConfigReminderVal.enabled := false;
-    chkbx_CalConfigReminder.enabled := false;
-    edt_CalConfigFTP_URL.enabled := false;
-    edt_CalConfigFTP_Benutzer.enabled := false;
-    edt_CalConfigFTP_Datei.enabled := false;
-    edt_CalConfigFTP_Passwort.enabled := false;
-    /// / Aufgaben
-    // Toolbar
-    btn_AufgabenNew.enabled := false;
-    btn_AufgabenSave.enabled := false;
-    btn_AufgabenCancel.enabled := false;
-    btn_AufgabenDelete.enabled := false;
-    btn_AufgabenPrioNew.enabled := false;
-    btn_AufgabenPrioSave.enabled := false;
-    btn_AufgabenPrioCancel.enabled := false;
-    btn_AufgabenPrioDelete.enabled := false;
-    // Editfelder
-    edt_Aufgabenart.enabled := false;
-    colcmbbx_Aufgabenart.enabled := false;
-    edt_PrioNumber.enabled := false;
-    edt_PrioBez.enabled := false;
-    /// / Stundenplan
-    // Toolbar
-    btn_FachNew.enabled := false;
-    btn_FachSave.enabled := false;
-    btn_FachCancel.enabled := false;
-    btn_FachDelete.enabled := false;
-    btn_FachUSave.enabled := false;
-    btn_FachUCancel.enabled := false;
-    // Editfelder
-    edt_StundenplanConfig_FachBezeichnung.enabled := false;
-    colcmbbx_StundenplanConfig_LabelColor.enabled := false;
-    colcmbbx_StundenplanConfig_FontColor.enabled := false;
-    colcmbbx_StundenplanConfigUhr_LabelColor.enabled := false;
-    colcmbbx_StundenplanConfigUhr_FontColor.enabled := false;
-    /// / Email
-    // Toolbar
-    btn_EmailConfigNew.enabled := false;
-    btn_EmailConfigSave.enabled := false;
-    btn_EmailConfigCancel.enabled := false;
-    btn_EmailConfigDelete.enabled := false;
-    // Editfelder
-    edt_EmailConfig_Emailadresse.enabled := false;
-    lucmbbx_EmailConfig_Kontptyp.enabled := false;
-    edt_EmailConfig_PostEingangServer.enabled := false;
-    edt_EmailConfig_PortEingang.enabled := false;
-    edt_EmailConfig_Benutzer.enabled := false;
-    edt_EmailConfig_Kennwort.enabled := false;
-    edt_EmailConfig_PostAusgangServer.enabled := false;
-    edt_EmailConfig_PortAusgang.enabled := false;
-    chxbx_EmailConfig_SSL.enabled := false;
-    btn_EmailConfig_Test.enabled := false;
-  end;
-  // Optionen / Ändern
-  if dm_PCM.iKonfiguration = 2 then
-  begin
-    /// / Kalender
-    // Toolbar
-    btn_CalConfigNew.enabled := true;
-    btn_CalConfigSave.enabled := true;
-    btn_CalConfigCancel.enabled := true;
-    btn_CalConfigDelete.enabled := false;
-    btn_CalConfigFTPNew.enabled := true;
-    btn_CalConfigFTPSave.enabled := true;
-    btn_CalConfigFTPCancel.enabled := true;
-    btn_CalConfigFTPDelete.enabled := false;
-    // Editfelder
-    edt_CalConfig_Kalender.enabled := true;
-    edt_CalConfig_Link.enabled := true;
-    edt_CalConfig_Benutzer.enabled := true;
-    edt_CalConfig_Passwort.enabled := true;
-    colcmbbx_CalConfigLabelColor.enabled := true;
-    colcmbbx_CalConfigFontColor.enabled := true;
-    cmbbx_CalConfigReminderVal.enabled := true;
-    chkbx_CalConfigReminder.enabled := true;
-    edt_CalConfigFTP_URL.enabled := true;
-    edt_CalConfigFTP_Benutzer.enabled := true;
-    edt_CalConfigFTP_Datei.enabled := true;
-    edt_CalConfigFTP_Passwort.enabled := true;
-    /// / Aufgaben
-    // Toolbar
-    btn_AufgabenNew.enabled := true;
-    btn_AufgabenSave.enabled := true;
-    btn_AufgabenCancel.enabled := true;
-    btn_AufgabenDelete.enabled := false;
-    btn_AufgabenPrioNew.enabled := true;
-    btn_AufgabenPrioSave.enabled := true;
-    btn_AufgabenPrioCancel.enabled := true;
-    btn_AufgabenPrioDelete.enabled := false;
-    // Editfelder
-    edt_Aufgabenart.enabled := true;
-    colcmbbx_Aufgabenart.enabled := true;
-    edt_PrioNumber.enabled := true;
-    edt_PrioBez.enabled := true;
-    /// / Stundenplan
-    // Toolbar
-    btn_FachNew.enabled := true;
-    btn_FachSave.enabled := true;
-    btn_FachCancel.enabled := true;
-    btn_FachDelete.enabled := false;
-    btn_FachUSave.enabled := true;
-    btn_FachUCancel.enabled := true;
-    // Editfelder
-    edt_StundenplanConfig_FachBezeichnung.enabled := true;
-    colcmbbx_StundenplanConfig_LabelColor.enabled := true;
-    colcmbbx_StundenplanConfig_FontColor.enabled := true;
-    colcmbbx_StundenplanConfigUhr_LabelColor.enabled := true;
-    colcmbbx_StundenplanConfigUhr_FontColor.enabled := true;
-    /// / Email
-    // Toolbar
-    btn_EmailConfigNew.enabled := true;
-    btn_EmailConfigSave.enabled := true;
-    btn_EmailConfigCancel.enabled := true;
-    btn_EmailConfigDelete.enabled := false;
-    // Editfelder
-    edt_EmailConfig_Emailadresse.enabled := true;
-    lucmbbx_EmailConfig_Kontptyp.enabled := true;
-    edt_EmailConfig_PostEingangServer.enabled := true;
-    edt_EmailConfig_PortEingang.enabled := true;
-    edt_EmailConfig_Benutzer.enabled := true;
-    edt_EmailConfig_Kennwort.enabled := true;
-    edt_EmailConfig_PostAusgangServer.enabled := true;
-    edt_EmailConfig_PortAusgang.enabled := true;
-    chxbx_EmailConfig_SSL.enabled := true;
-    btn_EmailConfig_Test.enabled := true;
-  end;
-  // Optionen / Vollzugriff
-  if dm_PCM.iKonfiguration = 3 then
-  begin
-    /// / Kalender
-    // Toolbar
-    btn_CalConfigNew.enabled := true;
-    btn_CalConfigSave.enabled := true;
-    btn_CalConfigCancel.enabled := true;
-    btn_CalConfigDelete.enabled := true;
-    btn_CalConfigFTPNew.enabled := true;
-    btn_CalConfigFTPSave.enabled := true;
-    btn_CalConfigFTPCancel.enabled := true;
-    btn_CalConfigFTPDelete.enabled := true;
-    // Editfelder
-    edt_CalConfig_Kalender.enabled := true;
-    edt_CalConfig_Link.enabled := true;
-    edt_CalConfig_Benutzer.enabled := true;
-    edt_CalConfig_Passwort.enabled := true;
-    colcmbbx_CalConfigLabelColor.enabled := true;
-    colcmbbx_CalConfigFontColor.enabled := true;
-    cmbbx_CalConfigReminderVal.enabled := true;
-    chkbx_CalConfigReminder.enabled := true;
-    edt_CalConfigFTP_URL.enabled := true;
-    edt_CalConfigFTP_Benutzer.enabled := true;
-    edt_CalConfigFTP_Datei.enabled := true;
-    edt_CalConfigFTP_Passwort.enabled := true;
-    /// / Aufgaben
-    // Toolbar
-    btn_AufgabenNew.enabled := true;
-    btn_AufgabenSave.enabled := true;
-    btn_AufgabenCancel.enabled := true;
-    btn_AufgabenDelete.enabled := true;
-    btn_AufgabenPrioNew.enabled := true;
-    btn_AufgabenPrioSave.enabled := true;
-    btn_AufgabenPrioCancel.enabled := true;
-    btn_AufgabenPrioDelete.enabled := true;
-    // Editfelder
-    edt_Aufgabenart.enabled := true;
-    colcmbbx_Aufgabenart.enabled := true;
-    edt_PrioNumber.enabled := true;
-    edt_PrioBez.enabled := true;
-    /// / Stundenplan
-    // Toolbar
-    btn_FachNew.enabled := true;
-    btn_FachSave.enabled := true;
-    btn_FachCancel.enabled := true;
-    btn_FachDelete.enabled := true;
-    btn_FachUSave.enabled := true;
-    btn_FachUCancel.enabled := true;
-    // Editfelder
-    edt_StundenplanConfig_FachBezeichnung.enabled := true;
-    colcmbbx_StundenplanConfig_LabelColor.enabled := true;
-    colcmbbx_StundenplanConfig_FontColor.enabled := true;
-    colcmbbx_StundenplanConfigUhr_LabelColor.enabled := true;
-    colcmbbx_StundenplanConfigUhr_FontColor.enabled := true;
-    /// / Email
-    // Toolbar
-    btn_EmailConfigNew.enabled := true;
-    btn_EmailConfigSave.enabled := true;
-    btn_EmailConfigCancel.enabled := true;
-    btn_EmailConfigDelete.enabled := true;
-    // Editfelder
-    edt_EmailConfig_Emailadresse.enabled := true;
-    lucmbbx_EmailConfig_Kontptyp.enabled := true;
-    edt_EmailConfig_PostEingangServer.enabled := true;
-    edt_EmailConfig_PortEingang.enabled := true;
-    edt_EmailConfig_Benutzer.enabled := true;
-    edt_EmailConfig_Kennwort.enabled := true;
-    edt_EmailConfig_PostAusgangServer.enabled := true;
-    edt_EmailConfig_PortAusgang.enabled := true;
-    chxbx_EmailConfig_SSL.enabled := true;
-    btn_EmailConfig_Test.enabled := true;
   end;
 end;
 procedure Tfrm_Config.SetButtons;
@@ -958,471 +593,30 @@ begin
     end;
   end;
 end;
-procedure Tfrm_Config.btn_CalConfigCancel1Click(Sender: TObject);
+procedure Tfrm_Config.SetButtonsEnableVisible(DataSet: TDataSet);
 begin
-  qry_CalConfig.Cancel;
+  SetButtons;
 end;
-procedure Tfrm_Config.btn_CalConfigDelete1Click(Sender: TObject);
+procedure Tfrm_Config.qry_EmailConfigAfterScroll(DataSet: TDataSet);
 begin
-  if qry_CalConfig.FieldByName('ID').asInteger > 0 then
-  begin
-    qry_CalConfig.Delete;
-  end;
+  SetButtons;
+  qry_EmailPostfachMain.SQL.text := 'SELECT ID,Postfach,Anzeige,Sortierung, Typ, Parent, Abonnieren, ID_manager_email FROM manager_email_postfach WHERE typ = 0 and ID_MANAGER_Email = :ID';
+  qry_EmailPostfachMain.ParamByName('ID').asInteger := qry_EmailConfig.FieldByName('ID').asInteger;
+  qry_EmailPostfachMain.Open;
+  qry_EmailPostfachSub.SQL.text := 'SELECT ID,Postfach,Anzeige,Sortierung, Typ, Parent, Abonnieren, ID_manager_email FROM manager_email_postfach WHERE parent = :parent and ID_MANAGER_Email = :ID';
+  qry_EmailPostfachSub.ParamByName('parent').asInteger := qry_EmailPostfachMain.FieldByName('ID').asInteger;
+  qry_EmailPostfachSub.ParamByName('ID').asInteger := qry_EmailConfig.FieldByName('ID').asInteger;
+  qry_EmailPostfachSub.Open;
+  dm_PCM.qry_Config_EmailPostfachLU.SQL.text := 'SELECT ID,Postfach,Anzeige,Sortierung, Typ, Parent, Abonnieren, ID_manager_email FROM manager_email_postfach WHERE ID_MANAGER_Email = :ID';
+  dm_PCM.qry_Config_EmailPostfachLU.ParamByName('ID').asInteger := qry_EmailConfig.FieldByName('ID').asInteger;
+  dm_PCM.qry_Config_EmailPostfachLU.Open;
 end;
-procedure Tfrm_Config.btn_CalConfigFTPCancelClick(Sender: TObject);
+procedure Tfrm_Config.qry_EmailPostfachMainAfterScroll(DataSet: TDataSet);
 begin
-  qry_CalConfigFTP.Cancel;
-end;
-procedure Tfrm_Config.btn_CalConfigFTPDeleteClick(Sender: TObject);
-begin
-  if qry_CalConfigFTP.FieldByName('ID').asInteger > 0 then
-  begin
-    qry_CalConfigFTP.Delete;
-  end;
-end;
-procedure Tfrm_Config.btn_CalConfigFTPNewClick(Sender: TObject);
-begin
-  if qry_CalConfigFTP.State in [dsInsert, dsEdit] then
-    qry_CalConfigFTP.Post;
-  qry_CalConfigFTP.Append;
-  qry_CalConfigFTP.Insert;
-  qry_CalConfigFTP.FieldByName('ID_Benutzer').asInteger := dm_PCM.iIDBenutzerPCM;
-  if not edt_CalConfigFTP_URL.enabled then
-  begin
-    edt_CalConfigFTP_URL.enabled := true;
-    edt_CalConfigFTP_Datei.enabled := true;
-    edt_CalConfigFTP_Benutzer.enabled := true;
-    edt_CalConfigFTP_Passwort.enabled := true;
-  end;
-
-  edt_CalConfigFTP_URL.SetFocus;
-end;
-procedure Tfrm_Config.btn_CalConfigFTPSaveClick(Sender: TObject);
-begin
-  if qry_CalConfigFTP.State in [dsInsert, dsEdit] then
-  begin
-    edt_CalConfigFTP_URL.PostEditValue;
-    edt_CalConfigFTP_Datei.PostEditValue;
-    edt_CalConfigFTP_Benutzer.PostEditValue;
-    edt_CalConfigFTP_Passwort.PostEditValue;
-    qry_CalConfigFTP.Post;
-  end;
-end;
-procedure Tfrm_Config.btn_CalConfigNew1Click(Sender: TObject);
-begin
-  if qry_CalConfig.State in [dsInsert, dsEdit] then
-    qry_CalConfig.Post;
-  qry_CalConfig.Append;
-  qry_CalConfig.Insert;
-//  qry_CalConfig.FieldByName('Erinnerung').AsBoolean := False;
-  qry_CalConfig.FieldByName('LabelColor').asInteger := 13083265;
-  qry_CalConfig.FieldByName('FontColor').asInteger := 0;
-  qry_CalConfig.FieldByName('ID_Benutzer').asInteger := dm_PCM.iIDBenutzerPCM;
-  if not edt_CalConfig_Kalender.enabled then
-  begin
-    edt_CalConfig_Kalender.enabled := true;
-    edt_CalConfig_Link.enabled := true;
-    colcmbbx_CalConfigLabelColor.enabled := true;
-    chkbx_CalConfigReminder.enabled := true;
-    cmbbx_CalConfigReminderVal.enabled := true;
-    edt_CalConfig_Benutzer.enabled := true;
-    edt_CalConfig_Passwort.enabled := true;
-    colcmbbx_CalConfigFontColor.enabled := true;
-  end;
-  edt_CalConfig_Kalender.SetFocus;
-end;
-procedure Tfrm_Config.btn_CalConfigSave1Click(Sender: TObject);
-begin
-  if qry_CalConfig.State in [dsInsert, dsEdit] then
-  begin
-    edt_CalConfig_Kalender.PostEditValue;
-    edt_CalConfig_Link.PostEditValue;
-    edt_CalConfig_Benutzer.PostEditValue;
-    edt_CalConfig_Passwort.PostEditValue;
-    qry_CalConfig.Post;
-  end;
-end;
-procedure Tfrm_Config.btn_CalFTDeleteClick(Sender: TObject);
-begin
-  if qry_FT1.FieldByName('ID').asInteger > 0 then
-  begin
-    qry_FT1.Delete;
-  end
-end;
-procedure Tfrm_Config.btn_CalFTinCalClick(Sender: TObject);
-var
-  datTimVon, datTimbis: TDateTime;
-  iAnzahl: integer;
-  sBundesland: string;
-  iID_Adresse: integer;
-begin
-  Application.CreateForm(Tfrm_FeiertageAktualisieren, frm_FeiertageAktualisieren);
-  if frm_FeiertageAktualisieren.Execute(datTimVon, datTimbis) then
-  begin
-    dm_PCM.qry_work1.SQL.text := 'SELECT Jahr, Datum, Bezeichnung From manager_feiertage Where ID_Benutzer = :ID and Datum >= :Von AND Datum <= :Bis';
-    dm_PCM.qry_work1.ParamByName('ID').asInteger := dm_PCM.iIDBenutzerPCM;
-    dm_PCM.qry_work1.ParamByName('Von').AsDateTime := datTimVon;
-    dm_PCM.qry_work1.ParamByName('Bis').AsDateTime := datTimbis;
-    dm_PCM.qry_work1.Open;
-    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_Feiertageintragen), dm_PCM.qry_work1.RecordCount, ClientWidth, Height);
-    Application.ProcessMessages;
-    Screen.Cursor := crHourGlass;
-    while not dm_PCM.qry_work1.Eof do
-    begin
-      WaitFormStep;
-      dm_PCM.qry_Work.SQL.text := 'SELECT Count(*) as Anzahl FROM manager_kalender WHERE Caption = :Caption AND  DATE(START) = :Date and Kalendername = :Kalender';
-      dm_PCM.qry_Work.ParamByName('Caption').AsString := dm_PCM.qry_work1.FieldByName('Bezeichnung').AsString;
-      dm_PCM.qry_Work.ParamByName('Kalender').AsString := 'Feiertage ' + dm_PCM.qry_work1.FieldByName('Jahr').AsString;
-      dm_PCM.qry_Work.ParamByName('Date').AsDate := dm_PCM.qry_work1.FieldByName('Datum').AsDateTime;
-      dm_PCM.qry_Work.Open;
-      iAnzahl := dm_PCM.qry_Work.FieldByName('Anzahl').asInteger;
-      dm_PCM.qry_Work.Close;
-//      iID_Adresse:=  -1;
-      if Pos('(',dm_PCM.qry_work1.FieldByName('Bezeichnung').AsString)  > 0 then
-        sBundesland := Copy(dm_PCM.qry_work1.FieldByName('Bezeichnung').AsString, Pos('(',dm_PCM.qry_work1.FieldByName('Bezeichnung').AsString)+1, Length(dm_PCM.qry_work1.FieldByName('Bezeichnung').AsString));
-        sBundesland := StringReplace(sBundesland,')','',[rfReplaceAll,rfIgnoreCase]);
-        dm_PCM.qry_Work.SQL.text := 'SELECT IFNULL(Adresse_eigene,-1) AS ID FROM manager_kalender_optionen  WHERE  Adresse_eigeneBL = (SELECT ID FROM manager_Bundesland Where Bezeichnung = :Bezeichnung) ' +
-                             'UNION all ' +
-                             'SELECT IFNULL(Adresse_Firma,-1) AS ID FROM manager_kalender_optionen WHERE  Adresse_FirmaBL = (SELECT ID FROM manager_Bundesland Where Bezeichnung = :Bezeichnung)';
-        dm_PCM.qry_work.ParamByName('Bezeichnung').AsString := sBundesland;
-        dm_PCM.qry_Work.Open;
-        iID_Adresse := dm_PCM.qry_Work.FieldByName('ID').asInteger;
-        dm_PCM.qry_Work.Close;
-
-      if iAnzahl = 0 then
-      begin
-        dm_PCM.qry_Work.SQL.text := 'Insert into manager_Kalender (ID_ADR_Wurzel,ID_Ansprechpartner,EventType,Caption,Location,Message,'
-                          + 'Start,Finish,Options,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'
-                          + 'ReminderMinutesBeforeStart,LabelColor,FontColor,ID_Benutzer,Kalendername,CompleteDay,Typ,GesendetAM,Aufgabenstatus,ID_IC_AufgabenArten,Erledigungsgrad,Zeitformat,ID_IC_Prioritaeten,AufgabenDauer) Values (:ID_ADR_Wurzel,:ID_Ansprechpartner,'
-                          + ':Eventtype,:SUMMARY,:Location,:Beschreibung,:DateBegin,:DateEnd,:Options,0,-1,:RecurrenceInfo,:Reminder,'
-                          + 'NULL,0,:Color,:FontColor,:ID,:Kalender,:ganzerTag,2,Now(),0,1,0,0,1,1440)';
-
-        dm_PCM.qry_Work.ParamByName('ID_ADR_Wurzel').asInteger := iID_Adresse;
-        dm_PCM.qry_Work.ParamByName('ID_Ansprechpartner').asInteger := iID_Adresse;
-        dm_PCM.qry_Work.ParamByName('Eventtype').asInteger := 0;
-        dm_PCM.qry_Work.ParamByName('SUMMARY').AsString := dm_PCM.qry_work1.FieldByName('Bezeichnung').AsString;
-        dm_PCM.qry_Work.ParamByName('Location').AsString := 'Feiertag';
-        dm_PCM.qry_Work.ParamByName('Beschreibung').AsString := dm_PCM.qry_work1.FieldByName('Bezeichnung').AsString;
-        dm_PCM.qry_Work.ParamByName('DateBegin').AsDateTime := dm_PCM.qry_work1.FieldByName('Datum').AsDateTime;;
-        dm_PCM.qry_Work.ParamByName('DateEnd').AsDateTime := IncDay(dm_PCM.qry_work1.FieldByName('Datum').AsDateTime, 1);
-        dm_PCM.qry_Work.ParamByName('Options').asInteger := 2;
-        dm_PCM.qry_Work.ParamByName('Reminder').AsString := 'false';
-        dm_PCM.qry_Work.ParamByName('RecurrenceInfo').AsString := '';
-        dm_PCM.qry_Work.ParamByName('Color').AsString := IntToStr(clSIlver);
-        dm_PCM.qry_Work.ParamByName('FontColor').AsString := IntToStr(clBlack);
-        dm_PCM.qry_Work.ParamByName('ID').asInteger := dm_PCM.iIDBenutzerPCM;
-        dm_PCM.qry_Work.ParamByName('Kalender').AsString := 'Feiertage ' + dm_PCM.qry_work1.FieldByName('Jahr').AsString;
-        dm_PCM.qry_Work.ParamByName('ganzerTag').AsString := 'true';
-        dm_PCM.qry_Work.ExecSQL;
-        dm_PCM.qry_Work.Close;
-      end;
-      dm_PCM.qry_work1.Next;
-    end;
-    dm_PCM.qry_work1.Close;
-    qry_FT1.Refresh;
-    Screen.Cursor := crDefault;
-    CloseWaitForm;
-  end;
-  frm_FeiertageAktualisieren.Free;
-end;
-procedure Tfrm_Config.btn_CalFTNewClick(Sender: TObject);
-begin
-  Application.CreateForm(TfFeiertageBerechnen, fFeiertageBerechnen);
-  if fFeiertageBerechnen.Execute(true, dm_PCM.iIDBenutzerPCM) then;
-    qry_FT1.Refresh;
-  fFeiertageBerechnen.Free;
-end;
-procedure Tfrm_Config.btn_EmailConfigCancelClick(Sender: TObject);
-begin
-  qry_EmailConfig.Cancel;
-end;
-procedure Tfrm_Config.btn_EmailConfigDeleteClick(Sender: TObject);
-begin
-  if qry_EmailConfig.FieldByName('ID').asInteger > 0 then
-  begin
-    dm_PCM.qry_Work.SQL.Text:= 'Delete From manager_email_postfach Where ID = :ID';
-    dm_PCM.qry_Work.ParamByName('ID').asInteger:= qry_EmailConfig.FieldByName('ID').asInteger;
-    dm_PCM.qry_Work.ExecSQL;
-    qry_EmailConfig.Delete;
-  end;
-end;
-procedure Tfrm_Config.btn_EmailConfigNewClick(Sender: TObject);
-begin
-  if qry_EmailConfig.State in [dsInsert, dsEdit] then
-    qry_EmailConfig.Post;
-  qry_EmailConfig.Append;
-  qry_EmailConfig.Insert;
-  qry_EmailConfig.FieldByName('SSLActive').AsString := 'false';
-  qry_EmailConfig.FieldByName('ID_Benutzer').asInteger := dm_PCM.iIDBenutzerPCM;
-  if not edt_EmailConfig_Emailadresse.enabled then
-  begin
-    edt_EmailConfig_Emailadresse.enabled := true;
-    lucmbbx_EmailConfig_Kontptyp.enabled := true;
-    edt_EmailConfig_PostEingangServer.enabled := true;
-    edt_EmailConfig_PortEingang.enabled := true;
-    edt_EmailConfig_Benutzer.enabled := true;
-    edt_EmailConfig_Kennwort.enabled := true;
-    edt_EmailConfig_PostAusgangServer.enabled := true;
-    edt_EmailConfig_PortAusgang.enabled := true;
-    chxbx_EmailConfig_SSL.enabled := true;
-  end;
-  edt_EmailConfig_Emailadresse.SetFocus;
-end;
-procedure Tfrm_Config.btn_EmailConfigSaveClick(Sender: TObject);
-begin
-  if qry_EmailConfig.State in [dsInsert, dsEdit] then
-  begin
-    edt_EmailConfig_Emailadresse.PostEditValue;
-    edt_EmailConfig_PostEingangServer.PostEditValue;
-    edt_EmailConfig_PortEingang.PostEditValue;
-    edt_EmailConfig_Benutzer.PostEditValue;
-    edt_EmailConfig_Kennwort.PostEditValue;
-    edt_EmailConfig_PostAusgangServer.PostEditValue;
-    edt_EmailConfig_PortAusgang.PostEditValue;
-    qry_EmailConfig.Post;
-  end;
-end;
-procedure Tfrm_Config.btn_EmailConfig_TestClick(Sender: TObject);
-var
-  idSmtpMail: TIdSMTP;
-  idSSLIOHndOPSSLPostfach: TIdSSLIOHandlerSocketOpenSSL;
-  idmsgMail: TIdMessage;
-  idSSLIOHndOPSSLMail: TIdSSLIOHandlerSocketOpenSSL;
-begin
-  idSSLIOHndOPSSLMail := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
-  idSSLIOHndOPSSLMail.SSLOptions.Method:= sslvSSLv23;
-  IdIMAP_Mail.IOHandler := idSSLIOHndOPSSLMail;
-  IdIMAP_Mail.UseTLS := utUseImplicitTLS;
-  IdIMAP_Mail.Host := qry_EmailConfig.FieldByName('PostEingangsserver').AsString;
-  IdIMAP_Mail.Port := qry_EmailConfig.FieldByName('PortEingangsserver').AsInteger;
-  IdIMAP_Mail.UseTLS := utUseImplicitTLS;
-  IdIMAP_Mail.Username := qry_EmailConfig.FieldByName('Benutzer').AsString;;
-  IdIMAP_Mail.Password := qry_EmailConfig.FieldByName('Passwort').AsString;
-  try
-    IdIMAP_Mail.Connect;
-    lbl_EmailConfig_PortEingangTest.Caption:= rs_PCMManager_posteingangerfolgreich;
-    lbl_EmailConfig_PortEingangTest.Style.Font.Color:= clgreen;
-    IdIMAP_Mail.Disconnect;
-  except
-    lbl_EmailConfig_PortEingangTest.Caption:= rs_PCMManager_posteingangnichterfolgreich;
-    lbl_EmailConfig_PortEingangTest.Style.Font.Color:= clred;
-  end;
-  idSSLIOHndOPSSLMail.Free;
-
-  idSmtpMail := TIdSMTP.Create(nil);
-  idSSLIOHndOPSSLMail := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
-  idSSLIOHndOPSSLMail.SSLOptions.Method:= sslvSSLv23;
-  idSSLIOHndOPSSLpostfach := TIdSSLIOHandlerSocketOpenSSL.Create(nil);
-  idmsgMail := TIdMessage.Create(nil);
-   try
-    try
-      idSmtpMail.Host := qry_EmailConfig.FieldByName('PostAusgangsserver').AsString;
-      idSmtpMail.Port := qry_EmailConfig.FieldByName('PortAusgangsserver').AsInteger;
-      idSmtpMail.Username := qry_EmailConfig.FieldByName('Benutzer').AsString;
-      idSmtpMail.Password := qry_EmailConfig.FieldByName('Passwort').AsString;
-      idSSLIOHndOPSSLpostfach.Host := idSmtpMail.Host;
-      idSSLIOHndOPSSLpostfach.Port := idSmtpMail.Port;
-      idSSLIOHndOPSSLpostfach.SSLOptions.Method := sslvSSLv23;
-      idSmtpMail.IOHandler := idSSLIOHndOPSSLpostfach;
-      idSmtpMail.UseTLS := utUseRequireTLS;
-      idmsgMail.Recipients.EMailAddresses := qry_EmailConfig.FieldByName('Email').AsString;
-      idmsgMail.Subject := rs_PCMManager_Testmail ;
-      idmsgMail.Body.Text := rs_PCMManager_TestmailBody;
-      idmsgMail.From.Address := idSmtpMail.Username;
-      idSmtpMail.Connect;
-      idSmtpMail.Send(idmsgMail);
-      idSmtpMail.Disconnect;
-    finally
-      idmsgMail.Free;
-      idSSLIOHndOPSSLpostfach.Free;
-      idSmtpMail.Free;
-      lbl_EmailConfig_PortAusgangTest.Caption:= rs_PCMManager_postausgangerfolgreich;
-      lbl_EmailConfig_PortAusgangTest.Style.Font.Color:= clgreen;
-    end;
-  except
-    lbl_EmailConfig_PortAusgangTest.Caption:= rs_PCMManager_postausgangnichterfolgreich;
-    lbl_EmailConfig_PortAusgangTest.Style.Font.Color:= clred;
-  end;
-end;
-procedure Tfrm_Config.btn_FachCancelClick(Sender: TObject);
-begin
-  qry_SchulFaecher.Cancel;
-end;
-procedure Tfrm_Config.btn_FachDeleteClick(Sender: TObject);
-begin
-  if qry_SchulFaecher.FieldByName('ID').asInteger > 0 then
-  begin
-    qry_SchulFaecher.Delete;
-  end;
-end;
-procedure Tfrm_Config.btn_FachNewClick(Sender: TObject);
-begin
-  if qry_SchulFaecher.State in [dsInsert, dsEdit] then
-    qry_SchulFaecher.Post;
-  qry_SchulFaecher.Append;
-  qry_SchulFaecher.Insert;
-  qry_SchulFaecher.FieldByName('Farbe').asInteger := 16777215;
-  qry_SchulFaecher.FieldByName('SchriftFarbe').asInteger := 0;
-  qry_SchulFaecher.FieldByName('ID_Benutzer').asInteger := dm_PCM.iIDBenutzerPCM;
-  if not edt_StundenplanConfig_FachBezeichnung.enabled then
-  begin
-    edt_StundenplanConfig_FachBezeichnung.enabled := true;
-    colcmbbx_StundenplanConfig_LabelColor.enabled := true;
-    colcmbbx_StundenplanConfig_FontColor.enabled := true;
-  end;
-  edt_StundenplanConfig_FachBezeichnung.SetFocus;
-end;
-procedure Tfrm_Config.btn_FachSaveClick(Sender: TObject);
-begin
-  if qry_SchulFaecher.State in [dsInsert, dsEdit] then
-  begin
-    edt_StundenplanConfig_FachBezeichnung.PostEditValue;
-    qry_SchulFaecher.Post;
-  end;
-end;
-procedure Tfrm_Config.btn_FachUCancelClick(Sender: TObject);
-begin
-  qry_SchulFaecher_Config.Cancel;
-end;
-procedure Tfrm_Config.btn_FachUSaveClick(Sender: TObject);
-begin
-  if qry_SchulFaecher_Config.State in [dsInsert, dsEdit] then
-  begin
-    qry_SchulFaecher_Config.Post;
-  end;
-end;
-procedure Tfrm_Config.cbx_DesignPropertiesChange(Sender: TObject);
-begin
-  if cmbbx_Design.ItemIndex > -1 then
-  begin
-    pnl_vorschau.Style.LookAndFeel.SkinName := cmbbx_Design.Properties.Items[cmbbx_Design.ItemIndex];
-    pnl_vorschau.Height := pnl_vorschau.Height + 1;
-    pnl_vorschau.Height := pnl_vorschau.Height - 1;
-    des_Label1.Style.LookAndFeel.SkinName := cmbbx_Design.Properties.Items[cmbbx_Design.ItemIndex];
-    des_Edit1.Style.LookAndFeel.SkinName := cmbbx_Design.Properties.Items[cmbbx_Design.ItemIndex];
-    des_CheckBox1.Style.LookAndFeel.SkinName := cmbbx_Design.Properties.Items[cmbbx_Design.ItemIndex];
-    des_RadioButton1.LookAndFeel.SkinName := cmbbx_Design.Properties.Items[cmbbx_Design.ItemIndex];
-    des_grid.LookAndFeel.SkinName := cmbbx_Design.Properties.Items[cmbbx_Design.ItemIndex];
-    des_Button1.LookAndFeel.SkinName := cmbbx_Design.Properties.Items[cmbbx_Design.ItemIndex];
-    des_Button2.LookAndFeel.SkinName := cmbbx_Design.Properties.Items[cmbbx_Design.ItemIndex];
-    des_Button3.LookAndFeel.SkinName := cmbbx_Design.Properties.Items[cmbbx_Design.ItemIndex];
-    des_ToolButton1.LookAndFeel.SkinName := cmbbx_Design.Properties.Items[cmbbx_Design.ItemIndex];
-    des_ToolButton2.LookAndFeel.SkinName := cmbbx_Design.Properties.Items[cmbbx_Design.ItemIndex];
-    des_ToolButton3.LookAndFeel.SkinName := cmbbx_Design.Properties.Items[cmbbx_Design.ItemIndex];
-  end;
-end;
-procedure Tfrm_Config.cbx_StylePropertiesChange(Sender: TObject);
-begin
-  if cmbbx_Style.ItemIndex > -1 then
-    img_Vorschau.imageindex:= cmbbx_Style.ItemIndex;
-end;
-procedure Tfrm_Config.btn_AufgabenOptionenSaveClick(Sender: TObject);
-begin
-  if qry_Konfiguration_Kalender_Optionen.State in [dsInsert, dsEdit] then
-  begin
-    mskedt_AufgabenSonstigesStunden.PostEditValue;
-    edt_AufgabenSonstigesJira.PostEditValue;
-    qry_Konfiguration_Kalender_Optionen.Post;
-  end;
-
-end;
-procedure Tfrm_Config.btn_AufgabenNewClick(Sender: TObject);
-begin
-  if qry_AufgabenArten.State in [dsInsert, dsEdit] then
-    qry_AufgabenArten.Post;
-  qry_AufgabenArten.Append;
-  qry_AufgabenArten.Insert;
-  qry_AufgabenArten.FieldByName('Bezeichnung').AsString := '';
-  qry_AufgabenArten.FieldByName('Farbe').asInteger := 16777215;
-  if not edt_Aufgabenart.enabled then
-  begin
-    edt_Aufgabenart.enabled := true;
-    colcmbbx_Aufgabenart.enabled := true;
-  end;
-  edt_Aufgabenart.SetFocus
-end;
-procedure Tfrm_Config.btn_AufgabenPrioCancelClick(Sender: TObject);
-begin
-  qry_prio.Cancel;
-end;
-procedure Tfrm_Config.btn_AufgabenPrioDeleteClick(Sender: TObject);
-begin
-  if qry_Prio.FieldByName('ID').asInteger > 0 then
-  begin
-    qry_Prio.Delete;
-  end;
-end;
-procedure Tfrm_Config.btn_AufgabenPrioNewClick(Sender: TObject);
-begin
-  if qry_Prio.State in [dsInsert, dsEdit] then
-    qry_Prio.Post;
-  qry_Prio.Append;
-  qry_Prio.Insert;
-  qry_Prio.FieldByName('Bezeichnung').AsString := '';
-  qry_Prio.FieldByName('Prioritaet').AsString := '';
-  if not edt_PrioNumber.enabled then
-  begin
-    edt_PrioNumber.enabled := true;
-    edt_PrioNumber.enabled := true;
-  end;
-  edt_PrioNumber.SetFocus
-end;
-procedure Tfrm_Config.btn_AufgabenPrioSaveClick(Sender: TObject);
-begin
-  if qry_prio.State in [dsInsert, dsEdit] then
-  begin
-    edt_PrioNumber.PostEditValue;
-    edt_PrioBez.PostEditValue;
-    qry_prio.Post;
-  end;
-end;
-procedure Tfrm_Config.btn_AufgabenCancelClick(Sender: TObject);
-begin
-  qry_AufgabenArten.Cancel;
-end;
-procedure Tfrm_Config.btn_AufgabenSaveClick(Sender: TObject);
-begin
-  if qry_AufgabenArten.State in [dsInsert, dsEdit] then
-  begin
-    edt_Aufgabenart.PostEditValue;
-    qry_AufgabenArten.Post;
-  end;
-
-end;
-procedure Tfrm_Config.btn_AufgabenDeleteClick(Sender: TObject);
-begin
-  if qry_AufgabenArten.FieldByName('ID').asInteger > 0 then
-  begin
-    qry_AufgabenArten.Delete;
-  end;
-end;
-procedure Tfrm_Config.btn_PostfachMainbottomClick(Sender: TObject);
-begin
-  SortierungFirstLastMain(false);
-end;
-procedure Tfrm_Config.btn_DesignSaveClick(Sender: TObject);
-var
-  iniFile: TIniFile;
-begin
-  iniFile := TIniFile.Create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
-  try
-    iniFile.WriteString('PCMManager', 'Design', cmbbx_Design.Properties.Items[cmbbx_Design.ItemIndex]);
-    iniFile.WriteString('PCMManager', 'Style', cmbbx_Style.Properties.Items[cmbbx_Style.ItemIndex]);
-    frm_PCM_main.lafCtrl_Main.SkinName := cmbbx_Design.Properties.Items[cmbbx_Design.ItemIndex];
-    if dm_PCM.sStyle <> cmbbx_Style.Properties.Items[cmbbx_Style.ItemIndex]
-    then
-    begin
-      if MessageDlg(rs_PCM_Style1 + slinebreak + rs_PCM_Style2, mtInformation,[mbYes, mbNo], 0) = mrYes then
-      begin
-        dm_PCM.bStyle := true;
-        TStyleManager.TRYSetStyle(cmbbx_Style.Properties.Items[cmbbx_Style.ItemIndex]);
-        dm_PCM.sDesign:= cmbbx_Design.Properties.Items[cmbbx_Design.ItemIndex];
-        dm_PCM.sStyle:= cmbbx_Style.Properties.Items[cmbbx_Style.ItemIndex];
-      end;
-    end;
-  finally
-    iniFile.Free;
-  end;
+  SetButtons;
+  qry_EmailPostfachSub.SQL.text := 'SELECT ID,Postfach,Anzeige,Sortierung, Typ, Parent, Abonnieren, ID_manager_email FROM manager_email_postfach WHERE parent = :parent';
+  qry_EmailPostfachSub.ParamByName('parent').asInteger := qry_EmailPostfachMain.FieldByName('ID').asInteger;
+  qry_EmailPostfachSub.Open;
 end;
 procedure Tfrm_Config.SortierungAendernMain(bUpDown: Boolean);
 var
@@ -1493,14 +687,6 @@ begin
     dm_PCM.qry_Work.ParamByName('ID').AsInteger := iTempID;
     dm_PCM.qry_Work.ExecSQL;
   end;
-end;
-procedure Tfrm_Config.btn_PostfachMaindownClick(Sender: TObject);
-begin
-  SortierungAendernMain(false);
-end;
-procedure Tfrm_Config.btn_PostfachMainUpClick(Sender: TObject);
-begin
-  SortierungAendernMain(true);
 end;
 procedure Tfrm_Config.SortierungFirstLastMain(bUpDown: Boolean);
 var
@@ -1622,121 +808,543 @@ begin
   dm_PCM.qry_Work.ExecSQL;
   qry_EmailPostfachSub.Refresh;
 end;
-procedure Tfrm_Config.btn_PostfachMainTopClick(Sender: TObject);
+{$EndRegion}
+{$Region TabKalender}
+////////////////////////////////////////////////////////////////////////////////
+// TabKalender                                                                //
+////////////////////////////////////////////////////////////////////////////////
+// Kalender
+procedure Tfrm_Config.btn_CalConfigNew1Click(Sender: TObject);
 begin
-  SortierungFirstLastMain(true);
+  if qry_CalConfig.State in [dsInsert, dsEdit] then
+    qry_CalConfig.Post;
+  qry_CalConfig.Append;
+  qry_CalConfig.Insert;
+//  qry_CalConfig.FieldByName('Erinnerung').AsBoolean := False;
+  qry_CalConfig.FieldByName('LabelColor').asInteger := 13083265;
+  qry_CalConfig.FieldByName('FontColor').asInteger := 0;
+  qry_CalConfig.FieldByName('ID_Benutzer').asInteger := dm_PCM.iIDBenutzerPCM;
+  if not edt_CalConfig_Kalender.enabled then
+  begin
+    edt_CalConfig_Kalender.enabled := true;
+    edt_CalConfig_Link.enabled := true;
+    colcmbbx_CalConfigLabelColor.enabled := true;
+    chkbx_CalConfigReminder.enabled := true;
+    cmbbx_CalConfigReminderVal.enabled := true;
+    edt_CalConfig_Benutzer.enabled := true;
+    edt_CalConfig_Passwort.enabled := true;
+    colcmbbx_CalConfigFontColor.enabled := true;
+  end;
+  edt_CalConfig_Kalender.SetFocus;
 end;
-procedure Tfrm_Config.btn_PostfachSubbottomClick(Sender: TObject);
+procedure Tfrm_Config.btn_CalConfigSave1Click(Sender: TObject);
 begin
-  SortierungFirstLastSub(false);
-end;
-procedure Tfrm_Config.btn_PostfachSubDownClick(Sender: TObject);
-begin
-  SortierungAendernSub(false);
-end;
-procedure Tfrm_Config.btn_PostfachSubUpClick(Sender: TObject);
-begin
-  SortierungAendernSub(true);
-end;
-procedure Tfrm_Config.btn_PostfachSubTopClick(Sender: TObject);
-begin
-  SortierungFirstLastSub(true);
-end;
-procedure Tfrm_Config.ShowFolders(AIdIMAP41: Tidimap4);
-var
-  i,iLastMain,iLastSub: integer;
-  bRet: Boolean;
-  strlstUsersFolders: TStringList;
-  sFolder,sFoldermain,sFoldermainPrev: string;
-  sSeparator: String;
-  iLastID,intI: integer;
-begin
-  try
-    iLastMain:= 1;
-    iLastSub:= 1;
-    sFoldermainPrev:= '';
-    strlstUsersFolders := TStringList.Create;
-    bRet := AIdIMAP41.ListMailBoxes(strlstUsersFolders);
-    Application.ProcessMessages;
-    if bRet = False then begin
-      MessageDlg(rs_PCMManager_OrdnerNichtGelesen, mtWarning, [mbOk], 0);
-    end;
-    Application.ProcessMessages;
-    for i := 0 to strlstUsersFolders.Count-1 do begin
-      Application.ProcessMessages;
-      sFolder:=   strlstUsersFolders[i];
-      intI:=Pos('/',sFolder)  + Pos('.',sFolder) ;
-      if intI > 0  then
-      begin
-        if Pos('/',sFolder) >  0 then
-          sSeparator:= '/';
-        if Pos('.',sFolder) >  0 then
-          sSeparator:= '.';
-        Application.ProcessMessages;
-        sFoldermain:=Copy(sFolder,1, intI-1);
-        sFolder:= Copy(sFolder, intI + 1, Length(sFolder));
-//        intISub:= Pos('/',sFolder);
-//        if intISub > 0  then
-//        begin
-          Application.ProcessMessages;
-
-          dm_PCM.qry_Work.SQL.text := 'SELECT ID as LASTID FROM manager_email_postfach WHERE Postfach = :Postfach and ID_manager_email = :ID';
-          dm_PCM.qry_Work.ParamByName('ID').asInteger := qry_EmailConfig.FieldByName('ID').asInteger;
-          dm_PCM.qry_Work.ParamByName('Postfach').asString := sFoldermain;
-          dm_PCM.qry_Work.Open;
-          iLastID := dm_PCM.qry_Work.FieldByName('LASTID').asInteger;
-          dm_PCM.qry_Work.Close;
-
-
-          if sFoldermainPrev <> sFoldermain then
-            iLastSub:=  1;
-
-          dm_PCM.qry_Work.SQL.text := 'Insert into manager_email_postfach (Postfach,Anzeige,Sortierung,Typ,Parent,Abonnieren,ID_manager_email,Trennzeichen) Values ('
-                    + ':Postfach,:Anzeige,:Sortierung,:Typ,:Parent,:Abonnieren,:ID_manager_email,:Trennzeichen)';
-          dm_PCM.qry_Work.ParamByName('Postfach').AsString := sFolder;
-          dm_PCM.qry_Work.ParamByName('Anzeige').AsString := sFolder;
-          dm_PCM.qry_Work.ParamByName('Sortierung').asInteger := iLastSub;
-          dm_PCM.qry_Work.ParamByName('Typ').asInteger := 1;
-          dm_PCM.qry_Work.ParamByName('Parent').asInteger := iLastID ;
-          dm_PCM.qry_Work.ParamByName('Abonnieren').AsString := 'true';
-          dm_PCM.qry_Work.ParamByName('Trennzeichen').AsString := sSeparator;
-          dm_PCM.qry_Work.ParamByName('ID_manager_email').asInteger := qry_EmailConfig.FieldByName('ID').asInteger;
-          dm_PCM.qry_Work.ExecSQL;
-          iLastSub:= iLastSub +  1;
-          sFoldermainPrev:= sFoldermain;
-
-      end
-      else begin
-        dm_PCM.qry_Work.SQL.text := 'Insert into manager_email_postfach (Postfach,Anzeige,Sortierung,Typ,Parent,Abonnieren,ID_manager_email,Trennzeichen) Values ('
-                      + ':Postfach,:Anzeige,:Sortierung,:Typ,:Parent,:Abonnieren,:ID_manager_email,:Trennzeichen)';
-        dm_PCM.qry_Work.ParamByName('Postfach').AsString := sFolder;
-        dm_PCM.qry_Work.ParamByName('Anzeige').AsString := sFolder;
-        dm_PCM.qry_Work.ParamByName('Sortierung').asInteger := iLastMain;
-        dm_PCM.qry_Work.ParamByName('Typ').asInteger := 0;
-        dm_PCM.qry_Work.ParamByName('Parent').asInteger := 0;
-        dm_PCM.qry_Work.ParamByName('Abonnieren').AsString := 'true';
-        dm_PCM.qry_Work.ParamByName('Trennzeichen').AsString := '';
-        dm_PCM.qry_Work.ParamByName('ID_manager_email').asInteger :=  qry_EmailConfig.FieldByName('ID').asInteger;
-        dm_PCM.qry_Work.ExecSQL;
-        iLastMain:= iLastMain + 1;
-        Application.ProcessMessages;
-      end;
-    end;
-    Application.ProcessMessages;
-    qry_EmailPostfachMain.Refresh;
-    Application.ProcessMessages;
-    qry_EmailPostfachSub.Refresh;
-    Application.ProcessMessages;
-    dm_PCM.qry_Config_EmailPostfachLU.Refresh;
-    Application.ProcessMessages;
-  except
-    on ep:system.sysutils.Exception do
-    begin
-      MessageDlg(rs_PCM_Fehler + ep.Message, mtError, [mbOk], 0);
-    end;
+  if qry_CalConfig.State in [dsInsert, dsEdit] then
+  begin
+    edt_CalConfig_Kalender.PostEditValue;
+    edt_CalConfig_Link.PostEditValue;
+    edt_CalConfig_Benutzer.PostEditValue;
+    edt_CalConfig_Passwort.PostEditValue;
+    qry_CalConfig.Post;
   end;
 end;
+procedure Tfrm_Config.btn_CalConfigCancel1Click(Sender: TObject);
+begin
+  qry_CalConfig.Cancel;
+end;
+procedure Tfrm_Config.btn_CalConfigDelete1Click(Sender: TObject);
+begin
+  if qry_CalConfig.FieldByName('ID').asInteger > 0 then
+  begin
+    qry_CalConfig.Delete;
+  end;
+end;
+// Feiertage
+procedure Tfrm_Config.btn_CalFTNewClick(Sender: TObject);
+begin
+  Application.CreateForm(TfFeiertageBerechnen, fFeiertageBerechnen);
+  if fFeiertageBerechnen.Execute(true, dm_PCM.iIDBenutzerPCM) then;
+    qry_FT1.Refresh;
+  fFeiertageBerechnen.Free;
+end;
+procedure Tfrm_Config.btn_CalFTDeleteClick(Sender: TObject);
+begin
+  if qry_FT1.FieldByName('ID').asInteger > 0 then
+  begin
+    qry_FT1.Delete;
+  end
+end;
+procedure Tfrm_Config.btn_CalFTinCalClick(Sender: TObject);
+var
+  datTimVon, datTimbis: TDateTime;
+  iAnzahl: integer;
+  sBundesland: string;
+  iID_Adresse: integer;
+begin
+  Application.CreateForm(Tfrm_FeiertageAktualisieren, frm_FeiertageAktualisieren);
+  if frm_FeiertageAktualisieren.Execute(datTimVon, datTimbis) then
+  begin
+    dm_PCM.qry_work1.SQL.text := 'SELECT Jahr, Datum, Bezeichnung From manager_feiertage Where ID_Benutzer = :ID and Datum >= :Von AND Datum <= :Bis';
+    dm_PCM.qry_work1.ParamByName('ID').asInteger := dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_work1.ParamByName('Von').AsDateTime := datTimVon;
+    dm_PCM.qry_work1.ParamByName('Bis').AsDateTime := datTimbis;
+    dm_PCM.qry_work1.Open;
+    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_Feiertageintragen), dm_PCM.qry_work1.RecordCount, ClientWidth, Height);
+    Application.ProcessMessages;
+    Screen.Cursor := crHourGlass;
+    while not dm_PCM.qry_work1.Eof do
+    begin
+      WaitFormStep;
+      dm_PCM.qry_Work.SQL.text := 'SELECT Count(*) as Anzahl FROM manager_kalender WHERE Caption = :Caption AND  DATE(START) = :Date and Kalendername = :Kalender';
+      dm_PCM.qry_Work.ParamByName('Caption').AsString := dm_PCM.qry_work1.FieldByName('Bezeichnung').AsString;
+      dm_PCM.qry_Work.ParamByName('Kalender').AsString := 'Feiertage ' + dm_PCM.qry_work1.FieldByName('Jahr').AsString;
+      dm_PCM.qry_Work.ParamByName('Date').AsDate := dm_PCM.qry_work1.FieldByName('Datum').AsDateTime;
+      dm_PCM.qry_Work.Open;
+      iAnzahl := dm_PCM.qry_Work.FieldByName('Anzahl').asInteger;
+      dm_PCM.qry_Work.Close;
+//      iID_Adresse:=  -1;
+      if Pos('(',dm_PCM.qry_work1.FieldByName('Bezeichnung').AsString)  > 0 then
+        sBundesland := Copy(dm_PCM.qry_work1.FieldByName('Bezeichnung').AsString, Pos('(',dm_PCM.qry_work1.FieldByName('Bezeichnung').AsString)+1, Length(dm_PCM.qry_work1.FieldByName('Bezeichnung').AsString));
+        sBundesland := StringReplace(sBundesland,')','',[rfReplaceAll,rfIgnoreCase]);
+        dm_PCM.qry_Work.SQL.text := 'SELECT IFNULL(Adresse_eigene,-1) AS ID FROM manager_kalender_optionen  WHERE  Adresse_eigeneBL = (SELECT ID FROM manager_Bundesland Where Bezeichnung = :Bezeichnung) ' +
+                             'UNION all ' +
+                             'SELECT IFNULL(Adresse_Firma,-1) AS ID FROM manager_kalender_optionen WHERE  Adresse_FirmaBL = (SELECT ID FROM manager_Bundesland Where Bezeichnung = :Bezeichnung)';
+        dm_PCM.qry_work.ParamByName('Bezeichnung').AsString := sBundesland;
+        dm_PCM.qry_Work.Open;
+        iID_Adresse := dm_PCM.qry_Work.FieldByName('ID').asInteger;
+        dm_PCM.qry_Work.Close;
+
+      if iAnzahl = 0 then
+      begin
+        dm_PCM.qry_Work.SQL.text := 'Insert into manager_Kalender (ID_ADR_Wurzel,ID_Ansprechpartner,EventType,Caption,Location,Message,'
+                          + 'Start,Finish,Options,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'
+                          + 'ReminderMinutesBeforeStart,LabelColor,FontColor,ID_Benutzer,Kalendername,CompleteDay,Typ,GesendetAM,Aufgabenstatus,ID_IC_AufgabenArten,Erledigungsgrad,Zeitformat,ID_IC_Prioritaeten,AufgabenDauer) Values (:ID_ADR_Wurzel,:ID_Ansprechpartner,'
+                          + ':Eventtype,:SUMMARY,:Location,:Beschreibung,:DateBegin,:DateEnd,:Options,0,-1,:RecurrenceInfo,:Reminder,'
+                          + 'NULL,0,:Color,:FontColor,:ID,:Kalender,:ganzerTag,2,Now(),0,1,0,0,1,1440)';
+
+        dm_PCM.qry_Work.ParamByName('ID_ADR_Wurzel').asInteger := iID_Adresse;
+        dm_PCM.qry_Work.ParamByName('ID_Ansprechpartner').asInteger := iID_Adresse;
+        dm_PCM.qry_Work.ParamByName('Eventtype').asInteger := 0;
+        dm_PCM.qry_Work.ParamByName('SUMMARY').AsString := dm_PCM.qry_work1.FieldByName('Bezeichnung').AsString;
+        dm_PCM.qry_Work.ParamByName('Location').AsString := 'Feiertag';
+        dm_PCM.qry_Work.ParamByName('Beschreibung').AsString := dm_PCM.qry_work1.FieldByName('Bezeichnung').AsString;
+        dm_PCM.qry_Work.ParamByName('DateBegin').AsDateTime := dm_PCM.qry_work1.FieldByName('Datum').AsDateTime;;
+        dm_PCM.qry_Work.ParamByName('DateEnd').AsDateTime := IncDay(dm_PCM.qry_work1.FieldByName('Datum').AsDateTime, 1);
+        dm_PCM.qry_Work.ParamByName('Options').asInteger := 2;
+        dm_PCM.qry_Work.ParamByName('Reminder').AsString := 'false';
+        dm_PCM.qry_Work.ParamByName('RecurrenceInfo').AsString := '';
+        dm_PCM.qry_Work.ParamByName('Color').AsString := IntToStr(clSIlver);
+        dm_PCM.qry_Work.ParamByName('FontColor').AsString := IntToStr(clBlack);
+        dm_PCM.qry_Work.ParamByName('ID').asInteger := dm_PCM.iIDBenutzerPCM;
+        dm_PCM.qry_Work.ParamByName('Kalender').AsString := 'Feiertage ' + dm_PCM.qry_work1.FieldByName('Jahr').AsString;
+        dm_PCM.qry_Work.ParamByName('ganzerTag').AsString := 'true';
+        dm_PCM.qry_Work.ExecSQL;
+        dm_PCM.qry_Work.Close;
+      end;
+      dm_PCM.qry_work1.Next;
+    end;
+    dm_PCM.qry_work1.Close;
+    qry_FT1.Refresh;
+    Screen.Cursor := crDefault;
+    CloseWaitForm;
+  end;
+  frm_FeiertageAktualisieren.Free;
+end;
+// FTP
+procedure Tfrm_Config.btn_CalConfigFTPNewClick(Sender: TObject);
+begin
+  if qry_CalConfigFTP.State in [dsInsert, dsEdit] then
+    qry_CalConfigFTP.Post;
+  qry_CalConfigFTP.Append;
+  qry_CalConfigFTP.Insert;
+  qry_CalConfigFTP.FieldByName('ID_Benutzer').asInteger := dm_PCM.iIDBenutzerPCM;
+  if not edt_CalConfigFTP_URL.enabled then
+  begin
+    edt_CalConfigFTP_URL.enabled := true;
+    edt_CalConfigFTP_Datei.enabled := true;
+    edt_CalConfigFTP_Benutzer.enabled := true;
+    edt_CalConfigFTP_Passwort.enabled := true;
+  end;
+
+  edt_CalConfigFTP_URL.SetFocus;
+end;
+procedure Tfrm_Config.btn_CalConfigFTPSaveClick(Sender: TObject);
+begin
+  if qry_CalConfigFTP.State in [dsInsert, dsEdit] then
+  begin
+    edt_CalConfigFTP_URL.PostEditValue;
+    edt_CalConfigFTP_Datei.PostEditValue;
+    edt_CalConfigFTP_Benutzer.PostEditValue;
+    edt_CalConfigFTP_Passwort.PostEditValue;
+    qry_CalConfigFTP.Post;
+  end;
+end;
+procedure Tfrm_Config.btn_CalConfigFTPCancelClick(Sender: TObject);
+begin
+  qry_CalConfigFTP.Cancel;
+end;
+procedure Tfrm_Config.btn_CalConfigFTPDeleteClick(Sender: TObject);
+begin
+  if qry_CalConfigFTP.FieldByName('ID').asInteger > 0 then
+  begin
+    qry_CalConfigFTP.Delete;
+  end;
+end;
+{$EndRegion}
+{$Region TabAufgaben}
+////////////////////////////////////////////////////////////////////////////////
+// TabAufgaben                                                                //
+////////////////////////////////////////////////////////////////////////////////
+// Aufgabentypen
+procedure Tfrm_Config.btn_AufgabenNewClick(Sender: TObject);
+begin
+  if qry_AufgabenArten.State in [dsInsert, dsEdit] then
+    qry_AufgabenArten.Post;
+  qry_AufgabenArten.Append;
+  qry_AufgabenArten.Insert;
+  qry_AufgabenArten.FieldByName('Bezeichnung').AsString := '';
+  qry_AufgabenArten.FieldByName('Farbe').asInteger := 16777215;
+  if not edt_Aufgabenart.enabled then
+  begin
+    edt_Aufgabenart.enabled := true;
+    colcmbbx_Aufgabenart.enabled := true;
+  end;
+  edt_Aufgabenart.SetFocus
+end;
+procedure Tfrm_Config.btn_AufgabenSaveClick(Sender: TObject);
+begin
+  if qry_AufgabenArten.State in [dsInsert, dsEdit] then
+  begin
+    edt_Aufgabenart.PostEditValue;
+    qry_AufgabenArten.Post;
+  end;
+
+end;
+procedure Tfrm_Config.btn_AufgabenCancelClick(Sender: TObject);
+begin
+  qry_AufgabenArten.Cancel;
+end;
+procedure Tfrm_Config.btn_AufgabenDeleteClick(Sender: TObject);
+begin
+  if qry_AufgabenArten.FieldByName('ID').asInteger > 0 then
+  begin
+    qry_AufgabenArten.Delete;
+  end;
+end;
+// Aufgabenprio
+procedure Tfrm_Config.btn_AufgabenPrioNewClick(Sender: TObject);
+begin
+  if qry_Prio.State in [dsInsert, dsEdit] then
+    qry_Prio.Post;
+  qry_Prio.Append;
+  qry_Prio.Insert;
+  qry_Prio.FieldByName('Bezeichnung').AsString := '';
+  qry_Prio.FieldByName('Prioritaet').AsString := '';
+  if not edt_PrioNumber.enabled then
+  begin
+    edt_PrioNumber.enabled := true;
+    edt_PrioNumber.enabled := true;
+  end;
+  edt_PrioNumber.SetFocus
+end;
+procedure Tfrm_Config.btn_AufgabenPrioSaveClick(Sender: TObject);
+begin
+  if qry_prio.State in [dsInsert, dsEdit] then
+  begin
+    edt_PrioNumber.PostEditValue;
+    edt_PrioBez.PostEditValue;
+    qry_prio.Post;
+  end;
+end;
+procedure Tfrm_Config.btn_AufgabenPrioCancelClick(Sender: TObject);
+begin
+  qry_prio.Cancel;
+end;
+procedure Tfrm_Config.btn_AufgabenPrioDeleteClick(Sender: TObject);
+begin
+  if qry_Prio.FieldByName('ID').asInteger > 0 then
+  begin
+    qry_Prio.Delete;
+  end;
+end;
+// Aufgabenoptionen
+procedure Tfrm_Config.btn_AufgabenOptionenSaveClick(Sender: TObject);
+begin
+  if qry_Konfiguration_Kalender_Optionen.State in [dsInsert, dsEdit] then
+  begin
+    mskedt_AufgabenSonstigesStunden.PostEditValue;
+    edt_AufgabenSonstigesJira.PostEditValue;
+    qry_Konfiguration_Kalender_Optionen.Post;
+  end;
+end;
+{$EndRegion}
+{$Region TabStundenplan}
+////////////////////////////////////////////////////////////////////////////////
+// TabStundenplan                                                             //
+////////////////////////////////////////////////////////////////////////////////
+// Schulfach
+procedure Tfrm_Config.btn_FachNewClick(Sender: TObject);
+begin
+  if qry_SchulFaecher.State in [dsInsert, dsEdit] then
+    qry_SchulFaecher.Post;
+  qry_SchulFaecher.Append;
+  qry_SchulFaecher.Insert;
+  qry_SchulFaecher.FieldByName('Farbe').asInteger := 16777215;
+  qry_SchulFaecher.FieldByName('SchriftFarbe').asInteger := 0;
+  qry_SchulFaecher.FieldByName('ID_Benutzer').asInteger := dm_PCM.iIDBenutzerPCM;
+  if not edt_StundenplanConfig_FachBezeichnung.enabled then
+  begin
+    edt_StundenplanConfig_FachBezeichnung.enabled := true;
+    colcmbbx_StundenplanConfig_LabelColor.enabled := true;
+    colcmbbx_StundenplanConfig_FontColor.enabled := true;
+  end;
+  edt_StundenplanConfig_FachBezeichnung.SetFocus;
+end;
+procedure Tfrm_Config.btn_FachSaveClick(Sender: TObject);
+begin
+  if qry_SchulFaecher.State in [dsInsert, dsEdit] then
+  begin
+    edt_StundenplanConfig_FachBezeichnung.PostEditValue;
+    qry_SchulFaecher.Post;
+  end;
+end;
+procedure Tfrm_Config.btn_FachCancelClick(Sender: TObject);
+begin
+  qry_SchulFaecher.Cancel;
+end;
+procedure Tfrm_Config.btn_FachDeleteClick(Sender: TObject);
+begin
+  if qry_SchulFaecher.FieldByName('ID').asInteger > 0 then
+  begin
+    qry_SchulFaecher.Delete;
+  end;
+end;
+// Uhrzeiten
+procedure Tfrm_Config.btn_FachUSaveClick(Sender: TObject);
+begin
+  if qry_SchulFaecher_Config.State in [dsInsert, dsEdit] then
+  begin
+    qry_SchulFaecher_Config.Post;
+  end;
+end;
+procedure Tfrm_Config.btn_FachUCancelClick(Sender: TObject);
+begin
+  qry_SchulFaecher_Config.Cancel;
+end;
+{$EndRegion}
+{$Region TabEmail}
+////////////////////////////////////////////////////////////////////////////////
+// TabEmail                                                                   //
+////////////////////////////////////////////////////////////////////////////////
+// Emailaccounts
+procedure Tfrm_Config.btn_EmailConfigNewClick(Sender: TObject);
+begin
+  if qry_EmailConfig.State in [dsInsert, dsEdit] then
+    qry_EmailConfig.Post;
+  qry_EmailConfig.Append;
+  qry_EmailConfig.Insert;
+  qry_EmailConfig.FieldByName('SSLActive').AsString := 'false';
+  qry_EmailConfig.FieldByName('ID_Benutzer').asInteger := dm_PCM.iIDBenutzerPCM;
+  if not edt_EmailConfig_Emailadresse.enabled then
+  begin
+    edt_EmailConfig_Emailadresse.enabled := true;
+    lucmbbx_EmailConfig_Kontptyp.enabled := true;
+    edt_EmailConfig_PostEingangServer.enabled := true;
+    edt_EmailConfig_PortEingang.enabled := true;
+    edt_EmailConfig_Benutzer.enabled := true;
+    edt_EmailConfig_Kennwort.enabled := true;
+    edt_EmailConfig_PostAusgangServer.enabled := true;
+    edt_EmailConfig_PortAusgang.enabled := true;
+    chxbx_EmailConfig_SSL.enabled := true;
+  end;
+  edt_EmailConfig_Emailadresse.SetFocus;
+end;
+procedure Tfrm_Config.btn_EmailConfigSaveClick(Sender: TObject);
+begin
+  if qry_EmailConfig.State in [dsInsert, dsEdit] then
+  begin
+    edt_EmailConfig_Emailadresse.PostEditValue;
+    edt_EmailConfig_PostEingangServer.PostEditValue;
+    edt_EmailConfig_PortEingang.PostEditValue;
+    edt_EmailConfig_Benutzer.PostEditValue;
+    edt_EmailConfig_Kennwort.PostEditValue;
+    edt_EmailConfig_PostAusgangServer.PostEditValue;
+    edt_EmailConfig_PortAusgang.PostEditValue;
+    qry_EmailConfig.Post;
+  end;
+end;
+procedure Tfrm_Config.btn_EmailConfigCancelClick(Sender: TObject);
+begin
+  qry_EmailConfig.Cancel;
+end;
+procedure Tfrm_Config.btn_EmailConfigDeleteClick(Sender: TObject);
+begin
+  if qry_EmailConfig.FieldByName('ID').asInteger > 0 then
+  begin
+    dm_PCM.qry_Work.SQL.Text:= 'Delete From manager_email_postfach Where ID = :ID';
+    dm_PCM.qry_Work.ParamByName('ID').asInteger:= qry_EmailConfig.FieldByName('ID').asInteger;
+    dm_PCM.qry_Work.ExecSQL;
+    qry_EmailConfig.Delete;
+  end;
+end;
+procedure Tfrm_Config.btn_EmailConfig_TestClick(Sender: TObject);
+var
+  idSmtpMail: TIdSMTP;
+  idSSLIOHndOPSSLPostfach: TIdSSLIOHandlerSocketOpenSSL;
+  idmsgMail: TIdMessage;
+  idSSLIOHndOPSSLMail: TIdSSLIOHandlerSocketOpenSSL;
+begin
+  idSSLIOHndOPSSLMail := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
+  idSSLIOHndOPSSLMail.SSLOptions.Method:= sslvSSLv23;
+  IdIMAP_Mail.IOHandler := idSSLIOHndOPSSLMail;
+  IdIMAP_Mail.UseTLS := utUseImplicitTLS;
+  IdIMAP_Mail.Host := qry_EmailConfig.FieldByName('PostEingangsserver').AsString;
+  IdIMAP_Mail.Port := qry_EmailConfig.FieldByName('PortEingangsserver').AsInteger;
+  IdIMAP_Mail.UseTLS := utUseImplicitTLS;
+  IdIMAP_Mail.Username := qry_EmailConfig.FieldByName('Benutzer').AsString;;
+  IdIMAP_Mail.Password := qry_EmailConfig.FieldByName('Passwort').AsString;
+  try
+    IdIMAP_Mail.Connect;
+    lbl_EmailConfig_PortEingangTest.Caption:= rs_PCMManager_posteingangerfolgreich;
+    lbl_EmailConfig_PortEingangTest.Style.Font.Color:= clgreen;
+    IdIMAP_Mail.Disconnect;
+  except
+    lbl_EmailConfig_PortEingangTest.Caption:= rs_PCMManager_posteingangnichterfolgreich;
+    lbl_EmailConfig_PortEingangTest.Style.Font.Color:= clred;
+  end;
+  idSSLIOHndOPSSLMail.Free;
+
+  idSmtpMail := TIdSMTP.Create(nil);
+  idSSLIOHndOPSSLMail := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
+  idSSLIOHndOPSSLMail.SSLOptions.Method:= sslvSSLv23;
+  idSSLIOHndOPSSLpostfach := TIdSSLIOHandlerSocketOpenSSL.Create(nil);
+  idmsgMail := TIdMessage.Create(nil);
+   try
+    try
+      idSmtpMail.Host := qry_EmailConfig.FieldByName('PostAusgangsserver').AsString;
+      idSmtpMail.Port := qry_EmailConfig.FieldByName('PortAusgangsserver').AsInteger;
+      idSmtpMail.Username := qry_EmailConfig.FieldByName('Benutzer').AsString;
+      idSmtpMail.Password := qry_EmailConfig.FieldByName('Passwort').AsString;
+      idSSLIOHndOPSSLpostfach.Host := idSmtpMail.Host;
+      idSSLIOHndOPSSLpostfach.Port := idSmtpMail.Port;
+      idSSLIOHndOPSSLpostfach.SSLOptions.Method := sslvSSLv23;
+      idSmtpMail.IOHandler := idSSLIOHndOPSSLpostfach;
+      idSmtpMail.UseTLS := utUseRequireTLS;
+      idmsgMail.Recipients.EMailAddresses := qry_EmailConfig.FieldByName('Email').AsString;
+      idmsgMail.Subject := rs_PCMManager_Testmail ;
+      idmsgMail.Body.Text := rs_PCMManager_TestmailBody;
+      idmsgMail.From.Address := idSmtpMail.Username;
+      idSmtpMail.Connect;
+      idSmtpMail.Send(idmsgMail);
+      idSmtpMail.Disconnect;
+    finally
+      idmsgMail.Free;
+      idSSLIOHndOPSSLpostfach.Free;
+      idSmtpMail.Free;
+      lbl_EmailConfig_PortAusgangTest.Caption:= rs_PCMManager_postausgangerfolgreich;
+      lbl_EmailConfig_PortAusgangTest.Style.Font.Color:= clgreen;
+    end;
+  except
+    lbl_EmailConfig_PortAusgangTest.Caption:= rs_PCMManager_postausgangnichterfolgreich;
+    lbl_EmailConfig_PortAusgangTest.Style.Font.Color:= clred;
+  end;
+end;
+// Postfächer
 procedure Tfrm_Config.btn_PostfachNewClick(Sender: TObject);
+  procedure ShowFolders(AIdIMAP41: Tidimap4);
+  var
+    i,iLastMain,iLastSub: integer;
+    bRet: Boolean;
+    strlstUsersFolders: TStringList;
+    sFolder,sFoldermain,sFoldermainPrev: string;
+    sSeparator: String;
+    iLastID,intI: integer;
+  begin
+    try
+      iLastMain:= 1;
+      iLastSub:= 1;
+      sFoldermainPrev:= '';
+      strlstUsersFolders := TStringList.Create;
+      bRet := AIdIMAP41.ListMailBoxes(strlstUsersFolders);
+      Application.ProcessMessages;
+      if bRet = False then begin
+        MessageDlg(rs_PCMManager_OrdnerNichtGelesen, mtWarning, [mbOk], 0);
+      end;
+      Application.ProcessMessages;
+      for i := 0 to strlstUsersFolders.Count-1 do begin
+        Application.ProcessMessages;
+        sFolder:=   strlstUsersFolders[i];
+        intI:=Pos('/',sFolder)  + Pos('.',sFolder) ;
+        if intI > 0  then
+        begin
+          if Pos('/',sFolder) >  0 then
+            sSeparator:= '/';
+          if Pos('.',sFolder) >  0 then
+            sSeparator:= '.';
+          Application.ProcessMessages;
+          sFoldermain:=Copy(sFolder,1, intI-1);
+          sFolder:= Copy(sFolder, intI + 1, Length(sFolder));
+  //        intISub:= Pos('/',sFolder);
+  //        if intISub > 0  then
+  //        begin
+            Application.ProcessMessages;
+
+            dm_PCM.qry_Work.SQL.text := 'SELECT ID as LASTID FROM manager_email_postfach WHERE Postfach = :Postfach and ID_manager_email = :ID';
+            dm_PCM.qry_Work.ParamByName('ID').asInteger := qry_EmailConfig.FieldByName('ID').asInteger;
+            dm_PCM.qry_Work.ParamByName('Postfach').asString := sFoldermain;
+            dm_PCM.qry_Work.Open;
+            iLastID := dm_PCM.qry_Work.FieldByName('LASTID').asInteger;
+            dm_PCM.qry_Work.Close;
+
+
+            if sFoldermainPrev <> sFoldermain then
+              iLastSub:=  1;
+
+            dm_PCM.qry_Work.SQL.text := 'Insert into manager_email_postfach (Postfach,Anzeige,Sortierung,Typ,Parent,Abonnieren,ID_manager_email,Trennzeichen) Values ('
+                      + ':Postfach,:Anzeige,:Sortierung,:Typ,:Parent,:Abonnieren,:ID_manager_email,:Trennzeichen)';
+            dm_PCM.qry_Work.ParamByName('Postfach').AsString := sFolder;
+            dm_PCM.qry_Work.ParamByName('Anzeige').AsString := sFolder;
+            dm_PCM.qry_Work.ParamByName('Sortierung').asInteger := iLastSub;
+            dm_PCM.qry_Work.ParamByName('Typ').asInteger := 1;
+            dm_PCM.qry_Work.ParamByName('Parent').asInteger := iLastID ;
+            dm_PCM.qry_Work.ParamByName('Abonnieren').AsString := 'true';
+            dm_PCM.qry_Work.ParamByName('Trennzeichen').AsString := sSeparator;
+            dm_PCM.qry_Work.ParamByName('ID_manager_email').asInteger := qry_EmailConfig.FieldByName('ID').asInteger;
+            dm_PCM.qry_Work.ExecSQL;
+            iLastSub:= iLastSub +  1;
+            sFoldermainPrev:= sFoldermain;
+
+        end
+        else begin
+          dm_PCM.qry_Work.SQL.text := 'Insert into manager_email_postfach (Postfach,Anzeige,Sortierung,Typ,Parent,Abonnieren,ID_manager_email,Trennzeichen) Values ('
+                        + ':Postfach,:Anzeige,:Sortierung,:Typ,:Parent,:Abonnieren,:ID_manager_email,:Trennzeichen)';
+          dm_PCM.qry_Work.ParamByName('Postfach').AsString := sFolder;
+          dm_PCM.qry_Work.ParamByName('Anzeige').AsString := sFolder;
+          dm_PCM.qry_Work.ParamByName('Sortierung').asInteger := iLastMain;
+          dm_PCM.qry_Work.ParamByName('Typ').asInteger := 0;
+          dm_PCM.qry_Work.ParamByName('Parent').asInteger := 0;
+          dm_PCM.qry_Work.ParamByName('Abonnieren').AsString := 'true';
+          dm_PCM.qry_Work.ParamByName('Trennzeichen').AsString := '';
+          dm_PCM.qry_Work.ParamByName('ID_manager_email').asInteger :=  qry_EmailConfig.FieldByName('ID').asInteger;
+          dm_PCM.qry_Work.ExecSQL;
+          iLastMain:= iLastMain + 1;
+          Application.ProcessMessages;
+        end;
+      end;
+      Application.ProcessMessages;
+      qry_EmailPostfachMain.Refresh;
+      Application.ProcessMessages;
+      qry_EmailPostfachSub.Refresh;
+      Application.ProcessMessages;
+      dm_PCM.qry_Config_EmailPostfachLU.Refresh;
+      Application.ProcessMessages;
+    except
+      on ep:system.sysutils.Exception do
+      begin
+        MessageDlg(rs_PCM_Fehler + ep.Message, mtError, [mbOk], 0);
+      end;
+    end;
+  end;
 var
   idSSLIOHndOPSSL_Postfach : TIdSSLIOHandlerSocketOpenSSL;
 begin
@@ -1775,6 +1383,45 @@ begin
   qry_EmailPostfachMain.Cancel;
   qry_EmailPostfachSub.Cancel;
 end;
+// Sortierung Postfächer Main
+procedure Tfrm_Config.btn_PostfachMainTopClick(Sender: TObject);
+begin
+  SortierungFirstLastMain(true);
+end;
+procedure Tfrm_Config.btn_PostfachMainUpClick(Sender: TObject);
+begin
+  SortierungAendernMain(true);
+end;
+procedure Tfrm_Config.btn_PostfachMaindownClick(Sender: TObject);
+begin
+  SortierungAendernMain(false);
+end;
+procedure Tfrm_Config.btn_PostfachMainbottomClick(Sender: TObject);
+begin
+  SortierungFirstLastMain(false);
+end;
+// Sortierung Postfächer Sub
+procedure Tfrm_Config.btn_PostfachSubTopClick(Sender: TObject);
+begin
+  SortierungFirstLastSub(true);
+end;
+procedure Tfrm_Config.btn_PostfachSubUpClick(Sender: TObject);
+begin
+  SortierungAendernSub(true);
+end;
+procedure Tfrm_Config.btn_PostfachSubDownClick(Sender: TObject);
+begin
+  SortierungAendernSub(false);
+end;
+procedure Tfrm_Config.btn_PostfachSubbottomClick(Sender: TObject);
+begin
+  SortierungFirstLastSub(false);
+end;
+{$EndRegion}
+{$Region FormFunctions}
+////////////////////////////////////////////////////////////////////////////////
+// FormFunctions                                                              //
+////////////////////////////////////////////////////////////////////////////////
 procedure Tfrm_Config.FormActivate(Sender: TObject);
 begin
   FormShow(Self);
@@ -1784,14 +1431,171 @@ begin
   SetGridViews(false);
 end;
 procedure Tfrm_Config.FormShow(Sender: TObject);
+  procedure OpenData;
+  var
+    iAnzahl: Integer;
+  begin
+    dm_PCM.qry_work.sql.Text:= 'Select COunt(*) as  Anzahl From manager_stundenplan_konfiguration Where ID_Benutzer = :ID_Benutzer';
+    dm_PCM.qry_work.ParamByname('ID_Benutzer').asInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_work.Open;
+    iAnzahl:= dm_PCM.qry_work.FieldByname('Anzahl').asInteger;
+    dm_PCM.qry_work.Close;
+    if iAnzahl = 0  then
+    begin
+      dm_PCM.qry_work.sql.Text:= 'Insert Into manager_stundenplan_konfiguration (Farbe, Schriftfarbe,ID_Benutzer) values (12632256, 0,:ID_Benutzer)';
+      dm_PCM.qry_work.ParamByname('ID_Benutzer').asInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.Execsql;
+    end;
+    qry_CalConfig.Open;
+    qry_CalConfigFTP.Open;
+    qry_CalConfig.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+    qry_CalConfig.Filtered := true;
+    qry_CalConfigFTP.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+    qry_CalConfigFTP.Filtered := true;
+    dm_PCM.qry_Config_Benutzer.Open;
+    qry_FT1.Open;
+    qry_FT1.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+    qry_FT1.Filtered := true;
+    qry_SchulFaecher.Open;
+    qry_SchulFaecher.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+    qry_SchulFaecher.Filtered := true;
+    qry_SchulFaecher_Config.Open;
+    qry_SchulFaecher_Config.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+    qry_SchulFaecher_Config.Filtered := true;
+    dm_PCM.qry_Config_EmailConfigTyp.Open;
+    qry_EmailConfig.Open;
+    qry_EmailConfig.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+    qry_EmailConfig.Filtered := true;
+    qry_EmailPostfachMain.Open;
+    dm_PCM.qry_Config_EmailPostfachLU.Open;
+    qry_AufgabenArten.Open;
+    qry_Prio.Open;
+    dm_PCM.qry_Config_Ansprechpartner.Open;
+    dm_PCM.qry_Config_Firmen.Open;
+    dm_PCM.qry_Config_Bundesland.Open;
+    qry_Konfiguration_Kalender_Optionen.Open;
+    qry_Konfiguration_Kalender_Optionen.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+    qry_Konfiguration_Kalender_Optionen.Filtered := true;
+    grdDBTblView_calconfigKalender.Caption := rs_PCM_Kalender;
+    grdDBTblView_calconfigLink.Caption := rs_PCMManager_Link;
+    grdDBTblView_calconfigBenutzer.Caption := rs_PCMBenutzerverwaltung_Benutzer;
+    grdDBTblView_calconfigPasswort.Caption := rs_PCM_Passwort;
+    grdDBTblView_calconfigErinnerung.Caption := rs_PCM_Erinnerung;
+    grdDBTblView_calconfigErinnerungVor.Caption := rs_PCM_ErinnerungVor;
+    grdDBTblView_calconfigLabelColor.Caption := rs_PCM_Terminfarbe;
+    grdDBTblView_calconfigFontcolor.Caption := rs_PCM_Schriftfarbe;
+    grdDBTblView_calconfigID_Benutzer.Caption :=rs_PCMBenutzerverwaltung_Benutzer;
+    grdDBTblView_FeiertageJahr.Caption := rs_PCM_Jahr;
+    grdDBTblView_FeiertageMonat.Caption:= rs_PCM_Monat;
+    grdDBTblView_FeiertageTag.Caption:= rs_PCM_Tag;
+    grdDBTblView_FeiertageBezeichnung.Caption:= rs_PCM_Bezeichnung;
+    grdDBTblView_FTPConfigurl.Caption := rs_PCM_Host;
+    grdDBTblView_FTPConfigkalendername.Caption := rs_PCM_Dateiname;
+    grdDBTblView_FTPConfiguser.Caption := rs_PCMBenutzerverwaltung_Benutzer;
+    grdDBTblView_FTPConfigpasswort.Caption := rs_PCM_Passwort;
+    grdDBTblView_AufgabenartenBezeichnung.Caption:= rs_PCM_Bezeichnung;
+    grdDBTblView_AufgabenartenFarbe.Caption:= rs_PCM_Farbe;
+    grdDBTblView_AufgabenPrioPrioritaet.Caption := rs_PCM_Prioritaet;
+    grdDBTblView_AufgabenPrioBezeichnung.Caption := rs_PCM_Bezeichnung;
+    grdDBTblView_StundenplanConfigBezeichnung.Caption := rs_PCM_Bezeichnung;
+    grdDBTblView_StundenplanConfigFarbe.Caption := rs_PCM_Farbe;
+    grdDBTblView_StundenplanConfigSchriftfarbe.Caption := rs_PCM_Schriftfarbe;
+    grdDBTblView_StundenplanConfigUhrFarbe.Caption :=  rs_PCM_Farbe;
+    grdDBTblView_StundenplanConfigUhrSchriftfarbe.Caption := rs_PCM_Schriftfarbe;
+    grdDBTblView_emailConfigEMail.Caption:= rs_PCM_EMailadresse;
+    grdDBTblView_emailConfigKontotyp.Caption:= rs_PCM_Kontotyp;
+    grdDBTblView_emailConfigPostEingangsserver.Caption:= rs_PCM_Posteingangsserver;
+    grdDBTblView_emailConfigPortEingangsserver.Caption:= rs_PCM_PortEingang;
+    grdDBTblView_emailConfigBenutzer.Caption:= rs_PCMBenutzerverwaltung_Benutzer;
+    grdDBTblView_emailConfigSSLActive.Caption:= rs_PCM_SSLAktiv;
+    grdDBTblViewl_PostfachmainPostfach.Caption:= rs_PCM_Postfach;
+    grdDBTblViewl_PostfachmainAnzeige.Caption:= rs_PCM_anzeige;
+    grdDBTblViewl_PostfachmainAbonnieren.Caption:= rs_PCM_Abonnieren;
+    grdDBTblViewl_PostfachmainSortierung.Caption:= rs_PCM_Sortierung;
+    grdDBTblViewl_PostfachSubPostfach.Caption:= rs_PCM_Postfach;
+    grdDBTblViewl_PostfachSubAnzeige.Caption:= rs_PCM_anzeige;
+    grdDBTblViewl_PostfachSubParent.Caption:= rs_PCM_Hauptpostfach;
+    grdDBTblViewl_PostfachSubAbonnieren.Caption:= rs_PCM_Abonnieren;
+    grdDBTblViewl_PostfachSubSortierung.Caption:= rs_PCM_Sortierung;
+  end;
+  procedure InitializeRights;
+  begin
+    /// / Kalender
+    // Toolbar
+    btn_CalConfigNew.enabled := dm_PCM.iKonfiguration >= SetReadWrite ;
+    btn_CalConfigSave.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    btn_CalConfigCancel.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    btn_CalConfigDelete.enabled := dm_PCM.iKonfiguration > SetReadWrite;
+    btn_CalConfigFTPNew.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    btn_CalConfigFTPSave.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    btn_CalConfigFTPCancel.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    btn_CalConfigFTPDelete.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    // Editfelder
+    edt_CalConfig_Kalender.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    edt_CalConfig_Link.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    edt_CalConfig_Benutzer.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    edt_CalConfig_Passwort.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    colcmbbx_CalConfigLabelColor.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    colcmbbx_CalConfigFontColor.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    cmbbx_CalConfigReminderVal.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    chkbx_CalConfigReminder.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    edt_CalConfigFTP_URL.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    edt_CalConfigFTP_Benutzer.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    edt_CalConfigFTP_Datei.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    edt_CalConfigFTP_Passwort.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    /// / Aufgaben
+    // Toolbar
+    btn_AufgabenNew.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    btn_AufgabenSave.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    btn_AufgabenCancel.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    btn_AufgabenDelete.enabled := dm_PCM.iKonfiguration > SetReadWrite;
+    btn_AufgabenPrioNew.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    btn_AufgabenPrioSave.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    btn_AufgabenPrioCancel.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    btn_AufgabenPrioDelete.enabled := dm_PCM.iKonfiguration > SetReadWrite;
+    // Editfelder
+    edt_Aufgabenart.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    colcmbbx_Aufgabenart.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    edt_PrioNumber.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    edt_PrioBez.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    /// / Stundenplan
+    // Toolbar
+    btn_FachNew.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    btn_FachSave.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    btn_FachCancel.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    btn_FachDelete.enabled := dm_PCM.iKonfiguration > SetReadWrite;
+    btn_FachUSave.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    btn_FachUCancel.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    // Editfelder
+    edt_StundenplanConfig_FachBezeichnung.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    colcmbbx_StundenplanConfig_LabelColor.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    colcmbbx_StundenplanConfig_FontColor.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    colcmbbx_StundenplanConfigUhr_LabelColor.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    colcmbbx_StundenplanConfigUhr_FontColor.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    /// / Email
+    // Toolbar
+    btn_EmailConfigNew.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    btn_EmailConfigSave.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    btn_EmailConfigCancel.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    btn_EmailConfigDelete.enabled := dm_PCM.iKonfiguration > SetReadWrite;
+    // Editfelder
+    edt_EmailConfig_Emailadresse.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    lucmbbx_EmailConfig_Kontptyp.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    edt_EmailConfig_PostEingangServer.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    edt_EmailConfig_PortEingang.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    edt_EmailConfig_Benutzer.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    edt_EmailConfig_Kennwort.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    edt_EmailConfig_PostAusgangServer.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    edt_EmailConfig_PortAusgang.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    chxbx_EmailConfig_SSL.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+    btn_EmailConfig_Test.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
+  end;
 begin
-  cmbbx_Design.ItemIndex := cmbbx_Design.Properties.Items.IndexOf(dm_PCM.sDesign);
-  cmbbx_Style.ItemIndex := cmbbx_Style.Properties.Items.IndexOf(dm_PCM.sStyle);
   OpenData;
   InitializeRights;
   SetButtons;
   SetGridViews(True);
 end;
-
+{$Endregion}
 end.
 

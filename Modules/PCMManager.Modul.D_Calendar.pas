@@ -60,7 +60,7 @@ uses
   dxChartXYSeriesLineView, dxChartXYSeriesAreaView, dxChartMarkers,
   dxChartXYSeriesBarView, dxChartDBData, dxCoreClasses, dxChartControl,
   dxStatusBar, cxImageList, dxLayoutContainer, dxLayoutLookAndFeels,
-  dxLayoutControl, dxLayoutcxEditAdapters;
+  dxLayoutControl, dxLayoutcxEditAdapters,PCM.Browser;
 
 
 type
@@ -74,10 +74,7 @@ type
     DaySO: string;
   end;
 
-type
   TPCMDays = array of TPCMDay;
-
-type
 
   TNachrichtenTyp = (ntAntrag, ntNachricht, ntAufgabe, ntTermin);
 
@@ -196,7 +193,7 @@ type
     cxGrid1Level1: TcxGridLevel;
     cxDBTextEdit6: TcxDBTextEdit;
     edtJiraTicketNr: TcxDBTextEdit;
-    btnGoToJira: TcxButton;
+    btn_GoToJira: TcxButton;
     cxGrid5: TcxGrid;
     cxGrid5DBTableView1: TcxGridDBTableView;
     cxGrid5DBTableView1ID: TcxGridDBColumn;
@@ -206,26 +203,26 @@ type
     cxGrid5Level1: TcxGridLevel;
     cxDBMemo1: TcxDBRichEdit;
     cxSplitter4: TcxSplitter;
-    cxGroupBox3: TcxGroupBox;
-    cxImage1: TcxImage;
-    pnlDetails: TcxGroupBox;
+    pnl_Search: TcxGroupBox;
+    img_search: TcxImage;
+    pnl_Details: TcxGroupBox;
     cxGroupBox8: TcxGroupBox;
     pAnhaenge: TcxGroupBox;
     Image1: TcxImage;
     lTypeName: TcxLabel;
     cxGroupBox11: TcxGroupBox;
-    cxSplitter1: TcxSplitter;
-    cxButton1: TcxButton;
-    cxButton2: TcxButton;
-    cxGroupBox5: TcxGroupBox;
+    spl_Grid: TcxSplitter;
+    btn_AttachementSave: TcxButton;
+    btn_AttachementOpen: TcxButton;
+    pnl_Aufgaben: TcxGroupBox;
     btn_NewTask: TdxBarLargeButton;
     btn_ReadJob: TdxBarLargeButton;
     btn_DoneJob: TdxBarLargeButton;
-    edSuche: TcxButtonEdit;
+    edt_Suche: TcxButtonEdit;
     btn_JobUndone: TdxBarLargeButton;
     btn_JobChange: TdxBarLargeButton;
-    dxBarLargeButton12: TdxBarLargeButton;
-    cxTreeList1: TcxTreeList;
+    btn_taskMinMax: TdxBarLargeButton;
+    trlst_Aufgaben: TcxTreeList;
     cxTreeList1Column1: TcxTreeListColumn;
     brpmm_Aufgaben: TdxBarPopupMenu;
     pmmbtn_CalNew: TdxBarButton;
@@ -299,88 +296,173 @@ type
     Label6: TcxLabel;
     Label8: TcxLabel;
     ts_C_Jira: TcxTabSheet;
-    cxPageControl1: TcxPageControl;
-    cxTabSheet1: TcxTabSheet;
-    cxTabSheet2: TcxTabSheet;
-    cxComboBox1: TcxComboBox;
-    chartctrl_Birthday: TdxChartControl;
-    chartctrl_BirthdayChart: TdxChartSimpleDiagram;
-    chartctrl_BirthdaySeries: TdxChartSimpleSeries;
-    cxGrid2DBTableView1: TcxGridDBTableView;
-    cxGrid2Level1: TcxGridLevel;
-    cxGrid2: TcxGrid;
-    pnl_Ticket: TcxGroupBox;
-    cxGroupBox2: TcxGroupBox;
-    cxGroupBox4: TcxGroupBox;
     dxBarDockControl1: TdxBarDockControl;
     brmgr_KalendarBar1: TdxBar;
-    btn_ReadTickets: TdxBarLargeButton;
+    btn_ReadTickets_Ges: TdxBarLargeButton;
     RESTClient_jira: TRESTClient;
     httpAuth_Jira: THTTPBasicAuthenticator;
     stbr_main: TdxStatusBar;
-    cxGrid2DBTableView1ID: TcxGridDBColumn;
-    cxGrid2DBTableView1Ticket_Nr: TcxGridDBColumn;
-    cxGrid2DBTableView1Nr: TcxGridDBColumn;
-    cxGrid2DBTableView1Status: TcxGridDBColumn;
-    cxGrid2DBTableView1Epic: TcxGridDBColumn;
-    cxGrid2DBTableView1Komponenten: TcxGridDBColumn;
-    cxGrid2DBTableView1Betreff: TcxGridDBColumn;
-    cxGrid2DBTableView1Board: TcxGridDBColumn;
-    ds_Tickets: TDataSource;
-    qry_Tickets: TFDQuery;
-    cxSplitter2: TcxSplitter;
-    cxGroupBox1: TcxGroupBox;
-    cxLabel2: TcxLabel;
-    cxLabel3: TcxLabel;
-    cxGroupBox6: TcxGroupBox;
-    cxLabel4: TcxLabel;
-    cxLabel5: TcxLabel;
-    cxDBTextEdit1: TcxDBTextEdit;
-    cxGroupBox7: TcxGroupBox;
-    cxLabel1: TcxLabel;
-    cxLabel6: TcxLabel;
-    cxDBTextEdit2: TcxDBTextEdit;
-    cxGrid2DBTableView1Stichwort: TcxGridDBColumn;
-    cxGrid2DBTableView1Type: TcxGridDBColumn;
+    ds_Tickets_ges: TDataSource;
+    qry_Tickets_ges: TFDQuery;
     cxGridPopupMenu1: TcxGridPopupMenu;
-    cxGrid2DBTableView1App: TcxGridDBColumn;
-    cxGroupBox9: TcxGroupBox;
-    cxLabel7: TcxLabel;
-    cxLabel8: TcxLabel;
-    cxDBTextEdit3: TcxDBTextEdit;
-    cxGroupBox10: TcxGroupBox;
-    cxLabel9: TcxLabel;
-    cxLabel10: TcxLabel;
-    cxDBTextEdit5: TcxDBTextEdit;
-    cxGroupBox12: TcxGroupBox;
-    cxLabel11: TcxLabel;
-    cxDBRichEdit1: TcxDBRichEdit;
     qry_prio: TFDQuery;
     ds_prio: TDataSource;
-    cxGrid2DBTableView1FixVersion: TcxGridDBColumn;
-    cxGrid2DBTableView1Beschreibung: TcxGridDBColumn;
-    cxGrid2DBTableView1ID_tickets_priority: TcxGridDBColumn;
     cxImageList1: TcxImageList;
-    cxTextEdit1: TcxDBImageComboBox;
-    cxTabSheet3: TcxTabSheet;
     dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
     dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel;
+    pc_JiraGes: TcxPageControl;
+    cxTabSheet2: TcxTabSheet;
+    pnl_BrowserJiraGes: TcxGroupBox;
+    dxBarDockControl2: TdxBarDockControl;
+    cxTabSheet1: TcxTabSheet;
+    cxComboBox1: TcxComboBox;
+    chartctrl_Customer: TdxChartControl;
+    chartctrl_CustomerChart: TdxChartSimpleDiagram;
+    chartctrl_CustomerSeries: TdxChartSimpleSeries;
+    ts_Detail: TcxTabSheet;
+    cxGrid2: TcxGrid;
+    cxGrid2DBTableView1: TcxGridDBTableView;
+    cxGrid2DBTableView1ID: TcxGridDBColumn;
+    cxGrid2DBTableView1Epic: TcxGridDBColumn;
+    cxGrid2DBTableView1Ticket_Nr: TcxGridDBColumn;
+    cxGrid2DBTableView1Betreff: TcxGridDBColumn;
+    cxGrid2DBTableView1Nr: TcxGridDBColumn;
+    cxGrid2DBTableView1ID_tickets_priority: TcxGridDBColumn;
+    cxGrid2DBTableView1Stichwort: TcxGridDBColumn;
+    cxGrid2DBTableView1Status: TcxGridDBColumn;
+    cxGrid2DBTableView1Komponenten: TcxGridDBColumn;
+    cxGrid2DBTableView1Type: TcxGridDBColumn;
+    cxGrid2DBTableView1FixVersion: TcxGridDBColumn;
+    cxGrid2DBTableView1Beschreibung: TcxGridDBColumn;
+    cxGrid2DBTableView1Sprint: TcxGridDBColumn;
+    cxGrid2DBTableView1Assignee: TcxGridDBColumn;
+    cxGrid2DBTableView1Reporter: TcxGridDBColumn;
+    cxGrid2DBTableView1Tester: TcxGridDBColumn;
+    cxGrid2DBTableView1Tester2: TcxGridDBColumn;
+    cxGrid2DBTableView1Melder: TcxGridDBColumn;
+    cxGrid2DBTableView1UHD: TcxGridDBColumn;
+    cxGrid2DBTableView1Land: TcxGridDBColumn;
+    cxGrid2DBTableView1KDNR: TcxGridDBColumn;
+    cxGrid2DBTableView1BetrifftVerison: TcxGridDBColumn;
+    cxGrid2Level1: TcxGridLevel;
+    cxSplitter2: TcxSplitter;
     dxLayoutControl1: TdxLayoutControl;
-    edt_Stichwort: TcxDBTextEdit;
-    dt: TcxDBTextEdit;
-    lucmbbx_Prio: TcxDBLookupComboBox;
+    cxDBImageComboBox1: TcxDBImageComboBox;
+    cxDBTextEdit2: TcxDBTextEdit;
+    cxDBTextEdit8: TcxDBTextEdit;
+    cxDBTextEdit9: TcxDBTextEdit;
+    cxDBTextEdit10: TcxDBTextEdit;
+    cxRichEdit2: TcxRichEdit;
+    cxDBTextEdit3: TcxDBTextEdit;
+    cxDBTextEdit1: TcxDBTextEdit;
+    cxDBTextEdit5: TcxDBTextEdit;
+    cxDBTextEdit7: TcxDBTextEdit;
+    cxDBTextEdit11: TcxDBTextEdit;
+    cxDBTextEdit12: TcxDBTextEdit;
+    cxDBTextEdit13: TcxDBTextEdit;
+    cxDBTextEdit14: TcxDBTextEdit;
+    cxDBTextEdit15: TcxDBTextEdit;
+    cxDBTextEdit16: TcxDBTextEdit;
+    cxDBTextEdit17: TcxDBTextEdit;
     dxLayoutControl1Group_Root: TdxLayoutGroup;
     dxLayoutGroup1: TdxLayoutGroup;
     dxLayoutGroup3: TdxLayoutGroup;
-    dxLayoutGroup5: TdxLayoutGroup;
+    grpbx_Ticketsges: TdxLayoutGroup;
     dxLayoutItem2: TdxLayoutItem;
     dxLayoutItem3: TdxLayoutItem;
     dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutItem6: TdxLayoutItem;
+    dxLayoutItem7: TdxLayoutItem;
+    dxLayoutItem8: TdxLayoutItem;
+    dxLayoutItem9: TdxLayoutItem;
+    dxLayoutGroup4: TdxLayoutGroup;
     dxLayoutAutoCreatedGroup1: TdxLayoutAutoCreatedGroup;
-    dxLayoutItem4: TdxLayoutItem;
     dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutItem10: TdxLayoutItem;
+    dxLayoutItem11: TdxLayoutItem;
+    dxLayoutItem12: TdxLayoutItem;
+    dxLayoutItem13: TdxLayoutItem;
+    dxLayoutItem14: TdxLayoutItem;
+    dxLayoutItem15: TdxLayoutItem;
+    dxLayoutItem16: TdxLayoutItem;
+    dxLayoutItem17: TdxLayoutItem;
+    dxLayoutItem18: TdxLayoutItem;
+    dxLayoutItem19: TdxLayoutItem;
+    brmgr_KalendarBar2: TdxBar;
+    btn_MinMaxBrowserGes: TdxBarLargeButton;
+    dxBarLargeButton2: TdxBarLargeButton;
+    pc_jiraDetails: TcxPageControl;
+    ts_ID: TcxTabSheet;
+    ts_PCM: TcxTabSheet;
+    dxBarDockControl4: TdxBarDockControl;
+    btn_Board_ges: TdxBarLargeButton;
+    brmgr_KalendarBar3: TdxBar;
+    btn_ReadTickets_Priv: TdxBarLargeButton;
+    pc_Jirapriv: TcxPageControl;
+    cxTabSheet3: TcxTabSheet;
+    pnl_BrowserJiraPriv: TcxGroupBox;
+    dxBarDockControl5: TdxBarDockControl;
+    cxTabSheet4: TcxTabSheet;
+    cxComboBox2: TcxComboBox;
+    dxChartControl1: TdxChartControl;
+    dxChartSimpleDiagram1: TdxChartSimpleDiagram;
+    dxChartSimpleSeries1: TdxChartSimpleSeries;
+    cxTabSheet5: TcxTabSheet;
+    cxGrid3: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridDBColumn1: TcxGridDBColumn;
+    cxGridDBColumn2: TcxGridDBColumn;
+    cxGridDBColumn3: TcxGridDBColumn;
+    cxGridDBColumn4: TcxGridDBColumn;
+    cxGridDBColumn5: TcxGridDBColumn;
+    cxGridDBColumn6: TcxGridDBColumn;
+    cxGridDBColumn7: TcxGridDBColumn;
+    cxGridDBColumn8: TcxGridDBColumn;
+    cxGridDBColumn10: TcxGridDBColumn;
+    cxGridDBColumn11: TcxGridDBColumn;
+    cxGridDBColumn12: TcxGridDBColumn;
+    cxGridDBColumn13: TcxGridDBColumn;
+    cxGridDBColumn14: TcxGridDBColumn;
+    cxGridDBColumn21: TcxGridDBColumn;
+    cxGridLevel1: TcxGridLevel;
+    cxSplitter1: TcxSplitter;
+    dxLayoutControl2: TdxLayoutControl;
+    cxDBImageComboBox2: TcxDBImageComboBox;
+    cxDBTextEdit18: TcxDBTextEdit;
+    cxDBTextEdit19: TcxDBTextEdit;
+    cxDBTextEdit21: TcxDBTextEdit;
+    cxRichEdit1: TcxRichEdit;
+    cxDBTextEdit22: TcxDBTextEdit;
+    cxDBTextEdit23: TcxDBTextEdit;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutGroup6: TdxLayoutGroup;
+    dxLayoutGroup7: TdxLayoutGroup;
+    grpbx_Ticketspriv: TdxLayoutGroup;
+    dxLayoutItem20: TdxLayoutItem;
+    dxLayoutItem21: TdxLayoutItem;
+    dxLayoutGroup9: TdxLayoutGroup;
+    dxLayoutItem22: TdxLayoutItem;
+    dxLayoutItem23: TdxLayoutItem;
+    dxLayoutItem24: TdxLayoutItem;
+    dxLayoutAutoCreatedGroup2: TdxLayoutAutoCreatedGroup;
+    dxLayoutItem27: TdxLayoutItem;
+    dxLayoutItem28: TdxLayoutItem;
+    dxLayoutItem30: TdxLayoutItem;
+    dxLayoutItem32: TdxLayoutItem;
+    btn_Board_priv: TdxBarLargeButton;
+    brmgr_KalendarBar4: TdxBar;
+    btn_MinMaxBrowserPriv: TdxBarLargeButton;
+    qry_Tickets_priv: TFDQuery;
+    ds_Tickets_priv: TDataSource;
+    cxGridDBTableView1Land: TcxGridDBColumn;
+    cxTabSheet6: TcxTabSheet;
+    cxComboBox3: TcxComboBox;
+    dxChartControl2: TdxChartControl;
+    dxChartSimpleDiagram2: TdxChartSimpleDiagram;
+    dxChartSimpleSeries2: TdxChartSimpleSeries;
     procedure btn_CalNewClick(Sender: TObject);
-    procedure btn_CalTagClick(Sender: TObject);
     procedure btn_CalArbeitswocheClick(Sender: TObject);
     procedure btn_CalWocheClick(Sender: TObject);
     procedure btn_CalMonatClick(Sender: TObject);
@@ -435,16 +517,16 @@ type
     procedure FormShow(Sender: TObject);
     procedure sched_KalenderGetEventEditProperties(Sender: TObject;  AEvent: TcxSchedulerControlEvent; var AProperties: TcxCustomEditProperties);
     procedure btn_CalAgendaClick(Sender: TObject);
-    procedure btnGoToJiraClick(Sender: TObject);
-    procedure cxButtonEdit1PropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
-    procedure edSucheEnter(Sender: TObject);
-    procedure edSucheExit(Sender: TObject);
-    procedure edSuchePropertiesChange(Sender: TObject);
+    procedure btn_GoToJiraClick(Sender: TObject);
+    procedure edt_SuchePropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+    procedure edt_SucheEnter(Sender: TObject);
+    procedure edt_SucheExit(Sender: TObject);
+    procedure edt_SuchePropertiesChange(Sender: TObject);
     procedure FormResize(Sender: TObject);
-    procedure cxTreeList1Click(Sender: TObject);
+    procedure trlst_AufgabenClick(Sender: TObject);
     procedure pmmbtn_CalNewClick(Sender: TObject);
     procedure btn_NewTaskClick(Sender: TObject);
-    procedure dxBarLargeButton12Click(Sender: TObject);
+    procedure btn_taskMinMaxClick(Sender: TObject);
     procedure tvAufCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
     procedure tvAufDblClick(Sender: TObject);
     procedure btn_JobChangeClick(Sender: TObject);
@@ -461,26 +543,40 @@ type
     procedure pmmbtn_AgendaClick(Sender: TObject);
     procedure btn_CalImportOutlookClick(Sender: TObject);
     procedure pmmbtn_JobsImportOutlookClick(Sender: TObject);
-    function GetRecurrenceInfoOutlook(AArt,AInterval,ADayOfWeeks,AAnzahlWiederholung:integer;AWiederholungStart,AWiederholungEnde,AInstanz:string): string;
     procedure btn_CalRefreshClick(Sender: TObject);
     procedure btn_CalExporttoOutlookClick(Sender: TObject);
     procedure pmmbtn_JobsExportOutlookClick(Sender: TObject);
-    procedure cxButton2Click(Sender: TObject);
-    procedure tvAufFocusedRecordChanged(Sender: TcxCustomGridTableView;
-      APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord;
-      ANewItemRecordFocusingChanged: Boolean);
-    procedure cxButton1Click(Sender: TObject);
+    procedure btn_AttachementOpenClick(Sender: TObject);
+    procedure tvAufFocusedRecordChanged(Sender: TcxCustomGridTableView; APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord; ANewItemRecordFocusingChanged: Boolean);
+    procedure btn_AttachementSaveClick(Sender: TObject);
     procedure qWF_Nachrichten_AnhaengeAfterScroll(DataSet: TDataSet);
-    procedure tvNachrichtenFocusedRecordChanged(Sender: TcxCustomGridTableView;
-      APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord;
-      ANewItemRecordFocusingChanged: Boolean);
+    procedure tvNachrichtenFocusedRecordChanged(Sender: TcxCustomGridTableView; APrevFocusedRecord, AFocusedRecord: TcxCustomGridRecord; ANewItemRecordFocusingChanged: Boolean);
     procedure FormDestroy(Sender: TObject);
     procedure FormActivate(Sender: TObject);
-    procedure btn_ReadTicketsClick(Sender: TObject);
-    procedure qry_TicketsAfterScroll(DataSet: TDataSet);
+    procedure btn_ReadTickets_GesClick(Sender: TObject);
+    procedure qry_Tickets_gesAfterScroll(DataSet: TDataSet);
+    procedure btn_CalTagClick(Sender: TObject);
+    procedure btn_MinMaxBrowserGesClick(Sender: TObject);
+    procedure btn_Board_gesClick(Sender: TObject);
+    procedure pc_JiraGesChange(Sender: TObject);
+    procedure pc_jiraDetailsClick(Sender: TObject);
+    procedure btn_Board_privClick(Sender: TObject);
+    procedure btn_ReadTickets_PrivClick(Sender: TObject);
+    procedure btn_MinMaxBrowserPrivClick(Sender: TObject);
+    procedure qry_Tickets_privAfterScroll(DataSet: TDataSet);
+    procedure pc_JiraprivChange(Sender: TObject);
+    procedure cxGrid2DBTableView1CellDblClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
+    procedure cxGridDBTableView1CellDblClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
   private
     { Private-Deklarationen }
-//    rep : TDmReports;
+
+    AURL: String;
+    FWebBrowser: TAbstractWebBrowser;
+    sTicketNr_Ges: String;
     FKalenderDateButton : Boolean;
     defaultLabelColor: integer;
     defaultFontColor: integer;
@@ -488,16 +584,10 @@ type
     sColordef,sFontcolordef: string;
     SaveGridViewAufgaben,SaveGridViewNachrichten,
     SaveGridViewStundenplan,SaveGridViewStundenplanDetail: TSavedGridView;
+    procedure InitializeBrowser(AParent: TWinControl);
     procedure SetGridViews(Show:boolean);
     procedure OpenEvent(ID_kalender: Integer; bReminder: Boolean);
-    procedure AddOutlookEvents(AuserPriv,AuserGes: string);
-    procedure AddOutlookToDo(AuserPriv,AuserGes: string);
-    procedure GetOutlookEvents(AUser: string);
-    procedure GetOutlookToDo(AUser: string);
-//    procedure AddAndGet;
     procedure NachrichtenAnhaengeLaden(ID_IC_Nachrichten: Integer);
-    procedure OpenAttachement;
-    procedure saveAttachement;
     function GetAttachmentFilename(s: string): string;
   public
     { Public-Deklarationen }
@@ -508,32 +598,25 @@ type
     FSearchType : TSearchType;
     FResult: boolEan;
     function SearchTypeToStr(ASearchType : TSearchType) : String;
-    function copyEvent : boolean;
     function GetRecurrence(var Rule, Start:  string) : Ansistring;
     function cxMyGetRecurrenceDescriptionString(ARecurrenceInfo: TcxSchedulerEventRecurrenceInfo; AFullDescription: Boolean = False): string;
     procedure SearchBoxSetStyle();
-    procedure pasteEvent(iEventId : integer);
-    procedure OpenData;
-    procedure InitializeRights;
     procedure SetButtons;
     procedure ReadICSAutomatic;
     procedure WriteICSAutomatic;
-    procedure RefreshCalender;
-    procedure SearchDoSearch(ASearchString : String);
     procedure RefreshTerminundAUfgaben;
-
-    function API_Auth_Jira(AMethod: TRESTRequestMethod = rmPost): TJSONObject;
-    function RestRequest(ABaseUrl: String; ARestclient: TRestClient; ARequestBody: TJSONObject; AResource: String; AGETPOST: TRESTRequestMethod = rmPost): TJSONObject;
-    procedure WriteInDB(ATicketInt: Integer;ATicket,AStatus,ABetreff,AType,AEpic,ASprint,APrio,AFixVersion,AApp,ALabel,Adesc,AAssignee: String);
+    procedure Loadjirastatus;
   end;
-
 
 var
   frm_Calendar: Tfrm_Calendar;
 
 const
-  user = 'J.Henske@id-berlin.de';
-  password = 'ATATT3xFfGF0aEJ1a-nyUpNVocMIqcMQtlP2mn0HbR_mpaJ5OCy5BYgmIiSYUdLlHgGcXVm7N8dSR8Jqoa06cqRRTOfpwdy2VcX4qgyQkgmD-_tsLmKNv3TjZ92azgm2XC4IeitOjnfQY6Ijz4vc7kDk0iG5T-rb8vWPOcIr2Ea1SROOgc1TnIw=8AA4CA05';
+  sIDUser = 'J.Henske@id-berlin.de';
+  sIDPassword = 'ATATT3xFfGF0aEJ1a-nyUpNVocMIqcMQtlP2mn0HbR_mpaJ5OCy5BYgmIiSYUdLlHgGcXVm7N8dSR8Jqoa06cqRRTOfpwdy2VcX4qgyQkgmD-_tsLmKNv3TjZ92azgm2XC4IeitOjnfQY6Ijz4vc7kDk0iG5T-rb8vWPOcIr2Ea1SROOgc1TnIw=8AA4CA05';
+  sPCMUser = 'Jens.Henske@outlook.com';
+  sPCMPassword = 'ATATT3xFfGF07HMGLsAvw7ShQHo_OHJYzLDS5lGKBGqiKF-LOamh0ZCt_jdYHDojFwIkZ47i5nOqliH7zl8vTrPL5BXZKF3yxjGIFSYqlZ3rrW_7fidxWtv_RxGvs9_G7D75BDdHBr7eJ00v_im-4ec_tEcLS5On_HqJ7kgiNtkw-QFow1j9x9c=F1F05D50';
+
 
 implementation
 
@@ -546,1109 +629,13 @@ uses  PCM.Main,
       PCM.Functions.Synch.Wait,
       PCMManager.Helper.Calendar.Ical,
       PCM.Data,
-      PCM.Strings;
+      PCM.Strings,
+      uwvLoader;
 
+{$Region Hilfsfunktionen}
 ////////////////////////////////////////////////////////////////////////////////
-// TAB Jira                                                                   //
+// Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
-function Tfrm_Calendar.API_Auth_Jira(AMethod: TRESTRequestMethod = rmPost): TJSONObject;
-var
-  RestRequest: TRESTRequest;
-  joResult: TJSONObject;
-  joLogin: TJSONObject;
-begin
-  RESTClient_Jira.BaseURL := 'https://id-berlin.atlassian.net/rest/auth/1/session';
-  HTTPAuth_Jira.Password := password;
-  httpAuth_Jira.Username := user;
-  joLogin := TJSONObject.Create;
-  joLogin.AddPair(TJSONPair.Create('username', user));
-  joLogin.AddPair(TJSONPair.Create('password', password));
-  RestRequest := TRESTRequest.Create(nil);
-  try
-    RestRequest.Client := RESTClient_Jira;
-    RestRequest.Method := rmGet;
-    RestRequest.Timeout := 600000;
-    if joLogin <> nil then
-    begin
-      RestRequest.Body.Add(joLogin);
-    end;
-    RestRequest.Execute;
-    joResult := TJSONObject.Create;
-    result := TJSONObject.ParseJSONValue(RestRequest.Response.JSONText) as TJSONObject;
-  finally
-    RestRequest.Free;
-  end;
-end;
-function Tfrm_Calendar.RestRequest(ABaseUrl: String; ArestClient: TRestClient; ARequestBody: TJSONObject; AResource: String; AGETPOST: TRESTRequestMethod = rmPost): TJSONObject;
-var
-  RestRequest: TRESTRequest;
-  sTest: String;
-  joResult: TJSONObject;
-begin
-  ArestClient.BaseURL := ABaseURl;
-  RestRequest := TRESTRequest.Create(nil);
-  try
-    RestRequest.Client := ArestClient;
-    RestRequest.Method := AGETPOST;
-    RestRequest.Resource := AResource;
-    RestRequest.Timeout := 600000;
-    if ARequestBody <> nil then
-    begin
-      RestRequest.Body.Add(ARequestBody);
-    end;
-    RestRequest.Execute;
-    joResult := TJSONObject.ParseJSONValue(RestRequest.Response.JSONText) as TJSONObject;
-    sTest:= joResult.ToString;
-    Result := joResult;
-  finally
-    RestRequest.Free;
-  end;
-end;
-procedure Tfrm_Calendar.WriteInDB(ATicketInt: Integer;ATicket,AStatus,ABetreff,AType,AEpic,ASprint,APrio,AFixVersion,AApp,ALabel,Adesc,AAssignee: String);
-var
-  iID,iCounter,iCounterEpic,iIDEpic,iIDPrio: Integer;
-begin
-  if (AEpic <> '') and (AEpic <> 'kein Epic') then
-  begin
-    dm_PCM.qry_Work.SQL.Text:= 'Select Count(*) as Anzahl From  manager_tickets Where Ticket_Nr = :Ticket_Nr';
-    dm_PCM.qry_Work.ParamByName('Ticket_Nr').asString:= AEpic;
-    dm_PCM.qry_Work.open;
-    iCounterEpic:= dm_PCM.qry_Work.FieldByName('Anzahl').AsInteger;
-    dm_PCM.qry_Work.Close;
-    if iCounterEpic > 0 then
-    begin
-      dm_PCM.qry_Work.SQL.Text:= 'Select ID From  manager_tickets Where Ticket_Nr = :Ticket_Nr';
-      dm_PCM.qry_Work.ParamByName('Ticket_Nr').asString:= AEpic;
-      dm_PCM.qry_Work.open;
-      iIDEpic:= dm_PCM.qry_Work.FieldByName('ID').AsInteger;
-      dm_PCM.qry_Work.Close;
-    end
-    else begin
-      iIDEpic:= 0;
-    end;
-  end
-  else begin
-    iIDEpic:= 0;
-  end;
-  dm_PCM.qry_Work.SQL.Text:= 'Select ID From  manager_tickets_priority Where Bezeichnung = :Bezeichnung';
-  dm_PCM.qry_Work.ParamByName('Bezeichnung').asString:= APrio;
-  dm_PCM.qry_Work.open;
-  iIDPrio:= dm_PCM.qry_Work.FieldByName('ID').AsInteger;
-  dm_PCM.qry_Work.Close;
-
-
-
-  dm_PCM.qry_Work.SQL.Text:= 'Select Count(*) as Anzahl From manager_tickets Where Nr = :Ticket_Nr';
-  dm_PCM.qry_Work.ParamByName('Ticket_Nr').AsInteger:= ATicketInt;
-  dm_PCM.qry_Work.open;
-  iCounter:= dm_PCM.qry_Work.FieldByName('Anzahl').AsInteger;
-  dm_PCM.qry_Work.Close;
-  if iCounter = 0 then
-  begin
-    dm_PCM.qry_Work.SQL.Text:= 'Insert into manager_tickets ' +
-                               ' (Ticket_Nr,Nr,STATUS,ID_tickets_priority,Epic,Board,Betreff,Stichwort,TYPE,App,FixVersion,Beschreibung,ID_Ticket) ' +
-                               'Values' +
-                               ' (:Ticket_Nr,:Nr,:STATUS,:ID_tickets_priority,:Epic,:Board,:Betreff,:Stichwort,:TYPE,:App,:FixVersion,:Beschreibung,:ID_Ticket)';
-    dm_PCM.qry_Work.ParamByName('Ticket_Nr').AsString:= ATicket;
-    dm_PCM.qry_Work.ParamByName('Nr').AsInteger:= ATicketInt;
-    dm_PCM.qry_Work.ParamByName('ID_Ticket').AsInteger:= iIDEpic;
-    dm_PCM.qry_Work.ParamByName('STATUS').AsString:= AStatus;
-    dm_PCM.qry_Work.ParamByName('ID_tickets_priority').asInteger:= iIDPrio;
-    dm_PCM.qry_Work.ParamByName('Epic').AsString:= AEpic;
-    dm_PCM.qry_Work.ParamByName('Betreff').AsString:= ABetreff;
-    dm_PCM.qry_Work.ParamByName('TYPE').AsString:= AType;
-//
-//    dm_PCM.qry_Work.ParamByName('Sprint').AsString:= ASprint;
-//
-    dm_PCM.qry_Work.ParamByName('FixVersion').AsString:= AFixVersion;
-    dm_PCM.qry_Work.ParamByName('App').AsString:= AApp;
-    dm_PCM.qry_Work.ParamByName('Stichwort').AsString:= ALabel;
-    dm_PCM.qry_Work.ParamByName('Beschreibung').AsMemo:= ADesc;
-//    dm_PCM.qry_Work.ParamByName('Zugewiesen').AsString:= AAssignee;
-    dm_PCM.qry_Work.ParamByName('Board').AsString:= 'ID Diacos';
-    dm_PCM.qry_Work.ExecSQL;
-  end
-  else
-  begin
-    dm_PCM.qry_Work.SQL.Text:= 'Select ID From manager_tickets Where Ticket_Nr = :Ticket_Nr';
-    dm_PCM.qry_Work.ParamByName('Ticket_Nr').AsString:= ATicket;
-    dm_PCM.qry_Work.open;
-    iID:= dm_PCM.qry_Work.FieldByName('ID').AsInteger;
-    dm_PCM.qry_Work.Close;
-    dm_PCM.qry_Work.SQL.Text:= 'Update manager_tickets ' +
-    ' Set Ticket_Nr = :Ticket_Nr,' +
-    'Nr = :Nr,'  +
-    'ID_Ticket = :ID_Ticket, ' +
-    'STATUS = :STATUS,' +
-    'Betreff = :Betreff,' +
-    'Epic = :Epic, ' +
-    'ID_tickets_priority = :ID_tickets_priority, ' +
-    'TYPE = :TYPE, ' +
-    //    'Sprint = :Sprint, ' +
-
-    'FixVersion = :FixVersion, ' +
-    'App = :App, ' +
-    'Stichwort = :Stichwort, ' +
-    'Beschreibung = :Beschreibung, ' +
-//    'Zugewiesen = :Zugewiesen, ' +
-    'Board = :Board ' +
-    'Where ID = :ID';
-    dm_PCM.qry_Work.ParamByName('Ticket_Nr').AsString:= ATicket;
-    dm_PCM.qry_Work.ParamByName('Nr').AsInteger:= ATicketInt;
-    dm_PCM.qry_Work.ParamByName('ID_Ticket').AsInteger:= iIDEpic;
-    dm_PCM.qry_Work.ParamByName('STATUS').AsString:= AStatus;
-    dm_PCM.qry_Work.ParamByName('ID_tickets_priority').asInteger:= iIDPrio;
-    dm_PCM.qry_Work.ParamByName('Epic').AsString:= AEpic;
-    dm_PCM.qry_Work.ParamByName('Betreff').AsString:= ABetreff;
-    dm_PCM.qry_Work.ParamByName('TYPE').AsString:= AType;
-//
-//    dm_PCM.qry_Work.ParamByName('Sprint').AsString:= ASprint;
-//
-    dm_PCM.qry_Work.ParamByName('FixVersion').AsString:= AFixVersion;
-    dm_PCM.qry_Work.ParamByName('App').AsString:= AApp;
-    dm_PCM.qry_Work.ParamByName('Stichwort').AsString:= ALabel;
-    dm_PCM.qry_Work.ParamByName('Beschreibung').AsMemo:= ADesc;
-//    dm_PCM.qry_Work.ParamByName('Zugewiesen').AsString:= AAssignee;
-    dm_PCM.qry_Work.ParamByName('Board').AsString:= 'ID Diacos';
-    dm_PCM.qry_Work.ParamByName('ID').AsInteger:= iID;
-    dm_PCM.qry_Work.ExecSQL;
-  end;
-  qry_Tickets.refresh;
-end;
-
-procedure Tfrm_Calendar.btn_ReadTicketsClick(Sender: TObject);
-var
-  joBody, joResult: TJSONObject;
-  jArray: TJSONArray;
-  joFields: TJSONObject;
-  joCustom4, joCustom3,joCustom2,joCustom1,joFixVersion,jopriority,josprint,joStatus,joIssuetype, joTemp,joParent: TJSONObject;
-  jaCustom2, jaCustom1,  jaCustom: TJSONArray;
-  sDesc,sAssi,sname,sApp,sFixVersion,sPrio, sEpic,sType, sBetreff,sStatus, sSprint, sTicket, sProcessNummer, sTemp, s,sJob: String;
-  iProcessNummer, iJob: Integer;
-  i,i1, iTicket: integer;
-  sJText: string;
-begin
-//  qry_Tickets.close;
-  Screen.Cursor := crHourGlass;
-  API_Auth_Jira;
-  joFields:= nil;
-  joCustom4:= nil;
-  joCustom3:= nil;
-  joCustom2:= nil;
-  joCustom1:= nil;
-  joFixVersion:= nil;
-  jopriority:= nil;
-  josprint:= nil;
-  joStatus:= nil;
-  joIssuetype:= nil;
-  joTemp:= nil;
-  joParent:= nil;
-  Application.ProcessMessages;
-  sJText:='{"jql": "project IN (' + QuotedStr('ID Diacos') + ') and status in (1,3,4,5,10015,10044,10003) and assignee = ' + QuotedStr('j.henske@id-berlin.de') + ' ORDER BY issue aSC", "startAt": 0, "maxResults": 100 }';
-  joBody := TJSONObject.ParseJSONValue(sJText) as TJSONObject;
-  joResult := RestRequest('https://id-berlin.atlassian.net/rest',RESTClient_jira,joBody, '/api/2/search');
-  joResult.TryGetValue<TJSONArray>('issues', jArray);
-
-    for i := 0 to jArray.Size - 1 do
-    begin
-      joResult := TJSONObject.ParseJSONValue(jArray.Get(i).ToString) as TJSONObject;
-      sBetreff:= '';
-      sApp:= '';
-      sFixVersion:= '';
-
-
-
-
-      sStatus:= '';
-      sType:= '';
-
-
-
-
-
-      sDesc:= '';
-      sAssi:= '';
-      if (joResult.GetValue('key').Null) OR (not joResult.TryGetValue<String>('key', sTicket)) then
-        sTicket:= '';
-      iTicket:= StrToInt(StringReplace(sTicket,'DCS-','',[rfReplaceAll, rfIgnoreCase]));
-
-      Application.ProcessMessages;
-      joResult.TryGetValue<TJSONObject>('fields', joFields);
-      joFields.TryGetValue<String>('summary', sBetreff);
-
-      Application.ProcessMessages;
-      stbr_main.Panels[1].Text:= 'Tickets ' + IntToStr(i + 1) + ' von ' + IntToStr(jArray.Size) + ' wird eingelesen';
-      stbr_main.Panels[2].Text:= 'aktuelles Tickets: ' + sTicket + ' - ' + sBetreff;
-
-      Application.ProcessMessages;
-      joFields.TryGetValue<TJSONObject>('status', joStatus);
-      joStatus.TryGetValue<String>('name', sStatus);
-
-      Application.ProcessMessages;
-      joFields.TryGetValue<TJSONObject>('issuetype',joIssuetype);
-      joIssuetype.TryGetValue<String>('name', sType);
-
-      joFields.TryGetValue<TJSONObject>('parent',joParent);
-
-      if joParent <> nil then
-        joParent.TryGetValue<String>('key', sEpic)
-      else
-        sEpic:= 'kein Epic';
-
-      if sType = 'Epic' then
-        sEpic:= 'Ohne';
-
-      joFields.TryGetValue<TJSONObject>('sprint',josprint);
-      if joSprint <> nil  then
-        josprint.TryGetValue<String>('name', sSprint)
-      else
-        sSprint:= '';
-
-      joFields.TryGetValue<TJSONObject>('priority',jopriority);
-      if jopriority <> nil  then
-        jopriority.TryGetValue<String>('name', sPrio)
-      else
-        sPrio:= '';
-
-      try
-        joFields.TryGetValue<TJSonArray>('fixVersions',jaCustom);
-        for i1 := 0 to jaCustom.Size - 1 do
-        begin
-          joFixVersion := TJSONObject.ParseJSONValue(jaCustom.Get(i1).ToString) as TJSONObject;
-          joFixVersion.TryGetValue<String>('name',sFixVersion);
-        end;
-      except
-      end;
-      try
-        joFields.TryGetValue<TJSonArray>('labels',jaCustom1);
-        sname:= '';
-        for i1 := 0 to jaCustom1.Size - 1 do
-        begin
-          sname:= StringReplace(jaCustom1.Get(i1).ToString,'"','',[rfreplaceall]);
-        end;
-      except
-      end;
-      try
-        joFields.TryGetValue<String>('description', sDesc);
-      except
-      end;
-      try
-
-        joFields.TryGetValue<TJSonArray>('components',jaCustom);
-        for i1 := 0 to jaCustom.Size - 1 do
-        begin
-          joCustom4 := TJSONObject.ParseJSONValue(jaCustom.Get(i1).ToString) as TJSONObject;
-          joCustom4.TryGetValue<String>('name',sApp);
-        end;
-
-        joFields.TryGetValue<TJSONObject>('assignee',joCustom3);
-        joCustom3.TryGetValue<String>('displayName', sAssi);
-      except
-      end;
-//      sDesc:= StringReplace(sDesc,#$A#$A,'',[rfReplaceall]);
-//      sDesc:= StringReplace(sDesc,'{panel:bgColor=#ffebe6}'+#$A,'',[rfReplaceall]);
-//      sDesc:= StringReplace(sDesc,'{panel}{panel:bgColor=#fffae6}','',[rfReplaceall]);
-//      sDesc:= StringReplace(sDesc,'{panel}{panel:bgColor=#deebff}','',[rfReplaceall]);
-//      sDesc:= StringReplace(sDesc,'{panel}{panel:bgColor=#eae6ff}','',[rfReplaceall]);
-//      sDesc:= StringReplace(sDesc,'{panel}{panel:bgColor=#e3fcef}','',[rfReplaceall]);
-//      sDesc:= StringReplace(sDesc,'Dev:','Dev:'+#$A,[rfReplaceall]);
-//      sDesc:= StringReplace(sDesc,'Abhängigkeiten:','Abhängigkeiten:'+#$A,[rfReplaceall]);
-//      sDesc:= StringReplace(sDesc,'QM:','QM:'+#$A,[rfReplaceall]);
-//      sDesc:= StringReplace(sDesc,'Notiz:','Notiz:'+#$A,[rfReplaceall]);
-//      sDesc:= StringReplace(sDesc,'Ready:','Ready:'+#$A,[rfReplaceall]);
-//      sDesc:= StringReplace(sDesc,'{panel}','',[rfReplaceall]);
-      WriteInDB(iTicket,sTicket,sStatus,sBetreff,sType,sEpic,sSprint,sPrio,sFixVersion,sApp,sName,sdesc,Sassi);
-    end;
-
-  Screen.Cursor := crDefault;
-end;
-procedure Tfrm_Calendar.qry_TicketsAfterScroll(DataSet: TDataSet);
-begin
-  pnl_Ticket.Caption:= 'Projekte / ' + qry_Tickets.FieldByName('Epic').asString + ' / ' + qry_Tickets.FieldByName('Ticket_nr').asString
-end;
-
-function Tfrm_Calendar.GetRecurrenceInfoOutlook(AArt,AInterval,ADayOfWeeks,AAnzahlWiederholung:integer;AWiederholungStart,AWiederholungEnde,AInstanz:string): string;
-var
-  iTage: integer;
-  idow: integer;
-  arrDays: TPCMDays;
-  iJahr,iMonat,iTag,iStunde,iMinute,iSekunde,iMSekunde: Word;
-  dtWiederholungEnde: TDateTime;
-begin
-  Result:= '';
-  dtWiederholungEnde:= StrToDateTime(AWiederholungEnde);
-  DecodeDate(dtWiederholungEnde,iJahr,iMonat,iTag);
-  DecodeTime(dtWiederholungEnde,iStunde,iMinute,iSekunde,iMSekunde);
-  if iStunde = 0 then
-    iStunde := 23;
-  if iMinute = 0 then
-    iMinute := 59;
-  if iSekunde = 0 then
-    iSekunde:= 59;
-  case AArt of
-  0:
-    begin
-      Result:= 'RRULE:FREQ=DAILY';
-      // Prüfen auf Interval
-      if AInterval > 1 then
-        Result:= Result + ';INTERVAL=' + IntToStr(AInterval);
-      // Prüfen auf Ende
-      if AWiederholungEnde <> '31.12.4500 23:59:00' then
-        Result:= Result + ';COUNT=' + IntToStr(AAnzahlWiederholung) + ';UNTIL=' +  IntToStr(iJahr) + IntToStr(iMonat) + IntToStr(iTag) + 'T' + IntToStr(iStunde) + IntToStr(iMinute) + IntToStr(iSekunde) + 'Z';
-    end;
-  1:
-    begin
-      idow:= ADayOfWeeks;
-      if ADayOfWeeks = 62 then
-      begin
-        ADayOfWeeks:= 61;
-
-      end;
-      if ADayOfWeeks = 62 then
-      begin
-        Result:= 'FREQ=DAILY;INTERVAL=1';
-      end
-      else begin
-        SetLength(arrDays,Length(arrDays) + 1);
-        Result:= 'FREQ=WEEKLY';
-        if AInterval > 1 then
-          Result:= Result + ';INTERVAL=' + IntToStr(AInterval);
-        // Prüfen auf Ende
-        if AWiederholungEnde <> '31.12.4500 23:59:00' then
-          Result:= Result + ';COUNT=' + IntToStr(AAnzahlWiederholung) + ';UNTIL=' +  IntToStr(iJahr) + IntToStr(iMonat) + IntToStr(iTag) + 'T' + IntToStr(iStunde) + IntToStr(iMinute) + IntToStr(iSekunde) + 'Z';
-
-        Result:= Result + ';BYDAY=';
-        ADayOfWeeks:= idow;
-        // Prüfung auf Samstag
-        if ADayOfWeeks>= 64 then
-        begin
-          iTage := ADayOfWeeks - 64;
-          arrDays[High(arrDays)].DaySA:= 'SA';
-        end
-        else
-        begin
-          itage:= ADayOfWeeks;
-          arrDays[High(arrDays)].DaySA:= '';
-        end;
-        // Prüfung auf Freitag
-        if itage >=32 then
-        begin
-          itage := itage - 32;
-          arrDays[High(arrDays)].DayFR:= 'FR';
-        end
-        else
-        begin
-          arrDays[High(arrDays)].DayFR:= '';
-        end;
-        // Prüfung auf Donnerstag
-        if itage >=16 then
-        begin
-          itage := itage - 16;
-          arrDays[High(arrDays)].DayDO:= 'TH';
-        end
-        else
-        begin
-          arrDays[High(arrDays)].DayDO:= '';
-        end;
-        // Prüfung auf Mittwoch
-        if itage >=8 then
-        begin
-          itage := itage - 8;
-          arrDays[High(arrDays)].DayMI:= 'WE';
-        end
-        else
-        begin
-          arrDays[High(arrDays)].DayMI:= '';
-        end;
-        // Prüfung auf Dienstag
-        if itage >= 4 then
-        begin
-          itage := itage - 4;
-          arrDays[High(arrDays)].DayDI:= 'TU';
-        end
-        else
-        begin
-          arrDays[High(arrDays)].DayDI:= '';
-        end;
-        // Prüfung auf Montag
-        if itage >= 2 then
-        begin
-          itage := itage - 2;
-          arrDays[High(arrDays)].DayMO:= 'MO';
-        end
-        else
-        begin
-//                itage:= ADayOfWeeks;
-          arrDays[High(arrDays)].DayMO:= '';
-        end;
-        // Prüfung auf Sonntag
-        if itage >= 1 then
-        begin
-//          itage := itage - 1;
-          arrDays[High(arrDays)].DaySO:= 'SU';
-        end
-        else
-        begin
-//                itage:= ADayOfWeeks;
-          arrDays[High(arrDays)].DaySO:= '';
-        end;
-        if arrDays[High(arrDays)].DaySO <> '' then
-          Result:= Result +'SU,';
-        if arrDays[High(arrDays)].DayMO <> '' then
-          Result:= Result +'MO,';
-        if arrDays[High(arrDays)].DayDI <> '' then
-          Result:= Result +'TU,';
-        if arrDays[High(arrDays)].DayMI <> '' then
-          Result:= Result +'WE,';
-        if arrDays[High(arrDays)].DayDO <> '' then
-          Result:= Result +'TH,';
-        if arrDays[High(arrDays)].DayFR <> '' then
-          Result:= Result +'FR,';
-        if arrDays[High(arrDays)].DaySA <> '' then
-          Result:= Result +'SA,';
-        Result:= Copy(Result,1,Length(Result) -1);
-      end;
-    end;
-  2:
-  begin
-    SetLength(arrDays,Length(arrDays) + 1);
-    Result:= 'FREQ=MONTHLY';
-    if AInterval > 1 then
-      Result:= Result + ';INTERVAL=' + IntToStr(AInterval);
-    // Prüfen auf Ende
-    if AWiederholungEnde <> '31.12.4500 23:59:00' then
-      Result:= Result + ';COUNT=' + IntToStr(AAnzahlWiederholung) + ';UNTIL=' +  IntToStr(iJahr) + IntToStr(iMonat) + IntToStr(iTag) + 'T' + IntToStr(iStunde) + IntToStr(iMinute) + IntToStr(iSekunde) + 'Z';
-    Result:= Result + ';BYMONTHDAY=' + IntToStr(StrToInt(Copy(AWiederholungStart,1,2)));
-  end;
-  3:
-  begin
-    SetLength(arrDays,Length(arrDays) + 1);
-    Result:= 'FREQ=MONTHLY';
-    if AInterval > 1 then
-      Result:= Result + ';INTERVAL=' + IntToStr(AInterval);
-    // Prüfen auf Ende
-    if AWiederholungEnde <> '31.12.4500 23:59:00' then
-      Result:= Result + ';COUNT=' + IntToStr(AAnzahlWiederholung) + ';UNTIL=' +  IntToStr(iJahr) + IntToStr(iMonat) + IntToStr(iTag) + 'T' + IntToStr(iStunde) + IntToStr(iMinute) + IntToStr(iSekunde) + 'Z';
-
-
-    // Prüfung auf Samstag
-    if ADayOfWeeks <>  127 then
-    begin
-      Result:= Result + ';BYDAY=';
-      if ADayOfWeeks>= 64 then
-      begin
-        iTage := ADayOfWeeks - 64;
-        arrDays[High(arrDays)].DaySA:= 'SA';
-      end
-      else
-      begin
-        itage:= ADayOfWeeks;
-        arrDays[High(arrDays)].DaySA:= '';
-      end;
-      // Prüfung auf Freitag
-      if itage >=32 then
-      begin
-        itage := itage - 32;
-        arrDays[High(arrDays)].DayFR:= 'FR';
-      end
-      else
-      begin
-        arrDays[High(arrDays)].DayFR:= '';
-      end;
-      // Prüfung auf Donnerstag
-      if itage >=16 then
-      begin
-        itage := itage - 16;
-        arrDays[High(arrDays)].DayDO:= 'TH';
-      end
-      else
-      begin
-        arrDays[High(arrDays)].DayDO:= '';
-      end;
-      // Prüfung auf Mittwoch
-      if itage >=8 then
-      begin
-        itage := itage - 8;
-        arrDays[High(arrDays)].DayMI:= 'WE';
-      end
-      else
-      begin
-        arrDays[High(arrDays)].DayMI:= '';
-      end;
-      // Prüfung auf Dienstag
-      if itage >= 4 then
-      begin
-        itage := itage - 4;
-        arrDays[High(arrDays)].DayDI:= 'TU';
-      end
-      else
-      begin
-        arrDays[High(arrDays)].DayDI:= '';
-      end;
-      // Prüfung auf Montag
-      if itage >= 2 then
-      begin
-        itage := itage - 2;
-        arrDays[High(arrDays)].DayMO:= 'MO';
-      end
-      else
-      begin
-  //                itage:= ADayOfWeeks;
-        arrDays[High(arrDays)].DayMO:= '';
-      end;
-      // Prüfung auf Sonntag
-      if itage >= 1 then
-      begin
-//        itage := itage - 1;
-        arrDays[High(arrDays)].DaySO:= 'SU';
-      end
-      else
-      begin
-  //                itage:= ADayOfWeeks;
-        arrDays[High(arrDays)].DaySO:= '';
-      end;
-      if arrDays[High(arrDays)].DaySO <> '' then
-        Result:= Result +'SU,';
-      if arrDays[High(arrDays)].DayMO <> '' then
-        Result:= Result +'MO,';
-      if arrDays[High(arrDays)].DayDI <> '' then
-        Result:= Result +'TU,';
-      if arrDays[High(arrDays)].DayMI <> '' then
-        Result:= Result +'WE,';
-      if arrDays[High(arrDays)].DayDO <> '' then
-        Result:= Result +'TH,';
-      if arrDays[High(arrDays)].DayFR <> '' then
-        Result:= Result +'FR,';
-      if arrDays[High(arrDays)].DaySA <> '' then
-        Result:= Result +'SA,';
-      Result:= Copy(Result,1,Length(Result) -1);
-    end;
-    if AInstanz = '5' then
-      Result:= Result + ';BYSETPOS=-1'
-    else
-      Result:= Result + ';BYSETPOS=' + AInstanz;
-  end;
-  5:
-  begin
-    SetLength(arrDays,Length(arrDays) + 1);
-    Result:= 'FREQ=YEARLY';
-//    if AInterval > 1 then
-//      Result:= Result + ';INTERVAL=' + IntToStr(AInterval);
-    // Prüfen auf Ende
-    if AWiederholungEnde <> '31.12.4500 23:59:00' then
-      Result:= Result + ';COUNT=' + IntToStr(AAnzahlWiederholung) + ';UNTIL=' +  IntToStr(iJahr) + IntToStr(iMonat) + IntToStr(iTag) + 'T' + IntToStr(iStunde) + IntToStr(iMinute) + IntToStr(iSekunde) + 'Z';
-    Result:= Result + ';BYMONTH=' + IntToStr(StrToInt(Copy(AWiederholungStart,4,2))) + ';BYMONTHDAY=' + IntToStr(StrToInt(Copy(AWiederholungStart,1,2)));
-  end;
-  6:
-  begin
-    SetLength(arrDays,Length(arrDays) + 1);
-    Result:= 'FREQ=YEARLY';
-//    if AInterval > 1 then
-//      Result:= Result + ';INTERVAL=' + IntToStr(AInterval);
-    // Prüfen auf Ende
-    if AWiederholungEnde <> '31.12.4500 23:59:00' then
-      Result:= Result + ';COUNT=' + IntToStr(AAnzahlWiederholung) + ';UNTIL=' +  IntToStr(iJahr) + IntToStr(iMonat) + IntToStr(iTag) + 'T' + IntToStr(iStunde) + IntToStr(iMinute) + IntToStr(iSekunde) + 'Z';
-    Result:= Result + ';BYMONTH=' + IntToStr(StrToInt(Copy(AWiederholungStart,4,2))) + ';BYMONTHDAY=' + IntToStr(StrToInt(Copy(AWiederholungStart,1,2)));
-  end;
-  end;
-end;
-procedure Tfrm_Calendar.GetOutlookEvents(AUser: string);
-const
-  olFolderCalendars = $00000009;
-var
-  ASnot,asmem: Ansistring;
-  sDateBegin, sDateEnd:string;
-  sTagBegin, sMonatBegin, sJahrBegin: String;
-  sTagEnd, sMonatEnd, sJahrEnd: String;
-
-  sStundeBegin, sMinuteBegin, sSekundeBegin: String;
-  sStundeEnd, sMinuteEnd, sSekundeEnd: String;
-  asBeschreibung: Ansistring;
-  sReminder: string;
-  sReminderDate: string;
-  iReminderMinutes: integer;
-  iOptions:integer;
-  sGanzerTag:string;
-  sErinnerung: string;
-  iErinnerungVor: integer;
-  sFontColor: string;
-  asRecurrence: Ansistring;
-  datTimTermin,dtNow: TDateTime;
-//  strlstICal: TStringList;
-	iID_Kontakt,iEventtpye: integer;
-  swiederholungtext: String;
-  DTSTART,DTEND,DESCRIPTION,location,Rule,SUMMARY: string;
-
-  objOwner,olvarTermine,Termin, olvarNameSpace: olevariant;
-  i,iTag: integer;
-begin
-  dm_PCM.qry_work.sql.text:= 'SELECT Adresse_Firma FROM manager_kalender_optionen Where ID_Benutzer = :ID_Benutzer';
-  dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-  dm_PCM.qry_work.Open;
-  iID_Kontakt:= dm_PCM.qry_work.FieldByName('Adresse_Firma').AsInteger;
-  dm_PCM.qry_work.CLose;
-  asRecurrence:='';
-  sErinnerung:= 'true';
-  iErinnerungVor:= 0;
-  iTag:= 0;
-  try
-    Outlook.connect;
-  except
-    on e: system.sysutils.Exception do
-    begin
-        Writelog(PCM_Logname,rs_PCMManager_Kontakte + rs_PCMManager_KeineVerbindung + e.Message, 2);
-      exit;
-    end;
-  end;
-  Writelog(PCM_Logname, rs_PCMManager_Kontakte + rs_PCMManager_Namespace, 0);
-  try
-    olvarNameSpace := Outlook.GetNameSpace('MAPI');
-  except
-    on e: system.sysutils.Exception do
-    begin
-      Writelog(PCM_Logname,rs_PCMManager_Kontakte + rs_PCMManager_NamespaceErmitteln + e.Message, 2);
-      exit;
-    end;
-  end;
-	Writelog(PCM_Logname, rs_PCMManager_Kontakte + rs_PCMManager_ContactsRootErmitteln + Auser, 0);
-  try
-    objOwner := olvarNameSpace.CreateRecipient(AUser);
-    olvarTermine := olvarNameSpace.GetSharedDefaultFolder(objOwner,olFolderCalendars);
-    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineImportieren), olvarTermine.items.count, ClientWidth, Height);
-    for i := 1 to olvarTermine.items.count do
-    begin
-      Termin:= olvarTermine.items.item[i];
-      SUMMARY:=  Termin.Subject;
-      WaitFormStep;
-      Rule:='';
-      DTSTART:=  DateTimeToStr(Termin.Start);
-      DTEND:= DateTimeToStr(Termin.END);
-      DESCRIPTION:= Termin.Body;
-      location:= Termin.Location;
-      if Integer(Termin.IsRecurring) = -1 then
-        Rule:= GetRecurrenceInfoOutlook(Integer(Termin.GetRecurrencePattern.RecurrenceType),
-                                               Integer(Termin.GetRecurrencePattern.Interval),
-                                               Integer(Termin.GetRecurrencePattern.DayOfWeekMask),
-                                               Integer(Termin.GetRecurrencePattern.Occurrences),
-                                               Termin.GetRecurrencePattern.PatternStartDate,
-                                               Termin.GetRecurrencePattern.PatternEndDate,
-                                               Termin.GetRecurrencePattern.instance);
-
-      if Length(DTSTART) < 12 then
-      begin
-        sJahrBegin:=Copy(DTSTART,7,4);
-        sMonatBegin:=Copy(DTSTART,4,2);
-        sTagBegin:=Copy(DTSTART,1,2);
-        sJahrEnd:= Copy(DTEND,7,4);
-        sMonatEnd:=Copy(DTEND,4,2);
-        sTagEnd:=Copy(DTEND,1,2);
-        if sErinnerung = 'true' then
-        begin
-          sReminder:= 'true';
-          sReminderDate:= DateTimeToStr(IncMinute(StrToDateTime(sTagBegin +'.' + sMonatBegin + '.' + sJahrBegin + ' 00:00:00'),iErinnerungVor *-1));
-          sReminderDate:= Copy(sReminderDate,7,4) + '-' + Copy(sReminderDate,4,2) + '-' + Copy(sReminderDate,1,2) + ' ' + Copy(sReminderDate,12,8);
-//            iReminderMinutes:= iErinnerungVor;
-//            sStundeBegin:=
-//            sMinuteBegin
-//            sSekundeBegin
-//            iOptions:= 6;
-          if Length(sReminderDate) < 12 then
-            datTimTermin := EncodeDateTime(StrToInt(sJahrBegin),StrToInt(sMonatBegin),StrToInt(sTagBegin),0,0,0,0)
-          else
-            datTimTermin := EncodeDateTime(StrToInt(sJahrBegin),StrToInt(sMonatBegin),StrToInt(sTagBegin),StrToInt(sStundeBegin),StrToInt(sMinuteBegin),StrToInt(sSekundeBegin),0);
-          dtNow:= now();
-          if datTimTermin < dtNow then
-          begin
-            sReminder:= 'false';
-            sReminderDate:= 'NULL';
-//              iReminderMinutes:= 0;
-//              iOptions:= 2;
-          end;
-        end
-        else begin
-          sReminder:= 'false';
-          sReminderDate:= 'NULL';
-//            iReminderMinutes:= 0;
-//            iOptions:= 2;
-        end;
-        sDateBegin:= sJahrBegin + '-' + sMonatBegin + '-' + sTagBegin + ' 00:00:00';
-        sDateEnd:= sJahrEnd + '-' + sMonatEnd + '-' + sTagEnd + ' 00:00:00';
-        sGanzerTag:= 'true';
-      end
-      else begin
-        sJahrBegin:=Copy(DTSTART,7,4);
-        sMonatBegin:=Copy(DTSTART,4,2);
-        sTagBegin:=Copy(DTSTART,1,2);
-        sJahrEnd:= Copy(DTEND,7,4);
-        sMonatEnd:=Copy(DTEND,4,2);
-        sTagEnd:=Copy(DTEND,1,2);
-
-        sStundeBegin:= Copy(DTSTART,12,2);
-        sMinuteBegin:= Copy(DTSTART,15,2);
-        sSekundeBegin:= Copy(DTSTART,18,2);
-        sStundeEnd:= Copy(DTEND,12,2);
-        sMinuteEnd:= Copy(DTEND,15,2);
-        sSekundeEnd:= Copy(DTEND,18,2);
-        sDateBegin:= sJahrBegin + '-' + sMonatBegin + '-' + sTagBegin + ' ' + sStundeBegin + ':' + sMinuteBegin + ':' + sSekundeBegin;
-        sDateEnd:= sJahrEnd + '-' + sMonatEnd + '-' + sTagEnd + ' ' + sStundeEnd + ':' + sMinuteEnd + ':' + sSekundeEnd;
-      end;
-      if sErinnerung = 'true' then
-      begin
-        sReminder:= 'true';
-        sReminderDate:= DateTimeToStr(IncMinute(StrToDateTime(
-        sTagBegin +'.' + sMonatBegin + '.' + sJahrBegin + ' '
-        + sStundeBegin + ':' + sMinuteBegin + ':' + sSekundeBegin),iErinnerungVor *-1));
-        sReminderDate:= Copy(sReminderDate,7,4) + '-' + Copy(sReminderDate,4,2) + '-'
-        + Copy(sReminderDate,1,2) + ' ' + Copy(sReminderDate,12,8);
-//          iReminderMinutes:= iErinnerungVor;
-//          iOptions:= 6;
-
-        if Length(sReminderDate) < 12 then
-          datTimTermin := EncodeDateTime(StrToInt(sJahrBegin),StrToInt(sMonatBegin),StrToInt(sTagBegin),0,0,0,0)
-        else
-          datTimTermin := EncodeDateTime(StrToInt(sJahrBegin),StrToInt(sMonatBegin),StrToInt(sTagBegin),StrToInt(sStundeBegin),StrToInt(sMinuteBegin),StrToInt(sSekundeBegin),0);
-        dtNow:= now();
-        if datTimTermin < dtNow then
-        begin
-          sReminder:= 'false';
-          sReminderDate:= 'NULL';
-          iReminderMinutes:= 0;
-          iOptions:= 2;
-        end
-        else begin
-          sReminder:= 'false';
-          sReminderDate:= 'NULL';
-          iReminderMinutes:= 0;
-          iOptions:= 2;
-        end;
-        sGanzerTag:= 'false';
-//
-        asBeschreibung := AnsiString(ReplaceStr(ReplaceStr(String(DESCRIPTION),String(ASnot),String(slinebreak)),String(asmem),','));
-        if Length(asBeschreibung) < 4 then
-          asBeschreibung:= '-';
-
-        if Location = '97725\, Elfershausen\, Adolf-Kolping-Str. 11' then
-        begin
-          Location:= 'im Büro'
-        end
-        else begin
-          if (Location = '\, \, ') or (Location = 'ohne Angabe') then
-          begin
-            Location:= 'sonstiges';
-          end;
-        end;
-        if Location = 'beim Kunden' then
-        begin
-          sColordef := IntToStr(12566527);
-          sFontcolordef := sFontColor;
-        end;
-        iEventtpye:= 0;
-        if Rule <> '' then
-        begin
-          iEventtpye:= 1;
-
-          asRecurrence:= GetRecurrence(Rule,sDateBegin);
-          swiederholungtext:=Rule; //String(asRecurrence);
-          sReminder:= 'true';
-          iOptions:= 6;
-          sReminderDate:= sDateBegin;
-        end
-        else begin
-          asRecurrence:='';
-          swiederholungtext:='';
-        end;
-        if sReminderDate = 'NULL' then
-        begin
-          dm_PCM.qry_work.SQL.Text:='Insert into manager_Kalender (ID_IC_Aufgabenarten,ID_IC_Prioritaeten, Aufgabenstatus,ID_ADR_Wurzel,ID_Ansprechpartner,Typ,EventType,Caption,Location,Message,'
-          + 'Start,Finish,Options,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'
-          + 'ReminderMinutesBeforeStart,ID_Benutzer,Kalendername,CompleteDay,wiederholung_text,LabelColor,FontColor) Values ' +
-          '(4,1,0,:ID_ADR_Wurzel,:ID_Ansprechpartner,2,:Eventtype,:SUMMARY,:Location,:Beschreibung,:DateBegin,:DateEnd,:Options,0,-1,:RecurrenceInfo,:Reminder,'
-          + 'NULL,0,:ID,:Kalender,:ganzerTag,:wiederholung_text,:LabelColor,:FontColor)';
-        end
-        else begin
-          dm_PCM.qry_work.SQL.Text:='Insert into manager_Kalender (ID_IC_Prioritaeten,ID_IC_Aufgabenarten,Aufgabenstatus,ID_ADR_Wurzel,ID_Ansprechpartner,Typ,EventType,Caption,Location,Message,'
-          + 'Start,Finish,Options,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'
-          + 'ReminderMinutesBeforeStart,ID_Benutzer,Kalendername,CompleteDay,wiederholung_text,LabelColor,FontColor) Values ' +
-          '(4,1,0,:ID_ADR_Wurzel,:ID_Ansprechpartner,2,:Eventtype,:SUMMARY,:Location,:Beschreibung,:DateBegin,:DateEnd,:Options,0,-1,:RecurrenceInfo,:Reminder,'
-          + ':ReminderDate,:ReminderMinutes,:ID,:Kalender,:ganzerTag,:wiederholung_text,:LabelColor,:FontColor)';
-          dm_PCM.qry_work.ParamByName('ReminderDate').AsString:= sReminderDate;
-          dm_PCM.qry_work.ParamByName('ReminderMinutes').AsInteger:= iReminderMinutes;
-        end;
-        dm_PCM.qry_work.ParamByName('ID_ADR_Wurzel').ASinteger:= iID_Kontakt;
-        dm_PCM.qry_work.ParamByName('ID_Ansprechpartner').ASinteger:= iID_Kontakt;
-        dm_PCM.qry_work.ParamByName('Eventtype').ASinteger:= iEventtpye;
-        dm_PCM.qry_work.ParamByName('SUMMARY').AsString:= SUMMARY;
-        dm_PCM.qry_work.ParamByName('Location').AsString:= StringReplace(String(Location),'\','',[rfIgnoreCase,rfReplaceAll]);
-        dm_PCM.qry_work.ParamByName('Beschreibung').AsString:= String(asBeschreibung);
-        dm_PCM.qry_work.ParamByName('DateBegin').AsString:= sDateBegin;
-        dm_PCM.qry_work.ParamByName('DateEnd').AsString:= sDateEnd;
-        dm_PCM.qry_work.ParamByName('Options').AsInteger:= iOptions;
-        dm_PCM.qry_work.ParamByName('Reminder').AsString:= sReminder;
-        dm_PCM.qry_work.ParamByName('RecurrenceInfo').AsAnsiString:= asRecurrence;
-        dm_PCM.qry_work.ParamByName('LabelColor').AsString:= IntToStr(8421631);
-        dm_PCM.qry_work.ParamByName('FontColor').AsString:= IntToStr(0);
-        dm_PCM.qry_work.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
-        dm_PCM.qry_work.ParamByName('Kalender').AsString:= Auser;
-        dm_PCM.qry_work.ParamByName('ganzerTag').AsString:= sGanzerTag;
-        dm_PCM.qry_work.ParamByName('wiederholung_text').AsString:= swiederholungtext;
-        dm_PCM.qry_work.ExecSQL;
-        dm_PCM.qry_work.close;
-      end;
-    end;
-  except
-    on e: system.sysutils.Exception do
-    begin
-      Writelog(PCM_Logname, rs_PCMManager_TerminenichtErmitteln + e.Message, 2);
-      exit;
-    end;
-  end;
-  CloseWaitForm;
-  Outlook.Disconnect;
-end;
-procedure Tfrm_Calendar.GetOutlookToDo(AUser: string);
-const
-  olFolderCalendars = $0000000D;
-var
-  ASnot,asmem: Ansistring;
-  sDateBegin, sDateEnd:string;
-  sTagBegin, sMonatBegin, sJahrBegin: String;
-  sTagEnd, sMonatEnd, sJahrEnd: String;
-
-  sStundeBegin, sMinuteBegin, sSekundeBegin: String;
-  sStundeEnd, sMinuteEnd, sSekundeEnd: String;
-  asBeschreibung: Ansistring;
-  sReminder: string;
-  sReminderDate: string;
-  iReminderMinutes: integer;
-  iOptions:integer;
-//  sGanzerTag:string;
-  sErinnerung: string;
-  asRecurrence: Ansistring;
-//  datTimTermin,dtNow: TDateTime;
-//  strlstICal: TStringList;
-	iID_Kontakt,iEventtpye: integer;
-//  swiederholungtext: String;
-  DTSTART,
-//  DTEND,
-  DESCRIPTION,
-//  SUBJECT,
-  location,
-//  Rule,
-  SUMMARY: string;
-
-  objOwner,olvarTermine,Termin, olvarNameSpace: olevariant;
-//  iFolders,
-  i,
-//  iDayOfWeeks,
-  iTag: integer;
-//  sFreg,test: String;
-//  arrDays: TDays;
-begin
-  dm_PCM.qry_work.sql.text:= 'SELECT Adresse_Firma FROM manager_kalender_optionen Where ID_Benutzer = :ID_Benutzer';
-  dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-  dm_PCM.qry_work.Open;
-  iID_Kontakt:= dm_PCM.qry_work.FieldByName('Adresse_Firma').AsInteger;
-  dm_PCM.qry_work.CLose;
-  asRecurrence:='';
-  sErinnerung:= 'true';
-  iTag:= 0;
-  try
-    Outlook.connect;
-  except
-    on e: system.sysutils.Exception do
-    begin
-        Writelog(PCM_Logname,rs_PCMManager_Kontakte + rs_PCMManager_KeineVerbindung + e.Message, 2);
-      exit;
-    end;
-  end;
-  Writelog(PCM_Logname, rs_PCMManager_Kontakte + rs_PCMManager_Namespace, 0);
-  try
-    olvarNameSpace := Outlook.GetNameSpace('MAPI');
-  except
-    on e: system.sysutils.Exception do
-    begin
-      Writelog(PCM_Logname,rs_PCMManager_Kontakte + rs_PCMManager_NamespaceErmitteln + e.Message, 2);
-      exit;
-    end;
-  end;
-  Writelog(PCM_Logname, rs_PCMManager_Kontakte + rs_PCMManager_ContactsRootErmitteln + AUser, 0);
-  try
-    objOwner := olvarNameSpace.CreateRecipient(AUser);
-    olvarTermine := olvarNameSpace.GetSharedDefaultFolder(objOwner,olFolderCalendars);
-    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineImportieren), olvarTermine.items.count, ClientWidth, Height);
-    for i := 1 to olvarTermine.items.count do
-    begin
-      Termin:= olvarTermine.items.item[i];
-      SUMMARY:=  Termin.Subject;
-      if Termin.Categories = 'PCM_Aufgabe' then
-      begin
-        WaitFormStep;
-      end
-      else
-      begin
-        SUMMARY:=  Termin.Subject;
-        DESCRIPTION:= Termin.body;
-        DTSTART:= DateTimeToStr(Termin.DueDate);
-        sJahrBegin:=Copy(DTSTART,7,4);
-        sMonatBegin:=Copy(DTSTART,4,2);
-        sTagBegin:=Copy(DTSTART,1,2);
-        sJahrEnd:= sJahrBegin;
-        sMonatEnd:=sMonatBegin;
-        sTagEnd:=sTagBegin;
-        sStundeBegin:= '09';
-        sMinuteBegin:= '00';
-        sSekundeBegin:= '00';
-        sStundeEnd:= '18';
-        sMinuteEnd:= '00';
-        sSekundeEnd:= '00';
-        sDateBegin:= sJahrBegin + '-' + sMonatBegin + '-' + sTagBegin + ' ' + sStundeBegin + ':' + sMinuteBegin + ':' + sSekundeBegin;
-        sDateEnd:= sJahrEnd + '-' + sMonatEnd + '-' + sTagEnd + ' ' + sStundeEnd + ':' + sMinuteEnd + ':' + sSekundeEnd;
-        sReminderDate:= DateTimeToStr(Termin.ReminderTime);
-        iOptions:= 6;
-        if sReminderDate <> '01.01.4501' then
-        begin
-          sErinnerung := 'true';
-        end
-        else
-        begin
-          sErinnerung := 'false';
-          sReminderDate := 'NULL';
-        end;
-        if sErinnerung = 'true' then
-        begin
-          sReminder:= 'true';
-          sReminderDate:= Copy(sReminderDate,7,4) + '-' + Copy(sReminderDate,4,2) + '-' + Copy(sReminderDate,1,2) + ' ' + Copy(sReminderDate,12,8);
-          iReminderMinutes:= 0;
-          iOptions:= 6;
-        end;
-          asBeschreibung := AnsiString(ReplaceStr(ReplaceStr(String(DESCRIPTION),String(ASnot),String(slinebreak)),String(asmem),','));
-        if Length(asBeschreibung) < 4 then
-          asBeschreibung:= '-';
-        Location:= 'im Büro';
-        iEventtpye:= 0;
-        if sReminderDate = 'NULL' then
-        begin
-          dm_PCM.qry_Work.SQL.Text:='Insert into manager_Kalender (Zeitformat,Erledigungsgrad,AufgabenDauer,Gesendetam,ID_IC_AufgabenArten,ID_IC_Prioritaeten,Aufgabenstatus,ID_ADR_Wurzel,ID_Ansprechpartner,Typ,EventType,Caption,Location,Message,'
-          + 'Start,Finish,Options,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'
-          + 'ReminderMinutesBeforeStart,ID_Benutzer,Kalendername,CompleteDay,LabelColor,FontColor) Values ' +
-          '(0,0,540,Now();5,:ID_IC_Prioritaeten,0,:ID_ADR_Wurzel,:ID_Ansprechpartner,1,:Eventtype,:SUMMARY,:Location,:Beschreibung,:DateBegin,:DateEnd,:Options,0,-1,:RecurrenceInfo,:Reminder,'
-          + 'NULL,0,:ID,:Kalender,:ganzerTag,:LabelColor,:FontColor,:ID_IC_Prioritaeten)';
-        end
-        else begin
-          dm_PCM.qry_Work.SQL.Text:='Insert into manager_Kalender (Zeitformat,Erledigungsgrad,AufgabenDauer,Gesendetam,ID_IC_AufgabenArten,ID_IC_Prioritaeten,Aufgabenstatus,ID_ADR_Wurzel,ID_Ansprechpartner,Typ,EventType,Caption,Location,Message,'
-          + 'Start,Finish,Options,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'
-          + 'ReminderMinutesBeforeStart,ID_Benutzer,Kalendername,CompleteDay,LabelColor,FontColor) Values ' +
-          '(0,0,540,Now(),5,:ID_IC_Prioritaeten,0,:ID_ADR_Wurzel,:ID_Ansprechpartner,1,:Eventtype,:SUMMARY,:Location,:Beschreibung,:DateBegin,:DateEnd,:Options,0,-1,:RecurrenceInfo,:Reminder,'
-          + ':ReminderDate,:ReminderMinutes,:ID,:Kalender,:ganzerTag,:LabelColor,:FontColor)';
-          dm_PCM.qry_Work.ParamByName('ReminderDate').AsString:= sReminderDate;
-          dm_PCM.qry_Work.ParamByName('ReminderMinutes').AsInteger:= iReminderMinutes;
-        end;
-        dm_PCM.qry_Work.ParamByName('ID_ADR_Wurzel').ASinteger:= iID_Kontakt;
-        dm_PCM.qry_Work.ParamByName('ID_Ansprechpartner').ASinteger:= iID_Kontakt;
-        dm_PCM.qry_Work.ParamByName('Eventtype').ASinteger:= 0;
-        dm_PCM.qry_Work.ParamByName('SUMMARY').AsString:= SUMMARY;
-        dm_PCM.qry_Work.ParamByName('Location').AsString:= StringReplace(String(Location),'\','',[rfIgnoreCase,rfReplaceAll]);
-        dm_PCM.qry_Work.ParamByName('Beschreibung').AsString:= String(asBeschreibung);
-        dm_PCM.qry_Work.ParamByName('DateBegin').AsString:= sDateBegin;
-        dm_PCM.qry_Work.ParamByName('DateEnd').AsString:= sDateEnd;
-        dm_PCM.qry_Work.ParamByName('Options').AsInteger:= iOptions;
-        dm_PCM.qry_Work.ParamByName('Reminder').AsString:= sReminder;
-        dm_PCM.qry_Work.ParamByName('RecurrenceInfo').AsAnsiString:= asRecurrence;
-        dm_PCM.qry_Work.ParamByName('LabelColor').AsString:= IntToStr(8421631);
-        dm_PCM.qry_Work.ParamByName('FontColor').AsString:= IntToStr(0);
-        dm_PCM.qry_Work.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
-        dm_PCM.qry_Work.ParamByName('Kalender').AsString:= Auser;
-        dm_PCM.qry_Work.ParamByName('ganzerTag').AsString:= 'false';
-        dm_PCM.qry_Work.ParamByName('ID_IC_Prioritaeten').AsInteger:=  Integer(Termin.Importance) +1;
-        dm_PCM.qry_Work.ExecSQL;
-      end;
-    end;
-  except
-    on e: system.sysutils.Exception do
-    begin
-      Writelog(PCM_Logname, rs_PCMManager_AufgabennichtErmitteln + e.Message, 2);
-      exit;
-    end;
-  end;
-  CloseWaitForm;
-  Outlook.Disconnect;
-end;
-procedure Tfrm_Calendar.RefreshTerminundAUfgaben;
-var
-  sfilter: String;
-begin
-  dm_PCM.qry_Kalender_Aufgaben.Filter:= '';
-  dm_PCM.qry_work.sql.text:= 'Select COUNT(*) AS AufgabenTermine , ('+
-                      'Select COUNT(*) From manager_kalender Where gelesenam is null and bearbeitetam is NULL AND Typ IN (0) and ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM) +' ) AS Nachrichten ' +
-                      'From manager_Kalender ' +
-                      'Where ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM) +' and  gelesenam is null and bearbeitetam is NULL AND Typ IN (1,2)';
-  dm_PCM.qry_work.open;
-  cxTreeList1.Items[2].Values[1]:= dm_PCM.qry_work.Fieldbyname('Nachrichten').asInteger;
-  cxTreeList1.Items[1].Values[1]:= dm_PCM.qry_work.Fieldbyname('AufgabenTermine').asInteger;
-  dm_PCM.qry_work.close;
-
-  sFilter:= '';
-  case iCurrTableView of
-  0:
-    sfilter:= 'Typ = 2';
-  1:
-    sfilter:= 'Typ = 1';
-  2:
-    sFilter:= 'Typ = 0';
-  end;
-  dm_PCM.qry_Kalender_Kalender.Refresh;
-  dm_PCM.qry_Kalender_Aufgaben.refresh;
-  if sFilter <> '' then
-    dm_PCM.qry_Kalender_Aufgaben.Filter:= sFilter + ' and bearbeitetam = null and ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM)
-  else
-    dm_PCM.qry_Kalender_Aufgaben.Filter:= 'bearbeitetam = null and ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-  dm_PCM.qry_Kalender_Aufgaben.Filtered:= true;
-
-end;
-procedure Tfrm_Calendar.SearchDoSearch(ASearchString : String);
-var
-  sSearchQuery : String;
-begin
-  SearchBoxSetStyle();
-//  qWF_Nachrichten.Filtered := False;
-  if ASearchString = '' then  exit;
-    sSearchQuery := 'Message LIKE ' + quotedStr('%' + ASearchString + '%') +
-                    ' OR ' + 'Caption LIKE ' + quotedStr('%' + ASearchString + '%') +
-                    ' OR ' + 'Location LIKE ' + quotedStr('%' + ASearchString + '%') +
-                    ' OR ' + 'Kalendername LIKE ' + quotedStr('%' + ASearchString + '%');
-
-  dm_PCM.qry_Kalender_Aufgaben.Filter := sSearchQuery;
-  dm_PCM.qry_Kalender_Aufgaben.Filtered := True;
-end;
-procedure Tfrm_Calendar.edSuchePropertiesChange(Sender: TObject);
-begin
-  SearchDoSearch(edSuche.Text);
-end;
-procedure Tfrm_Calendar.pmmbtn_CalNewClick(Sender: TObject);
-var
-  iNewId : Integer;
-begin
-  Application.CreateForm(TfNeu, fNeu);
-  fNeu.Execute(schedDBStrg_Kalender,2, 0, 0, '','',0,StrToDateTime(DateToStr(StrToDate(Copy(DateToStr(Date()),1,10))) + ' ' + '08:30:00'),StrToDateTime(DateToStr(StrToDate(Copy(DateToStr(Date()),1,10))) + ' ' + '08:30:00'),0,false,0,0,0,0,0,0,false,false,15,false,0,0,nil,'','',iNewId);
-  fNeu := nil;
-  RefreshTerminundAUfgaben;
-end;
-procedure Tfrm_Calendar.SearchBoxSetStyle();
-begin
-  if (edSuche.Text = SearchTypeToStr(stSubject)) OR
-     (edSuche.Text = SearchTypeToStr(stMessage)) OR
-     (edSuche.Text = SearchTypeToStr(stSubjectMessage)) then
-  begin
-    edSuche.Text := SearchTypeToStr(FSearchType);
-    edSuche.Style.Font.Color := clGray;
-    edSuche.Style.Font.Style := [fsItalic];
-  end
-  else
-  begin
-    edSuche.Style.Font.Color := clBlack;
-    edSuche.Style.Font.Style := [];
-  end;
-end;
 function Tfrm_Calendar.SearchTypeToStr(ASearchType : TSearchType) : String;
 begin
   case ASearchType of
@@ -1659,98 +646,6 @@ begin
     stSubjectMessage:
       result := 'Nachricht und Betreff';
   end;
-end;
-procedure Tfrm_Calendar.OpenData;
-//var I:integer;
-begin
-  dm_PCM.qry_Kalender_Benutzer.Open;
-//  qry_BenutzerRes.Open;
-  dm_PCM.qry_Kalender_Kalender.Open;
-  qry_Stundenplan.Open;
-  qry_Stundenplan_detail.Open;
-  qry_SchulFaecher.Open;
-  qry_SchulFaecher.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-  qry_Stundenplan.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-  qry_Stundenplan.Filtered:= true;
-  dm_PCM.qry_KalenderAufgaben_Arten.open;
-  dm_PCM.qry_KalenderAufgaben_Prio.Open;
-  dm_PCM.qry_Kalender_Ansprechpartner.Open;
-  dm_PCM.qry_Config_Firmen.Open;
-  dm_PCM.qry_Kalender_Aufgaben.open;
-  dm_PCM.qry_Kalender_Aufgaben.Filter:= 'bearbeitetam = null and ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-  dm_PCM.qry_Kalender_Aufgaben.Filtered:= true;
-  RefreshTerminundAUfgaben;
-  tvNachrichtenCaption.Caption:= rs_PCMManager_Betreff;
-  tvNachrichtenGelesenAm.Caption:= rs_PCMManager_GelesenAM;
-  tvNachrichtenGesendetAm.Caption:= rs_PCMManager_GesendetAm;
-  tvNachrichtenID_ADR_Wurzel.Caption:= rs_PCMManager_Adresse;
-  tvNachrichtenID_Ansprechpartner.Caption:= rs_PCMManager_Ansprechpartner;
-  tvNachrichtenJira_Ticket.Caption:= rs_PCMManager_JiraTicket;
-  tvNachrichtenLocation.Caption:= rs_PCMLizenzgenerator_KundeORT;
-  tvNachrichtenStatus.Caption:= rs_PCMManager_Status;
-  tvNachrichtenTyp.Caption:= rs_PCMManager_Typ;
-  grdDBTblView_StundenplanuebersichtID_Benutzer.Caption:= rs_PCMBenutzerverwaltung_Benutzer;
-  grdDBTblView_StundenplanuebersichtKlasse.Caption:= rs_PCMManager_Klasse;
-  grdDBTblView_StundenplanuebersichtSchule.Caption:= rs_PCMManager_Schule;
-  grdDBTblView_StundenplanuebersichtSchuljahr.Caption:= rs_PCMManager_Schuljahr;
-  grdDBTblView_StundenplanBegin.Caption:= rs_PCM_Beginn;
-  grdDBTblView_StundenplanDienstag.Caption:= rs_PCM_Dienstag;
-  grdDBTblView_StundenplanDonnerstag.Caption:= rs_PCM_Donnerstag;
-  grdDBTblView_StundenplanEnd.Caption:= rs_PCM_EndeZeit;
-  grdDBTblView_StundenplanFreitag.Caption:= rs_PCM_Freitag;
-  grdDBTblView_StundenplanMittwoch.Caption:= rs_PCM_Mittwoch;
-  grdDBTblView_StundenplanMontag.Caption:= rs_PCM_Montag;
-  grdDBTblView_StundenplanSamstag.Caption:= rs_PCM_Samstag;
-  qry_Tickets.open;
-end;
-procedure Tfrm_Calendar.OpenAttachement;
-var
-  f: string;
-begin
-  // Anhang öffnen
-  f := qWF_Nachrichten_AnhaengeDateinameSave.AsString;
-
-  if f <> '' then
-  begin
-    f := GetAttachmentFilename(f);
-    Screen.Cursor := crHourglass;
-    ShellExecute(self.WindowHandle,'open', PWideChar(f) ,nil,nil, SW_SHOWNORMAL);
-    Screen.Cursor := crDefault;
-  end;
-end;
-function Tfrm_Calendar.GetAttachmentFilename(s: string): string;
-begin
-  Result := ExpandFilename(ExtractFilePath(ParamStr(0)) + 'Files\' + s)
-end;
-procedure Tfrm_Calendar.cxButton1Click(Sender: TObject);
-begin
-  saveAttachement;
-end;
-procedure Tfrm_Calendar.cxButton2Click(Sender: TObject);
-begin
-  OpenAttachement;
-end;
-procedure Tfrm_Calendar.saveAttachement;
-var
-  f: string;
-begin
-  f := qWF_Nachrichten_AnhaengeDateinameSave.AsString;
-  if f <> '' then
-  begin
-    SaveDialog1.FileName := qWF_Nachrichten_AnhaengeDateiname.AsString;
-    if SaveDialog1.Execute then
-    begin
-      Screen.Cursor := crHourglass;
-      f := GetAttachmentFilename(f);
-      CopyFile(PChar(f), PChar(SaveDialog1.FileName), False);
-      Screen.Cursor := crDefault;
-    end;
-  end;
-end;
-procedure Tfrm_Calendar.cxButtonEdit1PropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
-begin
-  edSuche.Clear;
-  edSuche.SetFocus;
 end;
 function Tfrm_Calendar.cxMyGetRecurrenceDescriptionString(ARecurrenceInfo: TcxSchedulerEventRecurrenceInfo; AFullDescription: Boolean = False): string;
 const
@@ -1877,484 +772,105 @@ begin
       Result := Result + GetTimeBounds(APattern);
   end;
 end;
-procedure Tfrm_Calendar.cxTreeList1Click(Sender: TObject);
-var
-  selectedNode: TcxTreeListNode;
-  sItem: string;
-  view: TcxGridDBTableView;
+procedure Tfrm_Calendar.InitializeBrowser(AParent: TWinControl);
 begin
-  view := TcxGridDBTableView.Create(SELF);
-  if cxTreeList1.SelectionCount > 0 then
+  if not Assigned(FWebBrowser) then
   begin
-    selectedNode := cxTreeList1.FocusedNode;
-    if selectedNode = nil then
-      exit;
-   sItem:= selectedNode.Values[0];
-   if (sItem = 'Alle') or (sItem = 'Nachrichten') then
-   begin
-     view := tvNachrichten;
-     if (sItem = 'Alle') then
-     begin
-      iCurrTableview:= 0;
-//      dm_PCM.qry_Kalender_Aufgaben.Filtered:= false;
-     end
-     else
-     begin
-        iCurrTableview:= 2;
-//        dm_PCM.qry_Kalender_Aufgaben.Filter:= 'Typ =0';
-//        dm_PCM.qry_Kalender_Aufgaben.Filtered:= true;
-     end;
-   end
-   else begin
-     view := tvAuf;
-
-     if sItem = 'Aufgaben' then
-       iCurrTableview:= 1;
-     if sItem = 'Termine' then
-        iCurrTableview:= 0;
-//     dm_PCM.qry_Kalender_Aufgaben.Filter:= 'Typ <> 0';
-//     dm_PCM.qry_Kalender_Aufgaben.Filtered:= true;
-   end;
-  end;
-
-  RefreshTerminundAUfgaben;
-  cxGrid1.BeginUpdate();
-  view.BeginUpdate();
-  cxGrid1Level1.GridView := view;
-  view.EndUpdate;
-  cxGrid1.EndUpdate;
-end;
-procedure Tfrm_Calendar.pmmbtn_YearViewClick(Sender: TObject);
-begin
-  compPrint_Cal.PreviewOptions.Caption := rs_PCMManager_Kalenderjahr;
-  compPrint_CalLink1.PrintStyles.Yearly.Active := True;
-  compPrint_CalLink1.Preview(True);
-end;
-procedure Tfrm_Calendar.pmmbtn_AgendaClick(Sender: TObject);
-begin
-  compPrint_Cal.PreviewOptions.Caption := rs_PCMManager_Kalenderagenda;
-  compPrint_CalLink1.PrintStyles.Agenda.Active := True;
-  compPrint_CalLink1.Preview(True);
-end;
-procedure Tfrm_Calendar.btn_CalImportOutlookClick(Sender: TObject);
-var
-  sKal: String;
-begin
-
-  dm_PCM.qry_Work.sql.text:= 'Select Account_Geschaeftlich From manager_kalender_optionen Where ID_Benutzer =:ID_Benutzer';
-  dm_PCM.qry_Work.ParamByName('ID_benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-  dm_PCM.qry_Work.Open;
-  sKal:= dm_PCM.qry_Work.FieldByName('Account_Geschaeftlich').asString;
-  dm_PCM.qry_Work.Close;
-  dm_PCM.qry_work.SQL.Text:= 'Delete from manager_kalender Where Typ = 2 and Kalendername = :Kalendername';
-  dm_PCM.qry_work.ParamByName('Kalendername').AsString:=sKal;
-  dm_PCM.qry_work.execsql;
-  GetOutlookEvents(sKal);
-  RefreshTerminundAUfgaben;
-end;
-procedure Tfrm_Calendar.btn_JobUndoneClick(Sender: TObject);
-begin
-  dm_PCM.qry_Work.SQL.Text :=
-    'UPDATE manager_kalender SET BearbeitetAm = NULL ' +
-      'WHERE ID = ' + IntToStr(dm_PCM.qry_Kalender_Aufgaben.Fieldbyname('ID').AsInteger);
-  dm_PCM.qry_Work.Execute;
-  RefreshTerminundAUfgaben;
-end;
-procedure Tfrm_Calendar.btn_JobsDoneClick(Sender: TObject);
-begin
-  if btn_JobsDone.tag = 0 then
-  begin
-    btn_JobsDone.tag:= 1;
-    btn_JobsDone.Caption:= rs_PCMManager_aktAufgaben;
-    btn_JobsDone.largeimageindex:= 124;
-    btn_JobUndone.enabled:= true;
-    dm_PCM.qry_Kalender_Aufgaben.Filter:= 'bearbeitetam <> null and ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-    dm_PCM.qry_Kalender_Aufgaben.Filtered:= true;
+    FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
+    FWebBrowser.Parent := AParent;
+    FWebBrowser.Align := alClient;
+    FWebBrowser.OnBeforeNavigate := nil;
   end
   else begin
-    btn_JobsDone.tag:= 0;
-    btn_JobsDone.Caption:= rs_PCMManager_bearbAufgaben;
-    btn_JobsDone.largeimageindex:= 123;
-    btn_JobUndone.enabled:= false;
-    dm_PCM.qry_Kalender_Aufgaben.Filter:= 'bearbeitetam = null and ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-    dm_PCM.qry_Kalender_Aufgaben.Filtered:= true;
-  end;
-end;
-procedure Tfrm_Calendar.dxBarLargeButton12Click(Sender: TObject);
-begin
-  if bol_VollBildCal = false then
-  begin
-    bol_VollBildCal:= true;
-    frm_PCM_main.navbr_main.Width:= 0;
-    frm_PCM_main.pcmain.properties.HideTabs:= true;
-    pc_kalender.properties.HideTabs:= true;
-    btn_CalAnsicht.Caption:= rs_PCMManager_normAnsicht;
-    btn_CalAnsicht.LargeImageIndex:= 31;
-    cxTreeList1.Height:= 107;
-  end
-  else begin
-    bol_VollBildCal:= false;
-    frm_PCM_main.navbr_main.Width:= 200;
-    frm_PCM_main.pcmain.properties.HideTabs:= false;
-    pc_kalender.properties.HideTabs:= false;
-    btn_CalAnsicht.Caption:= rs_PCMManager_maxAnsicht;
-    btn_CalAnsicht.LargeImageIndex:= 32;
-    cxTreeList1.Height:= 107;
-  end;
-end;
-procedure Tfrm_Calendar.btn_CalRefreshClick(Sender: TObject);
-begin
-  RefreshTerminundAUfgaben;
-end;
-procedure Tfrm_Calendar.btn_NewEventClick(Sender: TObject);
-var
-  iNewId : Integer;
-begin
-  Application.CreateForm(TfNeu, fNeu);
-  fNeu.Execute(schedDBStrg_Kalender,2, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
-  fNeu := nil;
-  RefreshTerminundAUfgaben;
-end;
-procedure Tfrm_Calendar.btn_NewMessageClick(Sender: TObject);
-var
-  iNewId : Integer;
-begin
-  Application.CreateForm(TfNeu, fNeu);
-  fNeu.Execute(schedDBStrg_Kalender,0, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
-  fNeu := nil;
-  RefreshTerminundAUfgaben;
-end;
-procedure Tfrm_Calendar.btn_JobsRefreshClick(Sender: TObject);
-begin
-  RefreshTerminundAUfgaben;
-end;
-procedure Tfrm_Calendar.btn_NewTaskClick(Sender: TObject);
-var
-  iNewId : Integer;
-begin
-  Application.CreateForm(TfNeu, fNeu);
-  fNeu.Execute(schedDBStrg_Kalender,1, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
-  fNeu := nil;
-  RefreshTerminundAUfgaben;
-end;
-procedure Tfrm_Calendar.btn_ReadJobClick(Sender: TObject);
-var
-//  ID,
-  iCount, iRecCount: Integer;
-  view : TcxGridTableView;
-  col : TcxGridColumn;
-  AMessageIds : Array of Integer;
-begin
-  // Entsprechend der Ansicht View auswählen um selektiete Datensätze zu wählen
-  view := TcxGridTableView(cxGrid1.ActiveView);
-  if view = tvAuf then
-    col := tvAufID
-  else if view = tvNachrichten then
-    col := tvNachrichtenID
-  else
-    exit;
-
-  // kein Eintrag?
-  if (dm_PCM.qry_Kalender_Aufgaben.RecordCount > 0) then //and (qWF_NachrichtenTyp.Value = 2) then
-  begin
-    iRecCount := view.Controller.SelectedRowCount;
-    for iCount := 0 to iRecCount - 1 do
-    begin
-      SetLength(AMessageIds, Length(AMessageIds)+1);
-      AMessageIds[High(AMessageIds)] := view.Controller.SelectedRows[iCount].Values[col.Index];
-    end;
-  end;
-
-//  ID := dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID').asInteger;
-
-
-  for iCount := 0 to High(AMessageIds) do
-  begin
-    dm_PCM.qry_Work.SQL.Text := 'UPDATE manager_kalender ' + 'SET GelesenAm = NOW() WHERE ID = :ID_IC';
-    dm_PCM.qry_Work.ParamByName('ID_IC').AsInteger := AMessageIds[iCount];
-    dm_PCM.qry_Work.Execute;
-  end;
-
-
-
-  RefreshTerminundAUfgaben;
-
-
-//  dmIC_Main.qCustom.SQL.Text :=
-//    'UPDATE IC_Nachrichten SET GelesenAm = NOW() ' +
-//    'WHERE ID = ' + IntToStr(qWF_NachrichtenID.Value);
-//  dmIC_Main.qCustom.Execute;
-//  LastID_WF_Nachrichten := 1;
-//  RefreshMessages();
- // NachrichtToolbarAnpassen();
-end;
-procedure Tfrm_Calendar.btn_DoneJobClick(Sender: TObject);
-var
-  ID: Integer;
-  iCount,iRecCount: Integer;
-  view : TcxGridTableView;
-  col : TcxGridColumn;
-  AMessageIds : Array of Integer;
-  sMsgDlgMessage: String;
-begin
-  iRecCount:=0;
-  // Entsprechend der Ansicht View auswählen um selektiete Datensätze zu wählen
-  view := TcxGridTableView(cxGrid1.ActiveView);
-  if view = tvauf then
-    col := tvAufID
-  else if view = tvNachrichten then
-    col := tvNachrichtenID
-  else
-    exit;
-
-  // kein Eintrag?
-  if (dm_PCM.qry_Kalender_Aufgaben.RecordCount > 0) then //and (qWF_NachrichtenTyp.Value = 2) then
-  begin
-    iRecCount := view.Controller.SelectedRowCount;
-    for iCount := 0 to iRecCount - 1 do
-    begin
-      SetLength(AMessageIds, Length(AMessageIds)+1);
-      AMessageIds[High(AMessageIds)] := view.Controller.SelectedRows[iCount].Values[col.Index];
-    end;
-  end;
-
-  if iRecCount > 1 then
-  begin
-    sMsgDlgMessage := rs_PCMManager_Eintraegenichterledigt1 + slinebreak
-      + rs_PCMManager_Eintraegenichterledigt2 + IntToStr(iRecCount) + rs_PCMManager_Eintraegenichterledigt3;
-  end
-  else
-  begin
-    sMsgDlgMessage := rs_PCMManager_Eintragnichterledigt1 + slinebreak
-      + rs_PCMManager_Eintragnichterledigt2;
-  end;
-
-  if dm_PCM.qry_Kalender_Aufgaben.FieldByName('GelesenAm').IsNull then
-    if MessageDlg(sMsgDlgMessage + slinebreak + rs_PCMManager_AlsBearbeitet,mtwarning,[mbYes,mbNo],0) = IDNO then
-      Exit;
-
-  ID := dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID').asInteger;
-
-  cxGrid1Level1.GridView.DataController.GotoNext;
-  if dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID').asInteger = ID then
-    cxGrid1Level1.GridView.DataController.GotoPrev;
-
-  for iCount := 0 to High(AMessageIds) do
-  begin
-    dm_PCM.qry_Work.SQL.Text := 'UPDATE manager_kalender SET GelesenAm = IF(GelesenAm IS NULL, NOW(), GelesenAm), BearbeitetAm = NOW() WHERE ID = :ID_IC';
-    dm_PCM.qry_Work.ParamByName('ID_IC').AsInteger := AMessageIds[iCount];
-    dm_PCM.qry_Work.Execute;
-  end;
-  RefreshTerminundAUfgaben;
-end;
-procedure Tfrm_Calendar.edSucheEnter(Sender: TObject);
-begin
-  if (edSuche.Text = SearchTypeToStr(stSubject)) OR
-     (edSuche.Text = SearchTypeToStr(stMessage)) OR
-     (edSuche.Text = SearchTypeToStr(stSubjectMessage)) then
-        edSuche.Text := '';
-end;
-procedure Tfrm_Calendar.edSucheExit(Sender: TObject);
-begin
-  edSuche.Properties.OnChange := nil;
-  //if edSuche.Text = '' then edSuche.Text := SearchTypeToStr(FSearchType);
-  SearchBoxSetStyle();
-  edSuche.Properties.OnChange := edSuchePropertiesChange;
-end;
-function Tfrm_Calendar.copyEvent : boolean;
-var
-  AEvent: TcxSchedulerControlEvent;
-begin
-  result := False;
-  if sched_Kalender.SelectedEventCount > 0 then
-  begin
-    AEvent := sched_Kalender.SelectedEvents[0];
-    if Assigned(AEvent) then
-    begin
-      if dm_PCM.ikalender > 1 then
-      begin
-        iCopyEventId := AEvent.ID;
-        result := true;
-      end;
-    end;
-  end;
-end;
-procedure Tfrm_Calendar.btnGoToJiraClick(Sender: TObject);
-var
-  sURL: string;
-begin
-  if edtJiraTicketNr.Text <> '' then
-  begin
-    sURL := frm_PCM_main.FOptions.Jira_Basic_URL + edtJiraTicketNr.EditValue;
-    ShellExecute(self.WindowHandle,'open', PWideChar(sURL) ,nil,nil, SW_SHOWNORMAL);
-  end;
-end;
-procedure Tfrm_Calendar.btn_CalAgendaClick(Sender: TObject);
-begin
-  btn_CalTag.LargeImageIndex:= 39;
-  btn_CalArbeitswoche.LargeImageIndex:= 40;
-  btn_CalWoche.LargeImageIndex:= 41;
-  btn_CalMonat.LargeImageIndex:= 42;
-  btn_CalJahr.LargeImageIndex:= 44;
-  sched_Kalender.ViewAgenda.Active := True;
-end;
-procedure Tfrm_Calendar.FormActivate(Sender: TObject);
-begin
-  FormShow(Self);
-end;
-procedure Tfrm_Calendar.FormDestroy(Sender: TObject);
-begin
-  SetGridViews(False);
-end;
-procedure Tfrm_Calendar.FormResize(Sender: TObject);
-begin
-  cxTreeList1Column1.Width:= cxtreelist1.Width - (8 + cxTreeList1Column2.Width) ;
-end;
-procedure Tfrm_Calendar.FormShow(Sender: TObject);
-begin
-  case dm_PCM.iModulTab of
-  1: pc_Kalender.ActivePage:= ts_A_kalender;
-  2: pc_Kalender.ActivePage:= ts_B_Aufgaben;
-  3: pc_Kalender.ActivePage:= ts_C_jira;
-  4: pc_Kalender.ActivePage:= ts_D_Stundenplan;
-  end;
-  OpenData;
-  InitializeRights;
-  SetButtons;
-  dm_PCM.qry_Work.SQL.Text:=  'UPDATE manager_kalender ' +
-                            'SET START = TIMESTAMPADD(Year, Year(NOW()) - Year(START) , START), ' +
-                            'Finish = TIMESTAMPADD(Year, Year(NOW()) - Year(Finish) , Finish), ' +
-                            'Reminderdate  = TIMESTAMPADD(Year, Year(NOW()) - Year(Reminderdate) , Reminderdate) ' +
-                            'WHERE Kalendername = ''Geburtstag''';
-  dm_PCM.qry_Work.ExecSQL;
-  dm_PCM.qry_Work.SQL.Text:=  'UPDATE manager_kalender ' +
-                            'SET START = TIMESTAMPADD(Year, Year(NOW()) - Year(START)+1 , START), ' +
-                            'Finish = TIMESTAMPADD(Year, Year(NOW()) - Year(Finish)+1 , Finish), ' +
-                            'Reminderdate  = TIMESTAMPADD(Year, Year(NOW()) - Year(Reminderdate) , Reminderdate) ' +
-                             'WHERE Date(start) < Date(Now()) and Kalendername = ''Geburtstag''';
-  dm_PCM.qry_Work.ExecSQL;
-  dm_PCM.qry_Work.SQL.Text:=  'Delete FROM manager_kalender ' +
-                            'WHERE Date(start) < Date(Now()) and (Kalendername like ''Müll %'' or Kalendername like ''Feiertage %'')' ;
-  dm_PCM.qry_Work.ExecSQL;
-
-  defaultLabelColor:= 13083265;
-  defaultFontColor:= 0;
-  FormResize(Self);
-  if (dm_PCM.iModulTab = 1) then
-  begin
-    Application.ProcessMessages;
-    sched_Kalender.SelectDays(Date, Date, True);
-    Application.ProcessMessages;
-    dm_PCM.qry_Kalender_Benutzer.SQL.Text:= 'Select ID, CONCAT(Nachname, ' + QuotedStr(', ') + ' ,Vorname) as Name '+'From Benutzer Where ID = :ID';
-    dm_PCM.qry_Kalender_Benutzer.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
-    dm_PCM.qry_Kalender_Benutzer.Open;
-    Application.ProcessMessages;
-//    grdDBTblView_KalenderRessource.DataController.SelectRows(grdDBTblView_KalenderRessource.DataController.GetRowIndexByRecordIndex(
-//    grdDBTblView_KalenderRessource.DataController.FindRecordIndexByKey(dm_PCM.iIDBenutzerPCM), True),
-//    grdDBTblView_KalenderRessource.DataController.GetRowIndexByRecordIndex(
-//    grdDBTblView_KalenderRessource.DataController.FindRecordIndexByKey(dm_PCM.iIDBenutzerPCM), True));
-    Application.ProcessMessages;
-    dm_PCM.qry_Kalender_Kalender.SQL.Text:=  'Select ID,EventType,Caption,Location,Message,Start,' +
-                          'Finish,Options,CompleteDay,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'+
-                          'ReminderMinutesBeforeStart,LabelColor,FontColor,ID_Benutzer,ID_kontakte From manager_Kalender ' +
-                          'Where Typ = 2 and bearbeitetam is null and ID_Benutzer = :ID';;
-    dm_PCM.qry_Kalender_Kalender.ParamByName('ID').asBlob:= AnsiString(IntToStr(dm_PCM.iIDBenutzerPCM));
-    dm_PCM.qry_Kalender_Kalender.Open;
     try
-      Application.ProcessMessages;
-      ReadICSAutomatic;
-      Application.ProcessMessages;
-      WriteICSAutomatic;
+      FreeAndNil(FWebBrowser);
+    Except
+    end;
+    FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
+    FWebBrowser.Parent := AParent;
+    FWebBrowser.Align := alClient;
+    FWebBrowser.OnBeforeNavigate := nil;
+  end;
+  AURL:= 'https://id-berlin.atlassian.net/jira/software/c/projects/DCS/boards/61?assignee=712020%3A9e769b1a-88a0-4a21-8366-6b11439f3691';
+  FWebBrowser.Navigate(AURL)
+end;
+procedure Tfrm_Calendar.Loadjirastatus;
+begin
+  dm_PCM.qry_Work.SQL.Text:= 'Select DISTINCT(Sprint) as Sprint FROM manager_tickets_ges where Sprint <> '''' ORDER BY Sprint asc';
+  dm_PCM.qry_Work.open;
+  while not dm_PCM.qry_Work.eof do
+  begin
+    cxComboBox1.Properties.Items.Add(dm_PCM.qry_Work.FieldByName('Sprint').AsString);
+    dm_PCM.qry_Work.next;
+    try
+      cxComboBox1.ItemIndex:= 0;
     except
     end;
-    Application.ProcessMessages;
-    btn_CalArbeitswocheClick(Self);
-    btn_CalArbeitswoche.LargeImageIndex:= 16;
-    btn_CalTag.LargeImageIndex:= 39;
-    btn_CalWoche.LargeImageIndex:= 41;
-    btn_CalMonat.LargeImageIndex:= 42;
-    btn_CalJahr.LargeImageIndex:= 44;
-    schedDBStrg_Kalender.Reminders.Active:= true;
-    pc_Kalender.ActivePage:= ts_A_kalender;
-//  end
-//  else begin
-//    if dm_PCM.iModulTab = 2 then
-//      pc_Kalender.ActivePage:= ts_C_Stundenplan
-//    else
-//      pc_Kalender.ActivePage:= ts_B_Aufgaben;
   end;
-//  tvauf.DataController.Filter.Active:= false;
-//  tvauf.DataController.Filter.Root.Clear;
-//  tvauf.DataController.Filter.BeginUpdate;
-//  tvauf.DataController.Filter.AddItem(AItemlist, tvAufStatus,foNotEqual,'Bearbeitet','Bearbeitet');
-//  tvauf.DataController.Filter.EndUpdate;
-//  tvauf.DataController.Filter.Active:= true;
-  SetGridViews(True);
-end;
-procedure Tfrm_Calendar.SetGridViews(Show:boolean);
-begin
-  if Show then
+  dm_PCM.qry_Work.Close;
+  if cxComboBox1.ItemIndex > -1 then
   begin
-    SaveGridViewAufgaben := TSavedGridView.Create(GV_Aufgaben,dm_PCM.iIDBenutzerPCM, tvAuf);
-    SaveGridViewAufgaben.LoadView;
-    SaveGridViewNachrichten := TSavedGridView.Create(GV_Nachrichten,dm_PCM.iIDBenutzerPCM, tvNachrichten);
-    SaveGridViewNachrichten.LoadView;
-
-
-    SaveGridViewStundenplan := TSavedGridView.Create(GV_StundenplanBes,dm_PCM.iIDBenutzerPCM, grdDBTblView_Stundenplan);
-    SaveGridViewStundenplan.LoadView;
-    SaveGridViewStundenplanDetail := TSavedGridView.Create(GV_StundenplanDet,dm_PCM.iIDBenutzerPCM, grdDBTblView_Stundenplanuebersicht);
-    SaveGridViewStundenplanDetail.LoadView;
-  end
-  else begin
-    SaveGridViewAufgaben.SaveView(0);
-    SaveGridViewAufgaben.Free;
-    SaveGridViewNachrichten.SaveView(0);
-    SaveGridViewNachrichten.Free;
-    SaveGridViewStundenplan.SaveView(0);
-    SaveGridViewStundenplan.Free;
-    SaveGridViewStundenplanDetail.SaveView(0);
-    SaveGridViewStundenplanDetail.Free;
+    dm_Pcm.FDQuery2.sql.Text:=  'SELECT ''offen'',COUNT(*)  AS  Wert FROM manager_tickets_ges WHERE Sprint = :Sprint and (STATUS = ''Offen'' or Status =''Erneut geöffnet'' or Status = ''Input Queue'')'  +
+                                ' Union ALL ' +
+                                ' SELECT ''In Arbeit'',COUNT(*)  AS Wert FROM manager_tickets_ges WHERE Sprint = :Sprint and STATUS = ''In Arbeit''' +
+                                ' Union ALL ' +
+                                ' SELECT ''Implemented'',COUNT(*)  AS Wert FROM manager_tickets_ges WHERE Sprint = :Sprint and STATUS = ''Implemented''' +
+                                ' Union ALL ' +
+                                ' SELECT ''Ready for QA'',COUNT(*)  AS Wert FROM manager_tickets_ges WHERE Sprint = :Sprint and STATUS = ''Ready for QA''' +
+                                ' Union ALL ' +
+                                ' SELECT ''Functional Acceptance'',COUNT(*)  AS Wert  FROM manager_tickets_ges WHERE Sprint = :Sprint and STATUS = ''Functional Acceptance''';
+    dm_Pcm.FDQuery2.ParamByName('Sprint').AsString:= cxComboBox1.Properties.Items[cxComboBox1.ItemIndex];
+    dm_Pcm.FDQuery2.open;
   end;
-end;
-procedure Tfrm_Calendar.pasteEvent(iEventId : integer);
-var
-  i : integer;
-begin
-  if iCopyEventId > 0 then
+
+  dm_PCM.qry_Work.SQL.Text:= 'Select DISTINCT(Sprint) as Sprint FROM manager_tickets_priv where Board = ''PCM Desktopapp'' and Sprint <> '''' ORDER BY Sprint asc';
+  dm_PCM.qry_Work.open;
+  while not dm_PCM.qry_Work.eof do
   begin
-    sched_Kalender.BeginUpdate;
-    schedDBStrg_Kalender.BeginUpdate;
-//    ssReminder.BeginUpdate;
+    cxComboBox2.Properties.Items.Add(dm_PCM.qry_Work.FieldByName('Sprint').AsString);
+    dm_PCM.qry_Work.next;
     try
-      dm_PCM.qry_Kalender_Kalender.Locate('ID',iCopyEventId,[]);
-//      FindKey([iCopyEventId]);
-      dm_PCM.qry_work.SQL.Text := 'SELECT * FROM manager_Kalender';
-      dm_PCM.qry_work.Open;
-      dm_PCM.qry_work.Insert;
-
-      for I := 0 to dm_PCM.qry_Kalender_Kalender.FieldCount - 1 do
-      begin
-        if (dm_PCM.qry_Kalender_Kalender.Fields[i].FieldName <> 'ID') AND (dm_PCM.qry_Kalender_Kalender.Fields[i].FieldKind = fkData) then
-          dm_PCM.qry_work.FieldValues[dm_PCM.qry_Kalender_Kalender.Fields[i].FieldName] :=
-            dm_PCM.qry_Kalender_Kalender.FieldValues[dm_PCM.qry_Kalender_Kalender.Fields[i].FieldName];
-      end;
-
-      dm_PCM.qry_work.FieldValues['Start'] := sched_Kalender.SelStart;
-      dm_PCM.qry_work.FieldValues['Finish'] := sched_Kalender.SelFinish;
-      // RecurrenceInformation nicht übernehmen
-      dm_PCM.qry_work.FieldValues['EventType'] := 0;
-      dm_PCM.qry_work.FieldValues['RecurrenceInfo'] := null;
-
-      dm_PCM.qry_work.Post;
-      RefreshTerminundAUfgaben;
-
-    finally
-      //ssReminder.EndUpdate;
-      schedDBStrg_Kalender.EndUpdate ;
-      sched_Kalender.EndUpdate;
+      cxComboBox2.ItemIndex:= 0;
+    except
     end;
-    RefreshTerminundAUfgaben;
+  end;
+  dm_PCM.qry_Work.Close;
+  if cxComboBox2.ItemIndex > -1 then
+  begin
+    dm_Pcm.FDQuery3.sql.Text:= 'SELECT ''offen'',COUNT(*)  AS  Wert FROM manager_tickets_priv WHERE Sprint = :Sprint and (STATUS = ''Offen'' or Status =''Zu erledigen'' or Status = ''Input Queue'') AND Board = ''PCM Desktopapp'' ' +
+                               'Union ALL '+
+                               'SELECT ''In Arbeit'',COUNT(*)  AS Wert FROM manager_tickets_priv WHERE Sprint = :Sprint and STATUS = ''In Arbeit'' AND Board = ''PCM Desktopapp'' ' +
+                               'Union ALL '+
+                               'SELECT ''Testung'',COUNT(*)  AS Wert FROM manager_tickets_priv WHERE Sprint = :Sprint and STATUS = ''QM'' AND Board = ''PCM Desktopapp'' ' +
+                               'Union ALL '+
+                               'SELECT ''Bug occured'',COUNT(*)  AS Wert FROM manager_tickets_priv WHERE Sprint = :Sprint and STATUS = ''Bug occured''  AND Board = ''PCM Desktopapp''';
+    dm_Pcm.FDQuery3.ParamByName('Sprint').AsString:= cxComboBox2.Properties.Items[cxComboBox2.ItemIndex];
+    dm_Pcm.FDQuery3.open;
+  end;
+
+  dm_PCM.qry_Work.SQL.Text:= 'Select DISTINCT(Sprint) as Sprint FROM manager_tickets_priv where Board = ''PCM MobileApp'' and Sprint <> '''' ORDER BY Sprint asc';
+  dm_PCM.qry_Work.open;
+  while not dm_PCM.qry_Work.eof do
+  begin
+    cxComboBox3.Properties.Items.Add(dm_PCM.qry_Work.FieldByName('Sprint').AsString);
+    dm_PCM.qry_Work.next;
+    try
+      cxComboBox3.ItemIndex:= 0;
+    except
+    end;
+  end;
+  dm_PCM.qry_Work.Close;
+  if cxComboBox3.ItemIndex > -1 then
+  begin
+    dm_Pcm.FDQuery4.sql.Text:= 'SELECT ''offen'',COUNT(*)  AS  Wert FROM manager_tickets_priv WHERE Sprint = :Sprint and (STATUS = ''Offen'' or Status =''Zu erledigen'' or Status = ''Input Queue'') AND Board = ''PCM MobileApp'' ' +
+                               'Union ALL '+
+                               'SELECT ''In Arbeit'',COUNT(*)  AS Wert FROM manager_tickets_priv WHERE Sprint = :Sprint and STATUS = ''In Arbeit'' AND Board = ''PCM MobileApp'' ' +
+                               'Union ALL '+
+                               'SELECT ''Testung'',COUNT(*)  AS Wert FROM manager_tickets_priv WHERE Sprint = :Sprint and STATUS = ''QM'' AND Board = ''PCM MobileApp'' ' +
+                               'Union ALL '+
+                               'SELECT ''Bug occured'',COUNT(*)  AS Wert FROM manager_tickets_priv WHERE Sprint = :Sprint and STATUS = ''Bug occured''  AND Board = ''PCM MobileApp''';
+    dm_Pcm.FDQuery4.ParamByName('Sprint').AsString:= cxComboBox3.Properties.Items[cxComboBox3.ItemIndex];
+    dm_Pcm.FDQuery4.open;
   end;
 end;
 function Tfrm_Calendar.GetRecurrence(var Rule, Start:  string) : Ansistring;
@@ -2539,6 +1055,159 @@ begin
   RecurrenceInfo:= ARecurrenceInfo;
   Result := cxRecurrenceInfoDataToString(ARecurrenceInfo);
 end;
+function Tfrm_Calendar.GetAttachmentFilename(s: string): string;
+begin
+  Result := ExpandFilename(ExtractFilePath(ParamStr(0)) + 'Files\' + s)
+end;
+procedure Tfrm_Calendar.NachrichtenAnhaengeLaden(ID_IC_Nachrichten: Integer);
+begin
+  Image1.Picture.Assign(nil);
+  lTypeName.Caption := '';
+  qWF_Nachrichten_Anhaenge.Close;
+  qWF_Nachrichten_Anhaenge.SQL.Text:= 'SELECT ina.ID, ina.ID_IC_Nachrichten, ina.Dateiname, ina.DateinameSave FROM manager_Aufgaben_Anhaenge ina WHERE ina.ID_IC_Nachrichten = :ID_IC_Nachrichten';
+  qWF_Nachrichten_Anhaenge.Params[0].AsInteger := ID_IC_Nachrichten;
+  qWF_Nachrichten_Anhaenge.Open;
+end;
+procedure Tfrm_Calendar.qry_Tickets_privAfterScroll(DataSet: TDataSet);
+var
+  slBeschreibung: TStringlist;
+  i: Integer;
+begin
+  grpbx_Ticketspriv.CaptionOptions.Text:= 'Projekte / ' + qry_Tickets_priv.FieldByName('Epic').asString + ' / ' + qry_Tickets_priv.FieldByName('Ticket_nr').asString;
+  dxLayoutItem21.CaptionOptions.Text:=qry_Tickets_priv.FieldByName('Betreff').asString;
+  dm_PCm.qry_work.SQL.Text:= 'SELECT Beschreibung FROM manager_tickets_priv Where Ticket_nr = :Ticket_nr';
+  dm_PCm.qry_work.ParamByName('Ticket_nr').AsString:= qry_Tickets_priv.FieldByName('Ticket_nr').asString;
+  dm_PCm.qry_work.OPen;
+  slBeschreibung:= TStringlist.Create;
+  slBeschreibung.Text:= dm_PCm.qry_work.FieldByname('Beschreibung').AsString;
+  dm_PCm.qry_work.Close;
+  cxRichEdit1.Clear;
+  cxRichEdit1.Height:= Round(slBeschreibung.Count * 14 * dm_PCM.iScale);
+  for i := 0 to slBeschreibung.Count - 1 do
+  begin
+    cxRichEdit1.Lines.Add(slBeschreibung.Strings[i]);
+  end;
+end;
+procedure Tfrm_Calendar.qry_Tickets_gesAfterScroll(DataSet: TDataSet);
+var
+  slBeschreibung: TStringlist;
+  i: Integer;
+begin
+  grpbx_Ticketsges.CaptionOptions.Text:= 'Projekte / ' + qry_Tickets_ges.FieldByName('Epic').asString + ' / ' + qry_Tickets_ges.FieldByName('Ticket_nr').asString;
+  dxLayoutItem3.CaptionOptions.Text:=qry_Tickets_ges.FieldByName('Betreff').asString;
+  dm_PCm.qry_work.SQL.Text:= 'SELECT Beschreibung FROM manager_tickets_ges Where Ticket_nr = :Ticket_nr';
+  dm_PCm.qry_work.ParamByName('Ticket_nr').AsString:= qry_Tickets_ges.FieldByName('Ticket_nr').asString;
+  dm_PCm.qry_work.OPen;
+  slBeschreibung:= TStringlist.Create;
+  slBeschreibung.Text:= dm_PCm.qry_work.FieldByname('Beschreibung').AsString;
+  dm_PCm.qry_work.Close;
+  cxRichEdit2.Clear;
+  cxRichEdit2.Height:= Round(slBeschreibung.Count * 14 * dm_PCM.iScale);
+  for i := 0 to slBeschreibung.Count - 1 do
+  begin
+    cxRichEdit2.Lines.Add(slBeschreibung.Strings[i]);
+  end;
+end;
+procedure Tfrm_Calendar.qry_StundenplanAfterScroll(DataSet: TDataSet);
+var
+  iID_Stundenplan: integer;
+begin
+  Setbuttons;
+  iID_Stundenplan:= qry_Stundenplan.FieldByName('ID').AsInteger;
+  qry_Stundenplan_detail.Filter:= 'ID_Stundenplan = ' + IntToStr(iID_Stundenplan);
+  qry_Stundenplan_detail.Filtered:= true;
+end;
+procedure Tfrm_Calendar.qWF_Nachrichten_AnhaengeAfterScroll(DataSet: TDataSet);
+  function GetFileNameInfo(const FileName: string; out TypeName: string): HICON;
+  var
+    FileInfo: TSHFileInfo;
+    ImageList: HIMAGELIST;
+    Flags: Cardinal;
+  begin
+    FillChar(FileInfo, SizeOf(FileInfo), #0);
+    Flags := SHGFI_SHELLICONSIZE or SHGFI_TYPENAME;
+    ImageList := SHGetFileInfo(PChar(FileName), 0, FileInfo, SizeOf(FileInfo),
+      Flags or SHGFI_SYSICONINDEX);
+    TypeName := FileInfo.szTypeName;
+    if ImageList <> 0 then
+      Result := ImageList_ExtractIcon(0, ImageList, FileInfo.iIcon)
+    else
+      Result := 0;
+  end;
+
+var
+  f: string;
+  Icon: TIcon;
+  tn: string;
+begin
+
+  if not qWF_Nachrichten_Anhaenge.ControlsDisabled then
+  begin
+    f := qWF_Nachrichten_AnhaengeDateinameSave.AsString;
+    if f <> '' then
+    begin
+      f := GetAttachmentFilename(f);
+      Icon := TIcon.Create;
+      Icon.Handle := GetFileNameInfo(f, tn);
+      lTypeName.Caption := tn;
+      Image1.Picture.Assign(Icon);
+      Icon.Free;
+    end
+    else
+    begin
+      Image1.Picture.Assign(nil);
+      lTypeName.Caption := '';
+    end;
+  end;
+end;
+procedure Tfrm_Calendar.RefreshTerminundAUfgaben;
+var
+  sfilter: String;
+begin
+  dm_PCM.qry_Kalender_Aufgaben.Filter:= '';
+  dm_PCM.qry_work.sql.text:= 'Select COUNT(*) AS AufgabenTermine , ('+
+                      'Select COUNT(*) From manager_kalender Where gelesenam is null and bearbeitetam is NULL AND Typ IN (0) and ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM) +' ) AS Nachrichten ' +
+                      'From manager_Kalender ' +
+                      'Where ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM) +' and  gelesenam is null and bearbeitetam is NULL AND Typ IN (1,2)';
+  dm_PCM.qry_work.open;
+  trlst_Aufgaben.Items[2].Values[1]:= dm_PCM.qry_work.Fieldbyname('Nachrichten').asInteger;
+  trlst_Aufgaben.Items[1].Values[1]:= dm_PCM.qry_work.Fieldbyname('AufgabenTermine').asInteger;
+  dm_PCM.qry_work.close;
+
+  sFilter:= '';
+  case iCurrTableView of
+  0:
+    sfilter:= 'Typ = 2';
+  1:
+    sfilter:= 'Typ = 1';
+  2:
+    sFilter:= 'Typ = 0';
+  end;
+  dm_PCM.qry_Kalender_Kalender.Refresh;
+  dm_PCM.qry_Kalender_Aufgaben.refresh;
+  if sFilter <> '' then
+    dm_PCM.qry_Kalender_Aufgaben.Filter:= sFilter + ' and bearbeitetam = null and ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM)
+  else
+    dm_PCM.qry_Kalender_Aufgaben.Filter:= 'bearbeitetam = null and ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+  dm_PCM.qry_Kalender_Aufgaben.Filtered:= true;
+
+end;
+procedure Tfrm_Calendar.SearchBoxSetStyle();
+begin
+  if (edt_Suche.Text = SearchTypeToStr(stSubject)) OR
+     (edt_Suche.Text = SearchTypeToStr(stMessage)) OR
+     (edt_Suche.Text = SearchTypeToStr(stSubjectMessage)) then
+  begin
+    edt_Suche.Text := SearchTypeToStr(FSearchType);
+    edt_Suche.Style.Font.Color := clGray;
+    edt_Suche.Style.Font.Style := [fsItalic];
+  end
+  else
+  begin
+    edt_Suche.Style.Font.Color := clBlack;
+    edt_Suche.Style.Font.Style := [];
+  end;
+end;
 procedure Tfrm_Calendar.OpenEvent(ID_kalender: Integer; bReminder: Boolean);
 var
   schedeventE : TcxSchedulerControlEvent;
@@ -2591,39 +1260,6 @@ begin
   begin
     RefreshTerminundAUfgaben;
     fNeu:= nil;
-  end;
-
-end;
-procedure Tfrm_Calendar.btn_TerminchangeClick(Sender: TObject);
-begin
-  if (sched_Kalender.SelectedEventCount = 1)  then //and not Assigned(fNeu)
-  begin
-   if dm_PCM.ikalender >= 2 then
-     OpenEvent(sched_Kalender.SelectedEvents[0].ID, sched_Kalender.SelectedEvents[0].Reminder);
-  end;
-end;
-procedure Tfrm_Calendar.btn_TerminDeleteClick(Sender: TObject);
-var
-  ibuttonSelected : Integer;
-begin
-  if sched_Kalender.SelectedEventCount > 0 then
-  begin
-    ibuttonSelected := MessageDlg('Möchten sie den Termin wirklich löschen?',mtWarning, mbYesNo, 0);
-    if ibuttonSelected = mrYes then
-    begin
-      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
-      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Termin ' + sched_Kalender.SelectedEvents[0].Caption + ' von  '  +
-                                                        DateTimeToStr(sched_Kalender.SelectedEvents[0].Start) + ' bis ' +
-                                                        DateTimeToStr(sched_Kalender.SelectedEvents[0].Finish) + ' wurde gelöscht';
-      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-      dm_PCM.qry_work.execsql;
-      dm_PCM.qry_work.SQL.Text:='Delete From manager_Kalender Where ID = :ID';
-      dm_PCM.qry_work.ParamByName('ID').AsInteger:= sched_Kalender.SelectedEvents[0].ID;
-      dm_PCM.qry_work.ExecSQL;
-      RefreshTerminundAUfgaben;
-    end;
-    if ibuttonSelected = mrCancel then
-      exit;
   end;
 
 end;
@@ -2945,187 +1581,6 @@ begin
   CloseWaitForm;
 //  frm_PCM_Functions.free;
 end;
-procedure Tfrm_Calendar.sch_KalenderAfterSizingEvent(Sender: TcxCustomScheduler;AEvent: TcxSchedulerControlEvent; X, Y: Integer; var Accept: Boolean);
-var
-  sDateBegin, sDateEnd: string;
-begin
-  // Begindatum ermittlen
-  sDateBegin:= Copy(DateTimeToStr(sched_Kalender.SelectedEvents[0].Start),7,4) + '-'
-  + Copy(DateTimeToStr(sched_Kalender.SelectedEvents[0].Start),4,2) + '-'
-  + Copy(DateTimeToStr(sched_Kalender.SelectedEvents[0].Start),1,2) + ' '
-  + Copy(DateTimeToStr(sched_Kalender.SelectedEvents[0].Start),12,8);
-  // Enddatum ermittlen
-  sDateEnd:= Copy(DateTimeToStr(sched_Kalender.SelectedEvents[0].Finish),7,4) + '-'
-  + Copy(DateTimeToStr(sched_Kalender.SelectedEvents[0].Finish),4,2) + '-'
-  + Copy(DateTimeToStr(sched_Kalender.SelectedEvents[0].Finish),1,2) + ' '
-  + Copy(DateTimeToStr(sched_Kalender.SelectedEvents[0].Finish),12,8);
-  dm_PCM.qry_work.close;
-  dm_PCM.qry_work.SQL.Text:= 'Update manager_Kalender Set Start = :Begin, Finish = :End WHERE ID = :ID';
-  dm_PCM.qry_work.ParamByName('Begin').AsString:= sDateBegin;
-  dm_PCM.qry_work.ParamByName('End').AsString:= sDateEnd;
-  dm_PCM.qry_work.ParamByName('ID').AsInteger:= sched_Kalender.SelectedEvents[0].ID;
-  dm_PCM.qry_work.ExecSQL;
-  dm_PCM.qry_work.Close;
-
-end;
-procedure Tfrm_Calendar.sched_KalenderBeforeDragEvent(Sender: TcxCustomScheduler;AEvent: TcxSchedulerControlEvent; X, Y: Integer; var Allow: Boolean);
-begin
-  iCopyEventId := 0;
-  if (dm_PCM.iKalender > 1) AND (AEvent.RecurrenceIndex < 0)  then
-  begin
-    if (GetKeyState(VK_LCONTROL) < 0) OR (GetKeyState(VK_RCONTROL) < 0) then
-      Allow := False
-    else
-    begin
-      iCopyEventId := AEvent.ID;
-      Allow := True;
-    end;
-  end
-  else
-    Allow := False;
-end;
-procedure Tfrm_Calendar.sched_KalenderBeforeSizingEvent( Sender: TcxCustomScheduler; AEvent: TcxSchedulerControlEvent; X, Y: Integer; var Allow: Boolean);
-begin
-  if dm_PCM.iKalender > 1 then
-  begin
-    Allow := true;
-  end
-  else begin
-    Allow := false;
-  end;
-end;
-procedure Tfrm_Calendar.sched_KalenderClick(Sender: TObject);
-var
-  vwHitTest: TcxSchedulerViewHitTest;
-begin
-  vwHitTest := sched_Kalender.CurrentView.HitTest;
-  if vwHitTest.HitAtEvent then
-  begin
-    sched_Kalender.SelectEvent(vwHitTest.Event);
-  end;
-end;
-procedure Tfrm_Calendar.sched_KalenderCustomDrawDayHeader(Sender: TObject;  ACanvas: TcxCanvas; AViewInfo: TcxSchedulerDayHeaderCellViewInfo;  var ADone: Boolean);
-begin
-  AViewInfo.DisplayText:= StringReplace(AViewInfo.DisplayText, '/ ', '. ', [rfReplaceAll, rfIgnoreCase]);
-end;
-procedure Tfrm_Calendar.sched_KalenderCustomDrawEvent(Sender: TObject; ACanvas: TcxCanvas; AViewInfo: TcxSchedulerEventCellViewInfo; var ADone: Boolean);
-begin
-  dm_PCM.qry_work.Close;
-  dm_PCM.qry_work.SQL.Text := 'SELECT LabelColor,FontColor from manager_Kalender WHERE ID = ' + intToStr(AViewInfo.Event.ID);
-  dm_PCM.qry_work.Open;
-  if dm_PCM.qry_work.FieldByName('LabelColor').AsString <> '' then
-  begin
-    ACanvas.Font.Color := dm_PCM.qry_work.FieldByName('FontColor').asInteger;
-    ACanvas.Brush.Color := dm_PCM.qry_work.FieldByName('LabelColor').AsInteger;
-  end
-  else begin
-    ACanvas.Font.Color := defaultFontColor;
-    ACanvas.Brush.Color := defaultLabelColor;
-  end;
-  dm_PCM.qry_work.Close;
-end;
-procedure Tfrm_Calendar.sched_KalenderDblClick(Sender: TObject);
-begin
-  if dm_PCM.iKalender >= 2 then
-  begin
-    if sched_Kalender.SelectedEventCount > 0 then
-    begin
-      btn_TerminchangeClick(Sender);
-    end;
-  end;
-end;
-procedure Tfrm_Calendar.sched_KalenderGetEventEditProperties(Sender: TObject; AEvent: TcxSchedulerControlEvent; var AProperties: TcxCustomEditProperties);
-begin
-  AProperties := riEvent.Properties;
-end;
-procedure Tfrm_Calendar.sched_KalenderGetEventHintText(Sender: TObject; AEvent: TcxSchedulerControlEvent; var AText: string);
-var
-  i: integer;
-  sBegin: string;
-  sFinish: string;
-  sBetreff: string;
-  slocation: string;
-  sMessage: string;
-  sKalender: string;
-  sName: string;
-  sStrasse: string;
-  sOrt: string;
-  sTelefon: string;
-  sMobil: string;
-  sEmail: string;
-begin
-  i:= AEvent.ID;
-  if i > 0 then
-  begin
-    dm_PCM.qry_work.SQL.Text:= 'SELECT mgr_cal.Caption, mgr_cal.Location, ' +
-                        'mgr_cal.Message, mgr_cal.Start, ' +
-                        'mgr_cal.Finish, mgr_cal.Options,mgr_cal.Reminder, ' +
-                        'mgr_cal.ReminderDate, ' +
-                        'mgr_cal.ReminderMinutesBeforeStart,mgr_cal.LabelColor, mgr_cal.CompleteDay, mgr_cal.Kalendername, ' +
-                        'mgr_con.Vorname, mgr_con.Nachname, ' +
-                        'IF(mgr_con.Strasse_Privat = '''',mgr_con.Strasse_Ges,mgr_con.Strasse_Privat) AS Strasse, ' +
-                        'IF(mgr_con.PLZ_Privat = '''',mgr_con.PLZ_Ges,mgr_con.PLZ_Privat) AS PLZ, ' +
-                        'IF(mgr_con.Ort_Privat = '''',mgr_con.Ort_Ges,mgr_con.Ort_Privat) AS Ort, ' +
-                        'IF(mgr_con.Telefon_Privat = '''',mgr_con.Telefon_Ges,mgr_con.Telefon_Privat) AS Telefon, ' +
-                        'IF(mgr_con.Handy_privat = '''',mgr_con.Handy_ges,mgr_con.Handy_privat) AS Handy, ' +
-                        'IF(mgr_con.E_Mail_Privat = '''',mgr_con.E_Mail_ges,mgr_con.E_Mail_Privat) AS Mail ' +
-                        'FROM manager_Kalender mgr_cal ' +
-                        'LEFT OUTER JOIN manager_Kontakte mgr_con ON  mgr_con.ID = mgr_cal.ID_Kontakte ' +
-                        'WHERE mgr_cal.ID = :ID';
-
-    dm_PCM.qry_work.ParamByName('ID').AsInteger:= i;
-    dm_PCM.qry_work.Open;
-    sBegin:= Copy(dm_PCM.qry_work.FieldByName('Start').AsString,12,5);
-    if sBegin = '' then
-      sBegin := '00:00';
-    sFinish:= Copy(dm_PCM.qry_work.FieldByName('Finish').AsString,12,5);
-    if sFinish = '' then
-      sFinish := '00:00';
-    sBetreff:= dm_PCM.qry_work.FieldByName('Caption').AsString;
-    slocation:= dm_PCM.qry_work.FieldByName('Location').AsString;
-    sMessage:= dm_PCM.qry_work.FieldByName('Message').AsString;
-    sKalender:= dm_PCM.qry_work.FieldByName('Kalendername').AsString;
-    sName:= dm_PCM.qry_work.FieldByName('Vorname').AsString + ' ' + dm_PCM.qry_work.FieldByName('Nachname').AsString;
-    sStrasse:= dm_PCM.qry_work.FieldByName('Strasse').AsString;
-    sOrt:= dm_PCM.qry_work.FieldByName('PLZ').AsString + ' '+ dm_PCM.qry_work.FieldByName('Ort').AsString;
-    sTelefon:= dm_PCM.qry_work.FieldByName('Telefon').AsString;
-    sMobil:= dm_PCM.qry_work.FieldByName('Handy').AsString;
-    sEmail:=dm_PCM.qry_work.FieldByName('Mail').AsString;
-
-    dm_PCM.qry_work.close;
-
-    AText :=  'Zeit: ' + sBegin + ' bis ' + sFinish + Slinebreak
-              + 'Kalender: ' + sKalender + Slinebreak
-              + 'Betreff: ' + sBetreff + Slinebreak
-              + '___________________________________________' + slinebreak
-              + slinebreak + sMessage + slinebreak
-              + slinebreak
-              + 'Kontakt: ' + Slinebreak + sName + slinebreak
-              + sStrasse + slinebreak + sOrt + Slinebreak
-              + 'Tel: ' +sTelefon + Slinebreak
-              + 'Handy: ' + sMobil + Slinebreak
-              + 'E-Mail: ' + sEmail + Slinebreak;
-  end;
-
-end;
-procedure Tfrm_Calendar.sched_KalenderKeyDown(Sender: TObject; var Key: Word;  Shift: TShiftState);
-begin
-  if (Key = 67) and (ssCtrl in Shift) then
-  begin
-    copyEvent();
-    Key := 0;
-  end;
-
-  if (Key = 86) and (ssCtrl in Shift) then
-  begin
-    Key := 0;
-    pasteEvent(iCopyEventId);
-  end;
-  if (Key = 46) and (dm_PCM.iKalender > 2) then
-  begin
-    btn_TerminDeleteClick(Sender);
-  end;
-end;
 procedure Tfrm_Calendar.WriteICSAutomatic;
 var
   sFilename : string;
@@ -3271,899 +1726,35 @@ begin
   end;
   dm_PCM.qry_work1.close;
 end;
-procedure Tfrm_Calendar.btn_TerminExportClick(Sender: TObject);
+procedure Tfrm_Calendar.SetGridViews(Show:boolean);
 begin
-  ReadICSAutomatic;
-  Application.ProcessMessages;
-  WriteICSAutomatic;
-end;
-procedure Tfrm_Calendar.btn_CalTerminImportClick(Sender: TObject);
-begin
-  Application.CreateForm(Tfrm_PCM_Import,frm_PCM_Import);
-  if frm_PCM_Import.Execute(True,dm_PCM.iIDBenutzerPCM) then
-    RefreshTerminundAUfgaben;
-  frm_PCM_Import.Free;
-end;
-procedure Tfrm_Calendar.btn_TerminNeuClick(Sender: TObject);
-var
-  iNewId: integer;
-begin
-  Application.CreateForm(TfNeu, fNeu);
-  fNeu.Execute(schedDBStrg_Kalender,2, 0, 0, '','',0,sched_Kalender.SelStart,sched_Kalender.SelFinish,0,false,0,0,0,0,0,0,false,false,15,false,0,0,nil,'','',iNewId);
-  fNeu := nil;
-  RefreshTerminundAUfgaben;
-end;
-procedure Tfrm_Calendar.RefreshCalender;
-begin
-  dm_PCM.qry_Kalender_Kalender.SQL.Text:=  'Select ID,EventType,Caption,Location,Message,Start,' +
-                        'Finish,Options,Completeday,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'+
-                        'ReminderMinutesBeforeStart,LabelColor,Fontcolor, ID_Benutzer,ID_kontakte From manager_Kalender ' +
-                        'Where ID_Benutzer = :ID';
-  dm_PCM.qry_Kalender_Kalender.ParamByName('ID').AsInteger := dm_PCM.iIDBenutzerPCM;
-  dm_PCM.qry_Kalender_Kalender.open;
-end;
-procedure Tfrm_Calendar.btn_TerminTodayClick(Sender: TObject);
-begin
-  sched_Kalender.SelectDays(Date, Date, True);
+  if Show then
+  begin
+    SaveGridViewAufgaben := TSavedGridView.Create(GV_Aufgaben,dm_PCM.iIDBenutzerPCM, tvAuf);
+    SaveGridViewAufgaben.LoadView;
+    SaveGridViewNachrichten := TSavedGridView.Create(GV_Nachrichten,dm_PCM.iIDBenutzerPCM, tvNachrichten);
+    SaveGridViewNachrichten.LoadView;
+
+
+    SaveGridViewStundenplan := TSavedGridView.Create(GV_StundenplanBes,dm_PCM.iIDBenutzerPCM, grdDBTblView_Stundenplan);
+    SaveGridViewStundenplan.LoadView;
+    SaveGridViewStundenplanDetail := TSavedGridView.Create(GV_StundenplanDet,dm_PCM.iIDBenutzerPCM, grdDBTblView_Stundenplanuebersicht);
+    SaveGridViewStundenplanDetail.LoadView;
+  end
+  else begin
+    SaveGridViewAufgaben.SaveView(0);
+    SaveGridViewAufgaben.Free;
+    SaveGridViewNachrichten.SaveView(0);
+    SaveGridViewNachrichten.Free;
+    SaveGridViewStundenplan.SaveView(0);
+    SaveGridViewStundenplan.Free;
+    SaveGridViewStundenplanDetail.SaveView(0);
+    SaveGridViewStundenplanDetail.Free;
+  end;
 end;
 procedure Tfrm_Calendar.SetButtonsEnabledVisible(DataSet: TDataSet);
 begin
   SetButtons;
-end;
-procedure Tfrm_Calendar.qry_StundenplanAfterScroll(DataSet: TDataSet);
-var
-  iID_Stundenplan: integer;
-begin
-  Setbuttons;
-  iID_Stundenplan:= qry_Stundenplan.FieldByName('ID').AsInteger;
-  qry_Stundenplan_detail.Filter:= 'ID_Stundenplan = ' + IntToStr(iID_Stundenplan);
-  qry_Stundenplan_detail.Filtered:= true;
-end;
-procedure Tfrm_Calendar.qWF_Nachrichten_AnhaengeAfterScroll(DataSet: TDataSet);
-  function GetFileNameInfo(const FileName: string; out TypeName: string): HICON;
-  var
-    FileInfo: TSHFileInfo;
-    ImageList: HIMAGELIST;
-    Flags: Cardinal;
-  begin
-    FillChar(FileInfo, SizeOf(FileInfo), #0);
-    Flags := SHGFI_SHELLICONSIZE or SHGFI_TYPENAME;
-    ImageList := SHGetFileInfo(PChar(FileName), 0, FileInfo, SizeOf(FileInfo),
-      Flags or SHGFI_SYSICONINDEX);
-    TypeName := FileInfo.szTypeName;
-    if ImageList <> 0 then
-      Result := ImageList_ExtractIcon(0, ImageList, FileInfo.iIcon)
-    else
-      Result := 0;
-  end;
-
-var
-  f: string;
-  Icon: TIcon;
-  tn: string;
-begin
-
-  if not qWF_Nachrichten_Anhaenge.ControlsDisabled then
-  begin
-    f := qWF_Nachrichten_AnhaengeDateinameSave.AsString;
-    if f <> '' then
-    begin
-      f := GetAttachmentFilename(f);
-      Icon := TIcon.Create;
-      Icon.Handle := GetFileNameInfo(f, tn);
-      lTypeName.Caption := tn;
-      Image1.Picture.Assign(Icon);
-      Icon.Free;
-    end
-    else
-    begin
-      Image1.Picture.Assign(nil);
-      lTypeName.Caption := '';
-    end;
-  end;
-end;
-procedure Tfrm_Calendar.pc_KalenderClick(Sender: TObject);
-begin
-  if pc_Kalender.Properties.ActivePage = ts_A_kalender then
-  begin
-    Application.ProcessMessages;
-    sched_Kalender.SelectDays(Date, Date, True);
-    Application.ProcessMessages;
-    dm_PCM.qry_Kalender_Benutzer.SQL.Text:= 'Select ID, CONCAT(Nachname, ' + QuotedStr(', ') + ' ,Vorname) as Name '+'From Benutzer Where ID = :ID';
-    dm_PCM.qry_Kalender_Benutzer.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
-    dm_PCM.qry_Kalender_Benutzer.Open;
-    Application.ProcessMessages;
-    Application.ProcessMessages;
-    dm_PCM.qry_Kalender_Kalender.SQL.Text:=  'Select ID,EventType,Caption,Location,Message,Start,' +
-                          'Finish,Options,CompleteDay,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'+
-                          'ReminderMinutesBeforeStart,LabelColor,FontColor,ID_Benutzer,ID_kontakte From manager_Kalender ' +
-                          'Where Typ = 2 and ID_Benutzer = :ID';;
-    dm_PCM.qry_Kalender_Kalender.ParamByName('ID').asBlob:= AnsiStrIng(IntToStr(dm_PCM.iIDBenutzerPCM));
-    dm_PCM.qry_Kalender_Kalender.Open;
-    try
-      Application.ProcessMessages;
-      ReadICSAutomatic;
-      Application.ProcessMessages;
-      WriteICSAutomatic;
-    except
-    end;
-    Application.ProcessMessages;
-    btn_CalArbeitswocheClick(Self);
-    btn_CalArbeitswoche.LargeImageIndex:= 16;
-    btn_CalTag.LargeImageIndex:= 39;
-    btn_CalWoche.LargeImageIndex:= 41;
-    btn_CalMonat.LargeImageIndex:= 42;
-    btn_CalJahr.LargeImageIndex:= 44;
-    schedDBStrg_Kalender.Reminders.Active:= true;
-  end;
-  FormResize(Self);
-end;
-procedure Tfrm_Calendar.btn_CalAnsichtClick(Sender: TObject);
-begin
-  if bol_VollBildCal = false then
-  begin
-    bol_VollBildCal:= true;
-    frm_PCM_main.navbr_main.Width:= 0;
-    frm_PCM_main.pcmain.properties.HideTabs:= true;
-    pc_kalender.properties.HideTabs:= true;
-    btn_CalAnsicht.Caption:= rs_PCMManager_normAnsicht;
-    btn_CalAnsicht.LargeImageIndex:= 31;
-//    nbk_main.Left:= 0;
-//    nbk_main.Width:= dm_PCM.clientWidth;
-  end
-  else begin
-    bol_VollBildCal:= false;
-    frm_PCM_main.navbr_main.Width:= 200;
-    frm_PCM_main.pcmain.properties.HideTabs:= false;
-    pc_kalender.properties.HideTabs:= false;
-    btn_CalAnsicht.Caption:= rs_PCMManager_maxAnsicht;
-    btn_CalAnsicht.LargeImageIndex:= 32;
-//    nbk_Main.Left:= 200;
-//    nbk_main.Width:= dm_PCM.ClientWidth - 200;
-  end;
-end;
-procedure Tfrm_Calendar.btn_CalArbeitswocheClick(Sender: TObject);
-begin
-  FKalenderDateButton := True;
-  tag := Round(sched_Kalender.SelectedDays.Count / 2);
-  sched_Kalender.SelectWorkDays(sched_Kalender.SelectedDays[tag]);
-  btn_CalZurueck.Hint := rs_PCMManager_ArbWocheZurueck;
-  btn_CalVor.Hint := rs_PCMManager_ArbWocheVor;
-  btn_CalTag.LargeImageIndex:= 39;
-  btn_CalArbeitswoche.LargeImageIndex:= 16;
-  btn_CalWoche.LargeImageIndex:= 41;
-  btn_CalMonat.LargeImageIndex:= 42;
-  btn_CalJahr.LargeImageIndex:= 44;
-end;
-procedure Tfrm_Calendar.btn_CalArbeitszeitClick(Sender: TObject);
-begin
-  if (btn_CalArbeitswoche.LargeImageIndex = 16) or (btn_CalTag.LargeImageIndex = 15) then
-  begin
-    if bol_allday then
-    begin
-      sched_Kalender.ViewDay.WorkTimeOnly := true;
-      btn_CalCompleteday.LargeImageIndex:= 21;
-      bol_allday:= false;
-    end
-    else begin
-      sched_Kalender.ViewDay.WorkTimeOnly := false;
-      btn_CalCompleteday.LargeImageIndex:= 45;
-      bol_allday:= true;
-    end;
-  end;
-end;
-procedure Tfrm_Calendar.btn_CalExporttoOutlookClick(Sender: TObject);
-var
-  sKalPriv,sKalGes: String;
-begin
-  dm_PCM.qry_Work.sql.text:= 'Select Account_Privat,Account_Geschaeftlich From manager_kalender_optionen Where ID_Benutzer =:ID_Benutzer';
-  dm_PCM.qry_Work.ParamByName('ID_benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-  dm_PCM.qry_Work.Open;
-  sKalPriv:= dm_PCM.qry_Work.FieldByName('Account_Privat').asString;
-  sKalGes:= dm_PCM.qry_Work.FieldByName('Account_Geschaeftlich').asString;
-  dm_PCM.qry_Work.Close;
-  AddOutlookEvents(sKalPriv,sKalGes);
-end;
-procedure Tfrm_Calendar.AddOutlookEvents(AuserPriv,AuserGes: String);
-const
-  olFolderCalendars = $00000009;
-var
-  // Outlook : OleVariant;
-  NameSpace: olevariant;
-  Termin: olevariant;
-  CalendarsRoot,objOwner: olevariant;
-  CalendarsFolder: olevariant;
-  OutlookCalendar: olevariant;
-//  SubFolderName: string;
-//  iPosition: integer;
-//  Found: boolean;
-//  Counter: integer;
-//  TestCalendarFolder,
-  Appointments: olevariant;
-  i, iCOunt: integer;
-  sDatum: string;
-  dBefore, dAfter: TDate;
-  sTermine, sTerminArt: string;
-  bImport: boolean;
-//  sID_Benutzer,APath: string;
-begin
-//  Atyp:= True;
-  Writelog(PCM_Logname, rs_PCMManager_Terminealle + rs_PCMManager_OutlookVerbinden, 0);
-  try
-    Outlook.connect;
-  except
-    on e: System.sysutils.Exception do
-    begin
-      Writelog(PCM_Logname,rs_PCMManager_Terminealle + rs_PCMManager_KeineVerbindung + e.Message, 2);
-      exit;
-    end;
-  end;
-  Writelog(PCM_Logname, rs_PCMManager_Terminealle +rs_PCMManager_Namespace, 0);
-  try
-    NameSpace := Outlook.GetNameSpace('MAPI');
-  except
-    on e: System.sysutils.Exception do
-    begin
-      Writelog(PCM_Logname, rs_PCMManager_Terminealle + rs_PCMManager_NamespaceErmitteln + e.Message, 2);
-      exit;
-    end;
-  end;
-  Writelog(PCM_Logname, rs_PCMManager_Terminealle + rs_PCMManager_CalendarsRoot + AuserPriv, 0);
-  try
-    objOwner := NameSpace.CreateRecipient(AuserPriv);
-    CalendarsRoot := NameSpace.GetSharedDefaultFolder(objOwner,olFolderCalendars);
-  except
-    on e: System.sysutils.Exception do
-    begin
-      Writelog(PCM_Logname,rs_PCMManager_Terminealle + rs_PCMManager_CalendarsRootErmitteln +  e.Message, 2);
-      exit;
-    end;
-  end;
-  CalendarsFolder := CalendarsRoot;
-  Appointments := CalendarsFolder.Items;
-  Appointments.IncludeRecurrences := True;
-//  if ATyp then
-//  begin
-//    APath:= AuserPriv;
-//    while APath <> '' do
-//    begin
-//      iPosition := Pos('\', APath);
-//      if iPosition > 0 then
-//      begin
-//        SubFolderName := copy(APath, 1, iPosition - 1);
-//        APath := copy(APath, iPosition + 1, Length(APath));
-//      end
-//      else
-//      begin
-//        SubFolderName := APath;
-//        APath := '';
-//      end;
-//      if SubFolderName = '' then
-//        Break;
-//      Found := false;
-//      for Counter := 1 to CalendarsFolder.Folders.Count do
-//      begin
-//        TestCalendarFolder := CalendarsRoot.Folders.Item(Counter);
-//        if LowerCase(TestCalendarFolder.Name) = LowerCase(SubFolderName) then
-//        begin
-//          CalendarsFolder := TestCalendarFolder;
-//          Found := True;
-//          Break;
-//        end;
-//      end;
-//      if not Found then
-//        CalendarsFolder := CalendarsFolder.Folders.Add(SubFolderName);
-//    end;
-//  end;
-  i := 1;
-  ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineLoeschen), CalendarsFolder.Items.Count, frm_PCM_main.ClientWidth, frm_PCM_main.Height);
-  for iCOunt := 1 to CalendarsFolder.Items.Count do
-  begin
-    Application.ProcessMessages;
-    WaitFormStep;
-    Termin := CalendarsFolder.Items.Item(i);
-    if Termin.Categories = 'PCM_Termin' then
-    begin
-      Termin.delete;
-    end
-    else
-    begin
-      i := i + 1;
-    end;
-  end;
-  CloseWaitForm;
-  sDatum := DateToStr(Now());
-  dBefore := Now() - 365;
-  dAfter := Now() + 365;
-  dm_PCM.qry_Work.sql.Text := 'SELECT mgr_ben.Benutzer as Mitarbeiter,' +
-                       'mgr_cal.Caption AS Betreff,mgr_cal.Message as Nachricht, ' +
-                       'Cast(mgr_cal.Start as date) as StartDatum, Cast(mgr_cal.Finish as date) as EndeDatum, ' +
-                       'Cast(mgr_cal.Start as time) as StartZeit, Cast(mgr_cal.Finish as time) as EndeZeit, ' +
-                       'mgr_cal.Reminder as Erinnerung, mgr_cal.ReminderMinutesBeforeStart as MinutenVorTermin, ' +
-                       'mgr_cal.Location as Aufgabenort ' + 'From manager_kalender mgr_cal  ' +
-                       'LEFT OUTER JOIN benutzer mgr_ben ON mgr_cal.ID_Benutzer = mgr_ben.ID ' +
-                       'Where mgr_cal.Start >= :Von ' +
-                       'and mgr_cal.Start <= :Bis ' +
-                       'and mgr_cal.Start <= :Bis ' +
-                       ' and Kalendername <> ' + QuotedStr(AUserPriv);
-  dm_PCM.qry_Work.ParamByName('Von').AsDate:= dBefore;
-  dm_PCM.qry_Work.ParamByName('Bis').AsDate:= dAfter;
-
-  dm_PCM.qry_Work.sql.Text := dm_PCM.qry_Work.sql.Text + ' and mgr_Cal.ID_Benutzer IN ( ' + IntToStr(dm_PCM.iIDBenutzerPCM) + ') order by StartDatum asc';
-  dm_PCM.qry_Work.Open;
-  ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineImportieren), dm_PCM.qry_Work.RecordCount, frm_PCM_main.ClientWidth, frm_PCM_main.Height);
-  while not dm_PCM.qry_Work.eof do
-  begin
-//    Inc(i2);
-    WaitFormStep;
-    sTermine := dm_PCM.qry_Work.FieldByName('AufgabenOrt').AsString;
-    sTerminArt := dm_PCM.qry_Work.FieldByName('AufgabenOrt').AsString;
-    bImport := True;
-    OutlookCalendar := CalendarsFolder.Items.Add;
-    if dm_PCM.qry_Work.FieldByName('StartZeit').AsString = dm_PCM.qry_Work.FieldByName('EndeZeit').AsString then
-    begin
-      OutlookCalendar.Subject :=  dm_PCM.qry_Work.FieldByName('Betreff').AsString;
-      OutlookCalendar.AllDayEvent := 'true';
-      OutlookCalendar.body := '';
-    end
-    else
-    begin
-      OutlookCalendar.Subject :=  dm_PCM.qry_Work.FieldByName('Betreff').AsString;
-      OutlookCalendar.AllDayEvent := 'false';
-      OutlookCalendar.body := dm_PCM.qry_Work.FieldByName('Nachricht').AsString;
-    end;
-    if bImport = True then
-    begin
-      OutlookCalendar.Start := dm_PCM.qry_Work.FieldByName('StartDatum').AsString + ' ' + dm_PCM.qry_Work.FieldByName('StartZeit').AsString;
-      OutlookCalendar.End := dm_PCM.qry_Work.FieldByName('EndeDatum').AsString + ' ' + dm_PCM.qry_Work.FieldByName('EndeZeit').AsString;
-      OutlookCalendar.Location := sTerminArt;
-      OutlookCalendar.Categories := 'PCM_Termin';
-      if dm_PCM.qry_Work.FieldByName('Erinnerung').AsString = 'true' then
-        OutlookCalendar.Reminderset := True
-      else
-        OutlookCalendar.Reminderset := false;
-      OutlookCalendar.Save;
-    end;
-    dm_PCM.qry_Work.next;
-    CloseWaitForm;
-  end;
-  dm_PCM.qry_Work.close;
-  Application.ProcessMessages;
-  Outlook.Disconnect;
-end;
-procedure Tfrm_Calendar.AddOutlookTODO(AuserPriv,AuserGes: String);
-var
-  aMapi: Variant;
-  aTask: Variant;
-  aTaskItem: Variant;
-  objOwner,Task: olevariant;
-  strSubject, strBody: String;
-  tdtTermin, tdtFaellig: TDateTime;
-  iCOunt: integer;
-//  dtBefore: TDateTime;
-//  dtAfter: TDateTime;
-//  filter: String;
-//  sDatum: string;
-//  sID_ADressen: String;
-  i: integer;
-begin
-  Writelog(PCM_Logname, rs_PCMManager_Aufgaben + rs_PCMManager_OutlookVerbinden, 0);
-  try
-    Outlook.connect;
-  except
-    on e: System.sysutils.Exception do
-    begin
-      Writelog(PCM_Logname,rs_PCMManager_Aufgaben + rs_PCMManager_KeineVerbindung + e.Message, 2);
-      exit;
-    end;
-  end;
-  Writelog(PCM_Logname, rs_PCMManager_Aufgaben + rs_PCMManager_Namespace, 0);
-  try
-    aMapi := Outlook.GetNameSpace('MAPI');
-  except
-    on e: System.sysutils.Exception do
-    begin
-      Writelog(PCM_Logname,rs_PCMManager_Aufgaben + rs_PCMManager_NamespaceErmitteln + e.Message, 2);
-      exit;
-    end;
-  end;
-  Writelog(PCM_Logname, rs_PCMManager_Aufgaben + rs_PCMManager_CalendarsRoot + AUserPriv, 0);
-  try
-    objOwner := aMapi.CreateRecipient(AUserPriv);
-    aTask := aMapi.GetSharedDefaultFolder(objOwner,$0000000D);
-  except
-    on e: System.sysutils.Exception do
-    begin
-      Writelog(PCM_Logname,rs_PCMManager_Aufgaben + rs_PCMManager_CalendarsRootErmitteln + e.Message, 2);
-      exit;
-    end;
-  end;
-
-  i := 1;
-  ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_AufgabenLoeschen), aTask.Items.Count, frm_PCM_main.ClientWidth, frm_PCM_main.Height);
-  for iCOunt := 1 to aTask.Items.Count do
-  begin
-    Application.ProcessMessages;
-    WaitFormStep;
-    Task := aTask.Items.Item(i);
-    if Task.Categories = 'PCM_Aufgabe' then
-    begin
-      Task.delete;
-    end
-    else
-    begin
-      i := i + 1;
-    end;
-  end;
-  CloseWaitform;
-
-  dm_PCM.qry_Work.sql.clear;
-  dm_PCM.qry_Work.sql.Text := 'Select icn.caption AS Betreff,icn.Message as Nachricht, ' +
-              'Date(icn.start) as StartDatum, Date(icn.Finish) as EndeDatum, ' +
-              'Time(icn.start) as StartZeit, Time(icn.Finish) as EndeZeit, ' +
-              'icn.Reminder as Erinnerung, icn.ReminderMinutesBeforeStart as MinutenVorTermin, ' +
-              'fa.Firma as Kunde_Firma, fa.Strasse_ges as Kunde_strasse, fa.PLZ_ges as Kunde_PLZ, fa.ort_ges as Kunde_ort, ' +
-              'Concat(ansp.Nachname,'','',ansp.Vorname) as Kunde_Ansprechpartner, ' +
-              'ansp.Telefon_Ges as kunde_telefon1, ' +
-              'ifnull(ansp.Handy_Ges,ansp.Handy_privat) as Kunde_mobil, ' +
-              'ifnull(ansp.e_mail_ges,ansp.E_Mail_Ges) as Kunde_Email ' +
-              'from manager_kalender icn ' +
-              'Left Outer Join manager_kontakte fa ON fa.ID = icn.id_adr_Wurzel ' +
-              'Left Outer Join manager_kontakte ansp ON ansp.ID = icn.ID_Ansprechpartner ' +
-              'where icn.TYP = 1 and icn.BearbeitetAm is NULL and Date(start)  >= Date(:Begin) ' +
-              'and Date(start) <= Date(:End) and Kalendername  <> ' + QuotedStr(AuserPriv);
-  dm_PCM.qry_Work.ParamByName('Begin').AsDateTime:= Now() - 365;
-  dm_PCM.qry_Work.ParamByName('End').AsDateTime:= Now() + 365;
-  dm_PCM.qry_Work.sql.Text := dm_PCM.qry_Work.sql.Text + ' and icn.ID_benutzer IN ( ' + IntToStr(dm_PCM.iIDBenutzerPCM) + ') order by StartDatum asc';
-
-  ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_AufgabenImportieren), dm_PCM.qry_work.RecordCount, frm_PCM_main.ClientWidth, frm_PCM_main.Height);
-
-  dm_PCM.qry_Work.Open;
-  while not dm_PCM.qry_Work.eof do
-  begin
-    strSubject := dm_PCM.qry_Work.FieldByName('Betreff').AsString;
-    strBody := dm_PCM.qry_Work.FieldByName('Nachricht').AsString + sLineBreak  + sLineBreak + sLineBreak + 'Kunde: ' + sLineBreak +
-      dm_PCM.qry_Work.FieldByName('Kunde_Firma').AsString + sLineBreak +
-      dm_PCM.qry_Work.FieldByName('Kunde_Strasse').AsString + sLineBreak +
-      dm_PCM.qry_Work.FieldByName('Kunde_PLZ').AsString + ' ' +
-      dm_PCM.qry_Work.FieldByName('Kunde_Ort').AsString + sLineBreak + sLineBreak + 'Ansprechpartner: ' + sLineBreak + dm_PCM.qry_Work.FieldByName
-      ('Kunde_Ansprechpartner').AsString + sLineBreak +  dm_PCM.qry_Work.FieldByName('Kunde_Telefon1').AsString + sLineBreak +
-      dm_PCM.qry_Work.FieldByName('Kunde_mobil').AsString + sLineBreak + dm_PCM.qry_Work.FieldByName('Kunde_Email').AsString;
-
-    tdtTermin := StrToDateTime(dm_PCM.qry_Work.FieldByName('StartDatum').AsString +' ' + dm_PCM.qry_Work.FieldByName('StartZeit').AsString);
-    tdtFaellig := StrToDateTime(dm_PCM.qry_Work.FieldByName('EndeDatum').AsString +' ' + dm_PCM.qry_Work.FieldByName('EndeZeit').AsString);
-    aTaskItem := aTask.Items.Add($00000003);
-    aTaskItem.Subject := strSubject;
-    aTaskItem.body := strBody;
-    aTaskItem.StartDate := tdtTermin;
-    aTaskItem.DueDate := tdtFaellig;
-    aTaskItem.Categories := 'PCM_Aufgabe';
-    aTaskItem.Save;
-    WaitFormstep;
-    dm_PCM.qry_Work.next;
-  end;
-  CloseWaitForm;
-  Outlook.Disconnect;
-end;
-procedure Tfrm_Calendar.btn_CalFilterClick(Sender: TObject);
-var
-  sKalenderFilter: string;
-begin
-  if btn_CalFilter.LargeImageIndex = 46 then
-  begin
-    btn_CalFilter.LargeImageIndex:= 38;
-    dm_PCM.qry_Kalender_Kalender.sql.Text:= 'Select ID,EventType,Caption,Location,Message,Start,' +
-                         'Finish,Options,Completeday,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'+
-                         'ReminderMinutesBeforeStart,LabelColor,Fontcolor, ID_Benutzer,ID_kontakte From manager_Kalender ' +
-                         'Where ID_Benutzer = :ID';
-    dm_PCM.qry_Kalender_Kalender.ParamByName('ID').AsBlob:= AnsiString(IntToStr(dm_PCM.iIDBenutzerPCM));
-    dm_PCM.qry_Kalender_Kalender.Open;
-  end
-  else begin
-
-    Application.CreateForm(Tfrm_PCM_KalenderFilter,frm_PCM_KalenderFilter);
-    if not frm_PCM_KalenderFilter.Execute(True,dm_PCM.iIDBenutzerPCM,sKalenderFilter) then
-    begin
-      btn_CalFilter.LargeImageIndex := 38;
-    end;
-    frm_PCM_KalenderFilter.free;
-    if sKalenderFilter <> '' then
-    begin
-      dm_PCM.qry_Kalender_Kalender.sql.Text:= 'Select ID,EventType,Caption,Location,Message,Start,' +
-                                  'Finish,Options,Completeday,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'+
-                                  'ReminderMinutesBeforeStart,LabelColor,Fontcolor, ID_Benutzer,ID_kontakte From manager_Kalender ' +
-                                  'Where ID_Benutzer = :ID and Kalendername = :Kalender';
-      dm_PCM.qry_Kalender_Kalender.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
-      dm_PCM.qry_Kalender_Kalender.ParamByName('Kalender').asString:= sKalenderFilter;
-      dm_PCM.qry_Kalender_Kalender.Open;
-      btn_CalFilter.LargeImageIndex:= 46;
-    end;
-  end;
-end;
-procedure Tfrm_Calendar.btn_CalJahrClick(Sender: TObject);
-begin
-  FKalenderDateButton := True;
-  sched_Kalender.ViewYear.Active := True;
-  btn_CalZurueck.Hint := rs_PCMManager_JahrZurueck;
-  btn_CalVor.Hint := rs_PCMManager_JahrVor;
-  btn_CalTag.LargeImageIndex:= 39;
-  btn_CalArbeitswoche.LargeImageIndex:= 40;
-  btn_CalWoche.LargeImageIndex:= 41;
-  btn_CalMonat.LargeImageIndex:= 42;
-  btn_CalJahr.LargeImageIndex:= 19;
-end;
-procedure Tfrm_Calendar.btn_CalMonatClick(Sender: TObject);
-begin
-  FKalenderDateButton := True;
-  sched_Kalender.GoToDate(sched_Kalender.SelectedDays[0], vmMonth);
-  btn_CalZurueck.Hint := rs_PCMManager_MonatZurueck;
-  btn_CalVor.Hint := rs_PCMManager_Monatvor;
-  btn_CalTag.LargeImageIndex:= 39;
-  btn_CalArbeitswoche.LargeImageIndex:= 40;
-  btn_CalWoche.LargeImageIndex:= 41;
-  btn_CalMonat.LargeImageIndex:= 18;
-  btn_CalJahr.LargeImageIndex:= 44;
-end;
-procedure Tfrm_Calendar.btn_CalNewClick(Sender: TObject);
-var
-  iNewId: integer;
-begin
-  Application.CreateForm(TfNeu, fNeu);
-  fNeu.Execute(schedDBStrg_Kalender,2, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
-  fNeu := nil;
-  RefreshTerminundAUfgaben;
-end;
-procedure Tfrm_Calendar.btn_CalTagClick(Sender: TObject);
-begin
-  FKalenderDateButton := True;
-  sched_Kalender.ViewDay.Active := True;
-  sched_Kalender.SelectDays(sched_Kalender.SelectedDays[0], sched_Kalender.SelectedDays[0], True);
-  btn_CalZurueck.Hint := rs_PCMManager_TagZurueck;
-  btn_CalVor.Hint := rs_PCMManager_Tagvor;
-  btn_CalTag.LargeImageIndex:= 15;
-  btn_CalArbeitswoche.LargeImageIndex:= 40;
-  btn_CalWoche.LargeImageIndex:= 41;
-  btn_CalMonat.LargeImageIndex:= 42;
-  btn_CalJahr.LargeImageIndex:= 44;
-
-end;
-procedure Tfrm_Calendar.btn_CalVorClick(Sender: TObject);
-begin
-  FKalenderDateButton := True;
-  if btn_CalTag.LargeImageIndex = 15 then
-    //sched_Kalender.DateNavigator.Date := IncDay(sched_Kalender.DateNavigator.Date);
-    sched_Kalender.SelectDays(IncDay(sched_Kalender.DateNavigator.Date, 1), IncDay(sched_Kalender.DateNavigator.Date, 1), True);
-  if btn_CalArbeitswoche.LargeImageIndex = 16 then
-    sched_Kalender.SelectDays(IncDay(sched_Kalender.DateNavigator.Date, 7), IncDay(sched_Kalender.DateNavigator.Date, 11), True);
-  if btn_CalWoche.LargeImageIndex = 17 then
-  begin
-    sched_Kalender.SelectDays(IncDay(sched_Kalender.DateNavigator.Date, 7), IncDay(sched_Kalender.DateNavigator.Date, 13), True);
-    sched_Kalender.ViewWeek.Active := True;
-  end;
-  if btn_CalMonat.LargeImageIndex = 18 then
-  begin
-   sched_Kalender.GoToDate(IncDay(sched_Kalender.SelectedDays[sched_Kalender.SelectedDays.Count-1], 3), vmMonth);
-   FKalenderDateButton := True;
-  end;
-
-  if btn_CalJahr.LargeImageIndex = 19 then
-    sched_Kalender.SelectDays(IncYear(sched_Kalender.DateNavigator.Date, 1), IncYear(sched_Kalender.DateNavigator.Date, 1), True);
-
-end;
-procedure Tfrm_Calendar.btn_CalWocheClick(Sender: TObject);
-begin
-  FKalenderDateButton := True;
-  sched_Kalender.ViewWeek.Active := True;
-  btn_CalZurueck.Hint := rs_PCMManager_WocheZurueck;
-  btn_CalVor.Hint := rs_PCMManager_Wochevor;
-  btn_CalTag.LargeImageIndex:= 39;
-  btn_CalArbeitswoche.LargeImageIndex:= 40;
-  btn_CalWoche.LargeImageIndex:= 17;
-  btn_CalMonat.LargeImageIndex:= 42;
-  btn_CalJahr.LargeImageIndex:= 44;
-end;
-procedure Tfrm_Calendar.btn_CalZurueckClick(Sender: TObject);
-begin
-  FKalenderDateButton := True;
-  if btn_CalTag.LargeImageIndex = 15 then
-   //sched_Kalender.DateNavigator.Date := IncDay(sched_Kalender.DateNavigator.Date, -1);
-   sched_Kalender.SelectDays(IncDay(sched_Kalender.DateNavigator.Date, -1), IncDay(sched_Kalender.DateNavigator.Date, -1), True);
-  if btn_CalArbeitswoche.LargeImageIndex = 16 then
-    sched_Kalender.SelectDays(IncDay(sched_Kalender.DateNavigator.Date, -7), IncDay(sched_Kalender.DateNavigator.Date, -3), True);
-
-  if btn_CalWoche.LargeImageIndex = 17 then
-  begin
-    sched_Kalender.SelectDays(IncDay(sched_Kalender.DateNavigator.Date, -7), IncDay(sched_Kalender.DateNavigator.Date, -1), True);
-    sched_Kalender.ViewWeek.Active := True;
-  end;
-
-  if btn_CalMonat.LargeImageIndex = 18 then
-  begin
-   sched_Kalender.GoToDate(IncDay(sched_Kalender.SelectedDays[0], -3), vmMonth);
-   FKalenderDateButton := True;
-  end;
-
-  if btn_CalJahr.LargeImageIndex = 19 then
-    sched_Kalender.SelectDays(IncYear(sched_Kalender.DateNavigator.Date, -1), IncYear(sched_Kalender.DateNavigator.Date, -1 ), True);
-end;
-procedure Tfrm_Calendar.btn_StundeCancelClick(Sender: TObject);
-begin
-  qry_Stundenplan_detail.Cancel;
-end;
-procedure Tfrm_Calendar.btn_StundeDeleteClick(Sender: TObject);
-begin
-  if qry_Stundenplan_detail.FieldByName('ID').AsInteger > 0 then
-  begin
-    qry_Stundenplan_detail.Delete;
-  end
-end;
-procedure Tfrm_Calendar.btn_StundeNewClick(Sender: TObject);
-begin
-   if qry_Stundenplan_detail.State in [dsInsert, dsedit] then
-    qry_Stundenplan_detail.Post;
-  qry_Stundenplan_detail.Append;
-  qry_Stundenplan_detail.Insert;
-
-  qry_Stundenplan_detail.FieldByName('Montag').AsInteger:= 0;
-  qry_Stundenplan_detail.FieldByName('Dienstag').AsInteger:= 0;
-  qry_Stundenplan_detail.FieldByName('Mittwoch').AsInteger:= 0;
-  qry_Stundenplan_detail.FieldByName('Donnerstag').AsInteger:= 0;
-  qry_Stundenplan_detail.FieldByName('Freitag').AsInteger:= 0;
-  qry_Stundenplan_detail.FieldByName('Samstag').AsInteger:= 0;
-  qry_Stundenplan_detail.FieldByName('ID_Stundenplan').AsInteger:= qry_Stundenplan.FieldByName('ID').AsInteger;
-
-  if not tiEdt_Stundenplan_Von.enabled then
-  begin
-    tiEdt_Stundenplan_Von.enabled:= true;
-    tiEdt_Stundenplan_Bis.enabled:= true;
-    lucmbbx_Stundenplan_Montag.enabled:= true;
-    lucmbbx_Stundenplan_Dienstag.enabled:= true;
-    lucmbbx_Stundenplan_Mittwoch.enabled:= true;
-    lucmbbx_Stundenplan_Donnerstag.enabled:= true;
-    lucmbbx_Stundenplan_Freitag.enabled:= true;
-    lucmbbx_Stundenplan_Samstag.enabled:= true;
-  end;
-  tiEdt_Stundenplan_Von.SetFocus;
-end;
-procedure Tfrm_Calendar.btn_StundenplanCancelClick(Sender: TObject);
-begin
-  qry_Stundenplan.Cancel;
-end;
-procedure Tfrm_Calendar.btn_StundenplanDeleteClick(Sender: TObject);
-begin
-  if qry_Stundenplan.FieldByName('ID').AsInteger > 0 then
-  begin
-    dm_PCM.qry_work.SQL.Text:= 'Delete From manager_Stundenplan_Detail Where ID_Stundenplan = :ID';;
-    dm_PCM.qry_work.ParamByName('ID').AsInteger:= qry_Stundenplan.FieldByName('ID').Asinteger;
-    dm_PCM.qry_work.ExecSQL;
-    qry_Stundenplan.Delete;
-    qry_Stundenplan_detail.Refresh;
-  end
-
-end;
-procedure Tfrm_Calendar.btn_StundenplanNewClick(Sender: TObject);
-begin
-   if qry_Stundenplan.State in [dsInsert, dsedit] then
-    qry_Stundenplan.Post;
-  qry_Stundenplan.Append;
-  qry_Stundenplan.Insert;
-  qry_Stundenplan.FieldByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-  qry_Stundenplan_detail.Filter:= 'ID_Stundenplan = ' + qry_Stundenplan.FieldByName('ID').AsString;
-  qry_Stundenplan_detail.Filtered:= true;
-  if not edt_Stundenplan_Schule.Enabled then
-  begin
-    edt_Stundenplan_Schule.Enabled:= true;
-    edt_Stundenplan_Klasse.Enabled:= true;
-    edt_Stundenplan_Schuljahr.Enabled:= true;
-    btn_StundenplanPrint.Enabled:= true;
-  end;
-  edt_Stundenplan_Schule.SetFocus;
-
-end;
-procedure Tfrm_Calendar.btn_StundenplanPrintClick(Sender: TObject);
-begin
-//
-end;
-procedure Tfrm_Calendar.btn_StundenplanSaveClick(Sender: TObject);
-begin
-  if qry_Stundenplan.State in [dsInsert, dsEdit] then
-  begin
-    edt_Stundenplan_schule.PostEditValue;
-    edt_Stundenplan_Klasse.PostEditValue;
-    edt_Stundenplan_schuljahr.PostEditValue;
-    qry_Stundenplan.Post;
-  end;
-end;
-procedure Tfrm_Calendar.btn_StundeSaveClick(Sender: TObject);
-begin
-  if qry_Stundenplan_detail.State in [dsInsert, dsEdit] then
-  begin
-    qry_Stundenplan_detail.Post;
-  end;
-end;
-procedure Tfrm_Calendar.pmmbtn_JobsExportOutlookClick(Sender: TObject);
-var
-  sKalPriv,sKalGes: String;
-begin
-  dm_PCM.qry_Work.sql.text:= 'Select Account_Privat,Account_Geschaeftlich From manager_kalender_optionen Where ID_Benutzer =:ID_Benutzer';
-  dm_PCM.qry_Work.ParamByName('ID_benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-  dm_PCM.qry_Work.Open;
-  sKalPriv:= dm_PCM.qry_Work.FieldByName('Account_Privat').asString;
-  sKalGes:= dm_PCM.qry_Work.FieldByName('Account_Geschaeftlich').asString;
-  dm_PCM.qry_Work.Close;
-  AddOutlookToDO(sKalPriv,sKalGes);
-end;
-procedure Tfrm_Calendar.pmmbtn_JobsImportOutlookClick(Sender: TObject);
-var
-  sKalPriv,sKalGes: String;
-begin
-  dm_PCM.qry_Work.sql.text:= 'Select Account_Privat,Account_Geschaeftlich From manager_kalender_optionen Where ID_Benutzer =:ID_Benutzer';
-  dm_PCM.qry_Work.ParamByName('ID_benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-  dm_PCM.qry_Work.Open;
-  sKalPriv:= dm_PCM.qry_Work.FieldByName('Account_Privat').asString;
-  sKalGes:= dm_PCM.qry_Work.FieldByName('Account_Geschaeftlich').asString;
-
-  dm_PCM.qry_work.SQL.Text:= 'Delete from manager_kalender Where Typ = 1 and Kalendername = :Kalendername';
-  dm_PCM.qry_work.ParamByName('Kalendername').AsString:= sKalPriv;
-  dm_PCM.qry_work.execsql;
-
-  GetOutlookToDO(sKalPriv);
-  RefreshTerminundAUfgaben;//
-end;
-procedure Tfrm_Calendar.InitializeRights;
-begin
- // Kalender / Kein Recht
-  if dm_PCM.iKalender = 0 then
-  begin
-    ts_A_kalender.TabVisible:= False;
-  end;
-
-  // Kalender / Lesen
-  if dm_PCM.iKalender = 1 then
-  begin
-    ts_A_kalender.TabVisible:= true;
-    // Toolbar
-    btn_CalNew.Enabled:= false;
-    btn_CalTerminImport.Enabled:= false;
-    btn_TerminNeu.Enabled:= false;
-    btn_Terminchange.Enabled:= false;
-    btn_TerminDelete.Enabled:= false;
-   end;
-  // Kalender / Schreiben
-  if dm_PCM.iKalender = 2 then
-  begin
-    ts_A_kalender.TabVisible:= true;
-    // Toolbar
-    btn_CalNew.Enabled:= true;
-    btn_CalTerminImport.Enabled:= true;
-    btn_TerminNeu.Enabled:= true;
-    btn_Terminchange.Enabled:= true;
-    btn_TerminDelete.Enabled:= false;
-  end;
-  // Kalender / Vollzugriff
-  if dm_PCM.iKalender = 3 then
-  begin
-    ts_A_kalender.TabVisible:= true;
-    // Toolbar
-    btn_CalNew.Enabled:= true;
-    btn_CalTerminImport.Enabled:= true;
-    btn_TerminNeu.Enabled:= true;
-    btn_Terminchange.Enabled:= true;
-    btn_TerminDelete.Enabled:= true;
-  end;
-
-
-  // Stundenplan / Kein Recht
-  if dm_PCM.iStundenplan = 0 then
-  begin
-    ts_D_Stundenplan.TabVisible:= false;
-  end;
-
-  // Stundenplan / Lesen
-  if dm_PCM.iStundenplan = 1 then
-  begin
-    ts_D_Stundenplan.TabVisible:= true;
-    // Toolbar
-    btn_StundenplanNew.Enabled:= false;
-    btn_StundenplanSave.Enabled:= false;
-    btn_StundenplanCancel.Enabled:= false;
-    btn_StundenplanDelete.Enabled:= false;
-    btn_StundeNew.Enabled:= false;
-    btn_StundeSave.Enabled:= false;
-    btn_StundeCancel.Enabled:= false;
-    btn_StundeDelete.Enabled:= false;
-    // Editfelder
-    edt_Stundenplan_Schule.Enabled:= false;
-    edt_Stundenplan_Klasse.Enabled:= false;
-    edt_Stundenplan_Schuljahr.Enabled:= false;
-    tiEdt_Stundenplan_Von.Enabled:= false;
-    tiEdt_Stundenplan_Bis.Enabled:= false;
-    lucmbbx_Stundenplan_Montag.Enabled:= false;
-    lucmbbx_Stundenplan_Dienstag.Enabled:= false;
-    lucmbbx_Stundenplan_Mittwoch.Enabled:= false;
-    lucmbbx_Stundenplan_Donnerstag.Enabled:= false;
-    lucmbbx_Stundenplan_Freitag.Enabled:= false;
-    lucmbbx_Stundenplan_Samstag.Enabled:= false;
-  end;
-   // Stundenplan / Schreiben
-  if dm_PCM.iStundenplan = 2 then
-  begin
-    ts_D_Stundenplan.TabVisible:= true;
-    // Toolbar
-    btn_StundenplanNew.Enabled:= true;
-    btn_StundenplanSave.Enabled:= true;
-    btn_StundenplanCancel.Enabled:= true;
-    btn_StundenplanDelete.Enabled:= false;
-    btn_StundeNew.Enabled:= true;
-    btn_StundeSave.Enabled:= true;
-    btn_StundeCancel.Enabled:= true;
-    btn_StundeDelete.Enabled:= false;
-    // Editfelder
-    edt_Stundenplan_Schule.Enabled:= true;
-    edt_Stundenplan_Klasse.Enabled:= true;
-    edt_Stundenplan_Schuljahr.Enabled:= true;
-    tiEdt_Stundenplan_Von.Enabled:= true;
-    tiEdt_Stundenplan_Bis.Enabled:= true;
-    lucmbbx_Stundenplan_Montag.Enabled:= true;
-    lucmbbx_Stundenplan_Dienstag.Enabled:= true;
-    lucmbbx_Stundenplan_Mittwoch.Enabled:= true;
-    lucmbbx_Stundenplan_Donnerstag.Enabled:= true;
-    lucmbbx_Stundenplan_Freitag.Enabled:= true;
-    lucmbbx_Stundenplan_Samstag.Enabled:= true;
-  end;
-  // Stundenplan / Vollzugriff
-  if dm_PCM.iStundenplan = 3 then
-  begin
-    ts_D_Stundenplan.TabVisible:= true;
-    // Toolbar
-    btn_StundenplanNew.Enabled:= true;
-    btn_StundenplanSave.Enabled:= true;
-    btn_StundenplanCancel.Enabled:= true;
-    btn_StundenplanDelete.Enabled:= true;
-    btn_StundeNew.Enabled:= true;
-    btn_StundeSave.Enabled:= true;
-    btn_StundeCancel.Enabled:= true;
-    btn_StundeDelete.Enabled:= true;
-    // Editfelder
-    edt_Stundenplan_Schule.Enabled:= true;
-    edt_Stundenplan_Klasse.Enabled:= true;
-    edt_Stundenplan_Schuljahr.Enabled:= true;
-    tiEdt_Stundenplan_Von.Enabled:= true;
-    tiEdt_Stundenplan_Bis.Enabled:= true;
-    lucmbbx_Stundenplan_Montag.Enabled:= true;
-    lucmbbx_Stundenplan_Dienstag.Enabled:= true;
-    lucmbbx_Stundenplan_Mittwoch.Enabled:= true;
-    lucmbbx_Stundenplan_Donnerstag.Enabled:= true;
-    lucmbbx_Stundenplan_Freitag.Enabled:= true;
-    lucmbbx_Stundenplan_Samstag.Enabled:= true;
-  end;
-end;
-procedure Tfrm_Calendar.NachrichtenAnhaengeLaden(ID_IC_Nachrichten: Integer);
-begin
-  Image1.Picture.Assign(nil);
-  lTypeName.Caption := '';
-  qWF_Nachrichten_Anhaenge.Close;
-  qWF_Nachrichten_Anhaenge.SQL.Text:= 'SELECT ina.ID, ina.ID_IC_Nachrichten, ina.Dateiname, ina.DateinameSave FROM manager_Aufgaben_Anhaenge ina WHERE ina.ID_IC_Nachrichten = :ID_IC_Nachrichten';
-  qWF_Nachrichten_Anhaenge.Params[0].AsInteger := ID_IC_Nachrichten;
-  qWF_Nachrichten_Anhaenge.Open;
-end;
-procedure Tfrm_Calendar.btn_MonatsAnsichtClick(Sender: TObject);
-begin
-  compPrint_Cal.PreviewOptions.Caption := rs_PCMManager_KalenderMonat;
-  compPrint_CalLink1.PrintStyles.Monthly.Active := True;
-  compPrint_CalLink1.Preview(True);
-end;
-procedure Tfrm_Calendar.btn_TagesAnsichtClick(Sender: TObject);
-begin
-  compPrint_Cal.PreviewOptions.Caption := rs_PCMManager_KalenderTag;
-  compPrint_CalLink1.PrintStyles.Daily.Active := True;
-  compPrint_CalLink1.Preview(True);
-end;
-procedure Tfrm_Calendar.btn_WochenAnsichtClick(Sender: TObject);
-begin
-  compPrint_Cal.PreviewOptions.Caption := rs_PCMManager_KalenderWoche;
-  compPrint_CalLink1.PrintStyles. Weekly.Active := True;
-  compPrint_CalLink1.Preview(True);
 end;
 procedure Tfrm_Calendar.SetButtons;
 begin
@@ -4249,6 +1840,1279 @@ begin
       end;
     end;
   end;
+end;
+{$EndRegion}
+{$Region TABKalender}
+////////////////////////////////////////////////////////////////////////////////
+// TABKalender                                                                //
+////////////////////////////////////////////////////////////////////////////////
+procedure Tfrm_Calendar.btn_CalNewClick(Sender: TObject);
+var
+  iNewId: integer;
+begin
+  Application.CreateForm(TfNeu, fNeu);
+  fNeu.Execute(schedDBStrg_Kalender,2, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
+  fNeu := nil;
+  RefreshTerminundAUfgaben;
+end;
+procedure Tfrm_Calendar.btn_CalTagClick(Sender: TObject);
+begin
+  FKalenderDateButton := True;
+  sched_Kalender.ViewDay.Active := True;
+  sched_Kalender.SelectDays(sched_Kalender.SelectedDays[0], sched_Kalender.SelectedDays[0], True);
+  btn_CalZurueck.Hint := rs_PCMManager_TagZurueck;
+  btn_CalVor.Hint := rs_PCMManager_Tagvor;
+  btn_CalTag.LargeImageIndex:= 15;
+  btn_CalArbeitswoche.LargeImageIndex:= 40;
+  btn_CalWoche.LargeImageIndex:= 41;
+  btn_CalMonat.LargeImageIndex:= 42;
+  btn_CalJahr.LargeImageIndex:= 44;
+end;
+procedure Tfrm_Calendar.btn_CalArbeitswocheClick(Sender: TObject);
+begin
+  FKalenderDateButton := True;
+  tag := Round(sched_Kalender.SelectedDays.Count / 2);
+  sched_Kalender.SelectWorkDays(sched_Kalender.SelectedDays[tag]);
+  btn_CalZurueck.Hint := rs_PCMManager_ArbWocheZurueck;
+  btn_CalVor.Hint := rs_PCMManager_ArbWocheVor;
+  btn_CalTag.LargeImageIndex:= 39;
+  btn_CalArbeitswoche.LargeImageIndex:= 16;
+  btn_CalWoche.LargeImageIndex:= 41;
+  btn_CalMonat.LargeImageIndex:= 42;
+  btn_CalJahr.LargeImageIndex:= 44;
+end;
+procedure Tfrm_Calendar.btn_CalWocheClick(Sender: TObject);
+begin
+  FKalenderDateButton := True;
+  sched_Kalender.ViewWeek.Active := True;
+  btn_CalZurueck.Hint := rs_PCMManager_WocheZurueck;
+  btn_CalVor.Hint := rs_PCMManager_Wochevor;
+  btn_CalTag.LargeImageIndex:= 39;
+  btn_CalArbeitswoche.LargeImageIndex:= 40;
+  btn_CalWoche.LargeImageIndex:= 17;
+  btn_CalMonat.LargeImageIndex:= 42;
+  btn_CalJahr.LargeImageIndex:= 44;
+end;
+procedure Tfrm_Calendar.btn_CalMonatClick(Sender: TObject);
+begin
+  FKalenderDateButton := True;
+  sched_Kalender.GoToDate(sched_Kalender.SelectedDays[0], vmMonth);
+  btn_CalZurueck.Hint := rs_PCMManager_MonatZurueck;
+  btn_CalVor.Hint := rs_PCMManager_Monatvor;
+  btn_CalTag.LargeImageIndex:= 39;
+  btn_CalArbeitswoche.LargeImageIndex:= 40;
+  btn_CalWoche.LargeImageIndex:= 41;
+  btn_CalMonat.LargeImageIndex:= 18;
+  btn_CalJahr.LargeImageIndex:= 44;
+end;
+procedure Tfrm_Calendar.btn_CalJahrClick(Sender: TObject);
+begin
+  FKalenderDateButton := True;
+  sched_Kalender.ViewYear.Active := True;
+  btn_CalZurueck.Hint := rs_PCMManager_JahrZurueck;
+  btn_CalVor.Hint := rs_PCMManager_JahrVor;
+  btn_CalTag.LargeImageIndex:= 39;
+  btn_CalArbeitswoche.LargeImageIndex:= 40;
+  btn_CalWoche.LargeImageIndex:= 41;
+  btn_CalMonat.LargeImageIndex:= 42;
+  btn_CalJahr.LargeImageIndex:= 19;
+end;
+procedure Tfrm_Calendar.btn_CalAgendaClick(Sender: TObject);
+begin
+  btn_CalTag.LargeImageIndex:= 39;
+  btn_CalArbeitswoche.LargeImageIndex:= 40;
+  btn_CalWoche.LargeImageIndex:= 41;
+  btn_CalMonat.LargeImageIndex:= 42;
+  btn_CalJahr.LargeImageIndex:= 44;
+  sched_Kalender.ViewAgenda.Active := True;
+end;
+procedure Tfrm_Calendar.btn_CalArbeitszeitClick(Sender: TObject);
+begin
+  if (btn_CalArbeitswoche.LargeImageIndex = 16) or (btn_CalTag.LargeImageIndex = 15) then
+  begin
+    if bol_allday then
+    begin
+      sched_Kalender.ViewDay.WorkTimeOnly := true;
+      btn_CalCompleteday.LargeImageIndex:= 21;
+      bol_allday:= false;
+    end
+    else begin
+      sched_Kalender.ViewDay.WorkTimeOnly := false;
+      btn_CalCompleteday.LargeImageIndex:= 45;
+      bol_allday:= true;
+    end;
+  end;
+end;
+procedure Tfrm_Calendar.btn_CalZurueckClick(Sender: TObject);
+begin
+  FKalenderDateButton := True;
+  if btn_CalTag.LargeImageIndex = 15 then
+   //sched_Kalender.DateNavigator.Date := IncDay(sched_Kalender.DateNavigator.Date, -1);
+   sched_Kalender.SelectDays(IncDay(sched_Kalender.DateNavigator.Date, -1), IncDay(sched_Kalender.DateNavigator.Date, -1), True);
+  if btn_CalArbeitswoche.LargeImageIndex = 16 then
+    sched_Kalender.SelectDays(IncDay(sched_Kalender.DateNavigator.Date, -7), IncDay(sched_Kalender.DateNavigator.Date, -3), True);
+
+  if btn_CalWoche.LargeImageIndex = 17 then
+  begin
+    sched_Kalender.SelectDays(IncDay(sched_Kalender.DateNavigator.Date, -7), IncDay(sched_Kalender.DateNavigator.Date, -1), True);
+    sched_Kalender.ViewWeek.Active := True;
+  end;
+
+  if btn_CalMonat.LargeImageIndex = 18 then
+  begin
+   sched_Kalender.GoToDate(IncDay(sched_Kalender.SelectedDays[0], -3), vmMonth);
+   FKalenderDateButton := True;
+  end;
+
+  if btn_CalJahr.LargeImageIndex = 19 then
+    sched_Kalender.SelectDays(IncYear(sched_Kalender.DateNavigator.Date, -1), IncYear(sched_Kalender.DateNavigator.Date, -1 ), True);
+end;
+procedure Tfrm_Calendar.btn_CalVorClick(Sender: TObject);
+begin
+  FKalenderDateButton := True;
+  if btn_CalTag.LargeImageIndex = 15 then
+    //sched_Kalender.DateNavigator.Date := IncDay(sched_Kalender.DateNavigator.Date);
+    sched_Kalender.SelectDays(IncDay(sched_Kalender.DateNavigator.Date, 1), IncDay(sched_Kalender.DateNavigator.Date, 1), True);
+  if btn_CalArbeitswoche.LargeImageIndex = 16 then
+    sched_Kalender.SelectDays(IncDay(sched_Kalender.DateNavigator.Date, 7), IncDay(sched_Kalender.DateNavigator.Date, 11), True);
+  if btn_CalWoche.LargeImageIndex = 17 then
+  begin
+    sched_Kalender.SelectDays(IncDay(sched_Kalender.DateNavigator.Date, 7), IncDay(sched_Kalender.DateNavigator.Date, 13), True);
+    sched_Kalender.ViewWeek.Active := True;
+  end;
+  if btn_CalMonat.LargeImageIndex = 18 then
+  begin
+   sched_Kalender.GoToDate(IncDay(sched_Kalender.SelectedDays[sched_Kalender.SelectedDays.Count-1], 3), vmMonth);
+   FKalenderDateButton := True;
+  end;
+
+  if btn_CalJahr.LargeImageIndex = 19 then
+    sched_Kalender.SelectDays(IncYear(sched_Kalender.DateNavigator.Date, 1), IncYear(sched_Kalender.DateNavigator.Date, 1), True);
+
+end;
+procedure Tfrm_Calendar.btn_CalFilterClick(Sender: TObject);
+var
+  sKalenderFilter: string;
+begin
+  if btn_CalFilter.LargeImageIndex = 46 then
+  begin
+    btn_CalFilter.LargeImageIndex:= 38;
+    dm_PCM.qry_Kalender_Kalender.sql.Text:= 'Select ID,EventType,Caption,Location,Message,Start,' +
+                         'Finish,Options,Completeday,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'+
+                         'ReminderMinutesBeforeStart,LabelColor,Fontcolor, ID_Benutzer,ID_kontakte From manager_Kalender ' +
+                         'Where ID_Benutzer = :ID';
+    dm_PCM.qry_Kalender_Kalender.ParamByName('ID').AsBlob:= AnsiString(IntToStr(dm_PCM.iIDBenutzerPCM));
+    dm_PCM.qry_Kalender_Kalender.Open;
+  end
+  else begin
+
+    Application.CreateForm(Tfrm_PCM_KalenderFilter,frm_PCM_KalenderFilter);
+    if not frm_PCM_KalenderFilter.Execute(True,dm_PCM.iIDBenutzerPCM,sKalenderFilter) then
+    begin
+      btn_CalFilter.LargeImageIndex := 38;
+    end;
+    frm_PCM_KalenderFilter.free;
+    if sKalenderFilter <> '' then
+    begin
+      dm_PCM.qry_Kalender_Kalender.sql.Text:= 'Select ID,EventType,Caption,Location,Message,Start,' +
+                                  'Finish,Options,Completeday,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'+
+                                  'ReminderMinutesBeforeStart,LabelColor,Fontcolor, ID_Benutzer,ID_kontakte From manager_Kalender ' +
+                                  'Where ID_Benutzer = :ID and Kalendername = :Kalender';
+      dm_PCM.qry_Kalender_Kalender.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_Kalender_Kalender.ParamByName('Kalender').asString:= sKalenderFilter;
+      dm_PCM.qry_Kalender_Kalender.Open;
+      btn_CalFilter.LargeImageIndex:= 46;
+    end;
+  end;
+end;
+procedure Tfrm_Calendar.btn_TagesAnsichtClick(Sender: TObject);
+begin
+  compPrint_Cal.PreviewOptions.Caption := rs_PCMManager_KalenderTag;
+  compPrint_CalLink1.PrintStyles.Daily.Active := True;
+  compPrint_CalLink1.Preview(True);
+end;
+procedure Tfrm_Calendar.btn_WochenAnsichtClick(Sender: TObject);
+begin
+  compPrint_Cal.PreviewOptions.Caption := rs_PCMManager_KalenderWoche;
+  compPrint_CalLink1.PrintStyles. Weekly.Active := True;
+  compPrint_CalLink1.Preview(True);
+end;
+procedure Tfrm_Calendar.btn_MonatsAnsichtClick(Sender: TObject);
+begin
+  compPrint_Cal.PreviewOptions.Caption := rs_PCMManager_KalenderMonat;
+  compPrint_CalLink1.PrintStyles.Monthly.Active := True;
+  compPrint_CalLink1.Preview(True);
+end;
+procedure Tfrm_Calendar.pmmbtn_YearViewClick(Sender: TObject);
+begin
+  compPrint_Cal.PreviewOptions.Caption := rs_PCMManager_Kalenderjahr;
+  compPrint_CalLink1.PrintStyles.Yearly.Active := True;
+  compPrint_CalLink1.Preview(True);
+end;
+procedure Tfrm_Calendar.pmmbtn_AgendaClick(Sender: TObject);
+begin
+  compPrint_Cal.PreviewOptions.Caption := rs_PCMManager_Kalenderagenda;
+  compPrint_CalLink1.PrintStyles.Agenda.Active := True;
+  compPrint_CalLink1.Preview(True);
+end;
+procedure Tfrm_Calendar.btn_CalTerminImportClick(Sender: TObject);
+begin
+  Application.CreateForm(Tfrm_PCM_Import,frm_PCM_Import);
+  if frm_PCM_Import.Execute(True,dm_PCM.iIDBenutzerPCM) then
+    RefreshTerminundAUfgaben;
+  frm_PCM_Import.Free;
+end;
+procedure Tfrm_Calendar.btn_TerminExportClick(Sender: TObject);
+begin
+  ReadICSAutomatic;
+  Application.ProcessMessages;
+  WriteICSAutomatic;
+end;
+procedure Tfrm_Calendar.btn_CalImportOutlookClick(Sender: TObject);
+  function GetRecurrenceInfoOutlook(AArt,AInterval,ADayOfWeeks,AAnzahlWiederholung:integer;AWiederholungStart,AWiederholungEnde,AInstanz:string): string;
+  var
+    iTage: integer;
+    idow: integer;
+    arrDays: TPCMDays;
+    iJahr,iMonat,iTag,iStunde,iMinute,iSekunde,iMSekunde: Word;
+    dtWiederholungEnde: TDateTime;
+  begin
+    Result:= '';
+    dtWiederholungEnde:= StrToDateTime(AWiederholungEnde);
+    DecodeDate(dtWiederholungEnde,iJahr,iMonat,iTag);
+    DecodeTime(dtWiederholungEnde,iStunde,iMinute,iSekunde,iMSekunde);
+    if iStunde = 0 then
+      iStunde := 23;
+    if iMinute = 0 then
+      iMinute := 59;
+    if iSekunde = 0 then
+      iSekunde:= 59;
+    case AArt of
+    0:
+      begin
+        Result:= 'RRULE:FREQ=DAILY';
+        // Prüfen auf Interval
+        if AInterval > 1 then
+          Result:= Result + ';INTERVAL=' + IntToStr(AInterval);
+        // Prüfen auf Ende
+        if AWiederholungEnde <> '31.12.4500 23:59:00' then
+          Result:= Result + ';COUNT=' + IntToStr(AAnzahlWiederholung) + ';UNTIL=' +  IntToStr(iJahr) + IntToStr(iMonat) + IntToStr(iTag) + 'T' + IntToStr(iStunde) + IntToStr(iMinute) + IntToStr(iSekunde) + 'Z';
+      end;
+    1:
+      begin
+        idow:= ADayOfWeeks;
+        if ADayOfWeeks = 62 then
+        begin
+          ADayOfWeeks:= 61;
+
+        end;
+        if ADayOfWeeks = 62 then
+        begin
+          Result:= 'FREQ=DAILY;INTERVAL=1';
+        end
+        else begin
+          SetLength(arrDays,Length(arrDays) + 1);
+          Result:= 'FREQ=WEEKLY';
+          if AInterval > 1 then
+            Result:= Result + ';INTERVAL=' + IntToStr(AInterval);
+          // Prüfen auf Ende
+          if AWiederholungEnde <> '31.12.4500 23:59:00' then
+            Result:= Result + ';COUNT=' + IntToStr(AAnzahlWiederholung) + ';UNTIL=' +  IntToStr(iJahr) + IntToStr(iMonat) + IntToStr(iTag) + 'T' + IntToStr(iStunde) + IntToStr(iMinute) + IntToStr(iSekunde) + 'Z';
+
+          Result:= Result + ';BYDAY=';
+          ADayOfWeeks:= idow;
+          // Prüfung auf Samstag
+          if ADayOfWeeks>= 64 then
+          begin
+            iTage := ADayOfWeeks - 64;
+            arrDays[High(arrDays)].DaySA:= 'SA';
+          end
+          else
+          begin
+            itage:= ADayOfWeeks;
+            arrDays[High(arrDays)].DaySA:= '';
+          end;
+          // Prüfung auf Freitag
+          if itage >=32 then
+          begin
+            itage := itage - 32;
+            arrDays[High(arrDays)].DayFR:= 'FR';
+          end
+          else
+          begin
+            arrDays[High(arrDays)].DayFR:= '';
+          end;
+          // Prüfung auf Donnerstag
+          if itage >=16 then
+          begin
+            itage := itage - 16;
+            arrDays[High(arrDays)].DayDO:= 'TH';
+          end
+          else
+          begin
+            arrDays[High(arrDays)].DayDO:= '';
+          end;
+          // Prüfung auf Mittwoch
+          if itage >=8 then
+          begin
+            itage := itage - 8;
+            arrDays[High(arrDays)].DayMI:= 'WE';
+          end
+          else
+          begin
+            arrDays[High(arrDays)].DayMI:= '';
+          end;
+          // Prüfung auf Dienstag
+          if itage >= 4 then
+          begin
+            itage := itage - 4;
+            arrDays[High(arrDays)].DayDI:= 'TU';
+          end
+          else
+          begin
+            arrDays[High(arrDays)].DayDI:= '';
+          end;
+          // Prüfung auf Montag
+          if itage >= 2 then
+          begin
+            itage := itage - 2;
+            arrDays[High(arrDays)].DayMO:= 'MO';
+          end
+          else
+          begin
+  //                itage:= ADayOfWeeks;
+            arrDays[High(arrDays)].DayMO:= '';
+          end;
+          // Prüfung auf Sonntag
+          if itage >= 1 then
+          begin
+  //          itage := itage - 1;
+            arrDays[High(arrDays)].DaySO:= 'SU';
+          end
+          else
+          begin
+  //                itage:= ADayOfWeeks;
+            arrDays[High(arrDays)].DaySO:= '';
+          end;
+          if arrDays[High(arrDays)].DaySO <> '' then
+            Result:= Result +'SU,';
+          if arrDays[High(arrDays)].DayMO <> '' then
+            Result:= Result +'MO,';
+          if arrDays[High(arrDays)].DayDI <> '' then
+            Result:= Result +'TU,';
+          if arrDays[High(arrDays)].DayMI <> '' then
+            Result:= Result +'WE,';
+          if arrDays[High(arrDays)].DayDO <> '' then
+            Result:= Result +'TH,';
+          if arrDays[High(arrDays)].DayFR <> '' then
+            Result:= Result +'FR,';
+          if arrDays[High(arrDays)].DaySA <> '' then
+            Result:= Result +'SA,';
+          Result:= Copy(Result,1,Length(Result) -1);
+        end;
+      end;
+    2:
+    begin
+      SetLength(arrDays,Length(arrDays) + 1);
+      Result:= 'FREQ=MONTHLY';
+      if AInterval > 1 then
+        Result:= Result + ';INTERVAL=' + IntToStr(AInterval);
+      // Prüfen auf Ende
+      if AWiederholungEnde <> '31.12.4500 23:59:00' then
+        Result:= Result + ';COUNT=' + IntToStr(AAnzahlWiederholung) + ';UNTIL=' +  IntToStr(iJahr) + IntToStr(iMonat) + IntToStr(iTag) + 'T' + IntToStr(iStunde) + IntToStr(iMinute) + IntToStr(iSekunde) + 'Z';
+      Result:= Result + ';BYMONTHDAY=' + IntToStr(StrToInt(Copy(AWiederholungStart,1,2)));
+    end;
+    3:
+    begin
+      SetLength(arrDays,Length(arrDays) + 1);
+      Result:= 'FREQ=MONTHLY';
+      if AInterval > 1 then
+        Result:= Result + ';INTERVAL=' + IntToStr(AInterval);
+      // Prüfen auf Ende
+      if AWiederholungEnde <> '31.12.4500 23:59:00' then
+        Result:= Result + ';COUNT=' + IntToStr(AAnzahlWiederholung) + ';UNTIL=' +  IntToStr(iJahr) + IntToStr(iMonat) + IntToStr(iTag) + 'T' + IntToStr(iStunde) + IntToStr(iMinute) + IntToStr(iSekunde) + 'Z';
+
+
+      // Prüfung auf Samstag
+      if ADayOfWeeks <>  127 then
+      begin
+        Result:= Result + ';BYDAY=';
+        if ADayOfWeeks>= 64 then
+        begin
+          iTage := ADayOfWeeks - 64;
+          arrDays[High(arrDays)].DaySA:= 'SA';
+        end
+        else
+        begin
+          itage:= ADayOfWeeks;
+          arrDays[High(arrDays)].DaySA:= '';
+        end;
+        // Prüfung auf Freitag
+        if itage >=32 then
+        begin
+          itage := itage - 32;
+          arrDays[High(arrDays)].DayFR:= 'FR';
+        end
+        else
+        begin
+          arrDays[High(arrDays)].DayFR:= '';
+        end;
+        // Prüfung auf Donnerstag
+        if itage >=16 then
+        begin
+          itage := itage - 16;
+          arrDays[High(arrDays)].DayDO:= 'TH';
+        end
+        else
+        begin
+          arrDays[High(arrDays)].DayDO:= '';
+        end;
+        // Prüfung auf Mittwoch
+        if itage >=8 then
+        begin
+          itage := itage - 8;
+          arrDays[High(arrDays)].DayMI:= 'WE';
+        end
+        else
+        begin
+          arrDays[High(arrDays)].DayMI:= '';
+        end;
+        // Prüfung auf Dienstag
+        if itage >= 4 then
+        begin
+          itage := itage - 4;
+          arrDays[High(arrDays)].DayDI:= 'TU';
+        end
+        else
+        begin
+          arrDays[High(arrDays)].DayDI:= '';
+        end;
+        // Prüfung auf Montag
+        if itage >= 2 then
+        begin
+          itage := itage - 2;
+          arrDays[High(arrDays)].DayMO:= 'MO';
+        end
+        else
+        begin
+    //                itage:= ADayOfWeeks;
+          arrDays[High(arrDays)].DayMO:= '';
+        end;
+        // Prüfung auf Sonntag
+        if itage >= 1 then
+        begin
+  //        itage := itage - 1;
+          arrDays[High(arrDays)].DaySO:= 'SU';
+        end
+        else
+        begin
+    //                itage:= ADayOfWeeks;
+          arrDays[High(arrDays)].DaySO:= '';
+        end;
+        if arrDays[High(arrDays)].DaySO <> '' then
+          Result:= Result +'SU,';
+        if arrDays[High(arrDays)].DayMO <> '' then
+          Result:= Result +'MO,';
+        if arrDays[High(arrDays)].DayDI <> '' then
+          Result:= Result +'TU,';
+        if arrDays[High(arrDays)].DayMI <> '' then
+          Result:= Result +'WE,';
+        if arrDays[High(arrDays)].DayDO <> '' then
+          Result:= Result +'TH,';
+        if arrDays[High(arrDays)].DayFR <> '' then
+          Result:= Result +'FR,';
+        if arrDays[High(arrDays)].DaySA <> '' then
+          Result:= Result +'SA,';
+        Result:= Copy(Result,1,Length(Result) -1);
+      end;
+      if AInstanz = '5' then
+        Result:= Result + ';BYSETPOS=-1'
+      else
+        Result:= Result + ';BYSETPOS=' + AInstanz;
+    end;
+    5:
+    begin
+      SetLength(arrDays,Length(arrDays) + 1);
+      Result:= 'FREQ=YEARLY';
+  //    if AInterval > 1 then
+  //      Result:= Result + ';INTERVAL=' + IntToStr(AInterval);
+      // Prüfen auf Ende
+      if AWiederholungEnde <> '31.12.4500 23:59:00' then
+        Result:= Result + ';COUNT=' + IntToStr(AAnzahlWiederholung) + ';UNTIL=' +  IntToStr(iJahr) + IntToStr(iMonat) + IntToStr(iTag) + 'T' + IntToStr(iStunde) + IntToStr(iMinute) + IntToStr(iSekunde) + 'Z';
+      Result:= Result + ';BYMONTH=' + IntToStr(StrToInt(Copy(AWiederholungStart,4,2))) + ';BYMONTHDAY=' + IntToStr(StrToInt(Copy(AWiederholungStart,1,2)));
+    end;
+    6:
+    begin
+      SetLength(arrDays,Length(arrDays) + 1);
+      Result:= 'FREQ=YEARLY';
+  //    if AInterval > 1 then
+  //      Result:= Result + ';INTERVAL=' + IntToStr(AInterval);
+      // Prüfen auf Ende
+      if AWiederholungEnde <> '31.12.4500 23:59:00' then
+        Result:= Result + ';COUNT=' + IntToStr(AAnzahlWiederholung) + ';UNTIL=' +  IntToStr(iJahr) + IntToStr(iMonat) + IntToStr(iTag) + 'T' + IntToStr(iStunde) + IntToStr(iMinute) + IntToStr(iSekunde) + 'Z';
+      Result:= Result + ';BYMONTH=' + IntToStr(StrToInt(Copy(AWiederholungStart,4,2))) + ';BYMONTHDAY=' + IntToStr(StrToInt(Copy(AWiederholungStart,1,2)));
+    end;
+    end;
+  end;
+  procedure GetOutlookEvents(AUser: string);
+  const
+    olFolderCalendars = $00000009;
+  var
+    ASnot,asmem: Ansistring;
+    sDateBegin, sDateEnd:string;
+    sTagBegin, sMonatBegin, sJahrBegin: String;
+    sTagEnd, sMonatEnd, sJahrEnd: String;
+
+    sStundeBegin, sMinuteBegin, sSekundeBegin: String;
+    sStundeEnd, sMinuteEnd, sSekundeEnd: String;
+    asBeschreibung: Ansistring;
+    sReminder: string;
+    sReminderDate: string;
+    iReminderMinutes: integer;
+    iOptions:integer;
+    sGanzerTag:string;
+    sErinnerung: string;
+    iErinnerungVor: integer;
+    sFontColor: string;
+    asRecurrence: Ansistring;
+    datTimTermin,dtNow: TDateTime;
+  //  strlstICal: TStringList;
+    iID_Kontakt,iEventtpye: integer;
+    swiederholungtext: String;
+    DTSTART,DTEND,DESCRIPTION,location,Rule,SUMMARY: string;
+
+    objOwner,olvarTermine,Termin, olvarNameSpace: olevariant;
+    i,iTag: integer;
+  begin
+    dm_PCM.qry_work.sql.text:= 'SELECT Adresse_Firma FROM manager_kalender_optionen Where ID_Benutzer = :ID_Benutzer';
+    dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_work.Open;
+    iID_Kontakt:= dm_PCM.qry_work.FieldByName('Adresse_Firma').AsInteger;
+    dm_PCM.qry_work.CLose;
+    asRecurrence:='';
+    sErinnerung:= 'true';
+    iErinnerungVor:= 0;
+    iTag:= 0;
+    try
+      Outlook.connect;
+    except
+      on e: system.sysutils.Exception do
+      begin
+          Writelog(PCM_Logname,rs_PCMManager_Kontakte + rs_PCMManager_KeineVerbindung + e.Message, 2);
+        exit;
+      end;
+    end;
+    Writelog(PCM_Logname, rs_PCMManager_Kontakte + rs_PCMManager_Namespace, 0);
+    try
+      olvarNameSpace := Outlook.GetNameSpace('MAPI');
+    except
+      on e: system.sysutils.Exception do
+      begin
+        Writelog(PCM_Logname,rs_PCMManager_Kontakte + rs_PCMManager_NamespaceErmitteln + e.Message, 2);
+        exit;
+      end;
+    end;
+    Writelog(PCM_Logname, rs_PCMManager_Kontakte + rs_PCMManager_ContactsRootErmitteln + Auser, 0);
+    try
+      objOwner := olvarNameSpace.CreateRecipient(AUser);
+      olvarTermine := olvarNameSpace.GetSharedDefaultFolder(objOwner,olFolderCalendars);
+      ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineImportieren), olvarTermine.items.count, ClientWidth, Height);
+      for i := 1 to olvarTermine.items.count do
+      begin
+        Termin:= olvarTermine.items.item[i];
+        SUMMARY:=  Termin.Subject;
+        WaitFormStep;
+        Rule:='';
+        DTSTART:=  DateTimeToStr(Termin.Start);
+        DTEND:= DateTimeToStr(Termin.END);
+        DESCRIPTION:= Termin.Body;
+        location:= Termin.Location;
+        if Integer(Termin.IsRecurring) = -1 then
+          Rule:= GetRecurrenceInfoOutlook(Integer(Termin.GetRecurrencePattern.RecurrenceType),
+                                                 Integer(Termin.GetRecurrencePattern.Interval),
+                                                 Integer(Termin.GetRecurrencePattern.DayOfWeekMask),
+                                                 Integer(Termin.GetRecurrencePattern.Occurrences),
+                                                 Termin.GetRecurrencePattern.PatternStartDate,
+                                                 Termin.GetRecurrencePattern.PatternEndDate,
+                                                 Termin.GetRecurrencePattern.instance);
+
+        if Length(DTSTART) < 12 then
+        begin
+          sJahrBegin:=Copy(DTSTART,7,4);
+          sMonatBegin:=Copy(DTSTART,4,2);
+          sTagBegin:=Copy(DTSTART,1,2);
+          sJahrEnd:= Copy(DTEND,7,4);
+          sMonatEnd:=Copy(DTEND,4,2);
+          sTagEnd:=Copy(DTEND,1,2);
+          if sErinnerung = 'true' then
+          begin
+            sReminder:= 'true';
+            sReminderDate:= DateTimeToStr(IncMinute(StrToDateTime(sTagBegin +'.' + sMonatBegin + '.' + sJahrBegin + ' 00:00:00'),iErinnerungVor *-1));
+            sReminderDate:= Copy(sReminderDate,7,4) + '-' + Copy(sReminderDate,4,2) + '-' + Copy(sReminderDate,1,2) + ' ' + Copy(sReminderDate,12,8);
+  //            iReminderMinutes:= iErinnerungVor;
+  //            sStundeBegin:=
+  //            sMinuteBegin
+  //            sSekundeBegin
+  //            iOptions:= 6;
+            if Length(sReminderDate) < 12 then
+              datTimTermin := EncodeDateTime(StrToInt(sJahrBegin),StrToInt(sMonatBegin),StrToInt(sTagBegin),0,0,0,0)
+            else
+              datTimTermin := EncodeDateTime(StrToInt(sJahrBegin),StrToInt(sMonatBegin),StrToInt(sTagBegin),StrToInt(sStundeBegin),StrToInt(sMinuteBegin),StrToInt(sSekundeBegin),0);
+            dtNow:= now();
+            if datTimTermin < dtNow then
+            begin
+              sReminder:= 'false';
+              sReminderDate:= 'NULL';
+  //              iReminderMinutes:= 0;
+  //              iOptions:= 2;
+            end;
+          end
+          else begin
+            sReminder:= 'false';
+            sReminderDate:= 'NULL';
+  //            iReminderMinutes:= 0;
+  //            iOptions:= 2;
+          end;
+          sDateBegin:= sJahrBegin + '-' + sMonatBegin + '-' + sTagBegin + ' 00:00:00';
+          sDateEnd:= sJahrEnd + '-' + sMonatEnd + '-' + sTagEnd + ' 00:00:00';
+          sGanzerTag:= 'true';
+        end
+        else begin
+          sJahrBegin:=Copy(DTSTART,7,4);
+          sMonatBegin:=Copy(DTSTART,4,2);
+          sTagBegin:=Copy(DTSTART,1,2);
+          sJahrEnd:= Copy(DTEND,7,4);
+          sMonatEnd:=Copy(DTEND,4,2);
+          sTagEnd:=Copy(DTEND,1,2);
+
+          sStundeBegin:= Copy(DTSTART,12,2);
+          sMinuteBegin:= Copy(DTSTART,15,2);
+          sSekundeBegin:= Copy(DTSTART,18,2);
+          sStundeEnd:= Copy(DTEND,12,2);
+          sMinuteEnd:= Copy(DTEND,15,2);
+          sSekundeEnd:= Copy(DTEND,18,2);
+          sDateBegin:= sJahrBegin + '-' + sMonatBegin + '-' + sTagBegin + ' ' + sStundeBegin + ':' + sMinuteBegin + ':' + sSekundeBegin;
+          sDateEnd:= sJahrEnd + '-' + sMonatEnd + '-' + sTagEnd + ' ' + sStundeEnd + ':' + sMinuteEnd + ':' + sSekundeEnd;
+        end;
+        if sErinnerung = 'true' then
+        begin
+          sReminder:= 'true';
+          sReminderDate:= DateTimeToStr(IncMinute(StrToDateTime(
+          sTagBegin +'.' + sMonatBegin + '.' + sJahrBegin + ' '
+          + sStundeBegin + ':' + sMinuteBegin + ':' + sSekundeBegin),iErinnerungVor *-1));
+          sReminderDate:= Copy(sReminderDate,7,4) + '-' + Copy(sReminderDate,4,2) + '-'
+          + Copy(sReminderDate,1,2) + ' ' + Copy(sReminderDate,12,8);
+  //          iReminderMinutes:= iErinnerungVor;
+  //          iOptions:= 6;
+
+          if Length(sReminderDate) < 12 then
+            datTimTermin := EncodeDateTime(StrToInt(sJahrBegin),StrToInt(sMonatBegin),StrToInt(sTagBegin),0,0,0,0)
+          else
+            datTimTermin := EncodeDateTime(StrToInt(sJahrBegin),StrToInt(sMonatBegin),StrToInt(sTagBegin),StrToInt(sStundeBegin),StrToInt(sMinuteBegin),StrToInt(sSekundeBegin),0);
+          dtNow:= now();
+          if datTimTermin < dtNow then
+          begin
+            sReminder:= 'false';
+            sReminderDate:= 'NULL';
+            iReminderMinutes:= 0;
+            iOptions:= 2;
+          end
+          else begin
+            sReminder:= 'false';
+            sReminderDate:= 'NULL';
+            iReminderMinutes:= 0;
+            iOptions:= 2;
+          end;
+          sGanzerTag:= 'false';
+  //
+          asBeschreibung := AnsiString(ReplaceStr(ReplaceStr(String(DESCRIPTION),String(ASnot),String(slinebreak)),String(asmem),','));
+          if Length(asBeschreibung) < 4 then
+            asBeschreibung:= '-';
+
+          if Location = '97725\, Elfershausen\, Adolf-Kolping-Str. 11' then
+          begin
+            Location:= 'im Büro'
+          end
+          else begin
+            if (Location = '\, \, ') or (Location = 'ohne Angabe') then
+            begin
+              Location:= 'sonstiges';
+            end;
+          end;
+          if Location = 'beim Kunden' then
+          begin
+            sColordef := IntToStr(12566527);
+            sFontcolordef := sFontColor;
+          end;
+          iEventtpye:= 0;
+          if Rule <> '' then
+          begin
+            iEventtpye:= 1;
+
+            asRecurrence:= GetRecurrence(Rule,sDateBegin);
+            swiederholungtext:=Rule; //String(asRecurrence);
+            sReminder:= 'true';
+            iOptions:= 6;
+            sReminderDate:= sDateBegin;
+          end
+          else begin
+            asRecurrence:='';
+            swiederholungtext:='';
+          end;
+          if sReminderDate = 'NULL' then
+          begin
+            dm_PCM.qry_work.SQL.Text:='Insert into manager_Kalender (ID_IC_Aufgabenarten,ID_IC_Prioritaeten, Aufgabenstatus,ID_ADR_Wurzel,ID_Ansprechpartner,Typ,EventType,Caption,Location,Message,'
+            + 'Start,Finish,Options,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'
+            + 'ReminderMinutesBeforeStart,ID_Benutzer,Kalendername,CompleteDay,wiederholung_text,LabelColor,FontColor) Values ' +
+            '(4,1,0,:ID_ADR_Wurzel,:ID_Ansprechpartner,2,:Eventtype,:SUMMARY,:Location,:Beschreibung,:DateBegin,:DateEnd,:Options,0,-1,:RecurrenceInfo,:Reminder,'
+            + 'NULL,0,:ID,:Kalender,:ganzerTag,:wiederholung_text,:LabelColor,:FontColor)';
+          end
+          else begin
+            dm_PCM.qry_work.SQL.Text:='Insert into manager_Kalender (ID_IC_Prioritaeten,ID_IC_Aufgabenarten,Aufgabenstatus,ID_ADR_Wurzel,ID_Ansprechpartner,Typ,EventType,Caption,Location,Message,'
+            + 'Start,Finish,Options,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'
+            + 'ReminderMinutesBeforeStart,ID_Benutzer,Kalendername,CompleteDay,wiederholung_text,LabelColor,FontColor) Values ' +
+            '(4,1,0,:ID_ADR_Wurzel,:ID_Ansprechpartner,2,:Eventtype,:SUMMARY,:Location,:Beschreibung,:DateBegin,:DateEnd,:Options,0,-1,:RecurrenceInfo,:Reminder,'
+            + ':ReminderDate,:ReminderMinutes,:ID,:Kalender,:ganzerTag,:wiederholung_text,:LabelColor,:FontColor)';
+            dm_PCM.qry_work.ParamByName('ReminderDate').AsString:= sReminderDate;
+            dm_PCM.qry_work.ParamByName('ReminderMinutes').AsInteger:= iReminderMinutes;
+          end;
+          dm_PCM.qry_work.ParamByName('ID_ADR_Wurzel').ASinteger:= iID_Kontakt;
+          dm_PCM.qry_work.ParamByName('ID_Ansprechpartner').ASinteger:= iID_Kontakt;
+          dm_PCM.qry_work.ParamByName('Eventtype').ASinteger:= iEventtpye;
+          dm_PCM.qry_work.ParamByName('SUMMARY').AsString:= SUMMARY;
+          dm_PCM.qry_work.ParamByName('Location').AsString:= StringReplace(String(Location),'\','',[rfIgnoreCase,rfReplaceAll]);
+          dm_PCM.qry_work.ParamByName('Beschreibung').AsString:= String(asBeschreibung);
+          dm_PCM.qry_work.ParamByName('DateBegin').AsString:= sDateBegin;
+          dm_PCM.qry_work.ParamByName('DateEnd').AsString:= sDateEnd;
+          dm_PCM.qry_work.ParamByName('Options').AsInteger:= iOptions;
+          dm_PCM.qry_work.ParamByName('Reminder').AsString:= sReminder;
+          dm_PCM.qry_work.ParamByName('RecurrenceInfo').AsAnsiString:= asRecurrence;
+          dm_PCM.qry_work.ParamByName('LabelColor').AsString:= IntToStr(8421631);
+          dm_PCM.qry_work.ParamByName('FontColor').AsString:= IntToStr(0);
+          dm_PCM.qry_work.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
+          dm_PCM.qry_work.ParamByName('Kalender').AsString:= Auser;
+          dm_PCM.qry_work.ParamByName('ganzerTag').AsString:= sGanzerTag;
+          dm_PCM.qry_work.ParamByName('wiederholung_text').AsString:= swiederholungtext;
+          dm_PCM.qry_work.ExecSQL;
+          dm_PCM.qry_work.close;
+        end;
+      end;
+    except
+      on e: system.sysutils.Exception do
+      begin
+        Writelog(PCM_Logname, rs_PCMManager_TerminenichtErmitteln + e.Message, 2);
+        exit;
+      end;
+    end;
+    CloseWaitForm;
+    Outlook.Disconnect;
+  end;
+var
+  sKal: String;
+begin
+  dm_PCM.qry_Work.sql.text:= 'Select Account_Geschaeftlich From manager_kalender_optionen Where ID_Benutzer =:ID_Benutzer';
+  dm_PCM.qry_Work.ParamByName('ID_benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+  dm_PCM.qry_Work.Open;
+  sKal:= dm_PCM.qry_Work.FieldByName('Account_Geschaeftlich').asString;
+  dm_PCM.qry_Work.Close;
+  dm_PCM.qry_work.SQL.Text:= 'Delete from manager_kalender Where Typ = 2 and Kalendername = :Kalendername';
+  dm_PCM.qry_work.ParamByName('Kalendername').AsString:=sKal;
+  dm_PCM.qry_work.execsql;
+  GetOutlookEvents(sKal);
+  RefreshTerminundAUfgaben;
+end;
+procedure Tfrm_Calendar.btn_CalExporttoOutlookClick(Sender: TObject);
+  procedure AddOutlookEvents(AuserPriv,AuserGes: String);
+  const
+    olFolderCalendars = $00000009;
+  var
+    // Outlook : OleVariant;
+    NameSpace: olevariant;
+    Termin: olevariant;
+    CalendarsRoot,objOwner: olevariant;
+    CalendarsFolder: olevariant;
+    OutlookCalendar: olevariant;
+  //  SubFolderName: string;
+  //  iPosition: integer;
+  //  Found: boolean;
+  //  Counter: integer;
+  //  TestCalendarFolder,
+    Appointments: olevariant;
+    i, iCOunt: integer;
+    sDatum: string;
+    dBefore, dAfter: TDate;
+    sTermine, sTerminArt: string;
+    bImport: boolean;
+  //  sID_Benutzer,APath: string;
+  begin
+  //  Atyp:= True;
+    Writelog(PCM_Logname, rs_PCMManager_Terminealle + rs_PCMManager_OutlookVerbinden, 0);
+    try
+      Outlook.connect;
+    except
+      on e: System.sysutils.Exception do
+      begin
+        Writelog(PCM_Logname,rs_PCMManager_Terminealle + rs_PCMManager_KeineVerbindung + e.Message, 2);
+        exit;
+      end;
+    end;
+    Writelog(PCM_Logname, rs_PCMManager_Terminealle +rs_PCMManager_Namespace, 0);
+    try
+      NameSpace := Outlook.GetNameSpace('MAPI');
+    except
+      on e: System.sysutils.Exception do
+      begin
+        Writelog(PCM_Logname, rs_PCMManager_Terminealle + rs_PCMManager_NamespaceErmitteln + e.Message, 2);
+        exit;
+      end;
+    end;
+    Writelog(PCM_Logname, rs_PCMManager_Terminealle + rs_PCMManager_CalendarsRoot + AuserPriv, 0);
+    try
+      objOwner := NameSpace.CreateRecipient(AuserPriv);
+      CalendarsRoot := NameSpace.GetSharedDefaultFolder(objOwner,olFolderCalendars);
+    except
+      on e: System.sysutils.Exception do
+      begin
+        Writelog(PCM_Logname,rs_PCMManager_Terminealle + rs_PCMManager_CalendarsRootErmitteln +  e.Message, 2);
+        exit;
+      end;
+    end;
+    CalendarsFolder := CalendarsRoot;
+    Appointments := CalendarsFolder.Items;
+    Appointments.IncludeRecurrences := True;
+  //  if ATyp then
+  //  begin
+  //    APath:= AuserPriv;
+  //    while APath <> '' do
+  //    begin
+  //      iPosition := Pos('\', APath);
+  //      if iPosition > 0 then
+  //      begin
+  //        SubFolderName := copy(APath, 1, iPosition - 1);
+  //        APath := copy(APath, iPosition + 1, Length(APath));
+  //      end
+  //      else
+  //      begin
+  //        SubFolderName := APath;
+  //        APath := '';
+  //      end;
+  //      if SubFolderName = '' then
+  //        Break;
+  //      Found := false;
+  //      for Counter := 1 to CalendarsFolder.Folders.Count do
+  //      begin
+  //        TestCalendarFolder := CalendarsRoot.Folders.Item(Counter);
+  //        if LowerCase(TestCalendarFolder.Name) = LowerCase(SubFolderName) then
+  //        begin
+  //          CalendarsFolder := TestCalendarFolder;
+  //          Found := True;
+  //          Break;
+  //        end;
+  //      end;
+  //      if not Found then
+  //        CalendarsFolder := CalendarsFolder.Folders.Add(SubFolderName);
+  //    end;
+  //  end;
+    i := 1;
+    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineLoeschen), CalendarsFolder.Items.Count, frm_PCM_main.ClientWidth, frm_PCM_main.Height);
+    for iCOunt := 1 to CalendarsFolder.Items.Count do
+    begin
+      Application.ProcessMessages;
+      WaitFormStep;
+      Termin := CalendarsFolder.Items.Item(i);
+      if Termin.Categories = 'PCM_Termin' then
+      begin
+        Termin.delete;
+      end
+      else
+      begin
+        i := i + 1;
+      end;
+    end;
+    CloseWaitForm;
+    sDatum := DateToStr(Now());
+    dBefore := Now() - 365;
+    dAfter := Now() + 365;
+    dm_PCM.qry_Work.sql.Text := 'SELECT mgr_ben.Benutzer as Mitarbeiter,' +
+                         'mgr_cal.Caption AS Betreff,mgr_cal.Message as Nachricht, ' +
+                         'Cast(mgr_cal.Start as date) as StartDatum, Cast(mgr_cal.Finish as date) as EndeDatum, ' +
+                         'Cast(mgr_cal.Start as time) as StartZeit, Cast(mgr_cal.Finish as time) as EndeZeit, ' +
+                         'mgr_cal.Reminder as Erinnerung, mgr_cal.ReminderMinutesBeforeStart as MinutenVorTermin, ' +
+                         'mgr_cal.Location as Aufgabenort ' + 'From manager_kalender mgr_cal  ' +
+                         'LEFT OUTER JOIN benutzer mgr_ben ON mgr_cal.ID_Benutzer = mgr_ben.ID ' +
+                         'Where mgr_cal.Start >= :Von ' +
+                         'and mgr_cal.Start <= :Bis ' +
+                         'and mgr_cal.Start <= :Bis ' +
+                         ' and Kalendername <> ' + QuotedStr(AUserPriv);
+    dm_PCM.qry_Work.ParamByName('Von').AsDate:= dBefore;
+    dm_PCM.qry_Work.ParamByName('Bis').AsDate:= dAfter;
+
+    dm_PCM.qry_Work.sql.Text := dm_PCM.qry_Work.sql.Text + ' and mgr_Cal.ID_Benutzer IN ( ' + IntToStr(dm_PCM.iIDBenutzerPCM) + ') order by StartDatum asc';
+    dm_PCM.qry_Work.Open;
+    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineImportieren), dm_PCM.qry_Work.RecordCount, frm_PCM_main.ClientWidth, frm_PCM_main.Height);
+    while not dm_PCM.qry_Work.eof do
+    begin
+  //    Inc(i2);
+      WaitFormStep;
+      sTermine := dm_PCM.qry_Work.FieldByName('AufgabenOrt').AsString;
+      sTerminArt := dm_PCM.qry_Work.FieldByName('AufgabenOrt').AsString;
+      bImport := True;
+      OutlookCalendar := CalendarsFolder.Items.Add;
+      if dm_PCM.qry_Work.FieldByName('StartZeit').AsString = dm_PCM.qry_Work.FieldByName('EndeZeit').AsString then
+      begin
+        OutlookCalendar.Subject :=  dm_PCM.qry_Work.FieldByName('Betreff').AsString;
+        OutlookCalendar.AllDayEvent := 'true';
+        OutlookCalendar.body := '';
+      end
+      else
+      begin
+        OutlookCalendar.Subject :=  dm_PCM.qry_Work.FieldByName('Betreff').AsString;
+        OutlookCalendar.AllDayEvent := 'false';
+        OutlookCalendar.body := dm_PCM.qry_Work.FieldByName('Nachricht').AsString;
+      end;
+      if bImport = True then
+      begin
+        OutlookCalendar.Start := dm_PCM.qry_Work.FieldByName('StartDatum').AsString + ' ' + dm_PCM.qry_Work.FieldByName('StartZeit').AsString;
+        OutlookCalendar.End := dm_PCM.qry_Work.FieldByName('EndeDatum').AsString + ' ' + dm_PCM.qry_Work.FieldByName('EndeZeit').AsString;
+        OutlookCalendar.Location := sTerminArt;
+        OutlookCalendar.Categories := 'PCM_Termin';
+        if dm_PCM.qry_Work.FieldByName('Erinnerung').AsString = 'true' then
+          OutlookCalendar.Reminderset := True
+        else
+          OutlookCalendar.Reminderset := false;
+        OutlookCalendar.Save;
+      end;
+      dm_PCM.qry_Work.next;
+      CloseWaitForm;
+    end;
+    dm_PCM.qry_Work.close;
+    Application.ProcessMessages;
+    Outlook.Disconnect;
+  end;
+var
+  sKalPriv,sKalGes: String;
+begin
+  dm_PCM.qry_Work.sql.text:= 'Select Account_Privat,Account_Geschaeftlich From manager_kalender_optionen Where ID_Benutzer =:ID_Benutzer';
+  dm_PCM.qry_Work.ParamByName('ID_benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+  dm_PCM.qry_Work.Open;
+  sKalPriv:= dm_PCM.qry_Work.FieldByName('Account_Privat').asString;
+  sKalGes:= dm_PCM.qry_Work.FieldByName('Account_Geschaeftlich').asString;
+  dm_PCM.qry_Work.Close;
+  AddOutlookEvents(sKalPriv,sKalGes);
+end;
+procedure Tfrm_Calendar.btn_CalRefreshClick(Sender: TObject);
+begin
+  RefreshTerminundAUfgaben;
+end;
+procedure Tfrm_Calendar.btn_CalAnsichtClick(Sender: TObject);
+begin
+  if bol_VollBildCal = false then
+  begin
+    bol_VollBildCal:= true;
+    frm_PCM_main.navbr_main.Width:= 0;
+    frm_PCM_main.pcmain.properties.HideTabs:= true;
+    pc_kalender.properties.HideTabs:= true;
+    btn_CalAnsicht.Caption:= rs_PCMManager_normAnsicht;
+    btn_CalAnsicht.LargeImageIndex:= 31;
+//    nbk_main.Left:= 0;
+//    nbk_main.Width:= dm_PCM.clientWidth;
+  end
+  else begin
+    bol_VollBildCal:= false;
+    frm_PCM_main.navbr_main.Width:= 200;
+    frm_PCM_main.pcmain.properties.HideTabs:= false;
+    pc_kalender.properties.HideTabs:= false;
+    btn_CalAnsicht.Caption:= rs_PCMManager_maxAnsicht;
+    btn_CalAnsicht.LargeImageIndex:= 32;
+//    nbk_Main.Left:= 200;
+//    nbk_main.Width:= dm_PCM.ClientWidth - 200;
+  end;
+end;
+procedure Tfrm_Calendar.btn_TerminNeuClick(Sender: TObject);
+var
+  iNewId: integer;
+begin
+  Application.CreateForm(TfNeu, fNeu);
+  fNeu.Execute(schedDBStrg_Kalender,2, 0, 0, '','',0,sched_Kalender.SelStart,sched_Kalender.SelFinish,0,false,0,0,0,0,0,0,false,false,15,false,0,0,nil,'','',iNewId);
+  fNeu := nil;
+  RefreshTerminundAUfgaben;
+end;
+procedure Tfrm_Calendar.btn_TerminTodayClick(Sender: TObject);
+begin
+  sched_Kalender.SelectDays(Date, Date, True);
+end;
+procedure Tfrm_Calendar.btn_TerminchangeClick(Sender: TObject);
+begin
+  if (sched_Kalender.SelectedEventCount = 1)  then //and not Assigned(fNeu)
+  begin
+   if dm_PCM.ikalender >= 2 then
+     OpenEvent(sched_Kalender.SelectedEvents[0].ID, sched_Kalender.SelectedEvents[0].Reminder);
+  end;
+end;
+procedure Tfrm_Calendar.btn_TerminDeleteClick(Sender: TObject);
+var
+  ibuttonSelected : Integer;
+begin
+  if sched_Kalender.SelectedEventCount > 0 then
+  begin
+    ibuttonSelected := MessageDlg('Möchten sie den Termin wirklich löschen?',mtWarning, mbYesNo, 0);
+    if ibuttonSelected = mrYes then
+    begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Termin ' + sched_Kalender.SelectedEvents[0].Caption + ' von  '  +
+                                                        DateTimeToStr(sched_Kalender.SelectedEvents[0].Start) + ' bis ' +
+                                                        DateTimeToStr(sched_Kalender.SelectedEvents[0].Finish) + ' wurde gelöscht';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+      dm_PCM.qry_work.SQL.Text:='Delete From manager_Kalender Where ID = :ID';
+      dm_PCM.qry_work.ParamByName('ID').AsInteger:= sched_Kalender.SelectedEvents[0].ID;
+      dm_PCM.qry_work.ExecSQL;
+      RefreshTerminundAUfgaben;
+    end;
+    if ibuttonSelected = mrCancel then
+      exit;
+  end;
+
+end;
+// Scheduler
+procedure Tfrm_Calendar.sched_KalenderBeforeDragEvent(Sender: TcxCustomScheduler;AEvent: TcxSchedulerControlEvent; X, Y: Integer; var Allow: Boolean);
+begin
+  iCopyEventId := 0;
+  if (dm_PCM.iKalender > 1) AND (AEvent.RecurrenceIndex < 0)  then
+  begin
+    if (GetKeyState(VK_LCONTROL) < 0) OR (GetKeyState(VK_RCONTROL) < 0) then
+      Allow := False
+    else
+    begin
+      iCopyEventId := AEvent.ID;
+      Allow := True;
+    end;
+  end
+  else
+    Allow := False;
+end;
+procedure Tfrm_Calendar.sched_KalenderBeforeSizingEvent( Sender: TcxCustomScheduler; AEvent: TcxSchedulerControlEvent; X, Y: Integer; var Allow: Boolean);
+begin
+  if dm_PCM.iKalender > 1 then
+  begin
+    Allow := true;
+  end
+  else begin
+    Allow := false;
+  end;
+end;
+procedure Tfrm_Calendar.sched_KalenderClick(Sender: TObject);
+var
+  vwHitTest: TcxSchedulerViewHitTest;
+begin
+  vwHitTest := sched_Kalender.CurrentView.HitTest;
+  if vwHitTest.HitAtEvent then
+  begin
+    sched_Kalender.SelectEvent(vwHitTest.Event);
+  end;
+end;
+procedure Tfrm_Calendar.sched_KalenderCustomDrawDayHeader(Sender: TObject;  ACanvas: TcxCanvas; AViewInfo: TcxSchedulerDayHeaderCellViewInfo;  var ADone: Boolean);
+begin
+  AViewInfo.DisplayText:= StringReplace(AViewInfo.DisplayText, '/ ', '. ', [rfReplaceAll, rfIgnoreCase]);
+end;
+procedure Tfrm_Calendar.sched_KalenderCustomDrawEvent(Sender: TObject; ACanvas: TcxCanvas; AViewInfo: TcxSchedulerEventCellViewInfo; var ADone: Boolean);
+begin
+  dm_PCM.qry_work.Close;
+  dm_PCM.qry_work.SQL.Text := 'SELECT LabelColor,FontColor from manager_Kalender WHERE ID = ' + intToStr(AViewInfo.Event.ID);
+  dm_PCM.qry_work.Open;
+  if dm_PCM.qry_work.FieldByName('LabelColor').AsString <> '' then
+  begin
+    ACanvas.Font.Color := dm_PCM.qry_work.FieldByName('FontColor').asInteger;
+    ACanvas.Brush.Color := dm_PCM.qry_work.FieldByName('LabelColor').AsInteger;
+  end
+  else begin
+    ACanvas.Font.Color := defaultFontColor;
+    ACanvas.Brush.Color := defaultLabelColor;
+  end;
+  dm_PCM.qry_work.Close;
+end;
+procedure Tfrm_Calendar.sched_KalenderDblClick(Sender: TObject);
+begin
+  if dm_PCM.iKalender >= 2 then
+  begin
+    if sched_Kalender.SelectedEventCount > 0 then
+    begin
+      btn_TerminchangeClick(Sender);
+    end;
+  end;
+end;
+procedure Tfrm_Calendar.sched_KalenderGetEventEditProperties(Sender: TObject; AEvent: TcxSchedulerControlEvent; var AProperties: TcxCustomEditProperties);
+begin
+  AProperties := riEvent.Properties;
+end;
+procedure Tfrm_Calendar.sched_KalenderGetEventHintText(Sender: TObject; AEvent: TcxSchedulerControlEvent; var AText: string);
+var
+  i: integer;
+  sBegin: string;
+  sFinish: string;
+  sBetreff: string;
+  slocation: string;
+  sMessage: string;
+  sKalender: string;
+  sName: string;
+  sStrasse: string;
+  sOrt: string;
+  sTelefon: string;
+  sMobil: string;
+  sEmail: string;
+begin
+  i:= AEvent.ID;
+  if i > 0 then
+  begin
+    dm_PCM.qry_work.SQL.Text:= 'SELECT mgr_cal.Caption, mgr_cal.Location, ' +
+                        'mgr_cal.Message, mgr_cal.Start, ' +
+                        'mgr_cal.Finish, mgr_cal.Options,mgr_cal.Reminder, ' +
+                        'mgr_cal.ReminderDate, ' +
+                        'mgr_cal.ReminderMinutesBeforeStart,mgr_cal.LabelColor, mgr_cal.CompleteDay, mgr_cal.Kalendername, ' +
+                        'mgr_con.Vorname, mgr_con.Nachname, ' +
+                        'IF(mgr_con.Strasse_Privat = '''',mgr_con.Strasse_Ges,mgr_con.Strasse_Privat) AS Strasse, ' +
+                        'IF(mgr_con.PLZ_Privat = '''',mgr_con.PLZ_Ges,mgr_con.PLZ_Privat) AS PLZ, ' +
+                        'IF(mgr_con.Ort_Privat = '''',mgr_con.Ort_Ges,mgr_con.Ort_Privat) AS Ort, ' +
+                        'IF(mgr_con.Telefon_Privat = '''',mgr_con.Telefon_Ges,mgr_con.Telefon_Privat) AS Telefon, ' +
+                        'IF(mgr_con.Handy_privat = '''',mgr_con.Handy_ges,mgr_con.Handy_privat) AS Handy, ' +
+                        'IF(mgr_con.E_Mail_Privat = '''',mgr_con.E_Mail_ges,mgr_con.E_Mail_Privat) AS Mail ' +
+                        'FROM manager_Kalender mgr_cal ' +
+                        'LEFT OUTER JOIN manager_Kontakte mgr_con ON  mgr_con.ID = mgr_cal.ID_Kontakte ' +
+                        'WHERE mgr_cal.ID = :ID';
+
+    dm_PCM.qry_work.ParamByName('ID').AsInteger:= i;
+    dm_PCM.qry_work.Open;
+    sBegin:= Copy(dm_PCM.qry_work.FieldByName('Start').AsString,12,5);
+    if sBegin = '' then
+      sBegin := '00:00';
+    sFinish:= Copy(dm_PCM.qry_work.FieldByName('Finish').AsString,12,5);
+    if sFinish = '' then
+      sFinish := '00:00';
+    sBetreff:= dm_PCM.qry_work.FieldByName('Caption').AsString;
+    slocation:= dm_PCM.qry_work.FieldByName('Location').AsString;
+    sMessage:= dm_PCM.qry_work.FieldByName('Message').AsString;
+    sKalender:= dm_PCM.qry_work.FieldByName('Kalendername').AsString;
+    sName:= dm_PCM.qry_work.FieldByName('Vorname').AsString + ' ' + dm_PCM.qry_work.FieldByName('Nachname').AsString;
+    sStrasse:= dm_PCM.qry_work.FieldByName('Strasse').AsString;
+    sOrt:= dm_PCM.qry_work.FieldByName('PLZ').AsString + ' '+ dm_PCM.qry_work.FieldByName('Ort').AsString;
+    sTelefon:= dm_PCM.qry_work.FieldByName('Telefon').AsString;
+    sMobil:= dm_PCM.qry_work.FieldByName('Handy').AsString;
+    sEmail:=dm_PCM.qry_work.FieldByName('Mail').AsString;
+
+    dm_PCM.qry_work.close;
+
+    AText :=  'Zeit: ' + sBegin + ' bis ' + sFinish + Slinebreak
+              + 'Kalender: ' + sKalender + Slinebreak
+              + 'Betreff: ' + sBetreff + Slinebreak
+              + '___________________________________________' + slinebreak
+              + slinebreak + sMessage + slinebreak
+              + slinebreak
+              + 'Kontakt: ' + Slinebreak + sName + slinebreak
+              + sStrasse + slinebreak + sOrt + Slinebreak
+              + 'Tel: ' +sTelefon + Slinebreak
+              + 'Handy: ' + sMobil + Slinebreak
+              + 'E-Mail: ' + sEmail + Slinebreak;
+  end;
+
+end;
+procedure Tfrm_Calendar.sched_KalenderKeyDown(Sender: TObject; var Key: Word;  Shift: TShiftState);
+  function copyEvent : boolean;
+  var
+    AEvent: TcxSchedulerControlEvent;
+  begin
+    result := False;
+    if sched_Kalender.SelectedEventCount > 0 then
+    begin
+      AEvent := sched_Kalender.SelectedEvents[0];
+      if Assigned(AEvent) then
+      begin
+        if dm_PCM.ikalender > 1 then
+        begin
+          iCopyEventId := AEvent.ID;
+          result := true;
+        end;
+      end;
+    end;
+  end;
+  procedure pasteEvent(iEventId : integer);
+  var
+    i : integer;
+  begin
+    if iCopyEventId > 0 then
+    begin
+      sched_Kalender.BeginUpdate;
+      schedDBStrg_Kalender.BeginUpdate;
+  //    ssReminder.BeginUpdate;
+      try
+        dm_PCM.qry_Kalender_Kalender.Locate('ID',iCopyEventId,[]);
+  //      FindKey([iCopyEventId]);
+        dm_PCM.qry_work.SQL.Text := 'SELECT * FROM manager_Kalender';
+        dm_PCM.qry_work.Open;
+        dm_PCM.qry_work.Insert;
+
+        for I := 0 to dm_PCM.qry_Kalender_Kalender.FieldCount - 1 do
+        begin
+          if (dm_PCM.qry_Kalender_Kalender.Fields[i].FieldName <> 'ID') AND (dm_PCM.qry_Kalender_Kalender.Fields[i].FieldKind = fkData) then
+            dm_PCM.qry_work.FieldValues[dm_PCM.qry_Kalender_Kalender.Fields[i].FieldName] :=
+              dm_PCM.qry_Kalender_Kalender.FieldValues[dm_PCM.qry_Kalender_Kalender.Fields[i].FieldName];
+        end;
+
+        dm_PCM.qry_work.FieldValues['Start'] := sched_Kalender.SelStart;
+        dm_PCM.qry_work.FieldValues['Finish'] := sched_Kalender.SelFinish;
+        // RecurrenceInformation nicht übernehmen
+        dm_PCM.qry_work.FieldValues['EventType'] := 0;
+        dm_PCM.qry_work.FieldValues['RecurrenceInfo'] := null;
+
+        dm_PCM.qry_work.Post;
+        RefreshTerminundAUfgaben;
+
+      finally
+        //ssReminder.EndUpdate;
+        schedDBStrg_Kalender.EndUpdate ;
+        sched_Kalender.EndUpdate;
+      end;
+      RefreshTerminundAUfgaben;
+    end;
+  end;
+begin
+  if (Key = 67) and (ssCtrl in Shift) then
+  begin
+    copyEvent();
+    Key := 0;
+  end;
+
+  if (Key = 86) and (ssCtrl in Shift) then
+  begin
+    Key := 0;
+    pasteEvent(iCopyEventId);
+  end;
+  if (Key = 46) and (dm_PCM.iKalender > 2) then
+  begin
+    btn_TerminDeleteClick(Sender);
+  end;
+end;
+procedure Tfrm_Calendar.sch_KalenderAfterSizingEvent(Sender: TcxCustomScheduler;AEvent: TcxSchedulerControlEvent; X, Y: Integer; var Accept: Boolean);
+var
+  sDateBegin, sDateEnd: string;
+begin
+  // Begindatum ermittlen
+  sDateBegin:= Copy(DateTimeToStr(sched_Kalender.SelectedEvents[0].Start),7,4) + '-'
+  + Copy(DateTimeToStr(sched_Kalender.SelectedEvents[0].Start),4,2) + '-'
+  + Copy(DateTimeToStr(sched_Kalender.SelectedEvents[0].Start),1,2) + ' '
+  + Copy(DateTimeToStr(sched_Kalender.SelectedEvents[0].Start),12,8);
+  // Enddatum ermittlen
+  sDateEnd:= Copy(DateTimeToStr(sched_Kalender.SelectedEvents[0].Finish),7,4) + '-'
+  + Copy(DateTimeToStr(sched_Kalender.SelectedEvents[0].Finish),4,2) + '-'
+  + Copy(DateTimeToStr(sched_Kalender.SelectedEvents[0].Finish),1,2) + ' '
+  + Copy(DateTimeToStr(sched_Kalender.SelectedEvents[0].Finish),12,8);
+  dm_PCM.qry_work.close;
+  dm_PCM.qry_work.SQL.Text:= 'Update manager_Kalender Set Start = :Begin, Finish = :End WHERE ID = :ID';
+  dm_PCM.qry_work.ParamByName('Begin').AsString:= sDateBegin;
+  dm_PCM.qry_work.ParamByName('End').AsString:= sDateEnd;
+  dm_PCM.qry_work.ParamByName('ID').AsInteger:= sched_Kalender.SelectedEvents[0].ID;
+  dm_PCM.qry_work.ExecSQL;
+  dm_PCM.qry_work.Close;
+
 end;
 procedure Tfrm_Calendar.schedDBStrg_KalenderEventInserted(Sender: TObject; AEvent: TcxSchedulerEvent; var AHandled: Boolean);
 begin
@@ -4390,6 +3254,85 @@ procedure Tfrm_Calendar.ssKalenderRemindersOpenEvent(Sender: TcxSchedulerReminde
 begin
   OpenEvent(AEvent.ID,true);
 end;
+{$EndRegion}
+{$Region TABAufgaben}
+////////////////////////////////////////////////////////////////////////////////
+// TABAufgaben                                                                //
+////////////////////////////////////////////////////////////////////////////////
+procedure Tfrm_Calendar.trlst_AufgabenClick(Sender: TObject);
+var
+  selectedNode: TcxTreeListNode;
+  sItem: string;
+  view: TcxGridDBTableView;
+begin
+  view := TcxGridDBTableView.Create(SELF);
+  if trlst_Aufgaben.SelectionCount > 0 then
+  begin
+    selectedNode := trlst_Aufgaben.FocusedNode;
+    if selectedNode = nil then
+      exit;
+   sItem:= selectedNode.Values[0];
+   if (sItem = 'Alle') or (sItem = 'Nachrichten') then
+   begin
+     view := tvNachrichten;
+     if (sItem = 'Alle') then
+     begin
+      iCurrTableview:= 0;
+//      dm_PCM.qry_Kalender_Aufgaben.Filtered:= false;
+     end
+     else
+     begin
+        iCurrTableview:= 2;
+//        dm_PCM.qry_Kalender_Aufgaben.Filter:= 'Typ =0';
+//        dm_PCM.qry_Kalender_Aufgaben.Filtered:= true;
+     end;
+   end
+   else begin
+     view := tvAuf;
+
+     if sItem = 'Aufgaben' then
+       iCurrTableview:= 1;
+     if sItem = 'Termine' then
+        iCurrTableview:= 0;
+//     dm_PCM.qry_Kalender_Aufgaben.Filter:= 'Typ <> 0';
+//     dm_PCM.qry_Kalender_Aufgaben.Filtered:= true;
+   end;
+  end;
+
+  RefreshTerminundAUfgaben;
+  cxGrid1.BeginUpdate();
+  view.BeginUpdate();
+  cxGrid1Level1.GridView := view;
+  view.EndUpdate;
+  cxGrid1.EndUpdate;
+end;
+procedure Tfrm_Calendar.btn_NewMessageClick(Sender: TObject);
+var
+  iNewId : Integer;
+begin
+  Application.CreateForm(TfNeu, fNeu);
+  fNeu.Execute(schedDBStrg_Kalender,0, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
+  fNeu := nil;
+  RefreshTerminundAUfgaben;
+end;
+procedure Tfrm_Calendar.btn_NewTaskClick(Sender: TObject);
+var
+  iNewId : Integer;
+begin
+  Application.CreateForm(TfNeu, fNeu);
+  fNeu.Execute(schedDBStrg_Kalender,1, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
+  fNeu := nil;
+  RefreshTerminundAUfgaben;
+end;
+procedure Tfrm_Calendar.btn_NewEventClick(Sender: TObject);
+var
+  iNewId : Integer;
+begin
+  Application.CreateForm(TfNeu, fNeu);
+  fNeu.Execute(schedDBStrg_Kalender,2, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
+  fNeu := nil;
+  RefreshTerminundAUfgaben;
+end;
 procedure Tfrm_Calendar.btn_JobChangeClick(Sender: TObject);
   function GetFileNameInfo(const FileName: string; out TypeName: string): HICON;
   var
@@ -4476,6 +3419,519 @@ begin
       begin
         RefreshTerminundAUfgaben;
       end;
+end;
+procedure Tfrm_Calendar.btn_ReadJobClick(Sender: TObject);
+var
+//  ID,
+  iCount, iRecCount: Integer;
+  view : TcxGridTableView;
+  col : TcxGridColumn;
+  AMessageIds : Array of Integer;
+begin
+  // Entsprechend der Ansicht View auswählen um selektiete Datensätze zu wählen
+  view := TcxGridTableView(cxGrid1.ActiveView);
+  if view = tvAuf then
+    col := tvAufID
+  else if view = tvNachrichten then
+    col := tvNachrichtenID
+  else
+    exit;
+
+  // kein Eintrag?
+  if (dm_PCM.qry_Kalender_Aufgaben.RecordCount > 0) then //and (qWF_NachrichtenTyp.Value = 2) then
+  begin
+    iRecCount := view.Controller.SelectedRowCount;
+    for iCount := 0 to iRecCount - 1 do
+    begin
+      SetLength(AMessageIds, Length(AMessageIds)+1);
+      AMessageIds[High(AMessageIds)] := view.Controller.SelectedRows[iCount].Values[col.Index];
+    end;
+  end;
+
+//  ID := dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID').asInteger;
+
+
+  for iCount := 0 to High(AMessageIds) do
+  begin
+    dm_PCM.qry_Work.SQL.Text := 'UPDATE manager_kalender ' + 'SET GelesenAm = NOW() WHERE ID = :ID_IC';
+    dm_PCM.qry_Work.ParamByName('ID_IC').AsInteger := AMessageIds[iCount];
+    dm_PCM.qry_Work.Execute;
+  end;
+
+
+
+  RefreshTerminundAUfgaben;
+
+
+//  dmIC_Main.qCustom.SQL.Text :=
+//    'UPDATE IC_Nachrichten SET GelesenAm = NOW() ' +
+//    'WHERE ID = ' + IntToStr(qWF_NachrichtenID.Value);
+//  dmIC_Main.qCustom.Execute;
+//  LastID_WF_Nachrichten := 1;
+//  RefreshMessages();
+ // NachrichtToolbarAnpassen();
+end;
+procedure Tfrm_Calendar.btn_DoneJobClick(Sender: TObject);
+var
+  ID: Integer;
+  iCount,iRecCount: Integer;
+  view : TcxGridTableView;
+  col : TcxGridColumn;
+  AMessageIds : Array of Integer;
+  sMsgDlgMessage: String;
+begin
+  iRecCount:=0;
+  // Entsprechend der Ansicht View auswählen um selektiete Datensätze zu wählen
+  view := TcxGridTableView(cxGrid1.ActiveView);
+  if view = tvauf then
+    col := tvAufID
+  else if view = tvNachrichten then
+    col := tvNachrichtenID
+  else
+    exit;
+
+  // kein Eintrag?
+  if (dm_PCM.qry_Kalender_Aufgaben.RecordCount > 0) then //and (qWF_NachrichtenTyp.Value = 2) then
+  begin
+    iRecCount := view.Controller.SelectedRowCount;
+    for iCount := 0 to iRecCount - 1 do
+    begin
+      SetLength(AMessageIds, Length(AMessageIds)+1);
+      AMessageIds[High(AMessageIds)] := view.Controller.SelectedRows[iCount].Values[col.Index];
+    end;
+  end;
+
+  if iRecCount > 1 then
+  begin
+    sMsgDlgMessage := rs_PCMManager_Eintraegenichterledigt1 + slinebreak
+      + rs_PCMManager_Eintraegenichterledigt2 + IntToStr(iRecCount) + rs_PCMManager_Eintraegenichterledigt3;
+  end
+  else
+  begin
+    sMsgDlgMessage := rs_PCMManager_Eintragnichterledigt1 + slinebreak
+      + rs_PCMManager_Eintragnichterledigt2;
+  end;
+
+  if dm_PCM.qry_Kalender_Aufgaben.FieldByName('GelesenAm').IsNull then
+    if MessageDlg(sMsgDlgMessage + slinebreak + rs_PCMManager_AlsBearbeitet,mtwarning,[mbYes,mbNo],0) = IDNO then
+      Exit;
+
+  ID := dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID').asInteger;
+
+  cxGrid1Level1.GridView.DataController.GotoNext;
+  if dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID').asInteger = ID then
+    cxGrid1Level1.GridView.DataController.GotoPrev;
+
+  for iCount := 0 to High(AMessageIds) do
+  begin
+    dm_PCM.qry_Work.SQL.Text := 'UPDATE manager_kalender SET GelesenAm = IF(GelesenAm IS NULL, NOW(), GelesenAm), BearbeitetAm = NOW() WHERE ID = :ID_IC';
+    dm_PCM.qry_Work.ParamByName('ID_IC').AsInteger := AMessageIds[iCount];
+    dm_PCM.qry_Work.Execute;
+  end;
+  RefreshTerminundAUfgaben;
+end;
+procedure Tfrm_Calendar.btn_JobUndoneClick(Sender: TObject);
+begin
+  dm_PCM.qry_Work.SQL.Text :=
+    'UPDATE manager_kalender SET BearbeitetAm = NULL ' +
+      'WHERE ID = ' + IntToStr(dm_PCM.qry_Kalender_Aufgaben.Fieldbyname('ID').AsInteger);
+  dm_PCM.qry_Work.Execute;
+  RefreshTerminundAUfgaben;
+end;
+procedure Tfrm_Calendar.btn_JobsDoneClick(Sender: TObject);
+begin
+  if btn_JobsDone.tag = 0 then
+  begin
+    btn_JobsDone.tag:= 1;
+    btn_JobsDone.Caption:= rs_PCMManager_aktAufgaben;
+    btn_JobsDone.largeimageindex:= 124;
+    btn_JobUndone.enabled:= true;
+    dm_PCM.qry_Kalender_Aufgaben.Filter:= 'bearbeitetam <> null and ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+    dm_PCM.qry_Kalender_Aufgaben.Filtered:= true;
+  end
+  else begin
+    btn_JobsDone.tag:= 0;
+    btn_JobsDone.Caption:= rs_PCMManager_bearbAufgaben;
+    btn_JobsDone.largeimageindex:= 123;
+    btn_JobUndone.enabled:= false;
+    dm_PCM.qry_Kalender_Aufgaben.Filter:= 'bearbeitetam = null and ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+    dm_PCM.qry_Kalender_Aufgaben.Filtered:= true;
+  end;
+end;
+procedure Tfrm_Calendar.pmmbtn_JobsImportOutlookClick(Sender: TObject);
+  procedure GetOutlookToDo(AUser: string);
+  const
+    olFolderCalendars = $0000000D;
+  var
+    ASnot,asmem: Ansistring;
+    sDateBegin, sDateEnd:string;
+    sTagBegin, sMonatBegin, sJahrBegin: String;
+    sTagEnd, sMonatEnd, sJahrEnd: String;
+
+    sStundeBegin, sMinuteBegin, sSekundeBegin: String;
+    sStundeEnd, sMinuteEnd, sSekundeEnd: String;
+    asBeschreibung: Ansistring;
+    sReminder: string;
+    sReminderDate: string;
+    iReminderMinutes: integer;
+    iOptions:integer;
+  //  sGanzerTag:string;
+    sErinnerung: string;
+    asRecurrence: Ansistring;
+  //  datTimTermin,dtNow: TDateTime;
+  //  strlstICal: TStringList;
+    iID_Kontakt,iEventtpye: integer;
+  //  swiederholungtext: String;
+    DTSTART,
+  //  DTEND,
+    DESCRIPTION,
+  //  SUBJECT,
+    location,
+  //  Rule,
+    SUMMARY: string;
+
+    objOwner,olvarTermine,Termin, olvarNameSpace: olevariant;
+  //  iFolders,
+    i,
+  //  iDayOfWeeks,
+    iTag: integer;
+  //  sFreg,test: String;
+  //  arrDays: TDays;
+  begin
+    dm_PCM.qry_work.sql.text:= 'SELECT Adresse_Firma FROM manager_kalender_optionen Where ID_Benutzer = :ID_Benutzer';
+    dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_work.Open;
+    iID_Kontakt:= dm_PCM.qry_work.FieldByName('Adresse_Firma').AsInteger;
+    dm_PCM.qry_work.CLose;
+    asRecurrence:='';
+    sErinnerung:= 'true';
+    iTag:= 0;
+    try
+      Outlook.connect;
+    except
+      on e: system.sysutils.Exception do
+      begin
+          Writelog(PCM_Logname,rs_PCMManager_Kontakte + rs_PCMManager_KeineVerbindung + e.Message, 2);
+        exit;
+      end;
+    end;
+    Writelog(PCM_Logname, rs_PCMManager_Kontakte + rs_PCMManager_Namespace, 0);
+    try
+      olvarNameSpace := Outlook.GetNameSpace('MAPI');
+    except
+      on e: system.sysutils.Exception do
+      begin
+        Writelog(PCM_Logname,rs_PCMManager_Kontakte + rs_PCMManager_NamespaceErmitteln + e.Message, 2);
+        exit;
+      end;
+    end;
+    Writelog(PCM_Logname, rs_PCMManager_Kontakte + rs_PCMManager_ContactsRootErmitteln + AUser, 0);
+    try
+      objOwner := olvarNameSpace.CreateRecipient(AUser);
+      olvarTermine := olvarNameSpace.GetSharedDefaultFolder(objOwner,olFolderCalendars);
+      ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineImportieren), olvarTermine.items.count, ClientWidth, Height);
+      for i := 1 to olvarTermine.items.count do
+      begin
+        Termin:= olvarTermine.items.item[i];
+        SUMMARY:=  Termin.Subject;
+        if Termin.Categories = 'PCM_Aufgabe' then
+        begin
+          WaitFormStep;
+        end
+        else
+        begin
+          SUMMARY:=  Termin.Subject;
+          DESCRIPTION:= Termin.body;
+          DTSTART:= DateTimeToStr(Termin.DueDate);
+          sJahrBegin:=Copy(DTSTART,7,4);
+          sMonatBegin:=Copy(DTSTART,4,2);
+          sTagBegin:=Copy(DTSTART,1,2);
+          sJahrEnd:= sJahrBegin;
+          sMonatEnd:=sMonatBegin;
+          sTagEnd:=sTagBegin;
+          sStundeBegin:= '09';
+          sMinuteBegin:= '00';
+          sSekundeBegin:= '00';
+          sStundeEnd:= '18';
+          sMinuteEnd:= '00';
+          sSekundeEnd:= '00';
+          sDateBegin:= sJahrBegin + '-' + sMonatBegin + '-' + sTagBegin + ' ' + sStundeBegin + ':' + sMinuteBegin + ':' + sSekundeBegin;
+          sDateEnd:= sJahrEnd + '-' + sMonatEnd + '-' + sTagEnd + ' ' + sStundeEnd + ':' + sMinuteEnd + ':' + sSekundeEnd;
+          sReminderDate:= DateTimeToStr(Termin.ReminderTime);
+          iOptions:= 6;
+          if sReminderDate <> '01.01.4501' then
+          begin
+            sErinnerung := 'true';
+          end
+          else
+          begin
+            sErinnerung := 'false';
+            sReminderDate := 'NULL';
+          end;
+          if sErinnerung = 'true' then
+          begin
+            sReminder:= 'true';
+            sReminderDate:= Copy(sReminderDate,7,4) + '-' + Copy(sReminderDate,4,2) + '-' + Copy(sReminderDate,1,2) + ' ' + Copy(sReminderDate,12,8);
+            iReminderMinutes:= 0;
+            iOptions:= 6;
+          end;
+            asBeschreibung := AnsiString(ReplaceStr(ReplaceStr(String(DESCRIPTION),String(ASnot),String(slinebreak)),String(asmem),','));
+          if Length(asBeschreibung) < 4 then
+            asBeschreibung:= '-';
+          Location:= 'im Büro';
+          iEventtpye:= 0;
+          if sReminderDate = 'NULL' then
+          begin
+            dm_PCM.qry_Work.SQL.Text:='Insert into manager_Kalender (Zeitformat,Erledigungsgrad,AufgabenDauer,Gesendetam,ID_IC_AufgabenArten,ID_IC_Prioritaeten,Aufgabenstatus,ID_ADR_Wurzel,ID_Ansprechpartner,Typ,EventType,Caption,Location,Message,'
+            + 'Start,Finish,Options,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'
+            + 'ReminderMinutesBeforeStart,ID_Benutzer,Kalendername,CompleteDay,LabelColor,FontColor) Values ' +
+            '(0,0,540,Now();5,:ID_IC_Prioritaeten,0,:ID_ADR_Wurzel,:ID_Ansprechpartner,1,:Eventtype,:SUMMARY,:Location,:Beschreibung,:DateBegin,:DateEnd,:Options,0,-1,:RecurrenceInfo,:Reminder,'
+            + 'NULL,0,:ID,:Kalender,:ganzerTag,:LabelColor,:FontColor,:ID_IC_Prioritaeten)';
+          end
+          else begin
+            dm_PCM.qry_Work.SQL.Text:='Insert into manager_Kalender (Zeitformat,Erledigungsgrad,AufgabenDauer,Gesendetam,ID_IC_AufgabenArten,ID_IC_Prioritaeten,Aufgabenstatus,ID_ADR_Wurzel,ID_Ansprechpartner,Typ,EventType,Caption,Location,Message,'
+            + 'Start,Finish,Options,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'
+            + 'ReminderMinutesBeforeStart,ID_Benutzer,Kalendername,CompleteDay,LabelColor,FontColor) Values ' +
+            '(0,0,540,Now(),5,:ID_IC_Prioritaeten,0,:ID_ADR_Wurzel,:ID_Ansprechpartner,1,:Eventtype,:SUMMARY,:Location,:Beschreibung,:DateBegin,:DateEnd,:Options,0,-1,:RecurrenceInfo,:Reminder,'
+            + ':ReminderDate,:ReminderMinutes,:ID,:Kalender,:ganzerTag,:LabelColor,:FontColor)';
+            dm_PCM.qry_Work.ParamByName('ReminderDate').AsString:= sReminderDate;
+            dm_PCM.qry_Work.ParamByName('ReminderMinutes').AsInteger:= iReminderMinutes;
+          end;
+          dm_PCM.qry_Work.ParamByName('ID_ADR_Wurzel').ASinteger:= iID_Kontakt;
+          dm_PCM.qry_Work.ParamByName('ID_Ansprechpartner').ASinteger:= iID_Kontakt;
+          dm_PCM.qry_Work.ParamByName('Eventtype').ASinteger:= 0;
+          dm_PCM.qry_Work.ParamByName('SUMMARY').AsString:= SUMMARY;
+          dm_PCM.qry_Work.ParamByName('Location').AsString:= StringReplace(String(Location),'\','',[rfIgnoreCase,rfReplaceAll]);
+          dm_PCM.qry_Work.ParamByName('Beschreibung').AsString:= String(asBeschreibung);
+          dm_PCM.qry_Work.ParamByName('DateBegin').AsString:= sDateBegin;
+          dm_PCM.qry_Work.ParamByName('DateEnd').AsString:= sDateEnd;
+          dm_PCM.qry_Work.ParamByName('Options').AsInteger:= iOptions;
+          dm_PCM.qry_Work.ParamByName('Reminder').AsString:= sReminder;
+          dm_PCM.qry_Work.ParamByName('RecurrenceInfo').AsAnsiString:= asRecurrence;
+          dm_PCM.qry_Work.ParamByName('LabelColor').AsString:= IntToStr(8421631);
+          dm_PCM.qry_Work.ParamByName('FontColor').AsString:= IntToStr(0);
+          dm_PCM.qry_Work.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
+          dm_PCM.qry_Work.ParamByName('Kalender').AsString:= Auser;
+          dm_PCM.qry_Work.ParamByName('ganzerTag').AsString:= 'false';
+          dm_PCM.qry_Work.ParamByName('ID_IC_Prioritaeten').AsInteger:=  Integer(Termin.Importance) +1;
+          dm_PCM.qry_Work.ExecSQL;
+        end;
+      end;
+    except
+      on e: system.sysutils.Exception do
+      begin
+        Writelog(PCM_Logname, rs_PCMManager_AufgabennichtErmitteln + e.Message, 2);
+        exit;
+      end;
+    end;
+    CloseWaitForm;
+    Outlook.Disconnect;
+  end;
+var
+  sKalPriv,sKalGes: String;
+begin
+  dm_PCM.qry_Work.sql.text:= 'Select Account_Privat,Account_Geschaeftlich From manager_kalender_optionen Where ID_Benutzer =:ID_Benutzer';
+  dm_PCM.qry_Work.ParamByName('ID_benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+  dm_PCM.qry_Work.Open;
+  sKalPriv:= dm_PCM.qry_Work.FieldByName('Account_Privat').asString;
+  sKalGes:= dm_PCM.qry_Work.FieldByName('Account_Geschaeftlich').asString;
+
+  dm_PCM.qry_work.SQL.Text:= 'Delete from manager_kalender Where Typ = 1 and Kalendername = :Kalendername';
+  dm_PCM.qry_work.ParamByName('Kalendername').AsString:= sKalPriv;
+  dm_PCM.qry_work.execsql;
+
+  GetOutlookToDO(sKalPriv);
+  RefreshTerminundAUfgaben;//
+end;
+procedure Tfrm_Calendar.pmmbtn_JobsExportOutlookClick(Sender: TObject);
+  procedure AddOutlookTODO(AuserPriv,AuserGes: String);
+  var
+    aMapi: Variant;
+    aTask: Variant;
+    aTaskItem: Variant;
+    objOwner,Task: olevariant;
+    strSubject, strBody: String;
+    tdtTermin, tdtFaellig: TDateTime;
+    iCOunt: integer;
+  //  dtBefore: TDateTime;
+  //  dtAfter: TDateTime;
+  //  filter: String;
+  //  sDatum: string;
+  //  sID_ADressen: String;
+    i: integer;
+  begin
+    Writelog(PCM_Logname, rs_PCMManager_Aufgaben + rs_PCMManager_OutlookVerbinden, 0);
+    try
+      Outlook.connect;
+    except
+      on e: System.sysutils.Exception do
+      begin
+        Writelog(PCM_Logname,rs_PCMManager_Aufgaben + rs_PCMManager_KeineVerbindung + e.Message, 2);
+        exit;
+      end;
+    end;
+    Writelog(PCM_Logname, rs_PCMManager_Aufgaben + rs_PCMManager_Namespace, 0);
+    try
+      aMapi := Outlook.GetNameSpace('MAPI');
+    except
+      on e: System.sysutils.Exception do
+      begin
+        Writelog(PCM_Logname,rs_PCMManager_Aufgaben + rs_PCMManager_NamespaceErmitteln + e.Message, 2);
+        exit;
+      end;
+    end;
+    Writelog(PCM_Logname, rs_PCMManager_Aufgaben + rs_PCMManager_CalendarsRoot + AUserPriv, 0);
+    try
+      objOwner := aMapi.CreateRecipient(AUserPriv);
+      aTask := aMapi.GetSharedDefaultFolder(objOwner,$0000000D);
+    except
+      on e: System.sysutils.Exception do
+      begin
+        Writelog(PCM_Logname,rs_PCMManager_Aufgaben + rs_PCMManager_CalendarsRootErmitteln + e.Message, 2);
+        exit;
+      end;
+    end;
+
+    i := 1;
+    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_AufgabenLoeschen), aTask.Items.Count, frm_PCM_main.ClientWidth, frm_PCM_main.Height);
+    for iCOunt := 1 to aTask.Items.Count do
+    begin
+      Application.ProcessMessages;
+      WaitFormStep;
+      Task := aTask.Items.Item(i);
+      if Task.Categories = 'PCM_Aufgabe' then
+      begin
+        Task.delete;
+      end
+      else
+      begin
+        i := i + 1;
+      end;
+    end;
+    CloseWaitform;
+
+    dm_PCM.qry_Work.sql.clear;
+    dm_PCM.qry_Work.sql.Text := 'Select icn.caption AS Betreff,icn.Message as Nachricht, ' +
+                'Date(icn.start) as StartDatum, Date(icn.Finish) as EndeDatum, ' +
+                'Time(icn.start) as StartZeit, Time(icn.Finish) as EndeZeit, ' +
+                'icn.Reminder as Erinnerung, icn.ReminderMinutesBeforeStart as MinutenVorTermin, ' +
+                'fa.Firma as Kunde_Firma, fa.Strasse_ges as Kunde_strasse, fa.PLZ_ges as Kunde_PLZ, fa.ort_ges as Kunde_ort, ' +
+                'Concat(ansp.Nachname,'','',ansp.Vorname) as Kunde_Ansprechpartner, ' +
+                'ansp.Telefon_Ges as kunde_telefon1, ' +
+                'ifnull(ansp.Handy_Ges,ansp.Handy_privat) as Kunde_mobil, ' +
+                'ifnull(ansp.e_mail_ges,ansp.E_Mail_Ges) as Kunde_Email ' +
+                'from manager_kalender icn ' +
+                'Left Outer Join manager_kontakte fa ON fa.ID = icn.id_adr_Wurzel ' +
+                'Left Outer Join manager_kontakte ansp ON ansp.ID = icn.ID_Ansprechpartner ' +
+                'where icn.TYP = 1 and icn.BearbeitetAm is NULL and Date(start)  >= Date(:Begin) ' +
+                'and Date(start) <= Date(:End) and Kalendername  <> ' + QuotedStr(AuserPriv);
+    dm_PCM.qry_Work.ParamByName('Begin').AsDateTime:= Now() - 365;
+    dm_PCM.qry_Work.ParamByName('End').AsDateTime:= Now() + 365;
+    dm_PCM.qry_Work.sql.Text := dm_PCM.qry_Work.sql.Text + ' and icn.ID_benutzer IN ( ' + IntToStr(dm_PCM.iIDBenutzerPCM) + ') order by StartDatum asc';
+
+    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_AufgabenImportieren), dm_PCM.qry_work.RecordCount, frm_PCM_main.ClientWidth, frm_PCM_main.Height);
+
+    dm_PCM.qry_Work.Open;
+    while not dm_PCM.qry_Work.eof do
+    begin
+      strSubject := dm_PCM.qry_Work.FieldByName('Betreff').AsString;
+      strBody := dm_PCM.qry_Work.FieldByName('Nachricht').AsString + sLineBreak  + sLineBreak + sLineBreak + 'Kunde: ' + sLineBreak +
+        dm_PCM.qry_Work.FieldByName('Kunde_Firma').AsString + sLineBreak +
+        dm_PCM.qry_Work.FieldByName('Kunde_Strasse').AsString + sLineBreak +
+        dm_PCM.qry_Work.FieldByName('Kunde_PLZ').AsString + ' ' +
+        dm_PCM.qry_Work.FieldByName('Kunde_Ort').AsString + sLineBreak + sLineBreak + 'Ansprechpartner: ' + sLineBreak + dm_PCM.qry_Work.FieldByName
+        ('Kunde_Ansprechpartner').AsString + sLineBreak +  dm_PCM.qry_Work.FieldByName('Kunde_Telefon1').AsString + sLineBreak +
+        dm_PCM.qry_Work.FieldByName('Kunde_mobil').AsString + sLineBreak + dm_PCM.qry_Work.FieldByName('Kunde_Email').AsString;
+
+      tdtTermin := StrToDateTime(dm_PCM.qry_Work.FieldByName('StartDatum').AsString +' ' + dm_PCM.qry_Work.FieldByName('StartZeit').AsString);
+      tdtFaellig := StrToDateTime(dm_PCM.qry_Work.FieldByName('EndeDatum').AsString +' ' + dm_PCM.qry_Work.FieldByName('EndeZeit').AsString);
+      aTaskItem := aTask.Items.Add($00000003);
+      aTaskItem.Subject := strSubject;
+      aTaskItem.body := strBody;
+      aTaskItem.StartDate := tdtTermin;
+      aTaskItem.DueDate := tdtFaellig;
+      aTaskItem.Categories := 'PCM_Aufgabe';
+      aTaskItem.Save;
+      WaitFormstep;
+      dm_PCM.qry_Work.next;
+    end;
+    CloseWaitForm;
+    Outlook.Disconnect;
+  end;
+var
+  sKalPriv,sKalGes: String;
+begin
+  dm_PCM.qry_Work.sql.text:= 'Select Account_Privat,Account_Geschaeftlich From manager_kalender_optionen Where ID_Benutzer =:ID_Benutzer';
+  dm_PCM.qry_Work.ParamByName('ID_benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+  dm_PCM.qry_Work.Open;
+  sKalPriv:= dm_PCM.qry_Work.FieldByName('Account_Privat').asString;
+  sKalGes:= dm_PCM.qry_Work.FieldByName('Account_Geschaeftlich').asString;
+  dm_PCM.qry_Work.Close;
+  AddOutlookToDO(sKalPriv,sKalGes);
+end;
+procedure Tfrm_Calendar.btn_JobsRefreshClick(Sender: TObject);
+begin
+  RefreshTerminundAUfgaben;
+end;
+procedure Tfrm_Calendar.btn_taskMinMaxClick(Sender: TObject);
+begin
+  if bol_VollBildCal = false then
+  begin
+    bol_VollBildCal:= true;
+    frm_PCM_main.navbr_main.Width:= 0;
+    frm_PCM_main.pcmain.properties.HideTabs:= true;
+    pc_kalender.properties.HideTabs:= true;
+    btn_CalAnsicht.Caption:= rs_PCMManager_normAnsicht;
+    btn_CalAnsicht.LargeImageIndex:= 31;
+    trlst_Aufgaben.Height:= 107;
+  end
+  else begin
+    bol_VollBildCal:= false;
+    frm_PCM_main.navbr_main.Width:= 200;
+    frm_PCM_main.pcmain.properties.HideTabs:= false;
+    pc_kalender.properties.HideTabs:= false;
+    btn_CalAnsicht.Caption:= rs_PCMManager_maxAnsicht;
+    btn_CalAnsicht.LargeImageIndex:= 32;
+    trlst_Aufgaben.Height:= 107;
+  end;
+end;
+procedure Tfrm_Calendar.edt_SucheEnter(Sender: TObject);
+begin
+  if (edt_Suche.Text = SearchTypeToStr(stSubject)) OR
+     (edt_Suche.Text = SearchTypeToStr(stMessage)) OR
+     (edt_Suche.Text = SearchTypeToStr(stSubjectMessage)) then
+        edt_Suche.Text := '';
+end;
+procedure Tfrm_Calendar.edt_SucheExit(Sender: TObject);
+begin
+  edt_Suche.Properties.OnChange := nil;
+  //if edSuche.Text = '' then edSuche.Text := SearchTypeToStr(FSearchType);
+  SearchBoxSetStyle();
+  edt_Suche.Properties.OnChange := edt_SuchePropertiesChange;
+end;
+procedure Tfrm_Calendar.edt_SuchePropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+begin
+  edt_Suche.Clear;
+  edt_Suche.SetFocus;
+end;
+procedure Tfrm_Calendar.edt_SuchePropertiesChange(Sender: TObject);
+  procedure SearchDoSearch(ASearchString : String);
+  var
+    sSearchQuery : String;
+  begin
+    SearchBoxSetStyle();
+  //  qWF_Nachrichten.Filtered := False;
+    if ASearchString = '' then  exit;
+      sSearchQuery := 'Message LIKE ' + quotedStr('%' + ASearchString + '%') +
+                      ' OR ' + 'Caption LIKE ' + quotedStr('%' + ASearchString + '%') +
+                      ' OR ' + 'Location LIKE ' + quotedStr('%' + ASearchString + '%') +
+                      ' OR ' + 'Kalendername LIKE ' + quotedStr('%' + ASearchString + '%');
+
+    dm_PCM.qry_Kalender_Aufgaben.Filter := sSearchQuery;
+    dm_PCM.qry_Kalender_Aufgaben.Filtered := True;
+  end;
+begin
+  SearchDoSearch(edt_Suche.Text);
 end;
 procedure Tfrm_Calendar.tvAufCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 var
@@ -4597,6 +4053,1104 @@ procedure Tfrm_Calendar.tvNachrichtenFocusedRecordChanged(Sender: TcxCustomGridT
 begin
   NachrichtenAnhaengeLaden(dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID').AsInteger);
 end;
+procedure Tfrm_Calendar.btn_GoToJiraClick(Sender: TObject);
+var
+  sURL: string;
+begin
+  if edtJiraTicketNr.Text <> '' then
+  begin
+    sURL := frm_PCM_main.FOptions.Jira_Basic_URL + edtJiraTicketNr.EditValue;
+    ShellExecute(self.WindowHandle,'open', PWideChar(sURL) ,nil,nil, SW_SHOWNORMAL);
+  end;
+end;
+procedure Tfrm_Calendar.pmmbtn_CalNewClick(Sender: TObject);
+var
+  iNewId : Integer;
+begin
+  Application.CreateForm(TfNeu, fNeu);
+  fNeu.Execute(schedDBStrg_Kalender,2, 0, 0, '','',0,StrToDateTime(DateToStr(StrToDate(Copy(DateToStr(Date()),1,10))) + ' ' + '08:30:00'),StrToDateTime(DateToStr(StrToDate(Copy(DateToStr(Date()),1,10))) + ' ' + '08:30:00'),0,false,0,0,0,0,0,0,false,false,15,false,0,0,nil,'','',iNewId);
+  fNeu := nil;
+  RefreshTerminundAUfgaben;
+end;
+procedure Tfrm_Calendar.btn_AttachementOpenClick(Sender: TObject);
+  procedure OpenAttachement;
+  var
+    f: string;
+  begin
+    // Anhang öffnen
+    f := qWF_Nachrichten_AnhaengeDateinameSave.AsString;
+
+    if f <> '' then
+    begin
+      f := GetAttachmentFilename(f);
+      Screen.Cursor := crHourglass;
+      ShellExecute(self.WindowHandle,'open', PWideChar(f) ,nil,nil, SW_SHOWNORMAL);
+      Screen.Cursor := crDefault;
+    end;
+  end;
+begin
+  OpenAttachement;
+end;
+procedure Tfrm_Calendar.btn_AttachementSaveClick(Sender: TObject);
+  procedure saveAttachement;
+  var
+    f: string;
+  begin
+    f := qWF_Nachrichten_AnhaengeDateinameSave.AsString;
+    if f <> '' then
+    begin
+      SaveDialog1.FileName := qWF_Nachrichten_AnhaengeDateiname.AsString;
+      if SaveDialog1.Execute then
+      begin
+        Screen.Cursor := crHourglass;
+        f := GetAttachmentFilename(f);
+        CopyFile(PChar(f), PChar(SaveDialog1.FileName), False);
+        Screen.Cursor := crDefault;
+      end;
+    end;
+  end;
+begin
+  saveAttachement;
+end;
+
+{$EndRegion}
+{$Region TabJira}
+////////////////////////////////////////////////////////////////////////////////
+// TAB Jira                                                                   //
+////////////////////////////////////////////////////////////////////////////////
+// ID
+procedure Tfrm_Calendar.cxGrid2DBTableView1CellDblClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+var
+  hittest : TcxCustomGridHitTest;
+begin
+  hittest := cxGrid2DBTableView1.GetHitTest(cxgrid2.ScreenToClient(Mouse.CursorPos));
+  if hittest.HitTestCode = htCell then
+  begin
+    if qry_Tickets_ges.FieldByName('Ticket_Nr').AsString <> '' then
+    begin
+      AURL:= frm_PCM_Main.FOptions.Jira_Basic_URL + qry_Tickets_ges.FieldByName('Ticket_Nr').AsString;
+      FWebBrowser.Navigate(frm_PCM_Main.FOptions.Jira_Basic_URL + qry_Tickets_ges.FieldByName('Ticket_Nr').AsString);
+      pc_Jirages.ActivePageIndex:= 0;
+    end;
+  end;
+end;
+procedure Tfrm_Calendar.cxGridDBTableView1CellDblClick( Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+var
+  hittest : TcxCustomGridHitTest;
+begin
+  hittest := cxGridDBTableView1.GetHitTest(cxgrid2.ScreenToClient(Mouse.CursorPos));
+  if hittest.HitTestCode = htCell then
+  begin
+    if qry_Tickets_priv.FieldByName('Ticket_Nr').AsString <> '' then
+    begin
+      AURL:= 'https://pcm-software.atlassian.net/browse/' + qry_Tickets_priv.FieldByName('Ticket_Nr').AsString;
+      FWebBrowser.Navigate('https://pcm-software.atlassian.net/browse/' + qry_Tickets_priv.FieldByName('Ticket_Nr').AsString);
+      pc_Jirapriv.ActivePageIndex:= 0;
+    end;
+  end;
+end;
+procedure Tfrm_Calendar.btn_ReadTickets_GesClick(Sender: TObject);
+  function API_Auth_Jira(ABaseUrl,AUser,APassword: String; AMethod: TRESTRequestMethod = rmPost): TJSONObject;
+  var
+    RestRequest: TRESTRequest;
+    joLogin: TJSONObject;
+  begin
+    RESTClient_Jira.BaseURL := ABaseUrl;
+    HTTPAuth_Jira.Password := APassword;
+    httpAuth_Jira.Username := AUser;
+    joLogin := TJSONObject.Create;
+    joLogin.AddPair(TJSONPair.Create('username', AUser));
+    joLogin.AddPair(TJSONPair.Create('password', APassword));
+    RestRequest := TRESTRequest.Create(nil);
+    try
+      RestRequest.Client := RESTClient_Jira;
+      RestRequest.Method := rmGet;
+      RestRequest.Timeout := 600000;
+      if joLogin <> nil then
+      begin
+        RestRequest.Body.Add(joLogin);
+      end;
+      RestRequest.Execute;
+      result := TJSONObject.ParseJSONValue(RestRequest.Response.JSONText) as TJSONObject;
+    finally
+      RestRequest.Free;
+    end;
+  end;
+  function RestRequest(ABaseUrl: String; ArestClient: TRestClient; ARequestBody: TJSONObject; AResource: String; AGETPOST: TRESTRequestMethod = rmPost): TJSONObject;
+  var
+    RestRequest: TRESTRequest;
+    sTest: String;
+    joResult: TJSONObject;
+  begin
+    ArestClient.BaseURL := ABaseURl;
+    RestRequest := TRESTRequest.Create(nil);
+    try
+      RestRequest.Client := ArestClient;
+      RestRequest.Method := AGETPOST;
+      RestRequest.Resource := AResource;
+      RestRequest.Timeout := 600000;
+      if ARequestBody <> nil then
+      begin
+        RestRequest.Body.Add(ARequestBody);
+      end;
+      RestRequest.Execute;
+      joResult := TJSONObject.ParseJSONValue(RestRequest.Response.JSONText) as TJSONObject;
+      sTest:= joResult.ToString;
+      Result := joResult;
+    finally
+      RestRequest.Free;
+    end;
+  end;
+  procedure WriteInDB(ATicketInt: Integer;ATicket,AStatus,ABetreff,AType,AEpic,ASprint,APrio,AFixVersion,AApp,ALabel,Adesc,AAssignee,AReporter,ATester,Atester2,AMelder,AStorypoint,AUHD,ALand,AKDNR,ABetrifft: String);
+  var
+    iID,iCounter,iCounterEpic,iIDEpic,iIDPrio: Integer;
+  begin
+    if (AEpic <> '') and (AEpic <> 'kein Epic') then
+    begin
+      dm_PCM.qry_Work.SQL.Text:= 'Select Count(*) as Anzahl From  manager_tickets_ges Where Ticket_Nr = :Ticket_Nr';
+      dm_PCM.qry_Work.ParamByName('Ticket_Nr').asString:= AEpic;
+      dm_PCM.qry_Work.open;
+      iCounterEpic:= dm_PCM.qry_Work.FieldByName('Anzahl').AsInteger;
+      dm_PCM.qry_Work.Close;
+      if iCounterEpic > 0 then
+      begin
+        dm_PCM.qry_Work.SQL.Text:= 'Select ID From  manager_tickets_ges Where Ticket_Nr = :Ticket_Nr';
+        dm_PCM.qry_Work.ParamByName('Ticket_Nr').asString:= AEpic;
+        dm_PCM.qry_Work.open;
+        iIDEpic:= dm_PCM.qry_Work.FieldByName('ID').AsInteger;
+        dm_PCM.qry_Work.Close;
+      end
+      else begin
+        iIDEpic:= 0;
+      end;
+    end
+    else begin
+      iIDEpic:= 0;
+    end;
+    dm_PCM.qry_Work.SQL.Text:= 'Select ID From  manager_tickets_priority Where Bezeichnung = :Bezeichnung';
+    dm_PCM.qry_Work.ParamByName('Bezeichnung').asString:= APrio;
+    dm_PCM.qry_Work.open;
+    iIDPrio:= dm_PCM.qry_Work.FieldByName('ID').AsInteger;
+    dm_PCM.qry_Work.Close;
+
+
+
+    dm_PCM.qry_Work.SQL.Text:= 'Select Count(*) as Anzahl From manager_tickets_ges Where Nr = :Ticket_Nr';
+    dm_PCM.qry_Work.ParamByName('Ticket_Nr').AsInteger:= ATicketInt;
+    dm_PCM.qry_Work.open;
+    iCounter:= dm_PCM.qry_Work.FieldByName('Anzahl').AsInteger;
+    dm_PCM.qry_Work.Close;
+    if iCounter = 0 then
+    begin
+      dm_PCM.qry_Work.SQL.Text:= 'Insert into manager_tickets_ges ' +
+                                 ' (Ticket_Nr,Nr,STATUS,ID_tickets_priority,Epic,Board,Betreff,Stichwort,TYPE,App,FixVersion,Beschreibung,ID_Ticket,Sprint,Assignee,Reporter,Tester,Tester2,Melder,Storypoint,UHD,Land,KDNR,BetrifftVerison) ' +
+                                 'Values' +
+                                 ' (:Ticket_Nr,:Nr,:STATUS,:ID_tickets_priority,:Epic,:Board,:Betreff,:Stichwort,:TYPE,:App,:FixVersion,:Beschreibung,:ID_Ticket,:Sprint,:Zugewiesen,:Reporter,:Tester,:Tester2,:Melder,:Storypoint,:UHD,:Land,:KDNR,:BetrifftVerison)';
+      dm_PCM.qry_Work.ParamByName('Ticket_Nr').AsString:= ATicket;
+      dm_PCM.qry_Work.ParamByName('Nr').AsInteger:= ATicketInt;
+      dm_PCM.qry_Work.ParamByName('ID_Ticket').AsInteger:= iIDEpic;
+      dm_PCM.qry_Work.ParamByName('STATUS').AsString:= AStatus;
+      dm_PCM.qry_Work.ParamByName('ID_tickets_priority').asInteger:= iIDPrio;
+      dm_PCM.qry_Work.ParamByName('Epic').AsString:= AEpic;
+      dm_PCM.qry_Work.ParamByName('Betreff').AsString:= ABetreff;
+      dm_PCM.qry_Work.ParamByName('TYPE').AsString:= AType;
+      dm_PCM.qry_Work.ParamByName('Sprint').AsString:= ASprint;
+      dm_PCM.qry_Work.ParamByName('FixVersion').AsString:= AFixVersion;
+      dm_PCM.qry_Work.ParamByName('App').AsString:= AApp;
+      dm_PCM.qry_Work.ParamByName('Stichwort').AsString:= ALabel;
+      dm_PCM.qry_Work.ParamByName('Beschreibung').AsMemo:= ADesc;
+      dm_PCM.qry_Work.ParamByName('Zugewiesen').AsString:= AAssignee;
+      dm_PCM.qry_Work.ParamByName('Board').AsString:= 'ID Diacos';
+      dm_PCM.qry_Work.ParamByName('Reporter').AsString:= AReporter;
+      dm_PCM.qry_Work.ParamByName('Tester').AsString:= ATester;
+      dm_PCM.qry_Work.ParamByName('Tester2').AsString:= ATester2;
+      dm_PCM.qry_Work.ParamByName('Melder').AsString:= AMelder;
+      dm_PCM.qry_Work.ParamByName('Storypoint').AsFloat:= StrToFloat(AStorypoint);
+      dm_PCM.qry_Work.ParamByName('UHD').AsString:= AUHD;
+      dm_PCM.qry_Work.ParamByName('Land').AsString:= ALand;
+      dm_PCM.qry_Work.ParamByName('KDNR').AsString:= AKDNR;
+      dm_PCM.qry_Work.ParamByName('BetrifftVerison').AsString:= ABetrifft;
+      dm_PCM.qry_Work.ExecSQL;
+    end
+    else
+    begin
+      dm_PCM.qry_Work.SQL.Text:= 'Select ID From manager_tickets_ges Where Ticket_Nr = :Ticket_Nr';
+      dm_PCM.qry_Work.ParamByName('Ticket_Nr').AsString:= ATicket;
+      dm_PCM.qry_Work.open;
+      iID:= dm_PCM.qry_Work.FieldByName('ID').AsInteger;
+      dm_PCM.qry_Work.Close;
+      dm_PCM.qry_Work.SQL.Text:= 'Update manager_tickets_ges ' +
+      ' Set Ticket_Nr = :Ticket_Nr,' +
+      'Nr = :Nr,'  +
+      'ID_Ticket = :ID_Ticket, ' +
+      'STATUS = :STATUS,' +
+      'Betreff = :Betreff,' +
+      'Epic = :Epic, ' +
+      'ID_tickets_priority = :ID_tickets_priority, ' +
+      'TYPE = :TYPE, ' +
+      'Sprint = :Sprint, ' +
+
+      'FixVersion = :FixVersion, ' +
+      'App = :App, ' +
+      'Stichwort = :Stichwort, ' +
+      'Beschreibung = :Beschreibung, ' +
+      'Assignee = :Zugewiesen, ' +
+      'Tester = :Tester, ' +
+      'Tester2 = :Tester2, ' +
+      'Board = :Board, ' +
+      'Reporter = :Reporter, '   +
+      'Melder = :Melder, ' +
+      'Storypoint = :Storypoint, ' +
+      'UHD = :UHD, ' +
+      'Land = :Land, ' +
+      'KDNR = :KDNR,' +
+      'BetrifftVerison = :BetrifftVerison ' +
+      'Where ID = :ID';
+      dm_PCM.qry_Work.ParamByName('Ticket_Nr').AsString:= ATicket;
+      dm_PCM.qry_Work.ParamByName('Nr').AsInteger:= ATicketInt;
+      dm_PCM.qry_Work.ParamByName('ID_Ticket').AsInteger:= iIDEpic;
+      dm_PCM.qry_Work.ParamByName('STATUS').AsString:= AStatus;
+      dm_PCM.qry_Work.ParamByName('ID_tickets_priority').asInteger:= iIDPrio;
+      dm_PCM.qry_Work.ParamByName('Epic').AsString:= AEpic;
+      dm_PCM.qry_Work.ParamByName('Betreff').AsString:= ABetreff;
+      dm_PCM.qry_Work.ParamByName('TYPE').AsString:= AType;
+      dm_PCM.qry_Work.ParamByName('Sprint').AsString:= ASprint;
+      dm_PCM.qry_Work.ParamByName('FixVersion').AsString:= AFixVersion;
+      dm_PCM.qry_Work.ParamByName('App').AsString:= AApp;
+      dm_PCM.qry_Work.ParamByName('Stichwort').AsString:= ALabel;
+      dm_PCM.qry_Work.ParamByName('Beschreibung').AsMemo:= ADesc;
+      dm_PCM.qry_Work.ParamByName('Zugewiesen').AsString:= AAssignee;
+      dm_PCM.qry_Work.ParamByName('Board').AsString:= 'ID Diacos';
+      dm_PCM.qry_Work.ParamByName('Reporter').AsString:= AReporter;
+      dm_PCM.qry_Work.ParamByName('Tester').AsString:= ATester;
+      dm_PCM.qry_Work.ParamByName('Tester2').AsString:= ATester2;
+      dm_PCM.qry_Work.ParamByName('Melder').AsString:= AMelder;
+      dm_PCM.qry_Work.ParamByName('Storypoint').AsFloat:= StrToFloat(AStorypoint);
+      dm_PCM.qry_Work.ParamByName('UHD').AsString:= AUHD;
+      dm_PCM.qry_Work.ParamByName('Land').AsString:= ALand;
+      dm_PCM.qry_Work.ParamByName('KDNR').AsString:= AKDNR;
+      dm_PCM.qry_Work.ParamByName('BetrifftVerison').AsString:= ABetrifft;
+      dm_PCM.qry_Work.ParamByName('ID').AsInteger:= iID;
+      dm_PCM.qry_Work.ExecSQL;
+    end;
+    qry_Tickets_ges.refresh;
+  end;
+var
+  jarIssues,jarComponent,jarFixVersion: TJSONArray;
+  joLand, joUHD, joMelder, joTester2, joTester,joReporter,joAssignee,joComponent,joFixVersion,jopriority,josprint,joStatus,joIssuetype, joParent,joFields,joBody, joResult: TJSONObject;
+  jaLand, jaCustom1,  jaSprint: TJSONArray;
+  sBetrifftV1, sBetrifftV, sVersion, sKDNR, sLand1, sLand, sUHD, sDesc,sStorypoint, sMelder,sTester2, sTester, sactive,sReporter,sApp1,sSprintstate,sAssi,sname,sApp,sFixVersion,sPrio, sEpic,sType, sBetreff,sStatus, sSprint, sTicket: String;
+  i,i1, iTicket: integer;
+  sJText,sJsonString: string;
+begin
+  qry_Tickets_ges.AfterScroll:= nil;
+  sTicketNr_Ges:= '';
+  Screen.Cursor := crHourGlass;
+  API_Auth_Jira('https://id-berlin.atlassian.net/rest/auth/1/session',sIDUser,sIDPassword);
+  Application.ProcessMessages;
+  sJText:='{"fields": ["summary","status","issuetype","components","parent","customfield_10020",'+
+          '"priority","fixVersions","labels","assignee","customfield_10042","reporter","customfield_10051",'+
+          '"customfield_10052","customfield_10089","customfield_10047","customfield_10050","customfield_10045","versions","description"],' +
+          '"jql": "project IN (' + QuotedStr('ID Diacos') + ') and status in (1,3,4,5,10015,10044,10003,10043,10005) and assignee = ' + QuotedStr('j.henske@id-berlin.de') + ' ORDER BY issue aSC", "startAt": 0, "maxResults": 100 }';
+  joBody := TJSONObject.ParseJSONValue(sJText) as TJSONObject;
+  joResult := RestRequest('https://id-berlin.atlassian.net/rest',RESTClient_jira,joBody, '/api/2/search');
+  joResult.TryGetValue<TJSONArray>('issues', jarIssues);
+  for i := 0 to jarIssues.Count - 1 do
+  begin
+    joResult := TJSONObject.ParseJSONValue(jarIssues.Items[i].ToString) as TJSONObject;
+    // Ticketnummer
+    Application.ProcessMessages;
+    if (joResult.GetValue('key').Null) OR (not joResult.TryGetValue<String>('key', sTicket)) then
+      sTicket:= '';
+    iTicket:= StrToInt(StringReplace(sTicket,'DCS-','',[rfReplaceAll, rfIgnoreCase]));
+    sTicketNr_Ges:= sTicketNr_Ges + ',' + StringReplace(sTicket,'DCS-','',[rfReplaceAll, rfIgnoreCase]);
+    // Summary
+    Application.ProcessMessages;
+    joResult.TryGetValue<TJSONObject>('fields', joFields);
+    if (joFields.GetValue('summary').null) or (not joFields.TryGetValue<String>('summary', sBetreff)) then
+      sBetreff:= '';
+    // Status
+    Application.ProcessMessages;
+    joFields.TryGetValue<TJSONObject>('status', joStatus);
+    if (joStatus.GetValue('name').null) or (not joStatus.TryGetValue<String>('name', sStatus)) then
+      sStatus := '';
+    // Tickettyp
+    Application.ProcessMessages;
+    joFields.TryGetValue<TJSONObject>('issuetype',joIssuetype);
+    if (joFields.GetValue('summary').null) or (not joIssuetype.TryGetValue<String>('name', sType)) then
+      sType := '';
+    // EPIC
+    Application.ProcessMessages;
+    joParent:= nil;
+    joFields.TryGetValue<TJSONObject>('parent',joParent);
+    sEpic:='';
+    if joParent <> nil then
+      joParent.TryGetValue<String>('key', sEpic)
+    else
+      sEpic:= 'kein Epic';
+    if (sType = 'Epic') or (sEpic = '') then
+      sEpic:= 'Ohne';
+    // Priorität
+    Application.ProcessMessages;
+    joFields.TryGetValue<TJSONObject>('priority',jopriority);
+    if jopriority <> nil  then
+      jopriority.TryGetValue<String>('name', sPrio)
+    else
+      sPrio:= '';
+    // LösungsVersion
+    Application.ProcessMessages;
+    sFixVersion:= '';
+    joFields.TryGetValue<TJSonArray>('fixVersions',jarFixVersion);
+    for i1 := 0 to jarFixVersion.Count - 1 do
+    begin
+      joFixVersion := TJSONObject.ParseJSONValue(jarFixVersion.Items[i1].ToString) as TJSONObject;
+      joFixVersion.TryGetValue<String>('name',sFixVersion);
+    end;
+    // Stichwort
+    Application.ProcessMessages;
+    joFields.TryGetValue<TJSonArray>('labels',jaCustom1);
+    sname:= '';
+    for i1 := 0 to jaCustom1.Count - 1 do
+    begin
+      sname:= sname + ';' + StringReplace(jaCustom1.Items[i1].ToString,'"','',[rfreplaceall]);
+    end;
+    if sname = ''  then
+      sname := 'kein Wert'
+    else
+      sname := Copy(sname, 2, Length(sname));
+    // Beschreibung
+    Application.ProcessMessages;
+    joFields.TryGetValue<String>('description', sDesc);
+    // Komponente
+    Application.ProcessMessages;
+    sApp:= '';
+    sApp1:= '';
+    joFields.TryGetValue<TJSonArray>('components',jarComponent);
+    for i1 := 0 to jarComponent.Count - 1 do
+    begin
+      joComponent := TJSONObject.ParseJSONValue(jarComponent.Items[i1].ToString) as TJSONObject;
+      joComponent.TryGetValue<String>('name',sApp1);
+      sApp:= sApp + ', ' + sApp1
+    end;
+    sApp:= copy(sapp,3,Length(sapp));
+    // Zugewiesen
+    Application.ProcessMessages;
+    joFields.TryGetValue<TJSONObject>('assignee',joAssignee);
+    joAssignee.TryGetValue<String>('displayName', sAssi);
+    // Autor
+    Application.ProcessMessages;
+    sReporter:= '';
+    joFields.TryGetValue<TJSONObject>('reporter',joReporter);
+    if joReporter <> nil then
+    begin
+      joReporter.TryGetValue<String>('active', sactive);
+      joReporter.TryGetValue<String>('displayName', sReporter);
+      if sactive = 'false' then
+        sReporter := sReporter + ' (Inaktiv)';
+    end;
+
+    // Tester
+    Application.ProcessMessages;
+    sTester:= 'Keine';
+    if (not joFields.GetValue('customfield_10051').null) then
+    begin
+      joFields.TryGetValue<TJSONObject>('customfield_10051',joTester);
+      if joTester <> nil then
+        joTester.TryGetValue<String>('displayName', sTester);
+    end;
+    // Tester2
+    Application.ProcessMessages;
+    sTester2:= 'Keine';
+    if (not joFields.GetValue('customfield_10052').null) then
+    begin
+      joFields.TryGetValue<TJSONObject>('customfield_10052',joTester2);
+      if joTester2 <> nil then
+        joTester2.TryGetValue<String>('displayName', sTester2);
+    end;
+    // Melder
+    Application.ProcessMessages;
+    sMelder:= '';
+    if (not joFields.GetValue('customfield_10089').null) then
+    begin
+      joFields.TryGetValue<TJSONObject>('customfield_10089',joMelder);
+      if joMelder <> nil then
+        joMelder.TryGetValue<String>('value', sMelder);
+    end;
+    // Storypoint
+    Application.ProcessMessages;
+    sStorypoint:= '0,0';
+    if (not joFields.GetValue('customfield_10042').Null) then
+      joFields.TryGetValue<String>('customfield_10042', sStorypoint);
+    sStorypoint:= StringReplace(sStorypoint,'.',',',[rfReplaceALL,rfIgnoreCase]);
+    // UHD
+    Application.ProcessMessages;
+    sUHD:= '';
+    if (not joFields.GetValue('customfield_10047').null) then
+    begin
+      joFields.TryGetValue<String>('customfield_10047',sUHD);
+    end;
+    // Länderversion
+    Application.ProcessMessages;
+    sLand:= '';
+    sLand1:= '';
+    sJsonString:=joFields.ToString;
+    sJsonString:= StringReplace(sJsonString,'"customfield_10050":null','"customfield_10020":[]',[rfreplaceall,rfIgnorecase]);
+    joFields:=TJSONObject.ParseJSONValue(sJsonString) as TJSONObject;
+    joFields.TryGetValue<TJSonArray>('customfield_10050',jaLand);
+    for i1 := 0 to jaLand.Count - 1 do
+    begin
+       joSprint := TJSONObject.ParseJSONValue(jaLand.Items[i1].ToString) as TJSONObject;
+       joSprint.TryGetValue<String>('value',sLand);
+       sLand1:= sLand1 + ', ' + sLand;
+    end;
+    sLand1:= Copy(sland1,3,Length(sLand1));
+    // Kundennummer
+    Application.ProcessMessages;
+    sKDNR:= '';
+    if (not joFields.GetValue('customfield_10045').null) then
+    begin
+      joFields.TryGetValue<String>('customfield_10045',sKDNR);
+    end;
+    // Version
+    sBetrifftV:= '';
+
+    joFields.TryGetValue<TJSonArray>('versions',jarComponent);
+    for i1 := 0 to jarComponent.Count - 1 do
+    begin
+      joComponent := TJSONObject.ParseJSONValue(jarComponent.Items[i1].ToString) as TJSONObject;
+      joComponent.TryGetValue<String>('name',sBetrifftV);
+      sBetrifftV1:= sBetrifftV1 + ', ' + sBetrifftV;
+    end;
+     sBetrifftV1:= Copy(sBetrifftV1,3,Length(sLand1));
+//    // Version
+//    sSprint:= '';
+//    joFields:=TJSONObject.ParseJSONValue(joFields) as TJSONObject;
+//    joFields.TryGetValue<TJSonArray>('customfield_10020',jaSprint);
+//    for i1 := 0 to jaSprint.Count - 1 do
+//    begin
+//       joSprint := TJSONObject.ParseJSONValue(jaSprint.Items[i1].ToString) as TJSONObject;
+//       joSprint.TryGetValue<String>('state',sSprintstate);
+//    end;
+
+//versions name
+
+    // Sprint
+    sSprint:= '';
+    sSprintstate:= '';
+    sJsonString:=joFields.ToString;
+    sJsonString:= StringReplace(sJsonString,'"customfield_10020":null','"customfield_10020":[]',[rfreplaceall,rfIgnorecase]);
+    joFields:=TJSONObject.ParseJSONValue(sJsonString) as TJSONObject;
+    joFields.TryGetValue<TJSonArray>('customfield_10020',jaSprint);
+    for i1 := 0 to jaSprint.Count - 1 do
+    begin
+       joSprint := TJSONObject.ParseJSONValue(jaSprint.Items[i1].ToString) as TJSONObject;
+       joSprint.TryGetValue<String>('state',sSprintstate);
+       if sSprintstate = 'active' then
+         joSprint.TryGetValue<String>('name',sSprint);
+    end;
+    Application.ProcessMessages;
+    stbr_main.Panels[1].Text:= 'Tickets ' + IntToStr(i + 1) + ' von ' + IntToStr(jarIssues.Count) + ' wird eingelesen';
+    stbr_main.Panels[2].Text:= 'aktuelles Tickets: ' + sTicket + ' - ' + sBetreff;
+    WriteInDB(iTicket,sTicket,sStatus,sBetreff,sType,sEpic,sSprint,sPrio,sFixVersion,sApp,sName,sdesc,Sassi,sReporter,sTester,sTester2,sMelder,sStorypoint,sUHD,sLand1,sKDNR,sBetrifftV);
+  end;
+  sTicketNr_ges:= Copy(sTicketNr_ges, 2, Length(sTicketNr_ges));
+  dm_PCM.qry_Work.SQL.Text:= 'Delete From manager_tickets where nr not in (' + sTicketNr_ges + ')';
+  try
+    dm_PCM.qry_Work.ExecSQL;
+  except
+  end;
+  qry_Tickets_ges.refresh;
+  LoadJiraStatus;
+  qry_Tickets_ges.AfterScroll:= qry_Tickets_gesAfterScroll;
+  Screen.Cursor := crDefault;
+end;
+procedure Tfrm_Calendar.btn_ReadTickets_PrivClick(Sender: TObject);
+  function API_Auth_Jira(ABaseUrl,AUser,APassword: String; AMethod: TRESTRequestMethod = rmPost): TJSONObject;
+  var
+    RestRequest: TRESTRequest;
+    joLogin: TJSONObject;
+  begin
+    RESTClient_Jira.BaseURL := ABaseUrl;
+    HTTPAuth_Jira.Password := APassword;
+    httpAuth_Jira.Username := AUser;
+    joLogin := TJSONObject.Create;
+    joLogin.AddPair(TJSONPair.Create('username', AUser));
+    joLogin.AddPair(TJSONPair.Create('password', APassword));
+    RestRequest := TRESTRequest.Create(nil);
+    try
+      RestRequest.Client := RESTClient_Jira;
+      RestRequest.Method := rmGet;
+      RestRequest.Timeout := 600000;
+      if joLogin <> nil then
+      begin
+        RestRequest.Body.Add(joLogin);
+      end;
+      RestRequest.Execute;
+      result := TJSONObject.ParseJSONValue(RestRequest.Response.JSONText) as TJSONObject;
+    finally
+      RestRequest.Free;
+    end;
+  end;
+  function RestRequest(ABaseUrl: String; ArestClient: TRestClient; ARequestBody: TJSONObject; AResource: String; AGETPOST: TRESTRequestMethod = rmPost): TJSONObject;
+  var
+    RestRequest: TRESTRequest;
+    sTest: String;
+    joResult: TJSONObject;
+  begin
+    ArestClient.BaseURL := ABaseURl;
+    RestRequest := TRESTRequest.Create(nil);
+    try
+      RestRequest.Client := ArestClient;
+      RestRequest.Method := AGETPOST;
+      RestRequest.Resource := AResource;
+      RestRequest.Timeout := 600000;
+      if ARequestBody <> nil then
+      begin
+        RestRequest.Body.Add(ARequestBody);
+      end;
+      RestRequest.Execute;
+      joResult := TJSONObject.ParseJSONValue(RestRequest.Response.JSONText) as TJSONObject;
+      sTest:= joResult.ToString;
+      Result := joResult;
+    finally
+      RestRequest.Free;
+    end;
+  end;
+  procedure WriteInDB(ATicketInt: Integer;ATicket,AStatus,ABetreff,AType,AEpic,ASprint,APrio,AFixVersion,AApp,ALabel,Adesc,AAssignee,AReporter,ATester,Atester2,AMelder,AStorypoint,AUHD,ALand,AKDNR,ABetrifft: String);
+  var
+    iID,iCounter,iCounterEpic,iIDEpic,iIDPrio: Integer;
+  begin
+    if (AEpic <> '') and (AEpic <> 'kein Epic') then
+    begin
+      dm_PCM.qry_Work.SQL.Text:= 'Select Count(*) as Anzahl From  manager_tickets_priv Where Ticket_Nr = :Ticket_Nr';
+      dm_PCM.qry_Work.ParamByName('Ticket_Nr').asString:= AEpic;
+      dm_PCM.qry_Work.open;
+      iCounterEpic:= dm_PCM.qry_Work.FieldByName('Anzahl').AsInteger;
+      dm_PCM.qry_Work.Close;
+      if iCounterEpic > 0 then
+      begin
+        dm_PCM.qry_Work.SQL.Text:= 'Select ID From  manager_tickets_priv Where Ticket_Nr = :Ticket_Nr';
+        dm_PCM.qry_Work.ParamByName('Ticket_Nr').asString:= AEpic;
+        dm_PCM.qry_Work.open;
+        iIDEpic:= dm_PCM.qry_Work.FieldByName('ID').AsInteger;
+        dm_PCM.qry_Work.Close;
+      end
+      else begin
+        iIDEpic:= 0;
+      end;
+    end
+    else begin
+      iIDEpic:= 0;
+    end;
+    dm_PCM.qry_Work.SQL.Text:= 'Select ID From  manager_tickets_priority Where Bezeichnung = :Bezeichnung';
+    dm_PCM.qry_Work.ParamByName('Bezeichnung').asString:= APrio;
+    dm_PCM.qry_Work.open;
+    iIDPrio:= dm_PCM.qry_Work.FieldByName('ID').AsInteger;
+    dm_PCM.qry_Work.Close;
+
+
+
+    dm_PCM.qry_Work.SQL.Text:= 'Select Count(*) as Anzahl From manager_tickets_priv Where Ticket_Nr = :Ticket_Nr';
+    dm_PCM.qry_Work.ParamByName('Ticket_Nr').asString:= ATicket;
+    dm_PCM.qry_Work.open;
+    iCounter:= dm_PCM.qry_Work.FieldByName('Anzahl').AsInteger;
+    dm_PCM.qry_Work.Close;
+    if iCounter = 0 then
+    begin
+      dm_PCM.qry_Work.SQL.Text:= 'Insert into manager_tickets_priv ' +
+                                 ' (Ticket_Nr,Nr,STATUS,ID_tickets_priority,Epic,Board,Betreff,Stichwort,TYPE,App,FixVersion,Beschreibung,ID_Ticket,Sprint,Assignee,Reporter,Tester,Tester2,Melder,UHD,Land,KDNR,BetrifftVerison) ' +
+                                 'Values' +
+                                 ' (:Ticket_Nr,:Nr,:STATUS,:ID_tickets_priority,:Epic,:Board,:Betreff,:Stichwort,:TYPE,:App,:FixVersion,:Beschreibung,:ID_Ticket,:Sprint,:Zugewiesen,:Reporter,:Tester,:Tester2,:Melder,:UHD,:Land,:KDNR,:BetrifftVerison)';
+      dm_PCM.qry_Work.ParamByName('Ticket_Nr').AsString:= ATicket;
+      dm_PCM.qry_Work.ParamByName('Nr').AsInteger:= ATicketInt;
+      dm_PCM.qry_Work.ParamByName('ID_Ticket').AsInteger:= iIDEpic;
+      dm_PCM.qry_Work.ParamByName('STATUS').AsString:= AStatus;
+      dm_PCM.qry_Work.ParamByName('ID_tickets_priority').asInteger:= iIDPrio;
+      dm_PCM.qry_Work.ParamByName('Epic').AsString:= AEpic;
+      dm_PCM.qry_Work.ParamByName('Betreff').AsString:= ABetreff;
+      dm_PCM.qry_Work.ParamByName('TYPE').AsString:= AType;
+      dm_PCM.qry_Work.ParamByName('Sprint').AsString:= ASprint;
+      dm_PCM.qry_Work.ParamByName('FixVersion').AsString:= AFixVersion;
+      dm_PCM.qry_Work.ParamByName('App').AsString:= AApp;
+      dm_PCM.qry_Work.ParamByName('Stichwort').AsString:= ALabel;
+      dm_PCM.qry_Work.ParamByName('Beschreibung').AsMemo:= ADesc;
+      dm_PCM.qry_Work.ParamByName('Zugewiesen').AsString:= AAssignee;
+      dm_PCM.qry_Work.ParamByName('Board').AsString:= AKDNR;
+      dm_PCM.qry_Work.ParamByName('Reporter').AsString:= AReporter;
+      dm_PCM.qry_Work.ParamByName('Tester').AsString:= ATester;
+      dm_PCM.qry_Work.ParamByName('Tester2').AsString:= ATester2;
+      dm_PCM.qry_Work.ParamByName('Melder').AsString:= AMelder;
+      dm_PCM.qry_Work.ParamByName('UHD').AsString:= AUHD;
+      dm_PCM.qry_Work.ParamByName('Land').AsString:= ALand;
+      dm_PCM.qry_Work.ParamByName('KDNR').AsString:= AKDNR;
+      dm_PCM.qry_Work.ParamByName('BetrifftVerison').AsString:= ABetrifft;
+      dm_PCM.qry_Work.ExecSQL;
+    end
+    else
+    begin
+      dm_PCM.qry_Work.SQL.Text:= 'Select ID From manager_tickets_priv Where Ticket_Nr = :Ticket_Nr';
+      dm_PCM.qry_Work.ParamByName('Ticket_Nr').AsString:= ATicket;
+      dm_PCM.qry_Work.open;
+      iID:= dm_PCM.qry_Work.FieldByName('ID').AsInteger;
+      dm_PCM.qry_Work.Close;
+      dm_PCM.qry_Work.SQL.Text:= 'Update manager_tickets_priv ' +
+      ' Set Ticket_Nr = :Ticket_Nr,' +
+      'Nr = :Nr,'  +
+      'ID_Ticket = :ID_Ticket, ' +
+      'STATUS = :STATUS,' +
+      'Betreff = :Betreff,' +
+      'Epic = :Epic, ' +
+      'ID_tickets_priority = :ID_tickets_priority, ' +
+      'TYPE = :TYPE, ' +
+      'Sprint = :Sprint, ' +
+
+      'FixVersion = :FixVersion, ' +
+      'App = :App, ' +
+      'Stichwort = :Stichwort, ' +
+      'Beschreibung = :Beschreibung, ' +
+      'Assignee = :Zugewiesen, ' +
+      'Tester = :Tester, ' +
+      'Tester2 = :Tester2, ' +
+      'Board = :Board, ' +
+      'Reporter = :Reporter, '   +
+      'Melder = :Melder, ' +
+      'UHD = :UHD, ' +
+      'Land = :Land, ' +
+      'KDNR = :KDNR,' +
+      'BetrifftVerison = :BetrifftVerison ' +
+      'Where ID = :ID';
+      dm_PCM.qry_Work.ParamByName('Ticket_Nr').AsString:= ATicket;
+      dm_PCM.qry_Work.ParamByName('Nr').AsInteger:= ATicketInt;
+      dm_PCM.qry_Work.ParamByName('ID_Ticket').AsInteger:= iIDEpic;
+      dm_PCM.qry_Work.ParamByName('STATUS').AsString:= AStatus;
+      dm_PCM.qry_Work.ParamByName('ID_tickets_priority').asInteger:= iIDPrio;
+      dm_PCM.qry_Work.ParamByName('Epic').AsString:= AEpic;
+      dm_PCM.qry_Work.ParamByName('Betreff').AsString:= ABetreff;
+      dm_PCM.qry_Work.ParamByName('TYPE').AsString:= AType;
+      dm_PCM.qry_Work.ParamByName('Sprint').AsString:= ASprint;
+      dm_PCM.qry_Work.ParamByName('FixVersion').AsString:= AFixVersion;
+      dm_PCM.qry_Work.ParamByName('App').AsString:= AApp;
+      dm_PCM.qry_Work.ParamByName('Stichwort').AsString:= ALabel;
+      dm_PCM.qry_Work.ParamByName('Beschreibung').AsMemo:= ADesc;
+      dm_PCM.qry_Work.ParamByName('Zugewiesen').AsString:= AAssignee;
+      dm_PCM.qry_Work.ParamByName('Board').AsString:= AKDNR;
+      dm_PCM.qry_Work.ParamByName('Reporter').AsString:= AReporter;
+      dm_PCM.qry_Work.ParamByName('Tester').AsString:= ATester;
+      dm_PCM.qry_Work.ParamByName('Tester2').AsString:= ATester2;
+      dm_PCM.qry_Work.ParamByName('Melder').AsString:= AMelder;
+      dm_PCM.qry_Work.ParamByName('UHD').AsString:= AUHD;
+      dm_PCM.qry_Work.ParamByName('Land').AsString:= ALand;
+      dm_PCM.qry_Work.ParamByName('KDNR').AsString:= AKDNR;
+      dm_PCM.qry_Work.ParamByName('BetrifftVerison').AsString:= ABetrifft;
+      dm_PCM.qry_Work.ParamByName('ID').AsInteger:= iID;
+      dm_PCM.qry_Work.ExecSQL;
+    end;
+    qry_Tickets_ges.refresh;
+  end;
+var
+  jarIssues,jarComponent,jarFixVersion: TJSONArray;
+  joFields1,joLand, joUHD, joMelder, joTester2, joTester,joReporter,joAssignee,joComponent,joFixVersion,jopriority,josprint,joStatus,joIssuetype, joParent,joFields,joBody, joResult: TJSONObject;
+  jaLand, jaCustom1,  jaSprint: TJSONArray;
+  sBetrifftV1, sBetrifftV, sVersion, sKDNR, sLand1, sLand, sUHD, sDesc,sStorypoint, sMelder,sTester2, sTester, sactive,sReporter,sApp1,sSprintstate,sAssi,sname,sApp,sFixVersion,sPrio, sEpic,sType, sBetreff,sStatus, sSprint, sTicket: String;
+  i,i1, iTicket: integer;
+  sJText,sJsonString: string;
+begin
+  qry_Tickets_ges.AfterScroll:= nil;
+  sTicketNr_Ges:= '';
+  Screen.Cursor := crHourGlass;
+  API_Auth_Jira('https://pcm-software.atlassian.net/rest/auth/1/session',sPCMUser,sPCMPassword);
+  Application.ProcessMessages;
+  sJText:='{"fields": ["summary","status","issuetype","components","parent","customfield_10036","customfield_10020","priority",'+
+    '"fixVersions","labels","assignee","reporter","versions","description"],'+
+    '"jql": "assignee = ''jens.henske@outlook.com'' and status in (10000,10001,10003,10011,10007) ORDER BY issue ASC","startAt": 0, "maxResults": 100 }';
+
+  joBody := TJSONObject.ParseJSONValue(sJText) as TJSONObject;
+  joResult := RestRequest('https://pcm-software.atlassian.net/rest',RESTClient_jira,joBody, '/api/2/search');
+  joResult.TryGetValue<TJSONArray>('issues', jarIssues);
+  for i := 0 to jarIssues.Count - 1 do
+  begin
+    joResult := TJSONObject.ParseJSONValue(jarIssues.Items[i].ToString) as TJSONObject;
+    // Ticketnummer
+    Application.ProcessMessages;
+    if (joResult.GetValue('key').Null) OR (not joResult.TryGetValue<String>('key', sTicket)) then
+      sTicket:= '';
+    iTicket:= StrToInt(StringReplace(StringReplace(sTicket,'APP-','',[rfReplaceAll, rfIgnoreCase]),'PCM-','',[rfReplaceAll, rfIgnoreCase]));
+    sTicketNr_Ges:= sTicketNr_Ges + ',' + StringReplace(StringReplace(sTicket,'APP-','',[rfReplaceAll, rfIgnoreCase]),'PCM-','',[rfReplaceAll, rfIgnoreCase]);
+    // Summary
+    Application.ProcessMessages;
+    joResult.TryGetValue<TJSONObject>('fields', joFields);
+    if (joFields.GetValue('summary').null) or (not joFields.TryGetValue<String>('summary', sBetreff)) then
+      sBetreff:= '';
+    // Status
+    Application.ProcessMessages;
+    joFields.TryGetValue<TJSONObject>('status', joStatus);
+    if (joStatus.GetValue('name').null) or (not joStatus.TryGetValue<String>('name', sStatus)) then
+      sStatus := '';
+    // Tickettyp
+    Application.ProcessMessages;
+    joFields.TryGetValue<TJSONObject>('issuetype',joIssuetype);
+    if (joFields.GetValue('summary').null) or (not joIssuetype.TryGetValue<String>('name', sType)) then
+      sType := '';
+    // EPIC
+    Application.ProcessMessages;
+    joParent:= nil;
+    joFields.TryGetValue<TJSONObject>('parent',joParent);
+    sEpic:='';
+    if joParent <> nil then
+      joParent.TryGetValue<String>('key', sEpic)
+    else
+      sEpic:= 'kein Epic';
+    if (sType = 'Epic') or (sEpic = '') then
+      sEpic:= 'Ohne';
+    // Priorität
+    Application.ProcessMessages;
+    joFields.TryGetValue<TJSONObject>('priority',jopriority);
+    if jopriority <> nil  then
+      jopriority.TryGetValue<String>('name', sPrio)
+    else
+      sPrio:= '';
+    // LösungsVersion
+    Application.ProcessMessages;
+    sFixVersion:= '';
+    joFields.TryGetValue<TJSonArray>('fixVersions',jarFixVersion);
+    for i1 := 0 to jarFixVersion.Count - 1 do
+    begin
+      joFixVersion := TJSONObject.ParseJSONValue(jarFixVersion.Items[i1].ToString) as TJSONObject;
+      joFixVersion.TryGetValue<String>('name',sFixVersion);
+    end;
+    // Stichwort
+    Application.ProcessMessages;
+    joFields.TryGetValue<TJSonArray>('labels',jaCustom1);
+    sname:= '';
+    for i1 := 0 to jaCustom1.Count - 1 do
+    begin
+      sname:= sname + ';' + StringReplace(jaCustom1.Items[i1].ToString,'"','',[rfreplaceall]);
+    end;
+    if sname = ''  then
+      sname := 'kein Wert'
+    else
+      sname := Copy(sname, 2, Length(sname));
+    // Beschreibung
+    Application.ProcessMessages;
+    joFields.TryGetValue<String>('description', sDesc);
+    // Zugewiesen
+    Application.ProcessMessages;
+    joFields.TryGetValue<TJSONObject>('assignee',joAssignee);
+    joAssignee.TryGetValue<String>('displayName', sAssi);
+//  Länderversion
+    Application.ProcessMessages;
+    sLand:= '';
+    if (not joFields.GetValue('customfield_10036').null) then
+    begin
+      joFields.TryGetValue<TJSONObject>('customfield_10036',joMelder);
+      if joMelder <> nil then
+        joMelder.TryGetValue<String>('value', sLand);
+    end;
+    // Sprint
+    sSprint:= '';
+    sSprintstate:= '';
+    sJsonString:=joFields.ToString;
+    sJsonString:= StringReplace(sJsonString,'"customfield_10020":null','"customfield_10020":[]',[rfreplaceall,rfIgnorecase]);
+    joFields:=TJSONObject.ParseJSONValue(sJsonString) as TJSONObject;
+    joFields.TryGetValue<TJSonArray>('customfield_10020',jaSprint);
+    for i1 := 0 to jaSprint.Count - 1 do
+    begin
+       joSprint := TJSONObject.ParseJSONValue(jaSprint.Items[i1].ToString) as TJSONObject;
+       joSprint.TryGetValue<String>('state',sSprintstate);
+       if sSprintstate = 'active' then
+         joSprint.TryGetValue<String>('name',sSprint);
+    end;
+    Application.ProcessMessages;
+    stbr_main.Panels[1].Text:= 'Tickets ' + IntToStr(i + 1) + ' von ' + IntToStr(jarIssues.Count) + ' wird eingelesen';
+    stbr_main.Panels[2].Text:= 'aktuelles Tickets: ' + sTicket + ' - ' + sBetreff;
+    if Pos('APP',sTicket) > 0 then
+      sKDNR:= 'PCM MobileApp'
+    else
+      sKDNR:= 'PCM Desktopapp';
+    WriteInDB(iTicket,sTicket,sStatus,sBetreff,sType,sEpic,sSprint,sPrio,sFixVersion,sApp,sName,sdesc,Sassi,sReporter,sTester,sTester2,sMelder,sStorypoint,sUHD,sLand,sKDNR,sBetrifftV);
+  end;
+  sTicketNr_ges:= Copy(sTicketNr_ges, 2, Length(sTicketNr_ges));
+  dm_PCM.qry_Work.SQL.Text:= 'Delete From manager_tickets where nr not in (' + sTicketNr_ges + ')';
+  try
+    dm_PCM.qry_Work.ExecSQL;
+  except
+  end;
+  qry_Tickets_priv.refresh;
+  LoadJiraStatus;
+  qry_Tickets_priv.AfterScroll:= qry_Tickets_privAfterScroll;
+  Screen.Cursor := crDefault;
+end;
+procedure Tfrm_Calendar.btn_MinMaxBrowserGesClick(Sender: TObject);
+  procedure ReCreateBrowser;
+  begin
+    if not Assigned(FWebBrowser) then
+    begin
+      FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
+      FWebBrowser.Parent := pnl_BrowserJirages;
+      FWebBrowser.Align := alClient;
+      FWebBrowser.OnBeforeNavigate := nil;
+    end
+    else begin
+      FWebBrowser.Destroy;
+      FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
+      FWebBrowser.Parent := pnl_BrowserJirages;
+      FWebBrowser.Align := alClient;
+      FWebBrowser.OnBeforeNavigate := nil;
+    end;
+  end;
+begin
+  if pnl_BrowserJiraGes.Tag = 0  then
+  begin
+    pnl_BrowserJiraGes.Parent := pnl_design;
+    frm_PCM_main.navbr_main.Width:= 0;
+    brmgr_KalendarBar1.Visible:= false;
+    pnl_BrowserJiraGes.Tag:= 1;
+    btn_MinMaxBrowserGes.Caption:= 'Minimieren';
+    btn_MinMaxBrowserGes.LargeImageIndex:= 31;
+  end
+  else begin
+    pnl_BrowserJiraGes.Parent := cxTabsheet2;
+    frm_PCM_main.navbr_main.Width:= 200;
+    brmgr_KalendarBar1.Visible:= true;
+    btn_MinMaxBrowserGes.Caption:= 'Maximieren';
+    btn_MinMaxBrowserGes.LargeImageIndex:= 32;
+    pnl_BrowserJiraGes.Tag:= 0;
+  end;
+  ReCreateBrowser;
+  FWebBrowser.Navigate(AURL);
+end;
+procedure Tfrm_Calendar.btn_MinMaxBrowserPrivClick(Sender: TObject);procedure ReCreateBrowser;
+  begin
+    if not Assigned(FWebBrowser) then
+    begin
+      FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
+      FWebBrowser.Parent := pnl_BrowserJirapriv;
+      FWebBrowser.Align := alClient;
+      FWebBrowser.OnBeforeNavigate := nil;
+    end
+    else begin
+      FWebBrowser.Destroy;
+      FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
+      FWebBrowser.Parent := pnl_BrowserJirapriv;
+      FWebBrowser.Align := alClient;
+      FWebBrowser.OnBeforeNavigate := nil;
+    end;
+  end;
+begin
+  if pnl_BrowserJirapriv.Tag = 0  then
+  begin
+    pnl_BrowserJirapriv.Parent := pnl_design;
+    frm_PCM_main.navbr_main.Width:= 0;
+    brmgr_KalendarBar1.Visible:= false;
+    pnl_BrowserJirapriv.Tag:= 1;
+    btn_MinMaxBrowserpriv.Caption:= 'Minimieren';
+    btn_MinMaxBrowserpriv.LargeImageIndex:= 31;
+  end
+  else begin
+    pnl_BrowserJirapriv.Parent := cxTabsheet3;
+    frm_PCM_main.navbr_main.Width:= 200;
+    brmgr_KalendarBar1.Visible:= true;
+    btn_MinMaxBrowserpriv.Caption:= 'Maximieren';
+    btn_MinMaxBrowserpriv.LargeImageIndex:= 32;
+    pnl_BrowserJirapriv.Tag:= 0;
+  end;
+  ReCreateBrowser;
+  FWebBrowser.Navigate(AURL);
+
+end;
+procedure Tfrm_Calendar.btn_Board_privClick(Sender: TObject);
+begin
+  AURL:= 'https://pcm-software.atlassian.net/jira/software/projects/PCM/boards/1';
+  FWebBrowser.Navigate(AURL);
+end;
+procedure Tfrm_Calendar.btn_Board_gesClick(Sender: TObject);
+begin
+  AURL:= 'https://id-berlin.atlassian.net/jira/software/c/projects/DCS/boards/61?assignee=712020%3A9e769b1a-88a0-4a21-8366-6b11439f3691';
+  FWebBrowser.Navigate(AURL)
+end;
+procedure Tfrm_Calendar.pc_JiraprivChange(Sender: TObject);
+begin
+  if pc_Jirapriv.ActivePage = cxtabsheet5 then
+  begin
+    qry_Tickets_priv.AfterScroll:= qry_Tickets_privAfterScroll;
+    qry_Tickets_priv.First;
+  end;
+end;
+procedure Tfrm_Calendar.pc_JiraGesChange(Sender: TObject);
+begin
+  if pc_JiraGes.ActivePage = ts_Detail then
+  begin
+    qry_Tickets_Ges.AfterScroll:= qry_Tickets_gesAfterScroll;
+    qry_Tickets_Ges.First;
+  end;
+end;
+procedure Tfrm_Calendar.pc_KalenderClick(Sender: TObject);
+begin
+  if pc_Kalender.Properties.ActivePage = ts_A_kalender then
+  begin
+    Application.ProcessMessages;
+    sched_Kalender.SelectDays(Date, Date, True);
+    Application.ProcessMessages;
+    dm_PCM.qry_Kalender_Benutzer.SQL.Text:= 'Select ID, CONCAT(Nachname, ' + QuotedStr(', ') + ' ,Vorname) as Name '+'From Benutzer Where ID = :ID';
+    dm_PCM.qry_Kalender_Benutzer.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_Kalender_Benutzer.Open;
+    Application.ProcessMessages;
+    Application.ProcessMessages;
+    dm_PCM.qry_Kalender_Kalender.SQL.Text:=  'Select ID,EventType,Caption,Location,Message,Start,' +
+                          'Finish,Options,CompleteDay,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'+
+                          'ReminderMinutesBeforeStart,LabelColor,FontColor,ID_Benutzer,ID_kontakte From manager_Kalender ' +
+                          'Where Typ = 2 and ID_Benutzer = :ID';;
+    dm_PCM.qry_Kalender_Kalender.ParamByName('ID').asBlob:= AnsiStrIng(IntToStr(dm_PCM.iIDBenutzerPCM));
+    dm_PCM.qry_Kalender_Kalender.Open;
+    try
+      Application.ProcessMessages;
+      ReadICSAutomatic;
+      Application.ProcessMessages;
+      WriteICSAutomatic;
+    except
+    end;
+    Application.ProcessMessages;
+    btn_CalArbeitswocheClick(Self);
+    btn_CalArbeitswoche.LargeImageIndex:= 16;
+    btn_CalTag.LargeImageIndex:= 39;
+    btn_CalWoche.LargeImageIndex:= 41;
+    btn_CalMonat.LargeImageIndex:= 42;
+    btn_CalJahr.LargeImageIndex:= 44;
+    schedDBStrg_Kalender.Reminders.Active:= true;
+  end;
+  if pc_Kalender.Properties.ActivePage = ts_C_Jira then
+  begin
+    pc_JiraGes.activepage:= cxTabsheet2;
+//    pc_Jirapriv.activepage:= cxTabsheet2;
+    InitializeBrowser(pnl_BrowserJiraGes);
+  end;
+  FormResize(Self);
+end;
+procedure Tfrm_Calendar.pc_jiraDetailsClick(Sender: TObject);
+begin
+  if pc_jiraDetails.Properties.ActivePage = ts_ID then
+  begin
+    FreeAndNil(FWebBrowser);
+    GlobalWebView2Loader.Destroy;
+    GlobalWebView2Loader:= TWVLoader.Create(nil);
+    GlobalWebView2Loader.UserDataFolder := ExtractFileDir(Application.ExeName) + '\CustomCache\ID';
+    GlobalWebView2Loader.StartWebView2;
+    InitializeBrowser(pnl_BrowserJiraGes);
+    AURL:= 'https://id-berlin.atlassian.net/jira/software/c/projects/DCS/boards/61?assignee=712020%3A9e769b1a-88a0-4a21-8366-6b11439f3691';
+    FWebBrowser.Navigate(AURL);
+  end;
+  if pc_jiraDetails.Properties.ActivePage = ts_PCM then
+  begin
+    FreeAndNil(FWebBrowser);
+    GlobalWebView2Loader.Destroy;
+    GlobalWebView2Loader:= TWVLoader.Create(nil);
+    GlobalWebView2Loader.UserDataFolder := ExtractFileDir(Application.ExeName) + '\CustomCache\PCM';
+    GlobalWebView2Loader.StartWebView2;
+    InitializeBrowser(pnl_BrowserJiraPriv);
+    AURL:= 'https://pcm-software.atlassian.net/jira/software/projects/PCM/boards/1';
+    FWebBrowser.Navigate(AURL)
+  end;
+
+end;
+{$Endregion}
+{$Region Stundenplan}
+////////////////////////////////////////////////////////////////////////////////
+// TAB Stundenplan                                                            //
+////////////////////////////////////////////////////////////////////////////////
+procedure Tfrm_Calendar.btn_StundenplanNewClick(Sender: TObject);
+begin
+   if qry_Stundenplan.State in [dsInsert, dsedit] then
+    qry_Stundenplan.Post;
+  qry_Stundenplan.Append;
+  qry_Stundenplan.Insert;
+  qry_Stundenplan.FieldByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+  qry_Stundenplan_detail.Filter:= 'ID_Stundenplan = ' + qry_Stundenplan.FieldByName('ID').AsString;
+  qry_Stundenplan_detail.Filtered:= true;
+  if not edt_Stundenplan_Schule.Enabled then
+  begin
+    edt_Stundenplan_Schule.Enabled:= true;
+    edt_Stundenplan_Klasse.Enabled:= true;
+    edt_Stundenplan_Schuljahr.Enabled:= true;
+    btn_StundenplanPrint.Enabled:= true;
+  end;
+  edt_Stundenplan_Schule.SetFocus;
+
+end;
+procedure Tfrm_Calendar.btn_StundenplanSaveClick(Sender: TObject);
+begin
+  if qry_Stundenplan.State in [dsInsert, dsEdit] then
+  begin
+    edt_Stundenplan_schule.PostEditValue;
+    edt_Stundenplan_Klasse.PostEditValue;
+    edt_Stundenplan_schuljahr.PostEditValue;
+    qry_Stundenplan.Post;
+  end;
+end;
+procedure Tfrm_Calendar.btn_StundenplanCancelClick(Sender: TObject);
+begin
+  qry_Stundenplan.Cancel;
+end;
+procedure Tfrm_Calendar.btn_StundenplanDeleteClick(Sender: TObject);
+begin
+  if qry_Stundenplan.FieldByName('ID').AsInteger > 0 then
+  begin
+    dm_PCM.qry_work.SQL.Text:= 'Delete From manager_Stundenplan_Detail Where ID_Stundenplan = :ID';;
+    dm_PCM.qry_work.ParamByName('ID').AsInteger:= qry_Stundenplan.FieldByName('ID').Asinteger;
+    dm_PCM.qry_work.ExecSQL;
+    qry_Stundenplan.Delete;
+    qry_Stundenplan_detail.Refresh;
+  end
+end;
+procedure Tfrm_Calendar.btn_StundenplanPrintClick(Sender: TObject);
+begin
+//
+end;
+procedure Tfrm_Calendar.btn_StundeNewClick(Sender: TObject);
+begin
+   if qry_Stundenplan_detail.State in [dsInsert, dsedit] then
+    qry_Stundenplan_detail.Post;
+  qry_Stundenplan_detail.Append;
+  qry_Stundenplan_detail.Insert;
+
+  qry_Stundenplan_detail.FieldByName('Montag').AsInteger:= 0;
+  qry_Stundenplan_detail.FieldByName('Dienstag').AsInteger:= 0;
+  qry_Stundenplan_detail.FieldByName('Mittwoch').AsInteger:= 0;
+  qry_Stundenplan_detail.FieldByName('Donnerstag').AsInteger:= 0;
+  qry_Stundenplan_detail.FieldByName('Freitag').AsInteger:= 0;
+  qry_Stundenplan_detail.FieldByName('Samstag').AsInteger:= 0;
+  qry_Stundenplan_detail.FieldByName('ID_Stundenplan').AsInteger:= qry_Stundenplan.FieldByName('ID').AsInteger;
+
+  if not tiEdt_Stundenplan_Von.enabled then
+  begin
+    tiEdt_Stundenplan_Von.enabled:= true;
+    tiEdt_Stundenplan_Bis.enabled:= true;
+    lucmbbx_Stundenplan_Montag.enabled:= true;
+    lucmbbx_Stundenplan_Dienstag.enabled:= true;
+    lucmbbx_Stundenplan_Mittwoch.enabled:= true;
+    lucmbbx_Stundenplan_Donnerstag.enabled:= true;
+    lucmbbx_Stundenplan_Freitag.enabled:= true;
+    lucmbbx_Stundenplan_Samstag.enabled:= true;
+  end;
+  tiEdt_Stundenplan_Von.SetFocus;
+end;
+procedure Tfrm_Calendar.btn_StundeSaveClick(Sender: TObject);
+begin
+  if qry_Stundenplan_detail.State in [dsInsert, dsEdit] then
+  begin
+    qry_Stundenplan_detail.Post;
+  end;
+end;
+procedure Tfrm_Calendar.btn_StundeCancelClick(Sender: TObject);
+begin
+  qry_Stundenplan_detail.Cancel;
+end;
+procedure Tfrm_Calendar.btn_StundeDeleteClick(Sender: TObject);
+begin
+  if qry_Stundenplan_detail.FieldByName('ID').AsInteger > 0 then
+  begin
+    qry_Stundenplan_detail.Delete;
+  end
+end;
 procedure Tfrm_Calendar.grdDBTblView_StundenplanBeginCustomDrawCell(  Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;  AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 begin
   try
@@ -4608,11 +5162,41 @@ begin
   except
   end;
 end;
+procedure Tfrm_Calendar.grdDBTblView_StundenplanMontagCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+begin
+  try
+    dm_PCM.qry_work.sql.text:= 'Select Farbe, Schriftfarbe from manager_stundenplan_schulfaecher Where ID = :ID';
+    dm_PCM.qry_work.parambyname('ID').asInteger:= AViewInfo.GridRecord.Values[2];
+    dm_PCM.qry_work.open;
+    if dm_PCM.qry_work.RecordCount > 0 then
+    begin
+      ACanvas.Brush.Color := dm_PCM.qry_work.FieldByName('Farbe').asInteger;
+      ACanvas.Font.Color := dm_PCM.qry_work.FieldByName('Schriftfarbe').asInteger;
+    end;
+    dm_PCM.qry_work.Close;
+  except
+  end;
+end;
 procedure Tfrm_Calendar.grdDBTblView_StundenplanDienstagCustomDrawCell(  Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;  AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 begin
   try
     dm_PCM.qry_work.sql.text:= 'Select Farbe, Schriftfarbe from manager_stundenplan_schulfaecher Where ID = :ID';
     dm_PCM.qry_work.parambyname('ID').asInteger:= AViewInfo.GridRecord.Values[3];
+    dm_PCM.qry_work.open;
+    if dm_PCM.qry_work.RecordCount > 0 then
+    begin
+      ACanvas.Brush.Color := dm_PCM.qry_work.FieldByName('Farbe').asInteger;
+      ACanvas.Font.Color := dm_PCM.qry_work.FieldByName('Schriftfarbe').asInteger;
+    end;
+    dm_PCM.qry_work.Close;
+  except
+  end;
+end;
+procedure Tfrm_Calendar.grdDBTblView_StundenplanMittwochCustomDrawCell( Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;  AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+begin
+ try
+    dm_PCM.qry_work.sql.text:='Select Farbe, Schriftfarbe from manager_stundenplan_schulfaecher Where ID = :ID';
+    dm_PCM.qry_work.parambyname('ID').asInteger:= AViewInfo.GridRecord.Values[4];
     dm_PCM.qry_work.open;
     if dm_PCM.qry_work.RecordCount > 0 then
     begin
@@ -4653,36 +5237,6 @@ begin
   except
   end;
 end;
-procedure Tfrm_Calendar.grdDBTblView_StundenplanMittwochCustomDrawCell( Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;  AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
-begin
- try
-    dm_PCM.qry_work.sql.text:='Select Farbe, Schriftfarbe from manager_stundenplan_schulfaecher Where ID = :ID';
-    dm_PCM.qry_work.parambyname('ID').asInteger:= AViewInfo.GridRecord.Values[4];
-    dm_PCM.qry_work.open;
-    if dm_PCM.qry_work.RecordCount > 0 then
-    begin
-      ACanvas.Brush.Color := dm_PCM.qry_work.FieldByName('Farbe').asInteger;
-      ACanvas.Font.Color := dm_PCM.qry_work.FieldByName('Schriftfarbe').asInteger;
-    end;
-    dm_PCM.qry_work.Close;
-  except
-  end;
-end;
-procedure Tfrm_Calendar.grdDBTblView_StundenplanMontagCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
-begin
-  try
-    dm_PCM.qry_work.sql.text:= 'Select Farbe, Schriftfarbe from manager_stundenplan_schulfaecher Where ID = :ID';
-    dm_PCM.qry_work.parambyname('ID').asInteger:= AViewInfo.GridRecord.Values[2];
-    dm_PCM.qry_work.open;
-    if dm_PCM.qry_work.RecordCount > 0 then
-    begin
-      ACanvas.Brush.Color := dm_PCM.qry_work.FieldByName('Farbe').asInteger;
-      ACanvas.Font.Color := dm_PCM.qry_work.FieldByName('Schriftfarbe').asInteger;
-    end;
-    dm_PCM.qry_work.Close;
-  except
-  end;
-end;
 procedure Tfrm_Calendar.grdDBTblView_StundenplanSamstagCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 begin
   try
@@ -4698,5 +5252,206 @@ begin
   except
   end;
 end;
+{$EndRegion}
+{$Region Formfunctions}
+////////////////////////////////////////////////////////////////////////////////
+// TAB Formfunctions                                                            //
+////////////////////////////////////////////////////////////////////////////////
+procedure Tfrm_Calendar.FormActivate(Sender: TObject);
+begin
+  FormShow(Self);
+end;
+procedure Tfrm_Calendar.FormDestroy(Sender: TObject);
+begin
+  SetGridViews(False);
+end;
+procedure Tfrm_Calendar.FormResize(Sender: TObject);
+begin
+  cxTreeList1Column1.Width:= trlst_Aufgaben.Width - (8 + cxTreeList1Column2.Width) ;
+end;
+procedure Tfrm_Calendar.FormShow(Sender: TObject);
+  procedure InitializeRights;
+  begin
 
+    ts_A_kalender.TabVisible:= dm_PCM.iKalender >= SetRead;
+    ts_B_Aufgaben.TabVisible:= dm_PCM.iKalender >= SetRead;
+    ts_c_Jira.TabVisible:= dm_PCM.iKalender >= SetRead;
+    btn_CalNew.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+    btn_CalTerminImport.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+    btn_TerminNeu.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+    btn_Terminchange.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+    btn_TerminDelete.Enabled:= dm_PCM.iKalender > SetReadWrite;
+    pmmbtn_CalNew.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+    btn_CalTerminImport.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+    btn_TerminExport.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+    btn_CalImportOutlook.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+    btn_CalExporttoOutlook.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+    btn_TerminNeu.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+    btn_Terminchange.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+    btn_TerminDelete.Enabled:= dm_PCM.iKalender > SetReadWrite;
+    btn_NewMessage.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+    btn_NewTask.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+    btn_NewEvent.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+    btn_JobChange.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+    btn_ReadJob.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+    btn_DoneJob.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+    btn_JobUndone.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+    btn_JobsDone.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+    pmmbtn_JobsImportOutlook.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+    pmmbtn_JobsExportOutlook.Enabled:= dm_PCM.iKalender >= SetReadWrite;
+
+
+
+    ts_D_Stundenplan.TabVisible:= dm_PCM.iStundenplan >= SetRead;
+    // Toolbar
+    btn_StundenplanNew.Enabled:= dm_PCM.iStundenplan >= SetReadWrite;
+    btn_StundenplanSave.Enabled:= dm_PCM.iStundenplan >= SetReadWrite;
+    btn_StundenplanCancel.Enabled:= dm_PCM.iStundenplan >= SetReadWrite;
+    btn_StundenplanDelete.Enabled:= dm_PCM.iStundenplan > SetReadWrite;
+    btn_StundeNew.Enabled:= dm_PCM.iStundenplan >= SetReadWrite;
+    btn_StundeSave.Enabled:= dm_PCM.iStundenplan >= SetReadWrite;
+    btn_StundeCancel.Enabled:= dm_PCM.iStundenplan >= SetReadWrite;
+    btn_StundeDelete.Enabled:= dm_PCM.iStundenplan > SetReadWrite;
+    // Editfelder
+    edt_Stundenplan_Schule.Enabled:= dm_PCM.iStundenplan >= SetReadWrite;
+    edt_Stundenplan_Klasse.Enabled:= dm_PCM.iStundenplan >= SetReadWrite;
+    edt_Stundenplan_Schuljahr.Enabled:= dm_PCM.iStundenplan >= SetReadWrite;
+    tiEdt_Stundenplan_Von.Enabled:= dm_PCM.iStundenplan >= SetReadWrite;
+    tiEdt_Stundenplan_Bis.Enabled:= dm_PCM.iStundenplan >= SetReadWrite;
+    lucmbbx_Stundenplan_Montag.Enabled:= dm_PCM.iStundenplan >= SetReadWrite;
+    lucmbbx_Stundenplan_Dienstag.Enabled:= dm_PCM.iStundenplan >= SetReadWrite;
+    lucmbbx_Stundenplan_Mittwoch.Enabled:= dm_PCM.iStundenplan >= SetReadWrite;
+    lucmbbx_Stundenplan_Donnerstag.Enabled:= dm_PCM.iStundenplan >= SetReadWrite;
+    lucmbbx_Stundenplan_Freitag.Enabled:= dm_PCM.iStundenplan >= SetReadWrite;
+    lucmbbx_Stundenplan_Samstag.Enabled:= dm_PCM.iStundenplan >= SetReadWrite;
+
+  end;
+  procedure OpenData;
+  //var I:integer;
+  begin
+    dm_PCM.qry_Kalender_Benutzer.Open;
+  //  qry_BenutzerRes.Open;
+    dm_PCM.qry_Kalender_Kalender.Open;
+    qry_Stundenplan.Open;
+    qry_Stundenplan_detail.Open;
+    qry_SchulFaecher.Open;
+    qry_SchulFaecher.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+    qry_Stundenplan.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+    qry_Stundenplan.Filtered:= true;
+    dm_PCM.qry_KalenderAufgaben_Arten.open;
+    dm_PCM.qry_KalenderAufgaben_Prio.Open;
+    dm_PCM.qry_Kalender_Ansprechpartner.Open;
+    dm_PCM.qry_Config_Firmen.Open;
+    dm_PCM.qry_Kalender_Aufgaben.open;
+    dm_PCM.qry_Kalender_Aufgaben.Filter:= 'bearbeitetam = null and ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+    dm_PCM.qry_Kalender_Aufgaben.Filtered:= true;
+    RefreshTerminundAUfgaben;
+    tvNachrichtenCaption.Caption:= rs_PCMManager_Betreff;
+    tvNachrichtenGelesenAm.Caption:= rs_PCMManager_GelesenAM;
+    tvNachrichtenGesendetAm.Caption:= rs_PCMManager_GesendetAm;
+    tvNachrichtenID_ADR_Wurzel.Caption:= rs_PCMManager_Adresse;
+    tvNachrichtenID_Ansprechpartner.Caption:= rs_PCMManager_Ansprechpartner;
+    tvNachrichtenJira_Ticket.Caption:= rs_PCMManager_JiraTicket;
+    tvNachrichtenLocation.Caption:= rs_PCMLizenzgenerator_KundeORT;
+    tvNachrichtenStatus.Caption:= rs_PCMManager_Status;
+    tvNachrichtenTyp.Caption:= rs_PCMManager_Typ;
+    grdDBTblView_StundenplanuebersichtID_Benutzer.Caption:= rs_PCMBenutzerverwaltung_Benutzer;
+    grdDBTblView_StundenplanuebersichtKlasse.Caption:= rs_PCMManager_Klasse;
+    grdDBTblView_StundenplanuebersichtSchule.Caption:= rs_PCMManager_Schule;
+    grdDBTblView_StundenplanuebersichtSchuljahr.Caption:= rs_PCMManager_Schuljahr;
+    grdDBTblView_StundenplanBegin.Caption:= rs_PCM_Beginn;
+    grdDBTblView_StundenplanDienstag.Caption:= rs_PCM_Dienstag;
+    grdDBTblView_StundenplanDonnerstag.Caption:= rs_PCM_Donnerstag;
+    grdDBTblView_StundenplanEnd.Caption:= rs_PCM_EndeZeit;
+    grdDBTblView_StundenplanFreitag.Caption:= rs_PCM_Freitag;
+    grdDBTblView_StundenplanMittwoch.Caption:= rs_PCM_Mittwoch;
+    grdDBTblView_StundenplanMontag.Caption:= rs_PCM_Montag;
+    grdDBTblView_StundenplanSamstag.Caption:= rs_PCM_Samstag;
+    qry_Tickets_ges.AfterScroll:= Nil;
+    qry_Tickets_ges.open;
+    qry_Tickets_priv.AfterScroll:= Nil;
+    qry_Tickets_priv.open;
+  end;
+begin
+  case dm_PCM.iModulTab of
+  1: pc_Kalender.ActivePage:= ts_A_kalender;
+  2: pc_Kalender.ActivePage:= ts_B_Aufgaben;
+  3: pc_Kalender.ActivePage:= ts_C_jira;
+  4: pc_Kalender.ActivePage:= ts_D_Stundenplan;
+  end;
+  OpenData;
+  InitializeRights;
+  SetButtons;
+  Loadjirastatus;
+  dm_PCM.qry_Work.SQL.Text:=  'UPDATE manager_kalender ' +
+                            'SET START = TIMESTAMPADD(Year, Year(NOW()) - Year(START) , START), ' +
+                            'Finish = TIMESTAMPADD(Year, Year(NOW()) - Year(Finish) , Finish), ' +
+                            'Reminderdate  = TIMESTAMPADD(Year, Year(NOW()) - Year(Reminderdate) , Reminderdate) ' +
+                            'WHERE Kalendername = ''Geburtstag''';
+  dm_PCM.qry_Work.ExecSQL;
+  dm_PCM.qry_Work.SQL.Text:=  'UPDATE manager_kalender ' +
+                            'SET START = TIMESTAMPADD(Year, Year(NOW()) - Year(START)+1 , START), ' +
+                            'Finish = TIMESTAMPADD(Year, Year(NOW()) - Year(Finish)+1 , Finish), ' +
+                            'Reminderdate  = TIMESTAMPADD(Year, Year(NOW()) - Year(Reminderdate) , Reminderdate) ' +
+                             'WHERE Date(start) < Date(Now()) and Kalendername = ''Geburtstag''';
+  dm_PCM.qry_Work.ExecSQL;
+  dm_PCM.qry_Work.SQL.Text:=  'Delete FROM manager_kalender ' +
+                            'WHERE Date(start) < Date(Now()) and (Kalendername like ''Müll %'' or Kalendername like ''Feiertage %'')' ;
+  dm_PCM.qry_Work.ExecSQL;
+
+  defaultLabelColor:= 13083265;
+  defaultFontColor:= 0;
+  FormResize(Self);
+  if (dm_PCM.iModulTab = 3) then
+  begin
+    pc_JiraGes.activepage:= cxTabsheet2;
+//    pc_Jirapriv.activepage:= cxTabsheet2;
+    InitializeBrowser(pnl_BrowserJiraGes);
+  end;
+  if (dm_PCM.iModulTab = 1) then
+  begin
+    Application.ProcessMessages;
+    sched_Kalender.SelectDays(Date, Date, True);
+    Application.ProcessMessages;
+    dm_PCM.qry_Kalender_Benutzer.SQL.Text:= 'Select ID, CONCAT(Nachname, ' + QuotedStr(', ') + ' ,Vorname) as Name '+'From Benutzer Where ID = :ID';
+    dm_PCM.qry_Kalender_Benutzer.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_Kalender_Benutzer.Open;
+    Application.ProcessMessages;
+//    grdDBTblView_KalenderRessource.DataController.SelectRows(grdDBTblView_KalenderRessource.DataController.GetRowIndexByRecordIndex(
+//    grdDBTblView_KalenderRessource.DataController.FindRecordIndexByKey(dm_PCM.iIDBenutzerPCM), True),
+//    grdDBTblView_KalenderRessource.DataController.GetRowIndexByRecordIndex(
+//    grdDBTblView_KalenderRessource.DataController.FindRecordIndexByKey(dm_PCM.iIDBenutzerPCM), True));
+    Application.ProcessMessages;
+    dm_PCM.qry_Kalender_Kalender.SQL.Text:=  'Select ID,EventType,Caption,Location,Message,Start,' +
+                          'Finish,Options,CompleteDay,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'+
+                          'ReminderMinutesBeforeStart,LabelColor,FontColor,ID_Benutzer,ID_kontakte From manager_Kalender ' +
+                          'Where Typ = 2 and bearbeitetam is null and ID_Benutzer = :ID';;
+    dm_PCM.qry_Kalender_Kalender.ParamByName('ID').asBlob:= AnsiString(IntToStr(dm_PCM.iIDBenutzerPCM));
+    dm_PCM.qry_Kalender_Kalender.Open;
+    try
+      Application.ProcessMessages;
+      ReadICSAutomatic;
+      Application.ProcessMessages;
+      WriteICSAutomatic;
+    except
+    end;
+    Application.ProcessMessages;
+    btn_CalArbeitswocheClick(Self);
+    btn_CalArbeitswoche.LargeImageIndex:= 16;
+    btn_CalTag.LargeImageIndex:= 39;
+    btn_CalWoche.LargeImageIndex:= 41;
+    btn_CalMonat.LargeImageIndex:= 42;
+    btn_CalJahr.LargeImageIndex:= 44;
+    schedDBStrg_Kalender.Reminders.Active:= true;
+    pc_Kalender.ActivePage:= ts_A_kalender;
+  end;
+//  tvauf.DataController.Filter.Active:= false;
+//  tvauf.DataController.Filter.Root.Clear;
+//  tvauf.DataController.Filter.BeginUpdate;
+//  tvauf.DataController.Filter.AddItem(AItemlist, tvAufStatus,foNotEqual,'Bearbeitet','Bearbeitet');
+//  tvauf.DataController.Filter.EndUpdate;
+//  tvauf.DataController.Filter.Active:= true;
+  SetGridViews(True);
+end;
+{$EndRegion}
 end.

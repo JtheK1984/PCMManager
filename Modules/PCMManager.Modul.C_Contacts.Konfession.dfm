@@ -17,9 +17,9 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
   TextHeight = 25
   object grd_Konfession: TcxGrid
     Left = 0
-    Top = 63
+    Top = 58
     Width = 516
-    Height = 180
+    Height = 185
     Align = alClient
     BorderStyle = cxcbsNone
     Font.Charset = DEFAULT_CHARSET
@@ -100,7 +100,7 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
     DockControlHeights = (
       0
       0
-      63
+      58
       0)
     object tb_konfession: TdxBar
       Caption = 'tb_konfession'

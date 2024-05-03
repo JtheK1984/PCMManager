@@ -39,12 +39,15 @@ uses
 
 type
   TdxBarControlAccess = class(TdxBarControl);
+
   TdxBarAccess = class(TdxBar);
+
   TdxBarManagerAccess = class(TdxBarManager);
 
-type
   TMethod = procedure of object;
+
   TModuleType = (mtForm, mtEvent);
+
   TModule = class(TCollectionItem)
   protected
     FFormClass: TFormClass;
@@ -67,7 +70,6 @@ type
     property ImageIndex: Integer read FImageIndex write FImageIndex;
   end;
 
-type
   TIC_Options = record
     StundenProArbeitstag: Double;
     Jira_Basic_URL: String;
@@ -75,7 +77,6 @@ type
     EVENTS,TODO:String;
   end;
 
-type
   Tfrm_PCM_Main = class(TForm)
     img_Icons: TImageList;
     loc_Lang: TcxLocalizer;
@@ -307,26 +308,21 @@ type
     procedure ppmbtn_BeendenClick(Sender: TObject);
     procedure ppmbtn_HandbuchClick(Sender: TObject);
     procedure ppmbtn_SpracheClick(Sender: TObject);
+    procedure ppmbtn_DesignClick(Sender: TObject);
     procedure NavBarClick(Sender: TObject);
     procedure pcmainPageChanging(Sender: TObject; NewPage: TcxTabSheet; var AllowChange: Boolean);
     procedure btnModulleisteClick(Sender: TObject);
     procedure btnRefreshRightsClick(Sender: TObject);
     procedure btnCloseModulClick(Sender: TObject);
     procedure iSpracheClick(Sender: TObject);
-    procedure btnCloseAllGroupsClick(Sender: TObject);
-    procedure ppmbtn_DesignClick(Sender: TObject);
+
   private
     { Private-Deklarationen }
     Modules: TCollection;
-    procedure RegisterForm(SideBarItemName: string; FormClass: TFormClass; Instance: Pointer; Right: Integer);
-    procedure RegisterEvent(SideBarItemName: string; Event: TMethod);
-    procedure BarResize;
-    procedure RegisterNavBarItems;
+    procedure LoadData;
     procedure CloseModules;
-    function CurrentModule: TForm;
-    procedure LoadSQLs;
     procedure Abmelden;
-    procedure InitializeRights;
+    function CurrentModule: TForm;
   public
     { Public-Deklarationen }
     FOptions: TIC_Options;
@@ -350,6 +346,7 @@ uses  PCM.Benutzerverwaltung,
       PCM.Functions.Login,
       PCM.Handbuch,
       PCM.Helper,
+      PCM.Functions.Synch.Wait,
 			PCM.Strings,
       PCM.SQL,
       PCMManager.Modul.B_Config,
@@ -359,6 +356,7 @@ uses  PCM.Benutzerverwaltung,
       PCMManager.Modul.F_Passwort,
       PCMManager.Modul.G_Finanzen;
 
+{$Region Hilfsfunktionen }
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
@@ -378,108 +376,13 @@ begin
     FType := mtEvent;
   end;
 end;
-procedure Tfrm_PCM_Main.btnModulleisteClick(Sender: TObject);
+procedure Tfrm_PCM_Main.Abmelden;
 begin
-  navbr_main.Visible := not navbr_main.Visible;
-  if navbr_main.Visible then
-    btnModulleiste.Caption := rs_PCM_Modulliste_verstecken
-  else
-    btnModulleiste.Caption := rs_PCM_Modulliste_anzeigen;
-end;
-procedure Tfrm_PCM_Main.BarResize;
-var
-  rRect: TRect;
-  iTemp, iUsedSpace: Integer;
-  BarControl: TdxBarControlAccess;
-begin
-  if (dxBarManager1.Bars[0] <> nil) and (dxBarManager1.Bars[0].Control <> nil) then
-  begin
-    BarControl := TdxBarControlAccess(dxBarManager1.Bars[0].Control);
-
-    iUsedSpace := 0;
-
-    barOpenModule.Width := 0;
-
-    for iTemp := 0 to BarControl.Bar.ItemLinks.Count - 1 do
-    begin
-      if BarControl.Bar.ItemLinks.Items[iTemp].Item = btnModulleiste then
-      begin
-        Inc(iUsedSpace, 0);
-      end
-      else
-      begin
-        if BarControl.Bar.ItemLinks.Items[iTemp].Item <> barOpenModule then
-        begin
-          Inc(iUsedSpace, BarControl.Bar.ItemLinks.Items[iTemp].ItemRect.Width);
-        end;
-      end;
-    end;
-
-    if BarControl.MarkExists then
-    begin
-      rRect := BarControl.MarkRect;
-      Inc(iUsedSpace, rRect.Right - rRect.Left);
-    end;
-     dxBarManager1.BeginUpdate;
-    Try
-      barOpenModule.Width := (dxBarManager1.Bars[0].Control as TdxBarControl).Width -  iUsedSpace - btnModulleiste.Width  - 45;
-    Finally
-      dxBarManager1.EndUpdate();
-    End;
-  end;
-end;
-procedure Tfrm_PCM_Main.RegisterForm(SideBarItemName: string; FormClass: TFormClass; Instance: Pointer; Right: Integer);
-var
-  NewModule: TModule;
-  Item: TdxNavBarItem;
-begin
-  Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(SideBarItemName).index];
-  if Assigned(Item) then
-  begin
-    NewModule := TModule(Modules.Add);
-    Item.Tag := NewModule.ID;
-    NewModule.FormClass := FormClass;
-    NewModule.Instance := Instance;
-    NewModule.Right := Right;
-    NewModule.ModuleName := SideBarItemName;
-    NewModule.ImageIndex := Item.SmallImageIndex;
-  end;
-end;
-procedure Tfrm_PCM_Main.RegisterNavBarItems;
-begin
-  Modules.Clear;
-  RegisterForm('iBenutzerverwaltung', Tfrm_User, @frm_User, 1);
-  RegisterForm('iKonfiguration', Tfrm_config, @frm_config, 1);
-  RegisterForm('iKontakte',Tfrm_Contact, @frm_Contact, 1);
-  RegisterForm('iKalender',Tfrm_Calendar, @frm_Calendar, 1);
-  RegisterForm('iAufgaben',Tfrm_Calendar, @frm_Calendar, 1);
-  RegisterForm('iJira',Tfrm_Calendar, @frm_Calendar, 1);
-  RegisterForm('iStundenplan',Tfrm_Calendar, @frm_Calendar, 1);
-  RegisterForm('iEMails',Tfrm_mail, @frm_mail, 1);
-  RegisterForm('iPasswoerter',Tfrm_password, @frm_password, 1);
-  RegisterForm('iSerials',Tfrm_password, @frm_password, 1);
-  RegisterForm('iMonatsuebersicht',Tfrm_finanzen, @frm_finanzen, 1);
-  RegisterForm('iEinnahmen',Tfrm_finanzen, @frm_finanzen, 1);
-  RegisterForm('iAusgaben',Tfrm_finanzen, @frm_finanzen, 1);
-  RegisterForm('iSysteminfo',Tfrm_PCM_System, @frm_PCM_System, 1);
-  RegisterForm('iInfo',Tfrm_PCM_InfoApp, @frm_PCM_InfoApp, 1);
-  RegisterForm('iHandbuch',Tfrm_Handbuch, @frm_Handbuch, 1);
-  RegisterEvent('iAbmelden', Abmelden);
-  RegisterEvent('iBeenden', Close);
-end;
-procedure Tfrm_PCM_Main.RegisterEvent(SideBarItemName: string; Event: TMethod);
-var
-  NewModule: TModule;
-  Item: TdxNavBarItem;
-begin
-  Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(SideBarItemName).index];
-  if Assigned(Item) then
-  begin
-    NewModule := TModule(Modules.Add);
-    Item.Tag := NewModule.ID;
-    NewModule.Event := Event;
-    NewModule.ModuleName := SideBarItemName;
-  end
+  bAbmelden := True;
+  dm_PCM.bLogin := false;
+  dm_PCM.bStyle:= false;
+  Hide;
+  Show;
 end;
 procedure Tfrm_PCM_Main.CloseModules;
 var
@@ -495,9 +398,270 @@ begin
     pcMain.Pages[iPage].Free;
   end;
 end;
-procedure Tfrm_PCM_Main.pcmainPageChanging(Sender: TObject; NewPage: TcxTabSheet; var AllowChange: Boolean);
+procedure Tfrm_PCM_Main.LoadData;
+  procedure GetUserName;
+  begin
+    dm_PCM.qry_Work.SQL.Text:= 'Select Benutzer from Benutzer Where ID = :ID';
+    dm_PCM.qry_Work.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_Work.Open;
+    barUser.Caption:= dm_PCM.qry_Work.FieldByName('Benutzer').AsString;
+
+    dm_PCM.qry_Work.Close;
+  end;
+  procedure UpdateCalEvents;
+  var
+    iAnzahl: integer;
+  begin
+    dm_PCM.qry_Work.SQL.Text:=  'UPDATE manager_kalender ' +
+                                'SET START = TIMESTAMPADD(Year, Year(NOW()) - Year(START) , START), ' +
+                                'Finish = TIMESTAMPADD(Year, Year(NOW()) - Year(Finish) , Finish), ' +
+                                'Reminderdate  = TIMESTAMPADD(Year, Year(NOW()) - Year(Reminderdate) , Reminderdate) ' +
+                                'WHERE Kalendername = ''Geburtstag''';
+    dm_PCM.qry_Work.ExecSQL;
+    dm_PCM.qry_Work.SQL.Text:=  'UPDATE manager_kalender ' +
+                                'SET START = TIMESTAMPADD(Year, Year(NOW()) - Year(START)+1 , START), ' +
+                                'Finish = TIMESTAMPADD(Year, Year(NOW()) - Year(Finish)+1 , Finish), ' +
+                                'Reminderdate  = TIMESTAMPADD(Year, Year(NOW()) - Year(Reminderdate) , Reminderdate) ' +
+                                 'WHERE Date(start) < Date(Now()) and Kalendername = ''Geburtstag''';
+    dm_PCM.qry_Work.ExecSQL;
+    dm_PCM.qry_Work.SQL.Text:=  'UPDATE manager_kalender ' +
+                                'SET Bearbeitetam = Now() ' +
+                                'WHERE Date(start) < Date(Now()) and (Kalendername = ''Müll'' or Kalendername like ''Feiertage %'')' ;
+    dm_PCM.qry_Work.ExecSQL;
+    dm_PCM.qry_Work.sql.text:= 'Select Count(*) as Anzahl From manager_kalender_optionen where ID_Benutzer = :ID_Benutzer';
+    dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_Work.Open;
+    iAnzahl:= dm_PCM.qry_Work.FieldByName('Anzahl').AsInteger;
+    dm_PCM.qry_Work.Close;
+
+    if iAnzahl = 0 then
+    begin
+      dm_PCM.qry_Work.sql.text:=  'Insert into manager_kalender_optionen (StundenProArbeitstag, Standard_Faelligkeit_Aufgaben_In_Tagen,ID_benutzer) Values ' +
+                                  '(8,3,:ID_Benutzer)';
+      dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_Work.Execsql;
+    end;
+  end;
+  procedure GetCalOptions;
+  begin
+    dm_PCM.qry_Work.sql.text:= 'Select StundenProArbeitstag, Jira_Basic_URL,Adresse_Eigene,Adresse_Firma,Account_Privat,Account_Geschaeftlich From manager_kalender_optionen';
+    dm_PCM.qry_Work.Open;
+    FOptions.StundenProArbeitstag := dm_PCM.qry_Work.FieldByName('StundenProArbeitstag').AsFloat;
+    FOptions.Jira_Basic_URL := dm_PCM.qry_Work.FieldByName('Jira_Basic_URL').AsString;
+    FOptions.AdressSelf := dm_PCM.qry_Work.FieldByName('Adresse_Eigene').asInteger;
+    FOptions.AdressGes := dm_PCM.qry_Work.FieldByName('Adresse_Firma').asInteger;
+    FOptions.EVENTS :=dm_PCM.qry_Work.FieldByName('Account_Privat').asString;
+    FOptions.TODO :=dm_PCM.qry_Work.FieldByName('Account_Geschaeftlich').asString;
+    dm_PCM.qry_Work.Close;
+  end;
+  procedure SetCharts;
+  var
+    iZaehler: integer;
+    dEinnahmeSoll, dEinnahmeIst: Double;
+    dKostenVarSoll, dKostenVarIst: Double;
+    dKostenFixSoll, dKostenFixIst: Double;
+  begin
+    dEinnahmeSoll:=0;
+    dEinnahmeIst:=0;
+    dKostenVarSoll:=0;
+    dKostenVarIst:=0;
+    dKostenFixSoll:=0;
+    dKostenFixIst:=0;
+    if dm_PCM.qry_ChartGeburtstage.Active then
+    begin
+      dm_PCM.qry_ChartGeburtstage.Refresh;
+    end
+    else begin
+      dm_PCM.qry_ChartGeburtstage.Open;
+      dm_PCM.qry_ChartGeburtstage.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+      dm_PCM.qry_ChartGeburtstage.Filtered:= true;
+    end;
+
+    if dm_PCM.qry_ChartKontaktart.Active then
+    begin
+      dm_PCM.qry_ChartKontaktart.Refresh;
+    end
+    else begin
+      dm_PCM.qry_ChartKontaktart.Open;
+      dm_PCM.qry_ChartKontaktart.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+      dm_PCM.qry_ChartKontaktart.Filtered:= true;
+    end;
+
+    if dm_PCM.qry_ChartAdressen.Active then
+    begin
+      dm_PCM.qry_ChartAdressen.Refresh;
+    end
+    else begin
+      dm_PCM.qry_ChartAdressen.Open;
+      dm_PCM.qry_ChartAdressen.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+      dm_PCM.qry_ChartAdressen.Filtered:= true;
+    end;
+
+    if dm_PCM.qry_ChartKalender.Active then
+    begin
+      dm_PCM.qry_ChartKalender.Refresh;
+    end
+    else begin
+      dm_PCM.qry_ChartKalender.Open;
+      dm_PCM.qry_ChartKalender.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+      dm_PCM.qry_ChartKalender.Filtered:= true;
+    end;
+
+    if dm_PCM.qry_ChartKategorie.Active then
+    begin
+      dm_PCM.qry_ChartKategorie.Refresh;
+    end
+    else begin
+      dm_PCM.qry_ChartKategorie.open;
+    end;
+
+    if dm_PCM.qry_ChartAufgabe.Active  then
+    begin
+      dm_PCM.qry_ChartAufgabe.Refresh;
+    end
+    else begin
+      dm_PCM.qry_ChartAufgabe.open;
+      dm_PCM.qry_ChartAufgabe.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+      dm_PCM.qry_ChartAufgabe.Filtered:= true;
+    end;
+
+    if dm_PCM.qry_ChartFinance.Active then
+    begin
+      dm_PCM.qry_ChartFinance.Refresh;
+    end
+    else begin
+      dm_PCM.qry_ChartFinance.Open;
+      dm_PCM.qry_ChartFinance.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+      dm_PCM.qry_ChartFinance.Filtered:= true;
+    end;
+
+    if dm_PCM.qry_ChartPWDSerials.Active then
+    begin
+      dm_PCM.qry_ChartPWDSerials.Refresh;
+    end
+    else begin
+      dm_PCM.qry_ChartPWDSerials.Open;
+      dm_PCM.qry_ChartPWDSerials.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+      dm_PCM.qry_ChartPWDSerials.Filtered:= true;
+    end;
+
+    if dm_PCM.qry_ChartPWD_Kategorie.Active  then
+    begin
+      dm_PCM.qry_ChartPWD_Kategorie.Refresh;
+    end
+    else begin
+      dm_PCM.qry_ChartPWD_Kategorie.Open;
+      dm_PCM.qry_ChartPWD_Kategorie.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+      dm_PCM.qry_ChartPWD_Kategorie.Filtered:= true;
+    end;
+
+    if dm_PCM.qry_ChartSerialKategorie.Active then
+    begin
+      dm_PCM.qry_ChartSerialKategorie.Refresh;
+    end
+    else begin
+      dm_PCM.qry_ChartSerialKategorie.Open;
+      dm_PCM.qry_ChartSerialKategorie.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+      dm_PCM.qry_ChartSerialKategorie.Filtered:= true;
+    end;
+
+    if dm_PCM.qry_ChartFinance.Active then
+    begin
+      dm_PCM.qry_ChartFinance.Refresh;
+    end
+    else begin
+      dm_PCM.qry_ChartFinance.Open;
+    end;
+
+    dm_PCM.qry_ChartFinance.First;
+    iZaehler:= 0;
+    while not dm_PCM.qry_ChartFinance.eof do
+    begin
+      iZaehler:= iZaehler + 1;
+      case iZaehler of
+      1:
+        begin
+         dEinnahmeSoll:= dm_PCM.qry_ChartFinance.FieldByName('Soll').Asfloat;
+         dEinnahmeIst:= dm_PCM.qry_ChartFinance.FieldByName('Ist').Asfloat;
+        end;
+      2:
+        begin
+          dKostenFixSoll:= dm_PCM.qry_ChartFinance.FieldByName('Soll').Asfloat;
+          dKostenFixIst:= dm_PCM.qry_ChartFinance.FieldByName('Ist').Asfloat;
+        end;
+      3:
+        begin
+          dKostenVarSoll:= dm_PCM.qry_ChartFinance.FieldByName('Soll').Asfloat;
+          dKostenVarIst:= dm_PCM.qry_ChartFinance.FieldByName('Ist').Asfloat;
+        end;
+      end;
+      dm_PCM.qry_ChartFinance.Next;
+    end;
+    // SOLL
+    lbl_EinSoll.caption:= Format('%.2f €',[dEinnahmeSoll]);
+    lbl_EinIst.caption:= Format('%.2f €',[dEinnahmeIst]);
+    lbl_EinDiff.caption:= Format('%.2f €',[dEinnahmeSoll-dEinnahmeIst]);
+    // FIXKOSTEN
+    lbl_AusFixSoll.caption:= Format('%.2f €',[dKostenFixSoll]);
+    lbl_AusFixIst.caption:= Format('%.2f €',[dKostenFixIst]);
+    lbl_AusFixDiff.caption:= Format('%.2f €',[dKostenFixSoll-dKostenFixIst]);
+    // varKosten
+    lbl_AusVarSoll.caption:= Format('%.2f €',[dKostenvarSoll]);
+    lbl_AusvarIst.caption:= Format('%.2f €',[dKostenVarIst]);
+    lbl_AusvarDiff.caption:= Format('%.2f €',[dKostenvarSoll-dKostenVarIst]);
+
+    //Summen Soll
+    lbl_EinSollSum.caption:= Format('%.2f €',[dEinnahmeSoll]);
+    lbl_EinIstSum.caption:= Format('%.2f €',[dEinnahmeIst]);
+    lbl_EinDiffSum.caption:= Format('%.2f €',[dEinnahmeSoll-dEinnahmeIst]);
+    //Summen Fixkosten
+    lbl_AusFixSollSum.caption:= Format('%.2f €',[dKostenFixSoll]);
+    lbl_AusFixIstSum.caption:= Format('%.2f €',[dKostenFixIst]);
+    lbl_AusFixDiffSum.caption:= Format('%.2f €',[dKostenFixSoll-dKostenFixIst]);
+    // varKosten
+    lbl_AusVarSollSum.caption:= Format('%.2f €',[dKostenvarSoll]);
+    lbl_AusvarIstSum.caption:= Format('%.2f €',[dKostenVarIst]);
+    lbl_AusvarDiffSum.caption:= Format('%.2f €',[dKostenvarSoll-dKostenVarIst]);
+    //SUMME
+    lbl_SollSum.caption:= Format('%.2f €',[dEinnahmeSoll - dKostenFixSoll - dKostenvarSoll]);
+    lbl_IstSum.caption:= Format('%.2f €',[dEinnahmeist - dKostenFixIst - dKostenvarIst]);
+    lbl_DiffSUm.caption:= Format('%.2f €',[(dEinnahmeSoll - dEinnahmeist) - (dKostenFixSoll - dKostenFixIst) -  (dKostenvarSoll - dKostenvarIst)]);
+    dm_PCM.qry_Kalender_Aufgaben.Filter:= '';
+    dm_PCM.qry_work.sql.text:= 'Select COUNT(*) AS AufgabenTermine , ('+
+                               'Select COUNT(*) From manager_kalender Where gelesenam is null and bearbeitetam is NULL AND Typ IN (0) and ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM) +' ) AS Nachrichten ' +
+                                'From manager_Kalender ' +
+                                'Where ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM) +' and  gelesenam is null and bearbeitetam is NULL AND Typ IN (1,2)';
+    dm_PCM.qry_work.open;
+    trayIC_Main.Hint:= PCM_Programmname + slinebreak + slinebreak +
+    dm_PCM.qry_work.Fieldbyname('AufgabenTermine').asString + ' ungelesene Aufgaben und Termine' + slinebreak +
+    dm_PCM.qry_work.Fieldbyname('Nachrichten').asString + ' ungelesene Nachrichten';
+    dm_PCM.qry_work.close;
+  end;
 begin
-  barOpenModule.Caption := NewPage.Caption;
+  GetUserName;
+  UpdateCalEvents;
+  GetCalOptions;
+  SetCharts;
+end;
+function Tfrm_PCM_Main.CurrentModule: TForm;
+begin
+  if pcMain.ControlCount > 0 then
+    Result := TForm(pcMain.ActivePage.Controls[0])
+  else
+    Result := nil;
+end;
+{$EndRegion}
+{$Region Toolbar}
+////////////////////////////////////////////////////////////////////////////////
+// Toolbar                                                                    //
+////////////////////////////////////////////////////////////////////////////////
+procedure Tfrm_PCM_Main.btnModulleisteClick(Sender: TObject);
+begin
+  navbr_main.Visible := not navbr_main.Visible;
+  if navbr_main.Visible then
+    btnModulleiste.Caption := rs_PCM_Modulliste_verstecken
+  else
+    btnModulleiste.Caption := rs_PCM_Modulliste_anzeigen;
 end;
 procedure Tfrm_PCM_Main.btnRefreshRightsClick(Sender: TObject);
 var
@@ -522,15 +686,6 @@ begin
     btnRefreshRights.Enabled := True;
   end;
 end;
-procedure Tfrm_PCM_Main.btnCloseAllGroupsClick(Sender: TObject);
-var
-  iCount: Integer;
-begin
-  for iCount := 1 to navbr_main.Groups.Count -1 do
-  begin
-    navbr_main.Groups[iCount].Expanded := False;
-  end;
-end;
 procedure Tfrm_PCM_Main.btnCloseModulClick(Sender: TObject);
 begin
   if pcMain.PageCount > 1 then
@@ -540,385 +695,12 @@ begin
     pcMain.ActivePage.Free;
   end;
 end;
-procedure Tfrm_PCM_Main.InitializeRights;
+procedure Tfrm_PCM_Main.pcmainPageChanging(Sender: TObject; NewPage: TcxTabSheet; var AllowChange: Boolean);
 begin
-  dm_PCM.qry_Work.SQL.Text:=  ASSQL_GetAllRights[dm_PCM.iDBType];
-  dm_PCM.qry_Work.ParamByName('ID').AsInteger := dm_PCM.iIDBenutzerPCM;
-  dm_PCM.qry_Work.Open;
-  dm_PCM.iBenutzer:= dm_PCM.qry_Work.FieldByName('Benutzer').asInteger;
-  dm_PCM.iKonfiguration:= dm_PCM.qry_Work.FieldByName('Konfiguration').asInteger;
-  dm_PCM.iDesign:= dm_PCM.qry_Work.FieldByName('Design').asInteger;
-  dm_PCM.iKontakte:= dm_PCM.qry_Work.FieldByName('Kontakte').asInteger;
-  dm_PCM.iKalender:= dm_PCM.qry_Work.FieldByName('Kalender').asInteger;
-  dm_PCM.iStundenplan:= dm_PCM.qry_Work.FieldByName('Stundenplan').asInteger;
-  dm_PCM.iEmail:= dm_PCM.qry_Work.FieldByName('Email').asInteger;
-  dm_PCM.iPassword:= dm_PCM.qry_Work.FieldByName('Password').asInteger;
-  dm_PCM.iSerials:= dm_PCM.qry_Work.FieldByName('Serials').asInteger;
-  dm_PCM.iMonatsuebersicht:= dm_PCM.qry_Work.FieldByName('Monatsuebersicht').asInteger;
-  dm_PCM.iVerfuegung:= dm_PCM.qry_Work.FieldByName('Verfuegung').asInteger;
-  dm_PCM.iEinnahmen:= dm_PCM.qry_Work.FieldByName('Einnahmen').asInteger;
-  dm_PCM.iAusgaben:= dm_PCM.qry_Work.FieldByName('Ausgaben').asInteger;
-  dm_PCM.qry_Work.Close;
-
-  // Benutzerverwaltung / Kein Recht
-  if (dm_PCM.iBenutzer = 0) and (dm_PCM.iKonfiguration = 0) and (dm_PCM.iDesign = 0) then
-  begin
-    navbrgrp_Optionen.Visible:= false;
-    iBenutzerverwaltung.Visible:= false;
-    iKonfiguration.Visible:= false;
-  end;
-
-  // Benutzerverwaltung / Lesen / Ändern / Vollzugriff
-  case dm_PCM.iBenutzer of
-  0: iBenutzerverwaltung.Visible:= false;
-  1,2,3:
-    begin
-      navbrgrp_Optionen.Visible:= true;
-      iBenutzerverwaltung.Visible:= true;
-    end;
-  end;
-
-  // Optionen / Lesen / Ändern / Vollzugriff
-  case dm_PCM.iKonfiguration of
-  0: iKonfiguration.Visible:= false;
-  1,2,3:
-    begin
-      navbrgrp_Optionen.Visible:= true;
-      iKonfiguration.Visible:= true;
-    end;
-  end;
-
-  // Kontakte / Kein Recht
-  case dm_PCM.iKontakte of
-  0: navbrgrp_Kontake.Visible:= false;
-  // Kontakte / Lesen / Ändern / Vollzugriff
-  1,2,3: navbrgrp_Kontake.Visible:= true;
-  end;
-
-  // Kalender / Stundenplan / Mail
-  if (dm_PCM.iKalender = 0) and (dm_PCM.iStundenplan = 0) and (dm_PCM.iEmail = 0) then
-  begin
-    navbrgrp_Kalender.Visible:= false;
-    iKalender.Visible:= false;
-    iAufgaben.Visible:= false;
-    iStundenplan.Visible:= false;
-  end;
-  // Kalender / Kein Recht
-  case dm_PCM.iKalender of
-  0: iKalender.Visible:= false;
-  // Kalender / Lesen / Schreiben / Vollzugriff
-  1,2,3:
-    begin
-      navbrgrp_Kalender.Visible:= true;
-      iKalender.Visible:= true;
-    end;
-  end;
-
-  // Stundenplan / Kein Recht
-  case dm_PCM.iStundenplan of
-  0: iStundenplan.Visible:= false;
-  // Stundenplan / Lesen / Schreiben / Vollzugriff
-  1,2,3:
-    begin
-      navbrgrp_Kalender.Visible:= true;
-      iStundenplan.Visible:= true;
-    end;
-  end;
-
-  // Mails / Kein Recht
-  case dm_PCM.iEmail of
-  0: iEMails.Visible:= false;
-  // Mails / Lesen / Schreiben / Vollzugriff
-  1,2,3:
-    begin
-      navbrgrp_Kalender.Visible:= true;
-      iEMails.Visible:= true;
-    end;
-  end;
-
-  // Passwörter / Serials
-  if (dm_PCM.iPassword = 0) and (dm_PCM.iSerials = 0)  then
-  begin
-    navbrgrp_Passwort.Visible:= false;
-    iPasswoerter.Visible:= false;
-    iSerials.Visible:= false;
-  end;
-
-  // Passwort / kein Recht
-  case dm_PCM.iPassword of
-  0: iPasswoerter.Visible:= false;
-  // Passwort / Lesen / Schreiben / Vollzugriff
-  1,2,3:
-    begin
-      iPasswoerter.Visible:= true;
-      navbrgrp_Passwort.Visible:= true;
-    end;
-  end;
-
-  // Serial / Kein Recht
-  case dm_PCM.iSerials of
-  0: iSerials.Visible:= false;
-  // Serials / Lesen / Schreiben / Vollzugriff
-  1,2,3:
-    begin
-      iSerials.Visible:= true;
-      navbrgrp_Passwort.Visible:= true;
-    end;
-  end;
-
-  // Finanzen / Kein Recht
-  case dm_PCM.iMonatsuebersicht of
-  0: navbrgrp_Finanzen.Visible:= false;
-  // Finanzen / Lesen / Schreiben / Vollzugriff
-  1,2,3:  navbrgrp_Finanzen.Visible:= true;
-  end;
+  barOpenModule.Caption := NewPage.Caption;
 end;
-procedure Tfrm_PCM_Main.Abmelden;
-begin
-  bAbmelden := True;
-  dm_PCM.bLogin := false;
-  dm_PCM.bStyle:= false;
-  Hide;
-  Show;
-end;
-procedure Tfrm_PCM_Main.LoadSQLs;
-var
-  iZaehler: integer;
-  dEinnahmeSoll, dEinnahmeIst: Double;
-  dKostenVarSoll, dKostenVarIst: Double;
-  dKostenFixSoll, dKostenFixIst: Double;
-  iAnzahl: integer;
-begin
-  dm_PCM.qry_Work.SQL.Text:= 'Select Benutzer from Benutzer Where ID = :ID';
-  dm_PCM.qry_Work.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
-  dm_PCM.qry_Work.Open;
-  barUser.Caption:= dm_PCM.qry_Work.FieldByName('Benutzer').AsString;
-  dm_PCM.qry_Work.Close;
-
-  dEinnahmeSoll:=0;
-  dEinnahmeIst:=0;
-  dKostenVarSoll:=0;
-  dKostenVarIst:=0;
-  dKostenFixSoll:=0;
-  dKostenFixIst:=0;
-  dm_PCM.qry_Work.SQL.Text:=  'UPDATE manager_kalender ' +
-                              'SET START = TIMESTAMPADD(Year, Year(NOW()) - Year(START) , START), ' +
-                              'Finish = TIMESTAMPADD(Year, Year(NOW()) - Year(Finish) , Finish), ' +
-                              'Reminderdate  = TIMESTAMPADD(Year, Year(NOW()) - Year(Reminderdate) , Reminderdate) ' +
-                              'WHERE Kalendername = ''Geburtstag''';
-  dm_PCM.qry_Work.ExecSQL;
-  dm_PCM.qry_Work.SQL.Text:=  'UPDATE manager_kalender ' +
-                              'SET START = TIMESTAMPADD(Year, Year(NOW()) - Year(START)+1 , START), ' +
-                              'Finish = TIMESTAMPADD(Year, Year(NOW()) - Year(Finish)+1 , Finish), ' +
-                              'Reminderdate  = TIMESTAMPADD(Year, Year(NOW()) - Year(Reminderdate) , Reminderdate) ' +
-                               'WHERE Date(start) < Date(Now()) and Kalendername = ''Geburtstag''';
-  dm_PCM.qry_Work.ExecSQL;
-  dm_PCM.qry_Work.SQL.Text:=  'UPDATE manager_kalender ' +
-                              'SET Bearbeitetam = Now() ' +
-                              'WHERE Date(start) < Date(Now()) and (Kalendername = ''Müll'' or Kalendername like ''Feiertage %'')' ;
-  dm_PCM.qry_Work.ExecSQL;
-  dm_PCM.qry_Work.sql.text:= 'Select Count(*) as Anzahl From manager_kalender_optionen where ID_Benutzer = :ID_Benutzer';
-  dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-  dm_PCM.qry_Work.Open;
-  iAnzahl:= dm_PCM.qry_Work.FieldByName('Anzahl').AsInteger;
-  dm_PCM.qry_Work.Close;
-
-  if iAnzahl = 0 then
-  begin
-    dm_PCM.qry_Work.sql.text:=  'Insert into manager_kalender_optionen (StundenProArbeitstag, Standard_Faelligkeit_Aufgaben_In_Tagen,ID_benutzer) Values ' +
-                                '(8,3,:ID_Benutzer)';
-    dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-    dm_PCM.qry_Work.Execsql;
-  end;
-
-  dm_PCM.qry_Work.sql.text:= 'Select StundenProArbeitstag, Jira_Basic_URL,Adresse_Eigene,Adresse_Firma,Account_Privat,Account_Geschaeftlich From manager_kalender_optionen';
-  dm_PCM.qry_Work.Open;
-  FOptions.StundenProArbeitstag := dm_PCM.qry_Work.FieldByName('StundenProArbeitstag').AsFloat;
-  FOptions.Jira_Basic_URL := dm_PCM.qry_Work.FieldByName('Jira_Basic_URL').AsString;
-  FOptions.AdressSelf := dm_PCM.qry_Work.FieldByName('Adresse_Eigene').asInteger;
-  FOptions.AdressGes := dm_PCM.qry_Work.FieldByName('Adresse_Firma').asInteger;
-  FOptions.EVENTS :=dm_PCM.qry_Work.FieldByName('Account_Privat').asString;
-  FOptions.TODO :=dm_PCM.qry_Work.FieldByName('Account_Geschaeftlich').asString;
-  dm_PCM.qry_Work.Close;
-
-
-  if dm_PCM.qry_ChartGeburtstage.Active then
-  begin
-    dm_PCM.qry_ChartGeburtstage.Refresh;
-  end
-  else begin
-    dm_PCM.qry_ChartGeburtstage.Open;
-    dm_PCM.qry_ChartGeburtstage.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-    dm_PCM.qry_ChartGeburtstage.Filtered:= true;
-  end;
-
-  if dm_PCM.qry_ChartKontaktart.Active then
-  begin
-    dm_PCM.qry_ChartKontaktart.Refresh;
-  end
-  else begin
-    dm_PCM.qry_ChartKontaktart.Open;
-    dm_PCM.qry_ChartKontaktart.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-    dm_PCM.qry_ChartKontaktart.Filtered:= true;
-  end;
-
-  if dm_PCM.qry_ChartAdressen.Active then
-  begin
-    dm_PCM.qry_ChartAdressen.Refresh;
-  end
-  else begin
-    dm_PCM.qry_ChartAdressen.Open;
-    dm_PCM.qry_ChartAdressen.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-    dm_PCM.qry_ChartAdressen.Filtered:= true;
-  end;
-
-  if dm_PCM.qry_ChartKalender.Active then
-  begin
-    dm_PCM.qry_ChartKalender.Refresh;
-  end
-  else begin
-    dm_PCM.qry_ChartKalender.Open;
-    dm_PCM.qry_ChartKalender.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-    dm_PCM.qry_ChartKalender.Filtered:= true;
-  end;
-
-  if dm_PCM.qry_ChartKategorie.Active then
-  begin
-    dm_PCM.qry_ChartKategorie.Refresh;
-  end
-  else begin
-    dm_PCM.qry_ChartKategorie.open;
-  end;
-
-  if dm_PCM.qry_ChartAufgabe.Active  then
-  begin
-    dm_PCM.qry_ChartAufgabe.Refresh;
-  end
-  else begin
-    dm_PCM.qry_ChartAufgabe.open;
-    dm_PCM.qry_ChartAufgabe.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-    dm_PCM.qry_ChartAufgabe.Filtered:= true;
-  end;
-
-  if dm_PCM.qry_ChartFinance.Active then
-  begin
-    dm_PCM.qry_ChartFinance.Refresh;
-  end
-  else begin
-    dm_PCM.qry_ChartFinance.Open;
-    dm_PCM.qry_ChartFinance.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-    dm_PCM.qry_ChartFinance.Filtered:= true;
-  end;
-
-  if dm_PCM.qry_ChartPWDSerials.Active then
-  begin
-    dm_PCM.qry_ChartPWDSerials.Refresh;
-  end
-  else begin
-    dm_PCM.qry_ChartPWDSerials.Open;
-    dm_PCM.qry_ChartPWDSerials.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-    dm_PCM.qry_ChartPWDSerials.Filtered:= true;
-  end;
-
-  if dm_PCM.qry_ChartPWD_Kategorie.Active  then
-  begin
-    dm_PCM.qry_ChartPWD_Kategorie.Refresh;
-  end
-  else begin
-    dm_PCM.qry_ChartPWD_Kategorie.Open;
-    dm_PCM.qry_ChartPWD_Kategorie.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-    dm_PCM.qry_ChartPWD_Kategorie.Filtered:= true;
-  end;
-
-  if dm_PCM.qry_ChartSerialKategorie.Active then
-  begin
-    dm_PCM.qry_ChartSerialKategorie.Refresh;
-  end
-  else begin
-    dm_PCM.qry_ChartSerialKategorie.Open;
-    dm_PCM.qry_ChartSerialKategorie.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-    dm_PCM.qry_ChartSerialKategorie.Filtered:= true;
-  end;
-
-  if dm_PCM.qry_ChartFinance.Active then
-  begin
-    dm_PCM.qry_ChartFinance.Refresh;
-  end
-  else begin
-    dm_PCM.qry_ChartFinance.Open;
-  end;
-
-  dm_PCM.qry_ChartFinance.First;
-  iZaehler:= 0;
-  while not dm_PCM.qry_ChartFinance.eof do
-  begin
-    iZaehler:= iZaehler + 1;
-    case iZaehler of
-    1:
-      begin
-       dEinnahmeSoll:= dm_PCM.qry_ChartFinance.FieldByName('Soll').Asfloat;
-       dEinnahmeIst:= dm_PCM.qry_ChartFinance.FieldByName('Ist').Asfloat;
-      end;
-    2:
-      begin
-        dKostenFixSoll:= dm_PCM.qry_ChartFinance.FieldByName('Soll').Asfloat;
-        dKostenFixIst:= dm_PCM.qry_ChartFinance.FieldByName('Ist').Asfloat;
-      end;
-    3:
-      begin
-        dKostenVarSoll:= dm_PCM.qry_ChartFinance.FieldByName('Soll').Asfloat;
-        dKostenVarIst:= dm_PCM.qry_ChartFinance.FieldByName('Ist').Asfloat;
-      end;
-    end;
-    dm_PCM.qry_ChartFinance.Next;
-  end;
-  // SOLL
-  lbl_EinSoll.caption:= Format('%.2f €',[dEinnahmeSoll]);
-  lbl_EinIst.caption:= Format('%.2f €',[dEinnahmeIst]);
-  lbl_EinDiff.caption:= Format('%.2f €',[dEinnahmeSoll-dEinnahmeIst]);
-  // FIXKOSTEN
-  lbl_AusFixSoll.caption:= Format('%.2f €',[dKostenFixSoll]);
-  lbl_AusFixIst.caption:= Format('%.2f €',[dKostenFixIst]);
-  lbl_AusFixDiff.caption:= Format('%.2f €',[dKostenFixSoll-dKostenFixIst]);
-  // varKosten
-  lbl_AusVarSoll.caption:= Format('%.2f €',[dKostenvarSoll]);
-  lbl_AusvarIst.caption:= Format('%.2f €',[dKostenVarIst]);
-  lbl_AusvarDiff.caption:= Format('%.2f €',[dKostenvarSoll-dKostenVarIst]);
-
-  //Summen Soll
-  lbl_EinSollSum.caption:= Format('%.2f €',[dEinnahmeSoll]);
-  lbl_EinIstSum.caption:= Format('%.2f €',[dEinnahmeIst]);
-  lbl_EinDiffSum.caption:= Format('%.2f €',[dEinnahmeSoll-dEinnahmeIst]);
-  //Summen Fixkosten
-  lbl_AusFixSollSum.caption:= Format('%.2f €',[dKostenFixSoll]);
-  lbl_AusFixIstSum.caption:= Format('%.2f €',[dKostenFixIst]);
-  lbl_AusFixDiffSum.caption:= Format('%.2f €',[dKostenFixSoll-dKostenFixIst]);
-  // varKosten
-  lbl_AusVarSollSum.caption:= Format('%.2f €',[dKostenvarSoll]);
-  lbl_AusvarIstSum.caption:= Format('%.2f €',[dKostenVarIst]);
-  lbl_AusvarDiffSum.caption:= Format('%.2f €',[dKostenvarSoll-dKostenVarIst]);
-  //SUMME
-  lbl_SollSum.caption:= Format('%.2f €',[dEinnahmeSoll - dKostenFixSoll - dKostenvarSoll]);
-  lbl_IstSum.caption:= Format('%.2f €',[dEinnahmeist - dKostenFixIst - dKostenvarIst]);
-  lbl_DiffSUm.caption:= Format('%.2f €',[(dEinnahmeSoll - dEinnahmeist) - (dKostenFixSoll - dKostenFixIst) -  (dKostenvarSoll - dKostenvarIst)]);
-  dm_PCM.qry_Kalender_Aufgaben.Filter:= '';
-  dm_PCM.qry_work.sql.text:= 'Select COUNT(*) AS AufgabenTermine , ('+
-                             'Select COUNT(*) From manager_kalender Where gelesenam is null and bearbeitetam is NULL AND Typ IN (0) and ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM) +' ) AS Nachrichten ' +
-                              'From manager_Kalender ' +
-                              'Where ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM) +' and  gelesenam is null and bearbeitetam is NULL AND Typ IN (1,2)';
-  dm_PCM.qry_work.open;
-  trayIC_Main.Hint:= PCM_Programmname + slinebreak + slinebreak +
-  dm_PCM.qry_work.Fieldbyname('AufgabenTermine').asString + ' ungelesene Aufgaben und Termine' + slinebreak +
-  dm_PCM.qry_work.Fieldbyname('Nachrichten').asString + ' ungelesene Nachrichten';
-  dm_PCM.qry_work.close;
-end;
-function Tfrm_PCM_Main.CurrentModule: TForm;
-begin
-  if pcMain.ControlCount > 0 then
-    Result := TForm(pcMain.ActivePage.Controls[0])
-  else
-    Result := nil;
-end;
+{$EndRegion}
+{$Region Navbarfunktionen}
 ////////////////////////////////////////////////////////////////////////////////
 // Navbarfunktionen                                                           //
 ////////////////////////////////////////////////////////////////////////////////
@@ -1079,6 +861,9 @@ begin
         begin
           Screen.Cursor := crHourglass;
           try
+            ShowWaitForm(TForm(Self), PWideChar('Formular wird geladen'), 1,ClientWidth, Height);
+            Application.ProcessMessages;
+            WaitFormStep;
             TForm(Module.Instance^) := Module.FormClass.Create(Nil);
           finally
             Screen.Cursor := crDefault;
@@ -1094,6 +879,8 @@ begin
           fTabForm.ALign:= AlClient;
           fTabForm.Enabled := True;
           fTabForm.Show;
+          CloseWaitform;
+          fTabForm.BringToFront;
           barOpenModule.Caption := Copy(sModulCaption, 2, Length(sModulCaption));
         end
         else
@@ -1126,9 +913,11 @@ begin
   end;
   Caption:= PCM_Programmname;
   trayic_Main.popupmenu:= ppm_Main;
-  LoadSQLs;
+  LoadData;
   btnRefreshRightsClick(Self);
 end;
+{$EndRegion}
+{$Region Formfunktionen}
 ////////////////////////////////////////////////////////////////////////////////
 // Formfunktionen                                                             //
 ////////////////////////////////////////////////////////////////////////////////
@@ -1170,6 +959,48 @@ begin
         m.OnKeyUp(Sender, Key, Shift);
 end;
 procedure Tfrm_PCM_Main.FormResize(Sender: TObject);
+  procedure BarResize;
+  var
+    rRect: TRect;
+    iTemp, iUsedSpace: Integer;
+    BarControl: TdxBarControlAccess;
+  begin
+    if (dxBarManager1.Bars[0] <> nil) and (dxBarManager1.Bars[0].Control <> nil) then
+    begin
+      BarControl := TdxBarControlAccess(dxBarManager1.Bars[0].Control);
+
+      iUsedSpace := 0;
+
+      barOpenModule.Width := 0;
+
+      for iTemp := 0 to BarControl.Bar.ItemLinks.Count - 1 do
+      begin
+        if BarControl.Bar.ItemLinks.Items[iTemp].Item = btnModulleiste then
+        begin
+          Inc(iUsedSpace, 0);
+        end
+        else
+        begin
+          if BarControl.Bar.ItemLinks.Items[iTemp].Item <> barOpenModule then
+          begin
+            Inc(iUsedSpace, BarControl.Bar.ItemLinks.Items[iTemp].ItemRect.Width);
+          end;
+        end;
+      end;
+
+      if BarControl.MarkExists then
+      begin
+        rRect := BarControl.MarkRect;
+        Inc(iUsedSpace, rRect.Right - rRect.Left);
+      end;
+       dxBarManager1.BeginUpdate;
+      Try
+        barOpenModule.Width := (dxBarManager1.Bars[0].Control as TdxBarControl).Width -  iUsedSpace - btnModulleiste.Width  - 45;
+      Finally
+        dxBarManager1.EndUpdate();
+      End;
+    end;
+  end;
 begin
   pnl_CalToDOTop.Height:= Trunc(ts_B_Cal_TodoChart.Height/2);
   pnl_CalToDOmiddle.Height:= Trunc(ts_B_Cal_TodoChart.Height/2);
@@ -1195,6 +1026,239 @@ begin
   BarResize;
 end;
 procedure Tfrm_PCM_Main.FormShow(Sender: TObject);
+  procedure RegisterForm(SideBarItemName: string; FormClass: TFormClass; Instance: Pointer; Right: Integer);
+    var
+      NewModule: TModule;
+      Item: TdxNavBarItem;
+    begin
+      Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(SideBarItemName).index];
+      if Assigned(Item) then
+      begin
+        NewModule := TModule(Modules.Add);
+        Item.Tag := NewModule.ID;
+        NewModule.FormClass := FormClass;
+        NewModule.Instance := Instance;
+        NewModule.Right := Right;
+        NewModule.ModuleName := SideBarItemName;
+        NewModule.ImageIndex := Item.SmallImageIndex;
+      end;
+    end;
+  procedure RegisterEvent(SideBarItemName: string; Event: TMethod);
+  var
+    NewModule: TModule;
+    Item: TdxNavBarItem;
+  begin
+    Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(SideBarItemName).index];
+    if Assigned(Item) then
+    begin
+      NewModule := TModule(Modules.Add);
+      Item.Tag := NewModule.ID;
+      NewModule.Event := Event;
+      NewModule.ModuleName := SideBarItemName;
+    end
+  end;
+  procedure RegisterNavBarItems;
+  begin
+    Modules.Clear;
+    RegisterForm('iBenutzerverwaltung', Tfrm_User, @frm_User, 1);
+    RegisterForm('iKonfiguration', Tfrm_config, @frm_config, 1);
+    RegisterForm('iDesign', Tfrm_Design, @frm_Design, 1);
+    RegisterForm('iKontakte',Tfrm_Contact, @frm_Contact, 1);
+    RegisterForm('iKalender',Tfrm_Calendar, @frm_Calendar, 1);
+    RegisterForm('iAufgaben',Tfrm_Calendar, @frm_Calendar, 1);
+    RegisterForm('iJira',Tfrm_Calendar, @frm_Calendar, 1);
+    RegisterForm('iStundenplan',Tfrm_Calendar, @frm_Calendar, 1);
+    RegisterForm('iEMails',Tfrm_mail, @frm_mail, 1);
+    RegisterForm('iPasswoerter',Tfrm_password, @frm_password, 1);
+    RegisterForm('iSerials',Tfrm_password, @frm_password, 1);
+    RegisterForm('iMonatsuebersicht',Tfrm_finanzen, @frm_finanzen, 1);
+    RegisterForm('iEinnahmen',Tfrm_finanzen, @frm_finanzen, 1);
+    RegisterForm('iAusgaben',Tfrm_finanzen, @frm_finanzen, 1);
+    RegisterForm('iSysteminfo',Tfrm_PCM_System, @frm_PCM_System, 1);
+    RegisterForm('iInfo',Tfrm_PCM_InfoApp, @frm_PCM_InfoApp, 1);
+    RegisterForm('iHandbuch',Tfrm_Handbuch, @frm_Handbuch, 1);
+    RegisterEvent('iAbmelden', Abmelden);
+    RegisterEvent('iBeenden', Close);
+  end;
+  procedure InitializeRights;
+  begin
+    dm_PCM.qry_Work.SQL.Text:=  ASSQL_GetAllRights[dm_PCM.iDBType];
+    dm_PCM.qry_Work.ParamByName('ID').AsInteger := dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_Work.Open;
+    dm_PCM.iBenutzer:= dm_PCM.qry_Work.FieldByName('Benutzer').asInteger;
+    dm_PCM.iKonfiguration:= dm_PCM.qry_Work.FieldByName('Konfiguration').asInteger;
+    dm_PCM.iDesign:= dm_PCM.qry_Work.FieldByName('Design').asInteger;
+    dm_PCM.iKontakte:= dm_PCM.qry_Work.FieldByName('Kontakte').asInteger;
+    dm_PCM.iKalender:= dm_PCM.qry_Work.FieldByName('Kalender').asInteger;
+    dm_PCM.iStundenplan:= dm_PCM.qry_Work.FieldByName('Stundenplan').asInteger;
+    dm_PCM.iEmail:= dm_PCM.qry_Work.FieldByName('Email').asInteger;
+    dm_PCM.iPassword:= dm_PCM.qry_Work.FieldByName('Password').asInteger;
+    dm_PCM.iSerials:= dm_PCM.qry_Work.FieldByName('Serials').asInteger;
+    dm_PCM.iMonatsuebersicht:= dm_PCM.qry_Work.FieldByName('Monatsuebersicht').asInteger;
+    dm_PCM.iVerfuegung:= dm_PCM.qry_Work.FieldByName('Verfuegung').asInteger;
+    dm_PCM.iEinnahmen:= dm_PCM.qry_Work.FieldByName('Einnahmen').asInteger;
+    dm_PCM.iAusgaben:= dm_PCM.qry_Work.FieldByName('Ausgaben').asInteger;
+    dm_PCM.qry_Work.Close;
+
+    // Benutzerverwaltung / Kein Recht
+    if (dm_PCM.iBenutzer = 0) and (dm_PCM.iKonfiguration = 0) and (dm_PCM.iDesign = 0) then
+    begin
+      navbrgrp_Optionen.Visible:= false;
+      iBenutzerverwaltung.Visible:= false;
+      iKonfiguration.Visible:= false;
+    end;
+
+    // Benutzerverwaltung / Lesen / Ändern / Vollzugriff
+    case dm_PCM.iBenutzer of
+    0: iBenutzerverwaltung.Visible:= false;
+    1,2,3:
+      begin
+        navbrgrp_Optionen.Visible:= true;
+        iBenutzerverwaltung.Visible:= true;
+      end;
+    end;
+
+    // Optionen / Lesen / Ändern / Vollzugriff
+    case dm_PCM.iKonfiguration of
+    0: iKonfiguration.Visible:= false;
+    1,2,3:
+      begin
+        navbrgrp_Optionen.Visible:= true;
+        iKonfiguration.Visible:= true;
+      end;
+    end;
+
+    // Kontakte / Kein Recht
+    case dm_PCM.iKontakte of
+    0: navbrgrp_Kontake.Visible:= false;
+    // Kontakte / Lesen / Ändern / Vollzugriff
+    1,2,3: navbrgrp_Kontake.Visible:= true;
+    end;
+
+    // Kalender / Stundenplan / Mail
+    if (dm_PCM.iKalender = 0) and (dm_PCM.iStundenplan = 0) and (dm_PCM.iEmail = 0) then
+    begin
+      navbrgrp_Kalender.Visible:= false;
+      iKalender.Visible:= false;
+      iAufgaben.Visible:= false;
+      iStundenplan.Visible:= false;
+    end;
+    // Kalender / Kein Recht
+    case dm_PCM.iKalender of
+    0: iKalender.Visible:= false;
+    // Kalender / Lesen / Schreiben / Vollzugriff
+    1,2,3:
+      begin
+        navbrgrp_Kalender.Visible:= true;
+        iKalender.Visible:= true;
+      end;
+    end;
+
+    // Stundenplan / Kein Recht
+    case dm_PCM.iStundenplan of
+    0: iStundenplan.Visible:= false;
+    // Stundenplan / Lesen / Schreiben / Vollzugriff
+    1,2,3:
+      begin
+        navbrgrp_Kalender.Visible:= true;
+        iStundenplan.Visible:= true;
+      end;
+    end;
+
+    // Mails / Kein Recht
+    case dm_PCM.iEmail of
+    0: iEMails.Visible:= false;
+    // Mails / Lesen / Schreiben / Vollzugriff
+    1,2,3:
+      begin
+        navbrgrp_Kalender.Visible:= true;
+        iEMails.Visible:= true;
+      end;
+    end;
+
+    // Passwörter / Serials
+    if (dm_PCM.iPassword = 0) and (dm_PCM.iSerials = 0)  then
+    begin
+      navbrgrp_Passwort.Visible:= false;
+      iPasswoerter.Visible:= false;
+      iSerials.Visible:= false;
+    end;
+
+    // Passwort / kein Recht
+    case dm_PCM.iPassword of
+    0: iPasswoerter.Visible:= false;
+    // Passwort / Lesen / Schreiben / Vollzugriff
+    1,2,3:
+      begin
+        iPasswoerter.Visible:= true;
+        navbrgrp_Passwort.Visible:= true;
+      end;
+    end;
+
+    // Serial / Kein Recht
+    case dm_PCM.iSerials of
+    0: iSerials.Visible:= false;
+    // Serials / Lesen / Schreiben / Vollzugriff
+    1,2,3:
+      begin
+        iSerials.Visible:= true;
+        navbrgrp_Passwort.Visible:= true;
+      end;
+    end;
+
+    // Finanzen / Kein Recht
+    case dm_PCM.iMonatsuebersicht of
+    0: navbrgrp_Finanzen.Visible:= false;
+    // Finanzen / Lesen / Schreiben / Vollzugriff
+    1,2,3:  navbrgrp_Finanzen.Visible:= true;
+    end;
+  end;
+  procedure LoadLanguageIni;
+  begin
+    try
+      loc_lang.LoadFromFile(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\cxLocalLang.ini');
+      loc_lang.LanguageIndex := 1;
+    except
+      on e:Exception do
+      begin
+        MessageDlg(rs_PCM_Sprachdatei, mtWarning, [mbOk], 0);
+      end
+    end;
+  end;
+  procedure CheckClientLicence;
+  begin
+    dm_PCM.bNewLiceneCheck:= false;
+    CheckLizenzNew;
+    if dm_PCm.bNewLiceneCheck = false then
+    begin
+      CheckLizenzNew;
+      if dm_PCm.bNewLiceneCheck = false then
+        Application.Terminate;
+    end;
+  end;
+  procedure CheckLogin;
+  begin
+    if not bAbmelden then
+      dm_PCM.bLogin := Autologin
+    else
+      dm_PCM.bLogin := false;
+    if not dm_PCM.bLogin then
+    begin
+      Application.CreateForm(Tfrm_PCM_Login, frm_PCM_Login);
+      dm_PCM.bLogin := frm_pcm_login.Login_User;
+      frm_PCM_Login.Free;
+    end;
+    if not dm_PCM.bLogin then
+      Application.Terminate;
+    bAbmelden:= False;
+  end;
+  procedure SetTrayMenu;
+  begin
+    Caption:= PCM_Programmname;
+    trayIC_Main.PopupMenu:= ppm_main;
+    if dm_PCM.bDemo then
+      Caption:=PCM_Programmname + rs_PCM_Demolizenz + DateTostr(dm_PCM.dtGueltig);
+  end;
 begin
   {$ifdef WIn32}
   iSprache.Visible:= false;
@@ -1209,55 +1273,24 @@ begin
   end
   else begin
   	lafCtrl_Main.SkinName:= dm_PCM.sDesign;
-    try
-      loc_lang.LoadFromFile(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\cxLocalLang.ini');
-      loc_lang.LanguageIndex := 1;
-    except
-      on e:Exception do
-      begin
-        MessageDlg(rs_PCM_Sprachdatei, mtWarning, [mbOk], 0);
-      end
-    end;
+    LoadLanguageIni;
     if dm_PCM.bStyle then
     begin
       NavBarClick(iKonfiguration);
     end
     else begin
-      dm_PCM.bNewLiceneCheck:= false;
-      CheckLizenzNew;
-      if dm_PCm.bNewLiceneCheck = false then
-      begin
-        CheckLizenzNew;
-        if dm_PCm.bNewLiceneCheck = false then
-          Application.Terminate;
-      end;
-      if not bAbmelden then
-        dm_PCM.bLogin := Autologin
-      else
-        dm_PCM.bLogin := false;
-      if not dm_PCM.bLogin then
-      begin
-        Application.CreateForm(Tfrm_PCM_Login, frm_PCM_Login);
-        dm_PCM.bLogin := frm_pcm_login.Login_User;
-        frm_PCM_Login.Free;
-      end;
-      if not dm_PCM.bLogin then
-        Application.Terminate;
-      bAbmelden:= False;
+      CheckClientLicence;
+      CheckLogin;
       InitializeRights;
-      LoadSQLs;
-      FormResize(Self);
+      LoadData;
       WriteLog(PCM_Logname,rs_PCM_Start,0);
-      Caption:= PCM_Programmname;
-
-      trayIC_Main.PopupMenu:= ppm_main;
-      if dm_PCM.bDemo then
-        Caption:=PCM_Programmname + rs_PCM_Demolizenz + DateTostr(dm_PCM.dtGueltig);
-      BarResize;
+      SetTrayMenu;
       RegisterNavBarItems;
     end;
   end;
 end;
+{$EndRegion}
+{$Region Traymenü}
 ////////////////////////////////////////////////////////////////////////////////
 // Traymenü                                                                   //
 ////////////////////////////////////////////////////////////////////////////////
@@ -1285,7 +1318,6 @@ begin
   WindowState:= TWindowState.wsMaximized;
   SetForegroundWindow(frm_PCM_main.Handle);
 end;
-
 procedure Tfrm_PCM_Main.ppmbtn_kalenderClick(Sender: TObject);
 begin
   navbarclick(iKalender);
@@ -1372,7 +1404,7 @@ procedure Tfrm_PCM_Main.ppmbtn_BeendenClick(Sender: TObject);
 begin
   Close;
 end;
-
+{$EndRegion}
 end.
 
 

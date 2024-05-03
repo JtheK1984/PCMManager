@@ -10,6 +10,8 @@ object dm_PCM: Tdm_PCM
       'Server=127.0.0.1'
       'Port=3307'
       'DriverID=MySQL')
+    ResourceOptions.AssignedValues = [rvAutoReconnect]
+    ResourceOptions.AutoReconnect = True
     Connected = True
     LoginPrompt = False
     BeforeConnect = con_PCMBeforeConnect
@@ -22681,5 +22683,107 @@ object dm_PCM: Tdm_PCM
       '')
     Left = 408
     Top = 128
+  end
+  object FDQuery2: TFDQuery
+    Connection = con_PCM
+    SQL.Strings = (
+      
+        'SELECT '#39'offen'#39',COUNT(*)  AS  Wert FROM manager_tickets_ges WHERE' +
+        ' STATUS = '#39'offen'#39
+      'Union ALL'
+      '      '
+      
+        'SELECT '#39'In Arbeit'#39',COUNT(*)  AS Wert FROM manager_tickets_ges WH' +
+        'ERE STATUS = '#39'In Arbeit'#39
+      'Union ALL'
+      '      '
+      
+        'SELECT '#39'Implemented'#39',COUNT(*)  AS Wert FROM manager_tickets_ges ' +
+        'WHERE STATUS = '#39'Implemented'#39
+      'Union ALL'
+      ''
+      
+        'SELECT '#39'Ready for QA'#39',COUNT(*)  AS Wert FROM manager_tickets_ges' +
+        ' WHERE STATUS = '#39'Ready for QA'#39
+      'Union ALL'
+      '      '
+      
+        'SELECT '#39'Functional Acceptance'#39',COUNT(*)  AS Wert  FROM manager_t' +
+        'ickets_ges WHERE STATUS = '#39'Functional Acceptance'#39)
+    Left = 32
+    Top = 128
+  end
+  object DataSource2: TDataSource
+    DataSet = FDQuery2
+    Left = 127
+    Top = 136
+  end
+  object DataSource3: TDataSource
+    DataSet = FDQuery3
+    Left = 279
+    Top = 152
+  end
+  object FDQuery3: TFDQuery
+    Connection = con_PCM
+    SQL.Strings = (
+      
+        'SELECT '#39'offen'#39',COUNT(*)  AS  Wert FROM manager_tickets_ges WHERE' +
+        ' STATUS = '#39'offen'#39
+      'Union ALL'
+      '      '
+      
+        'SELECT '#39'In Arbeit'#39',COUNT(*)  AS Wert FROM manager_tickets_ges WH' +
+        'ERE STATUS = '#39'In Arbeit'#39
+      'Union ALL'
+      '      '
+      
+        'SELECT '#39'Implemented'#39',COUNT(*)  AS Wert FROM manager_tickets_ges ' +
+        'WHERE STATUS = '#39'Implemented'#39
+      'Union ALL'
+      ''
+      
+        'SELECT '#39'Ready for QA'#39',COUNT(*)  AS Wert FROM manager_tickets_ges' +
+        ' WHERE STATUS = '#39'Ready for QA'#39
+      'Union ALL'
+      '      '
+      
+        'SELECT '#39'Functional Acceptance'#39',COUNT(*)  AS Wert  FROM manager_t' +
+        'ickets_ges WHERE STATUS = '#39'Functional Acceptance'#39)
+    Left = 184
+    Top = 144
+  end
+  object FDQuery4: TFDQuery
+    Connection = con_PCM
+    SQL.Strings = (
+      
+        'SELECT '#39'offen'#39',COUNT(*)  AS  Wert FROM manager_tickets_ges WHERE' +
+        ' STATUS = '#39'offen'#39
+      'Union ALL'
+      '      '
+      
+        'SELECT '#39'In Arbeit'#39',COUNT(*)  AS Wert FROM manager_tickets_ges WH' +
+        'ERE STATUS = '#39'In Arbeit'#39
+      'Union ALL'
+      '      '
+      
+        'SELECT '#39'Implemented'#39',COUNT(*)  AS Wert FROM manager_tickets_ges ' +
+        'WHERE STATUS = '#39'Implemented'#39
+      'Union ALL'
+      ''
+      
+        'SELECT '#39'Ready for QA'#39',COUNT(*)  AS Wert FROM manager_tickets_ges' +
+        ' WHERE STATUS = '#39'Ready for QA'#39
+      'Union ALL'
+      '      '
+      
+        'SELECT '#39'Functional Acceptance'#39',COUNT(*)  AS Wert  FROM manager_t' +
+        'ickets_ges WHERE STATUS = '#39'Functional Acceptance'#39)
+    Left = 192
+    Top = 152
+  end
+  object DataSource4: TDataSource
+    DataSet = FDQuery4
+    Left = 287
+    Top = 160
   end
 end

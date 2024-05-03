@@ -45,7 +45,6 @@ type
     btn_KonfessionCancel: TdxBarLargeButton;
     btn_KonfessionDelete: TdxBarLargeButton;
     procedure btn_KonfessionCloseClick(Sender: TObject);
-    procedure btn_NotenNewClick(Sender: TObject);
     procedure btn_KonfessionSaveClick(Sender: TObject);
     procedure btn_KonfessionCancelClick(Sender: TObject);
     procedure btn_KonfessionDeleteClick(Sender: TObject);
@@ -82,13 +81,6 @@ begin
   end
 end;
 procedure Tfrm_PCM_Konfession.btn_KonfessionNewClick(Sender: TObject);
-begin
-  if dm_PCM.qry_Contact_Konfession.State in [dsInsert, dsedit] then
-    dm_PCM.qry_Contact_Konfession.Post;
-  dm_PCM.qry_Contact_Konfession.Append;
-  dm_PCM.qry_Contact_Konfession.Insert;
-end;
-procedure Tfrm_PCM_Konfession.btn_NotenNewClick(Sender: TObject);
 begin
   if dm_PCM.qry_Contact_Konfession.State in [dsInsert, dsedit] then
     dm_PCM.qry_Contact_Konfession.Post;

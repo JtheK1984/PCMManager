@@ -7,6 +7,8 @@ uses
   System.SysUtils,
   Vcl.Themes,
   Vcl.Styles,
+  uWVLoader,
+  Windows,
   PCMManager.Modul.B_Config in 'Modules\PCMManager.Modul.B_Config.pas' {frm_Config},
   PCMManager.Modul.B_Config.Kalender.Feiertage.Neu in 'Modules\PCMManager.Modul.B_Config.Kalender.Feiertage.Neu.pas' {fFeiertageBerechnen},
   PCMManager.Modul.B_Config.Kalender.Feiertage.Aktualisieren in 'Modules\PCMManager.Modul.B_Config.Kalender.Feiertage.Aktualisieren.pas' {frm_FeiertageAktualisieren},
@@ -38,6 +40,9 @@ uses
 
 {$R *.res}
 
+{$SetPEOptFlags IMAGE_DLLCHARACTERISTICS_TERMINAL_SERVER_AWARE}
+{$SetPEFlags IMAGE_FILE_REMOVABLE_RUN_FROM_SWAP or IMAGE_FILE_NET_RUN_FROM_SWAP or IMAGE_FILE_LARGE_ADDRESS_AWARE}
+
 var
   iniFile: TIniFile;
   sStyle: String;
@@ -50,6 +55,9 @@ begin
   {$IFDEF WIN64}
   TNtTranslator.SetNew(slocale,[],'de');
   {$ENDIF}
+  GlobalWebView2Loader                := TWVLoader.Create(nil);
+  GlobalWebView2Loader.UserDataFolder := ExtractFileDir(Application.ExeName) + '\CustomCache';
+  GlobalWebView2Loader.StartWebView2;
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   {$IFDEF WIN64}
