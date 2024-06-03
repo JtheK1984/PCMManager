@@ -57,7 +57,6 @@ const
   L_SchleswigHolstein = 14;
   L_Thueringen = 15;
 
-function TagImJahr(Datum: TDateTime): word;
 procedure FeiertageBerechnen(Land: Integer; Y: word);
 
 implementation
@@ -65,20 +64,20 @@ implementation
 uses
   SysUtils;
 
-function TagImJahr(Datum: TDateTime): word;
-var
-  T, M, J: word;
-  Erster: TDateTime;
-begin
-  try
-    DecodeDate(Datum, J, M, T);
-    Erster := EncodeDate(J, 1, 1);
-    Result := trunc(Datum - Erster + 1);
-  except
-    Result := 0;
-  end;
-end;
 procedure FeiertageBerechnen(Land: Integer; Y: word);
+  function TagImJahr(Datum: TDateTime): word;
+  var
+    T, M, J: word;
+    Erster: TDateTime;
+  begin
+    try
+      DecodeDate(Datum, J, M, T);
+      Erster := EncodeDate(J, 1, 1);
+      Result := trunc(Datum - Erster + 1);
+    except
+      Result := 0;
+    end;
+  end;
 var
   D, dw, OM, aw: word;
   Dat: TDateTime;

@@ -58,6 +58,10 @@ uses
   DateUtils,
   PCM.Strings;
 
+{$Region Formfunctions}
+////////////////////////////////////////////////////////////////////////////////
+// Formfunctions                                                               //
+////////////////////////////////////////////////////////////////////////////////
 function Tfrm_FeiertageAktualisieren.Execute(out von, bis: TDateTime): Boolean;
 begin
   dEdt_Von.Date := StartOfTheYear(Date);
@@ -84,6 +88,6 @@ procedure Tfrm_FeiertageAktualisieren.btn_AbortClick(Sender: TObject);
 begin
   ModalResult := mrCancel;
 end;
-
+{$EndRegion}
 end.
 

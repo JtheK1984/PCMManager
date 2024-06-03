@@ -69,17 +69,11 @@ implementation
 uses PCMManager.Modul.C_Contacts,
      PCM.Data,PCM.Strings;
 
-procedure Tfrm_PCM_Staatsangehoerigkeit.btn_StaatsangehoerigkeitCancelClick(Sender: TObject);
-begin
-  dm_PCM.qry_Contact_Staatsangehoerigkeit.Cancel;
-end;
-procedure Tfrm_PCM_Staatsangehoerigkeit.btn_StaatsangehoerigkeitDeleteClick(Sender: TObject);
-begin
-  if dm_PCM.qry_Contact_Staatsangehoerigkeit.FieldByName('ID').AsInteger > 0 then
-  begin
-    dm_PCM.qry_Contact_Staatsangehoerigkeit.Delete;
-  end
-end;
+
+{$Region Buttons}
+////////////////////////////////////////////////////////////////////////////////
+// Buttons                                                                    //
+////////////////////////////////////////////////////////////////////////////////
 procedure Tfrm_PCM_Staatsangehoerigkeit.btn_StaatsangehoerigkeitNewClick(Sender: TObject);
 begin
   if dm_PCM.qry_Contact_Staatsangehoerigkeit.State in [dsInsert, dsedit] then
@@ -94,46 +88,47 @@ begin
     dm_PCM.qry_Contact_Staatsangehoerigkeit.Post;
   end;
 end;
-function Tfrm_PCM_Staatsangehoerigkeit.Execute(Caption: string; Recht: integer) :boolean;
+procedure Tfrm_PCM_Staatsangehoerigkeit.btn_StaatsangehoerigkeitCancelClick(Sender: TObject);
 begin
-  dm_PCM.qry_Contact_Staatsangehoerigkeit.Open;
-  Self.Caption := Caption;
-  // Lesen
-  if Recht = 1  then
-  begin
-    btn_StaatsangehoerigkeitNew.Enabled:= false;
-    btn_StaatsangehoerigkeitSave.Enabled:= false;
-    btn_StaatsangehoerigkeitCancel.Enabled:= false;
-    btn_StaatsangehoerigkeitDelete.Enabled:= false;
-  end;
-  // Ändern
-  if Recht = 2  then
-  begin
-    btn_StaatsangehoerigkeitNew.Enabled:= true;
-    btn_StaatsangehoerigkeitSave.Enabled:= true;
-    btn_StaatsangehoerigkeitCancel.Enabled:= true;
-    btn_StaatsangehoerigkeitDelete.Enabled:= False;
-  end;
-  // Vollugriff
-  if Recht = 3  then
-  begin
-    btn_StaatsangehoerigkeitNew.Enabled:= true;
-    btn_StaatsangehoerigkeitSave.Enabled:= true;
-    btn_StaatsangehoerigkeitCancel.Enabled:= true;
-    btn_StaatsangehoerigkeitDelete.Enabled:= true;
-  end;
-  ShowModal;
-  result:= true;
-  Release;
+  dm_PCM.qry_Contact_Staatsangehoerigkeit.Cancel;
 end;
-procedure Tfrm_PCM_Staatsangehoerigkeit.FormShow(Sender: TObject);
+procedure Tfrm_PCM_Staatsangehoerigkeit.btn_StaatsangehoerigkeitDeleteClick(Sender: TObject);
 begin
-  grdDBTblView_StaatsangehoerigkeitBezeichnung.Caption := rs_PCMManager_Staatsangehoerigkeit;
+  if dm_PCM.qry_Contact_Staatsangehoerigkeit.FieldByName('ID').AsInteger > 0 then
+  begin
+    dm_PCM.qry_Contact_Staatsangehoerigkeit.Delete;
+  end
 end;
 procedure Tfrm_PCM_Staatsangehoerigkeit.btn_StaatsangehoerigkeitCloseClick(Sender: TObject);
 begin
   Close;
 end;
-
+{$EndRegion}
+{$Region Execute}
+////////////////////////////////////////////////////////////////////////////////
+// Execute                                                                    //
+////////////////////////////////////////////////////////////////////////////////
+function Tfrm_PCM_Staatsangehoerigkeit.Execute(Caption: string; Recht: integer) :boolean;
+begin
+  dm_PCM.qry_Contact_Staatsangehoerigkeit.Open;
+  Self.Caption := Caption;
+  btn_StaatsangehoerigkeitNew.Enabled:= Recht >= SetReadWrite;
+  btn_StaatsangehoerigkeitSave.Enabled:= Recht >= SetReadWrite;
+  btn_StaatsangehoerigkeitCancel.Enabled:= Recht >= SetReadWrite;
+  btn_StaatsangehoerigkeitDelete.Enabled:= Recht > SetReadWrite;
+  ShowModal;
+  result:= true;
+  Release;
+end;
+{$EndRegion}
+{$Region Formfunctions}
+////////////////////////////////////////////////////////////////////////////////
+// FormFunctions                                                              //
+////////////////////////////////////////////////////////////////////////////////
+procedure Tfrm_PCM_Staatsangehoerigkeit.FormShow(Sender: TObject);
+begin
+  grdDBTblView_StaatsangehoerigkeitBezeichnung.Caption := rs_PCMManager_Staatsangehoerigkeit;
+end;
+{$EndRegion}
 end.
 

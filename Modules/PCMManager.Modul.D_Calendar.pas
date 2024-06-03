@@ -559,7 +559,6 @@ type
     procedure btn_MinMaxBrowserGesClick(Sender: TObject);
     procedure btn_Board_gesClick(Sender: TObject);
     procedure pc_JiraGesChange(Sender: TObject);
-    procedure pc_jiraDetailsClick(Sender: TObject);
     procedure btn_Board_privClick(Sender: TObject);
     procedure btn_ReadTickets_PrivClick(Sender: TObject);
     procedure btn_MinMaxBrowserPrivClick(Sender: TObject);
@@ -571,6 +570,7 @@ type
     procedure cxGridDBTableView1CellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
       AShift: TShiftState; var AHandled: Boolean);
+    procedure pc_jiraDetailsChange(Sender: TObject);
   private
     { Private-Deklarationen }
 
@@ -629,6 +629,7 @@ uses  PCM.Main,
       PCM.Functions.Synch.Wait,
       PCMManager.Helper.Calendar.Ical,
       PCM.Data,
+      PCM.Browser.FullScreen,
       PCM.Strings,
       uwvLoader;
 
@@ -781,11 +782,9 @@ begin
     FWebBrowser.Align := alClient;
     FWebBrowser.OnBeforeNavigate := nil;
   end
-  else begin
-    try
-      FreeAndNil(FWebBrowser);
-    Except
-    end;
+  else
+  begin
+    FreeAndNil(FWebBrowser);
     FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
     FWebBrowser.Parent := AParent;
     FWebBrowser.Align := alClient;
@@ -1222,7 +1221,7 @@ begin
   except
     schedeventE:= nil;
   end;
-  Application.CreateForm(TfNeu, fNeu);
+  Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
 
   if dm_PCM.qry_Kalender_Aufgaben.FieldByName('CompleteDay').asString = 'true' then
     bCompleteDay:= true
@@ -1231,7 +1230,7 @@ begin
 
 
 
-  if fneu.Execute(schedDBStrg_Kalender,dm_PCM.qry_Kalender_Aufgaben.FieldByName('Typ').asInteger,
+  if frm_Calendar_new.Execute(schedDBStrg_Kalender,dm_PCM.qry_Kalender_Aufgaben.FieldByName('Typ').asInteger,
     dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID_Adr_Wurzel').AsInteger,
     dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID_Ansprechpartner').AsInteger,
     dm_PCM.qry_Kalender_Aufgaben.FieldByName('Caption').AsString,
@@ -1259,7 +1258,7 @@ begin
     iNewId) then
   begin
     RefreshTerminundAUfgaben;
-    fNeu:= nil;
+    frm_Calendar_new:= nil;
   end;
 
 end;
@@ -1850,9 +1849,9 @@ procedure Tfrm_Calendar.btn_CalNewClick(Sender: TObject);
 var
   iNewId: integer;
 begin
-  Application.CreateForm(TfNeu, fNeu);
-  fNeu.Execute(schedDBStrg_Kalender,2, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
-  fNeu := nil;
+  Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
+  frm_Calendar_new.Execute(schedDBStrg_Kalender,2, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
+  frm_Calendar_new := nil;
   RefreshTerminundAUfgaben;
 end;
 procedure Tfrm_Calendar.btn_CalTagClick(Sender: TObject);
@@ -2832,9 +2831,9 @@ procedure Tfrm_Calendar.btn_TerminNeuClick(Sender: TObject);
 var
   iNewId: integer;
 begin
-  Application.CreateForm(TfNeu, fNeu);
-  fNeu.Execute(schedDBStrg_Kalender,2, 0, 0, '','',0,sched_Kalender.SelStart,sched_Kalender.SelFinish,0,false,0,0,0,0,0,0,false,false,15,false,0,0,nil,'','',iNewId);
-  fNeu := nil;
+  Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
+  frm_Calendar_new.Execute(schedDBStrg_Kalender,2, 0, 0, '','',0,sched_Kalender.SelStart,sched_Kalender.SelFinish,0,false,0,0,0,0,0,0,false,false,15,false,0,0,nil,'','',iNewId);
+  frm_Calendar_new := nil;
   RefreshTerminundAUfgaben;
 end;
 procedure Tfrm_Calendar.btn_TerminTodayClick(Sender: TObject);
@@ -3310,27 +3309,27 @@ procedure Tfrm_Calendar.btn_NewMessageClick(Sender: TObject);
 var
   iNewId : Integer;
 begin
-  Application.CreateForm(TfNeu, fNeu);
-  fNeu.Execute(schedDBStrg_Kalender,0, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
-  fNeu := nil;
+  Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
+  frm_Calendar_new.Execute(schedDBStrg_Kalender,0, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
+  frm_Calendar_new := nil;
   RefreshTerminundAUfgaben;
 end;
 procedure Tfrm_Calendar.btn_NewTaskClick(Sender: TObject);
 var
   iNewId : Integer;
 begin
-  Application.CreateForm(TfNeu, fNeu);
-  fNeu.Execute(schedDBStrg_Kalender,1, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
-  fNeu := nil;
+  Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
+  frm_Calendar_new.Execute(schedDBStrg_Kalender,1, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
+  frm_Calendar_new := nil;
   RefreshTerminundAUfgaben;
 end;
 procedure Tfrm_Calendar.btn_NewEventClick(Sender: TObject);
 var
   iNewId : Integer;
 begin
-  Application.CreateForm(TfNeu, fNeu);
-  fNeu.Execute(schedDBStrg_Kalender,2, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
-  fNeu := nil;
+  Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
+  frm_Calendar_new.Execute(schedDBStrg_Kalender,2, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
+  frm_Calendar_new := nil;
   RefreshTerminundAUfgaben;
 end;
 procedure Tfrm_Calendar.btn_JobChangeClick(Sender: TObject);
@@ -3369,28 +3368,28 @@ begin
     else
       bCompleteDay:= false;
 
-    Application.CreateForm(TfNeu, fNeu);
+    Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
     qWF_Nachrichten_Anhaenge.First;
     while not qWF_Nachrichten_Anhaenge.Eof do
     begin
-      fNeu.AddAnhang(qWF_Nachrichten_AnhaengeDateiname.AsString, GetAttachmentFilename(qWF_Nachrichten_AnhaengeDateinameSave.AsString));
+      frm_Calendar_new.AddAnhang(qWF_Nachrichten_AnhaengeDateiname.AsString, GetAttachmentFilename(qWF_Nachrichten_AnhaengeDateinameSave.AsString));
       f := GetAttachmentFilename(qWF_Nachrichten_AnhaengeDateinameSave.AsString);
       if f <> '' then
       begin
         Icon := TIcon.Create;
         Icon.Handle := GetFileNameInfo(f, tn);
-        fNeu.lTypeName.Caption := tn;
-        fNeu.Image1.Picture.Assign(Icon);
+        frm_Calendar_new.lTypeName.Caption := tn;
+        frm_Calendar_new.Image1.Picture.Assign(Icon);
         Icon.Free;
       end
       else
       begin
-        fNeu.Image1.Picture.Assign(nil);
-        fNeu.lTypeName.Caption := '';
+        frm_Calendar_new.Image1.Picture.Assign(nil);
+        frm_Calendar_new.lTypeName.Caption := '';
       end;
       qWF_Nachrichten_Anhaenge.Next;
     end;
-      if fNeu.Execute(schedDBStrg_Kalender,dm_PCM.qry_Kalender_Aufgaben.FieldByName('Typ').asInteger,
+      if frm_Calendar_new.Execute(schedDBStrg_Kalender,dm_PCM.qry_Kalender_Aufgaben.FieldByName('Typ').asInteger,
       dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID_Adr_Wurzel').AsInteger,
       dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID_Ansprechpartner').AsInteger,
       dm_PCM.qry_Kalender_Aufgaben.FieldByName('Caption').AsString,
@@ -4067,9 +4066,9 @@ procedure Tfrm_Calendar.pmmbtn_CalNewClick(Sender: TObject);
 var
   iNewId : Integer;
 begin
-  Application.CreateForm(TfNeu, fNeu);
-  fNeu.Execute(schedDBStrg_Kalender,2, 0, 0, '','',0,StrToDateTime(DateToStr(StrToDate(Copy(DateToStr(Date()),1,10))) + ' ' + '08:30:00'),StrToDateTime(DateToStr(StrToDate(Copy(DateToStr(Date()),1,10))) + ' ' + '08:30:00'),0,false,0,0,0,0,0,0,false,false,15,false,0,0,nil,'','',iNewId);
-  fNeu := nil;
+  Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
+  frm_Calendar_new.Execute(schedDBStrg_Kalender,2, 0, 0, '','',0,StrToDateTime(DateToStr(StrToDate(Copy(DateToStr(Date()),1,10))) + ' ' + '08:30:00'),StrToDateTime(DateToStr(StrToDate(Copy(DateToStr(Date()),1,10))) + ' ' + '08:30:00'),0,false,0,0,0,0,0,0,false,false,15,false,0,0,nil,'','',iNewId);
+  frm_Calendar_new := nil;
   RefreshTerminundAUfgaben;
 end;
 procedure Tfrm_Calendar.btn_AttachementOpenClick(Sender: TObject);
@@ -4881,82 +4880,14 @@ begin
   Screen.Cursor := crDefault;
 end;
 procedure Tfrm_Calendar.btn_MinMaxBrowserGesClick(Sender: TObject);
-  procedure ReCreateBrowser;
-  begin
-    if not Assigned(FWebBrowser) then
-    begin
-      FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
-      FWebBrowser.Parent := pnl_BrowserJirages;
-      FWebBrowser.Align := alClient;
-      FWebBrowser.OnBeforeNavigate := nil;
-    end
-    else begin
-      FWebBrowser.Destroy;
-      FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
-      FWebBrowser.Parent := pnl_BrowserJirages;
-      FWebBrowser.Align := alClient;
-      FWebBrowser.OnBeforeNavigate := nil;
-    end;
-  end;
 begin
-  if pnl_BrowserJiraGes.Tag = 0  then
-  begin
-    pnl_BrowserJiraGes.Parent := pnl_design;
-    frm_PCM_main.navbr_main.Width:= 0;
-    brmgr_KalendarBar1.Visible:= false;
-    pnl_BrowserJiraGes.Tag:= 1;
-    btn_MinMaxBrowserGes.Caption:= 'Minimieren';
-    btn_MinMaxBrowserGes.LargeImageIndex:= 31;
-  end
-  else begin
-    pnl_BrowserJiraGes.Parent := cxTabsheet2;
-    frm_PCM_main.navbr_main.Width:= 200;
-    brmgr_KalendarBar1.Visible:= true;
-    btn_MinMaxBrowserGes.Caption:= 'Maximieren';
-    btn_MinMaxBrowserGes.LargeImageIndex:= 32;
-    pnl_BrowserJiraGes.Tag:= 0;
-  end;
-  ReCreateBrowser;
-  FWebBrowser.Navigate(AURL);
+  Application.CreateForm(Tfrm_Browser_FullScreen, frm_Browser_FullScreen);
+  frm_Browser_FullScreen.Execute(True,'Jira - ID Berlin',Aurl);
 end;
-procedure Tfrm_Calendar.btn_MinMaxBrowserPrivClick(Sender: TObject);procedure ReCreateBrowser;
-  begin
-    if not Assigned(FWebBrowser) then
-    begin
-      FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
-      FWebBrowser.Parent := pnl_BrowserJirapriv;
-      FWebBrowser.Align := alClient;
-      FWebBrowser.OnBeforeNavigate := nil;
-    end
-    else begin
-      FWebBrowser.Destroy;
-      FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
-      FWebBrowser.Parent := pnl_BrowserJirapriv;
-      FWebBrowser.Align := alClient;
-      FWebBrowser.OnBeforeNavigate := nil;
-    end;
-  end;
+procedure Tfrm_Calendar.btn_MinMaxBrowserPrivClick(Sender: TObject);
 begin
-  if pnl_BrowserJirapriv.Tag = 0  then
-  begin
-    pnl_BrowserJirapriv.Parent := pnl_design;
-    frm_PCM_main.navbr_main.Width:= 0;
-    brmgr_KalendarBar1.Visible:= false;
-    pnl_BrowserJirapriv.Tag:= 1;
-    btn_MinMaxBrowserpriv.Caption:= 'Minimieren';
-    btn_MinMaxBrowserpriv.LargeImageIndex:= 31;
-  end
-  else begin
-    pnl_BrowserJirapriv.Parent := cxTabsheet3;
-    frm_PCM_main.navbr_main.Width:= 200;
-    brmgr_KalendarBar1.Visible:= true;
-    btn_MinMaxBrowserpriv.Caption:= 'Maximieren';
-    btn_MinMaxBrowserpriv.LargeImageIndex:= 32;
-    pnl_BrowserJirapriv.Tag:= 0;
-  end;
-  ReCreateBrowser;
-  FWebBrowser.Navigate(AURL);
-
+  Application.CreateForm(Tfrm_Browser_FullScreen, frm_Browser_FullScreen);
+  frm_Browser_FullScreen.Execute(True,'Jira - PCM',Aurl);
 end;
 procedure Tfrm_Calendar.btn_Board_privClick(Sender: TObject);
 begin
@@ -4986,9 +4917,11 @@ begin
 end;
 procedure Tfrm_Calendar.pc_KalenderClick(Sender: TObject);
 begin
+  schedDBStrg_Kalender.Reminders.Active:= false;
   if pc_Kalender.Properties.ActivePage = ts_A_kalender then
   begin
     Application.ProcessMessages;
+    schedDBStrg_Kalender.Reminders.Active:= true;
     sched_Kalender.SelectDays(Date, Date, True);
     Application.ProcessMessages;
     dm_PCM.qry_Kalender_Benutzer.SQL.Text:= 'Select ID, CONCAT(Nachname, ' + QuotedStr(', ') + ' ,Vorname) as Name '+'From Benutzer Where ID = :ID';
@@ -5026,7 +4959,7 @@ begin
   end;
   FormResize(Self);
 end;
-procedure Tfrm_Calendar.pc_jiraDetailsClick(Sender: TObject);
+procedure Tfrm_Calendar.pc_jiraDetailsChange(Sender: TObject);
 begin
   if pc_jiraDetails.Properties.ActivePage = ts_ID then
   begin
@@ -5050,7 +4983,6 @@ begin
     AURL:= 'https://pcm-software.atlassian.net/jira/software/projects/PCM/boards/1';
     FWebBrowser.Navigate(AURL)
   end;
-
 end;
 {$Endregion}
 {$Region Stundenplan}
@@ -5272,7 +5204,6 @@ end;
 procedure Tfrm_Calendar.FormShow(Sender: TObject);
   procedure InitializeRights;
   begin
-
     ts_A_kalender.TabVisible:= dm_PCM.iKalender >= SetRead;
     ts_B_Aufgaben.TabVisible:= dm_PCM.iKalender >= SetRead;
     ts_c_Jira.TabVisible:= dm_PCM.iKalender >= SetRead;
@@ -5398,16 +5329,10 @@ begin
   dm_PCM.qry_Work.SQL.Text:=  'Delete FROM manager_kalender ' +
                             'WHERE Date(start) < Date(Now()) and (Kalendername like ''Müll %'' or Kalendername like ''Feiertage %'')' ;
   dm_PCM.qry_Work.ExecSQL;
-
+  schedDBStrg_Kalender.Reminders.Active:= false;
   defaultLabelColor:= 13083265;
   defaultFontColor:= 0;
   FormResize(Self);
-  if (dm_PCM.iModulTab = 3) then
-  begin
-    pc_JiraGes.activepage:= cxTabsheet2;
-//    pc_Jirapriv.activepage:= cxTabsheet2;
-    InitializeBrowser(pnl_BrowserJiraGes);
-  end;
   if (dm_PCM.iModulTab = 1) then
   begin
     Application.ProcessMessages;
@@ -5452,6 +5377,18 @@ begin
 //  tvauf.DataController.Filter.EndUpdate;
 //  tvauf.DataController.Filter.Active:= true;
   SetGridViews(True);
+  if (dm_PCM.iModulTab = 3) then
+  begin
+    pc_JiraGes.activepage:= cxTabsheet2;
+    if GlobalWebView2Loader.Initialized then
+      GlobalWebView2Loader.Destroy;
+    GlobalWebView2Loader:= TWVLoader.Create(nil);
+    GlobalWebView2Loader.UserDataFolder := ExtractFileDir(Application.ExeName) + '\CustomCache\ID';
+    GlobalWebView2Loader.StartWebView2;
+    InitializeBrowser(pnl_BrowserJiraGes);
+  end;
+
+
 end;
 {$EndRegion}
 end.

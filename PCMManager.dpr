@@ -18,7 +18,7 @@ uses
   PCMManager.Modul.C_Contacts.Konfession in 'Modules\PCMManager.Modul.C_Contacts.Konfession.pas' {frm_PCM_Konfession},
   PCMManager.Modul.C_Contacts.Staatsangehoerigkeit in 'Modules\PCMManager.Modul.C_Contacts.Staatsangehoerigkeit.pas' {frm_PCM_Staatsangehoerigkeit},
   PCMManager.Modul.D_Calendar in 'Modules\PCMManager.Modul.D_Calendar.pas' {frm_Calendar},
-  PCMManager.Modul.D_Calandar.Neu in 'Modules\PCMManager.Modul.D_Calandar.Neu.pas' {fNeu},
+  PCMManager.Modul.D_Calandar.Neu in 'Modules\PCMManager.Modul.D_Calandar.Neu.pas' {frm_Calendar_new},
   PCMManager.Modul.D_Calender.Neu.Adresssuche in 'Modules\PCMManager.Modul.D_Calender.Neu.Adresssuche.pas' {fAdressSuche},
   PCMManager.Modul.D_Calendar.Filter in 'Modules\PCMManager.Modul.D_Calendar.Filter.pas' {frm_PCM_KalenderFilter},
   PCMManager.Modul.D_Calendar.Import in 'Modules\PCMManager.Modul.D_Calendar.Import.pas' {frm_PCM_Import},
@@ -28,7 +28,6 @@ uses
   PCMManager.Modul.F_Passwort in 'Modules\PCMManager.Modul.F_Passwort.pas' {frm_password},
   PCMManager.Modul.G_Finanzen in 'Modules\PCMManager.Modul.G_Finanzen.pas' {frm_finanzen},
   PCMManager.Modul.G_Finanzen.Filter.Date in 'Modules\PCMManager.Modul.G_Finanzen.Filter.Date.pas' {frm_PCManagerChooseDate},
-  PCMManager.Modul.G_Finanzen.Report in 'Modules\PCMManager.Modul.G_Finanzen.Report.pas' {frm_PCM_Finanzreport},
   PCM.Main in 'PCM.Main.pas' {frm_PCM_Main},
   PCM.Data in 'PCM.Data.pas' {dm_PCM: TDataModule},
   cxSchedulerStorage in 'Helper\cxSchedulerStorage.pas',
@@ -56,7 +55,7 @@ begin
   TNtTranslator.SetNew(slocale,[],'de');
   {$ENDIF}
   GlobalWebView2Loader                := TWVLoader.Create(nil);
-  GlobalWebView2Loader.UserDataFolder := ExtractFileDir(Application.ExeName) + '\CustomCache';
+  GlobalWebView2Loader.UserDataFolder := ExtractFileDir(Application.ExeName) + '\CustomCache\ID';
   GlobalWebView2Loader.StartWebView2;
   Application.Initialize;
   Application.MainFormOnTaskbar := True;

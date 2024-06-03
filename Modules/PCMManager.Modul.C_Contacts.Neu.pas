@@ -57,11 +57,23 @@ implementation
 
 uses PCM.Data, PCM.Strings;
 
-
+{$Region Buttons}
+////////////////////////////////////////////////////////////////////////////////
+// Buttons                                                                    //
+////////////////////////////////////////////////////////////////////////////////
 procedure Tfrm_PCManagerNewContact.btn_PCManagerLogin_OkClick(Sender: TObject);
 begin
   ModalResult:= mrOK;
 end;
+procedure Tfrm_PCManagerNewContact.btn_PCManagerLogin_CancelClick(Sender: TObject);
+begin
+  ModalResult:= mrCancel;
+end;
+{$EndRegion}
+{$Region Execute}
+////////////////////////////////////////////////////////////////////////////////
+// Execute                                                                    //
+////////////////////////////////////////////////////////////////////////////////
 function Tfrm_PCManagerNewContact.Execute(AModal: boolean; out Anrede : Integer; out Vorname, Name: string): Boolean;
 begin
   result:= false;
@@ -105,10 +117,6 @@ begin
     end;
   end;
 end;
-procedure Tfrm_PCManagerNewContact.btn_PCManagerLogin_CancelClick(Sender: TObject);
-begin
-  ModalResult:= mrCancel;
-end;
-
+{$EndRegion}
 end.
 

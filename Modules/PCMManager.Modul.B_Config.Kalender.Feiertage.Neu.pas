@@ -97,6 +97,10 @@ uses  PCMManager.Modul.B_Config,
       PCMManager.Modul.B_Config.Kalender.Feiertage.Neu.Berechnen,
       PCM.Data,PCM.Strings;
 
+{$Region Formfunctions}
+////////////////////////////////////////////////////////////////////////////////
+// Formfunctions                                                               //
+////////////////////////////////////////////////////////////////////////////////
 procedure TfFeiertageBerechnen.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   memData_Feiertage.Close;
@@ -117,6 +121,11 @@ begin
   tvFeiertageMonat.Caption := rs_PCM_Monat;
   tvFeiertageBezeichnung.Caption := rs_PCM_Bezeichnung;
 end;
+{$EndRegion}
+{$Region Buttons}
+////////////////////////////////////////////////////////////////////////////////
+// Buttons                                                                    //
+////////////////////////////////////////////////////////////////////////////////
 procedure TfFeiertageBerechnen.btn_AbortClick(Sender: TObject);
 begin
   ModalResult := mrCancel;
@@ -176,19 +185,6 @@ begin
   end;
   memData_Feiertage.EnableControls;
   ModalResult := mrOK;
-end;
-function TfFeiertageBerechnen.Execute(AModal: Boolean; AID: Integer) : boolean;
-begin
-  Result:= false;
-  AID_Benutzer:= AID;
-  if AModal then
-  begin
-    ShowModal;
-    if ModalResult = mrOk then
-      Result:= true
-    else
-      Result:= true;
-  end;
 end;
 procedure TfFeiertageBerechnen.btn_BerechnenClick(Sender: TObject);
 var
@@ -252,6 +248,11 @@ begin
   memData_Feiertage.EnableControls;
   GridFeiertage.SetFocus;
 end;
+{$EndRegion}
+{$Region Grid}
+////////////////////////////////////////////////////////////////////////////////
+// Grid                                                                       //
+////////////////////////////////////////////////////////////////////////////////
 procedure TfFeiertageBerechnen.tmFeiertageMonatGetText(Sender: TField; var Text: string; DisplayText: Boolean);
 begin
   if DisplayText then
@@ -269,6 +270,25 @@ begin
     if not Sender.IsNull then
       Text := Format('%.2d.', [Sender.AsInteger]);
 end;
+{$EndRegion}
+{$Region Execute}
+////////////////////////////////////////////////////////////////////////////////
+// Execute                                                                    //
+////////////////////////////////////////////////////////////////////////////////
+function TfFeiertageBerechnen.Execute(AModal: Boolean; AID: Integer) : boolean;
+begin
+  Result:= false;
+  AID_Benutzer:= AID;
+  if AModal then
+  begin
+    ShowModal;
+    if ModalResult = mrOk then
+      Result:= true
+    else
+      Result:= true;
+  end;
+end;
+{$EndRegion}
 
 end.
 

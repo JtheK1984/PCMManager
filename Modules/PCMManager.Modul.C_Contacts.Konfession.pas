@@ -69,17 +69,10 @@ implementation
 uses  PCMManager.Modul.C_Contacts,
       PCM.Data,PCM.Strings;
 
-procedure Tfrm_PCM_Konfession.btn_KonfessionCancelClick(Sender: TObject);
-begin
-  dm_PCM.qry_Contact_Konfession.Cancel;
-end;
-procedure Tfrm_PCM_Konfession.btn_KonfessionDeleteClick(Sender: TObject);
-begin
-  if dm_PCM.qry_Contact_Konfession.FieldByName('ID').AsInteger > 0 then
-  begin
-    dm_PCM.qry_Contact_Konfession.Delete;
-  end
-end;
+{$Region Buttons}
+////////////////////////////////////////////////////////////////////////////////
+// Buttons                                                                    //
+////////////////////////////////////////////////////////////////////////////////
 procedure Tfrm_PCM_Konfession.btn_KonfessionNewClick(Sender: TObject);
 begin
   if dm_PCM.qry_Contact_Konfession.State in [dsInsert, dsedit] then
@@ -94,45 +87,46 @@ begin
     dm_PCM.qry_Contact_Konfession.Post;
   end;
 end;
-function Tfrm_PCM_Konfession.Execute(Caption: string; Recht: integer) :boolean;
+procedure Tfrm_PCM_Konfession.btn_KonfessionCancelClick(Sender: TObject);
 begin
-  Self.Caption := Caption;
-    // Lesen
-  if Recht = 1  then
-  begin
-    btn_KonfessionNew.Enabled:= false;
-    btn_KonfessionSave.Enabled:= false;
-    btn_KonfessionCancel.Enabled:= false;
-    btn_KonfessionDelete.Enabled:= false;
-  end;
-  // Ändern
-  if Recht = 2  then
-  begin
-    btn_KonfessionNew.Enabled:= true;
-    btn_KonfessionSave.Enabled:= true;
-    btn_KonfessionCancel.Enabled:= true;
-    btn_KonfessionDelete.Enabled:= False;
-  end;
-  // Vollugriff
-  if Recht = 3  then
-  begin
-    btn_KonfessionNew.Enabled:= true;
-    btn_KonfessionSave.Enabled:= true;
-    btn_KonfessionCancel.Enabled:= true;
-    btn_KonfessionDelete.Enabled:= true;
-  end;
-  ShowModal;
-  result:= true;
-  Release;
+  dm_PCM.qry_Contact_Konfession.Cancel;
 end;
-procedure Tfrm_PCM_Konfession.FormShow(Sender: TObject);
+procedure Tfrm_PCM_Konfession.btn_KonfessionDeleteClick(Sender: TObject);
 begin
-  grdDBTblView_KonfessionBezeichnung.Caption := rs_PCMManager_Konfession;
+  if dm_PCM.qry_Contact_Konfession.FieldByName('ID').AsInteger > 0 then
+  begin
+    dm_PCM.qry_Contact_Konfession.Delete;
+  end
 end;
 procedure Tfrm_PCM_Konfession.btn_KonfessionCloseClick(Sender: TObject);
 begin
   Close;
 end;
-
+{$EndRegion}
+{$Region Execute}
+////////////////////////////////////////////////////////////////////////////////
+// Execute                                                                    //
+////////////////////////////////////////////////////////////////////////////////
+function Tfrm_PCM_Konfession.Execute(Caption: string; Recht: integer) :boolean;
+begin
+  Self.Caption := Caption;
+  btn_KonfessionNew.Enabled:= Recht >= SetReadWrite;
+  btn_KonfessionSave.Enabled:= Recht >= SetReadWrite;
+  btn_KonfessionCancel.Enabled:= Recht >= SetReadWrite;
+  btn_KonfessionDelete.Enabled:= Recht > SetReadWrite;
+  ShowModal;
+  result:= true;
+  Release;
+end;
+{$EndRegion}
+{$Region Formfunctions}
+////////////////////////////////////////////////////////////////////////////////
+// Formfunctions                                                               //
+////////////////////////////////////////////////////////////////////////////////
+procedure Tfrm_PCM_Konfession.FormShow(Sender: TObject);
+begin
+  grdDBTblView_KonfessionBezeichnung.Caption := rs_PCMManager_Konfession;
+end;
+{$EndRegion}
 end.
 

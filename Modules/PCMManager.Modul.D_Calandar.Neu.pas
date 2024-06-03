@@ -42,7 +42,7 @@ uses
   PCMManager.Helper.Calendar.Neu.Wiederholung, dxSkinWXI, System.uitypes;
 
 type
-  TfNeu = class(TForm)
+  Tfrm_Calendar_new = class(TForm)
     deStart: TcxDateEdit;
     tAnhaenge: TdxMemData;
     dsAnhaenge: TDataSource;
@@ -186,13 +186,14 @@ type
       bStandardFaelligkeitAufgabe: Boolean = False; bCallFromReminder: Boolean = False): Boolean;
     procedure AddAnhang(FileName, FullName: string; bDelete : boolean = False);
     procedure ZeigeWiederholungsInfo();
+    function minutesBetweenEx(Date1, Date2 : TDateTime) : integer;
     function cxMyGetRecurrenceDescriptionString(ARecurrenceInfo: TcxSchedulerEventRecurrenceInfo; AFullDescription: Boolean = False): string;
     function cxMyGetRecurrenceFreqString(ARecurrenceInfo: TcxSchedulerEventRecurrenceInfo; AFullDescription: Boolean = False): string;
     procedure TypAenderung;
   end;
 
 var
-  fNeu: TfNeu;
+  frm_Calendar_new: Tfrm_Calendar_new;
 
 const
   ntAufgabe = 1;
@@ -208,7 +209,7 @@ uses  PCMManager.Modul.D_Calender.Neu.Adresssuche,
 
 {$R *.dfm}
 
-function TfNeu.cxMyGetRecurrenceDescriptionString(ARecurrenceInfo: TcxSchedulerEventRecurrenceInfo; AFullDescription: Boolean = False): string;
+function Tfrm_Calendar_new.cxMyGetRecurrenceDescriptionString(ARecurrenceInfo: TcxSchedulerEventRecurrenceInfo; AFullDescription: Boolean = False): string;
 const
   Weeks: array[1..5] of string = (rs_PCM_ersten, rs_PCM_zweiten, rs_PCM_dritten, rs_PCM_vierten, rs_PCM_letzten);
   Days: array[cxdtEveryDay..cxdtWeekEndDay] of string = (rs_PCM_Tag, rs_PCM_Wochentag, rs_PCM_Wochenend_Tag);
@@ -333,7 +334,7 @@ begin
       Result := Result + GetTimeBounds(APattern);
   end;
 end;
-function TfNeu.cxMyGetRecurrenceFreqString(ARecurrenceInfo: TcxSchedulerEventRecurrenceInfo; AFullDescription: Boolean = False): string;
+function Tfrm_Calendar_new.cxMyGetRecurrenceFreqString(ARecurrenceInfo: TcxSchedulerEventRecurrenceInfo; AFullDescription: Boolean = False): string;
 const
   Weeks: array[1..5] of string = ('ersten', 'zweiten', 'dritten', 'vierten', 'letzten');
   Days: array[cxdtEveryDay..cxdtWeekEndDay] of string = ('Tag', 'Wochentag', 'Wochenend-Tag');
@@ -526,16 +527,17 @@ begin
 //    end;
   end;
 end;
-procedure TfNeu.ZeigeWiederholungsInfo();
+function Tfrm_Calendar_new.minutesBetweenEx(Date1, Date2 : TDateTime) : integer;
+begin
+  result := Trunc (0.5 + (Date2 - Date1)*1440);
+end;
+
+procedure Tfrm_Calendar_new.ZeigeWiederholungsInfo();
 begin
   stbr_New.Panels[0].Text:=cxMyGetRecurrenceDescriptionString(AEvent.RecurrenceInfo, true);
   btn_DelRecurringEv.Enabled := True;
 end;
-function minutesBetweenEx(Date1, Date2 : TDateTime) : integer;
-begin
-  result := Trunc (0.5 + (Date2 - Date1)*1440);
-end;
-procedure TfNeu.TypAenderung;
+procedure Tfrm_Calendar_new.TypAenderung;
 var
   Typ: integer;
 //  dtBis : TDateTime;
@@ -597,7 +599,8 @@ begin
   end;
   // Zeitformat auf Minunten ändern
 end;
-function TfNeu.Execute(AKalenderStorage:TcxSchedulerDBStorage;Typ : Integer; ID_Adr_Wurzel, ID_Ansprechpartner: integer;Betreff, Nachricht: string; ID_WF_Nachrichten_Ursprung: Integer;Start, Faellig: TDateTime; Status2: Integer; Rueckfrage: Boolean; ID_WF_Prioritaeten,ID_WF_AufgabenArten, Dauer, OrtTyp, ID_Firma, ID_Adr_Firmen_Adressen: Integer;Reminder, GanzerTag : Boolean; ReminderBeforeStart: Integer; PrivaterTermin : Boolean;Zeitformat : integer; Erledigungsgrad : double;Event: TcxSchedulerControlEvent; Jira_Ticket, Wiederholung: String;var NewId : Integer;bStandardFaelligkeitAufgabe: Boolean = False; bCallFromReminder: Boolean = False): Boolean;
+
+function Tfrm_Calendar_new.Execute(AKalenderStorage:TcxSchedulerDBStorage;Typ : Integer; ID_Adr_Wurzel, ID_Ansprechpartner: integer;Betreff, Nachricht: string; ID_WF_Nachrichten_Ursprung: Integer;Start, Faellig: TDateTime; Status2: Integer; Rueckfrage: Boolean; ID_WF_Prioritaeten,ID_WF_AufgabenArten, Dauer, OrtTyp, ID_Firma, ID_Adr_Firmen_Adressen: Integer;Reminder, GanzerTag : Boolean; ReminderBeforeStart: Integer; PrivaterTermin : Boolean;Zeitformat : integer; Erledigungsgrad : double;Event: TcxSchedulerControlEvent; Jira_Ticket, Wiederholung: String;var NewId : Integer;bStandardFaelligkeitAufgabe: Boolean = False; bCallFromReminder: Boolean = False): Boolean;
   function WFAddAttachment(AttachmentName: string; FilePath: string; ID_WF_Nachrichten: Integer): Boolean; stdcall;
   var
     fn: string;
@@ -1087,11 +1090,11 @@ begin
   dm_Pcm.qry_Aufgabe_Ansprechpartner.close;
   Release;
 end;
-procedure TfNeu.bCancelClick(Sender: TObject);
+procedure Tfrm_Calendar_new.bCancelClick(Sender: TObject);
 begin
   ModalResult := mrCancel;
 end;
-procedure TfNeu.bSendClick(Sender: TObject);
+procedure Tfrm_Calendar_new.bSendClick(Sender: TObject);
   procedure Hinweis(s: string);
   begin
     MessageDlg(s,mtwarning, [mbOk],0);
@@ -1160,7 +1163,7 @@ begin
     ModalResult := mrOk;
   end;
 end;
-procedure TfNeu.AddAnhang(FileName, FullName: string; bDelete : boolean = False);
+procedure Tfrm_Calendar_new.AddAnhang(FileName, FullName: string; bDelete : boolean = False);
 begin
   try
   tAnhaenge.Append;
@@ -1171,13 +1174,13 @@ begin
   except
   end;
 end;
-procedure TfNeu.btnEraseFirmaClick(Sender: TObject);
+procedure Tfrm_Calendar_new.btnEraseFirmaClick(Sender: TObject);
 begin
   FID_Adr_Wurzel := 0;
   cbAnsprechpartner.ItemIndex := -1;
   edtFirma.Text := '';
 end;
-procedure TfNeu.btnGoToJiraClick(Sender: TObject);
+procedure Tfrm_Calendar_new.btnGoToJiraClick(Sender: TObject);
 //var
 //  sURL: String;
 begin
@@ -1187,7 +1190,7 @@ begin
 //    ShellExecute(self.WindowHandle,'open', PWideChar(sURL) ,nil,nil, SW_SHOWNORMAL);
 //  end;
 end;
-procedure TfNeu.btnAnhangDokumentClick(Sender: TObject);
+procedure Tfrm_Calendar_new.btnAnhangDokumentClick(Sender: TObject);
 //var
 //  sName, sAnzeigeName : String;
 begin
@@ -1212,7 +1215,7 @@ begin
 //    end;
 //  end;
 end;
-procedure TfNeu.btnAnhangHinzufuegenClick(Sender: TObject);
+procedure Tfrm_Calendar_new.btnAnhangHinzufuegenClick(Sender: TObject);
 var
   i: IntegeR;
 begin
@@ -1222,17 +1225,17 @@ begin
       AddAnhang(ExtractFileName(odAnhang.Files[i]), odAnhang.Files[i]);
   end;
 end;
-procedure TfNeu.btnAnhangLoeschenClick(Sender: TObject);
+procedure Tfrm_Calendar_new.btnAnhangLoeschenClick(Sender: TObject);
 begin
   if tAnhaenge.RecordCount > 0 then
     tAnhaenge.Delete;
 end;
-procedure TfNeu.btnAnhangOeffnenClick(Sender: TObject);
+procedure Tfrm_Calendar_new.btnAnhangOeffnenClick(Sender: TObject);
 begin
   if cxGrid1DBTableView1.Controller.FocusedRowIndex > -1 then
     ShellExecute(Application.Handle,nil,PChar(tAnhaengeFullName.AsString),NIL,NIL,SW_SHOWNORMAL)
 end;
-function TfNeu.dauerUmrechnenVonMinute(iFormat : integer; iDauer : double) : double;
+function Tfrm_Calendar_new.dauerUmrechnenVonMinute(iFormat : integer; iDauer : double) : double;
 var
   dMinTag : double;
 begin
@@ -1257,7 +1260,7 @@ begin
     result := roundTo(dMinTag * iDauer,-2);
   end;
 end;
-function TfNeu.dauerUmrechnenInMinute(iFormat : integer; iDauer : double) : double;
+function Tfrm_Calendar_new.dauerUmrechnenInMinute(iFormat : integer; iDauer : double) : double;
 var
   dTagInMinuten : double;
 begin
@@ -1279,7 +1282,7 @@ begin
     result := iDauer * dTagInMinuten;
   end;
 end;
-procedure TfNeu.SetStandardFaelligkeitAufgabe;
+procedure Tfrm_Calendar_new.SetStandardFaelligkeitAufgabe;
 var
   Start, Ende: TDateTime;
 begin
@@ -1291,7 +1294,7 @@ begin
   deEndeAufgabe.Date := Trunc(Ende);
   teEndeAufgabe.Time := Frac(Ende);
 end;
-procedure TfNeu.tAnhaengeAfterScroll(DataSet: TDataSet);
+procedure Tfrm_Calendar_new.tAnhaengeAfterScroll(DataSet: TDataSet);
   function GetFileNameInfo(const FileName: string; out TypeName: string): HICON;
   var
     FileInfo: TSHFileInfo;
@@ -1333,7 +1336,7 @@ begin
     end;
   end;
 end;
-procedure TfNeu.teEndeAufgabePropertiesEditValueChanged(Sender: TObject);
+procedure Tfrm_Calendar_new.teEndeAufgabePropertiesEditValueChanged(Sender: TObject);
 var
   v: integer;
 begin
@@ -1341,7 +1344,7 @@ begin
       deEndeAufgabe.EditValue + teEndeAufgabe.EditValue);
     meDauer.EditValue := v;
 end;
-procedure TfNeu.teStartPropertiesEditValueChanged(Sender: TObject);
+procedure Tfrm_Calendar_new.teStartPropertiesEditValueChanged(Sender: TObject);
 var
   v: Integer;
   Ende: TDateTime;
@@ -1355,11 +1358,11 @@ begin
     teEndeAufgabe.Time := Frac(Ende);
   end;
 end;
-procedure TfNeu.cbTypPropertiesEditValueChanged(Sender: TObject);
+procedure Tfrm_Calendar_new.cbTypPropertiesEditValueChanged(Sender: TObject);
 begin
   TypAenderung;
 end;
-procedure TfNeu.chkbx_CompleteDayPropertiesChange(Sender: TObject);
+procedure Tfrm_Calendar_new.chkbx_CompleteDayPropertiesChange(Sender: TObject);
 begin
   if chkbx_CompleteDay.Checked then
   begin
@@ -1379,12 +1382,12 @@ begin
     label15.Visible:= true;
   end;
 end;
-procedure TfNeu.cbAufgabenArtPropertiesCloseUp(Sender: TObject);
+procedure Tfrm_Calendar_new.cbAufgabenArtPropertiesCloseUp(Sender: TObject);
 begin
   if teBetreff.Text = '' then
     teBetreff.Text := cbAufgabenArt.Text;
 end;
-procedure TfNeu.cbErledigungsgradPropertiesChange(Sender: TObject);
+procedure Tfrm_Calendar_new.cbErledigungsgradPropertiesChange(Sender: TObject);
 begin
   if (cbTyp.EditValue = ntAufgabe) or (cbTyp.EditValue = nttermin) then
   begin
@@ -1404,20 +1407,20 @@ begin
       FErledigungsgrad := cbErledigungsgrad.ItemIndex * 10;
   end;
 end;
-procedure TfNeu.meDauerEnter(Sender: TObject);
+procedure Tfrm_Calendar_new.meDauerEnter(Sender: TObject);
 var
   Typ: integer;
 begin
   Typ := cbTyp.EditValue;
   pDauerFormat.Visible := Typ = ntAufgabe;
 end;
-procedure TfNeu.meDauerExit(Sender: TObject);
+procedure Tfrm_Calendar_new.meDauerExit(Sender: TObject);
 begin
-  if (fNeu.ActiveControl.Name = '') OR (fNeu.ActiveControl.Name = 'teStart') OR
-     (fNeu.ActiveControl.Name = 'cbStatus2') then
+  if (frm_Calendar_new.ActiveControl.Name = '') OR (frm_Calendar_new.ActiveControl.Name = 'teStart') OR
+     (frm_Calendar_new.ActiveControl.Name = 'cbStatus2') then
     pDauerFormat.Hide;
 end;
-procedure TfNeu.meDauerKeyPress(Sender: TObject; var Key: Char);
+procedure Tfrm_Calendar_new.meDauerKeyPress(Sender: TObject; var Key: Char);
 begin
   if not CharinSet(Key, [#8, '0'..'9', FormatSettings.DecimalSeparator]) then
   begin
@@ -1427,7 +1430,7 @@ begin
     Key := #0;
   end;
 end;
-procedure TfNeu.meDauerPropertiesEditValueChanged(Sender: TObject);
+procedure Tfrm_Calendar_new.meDauerPropertiesEditValueChanged(Sender: TObject);
 var
   fCalc : double;
   s : string;
@@ -1453,15 +1456,15 @@ begin
   end;
 
 end;
-procedure TfNeu.mNachrichtPropertiesURLClick(Sender: TcxCustomRichEdit; const URLText: string; Button: TMouseButton);
+procedure Tfrm_Calendar_new.mNachrichtPropertiesURLClick(Sender: TcxCustomRichEdit; const URLText: string; Button: TMouseButton);
 begin
   ShellExecute(0, 'open', PWideChar(URLText), nil, nil, SW_SHOW);
 end;
-procedure TfNeu.pDauerFormat1Exit(Sender: TObject);
+procedure Tfrm_Calendar_new.pDauerFormat1Exit(Sender: TObject);
 begin
   pDauerFormat.Hide;
 end;
-procedure TfNeu.deEndeAufgabePropertiesEditValueChanged(Sender: TObject);
+procedure Tfrm_Calendar_new.deEndeAufgabePropertiesEditValueChanged(Sender: TObject);
 var
   v : Integer;
 begin
@@ -1471,7 +1474,7 @@ begin
   if deStart.Date > deEndeAufgabe.Date then
     deStart.Date := deEndeAufgabe.Date;
 end;
-procedure TfNeu.deStartPropertiesEditValueChanged(Sender: TObject);
+procedure Tfrm_Calendar_new.deStartPropertiesEditValueChanged(Sender: TObject);
 begin
   if deStart.EditModified then
   begin
@@ -1479,13 +1482,13 @@ begin
       deEndeAufgabe.Date  := deStart.Date;
   end;
 end;
-procedure TfNeu.edtFirmaPropertiesEditValueChanged(Sender: TObject);
+procedure Tfrm_Calendar_new.edtFirmaPropertiesEditValueChanged(Sender: TObject);
 begin
   dm_PCM.qry_Aufgabe_Ansprechpartner.SQL.Text := 'SELECT ID,Concat(Nachname,'', '', Vorname) as NameVorname FROM manager_kontakte WHERE Firma = :ID_Adr_Wurzel ORDER By Nachname, Vorname';
   dm_PCM.qry_Aufgabe_Ansprechpartner.ParamByName('ID_Adr_Wurzel').AsString := FFirma;
   dm_PCM.qry_Aufgabe_Ansprechpartner.Open;
 end;
-procedure TfNeu.loescheTempDoks();
+procedure Tfrm_Calendar_new.loescheTempDoks();
 begin
   tAnhaenge.First;
   while not tAnhaenge.Eof do
@@ -1494,31 +1497,31 @@ begin
     tAnhaenge.Next;
   end;
 end;
-procedure TfNeu.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure Tfrm_Calendar_new.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   if ModalResult = mrCancel then
   begin
     loescheTempDoks();
   end;
 end;
-procedure TfNeu.FormShow(Sender: TObject);
+procedure Tfrm_Calendar_new.FormShow(Sender: TObject);
 begin
   Screen.Cursor := crDefault;
   dm_PCM.qry_KalenderAufgaben_Prio.open;
   dm_PCM.qry_KalenderAufgaben_Arten.open;
 end;
-procedure TfNeu.icbReminderAufgabePropertiesEditValueChanged(Sender: TObject);
+procedure Tfrm_Calendar_new.icbReminderAufgabePropertiesEditValueChanged(Sender: TObject);
 begin
   icbReminderAufgabe.Enabled := cbReminderAufgabe.EditValue = True;
 end;
-procedure TfNeu.btnSearchFirmaClick(Sender: TObject);
+procedure Tfrm_Calendar_new.btnSearchFirmaClick(Sender: TObject);
 begin
   Application.CreateForm(TfAdressSuche, fAdressSuche);
   FID_Adr_Wurzel := fAdressSuche.ShowModal;
   fAdressSuche.Free;
   edtFirma.Text := FFirma;//qryWork.FieldByName('Name').AsString;
 end;
-procedure TfNeu.btn_DelRecurringEvClick(Sender: TObject);
+procedure Tfrm_Calendar_new.btn_DelRecurringEvClick(Sender: TObject);
 begin
   if AEvent <> nil then
   begin
@@ -1527,7 +1530,7 @@ begin
     btn_DelRecurringEv.Enabled := False;
   end;
 end;
-procedure TfNeu.btn_SetRecurringEvClick(Sender: TObject);
+procedure Tfrm_Calendar_new.btn_SetRecurringEvClick(Sender: TObject);
 var
   f : TcxSchedulerRecurrenceEventEditorForm;
 begin
@@ -1546,7 +1549,7 @@ begin
 
   FreeAndNil(f);
 end;
-procedure TfNeu.cxRichEdit1PropertiesURLClick(Sender: TcxCustomRichEdit; const URLText: string; Button: TMouseButton);
+procedure Tfrm_Calendar_new.cxRichEdit1PropertiesURLClick(Sender: TcxCustomRichEdit; const URLText: string; Button: TMouseButton);
 begin
   ShowMessage('URL Click');
 end;

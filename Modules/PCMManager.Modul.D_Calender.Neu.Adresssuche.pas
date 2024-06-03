@@ -176,7 +176,7 @@ begin
   if tvAdressen.Controller.FocusedRowIndex > -1 then
   begin
     recSelected := True;
-    fneu.FFirma:= dm_PCM.Qry_work.Fields[0].asString;
+    frm_Calendar_new.FFirma:= dm_PCM.Qry_work.Fields[0].asString;
     modalResult := 1;// dm_PCM.Qry_work.Fields[0].asInteger;
 
   end else
@@ -191,7 +191,7 @@ end;
 procedure TfAdressSuche.tvAdressenCellDblClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
 begin
   recSelected := true;
-  fneu.FFirma:= dm_PCM.Qry_work.Fields[0].asString;
+  frm_Calendar_new.FFirma:= dm_PCM.Qry_work.Fields[0].asString;
   modalResult := 1;//dm_PCM.Qry_work.Fields[0].AsInteger;
 end;
 

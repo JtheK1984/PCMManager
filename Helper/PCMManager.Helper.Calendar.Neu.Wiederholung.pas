@@ -1205,7 +1205,7 @@ begin
     else
       dxMessageDlg(cxGetResourceString(@scxWrongPattern), mtWarning, [mbOK], 0);
   end;
-  fNeu.iCountEvent:= meendafter.EditValue;
+  frm_Calendar_new.iCountEvent:= meendafter.EditValue;
 end;
 procedure TcxSchedulerRecurrenceEventEditorForm.deEndByPropertiesEditValueChanged(Sender: TObject);
 begin

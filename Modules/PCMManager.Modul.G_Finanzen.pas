@@ -219,9 +219,9 @@ implementation
 
 {$R *.dfm}
 
-uses  PCM.Data,
+uses  PCM.Data, PCM.Browser.FullScreen,
       PCMManager.Modul.G_Finanzen.Filter.Date,
-      PCMManager.Modul.G_Finanzen.Report,PCM.Strings;
+      PCM.Strings;
 
 procedure Tfrm_finanzen.Execute(ATag,AActiveTab: integer);
 begin
@@ -234,6 +234,27 @@ begin
   4: AG_pc_Finanzen.ActivePage:= ts_verf;
   end;
 end;
+procedure Tfrm_finanzen.SetGridViews(Show:boolean);
+begin
+  if Show then
+  begin
+    SaveGridViewEin := TSavedGridView.Create(GV_Einnahmen,dm_PCM.iIDBenutzerPCM, tv_Einnahmen);
+    SaveGridViewEin.LoadView;
+    SaveGridViewAus := TSavedGridView.Create(GV_Ausgaben,dm_PCM.iIDBenutzerPCM, tv_ausgaben);
+    SaveGridViewAus.LoadView;
+    SaveGridViewVerf := TSavedGridView.Create(GV_Verfuegung,dm_PCM.iIDBenutzerPCM, tv_ausgaben1);
+    SaveGridViewVerf.LoadView;
+  end
+  else begin
+    SaveGridViewEin.SaveView(0);
+    SaveGridViewEin.Free;
+    SaveGridViewAus.SaveView(0);
+    SaveGridViewAus.Free;
+    SaveGridViewVerf.SaveView(0);
+    SaveGridViewVerf.Free;
+  end;
+end;
+
 procedure Tfrm_finanzen.FormActivate(Sender: TObject);
 begin
   FormShow(Self);
@@ -257,26 +278,7 @@ begin
   SetFinanzUebersicht;
   SetGridViews(True);
 end;
-procedure Tfrm_finanzen.SetGridViews(Show:boolean);
-begin
-  if Show then
-  begin
-    SaveGridViewEin := TSavedGridView.Create(GV_Einnahmen,dm_PCM.iIDBenutzerPCM, tv_Einnahmen);
-    SaveGridViewEin.LoadView;
-    SaveGridViewAus := TSavedGridView.Create(GV_Ausgaben,dm_PCM.iIDBenutzerPCM, tv_ausgaben);
-    SaveGridViewAus.LoadView;
-    SaveGridViewVerf := TSavedGridView.Create(GV_Verfuegung,dm_PCM.iIDBenutzerPCM, tv_ausgaben1);
-    SaveGridViewVerf.LoadView;
-  end
-  else begin
-    SaveGridViewEin.SaveView(0);
-    SaveGridViewEin.Free;
-    SaveGridViewAus.SaveView(0);
-    SaveGridViewAus.Free;
-    SaveGridViewVerf.SaveView(0);
-    SaveGridViewVerf.Free;
-  end;
-end;
+
 procedure Tfrm_finanzen.btn_FinAusCancelClick(Sender: TObject);
 begin
   bnew:= False;
@@ -1064,8 +1066,12 @@ begin
     slFileAfter.SaveToFile(TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Finanzübersicht.html');
     slFileAfter.Free;
     slFileBefore.Free;
-    Application.CreateForm(Tfrm_PCM_Finanzreport,frm_PCM_Finanzreport);
-    frm_PCM_Finanzreport.ShowModal;
+    DeleteFile(TPath.Combine(TPath.GetDirectoryName(Application.ExeName),'Report') + 'Temp_Finanzübersicht.html');
+    Application.CreateForm(Tfrm_Browser_FullScreen, frm_Browser_FullScreen);
+    frm_Browser_FullScreen.Execute(True,'PCM - Manager: Finanzübersicht',TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Finanzübersicht.html');
+
+//    Application.CreateForm(Tfrm_PCM_Finanzreport,frm_PCM_Finanzreport);
+//    frm_PCM_Finanzreport.ShowModal;
 
   except
   end;
