@@ -217,7 +217,7 @@
             <Form>cxSchedulerReminderForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <BuildConfiguration Include="Base">
+        <BuildConfiguration Include="Base"> 
             <Key>Base</Key>
         </BuildConfiguration>
         <BuildConfiguration Include="Debug">
