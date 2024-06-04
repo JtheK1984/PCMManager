@@ -3787,13 +3787,13 @@ object frm_PCM_Main: Tfrm_PCM_Main
           Item = iAusgaben
         end
         item
-          Item = navbrit_Belege
+          Item = iBelege
+        end
+        item
+          Item = iGutscheine
         end
         item
           Item = navbrit_Verfuegung
-        end
-        item
-          Item = navbrit_Gutscheine
         end>
     end
     object navbrgrp_Info: TdxNavBarGroup
@@ -3925,13 +3925,15 @@ object frm_PCM_Main: Tfrm_PCM_Main
       SmallImageIndex = 23
       Visible = False
     end
-    object navbrit_Belege: TdxNavBarItem
+    object iBelege: TdxNavBarItem
       Caption = 'Belege'
-      Visible = False
+      SmallImageIndex = 5
+      OnClick = NavBarClick
     end
-    object navbrit_Gutscheine: TdxNavBarItem
+    object iGutscheine: TdxNavBarItem
       Caption = 'Gutscheine'
-      Visible = False
+      SmallImageIndex = 6
+      OnClick = NavBarClick
     end
     object iAufgaben: TdxNavBarItem
       Caption = 'Aufgaben'
@@ -4687,8 +4689,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
                   end
                 end
                 object pnl_FixSoll: TcxGroupBox
@@ -4752,8 +4752,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
                   end
                 end
                 object pnl_VarISoll: TcxGroupBox
@@ -4817,8 +4815,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
                   end
                 end
                 object pnl_GesSoll: TcxGroupBox
@@ -5163,8 +5159,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
                   end
                 end
                 object pnl_FixIst: TcxGroupBox
@@ -5228,8 +5222,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
                   end
                 end
                 object pnl_VarISt: TcxGroupBox
@@ -5293,8 +5285,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
                   end
                 end
                 object pnl_GesIst: TcxGroupBox
@@ -5639,8 +5629,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
                   end
                 end
                 object pnl_FixDiff: TcxGroupBox
@@ -5704,8 +5692,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
                   end
                 end
                 object pnl_VarIDiff: TcxGroupBox
@@ -5769,8 +5755,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
                   end
                 end
                 object pnl_GesDiff: TcxGroupBox

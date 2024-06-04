@@ -34,7 +34,7 @@ uses
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   cxGridCustomPopupMenu, cxGridPopupMenu, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, dxBar,System.UITypes, Xml.XMLIntf,Xml.XMLDoc, Xml.xmldom,
-  Xml.Win.msxmldom,cxGridExportLink,PCM.Functions, dxSkinWXI;
+  Xml.Win.msxmldom,cxGridExportLink,PCM.Functions, dxSkinWXI, dxBarCode;
 
 type
   Tfrm_finanzen = class(TForm)
@@ -172,6 +172,80 @@ type
     dxBarLargeButton3: TdxBarLargeButton;
     dxBarLargeButton4: TdxBarLargeButton;
     pnl_Design: TcxGroupBox;
+    D_tsBelege: TcxTabSheet;
+    E_tsGutschein: TcxTabSheet;
+    dxBarDockControl3: TdxBarDockControl;
+    dxBarDockControl4: TdxBarDockControl;
+    dxBarManager1Bar3: TdxBar;
+    btn_BelegeNew: TdxBarLargeButton;
+    btn_BelegeSave: TdxBarLargeButton;
+    btn_BelegeCancel: TdxBarLargeButton;
+    btn_BelegeDelete: TdxBarLargeButton;
+    dxBarManager1Bar4: TdxBar;
+    btn_GutscheinNew: TdxBarLargeButton;
+    btn_GutscheinSave: TdxBarLargeButton;
+    btn_GutscheinCancel: TdxBarLargeButton;
+    btn_GutscheinDelete: TdxBarLargeButton;
+    gbx_Finanzen_Belege: TcxGroupBox;
+    pnl_Finanzen_Belege: TcxGroupBox;
+    lbl_BelegeDatum: TcxLabel;
+    lbl_BelegeBetrag: TcxLabel;
+    lbl_BelegeJahr: TcxLabel;
+    lbl_BelegeMonat: TcxLabel;
+    lbl_BelegeNummer: TcxLabel;
+    lbl_BelegeKategorie: TcxLabel;
+    cx_BelegJahr: TcxDBComboBox;
+    cx_BelegMonat: TcxDBImageComboBox;
+    edt_BelegeNummer: TcxDBTextEdit;
+    lbl_BelegeAusteller: TcxLabel;
+    grd_Finanzen_Belege: TcxGrid;
+    tv_Belege: TcxGridDBTableView;
+    glvl_Belege: TcxGridLevel;
+    gbx_Finanzen_Gutscheine: TcxGroupBox;
+    grd_Finanzen_Gutscheine: TcxGrid;
+    cxGridDBTableView2: TcxGridDBTableView;
+    cxGridLevel3: TcxGridLevel;
+    pm_Belege: TcxGridPopupMenu;
+    pm_Gutscheine: TcxGridPopupMenu;
+    pmm_Belege: TdxBarPopupMenu;
+    NachEx1: TdxBarButton;
+    pmm_Gutscheine: TdxBarPopupMenu;
+    NachExcelexportieren2: TdxBarButton;
+    qBelege: TFDQuery;
+    dsBelege: TDataSource;
+    lbl_BelegeGueltig: TcxLabel;
+    edt_BelegeBetrag: TcxDBCurrencyEdit;
+    edt_BelegeAussteller: TcxDBTextEdit;
+    cbx_BelegeKategorie: TcxDBImageComboBox;
+    tv_BelegeNummer: TcxGridDBColumn;
+    tv_BelegeDatum: TcxGridDBColumn;
+    tv_BelegeAussteller: TcxGridDBColumn;
+    tv_BelegeBetrag: TcxGridDBColumn;
+    tv_BelegeKategorie: TcxGridDBColumn;
+    tv_BelegeJahr: TcxGridDBColumn;
+    tv_BelegeMonat: TcxGridDBColumn;
+    edt_BelegDatum: TcxDBDateEdit;
+    cxGroupBox1: TcxGroupBox;
+    lbl_GutscheinDatum: TcxLabel;
+    lbl_GutscheinWert: TcxLabel;
+    lbl_GutscheinNummer: TcxLabel;
+    lbl_GutscheinRestwert: TcxLabel;
+    edt_GutscheinNummer: TcxDBTextEdit;
+    lbl_GutscheinAussteller: TcxLabel;
+    lbl_GutscheinPin: TcxLabel;
+    edt_GutscheinWert: TcxDBCurrencyEdit;
+    edt_GutscheinAussteller: TcxDBTextEdit;
+    edt_GutscheinDatum: TcxDBDateEdit;
+    edt_GutscheinRestwert: TcxDBCurrencyEdit;
+    edt_GutscheinPin: TcxDBTextEdit;
+    qGutschein: TFDQuery;
+    dsGutschein: TDataSource;
+    cxGridDBTableView2Nummer: TcxGridDBColumn;
+    cxGridDBTableView2Bezeichnung: TcxGridDBColumn;
+    cxGridDBTableView2Datum: TcxGridDBColumn;
+    cxGridDBTableView2Wert: TcxGridDBColumn;
+    cxGridDBTableView2Restwert: TcxGridDBColumn;
+    cxGridDBTableView2AbfragePin: TcxGridDBColumn;
     procedure btn_FinanzenDruckenClick(Sender: TObject);
     procedure SetButtonsEnableVisible(DataSet: TDataSet);
     procedure chkbx_FinAusFixkostenPropertiesChange(Sender: TObject);
@@ -195,6 +269,16 @@ type
     procedure dxBarLargeButton3Click(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure NachExcelexportieren2Click(Sender: TObject);
+    procedure NachEx1Click(Sender: TObject);
+    procedure btn_BelegeNewClick(Sender: TObject);
+    procedure btn_BelegeSaveClick(Sender: TObject);
+    procedure btn_BelegeCancelClick(Sender: TObject);
+    procedure btn_BelegeDeleteClick(Sender: TObject);
+    procedure btn_GutscheinSaveClick(Sender: TObject);
+    procedure btn_GutscheinNewClick(Sender: TObject);
+    procedure btn_GutscheinCancelClick(Sender: TObject);
+    procedure btn_GutscheinDeleteClick(Sender: TObject);
   private
     { Private-Deklarationen }
 //    rep: TDmReports;
@@ -232,6 +316,8 @@ begin
   2: AG_pc_Finanzen.ActivePage:= B_ts_Ein;
   3: AG_pc_Finanzen.ActivePage:= C_ts_Aus;
   4: AG_pc_Finanzen.ActivePage:= ts_verf;
+  5: AG_pc_Finanzen.ActivePage:= D_tsBelege;
+  6: AG_pc_Finanzen.ActivePage:= E_tsGutschein;
   end;
 end;
 procedure Tfrm_finanzen.SetGridViews(Show:boolean);
@@ -254,7 +340,6 @@ begin
     SaveGridViewVerf.Free;
   end;
 end;
-
 procedure Tfrm_finanzen.FormActivate(Sender: TObject);
 begin
   FormShow(Self);
@@ -273,6 +358,8 @@ begin
   2: AG_pc_Finanzen.ActivePage:= B_ts_Ein;
   3: AG_pc_Finanzen.ActivePage:= C_ts_Aus;
   4: AG_pc_Finanzen.ActivePage:= ts_verf;
+  5: AG_pc_Finanzen.ActivePage:= D_tsBelege;
+  6: AG_pc_Finanzen.ActivePage:= E_tsGutschein;
   end;
   AG_pc_Finanzen.OnChange:= AG_pc_FinanzenChange;
   SetFinanzUebersicht;
@@ -409,6 +496,72 @@ begin
     bNew:= false;
   end;
 end;
+procedure Tfrm_finanzen.btn_GutscheinCancelClick(Sender: TObject);
+begin
+  bnew:= False;
+  qGutschein.Cancel;
+end;
+
+procedure Tfrm_finanzen.btn_GutscheinDeleteClick(Sender: TObject);
+begin
+  bNew:= false;
+  if qGutschein.FieldByName('ID').AsInteger > 0 then
+  begin
+    dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+    dm_PCM.qry_work.ParamByName('Message').AsString:= 'Gutschein ' + qGutschein.FieldByName('Nummer').asString + ' wurde gelöscht';
+    dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_work.execsql;
+    qGutschein.Delete;
+  end
+end;
+procedure Tfrm_finanzen.btn_GutscheinNewClick(Sender: TObject);
+begin
+  if qGutschein.State in [dsInsert, dsedit] then
+    qGutschein.Post;
+  qGutschein.Append;
+  qGutschein.Insert;
+  qGutschein.FieldByName('Datum').AsDateTime:= Date();
+  qGutschein.FieldByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+  if not edt_GutscheinNummer.Enabled then
+  begin
+    edt_GutscheinNummer .Enabled:= true;
+    edt_GutscheinAussteller .Enabled:= true;
+    edt_GutscheinDatum .Enabled:= true;
+    edt_GutscheinWert .Enabled:= true;
+    edt_GutscheinRestwert .Enabled:= true;
+    edt_GutscheinPin .Enabled:= true;
+  end;
+  edt_GutscheinNummer.SetFocus;
+  bNew:= true;
+end;
+
+procedure Tfrm_finanzen.btn_GutscheinSaveClick(Sender: TObject);
+begin
+ if qGutschein.State in [dsInsert, dsEdit] then
+  begin
+    edt_GutscheinNummer.PostEditValue;
+    edt_GutscheinAussteller.PostEditValue;
+    edt_GutscheinWert.PostEditValue;
+    edt_GutscheinRestwert.PostEditValue;
+    edt_GutscheinPin.PostEditValue;
+    qGutschein.Post;
+    if bnew then
+    begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Neuer Gutschein ' + qGutschein.FieldByName('Nummer').asString + ' wurde angelegt';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+    end
+    else begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Gutschein ' + qGutschein.FieldByName('Nummer').asString + ' wurde geändert';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+    end;
+    bNew:= false;
+  end;
+end;
+
 procedure Tfrm_finanzen.chkbx_FinAusFixkostenPropertiesChange(Sender: TObject);
 begin
   if chkbx_FinAusFixkosten.Checked then
@@ -555,6 +708,11 @@ begin
     MessageDlg(rs_PCMManager_GridExport1 + sdlg_Ausgaben.FileName +  rs_PCMManager_GridExport2, mtInformation, [mbOk], 0);
   end;
 end;
+procedure Tfrm_finanzen.NachEx1Click(Sender: TObject);
+begin
+  ShowMessage('Belege');
+end;
+
 procedure Tfrm_finanzen.NachExcelexportieren1Click(Sender: TObject);
 begin
   if sdlg_Einnahmen.Execute then
@@ -563,6 +721,11 @@ begin
     MessageDlg(rs_PCMManager_GridExport1 + sdlg_Einnahmen.FileName +  rs_PCMManager_GridExport2, mtInformation, [mbOk], 0);
   end;
 end;
+procedure Tfrm_finanzen.NachExcelexportieren2Click(Sender: TObject);
+begin
+  ShowMessage('Gutschein');
+end;
+
 procedure Tfrm_finanzen.SetButtons;
 begin
   // AG_Finanzeneinnahmen
@@ -570,10 +733,16 @@ begin
   begin
     btn_FinEinSave.Enabled := qEinnahmen.State in [dsInsert, dsEdit];
     btn_FinEinCancel.Enabled := qEinnahmen.State in [dsInsert, dsEdit];
+    btn_BelegeSave.Enabled := qBelege.State in [dsInsert, dsEdit];
+    btn_BelegeCancel.Enabled := qBelege.State in [dsInsert, dsEdit];
+    btn_GutscheinSave.Enabled := qGutschein.State in [dsInsert, dsEdit];
+    btn_GutscheinCancel.Enabled := qGutschein.State in [dsInsert, dsEdit];
   end;
   if dm_PCM.iEinnahmen = 3 then
   begin
     btn_FinEinDelete.Enabled := (not qEinnahmen.Eof) and not (qEinnahmen.State in [dsInsert, dsEdit]);
+    btn_BelegeDelete.Enabled := (not qBelege.Eof) and not (qBelege.State in [dsInsert, dsEdit]);
+    btn_GutscheinDelete.Enabled := (not qGutschein.Eof) and not (qGutschein.State in [dsInsert, dsEdit]);
   end;
   if qEinnahmen.RecordCount = 0  then
   begin
@@ -587,6 +756,51 @@ begin
       edt_FinEinAbsender.enabled:= true;
       edt_FinEinBez.enabled:= true;
       edt_FinEinBetrag.enabled:= true;
+    end;
+  end;
+
+
+  if qBelege.RecordCount = 0  then
+  begin
+    edt_BelegeNummer.enabled:= false;
+    edt_BelegDatum.enabled:= false;
+    edt_BelegeBetrag.enabled:= false;
+    edt_BelegeAussteller.enabled:= false;
+    cbx_BelegeKategorie.enabled:= false;
+    cx_BelegMonat.Enabled:= false;
+    cx_BelegJahr.Enabled:= false;
+  end
+  else begin
+    if dm_PCM.iEinnahmen >= 2 then
+    begin
+      edt_BelegeNummer.enabled:= true;
+      edt_BelegDatum.enabled:= true;
+      edt_BelegeBetrag.enabled:= true;
+      edt_BelegeAussteller.enabled:= true;
+      cbx_BelegeKategorie.enabled:= true;
+      cx_BelegMonat.Enabled:= true;
+      cx_BelegJahr.Enabled:= true;
+    end;
+  end;
+
+  if qgutschein.RecordCount = 0  then
+  begin
+    edt_GutscheinNummer.enabled:= false;
+    edt_GutscheinAussteller.enabled:= false;
+    edt_GutscheinDatum.enabled:= false;
+    edt_GutscheinWert.enabled:= false;
+    edt_GutscheinRestwert.enabled:= false;
+    edt_GutscheinPin.enabled:= false;
+  end
+  else begin
+    if dm_PCM.iEinnahmen >= 2 then
+    begin
+    edt_GutscheinNummer.enabled:= true;
+    edt_GutscheinAussteller.enabled:= true;
+    edt_GutscheinDatum.enabled:= true;
+    edt_GutscheinWert.enabled:= true;
+    edt_GutscheinRestwert.enabled:= true;
+    edt_GutscheinPin.enabled:= true;
     end;
   end;
 
@@ -635,6 +849,12 @@ begin
   qEinnahmen.Filtered:= true;
   qAusgaben.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
   qAusgaben.Filtered:= true;
+  qGutschein.Open;
+  qGutschein.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+  qGutschein.Filtered:= true;
+  qBelege.Open;
+  qBelege.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+  qBelege.Filtered:= true;
   tv_AusgabenName.Caption := rs_PCMManager_AusgabenEmpfaenger;
   tv_AusgabenBeschreibung.Caption := rs_PCM_Beschreibung;
   tv_Ausgabenverwendungszweck.Caption := rs_PCMManager_Verwendungszweck;
@@ -748,6 +968,77 @@ begin
     frm_PCManagerChooseDate.Free;
   end;
 end;
+procedure Tfrm_finanzen.btn_BelegeCancelClick(Sender: TObject);
+begin
+  bnew:= False;
+  qBelege.Cancel;
+end;
+
+procedure Tfrm_finanzen.btn_BelegeDeleteClick(Sender: TObject);
+begin
+  bNew:= false;
+  if qBelege.FieldByName('ID').AsInteger > 0 then
+  begin
+    dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+    dm_PCM.qry_work.ParamByName('Message').AsString:= 'Belege ' + qBelege.FieldByName('Nummer').asString + ' wurde gelöscht';
+    dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_work.execsql;
+    qBelege.Delete;
+  end
+end;
+procedure Tfrm_finanzen.btn_BelegeNewClick(Sender: TObject);
+var
+  iJahr, iMonat,iTag : word;
+begin
+  if qBelege.State in [dsInsert, dsedit] then
+    qBelege.Post;
+  qBelege.Append;
+  qBelege.Insert;
+  DecodeDate(Now(),iJahr,iMonat,iTag);
+  qBelege.FieldByName('Kategorie').AsInteger:=0;
+  qBelege.FieldByName('Datum').AsDateTime:= Date();
+  qBelege.FieldByName('Monat').AsInteger:= iMonat;
+  qBelege.FieldByName('Jahr').AsInteger:= iJahr;
+  qBelege.FieldByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+  if not edt_BelegeNummer.Enabled then
+  begin
+    edt_BelegeNummer.Enabled:= true;
+    edt_BelegDatum.Enabled:= true;
+    edt_BelegeAussteller.Enabled:= true;
+    edt_BelegeBetrag.Enabled:= true;
+    cbx_BelegeKategorie.Enabled:= true;
+    cx_BelegMonat.Enabled:= true;
+    cx_BelegJahr.Enabled:= true;
+  end;
+  edt_BelegeNummer.SetFocus;
+  bNew:= true;
+end;
+
+procedure Tfrm_finanzen.btn_BelegeSaveClick(Sender: TObject);
+begin
+ if qBelege.State in [dsInsert, dsEdit] then
+  begin
+    edt_BelegeNummer.PostEditValue;
+    edt_BelegeAussteller.PostEditValue;
+    edt_BelegeBetrag.PostEditValue;
+    qBelege.Post;
+    if bnew then
+    begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Neuer Beleg ' + qBelege.FieldByName('Nummer').asString + ' wurde angelegt';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+    end
+    else begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Beleg ' + qBelege.FieldByName('Nummer').asString + ' wurde geändert';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+    end;
+    bNew:= false;
+  end;
+end;
+
 procedure Tfrm_finanzen.btn_FinanzenDruckenClick(Sender: TObject);
   function ReplaceHTML(AValue: String) : string;
   begin

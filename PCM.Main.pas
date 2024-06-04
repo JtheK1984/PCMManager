@@ -108,8 +108,8 @@ type
     navbrit_ChangePW: TdxNavBarItem;
     navbrStyleIt_main: TdxNavBarStyleItem;
     pcmain: TcxPageControl;
-    navbrit_Belege: TdxNavBarItem;
-    navbrit_Gutscheine: TdxNavBarItem;
+    iBelege: TdxNavBarItem;
+    iGutscheine: TdxNavBarItem;
     iAufgaben: TdxNavBarItem;
     td_Dashboard: TcxTabSheet;
     pnl_chartBottom: TcxGroupBox;
@@ -747,7 +747,7 @@ begin
       begin
         sModul:= Module.ModuleName;
         sModulCaption:= Module.ModuleName;
-        case AnsiIndexStr(sModul, ['iBenutzerverwaltung','iKonfiguration','iDesign','iKontakte','iKalender','iAufgaben','iStundenplan','iEMails','iPasswoerter','iSerials','iMonatsuebersicht','iEinnahmen','iAusgaben','iSysteminfo','iInfo','iHandbuch','iJira']) of
+        case AnsiIndexStr(sModul, ['iBenutzerverwaltung','iKonfiguration','iDesign','iKontakte','iKalender','iAufgaben','iStundenplan','iEMails','iPasswoerter','iSerials','iMonatsuebersicht','iEinnahmen','iAusgaben','iSysteminfo','iInfo','iHandbuch','iJira','iBelege','iGutscheine']) of
         0:
           begin
             sModulCaption := 'i'  + rs_PCM_Benutzerverwaltung;
@@ -841,6 +841,19 @@ begin
             sModul:= 'Kalender_AuKalender_Aufgaben_Jira_Stundenplanfgaben_Stundenplan';
             sModulCaption := 'i'  + rs_PCMManager_KalenderStundenplan;
             dm_PCM.iModulTab:= 3;
+          end;
+        17:
+          begin
+            sModul:= 'Finanzen';
+            sModulCaption := 'i'  + rs_PCMManager_Finanzuebersicht;
+            dm_PCM.iModulTab:= 5;
+          end;
+
+        18:
+          begin
+            sModul:= 'Finanzen';
+            sModulCaption := 'i'  + rs_PCMManager_Finanzuebersicht;
+            dm_PCM.iModulTab:= 6;
           end;
         end;
         iPageIndex := TabExist('tsh' + sModul);
@@ -1074,6 +1087,8 @@ procedure Tfrm_PCM_Main.FormShow(Sender: TObject);
     RegisterForm('iMonatsuebersicht',Tfrm_finanzen, @frm_finanzen, 1);
     RegisterForm('iEinnahmen',Tfrm_finanzen, @frm_finanzen, 1);
     RegisterForm('iAusgaben',Tfrm_finanzen, @frm_finanzen, 1);
+    RegisterForm('iBelege',Tfrm_finanzen, @frm_finanzen, 1);
+    RegisterForm('iGutscheine',Tfrm_finanzen, @frm_finanzen, 1);
     RegisterForm('iSysteminfo',Tfrm_PCM_System, @frm_PCM_System, 1);
     RegisterForm('iInfo',Tfrm_PCM_InfoApp, @frm_PCM_InfoApp, 1);
     RegisterForm('iHandbuch',Tfrm_Handbuch, @frm_Handbuch, 1);
