@@ -3994,16 +3994,17 @@ object frm_PCM_Main: Tfrm_PCM_Main
       ParentBackground = False
       ParentColor = False
       TabOrder = 0
-      Properties.ActivePage = td_Dashboard
+      Properties.ActivePage = ts_Dashboard
       Properties.CustomButtons.Buttons = <>
       Properties.Images = dm_PCM.imglst_16x16
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
       OnPageChanging = pcmainPageChanging
+      ExplicitTop = 0
       ClientRectBottom = 714
       ClientRectLeft = 2
       ClientRectRight = 1052
       ClientRectTop = 28
-      object td_Dashboard: TcxTabSheet
+      object ts_Dashboard: TcxTabSheet
         AllowCloseButton = False
         Caption = 'Dashboard'
         ImageIndex = 79
@@ -4069,7 +4070,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     object chartctrl_BirthdaySeries: TdxChartSimpleSeries
                       Caption = 'Wert'
                       DataBindingType = 'DB'
-                      DataBinding.DataSource = dm_PCM.ds_ChartGeburtstage
                       DataBinding.ArgumentField.FieldName = 'Monatbes'
                       DataBinding.ValueField.FieldName = 'Wert'
                       ViewType = 'Pie'
@@ -4116,7 +4116,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     object chartctrl_ContactSeries: TdxChartSimpleSeries
                       Caption = 'Wert'
                       DataBindingType = 'DB'
-                      DataBinding.DataSource = dm_PCM.ds_ChartKontaktart
                       DataBinding.ArgumentField.FieldName = 'Privat'
                       DataBinding.ValueField.FieldName = 'Wert'
                       ViewType = 'Pie'
@@ -4158,7 +4157,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     object chartctrl_AdressesSeries: TdxChartSimpleSeries
                       Caption = 'Wert'
                       DataBindingType = 'DB'
-                      DataBinding.DataSource = dm_PCM.ds_ChartAdressen
                       DataBinding.ArgumentField.FieldName = 'Privat'
                       DataBinding.ValueField.FieldName = 'Wert'
                       ViewType = 'Pie'
@@ -4227,7 +4225,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     object chartctrl_CalSeries: TdxChartSimpleSeries
                       Caption = 'Wert'
                       DataBindingType = 'DB'
-                      DataBinding.DataSource = dm_PCM.ds_ChartKalender
                       DataBinding.ArgumentField.FieldName = 'heute'
                       DataBinding.ValueField.FieldName = 'Wert'
                       ViewType = 'Pie'
@@ -4269,7 +4266,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     object chartctrl_CalCategoriesSeries: TdxChartSimpleSeries
                       Caption = 'Wert'
                       DataBindingType = 'DB'
-                      DataBinding.DataSource = dm_PCM.ds_ChartKategorie
                       DataBinding.ArgumentField.FieldName = 'Kategorie'
                       DataBinding.ValueField.FieldName = 'Wert'
                       ViewType = 'Pie'
@@ -4322,7 +4318,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     object chartctrl_ToDoSeries: TdxChartSimpleSeries
                       Caption = 'Wert'
                       DataBindingType = 'DB'
-                      DataBinding.DataSource = dm_PCM.ds_ChartAufgabe
                       DataBinding.ArgumentField.FieldName = 'ungelesen'
                       DataBinding.ValueField.FieldName = 'Wert'
                       ViewType = 'Pie'
@@ -4392,7 +4387,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     object chartctrl_PWDCategoriesSeries: TdxChartSimpleSeries
                       Caption = 'Wert'
                       DataBindingType = 'DB'
-                      DataBinding.DataSource = dm_PCM.ds_ChartPWD_Kategorie
                       DataBinding.ArgumentField.FieldName = 'Bezeichnung'
                       DataBinding.ValueField.FieldName = 'Wert'
                       ViewType = 'Pie'
@@ -4441,7 +4435,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     object chartctrl_SerialsCategoriesSeries: TdxChartSimpleSeries
                       Caption = 'Wert'
                       DataBindingType = 'DB'
-                      DataBinding.DataSource = dm_PCM.ds_ChartSerialKategorie
                       DataBinding.ArgumentField.FieldName = 'Bezeichnung'
                       DataBinding.ValueField.FieldName = 'Wert'
                       ViewType = 'Pie'
@@ -4483,7 +4476,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     object chartctrl_PWDSerialsSeries: TdxChartSimpleSeries
                       Caption = 'Wert'
                       DataBindingType = 'DB'
-                      DataBinding.DataSource = dm_PCM.ds_ChartPWDSerials
                       DataBinding.ArgumentField.FieldName = 'BEZ'
                       DataBinding.ValueField.FieldName = 'Wert'
                       ViewType = 'Pie'
@@ -4553,7 +4545,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                   object chartctrl_FinanceSeries1: TdxChartXYSeries
                     Caption = 'Soll'
                     DataBindingType = 'DB'
-                    DataBinding.DataSource = dm_PCM.ds_ChartFinance
                     DataBinding.ArgumentField.FieldName = 'Bezeichung'
                     DataBinding.ValueField.FieldName = 'Soll'
                     ViewType = 'Bar'
@@ -4570,7 +4561,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                   object chartctrl_FinanceSeries2: TdxChartXYSeries
                     Caption = 'Ist'
                     DataBindingType = 'DB'
-                    DataBinding.DataSource = dm_PCM.ds_ChartFinance
                     DataBinding.ArgumentField.FieldName = 'Bezeichung'
                     DataBinding.ValueField.FieldName = 'Ist'
                     ViewType = 'Bar'
@@ -4689,6 +4679,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                   end
                 end
                 object pnl_FixSoll: TcxGroupBox
@@ -4752,6 +4744,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                   end
                 end
                 object pnl_VarISoll: TcxGroupBox
@@ -4815,6 +4809,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                   end
                 end
                 object pnl_GesSoll: TcxGroupBox
@@ -5159,6 +5155,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                   end
                 end
                 object pnl_FixIst: TcxGroupBox
@@ -5222,6 +5220,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                   end
                 end
                 object pnl_VarISt: TcxGroupBox
@@ -5285,6 +5285,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                   end
                 end
                 object pnl_GesIst: TcxGroupBox
@@ -5629,6 +5631,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                   end
                 end
                 object pnl_FixDiff: TcxGroupBox
@@ -5692,6 +5696,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                   end
                 end
                 object pnl_VarIDiff: TcxGroupBox
@@ -5755,6 +5761,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.Font.Style = []
                     Style.IsFontAssigned = True
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                   end
                 end
                 object pnl_GesDiff: TcxGroupBox
@@ -10203,9 +10211,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
       WholeRow = False
     end
     object barOpenModule: TdxBarStatic
-      Caption = '__'
+      Caption = 'Dashboard'
       Category = 0
-      Hint = '__'
+      Hint = 'Dashboard'
       Visible = ivAlways
       Width = 573
     end

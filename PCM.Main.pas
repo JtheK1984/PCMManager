@@ -111,7 +111,7 @@ type
     iBelege: TdxNavBarItem;
     iGutscheine: TdxNavBarItem;
     iAufgaben: TdxNavBarItem;
-    td_Dashboard: TcxTabSheet;
+    ts_Dashboard: TcxTabSheet;
     pnl_chartBottom: TcxGroupBox;
     chartctrl_Finance: TdxChartControl;
     chartctrl_FinanceChart: TdxChartXYDiagram;
@@ -651,10 +651,11 @@ begin
     Result := nil;
 end;
 {$EndRegion}
-{$Region Toolbar}
+
 ////////////////////////////////////////////////////////////////////////////////
 // Toolbar                                                                    //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Toolbar}
 procedure Tfrm_PCM_Main.btnModulleisteClick(Sender: TObject);
 begin
   navbr_main.Visible := not navbr_main.Visible;
@@ -690,9 +691,14 @@ procedure Tfrm_PCM_Main.btnCloseModulClick(Sender: TObject);
 begin
   if pcMain.PageCount > 1 then
   begin
-    TForm(pcMain.ActivePage.Controls[0]).Close;
-    TForm(pcMain.ActivePage.Controls[0]).Free;
-    pcMain.ActivePage.Free;
+    if pcMain.PageCount = 2 then
+      barOpenModule.Caption := 'Dashboard';
+    if pcmain.ActivePage <> ts_Dashboard  then
+    begin
+      TForm(pcMain.ActivePage.Controls[0]).Close;
+      TForm(pcMain.ActivePage.Controls[0]).Free;
+      pcMain.ActivePage.Free;
+    end;
   end;
 end;
 procedure Tfrm_PCM_Main.pcmainPageChanging(Sender: TObject; NewPage: TcxTabSheet; var AllowChange: Boolean);
@@ -700,10 +706,10 @@ begin
   barOpenModule.Caption := NewPage.Caption;
 end;
 {$EndRegion}
-{$Region Navbarfunktionen}
 ////////////////////////////////////////////////////////////////////////////////
 // Navbarfunktionen                                                           //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Navbarfunktionen}
 procedure Tfrm_PCM_Main.NavBarClick(Sender: TObject);
 var
   Module: TModule;
@@ -930,10 +936,10 @@ begin
   btnRefreshRightsClick(Self);
 end;
 {$EndRegion}
-{$Region Formfunktionen}
 ////////////////////////////////////////////////////////////////////////////////
 // Formfunktionen                                                             //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Formfunktionen}
 procedure Tfrm_PCM_Main.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   CloseModules;
@@ -1305,10 +1311,11 @@ begin
   end;
 end;
 {$EndRegion}
-{$Region Traymenü}
+
 ////////////////////////////////////////////////////////////////////////////////
 // Traymenü                                                                   //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Traymenü}
 procedure Tfrm_PCM_Main.ppmbtn_BenutzerClick(Sender: TObject);
 begin
   navbarclick(iBenutzerverwaltung);
