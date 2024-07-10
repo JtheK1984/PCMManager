@@ -1,12 +1,14 @@
 program PCMManager;
 
 uses
+	inifiles,
   NtTranslator,
-  inifiles,
-  Vcl.Forms,
   System.SysUtils,
+  Vcl.Forms,
   Vcl.Themes,
   Vcl.Styles,
+	PCM.Main in 'PCM.Main.pas' {frm_PCM_Main},
+  PCM.Data in 'PCM.Data.pas' {dm_PCM: TDataModule},
   uWVLoader,
   Windows,
   PCMManager.Modul.B_Config in 'Modules\PCMManager.Modul.B_Config.pas' {frm_Config},
@@ -28,8 +30,6 @@ uses
   PCMManager.Modul.F_Passwort in 'Modules\PCMManager.Modul.F_Passwort.pas' {frm_password},
   PCMManager.Modul.G_Finanzen in 'Modules\PCMManager.Modul.G_Finanzen.pas' {frm_finanzen},
   PCMManager.Modul.G_Finanzen.Filter.Date in 'Modules\PCMManager.Modul.G_Finanzen.Filter.Date.pas' {frm_PCManagerChooseDate},
-  PCM.Main in 'PCM.Main.pas' {frm_PCM_Main},
-  PCM.Data in 'PCM.Data.pas' {dm_PCM: TDataModule},
   cxSchedulerStorage in 'Helper\cxSchedulerStorage.pas',
   PCMManager.Helper.Contacts.VCF in 'Helper\PCMManager.Helper.Contacts.VCF.pas',
   PCMManager.Helper.Calendar.ICAL in 'Helper\PCMManager.Helper.Calendar.ICAL.pas',
@@ -43,29 +43,28 @@ uses
 {$SetPEFlags IMAGE_FILE_REMOVABLE_RUN_FROM_SWAP or IMAGE_FILE_NET_RUN_FROM_SWAP or IMAGE_FILE_LARGE_ADDRESS_AWARE}
 
 var
-  iniFile: TIniFile;
+  ifini: TIniFile;
   sStyle: String;
   slocale: String;
+
 begin
-  iniFile:=TIniFile.create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
-  sStyle:= iniFile.ReadString('PCMManager','Style','Windows');
-  slocale:= iniFile.ReadString('PCMManager','Language','de');
-  iniFile.Free;
-  {$IFDEF WIN64}
-  TNtTranslator.SetNew(slocale,[],'de');
-  {$ENDIF}
+  ifini:=TIniFile.create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
+  sStyle:=ifini.ReadString('PCMManager','Style','Windows');
+  slocale:=ifini.ReadString('PCMManager','Language','de');
+  ifini.Free;
   GlobalWebView2Loader                := TWVLoader.Create(nil);
   GlobalWebView2Loader.UserDataFolder := ExtractFileDir(Application.ExeName) + '\CustomCache\ID';
   GlobalWebView2Loader.StartWebView2;
   Application.Initialize;
-  Application.MainFormOnTaskbar := True;
-  {$IFDEF WIN64}
-  Application.Title:= 'PCM-Manager 64-Bit';
-  {$else}
-  Application.Title:= 'PCM-Manager 32-Bit';
-  {$ENDIF}
   TStyleManager.TrySetStyle(sStyle);
-  Application.CreateForm(Tdm_PCM, dm_PCM);
-  Application.CreateForm(Tfrm_PCM_Main, frm_PCM_Main);
+  {$IFDEF WIN64}
+  Application.Title:= 'PCM - Manager 64-Bit';
+  TNtTranslator.SetNew(slocale,[],'de');
+  {$else}
+  Application.Title:= 'PCM - Manager 32-Bit';
+  {$ENDIF}
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(Tdm_PCM,dm_PCM);
+  Application.CreateForm(Tfrm_PCM_Main,frm_PCM_Main);
   Application.Run;
 end.
