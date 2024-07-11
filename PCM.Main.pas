@@ -3,6 +3,7 @@
 interface
 
 uses
+  {$Region Uses}
   SYSTEM.uitypes, Winapi.Windows, Winapi.Messages, System.SysUtils,
   System.Variants, System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.ImgList, Vcl.Menus, NTTranslator, Strutils, DateUtils,shellapi, Vcl.Themes,
@@ -36,8 +37,9 @@ uses
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, dxBar, cxLocalization, cxLabel, cxGroupBox, dxNavBarStyles,inifiles;
-
+  {$EndRegion Uses}
 type
+  {$Region Types}
   TdxBarControlAccess = class(TdxBarControl);
 
   TdxBarAccess = class(TdxBar);
@@ -78,244 +80,241 @@ type
   end;
 
   Tfrm_PCM_Main = class(TForm)
-    img_Icons: TImageList;
-    loc_Lang: TcxLocalizer;
-    lafCtrl_Main: TcxLookAndFeelController;
-    navbr_main: TdxNavBar;
-    navbrgrp_Optionen: TdxNavBarGroup;
-    navbrgrp_Kontake: TdxNavBarGroup;
-    navbrgrp_Kalender: TdxNavBarGroup;
-    navbrgrp_Passwort: TdxNavBarGroup;
-    navbrgrp_Finanzen: TdxNavBarGroup;
-    navbrgrp_Info: TdxNavBarGroup;
-    navbrgrp_Programm: TdxNavBarGroup;
-    iKontakte: TdxNavBarItem;
-    iPasswoerter: TdxNavBarItem;
-    iSysteminfo: TdxNavBarItem;
-    iBeenden: TdxNavBarItem;
-    iMonatsuebersicht: TdxNavBarItem;
-    iAusgaben: TdxNavBarItem;
-    iEinnahmen: TdxNavBarItem;
-    iSerials: TdxNavBarItem;
-    iBenutzerverwaltung: TdxNavBarItem;
-    iKonfiguration: TdxNavBarItem;
-    iInfo: TdxNavBarItem;
-    navbrit_Verfuegung: TdxNavBarItem;
-    iKalender: TdxNavBarItem;
-    iStundenplan: TdxNavBarItem;
-    iEMails: TdxNavBarItem;
-    iAbmelden: TdxNavBarItem;
-    navbrit_ChangePW: TdxNavBarItem;
-    navbrStyleIt_main: TdxNavBarStyleItem;
-    pcmain: TcxPageControl;
-    iBelege: TdxNavBarItem;
-    iGutscheine: TdxNavBarItem;
-    iAufgaben: TdxNavBarItem;
-    ts_Dashboard: TcxTabSheet;
-    pnl_chartBottom: TcxGroupBox;
+    brstc_OpenModule: TdxBarStatic;
+    brstc_User: TdxBarStatic;
+    btn_CloseModul: TdxBarLargeButton;
+    btn_Modulleiste: TdxBarLargeButton;
+    btn_RefreshRights: TdxBarLargeButton;
+    chartctrl_Adresses: TdxChartControl;
+    chartctrl_AdressesChart: TdxChartSimpleDiagram;
+    chartctrl_AdressesSeries: TdxChartSimpleSeries;
+    chartctrl_Birthday: TdxChartControl;
+    chartctrl_BirthdayChart: TdxChartSimpleDiagram;
+    chartctrl_BirthdaySeries: TdxChartSimpleSeries;
+    chartctrl_Cal: TdxChartControl;
+    chartctrl_CalCategories: TdxChartControl;
+    chartctrl_CalCategoriesChart: TdxChartSimpleDiagram;
+    chartctrl_CalCategoriesSeries: TdxChartSimpleSeries;
+    chartctrl_Calchart: TdxChartSimpleDiagram;
+    chartctrl_CalSeries: TdxChartSimpleSeries;
+    chartctrl_Contact: TdxChartControl;
+    chartctrl_ContactChart: TdxChartSimpleDiagram;
+    chartctrl_ContactSeries: TdxChartSimpleSeries;
     chartctrl_Finance: TdxChartControl;
     chartctrl_FinanceChart: TdxChartXYDiagram;
     chartctrl_FinanceSeries1: TdxChartXYSeries;
     chartctrl_FinanceSeries2: TdxChartXYSeries;
-    pc_Chart: TcxPageControl;
-    ts_E_FinanceChart: TcxTabSheet;
-    ts_B_Cal_TodoChart: TcxTabSheet;
-    pnl_DashboardCalToDO: TcxGroupBox;
-    pnl_CalToDOMiddle: TcxGroupBox;
-    chartctrl_Cal: TdxChartControl;
-    chartctrl_Calchart: TdxChartSimpleDiagram;
-    chartctrl_CalSeries: TdxChartSimpleSeries;
-    pnl_CalToDORight: TcxGroupBox;
-    chartctrl_CalCategories: TdxChartControl;
-    chartctrl_CalCategoriesChart: TdxChartSimpleDiagram;
-    chartctrl_CalCategoriesSeries: TdxChartSimpleSeries;
-    pnl_CalToDOtop: TcxGroupBox;
-    chartctrl_ToDo: TdxChartControl;
-    chartctrl_ToDoChart: TdxChartSimpleDiagram;
-    chartctrl_ToDoSeries: TdxChartSimpleSeries;
-    spl_ChartCalToDoMain: TcxSplitter;
-    spl_ChartCalToDoLeft: TcxSplitter;
-    grpbx_FinanzenUebersicht: TcxGroupBox;
-    grpbx_FinanzenUebersicht_Left: TcxGroupBox;
-    pnl_EinSoll: TcxGroupBox;
-    lbl_EinSoll: TcxLabel;
-    lbl_EinSollLabel: TcxLabel;
-    pnl_FixSoll: TcxGroupBox;
-    lbl_AusFixSoll: TcxLabel;
-    lbl_AusFixSollLabel: TcxLabel;
-    pnl_VarISoll: TcxGroupBox;
-    lbl_AusVarSoll: TcxLabel;
-    lbl_AusVarSollLabel: TcxLabel;
-    pnl_GesSoll: TcxGroupBox;
-    pnl_VerfSoll: TcxGroupBox;
-    lbl_SollSumLabel: TcxLabel;
-    lbl_SollSum: TcxLabel;
-    pnl_VerfEinSoll: TcxGroupBox;
-    lbl_EinSollSumLabel: TcxLabel;
-    lbl_EinSollSum: TcxLabel;
-    pnl_VerfvarSoll: TcxGroupBox;
-    lbl_AusVarSollSumLabel: TcxLabel;
-    lbl_AusVarSollSum: TcxLabel;
-    pnl_TrennSoll: TPanel;
-    pnl_VerffixSoll: TcxGroupBox;
-    lbl_AusFixSollSumLabel: TcxLabel;
-    lbl_AusFixSollSum: TcxLabel;
-    grpbx_FinanzenUebersicht_Right: TcxGroupBox;
-    pnl_EinIst: TcxGroupBox;
-    lbl_EinIst: TcxLabel;
-    lbl_EinIstLabel: TcxLabel;
-    pnl_FixIst: TcxGroupBox;
-    lbl_AusFixIst: TcxLabel;
-    lbl_AusFixIstLabel: TcxLabel;
-    pnl_VarISt: TcxGroupBox;
-    lbl_AusvarIst: TcxLabel;
-    lbl_AusVarIstLabel: TcxLabel;
-    pnl_GesIst: TcxGroupBox;
-    pnl_VerfIst: TcxGroupBox;
-    lbl_IstSumLabel: TcxLabel;
-    lbl_IstSum: TcxLabel;
-    pnl_VerfEinIst: TcxGroupBox;
-    lbl_EinIstSumLabel: TcxLabel;
-    lbl_EinIstSum: TcxLabel;
-    pnl_VerfvarIst: TcxGroupBox;
-    lbl_AusvarIstSumLabel: TcxLabel;
-    lbl_AusvarIstSum: TcxLabel;
-    pnl_TrennIst: TPanel;
-    pnl_VerffixIst: TcxGroupBox;
-    lbl_AusFixIstSumLabel: TcxLabel;
-    lbl_AusFixIstSum: TcxLabel;
-    grpbx_FinanzenUebersicht_middle: TcxGroupBox;
-    pnl_EinDiff: TcxGroupBox;
-    lbl_EinDiff: TcxLabel;
-    lbl_EinDiffLabel: TcxLabel;
-    pnl_FixDiff: TcxGroupBox;
-    lbl_AusFixDiff: TcxLabel;
-    lbl_AusFixDiffLabel: TcxLabel;
-    pnl_VarIDiff: TcxGroupBox;
-    lbl_AusvarDiff: TcxLabel;
-    lbl_AusVarDiffLabel: TcxLabel;
-    pnl_GesDiff: TcxGroupBox;
-    pnl_VerfDiff: TcxGroupBox;
-    lbl_SollDiff: TcxLabel;
-    lbl_DiffSum: TcxLabel;
-    pnl_VerfEinDiff: TcxGroupBox;
-    lbl_EinDiffSumLabel: TcxLabel;
-    lbl_EinDiffSum: TcxLabel;
-    pnl_VerfvarDiff: TcxGroupBox;
-    lbl_AusvarDiffSumLabel: TcxLabel;
-    lbl_AusvarDiffSum: TcxLabel;
-    pnl_TrennDiff: TPanel;
-    pnl_VerffixDiff: TcxGroupBox;
-    lbl_AusFixDiffSumLabel: TcxLabel;
-    lbl_AusFixDiffSum: TcxLabel;
-    ts_A_ContactChart: TcxTabSheet;
-    ts_C_PasswortChart: TcxTabSheet;
-    pnl_ContactTop: TcxGroupBox;
-    spl_ChartContactsMain: TcxSplitter;
-    pnl_Contactmiddle: TcxGroupBox;
-    chartctrl_Birthday: TdxChartControl;
-    chartctrl_BirthdayChart: TdxChartSimpleDiagram;
-    chartctrl_BirthdaySeries: TdxChartSimpleSeries;
-    pnl_Contactright: TcxGroupBox;
-    chartctrl_Adresses: TdxChartControl;
-    chartctrl_AdressesChart: TdxChartSimpleDiagram;
-    chartctrl_AdressesSeries: TdxChartSimpleSeries;
-    spl_ChartContactsLeft: TcxSplitter;
-    pnl_DashboardContacts: TcxGroupBox;
-    chartctrl_Contact: TdxChartControl;
-    chartctrl_ContactChart: TdxChartSimpleDiagram;
-    chartctrl_ContactSeries: TdxChartSimpleSeries;
-    pnl_DashboardPWDSerial: TcxGroupBox;
-    pnl_PWDSerialmiddle: TcxGroupBox;
     chartctrl_PWDCategories: TdxChartControl;
     chartctrl_PWDCategoriesChart: TdxChartSimpleDiagram;
     chartctrl_PWDCategoriesSeries: TdxChartSimpleSeries;
-    pnl_PWDSerialright: TcxGroupBox;
-    spl_ChartPWDSerialLeft: TcxSplitter;
-    chartctrl_SerialsCategories: TdxChartControl;
-    chartctrl_SerialsCategoriesChart: TdxChartSimpleDiagram;
-    chartctrl_SerialsCategoriesSeries: TdxChartSimpleSeries;
-    pnl_PWDSerialTop: TcxGroupBox;
     chartctrl_PWDSerials: TdxChartControl;
     chartctrl_PWDSerialsChart: TdxChartSimpleDiagram;
     chartctrl_PWDSerialsSeries: TdxChartSimpleSeries;
-    spl_ChartPWDSerialMain: TcxSplitter;
-    pnl_Design: TcxGroupBox;
-    trayic_Main: TTrayIcon;
+    chartctrl_SerialsCategories: TdxChartControl;
+    chartctrl_SerialsCategoriesChart: TdxChartSimpleDiagram;
+    chartctrl_SerialsCategoriesSeries: TdxChartSimpleSeries;
+    chartctrl_ToDo: TdxChartControl;
+    chartctrl_ToDoChart: TdxChartSimpleDiagram;
+    chartctrl_ToDoSeries: TdxChartSimpleSeries;
+    brmgr_Main: TdxBarManager;
+    tb_Main: TdxBar;
+    grpbx_FinanzenUebersicht: TcxGroupBox;
+    grpbx_FinanzenUebersicht_Left: TcxGroupBox;
+    grpbx_FinanzenUebersicht_middle: TcxGroupBox;
+    grpbx_FinanzenUebersicht_Right: TcxGroupBox;
+    iAbmelden: TdxNavBarItem;
+    iAufgaben: TdxNavBarItem;
+    iAusgaben: TdxNavBarItem;
+    iBeenden: TdxNavBarItem;
+    iBelege: TdxNavBarItem;
+    iBenutzerverwaltung: TdxNavBarItem;
+    iDesign: TdxNavBarItem;
+    iEinnahmen: TdxNavBarItem;
+    iEMails: TdxNavBarItem;
+    iGutscheine: TdxNavBarItem;
+    iHandbuch: TdxNavBarItem;
+    iInfo: TdxNavBarItem;
+    iJira: TdxNavBarItem;
+    iKalender: TdxNavBarItem;
+    iKonfiguration: TdxNavBarItem;
+    iKontakte: TdxNavBarItem;
+    imglst_Icons: TImageList;
+    iMonatsuebersicht: TdxNavBarItem;
+    iPasswoerter: TdxNavBarItem;
+    iSerials: TdxNavBarItem;
+    iSprache: TdxNavBarItem;
+    iStundenplan: TdxNavBarItem;
+    iSysteminfo: TdxNavBarItem;
+    lafCtrl_Main: TcxLookAndFeelController;
+    lbl_AusFixDiff: TcxLabel;
+    lbl_AusFixDiffLabel: TcxLabel;
+    lbl_AusFixDiffSum: TcxLabel;
+    lbl_AusFixDiffSumLabel: TcxLabel;
+    lbl_AusFixIst: TcxLabel;
+    lbl_AusFixIstLabel: TcxLabel;
+    lbl_AusFixIstSum: TcxLabel;
+    lbl_AusFixIstSumLabel: TcxLabel;
+    lbl_AusFixSoll: TcxLabel;
+    lbl_AusFixSollLabel: TcxLabel;
+    lbl_AusFixSollSum: TcxLabel;
+    lbl_AusFixSollSumLabel: TcxLabel;
+    lbl_AusvarDiff: TcxLabel;
+    lbl_AusVarDiffLabel: TcxLabel;
+    lbl_AusvarDiffSum: TcxLabel;
+    lbl_AusvarDiffSumLabel: TcxLabel;
+    lbl_AusvarIst: TcxLabel;
+    lbl_AusVarIstLabel: TcxLabel;
+    lbl_AusvarIstSum: TcxLabel;
+    lbl_AusvarIstSumLabel: TcxLabel;
+    lbl_AusVarSoll: TcxLabel;
+    lbl_AusVarSollLabel: TcxLabel;
+    lbl_AusVarSollSum: TcxLabel;
+    lbl_AusVarSollSumLabel: TcxLabel;
+    lbl_DiffSum: TcxLabel;
+    lbl_EinDiff: TcxLabel;
+    lbl_EinDiffLabel: TcxLabel;
+    lbl_EinDiffSum: TcxLabel;
+    lbl_EinDiffSumLabel: TcxLabel;
+    lbl_EinIst: TcxLabel;
+    lbl_EinIstLabel: TcxLabel;
+    lbl_EinIstSum: TcxLabel;
+    lbl_EinIstSumLabel: TcxLabel;
+    lbl_EinSoll: TcxLabel;
+    lbl_EinSollLabel: TcxLabel;
+    lbl_EinSollSum: TcxLabel;
+    lbl_EinSollSumLabel: TcxLabel;
+    lbl_IstSum: TcxLabel;
+    lbl_IstSumLabel: TcxLabel;
+    lbl_SollDiff: TcxLabel;
+    lbl_SollSum: TcxLabel;
+    lbl_SollSumLabel: TcxLabel;
+    loc_Lang: TcxLocalizer;
+    Menuezurueck: TdxBarButton;
+    navbr_main: TdxNavBar;
+    navbrgrp_Finanzen: TdxNavBarGroup;
+    navbrgrp_Info: TdxNavBarGroup;
+    navbrgrp_Kalender: TdxNavBarGroup;
+    navbrgrp_Kontake: TdxNavBarGroup;
+    navbrgrp_Optionen: TdxNavBarGroup;
+    navbrgrp_Passwort: TdxNavBarGroup;
+    navbrgrp_Programm: TdxNavBarGroup;
+    navbrit_ChangePW: TdxNavBarItem;
+    navbrit_Verfuegung: TdxNavBarItem;
+    navbrStyleIt_main: TdxNavBarStyleItem;
+    pc_Chart: TcxPageControl;
+    pc_main: TcxPageControl;
+    pnl_CalToDOMiddle: TcxGroupBox;
+    pnl_CalToDORight: TcxGroupBox;
+    pnl_CalToDOtop: TcxGroupBox;
+    pnl_chartBottom: TcxGroupBox;
+    pnl_Contactmiddle: TcxGroupBox;
+    pnl_Contactright: TcxGroupBox;
+    pnl_ContactTop: TcxGroupBox;
+    pnl_DashboardCalToDO: TcxGroupBox;
+    pnl_DashboardContacts: TcxGroupBox;
+    pnl_DashboardPWDSerial: TcxGroupBox;
+    grpbx_Design: TcxGroupBox;
+    pnl_EinDiff: TcxGroupBox;
+    pnl_EinIst: TcxGroupBox;
+    pnl_EinSoll: TcxGroupBox;
+    pnl_FixDiff: TcxGroupBox;
+    pnl_FixIst: TcxGroupBox;
+    pnl_FixSoll: TcxGroupBox;
+    pnl_GesDiff: TcxGroupBox;
+    pnl_GesIst: TcxGroupBox;
+    pnl_GesSoll: TcxGroupBox;
+    pnl_PWDSerialmiddle: TcxGroupBox;
+    pnl_PWDSerialright: TcxGroupBox;
+    pnl_PWDSerialTop: TcxGroupBox;
+    pnl_TrennDiff: TPanel;
+    pnl_TrennIst: TPanel;
+    pnl_TrennSoll: TPanel;
+    pnl_VarIDiff: TcxGroupBox;
+    pnl_VarISoll: TcxGroupBox;
+    pnl_VarISt: TcxGroupBox;
+    pnl_VerfDiff: TcxGroupBox;
+    pnl_VerfEinDiff: TcxGroupBox;
+    pnl_VerfEinIst: TcxGroupBox;
+    pnl_VerfEinSoll: TcxGroupBox;
+    pnl_VerffixDiff: TcxGroupBox;
+    pnl_VerffixIst: TcxGroupBox;
+    pnl_VerffixSoll: TcxGroupBox;
+    pnl_VerfIst: TcxGroupBox;
+    pnl_VerfSoll: TcxGroupBox;
+    pnl_VerfvarDiff: TcxGroupBox;
+    pnl_VerfvarIst: TcxGroupBox;
+    pnl_VerfvarSoll: TcxGroupBox;
     ppm_Main: TPopupMenu;
-    ppmbtn_Benutzer: TMenuItem;
-    ppmbtn_Konfiguration: TMenuItem;
-    ppmbtn_Contacts: TMenuItem;
-    ppmbtn_kalender: TMenuItem;
+    ppmbtn_Abmelden: TMenuItem;
     ppmbtn_Aufgaben: TMenuItem;
-    ppmbtn_Stundenplan: TMenuItem;
+    ppmbtn_Ausgaben: TMenuItem;
+    ppmbtn_Beenden: TMenuItem;
+    ppmbtn_Benutzer: TMenuItem;
+    ppmbtn_Contacts: TMenuItem;
+    ppmbtn_Design: TMenuItem;
+    ppmbtn_Einnahmen: TMenuItem;
     ppmbtn_Email: TMenuItem;
+    ppmbtn_Handbuch: TMenuItem;
+    ppmbtn_Info: TMenuItem;
+    ppmbtn_kalender: TMenuItem;
+    ppmbtn_Konfiguration: TMenuItem;
+    ppmbtn_Monatsuebersicht: TMenuItem;
     ppmbtn_Passwoerter: TMenuItem;
+    ppmbtn_Serials: TMenuItem;
+    ppmbtn_Sprache: TMenuItem;
+    ppmbtn_Stundenplan: TMenuItem;
+    ppmbtn_Systeminfo: TMenuItem;
     ppmbtn_Trenn1: TMenuItem;
     ppmbtn_Trenn2: TMenuItem;
     ppmbtn_Trenn3: TMenuItem;
-    ppmbtn_Serials: TMenuItem;
     ppmbtn_Trenn4: TMenuItem;
-    ppmbtn_Monatsuebersicht: TMenuItem;
-    ppmbtn_Einnahmen: TMenuItem;
-    ppmbtn_Ausgaben: TMenuItem;
     ppmbtn_Trenn5: TMenuItem;
-    ppmbtn_Systeminfo: TMenuItem;
-    ppmbtn_Info: TMenuItem;
-    ppmbtn_Beenden: TMenuItem;
     ppmbtn_Trenn6: TMenuItem;
-    iHandbuch: TdxNavBarItem;
-    ppmbtn_Handbuch: TMenuItem;
-    iSprache: TdxNavBarItem;
-    ppmbtn_Sprache: TMenuItem;
-    ppmbtn_Abmelden: TMenuItem;
-    dxBarManager1: TdxBarManager;
-    dxBarManager1Bar1: TdxBar;
-    barOpenModule: TdxBarStatic;
-    btnModulleiste: TdxBarLargeButton;
-    btnRefreshRights: TdxBarLargeButton;
-    btnCloseModul: TdxBarLargeButton;
-    barUser: TdxBarStatic;
-    dxBarButton1: TdxBarButton;
-    Menuezurueck: TdxBarButton;
-    dxBarGroup1: TdxBarGroup;
-    ppmbtn_Design: TMenuItem;
-    iDesign: TdxNavBarItem;
-    iJira: TdxNavBarItem;
-    procedure FormShow(Sender: TObject);
+    spl_ChartCalToDoLeft: TcxSplitter;
+    spl_ChartCalToDoMain: TcxSplitter;
+    spl_ChartContactsLeft: TcxSplitter;
+    spl_ChartContactsMain: TcxSplitter;
+    spl_ChartPWDSerialLeft: TcxSplitter;
+    spl_ChartPWDSerialMain: TcxSplitter;
+    trayic_Main: TTrayIcon;
+    ts_A_ContactChart: TcxTabSheet;
+    ts_B_Cal_TodoChart: TcxTabSheet;
+    ts_C_PasswortChart: TcxTabSheet;
+    ts_Dashboard: TcxTabSheet;
+    ts_E_FinanceChart: TcxTabSheet;
+    procedure btn_CloseModulClick(Sender: TObject);
+    procedure btn_ModulleisteClick(Sender: TObject);
+    procedure btn_RefreshRightsClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure FormResize(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormHide(Sender: TObject);
     procedure FormKeyPress(Sender: TObject; var Key: Char);
     procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure FormCreate(Sender: TObject);
-    procedure ppmbtn_BenutzerClick(Sender: TObject);
-    procedure ppmbtn_KonfigurationClick(Sender: TObject);
-    procedure ppmbtn_ContactsClick(Sender: TObject);
-    procedure ppmbtn_kalenderClick(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure iSpracheClick(Sender: TObject);
+    procedure NavBarClick(Sender: TObject);
+    procedure pc_mainPageChanging(Sender: TObject; NewPage: TcxTabSheet; var AllowChange: Boolean);
+    procedure ppmbtn_AbmeldenClick(Sender: TObject);
     procedure ppmbtn_AufgabenClick(Sender: TObject);
-    procedure ppmbtn_StundenplanClick(Sender: TObject);
+    procedure ppmbtn_AusgabenClick(Sender: TObject);
+    procedure ppmbtn_BeendenClick(Sender: TObject);
+    procedure ppmbtn_BenutzerClick(Sender: TObject);
+    procedure ppmbtn_ContactsClick(Sender: TObject);
+    procedure ppmbtn_DesignClick(Sender: TObject);
+    procedure ppmbtn_EinnahmenClick(Sender: TObject);
     procedure ppmbtn_EmailClick(Sender: TObject);
+    procedure ppmbtn_HandbuchClick(Sender: TObject);
+    procedure ppmbtn_InfoClick(Sender: TObject);
+    procedure ppmbtn_kalenderClick(Sender: TObject);
+    procedure ppmbtn_KonfigurationClick(Sender: TObject);
+    procedure ppmbtn_MonatsuebersichtClick(Sender: TObject);
     procedure ppmbtn_PasswoerterClick(Sender: TObject);
     procedure ppmbtn_SerialsClick(Sender: TObject);
-    procedure ppmbtn_MonatsuebersichtClick(Sender: TObject);
-    procedure ppmbtn_EinnahmenClick(Sender: TObject);
-    procedure ppmbtn_AusgabenClick(Sender: TObject);
-    procedure ppmbtn_SysteminfoClick(Sender: TObject);
-    procedure ppmbtn_InfoClick(Sender: TObject);
-    procedure ppmbtn_AbmeldenClick(Sender: TObject);
-    procedure ppmbtn_BeendenClick(Sender: TObject);
-    procedure ppmbtn_HandbuchClick(Sender: TObject);
     procedure ppmbtn_SpracheClick(Sender: TObject);
-    procedure ppmbtn_DesignClick(Sender: TObject);
-    procedure NavBarClick(Sender: TObject);
-    procedure pcmainPageChanging(Sender: TObject; NewPage: TcxTabSheet; var AllowChange: Boolean);
-    procedure btnModulleisteClick(Sender: TObject);
-    procedure btnRefreshRightsClick(Sender: TObject);
-    procedure btnCloseModulClick(Sender: TObject);
-    procedure iSpracheClick(Sender: TObject);
-
+    procedure ppmbtn_StundenplanClick(Sender: TObject);
+    procedure ppmbtn_SysteminfoClick(Sender: TObject);
   private
     { Private-Deklarationen }
     Modules: TCollection;
@@ -328,7 +327,7 @@ type
     FOptions: TIC_Options;
     bAbmelden: Boolean;
   end;
-
+  {$EndRegion Types}
 var
   frm_PCM_Main: Tfrm_PCM_Main;
 
@@ -356,10 +355,18 @@ uses  PCM.Benutzerverwaltung,
       PCMManager.Modul.F_Passwort,
       PCMManager.Modul.G_Finanzen;
 
-{$Region Hilfsfunktionen }
+
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktionen }
+function Tfrm_PCM_Main.CurrentModule: TForm;
+begin
+  if pc_Main.ControlCount > 0 then
+    Result := TForm(pc_Main.ActivePage.Controls[0])
+  else
+    Result := nil;
+end;
 procedure TModule.SetFormClass(Value: TFormClass);
 begin
   if Value <> FFormClass then
@@ -388,14 +395,14 @@ procedure Tfrm_PCM_Main.CloseModules;
 var
   iPage: Integer;
 begin
-  for iPage := pcMain.PageCount - 1 downto 1 do
+  for iPage := pc_Main.PageCount - 1 downto 1 do
   begin
     try
-      TForm(pcMain.Pages[iPage].Controls[0]).Close;
-      TForm(pcMain.Pages[iPage].Controls[0]).Free;
+      TForm(pc_Main.Pages[iPage].Controls[0]).Close;
+      TForm(pc_Main.Pages[iPage].Controls[0]).Free;
     except
     end;
-    pcMain.Pages[iPage].Free;
+    pc_Main.Pages[iPage].Free;
   end;
 end;
 procedure Tfrm_PCM_Main.LoadData;
@@ -404,7 +411,7 @@ procedure Tfrm_PCM_Main.LoadData;
     dm_PCM.qry_Work.SQL.Text:= 'Select Benutzer from Benutzer Where ID = :ID';
     dm_PCM.qry_Work.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
     dm_PCM.qry_Work.Open;
-    barUser.Caption:= dm_PCM.qry_Work.FieldByName('Benutzer').AsString;
+    brstc_User.Caption:= dm_PCM.qry_Work.FieldByName('Benutzer').AsString;
 
     dm_PCM.qry_Work.Close;
   end;
@@ -643,73 +650,86 @@ begin
   GetCalOptions;
   SetCharts;
 end;
-function Tfrm_PCM_Main.CurrentModule: TForm;
-begin
-  if pcMain.ControlCount > 0 then
-    Result := TForm(pcMain.ActivePage.Controls[0])
-  else
-    Result := nil;
-end;
 {$EndRegion}
-
 ////////////////////////////////////////////////////////////////////////////////
 // Toolbar                                                                    //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Toolbar}
-procedure Tfrm_PCM_Main.btnModulleisteClick(Sender: TObject);
+procedure Tfrm_PCM_Main.btn_CloseModulClick(Sender: TObject);
+begin
+  if pc_Main.PageCount > 1 then
+  begin
+    if pc_Main.PageCount = 2 then
+      brstc_OpenModule.Caption := 'Dashboard';
+    if pc_Main.ActivePage <> ts_Dashboard  then
+    begin
+      TForm(pc_Main.ActivePage.Controls[0]).Close;
+      TForm(pc_Main.ActivePage.Controls[0]).Free;
+      pc_Main.ActivePage.Free;
+    end;
+  end;
+end;
+procedure Tfrm_PCM_Main.btn_ModulleisteClick(Sender: TObject);
 begin
   navbr_main.Visible := not navbr_main.Visible;
   if navbr_main.Visible then
-    btnModulleiste.Caption := rs_PCM_Modulliste_verstecken
+    btn_Modulleiste.Caption := rs_PCM_Modulliste_verstecken
   else
-    btnModulleiste.Caption := rs_PCM_Modulliste_anzeigen;
+    btn_Modulleiste.Caption := rs_PCM_Modulliste_anzeigen;
 end;
-procedure Tfrm_PCM_Main.btnRefreshRightsClick(Sender: TObject);
+procedure Tfrm_PCM_Main.btn_RefreshRightsClick(Sender: TObject);
 var
   Item: TdxNavBarItem;
   Module: TModule;
 begin
-  btnRefreshRights.Enabled := False;
+  btn_RefreshRights.Enabled := False;
   try
-    if pcMain.PageCount > 1 then
+    if pc_Main.PageCount > 1 then
     begin
-      Module := TModule(Modules.FindItemID(pcMain.ActivePage.Tag));
+      Module := TModule(Modules.FindItemID(pc_Main.ActivePage.Tag));
       if Module.Typ = mtForm then
       begin
         Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(Module.ModuleName).index];
-        TForm(pcMain.ActivePage.Controls[0]).Close;
-        TForm(pcMain.ActivePage.Controls[0]).Free;
-        pcMain.ActivePage.Free;
+        TForm(pc_Main.ActivePage.Controls[0]).Close;
+        TForm(pc_Main.ActivePage.Controls[0]).Free;
+        pc_Main.ActivePage.Free;
         NavBarClick(Item);
       end;
     end;
   finally
-    btnRefreshRights.Enabled := True;
+    btn_RefreshRights.Enabled := True;
   end;
 end;
-procedure Tfrm_PCM_Main.btnCloseModulClick(Sender: TObject);
+procedure Tfrm_PCM_Main.pc_mainPageChanging(Sender: TObject; NewPage: TcxTabSheet; var AllowChange: Boolean);
 begin
-  if pcMain.PageCount > 1 then
-  begin
-    if pcMain.PageCount = 2 then
-      barOpenModule.Caption := 'Dashboard';
-    if pcmain.ActivePage <> ts_Dashboard  then
-    begin
-      TForm(pcMain.ActivePage.Controls[0]).Close;
-      TForm(pcMain.ActivePage.Controls[0]).Free;
-      pcMain.ActivePage.Free;
-    end;
-  end;
-end;
-procedure Tfrm_PCM_Main.pcmainPageChanging(Sender: TObject; NewPage: TcxTabSheet; var AllowChange: Boolean);
-begin
-  barOpenModule.Caption := NewPage.Caption;
+  brstc_OpenModule.Caption := NewPage.Caption;
 end;
 {$EndRegion}
 ////////////////////////////////////////////////////////////////////////////////
 // Navbarfunktionen                                                           //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Navbarfunktionen}
+procedure Tfrm_PCM_Main.iSpracheClick(Sender: TObject);
+var
+  iniFile: TIniFile;
+begin
+  Application.CreateForm(Tfrm_Language,frm_Language);
+  frm_Language.Position:= poScreenCenter;
+  frm_Language.ClientHeight:= 214;
+  frm_Language.ShowModal;
+  TNtTranslator.SetNew(dm_PCM.slocale,[],'de');
+  TNtTranslator.TranslateForms;
+  iniFile := TIniFile.Create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
+  try
+    iniFile.WriteString(PCM_Logname, 'Language', dm_PCm.sLocale);
+  finally
+    iniFile.Free;
+  end;
+  Caption:= PCM_Programmname;
+  trayic_Main.popupmenu:= ppm_Main;
+  LoadData;
+  btn_RefreshRightsClick(Self);
+end;
 procedure Tfrm_PCM_Main.NavBarClick(Sender: TObject);
 var
   Module: TModule;
@@ -721,9 +741,9 @@ var
     iCount: Integer;
   begin
     Result := -1;
-    for iCount := 0 to pcMain.PageCount -1 do
+    for iCount := 0 to pc_Main.PageCount -1 do
     begin
-      if pcMain.Pages[iCount].Name = sTabName then
+      if pc_Main.Pages[iCount].Name = sTabName then
       begin
         Result := iCount;
         Break;
@@ -735,11 +755,11 @@ var
   var
     tshNew: TcxTabSheet;
   begin
-    tshNew := TcxTabSheet.Create(pcMain);
-    tshNew.PageControl := pcMain;
+    tshNew := TcxTabSheet.Create(pc_Main);
+    tshNew.PageControl := pc_Main;
     tshNew.Name := sTabName;
-    pcMain.ActivePage := tshNew;
-    Result := pcMain.ActivePageIndex;
+    pc_Main.ActivePage := tshNew;
+    Result := pc_Main.ActivePageIndex;
   end;
 var
   sModul,sModulCaption: String;
@@ -865,14 +885,14 @@ begin
         iPageIndex := TabExist('tsh' + sModul);
         if iPageIndex > -1 then
         begin
-          pcMain.ActivePageIndex := iPageIndex;
+          pc_Main.ActivePageIndex := iPageIndex;
           fTabForm := CurrentModule;
           if fTabForm <> nil then
             if not fTabForm.Focused then
               if Assigned(fTabForm.OnActivate) then
               begin
                 fTabForm.OnActivate(Sender);
-                barOpenModule.Caption := Copy(sModulCaption, 2, Length(sModulCaption));
+                brstc_OpenModule.Caption := Copy(sModulCaption, 2, Length(sModulCaption));
               end;
           Exit;
         end;
@@ -889,18 +909,18 @@ begin
           end;
           fTabForm := TForm((Module.Instance)^);
           iPageIndex := CreateNewTabSheet('tsh' + sModul);
-          fTabForm.Parent := pcMain.Pages[iPageIndex];
-          pcMain.Pages[iPageIndex].Caption := Copy(sModulCaption, 2, Length(sModulCaption));
-          pcMain.Pages[iPageIndex].Tag := (Sender AS TdxNavBarItem).Tag;
-          pcMain.Pages[iPageIndex].ImageIndex := Module.ImageIndex;
-          pcMain.Pages[iPageIndex].InsertComponent(fTabForm);
+          fTabForm.Parent := pc_Main.Pages[iPageIndex];
+          pc_Main.Pages[iPageIndex].Caption := Copy(sModulCaption, 2, Length(sModulCaption));
+          pc_Main.Pages[iPageIndex].Tag := (Sender AS TdxNavBarItem).Tag;
+          pc_Main.Pages[iPageIndex].ImageIndex := Module.ImageIndex;
+          pc_Main.Pages[iPageIndex].InsertComponent(fTabForm);
           fTabForm.BorderStyle := bsNone;
           fTabForm.ALign:= AlClient;
           fTabForm.Enabled := True;
           fTabForm.Show;
           CloseWaitform;
           fTabForm.BringToFront;
-          barOpenModule.Caption := Copy(sModulCaption, 2, Length(sModulCaption));
+          brstc_OpenModule.Caption := Copy(sModulCaption, 2, Length(sModulCaption));
         end
         else
           if Module.Typ = mtEvent then
@@ -913,27 +933,6 @@ begin
       Application.ProcessMessages;
     END;
   end;
-end;
-procedure Tfrm_PCM_Main.iSpracheClick(Sender: TObject);
-var
-  iniFile: TIniFile;
-begin
-  Application.CreateForm(Tfrm_Language,frm_Language);
-  frm_Language.Position:= poScreenCenter;
-  frm_Language.ClientHeight:= 214;
-  frm_Language.ShowModal;
-  TNtTranslator.SetNew(dm_PCM.slocale,[],'de');
-  TNtTranslator.TranslateForms;
-  iniFile := TIniFile.Create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
-  try
-    iniFile.WriteString(PCM_Logname, 'Language', dm_PCm.sLocale);
-  finally
-    iniFile.Free;
-  end;
-  Caption:= PCM_Programmname;
-  trayic_Main.popupmenu:= ppm_Main;
-  LoadData;
-  btnRefreshRightsClick(Self);
 end;
 {$EndRegion}
 ////////////////////////////////////////////////////////////////////////////////
@@ -984,23 +983,23 @@ procedure Tfrm_PCM_Main.FormResize(Sender: TObject);
     iTemp, iUsedSpace: Integer;
     BarControl: TdxBarControlAccess;
   begin
-    if (dxBarManager1.Bars[0] <> nil) and (dxBarManager1.Bars[0].Control <> nil) then
+    if (brmgr_Main.Bars[0] <> nil) and (brmgr_Main.Bars[0].Control <> nil) then
     begin
-      BarControl := TdxBarControlAccess(dxBarManager1.Bars[0].Control);
+      BarControl := TdxBarControlAccess(brmgr_Main.Bars[0].Control);
 
       iUsedSpace := 0;
 
-      barOpenModule.Width := 0;
+      brstc_OpenModule.Width := 0;
 
       for iTemp := 0 to BarControl.Bar.ItemLinks.Count - 1 do
       begin
-        if BarControl.Bar.ItemLinks.Items[iTemp].Item = btnModulleiste then
+        if BarControl.Bar.ItemLinks.Items[iTemp].Item = btn_Modulleiste then
         begin
           Inc(iUsedSpace, 0);
         end
         else
         begin
-          if BarControl.Bar.ItemLinks.Items[iTemp].Item <> barOpenModule then
+          if BarControl.Bar.ItemLinks.Items[iTemp].Item <> brstc_OpenModule then
           begin
             Inc(iUsedSpace, BarControl.Bar.ItemLinks.Items[iTemp].ItemRect.Width);
           end;
@@ -1012,11 +1011,11 @@ procedure Tfrm_PCM_Main.FormResize(Sender: TObject);
         rRect := BarControl.MarkRect;
         Inc(iUsedSpace, rRect.Right - rRect.Left);
       end;
-       dxBarManager1.BeginUpdate;
+       brmgr_Main.BeginUpdate;
       Try
-        barOpenModule.Width := (dxBarManager1.Bars[0].Control as TdxBarControl).Width -  iUsedSpace - btnModulleiste.Width  - 45;
+        brstc_OpenModule.Width := (brmgr_Main.Bars[0].Control as TdxBarControl).Width -  iUsedSpace - btn_Modulleiste.Width  - 45;
       Finally
-        dxBarManager1.EndUpdate();
+        brmgr_Main.EndUpdate();
       End;
     end;
   end;
@@ -1297,7 +1296,7 @@ begin
     LoadLanguageIni;
     if dm_PCM.bStyle then
     begin
-      NavBarClick(iKonfiguration);
+      NavBarClick(iDesign);
     end
     else begin
       CheckClientLicence;
@@ -1311,7 +1310,6 @@ begin
   end;
 end;
 {$EndRegion}
-
 ////////////////////////////////////////////////////////////////////////////////
 // Traymenü                                                                   //
 ////////////////////////////////////////////////////////////////////////////////

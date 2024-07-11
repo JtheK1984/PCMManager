@@ -2809,7 +2809,7 @@ begin
   begin
     bol_VollBildCal:= true;
     frm_PCM_main.navbr_main.Width:= 0;
-    frm_PCM_main.pcmain.properties.HideTabs:= true;
+    frm_PCM_main.pc_main.properties.HideTabs:= true;
     pc_kalender.properties.HideTabs:= true;
     btn_CalAnsicht.Caption:= rs_PCMManager_normAnsicht;
     btn_CalAnsicht.LargeImageIndex:= 31;
@@ -2819,7 +2819,7 @@ begin
   else begin
     bol_VollBildCal:= false;
     frm_PCM_main.navbr_main.Width:= 200;
-    frm_PCM_main.pcmain.properties.HideTabs:= false;
+    frm_PCM_main.pc_main.properties.HideTabs:= false;
     pc_kalender.properties.HideTabs:= false;
     btn_CalAnsicht.Caption:= rs_PCMManager_maxAnsicht;
     btn_CalAnsicht.LargeImageIndex:= 32;
@@ -3878,7 +3878,7 @@ begin
   begin
     bol_VollBildCal:= true;
     frm_PCM_main.navbr_main.Width:= 0;
-    frm_PCM_main.pcmain.properties.HideTabs:= true;
+    frm_PCM_main.pc_main.properties.HideTabs:= true;
     pc_kalender.properties.HideTabs:= true;
     btn_CalAnsicht.Caption:= rs_PCMManager_normAnsicht;
     btn_CalAnsicht.LargeImageIndex:= 31;
@@ -3887,7 +3887,7 @@ begin
   else begin
     bol_VollBildCal:= false;
     frm_PCM_main.navbr_main.Width:= 200;
-    frm_PCM_main.pcmain.properties.HideTabs:= false;
+    frm_PCM_main.pc_main.properties.HideTabs:= false;
     pc_kalender.properties.HideTabs:= false;
     btn_CalAnsicht.Caption:= rs_PCMManager_maxAnsicht;
     btn_CalAnsicht.LargeImageIndex:= 32;
