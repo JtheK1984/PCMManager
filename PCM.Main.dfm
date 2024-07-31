@@ -4,8 +4,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
   AlphaBlend = True
   BorderStyle = bsSingle
   Caption = 'PCM - Manager'
-  ClientHeight = 761
-  ClientWidth = 1264
+  ClientHeight = 800
+  ClientWidth = 1280
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -3707,7 +3707,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     Left = 0
     Top = 35
     Width = 200
-    Height = 726
+    Height = 765
     Align = alLeft
     ActiveGroupIndex = 0
     TabOrder = 0
@@ -3958,6 +3958,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     object iJira: TdxNavBarItem
       Caption = 'Jira'
       SmallImageIndex = 83
+      Visible = False
       OnClick = NavBarClick
     end
     object navbrStyleIt_main: TdxNavBarStyleItem
@@ -3978,13 +3979,13 @@ object frm_PCM_Main: Tfrm_PCM_Main
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 1
-    Height = 726
-    Width = 1064
+    Height = 765
+    Width = 1080
     object pc_main: TcxPageControl
       Left = 3
       Top = 3
-      Width = 1058
-      Height = 720
+      Width = 1074
+      Height = 759
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -3999,9 +4000,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Properties.Images = dm_PCM.imglst_16x16
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
       OnPageChanging = pc_mainPageChanging
-      ClientRectBottom = 714
+      ClientRectBottom = 753
       ClientRectLeft = 2
-      ClientRectRight = 1052
+      ClientRectRight = 1068
       ClientRectTop = 28
       object ts_Dashboard: TcxTabSheet
         AllowCloseButton = False
@@ -4010,8 +4011,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
         object pc_Chart: TcxPageControl
           Left = 0
           Top = 0
-          Width = 1050
-          Height = 686
+          Width = 1066
+          Height = 725
           Margins.Left = 0
           Margins.Top = 0
           Margins.Right = 0
@@ -4026,9 +4027,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
           Properties.CustomButtons.Buttons = <>
           Properties.Images = dm_PCM.imglst_16x16
           Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
-          ClientRectBottom = 680
+          ClientRectBottom = 719
           ClientRectLeft = 2
-          ClientRectRight = 1044
+          ClientRectRight = 1060
           ClientRectTop = 28
           object ts_A_ContactChart: TcxTabSheet
             AllowCloseButton = False
@@ -4042,8 +4043,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
               Style.BorderStyle = ebsNone
               Style.Edges = [bLeft, bTop, bRight, bBottom]
               TabOrder = 0
-              Height = 652
-              Width = 1042
+              Height = 691
+              Width = 1058
               object pnl_ContactTop: TcxGroupBox
                 Left = 3
                 Top = 3
@@ -4053,11 +4054,11 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 Style.Edges = [bLeft, bTop, bRight, bBottom]
                 TabOrder = 0
                 Height = 305
-                Width = 1036
+                Width = 1052
                 object chartctrl_Birthday: TdxChartControl
                   Left = 3
                   Top = 15
-                  Width = 1030
+                  Width = 1046
                   Height = 281
                   Align = alClient
                   BorderStyle = cxcbsNone
@@ -4085,7 +4086,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
               object spl_ChartContactsMain: TcxSplitter
                 Left = 3
                 Top = 308
-                Width = 1036
+                Width = 1052
                 Height = 5
                 AlignSplitter = salBottom
                 Control = pnl_ContactTop
@@ -4098,13 +4099,13 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 Style.BorderStyle = ebsFlat
                 Style.Edges = [bLeft, bTop, bRight, bBottom]
                 TabOrder = 2
-                Height = 336
+                Height = 375
                 Width = 491
                 object chartctrl_Contact: TdxChartControl
                   Left = 3
                   Top = 15
                   Width = 485
-                  Height = 312
+                  Height = 351
                   Align = alClient
                   BorderStyle = cxcbsNone
                   Legend.Title.Visible = False
@@ -4139,13 +4140,13 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 Style.BorderStyle = ebsFlat
                 Style.Edges = [bLeft, bTop, bRight, bBottom]
                 TabOrder = 3
-                Height = 336
-                Width = 545
+                Height = 375
+                Width = 561
                 object chartctrl_Adresses: TdxChartControl
                   Left = 8
                   Top = 15
-                  Width = 534
-                  Height = 312
+                  Width = 550
+                  Height = 351
                   Align = alClient
                   BorderStyle = cxcbsNone
                   Legend.Title.Visible = False
@@ -4179,7 +4180,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                   Left = 3
                   Top = 15
                   Width = 5
-                  Height = 312
+                  Height = 351
                   Control = pnl_Contactmiddle
                 end
               end
@@ -4189,6 +4190,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AllowCloseButton = False
             Caption = 'Aufgaben / Termine'
             ImageIndex = 58
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object pnl_DashboardCalToDO: TcxGroupBox
               Left = 0
               Top = 0
@@ -4197,8 +4202,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
               Style.BorderStyle = ebsNone
               Style.Edges = [bLeft, bTop, bRight, bBottom]
               TabOrder = 0
-              Height = 652
-              Width = 1042
+              Height = 691
+              Width = 1058
               object pnl_CalToDOMiddle: TcxGroupBox
                 Left = 3
                 Top = 294
@@ -4207,13 +4212,13 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 Style.BorderStyle = ebsFlat
                 Style.Edges = [bLeft, bTop, bRight, bBottom]
                 TabOrder = 0
-                Height = 355
+                Height = 394
                 Width = 491
                 object chartctrl_Cal: TdxChartControl
                   Left = 3
                   Top = 15
                   Width = 485
-                  Height = 331
+                  Height = 370
                   Align = alClient
                   BorderStyle = cxcbsNone
                   Legend.Title.Visible = False
@@ -4248,13 +4253,13 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 Style.BorderStyle = ebsFlat
                 Style.Edges = [bLeft, bTop, bRight, bBottom]
                 TabOrder = 1
-                Height = 355
-                Width = 545
+                Height = 394
+                Width = 561
                 object chartctrl_CalCategories: TdxChartControl
                   Left = 8
                   Top = 15
-                  Width = 534
-                  Height = 331
+                  Width = 550
+                  Height = 370
                   Align = alClient
                   BorderStyle = cxcbsNone
                   Legend.Title.Visible = False
@@ -4288,7 +4293,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                   Left = 3
                   Top = 15
                   Width = 5
-                  Height = 331
+                  Height = 370
                   Control = pnl_CalToDOMiddle
                 end
               end
@@ -4301,11 +4306,11 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 Style.Edges = [bLeft, bTop, bRight, bBottom]
                 TabOrder = 2
                 Height = 286
-                Width = 1036
+                Width = 1052
                 object chartctrl_ToDo: TdxChartControl
                   Left = 3
                   Top = 15
-                  Width = 1030
+                  Width = 1046
                   Height = 262
                   Align = alClient
                   BorderStyle = cxcbsNone
@@ -4317,6 +4322,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     object chartctrl_ToDoSeries: TdxChartSimpleSeries
                       Caption = 'Wert'
                       DataBindingType = 'DB'
+                      DataBinding.DataSource = dm_PCM.ds_ChartAufgabe
                       DataBinding.ArgumentField.FieldName = 'ungelesen'
                       DataBinding.ValueField.FieldName = 'Wert'
                       ViewType = 'Pie'
@@ -4340,7 +4346,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
               object spl_ChartCalToDoMain: TcxSplitter
                 Left = 3
                 Top = 289
-                Width = 1036
+                Width = 1052
                 Height = 5
                 AlignSplitter = salBottom
                 Control = pnl_CalToDOtop
@@ -4349,8 +4355,12 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object ts_C_PasswortChart: TcxTabSheet
             AllowCloseButton = False
-            Caption = 'Passw'#246'rter'
+            Caption = 'Passw'#246'rter / Serials'
             ImageIndex = 9
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object pnl_DashboardPWDSerial: TcxGroupBox
               Left = 0
               Top = 0
@@ -4359,8 +4369,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
               Style.BorderStyle = ebsNone
               Style.Edges = [bLeft, bTop, bRight, bBottom]
               TabOrder = 0
-              Height = 652
-              Width = 1042
+              Height = 691
+              Width = 1058
               object pnl_PWDSerialmiddle: TcxGroupBox
                 Left = 3
                 Top = 294
@@ -4369,13 +4379,13 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 Style.BorderStyle = ebsFlat
                 Style.Edges = [bLeft, bTop, bRight, bBottom]
                 TabOrder = 0
-                Height = 355
+                Height = 394
                 Width = 491
                 object chartctrl_PWDCategories: TdxChartControl
                   Left = 3
                   Top = 15
                   Width = 485
-                  Height = 331
+                  Height = 370
                   Align = alClient
                   BorderStyle = cxcbsNone
                   Legend.Title.Visible = False
@@ -4410,20 +4420,20 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 Style.BorderStyle = ebsFlat
                 Style.Edges = [bLeft, bTop, bRight, bBottom]
                 TabOrder = 1
-                Height = 355
-                Width = 545
+                Height = 394
+                Width = 561
                 object spl_ChartPWDSerialLeft: TcxSplitter
                   Left = 3
                   Top = 15
                   Width = 5
-                  Height = 331
+                  Height = 370
                   Control = pnl_PWDSerialmiddle
                 end
                 object chartctrl_SerialsCategories: TdxChartControl
                   Left = 8
                   Top = 15
-                  Width = 534
-                  Height = 331
+                  Width = 550
+                  Height = 370
                   Align = alClient
                   BorderStyle = cxcbsNone
                   Legend.Title.Visible = False
@@ -4459,11 +4469,11 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 Style.Edges = [bLeft, bTop, bRight, bBottom]
                 TabOrder = 2
                 Height = 286
-                Width = 1036
+                Width = 1052
                 object chartctrl_PWDSerials: TdxChartControl
                   Left = 3
                   Top = 15
-                  Width = 1030
+                  Width = 1046
                   Height = 262
                   Align = alClient
                   BorderStyle = cxcbsNone
@@ -4498,7 +4508,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
               object spl_ChartPWDSerialMain: TcxSplitter
                 Left = 3
                 Top = 289
-                Width = 1036
+                Width = 1052
                 Height = 5
                 AlignSplitter = salBottom
                 Control = pnl_PWDSerialTop
@@ -4522,13 +4532,13 @@ object frm_PCM_Main: Tfrm_PCM_Main
               Style.Edges = [bLeft, bTop, bRight, bBottom]
               Style.Shadow = False
               TabOrder = 0
-              Height = 384
-              Width = 1030
+              Height = 423
+              Width = 1046
               object chartctrl_Finance: TdxChartControl
                 Left = 3
                 Top = 15
-                Width = 1024
-                Height = 360
+                Width = 1040
+                Height = 399
                 Align = alClient
                 BorderStyle = cxcbsNone
                 Legend.Visible = False
@@ -4579,7 +4589,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             object grpbx_FinanzenUebersicht: TcxGroupBox
               AlignWithMargins = True
               Left = 6
-              Top = 387
+              Top = 426
               Margins.Left = 6
               Margins.Top = 0
               Margins.Right = 6
@@ -4596,7 +4606,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
               Style.IsFontAssigned = True
               TabOrder = 1
               Height = 265
-              Width = 1030
+              Width = 1046
               object grpbx_FinanzenUebersicht_Left: TcxGroupBox
                 Left = 3
                 Top = 3
@@ -4657,6 +4667,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taRightJustify
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                     Height = 17
                     Width = 80
                     AnchorX = 286
@@ -4722,6 +4734,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taRightJustify
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                     Height = 17
                     Width = 80
                     AnchorX = 286
@@ -4787,6 +4801,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taRightJustify
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                     Height = 17
                     Width = 80
                     AnchorX = 286
@@ -4844,6 +4860,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 0
+                    ExplicitTop = 67
                     Height = 23
                     Width = 288
                     object lbl_SollSumLabel: TcxLabel
@@ -4900,6 +4917,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 1
+                    ExplicitTop = -4
                     Height = 23
                     Width = 288
                     object lbl_EinSollSumLabel: TcxLabel
@@ -4956,6 +4974,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 2
+                    ExplicitTop = 19
                     Height = 23
                     Width = 288
                     object lbl_AusVarSollSumLabel: TcxLabel
@@ -5026,6 +5045,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 4
+                    ExplicitTop = 42
                     Height = 23
                     Width = 288
                     object lbl_AusFixSollSumLabel: TcxLabel
@@ -5092,7 +5112,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 Style.IsFontAssigned = True
                 TabOrder = 1
                 Height = 259
-                Width = 532
+                Width = 548
                 object pnl_EinIst: TcxGroupBox
                   AlignWithMargins = True
                   Left = 3
@@ -5113,10 +5133,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
                   Style.IsFontAssigned = True
                   TabOrder = 0
                   Height = 45
-                  Width = 526
+                  Width = 542
                   object lbl_EinIst: TcxLabel
                     AlignWithMargins = True
-                    Left = 438
+                    Left = 454
                     Top = 16
                     Margins.Left = 0
                     Margins.Top = 1
@@ -5133,9 +5153,11 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taRightJustify
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                     Height = 17
                     Width = 80
-                    AnchorX = 518
+                    AnchorX = 534
                   end
                   object lbl_EinIstLabel: TcxLabel
                     AlignWithMargins = True
@@ -5178,10 +5200,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
                   Style.IsFontAssigned = True
                   TabOrder = 1
                   Height = 45
-                  Width = 526
+                  Width = 542
                   object lbl_AusFixIst: TcxLabel
                     AlignWithMargins = True
-                    Left = 438
+                    Left = 454
                     Top = 16
                     Margins.Left = 0
                     Margins.Top = 1
@@ -5198,9 +5220,11 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taRightJustify
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                     Height = 17
                     Width = 80
-                    AnchorX = 518
+                    AnchorX = 534
                   end
                   object lbl_AusFixIstLabel: TcxLabel
                     AlignWithMargins = True
@@ -5243,10 +5267,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
                   Style.IsFontAssigned = True
                   TabOrder = 2
                   Height = 45
-                  Width = 526
+                  Width = 542
                   object lbl_AusvarIst: TcxLabel
                     AlignWithMargins = True
-                    Left = 438
+                    Left = 454
                     Top = 16
                     Margins.Left = 0
                     Margins.Top = 1
@@ -5263,9 +5287,11 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taRightJustify
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                     Height = 17
                     Width = 80
-                    AnchorX = 518
+                    AnchorX = 534
                   end
                   object lbl_AusVarIstLabel: TcxLabel
                     AlignWithMargins = True
@@ -5308,7 +5334,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                   Style.IsFontAssigned = True
                   TabOrder = 3
                   Height = 121
-                  Width = 526
+                  Width = 542
                   object pnl_VerfIst: TcxGroupBox
                     Left = 3
                     Top = 86
@@ -5320,8 +5346,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 0
+                    ExplicitTop = 67
                     Height = 23
-                    Width = 520
+                    Width = 536
                     object lbl_IstSumLabel: TcxLabel
                       AlignWithMargins = True
                       Left = 13
@@ -5342,7 +5369,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     end
                     object lbl_IstSum: TcxLabel
                       AlignWithMargins = True
-                      Left = 432
+                      Left = 448
                       Top = 3
                       Margins.Left = 0
                       Margins.Top = 0
@@ -5362,7 +5389,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                       Transparent = True
                       Height = 17
                       Width = 80
-                      AnchorX = 512
+                      AnchorX = 528
                     end
                   end
                   object pnl_VerfEinIst: TcxGroupBox
@@ -5376,8 +5403,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 1
+                    ExplicitTop = -4
                     Height = 23
-                    Width = 520
+                    Width = 536
                     object lbl_EinIstSumLabel: TcxLabel
                       AlignWithMargins = True
                       Left = 13
@@ -5398,7 +5426,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     end
                     object lbl_EinIstSum: TcxLabel
                       AlignWithMargins = True
-                      Left = 432
+                      Left = 448
                       Top = 3
                       Margins.Left = 0
                       Margins.Top = 0
@@ -5418,7 +5446,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                       Transparent = True
                       Height = 17
                       Width = 80
-                      AnchorX = 512
+                      AnchorX = 528
                     end
                   end
                   object pnl_VerfvarIst: TcxGroupBox
@@ -5432,8 +5460,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 2
+                    ExplicitTop = 19
                     Height = 23
-                    Width = 520
+                    Width = 536
                     object lbl_AusvarIstSumLabel: TcxLabel
                       AlignWithMargins = True
                       Left = 13
@@ -5454,7 +5483,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     end
                     object lbl_AusvarIstSum: TcxLabel
                       AlignWithMargins = True
-                      Left = 432
+                      Left = 448
                       Top = 3
                       Margins.Left = 0
                       Margins.Top = 0
@@ -5474,14 +5503,14 @@ object frm_PCM_Main: Tfrm_PCM_Main
                       Transparent = True
                       Height = 17
                       Width = 80
-                      AnchorX = 512
+                      AnchorX = 528
                     end
                   end
                   object pnl_TrennIst: TPanel
                     AlignWithMargins = True
                     Left = 16
                     Top = 84
-                    Width = 507
+                    Width = 523
                     Height = 2
                     Margins.Left = 13
                     Margins.Top = 0
@@ -5502,8 +5531,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 4
+                    ExplicitTop = 42
                     Height = 23
-                    Width = 520
+                    Width = 536
                     object lbl_AusFixIstSumLabel: TcxLabel
                       AlignWithMargins = True
                       Left = 13
@@ -5524,7 +5554,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     end
                     object lbl_AusFixIstSum: TcxLabel
                       AlignWithMargins = True
-                      Left = 432
+                      Left = 448
                       Top = 3
                       Margins.Left = 0
                       Margins.Top = 0
@@ -5544,13 +5574,13 @@ object frm_PCM_Main: Tfrm_PCM_Main
                       Transparent = True
                       Height = 17
                       Width = 80
-                      AnchorX = 512
+                      AnchorX = 528
                     end
                   end
                 end
               end
               object grpbx_FinanzenUebersicht_middle: TcxGroupBox
-                Left = 835
+                Left = 851
                 Top = 3
                 Margins.Left = 0
                 Margins.Top = 0
@@ -5609,6 +5639,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taRightJustify
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                     Height = 17
                     Width = 80
                     AnchorX = 178
@@ -5674,6 +5706,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taRightJustify
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                     Height = 17
                     Width = 80
                     AnchorX = 178
@@ -5739,6 +5773,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     Style.IsFontAssigned = True
                     Properties.Alignment.Horz = taRightJustify
                     Transparent = True
+                    ExplicitTop = -3
+                    ExplicitHeight = 36
                     Height = 17
                     Width = 80
                     AnchorX = 178
@@ -5796,6 +5832,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 0
+                    ExplicitTop = 67
                     Height = 23
                     Width = 180
                     object lbl_SollDiff: TcxLabel
@@ -5852,6 +5889,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 1
+                    ExplicitTop = -4
                     Height = 23
                     Width = 180
                     object lbl_EinDiffSumLabel: TcxLabel
@@ -5908,6 +5946,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 2
+                    ExplicitTop = 19
                     Height = 23
                     Width = 180
                     object lbl_AusvarDiffSumLabel: TcxLabel
@@ -5978,6 +6017,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
                     PanelStyle.Active = True
                     Style.BorderStyle = ebsNone
                     TabOrder = 4
+                    ExplicitTop = 42
                     Height = 23
                     Width = 180
                     object lbl_AusFixDiffSumLabel: TcxLabel

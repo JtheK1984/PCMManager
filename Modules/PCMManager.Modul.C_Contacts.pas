@@ -262,6 +262,9 @@ type
     dlgFOpen_VCF: TdxOpenFileDialog;
     dlgsave_Personal: TdxSaveFileDialog;
     dlgSave_VCF: TdxSaveFileDialog;
+    cxPageControl1: TcxPageControl;
+    cxTabSheet1: TcxTabSheet;
+    dxBarDockControl1: TdxBarDockControl;
     procedure btn_KontaktNewClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure pc_Kontakte_KontakteChange(Sender: TObject);
@@ -365,6 +368,9 @@ begin
   Application.CreateForm(Tfrm_PCManagerNewContact, frm_PCManagerNewContact);
   if frm_PCManagerNewContact.Execute(True,iAnrede, sVorname, sName) then
   begin
+    if not qry_Kontakte.active then
+       qry_Kontakte.Open;
+
     if qry_Kontakte.State in [dsInsert, dsedit] then
       qry_Kontakte.Post;
     qry_Kontakte.Append;
@@ -1681,6 +1687,7 @@ procedure Tfrm_Contact.FormShow(Sender: TObject);
     btn_KontaktKonfessionEdit.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
   end;
 begin
+  ShowMessage('Breite:'+ IntToStr(clientwidth)  );
   cmbbx_KontaktSucheArt.clear;
   dm_PCM.qry_Work.SQL.Text:= 'SELECT ID, Bezeichnung FROM manager_kontaktart order by Bezeichnung asc';
   dm_PCM.qry_Work.open;

@@ -958,12 +958,10 @@ object frm_Config: Tfrm_Config
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 0
-            ExplicitTop = 81
-            ExplicitWidth = 1262
             Height = 35
             Width = 1272
             object lbl_AufgabenPrioBezeichnung: TcxLabel
-              Left = 569
+              Left = 546
               Top = 7
               Caption = 'Bezeichnung:'
               ParentFont = False
@@ -989,7 +987,7 @@ object frm_Config: Tfrm_Config
               Transparent = True
             end
             object edt_PrioBez: TcxDBTextEdit
-              Left = 661
+              Left = 638
               Top = 6
               DataBinding.DataField = 'Bezeichnung'
               DataBinding.DataSource = ds_prio
@@ -1033,7 +1031,7 @@ object frm_Config: Tfrm_Config
           Height = 300
           Width = 1276
           object lbl_AufgabenartenColor: TcxLabel
-            Left = 571
+            Left = 546
             Top = 84
             Caption = 'Aufgaben Farbe:'
             ParentFont = False
@@ -1144,8 +1142,8 @@ object frm_Config: Tfrm_Config
             end
           end
           object colcmbbx_Aufgabenart: TcxDBColorComboBox
-            Left = 663
-            Top = 83
+            Left = 638
+            Top = 82
             DataBinding.DataField = 'Farbe'
             DataBinding.DataSource = ds_Aufgabenarten
             ParentFont = False
@@ -1183,7 +1181,7 @@ object frm_Config: Tfrm_Config
           Width = 1276
           object cmbbx_AufgabenSonstigesAdresseFirma: TcxDBLookupComboBox
             AlignWithMargins = True
-            Left = 663
+            Left = 638
             Top = 109
             Margins.Left = 5
             Margins.Top = 5
@@ -1230,7 +1228,7 @@ object frm_Config: Tfrm_Config
             BarManager = brmgr_Config
           end
           object lbl_AufgabenSonstigesStunden: TcxLabel
-            Left = 571
+            Left = 546
             Top = 84
             Caption = 'Stunden pro Tag:'
             Transparent = True
@@ -1242,7 +1240,7 @@ object frm_Config: Tfrm_Config
             Transparent = True
           end
           object lbl_AufgabenSonstigesAdresseFirma: TcxLabel
-            Left = 571
+            Left = 546
             Top = 110
             Caption = 'Adresse Firma:'
             Transparent = True
@@ -1262,7 +1260,7 @@ object frm_Config: Tfrm_Config
             Width = 390
           end
           object mskedt_AufgabenSonstigesStunden: TcxDBCurrencyEdit
-            Left = 663
+            Left = 638
             Top = 83
             DataBinding.DataField = 'StundenProArbeitstag'
             DataBinding.DataSource = ds_option
@@ -1271,7 +1269,7 @@ object frm_Config: Tfrm_Config
             Width = 390
           end
           object cmbbx_AufgabenSonstigesBundeslandFirma: TcxDBLookupComboBox
-            Left = 663
+            Left = 638
             Top = 137
             DataBinding.DataField = 'Adresse_firmaBL'
             DataBinding.DataSource = ds_option
@@ -1311,7 +1309,7 @@ object frm_Config: Tfrm_Config
             Transparent = True
           end
           object lbl_AufgabenSonstigesBundeslandFirma: TcxLabel
-            Left = 571
+            Left = 546
             Top = 138
             Caption = 'Bundesland:'
             Transparent = True
@@ -1325,7 +1323,7 @@ object frm_Config: Tfrm_Config
             Width = 390
           end
           object lbl_AufgabenSonstigesAccMail: TcxLabel
-            Left = 571
+            Left = 546
             Top = 167
             Caption = 'Account-Mails:'
             Transparent = True
@@ -1337,7 +1335,7 @@ object frm_Config: Tfrm_Config
             Transparent = True
           end
           object edt_AufgabenSonstigesAccMail: TcxDBTextEdit
-            Left = 663
+            Left = 638
             Top = 166
             DataBinding.DataField = 'Account_Geschaeftlich'
             DataBinding.DataSource = ds_option
@@ -1445,12 +1443,10 @@ object frm_Config: Tfrm_Config
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 0
-            ExplicitTop = 81
-            ExplicitWidth = 1262
             Height = 64
             Width = 1272
             object colcmbbx_StundenplanConfig_FontColor: TcxDBColorComboBox
-              Left = 641
+              Left = 638
               Top = 35
               DataBinding.DataField = 'Schriftfarbe'
               DataBinding.DataSource = ds_SchulFaecher
@@ -1522,7 +1518,7 @@ object frm_Config: Tfrm_Config
               Transparent = True
             end
             object lbl_StundenplanConfig_FontColor: TcxLabel
-              Left = 574
+              Left = 571
               Top = 37
               Caption = 'Schriftfarbe:'
               ParentFont = False
@@ -1566,7 +1562,7 @@ object frm_Config: Tfrm_Config
           Height = 195
           Width = 1276
           object colcmbbx_StundenplanConfigUhr_FontColor: TcxDBColorComboBox
-            Left = 641
+            Left = 638
             Top = 83
             DataBinding.DataField = 'Schriftfarbe'
             DataBinding.DataSource = ds_SchulFaecher_Config
@@ -1679,7 +1675,7 @@ object frm_Config: Tfrm_Config
             end
           end
           object lbl_StundenplanConfigUhr_FontColor: TcxLabel
-            Left = 574
+            Left = 571
             Top = 85
             Caption = 'Schriftfarbe:'
             ParentFont = False
@@ -1723,9 +1719,6 @@ object frm_Config: Tfrm_Config
           Align = alClient
           Caption = 'E-Mailkonfiguration'
           TabOrder = 0
-          ExplicitTop = 63
-          ExplicitWidth = 1266
-          ExplicitHeight = 301
           Height = 317
           Width = 1276
           object grd_EmailConfig: TcxGrid
@@ -1833,13 +1826,12 @@ object frm_Config: Tfrm_Config
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 0
-            ExplicitWidth = 1262
             Height = 234
             Width = 1272
             object btn_EmailConfig_Test: TcxButton
               Left = 3
               Top = 161
-              Width = 1045
+              Width = 1025
               Height = 27
               Caption = 'Verbindung Testen'
               TabOrder = 9
@@ -1865,7 +1857,7 @@ object frm_Config: Tfrm_Config
               OnExit = btn_EmailConfigSaveClick
             end
             object edt_EmailConfig_Benutzer: TcxDBTextEdit
-              Left = 703
+              Left = 678
               Top = 27
               DataBinding.DataField = 'Benutzer'
               DataBinding.DataSource = ds_EmailConfig
@@ -1899,7 +1891,7 @@ object frm_Config: Tfrm_Config
               Width = 350
             end
             object edt_EmailConfig_Kennwort: TcxDBTextEdit
-              Left = 703
+              Left = 678
               Top = 54
               DataBinding.DataField = 'Passwort'
               DataBinding.DataSource = ds_EmailConfig
@@ -1917,7 +1909,7 @@ object frm_Config: Tfrm_Config
               Width = 350
             end
             object edt_EmailConfig_PortAusgang: TcxDBTextEdit
-              Left = 703
+              Left = 678
               Top = 108
               DataBinding.DataField = 'PortAusgangsserver'
               DataBinding.DataSource = ds_EmailConfig
@@ -1951,7 +1943,7 @@ object frm_Config: Tfrm_Config
               Width = 350
             end
             object edt_EmailConfig_PostAusgangServer: TcxDBTextEdit
-              Left = 703
+              Left = 678
               Top = 81
               DataBinding.DataField = 'PostAusgangsserver'
               DataBinding.DataSource = ds_EmailConfig
@@ -1984,7 +1976,7 @@ object frm_Config: Tfrm_Config
               Width = 350
             end
             object lbl_EmailConfig_Anmeldeinformationen: TcxLabel
-              Left = 564
+              Left = 539
               Top = 5
               Caption = 'Anmeldeinformationen'
               ParentFont = False
@@ -1997,7 +1989,7 @@ object frm_Config: Tfrm_Config
               Transparent = True
             end
             object lbl_EmailConfig_Benutzer: TcxLabel
-              Left = 564
+              Left = 539
               Top = 30
               Caption = 'Benutzername:'
               ParentFont = False
@@ -2023,7 +2015,7 @@ object frm_Config: Tfrm_Config
               Transparent = True
             end
             object lbl_EmailConfig_Kennwort: TcxLabel
-              Left = 564
+              Left = 539
               Top = 57
               Caption = 'Kennwort:'
               ParentFont = False
@@ -2049,7 +2041,7 @@ object frm_Config: Tfrm_Config
               Transparent = True
             end
             object lbl_EmailConfig_PortAusgang: TcxLabel
-              Left = 564
+              Left = 539
               Top = 111
               Caption = 'Port (SMTP):'
               ParentFont = False
@@ -2103,7 +2095,7 @@ object frm_Config: Tfrm_Config
               Transparent = True
             end
             object lbl_EmailConfig_PostAusgangServer: TcxLabel
-              Left = 564
+              Left = 539
               Top = 84
               Caption = 'Postausgangsserver:'
               ParentFont = False
@@ -2165,7 +2157,7 @@ object frm_Config: Tfrm_Config
               Width = 350
             end
             object imgcmbbx_Server: TcxDBImageComboBox
-              Left = 703
+              Left = 678
               Top = 135
               DataBinding.DataField = 'Synch'
               DataBinding.DataSource = ds_EmailConfig
@@ -2229,9 +2221,6 @@ object frm_Config: Tfrm_Config
             Align = alBottom
             Caption = 'Hauptpostf'#228'cher'
             TabOrder = 0
-            ExplicitLeft = 3
-            ExplicitTop = 87
-            ExplicitWidth = 1260
             Height = 150
             Width = 1272
             object grpbx_PostfachMainSort: TcxGroupBox
@@ -2240,7 +2229,6 @@ object frm_Config: Tfrm_Config
               Align = alRight
               PanelStyle.Active = True
               TabOrder = 0
-              ExplicitHeight = 126
               Height = 130
               Width = 26
               object btn_PostfachMainbottom: TcxButton
@@ -2457,9 +2445,6 @@ object frm_Config: Tfrm_Config
             Align = alBottom
             Caption = 'Unterpostf'#228'cher'
             TabOrder = 1
-            ExplicitLeft = 3
-            ExplicitTop = 237
-            ExplicitWidth = 1260
             Height = 150
             Width = 1272
             object grpbx_PostfachMainSub: TcxGroupBox
@@ -2468,7 +2453,6 @@ object frm_Config: Tfrm_Config
               Align = alRight
               PanelStyle.Active = True
               TabOrder = 0
-              ExplicitHeight = 126
               Height = 130
               Width = 26
               object btn_PostfachSubbottom: TcxButton

@@ -467,7 +467,37 @@ procedure Tfrm_PCM_Main.LoadData;
     dEinnahmeSoll, dEinnahmeIst: Double;
     dKostenVarSoll, dKostenVarIst: Double;
     dKostenFixSoll, dKostenFixIst: Double;
+    ADataBinding :TdxChartSimpleSeriesDBDataBinding;
+    ADataBinding1 :TdxChartXYSeriesDBDataBinding;
   begin
+
+    ADataBinding := chartctrl_BirthdaySeries.DataBinding as TdxChartSimpleSeriesDBDataBinding;
+    ADataBinding.DataSource := dm_PCM.ds_ChartGeburtstage;
+    ADataBinding := chartctrl_ContactSeries.DataBinding as TdxChartSimpleSeriesDBDataBinding;
+    ADataBinding.DataSource := dm_PCM.ds_ChartKontaktart;
+    ADataBinding := chartctrl_AdressesSeries.DataBinding as TdxChartSimpleSeriesDBDataBinding;
+    ADataBinding.DataSource := dm_PCM.ds_ChartAdressen;
+
+
+    ADataBinding := chartctrl_ToDoSeries.DataBinding as TdxChartSimpleSeriesDBDataBinding;
+    ADataBinding.DataSource := dm_PCM.ds_ChartAufgabe;
+    ADataBinding := chartctrl_CalSeries.DataBinding as TdxChartSimpleSeriesDBDataBinding;
+    ADataBinding.DataSource := dm_PCM.ds_ChartKalender;
+    ADataBinding := chartctrl_CalCategoriesSeries.DataBinding as TdxChartSimpleSeriesDBDataBinding;
+    ADataBinding.DataSource := dm_PCM.ds_ChartKategorie;
+
+    ADataBinding := chartctrl_PWDSerialsSeries.DataBinding as TdxChartSimpleSeriesDBDataBinding;
+    ADataBinding.DataSource := dm_PCM.ds_ChartPWDSerials;
+    ADataBinding := chartctrl_PWDCategoriesSeries.DataBinding as TdxChartSimpleSeriesDBDataBinding;
+    ADataBinding.DataSource := dm_PCM.ds_ChartPWD_Kategorie;
+    ADataBinding := chartctrl_SerialsCategoriesSeries.DataBinding as TdxChartSimpleSeriesDBDataBinding;
+    ADataBinding.DataSource := dm_PCM.ds_ChartSerialKategorie;
+
+    ADataBinding1 := chartctrl_FinanceSeries1.DataBinding as TdxChartXYSeriesDBDataBinding;
+    ADataBinding1.DataSource := dm_PCM.ds_ChartFinance;
+    ADataBinding1 := chartctrl_FinanceSeries2.DataBinding as TdxChartXYSeriesDBDataBinding;
+    ADataBinding1.DataSource := dm_PCM.ds_ChartFinance;
+
     dEinnahmeSoll:=0;
     dEinnahmeIst:=0;
     dKostenVarSoll:=0;
@@ -1306,6 +1336,8 @@ begin
       WriteLog(PCM_Logname,rs_PCM_Start,0);
       SetTrayMenu;
       RegisterNavBarItems;
+      if paramstr(1) = '/jira'  then
+        iJira.Visible:= true;
     end;
   end;
 end;

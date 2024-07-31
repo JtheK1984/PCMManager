@@ -5387,6 +5387,7 @@ begin
     GlobalWebView2Loader.StartWebView2;
     InitializeBrowser(pnl_BrowserJiraGes);
   end;
+  ts_C_jira.Visible:= frm_PCM_main.iJira.visible;
 
 
 end;

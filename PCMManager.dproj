@@ -146,6 +146,13 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
+        <DCCReference Include="PCM.Main.pas">
+            <Form>frm_PCM_Main</Form>
+        </DCCReference>
+        <DCCReference Include="PCM.Data.pas">
+            <Form>dm_PCM</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <DCCReference Include="Modules\PCMManager.Modul.B_Config.pas">
             <Form>frm_Config</Form>
         </DCCReference>
@@ -201,13 +208,6 @@
         <DCCReference Include="Modules\PCMManager.Modul.G_Finanzen.Filter.Date.pas">
             <Form>frm_PCManagerChooseDate</Form>
         </DCCReference>
-        <DCCReference Include="PCM.Main.pas">
-            <Form>frm_PCM_Main</Form>
-        </DCCReference>
-        <DCCReference Include="PCM.Data.pas">
-            <Form>dm_PCM</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="Helper\cxSchedulerStorage.pas"/>
         <DCCReference Include="Helper\PCMManager.Helper.Contacts.VCF.pas"/>
         <DCCReference Include="Helper\PCMManager.Helper.Calendar.ICAL.pas"/>
@@ -217,7 +217,7 @@
             <Form>cxSchedulerReminderForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <BuildConfiguration Include="Base"> 
+        <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
         <BuildConfiguration Include="Debug">
