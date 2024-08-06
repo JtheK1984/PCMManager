@@ -318,10 +318,11 @@ uses  PCM.Data,
       PCMManager.Helper.Contacts.VCF,
       PCM.Strings;
 
-{$Region Hilfsfunktionen}
+
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktionen}
 procedure Tfrm_Contact.SetButtonsEnabledVisible(DataSet: TDataSet);
 begin
   SetButtons;
@@ -354,11 +355,10 @@ begin
   end;
 end;
 {$EndRegion}
-{$Region Toolbar}
 ////////////////////////////////////////////////////////////////////////////////
 // Toolbar                                                                    //
 ////////////////////////////////////////////////////////////////////////////////
-// Toolbar
+{$Region Toolbar}
 procedure Tfrm_Contact.btn_KontaktNewClick(Sender: TObject);
 var
   iAnrede : Integer;
@@ -1517,10 +1517,10 @@ begin
   end;
 end;
 {$EndRegion}
-{$Region Kontaktdetail}
 ////////////////////////////////////////////////////////////////////////////////
 // Kontaktdetail                                                              //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Kontaktdetail}
 procedure Tfrm_Contact.btn_KontaktEmail1SendClick(Sender: TObject);
 var
   ExecStr : String;
@@ -1575,10 +1575,10 @@ begin
   end;
 end;
 {$EndRegion}
-{$Region Formfunktions}
 ////////////////////////////////////////////////////////////////////////////////
 // Formfunktions                                                              //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Formfunktions}
 procedure Tfrm_Contact.FormActivate(Sender: TObject);
 begin
   FormShow(Self);
@@ -1687,7 +1687,6 @@ procedure Tfrm_Contact.FormShow(Sender: TObject);
     btn_KontaktKonfessionEdit.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
   end;
 begin
-  ShowMessage('Breite:'+ IntToStr(clientwidth)  );
   cmbbx_KontaktSucheArt.clear;
   dm_PCM.qry_Work.SQL.Text:= 'SELECT ID, Bezeichnung FROM manager_kontaktart order by Bezeichnung asc';
   dm_PCM.qry_Work.open;

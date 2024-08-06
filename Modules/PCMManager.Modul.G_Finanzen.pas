@@ -34,7 +34,7 @@ uses
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   cxGridCustomPopupMenu, cxGridPopupMenu, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, dxBar,System.UITypes, Xml.XMLIntf,Xml.XMLDoc, Xml.xmldom,
-  Xml.Win.msxmldom,cxGridExportLink,PCM.Functions, dxSkinWXI, dxBarCode;
+  Xml.Win.msxmldom,cxGridExportLink,PCM.Functions, dxSkinWXI, dxBarCode, Xml.adomxmldom;
 
 type
   Tfrm_finanzen = class(TForm)
@@ -1047,151 +1047,138 @@ procedure Tfrm_finanzen.btn_FinanzenDruckenClick(Sender: TObject);
     Result:= StringReplace(Result,'&lt;','<',[rfreplaceAll]);
   end;
 var
+  DomImpl: IDOMImplementation;
   xmlDoc: IXMLDocument;
-  xmlnhtml, xmlnHead, xmlnMeta,xmlnStyle,xmlnBody : IXMLNode;
+  xmlDocType: IXMLDocument;
+  xmlnhtml,
+  xmlnhtml1,xmlnHead, xmlnMeta,xmlnStyle,xmlnBody : IXMLNode;
   xmlnDivContainer,xmlnDivReport,xmlnDivDate, xmlnDivstyle  : IXMLNode;
   xmlnInput, xmlndivdiv,xmlntable: IXMLNode;
   trEinnahmenHeader, trAusgabenvarHeader : IXMLNode;
   xmlntableTH,xmlndivstatus,xmlntableheader,xmlntablebody, xmlntableFoot: IXMLNode;
   xmlJavascript1, xmlJavascript2:IXMLNode;
   fEinSum,fAusvar,fAusFix: Double;
-  slFileBefore, slFileAfter: TStringList;
+  slFileXML,slFileBefore, slFileAfter: TStringList;
   iTemp: integer;
+  sMonat: string;
 begin
   try
-    xmlDoc := TXMLDocument.Create(nil);
-    xmlDoc.Active := true;
-    xmlDoc.Options := [doNodeAutoIndent];
-    xmlnhtml := xmlDoc.AddChild('html');
-    xmlnHead:= xmlnhtml.AddChild('head');
-    xmlnHead.AddChild('title').Text:= 'PCM - Finanzübersicht';
-    xmlnMeta:= xmlnHead.AddChild('meta');
-    xmlnMeta.Attributes['http-equiv'] := 'refresh';
-//    xmlnMeta.Attributes['content'] := '1';//
-    xmlnMeta.Attributes['name'] := 'viewport';
-    xmlnMeta.Attributes['content']:='width=device-width';
+    Application.CreateForm(Tfrm_PCManagerChooseDate,frm_PCManagerChooseDate);
+    frm_PCManagerChooseDate.Execute(True,iMonat,iJahr);
+    case iMonat of
+      1: sMonat:=rs_PCM_Januar;
+      2: sMonat:=rs_PCM_Februar;
+      3: sMonat:=rs_PCM_Maerz;
+      4: sMonat:=rs_PCM_April;
+      5: sMonat:=rs_PCM_Mai;
+      6: sMonat:=rs_PCM_Juni;
+      7: sMonat:=rs_PCM_Juli;
+      8: sMonat:=rs_PCM_August;
+      9: sMonat:=rs_PCM_September;
+      10: sMonat:=rs_PCM_Oktober;
+      11: sMonat:=rs_PCM_November;
+      12: sMonat:=rs_PCM_Dezember;
+    end;
 
 
-    xmlnStyle:= xmlnHead.AddChild('style');
-    xmlnStyle.Attributes['type'] := 'text/css';
-    xmlnStyle.text:= 'body {background: #086A87;} '+ slinebreak +
-      '.container-table {margin: auto;	margin-top: calc(8vh - 7px); '+
-      'margin-bottom: calc(8vh - 7px); width: 80vw; min-height: 8vh; display: block; overflow: auto; -moz-box-shadow: 0px 0px 10px #ccc; -webkit-box-shadow: 0px 0px 10px #ccc; border-bottom: solid 5px #93a8d8;} ' + slinebreak +
-      '.container-table {padding: 15px 15px 15px 15px;width: 80%; } ' + slinebreak +
-      '.container-table-background{background-color: white;} ' + slinebreak +
-      '.container-table * {font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Verdana, sans-serif;} ' + slinebreak +
-      '.container-table h2 {font-size: 20px; font-weight: 100;} ' + slinebreak +
-      '.Report {width: calc(50% - 15px); float: left; text-align: left;} ' + slinebreak +
-      '.Datumuhrzeit {width: calc(50% - 15px); float: right; text-align: right;} ' + slinebreak +
-      '.divider {height: 5px; width: 100%; background-color: #086A87} ' + slinebreak +
-      '#search {outline: none; margin-top: 0px; margin-bottom: 15px;  width: 100%; display: block; border: none; border-bottom: solid 2px #c9c9c9; transition: border 0.3s;} ' + slinebreak +
-      '#search:focus, #search.focus {border-bottom: solid 2px #969696;} ' + slinebreak +
-      'table {width: 100%;border-collapse:collapse; padding: 0px 15px 0px 15px;} ' + slinebreak +
-      'table thead th {padding: 15px 0px 0px 0px;} ' + slinebreak +
-      'table tbody th {border-top: 1px solid black; padding: 5px 0px 0px 0px} ' + slinebreak +
-      'table tfoot th {border-bottom: 5px double black;padding: 20px 0px 0px 0px;} ' + slinebreak +
-      'th {padding-bottom: 5px; } ' + slinebreak +
-      'td {padding-top: 1px; padding-bottom: 1px; font-size: 15px;} ' + slinebreak +
-      '.status-fields {float: left; display: flex; flex-wrap: wrap; width: calc( 100% - 20px ); text-align: center; margin: 20px 10px 20px 10px;} ' + slinebreak +
-      'div.status-fields>div {width: calc( 20% - 20px ); display: flex; align-items: center; justify-content: center; flex-direction: column; margin: 5px 5px 5px 5px; padding: 10px 5px 10px 5px; float: left; } ' + slinebreak +
-      'div.status-fields>tr {display: none;} div.status-fields>tr>td {display: none;} ' + slinebreak +
-      '.mobile-hidden {display: none;}';
-    xmlnBody:= xmlnhtml.AddChild('body');
-    xmlnDivContainer:= xmlnBody.AddChild('div');
-    xmlnDivContainer.Attributes['class'] := 'container-table container-table-background';
-    xmlnDivReport:= xmlnDivContainer.AddChild('div');
-    xmlnDivReport.Attributes['class'] := 'Report';
-    xmlnDivReport.AddChild('h2').Text:= 'PCM - Finanzübersicht';
-    xmlnDivDate:= xmlnDivContainer.AddChild('div');
-    xmlnDivDate.Attributes['class'] := 'Datumuhrzeit';
-    xmlnDivDate.AddChild('h2').Text:= DatetoStr(Date()) + ' - ' + Copy(TimeToStr(Now()),1,5) + ' Uhr';
-    xmlnDivstyle:= xmlnDivContainer.AddChild('div');
-    xmlnDivstyle.Attributes['style'] := 'clear: both;';
-    xmlnInput:= xmlnDivContainer.AddChild('input');
-    xmlnInput.Attributes['id'] := 'search';
-    xmlnInput.Attributes['placeholder'] := 'Suchen';
-    xmlndivdiv:= xmlnDivContainer.AddChild('div');
-    xmlndivdiv.Attributes['class'] := 'divider';
-    xmlndivstatus:= xmlnDivContainer.AddChild('div');
-    xmlndivstatus.Attributes['class'] := 'status-fields';
-    xmlntable:= xmlndivstatus.AddChild('table');
-    xmlntable.Attributes['id'] := 'tblData';
+    slFileXML:= TStringList.Create;
+
+    slFileXML.Add('<!DOCTYPE html>');
+
+    slFileXML.Add('<html>');
+    slFileXML.Add('  <head>');
+    slFileXML.Add('    <title>PCM - Finanzübersicht</title>');
+    slFileXML.Add('    <meta http-equiv="content-type" content="text/html; charset=Windows-1252"/>');
+    slFileXML.Add('    <style type="text/css">body {background: #086A87;}');
+    slFileXML.Add('		.container-table {margin: auto;	margin-top: calc(8vh - 7px); margin-bottom: calc(8vh - 7px); width: 80vw; min-height: 8vh; display: block; overflow: auto; -moz-box-shadow: 0px 0px 10px #ccc; -webkit-box-shadow: 0px 0px 10px #ccc; border-bottom: solid 5px #93a8d8;}');
+    slFileXML.Add('		.container-table {padding: 15px 15px 15px 15px;width: 80%; }');
+    slFileXML.Add('		.container-table-background{background-color: white;}');
+    slFileXML.Add('		.container-table * {font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Verdana, sans-serif;}');
+    slFileXML.Add('		.container-table h2 {font-size: 20px; font-weight: 100;}');
+    slFileXML.Add('		.Report {width: calc(50% - 15px); float: left; text-align: left;}');
+    slFileXML.Add('		.Datumuhrzeit {width: calc(50% - 15px); float: right; text-align: right;}');
+    slFileXML.Add('		.divider {height: 5px; width: 100%; background-color: #086A87}');
+    slFileXML.Add('		#search {outline: none; margin-top: 0px; margin-bottom: 15px;  width: 100%; display: block; border: none; border-bottom: solid 2px #c9c9c9; transition: border 0.3s;}');
+    slFileXML.Add('		#search:focus, #search.focus {border-bottom: solid 2px #969696;}');
+    slFileXML.Add('		table {width: 100%;border-collapse:collapse; padding: 0px 15px 0px 15px;}');
+    slFileXML.Add('		table thead th {padding: 15px 0px 0px 0px;}');
+    slFileXML.Add('		table tbody th {border-top: 1px solid black; padding: 5px 0px 0px 0px}');
+    slFileXML.Add('		table tfoot th {border-bottom: 5px double black;padding: 20px 0px 0px 0px;}');
+    slFileXML.Add('		th {padding-bottom: 5px; text-align: Left}');
+    slFileXML.Add('		th.big {padding-bottom: 5px; text-align: Left; width:500}');
+    slFileXML.Add('		th.small {padding-bottom: 5px; text-align: right; width:200}');
+    slFileXML.Add('		td {padding-top: 1px; padding-bottom: 1px; font-size: 15px;}');
+    slFileXML.Add('		.status-fields {float: left; display: flex; flex-wrap: wrap; width: calc( 100% - 20px ); text-align: center; margin: 20px 10px 20px 10px;}');
+    slFileXML.Add('		div.status-fields>div {width: calc( 20% - 20px ); display: flex; align-items: center; justify-content: center; flex-direction: column; margin: 5px 5px 5px 5px; padding: 10px 5px 10px 5px; float: left; }');
+    slFileXML.Add('		div.status-fields>tr {display: none;} div.status-fields>tr>td {display: none;}');
+    slFileXML.Add('		.mobile-hidden {display: none;}</style>');
+    slFileXML.Add('  </head>');
+    slFileXML.Add('  <body>');
+    slFileXML.Add('      <div class="container-table container-table-background">');
+    slFileXML.Add('      <div class="Report">');
+    slFileXML.Add('        <h2>PCM - Finanzübersicht für ' + sMonat + ' ' + IntToStr(iJahr) + '</h2>');
+    slFileXML.Add('      </div>');
+    slFileXML.Add('      <div class="Datumuhrzeit">');
+    slFileXML.Add('        <h2>' + DatetoStr(Date()) + ' - ' + Copy(TimeToStr(Now()),1,5) + ' Uhr</h2>');
+    slFileXML.Add('      </div>');
+    slFileXML.Add('      <div style="clear: both;">');
+    slFileXML.Add('				<input id="search" placeholder="Suchen"/>');
+    slFileXML.Add('				<div class="divider">');
+    slFileXML.Add('					<div class="status-fields">');
+    slFileXML.Add('						<table id="tblData">');
     ////////////////////////////////////////////////////////////////////////////
     // Einnahmen                                                              //
     ////////////////////////////////////////////////////////////////////////////
-    xmlntableheader:= xmlntable.AddChild('thead');
-    trEinnahmenHeader:= xmlntableheader.AddChild('tr').AddChild('th');
-    trEinnahmenHeader.Attributes['colspan'] := '3';
-    trEinnahmenHeader.Attributes['align'] := 'Left';
-    trEinnahmenHeader.text:= 'Einnahmen:';
-    xmlntablebody:= xmlntable.AddChild('tbody');
-    xmlntablebody.AddChild('tr');
-    xmlntableTH:= xmlntablebody.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'Left';
-    xmlntableTH.Attributes['width'] := '500';
-    xmlntableTH.text:= 'Quelle:' ;
-    xmlntableTH:= xmlntablebody.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'Left';
-    xmlntableTH.Attributes['width'] := '500';
-    xmlntableTH.text:= 'Beschreibung:' ;
-    xmlntableTH:= xmlntablebody.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'right';
-    xmlntableTH.Attributes['width'] := '200';
-    xmlntableTH.text:= 'Betrag:' ;
+    slFileXML.Add('							<thead>');
+    slFileXML.Add('								<tr>');
+    slFileXML.Add('									<th colspan="3">Einnahmen:</th>');
+    slFileXML.Add('								</tr>');
+    slFileXML.Add('							</thead>');
+    slFileXML.Add('              <tbody>');
+    slFileXML.Add('								<tr>');
+    slFileXML.Add('									<th class="big">Quelle:</th>');
+    slFileXML.Add('									<th class="big">Beschreibung:</th>');
+    slFileXML.Add('									<th class="small">Betrag:</th>');
+    slFileXML.Add('								</tr>');
+    slFileXML.Add('							</tbody>');
     dm_PCM.qry_work.SQL.Text:= 'SELECT * FROM manager_finanzen_einnahmen where id_benutzer = :id_benutzer order by quelle';
     dm_PCM.qry_work.ParamByName('id_benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
     dm_PCM.qry_work.open;
     fEinSum:= 0;
     while not dm_PCM.qry_work.Eof do
     begin
-      xmlntablebody.AddChild('tr');
-      xmlntableTH:= xmlntablebody.AddChild('td');
-      xmlntableTH.Attributes['align'] := 'Left';
-      xmlntableTH.text:= dm_PCM.qry_work.FieldByName('Quelle').AsString  ;
-      xmlntableTH:= xmlntablebody.AddChild('td');
-      xmlntableTH.Attributes['align'] := 'Left';
-      xmlntableTH.text:= dm_PCM.qry_work.FieldByName('Bezeichnung').AsString ;
-      xmlntableTH:= xmlntablebody.AddChild('td');
-      xmlntableTH.Attributes['align'] := 'right';
-      xmlntableTH.text:= Format('%.2f €', [dm_PCM.qry_work.FieldByName('Betrag').AsFloat]) ;
-      xmlntableTH:= xmlntablebody.AddChild('td');
-      xmlntableTH.Attributes['class'] := 'mobile-hidden';
-      xmlntableTH.text:= 'Einnahmen' ;
+      slFileXML.Add('							<tbody>');
+      slFileXML.Add('								<tr>');
+      slFileXML.Add('									<th class="big">' + dm_PCM.qry_work.FieldByName('Quelle').AsString + '</th>');
+      slFileXML.Add('									<th class="big">' + dm_PCM.qry_work.FieldByName('Bezeichnung').AsString + '</th>');
+      slFileXML.Add('									<th class="small">' + Format('%.2f €', [dm_PCM.qry_work.FieldByName('Betrag').AsFloat]) + '</th>');
+      slFileXML.Add('								</tr> ');
+      slFileXML.Add('							</tbody>');
       fEinSum:= fEinSum + dm_PCM.qry_work.FieldByName('Betrag').AsFloat;
       dm_PCM.qry_work.Next
     end;
-    xmlntablebody.AddChild('tr');
-    xmlntableTH:= xmlntablebody.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'Left';
-    xmlntableTH.text:= 'Einnahmen gesamt:' ;
-    xmlntableTH:= xmlntablebody.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'Left';
-    xmlntableTH.text:= ' ' ;
-    xmlntableTH:= xmlntablebody.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'right';
-    xmlntableTH.text:= Format('%.2f €', [fEinSum]) ;
+    slFileXML.Add('              <tbody>');
+    slFileXML.Add('								<tr>');
+    slFileXML.Add('									<th class="big">Einnahmen gesamt:</th>');
+    slFileXML.Add('									<th class="big"> </th>');
+    slFileXML.Add('									<th class="small">' + Format('%.2f €', [fEinSum]) + '</th>');
+    slFileXML.Add('								</tr>');
+    slFileXML.Add('							</tbody>');
     ////////////////////////////////////////////////////////////////////////////
     // Ausgaben variabel                                                      //
     ////////////////////////////////////////////////////////////////////////////
-    xmlntableheader:= xmlntable.AddChild('thead');
-    trAusgabenvarHeader:= xmlntableheader.AddChild('tr').AddChild('th');
-    trAusgabenvarHeader.Attributes['colspan'] := '3';
-    trAusgabenvarHeader.Attributes['align'] := 'Left';
-    trAusgabenvarHeader.text:= 'Ausgaben variabel:';
-    xmlntablebody:= xmlntable.AddChild('tbody');
-    xmlntablebody.AddChild('tr');
-    xmlntableTH:= xmlntablebody.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'Left';
-    xmlntableTH.Attributes['width'] := '500';
-    xmlntableTH.text:= 'Empfänger:' ;
-    xmlntableTH:= xmlntablebody.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'Left';
-    xmlntableTH.Attributes['width'] := '500';
-    xmlntableTH.text:= 'Beschreibung:' ;
-    xmlntableTH:= xmlntablebody.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'right';
-    xmlntableTH.Attributes['width'] := '200';
-    xmlntableTH.text:= 'Betrag:'    ;
+    slFileXML.Add('							<thead>');
+    slFileXML.Add('								<tr>');
+    slFileXML.Add('									<th colspan="3">Ausgaben variabel:</th>');
+    slFileXML.Add('								</tr>');
+    slFileXML.Add('							</thead>');
+    slFileXML.Add('              <tbody>');
+    slFileXML.Add('								<tr>');
+    slFileXML.Add('									<th class="big">Empfänger:</th>');
+    slFileXML.Add('									<th class="big">Beschreibung:</th>');
+    slFileXML.Add('									<th class="small">Betrag:</th>');
+    slFileXML.Add('								</tr>');
+    slFileXML.Add('							</tbody>');
     dm_PCM.qry_work.SQL.Text:= 'SELECT * FROM manager_finanzen_ausgaben where id_benutzer = :id_benutzer and Gueltig_monat = :Monat and Gueltig_jahr = :Jahr and fixkosten = false order by Name';
     dm_PCM.qry_work.ParamByName('id_benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
     dm_PCM.qry_work.ParamByName('Monat').AsInteger:= iMonat;
@@ -1200,171 +1187,130 @@ begin
     fAusvar:= 0;
     while not dm_PCM.qry_work.Eof do
     begin
-      xmlntablebody.AddChild('tr');
-      xmlntableTH:= xmlntablebody.AddChild('td');
-      xmlntableTH.Attributes['align'] := 'Left';
-      xmlntableTH.text:= dm_PCM.qry_work.FieldByName('Name').AsString  ;
-      xmlntableTH:= xmlntablebody.AddChild('td');
-      xmlntableTH.Attributes['align'] := 'Left';
-      xmlntableTH.text:= dm_PCM.qry_work.FieldByName('Beschreibung').AsString ;
-      xmlntableTH:= xmlntablebody.AddChild('td');
-      xmlntableTH.Attributes['align'] := 'right';
-      xmlntableTH.text:= Format('%.2f €', [dm_PCM.qry_work.FieldByName('Betrag').AsFloat]) ;
-      xmlntableTH:= xmlntablebody.AddChild('td');
-      xmlntableTH.Attributes['class'] := 'mobile-hidden';
-      xmlntableTH.text:= 'Ausgaben variabel' ;
+      slFileXML.Add('							<tbody>');
+      slFileXML.Add('								<tr>');
+      slFileXML.Add('									<th class="big">' + dm_PCM.qry_work.FieldByName('Name').AsString + '</th>');
+      slFileXML.Add('									<th class="big">' + dm_PCM.qry_work.FieldByName('Bezeichnung').AsString + '</th>');
+      slFileXML.Add('									<th class="small">' + Format('%.2f €', [dm_PCM.qry_work.FieldByName('Betrag').AsFloat]) + '</th>');
+      slFileXML.Add('								</tr> ');
+      slFileXML.Add('							</tbody>');
       fAusvar:= fAusvar + dm_PCM.qry_work.FieldByName('Betrag').AsFloat;
       dm_PCM.qry_work.Next
     end;
-    xmlntablebody.AddChild('tr');
-    xmlntableTH:= xmlntablebody.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'Left';
-    xmlntableTH.text:= 'Ausgaben variabel gesamt:' ;
-    xmlntableTH:= xmlntablebody.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'Left';
-    xmlntableTH.text:= ' ' ;
-    xmlntableTH:= xmlntablebody.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'right';
-    xmlntableTH.text:= Format('%.2f €', [fAusvar]) ;
+    slFileXML.Add('              <tbody>');
+    slFileXML.Add('								<tr>');
+    slFileXML.Add('									<th class="big">Ausgaben variabel gesamt:</th>');
+    slFileXML.Add('									<th class="big"> </th>');
+    slFileXML.Add('									<th class="small">' + Format('%.2f €', [fAusvar]) + '</th>');
+    slFileXML.Add('								</tr>');
+    slFileXML.Add('							</tbody>');
     ////////////////////////////////////////////////////////////////////////////
     // Ausgaben Fix                                                           //
     ////////////////////////////////////////////////////////////////////////////
-    xmlntableheader:= xmlntable.AddChild('thead');
-    trAusgabenvarHeader:= xmlntableheader.AddChild('tr').AddChild('th');
-    trAusgabenvarHeader.Attributes['colspan'] := '3';
-    trAusgabenvarHeader.Attributes['align'] := 'Left';
-    trAusgabenvarHeader.text:= 'Ausgaben fix:';
-    xmlntablebody:= xmlntable.AddChild('tbody');
-    xmlntablebody.AddChild('tr');
-    xmlntableTH:= xmlntablebody.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'Left';
-    xmlntableTH.Attributes['width'] := '500';
-    xmlntableTH.text:= 'Empfänger:' ;
-    xmlntableTH:= xmlntablebody.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'Left';
-    xmlntableTH.Attributes['width'] := '500';
-    xmlntableTH.text:= 'Beschreibung:' ;
-    xmlntableTH:= xmlntablebody.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'right';
-    xmlntableTH.Attributes['width'] := '200';
-    xmlntableTH.text:= 'Betrag:'    ;
-
+    slFileXML.Add('							<thead>');
+    slFileXML.Add('								<tr>');
+    slFileXML.Add('									<th colspan="3">Ausgaben fix:</th>');
+    slFileXML.Add('								</tr>');
+    slFileXML.Add('							</thead>');
+    slFileXML.Add('              <tbody>');
+    slFileXML.Add('								<tr>');
+    slFileXML.Add('									<th class="big">Empfänger:</th>');
+    slFileXML.Add('									<th class="big">Beschreibung:</th>');
+    slFileXML.Add('									<th class="small">Betrag:</th>');
+    slFileXML.Add('								</tr>');
+    slFileXML.Add('							</tbody>');
     dm_PCM.qry_work.SQL.Text:= 'SELECT * FROM manager_finanzen_ausgaben where id_benutzer = :id_benutzer and  fixkosten = ''true'' order by Name';
     dm_PCM.qry_work.ParamByName('id_benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
     dm_PCM.qry_work.open;
     fAusfix:= 0;
     while not dm_PCM.qry_work.Eof do
     begin
-      xmlntablebody.AddChild('tr');
-      xmlntableTH:= xmlntablebody.AddChild('td');
-      xmlntableTH.Attributes['align'] := 'Left';
-      xmlntableTH.text:= dm_PCM.qry_work.FieldByName('Name').AsString  ;
-      xmlntableTH:= xmlntablebody.AddChild('td');
-      xmlntableTH.Attributes['align'] := 'Left';
-      xmlntableTH.text:= dm_PCM.qry_work.FieldByName('Beschreibung').AsString ;
-      xmlntableTH:= xmlntablebody.AddChild('td');
-      xmlntableTH.Attributes['align'] := 'right';
-      xmlntableTH.text:= Format('%.2f €', [dm_PCM.qry_work.FieldByName('Betrag').AsFloat]) ;
-      xmlntableTH:= xmlntablebody.AddChild('td');
-      xmlntableTH.Attributes['class'] := 'mobile-hidden';
-      xmlntableTH.text:= 'Ausgaben fix' ;
+      slFileXML.Add('							<tbody>');
+      slFileXML.Add('								<tr>');
+      slFileXML.Add('									<th class="big">' + dm_PCM.qry_work.FieldByName('Name').AsString + '</th>');
+      slFileXML.Add('									<th class="big">' + dm_PCM.qry_work.FieldByName('Beschreibung').AsString + '</th>');
+      slFileXML.Add('									<th class="small">' + Format('%.2f €', [dm_PCM.qry_work.FieldByName('Betrag').AsFloat]) + '</th>');
+      slFileXML.Add('								</tr> ');
+      slFileXML.Add('							</tbody>');
       fAusfix:= fAusfix + dm_PCM.qry_work.FieldByName('Betrag').AsFloat;
       dm_PCM.qry_work.Next
     end;
-    xmlntablebody.AddChild('tr');
-    xmlntableTH:= xmlntablebody.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'Left';
-    xmlntableTH.text:= 'Ausgaben fix gesamt:' ;
-    xmlntableTH:= xmlntablebody.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'Left';
-    xmlntableTH.text:= ' ' ;
-    xmlntableTH:= xmlntablebody.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'right';
-    xmlntableTH.text:= Format('%.2f €', [fAusfix]) ;
-    xmlntableFoot:= xmlntable.AddChild('tfoot');
-    xmlntableFoot.AddChild('tr');
-    xmlntableTH:= xmlntableFoot.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'left';
-    xmlntableTH.text:= 'verfügbare Restsumme:';
-    xmlntableTH:= xmlntableFoot.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'left';
-    xmlntableTH.text:= '';
-    xmlntableTH:= xmlntableFoot.AddChild('th');
-    xmlntableTH.Attributes['align'] := 'right';
-    xmlntableTH.text:= Format('%.2f €', [fEinSum - fAusfix - fAusvar ]) ;
-    xmlJavascript1:=xmlnBody.AddChild('script');
-    xmlJavascript1.Attributes['type'] := 'text/javascript';
-    xmlJavascript1.Attributes['src'] := 'http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js';
-    xmlJavascript1.Text:= '';
-    xmlJavascript2:=xmlnBody.AddChild('script');
-    xmlJavascript2.Attributes['type'] := 'text/javascript';
-    xmlJavascript2.Text:= '$(document).ready(function() ' + slinebreak +
-                          '{ ' + slinebreak +
-                          '	$(''#search'').keyup(function() ' + slinebreak +
-                          '	{ ' + slinebreak +
-                          '		searchTable($(this).val()); ' + slinebreak +
-                          '	}); ' + slinebreak +
-                          '}); ' + slinebreak +
-                          'function searchTable(inputVal) ' + slinebreak +
-                          '{ ' + slinebreak +
-                          '	// Tabellenvariable festlegen ' + slinebreak +
-                          '	var table = $(''#tblData''); ' + slinebreak +
-                          '	// Tabelleninhalt Tr finden ' + slinebreak +
-                          '	table.find(''tr'').each(function(index, row) ' + slinebreak +
-                          '	{ ' + slinebreak +
-                          '		var allCells = $(row).find(''td''); ' + slinebreak +
-                          '		if(allCells.length > 0) ' + slinebreak +
-                          '		{ ' + slinebreak +
-                          '			var found = false; ' + slinebreak +
-                          '			allCells.each(function(index, td) ' + slinebreak +
-                          '			{ ' + slinebreak +
-                          '				var regExp = new RegExp(inputVal, ''i''); ' + slinebreak +
-                          '				if(regExp.test($(td).text())) ' + slinebreak +
-                          '				{ ' + slinebreak +
-                          '					found = true; ' + slinebreak +
-                          '					return false; ' + slinebreak +
-                          '				} ' + slinebreak +
-                          '			}); ' + slinebreak +
-                          '			if(found == true)$(row).show();else $(row).hide(); ' + slinebreak +
-                          '		}; ' + slinebreak +
-                          '		if(allCells.length < 1) ' + slinebreak +
-                          '		{ ' + slinebreak +
-                          '			var allCells = $(row).find(''th''); ' + slinebreak +
-                          '			if(allCells.length > 0) ' + slinebreak +
-                          '			{ ' + slinebreak +
-                          '				var found = false; ' + slinebreak +
-                          '				allCells.each(function(index, td) ' + slinebreak +
-                          '				{ ' + slinebreak +
-                          '					var regExp = new RegExp(inputVal, ''i''); ' + slinebreak +
-                          '					if(regExp.test($(td).text())) ' + slinebreak +
-                          '					{ ' + slinebreak +
-                          '						found = true; ' + slinebreak +
-                          '						return false; ' + slinebreak +
-                          '					} ' + slinebreak +
-                          '				}); ' + slinebreak +
-                          '				if(found == true)$(row).show();else $(row).hide(); ' + slinebreak +
-                          '			}; ' + slinebreak +
-                          '		}; ' + slinebreak +
-                          '	}); ' + slinebreak +
-                          '}';
-    xmlDoc.SaveToFile(TPath.Combine(TPath.GetDirectoryName(Application.ExeName),'Report') + 'Temp_Finanzübersicht.html');
-    xmlDoc.Active := False;
-    slFileBefore:= TStringList.Create;
-    slFileAfter:= TStringList.Create;
-    slFileBefore.LoadFromFile(TPath.Combine(TPath.GetDirectoryName(Application.ExeName),'Report') + 'Temp_Finanzübersicht.html');
-    for iTemp := 0 to slFileBefore.Count - 1 do
-      slFileAfter.Add(ReplaceHTML(slFileBefore.Strings[iTemp]));
-    slFileAfter.SaveToFile(TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Finanzübersicht.html');
-    slFileAfter.Free;
-    slFileBefore.Free;
-    DeleteFile(TPath.Combine(TPath.GetDirectoryName(Application.ExeName),'Report') + 'Temp_Finanzübersicht.html');
+    slFileXML.Add('              <tbody>');
+    slFileXML.Add('								<tr>');
+    slFileXML.Add('									<th class="big">Ausgaben fix gesamt:</th>');
+    slFileXML.Add('									<th class="big"> </th>');
+    slFileXML.Add('									<th class="small">' + Format('%.2f €', [fAusfix]) + '</th>');
+    slFileXML.Add('								</tr>');
+    slFileXML.Add('							</tbody>');
+    slFileXML.Add('							<tfoot>');
+    slFileXML.Add('								<tr/>');
+    slFileXML.Add('								<th class="big">verfügbare Restsumme:</th>');
+    slFileXML.Add('								<th class="big"></th>');
+    slFileXML.Add('								<th class="small">' + Format('%.2f €', [fEinSum - fAusfix - fAusvar ]) + '</th>');
+    slFileXML.Add('							</tfoot>');
+    slFileXML.Add('						</table>');
+    slFileXML.Add('					</div>');
+    slFileXML.Add('				</div>');
+    slFileXML.Add('			</div>');
+    slFileXML.Add('    </div>');
+    slFileXML.Add('    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>');
+    slFileXML.Add('    <script type="text/javascript">$(document).ready(function()');
+    slFileXML.Add('{');
+    slFileXML.Add('	$(''#search'').keyup(function()');
+    slFileXML.Add('	{');
+    slFileXML.Add('		searchTable($(this).val());');
+    slFileXML.Add('	});');
+    slFileXML.Add('});');
+    slFileXML.Add('function searchTable(inputVal)');
+    slFileXML.Add('{');
+    slFileXML.Add('	// Tabellenvariable festlegen');
+    slFileXML.Add('	var table = $(''#tblData'');');
+    slFileXML.Add('	// Tabelleninhalt Tr finden');
+    slFileXML.Add('	table.find(''tr'').each(function(index, row)');
+    slFileXML.Add('	{');
+    slFileXML.Add('		var allCells = $(row).find(''td'');');
+    slFileXML.Add('		if(allCells.length > 0)');
+    slFileXML.Add('		{');
+    slFileXML.Add('			var found = false;');
+    slFileXML.Add('			allCells.each(function(index, td)');
+    slFileXML.Add('			{');
+    slFileXML.Add('				var regExp = new RegExp(inputVal, ''i'');');
+    slFileXML.Add('				if(regExp.test($(td).text()))');
+    slFileXML.Add('				{');
+    slFileXML.Add('					found = true;');
+    slFileXML.Add('					return false;');
+    slFileXML.Add('				}');
+    slFileXML.Add('			});');
+    slFileXML.Add('			if(found == true)$(row).show();else $(row).hide();');
+    slFileXML.Add('		};');
+    slFileXML.Add('		if(allCells.length < 1)');
+    slFileXML.Add('		{');
+    slFileXML.Add('			var allCells = $(row).find(''th'');');
+    slFileXML.Add('			if(allCells.length > 0)');
+    slFileXML.Add('			{');
+    slFileXML.Add('				var found = false;');
+    slFileXML.Add('				allCells.each(function(index, td)');
+    slFileXML.Add('				{');
+    slFileXML.Add('					var regExp = new RegExp(inputVal, ''i'');');
+    slFileXML.Add('					if(regExp.test($(td).text()))');
+    slFileXML.Add('					{');
+    slFileXML.Add('						found = true;');
+    slFileXML.Add('						return false;');
+    slFileXML.Add('					}');
+    slFileXML.Add('				});');
+    slFileXML.Add('				if(found == true)$(row).show();else $(row).hide();');
+    slFileXML.Add('			};');
+    slFileXML.Add('		};');
+    slFileXML.Add('	});');
+    slFileXML.Add('}</script>');
+    slFileXML.Add('  </body>');
+    slFileXML.Add('</html>');
+    slFileXML.SaveToFile(TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Finanzübersicht.html');
     Application.CreateForm(Tfrm_Browser_FullScreen, frm_Browser_FullScreen);
     frm_Browser_FullScreen.Execute(True,'PCM - Manager: Finanzübersicht',TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Finanzübersicht.html');
-
-//    Application.CreateForm(Tfrm_PCM_Finanzreport,frm_PCM_Finanzreport);
-//    frm_PCM_Finanzreport.ShowModal;
-
-  except
+  finally
+    slFileXML.Free;
   end;
 end;
+
 end.

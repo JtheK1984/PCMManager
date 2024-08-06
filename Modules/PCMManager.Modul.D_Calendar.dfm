@@ -28,10 +28,10 @@ object frm_Calendar: Tfrm_Calendar
     Height = 940
     Width = 1070
     object pc_Kalender: TcxPageControl
-      Left = 3
-      Top = 3
-      Width = 1064
-      Height = 934
+      Left = 2
+      Top = 2
+      Width = 1066
+      Height = 936
       Align = alClient
       Color = clBtnFace
       Font.Charset = DEFAULT_CHARSET
@@ -50,26 +50,17 @@ object frm_Calendar: Tfrm_Calendar
       Properties.TabSlants.Kind = skCutCorner
       Properties.TabWidth = 100
       OnClick = pc_KalenderClick
-      ExplicitLeft = 2
-      ExplicitTop = 2
-      ExplicitWidth = 1066
-      ExplicitHeight = 936
-      ClientRectBottom = 928
-      ClientRectLeft = 2
-      ClientRectRight = 1058
-      ClientRectTop = 28
+      ClientRectBottom = 936
+      ClientRectRight = 1066
+      ClientRectTop = 25
       object ts_A_kalender: TcxTabSheet
         Caption = 'Kalender'
         ImageIndex = 10
-        ExplicitLeft = 0
-        ExplicitTop = 25
-        ExplicitWidth = 1066
-        ExplicitHeight = 911
         object spl_Kalender: TcxSplitter
           Left = 0
-          Top = 117
-          Width = 5
-          Height = 783
+          Top = 112
+          Width = 8
+          Height = 799
           HotZoneClassName = 'TcxSimpleStyle'
           HotZone.ArrowColor = clGrayText
           HotZone.ArrowHighlightColor = clGrayText
@@ -80,20 +71,22 @@ object frm_Calendar: Tfrm_Calendar
           Color = clBlack
           ParentColor = False
           Visible = False
+          ExplicitTop = 117
+          ExplicitHeight = 783
         end
         object brdckctrl_Kalender: TdxBarDockControl
           Left = 0
           Top = 0
-          Width = 1056
-          Height = 117
+          Width = 1066
+          Height = 112
           Align = dalTop
           BarManager = brmgr_Kalendar
         end
         object sched_Kalender: TcxScheduler
-          Left = 5
-          Top = 117
-          Width = 1051
-          Height = 783
+          Left = 8
+          Top = 112
+          Width = 1058
+          Height = 799
           DateNavigator.RowCount = 6
           ViewDay.Active = True
           ViewDay.AlwaysShowEventTime = True
@@ -139,23 +132,23 @@ object frm_Calendar: Tfrm_Calendar
           OnGetEventEditProperties = sched_KalenderGetEventEditProperties
           OnGetEventHintText = sched_KalenderGetEventHintText
           OnKeyDown = sched_KalenderKeyDown
+          ExplicitLeft = 5
+          ExplicitTop = 117
+          ExplicitWidth = 1051
+          ExplicitHeight = 783
           Selection = 7
           Splitters = {
-            950000007E000000840600008300000086030000010000008B0300000E030000}
-          StoredClientBounds = {01000000010000001A0400000E030000}
+            950000007E000000840600008300000086030000010000008B0300001E030000}
+          StoredClientBounds = {0100000001000000210400001E030000}
         end
       end
       object ts_B_Aufgaben: TcxTabSheet
         Caption = 'Aufgaben'
         ImageIndex = 58
-        ExplicitLeft = 0
-        ExplicitTop = 25
-        ExplicitWidth = 1066
-        ExplicitHeight = 911
         object trlst_Aufgaben: TcxTreeList
           Left = 0
           Top = 0
-          Width = 1056
+          Width = 1066
           Height = 107
           Align = alTop
           Bands = <
@@ -165,7 +158,6 @@ object frm_Calendar: Tfrm_Calendar
           ScrollbarAnnotations.CustomAnnotations = <>
           TabOrder = 1
           OnClick = trlst_AufgabenClick
-          ExplicitWidth = 1066
           Data = {
             00000500430100000F00000044617461436F6E74726F6C6C6572310200000012
             000000546378537472696E6756616C7565547970651200000054637853747269
@@ -203,35 +195,28 @@ object frm_Calendar: Tfrm_Calendar
         object brdckctrl_Aufgaben: TdxBarDockControl
           Left = 0
           Top = 107
-          Width = 1056
-          Height = 117
+          Width = 1066
+          Height = 112
           Align = dalTop
           BarManager = brmgr_Kalendar
         end
         object pnl_Aufgaben: TcxGroupBox
           Left = 0
-          Top = 224
+          Top = 219
           Align = alClient
           PanelStyle.Active = True
           Style.BorderStyle = ebsNone
           TabOrder = 0
-          ExplicitTop = 219
-          ExplicitWidth = 1066
-          ExplicitHeight = 692
-          Height = 676
-          Width = 1056
+          Height = 692
+          Width = 1066
           object cxGrid1: TcxGrid
-            Left = 3
-            Top = 33
-            Width = 1050
-            Height = 315
+            Left = 2
+            Top = 32
+            Width = 1062
+            Height = 330
             Align = alClient
             TabOrder = 1
             LookAndFeel.NativeStyle = False
-            ExplicitLeft = 2
-            ExplicitTop = 32
-            ExplicitWidth = 1062
-            ExplicitHeight = 330
             object tvNachrichten: TcxGridDBTableView
               OnDblClick = tvNachrichtenDblClick
               Navigator.Buttons.CustomButtons = <>
@@ -532,39 +517,35 @@ object frm_Calendar: Tfrm_Calendar
             end
           end
           object spl_Grid: TcxSplitter
-            Left = 3
-            Top = 348
-            Width = 1050
-            Height = 5
+            Left = 2
+            Top = 362
+            Width = 1062
+            Height = 8
             HotZoneClassName = 'TcxSimpleStyle'
             AlignSplitter = salBottom
             Control = pnl_Details
+            ExplicitLeft = 3
             ExplicitTop = 350
+            ExplicitWidth = 8
           end
           object pnl_Details: TcxGroupBox
-            Left = 3
-            Top = 353
+            Left = 2
+            Top = 370
             Align = alBottom
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 2
-            ExplicitLeft = 2
-            ExplicitTop = 370
-            ExplicitWidth = 1062
             Height = 320
-            Width = 1050
+            Width = 1062
             object cxGroupBox8: TcxGroupBox
-              Left = 3
-              Top = 3
+              Left = 2
+              Top = 2
               Align = alTop
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 0
-              ExplicitLeft = 2
-              ExplicitTop = 2
-              ExplicitWidth = 1058
               Height = 62
-              Width = 1044
+              Width = 1058
               object cxDBTextEdit6: TcxDBTextEdit
                 Left = 81
                 Top = 5
@@ -673,8 +654,8 @@ object frm_Calendar: Tfrm_Calendar
               end
             end
             object cxDBMemo1: TcxDBRichEdit
-              Left = 3
-              Top = 65
+              Left = 2
+              Top = 64
               Align = alClient
               DataBinding.DataField = 'Message'
               DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
@@ -689,46 +670,37 @@ object frm_Calendar: Tfrm_Calendar
               Style.Font.Style = []
               Style.IsFontAssigned = True
               TabOrder = 1
-              ExplicitLeft = 2
-              ExplicitTop = 64
-              ExplicitWidth = 868
-              ExplicitHeight = 254
-              Height = 252
-              Width = 857
+              Height = 254
+              Width = 868
             end
             object cxSplitter4: TcxSplitter
-              Left = 860
-              Top = 65
-              Width = 5
-              Height = 252
+              Left = 870
+              Top = 64
+              Width = 8
+              Height = 254
               HotZoneClassName = 'TcxSimpleStyle'
               Control = pAnhaenge
               ExplicitLeft = 857
+              ExplicitTop = 65
+              ExplicitHeight = 252
             end
             object pAnhaenge: TcxGroupBox
-              Left = 865
-              Top = 65
+              Left = 878
+              Top = 64
               Align = alRight
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 3
-              ExplicitLeft = 878
-              ExplicitTop = 64
-              ExplicitHeight = 254
-              Height = 252
+              Height = 254
               Width = 182
               object cxGrid5: TcxGrid
-                Left = 3
-                Top = 3
-                Width = 176
-                Height = 204
+                Left = 2
+                Top = 2
+                Width = 178
+                Height = 208
                 Align = alClient
                 TabOrder = 0
                 LookAndFeel.NativeStyle = False
-                ExplicitLeft = 2
-                ExplicitTop = 2
-                ExplicitWidth = 178
-                ExplicitHeight = 208
                 object cxGrid5DBTableView1: TcxGridDBTableView
                   Navigator.Buttons.CustomButtons = <>
                   Navigator.Buttons.First.Visible = True
@@ -790,20 +762,17 @@ object frm_Calendar: Tfrm_Calendar
                 end
               end
               object cxGroupBox11: TcxGroupBox
-                Left = 3
-                Top = 207
+                Left = 2
+                Top = 210
                 Align = alBottom
                 PanelStyle.Active = True
                 Style.BorderStyle = ebsNone
                 TabOrder = 1
-                ExplicitLeft = 2
-                ExplicitTop = 210
-                ExplicitWidth = 178
                 Height = 42
-                Width = 176
+                Width = 178
                 object lTypeName: TcxLabel
-                  Left = 35
-                  Top = 3
+                  Left = 34
+                  Top = 2
                   Align = alLeft
                   AutoSize = False
                   ParentFont = False
@@ -815,15 +784,12 @@ object frm_Calendar: Tfrm_Calendar
                   Style.IsFontAssigned = True
                   Properties.WordWrap = True
                   Transparent = True
-                  ExplicitLeft = 34
-                  ExplicitTop = 2
-                  ExplicitHeight = 38
-                  Height = 36
+                  Height = 38
                   Width = 90
                 end
                 object Image1: TcxImage
-                  Left = 3
-                  Top = 3
+                  Left = 2
+                  Top = 2
                   Align = alLeft
                   AutoSize = True
                   Properties.FitMode = ifmNormal
@@ -831,18 +797,15 @@ object frm_Calendar: Tfrm_Calendar
                   Style.BorderStyle = ebsNone
                   TabOrder = 1
                   Transparent = True
-                  ExplicitLeft = 2
-                  ExplicitTop = 2
-                  ExplicitHeight = 38
-                  Height = 36
+                  Height = 38
                   Width = 32
                 end
                 object btn_AttachementSave: TcxButton
                   AlignWithMargins = True
-                  Left = 150
-                  Top = 9
+                  Left = 153
+                  Top = 8
                   Width = 23
-                  Height = 24
+                  Height = 26
                   Margins.Left = 0
                   Margins.Top = 6
                   Margins.Right = 0
@@ -853,16 +816,13 @@ object frm_Calendar: Tfrm_Calendar
                   PaintStyle = bpsGlyph
                   TabOrder = 2
                   OnClick = btn_AttachementSaveClick
-                  ExplicitLeft = 153
-                  ExplicitTop = 8
-                  ExplicitHeight = 26
                 end
                 object btn_AttachementOpen: TcxButton
                   AlignWithMargins = True
-                  Left = 127
-                  Top = 9
+                  Left = 130
+                  Top = 8
                   Width = 23
-                  Height = 24
+                  Height = 26
                   Margins.Left = 0
                   Margins.Top = 6
                   Margins.Right = 0
@@ -874,28 +834,22 @@ object frm_Calendar: Tfrm_Calendar
                   PaintStyle = bpsGlyph
                   TabOrder = 3
                   OnClick = btn_AttachementOpenClick
-                  ExplicitLeft = 130
-                  ExplicitTop = 8
-                  ExplicitHeight = 26
                 end
               end
             end
           end
           object pnl_Search: TcxGroupBox
-            Left = 3
-            Top = 3
+            Left = 2
+            Top = 2
             Align = alTop
             PanelStyle.Active = True
             Style.BorderStyle = ebsFlat
             TabOrder = 0
-            ExplicitLeft = 2
-            ExplicitTop = 2
-            ExplicitWidth = 1062
             Height = 30
-            Width = 1050
+            Width = 1062
             object img_search: TcxImage
-              Left = 3
-              Top = 3
+              Left = 2
+              Top = 2
               Align = alLeft
               AutoSize = True
               Picture.Data = {
@@ -917,13 +871,10 @@ object frm_Calendar: Tfrm_Calendar
               StyleHot.BorderStyle = ebsNone
               TabOrder = 0
               Transparent = True
-              ExplicitLeft = 2
-              ExplicitTop = 2
-              ExplicitHeight = 26
             end
             object edt_Suche: TcxButtonEdit
-              Left = 23
-              Top = 3
+              Left = 22
+              Top = 2
               Align = alClient
               AutoSize = False
               Properties.Buttons = <
@@ -938,12 +889,8 @@ object frm_Calendar: Tfrm_Calendar
               TabOrder = 1
               OnEnter = edt_SucheEnter
               OnExit = edt_SucheExit
-              ExplicitLeft = 22
-              ExplicitTop = 2
-              ExplicitWidth = 1038
-              ExplicitHeight = 26
-              Height = 24
-              Width = 1024
+              Height = 26
+              Width = 1038
             end
           end
         end
@@ -951,14 +898,10 @@ object frm_Calendar: Tfrm_Calendar
       object ts_C_Jira: TcxTabSheet
         Caption = 'Jira'
         ImageIndex = 83
-        ExplicitLeft = 0
-        ExplicitTop = 25
-        ExplicitWidth = 1066
-        ExplicitHeight = 911
         object stbr_main: TdxStatusBar
           Left = 0
-          Top = 880
-          Width = 1056
+          Top = 891
+          Width = 1066
           Height = 20
           Panels = <
             item
@@ -982,79 +925,60 @@ object frm_Calendar: Tfrm_Calendar
           Font.Height = -12
           Font.Name = 'Segoe UI'
           Font.Style = []
-          ExplicitTop = 891
-          ExplicitWidth = 1066
         end
         object pc_jiraDetails: TcxPageControl
           Left = 0
           Top = 0
-          Width = 1056
-          Height = 880
+          Width = 1066
+          Height = 891
           Align = alClient
           TabOrder = 1
           Properties.ActivePage = ts_ID
           Properties.CustomButtons.Buttons = <>
           OnChange = pc_jiraDetailsChange
-          ExplicitWidth = 1066
-          ExplicitHeight = 891
-          ClientRectBottom = 874
-          ClientRectLeft = 2
-          ClientRectRight = 1050
-          ClientRectTop = 27
+          ClientRectBottom = 891
+          ClientRectRight = 1066
+          ClientRectTop = 24
           object ts_ID: TcxTabSheet
             Caption = 'ID Berlin'
             ImageIndex = 0
-            ExplicitLeft = 0
-            ExplicitTop = 24
-            ExplicitWidth = 1066
-            ExplicitHeight = 867
             object dxBarDockControl1: TdxBarDockControl
               Left = 0
               Top = 0
-              Width = 1048
-              Height = 63
+              Width = 1066
+              Height = 58
               Align = dalTop
               BarManager = brmgr_Kalendar
             end
             object pc_JiraGes: TcxPageControl
               Left = 0
-              Top = 63
-              Width = 1048
-              Height = 784
+              Top = 58
+              Width = 1066
+              Height = 809
               Align = alClient
               TabOrder = 1
               Properties.ActivePage = cxTabSheet2
               Properties.CustomButtons.Buttons = <>
               OnChange = pc_JiraGesChange
-              ExplicitTop = 58
-              ExplicitWidth = 1066
-              ExplicitHeight = 809
-              ClientRectBottom = 778
-              ClientRectLeft = 2
-              ClientRectRight = 1042
-              ClientRectTop = 27
+              ClientRectBottom = 809
+              ClientRectRight = 1066
+              ClientRectTop = 24
               object cxTabSheet2: TcxTabSheet
                 Caption = 'Jira-Browser'
                 ImageIndex = 2
-                ExplicitLeft = 0
-                ExplicitTop = 24
-                ExplicitWidth = 1066
-                ExplicitHeight = 785
                 object pnl_BrowserJiraGes: TcxGroupBox
                   Left = 0
                   Top = 0
                   Align = alClient
                   PanelStyle.Active = True
                   TabOrder = 0
-                  ExplicitWidth = 1066
-                  ExplicitHeight = 785
-                  Height = 751
-                  Width = 1040
+                  Height = 785
+                  Width = 1066
                   object dxBarDockControl2: TdxBarDockControl
-                    Left = 3
-                    Top = 3
-                    Width = 1034
-                    Height = 63
+                    Left = 2
+                    Top = 2
+                    Width = 1062
+                    Height = 58
                     Align = dalTop
                     BarManager = brmgr_Kalendar
                   end
@@ -1063,6 +987,9 @@ object frm_Calendar: Tfrm_Calendar
               object cxTabSheet1: TcxTabSheet
                 Caption = #220'bersicht'
                 ImageIndex = 0
+                ExplicitTop = 0
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object cxComboBox1: TcxComboBox
                   AlignWithMargins = True
                   Left = 6
@@ -1108,13 +1035,17 @@ object frm_Calendar: Tfrm_Calendar
               object ts_Detail: TcxTabSheet
                 Caption = 'Details'
                 ImageIndex = 1
+                ExplicitTop = 0
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object cxGrid2: TcxGrid
                   Left = 0
                   Top = 0
-                  Width = 1040
+                  Width = 1066
                   Height = 200
                   Align = alTop
                   TabOrder = 0
+                  ExplicitWidth = 1040
                   object cxGrid2DBTableView1: TcxGridDBTableView
                     Navigator.Buttons.CustomButtons = <>
                     ScrollbarAnnotations.CustomAnnotations = <>
@@ -1286,17 +1217,18 @@ object frm_Calendar: Tfrm_Calendar
                 object cxSplitter2: TcxSplitter
                   Left = 0
                   Top = 200
-                  Width = 1040
+                  Width = 1066
                   Height = 5
                   AlignSplitter = salTop
                   Control = cxGrid2
+                  ExplicitWidth = 1040
                 end
                 object dxLayoutControl1: TdxLayoutControl
                   AlignWithMargins = True
                   Left = 0
                   Top = 205
-                  Width = 1040
-                  Height = 546
+                  Width = 1066
+                  Height = 580
                   Margins.Left = 0
                   Margins.Top = 0
                   Margins.Right = 0
@@ -1307,8 +1239,8 @@ object frm_Calendar: Tfrm_Calendar
                   LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
                   object cxDBImageComboBox1: TcxDBImageComboBox
                     AlignWithMargins = True
-                    Left = 110
-                    Top = 76
+                    Left = 113
+                    Top = 65
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -1349,12 +1281,12 @@ object frm_Calendar: Tfrm_Calendar
                     Style.TransparentBorder = False
                     TabOrder = 0
                     Height = 19
-                    Width = 505
+                    Width = 525
                   end
                   object cxDBTextEdit2: TcxDBTextEdit
                     AlignWithMargins = True
-                    Left = 110
-                    Top = 111
+                    Left = 113
+                    Top = 100
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -1365,12 +1297,12 @@ object frm_Calendar: Tfrm_Calendar
                     Style.HotTrack = False
                     Style.TransparentBorder = False
                     TabOrder = 1
-                    Width = 505
+                    Width = 525
                   end
                   object cxDBTextEdit8: TcxDBTextEdit
                     AlignWithMargins = True
-                    Left = 110
-                    Top = 171
+                    Left = 113
+                    Top = 160
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -1381,12 +1313,12 @@ object frm_Calendar: Tfrm_Calendar
                     Style.HotTrack = False
                     Style.TransparentBorder = False
                     TabOrder = 3
-                    Width = 505
+                    Width = 525
                   end
                   object cxDBTextEdit9: TcxDBTextEdit
                     AlignWithMargins = True
-                    Left = 110
-                    Top = 206
+                    Left = 113
+                    Top = 195
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -1397,12 +1329,12 @@ object frm_Calendar: Tfrm_Calendar
                     Style.HotTrack = False
                     Style.TransparentBorder = False
                     TabOrder = 4
-                    Width = 505
+                    Width = 525
                   end
                   object cxDBTextEdit10: TcxDBTextEdit
                     AlignWithMargins = True
-                    Left = 110
-                    Top = 141
+                    Left = 113
+                    Top = 130
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -1413,11 +1345,11 @@ object frm_Calendar: Tfrm_Calendar
                     Style.HotTrack = False
                     Style.TransparentBorder = False
                     TabOrder = 2
-                    Width = 505
+                    Width = 525
                   end
                   object cxRichEdit2: TcxRichEdit
-                    Left = 19
-                    Top = 266
+                    Left = 22
+                    Top = 255
                     Properties.AutoURLDetect = True
                     Properties.ReadOnly = True
                     Lines.Strings = (
@@ -1445,12 +1377,12 @@ object frm_Calendar: Tfrm_Calendar
                     StyleHot.BorderStyle = ebsNone
                     TabOrder = 5
                     Height = 14
-                    Width = 596
+                    Width = 616
                   end
                   object cxDBTextEdit3: TcxDBTextEdit
                     AlignWithMargins = True
-                    Left = 743
-                    Top = 46
+                    Left = 772
+                    Top = 35
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -1461,12 +1393,12 @@ object frm_Calendar: Tfrm_Calendar
                     Style.HotTrack = False
                     Style.TransparentBorder = False
                     TabOrder = 6
-                    Width = 278
+                    Width = 272
                   end
                   object cxDBTextEdit1: TcxDBTextEdit
                     AlignWithMargins = True
-                    Left = 743
-                    Top = 81
+                    Left = 772
+                    Top = 70
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -1477,12 +1409,12 @@ object frm_Calendar: Tfrm_Calendar
                     Style.HotTrack = False
                     Style.TransparentBorder = False
                     TabOrder = 7
-                    Width = 278
+                    Width = 272
                   end
                   object cxDBTextEdit5: TcxDBTextEdit
                     AlignWithMargins = True
-                    Left = 743
-                    Top = 116
+                    Left = 772
+                    Top = 105
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -1493,12 +1425,12 @@ object frm_Calendar: Tfrm_Calendar
                     Style.HotTrack = False
                     Style.TransparentBorder = False
                     TabOrder = 8
-                    Width = 278
+                    Width = 272
                   end
                   object cxDBTextEdit7: TcxDBTextEdit
                     AlignWithMargins = True
-                    Left = 743
-                    Top = 151
+                    Left = 772
+                    Top = 140
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -1509,12 +1441,12 @@ object frm_Calendar: Tfrm_Calendar
                     Style.HotTrack = False
                     Style.TransparentBorder = False
                     TabOrder = 9
-                    Width = 278
+                    Width = 272
                   end
                   object cxDBTextEdit11: TcxDBTextEdit
                     AlignWithMargins = True
-                    Left = 743
-                    Top = 186
+                    Left = 772
+                    Top = 175
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -1526,12 +1458,12 @@ object frm_Calendar: Tfrm_Calendar
                     Style.HotTrack = False
                     Style.TransparentBorder = False
                     TabOrder = 10
-                    Width = 278
+                    Width = 272
                   end
                   object cxDBTextEdit12: TcxDBTextEdit
                     AlignWithMargins = True
-                    Left = 743
-                    Top = 221
+                    Left = 772
+                    Top = 210
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -1542,12 +1474,12 @@ object frm_Calendar: Tfrm_Calendar
                     Style.HotTrack = False
                     Style.TransparentBorder = False
                     TabOrder = 11
-                    Width = 278
+                    Width = 272
                   end
                   object cxDBTextEdit13: TcxDBTextEdit
                     AlignWithMargins = True
-                    Left = 743
-                    Top = 299
+                    Left = 772
+                    Top = 277
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -1559,12 +1491,12 @@ object frm_Calendar: Tfrm_Calendar
                     Style.HotTrack = False
                     Style.TransparentBorder = False
                     TabOrder = 12
-                    Width = 278
+                    Width = 272
                   end
                   object cxDBTextEdit14: TcxDBTextEdit
                     AlignWithMargins = True
-                    Left = 743
-                    Top = 334
+                    Left = 772
+                    Top = 312
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -1576,12 +1508,12 @@ object frm_Calendar: Tfrm_Calendar
                     Style.HotTrack = False
                     Style.TransparentBorder = False
                     TabOrder = 13
-                    Width = 278
+                    Width = 272
                   end
                   object cxDBTextEdit15: TcxDBTextEdit
                     AlignWithMargins = True
-                    Left = 743
-                    Top = 369
+                    Left = 772
+                    Top = 347
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -1593,12 +1525,12 @@ object frm_Calendar: Tfrm_Calendar
                     Style.HotTrack = False
                     Style.TransparentBorder = False
                     TabOrder = 14
-                    Width = 278
+                    Width = 272
                   end
                   object cxDBTextEdit16: TcxDBTextEdit
                     AlignWithMargins = True
-                    Left = 743
-                    Top = 404
+                    Left = 772
+                    Top = 382
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -1609,12 +1541,12 @@ object frm_Calendar: Tfrm_Calendar
                     Style.HotTrack = False
                     Style.TransparentBorder = False
                     TabOrder = 15
-                    Width = 278
+                    Width = 272
                   end
                   object cxDBTextEdit17: TcxDBTextEdit
                     AlignWithMargins = True
-                    Left = 743
-                    Top = 439
+                    Left = 772
+                    Top = 417
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -1625,7 +1557,7 @@ object frm_Calendar: Tfrm_Calendar
                     Style.HotTrack = False
                     Style.TransparentBorder = False
                     TabOrder = 16
-                    Width = 278
+                    Width = 272
                   end
                   object dxLayoutControl1Group_Root: TdxLayoutGroup
                     AlignHorz = ahClient
@@ -1928,57 +1860,43 @@ object frm_Calendar: Tfrm_Calendar
           object ts_PCM: TcxTabSheet
             Caption = 'PCM'
             ImageIndex = 1
-            ExplicitLeft = 0
-            ExplicitTop = 24
-            ExplicitWidth = 1066
-            ExplicitHeight = 867
             object dxBarDockControl4: TdxBarDockControl
               Left = 0
               Top = 0
-              Width = 1048
-              Height = 63
+              Width = 1066
+              Height = 58
               Align = dalTop
               BarManager = brmgr_Kalendar
             end
             object pc_Jirapriv: TcxPageControl
               Left = 0
-              Top = 63
-              Width = 1048
-              Height = 784
+              Top = 58
+              Width = 1066
+              Height = 809
               Align = alClient
               TabOrder = 1
               Properties.ActivePage = cxTabSheet3
               Properties.CustomButtons.Buttons = <>
               OnChange = pc_JiraprivChange
-              ExplicitTop = 58
-              ExplicitWidth = 1066
-              ExplicitHeight = 809
-              ClientRectBottom = 778
-              ClientRectLeft = 2
-              ClientRectRight = 1042
-              ClientRectTop = 27
+              ClientRectBottom = 809
+              ClientRectRight = 1066
+              ClientRectTop = 24
               object cxTabSheet3: TcxTabSheet
                 Caption = 'Jira-Browser'
                 ImageIndex = 2
-                ExplicitLeft = 0
-                ExplicitTop = 24
-                ExplicitWidth = 1066
-                ExplicitHeight = 785
                 object pnl_BrowserJiraPriv: TcxGroupBox
                   Left = 0
                   Top = 0
                   Align = alClient
                   PanelStyle.Active = True
                   TabOrder = 0
-                  ExplicitWidth = 1066
-                  ExplicitHeight = 785
-                  Height = 751
-                  Width = 1040
+                  Height = 785
+                  Width = 1066
                   object dxBarDockControl5: TdxBarDockControl
-                    Left = 3
-                    Top = 3
-                    Width = 1034
-                    Height = 63
+                    Left = 2
+                    Top = 2
+                    Width = 1062
+                    Height = 58
                     Align = dalTop
                     BarManager = brmgr_Kalendar
                   end
@@ -1987,6 +1905,9 @@ object frm_Calendar: Tfrm_Calendar
               object cxTabSheet4: TcxTabSheet
                 Caption = #220'bersicht Desktop Board'
                 ImageIndex = 0
+                ExplicitTop = 0
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object cxComboBox2: TcxComboBox
                   AlignWithMargins = True
                   Left = 6
@@ -2032,6 +1953,9 @@ object frm_Calendar: Tfrm_Calendar
               object cxTabSheet6: TcxTabSheet
                 Caption = #220'bersicht Mobile Board'
                 ImageIndex = 3
+                ExplicitTop = 0
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object cxComboBox3: TcxComboBox
                   AlignWithMargins = True
                   Left = 6
@@ -2077,13 +2001,17 @@ object frm_Calendar: Tfrm_Calendar
               object cxTabSheet5: TcxTabSheet
                 Caption = 'Details'
                 ImageIndex = 1
+                ExplicitTop = 0
+                ExplicitWidth = 0
+                ExplicitHeight = 0
                 object cxGrid3: TcxGrid
                   Left = 0
                   Top = 0
-                  Width = 1040
+                  Width = 1066
                   Height = 200
                   Align = alTop
                   TabOrder = 0
+                  ExplicitWidth = 1040
                   object cxGridDBTableView1: TcxGridDBTableView
                     Navigator.Buttons.CustomButtons = <>
                     ScrollbarAnnotations.CustomAnnotations = <>
@@ -2217,17 +2145,18 @@ object frm_Calendar: Tfrm_Calendar
                 object cxSplitter1: TcxSplitter
                   Left = 0
                   Top = 200
-                  Width = 1040
+                  Width = 1066
                   Height = 5
                   AlignSplitter = salTop
                   Control = cxGrid3
+                  ExplicitWidth = 1040
                 end
                 object dxLayoutControl2: TdxLayoutControl
                   AlignWithMargins = True
                   Left = 0
                   Top = 205
-                  Width = 1040
-                  Height = 546
+                  Width = 1066
+                  Height = 580
                   Margins.Left = 0
                   Margins.Top = 0
                   Margins.Right = 0
@@ -2238,8 +2167,8 @@ object frm_Calendar: Tfrm_Calendar
                   LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
                   object cxDBImageComboBox2: TcxDBImageComboBox
                     AlignWithMargins = True
-                    Left = 76
-                    Top = 76
+                    Left = 79
+                    Top = 65
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -2295,12 +2224,12 @@ object frm_Calendar: Tfrm_Calendar
                     Style.TransparentBorder = False
                     TabOrder = 0
                     Height = 19
-                    Width = 539
+                    Width = 559
                   end
                   object cxDBTextEdit18: TcxDBTextEdit
                     AlignWithMargins = True
-                    Left = 76
-                    Top = 111
+                    Left = 79
+                    Top = 100
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -2311,12 +2240,12 @@ object frm_Calendar: Tfrm_Calendar
                     Style.HotTrack = False
                     Style.TransparentBorder = False
                     TabOrder = 1
-                    Width = 539
+                    Width = 559
                   end
                   object cxDBTextEdit19: TcxDBTextEdit
                     AlignWithMargins = True
-                    Left = 76
-                    Top = 171
+                    Left = 79
+                    Top = 160
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -2327,12 +2256,12 @@ object frm_Calendar: Tfrm_Calendar
                     Style.HotTrack = False
                     Style.TransparentBorder = False
                     TabOrder = 3
-                    Width = 539
+                    Width = 559
                   end
                   object cxDBTextEdit21: TcxDBTextEdit
                     AlignWithMargins = True
-                    Left = 76
-                    Top = 141
+                    Left = 79
+                    Top = 130
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -2343,11 +2272,11 @@ object frm_Calendar: Tfrm_Calendar
                     Style.HotTrack = False
                     Style.TransparentBorder = False
                     TabOrder = 2
-                    Width = 539
+                    Width = 559
                   end
                   object cxRichEdit1: TcxRichEdit
-                    Left = 19
-                    Top = 231
+                    Left = 22
+                    Top = 220
                     Properties.AutoURLDetect = True
                     Properties.ReadOnly = True
                     Lines.Strings = (
@@ -2375,12 +2304,12 @@ object frm_Calendar: Tfrm_Calendar
                     StyleHot.BorderStyle = ebsNone
                     TabOrder = 4
                     Height = 14
-                    Width = 596
+                    Width = 616
                   end
                   object cxDBTextEdit22: TcxDBTextEdit
                     AlignWithMargins = True
-                    Left = 718
-                    Top = 46
+                    Left = 747
+                    Top = 35
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -2391,12 +2320,12 @@ object frm_Calendar: Tfrm_Calendar
                     Style.HotTrack = False
                     Style.TransparentBorder = False
                     TabOrder = 5
-                    Width = 303
+                    Width = 297
                   end
                   object cxDBTextEdit23: TcxDBTextEdit
                     AlignWithMargins = True
-                    Left = 718
-                    Top = 81
+                    Left = 747
+                    Top = 70
                     Margins.Left = 8
                     Margins.Top = 1
                     Margins.Right = 8
@@ -2407,7 +2336,7 @@ object frm_Calendar: Tfrm_Calendar
                     Style.HotTrack = False
                     Style.TransparentBorder = False
                     TabOrder = 6
-                    Width = 303
+                    Width = 297
                   end
                   object dxLayoutGroup5: TdxLayoutGroup
                     AlignHorz = ahClient
@@ -2578,19 +2507,14 @@ object frm_Calendar: Tfrm_Calendar
       object ts_D_Stundenplan: TcxTabSheet
         Caption = 'Stundenplan'
         ImageIndex = 14
-        ExplicitLeft = 0
-        ExplicitTop = 25
-        ExplicitWidth = 1066
-        ExplicitHeight = 911
         object grpbx_Stundenplanuebersicht: TcxGroupBox
           Left = 0
           Top = 0
           Align = alTop
           Caption = 'Stundenplan'#252'bersicht'
           TabOrder = 0
-          ExplicitWidth = 1062
           Height = 201
-          Width = 1056
+          Width = 1066
           object edt_Stundenplan_Klasse: TcxDBTextEdit
             Left = 762
             Top = 87
@@ -2643,9 +2567,9 @@ object frm_Calendar: Tfrm_Calendar
             Width = 100
           end
           object grd_Stundenplanuebersicht: TcxGrid
-            Left = 3
-            Top = 111
-            Width = 1050
+            Left = 2
+            Top = 118
+            Width = 1062
             Height = 81
             Align = alBottom
             BorderStyle = cxcbsNone
@@ -2769,10 +2693,10 @@ object frm_Calendar: Tfrm_Calendar
             Transparent = True
           end
           object brdckctrl_Stundenplan: TdxBarDockControl
-            Left = 3
-            Top = 15
-            Width = 1050
-            Height = 63
+            Left = 2
+            Top = 18
+            Width = 1062
+            Height = 58
             Align = dalTop
             BarManager = brmgr_Kalendar
           end
@@ -2783,18 +2707,16 @@ object frm_Calendar: Tfrm_Calendar
           Align = alClient
           Caption = 'Stundenplan'
           TabOrder = 1
-          ExplicitWidth = 1062
-          ExplicitHeight = 710
-          Height = 699
-          Width = 1056
+          Height = 710
+          Width = 1066
           object pnl_Stundenplandetail: TcxGroupBox
-            Left = 3
-            Top = 78
+            Left = 2
+            Top = 76
             Align = alTop
             PanelStyle.Active = True
             TabOrder = 0
             Height = 60
-            Width = 1050
+            Width = 1062
             object lbl_Stundenplan_Bis: TcxLabel
               Left = 82
               Top = 8
@@ -3073,10 +2995,10 @@ object frm_Calendar: Tfrm_Calendar
             end
           end
           object grd_StundenplanFach: TcxGrid
-            Left = 3
-            Top = 138
-            Width = 1050
-            Height = 552
+            Left = 2
+            Top = 136
+            Width = 1062
+            Height = 572
             Align = alClient
             BorderStyle = cxcbsNone
             Font.Charset = DEFAULT_CHARSET
@@ -3223,10 +3145,10 @@ object frm_Calendar: Tfrm_Calendar
             end
           end
           object brdckCtrl_StundenplanFach: TdxBarDockControl
-            Left = 3
-            Top = 15
-            Width = 1050
-            Height = 63
+            Left = 2
+            Top = 18
+            Width = 1062
+            Height = 58
             Align = dalTop
             BarManager = brmgr_Kalendar
           end
@@ -4488,7 +4410,7 @@ object frm_Calendar: Tfrm_Calendar
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 45503.625410497680000000
+      ReportDocument.CreationDate = 45510.530895532410000000
       OptionsSize.AutoWidth = True
       PixelsPerInch = 96
       BuiltInReportLink = True

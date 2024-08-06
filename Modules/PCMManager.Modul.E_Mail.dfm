@@ -16,249 +16,318 @@ object frm_Mail: Tfrm_Mail
   TextHeight = 13
   object pnl_Design: TcxGroupBox
     Left = 0
-    Top = 63
+    Top = 0
     Align = alClient
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 4
-    Height = 750
+    ExplicitTop = 58
+    ExplicitHeight = 755
+    Height = 813
     Width = 1240
-    object grpbx_Mail: TcxGroupBox
-      Left = 253
-      Top = 3
-      Align = alClient
-      PanelStyle.Active = True
-      TabOrder = 0
-      Height = 724
-      Width = 984
-      object grd_Mail: TcxGrid
-        Left = 3
-        Top = 3
-        Width = 978
-        Height = 203
-        Align = alClient
-        BorderStyle = cxcbsNone
-        TabOrder = 0
-        object grdDBTblView_Mails: TcxGridDBTableView
-          Navigator.Buttons.CustomButtons = <>
-          FilterBox.CustomizeDialog = False
-          ScrollbarAnnotations.CustomAnnotations = <>
-          OnCellDblClick = grdDBTblView_MailsCellDblClick
-          OnCustomDrawCell = grdDBTblView_MailsCustomDrawCell
-          DataController.DataSource = ds_Mail
-          DataController.Summary.DefaultGroupSummaryItems = <>
-          DataController.Summary.FooterSummaryItems = <>
-          DataController.Summary.SummaryGroups = <>
-          OptionsData.Deleting = False
-          OptionsData.Editing = False
-          OptionsData.Inserting = False
-          OptionsSelection.CellSelect = False
-          OptionsView.CellEndEllipsis = True
-          OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-          OptionsView.GroupByBox = False
-          OptionsView.HeaderFilterButtonShowMode = fbmButton
-          OptionsView.Indicator = True
-          OptionsView.IndicatorWidth = 14
-          object grdDBTblView_MailsRecId: TcxGridDBColumn
-            DataBinding.FieldName = 'RecId'
-            DataBinding.IsNullValueType = True
-            Visible = False
-          end
-          object grdDBTblView_MailsVon: TcxGridDBColumn
-            DataBinding.FieldName = 'Von'
-            DataBinding.IsNullValueType = True
-            Width = 300
-          end
-          object grdDBTblView_MailsBetreff: TcxGridDBColumn
-            DataBinding.FieldName = 'Betreff'
-            DataBinding.IsNullValueType = True
-            Width = 500
-          end
-          object grdDBTblView_MailsErhalten: TcxGridDBColumn
-            DataBinding.FieldName = 'Erhalten'
-            DataBinding.IsNullValueType = True
-            SortIndex = 0
-            SortOrder = soDescending
-            Width = 130
-          end
-          object grdDBTblView_MailsGroesse: TcxGridDBColumn
-            Caption = 'Gr'#246#223'e'
-            DataBinding.FieldName = 'Groesse'
-            DataBinding.IsNullValueType = True
-            Width = 80
-          end
-          object grdDBTblView_MailsUID: TcxGridDBColumn
-            DataBinding.FieldName = 'UID'
-            DataBinding.IsNullValueType = True
-            Visible = False
-            VisibleForCustomization = False
-            Width = 100
-          end
-          object grdDBTblView_Mailsread: TcxGridDBColumn
-            DataBinding.FieldName = 'readEmail'
-            DataBinding.IsNullValueType = True
-            Visible = False
-            VisibleForCustomization = False
-          end
-          object grdDBTblView_MailsID: TcxGridDBColumn
-            DataBinding.FieldName = 'ID'
-            DataBinding.IsNullValueType = True
-            Visible = False
-            VisibleForCustomization = False
-          end
-          object grdDBTblView_MailsUIDL: TcxGridDBColumn
-            DataBinding.FieldName = 'UIDL'
-            DataBinding.IsNullValueType = True
-            Visible = False
-            VisibleForCustomization = False
-          end
-          object grdDBTblView_MailsData: TcxGridDBColumn
-            DataBinding.FieldName = 'Data'
-            DataBinding.IsNullValueType = True
-            Visible = False
-            VisibleForCustomization = False
-          end
-          object grdDBTblView_MailsfileName: TcxGridDBColumn
-            DataBinding.FieldName = 'fileName'
-            DataBinding.IsNullValueType = True
-            Visible = False
-            VisibleForCustomization = False
-            Width = 400
-          end
-        end
-        object grdlvl_mail: TcxGridLevel
-          GridView = grdDBTblView_Mails
-        end
-      end
-      object grpbx_MailVorschau: TcxGroupBox
-        Left = 3
-        Top = 211
-        Align = alBottom
-        PanelStyle.Active = True
-        TabOrder = 1
-        Visible = False
-        Height = 510
-        Width = 978
-        object webbwr_Mail: TWebBrowser
-          Left = 3
-          Top = 3
-          Width = 972
-          Height = 504
-          Align = alClient
-          TabOrder = 0
-          ControlData = {
-            4C00000076640000173400000000000000000000000000000000000000000000
-            000000004C000000000000000000000001000000E0D057007335CF11AE690800
-            2B2E126208000000000000004C0000000114020000000000C000000000000046
-            8000000000000000000000000000000000000000000000000000000000000000
-            00000000000000000100000000000000000000000000000000000000}
-        end
-      end
-      object cxSplitter1: TcxSplitter
-        Left = 3
-        Top = 206
-        Width = 978
-        Height = 5
-        Cursor = crVSplit
-        AlignSplitter = salBottom
-        Control = grpbx_MailVorschau
-      end
-    end
-    object grpbx_Postfach: TcxGroupBox
+    object cxPageControl1: TcxPageControl
       Left = 3
       Top = 3
-      Align = alLeft
-      PanelStyle.Active = True
-      TabOrder = 1
-      Height = 724
-      Width = 250
-      object trlst_EmailFolder: TcxTreeList
-        Left = 3
-        Top = 3
-        Width = 244
-        Height = 718
-        BorderStyle = cxcbsNone
-        Align = alClient
-        Bands = <
-          item
-          end>
-        Navigator.Buttons.CustomButtons = <>
-        OptionsBehavior.Sorting = False
-        OptionsData.CancelOnExit = False
-        OptionsData.Editing = False
-        OptionsData.Deleting = False
-        ScrollbarAnnotations.CustomAnnotations = <>
-        TabOrder = 0
-        Data = {
-          00000500F40000000F00000044617461436F6E74726F6C6C6572310200000012
-          000000546378537472696E6756616C7565547970651200000054637853747269
-          6E6756616C75655479706503000000445855464D540000080000007300640073
-          006400730064007300640001445855464D540000040000007300640073006400
-          01445855464D5400000500000073006400730064006400010100000000000000
-          1208020000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFF010000000808
-          0000000000000000FFFFFFFFFFFFFFFFFFFFFFFF02000000080A000000000000
-          0000FFFFFFFFFFFFFFFFFFFFFFFF0A0801000000}
-        object cxTreeList1Column1: TcxTreeListColumn
-          Caption.Text = 'E-Mail Konten'
-          Width = 200
-          Position.ColIndex = 0
-          Position.RowIndex = 0
-          Position.BandIndex = 0
-          Summary.FooterSummaryItems = <>
-          Summary.GroupFooterSummaryItems = <>
-        end
-        object cxTreeList1Column2: TcxTreeListColumn
-          Width = 47
-          Position.ColIndex = 1
-          Position.RowIndex = 0
-          Position.BandIndex = 0
-          Summary.FooterSummaryItems = <>
-          Summary.GroupFooterSummaryItems = <>
-        end
-      end
-    end
-    object stbr_user: TdxStatusBar
-      Left = 3
-      Top = 727
       Width = 1234
-      Height = 20
-      Panels = <
-        item
-          PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
-          PanelStyle.Font.Charset = DEFAULT_CHARSET
-          PanelStyle.Font.Color = clWhite
-          PanelStyle.Font.Height = -12
-          PanelStyle.Font.Name = 'Segoe UI'
-          PanelStyle.Font.Style = []
-          PanelStyle.ParentFont = False
-          Width = 200
+      Height = 807
+      Align = alClient
+      Color = clBtnFace
+      ParentBackground = False
+      ParentColor = False
+      TabOrder = 0
+      Properties.ActivePage = cxTabSheet1
+      Properties.CustomButtons.Buttons = <>
+      Properties.Images = dm_PCM.imglst_16x16
+      Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
+      Properties.TabSlants.Kind = skCutCorner
+      Properties.TabWidth = 100
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 1240
+      ExplicitHeight = 813
+      ClientRectBottom = 801
+      ClientRectLeft = 2
+      ClientRectRight = 1228
+      ClientRectTop = 28
+      object cxTabSheet1: TcxTabSheet
+        Caption = 'E-Mails'
+        ImageIndex = 15
+        ExplicitLeft = 0
+        ExplicitTop = 25
+        ExplicitWidth = 1240
+        ExplicitHeight = 788
+        object dxBarDockControl1: TdxBarDockControl
+          Left = 0
+          Top = 0
+          Width = 1226
+          Height = 63
+          Align = dalTop
+          BarManager = brmgr_Email
+          ExplicitWidth = 1232
         end
-        item
-          PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
-          PanelStyle.Font.Charset = DEFAULT_CHARSET
-          PanelStyle.Font.Color = clWhite
-          PanelStyle.Font.Height = -12
-          PanelStyle.Font.Name = 'Segoe UI'
-          PanelStyle.Font.Style = []
-          PanelStyle.ParentFont = False
-          Width = 400
+        object stbr_user: TdxStatusBar
+          Left = 0
+          Top = 753
+          Width = 1226
+          Height = 20
+          Panels = <
+            item
+              PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
+              PanelStyle.Font.Charset = DEFAULT_CHARSET
+              PanelStyle.Font.Color = clWhite
+              PanelStyle.Font.Height = -12
+              PanelStyle.Font.Name = 'Segoe UI'
+              PanelStyle.Font.Style = []
+              PanelStyle.ParentFont = False
+              Width = 200
+            end
+            item
+              PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
+              PanelStyle.Font.Charset = DEFAULT_CHARSET
+              PanelStyle.Font.Color = clWhite
+              PanelStyle.Font.Height = -12
+              PanelStyle.Font.Name = 'Segoe UI'
+              PanelStyle.Font.Style = []
+              PanelStyle.ParentFont = False
+              Width = 400
+            end
+            item
+              PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
+              PanelStyle.Font.Charset = DEFAULT_CHARSET
+              PanelStyle.Font.Color = clWhite
+              PanelStyle.Font.Height = -12
+              PanelStyle.Font.Name = 'Segoe UI'
+              PanelStyle.Font.Style = []
+              PanelStyle.ParentFont = False
+              Width = 200
+            end>
+          PaintStyle = stpsUseLookAndFeel
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBtnText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ExplicitTop = 768
+          ExplicitWidth = 1240
         end
-        item
-          PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
-          PanelStyle.Font.Charset = DEFAULT_CHARSET
-          PanelStyle.Font.Color = clWhite
-          PanelStyle.Font.Height = -12
-          PanelStyle.Font.Name = 'Segoe UI'
-          PanelStyle.Font.Style = []
-          PanelStyle.ParentFont = False
-          Width = 200
-        end>
-      PaintStyle = stpsUseLookAndFeel
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBtnText
-      Font.Height = -12
-      Font.Name = 'Segoe UI'
-      Font.Style = []
+        object grpbx_Mail: TcxGroupBox
+          Left = 250
+          Top = 63
+          Align = alClient
+          PanelStyle.Active = True
+          TabOrder = 2
+          ExplicitTop = 58
+          ExplicitWidth = 990
+          ExplicitHeight = 710
+          Height = 690
+          Width = 976
+          object grd_Mail: TcxGrid
+            Left = 3
+            Top = 3
+            Width = 970
+            Height = 169
+            Align = alClient
+            BorderStyle = cxcbsNone
+            TabOrder = 0
+            ExplicitLeft = 2
+            ExplicitTop = 2
+            ExplicitWidth = 986
+            ExplicitHeight = 191
+            object grdDBTblView_Mails: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              FilterBox.CustomizeDialog = False
+              ScrollbarAnnotations.CustomAnnotations = <>
+              OnCellDblClick = grdDBTblView_MailsCellDblClick
+              OnCustomDrawCell = grdDBTblView_MailsCustomDrawCell
+              DataController.DataSource = ds_Mail
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              OptionsData.Deleting = False
+              OptionsData.Editing = False
+              OptionsData.Inserting = False
+              OptionsSelection.CellSelect = False
+              OptionsView.CellEndEllipsis = True
+              OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+              OptionsView.GroupByBox = False
+              OptionsView.HeaderFilterButtonShowMode = fbmButton
+              OptionsView.Indicator = True
+              OptionsView.IndicatorWidth = 14
+              object grdDBTblView_MailsRecId: TcxGridDBColumn
+                DataBinding.FieldName = 'RecId'
+                DataBinding.IsNullValueType = True
+                Visible = False
+              end
+              object grdDBTblView_MailsVon: TcxGridDBColumn
+                DataBinding.FieldName = 'Von'
+                DataBinding.IsNullValueType = True
+                Width = 300
+              end
+              object grdDBTblView_MailsBetreff: TcxGridDBColumn
+                DataBinding.FieldName = 'Betreff'
+                DataBinding.IsNullValueType = True
+                Width = 500
+              end
+              object grdDBTblView_MailsErhalten: TcxGridDBColumn
+                DataBinding.FieldName = 'Erhalten'
+                DataBinding.IsNullValueType = True
+                SortIndex = 0
+                SortOrder = soDescending
+                Width = 130
+              end
+              object grdDBTblView_MailsGroesse: TcxGridDBColumn
+                Caption = 'Gr'#246#223'e'
+                DataBinding.FieldName = 'Groesse'
+                DataBinding.IsNullValueType = True
+                Width = 80
+              end
+              object grdDBTblView_MailsUID: TcxGridDBColumn
+                DataBinding.FieldName = 'UID'
+                DataBinding.IsNullValueType = True
+                Visible = False
+                VisibleForCustomization = False
+                Width = 100
+              end
+              object grdDBTblView_Mailsread: TcxGridDBColumn
+                DataBinding.FieldName = 'readEmail'
+                DataBinding.IsNullValueType = True
+                Visible = False
+                VisibleForCustomization = False
+              end
+              object grdDBTblView_MailsID: TcxGridDBColumn
+                DataBinding.FieldName = 'ID'
+                DataBinding.IsNullValueType = True
+                Visible = False
+                VisibleForCustomization = False
+              end
+              object grdDBTblView_MailsUIDL: TcxGridDBColumn
+                DataBinding.FieldName = 'UIDL'
+                DataBinding.IsNullValueType = True
+                Visible = False
+                VisibleForCustomization = False
+              end
+              object grdDBTblView_MailsData: TcxGridDBColumn
+                DataBinding.FieldName = 'Data'
+                DataBinding.IsNullValueType = True
+                Visible = False
+                VisibleForCustomization = False
+              end
+              object grdDBTblView_MailsfileName: TcxGridDBColumn
+                DataBinding.FieldName = 'fileName'
+                DataBinding.IsNullValueType = True
+                Visible = False
+                VisibleForCustomization = False
+                Width = 400
+              end
+            end
+            object grdlvl_mail: TcxGridLevel
+              GridView = grdDBTblView_Mails
+            end
+          end
+          object grpbx_MailVorschau: TcxGroupBox
+            Left = 3
+            Top = 177
+            Align = alBottom
+            PanelStyle.Active = True
+            TabOrder = 1
+            Visible = False
+            ExplicitLeft = 2
+            ExplicitTop = 198
+            ExplicitWidth = 986
+            Height = 510
+            Width = 970
+            object webbwr_Mail: TWebBrowser
+              Left = 3
+              Top = 3
+              Width = 964
+              Height = 504
+              Align = alClient
+              TabOrder = 0
+              ExplicitLeft = 2
+              ExplicitTop = 2
+              ExplicitWidth = 982
+              ExplicitHeight = 506
+              ControlData = {
+                4C000000A2630000173400000000000000000000000000000000000000000000
+                000000004C000000000000000000000001000000E0D057007335CF11AE690800
+                2B2E126208000000000000004C0000000114020000000000C000000000000046
+                8000000000000000000000000000000000000000000000000000000000000000
+                00000000000000000100000000000000000000000000000000000000}
+            end
+          end
+          object cxSplitter1: TcxSplitter
+            Left = 3
+            Top = 172
+            Width = 970
+            Height = 5
+            Cursor = crVSplit
+            AlignSplitter = salBottom
+            Control = grpbx_MailVorschau
+            ExplicitLeft = 2
+            ExplicitTop = 193
+            ExplicitWidth = 986
+          end
+        end
+        object grpbx_Postfach: TcxGroupBox
+          Left = 0
+          Top = 63
+          Align = alLeft
+          PanelStyle.Active = True
+          TabOrder = 3
+          ExplicitTop = 58
+          ExplicitHeight = 710
+          Height = 690
+          Width = 250
+          object trlst_EmailFolder: TcxTreeList
+            Left = 3
+            Top = 3
+            Width = 244
+            Height = 684
+            BorderStyle = cxcbsNone
+            Align = alClient
+            Bands = <
+              item
+              end>
+            Navigator.Buttons.CustomButtons = <>
+            OptionsBehavior.Sorting = False
+            OptionsData.CancelOnExit = False
+            OptionsData.Editing = False
+            OptionsData.Deleting = False
+            ScrollbarAnnotations.CustomAnnotations = <>
+            TabOrder = 0
+            ExplicitLeft = 2
+            ExplicitTop = 2
+            ExplicitWidth = 246
+            ExplicitHeight = 706
+            Data = {
+              00000500F40000000F00000044617461436F6E74726F6C6C6572310200000012
+              000000546378537472696E6756616C7565547970651200000054637853747269
+              6E6756616C75655479706503000000445855464D540000080000007300640073
+              006400730064007300640001445855464D540000040000007300640073006400
+              01445855464D5400000500000073006400730064006400010100000000000000
+              1208020000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFF010000000808
+              0000000000000000FFFFFFFFFFFFFFFFFFFFFFFF02000000080A000000000000
+              0000FFFFFFFFFFFFFFFFFFFFFFFF0A0801000000}
+            object cxTreeList1Column1: TcxTreeListColumn
+              Caption.Text = 'E-Mail Konten'
+              Width = 200
+              Position.ColIndex = 0
+              Position.RowIndex = 0
+              Position.BandIndex = 0
+              Summary.FooterSummaryItems = <>
+              Summary.GroupFooterSummaryItems = <>
+            end
+            object cxTreeList1Column2: TcxTreeListColumn
+              Width = 47
+              Position.ColIndex = 1
+              Position.RowIndex = 0
+              Position.BandIndex = 0
+              Summary.FooterSummaryItems = <>
+              Summary.GroupFooterSummaryItems = <>
+            end
+          end
+        end
+      end
     end
   end
   object ds_Mail: TDataSource
@@ -299,18 +368,13 @@ object frm_Mail: Tfrm_Mail
     Left = 728
     Top = 376
     PixelsPerInch = 96
-    DockControlHeights = (
-      0
-      0
-      63
-      0)
-    object dxBarManager1Bar1: TdxBar
+    object tb_Email: TdxBar
       Caption = 'Custom 1'
       CaptionButtons = <>
-      DockedDockingStyle = dsTop
+      DockControl = dxBarDockControl1
+      DockedDockControl = dxBarDockControl1
       DockedLeft = 0
       DockedTop = 0
-      DockingStyle = dsTop
       FloatLeft = 1256
       FloatTop = 2
       FloatClientWidth = 0

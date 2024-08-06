@@ -321,7 +321,7 @@ object frm_password: Tfrm_password
               Transparent = True
             end
             object btn_Passwort_PasswortShow: TcxButton
-              Left = 1040
+              Left = 1005
               Top = 34
               Width = 23
               Height = 23
@@ -351,7 +351,7 @@ object frm_password: Tfrm_password
               Style.IsFontAssigned = True
               TabOrder = 4
               OnExit = btn_PasswortSaveClick
-              Width = 400
+              Width = 390
             end
             object edt_Passwort_APPPort: TcxDBTextEdit
               Left = 554
@@ -383,7 +383,7 @@ object frm_password: Tfrm_password
               Style.IsFontAssigned = True
               TabOrder = 8
               OnExit = btn_PasswortSaveClick
-              Width = 192
+              Width = 157
             end
             object edt_Passwort_Benutzer: TcxDBTextEdit
               Left = 130
@@ -399,7 +399,7 @@ object frm_password: Tfrm_password
               Style.IsFontAssigned = True
               TabOrder = 2
               OnExit = btn_PasswortSaveClick
-              Width = 400
+              Width = 390
             end
             object edt_Passwort_Bezeichnung: TcxDBTextEdit
               Left = 130
@@ -415,7 +415,7 @@ object frm_password: Tfrm_password
               Style.IsFontAssigned = True
               TabOrder = 0
               OnExit = btn_PasswortSaveClick
-              Width = 400
+              Width = 390
             end
             object edt_Passwort_EmailInboxPort: TcxDBTextEdit
               Left = 554
@@ -463,7 +463,7 @@ object frm_password: Tfrm_password
               Style.IsFontAssigned = True
               TabOrder = 11
               OnExit = btn_PasswortSaveClick
-              Width = 192
+              Width = 157
             end
             object edt_Passwort_EmailOutboxPort: TcxDBTextEdit
               Left = 554
@@ -511,10 +511,10 @@ object frm_password: Tfrm_password
               Style.IsFontAssigned = True
               TabOrder = 14
               OnExit = btn_PasswortSaveClick
-              Width = 192
+              Width = 157
             end
             object edt_Passwort_Link: TcxDBTextEdit
-              Left = 613
+              Left = 653
               Top = 8
               DataBinding.DataField = 'link'
               DataBinding.DataSource = dsPWD
@@ -527,10 +527,10 @@ object frm_password: Tfrm_password
               Style.IsFontAssigned = True
               TabOrder = 1
               OnExit = btn_PasswortSaveClick
-              Width = 450
+              Width = 375
             end
             object edt_Passwort_Passwort: TcxDBTextEdit
-              Left = 613
+              Left = 653
               Top = 35
               DataBinding.DataField = 'password'
               DataBinding.DataSource = dsPWD
@@ -545,7 +545,7 @@ object frm_password: Tfrm_password
               Style.IsFontAssigned = True
               TabOrder = 3
               OnExit = btn_PasswortSaveClick
-              Width = 427
+              Width = 346
             end
             object edt_Passwort_VPN: TcxDBTextEdit
               Left = 653
@@ -561,7 +561,7 @@ object frm_password: Tfrm_password
               Style.IsFontAssigned = True
               TabOrder = 5
               OnExit = btn_PasswortSaveClick
-              Width = 410
+              Width = 375
             end
             object edt_Passwort_VPN_APP: TcxDBTextEdit
               Left = 130
@@ -788,7 +788,7 @@ object frm_password: Tfrm_password
             end
           end
           object edt_Programs_Bez: TcxDBTextEdit
-            Left = 78
+            Left = 81
             Top = 87
             DataBinding.DataField = 'APP'
             DataBinding.DataSource = dsSerial
@@ -800,10 +800,10 @@ object frm_password: Tfrm_password
             Style.Font.Style = []
             Style.IsFontAssigned = True
             TabOrder = 0
-            Width = 523
+            Width = 390
           end
           object lucbx_Programs_Typ: TcxDBLookupComboBox
-            Left = 673
+            Left = 638
             Top = 87
             DataBinding.DataField = 'iD_typ'
             DataBinding.DataSource = dsSerial
@@ -838,7 +838,7 @@ object frm_password: Tfrm_password
             Transparent = True
           end
           object lbl_Programs_Typ: TcxLabel
-            Left = 641
+            Left = 595
             Top = 88
             Caption = 'Typ:'
             ParentFont = False
@@ -945,7 +945,7 @@ object frm_password: Tfrm_password
             Height = 33
             Width = 1152
             object edt_SerialsBez: TcxDBTextEdit
-              Left = 78
+              Left = 81
               Top = 8
               DataBinding.DataField = 'USer'
               DataBinding.DataSource = dsSerial_keys
@@ -957,10 +957,10 @@ object frm_password: Tfrm_password
               Style.Font.Style = []
               Style.IsFontAssigned = True
               TabOrder = 0
-              Width = 523
+              Width = 390
             end
             object edt_SerialsSerial: TcxDBTextEdit
-              Left = 673
+              Left = 638
               Top = 8
               DataBinding.DataField = 'Serial'
               DataBinding.DataSource = dsSerial_keys
@@ -989,7 +989,7 @@ object frm_password: Tfrm_password
               Transparent = True
             end
             object Label4: TcxLabel
-              Left = 638
+              Left = 595
               Top = 9
               Caption = 'Serial:'
               ParentFont = False

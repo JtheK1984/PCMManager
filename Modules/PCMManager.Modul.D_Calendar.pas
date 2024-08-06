@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, dxBarBuiltInMenu, cxGraphics,
   cxControls, cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore, dxSkinBasic,
   dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
-  dxSkinDarkroom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDarkroom, dxSkinDarkSide, dxSkinDevExpressDarkStyle, System.IOUtils,
   dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
   dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
   dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
@@ -5034,8 +5034,240 @@ begin
   end
 end;
 procedure Tfrm_Calendar.btn_StundenplanPrintClick(Sender: TObject);
+  function GetColor(AColor: TColor): string;
+  begin
+    Result:= IntToStr(GetRValue(AColor)) + ',' + IntToStr(GetGValue(AColor)) + ',' + IntToStr(GetBValue(AColor));
+  end;
+  function SetXMLLIne(AValue: string; AColor, AFontColor: Integer) : string;
+  begin
+    Result:= '';
+    if (AColor <> -1) and (AFontColor <> -1) then
+    begin
+      Result:= '                 <th style="background-color:rgb(' + GetColor(AColor) + ');color:rgb(' + GetColor(AFontColor) + ')">&nbsp; ' + AValue + '</th>'
+    end;
+
+    if (AColor <> -1) and (AFontColor = -1) then
+    begin
+      Result:= '                 <th style="background-color:rgb(' + GetColor(AColor) + ')">&nbsp; ' + AValue + '</th>'
+    end;
+
+    if (AColor = -1) and (AFontColor <> -1) then
+    begin
+      Result:= '                 <th style="color:rgb(' + GetColor(AFontColor) + ')">&nbsp; ' + AValue + '</th>'
+    end;
+
+    if (AColor = -1) and (AFontColor = -1) then
+    begin
+      Result:= '                 <th>&nbsp; ' + AValue + '</th>'
+    end;
+
+
+  end;
+var
+  slFileXML: TStringList;
+  sSchule, sKlasse, sSchuljahr: String;
 begin
-//
+  slFileXML:= TStringList.Create;
+  dm_PCM.qry_work.SQL.Text:= 'SELECT * FROM manager_stundenplan where ID  = :ID';
+  dm_PCM.qry_work.ParamByName('ID').AsInteger:= qry_Stundenplan.FieldByName('ID').Asinteger;
+  dm_PCM.qry_work.open;
+  sSchule:= dm_PCM.qry_work.FieldByName('Schule').asString;
+  sKlasse:= dm_PCM.qry_work.FieldByName('Klasse').asString;
+  sSchuljahr:= dm_PCM.qry_work.FieldByName('Schuljahr').AsString;
+  dm_PCM.qry_work.Close;
+  try
+    slFileXML.Add('<!DOCTYPE html>');
+    slFileXML.Add('<html>');
+    slFileXML.Add('<head>');
+    slFileXML.Add('  <title>PCM - Stundenplanübersicht</title>');
+    slFileXML.Add('  <meta http-equiv="content-type" content="text/html; charset=Windows-1252"/>');
+    slFileXML.Add('  <style type="text/css">body {background: #086A87;}');
+    slFileXML.Add('	   .container-table {margin: auto;	margin-top: calc(8vh - 7px); margin-bottom: calc(8vh - 7px); width: 80vw; min-height: 8vh; display: block; overflow: auto; -moz-box-shadow: 0px 0px 10px #ccc; -webkit-box-shadow: 0px 0px 10px #ccc; border-bottom: solid 5px #93a8d8;}');
+    slFileXML.Add('	   .container-table {padding: 15px 15px 15px 15px;width: 80%; }');
+    slFileXML.Add('	   .container-table-background{background-color: white;}');
+    slFileXML.Add('	   .container-table * {font-family: "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Verdana, sans-serif;}');
+    slFileXML.Add('	   .container-table h2 {font-size: 20px; font-weight: 100;}');
+    slFileXML.Add('	   .Report {width: calc(50% - 15px); float: left; text-align: left;}');
+    slFileXML.Add('	   .Datumuhrzeit {width: calc(50% - 15px); float: right; text-align: right;}');
+    slFileXML.Add('	   .divider {height: 5px; width: 100%; background-color: #086A87}');
+    slFileXML.Add('	   #search {outline: none; margin-top: 0px; margin-bottom: 15px;  width: 100%; display: block; border: none; border-bottom: solid 2px #c9c9c9; transition: border 0.3s;}');
+    slFileXML.Add('	   #search:focus, #search.focus {border-bottom: solid 2px #969696;}');
+    slFileXML.Add('	   table {width: 100%;border-collapse:collapse; padding: 0px 15px 0px 15px;}');
+    slFileXML.Add('	   table tbody th {padding: 15px 0px 0px 0px;}');
+    slFileXML.Add('	   table tbody th {border-top: 1px solid black; padding: 5px 0px 0px 0px}');
+    slFileXML.Add('	   table tfoot th {border-bottom: 5px double black;padding: 20px 0px 0px 0px;}');
+    slFileXML.Add('	   th {padding-bottom: 5px; text-align: Left;  column-span: 3px; border-style:solid solid solid solid; border-collapse: collapse; border-width: 1px;}');
+    slFileXML.Add('	   th.noneBorder {padding-bottom: 5px; text-align: Left;  column-span: 3px; border-style:none none none none; border-collapse: collapse; border-width: 1px;}');
+    slFileXML.Add('	   td {padding-top: 1px; padding-bottom: 1px; font-size: 15px;}');
+    slFileXML.Add('	   .status-fields {float: left; display: flex; flex-wrap: wrap; width: calc( 100% - 20px ); text-align: center; margin: 20px 10px 20px 10px;}');
+    slFileXML.Add('	   div.status-fields>div {width: calc( 20% - 20px ); display: flex; align-items: center; justify-content: center; flex-direction: column; margin: 5px 5px 5px 5px; padding: 10px 5px 10px 5px; float: left; }');
+    slFileXML.Add('	   div.status-fields>tr {display: none;} div.status-fields>tr>td {display: none;}');
+    slFileXML.Add('	   .mobile-hidden {display: none;}');
+    slFileXML.Add('    </style>');
+    slFileXML.Add('  </head>');
+    slFileXML.Add('  <body>');
+    slFileXML.Add('      <div class="container-table container-table-background">');
+    slFileXML.Add('      <div class="Report">');
+    slFileXML.Add('        <h2>PCM - Finanzübersicht für');
+    slFileXML.Add('        <h2>' + sSchule + ' Klasse:' + sKlasse + ' Schuljahr:' + sSchuljahr);
+    slFileXML.Add('      </div>');
+    slFileXML.Add('      <div class="Datumuhrzeit">');
+    slFileXML.Add('        <h2>' + DatetoStr(Date()) + ' - ' + Copy(TimeToStr(Now()),1,5) + ' Uhr</h2>');
+    slFileXML.Add('      </div>');
+    slFileXML.Add('      <div style="clear: both;">');
+    slFileXML.Add('				<input id="search" placeholder="Suchen"/>');
+    slFileXML.Add('				<div class="divider">');
+    slFileXML.Add('					<div class="status-fields">');
+    slFileXML.Add('						<table id="tblData">');
+    ////////////////////////////////////////////////////////////////////////////
+    // Überschrift                                                            //
+    ////////////////////////////////////////////////////////////////////////////
+    slFileXML.Add('              <thead>');
+    slFileXML.Add('								<tr>');
+    slFileXML.Add('									<th>&nbsp; Beginn:</th>');
+    slFileXML.Add('									<th>&nbsp; Ende:</th>');
+    slFileXML.Add('									<th>&nbsp; Montag:</th>');
+    slFileXML.Add('									<th>&nbsp; Dienstag:</th>');
+    slFileXML.Add('									<th>&nbsp; Mittwoch:</th>');
+    slFileXML.Add('									<th>&nbsp; Donnerstag:</th>');
+    slFileXML.Add('									<th>&nbsp; Freitag:</th>');
+    slFileXML.Add('									<th>&nbsp; Samstag:</th>');
+    slFileXML.Add('								</tr>');
+    slFileXML.Add('							</thead>');
+    dm_PCM.qry_work.SQL.Text:= 'SELECT mspd.BEGIN, ifnull(mspk.Farbe,-1) as Color_Begin, ifnull(mspk.Schriftfarbe,-1) as FontColor_Begin, ' +
+                                'mspd.END, ifnull(mspk.Farbe,-1) as Color_End, ifnull(mspk.Schriftfarbe,-1) as FontColor_End, ' +
+                                'mspsf_mo.Bezeichnung AS MON, ifnull(mspsf_mo.Farbe,-1) AS MO_Color, ifnull(mspsf_mo.SchriftFarbe,-1) AS MO_FontColor, ' +
+                                'mspsf_di.Bezeichnung AS DIE, ifnull(mspsf_di.Farbe,-1) AS DI_Color, ifnull(mspsf_di.SchriftFarbe,-1) AS DI_FontColor, ' +
+                                'mspsf_mi.Bezeichnung AS MIT, ifnull(mspsf_mi.Farbe,-1) AS MI_Color, ifnull(mspsf_mi.SchriftFarbe,-1) AS MI_FontColor, ' +
+                                'mspsf_do.Bezeichnung AS DON, ifnull(mspsf_do.Farbe,-1) AS DO_Color, ifnull(mspsf_do.SchriftFarbe,-1) AS DO_FontColor, ' +
+                                'mspsf_fr.Bezeichnung AS FRE, ifnull(mspsf_fr.Farbe,-1) AS FR_Color, ifnull(mspsf_fr.SchriftFarbe,-1) AS FR_FontColor, ' +
+                                'mspsf_sa.Bezeichnung AS SAM, ifnull(mspsf_SA.Farbe,-1) AS SA_Color, ifnull(mspsf_SA.SchriftFarbe,-1) AS SA_FontColor ' +
+                                'FROM manager_stundenplan_detail mspd ' +
+                                'LEFT OUTER JOIN manager_stundenplan_konfiguration mspk ON mspk.ID_Benutzer = 1 ' +
+                                'LEFT OUTER JOIN manager_stundenplan_schulfaecher mspsf_mo ON mspd.Montag = mspsf_mo.id ' +
+                                'LEFT OUTER JOIN manager_stundenplan_schulfaecher mspsf_di ON mspd.Dienstag = mspsf_di.id ' +
+                                'LEFT OUTER JOIN manager_stundenplan_schulfaecher mspsf_mi ON mspd.Mittwoch = mspsf_mi.id ' +
+                                'LEFT OUTER JOIN manager_stundenplan_schulfaecher mspsf_do ON mspd.Donnerstag = mspsf_do.id ' +
+                                'LEFT OUTER JOIN manager_stundenplan_schulfaecher mspsf_fr ON mspd.Freitag = mspsf_fr.id ' +
+                                'LEFT OUTER JOIN manager_stundenplan_schulfaecher mspsf_sa ON mspd.Samstag = mspsf_sa.id ' +
+                                'where mspd.ID_Stundenplan  = :ID';
+    dm_PCM.qry_work.ParamByName('ID').AsInteger:= qry_Stundenplan.FieldByName('ID').Asinteger;
+    dm_PCM.qry_work.open;
+    while not dm_PCM.qry_work.Eof do
+    begin
+      slFileXML.Add('							<tbody>');
+      slFileXML.Add('								<tr>');
+      // Beginn
+      slFileXML.Add(SetXMLLIne(dm_PCM.qry_work.FieldByName('Begin').asString,
+                               dm_PCM.qry_work.FieldByName('Color_Begin').AsInteger,
+                               dm_PCM.qry_work.FieldByName('FontColor_Begin').AsInteger));
+      // Ende
+      slFileXML.Add(SetXMLLIne(dm_PCM.qry_work.FieldByName('End').asString,
+                               dm_PCM.qry_work.FieldByName('Color_End').AsInteger,
+                               dm_PCM.qry_work.FieldByName('FontColor_End').AsInteger));
+      // Montag
+      slFileXML.Add(SetXMLLIne(dm_PCM.qry_work.FieldByName('MON').asString,
+                               dm_PCM.qry_work.FieldByName('MO_Color').AsInteger,
+                               dm_PCM.qry_work.FieldByName('MO_FontColor').AsInteger));
+      // Dienstag
+      slFileXML.Add(SetXMLLIne(dm_PCM.qry_work.FieldByName('DIE').asString,
+                               dm_PCM.qry_work.FieldByName('DI_Color').AsInteger,
+                               dm_PCM.qry_work.FieldByName('DI_FontColor').AsInteger));
+      // Mittwoch
+      slFileXML.Add(SetXMLLIne(dm_PCM.qry_work.FieldByName('MIT').asString,
+                               dm_PCM.qry_work.FieldByName('MI_Color').AsInteger,
+                               dm_PCM.qry_work.FieldByName('MI_FontColor').AsInteger));
+      // Donnerstag
+      slFileXML.Add(SetXMLLIne(dm_PCM.qry_work.FieldByName('DON').asString,
+                               dm_PCM.qry_work.FieldByName('DO_Color').AsInteger,
+                               dm_PCM.qry_work.FieldByName('DO_FontColor').AsInteger));
+      // Freitag
+      slFileXML.Add(SetXMLLIne(dm_PCM.qry_work.FieldByName('FRE').asString,
+                               dm_PCM.qry_work.FieldByName('FR_Color').AsInteger,
+                               dm_PCM.qry_work.FieldByName('FR_FontColor').AsInteger));
+      // Samstag
+      slFileXML.Add(SetXMLLIne(dm_PCM.qry_work.FieldByName('SAM').asString,
+                               dm_PCM.qry_work.FieldByName('SA_Color').AsInteger,
+                               dm_PCM.qry_work.FieldByName('SA_FontColor').AsInteger));
+      slFileXML.Add('								</tr>');
+      slFileXML.Add('							</tbody>');
+      dm_PCM.qry_work.Next
+    end;
+    slFileXML.Add('              <tbody>');
+    slFileXML.Add('								<tr>');
+    slFileXML.Add('									<th class="noneBorder"></th>');
+    slFileXML.Add('									<th class="noneBorder"></th>');
+    slFileXML.Add('									<th class="noneBorder"></th>');
+    slFileXML.Add('									<th class="noneBorder"></th>');
+    slFileXML.Add('									<th class="noneBorder"></th>');
+    slFileXML.Add('									<th class="noneBorder"></th>');
+    slFileXML.Add('									<th class="noneBorder"></th>');
+    slFileXML.Add('									<th class="noneBorder"></th>');
+    slFileXML.Add('								</tr>');
+    slFileXML.Add('							</tbody>');
+    slFileXML.Add('						</table>');
+    slFileXML.Add('					</div>');
+    slFileXML.Add('				</div>');
+    slFileXML.Add('			</div>');
+    slFileXML.Add('    </div>');
+    slFileXML.Add('    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>');
+    slFileXML.Add('    <script type="text/javascript">$(document).ready(function()');
+    slFileXML.Add('{');
+    slFileXML.Add('	$(''#search'').keyup(function()');
+    slFileXML.Add('	{');
+    slFileXML.Add('		searchTable($(this).val());');
+    slFileXML.Add('	});');
+    slFileXML.Add('});');
+    slFileXML.Add('function searchTable(inputVal)');
+    slFileXML.Add('{');
+    slFileXML.Add('	// Tabellenvariable festlegen');
+    slFileXML.Add('	var table = $(''#tblData'');');
+    slFileXML.Add('	// Tabelleninhalt Tr finden');
+    slFileXML.Add('	table.find(''tr'').each(function(index, row)');
+    slFileXML.Add('	{');
+    slFileXML.Add('		var allCells = $(row).find(''td'');');
+    slFileXML.Add('		if(allCells.length > 0)');
+    slFileXML.Add('		{');
+    slFileXML.Add('			var found = false;');
+    slFileXML.Add('			allCells.each(function(index, td)');
+    slFileXML.Add('			{');
+    slFileXML.Add('				var regExp = new RegExp(inputVal, ''i'');');
+    slFileXML.Add('				if(regExp.test($(td).text()))');
+    slFileXML.Add('				{');
+    slFileXML.Add('					found = true;');
+    slFileXML.Add('					return false;');
+    slFileXML.Add('				}');
+    slFileXML.Add('			});');
+    slFileXML.Add('			if(found == true)$(row).show();else $(row).hide();');
+    slFileXML.Add('		};');
+    slFileXML.Add('		if(allCells.length < 1)');
+    slFileXML.Add('		{');
+    slFileXML.Add('			var allCells = $(row).find(''th'');');
+    slFileXML.Add('			if(allCells.length > 0)');
+    slFileXML.Add('			{');
+    slFileXML.Add('				var found = false;');
+    slFileXML.Add('				allCells.each(function(index, td)');
+    slFileXML.Add('				{');
+    slFileXML.Add('					var regExp = new RegExp(inputVal, ''i'');');
+    slFileXML.Add('					if(regExp.test($(td).text()))');
+    slFileXML.Add('					{');
+    slFileXML.Add('						found = true;');
+    slFileXML.Add('						return false;');
+    slFileXML.Add('					}');
+    slFileXML.Add('				});');
+    slFileXML.Add('				if(found == true)$(row).show();else $(row).hide();');
+    slFileXML.Add('			};');
+    slFileXML.Add('		};');
+    slFileXML.Add('	});');
+    slFileXML.Add('}</script>');
+    slFileXML.Add('  </body>');
+    slFileXML.Add('</html>');
+    slFileXML.SaveToFile(TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Stundenplan.html');
+    Application.CreateForm(Tfrm_Browser_FullScreen, frm_Browser_FullScreen);
+    frm_Browser_FullScreen.Execute(True,'PCM - Manager: Stundenplan',TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Stundenplan.html');
+  finally
+    slFileXML.Free;
+  end;
 end;
 procedure Tfrm_Calendar.btn_StundeNewClick(Sender: TObject);
 begin

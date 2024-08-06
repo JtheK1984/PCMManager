@@ -66,7 +66,7 @@ type
     grdDBTblView_MailsData: TcxGridDBColumn;
     grdDBTblView_MailsfileName: TcxGridDBColumn;
     brmgr_Email: TdxBarManager;
-    dxBarManager1Bar1: TdxBar;
+    tb_Email: TdxBar;
     dxBarLargeButton1: TdxBarLargeButton;
     dxBarLargeButton2: TdxBarLargeButton;
     dxBarLargeButton3: TdxBarLargeButton;
@@ -87,6 +87,9 @@ type
     EMailweiterleiten1: TdxBarButton;
     Alsgelesenmarkieren1: TdxBarButton;
     pnl_Design: TcxGroupBox;
+    cxPageControl1: TcxPageControl;
+    cxTabSheet1: TcxTabSheet;
+    dxBarDockControl1: TdxBarDockControl;
     procedure FormShow(Sender: TObject);
     procedure tl_EmailFolderChange(Sender: TObject);
     procedure grdDBTblView_MailsCustomDrawCell(Sender: TcxCustomGridTableView;  ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
@@ -137,6 +140,18 @@ uses  PCM.Data,
       PCMManager.Modul.E_Mail.Show,
       PCMManager.Modul.E_Mail.Mailbox, PCM.Strings;
 
+procedure Tfrm_Mail.SetGridViews(Show:boolean);
+begin
+  if Show then
+  begin
+    SaveGridViewMail := TSavedGridView.Create(GV_Mail,dm_PCM.iIDBenutzerPCM, grdDBTblView_Mails);
+    SaveGridViewMail.LoadView;
+  end
+  else begin
+    SaveGridViewMail.SaveView(0);
+    SaveGridViewMail.Free;
+  end;
+end;
 
 procedure Tfrm_Mail.CreateFullFolder( folder: String );
 var
@@ -1182,18 +1197,6 @@ end;
 procedure Tfrm_Mail.FormDestroy(Sender: TObject);
 begin
   SetGridViews(false);
-end;
-procedure Tfrm_Mail.SetGridViews(Show:boolean);
-begin
-  if Show then
-  begin
-    SaveGridViewMail := TSavedGridView.Create(GV_Mail,dm_PCM.iIDBenutzerPCM, grdDBTblView_Mails);
-    SaveGridViewMail.LoadView;
-  end
-  else begin
-    SaveGridViewMail.SaveView(0);
-    SaveGridViewMail.Free;
-  end;
 end;
 procedure Tfrm_Mail.FormShow(Sender: TObject);
 begin

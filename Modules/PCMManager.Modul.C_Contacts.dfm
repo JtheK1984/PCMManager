@@ -22,10 +22,7 @@
     Align = alClient
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
-    TabOrder = 4
-    ExplicitTop = 58
-    ExplicitWidth = 1181
-    ExplicitHeight = 728
+    TabOrder = 0
     Height = 786
     Width = 1070
   end
@@ -38,7 +35,7 @@
     Color = clBtnFace
     ParentBackground = False
     ParentColor = False
-    TabOrder = 5
+    TabOrder = 1
     Properties.ActivePage = cxTabSheet1
     Properties.CustomButtons.Buttons = <>
     Properties.Images = dm_PCM.imglst_16x16
@@ -46,18 +43,12 @@
     Properties.TabSlants.Kind = skCutCorner
     Properties.TabWidth = 100
     OnChange = pc_Kontakte_KontakteChange
-    ExplicitLeft = 4
-    ExplicitTop = 10
-    ExplicitWidth = 1177
-    ExplicitHeight = 724
     ClientRectBottom = 786
     ClientRectRight = 1070
     ClientRectTop = 25
     object cxTabSheet1: TcxTabSheet
       Caption = 'Kontakte'
       ImageIndex = 64
-      ExplicitWidth = 1177
-      ExplicitHeight = 699
       object pc_Kontakte_Kontakte: TcxPageControl
         AlignWithMargins = True
         Left = 0
@@ -80,18 +71,12 @@
         Properties.TabSlants.Kind = skCutCorner
         Properties.TabWidth = 100
         OnChange = pc_Kontakte_KontakteChange
-        ExplicitLeft = 2
-        ExplicitTop = 2
-        ExplicitWidth = 1177
-        ExplicitHeight = 724
         ClientRectBottom = 703
         ClientRectRight = 1070
         ClientRectTop = 25
         object ts_A_Kontakte_Kontakte_Suche: TcxTabSheet
           Caption = 'Suche'
           ImageIndex = 25
-          ExplicitWidth = 1177
-          ExplicitHeight = 699
           object grd_Kontaktesuche: TcxGrid
             Left = 0
             Top = 148
@@ -110,8 +95,6 @@
             TabOrder = 2
             LockedStateImageOptions.Effect = lsieDark
             LookAndFeel.ScrollbarMode = sbmDefault
-            ExplicitWidth = 1177
-            ExplicitHeight = 551
             object grdDBTblView_Kontakte: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               ScrollbarAnnotations.CustomAnnotations = <>
@@ -411,7 +394,6 @@
             Align = alTop
             Caption = 'Filterkriterien'
             TabOrder = 0
-            ExplicitWidth = 1177
             Height = 109
             Width = 1070
             object cmbbx_KontaktSucheArt: TcxComboBox
@@ -709,7 +691,6 @@
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 1
-            ExplicitWidth = 1177
             Height = 39
             Width = 1070
             object btn_kontaktDeletefilter: TcxButton
@@ -751,7 +732,9 @@
         object ts_B_Kontakte_Kontakte_Detail: TcxTabSheet
           Caption = 'Kontakte'
           ImageIndex = 11
+          ExplicitTop = 0
           ExplicitWidth = 1181
+          ExplicitHeight = 0
           object pc_Kontakte_Kontakte_Adressen: TcxPageControl
             Left = 394
             Top = 0
@@ -776,14 +759,15 @@
             object ts_A_Zusatz: TcxTabSheet
               Caption = 'Zusatz'
               ImageIndex = 0
+              ExplicitTop = 0
               ExplicitWidth = 787
+              ExplicitHeight = 0
               object grpbx_KontakteZusatzSonstige: TcxGroupBox
                 Left = 0
                 Top = 187
                 Align = alClient
                 Caption = 'Sonstige Informationen'
                 TabOrder = 1
-                ExplicitWidth = 787
                 Height = 467
                 Width = 676
                 object mem_KontakteZusatzSonstige: TcxDBMemo
@@ -811,7 +795,6 @@
                 Align = alTop
                 Caption = 'Zusatzinformation'
                 TabOrder = 0
-                ExplicitWidth = 787
                 Height = 187
                 Width = 676
                 object lbl_KontaktZusatzFamilienstand: TcxLabel
@@ -1054,14 +1037,12 @@
             object ts_B_Geschaeftlich: TcxTabSheet
               Caption = 'Gesch'#228'ftlich'
               ImageIndex = 2
-              ExplicitWidth = 787
               object grpbx_KontakteGeschaeftlich: TcxGroupBox
                 Left = 0
                 Top = 0
                 Align = alClient
                 Caption = 'Kontakdaten Gesch'#228'ftlich'
                 TabOrder = 0
-                ExplicitWidth = 787
                 Height = 654
                 Width = 676
                 object btn_KontaktGeschaeftlichSendMail: TcxButton
@@ -1420,14 +1401,12 @@
             object ts_C_Sonstiges: TcxTabSheet
               Caption = 'Sonstige Info'
               ImageIndex = 3
-              ExplicitWidth = 787
               object grpbx_KontakteSonstiges: TcxGroupBox
                 Left = 0
                 Top = 0
                 Align = alClient
                 Caption = 'Messenger / Soziale Netzwerke'
                 TabOrder = 0
-                ExplicitWidth = 787
                 Height = 654
                 Width = 676
                 object edt_KontakteSonstigesFacebook: TcxDBTextEdit
@@ -2079,7 +2058,6 @@
         Height = 58
         Align = dalTop
         BarManager = brmgr_Contacts
-        ExplicitWidth = 1181
       end
     end
   end
