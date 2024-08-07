@@ -103,7 +103,7 @@ begin
         exit;
       end
       else begin
-        Vorname:= edt_SurName.Text
+        Vorname:= edt_Name.Text
       end;
       if edt_Name.Text = '' then
       begin
@@ -111,7 +111,7 @@ begin
         exit;
       end
       else begin
-        Name:= edt_Name.Text
+        Name:= edt_SurName.Text
       end;
       result:= true;
     end;
