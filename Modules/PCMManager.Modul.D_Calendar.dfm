@@ -43,7 +43,7 @@ object frm_Calendar: Tfrm_Calendar
       ParentColor = False
       ParentFont = False
       TabOrder = 0
-      Properties.ActivePage = ts_D_Stundenplan
+      Properties.ActivePage = ts_C_Jira
       Properties.CustomButtons.Buttons = <>
       Properties.Images = dm_PCM.imglst_16x16
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
@@ -71,8 +71,6 @@ object frm_Calendar: Tfrm_Calendar
           Color = clBlack
           ParentColor = False
           Visible = False
-          ExplicitTop = 117
-          ExplicitHeight = 783
         end
         object brdckctrl_Kalender: TdxBarDockControl
           Left = 0
@@ -132,13 +130,9 @@ object frm_Calendar: Tfrm_Calendar
           OnGetEventEditProperties = sched_KalenderGetEventEditProperties
           OnGetEventHintText = sched_KalenderGetEventHintText
           OnKeyDown = sched_KalenderKeyDown
-          ExplicitLeft = 5
-          ExplicitTop = 117
-          ExplicitWidth = 1051
-          ExplicitHeight = 783
           Selection = 7
           Splitters = {
-            950000007E000000840600008300000086030000010000008B0300001E030000}
+            950000007E00000084060000830000008D03000001000000920300001E030000}
           StoredClientBounds = {0100000001000000210400001E030000}
         end
       end
@@ -524,9 +518,6 @@ object frm_Calendar: Tfrm_Calendar
             HotZoneClassName = 'TcxSimpleStyle'
             AlignSplitter = salBottom
             Control = pnl_Details
-            ExplicitLeft = 3
-            ExplicitTop = 350
-            ExplicitWidth = 8
           end
           object pnl_Details: TcxGroupBox
             Left = 2
@@ -680,9 +671,6 @@ object frm_Calendar: Tfrm_Calendar
               Height = 254
               HotZoneClassName = 'TcxSimpleStyle'
               Control = pAnhaenge
-              ExplicitLeft = 857
-              ExplicitTop = 65
-              ExplicitHeight = 252
             end
             object pAnhaenge: TcxGroupBox
               Left = 878
@@ -4410,7 +4398,7 @@ object frm_Calendar: Tfrm_Calendar
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 45510.530895532410000000
+      ReportDocument.CreationDate = 45512.419136944450000000
       OptionsSize.AutoWidth = True
       PixelsPerInch = 96
       BuiltInReportLink = True

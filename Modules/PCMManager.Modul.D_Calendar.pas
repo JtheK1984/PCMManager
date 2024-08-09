@@ -4966,7 +4966,7 @@ begin
     FreeAndNil(FWebBrowser);
     GlobalWebView2Loader.Destroy;
     GlobalWebView2Loader:= TWVLoader.Create(nil);
-    GlobalWebView2Loader.UserDataFolder := ExtractFileDir(Application.ExeName) + '\CustomCache\ID';
+    GlobalWebView2Loader.UserDataFolder := GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\CustomCache\ID';
     GlobalWebView2Loader.StartWebView2;
     InitializeBrowser(pnl_BrowserJiraGes);
     AURL:= 'https://id-berlin.atlassian.net/jira/software/c/projects/DCS/boards/61?assignee=712020%3A9e769b1a-88a0-4a21-8366-6b11439f3691';
@@ -4977,7 +4977,7 @@ begin
     FreeAndNil(FWebBrowser);
     GlobalWebView2Loader.Destroy;
     GlobalWebView2Loader:= TWVLoader.Create(nil);
-    GlobalWebView2Loader.UserDataFolder := ExtractFileDir(Application.ExeName) + '\CustomCache\PCM';
+    GlobalWebView2Loader.UserDataFolder := GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\CustomCache\PCM';
     GlobalWebView2Loader.StartWebView2;
     InitializeBrowser(pnl_BrowserJiraPriv);
     AURL:= 'https://pcm-software.atlassian.net/jira/software/projects/PCM/boards/1';
@@ -5615,7 +5615,7 @@ begin
     if GlobalWebView2Loader.Initialized then
       GlobalWebView2Loader.Destroy;
     GlobalWebView2Loader:= TWVLoader.Create(nil);
-    GlobalWebView2Loader.UserDataFolder := ExtractFileDir(Application.ExeName) + '\CustomCache\ID';
+    GlobalWebView2Loader.UserDataFolder := GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\CustomCache\ID';
     GlobalWebView2Loader.StartWebView2;
     InitializeBrowser(pnl_BrowserJiraGes);
   end;
