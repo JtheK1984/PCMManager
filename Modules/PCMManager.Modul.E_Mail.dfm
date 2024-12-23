@@ -20,9 +20,7 @@ object frm_Mail: Tfrm_Mail
     Align = alClient
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
-    TabOrder = 4
-    ExplicitTop = 58
-    ExplicitHeight = 755
+    TabOrder = 0
     Height = 813
     Width = 1240
     object cxPageControl1: TcxPageControl
@@ -41,10 +39,6 @@ object frm_Mail: Tfrm_Mail
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
       Properties.TabSlants.Kind = skCutCorner
       Properties.TabWidth = 100
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 1240
-      ExplicitHeight = 813
       ClientRectBottom = 801
       ClientRectLeft = 2
       ClientRectRight = 1228
@@ -52,10 +46,6 @@ object frm_Mail: Tfrm_Mail
       object cxTabSheet1: TcxTabSheet
         Caption = 'E-Mails'
         ImageIndex = 15
-        ExplicitLeft = 0
-        ExplicitTop = 25
-        ExplicitWidth = 1240
-        ExplicitHeight = 788
         object dxBarDockControl1: TdxBarDockControl
           Left = 0
           Top = 0
@@ -63,7 +53,6 @@ object frm_Mail: Tfrm_Mail
           Height = 63
           Align = dalTop
           BarManager = brmgr_Email
-          ExplicitWidth = 1232
         end
         object stbr_user: TdxStatusBar
           Left = 0
@@ -107,8 +96,6 @@ object frm_Mail: Tfrm_Mail
           Font.Height = -12
           Font.Name = 'Segoe UI'
           Font.Style = []
-          ExplicitTop = 768
-          ExplicitWidth = 1240
         end
         object grpbx_Mail: TcxGroupBox
           Left = 250
@@ -116,9 +103,6 @@ object frm_Mail: Tfrm_Mail
           Align = alClient
           PanelStyle.Active = True
           TabOrder = 2
-          ExplicitTop = 58
-          ExplicitWidth = 990
-          ExplicitHeight = 710
           Height = 690
           Width = 976
           object grd_Mail: TcxGrid
@@ -129,10 +113,6 @@ object frm_Mail: Tfrm_Mail
             Align = alClient
             BorderStyle = cxcbsNone
             TabOrder = 0
-            ExplicitLeft = 2
-            ExplicitTop = 2
-            ExplicitWidth = 986
-            ExplicitHeight = 191
             object grdDBTblView_Mails: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -231,9 +211,6 @@ object frm_Mail: Tfrm_Mail
             PanelStyle.Active = True
             TabOrder = 1
             Visible = False
-            ExplicitLeft = 2
-            ExplicitTop = 198
-            ExplicitWidth = 986
             Height = 510
             Width = 970
             object webbwr_Mail: TWebBrowser
@@ -243,10 +220,6 @@ object frm_Mail: Tfrm_Mail
               Height = 504
               Align = alClient
               TabOrder = 0
-              ExplicitLeft = 2
-              ExplicitTop = 2
-              ExplicitWidth = 982
-              ExplicitHeight = 506
               ControlData = {
                 4C000000A2630000173400000000000000000000000000000000000000000000
                 000000004C000000000000000000000001000000E0D057007335CF11AE690800
@@ -263,9 +236,6 @@ object frm_Mail: Tfrm_Mail
             Cursor = crVSplit
             AlignSplitter = salBottom
             Control = grpbx_MailVorschau
-            ExplicitLeft = 2
-            ExplicitTop = 193
-            ExplicitWidth = 986
           end
         end
         object grpbx_Postfach: TcxGroupBox
@@ -274,8 +244,6 @@ object frm_Mail: Tfrm_Mail
           Align = alLeft
           PanelStyle.Active = True
           TabOrder = 3
-          ExplicitTop = 58
-          ExplicitHeight = 710
           Height = 690
           Width = 250
           object trlst_EmailFolder: TcxTreeList
@@ -295,10 +263,6 @@ object frm_Mail: Tfrm_Mail
             OptionsData.Deleting = False
             ScrollbarAnnotations.CustomAnnotations = <>
             TabOrder = 0
-            ExplicitLeft = 2
-            ExplicitTop = 2
-            ExplicitWidth = 246
-            ExplicitHeight = 706
             Data = {
               00000500F40000000F00000044617461436F6E74726F6C6C6572310200000012
               000000546378537472696E6756616C7565547970651200000054637853747269

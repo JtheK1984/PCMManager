@@ -4,39 +4,87 @@ interface
 
 uses
   {$Region Uses}
-  SYSTEM.uitypes, Winapi.Windows, Winapi.Messages, System.SysUtils,
-  System.Variants, System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
-  Vcl.ImgList, Vcl.Menus, NTTranslator, Strutils, DateUtils,shellapi, Vcl.Themes,
-  FireDAC.Phys.ADSDef, FireDAC.Phys.MSSQLDef, FireDAC.Stan.Param,
-  FireDAC.Phys.ODBCBase, FireDAC.Phys.MSSQL, FireDAC.Phys.ADS,
-  VclTee.TeeGDIPlus, VCLTee.TeEngine, VCLTee.Series, VCLTee.TeeProcs,
-  VCLTee.Chart, VCLTee.DBChart, cxGeometry, cxVariants, dxCustomData,
-  cxCustomCanvas, dxCoreGraphics, dxChartCore, dxChartData, dxChartLegend,
-  dxChartSimpleDiagram, dxChartXYDiagram, dxChartXYSeriesLineView,
-  dxChartXYSeriesAreaView, dxChartMarkers, dxChartXYSeriesBarView,
-  dxChartDBData, dxCoreClasses, dxChartControl, VCLTee.TeeDBCrossTab,
-  cxGridChartView, cxPivotGridChartConnection, cxCustomPivotGrid, cxDBPivotGrid,
-  dxSkinWXI, dxBarExtItems, cxBarEditItem,
-  cxSplitter, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
-  cxEdit, cxClasses, System.ImageList, cxContainer, dxBarBuiltInMenu,
-  Vcl.ExtCtrls, cxPC, dxNavBarCollns, dxNavBarBase, dxNavBar, dxSkinsCore,
-  dxSkinBasic, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
-  dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
-  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
-  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
-  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
-  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
-  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
-  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
-  dxSkinOffice2016Dark, dxSkinOffice2019Black, dxSkinOffice2019Colorful,
-  dxSkinOffice2019DarkGray, dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven,
-  dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
-  dxSkinSpringtime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
-  dxSkinTheBezier, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
-  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, dxBar, cxLocalization, cxLabel, cxGroupBox, dxNavBarStyles,inifiles;
+  {$IFDEF WIN64}
+    {$I Skins.inc}
+    dxSkinsForm, dxSkinsdxBarPainter, dxSkinscxPCPainter,
+  {$ELSE}
+    {$I Skins.inc}
+    dxSkinsForm, dxSkinsdxBarPainter, dxSkinscxPCPainter,
+  {$ENDIF}
+  cxBarEditItem,
+  cxClasses,
+  cxContainer,
+  cxControls,
+  cxCustomCanvas,
+  cxCustomPivotGrid,
+  cxDBPivotGrid,
+  cxEdit,
+  cxGeometry,
+  cxGraphics,
+  cxGridChartView,
+  cxGroupBox,
+  cxLabel,
+  cxLocalization,
+  cxLookAndFeelPainters,
+  cxLookAndFeels,
+  cxPC,
+  cxPivotGridChartConnection,
+  cxSplitter,
+  cxVariants,
+  DateUtils,
+  dxBar,
+  dxBarBuiltInMenu,
+  dxBarExtItems,
+  dxChartControl,
+  dxChartCore,
+  dxChartData,
+  dxChartDBData,
+  dxChartLegend,
+  dxChartMarkers,
+  dxChartSimpleDiagram,
+  dxChartXYDiagram,
+  dxChartXYSeriesAreaView,
+  dxChartXYSeriesBarView,
+  dxChartXYSeriesLineView,
+  dxCoreClasses,
+  dxCoreGraphics,
+  dxCustomData,
+  dxNavBar,
+  dxNavBarBase,
+  dxNavBarCollns,
+  dxNavBarStyles,
+  FireDAC.Phys.ADS,
+  FireDAC.Phys.ADSDef,
+  FireDAC.Phys.MSSQL,
+  FireDAC.Phys.MSSQLDef,
+  FireDAC.Phys.ODBCBase,
+  FireDAC.Stan.Param,
+  inifiles,
+  NTTranslator,
+  shellapi,
+  Strutils,
+  System.Classes,
+  System.ImageList,
+  System.SysUtils,
+  SYSTEM.uitypes,
+  System.Variants,
+  Vcl.Controls,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.ImgList,
+  Vcl.Menus,
+  Vcl.Themes,
+  VCLTee.Chart,
+  VCLTee.DBChart,
+  VCLTee.Series,
+  VCLTee.TeeDBCrossTab,
+  VclTee.TeeGDIPlus,
+  VCLTee.TeEngine,
+  VCLTee.TeeProcs,
+  Winapi.Messages,
+  Winapi.Windows;
   {$EndRegion Uses}
 type
   {$Region Types}
@@ -329,33 +377,35 @@ type
   end;
   {$EndRegion Types}
 var
+  {$Region var}
   frm_PCM_Main: Tfrm_PCM_Main;
-
+  {$EndRegion var}
 implementation
 
 {$R *.dfm}
 
-uses  PCM.Benutzerverwaltung,
-      PCM.Data,
-      PCM.Design,
-      PCM.Functions,
-      PCM.Functions.Appinfo,
-      PCM.Functions.ChangePW,
-      PCM.Functions.Languages,
-      PCM.Functions.Login,
-      PCM.Handbuch,
-      PCM.Helper,
-      PCM.Functions.Synch.Wait,
-			PCM.Strings,
-      PCM.SQL,
-      PCMManager.Modul.B_Config,
-      PCMManager.Modul.C_Contacts,
-      PCMManager.Modul.D_Calendar,
-      PCMManager.Modul.E_Mail,
-      PCMManager.Modul.F_Passwort,
-      PCMManager.Modul.G_Finanzen;
-
-
+uses
+  {$Region Uses}
+  PCM.Benutzerverwaltung,
+  PCM.Data,
+  PCM.Design,
+  PCM.Functions,
+  PCM.Functions.Appinfo,
+  PCM.Functions.ChangePW,
+  PCM.Functions.Languages,
+  PCM.Functions.Login,
+  PCM.Functions.Synch.Wait,
+  PCM.Handbuch,
+  PCM.Helper,
+  PCM.SQL,
+  PCM.Strings,
+  PCMManager.Modul.B_Config,
+  PCMManager.Modul.C_Contacts,
+  PCMManager.Modul.D_Calendar,
+  PCMManager.Modul.E_Mail,
+  PCMManager.Modul.F_Passwort,
+  PCMManager.Modul.G_Finanzen;
+  {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////

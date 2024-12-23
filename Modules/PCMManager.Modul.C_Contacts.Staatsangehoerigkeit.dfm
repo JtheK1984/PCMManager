@@ -32,8 +32,6 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
     LockedStateImageOptions.Effect = lsieDark
     LookAndFeel.Kind = lfFlat
     LookAndFeel.NativeStyle = False
-    ExplicitTop = 58
-    ExplicitHeight = 186
     object grdDBTblView_Staatsangehoerigkeit: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       FilterBox.CustomizeDialog = False

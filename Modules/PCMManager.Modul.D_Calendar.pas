@@ -5,24 +5,9 @@ interface
 uses
   Winapi.Windows,Winapi.CommCtrl, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, dxBarBuiltInMenu, cxGraphics,
-  cxControls, cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore, dxSkinBasic,
-  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
-  dxSkinDarkroom, dxSkinDarkSide, dxSkinDevExpressDarkStyle, System.IOUtils,
-  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
-  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
-  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
-  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
-  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
-  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
-  dxSkinOffice2016Dark, dxSkinOffice2019Black, dxSkinOffice2019Colorful,
-  dxSkinOffice2019DarkGray, dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven,
-  dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
-  dxSkinSpringtime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
-  dxSkinTheBezier, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
-  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, Vcl.Menus, cxStyles, cxEdit, cxScheduler,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  System.IOUtils,
+  Vcl.Menus, cxStyles, cxEdit, cxScheduler,
   cxSchedulerStorage, cxSchedulerCustomControls, cxSchedulerCustomResourceView,
   cxSchedulerDayView, cxSchedulerAgendaView, cxSchedulerDateNavigator,
   cxSchedulerHolidays, cxSchedulerTimeGridView, cxSchedulerUtils,
@@ -1223,7 +1208,7 @@ begin
   end;
   Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
 
-  if dm_PCM.qry_Kalender_Aufgaben.FieldByName('CompleteDay').asString = 'true' then
+  if lowercase(dm_PCM.qry_Kalender_Aufgaben.FieldByName('CompleteDay').asString) = lowercase('True') then
     bCompleteDay:= true
   else
     bCompleteDay:= false;
@@ -2959,6 +2944,7 @@ var
   sTelefon: string;
   sMobil: string;
   sEmail: string;
+  sFirstline: string;
 begin
   i:= AEvent.ID;
   if i > 0 then
@@ -2987,6 +2973,11 @@ begin
     sFinish:= Copy(dm_PCM.qry_work.FieldByName('Finish').AsString,12,5);
     if sFinish = '' then
       sFinish := '00:00';
+
+    if (sBegin = '00:00') and (sBegin = '00:00') then
+      sFirstline:= 'Zeit: ganzer Tag' + Slinebreak
+    else
+      sFirstline:= 'Zeit: ' + sBegin + ' bis ' + sFinish + Slinebreak;
     sBetreff:= dm_PCM.qry_work.FieldByName('Caption').AsString;
     slocation:= dm_PCM.qry_work.FieldByName('Location').AsString;
     sMessage:= dm_PCM.qry_work.FieldByName('Message').AsString;
@@ -3000,7 +2991,7 @@ begin
 
     dm_PCM.qry_work.close;
 
-    AText :=  'Zeit: ' + sBegin + ' bis ' + sFinish + Slinebreak
+    AText :=  sFirstline
               + 'Kalender: ' + sKalender + Slinebreak
               + 'Betreff: ' + sBetreff + Slinebreak
               + '___________________________________________' + slinebreak

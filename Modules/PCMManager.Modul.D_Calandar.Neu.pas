@@ -20,26 +20,10 @@ uses
   cxSchedulerRecurrence, Vcl.DBCtrls, cxRichEdit,
   Vcl.StdActns, Vcl.ActnList, Vcl.ImgList, cxPC, dxDockControl, dxDockPanel,
   cxSplitter, dxDateRanges, dxScrollbarAnnotations, cxGridCustomView,
-  cxNavigator, dxSkinBasic, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
-  dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide,
-  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
-  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
-  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
-  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
-  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
-  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
-  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
-  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
-  dxSkinOffice2019Black, dxSkinOffice2019Colorful, dxSkinOffice2019DarkGray,
-  dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
-  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringtime, dxSkinStardust,
-  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
-  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
-  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue, dxBar, cxGroupBox, cxLabel, cxImage,
+  cxNavigator, dxBar, cxGroupBox, cxLabel, cxImage,
   System.ImageList, dxStatusBar,cxSchedulerDBStorage,
   DateUtils, CommCtrl,  ShellApi, dxShellDialogs,
-  PCMManager.Helper.Calendar.Neu.Wiederholung, dxSkinWXI, System.uitypes;
+  PCMManager.Helper.Calendar.Neu.Wiederholung, System.uitypes;
 
 type
   Tfrm_Calendar_new = class(TForm)
@@ -547,7 +531,7 @@ begin
   if (Typ = ntAufgabe) or (Typ = ntTermin) then
   begin
     pTop.Height:= Round(268 * dm_PCM.iScale);
-    pnlTop.Height:= Round(116 * dm_PCM.iScale);
+    pnlTop.Height:= Round(132 * dm_PCM.iScale);
     chkbx_CompleteDay.Visible:= False;
     btn_SetRecurringEv.Visible:= False;
     btn_DelRecurringEv.Visible:= False;
@@ -675,6 +659,7 @@ begin
   FID_Original_Absender_ID := dm_PCM.iIDBenutzerPCM;
   edtJiraTicket.EditValue := Jira_Ticket;
   FIdNachricht:= ID_WF_Nachrichten_Ursprung;
+  if Faellig = 0 then Faellig := RecodeMinute(IncHour(Now, 1), 0);
   deEndeAufgabe.Date := DateOf(Faellig);
   teEndeAufgabe.Time := TimeOf(Faellig);
   FErledigungsgrad := Erledigungsgrad;
@@ -807,7 +792,7 @@ begin
 
   cbReminderAufgabe.EditValue := Reminder;
   icbReminderAufgabe.EditValue := ReminderBeforeStart;
-
+  chkbx_CompleteDay.Checked:= GanzerTag;
 
   if ShowModal = mrOk then
   begin
@@ -1051,7 +1036,7 @@ begin
       dm_PCM.qry_Work.ParamByName('ganzerTag').AsString:= sganzerTag;
       if (cbTyp.EditValue = ntAufgabe) or (cbTyp.EditValue = nttermin) then
       begin
-        dm_PCM.qry_work.Parambyname('Finish').AsDateTime := dEndeAm;
+//        dm_PCM.qry_work.Parambyname('Finish').AsDateTime := dEndeAm;
         if cbPrioritaet.EditValue = 0 then
           dm_PCM.qry_work.Parambyname('ID_IC_Prioritaeten').asInteger := -1
         else
@@ -1372,6 +1357,13 @@ begin
     deEndeAufgabe.Width:= 145;
     label6.Visible:= false;
     label15.Visible:= false;
+
+    medauer.Visible:= false;
+    lblDauer.Visible:= false;
+    label10.left:= 152;
+    cbAufgabenStatus.left:= 152;
+    label10.Width:= 168;
+    cbAufgabenStatus.Width:= 168;
   end
   else begin
     teStart.visible:= true;
@@ -1380,6 +1372,13 @@ begin
     deEndeAufgabe.Width:= 81;
     label6.Visible:= true;
     label15.Visible:= true;
+
+    medauer.Visible:= true;
+    lblDauer.Visible:= true;
+    label10.left:= 222;
+    cbAufgabenStatus.left:= 222;
+    label10.Width:= 98;
+    cbAufgabenStatus.Width:= 98;
   end;
 end;
 procedure Tfrm_Calendar_new.cbAufgabenArtPropertiesCloseUp(Sender: TObject);

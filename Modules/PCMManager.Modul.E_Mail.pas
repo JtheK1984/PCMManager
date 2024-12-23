@@ -5,24 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, dxBarBuiltInMenu, cxGraphics,
-  cxControls, cxLookAndFeels, cxLookAndFeelPainters, dxSkinsCore, dxSkinBasic,
-  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
-  dxSkinDarkroom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
-  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
-  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
-  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
-  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
-  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
-  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
-  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
-  dxSkinOffice2016Dark, dxSkinOffice2019Black, dxSkinOffice2019Colorful,
-  dxSkinOffice2019DarkGray, dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven,
-  dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus, dxSkinSilver,
-  dxSkinSpringtime, dxSkinStardust, dxSkinSummer2008, dxSkinTheAsphaltWorld,
-  dxSkinTheBezier, dxSkinsDefaultPainters, dxSkinValentine,
-  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
-  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, Vcl.ComCtrls, Vcl.ToolWin, dxStatusBar, cxContainer,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  Vcl.ComCtrls, Vcl.ToolWin, dxStatusBar, cxContainer,
   cxEdit, cxListView, Vcl.ExtCtrls, cxPC,IdIMAP4,IdMessage,idAttachment,IdText,
   IdMessageClient,ShellAPI,dateutils, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
@@ -36,8 +20,7 @@ uses
   cxGridDBTableView, cxGrid, Vcl.Menus, Vcl.StdCtrls, cxButtons, cxGroupBox,
   System.ImageList, Vcl.ImgList, Vcl.OleCtrls,
   SHDocVw, dxBar,System.UITypes, IdTCPConnection, IdTCPClient,IdAttachmentFile,
-  cxSplitter, cxGridCustomPopupMenu, cxGridPopupMenu, cxCurrencyEdit,PCm.Functions,
-  dxSkinWXI;
+  cxSplitter, cxGridCustomPopupMenu, cxGridPopupMenu, cxCurrencyEdit,PCm.Functions;
 
 type
   Tfrm_Mail = class(TForm)

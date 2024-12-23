@@ -17,89 +17,89 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
   TextHeight = 13
   object grpbx_Email: TcxGroupBox
     Left = 0
-    Top = 58
+    Top = 63
     Align = alClient
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 4
-    Height = 732
+    Height = 727
     Width = 1122
     object grpbx_Detail: TcxGroupBox
-      Left = 2
-      Top = 2
+      Left = 3
+      Top = 3
       Align = alTop
       PanelStyle.Active = True
       Style.BorderStyle = ebsNone
       TabOrder = 0
       Height = 79
-      Width = 1118
+      Width = 1116
       object grpbx_EmailValues: TcxGroupBox
-        Left = 50
-        Top = 2
+        Left = 51
+        Top = 3
         Align = alClient
         PanelStyle.Active = True
         Style.BorderStyle = ebsNone
         TabOrder = 0
-        Height = 75
-        Width = 1066
+        Height = 73
+        Width = 1062
         object lbl_Betreff: TcxLabel
-          Left = 2
-          Top = 53
+          Left = 3
+          Top = 54
           Align = alTop
           Transparent = True
         end
         object lbl_CC: TcxLabel
-          Left = 2
-          Top = 36
+          Left = 3
+          Top = 37
           Align = alTop
           Transparent = True
         end
         object lbl_AN: TcxLabel
-          Left = 2
-          Top = 19
+          Left = 3
+          Top = 20
           Align = alTop
           Transparent = True
         end
         object lbl_Von: TcxLabel
-          Left = 2
-          Top = 2
+          Left = 3
+          Top = 3
           Align = alTop
           Transparent = True
         end
       end
       object grpbx_EmailLabel: TcxGroupBox
-        Left = 2
-        Top = 2
+        Left = 3
+        Top = 3
         Align = alLeft
         PanelStyle.Active = True
         Style.BorderStyle = ebsNone
         TabOrder = 1
-        Height = 75
+        Height = 73
         Width = 48
         object lbl_BetreffLabel: TcxLabel
-          Left = 2
-          Top = 53
+          Left = 3
+          Top = 54
           Align = alTop
           Caption = 'Betreff:'
           Transparent = True
         end
         object lbl_CCLabel: TcxLabel
-          Left = 2
-          Top = 36
+          Left = 3
+          Top = 37
           Align = alTop
           Caption = 'CC:'
           Transparent = True
         end
         object lbl_AnLabel: TcxLabel
-          Left = 2
-          Top = 19
+          Left = 3
+          Top = 20
           Align = alTop
           Caption = 'An:'
           Transparent = True
         end
         object lbl_VonLabel: TcxLabel
-          Left = 2
-          Top = 2
+          Left = 3
+          Top = 3
           Align = alTop
           Caption = 'Von:'
           Transparent = True
@@ -107,9 +107,9 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
       end
     end
     object lstVw_Mail: TcxListView
-      Left = 2
-      Top = 81
-      Width = 1118
+      Left = 3
+      Top = 82
+      Width = 1116
       Height = 41
       Margins.Left = 0
       Margins.Top = 0
@@ -151,14 +151,14 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
       OnDblClick = lstVw_MailDblClick
     end
     object webbwr_Mail: TWebBrowser
-      Left = 2
-      Top = 122
-      Width = 1118
-      Height = 608
+      Left = 3
+      Top = 123
+      Width = 1116
+      Height = 601
       Align = alClient
       TabOrder = 2
       ControlData = {
-        4C0000008C730000D73E00000000000000000000000000000000000000000000
+        4C000000587300001D3E00000000000000000000000000000000000000000000
         000000004C000000000000000000000001000000E0D057007335CF11AE690800
         2B2E126208000000000000004C0000000114020000000000C000000000000046
         8000000000000000000000000000000000000000000000000000000000000000
@@ -194,7 +194,7 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
     DockControlHeights = (
       0
       0
-      58
+      63
       0)
     object tb_Mail: TdxBar
       Caption = 'Custom 1'

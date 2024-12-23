@@ -942,6 +942,7 @@ object frm_password: Tfrm_password
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 1
+            ExplicitTop = 59
             Height = 33
             Width = 1152
             object edt_SerialsBez: TcxDBTextEdit

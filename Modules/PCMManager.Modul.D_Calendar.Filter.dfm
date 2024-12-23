@@ -58,9 +58,9 @@ object frm_PCM_KalenderFilter: Tfrm_PCM_KalenderFilter
       OnClick = btn_CancelClick
     end
     object grd_Stundenplanuebersicht: TcxGrid
-      Left = 2
-      Top = 2
-      Width = 500
+      Left = 3
+      Top = 3
+      Width = 498
       Height = 263
       Align = alTop
       BevelInner = bvLowered

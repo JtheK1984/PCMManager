@@ -9,28 +9,11 @@ uses
   cxTextEdit, cxMaskEdit, cxDropDownEdit, cxColorComboBox, dxGDIPlusClasses,
   Vcl.ExtCtrls, cxProgressBar, AnsiStrings, cxCheckBox, cxImageComboBox,
   DateUtils,  Vcl.Menus, System.ImageList,
-  Vcl.ImgList, cxButtons,cxSchedulerRecurrence, dxSkinsCore,
-  dxSkinMetropolisDark, cxImage, dxSkinBasic, dxSkinBlack, dxSkinBlue,
-  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide,
-  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
-  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
-  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
-  dxSkinMoneyTwins, dxSkinOffice2007Black, dxSkinOffice2007Blue,
-  dxSkinOffice2007Green, dxSkinOffice2007Pink, dxSkinOffice2007Silver,
-  dxSkinOffice2010Black, dxSkinOffice2010Blue, dxSkinOffice2010Silver,
-  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2013White,
-  dxSkinOffice2016Colorful, dxSkinOffice2016Dark, dxSkinOffice2019Black,
-  dxSkinOffice2019Colorful, dxSkinOffice2019DarkGray, dxSkinOffice2019White,
-  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
-  dxSkinSilver, dxSkinSpringtime, dxSkinStardust, dxSkinSummer2008,
-  dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinsDefaultPainters,
-  dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
-  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, cxLabel, cxGroupBox, FireDAC.Stan.Intf,
+  Vcl.ImgList, cxButtons,cxSchedulerRecurrence,
+  cxImage, cxLabel, cxGroupBox, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,cxdateutils,system.UItypes,
-  dxSkinWXI;
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,cxdateutils,system.UItypes;
 
 type
   Tfrm_PCM_Import = class(TForm)

@@ -16,19 +16,22 @@ object frm_Calendar_new: Tfrm_Calendar_new
   TextHeight = 13
   object dsHost: TdxDockSite
     Left = 0
-    Top = 58
+    Top = 63
     Width = 920
-    Height = 708
+    Height = 703
     AllowDockClients = []
     Align = alClient
+    ExplicitTop = 58
+    ExplicitHeight = 708
     DockingType = 5
     OriginalWidth = 920
-    OriginalHeight = 708
+    OriginalHeight = 703
     object dxLayoutDockSite1: TdxLayoutDockSite
       Left = 0
       Top = 0
       Width = 920
-      Height = 708
+      Height = 703
+      ExplicitHeight = 708
       DockingType = 0
       OriginalWidth = 300
       OriginalHeight = 200
@@ -37,7 +40,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Left = 0
       Top = 0
       Width = 920
-      Height = 708
+      Height = 703
       AllowDock = []
       AllowDockClients = []
       AllowFloating = False
@@ -48,6 +51,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Dockable = False
       ShowCaption = False
       TabsProperties.CustomButtons.Buttons = <>
+      ExplicitHeight = 708
       DockingType = 0
       OriginalWidth = 696
       OriginalHeight = 140
@@ -94,12 +98,13 @@ object frm_Calendar_new: Tfrm_Calendar_new
         PanelStyle.Active = True
         Style.BorderStyle = ebsNone
         TabOrder = 0
+        ExplicitWidth = 916
         Height = 268
-        Width = 916
+        Width = 912
         object pAll: TcxGroupBox
           AlignWithMargins = True
-          Left = 4
-          Top = 132
+          Left = 5
+          Top = 133
           Margins.Left = 2
           Margins.Top = 0
           Margins.Bottom = 0
@@ -107,8 +112,11 @@ object frm_Calendar_new: Tfrm_Calendar_new
           PanelStyle.Active = True
           Style.BorderStyle = ebsNone
           TabOrder = 0
+          ExplicitLeft = 4
+          ExplicitTop = 132
+          ExplicitWidth = 907
           Height = 137
-          Width = 907
+          Width = 901
           object btnEraseFirma: TcxButton
             Left = 416
             Top = 20
@@ -223,22 +231,28 @@ object frm_Calendar_new: Tfrm_Calendar_new
           end
         end
         object pnlTop: TcxGroupBox
-          Left = 2
-          Top = 2
+          Left = 3
+          Top = 3
           Align = alTop
           PanelStyle.Active = True
           Style.BorderStyle = ebsNone
           TabOrder = 1
+          ExplicitLeft = 2
+          ExplicitTop = 2
+          ExplicitWidth = 912
           Height = 130
-          Width = 912
+          Width = 906
           object pnlTopLeft: TcxGroupBox
-            Left = 2
-            Top = 2
+            Left = 3
+            Top = 3
             Align = alLeft
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 0
-            Height = 126
+            ExplicitLeft = 2
+            ExplicitTop = 2
+            ExplicitHeight = 126
+            Height = 124
             Width = 131
             object btn_DelRecurringEv: TcxButton
               Left = 0
@@ -299,14 +313,18 @@ object frm_Calendar_new: Tfrm_Calendar_new
             end
           end
           object pAufgabeTermin: TcxGroupBox
-            Left = 133
-            Top = 2
+            Left = 134
+            Top = 3
             Align = alClient
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 1
-            Height = 126
-            Width = 777
+            ExplicitLeft = 133
+            ExplicitTop = 2
+            ExplicitWidth = 777
+            ExplicitHeight = 126
+            Height = 124
+            Width = 769
             object cbAufgabenArt: TcxLookupComboBox
               Left = 551
               Top = 16
@@ -394,7 +412,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
               Width = 81
             end
             object Label10: TcxLabel
-              Left = 224
+              Left = 222
               Top = 0
               Caption = 'Aufgabenstatus:'
               Transparent = True
@@ -694,7 +712,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
             end
             object chkbx_CompleteDay: TcxCheckBox
               AlignWithMargins = True
-              Left = 2
+              Left = 0
               Top = 106
               Margins.Left = 134
               Margins.Top = 0
@@ -706,7 +724,6 @@ object frm_Calendar_new: Tfrm_Calendar_new
               Style.TransparentBorder = False
               TabOrder = 23
               Transparent = True
-              Visible = False
               Height = 21
               Width = 638
             end
@@ -725,19 +742,23 @@ object frm_Calendar_new: Tfrm_Calendar_new
         PanelStyle.Active = True
         Style.BorderStyle = ebsNone
         TabOrder = 2
-        Height = 436
-        Width = 906
+        ExplicitWidth = 906
+        ExplicitHeight = 436
+        Height = 427
+        Width = 902
         object cxSplitter1: TcxSplitter
-          Left = 711
-          Top = 2
-          Width = 8
-          Height = 432
+          Left = 709
+          Top = 3
+          Width = 5
+          Height = 421
           HotZoneClassName = 'TcxSimpleStyle'
           Control = panel6
+          ExplicitLeft = 710
+          ExplicitHeight = 430
         end
         object mNachricht: TcxRichEdit
-          Left = 2
-          Top = 2
+          Left = 3
+          Top = 3
           Align = alClient
           ParentFont = False
           Properties.AutoURLDetect = True
@@ -752,23 +773,30 @@ object frm_Calendar_new: Tfrm_Calendar_new
           Style.Font.Style = []
           Style.IsFontAssigned = True
           TabOrder = 1
-          Height = 432
-          Width = 709
+          ExplicitLeft = 2
+          ExplicitTop = 2
+          ExplicitWidth = 709
+          ExplicitHeight = 432
+          Height = 421
+          Width = 706
         end
         object panel6: TcxGroupBox
-          Left = 719
-          Top = 2
+          Left = 714
+          Top = 3
           Align = alRight
           PanelStyle.Active = True
           Style.BorderStyle = ebsFlat
           TabOrder = 2
-          Height = 432
+          ExplicitLeft = 719
+          ExplicitTop = 2
+          ExplicitHeight = 432
+          Height = 421
           Width = 185
           object cxGrid1: TcxGrid
-            Left = 2
-            Top = 2
-            Width = 181
-            Height = 386
+            Left = 3
+            Top = 3
+            Width = 179
+            Height = 373
             Align = alClient
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -778,6 +806,10 @@ object frm_Calendar_new: Tfrm_Calendar_new
             ParentFont = False
             TabOrder = 0
             LookAndFeel.NativeStyle = False
+            ExplicitLeft = 2
+            ExplicitTop = 2
+            ExplicitWidth = 181
+            ExplicitHeight = 386
             object cxGrid1DBTableView1: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               Navigator.Buttons.First.Visible = True
@@ -823,18 +855,21 @@ object frm_Calendar_new: Tfrm_Calendar_new
             end
           end
           object pAnhaengeView: TcxGroupBox
-            Left = 2
-            Top = 388
+            Left = 3
+            Top = 376
             Align = alBottom
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 1
+            ExplicitLeft = 2
+            ExplicitTop = 388
+            ExplicitWidth = 181
             Height = 42
-            Width = 181
+            Width = 179
             object Image1: TcxImage
               AlignWithMargins = True
-              Left = 7
-              Top = 4
+              Left = 8
+              Top = 5
               Margins.Left = 5
               Margins.Top = 2
               Margins.Right = 0
@@ -846,13 +881,16 @@ object frm_Calendar_new: Tfrm_Calendar_new
               Style.BorderStyle = ebsNone
               TabOrder = 3
               Transparent = True
-              Height = 34
+              ExplicitLeft = 7
+              ExplicitTop = 4
+              ExplicitHeight = 34
+              Height = 32
               Width = 32
             end
             object lTypeName: TcxLabel
               AlignWithMargins = True
-              Left = 43
-              Top = 6
+              Left = 44
+              Top = 7
               Margins.Left = 4
               Margins.Top = 4
               Margins.Right = 0
@@ -868,15 +906,18 @@ object frm_Calendar_new: Tfrm_Calendar_new
               Style.IsFontAssigned = True
               Properties.WordWrap = True
               Transparent = True
-              Height = 19
+              ExplicitLeft = 43
+              ExplicitTop = 6
+              ExplicitHeight = 19
+              Height = 17
               Width = 60
             end
             object btnAnhangOeffnen: TcxButton
               AlignWithMargins = True
-              Left = 156
-              Top = 8
+              Left = 153
+              Top = 9
               Width = 23
-              Height = 26
+              Height = 24
               Margins.Left = 0
               Margins.Top = 6
               Margins.Right = 0
@@ -888,13 +929,16 @@ object frm_Calendar_new: Tfrm_Calendar_new
               PaintStyle = bpsGlyph
               TabOrder = 2
               OnClick = btnAnhangOeffnenClick
+              ExplicitLeft = 156
+              ExplicitTop = 8
+              ExplicitHeight = 26
             end
             object btnAnhangLoeschen: TcxButton
               AlignWithMargins = True
-              Left = 133
-              Top = 8
+              Left = 130
+              Top = 9
               Width = 23
-              Height = 26
+              Height = 24
               Margins.Left = 0
               Margins.Top = 6
               Margins.Right = 0
@@ -924,13 +968,16 @@ object frm_Calendar_new: Tfrm_Calendar_new
               PaintStyle = bpsGlyph
               TabOrder = 1
               OnClick = btnAnhangLoeschenClick
+              ExplicitLeft = 133
+              ExplicitTop = 8
+              ExplicitHeight = 26
             end
             object btnAnhangHinzufuegen: TcxButton
               AlignWithMargins = True
-              Left = 110
-              Top = 8
+              Left = 107
+              Top = 9
               Width = 23
-              Height = 26
+              Height = 24
               Margins.Left = 0
               Margins.Top = 6
               Margins.Right = 0
@@ -941,6 +988,9 @@ object frm_Calendar_new: Tfrm_Calendar_new
               PaintStyle = bpsGlyph
               TabOrder = 0
               OnClick = btnAnhangHinzufuegenClick
+              ExplicitLeft = 110
+              ExplicitTop = 8
+              ExplicitHeight = 26
             end
           end
         end
@@ -1037,7 +1087,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     DockControlHeights = (
       0
       0
-      58
+      63
       0)
     object dxBarManager1Bar1: TdxBar
       Caption = 'Custom 1'

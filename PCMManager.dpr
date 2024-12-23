@@ -4,6 +4,7 @@ uses
 	inifiles,
   NtTranslator,
   System.SysUtils,
+  PCM.Helper,
   Vcl.Forms,
   Vcl.Themes,
   Vcl.Styles,
@@ -48,12 +49,13 @@ var
   slocale: String;
 
 begin
+  Checkinis;
   ifini:=TIniFile.create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
   sStyle:=ifini.ReadString('PCMManager','Style','Windows');
   slocale:=ifini.ReadString('PCMManager','Language','de');
   ifini.Free;
   GlobalWebView2Loader                := TWVLoader.Create(nil);
-  GlobalWebView2Loader.UserDataFolder := ExtractFileDir(Application.ExeName) + '\CustomCache\ID';
+  GlobalWebView2Loader.UserDataFolder := ExtractFileDir(Application.ExeName) + '\CustomCache';
   GlobalWebView2Loader.StartWebView2;
   Application.Initialize;
   TStyleManager.TrySetStyle(sStyle);

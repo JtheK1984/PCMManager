@@ -3,17 +3,46 @@ unit PCM.Data;
 interface
 
 uses
-  System.SysUtils, System.Classes,inifiles, FireDAC.Stan.Intf,
-  FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf,
-  FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys,
-  FireDAC.Phys.MySQL, FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, Data.DB,
-  FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
-  FireDAC.DApt, FireDAC.Phys.ADSDef, FireDAC.Phys.MSSQLDef,
-  FireDAC.Phys.ODBCBase, FireDAC.Phys.MSSQL, FireDAC.Phys.ADS,
-  FireDAC.Comp.DataSet,Vcl.Dialogs, System.ImageList, Vcl.ImgList, Vcl.Controls,
-  cxImageList, cxGraphics, winapi.Windows,vcl.forms, System.UITypes;
-
+  {$Region Uses}
+  cxGraphics,
+  cxImageList,
+  Data.DB,
+  FireDAC.Comp.Client,
+  FireDAC.Comp.DataSet,
+  FireDAC.DApt,
+  FireDAC.DApt.Intf,
+  FireDAC.DatS,
+  FireDAC.Phys,
+  FireDAC.Phys.ADS,
+  FireDAC.Phys.ADSDef,
+  FireDAC.Phys.Intf,
+  FireDAC.Phys.MSSQL,
+  FireDAC.Phys.MSSQLDef,
+  FireDAC.Phys.MySQL,
+  FireDAC.Phys.MySQLDef,
+  FireDAC.Phys.ODBCBase,
+  FireDAC.Stan.Async,
+  FireDAC.Stan.Def,
+  FireDAC.Stan.Error,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+  FireDAC.Stan.Pool,
+  FireDAC.UI.Intf,
+  FireDAC.VCLUI.Wait,
+  inifiles,
+  System.Classes,
+  System.ImageList,
+  System.SysUtils,
+  System.UITypes,
+  Vcl.Controls,
+  Vcl.Dialogs,
+  vcl.forms,
+  Vcl.ImgList,
+  winapi.Windows;
+  {$EndRegion Uses}
 type
+  {$Region type}
   Tdm_PCM = class(TDataModule)
     con_PCM: TFDConnection;
     qry_ChartKalender: TFDQuery;
@@ -201,11 +230,13 @@ type
     bAutologin: boolean;
     sUSerAutologin: string;
   end;
-
+  {$EndRegion type}
 var
+  {$Region var}
   dm_PCM: Tdm_PCM;
-
+  {$EndRegion var}
 const
+  {$Region const}
   DB_MYSQL = 0;
   DB_MSSQL = 1;
   DB_ADS = 2;
@@ -215,15 +246,15 @@ const
   PCM_Programmnummer =  1;
   PCM_Alias = 'manager';
   sSQLInsertintoPushNotification = 'Insert Into service_pushnotifications (ID_Benutzer, Message) values (:ID_Benutzer, :Message)';
-
+  {$EndRegion const}
 resourcestring
+  {$Region resourcestring}
   {$IFDEF WIN64}
   PCM_Programmname = 'PCM - Manager 64-Bit';
   {$else}
   PCM_Programmname = 'PCM - Manager 32-Bit';
   {$ENDIF}
-
-
+  {$EndRegion resourcestring}
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
@@ -232,10 +263,6 @@ uses PCM.Main;
 
 {$R *.dfm}
 
-procedure Tdm_PCM.DataModuleCreate(Sender: TObject);
-begin
-  iScale := Screen.PrimaryMonitor.PixelsPerInch /96;
-end;
 procedure Tdm_PCM.con_PCMBeforeConnect(Sender: TObject);
 begin
   con_PCM.LoginPrompt := False;
@@ -268,6 +295,10 @@ begin
       con_PCM.Params.Add('DriverID=ADS');
      end;
   end;
+end;
+procedure Tdm_PCM.DataModuleCreate(Sender: TObject);
+begin
+  iScale := Screen.PrimaryMonitor.PixelsPerInch /96;
 end;
 
 end.
