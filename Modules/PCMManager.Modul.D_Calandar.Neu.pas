@@ -735,6 +735,10 @@ begin
     teEndeAufgabe.time := TimeOf(Faellig);
   end;
   chkbx_CompleteDay.EditValue := GanzerTag;
+  if ganzertag then
+  begin
+    deEndeAufgabe.Date:= IncDay(DateOf(Faellig),-1);
+  end;
   if Dauer > 0 then
   begin
 
