@@ -809,13 +809,13 @@ begin
       TimeEnd:= '00:00:00';
       DateBegin:= JahrBegin + '-' + MonatBegin + '-' + TagBegin + ' ' + TimeBegin;
       DateEnd:= JahrEnd + '-' + MonatEnd + '-' + TagEnd + ' ' + TimeEnd;
-      if DateBegin = DateEnd then
-      begin
+//      if DateBegin = DateEnd then
+//      begin
         JahrEnd:=Copy(DateTimeToStr(deEndeAufgabe.Date + 1),7,4);
         MonatEnd:=Copy(DateTimeToStr(deEndeAufgabe.Date + 1),4,2);
         TagEnd:=Copy(DateTimeToStr(deEndeAufgabe.Date + 1),1,2);
         DateEnd:= JahrEnd + '-' + MonatEnd + '-' + TagEnd + ' ' + TimeEnd;
-      end;
+//      end;
       sGanzerTag:= 'true';
     end
     else begin
