@@ -330,6 +330,8 @@ type
     ts_C_PasswortChart: TcxTabSheet;
     ts_Dashboard: TcxTabSheet;
     ts_E_FinanceChart: TcxTabSheet;
+    navbr_mainGroup1: TdxNavBarGroup;
+    iZeiterfassung: TdxNavBarItem;
     procedure btn_CloseModulClick(Sender: TObject);
     procedure btn_ModulleisteClick(Sender: TObject);
     procedure btn_RefreshRightsClick(Sender: TObject);
@@ -404,7 +406,8 @@ uses
   PCMManager.Modul.D_Calendar,
   PCMManager.Modul.E_Mail,
   PCMManager.Modul.F_Passwort,
-  PCMManager.Modul.G_Finanzen;
+  PCMManager.Modul.G_Finanzen,
+  PCMManager.Modul.H_ZE;
   {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -853,7 +856,7 @@ begin
       begin
         sModul:= Module.ModuleName;
         sModulCaption:= Module.ModuleName;
-        case AnsiIndexStr(sModul, ['iBenutzerverwaltung','iKonfiguration','iDesign','iKontakte','iKalender','iAufgaben','iStundenplan','iEMails','iPasswoerter','iSerials','iMonatsuebersicht','iEinnahmen','iAusgaben','iSysteminfo','iInfo','iHandbuch','iJira','iBelege','iGutscheine']) of
+        case AnsiIndexStr(sModul, ['iBenutzerverwaltung','iKonfiguration','iDesign','iKontakte','iKalender','iAufgaben','iStundenplan','iEMails','iPasswoerter','iSerials','iMonatsuebersicht','iEinnahmen','iAusgaben','iSysteminfo','iInfo','iHandbuch','iJira','iBelege','iGutscheine','iZeiterfassung']) of
         0:
           begin
             sModulCaption := 'i'  + rs_PCM_Benutzerverwaltung;
@@ -960,6 +963,12 @@ begin
             sModul:= 'Finanzen';
             sModulCaption := 'i'  + rs_PCMManager_Finanzuebersicht;
             dm_PCM.iModulTab:= 6;
+          end;
+        19:
+          begin
+            sModul:= 'Zeiterfassung';
+            sModulCaption := 'i'  + 'Zeiterfassung';
+            dm_PCM.iModulTab:= 1;
           end;
         end;
         iPageIndex := TabExist('tsh' + sModul);
@@ -1167,6 +1176,7 @@ procedure Tfrm_PCM_Main.FormShow(Sender: TObject);
     RegisterForm('iJira',Tfrm_Calendar, @frm_Calendar, 1);
     RegisterForm('iStundenplan',Tfrm_Calendar, @frm_Calendar, 1);
     RegisterForm('iEMails',Tfrm_mail, @frm_mail, 1);
+    RegisterForm('iZeiterfassung',Tfrm_ZE, @frm_ZE, 1);
     RegisterForm('iPasswoerter',Tfrm_password, @frm_password, 1);
     RegisterForm('iSerials',Tfrm_password, @frm_password, 1);
     RegisterForm('iMonatsuebersicht',Tfrm_finanzen, @frm_finanzen, 1);

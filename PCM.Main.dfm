@@ -3772,6 +3772,15 @@ object frm_PCM_Main: Tfrm_PCM_Main
           Item = iSerials
         end>
     end
+    object navbr_mainGroup1: TdxNavBarGroup
+      Caption = 'Zeiterfassung'
+      SelectedLinkIndex = -1
+      TopVisibleLinkIndex = 0
+      Links = <
+        item
+          Item = iZeiterfassung
+        end>
+    end
     object navbrgrp_Finanzen: TdxNavBarGroup
       Caption = 'Finanzen'
       SelectedLinkIndex = -1
@@ -3959,6 +3968,11 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Caption = 'Jira'
       SmallImageIndex = 83
       Visible = False
+      OnClick = NavBarClick
+    end
+    object iZeiterfassung: TdxNavBarItem
+      Caption = 'Zeiterfassung'
+      SmallImageIndex = 84
       OnClick = NavBarClick
     end
     object navbrStyleIt_main: TdxNavBarStyleItem

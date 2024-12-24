@@ -288,6 +288,7 @@ type
     edt_AufgabenSonstigesAccMail: TcxDBTextEdit;
     pnl_Design: TcxGroupBox;
     ImageCollection1: TImageCollection;
+    grdDBTblView_FeiertageKategorie: TcxGridDBColumn;
     procedure FormShow(Sender: TObject);
     procedure btn_CalConfigNew1Click(Sender: TObject);
     procedure btn_CalConfigSave1Click(Sender: TObject);
@@ -903,21 +904,24 @@ begin
                           + 'Start,Finish,Options,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'
                           + 'ReminderMinutesBeforeStart,LabelColor,FontColor,ID_Benutzer,Kalendername,CompleteDay,Typ,GesendetAM,Aufgabenstatus,ID_IC_AufgabenArten,Erledigungsgrad,Zeitformat,ID_IC_Prioritaeten,AufgabenDauer) Values (:ID_ADR_Wurzel,:ID_Ansprechpartner,'
                           + ':Eventtype,:SUMMARY,:Location,:Beschreibung,:DateBegin,:DateEnd,:Options,0,-1,:RecurrenceInfo,:Reminder,'
-                          + 'NULL,0,:Color,:FontColor,:ID,:Kalender,:ganzerTag,2,Now(),0,1,0,0,1,1440)';
-
+                          + 'NULL,0,:Color,:FontColor,:ID,:Kalender,:ganzerTag,2,Now(),0,:ID_IC_AufgabenArten,0,0,1,1440)';
+        if dm_PCM.qry_work1.FieldByName('Kategorie').AsInteger = 1 then
+          dm_PCM.qry_Work.ParamByName('Beschreibung').AsString := dm_PCM.qry_work1.FieldByName('Bezeichnung').AsString + '(ganzer Tag)'
+        else
+          dm_PCM.qry_Work.ParamByName('Beschreibung').AsString := dm_PCM.qry_work1.FieldByName('Bezeichnung').AsString + '(halber Tag)' ;
         dm_PCM.qry_Work.ParamByName('ID_ADR_Wurzel').asInteger := iID_Adresse;
         dm_PCM.qry_Work.ParamByName('ID_Ansprechpartner').asInteger := iID_Adresse;
         dm_PCM.qry_Work.ParamByName('Eventtype').asInteger := 0;
         dm_PCM.qry_Work.ParamByName('SUMMARY').AsString := dm_PCM.qry_work1.FieldByName('Bezeichnung').AsString;
         dm_PCM.qry_Work.ParamByName('Location').AsString := 'Feiertag';
-        dm_PCM.qry_Work.ParamByName('Beschreibung').AsString := dm_PCM.qry_work1.FieldByName('Bezeichnung').AsString;
         dm_PCM.qry_Work.ParamByName('DateBegin').AsDateTime := dm_PCM.qry_work1.FieldByName('Datum').AsDateTime;;
         dm_PCM.qry_Work.ParamByName('DateEnd').AsDateTime := IncDay(dm_PCM.qry_work1.FieldByName('Datum').AsDateTime, 1);
         dm_PCM.qry_Work.ParamByName('Options').asInteger := 2;
         dm_PCM.qry_Work.ParamByName('Reminder').AsString := 'false';
         dm_PCM.qry_Work.ParamByName('RecurrenceInfo').AsString := '';
-        dm_PCM.qry_Work.ParamByName('Color').AsString := IntToStr(clSIlver);
+        dm_PCM.qry_Work.ParamByName('Color').AsString := IntToStr(8453888);
         dm_PCM.qry_Work.ParamByName('FontColor').AsString := IntToStr(clBlack);
+        dm_PCM.qry_Work.ParamByName('ID_IC_AufgabenArten').asInteger := 1;
         dm_PCM.qry_Work.ParamByName('ID').asInteger := dm_PCM.iIDBenutzerPCM;
         dm_PCM.qry_Work.ParamByName('Kalender').AsString := 'Feiertage ' + dm_PCM.qry_work1.FieldByName('Jahr').AsString;
         dm_PCM.qry_Work.ParamByName('ganzerTag').AsString := 'true';

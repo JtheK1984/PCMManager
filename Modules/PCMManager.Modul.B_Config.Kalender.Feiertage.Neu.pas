@@ -30,14 +30,6 @@ type
     btn_Berechnen: TcxButton;
     cmbbx_Bundesland: TcxComboBox;
     edt_Jahr: TcxSpinEdit;
-    GridFeiertage: TcxGrid;
-    tvFeiertage: TcxGridDBTableView;
-    cxGridLevel1: TcxGridLevel;
-    tvFeiertageMarked: TcxGridDBColumn;
-    tvFeiertageFT: TcxGridDBColumn;
-    tvFeiertageTag: TcxGridDBColumn;
-    tvFeiertageMonat: TcxGridDBColumn;
-    tvFeiertageBezeichnung: TcxGridDBColumn;
     cxStyleRepository1: TcxStyleRepository;
     cxStyleFT: TcxStyle;
     grpbx_Design: TcxGroupBox;
@@ -51,6 +43,15 @@ type
     memData_FeiertageBezeichnung: TStringField;
     memData_FeiertageUebernehmen: TBooleanField;
     memData_FeiertageTyp: TStringField;
+    grd_FT: TcxGrid;
+    tvFeiertage: TcxGridDBTableView;
+    tvFeiertageMarked: TcxGridDBColumn;
+    tvFeiertageFT: TcxGridDBColumn;
+    tvFeiertageTag: TcxGridDBColumn;
+    tvFeiertageMonat: TcxGridDBColumn;
+    tvFeiertageKategorie: TcxGridDBColumn;
+    tvFeiertageBezeichnung: TcxGridDBColumn;
+    cxGridLevel1: TcxGridLevel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure btn_BerechnenClick(Sender: TObject);
@@ -135,10 +136,11 @@ begin
         // UPDATE
         dm_PCM.qry_Work.SQL.Text := 'UPDATE manager_Feiertage SET Jahr = :Jahr, Monat = :Monat, Tag = :Tag, '
                         + ' Bezeichnung = :Bezeichnung, Uebertragen = :Uebertragen, '
-                        + ' Datum = :Datum, ID_Benutzer = :ID_Benutzer WHERE ID = :ID';
+                        + ' Datum = :Datum, ID_Benutzer = :ID_Benutzer, Kategorie = :Kategorie  WHERE ID = :ID';
         dm_PCM.qry_Work.ParamByName('Jahr').AsInteger := memData_FeiertageJahr.AsInteger;
         dm_PCM.qry_Work.ParamByName('Monat').AsInteger := memData_FeiertageMonat.AsInteger;
         dm_PCM.qry_Work.ParamByName('Tag').AsInteger := memData_FeiertageTag.AsInteger;
+        dm_PCM.qry_Work.ParamByName('Kategorie').AsInteger := memData_FeiertageKategorie.AsInteger;
         dm_PCM.qry_Work.ParamByName('Bezeichnung').Asstring := memData_FeiertageBezeichnung.AsString;
         dm_PCM.qry_Work.ParamByName('Datum').AsDate := EncodeDate(memData_FeiertageJahr.AsInteger,memData_FeiertageMonat.AsInteger,memData_FeiertageTag.AsInteger);
         dm_PCM.qry_Work.ParamByName('Uebertragen').AsString := 'true';
@@ -149,12 +151,13 @@ begin
       begin
         // INSERT
         dm_PCM.qry_Work.SQL.Text := 'INSERT INTO manager_Feiertage(Jahr, Monat, Tag, Bezeichnung, '
-                        + ' Uebertragen, Datum, ID_Benutzer,BL) VALUES '
+                        + ' Uebertragen, Datum, ID_Benutzer,BL,Kategorie) VALUES '
                         + ' (:Jahr, :Monat, :Tag, :Bezeichnung, '
-                        + ' :Uebertragen, :Datum,  :ID_Benutzer,:BL)';
+                        + ' :Uebertragen, :Datum,  :ID_Benutzer,:BL,:Kategorie)';
         dm_PCM.qry_Work.ParamByName('Jahr').AsInteger := memData_FeiertageJahr.AsInteger;
         dm_PCM.qry_Work.ParamByName('Monat').AsInteger := memData_FeiertageMonat.AsInteger;
         dm_PCM.qry_Work.ParamByName('Tag').AsInteger := memData_FeiertageTag.AsInteger;
+        dm_PCM.qry_Work.ParamByName('Kategorie').AsInteger := memData_FeiertageKategorie.AsInteger;
         dm_PCM.qry_Work.ParamByName('Bezeichnung').Asstring := memData_FeiertageBezeichnung.AsString;
         dm_PCM.qry_Work.ParamByName('Datum').AsDate := EncodeDate(memData_FeiertageJahr.AsInteger,memData_FeiertageMonat.AsInteger,memData_FeiertageTag.AsInteger);
         dm_PCM.qry_Work.ParamByName('Uebertragen').AsString := 'true';
@@ -198,6 +201,10 @@ begin
         memData_FeiertageJahr.Value := Jahr;
         memData_FeiertageMonat.Value := Monat;
         memData_FeiertageTag.Value := Tag;
+        if ((Tag = 24) and (Monat = 12)) or ((Tag = 31) and (Monat = 12)) then
+          memData_FeiertageKategorie.value:= 2
+        else
+          memData_FeiertageKategorie.value:= 1;
         if Feiertag[i] > 0 then
         begin
           memData_FeiertageBezeichnung.AsString := String(Feiertage[Feiertag[i]])  + ' ('+ cmbbx_Bundesland.Properties.Items[cmbbx_Bundesland.ItemIndex] +')';
@@ -228,7 +235,7 @@ begin
   end;
   memData_Feiertage.First;
   memData_Feiertage.EnableControls;
-  GridFeiertage.SetFocus;
+  grd_Ft.SetFocus;
 end;
 {$EndRegion}
 {$Region Grid}

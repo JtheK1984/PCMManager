@@ -217,6 +217,34 @@
             <Form>cxSchedulerReminderForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.pas">
+            <Form>frm_ZE</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.Booking.pas">
+            <Form>frm_Booking</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.ChooseMonth.pas">
+            <Form>frm_ChooseDate</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.Monatswerte.pas">
+            <Form>frm_monatswerte</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.Feiertage.pas">
+            <Form>frm_Feiertage</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.Fehltage.Edit.pas">
+            <Form>frm_Fehltageeintragen</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.Fehltage.pas">
+            <Form>frm_Fehltage</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

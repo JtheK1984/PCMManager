@@ -17,7 +17,8 @@ uses
   FireDAC.Comp.Client,shellapi,cxSchedulerRecurrence,system.math,cxDateUtils,dateutils,
   dxBar, cxGridCustomPopupMenu, cxGridPopupMenu,cxGridExportLink, System.UITypes, strutils,
   IdBaseComponent, IdCoder, IdCoder3to4, IdCoderMIME, IdCoderQuotedPrintable,Soap.EncdDecd,System.netencoding,
-  Vcl.ExtCtrls, dxShellDialogs,PCM.Functions,cxSchedulerStorage;
+  Vcl.ExtCtrls, dxShellDialogs,PCM.Functions,cxSchedulerStorage,
+  cxColorComboBox, cxDBColorComboBox, cxSpinEdit, cxTimeEdit;
 
 type
   Tfrm_Contact = class(TForm)
@@ -248,6 +249,32 @@ type
     cxPageControl1: TcxPageControl;
     cxTabSheet1: TcxTabSheet;
     dxBarDockControl1: TdxBarDockControl;
+    ts_D_ZE: TcxTabSheet;
+    grpbx_ZE: TcxGroupBox;
+    lbl_Sollstunden: TcxLabel;
+    lbl_CalWork: TcxLabel;
+    lbl_CalBreak: TcxLabel;
+    tedt_Sollstunden: TcxDBTimeEdit;
+    colcmbbx_CalWork: TcxDBColorComboBox;
+    colcmbbx_CalBreak: TcxDBColorComboBox;
+    colcmbbx_FontBreak: TcxDBColorComboBox;
+    colcmbbx_FontWork: TcxDBColorComboBox;
+    lbl_FontBreak: TcxLabel;
+    lbl_FontWork: TcxLabel;
+    cxLabel1: TcxLabel;
+    cxDBLookupComboBox1: TcxDBLookupComboBox;
+    cxLabel6: TcxLabel;
+    cxDBSpinEdit1: TcxDBSpinEdit;
+    cxLabel5: TcxLabel;
+    cxDBDateEdit1: TcxDBDateEdit;
+    qry_KontakteSollstunden: TTimeField;
+    qry_KontakteColFontWork: TIntegerField;
+    qry_KontakteColCalWork: TIntegerField;
+    qry_KontakteColFontBreak: TIntegerField;
+    qry_KontakteUrlaub: TIntegerField;
+    qry_KontakteEintritt: TDateField;
+    qry_KontakteColCalBreak: TIntegerField;
+    qry_KontakteID_Zeiterfasser: TIntegerField;
     procedure btn_KontaktNewClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure pc_Kontakte_KontakteChange(Sender: TObject);

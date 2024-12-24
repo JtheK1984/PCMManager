@@ -845,6 +845,10 @@ object frm_Config: Tfrm_Config
                 SortOrder = soAscending
                 Width = 80
               end
+              object grdDBTblView_FeiertageKategorie: TcxGridDBColumn
+                DataBinding.FieldName = 'Kategorie'
+                DataBinding.IsNullValueType = True
+              end
               object grdDBTblView_FeiertageBezeichnung: TcxGridDBColumn
                 DataBinding.FieldName = 'Bezeichnung'
                 DataBinding.IsNullValueType = True
@@ -963,8 +967,6 @@ object frm_Config: Tfrm_Config
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 0
-            ExplicitTop = 54
-            ExplicitWidth = 1270
             Height = 35
             Width = 1260
             object lbl_AufgabenPrioBezeichnung: TcxLabel
@@ -1457,8 +1459,6 @@ object frm_Config: Tfrm_Config
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 0
-            ExplicitTop = 54
-            ExplicitWidth = 1270
             Height = 64
             Width = 1260
             object colcmbbx_StundenplanConfig_FontColor: TcxDBColorComboBox
@@ -1738,9 +1738,6 @@ object frm_Config: Tfrm_Config
           Align = alClient
           Caption = 'E-Mailkonfiguration'
           TabOrder = 0
-          ExplicitTop = 58
-          ExplicitWidth = 1276
-          ExplicitHeight = 317
           Height = 301
           Width = 1266
           object grd_EmailConfig: TcxGrid
@@ -1852,8 +1849,6 @@ object frm_Config: Tfrm_Config
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 0
-            ExplicitTop = -4
-            ExplicitWidth = 1270
             Height = 234
             Width = 1260
             object btn_EmailConfig_Test: TcxButton
@@ -2249,9 +2244,6 @@ object frm_Config: Tfrm_Config
             Align = alBottom
             Caption = 'Hauptpostf'#228'cher'
             TabOrder = 0
-            ExplicitLeft = 2
-            ExplicitTop = 94
-            ExplicitWidth = 1272
             Height = 150
             Width = 1260
             object grpbx_PostfachMainSort: TcxGroupBox
@@ -2260,9 +2252,6 @@ object frm_Config: Tfrm_Config
               Align = alRight
               PanelStyle.Active = True
               TabOrder = 0
-              ExplicitLeft = 1244
-              ExplicitTop = 18
-              ExplicitHeight = 130
               Height = 126
               Width = 26
               object btn_PostfachMainbottom: TcxButton
@@ -2495,9 +2484,6 @@ object frm_Config: Tfrm_Config
             Align = alBottom
             Caption = 'Unterpostf'#228'cher'
             TabOrder = 1
-            ExplicitLeft = 2
-            ExplicitTop = 244
-            ExplicitWidth = 1272
             Height = 150
             Width = 1260
             object grpbx_PostfachMainSub: TcxGroupBox
@@ -2506,9 +2492,6 @@ object frm_Config: Tfrm_Config
               Align = alRight
               PanelStyle.Active = True
               TabOrder = 0
-              ExplicitLeft = 1244
-              ExplicitTop = 18
-              ExplicitHeight = 130
               Height = 126
               Width = 26
               object btn_PostfachSubbottom: TcxButton
@@ -2808,7 +2791,7 @@ object frm_Config: Tfrm_Config
     SQL.Strings = (
       
         'SELECT ID,Jahr,Monat,Tag,Bezeichnung, uebertragen,Datum, ID_Benu' +
-        'tzer'
+        'tzer,Kategorie'
       'FROM manager_Feiertage'
       'ORDER by Datum asc')
     Left = 224

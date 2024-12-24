@@ -5,7 +5,7 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
   BorderStyle = bsSingle
   Caption = 'Feiertage berechnen'
   ClientHeight = 459
-  ClientWidth = 422
+  ClientWidth = 472
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -24,34 +24,34 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
     Style.BorderStyle = ebsNone
     TabOrder = 0
     Height = 459
-    Width = 422
+    Width = 472
     object Bevel1: TBevel
       Left = 16
       Top = 416
-      Width = 394
+      Width = 445
       Height = 2
       Shape = bsTopLine
     end
     object Bevel2: TBevel
       Left = 16
       Top = 40
-      Width = 395
+      Width = 445
       Height = 2
       Shape = bsTopLine
     end
     object btn_Abort: TcxButton
-      Left = 321
+      Left = 371
       Top = 424
       Width = 90
       Height = 25
       Caption = 'Abbrechen'
       OptionsImage.ImageIndex = 57
       OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 5
+      TabOrder = 4
       OnClick = btn_AbortClick
     end
     object btn_Berechnen: TcxButton
-      Left = 328
+      Left = 378
       Top = 12
       Width = 84
       Height = 21
@@ -61,14 +61,14 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
       OnClick = btn_BerechnenClick
     end
     object btn_OK: TcxButton
-      Left = 120
+      Left = 170
       Top = 424
       Width = 195
       Height = 25
       Caption = 'Gew'#228'hlte Feiertage '#252'bernehmen'
       OptionsImage.ImageIndex = 56
       OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 4
+      TabOrder = 3
       OnClick = btn_OKClick
     end
     object cmbbx_Bundesland: TcxComboBox
@@ -93,7 +93,7 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
         'Th'#252'ringen')
       Style.BorderStyle = ebsFlat
       TabOrder = 1
-      Width = 145
+      Width = 195
     end
     object edt_Jahr: TcxSpinEdit
       Left = 45
@@ -101,81 +101,6 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
       Style.BorderStyle = ebsFlat
       TabOrder = 0
       Width = 57
-    end
-    object GridFeiertage: TcxGrid
-      Left = 16
-      Top = 48
-      Width = 395
-      Height = 362
-      Align = alCustom
-      TabOrder = 3
-      object tvFeiertage: TcxGridDBTableView
-        Navigator.Buttons.CustomButtons = <>
-        ScrollbarAnnotations.CustomAnnotations = <>
-        DataController.DataSource = dsmFeiertage
-        DataController.Summary.DefaultGroupSummaryItems = <>
-        DataController.Summary.FooterSummaryItems = <>
-        DataController.Summary.SummaryGroups = <>
-        OptionsBehavior.FocusCellOnTab = True
-        OptionsCustomize.ColumnFiltering = False
-        OptionsCustomize.ColumnGrouping = False
-        OptionsCustomize.ColumnSorting = False
-        OptionsData.Deleting = False
-        OptionsData.Inserting = False
-        OptionsView.GridLines = glVertical
-        OptionsView.GroupByBox = False
-        OptionsView.HeaderFilterButtonShowMode = fbmButton
-        OptionsView.Indicator = True
-        object tvFeiertageMarked: TcxGridDBColumn
-          DataBinding.FieldName = 'Uebernehmen'
-          PropertiesClassName = 'TcxCheckBoxProperties'
-          MinWidth = 22
-          Options.HorzSizing = False
-          Options.Moving = False
-          Width = 22
-          IsCaptionAssigned = True
-        end
-        object tvFeiertageFT: TcxGridDBColumn
-          Caption = 'FT'
-          DataBinding.FieldName = 'Typ'
-          PropertiesClassName = 'TcxLabelProperties'
-          Properties.Alignment.Horz = taCenter
-          Properties.Alignment.Vert = taVCenter
-          MinWidth = 35
-          Options.Editing = False
-          Options.HorzSizing = False
-          Options.Moving = False
-          Styles.Content = cxStyleFT
-          Width = 35
-        end
-        object tvFeiertageTag: TcxGridDBColumn
-          DataBinding.FieldName = 'Tag'
-          MinWidth = 50
-          Options.Editing = False
-          Options.HorzSizing = False
-          Options.Moving = False
-          Width = 50
-        end
-        object tvFeiertageMonat: TcxGridDBColumn
-          DataBinding.FieldName = 'Monat'
-          MinWidth = 50
-          Options.Editing = False
-          Options.HorzSizing = False
-          Options.Moving = False
-          Width = 50
-        end
-        object tvFeiertageBezeichnung: TcxGridDBColumn
-          DataBinding.FieldName = 'Bezeichnung'
-          MinWidth = 200
-          Options.Editing = False
-          Options.HorzSizing = False
-          Options.Moving = False
-          Width = 200
-        end
-      end
-      object cxGridLevel1: TcxGridLevel
-        GridView = tvFeiertage
-      end
     end
     object Label1: TcxLabel
       Left = 16
@@ -188,6 +113,84 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
       Top = 13
       Caption = 'Bundesland:'
       Transparent = True
+    end
+  end
+  object grd_FT: TcxGrid
+    Left = 16
+    Top = 48
+    Width = 445
+    Height = 362
+    Align = alCustom
+    TabOrder = 1
+    object tvFeiertage: TcxGridDBTableView
+      Navigator.Buttons.CustomButtons = <>
+      ScrollbarAnnotations.CustomAnnotations = <>
+      DataController.DataSource = dsmFeiertage
+      DataController.Summary.DefaultGroupSummaryItems = <>
+      DataController.Summary.FooterSummaryItems = <>
+      DataController.Summary.SummaryGroups = <>
+      OptionsBehavior.FocusCellOnTab = True
+      OptionsCustomize.ColumnFiltering = False
+      OptionsCustomize.ColumnGrouping = False
+      OptionsCustomize.ColumnSorting = False
+      OptionsData.Deleting = False
+      OptionsData.Inserting = False
+      OptionsView.GridLines = glVertical
+      OptionsView.GroupByBox = False
+      OptionsView.HeaderFilterButtonShowMode = fbmButton
+      OptionsView.Indicator = True
+      object tvFeiertageMarked: TcxGridDBColumn
+        DataBinding.FieldName = 'Uebernehmen'
+        PropertiesClassName = 'TcxCheckBoxProperties'
+        MinWidth = 22
+        Options.HorzSizing = False
+        Options.Moving = False
+        Width = 22
+        IsCaptionAssigned = True
+      end
+      object tvFeiertageFT: TcxGridDBColumn
+        Caption = 'FT'
+        DataBinding.FieldName = 'Typ'
+        PropertiesClassName = 'TcxLabelProperties'
+        Properties.Alignment.Horz = taCenter
+        Properties.Alignment.Vert = taVCenter
+        MinWidth = 35
+        Options.Editing = False
+        Options.HorzSizing = False
+        Options.Moving = False
+        Styles.Content = cxStyleFT
+        Width = 35
+      end
+      object tvFeiertageTag: TcxGridDBColumn
+        DataBinding.FieldName = 'Tag'
+        MinWidth = 50
+        Options.Editing = False
+        Options.HorzSizing = False
+        Options.Moving = False
+        Width = 50
+      end
+      object tvFeiertageMonat: TcxGridDBColumn
+        DataBinding.FieldName = 'Monat'
+        MinWidth = 50
+        Options.Editing = False
+        Options.HorzSizing = False
+        Options.Moving = False
+        Width = 50
+      end
+      object tvFeiertageKategorie: TcxGridDBColumn
+        DataBinding.FieldName = 'Kategorie'
+      end
+      object tvFeiertageBezeichnung: TcxGridDBColumn
+        DataBinding.FieldName = 'Bezeichnung'
+        MinWidth = 200
+        Options.Editing = False
+        Options.HorzSizing = False
+        Options.Moving = False
+        Width = 200
+      end
+    end
+    object cxGridLevel1: TcxGridLevel
+      GridView = tvFeiertage
     end
   end
   object dsmFeiertage: TDataSource

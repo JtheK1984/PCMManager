@@ -187,12 +187,12 @@ type
     qry_work2: TFDQuery;
     DataSource1: TDataSource;
     FDQuery1: TFDQuery;
-    FDQuery2: TFDQuery;
-    DataSource2: TDataSource;
     DataSource3: TDataSource;
     FDQuery3: TFDQuery;
     FDQuery4: TFDQuery;
     DataSource4: TDataSource;
+    qry_Calc: TFDQuery;
+    qry_timer: TFDQuery;
     procedure con_PCMBeforeConnect(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
   private

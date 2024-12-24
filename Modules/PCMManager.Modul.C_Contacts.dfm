@@ -1,17 +1,17 @@
 ﻿object frm_Contact: Tfrm_Contact
   Left = 0
   Top = 0
-  BorderStyle = bsNone
-  Caption = 'frm_Contact'
-  ClientHeight = 786
-  ClientWidth = 1070
+  BorderStyle = bsDialog
+  Caption = 'PCM - Manager: Kontakte'
+  ClientHeight = 900
+  ClientWidth = 1600
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  WindowState = wsMaximized
+  Position = poScreenCenter
   OnActivate = FormActivate
   OnDestroy = FormDestroy
   OnShow = FormShow
@@ -23,14 +23,14 @@
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
-    Height = 786
-    Width = 1070
+    Height = 900
+    Width = 1600
   end
   object cxPageControl1: TcxPageControl
     Left = 0
     Top = 0
-    Width = 1070
-    Height = 786
+    Width = 1600
+    Height = 900
     Align = alClient
     Color = clBtnFace
     ParentBackground = False
@@ -43,9 +43,9 @@
     Properties.TabSlants.Kind = skCutCorner
     Properties.TabWidth = 100
     OnChange = pc_Kontakte_KontakteChange
-    ClientRectBottom = 780
+    ClientRectBottom = 894
     ClientRectLeft = 2
-    ClientRectRight = 1064
+    ClientRectRight = 1594
     ClientRectTop = 28
     object cxTabSheet1: TcxTabSheet
       Caption = 'Kontakte'
@@ -54,8 +54,8 @@
         AlignWithMargins = True
         Left = 0
         Top = 63
-        Width = 1062
-        Height = 689
+        Width = 1592
+        Height = 803
         Margins.Left = 0
         Margins.Top = 0
         Margins.Right = 0
@@ -65,16 +65,16 @@
         ParentBackground = False
         ParentColor = False
         TabOrder = 0
-        Properties.ActivePage = ts_A_Kontakte_Kontakte_Suche
+        Properties.ActivePage = ts_B_Kontakte_Kontakte_Detail
         Properties.CustomButtons.Buttons = <>
         Properties.Images = dm_PCM.imglst_16x16
         Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
         Properties.TabSlants.Kind = skCutCorner
         Properties.TabWidth = 100
         OnChange = pc_Kontakte_KontakteChange
-        ClientRectBottom = 683
+        ClientRectBottom = 797
         ClientRectLeft = 2
-        ClientRectRight = 1056
+        ClientRectRight = 1586
         ClientRectTop = 28
         object ts_A_Kontakte_Kontakte_Suche: TcxTabSheet
           Caption = 'Suche'
@@ -82,8 +82,8 @@
           object grd_Kontaktesuche: TcxGrid
             Left = 0
             Top = 148
-            Width = 1054
-            Height = 507
+            Width = 1584
+            Height = 621
             Align = alClient
             BevelInner = bvNone
             BevelOuter = bvNone
@@ -397,7 +397,7 @@
             Caption = 'Filterkriterien'
             TabOrder = 0
             Height = 109
-            Width = 1054
+            Width = 1584
             object cmbbx_KontaktSucheArt: TcxComboBox
               Left = 100
               Top = 75
@@ -694,7 +694,7 @@
             Style.BorderStyle = ebsNone
             TabOrder = 1
             Height = 39
-            Width = 1054
+            Width = 1584
             object btn_kontaktDeletefilter: TcxButton
               Left = 151
               Top = 6
@@ -734,15 +734,11 @@
         object ts_B_Kontakte_Kontakte_Detail: TcxTabSheet
           Caption = 'Kontakte'
           ImageIndex = 11
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 1181
-          ExplicitHeight = 0
           object pc_Kontakte_Kontakte_Adressen: TcxPageControl
             Left = 394
             Top = 0
-            Width = 660
-            Height = 655
+            Width = 1190
+            Height = 769
             Align = alClient
             BiDiMode = bdLeftToRight
             Color = clBtnFace
@@ -750,34 +746,26 @@
             ParentBiDiMode = False
             ParentColor = False
             TabOrder = 1
-            Properties.ActivePage = ts_A_Zusatz
+            Properties.ActivePage = ts_D_ZE
             Properties.CustomButtons.Buttons = <>
             Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
             Properties.TabSlants.Kind = skCutCorner
             Properties.TabWidth = 100
-            ExplicitWidth = 787
-            ExplicitHeight = 678
-            ClientRectBottom = 649
+            ClientRectBottom = 763
             ClientRectLeft = 2
-            ClientRectRight = 654
+            ClientRectRight = 1184
             ClientRectTop = 27
             object ts_A_Zusatz: TcxTabSheet
               Caption = 'Zusatz'
               ImageIndex = 0
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 787
-              ExplicitHeight = 0
               object grpbx_KontakteZusatzSonstige: TcxGroupBox
                 Left = 0
                 Top = 187
                 Align = alClient
                 Caption = 'Sonstige Informationen'
                 TabOrder = 1
-                ExplicitWidth = 676
-                ExplicitHeight = 467
-                Height = 435
-                Width = 652
+                Height = 549
+                Width = 1182
                 object mem_KontakteZusatzSonstige: TcxDBMemo
                   Left = 8
                   Top = 24
@@ -803,9 +791,8 @@
                 Align = alTop
                 Caption = 'Zusatzinformation'
                 TabOrder = 0
-                ExplicitWidth = 676
                 Height = 187
-                Width = 652
+                Width = 1182
                 object lbl_KontaktZusatzFamilienstand: TcxLabel
                   Left = 184
                   Top = 91
@@ -1046,20 +1033,14 @@
             object ts_B_Geschaeftlich: TcxTabSheet
               Caption = 'Gesch'#228'ftlich'
               ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 24
-              ExplicitWidth = 676
-              ExplicitHeight = 654
               object grpbx_KontakteGeschaeftlich: TcxGroupBox
                 Left = 0
                 Top = 0
                 Align = alClient
                 Caption = 'Kontakdaten Gesch'#228'ftlich'
                 TabOrder = 0
-                ExplicitWidth = 676
-                ExplicitHeight = 654
-                Height = 622
-                Width = 652
+                Height = 736
+                Width = 1182
                 object btn_KontaktGeschaeftlichSendMail: TcxButton
                   Left = 627
                   Top = 236
@@ -1416,20 +1397,14 @@
             object ts_C_Sonstiges: TcxTabSheet
               Caption = 'Sonstige Info'
               ImageIndex = 3
-              ExplicitLeft = 0
-              ExplicitTop = 24
-              ExplicitWidth = 676
-              ExplicitHeight = 654
               object grpbx_KontakteSonstiges: TcxGroupBox
                 Left = 0
                 Top = 0
                 Align = alClient
                 Caption = 'Messenger / Soziale Netzwerke'
                 TabOrder = 0
-                ExplicitWidth = 676
-                ExplicitHeight = 654
-                Height = 622
-                Width = 652
+                Height = 736
+                Width = 1182
                 object edt_KontakteSonstigesFacebook: TcxDBTextEdit
                   Left = 113
                   Top = 21
@@ -1522,6 +1497,248 @@
                 end
               end
             end
+            object ts_D_ZE: TcxTabSheet
+              Caption = 'Zeiterfassung'
+              ImageIndex = 3
+              object grpbx_ZE: TcxGroupBox
+                Left = 0
+                Top = 0
+                Align = alClient
+                Caption = 'Zeiterfassung'
+                TabOrder = 0
+                Height = 736
+                Width = 1182
+                object lbl_Sollstunden: TcxLabel
+                  Left = 8
+                  Top = 21
+                  Caption = 'Sollstunden:'
+                  ParentFont = False
+                  Style.Font.Charset = DEFAULT_CHARSET
+                  Style.Font.Color = clWindowText
+                  Style.Font.Height = -11
+                  Style.Font.Name = 'Tahoma'
+                  Style.Font.Style = []
+                  Style.IsFontAssigned = True
+                  Transparent = True
+                end
+                object lbl_CalWork: TcxLabel
+                  Left = 8
+                  Top = 75
+                  Caption = 'Kalender Arbeitszeit:'
+                  ParentFont = False
+                  Style.Font.Charset = DEFAULT_CHARSET
+                  Style.Font.Color = clWindowText
+                  Style.Font.Height = -11
+                  Style.Font.Name = 'Tahoma'
+                  Style.Font.Style = []
+                  Style.IsFontAssigned = True
+                  Transparent = True
+                end
+                object lbl_CalBreak: TcxLabel
+                  Left = 8
+                  Top = 129
+                  Caption = 'Kalender Pause:'
+                  ParentFont = False
+                  Style.Font.Charset = DEFAULT_CHARSET
+                  Style.Font.Color = clWindowText
+                  Style.Font.Height = -11
+                  Style.Font.Name = 'Tahoma'
+                  Style.Font.Style = []
+                  Style.IsFontAssigned = True
+                  Transparent = True
+                end
+                object tedt_Sollstunden: TcxDBTimeEdit
+                  Left = 113
+                  Top = 20
+                  DataBinding.DataField = 'Sollstunden'
+                  DataBinding.DataSource = ds_Kontakte
+                  Properties.SpinButtons.Visible = False
+                  Properties.TimeFormat = tfHourMin
+                  TabOrder = 3
+                  Width = 535
+                end
+                object colcmbbx_CalWork: TcxDBColorComboBox
+                  Left = 113
+                  Top = 74
+                  DataBinding.DataField = 'ColCalWork'
+                  DataBinding.DataSource = ds_Kontakte
+                  ParentFont = False
+                  Properties.AllowSelectColor = True
+                  Properties.CustomColors = <>
+                  Properties.PrepareList = cxplHTML4
+                  Properties.ShowDescriptions = False
+                  Style.Font.Charset = DEFAULT_CHARSET
+                  Style.Font.Color = clWindowText
+                  Style.Font.Height = -11
+                  Style.Font.Name = 'Tahoma'
+                  Style.Font.Style = []
+                  Style.IsFontAssigned = True
+                  TabOrder = 4
+                  Width = 535
+                end
+                object colcmbbx_CalBreak: TcxDBColorComboBox
+                  Left = 113
+                  Top = 128
+                  DataBinding.DataField = 'ColCalBreak'
+                  DataBinding.DataSource = ds_Kontakte
+                  ParentFont = False
+                  Properties.AllowSelectColor = True
+                  Properties.CustomColors = <>
+                  Properties.PrepareList = cxplHTML4
+                  Properties.ShowDescriptions = False
+                  Style.Font.Charset = DEFAULT_CHARSET
+                  Style.Font.Color = clWindowText
+                  Style.Font.Height = -11
+                  Style.Font.Name = 'Tahoma'
+                  Style.Font.Style = []
+                  Style.IsFontAssigned = True
+                  TabOrder = 5
+                  Width = 535
+                end
+                object colcmbbx_FontBreak: TcxDBColorComboBox
+                  Left = 113
+                  Top = 101
+                  DataBinding.DataField = 'ColFontBreak'
+                  DataBinding.DataSource = ds_Kontakte
+                  ParentFont = False
+                  Properties.AllowSelectColor = True
+                  Properties.CustomColors = <>
+                  Properties.PrepareList = cxplHTML4
+                  Properties.ShowDescriptions = False
+                  Style.Font.Charset = DEFAULT_CHARSET
+                  Style.Font.Color = clWindowText
+                  Style.Font.Height = -11
+                  Style.Font.Name = 'Tahoma'
+                  Style.Font.Style = []
+                  Style.IsFontAssigned = True
+                  TabOrder = 6
+                  Width = 535
+                end
+                object colcmbbx_FontWork: TcxDBColorComboBox
+                  Left = 113
+                  Top = 47
+                  DataBinding.DataField = 'ColFontWork'
+                  DataBinding.DataSource = ds_Kontakte
+                  ParentFont = False
+                  Properties.AllowSelectColor = True
+                  Properties.CustomColors = <>
+                  Properties.PrepareList = cxplHTML4
+                  Properties.ShowDescriptions = False
+                  Style.Font.Charset = DEFAULT_CHARSET
+                  Style.Font.Color = clWindowText
+                  Style.Font.Height = -11
+                  Style.Font.Name = 'Tahoma'
+                  Style.Font.Style = []
+                  Style.IsFontAssigned = True
+                  TabOrder = 7
+                  Width = 535
+                end
+                object lbl_FontBreak: TcxLabel
+                  Left = 8
+                  Top = 102
+                  Caption = 'Schrift Pause:'
+                  ParentFont = False
+                  Style.Font.Charset = DEFAULT_CHARSET
+                  Style.Font.Color = clWindowText
+                  Style.Font.Height = -11
+                  Style.Font.Name = 'Tahoma'
+                  Style.Font.Style = []
+                  Style.IsFontAssigned = True
+                  Transparent = True
+                end
+                object lbl_FontWork: TcxLabel
+                  Left = 8
+                  Top = 48
+                  Caption = 'Schrift Arbeitszeit:'
+                  ParentFont = False
+                  Style.Font.Charset = DEFAULT_CHARSET
+                  Style.Font.Color = clWindowText
+                  Style.Font.Height = -11
+                  Style.Font.Name = 'Tahoma'
+                  Style.Font.Style = []
+                  Style.IsFontAssigned = True
+                  Transparent = True
+                end
+                object cxLabel1: TcxLabel
+                  Left = 8
+                  Top = 156
+                  Caption = 'Benutzer:'
+                  ParentFont = False
+                  Style.Font.Charset = DEFAULT_CHARSET
+                  Style.Font.Color = clWindowText
+                  Style.Font.Height = -11
+                  Style.Font.Name = 'Tahoma'
+                  Style.Font.Style = []
+                  Style.IsFontAssigned = True
+                  Transparent = True
+                end
+                object cxDBLookupComboBox1: TcxDBLookupComboBox
+                  Left = 113
+                  Top = 155
+                  DataBinding.DataField = 'ID_Zeiterfasser'
+                  DataBinding.DataSource = ds_Kontakte
+                  Properties.KeyFieldNames = 'ID'
+                  Properties.ListColumns = <
+                    item
+                      FieldName = 'Name'
+                    end>
+                  Properties.ListSource = dm_PCM.ds_Kalender_Benutzer
+                  TabOrder = 11
+                  Width = 535
+                end
+                object cxLabel6: TcxLabel
+                  Left = 8
+                  Top = 186
+                  Caption = 'Urlaubsanspruch:'
+                  ParentFont = False
+                  Style.Font.Charset = DEFAULT_CHARSET
+                  Style.Font.Color = clWindowText
+                  Style.Font.Height = -11
+                  Style.Font.Name = 'Tahoma'
+                  Style.Font.Style = []
+                  Style.IsFontAssigned = True
+                  Transparent = True
+                end
+                object cxDBSpinEdit1: TcxDBSpinEdit
+                  Left = 113
+                  Top = 184
+                  DataBinding.DataField = 'Urlaub'
+                  DataBinding.DataSource = ds_Kontakte
+                  Properties.SpinButtons.Visible = False
+                  TabOrder = 13
+                  Width = 535
+                end
+                object cxLabel5: TcxLabel
+                  Left = 8
+                  Top = 214
+                  Caption = 'Eintritt:'
+                  ParentFont = False
+                  Style.Font.Charset = DEFAULT_CHARSET
+                  Style.Font.Color = clWindowText
+                  Style.Font.Height = -11
+                  Style.Font.Name = 'Tahoma'
+                  Style.Font.Style = []
+                  Style.IsFontAssigned = True
+                  Transparent = True
+                end
+                object cxDBDateEdit1: TcxDBDateEdit
+                  Left = 113
+                  Top = 213
+                  DataBinding.DataField = 'Eintritt'
+                  DataBinding.DataSource = ds_Kontakte
+                  ParentFont = False
+                  Style.BorderStyle = ebsFlat
+                  Style.Font.Charset = DEFAULT_CHARSET
+                  Style.Font.Color = clWindowText
+                  Style.Font.Height = -11
+                  Style.Font.Name = 'Tahoma'
+                  Style.Font.Style = []
+                  Style.IsFontAssigned = True
+                  TabOrder = 15
+                  Width = 535
+                end
+              end
+            end
           end
           object grpbx_KontaktAllgemein: TcxGroupBox
             Left = 0
@@ -1530,8 +1747,7 @@
             Align = alLeft
             Caption = 'Kontakt'
             TabOrder = 0
-            ExplicitHeight = 678
-            Height = 655
+            Height = 769
             Width = 394
             object btn_KontaktEmail1Send: TcxButton
               Left = 364
@@ -2076,7 +2292,7 @@
       object dxBarDockControl1: TdxBarDockControl
         Left = 0
         Top = 0
-        Width = 1062
+        Width = 1592
         Height = 63
         Align = dalTop
         BarManager = brmgr_Contacts
@@ -2643,6 +2859,46 @@
       FieldName = 'Geburtsland'
       Origin = 'Geburtsland'
       Size = 128
+    end
+    object qry_KontakteSollstunden: TTimeField
+      AutoGenerateValue = arDefault
+      FieldName = 'Sollstunden'
+      Origin = 'Sollstunden'
+    end
+    object qry_KontakteColFontWork: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'ColFontWork'
+      Origin = 'ColFontWork'
+    end
+    object qry_KontakteColCalWork: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'ColCalWork'
+      Origin = 'ColCalWork'
+    end
+    object qry_KontakteColFontBreak: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'ColFontBreak'
+      Origin = 'ColFontBreak'
+    end
+    object qry_KontakteUrlaub: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'Urlaub'
+      Origin = 'Urlaub'
+    end
+    object qry_KontakteEintritt: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'Eintritt'
+      Origin = 'Eintritt'
+    end
+    object qry_KontakteColCalBreak: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'ColCalBreak'
+      Origin = 'ColCalBreak'
+    end
+    object qry_KontakteID_Zeiterfasser: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'ID_Zeiterfasser'
+      Origin = 'ID_Zeiterfasser'
     end
   end
   object idEncQuotPrint_Main: TIdEncoderQuotedPrintable
