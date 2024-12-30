@@ -141,7 +141,7 @@ begin
     dm_PCM.qry_work.SQL.Text:= 'Update manager_buchungen Set Fehltag = '''' Where Fehltag = :Fehltag';;
     dm_PCM.qry_work.ParamByName('Fehltag').asString:= qry_Ft1.FieldByName('Kuerzel').AsString;
     dm_PCM.qry_work.ExecSQL;
-    dm_PCM.qry_work.SQL.Text:= 'Delete From Zeiterfassung_Kalender Where Caption = :Fehltag';;
+    dm_PCM.qry_work.SQL.Text:= 'Delete From manager_Kalender Where Caption = :Fehltag';;
     dm_PCM.qry_work.ParamByName('Fehltag').asString:= qry_Ft1.FieldByName('Beschreibung').AsString;
     dm_PCM.qry_work.ExecSQL;
     qry_Ft1.Delete;

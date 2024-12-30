@@ -18,23 +18,25 @@ object frm_Fehltage: Tfrm_Fehltage
     Left = 0
     Top = 0
     Width = 1600
-    Height = 63
+    Height = 58
     Align = dalTop
     BarManager = brmgr_Config
   end
   object grpbx_Feiertage: TcxGroupBox
     Left = 0
-    Top = 63
+    Top = 58
     Align = alClient
     Caption = 'Fehltage'
     TabOrder = 1
-    Height = 837
+    ExplicitTop = 63
+    ExplicitHeight = 837
+    Height = 842
     Width = 1600
     object grd_Feiertage: TcxGrid
-      Left = 3
-      Top = 177
-      Width = 1594
-      Height = 651
+      Left = 2
+      Top = 180
+      Width = 1596
+      Height = 660
       Align = alClient
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
@@ -46,6 +48,10 @@ object frm_Fehltage: Tfrm_Fehltage
       TabOrder = 1
       TabStop = False
       LockedStateImageOptions.Effect = lsieDark
+      ExplicitLeft = 3
+      ExplicitTop = 177
+      ExplicitWidth = 1594
+      ExplicitHeight = 651
       object grdDBTblView_Feiertage: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         FilterBox.CustomizeDialog = False
@@ -174,19 +180,18 @@ object frm_Fehltage: Tfrm_Fehltage
       end
     end
     object grpbx_FTDetail: TcxGroupBox
-      Left = 3
-      Top = 17
+      Left = 2
+      Top = 20
       Align = alTop
       PanelStyle.Active = True
       Style.BorderStyle = ebsNone
       TabOrder = 0
-      ExplicitTop = -4
       Height = 160
-      Width = 1594
+      Width = 1596
       object lbl_FTKuerzel: TcxLabel
         AlignWithMargins = True
-        Left = 5
-        Top = 3
+        Left = 4
+        Top = 2
         Margins.Left = 2
         Margins.Top = 0
         Margins.Right = 2
@@ -197,18 +202,21 @@ object frm_Fehltage: Tfrm_Fehltage
       end
       object edt_FTKuerzel: TcxDBTextEdit
         AlignWithMargins = True
-        Left = 6
-        Top = 25
+        Left = 5
+        Top = 24
         Align = alTop
         DataBinding.DataField = 'Kuerzel'
         DataBinding.DataSource = ds_FT
         TabOrder = 0
-        Width = 1582
+        ExplicitLeft = 6
+        ExplicitTop = 25
+        ExplicitWidth = 1582
+        Width = 1586
       end
       object lbl_FTDesc: TcxLabel
         AlignWithMargins = True
-        Left = 5
-        Top = 49
+        Left = 4
+        Top = 48
         Margins.Left = 2
         Margins.Top = 0
         Margins.Right = 2
@@ -219,14 +227,16 @@ object frm_Fehltage: Tfrm_Fehltage
       end
       object edt_FTDesc: TcxDBTextEdit
         AlignWithMargins = True
-        Left = 6
-        Top = 71
+        Left = 5
+        Top = 70
         Align = alTop
         DataBinding.DataField = 'Beschreibung'
         DataBinding.DataSource = ds_FT
         TabOrder = 1
+        ExplicitLeft = 6
         ExplicitTop = 73
-        Width = 1582
+        ExplicitWidth = 1582
+        Width = 1586
       end
       object lbl_FTTyp: TcxLabel
         Left = 6

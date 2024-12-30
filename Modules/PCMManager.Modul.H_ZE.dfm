@@ -89,7 +89,7 @@ object frm_ZE: Tfrm_ZE
     Height = 552
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = ts_Online
+    Properties.ActivePage = ts_Kalender
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
     Properties.HotTrack = True
@@ -99,8 +99,6 @@ object frm_ZE: Tfrm_ZE
     object ts_Grid: TcxTabSheet
       Caption = 'Grid'
       ImageIndex = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object grd_Booking: TcxGrid
         Left = 0
         Top = 0
@@ -262,8 +260,6 @@ object frm_ZE: Tfrm_ZE
     object ts_Kalender: TcxTabSheet
       Caption = 'Kalender'
       ImageIndex = 1
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object sched_Kalender: TcxScheduler
         Left = 0
         Top = 0

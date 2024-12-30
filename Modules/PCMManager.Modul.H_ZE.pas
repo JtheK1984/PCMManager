@@ -953,7 +953,7 @@ end;
 procedure Tfrm_ZE.sched_KalenderCustomDrawEvent(Sender: TObject; ACanvas: TcxCanvas; AViewInfo: TcxSchedulerEventCellViewInfo; var ADone: Boolean);
 begin
   dm_PCM.qry_work.Close;
-  dm_PCM.qry_work.SQL.Text := 'SELECT LabelColor,FontColor from Zeiterfassung_Kalender WHERE ID = ' + intToStr(AViewInfo.Event.ID);
+  dm_PCM.qry_work.SQL.Text := 'SELECT LabelColor,FontColor from manager_Kalender WHERE ID = ' + intToStr(AViewInfo.Event.ID);
   dm_PCM.qry_work.Open;
   if dm_PCM.qry_work.FieldByName('LabelColor').AsString <> '' then
   begin
@@ -981,7 +981,7 @@ var
   tPause2ende: TTime;
 begin
   dm_PCm.qry_Timer.ResourceOptions.SilentMode:=True;
-  stbr_ZE.Panels[0].Text:= 'Aktuelle Datum / Uhrzeit: ' + FormatDateTime('dd.MM.yyyy hh:mm:ss',Now);
+  stbr_ZE.Panels[0].Text:= 'Aktuelles Datum / Uhrzeit: ' + FormatDateTime('dd.MM.yyyy hh:mm:ss',Now);
   dm_PCm.qry_Timer.SQL.Text:= 'Select Kommen, Gehen, Pause1Beginn,Pause1ende,Pause2Beginn,Pause2ende From manager_buchungen Where Datum = :Datum';
   dm_PCm.qry_Timer.ParamByName('Datum').AsDate:= Date;
   dm_PCm.qry_Timer.open;
