@@ -218,6 +218,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure cxButton1Click(Sender: TObject);
     procedure Monatsbericht1Click(Sender: TObject);
+    procedure Monatsbericht2Click(Sender: TObject);
   private
     { Private-Deklarationen }
     function GetMonthFromButton: integer;
@@ -250,6 +251,7 @@ uses
 {$Region Hilfsfunktionen}
 function Tfrm_monatswerte.GetMonthFromButton: integer;
 begin
+  Result:= 0;
   if btn_01.LargeImageIndex = 0 then
     Result:= 1;
   if btn_02.LargeImageIndex = 0 then
@@ -279,6 +281,11 @@ procedure Tfrm_monatswerte.Monatsbericht1Click(Sender: TObject);
 begin
   Drucke_PCM_ZE_Monatsbericht(GetMonthFromButton,AuswertungsJahr.EditingValue);
 end;
+procedure Tfrm_monatswerte.Monatsbericht2Click(Sender: TObject);
+begin
+  Drucke_PCM_ZE_Jahresbericht(AuswertungsJahr.EditingValue);
+end;
+
 procedure Tfrm_monatswerte.GetData(Amonat,AJahr: integer);
 var
   iJahr,iMonat,iTag: Word;

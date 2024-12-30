@@ -130,7 +130,7 @@ type
   Tfrm_ZE = class(TForm)
     brmgr_Main: TdxBarManager;
     tb_Ansicht: TdxBar;
-    ribtab_1View: TdxRibbonTab;
+    ribTab_1View: TdxRibbonTab;
     rib: TdxRibbon;
     tb_FilterMonatJahr: TdxBar;
     cbx_FilterMonth: TcxBarEditItem;
@@ -155,14 +155,14 @@ type
     btn_CalVor: TdxBarLargeButton;
     btn_CalZurueck: TdxBarLargeButton;
     ppm_Views: TdxBarPopupMenu;
-    pmbtn_Tag: TdxBarButton;
-    pmbtn_Arbeitswoche: TdxBarButton;
-    pmbtn_Woche: TdxBarButton;
-    pmbtn_Monat: TdxBarButton;
-    pmbtn_Jahr: TdxBarButton;
-    pmbtn_Agenda: TdxBarButton;
-    pmbtn_Planung: TdxBarButton;
-    pmbtn_Ganzertag: TdxBarButton;
+    ppmbtn_ViewTag: TdxBarButton;
+    ppmbtn_ViewArbeitswoche: TdxBarButton;
+    ppmbtn_ViewWoche: TdxBarButton;
+    ppmbtn_ViewMonat: TdxBarButton;
+    ppmbtn_ViewJahr: TdxBarButton;
+    ppmbtn_ViewAgenda: TdxBarButton;
+    ppmbtn_ViewPlanung: TdxBarButton;
+    ppmbtn_ViewGanzertag: TdxBarButton;
     qry_Buchungen: TFDQuery;
     ds_Buchungen: TDataSource;
     tb_Optionen: TdxBar;
@@ -206,46 +206,53 @@ type
     btn_Fehltage: TdxBarLargeButton;
     btn_Online: TdxBarLargeButton;
     ts_Online: TcxTabSheet;
-    cxGroupBox1: TcxGroupBox;
-    btn_WorkBegin: TcxButton;
-    btn_WorkEnd: TcxButton;
-    btn_BreakEnd: TcxButton;
-    btn_BreakBegin: TcxButton;
-    dxStatusBar1: TdxStatusBar;
+    grpbx_Booking: TcxGroupBox;
+    btn_BookingWorkBegin: TcxButton;
+    btn_BookingWorkEnd: TcxButton;
+    btn_BookingBreakEnd: TcxButton;
+    btn_BookingBreakBegin: TcxButton;
+    stbr_ZE: TdxStatusBar;
     Timer1: TTimer;
     tb_fehltage: TdxBar;
     btn_FehltagSet: TdxBarLargeButton;
     grdDBTblView_BookingBuchungsart: TcxGridDBColumn;
-    cxComboBox1: TcxComboBox;
-    dxBarPopupMenu1: TdxBarPopupMenu;
-    pmmbtn_Tagesansicht: TdxBarButton;
-    pmmbtn_Wochenansicht: TdxBarButton;
-    pmmbtn_Monatsansicht: TdxBarButton;
-    pmmbtn_Jahresansicht: TdxBarButton;
-    pmmbtn_Agenda: TdxBarButton;
-    cxImageList1: TcxImageList;
+    cmbbx_Bookingtype: TcxComboBox;
+    ppm_printScheduler: TdxBarPopupMenu;
+    ppmbtn_PrintTagesansicht: TdxBarButton;
+    ppmbtn_PrintWochenansicht: TdxBarButton;
+    ppmbtn_PrintMonatsansicht: TdxBarButton;
+    ppmbtn_PrintJahresansicht: TdxBarButton;
+    ppmbtn_PrintAgenda: TdxBarButton;
+    imglst_16x16: TcxImageList;
     comp_EditRepository: TcxEditRepository;
     riEvent: TcxEditRepositoryRichItem;
-    compPrint_Cal: TdxComponentPrinter;
-    compPrint_CalLink1: TcxSchedulerReportLink;
-    compPrint_CalLink2: TdxGridReportLink;
+    comp_PrintCal: TdxComponentPrinter;
+    comp_PrintCalLink1: TcxSchedulerReportLink;
+    comp_PrintCalLink2: TdxGridReportLink;
+    ppm_Calc: TdxBarPopupMenu;
+    ppmbtn_CalcDay: TdxBarButton;
+    ppmbtn_CalcMonth: TdxBarButton;
+    ppmbtn_CalcYear: TdxBarButton;
+    ppmbtn_CalcAll: TdxBarButton;
+    ppm_Reports: TdxBarPopupMenu;
+    ppmbtn_ReportMonth: TdxBarButton;
+    ppmbtn_ReportYear: TdxBarButton;
     procedure FormShow(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btn_ViewCalClick(Sender: TObject);
     procedure btn_ViewGridClick(Sender: TObject);
     procedure sched_KalenderCustomDrawEvent(Sender: TObject; ACanvas: TcxCanvas; AViewInfo: TcxSchedulerEventCellViewInfo; var ADone: Boolean);
     procedure btn_CalZurueckClick(Sender: TObject);
-    procedure pmbtn_TagClick(Sender: TObject);
-    procedure pmbtn_ArbeitswocheClick(Sender: TObject);
-    procedure pmbtn_WocheClick(Sender: TObject);
-    procedure pmbtn_MonatClick(Sender: TObject);
-    procedure pmbtn_JahrClick(Sender: TObject);
-    procedure pmbtn_AgendaClick(Sender: TObject);
-    procedure pmbtn_PlanungClick(Sender: TObject);
-    procedure pmbtn_GanzertagClick(Sender: TObject);
+    procedure ppmbtn_ViewTagClick(Sender: TObject);
+    procedure ppmbtn_ViewArbeitswocheClick(Sender: TObject);
+    procedure ppmbtn_ViewWocheClick(Sender: TObject);
+    procedure ppmbtn_ViewMonatClick(Sender: TObject);
+    procedure ppmbtn_ViewJahrClick(Sender: TObject);
+    procedure ppmbtn_ViewAgendaClick(Sender: TObject);
+    procedure ppmbtn_ViewPlanungClick(Sender: TObject);
+    procedure ppmbtn_ViewGanzertagClick(Sender: TObject);
     procedure btn_CalVorClick(Sender: TObject);
     procedure btn_DataNewClick(Sender: TObject);
-    procedure btn_CalcClick(Sender: TObject);
     procedure btn_DataPrevClick(Sender: TObject);
     procedure btn_DataNextClick(Sender: TObject);
     procedure btn_FilterMonthYearClick(Sender: TObject);
@@ -255,21 +262,27 @@ type
     procedure grdDBTblView_BookingCellDblClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
     procedure btn_OnlineClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
-    procedure btn_WorkBeginClick(Sender: TObject);
-    procedure btn_WorkEndClick(Sender: TObject);
-    procedure btn_BreakBeginClick(Sender: TObject);
-    procedure btn_BreakEndClick(Sender: TObject);
+    procedure btn_BookingWorkBeginClick(Sender: TObject);
+    procedure btn_BookingWorkEndClick(Sender: TObject);
+    procedure btn_BookingBreakBeginClick(Sender: TObject);
+    procedure btn_BookingBreakEndClick(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure btn_MonthviewClick(Sender: TObject);
     procedure btn_FehltagSetClick(Sender: TObject);
     procedure btn_printClick(Sender: TObject);
     procedure btn_FehltageClick(Sender: TObject);
     procedure sched_KalenderGetEventModernStyleHintInfo(Sender: TObject; AEvent: TcxSchedulerControlEvent; AInfo: TcxSchedulerEventModernStyleHintInfo);
-    procedure pmmbtn_TagesansichtClick(Sender: TObject);
-    procedure pmmbtn_WochenansichtClick(Sender: TObject);
-    procedure pmmbtn_MonatsansichtClick(Sender: TObject);
-    procedure pmmbtn_JahresansichtClick(Sender: TObject);
-    procedure pmmbtn_AgendaClick(Sender: TObject);
+    procedure ppmbtn_PrintTagesansichtClick(Sender: TObject);
+    procedure ppmbtn_PrintWochenansichtClick(Sender: TObject);
+    procedure ppmbtn_PrintMonatsansichtClick(Sender: TObject);
+    procedure ppmbtn_PrintJahresansichtClick(Sender: TObject);
+    procedure ppmbtn_PrintAgendaClick(Sender: TObject);
+    procedure ppmbtn_CalcDayClick(Sender: TObject);
+    procedure ppmbtn_CalcMonthClick(Sender: TObject);
+    procedure ppmbtn_CalcYearClick(Sender: TObject);
+    procedure ppmbtn_CalcAllClick(Sender: TObject);
+    procedure ppmbtn_ReportMonthClick(Sender: TObject);
+    procedure ppmbtn_ReportYearClick(Sender: TObject);
   private
     { Private-Deklarationen }
     defaultLabelColor: integer;
@@ -293,6 +306,7 @@ uses
   PCM.Data,
   PCM.Functions.Synch.Wait,
   PCM.Main,
+  PCMManager.Modul.G_Finanzen.Filter.Date,
   PCMManager.Modul.H_ZE.Booking,
   PCMManager.Modul.H_ZE.ChooseMonth,
   PCMManager.Modul.H_ZE.Fehltage,
@@ -315,7 +329,8 @@ begin
   tb_Monatswerte.Visible:= true;
   ribTab_2Edit.Visible:=  false;
   ribTab_3View.Visible:= false;
-  ribTab_4Print.Visible:= false;
+  tb_Drucken.Visible:= false;
+  tb_DruckeGrid.Visible:= true;
   tb_fehltage.Visible:= true;
   pc_Ze.ActivePage:= ts_Online;
 end;
@@ -371,10 +386,6 @@ begin
   qry_Buchungen.open;
 end;
 // ZE - Monatswerte
-procedure Tfrm_ZE.btn_CalcClick(Sender: TObject);
-begin
-  BerechneMonate;
-end;
 procedure Tfrm_ZE.btn_MonthviewClick(Sender: TObject);
 begin
   Application.CreateForm(Tfrm_monatswerte,frm_monatswerte);
@@ -560,7 +571,7 @@ begin
   qry_Buchungen.Next;
 end;
 // View - Popup
-procedure Tfrm_ZE.pmbtn_TagClick(Sender: TObject);
+procedure Tfrm_ZE.ppmbtn_ViewTagClick(Sender: TObject);
 begin
   iView:= 1;
   sched_Kalender.ViewDay.Active := True;
@@ -568,7 +579,7 @@ begin
   btn_CalZurueck.Hint := rs_PCMManager_TagZurueck;
   btn_CalVor.Hint := rs_PCMManager_Tagvor;
 end;
-procedure Tfrm_ZE.pmbtn_ArbeitswocheClick(Sender: TObject);
+procedure Tfrm_ZE.ppmbtn_ViewArbeitswocheClick(Sender: TObject);
 var
   iTag: integer;
 begin
@@ -578,49 +589,49 @@ begin
   btn_CalZurueck.Hint := rs_PCMManager_ArbWocheZurueck;
   btn_CalVor.Hint := rs_PCMManager_ArbWocheVor;
 end;
-procedure Tfrm_ZE.pmbtn_WocheClick(Sender: TObject);
+procedure Tfrm_ZE.ppmbtn_ViewWocheClick(Sender: TObject);
 begin
   iView:= 3;
   sched_Kalender.ViewWeek.Active := True;
   btn_CalZurueck.Hint := rs_PCMManager_WocheZurueck;
   btn_CalVor.Hint := rs_PCMManager_Wochevor;
 end;
-procedure Tfrm_ZE.pmbtn_MonatClick(Sender: TObject);
+procedure Tfrm_ZE.ppmbtn_ViewMonatClick(Sender: TObject);
 begin
   iView:= 4;
   sched_Kalender.GoToDate(sched_Kalender.SelectedDays[0], vmMonth);
   btn_CalZurueck.Hint := rs_PCMManager_MonatZurueck;
   btn_CalVor.Hint := rs_PCMManager_Monatvor;
 end;
-procedure Tfrm_ZE.pmbtn_JahrClick(Sender: TObject);
+procedure Tfrm_ZE.ppmbtn_ViewJahrClick(Sender: TObject);
 begin
   iView:= 5;
   sched_Kalender.ViewYear.Active := True;
   btn_CalZurueck.Hint := rs_PCMManager_JahrZurueck;
   btn_CalVor.Hint := rs_PCMManager_JahrVor;
 end;
-procedure Tfrm_ZE.pmbtn_AgendaClick(Sender: TObject);
+procedure Tfrm_ZE.ppmbtn_ViewAgendaClick(Sender: TObject);
 begin
   iView:= 6;
   sched_Kalender.ViewAgenda.Active := True;
 end;
-procedure Tfrm_ZE.pmbtn_PlanungClick(Sender: TObject);
+procedure Tfrm_ZE.ppmbtn_ViewPlanungClick(Sender: TObject);
 begin
   iView:= 7;
   sched_Kalender.ViewTimegrid.Active := True;
   btn_CalZurueck.Hint := rs_PCMManager_JahrZurueck;
   btn_CalVor.Hint := rs_PCMManager_JahrVor;
 end;
-procedure Tfrm_ZE.pmbtn_GanzertagClick(Sender: TObject);
+procedure Tfrm_ZE.ppmbtn_ViewGanzertagClick(Sender: TObject);
 begin
   iView:= 1;
-  if pmbtn_Ganzertag.Tag = 0  then
+  if ppmbtn_ViewGanzertag.Tag = 0  then
   begin
-    pmbtn_Ganzertag.Tag:= 1;
+    ppmbtn_ViewGanzertag.Tag:= 1;
     sched_Kalender.ViewDay.WorkTimeOnly := true
   end
   else begin
-    pmbtn_Ganzertag.Tag:= 0;
+    ppmbtn_ViewGanzertag.Tag:= 0;
     sched_Kalender.ViewDay.WorkTimeOnly := false;
   end;
 end;
@@ -659,35 +670,51 @@ procedure Tfrm_ZE.btn_printClick(Sender: TObject);
 begin
   Drucke_PCM_ZE_Monatsbericht(cbx_FilterMonth.itemindex+1,cbx_FilterYear.EditValue);
 end;
-procedure Tfrm_ZE.pmmbtn_TagesansichtClick(Sender: TObject);
+procedure Tfrm_ZE.ppmbtn_PrintTagesansichtClick(Sender: TObject);
 begin
-  compPrint_Cal.PreviewOptions.Caption := rs_PCMManager_KalenderTag;
-  compPrint_CalLink1.PrintStyles.Daily.Active := True;
-  compPrint_CalLink1.Preview(True);
+  comp_PrintCal.PreviewOptions.Caption := rs_PCMManager_KalenderTag;
+  comp_PrintCalLink1.PrintStyles.Daily.Active := True;
+  comp_PrintCalLink1.Preview(True);
 end;
-procedure Tfrm_ZE.pmmbtn_WochenansichtClick(Sender: TObject);
+procedure Tfrm_ZE.ppmbtn_PrintWochenansichtClick(Sender: TObject);
 begin
-  compPrint_Cal.PreviewOptions.Caption := rs_PCMManager_KalenderWoche;
-  compPrint_CalLink1.PrintStyles. Weekly.Active := True;
-  compPrint_CalLink1.Preview(True);
+  comp_PrintCal.PreviewOptions.Caption := rs_PCMManager_KalenderWoche;
+  comp_PrintCalLink1.PrintStyles. Weekly.Active := True;
+  comp_PrintCalLink1.Preview(True);
 end;
-procedure Tfrm_ZE.pmmbtn_MonatsansichtClick(Sender: TObject);
+procedure Tfrm_ZE.ppmbtn_PrintMonatsansichtClick(Sender: TObject);
 begin
-  compPrint_Cal.PreviewOptions.Caption := rs_PCMManager_KalenderMonat;
-  compPrint_CalLink1.PrintStyles.Monthly.Active := True;
-  compPrint_CalLink1.Preview(True);
+  comp_PrintCal.PreviewOptions.Caption := rs_PCMManager_KalenderMonat;
+  comp_PrintCalLink1.PrintStyles.Monthly.Active := True;
+  comp_PrintCalLink1.Preview(True);
 end;
-procedure Tfrm_ZE.pmmbtn_JahresansichtClick(Sender: TObject);
+procedure Tfrm_ZE.ppmbtn_PrintJahresansichtClick(Sender: TObject);
 begin
-  compPrint_Cal.PreviewOptions.Caption := rs_PCMManager_Kalenderjahr;
-  compPrint_CalLink1.PrintStyles.Yearly.Active := True;
-  compPrint_CalLink1.Preview(True);
+  comp_PrintCal.PreviewOptions.Caption := rs_PCMManager_Kalenderjahr;
+  comp_PrintCalLink1.PrintStyles.Yearly.Active := True;
+  comp_PrintCalLink1.Preview(True);
 end;
-procedure Tfrm_ZE.pmmbtn_AgendaClick(Sender: TObject);
+procedure Tfrm_ZE.ppmbtn_PrintAgendaClick(Sender: TObject);
 begin
-  compPrint_Cal.PreviewOptions.Caption := rs_PCMManager_Kalenderagenda;
-  compPrint_CalLink1.PrintStyles.Agenda.Active := True;
-  compPrint_CalLink1.Preview(True);
+  comp_PrintCal.PreviewOptions.Caption := rs_PCMManager_Kalenderagenda;
+  comp_PrintCalLink1.PrintStyles.Agenda.Active := True;
+  comp_PrintCalLink1.Preview(True);
+end;
+procedure Tfrm_ZE.ppmbtn_ReportMonthClick(Sender: TObject);
+var
+  iMonat, iJahr: integer;
+begin
+  Application.CreateForm(Tfrm_PCManagerChooseDate,frm_PCManagerChooseDate);
+  frm_PCManagerChooseDate.Execute(True,iMonat,iJahr);
+  Drucke_PCM_ZE_Monatsbericht(iMonat,IntToStr(iJahr));
+end;
+procedure Tfrm_ZE.ppmbtn_ReportYearClick(Sender: TObject);
+var
+  iJahr: integer;
+begin
+  Application.CreateForm(Tfrm_PCManagerChooseDate,frm_PCManagerChooseDate);
+  frm_PCManagerChooseDate.Execute(True,True,iJahr);
+  Drucke_PCM_ZE_Jahresbericht(IntToStr(iJahr));
 end;
 // Config
 procedure Tfrm_ZE.btn_userClick(Sender: TObject);
@@ -711,7 +738,56 @@ end;
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Tabfunction}
 // Tab Zeiterfassung Online
-procedure Tfrm_ZE.btn_WorkBeginClick(Sender: TObject);
+procedure Tfrm_ZE.ppmbtn_CalcAllClick(Sender: TObject);
+begin
+  BerechneMonate;
+  qry_Buchungen.Refresh;
+end;
+procedure Tfrm_ZE.ppmbtn_CalcDayClick(Sender: TObject);
+var
+  wJahr,wMonat,wTag: word;
+begin
+  ShowWaitForm(TForm(frm_ZE), PWideChar('Berechne Tag'),1 ,417, 65);
+  DecodeDate(Date,wJahr,wMonat,wTag);
+  BerechneTage(wTag,wMonat,wJahr);
+  BerechneMonat(wMonat,wJahr);
+  qry_Buchungen.Refresh;
+  CloseWaitForm;
+end;
+procedure Tfrm_ZE.ppmbtn_CalcMonthClick(Sender: TObject);
+var
+  wJahr,wMonat,wTag: word;
+begin
+  ShowWaitForm(TForm(frm_ZE), PWideChar('Berechne Monat'),1 ,417, 65);
+  DecodeDate(Date,wJahr,wMonat,wTag);
+  BerechneTage(0,wMonat,wJahr);
+  BerechneMonat(wMonat,wJahr);
+  qry_Buchungen.Refresh;
+  CloseWaitForm;
+end;
+procedure Tfrm_ZE.ppmbtn_CalcYearClick(Sender: TObject);
+var
+  wJahr,wMonat,wTag: word;
+begin
+  ShowWaitForm(TForm(frm_ZE), PWideChar('Berechne Jahr'),1 ,417, 65);
+  DecodeDate(Date,wJahr,wMonat,wTag);
+  BerechneTage(0,0,wJahr);
+  BerechneMonat(1,wJahr);
+  BerechneMonat(2,wJahr);
+  BerechneMonat(3,wJahr);
+  BerechneMonat(4,wJahr);
+  BerechneMonat(5,wJahr);
+  BerechneMonat(6,wJahr);
+  BerechneMonat(7,wJahr);
+  BerechneMonat(8,wJahr);
+  BerechneMonat(9,wJahr);
+  BerechneMonat(10,wJahr);
+  BerechneMonat(11,wJahr);
+  BerechneMonat(12,wJahr);
+  qry_Buchungen.Refresh;
+  CloseWaitForm;
+end;
+procedure Tfrm_ZE.btn_BookingWorkBeginClick(Sender: TObject);
 var
   sText: String;
   dDate: TDate;
@@ -725,17 +801,17 @@ begin
   tTimes:= EncodeTime(iStd,iMin,0,0);
   dm_PCM.qry_Work.SQL.Text:= 'Update manager_buchungen Set Kommen = :Kommen,Buchungsart = :BA Where Datum = :Datum';
   dm_PCM.qry_Work.ParamByName('Kommen').AsTime:= tTimes;
-  dm_PCM.qry_Work.ParamByName('BA').asInteger:= cxComboBox1.ItemIndex;
+  dm_PCM.qry_Work.ParamByName('BA').asInteger:= cmbbx_Bookingtype.ItemIndex;
   dm_PCM.qry_Work.ParamByName('Datum').AsDate:= dDate;
   dm_PCM.qry_Work.ExecSQL;
   sText:= 'Letzte Buchung: Kommen am ' + FormatDateTime('dd.MM.yyyy hh:mm',dtNow);
   dm_PCM.qry_Work.SQL.Text:= 'Update manager_message Set Text = :Text';
   dm_PCM.qry_Work.ParamByName('Text').AsString := sText;
   dm_PCM.qry_Work.ExecSQL;
-  dxStatusbar1.Panels[1].Text:= sText;
+  stbr_ZE.Panels[1].Text:= sText;
   qry_Buchungen.Refresh;
 end;
-procedure Tfrm_ZE.btn_BreakBeginClick(Sender: TObject);
+procedure Tfrm_ZE.btn_BookingBreakBeginClick(Sender: TObject);
 var
   sText: String;
   dDate: TDate;
@@ -765,7 +841,7 @@ begin
     dm_PCM.qry_Work.SQL.Text:= 'Update manager_message Set Text = :Text';
     dm_PCM.qry_Work.ParamByName('Text').AsString := sText;
     dm_PCM.qry_Work.ExecSQL;
-    dxStatusbar1.Panels[1].Text:= sText;
+    stbr_ZE.Panels[1].Text:= sText;
   end
   else begin
     if tp2 = StrToTime('00:00') then
@@ -778,12 +854,12 @@ begin
       dm_PCM.qry_Work.SQL.Text:= 'Update manager_message Set Text = :Text';
       dm_PCM.qry_Work.ParamByName('Text').AsString := sText;
       dm_PCM.qry_Work.ExecSQL;
-      dxStatusbar1.Panels[1].Text:= sText;
+      stbr_ZE.Panels[1].Text:= sText;
     end
   end;
   qry_Buchungen.Refresh;
 end;
-procedure Tfrm_ZE.btn_BreakEndClick(Sender: TObject);
+procedure Tfrm_ZE.btn_BookingBreakEndClick(Sender: TObject);
 var
   sText: String;
   dDate: TDate;
@@ -813,7 +889,7 @@ begin
     dm_PCM.qry_Work.SQL.Text:= 'Update manager_message Set Text = :Text';
     dm_PCM.qry_Work.ParamByName('Text').AsString := sText;
     dm_PCM.qry_Work.ExecSQL;
-    dxStatusbar1.Panels[1].Text:= sText;
+    stbr_ZE.Panels[1].Text:= sText;
   end
   else begin
     if tp2 = StrToTime('00:00') then
@@ -826,12 +902,12 @@ begin
       dm_PCM.qry_Work.SQL.Text:= 'Update manager_message Set Text = :Text';
       dm_PCM.qry_Work.ParamByName('Text').AsString := sText;
       dm_PCM.qry_Work.ExecSQL;
-      dxStatusbar1.Panels[1].Text:= sText;
+      stbr_ZE.Panels[1].Text:= sText;
     end
   end;
   qry_Buchungen.Refresh;
 end;
-procedure Tfrm_ZE.btn_WorkEndClick(Sender: TObject);
+procedure Tfrm_ZE.btn_BookingWorkEndClick(Sender: TObject);
 var
   sText: String;
   dDate: TDate;
@@ -853,12 +929,10 @@ begin
   dm_PCM.qry_Work.SQL.Text:= 'Update manager_message Set Text = :Text';
   dm_PCM.qry_Work.ParamByName('Text').AsString := sText;
   dm_PCM.qry_Work.ExecSQL;
-  dxStatusbar1.Panels[1].Text:= sText;
+  stbr_ZE.Panels[1].Text:= sText;
   BerechneTage(iTag,iMonat,iJahr);
   qry_Buchungen.Refresh;
 end;
-
-
 procedure Tfrm_ZE.grdDBTblView_BookingCellDblClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
 begin
 var
@@ -907,7 +981,7 @@ var
   tPause2ende: TTime;
 begin
   dm_PCm.qry_Timer.ResourceOptions.SilentMode:=True;
-  dxStatusbar1.Panels[0].Text:= 'Aktuelle Datum / Uhrzeit: ' + FormatDateTime('dd.MM.yyyy hh:mm:ss',Now);
+  stbr_ZE.Panels[0].Text:= 'Aktuelle Datum / Uhrzeit: ' + FormatDateTime('dd.MM.yyyy hh:mm:ss',Now);
   dm_PCm.qry_Timer.SQL.Text:= 'Select Kommen, Gehen, Pause1Beginn,Pause1ende,Pause2Beginn,Pause2ende From manager_buchungen Where Datum = :Datum';
   dm_PCm.qry_Timer.ParamByName('Datum').AsDate:= Date;
   dm_PCm.qry_Timer.open;
@@ -920,15 +994,15 @@ begin
   dm_PCm.qry_Timer.close;
   // Kommen
   if tKommen <> StrToTime('00:00') then
-    btn_WorkBegin.Enabled:= false
+    btn_BookingWorkBegin.Enabled:= false
   else
-    btn_WorkBegin.Enabled:= true;
+    btn_BookingWorkBegin.Enabled:= true;
   // Gehen
-  if (tGehen <> StrToTime('00:00')) or (btn_breakend.Enabled) then
-    btn_WorkEnd.Enabled:= false
+  if (tGehen <> StrToTime('00:00')) or (btn_Bookingbreakend.Enabled) then
+    btn_BookingWorkEnd.Enabled:= false
   else
     if (tKommen <> StrToTime('00:00')) then
-      btn_WorkEnd.Enabled:= true;
+      btn_BookingWorkEnd.Enabled:= true;
 
 
 
@@ -936,39 +1010,39 @@ begin
   if (tPause1Beginn <> StrToTime('00:00')) and (tPause2Beginn <> StrToTime('00:00'))then
   begin
     if tKommen <> StrToTime('00:00') then
-      btn_BreakBegin.Enabled:= false
+      btn_BookingBreakBegin.Enabled:= false
   end
   else begin
     if (tPause1Beginn <> StrToTime('00:00')) and (tPause1Ende = StrToTime('00:00')) or (tPause2Beginn <> StrToTime('00:00')) and (tPause2Ende = StrToTime('00:00')) then
     begin
-      btn_BreakBegin.Enabled:= false;
+      btn_BookingBreakBegin.Enabled:= false;
     end
     else begin
       if (tKommen <> StrToTime('00:00')) and (tGehen = StrToTime('00:00')) then
-        btn_BreakBegin.Enabled:= true;
+        btn_BookingBreakBegin.Enabled:= true;
     end;
   end;
 
   if (tPause1ende <> StrToTime('00:00')) and (tPause2ende <> StrToTime('00:00'))then
   begin
-    btn_Breakend.Enabled:= false
+    btn_BookingBreakend.Enabled:= false
   end
   else begin
     if (tPause1ende <> StrToTime('00:00')) and (tPause2Beginn = StrToTime('00:00'))then
     begin
-      btn_Breakend.Enabled:= false
+      btn_BookingBreakend.Enabled:= false
     end
     else begin
       if ((tPause2Beginn <> StrToTime('00:00')) and (tPause2Ende = StrToTime('00:00'))) or ((tPause1Beginn <> StrToTime('00:00')) and (tPause1Ende = StrToTime('00:00'))) then
       begin
       if (tKommen <> StrToTime('00:00')) and (tGehen = StrToTime('00:00')) then
-          btn_Breakend.Enabled:= true;
+          btn_BookingBreakend.Enabled:= true;
       end;
     end;
   end;
-  if not btn_WorkEnd.Enabled then
+  if not btn_BookingWorkEnd.Enabled then
   begin
-    btn_BreakBegin.Enabled:= false;
+    btn_BookingBreakBegin.Enabled:= false;
   end;
   dm_PCm.qry_Timer.ResourceOptions.SilentMode:=false;
 
@@ -989,24 +1063,24 @@ var
 begin
   iwidth:= Round((frm_PCM_Main.pc_main.Width - 70) / 2);
   iheight:= Round((frm_PCM_Main.pc_main.Height - 250) / 2);
-  btn_WorkBegin.Left:= 20;
-  btn_WorkBegin.Top:= 30;
-  btn_WorkBegin.Height:= iheight;
-  btn_WorkBegin.Width:= iwidth;
-  btn_WorkEnd.Left:= btn_WorkBegin.Width + 40;
-  btn_WorkEnd.Top:= 30;
-  btn_WorkEnd.Height:= iheight;
-  btn_WorkEnd.Width:= iwidth;
+  btn_BookingWorkBegin.Left:= 20;
+  btn_BookingWorkBegin.Top:= 30;
+  btn_BookingWorkBegin.Height:= iheight;
+  btn_BookingWorkBegin.Width:= iwidth;
+  btn_BookingWorkEnd.Left:= btn_BookingWorkBegin.Width + 40;
+  btn_BookingWorkEnd.Top:= 30;
+  btn_BookingWorkEnd.Height:= iheight;
+  btn_BookingWorkEnd.Width:= iwidth;
 
 
-  btn_BreakBegin.Left:= 20;
-  btn_BreakBegin.Top:= btn_WorkBegin.Height + 40;
-  btn_BreakBegin.Height:= iheight;
-  btn_BreakBegin.Width:= iwidth;
-  btn_BreakEnd.Left:= btn_BreakBegin.Width + 40;
-  btn_BreakEnd.Top:= btn_WorkBegin.Height + 40;
-  btn_BreakEnd.Height:= iheight;
-  btn_BreakEnd.Width:= iwidth;
+  btn_BookingBreakBegin.Left:= 20;
+  btn_BookingBreakBegin.Top:= btn_BookingWorkBegin.Height + 40;
+  btn_BookingBreakBegin.Height:= iheight;
+  btn_BookingBreakBegin.Width:= iwidth;
+  btn_BookingBreakEnd.Left:= btn_BookingBreakBegin.Width + 40;
+  btn_BookingBreakEnd.Top:= btn_BookingWorkBegin.Height + 40;
+  btn_BookingBreakEnd.Height:= iheight;
+  btn_BookingBreakEnd.Width:= iwidth;
 
 end;
 procedure Tfrm_ZE.FormShow(Sender: TObject);
@@ -1026,7 +1100,8 @@ begin
   tb_Monatswerte.Visible:= true;
   ribTab_2Edit.Visible:=  false;
   ribTab_3View.Visible:= false;
-  ribTab_4Print.Visible:= false;
+//  ribTab_4Print.Visible:= false;
+  tb_Drucken.Visible:= false;
   tb_fehltage.Visible:= true;
   pc_Ze.ActivePage:= ts_Online;
   iView:= 1;
@@ -1034,7 +1109,7 @@ begin
   defaultLabelColor:= 13083265;
   defaultFontColor:= 0;
   grd_Booking.Align:= alClient;
-  cxGroupBox1.Align:= alClient;
+  grpbx_Booking.Align:= alClient;
   DecodeDate(Now,iJahr,iMonat,iTag);
 
   case iMonat of

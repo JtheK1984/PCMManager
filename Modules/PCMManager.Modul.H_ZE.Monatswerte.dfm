@@ -19,12 +19,11 @@ object frm_monatswerte: Tfrm_monatswerte
     Align = alTop
     PanelStyle.Active = True
     TabOrder = 0
-    ExplicitWidth = 1600
     Height = 75
     Width = 1650
     object grpbx_MonatInfo: TcxGroupBox
-      Left = 188
-      Top = 3
+      Left = 187
+      Top = 2
       Align = alLeft
       Caption = 'Monatsinfo'
       PanelStyle.Active = True
@@ -36,7 +35,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       TabOrder = 0
-      Height = 69
+      Height = 71
       Width = 321
       object grpbx_MonatInfoDetail: TcxGroupBox
         Left = 0
@@ -46,9 +45,9 @@ object frm_monatswerte: Tfrm_monatswerte
         Height = 50
         Width = 321
         object dxBarDockControl1: TdxBarDockControl
-          Left = 3
-          Top = 3
-          Width = 315
+          Left = 2
+          Top = 2
+          Width = 317
           Height = 42
           Align = dalTop
           BarManager = brmgr_MW
@@ -56,8 +55,8 @@ object frm_monatswerte: Tfrm_monatswerte
       end
     end
     object grpbx_Personal: TcxGroupBox
-      Left = 3
-      Top = 3
+      Left = 2
+      Top = 2
       Align = alLeft
       Caption = 'Zeiterfasser'
       PanelStyle.Active = True
@@ -69,7 +68,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       TabOrder = 1
-      Height = 69
+      Height = 71
       Width = 185
       object cxGroupBox4: TcxGroupBox
         Left = 0
@@ -133,8 +132,8 @@ object frm_monatswerte: Tfrm_monatswerte
       end
     end
     object grpbx_Jahr: TcxGroupBox
-      Left = 509
-      Top = 3
+      Left = 508
+      Top = 2
       Align = alLeft
       Caption = 'Jahr'
       PanelStyle.Active = True
@@ -146,7 +145,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       TabOrder = 2
-      Height = 69
+      Height = 71
       Width = 62
       object grpbx_JahrDetail: TcxGroupBox
         Left = 0
@@ -170,8 +169,8 @@ object frm_monatswerte: Tfrm_monatswerte
       end
     end
     object grpbx_Stat: TcxGroupBox
-      Left = 571
-      Top = 3
+      Left = 570
+      Top = 2
       Align = alLeft
       Caption = 'Zeiterfasser'
       PanelStyle.Active = True
@@ -183,7 +182,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
       TabOrder = 3
-      Height = 69
+      Height = 71
       Width = 860
       object cxGroupBox11: TcxGroupBox
         Left = 0
@@ -566,25 +565,23 @@ object frm_monatswerte: Tfrm_monatswerte
     Align = alClient
     Caption = 'Auswertung'
     TabOrder = 1
-    ExplicitWidth = 1600
     Height = 825
     Width = 1650
     object sclbx_MW: TScrollBox
-      Left = 3
-      Top = 17
-      Width = 1644
-      Height = 799
+      Left = 2
+      Top = 20
+      Width = 1646
+      Height = 803
       Align = alClient
       BorderStyle = bsNone
       TabOrder = 0
-      ExplicitWidth = 1594
       object grpbx_MWMonat: TcxGroupBox
         Left = 0
         Top = 0
         Align = alLeft
         Caption = 'Monatswerte'
         TabOrder = 0
-        Height = 799
+        Height = 803
         Width = 389
         object Bevel2: TBevel
           Left = 196
@@ -1258,19 +1255,17 @@ object frm_monatswerte: Tfrm_monatswerte
         Align = alClient
         Caption = 'Tageswerte'
         TabOrder = 1
-        ExplicitWidth = 1205
-        Height = 799
-        Width = 1255
+        Height = 803
+        Width = 1257
         object grd_Tag: TcxGrid
-          Left = 3
-          Top = 17
-          Width = 1249
-          Height = 773
+          Left = 2
+          Top = 20
+          Width = 1253
+          Height = 781
           Align = alClient
           BorderStyle = cxcbsNone
           TabOrder = 0
           LookAndFeel.NativeStyle = False
-          ExplicitWidth = 1199
           object grd_TagDBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             Navigator.Buttons.First.Visible = True
@@ -1750,6 +1745,7 @@ object frm_monatswerte: Tfrm_monatswerte
       Caption = 'Jahres'#252'bersicht'
       Category = 1
       Visible = ivAlways
+      OnClick = Monatsbericht2Click
     end
   end
   object imglst_16x16: TcxImageList

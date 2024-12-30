@@ -25,7 +25,7 @@ object frm_ZE: Tfrm_ZE
     Contexts = <>
     TabOrder = 0
     TabStop = False
-    object ribtab_1View: TdxRibbonTab
+    object ribTab_1View: TdxRibbonTab
       Active = True
       Caption = 'Zeiterfassung'
       Groups = <
@@ -89,25 +89,22 @@ object frm_ZE: Tfrm_ZE
     Height = 552
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = ts_Grid
+    Properties.ActivePage = ts_Online
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
     Properties.HotTrack = True
-    ClientRectBottom = 551
-    ClientRectLeft = 1
-    ClientRectRight = 1156
-    ClientRectTop = 1
+    ClientRectBottom = 552
+    ClientRectRight = 1157
+    ClientRectTop = 0
     object ts_Grid: TcxTabSheet
       Caption = 'Grid'
       ImageIndex = 0
-      ExplicitLeft = 0
-      ExplicitTop = 0
       ExplicitWidth = 0
       ExplicitHeight = 0
       object grd_Booking: TcxGrid
         Left = 0
         Top = 0
-        Width = 1155
+        Width = 1157
         Height = 572
         Align = alTop
         TabOrder = 0
@@ -265,15 +262,13 @@ object frm_ZE: Tfrm_ZE
     object ts_Kalender: TcxTabSheet
       Caption = 'Kalender'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
       ExplicitWidth = 0
       ExplicitHeight = 0
       object sched_Kalender: TcxScheduler
         Left = 0
         Top = 0
-        Width = 1155
-        Height = 550
+        Width = 1157
+        Height = 552
         DateNavigator.RowCount = 4
         ViewDay.Active = True
         ViewDay.AlwaysShowEventTime = True
@@ -315,27 +310,22 @@ object frm_ZE: Tfrm_ZE
         TabOrder = 0
         OnGetEventModernStyleHintInfo = sched_KalenderGetEventModernStyleHintInfo
         Splitters = {
-          950000007E0000008406000083000000EE03000001000000F303000025020000}
-        StoredClientBounds = {01000000010000008204000025020000}
+          950000007E0000008406000083000000F003000001000000F503000027020000}
+        StoredClientBounds = {01000000010000008404000027020000}
       end
     end
     object ts_Online: TcxTabSheet
       Caption = 'ts_Online'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
-      object cxGroupBox1: TcxGroupBox
+      object grpbx_Booking: TcxGroupBox
         Left = 0
         Top = 23
         Align = alTop
         Caption = 'Online-Buchung'
         TabOrder = 0
-        ExplicitTop = 21
         Height = 552
-        Width = 1155
-        object btn_WorkBegin: TcxButton
+        Width = 1157
+        object btn_BookingWorkBegin: TcxButton
           Left = 40
           Top = 40
           Width = 440
@@ -589,9 +579,9 @@ object frm_ZE: Tfrm_ZE
             238075610DDF2E33AAF7CBC0AA4CE3FB2496FF0474ACF33A0F3E061E00000000
             49454E44AE426082}
           TabOrder = 0
-          OnClick = btn_WorkBeginClick
+          OnClick = btn_BookingWorkBeginClick
         end
-        object btn_WorkEnd: TcxButton
+        object btn_BookingWorkEnd: TcxButton
           Left = 520
           Top = 40
           Width = 440
@@ -813,9 +803,9 @@ object frm_ZE: Tfrm_ZE
             7880C9720E276739DF86E8444A099C2315C37ADEF7DE3D99997BFE1736EDF273
             A8FCDC400000000049454E44AE426082}
           TabOrder = 1
-          OnClick = btn_WorkEndClick
+          OnClick = btn_BookingWorkEndClick
         end
-        object btn_BreakEnd: TcxButton
+        object btn_BookingBreakEnd: TcxButton
           Left = 520
           Top = 295
           Width = 440
@@ -985,9 +975,9 @@ object frm_ZE: Tfrm_ZE
             64410DC633E518A11526ECC171701C1C7F19FF0B93B3C6A9BC2828AA00000000
             49454E44AE426082}
           TabOrder = 2
-          OnClick = btn_BreakEndClick
+          OnClick = btn_BookingBreakEndClick
         end
-        object btn_BreakBegin: TcxButton
+        object btn_BookingBreakBegin: TcxButton
           Left = 40
           Top = 295
           Width = 440
@@ -1157,10 +1147,10 @@ object frm_ZE: Tfrm_ZE
             64410DC633E518A11526ECC171701C1C7F19FF0B93B3C6A9BC2828AA00000000
             49454E44AE426082}
           TabOrder = 3
-          OnClick = btn_BreakBeginClick
+          OnClick = btn_BookingBreakBeginClick
         end
       end
-      object cxComboBox1: TcxComboBox
+      object cmbbx_Bookingtype: TcxComboBox
         AlignWithMargins = True
         Left = 0
         Top = 0
@@ -1174,11 +1164,11 @@ object frm_ZE: Tfrm_ZE
           'HomeOffice')
         TabOrder = 1
         Text = 'HomeOffice'
-        Width = 1155
+        Width = 1157
       end
     end
   end
-  object dxStatusBar1: TdxStatusBar
+  object stbr_ZE: TdxStatusBar
     Left = 0
     Top = 676
     Width = 1157
@@ -1218,14 +1208,14 @@ object frm_ZE: Tfrm_ZE
     Categories.Visibles = (
       True
       True)
-    ImageOptions.Images = cxImageList1
+    ImageOptions.Images = imglst_16x16
     ImageOptions.LargeImages = imglst_32x32
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
     Style = bmsUseLookAndFeel
     UseSystemFont = True
-    Left = 592
-    Top = 240
+    Left = 240
+    Top = 58
     PixelsPerInch = 96
     object tb_Ansicht: TdxBar
       Caption = 'Ansicht'
@@ -1722,25 +1712,28 @@ object frm_ZE: Tfrm_ZE
       Hint = 'Drucke Ansicht'
       Visible = ivAlways
       ButtonStyle = bsDropDown
-      DropDownMenu = dxBarPopupMenu1
+      DropDownMenu = ppm_printScheduler
       LargeImageIndex = 15
       Width = 100
     end
     object btn_print: TdxBarLargeButton
-      Caption = 'Drucke Monat'
+      Caption = 'Drucke Report'
       Category = 0
-      Hint = 'Drucke Monat'
+      Hint = 'Drucke Report'
       Visible = ivAlways
+      ButtonStyle = bsDropDown
+      DropDownMenu = ppm_Reports
       OnClick = btn_printClick
       LargeImageIndex = 15
       Width = 100
     end
     object btn_Calc: TdxBarLargeButton
-      Caption = 'Berechne Stunden'
+      Caption = 'Berechnung'
       Category = 0
-      Hint = 'Berechne Stunden'
+      Hint = 'Berechnung'
       Visible = ivAlways
-      OnClick = btn_CalcClick
+      ButtonStyle = bsDropDown
+      DropDownMenu = ppm_Calc
       LargeImageIndex = 12
       Width = 100
     end
@@ -1780,95 +1773,132 @@ object frm_ZE: Tfrm_ZE
       LargeImageIndex = 17
       Width = 100
     end
-    object pmbtn_Tag: TdxBarButton
+    object ppmbtn_CalcAll: TdxBarButton
+      Caption = 'Alles'
+      Category = 0
+      Hint = 'Alles'
+      Visible = ivAlways
+      OnClick = ppmbtn_CalcAllClick
+    end
+    object ppmbtn_ViewTag: TdxBarButton
       Tag = 1
       Caption = 'Tag'
       Category = 1
       Visible = ivAlways
-      OnClick = pmbtn_TagClick
+      OnClick = ppmbtn_ViewTagClick
     end
-    object pmbtn_Arbeitswoche: TdxBarButton
+    object ppmbtn_ViewArbeitswoche: TdxBarButton
       Tag = 2
       Caption = 'Arbeitswoche'
       Category = 1
       Visible = ivAlways
-      OnClick = pmbtn_ArbeitswocheClick
+      OnClick = ppmbtn_ViewArbeitswocheClick
     end
-    object pmbtn_Woche: TdxBarButton
+    object ppmbtn_ViewWoche: TdxBarButton
       Caption = 'Woche'
       Category = 1
       Visible = ivAlways
-      OnClick = pmbtn_WocheClick
+      OnClick = ppmbtn_ViewWocheClick
     end
-    object pmbtn_Monat: TdxBarButton
+    object ppmbtn_ViewMonat: TdxBarButton
       Tag = 3
       Caption = 'Monat'
       Category = 1
       Visible = ivAlways
-      OnClick = pmbtn_MonatClick
+      OnClick = ppmbtn_ViewMonatClick
     end
-    object pmbtn_Jahr: TdxBarButton
+    object ppmbtn_ViewJahr: TdxBarButton
       Tag = 4
       Caption = 'Jahr'
       Category = 1
       Visible = ivAlways
-      OnClick = pmbtn_JahrClick
+      OnClick = ppmbtn_ViewJahrClick
     end
-    object pmbtn_Agenda: TdxBarButton
+    object ppmbtn_ViewAgenda: TdxBarButton
       Tag = 5
       Caption = 'Agenda'
       Category = 1
       Visible = ivAlways
-      OnClick = pmbtn_AgendaClick
+      OnClick = ppmbtn_ViewAgendaClick
     end
-    object pmbtn_Planung: TdxBarButton
+    object ppmbtn_ViewPlanung: TdxBarButton
       Tag = 6
       Caption = 'Planung'
       Category = 1
       Visible = ivAlways
-      OnClick = pmbtn_PlanungClick
+      OnClick = ppmbtn_ViewPlanungClick
     end
-    object pmbtn_Ganzertag: TdxBarButton
+    object ppmbtn_ViewGanzertag: TdxBarButton
       Tag = 7
       Caption = 'GanzerTag'
       Category = 1
       Visible = ivAlways
-      OnClick = pmbtn_GanzertagClick
+      OnClick = ppmbtn_ViewGanzertagClick
     end
-    object pmmbtn_Tagesansicht: TdxBarButton
+    object ppmbtn_PrintTagesansicht: TdxBarButton
       Caption = 'Tagesansicht'
       Category = 1
       Visible = ivAlways
       ImageIndex = 0
-      OnClick = pmmbtn_TagesansichtClick
+      OnClick = ppmbtn_PrintTagesansichtClick
     end
-    object pmmbtn_Wochenansicht: TdxBarButton
+    object ppmbtn_PrintWochenansicht: TdxBarButton
       Caption = 'Wochenansicht'
       Category = 1
       Visible = ivAlways
       ImageIndex = 0
-      OnClick = pmmbtn_WochenansichtClick
+      OnClick = ppmbtn_PrintWochenansichtClick
     end
-    object pmmbtn_Monatsansicht: TdxBarButton
+    object ppmbtn_PrintMonatsansicht: TdxBarButton
       Caption = 'Monatsansicht'
       Category = 1
       Visible = ivAlways
       ImageIndex = 0
-      OnClick = pmmbtn_MonatsansichtClick
+      OnClick = ppmbtn_PrintMonatsansichtClick
     end
-    object pmmbtn_Jahresansicht: TdxBarButton
+    object ppmbtn_PrintJahresansicht: TdxBarButton
       Caption = 'Jahresansicht'
       Category = 1
       Visible = ivAlways
       ImageIndex = 0
-      OnClick = pmmbtn_JahresansichtClick
+      OnClick = ppmbtn_PrintJahresansichtClick
     end
-    object pmmbtn_Agenda: TdxBarButton
+    object ppmbtn_PrintAgenda: TdxBarButton
       Caption = 'Agenda'
       Category = 1
       Visible = ivAlways
       ImageIndex = 0
-      OnClick = pmmbtn_AgendaClick
+      OnClick = ppmbtn_PrintAgendaClick
+    end
+    object ppmbtn_CalcDay: TdxBarButton
+      Caption = 'Tag'
+      Category = 1
+      Visible = ivAlways
+      OnClick = ppmbtn_CalcDayClick
+    end
+    object ppmbtn_CalcMonth: TdxBarButton
+      Caption = 'Monat'
+      Category = 1
+      Visible = ivAlways
+      OnClick = ppmbtn_CalcMonthClick
+    end
+    object ppmbtn_CalcYear: TdxBarButton
+      Caption = 'Jahr'
+      Category = 1
+      Visible = ivAlways
+      OnClick = ppmbtn_CalcYearClick
+    end
+    object ppmbtn_ReportMonth: TdxBarButton
+      Caption = 'Monatsbericht'
+      Category = 1
+      Visible = ivAlways
+      OnClick = ppmbtn_ReportMonthClick
+    end
+    object ppmbtn_ReportYear: TdxBarButton
+      Caption = 'Jahresbericht'
+      Category = 1
+      Visible = ivAlways
+      OnClick = ppmbtn_ReportYearClick
     end
   end
   object imglst_32x32: TcxImageList
@@ -1876,7 +1906,7 @@ object frm_ZE: Tfrm_ZE
     Height = 32
     Width = 32
     FormatVersion = 1
-    DesignInfo = 24118126
+    DesignInfo = 3670486
     ImageInfo = <
       item
         ImageClass = 'TBitmap'
@@ -3971,43 +4001,43 @@ object frm_ZE: Tfrm_ZE
     FieldNames.ReminderMinutesBeforeStart = 'ReminderMinutesBeforeStart'
     FieldNames.ResourceID = 'ID_Benutzer'
     FieldNames.Start = 'Start'
-    Left = 179
-    Top = 242
+    Left = 323
+    Top = 58
   end
   object ppm_Views: TdxBarPopupMenu
     BarManager = brmgr_Main
     ItemLinks = <
       item
         Visible = True
-        ItemName = 'pmbtn_Tag'
+        ItemName = 'ppmbtn_ViewTag'
       end
       item
         Visible = True
-        ItemName = 'pmbtn_Arbeitswoche'
+        ItemName = 'ppmbtn_ViewArbeitswoche'
       end
       item
         Visible = True
-        ItemName = 'pmbtn_Woche'
+        ItemName = 'ppmbtn_ViewWoche'
       end
       item
         Visible = True
-        ItemName = 'pmbtn_Monat'
+        ItemName = 'ppmbtn_ViewMonat'
       end
       item
         Visible = True
-        ItemName = 'pmbtn_Jahr'
+        ItemName = 'ppmbtn_ViewJahr'
       end
       item
         Visible = True
-        ItemName = 'pmbtn_Agenda'
+        ItemName = 'ppmbtn_ViewAgenda'
       end
       item
         Visible = True
-        ItemName = 'pmbtn_Planung'
+        ItemName = 'ppmbtn_ViewPlanung'
       end
       item
         Visible = True
-        ItemName = 'pmbtn_Ganzertag'
+        ItemName = 'ppmbtn_ViewGanzertag'
       end>
     UseOwnFont = False
     Left = 768
@@ -4050,38 +4080,38 @@ object frm_ZE: Tfrm_ZE
     Left = 952
     Top = 352
   end
-  object dxBarPopupMenu1: TdxBarPopupMenu
+  object ppm_printScheduler: TdxBarPopupMenu
     BarManager = brmgr_Main
     ItemLinks = <
       item
         Visible = True
-        ItemName = 'pmmbtn_Tagesansicht'
+        ItemName = 'ppmbtn_PrintTagesansicht'
       end
       item
         Visible = True
-        ItemName = 'pmmbtn_Wochenansicht'
+        ItemName = 'ppmbtn_PrintWochenansicht'
       end
       item
         Visible = True
-        ItemName = 'pmmbtn_Monatsansicht'
+        ItemName = 'ppmbtn_PrintMonatsansicht'
       end
       item
         Visible = True
-        ItemName = 'pmmbtn_Jahresansicht'
+        ItemName = 'ppmbtn_PrintJahresansicht'
       end
       item
         Visible = True
-        ItemName = 'pmmbtn_Agenda'
+        ItemName = 'ppmbtn_PrintAgenda'
       end>
     UseOwnFont = False
     Left = 585
     Top = 557
     PixelsPerInch = 96
   end
-  object cxImageList1: TcxImageList
+  object imglst_16x16: TcxImageList
     SourceDPI = 96
     FormatVersion = 1
-    DesignInfo = 23069248
+    DesignInfo = 3670432
     ImageInfo = <
       item
         ImageClass = 'TdxPNGImage'
@@ -4125,14 +4155,14 @@ object frm_ZE: Tfrm_ZE
     object riEvent: TcxEditRepositoryRichItem
     end
   end
-  object compPrint_Cal: TdxComponentPrinter
-    CurrentLink = compPrint_CalLink1
+  object comp_PrintCal: TdxComponentPrinter
+    CurrentLink = comp_PrintCalLink1
     PreviewOptions.WindowState = wsMaximized
     Version = 0
     Left = 1067
     Top = 152
     PixelsPerInch = 96
-    object compPrint_CalLink1: TcxSchedulerReportLink
+    object comp_PrintCalLink1: TcxSchedulerReportLink
       Component = sched_Kalender
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
@@ -4155,7 +4185,7 @@ object frm_ZE: Tfrm_ZE
       PixelsPerInch = 96
       BuiltInReportLink = True
     end
-    object compPrint_CalLink2: TdxGridReportLink
+    object comp_PrintCalLink2: TdxGridReportLink
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -4174,5 +4204,46 @@ object frm_ZE: Tfrm_ZE
       PixelsPerInch = 96
       BuiltInReportLink = True
     end
+  end
+  object ppm_Calc: TdxBarPopupMenu
+    BarManager = brmgr_Main
+    Images = dm_PCM.imglst_16x16
+    ItemLinks = <
+      item
+        Visible = True
+        ItemName = 'ppmbtn_CalcDay'
+      end
+      item
+        Visible = True
+        ItemName = 'ppmbtn_CalcMonth'
+      end
+      item
+        Visible = True
+        ItemName = 'ppmbtn_CalcYear'
+      end
+      item
+        Visible = True
+        ItemName = 'ppmbtn_CalcAll'
+      end>
+    UseOwnFont = False
+    Left = 592
+    Top = 448
+    PixelsPerInch = 96
+  end
+  object ppm_Reports: TdxBarPopupMenu
+    BarManager = brmgr_Main
+    ItemLinks = <
+      item
+        Visible = True
+        ItemName = 'ppmbtn_ReportMonth'
+      end
+      item
+        Visible = True
+        ItemName = 'ppmbtn_ReportYear'
+      end>
+    UseOwnFont = False
+    Left = 584
+    Top = 264
+    PixelsPerInch = 96
   end
 end

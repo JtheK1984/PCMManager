@@ -47,7 +47,7 @@ type
     FShowModal: boolean;
   public
     { Public-Deklarationen }
-    function Execute(const AShowModal: Boolean; out AMonat, AJahr: integer) : boolean;
+    function Execute(const AShowModal: Boolean; out AMonat, AJahr: integer) : boolean; Overload;
   end;
   {$EndRegion Type}
 var

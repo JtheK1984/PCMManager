@@ -26,7 +26,8 @@ type
     FShowModal: boolean;
   public
     { Public-Deklarationen }
-    function Execute(const AShowModal: Boolean; out AMonat, AJahr: integer) : boolean;
+    function Execute(const AShowModal: Boolean; out AMonat, AJahr: integer) : boolean; overload;
+    function Execute(const AShowModal,AOnlyYear: Boolean; out AJahr: integer) : boolean; overload;
   end;
 
 var
@@ -52,6 +53,36 @@ begin
     if ModalResult = mrOK then
     begin
       AMonat:= cbx_PCManagerChooseDate_Month.ItemIndex + 1;
+      AJahr:= StrToInt(cbx_PCManagerChooseDate_Year.Properties.Items[cbx_PCManagerChooseDate_Year.ItemIndex]);
+      result:= true;
+    end;
+  end;
+end;
+function Tfrm_PCManagerChooseDate.Execute(const AShowModal,AOnlyYear: Boolean;out AJahr: integer) : boolean;
+begin
+  if AOnlyYear then
+  begin
+    lbl_PCManagerChooseDate_Month.Visible:= false;
+    cbx_PCManagerChooseDate_Month.Visible:= false;
+    lbl_PCManagerChooseDate_Year.Left:= 8;
+    cbx_PCManagerChooseDate_Year.left:= 8;
+    cbx_PCManagerChooseDate_Year.Width:= 258;
+  end
+  else begin
+    lbl_PCManagerChooseDate_Month.Visible:= true;
+    cbx_PCManagerChooseDate_Month.Visible:= true;
+    lbl_PCManagerChooseDate_Year.Left:= 140;
+    cbx_PCManagerChooseDate_Year.left:= 140;
+    cbx_PCManagerChooseDate_Year.Width:= 126;
+  end;
+  Ajahr:= StrToInt(cbx_PCManagerChooseDate_Year.properties.Items[cbx_PCManagerChooseDate_Year.ItemIndex]);
+  FShowModal := AShowModal;
+  result:= true;
+  if FShowModal then
+  begin
+    ShowModal;
+    if ModalResult = mrOK then
+    begin
       AJahr:= StrToInt(cbx_PCManagerChooseDate_Year.Properties.Items[cbx_PCManagerChooseDate_Year.ItemIndex]);
       result:= true;
     end;

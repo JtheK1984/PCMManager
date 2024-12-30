@@ -1,14 +1,26 @@
-unit PCMManager.Helper.Calendar.ICAL; // V1.11
-
-/// //This class imports a iCal calander file into a list of objects
+unit PCMManager.Helper.Calendar.ICAL;
 
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, WideStrings, AnsiStrings, WideStrUtils;
-
+  {$Region Uses}
+  AnsiStrings,
+  Classes,
+  Controls,
+  Dialogs,
+  Forms,
+  Graphics,
+  Math,
+  Messages,
+  StdCtrls,
+  SysUtils,
+  Variants,
+  WideStrings,
+  WideStrUtils,
+  Windows;
+  {$EndRegion Uses}
 Type
+  {$Region Type}
   riCalItem = Class
   Public
     UID: String;
@@ -24,8 +36,6 @@ Type
     constructor createIcal;
     destructor DestroyIcal;
   End;
-
-Type
   TiCalPackage = Class
   Private
     aChanged: Boolean;
@@ -52,13 +62,9 @@ Type
       i: Integer = 1); Overload;
     destructor Destroy; override;
   end;
-
+  {$EndRegion Type}
 implementation
-
-uses Math;
-
 { TiCalPackage }
-
 constructor TiCalPackage.create(Filename: string; Parent: TWinControl);
 var
   Reader: TStreamReader;
@@ -83,7 +89,6 @@ begin
   end;
   Reader.Free;
 end;
-
 function TiCalPackage.convertDate(iCalDate: String): TDateTime;
 Var
   s, t: String;
