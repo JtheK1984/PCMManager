@@ -99,6 +99,8 @@ object frm_ZE: Tfrm_ZE
     object ts_Grid: TcxTabSheet
       Caption = 'Grid'
       ImageIndex = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grd_Booking: TcxGrid
         Left = 0
         Top = 0
@@ -315,7 +317,7 @@ object frm_ZE: Tfrm_ZE
       ImageIndex = 2
       object grpbx_Booking: TcxGroupBox
         Left = 0
-        Top = 23
+        Top = 21
         Align = alTop
         Caption = 'Online-Buchung'
         TabOrder = 0

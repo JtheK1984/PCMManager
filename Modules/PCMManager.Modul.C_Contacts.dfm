@@ -43,19 +43,18 @@
     Properties.TabSlants.Kind = skCutCorner
     Properties.TabWidth = 100
     OnChange = pc_Kontakte_KontakteChange
-    ClientRectBottom = 894
-    ClientRectLeft = 2
-    ClientRectRight = 1594
-    ClientRectTop = 28
+    ClientRectBottom = 900
+    ClientRectRight = 1600
+    ClientRectTop = 25
     object cxTabSheet1: TcxTabSheet
       Caption = 'Kontakte'
       ImageIndex = 64
       object pc_Kontakte_Kontakte: TcxPageControl
         AlignWithMargins = True
         Left = 0
-        Top = 63
-        Width = 1592
-        Height = 803
+        Top = 58
+        Width = 1600
+        Height = 817
         Margins.Left = 0
         Margins.Top = 0
         Margins.Right = 0
@@ -65,25 +64,24 @@
         ParentBackground = False
         ParentColor = False
         TabOrder = 0
-        Properties.ActivePage = ts_B_Kontakte_Kontakte_Detail
+        Properties.ActivePage = ts_A_Kontakte_Kontakte_Suche
         Properties.CustomButtons.Buttons = <>
         Properties.Images = dm_PCM.imglst_16x16
         Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
         Properties.TabSlants.Kind = skCutCorner
         Properties.TabWidth = 100
         OnChange = pc_Kontakte_KontakteChange
-        ClientRectBottom = 797
-        ClientRectLeft = 2
-        ClientRectRight = 1586
-        ClientRectTop = 28
+        ClientRectBottom = 817
+        ClientRectRight = 1600
+        ClientRectTop = 25
         object ts_A_Kontakte_Kontakte_Suche: TcxTabSheet
           Caption = 'Suche'
           ImageIndex = 25
           object grd_Kontaktesuche: TcxGrid
             Left = 0
             Top = 148
-            Width = 1584
-            Height = 621
+            Width = 1600
+            Height = 644
             Align = alClient
             BevelInner = bvNone
             BevelOuter = bvNone
@@ -397,7 +395,7 @@
             Caption = 'Filterkriterien'
             TabOrder = 0
             Height = 109
-            Width = 1584
+            Width = 1600
             object cmbbx_KontaktSucheArt: TcxComboBox
               Left = 100
               Top = 75
@@ -694,7 +692,7 @@
             Style.BorderStyle = ebsNone
             TabOrder = 1
             Height = 39
-            Width = 1584
+            Width = 1600
             object btn_kontaktDeletefilter: TcxButton
               Left = 151
               Top = 6
@@ -734,11 +732,14 @@
         object ts_B_Kontakte_Kontakte_Detail: TcxTabSheet
           Caption = 'Kontakte'
           ImageIndex = 11
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object pc_Kontakte_Kontakte_Adressen: TcxPageControl
             Left = 394
             Top = 0
-            Width = 1190
-            Height = 769
+            Width = 1206
+            Height = 792
             Align = alClient
             BiDiMode = bdLeftToRight
             Color = clBtnFace
@@ -751,21 +752,23 @@
             Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
             Properties.TabSlants.Kind = skCutCorner
             Properties.TabWidth = 100
-            ClientRectBottom = 763
-            ClientRectLeft = 2
-            ClientRectRight = 1184
-            ClientRectTop = 27
+            ClientRectBottom = 792
+            ClientRectRight = 1206
+            ClientRectTop = 24
             object ts_A_Zusatz: TcxTabSheet
               Caption = 'Zusatz'
               ImageIndex = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object grpbx_KontakteZusatzSonstige: TcxGroupBox
                 Left = 0
                 Top = 187
                 Align = alClient
                 Caption = 'Sonstige Informationen'
                 TabOrder = 1
-                Height = 549
-                Width = 1182
+                Height = 581
+                Width = 1206
                 object mem_KontakteZusatzSonstige: TcxDBMemo
                   Left = 8
                   Top = 24
@@ -792,7 +795,7 @@
                 Caption = 'Zusatzinformation'
                 TabOrder = 0
                 Height = 187
-                Width = 1182
+                Width = 1206
                 object lbl_KontaktZusatzFamilienstand: TcxLabel
                   Left = 184
                   Top = 91
@@ -1039,8 +1042,8 @@
                 Align = alClient
                 Caption = 'Kontakdaten Gesch'#228'ftlich'
                 TabOrder = 0
-                Height = 736
-                Width = 1182
+                Height = 768
+                Width = 1206
                 object btn_KontaktGeschaeftlichSendMail: TcxButton
                   Left = 627
                   Top = 236
@@ -1403,8 +1406,8 @@
                 Align = alClient
                 Caption = 'Messenger / Soziale Netzwerke'
                 TabOrder = 0
-                Height = 736
-                Width = 1182
+                Height = 768
+                Width = 1206
                 object edt_KontakteSonstigesFacebook: TcxDBTextEdit
                   Left = 113
                   Top = 21
@@ -1506,8 +1509,8 @@
                 Align = alClient
                 Caption = 'Zeiterfassung'
                 TabOrder = 0
-                Height = 736
-                Width = 1182
+                Height = 768
+                Width = 1206
                 object lbl_Sollstunden: TcxLabel
                   Left = 8
                   Top = 21
@@ -1747,7 +1750,7 @@
             Align = alLeft
             Caption = 'Kontakt'
             TabOrder = 0
-            Height = 769
+            Height = 792
             Width = 394
             object btn_KontaktEmail1Send: TcxButton
               Left = 364
@@ -2292,8 +2295,8 @@
       object dxBarDockControl1: TdxBarDockControl
         Left = 0
         Top = 0
-        Width = 1592
-        Height = 63
+        Width = 1600
+        Height = 58
         Align = dalTop
         BarManager = brmgr_Contacts
       end

@@ -720,6 +720,7 @@ end;
 procedure Tfrm_ZE.btn_userClick(Sender: TObject);
 begin
   Application.CreateForm(Tfrm_Contact,frm_Contact);
+
   frm_Contact.ShowModal;
 end;
 procedure Tfrm_ZE.btn_FeiertageClick(Sender: TObject);
