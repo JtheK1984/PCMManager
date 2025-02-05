@@ -89,7 +89,7 @@ object frm_ZE: Tfrm_ZE
     Height = 552
     Align = alClient
     TabOrder = 1
-    Properties.ActivePage = ts_Kalender
+    Properties.ActivePage = ts_Online
     Properties.CustomButtons.Buttons = <>
     Properties.HideTabs = True
     Properties.HotTrack = True
@@ -99,8 +99,6 @@ object frm_ZE: Tfrm_ZE
     object ts_Grid: TcxTabSheet
       Caption = 'Grid'
       ImageIndex = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object grd_Booking: TcxGrid
         Left = 0
         Top = 0
@@ -317,10 +315,11 @@ object frm_ZE: Tfrm_ZE
       ImageIndex = 2
       object grpbx_Booking: TcxGroupBox
         Left = 0
-        Top = 21
+        Top = 23
         Align = alTop
         Caption = 'Online-Buchung'
         TabOrder = 0
+        ExplicitTop = 21
         Height = 552
         Width = 1157
         object btn_BookingWorkBegin: TcxButton
@@ -3977,14 +3976,12 @@ object frm_ZE: Tfrm_ZE
     Reminders.Active = False
     Reminders.ReminderWindowLookAndFeel.NativeStyle = False
     Resources.Items = <>
-    Resources.DataSource = dm_PCM.ds_Kalender_Benutzer
     Resources.ResourceID = 'ID'
     Resources.ResourceName = 'Name'
     CustomFields = <
       item
         FieldName = 'KalenderHint'
       end>
-    DataSource = dm_PCM.ds_Kalender_Kalender
     FieldNames.Caption = 'Caption'
     FieldNames.EventType = 'EventType'
     FieldNames.Finish = 'Finish'

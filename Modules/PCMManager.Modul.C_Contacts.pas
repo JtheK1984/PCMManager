@@ -609,7 +609,7 @@ begin
     tsVCF.Text := AnsiReplaceStr(tsVCF.Text, #13#10#32, '');
     tsVCF.Text := AnsiReplaceStr(tsVCF.Text, #13#10#9, '');
     tsVCF.SaveToFile('C:\Temp\test');
-    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_KontakteImportieren), tsVCF.Count,ClientWidth, Height);
+    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_KontakteImportieren), tsVCF.Count,417, 65);
     for i := 0 to tsVCF.Count-1 do
     begin
       Application.ProcessMessages;

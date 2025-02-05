@@ -873,7 +873,7 @@ begin
     dm_PCM.qry_work1.ParamByName('Von').AsDateTime := datTimVon;
     dm_PCM.qry_work1.ParamByName('Bis').AsDateTime := datTimbis;
     dm_PCM.qry_work1.Open;
-    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_Feiertageintragen), dm_PCM.qry_work1.RecordCount, ClientWidth, Height);
+    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_Feiertageintragen), dm_PCM.qry_work1.RecordCount, 417, 65);
     Application.ProcessMessages;
     Screen.Cursor := crHourGlass;
     while not dm_PCM.qry_work1.Eof do

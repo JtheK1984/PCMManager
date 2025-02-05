@@ -367,15 +367,17 @@ type
     procedure ppmbtn_SysteminfoClick(Sender: TObject);
   private
     { Private-Deklarationen }
+
+  public
+    { Public-Deklarationen }
+    FOptions: TIC_Options;
+    bAbmelden: Boolean;
     Modules: TCollection;
     procedure LoadData;
     procedure CloseModules;
     procedure Abmelden;
     function CurrentModule: TForm;
-  public
-    { Public-Deklarationen }
-    FOptions: TIC_Options;
-    bAbmelden: Boolean;
+    procedure RegisterNavBarItems;
   end;
   {$EndRegion Types}
 var
@@ -407,7 +409,7 @@ uses
   PCMManager.Modul.E_Mail,
   PCMManager.Modul.F_Passwort,
   PCMManager.Modul.G_Finanzen,
-  PCMManager.Modul.H_ZE;
+  PCMManager.Modul.H_ZE, PCM.splash;
   {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -733,6 +735,63 @@ begin
   GetCalOptions;
   SetCharts;
 end;
+procedure Tfrm_PCM_Main.RegisterNavBarItems;
+  procedure RegisterForm(SideBarItemName: string; FormClass: TFormClass; Instance: Pointer; Right: Integer);
+  var
+    NewModule: TModule;
+    Item: TdxNavBarItem;
+  begin
+    Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(SideBarItemName).index];
+    if Assigned(Item) then
+    begin
+      NewModule := TModule(Modules.Add);
+      Item.Tag := NewModule.ID;
+      NewModule.FormClass := FormClass;
+      NewModule.Instance := Instance;
+      NewModule.Right := Right;
+      NewModule.ModuleName := SideBarItemName;
+      NewModule.ImageIndex := Item.SmallImageIndex;
+    end;
+  end;
+  procedure RegisterEvent(SideBarItemName: string; Event: TMethod);
+  var
+    NewModule: TModule;
+    Item: TdxNavBarItem;
+  begin
+    Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(SideBarItemName).index];
+    if Assigned(Item) then
+    begin
+      NewModule := TModule(Modules.Add);
+      Item.Tag := NewModule.ID;
+      NewModule.Event := Event;
+      NewModule.ModuleName := SideBarItemName;
+    end
+  end;
+begin
+  Modules.Clear;
+  RegisterForm('iBenutzerverwaltung', Tfrm_User, @frm_User, 1);
+  RegisterForm('iKonfiguration', Tfrm_config, @frm_config, 1);
+  RegisterForm('iDesign', Tfrm_Design, @frm_Design, 1);
+  RegisterForm('iKontakte',Tfrm_Contact, @frm_Contact, 1);
+  RegisterForm('iKalender',Tfrm_Calendar, @frm_Calendar, 1);
+  RegisterForm('iAufgaben',Tfrm_Calendar, @frm_Calendar, 1);
+  RegisterForm('iJira',Tfrm_Calendar, @frm_Calendar, 1);
+  RegisterForm('iStundenplan',Tfrm_Calendar, @frm_Calendar, 1);
+  RegisterForm('iEMails',Tfrm_mail, @frm_mail, 1);
+  RegisterForm('iZeiterfassung',Tfrm_ZE, @frm_ZE, 1);
+  RegisterForm('iPasswoerter',Tfrm_password, @frm_password, 1);
+  RegisterForm('iSerials',Tfrm_password, @frm_password, 1);
+  RegisterForm('iMonatsuebersicht',Tfrm_finanzen, @frm_finanzen, 1);
+  RegisterForm('iEinnahmen',Tfrm_finanzen, @frm_finanzen, 1);
+  RegisterForm('iAusgaben',Tfrm_finanzen, @frm_finanzen, 1);
+  RegisterForm('iBelege',Tfrm_finanzen, @frm_finanzen, 1);
+  RegisterForm('iGutscheine',Tfrm_finanzen, @frm_finanzen, 1);
+  RegisterForm('iSysteminfo',Tfrm_PCM_System, @frm_PCM_System, 1);
+  RegisterForm('iInfo',Tfrm_PCM_InfoApp, @frm_PCM_InfoApp, 1);
+  RegisterForm('iHandbuch',Tfrm_Handbuch, @frm_Handbuch, 1);
+  RegisterEvent('iAbmelden', Abmelden);
+  RegisterEvent('iBeenden', Close);
+end;
 {$EndRegion}
 ////////////////////////////////////////////////////////////////////////////////
 // Toolbar                                                                    //
@@ -989,7 +1048,7 @@ begin
         begin
           Screen.Cursor := crHourglass;
           try
-            ShowWaitForm(TForm(Self), PWideChar('Formular wird geladen'), 1,ClientWidth, Height);
+            ShowWaitForm(TForm(Self), PWideChar('Formular wird geladen'), 1,417, 65);
             Application.ProcessMessages;
             WaitFormStep;
             TForm(Module.Instance^) := Module.FormClass.Create(Nil);
@@ -1133,242 +1192,6 @@ begin
   BarResize;
 end;
 procedure Tfrm_PCM_Main.FormShow(Sender: TObject);
-  procedure RegisterForm(SideBarItemName: string; FormClass: TFormClass; Instance: Pointer; Right: Integer);
-    var
-      NewModule: TModule;
-      Item: TdxNavBarItem;
-    begin
-      Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(SideBarItemName).index];
-      if Assigned(Item) then
-      begin
-        NewModule := TModule(Modules.Add);
-        Item.Tag := NewModule.ID;
-        NewModule.FormClass := FormClass;
-        NewModule.Instance := Instance;
-        NewModule.Right := Right;
-        NewModule.ModuleName := SideBarItemName;
-        NewModule.ImageIndex := Item.SmallImageIndex;
-      end;
-    end;
-  procedure RegisterEvent(SideBarItemName: string; Event: TMethod);
-  var
-    NewModule: TModule;
-    Item: TdxNavBarItem;
-  begin
-    Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(SideBarItemName).index];
-    if Assigned(Item) then
-    begin
-      NewModule := TModule(Modules.Add);
-      Item.Tag := NewModule.ID;
-      NewModule.Event := Event;
-      NewModule.ModuleName := SideBarItemName;
-    end
-  end;
-  procedure RegisterNavBarItems;
-  begin
-    Modules.Clear;
-    RegisterForm('iBenutzerverwaltung', Tfrm_User, @frm_User, 1);
-    RegisterForm('iKonfiguration', Tfrm_config, @frm_config, 1);
-    RegisterForm('iDesign', Tfrm_Design, @frm_Design, 1);
-    RegisterForm('iKontakte',Tfrm_Contact, @frm_Contact, 1);
-    RegisterForm('iKalender',Tfrm_Calendar, @frm_Calendar, 1);
-    RegisterForm('iAufgaben',Tfrm_Calendar, @frm_Calendar, 1);
-    RegisterForm('iJira',Tfrm_Calendar, @frm_Calendar, 1);
-    RegisterForm('iStundenplan',Tfrm_Calendar, @frm_Calendar, 1);
-    RegisterForm('iEMails',Tfrm_mail, @frm_mail, 1);
-    RegisterForm('iZeiterfassung',Tfrm_ZE, @frm_ZE, 1);
-    RegisterForm('iPasswoerter',Tfrm_password, @frm_password, 1);
-    RegisterForm('iSerials',Tfrm_password, @frm_password, 1);
-    RegisterForm('iMonatsuebersicht',Tfrm_finanzen, @frm_finanzen, 1);
-    RegisterForm('iEinnahmen',Tfrm_finanzen, @frm_finanzen, 1);
-    RegisterForm('iAusgaben',Tfrm_finanzen, @frm_finanzen, 1);
-    RegisterForm('iBelege',Tfrm_finanzen, @frm_finanzen, 1);
-    RegisterForm('iGutscheine',Tfrm_finanzen, @frm_finanzen, 1);
-    RegisterForm('iSysteminfo',Tfrm_PCM_System, @frm_PCM_System, 1);
-    RegisterForm('iInfo',Tfrm_PCM_InfoApp, @frm_PCM_InfoApp, 1);
-    RegisterForm('iHandbuch',Tfrm_Handbuch, @frm_Handbuch, 1);
-    RegisterEvent('iAbmelden', Abmelden);
-    RegisterEvent('iBeenden', Close);
-  end;
-  procedure InitializeRights;
-  begin
-    dm_PCM.qry_Work.SQL.Text:=  ASSQL_GetAllRights[dm_PCM.iDBType];
-    dm_PCM.qry_Work.ParamByName('ID').AsInteger := dm_PCM.iIDBenutzerPCM;
-    dm_PCM.qry_Work.Open;
-    dm_PCM.iBenutzer:= dm_PCM.qry_Work.FieldByName('Benutzer').asInteger;
-    dm_PCM.iKonfiguration:= dm_PCM.qry_Work.FieldByName('Konfiguration').asInteger;
-    dm_PCM.iDesign:= dm_PCM.qry_Work.FieldByName('Design').asInteger;
-    dm_PCM.iKontakte:= dm_PCM.qry_Work.FieldByName('Kontakte').asInteger;
-    dm_PCM.iKalender:= dm_PCM.qry_Work.FieldByName('Kalender').asInteger;
-    dm_PCM.iStundenplan:= dm_PCM.qry_Work.FieldByName('Stundenplan').asInteger;
-    dm_PCM.iEmail:= dm_PCM.qry_Work.FieldByName('Email').asInteger;
-    dm_PCM.iPassword:= dm_PCM.qry_Work.FieldByName('Password').asInteger;
-    dm_PCM.iSerials:= dm_PCM.qry_Work.FieldByName('Serials').asInteger;
-    dm_PCM.iMonatsuebersicht:= dm_PCM.qry_Work.FieldByName('Monatsuebersicht').asInteger;
-    dm_PCM.iVerfuegung:= dm_PCM.qry_Work.FieldByName('Verfuegung').asInteger;
-    dm_PCM.iEinnahmen:= dm_PCM.qry_Work.FieldByName('Einnahmen').asInteger;
-    dm_PCM.iAusgaben:= dm_PCM.qry_Work.FieldByName('Ausgaben').asInteger;
-    dm_PCM.qry_Work.Close;
-
-    // Benutzerverwaltung / Kein Recht
-    if (dm_PCM.iBenutzer = 0) and (dm_PCM.iKonfiguration = 0) and (dm_PCM.iDesign = 0) then
-    begin
-      navbrgrp_Optionen.Visible:= false;
-      iBenutzerverwaltung.Visible:= false;
-      iKonfiguration.Visible:= false;
-    end;
-
-    // Benutzerverwaltung / Lesen / Ändern / Vollzugriff
-    case dm_PCM.iBenutzer of
-    0: iBenutzerverwaltung.Visible:= false;
-    1,2,3:
-      begin
-        navbrgrp_Optionen.Visible:= true;
-        iBenutzerverwaltung.Visible:= true;
-      end;
-    end;
-
-    // Optionen / Lesen / Ändern / Vollzugriff
-    case dm_PCM.iKonfiguration of
-    0: iKonfiguration.Visible:= false;
-    1,2,3:
-      begin
-        navbrgrp_Optionen.Visible:= true;
-        iKonfiguration.Visible:= true;
-      end;
-    end;
-
-    // Kontakte / Kein Recht
-    case dm_PCM.iKontakte of
-    0: navbrgrp_Kontake.Visible:= false;
-    // Kontakte / Lesen / Ändern / Vollzugriff
-    1,2,3: navbrgrp_Kontake.Visible:= true;
-    end;
-
-    // Kalender / Stundenplan / Mail
-    if (dm_PCM.iKalender = 0) and (dm_PCM.iStundenplan = 0) and (dm_PCM.iEmail = 0) then
-    begin
-      navbrgrp_Kalender.Visible:= false;
-      iKalender.Visible:= false;
-      iAufgaben.Visible:= false;
-      iStundenplan.Visible:= false;
-    end;
-    // Kalender / Kein Recht
-    case dm_PCM.iKalender of
-    0: iKalender.Visible:= false;
-    // Kalender / Lesen / Schreiben / Vollzugriff
-    1,2,3:
-      begin
-        navbrgrp_Kalender.Visible:= true;
-        iKalender.Visible:= true;
-      end;
-    end;
-
-    // Stundenplan / Kein Recht
-    case dm_PCM.iStundenplan of
-    0: iStundenplan.Visible:= false;
-    // Stundenplan / Lesen / Schreiben / Vollzugriff
-    1,2,3:
-      begin
-        navbrgrp_Kalender.Visible:= true;
-        iStundenplan.Visible:= true;
-      end;
-    end;
-
-    // Mails / Kein Recht
-    case dm_PCM.iEmail of
-    0: iEMails.Visible:= false;
-    // Mails / Lesen / Schreiben / Vollzugriff
-    1,2,3:
-      begin
-        navbrgrp_Kalender.Visible:= true;
-        iEMails.Visible:= true;
-      end;
-    end;
-
-    // Passwörter / Serials
-    if (dm_PCM.iPassword = 0) and (dm_PCM.iSerials = 0)  then
-    begin
-      navbrgrp_Passwort.Visible:= false;
-      iPasswoerter.Visible:= false;
-      iSerials.Visible:= false;
-    end;
-
-    // Passwort / kein Recht
-    case dm_PCM.iPassword of
-    0: iPasswoerter.Visible:= false;
-    // Passwort / Lesen / Schreiben / Vollzugriff
-    1,2,3:
-      begin
-        iPasswoerter.Visible:= true;
-        navbrgrp_Passwort.Visible:= true;
-      end;
-    end;
-
-    // Serial / Kein Recht
-    case dm_PCM.iSerials of
-    0: iSerials.Visible:= false;
-    // Serials / Lesen / Schreiben / Vollzugriff
-    1,2,3:
-      begin
-        iSerials.Visible:= true;
-        navbrgrp_Passwort.Visible:= true;
-      end;
-    end;
-
-    // Finanzen / Kein Recht
-    case dm_PCM.iMonatsuebersicht of
-    0: navbrgrp_Finanzen.Visible:= false;
-    // Finanzen / Lesen / Schreiben / Vollzugriff
-    1,2,3:  navbrgrp_Finanzen.Visible:= true;
-    end;
-  end;
-  procedure LoadLanguageIni;
-  begin
-    try
-      loc_lang.LoadFromFile(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\cxLocalLang.ini');
-      loc_lang.LanguageIndex := 1;
-    except
-      on e:Exception do
-      begin
-        MessageDlg(rs_PCM_Sprachdatei, mtWarning, [mbOk], 0);
-      end
-    end;
-  end;
-  procedure CheckClientLicence;
-  begin
-    dm_PCM.bNewLiceneCheck:= false;
-    CheckLizenzNew;
-    if dm_PCm.bNewLiceneCheck = false then
-    begin
-      CheckLizenzNew;
-      if dm_PCm.bNewLiceneCheck = false then
-        Application.Terminate;
-    end;
-  end;
-  procedure CheckLogin;
-  begin
-    if not bAbmelden then
-      dm_PCM.bLogin := Autologin
-    else
-      dm_PCM.bLogin := false;
-    if not dm_PCM.bLogin then
-    begin
-      Application.CreateForm(Tfrm_PCM_Login, frm_PCM_Login);
-      dm_PCM.bLogin := frm_pcm_login.Login_User;
-      frm_PCM_Login.Free;
-    end;
-    if not dm_PCM.bLogin then
-      Application.Terminate;
-    bAbmelden:= False;
-  end;
-  procedure SetTrayMenu;
-  begin
-    Caption:= PCM_Programmname;
-    trayIC_Main.PopupMenu:= ppm_main;
-    if dm_PCM.bDemo then
-      Caption:=PCM_Programmname + rs_PCM_Demolizenz + DateTostr(dm_PCM.dtGueltig);
-  end;
 begin
   {$ifdef WIn32}
   iSprache.Visible:= false;
@@ -1383,19 +1206,15 @@ begin
   end
   else begin
   	lafCtrl_Main.SkinName:= dm_PCM.sDesign;
-    LoadLanguageIni;
+    SplashScreen := TSplashScreen.Create(nil);
+    SplashScreen.Update;
+    SplashScreen.Execute(dm_PCM.bStyle);
     if dm_PCM.bStyle then
     begin
       NavBarClick(iDesign);
     end
     else begin
-      CheckClientLicence;
-      CheckLogin;
-      InitializeRights;
-      LoadData;
       WriteLog(PCM_Logname,rs_PCM_Start,0);
-      SetTrayMenu;
-      RegisterNavBarItems;
       if paramstr(1) = '/jira'  then
         iJira.Visible:= true;
     end;

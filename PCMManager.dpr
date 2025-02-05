@@ -43,9 +43,16 @@ uses
   PCMManager.Modul.H_ZE.Monatswerte in 'Modules\PCMManager.Modul.H_ZE.Monatswerte.pas' {frm_monatswerte},
   PCMManager.Modul.H_ZE.Feiertage in 'Modules\PCMManager.Modul.H_ZE.Feiertage.pas' {frm_Feiertage},
   PCMManager.Modul.H_ZE.Fehltage.Edit in 'Modules\PCMManager.Modul.H_ZE.Fehltage.Edit.pas' {frm_Fehltageeintragen},
-  PCMManager.Modul.H_ZE.Fehltage in 'Modules\PCMManager.Modul.H_ZE.Fehltage.pas' {frm_Fehltage};
+  PCMManager.Modul.H_ZE.Fehltage in 'Modules\PCMManager.Modul.H_ZE.Fehltage.pas' {frm_Fehltage},
+  PCM.splash in 'PCM.splash.pas' {SplashScreen};
 
 {$R *.res}
+
+{$IFDEF WIN64}
+  {$R 'Versioninfo64.res'}
+{$else}
+  {$R 'Versioninfo32.res'}
+{$ENDIF}
 
 {$SetPEOptFlags IMAGE_DLLCHARACTERISTICS_TERMINAL_SERVER_AWARE}
 {$SetPEFlags IMAGE_FILE_REMOVABLE_RUN_FROM_SWAP or IMAGE_FILE_NET_RUN_FROM_SWAP or IMAGE_FILE_LARGE_ADDRESS_AWARE}

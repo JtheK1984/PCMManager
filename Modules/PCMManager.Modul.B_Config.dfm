@@ -967,6 +967,7 @@ object frm_Config: Tfrm_Config
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 0
+            ExplicitTop = 59
             Height = 35
             Width = 1260
             object lbl_AufgabenPrioBezeichnung: TcxLabel
@@ -1459,6 +1460,7 @@ object frm_Config: Tfrm_Config
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 0
+            ExplicitTop = 59
             Height = 64
             Width = 1260
             object colcmbbx_StundenplanConfig_FontColor: TcxDBColorComboBox
@@ -1849,6 +1851,7 @@ object frm_Config: Tfrm_Config
             PanelStyle.Active = True
             Style.BorderStyle = ebsNone
             TabOrder = 0
+            ExplicitTop = -4
             Height = 234
             Width = 1260
             object btn_EmailConfig_Test: TcxButton

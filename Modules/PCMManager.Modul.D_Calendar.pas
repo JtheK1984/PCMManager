@@ -1169,7 +1169,7 @@ begin
         dm_PCM.qry_work1.ParamByName('Kalender').AsString:= sKalender;
         dm_PCM.qry_work1.ExecSQL;
         dm_PCM.qry_work1.close;
-        ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineImportieren), alist.Count-1, ClientWidth, Height);
+        ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineImportieren), alist.Count-1, 417, 65);
         Application.ProcessMessages;
         Screen.Cursor:= crHourGlass;
         Application.ProcessMessages;
@@ -2251,7 +2251,7 @@ procedure Tfrm_Calendar.btn_CalImportOutlookClick(Sender: TObject);
     try
       objOwner := olvarNameSpace.CreateRecipient(AUser);
       olvarTermine := olvarNameSpace.GetSharedDefaultFolder(objOwner,olFolderCalendars);
-      ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineImportieren), olvarTermine.items.count, ClientWidth, Height);
+      ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineImportieren), olvarTermine.items.count, 417, 65);
       for i := 1 to olvarTermine.items.count do
       begin
         Termin:= olvarTermine.items.item[i];
@@ -2549,7 +2549,7 @@ procedure Tfrm_Calendar.btn_CalExporttoOutlookClick(Sender: TObject);
   //    end;
   //  end;
     i := 1;
-    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineLoeschen), CalendarsFolder.Items.Count, frm_PCM_main.ClientWidth, frm_PCM_main.Height);
+    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineLoeschen), CalendarsFolder.Items.Count, 417, 65);
     for iCOunt := 1 to CalendarsFolder.Items.Count do
     begin
       Application.ProcessMessages;
@@ -2584,7 +2584,7 @@ procedure Tfrm_Calendar.btn_CalExporttoOutlookClick(Sender: TObject);
 
     dm_PCM.qry_Work.sql.Text := dm_PCM.qry_Work.sql.Text + ' and mgr_Cal.ID_Benutzer IN ( ' + IntToStr(dm_PCM.iIDBenutzerPCM) + ') order by StartDatum asc';
     dm_PCM.qry_Work.Open;
-    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineImportieren), dm_PCM.qry_Work.RecordCount, frm_PCM_main.ClientWidth, frm_PCM_main.Height);
+    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineImportieren), dm_PCM.qry_Work.RecordCount, 417, 65);
     while not dm_PCM.qry_Work.eof do
     begin
   //    Inc(i2);
@@ -3470,7 +3470,7 @@ procedure Tfrm_Calendar.pmmbtn_JobsImportOutlookClick(Sender: TObject);
     try
       objOwner := olvarNameSpace.CreateRecipient(AUser);
       olvarTermine := olvarNameSpace.GetSharedDefaultFolder(objOwner,olFolderCalendars);
-      ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineImportieren), olvarTermine.items.count, ClientWidth, Height);
+      ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineImportieren), olvarTermine.items.count, 417, 65);
       for i := 1 to olvarTermine.items.count do
       begin
         Termin:= olvarTermine.items.item[i];
@@ -3634,7 +3634,7 @@ procedure Tfrm_Calendar.pmmbtn_JobsExportOutlookClick(Sender: TObject);
     end;
 
     i := 1;
-    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_AufgabenLoeschen), aTask.Items.Count, frm_PCM_main.ClientWidth, frm_PCM_main.Height);
+    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_AufgabenLoeschen), aTask.Items.Count, 417, 65);
     for iCOunt := 1 to aTask.Items.Count do
     begin
       Application.ProcessMessages;
@@ -3670,7 +3670,7 @@ procedure Tfrm_Calendar.pmmbtn_JobsExportOutlookClick(Sender: TObject);
     dm_PCM.qry_Work.ParamByName('End').AsDateTime:= Now() + 365;
     dm_PCM.qry_Work.sql.Text := dm_PCM.qry_Work.sql.Text + ' and icn.ID_benutzer IN ( ' + IntToStr(dm_PCM.iIDBenutzerPCM) + ') order by StartDatum asc';
 
-    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_AufgabenImportieren), dm_PCM.qry_work.RecordCount, frm_PCM_main.ClientWidth, frm_PCM_main.Height);
+    ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_AufgabenImportieren), dm_PCM.qry_work.RecordCount, 417, 65);
 
     dm_PCM.qry_Work.Open;
     while not dm_PCM.qry_Work.eof do
