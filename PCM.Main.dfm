@@ -3772,15 +3772,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
           Item = iSerials
         end>
     end
-    object navbr_mainGroup1: TdxNavBarGroup
-      Caption = 'Zeiterfassung'
-      SelectedLinkIndex = -1
-      TopVisibleLinkIndex = 0
-      Links = <
-        item
-          Item = iZeiterfassung
-        end>
-    end
     object navbrgrp_Finanzen: TdxNavBarGroup
       Caption = 'Finanzen'
       SelectedLinkIndex = -1
@@ -4022,2026 +4013,1671 @@ object frm_PCM_Main: Tfrm_PCM_Main
         AllowCloseButton = False
         Caption = 'Dashboard'
         ImageIndex = 79
-        object pc_Chart: TcxPageControl
+        ExplicitLeft = 3
+        ExplicitTop = 31
+        object dxLayoutControl1: TdxLayoutControl
           Left = 0
           Top = 0
           Width = 1066
           Height = 725
-          Margins.Left = 0
-          Margins.Top = 0
-          Margins.Right = 0
-          Margins.Bottom = 0
           Align = alClient
-          Color = clBtnFace
-          ParentBackground = False
-          ParentColor = False
           TabOrder = 0
-          Properties.ActivePage = ts_A_ContactChart
-          Properties.CloseButtonMode = cbmEveryTab
-          Properties.CustomButtons.Buttons = <>
-          Properties.Images = dm_PCM.imglst_16x16
-          Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
-          ClientRectBottom = 719
-          ClientRectLeft = 2
-          ClientRectRight = 1060
-          ClientRectTop = 28
-          object ts_A_ContactChart: TcxTabSheet
-            AllowCloseButton = False
-            Caption = 'Kontakte'
-            ImageIndex = 11
-            object pnl_DashboardContacts: TcxGroupBox
-              Left = 0
-              Top = 0
-              Align = alClient
-              PanelStyle.Active = True
-              Style.BorderStyle = ebsNone
-              Style.Edges = [bLeft, bTop, bRight, bBottom]
-              TabOrder = 0
-              Height = 691
-              Width = 1058
-              object pnl_ContactTop: TcxGroupBox
-                Left = 3
-                Top = 3
-                Align = alTop
-                Caption = 'Geburtstage'
-                Style.BorderStyle = ebsFlat
-                Style.Edges = [bLeft, bTop, bRight, bBottom]
-                TabOrder = 0
-                Height = 305
-                Width = 1052
-                object chartctrl_Birthday: TdxChartControl
-                  Left = 3
-                  Top = 15
-                  Width = 1046
-                  Height = 281
-                  Align = alClient
-                  BorderStyle = cxcbsNone
-                  Legend.Title.Visible = False
-                  Titles = <>
-                  object chartctrl_BirthdayChart: TdxChartSimpleDiagram
-                    Title.Visible = False
-                    Layout = Horizontal
-                    object chartctrl_BirthdaySeries: TdxChartSimpleSeries
-                      Caption = 'Wert'
-                      DataBindingType = 'DB'
-                      DataBinding.ArgumentField.FieldName = 'Monatbes'
-                      DataBinding.ValueField.FieldName = 'Wert'
-                      ViewType = 'Pie'
-                      View.SweepDirection = Counterclockwise
-                      View.ValueLabels.LineLength = 10.000000000000000000
-                      View.ValueLabels.Visible = True
-                      View.ValueLabels.Position = Outside
-                      SortBy = Value
-                      ColorSchemeIndex = 0
-                    end
-                  end
-                end
-              end
-              object spl_ChartContactsMain: TcxSplitter
-                Left = 3
-                Top = 308
-                Width = 1052
-                Height = 5
-                AlignSplitter = salBottom
-                Control = pnl_ContactTop
-              end
-              object pnl_Contactmiddle: TcxGroupBox
-                Left = 3
-                Top = 313
-                Align = alLeft
-                Caption = 'Kontaktarten'
-                Style.BorderStyle = ebsFlat
-                Style.Edges = [bLeft, bTop, bRight, bBottom]
-                TabOrder = 2
-                Height = 375
-                Width = 491
-                object chartctrl_Contact: TdxChartControl
-                  Left = 3
-                  Top = 15
-                  Width = 485
-                  Height = 351
-                  Align = alClient
-                  BorderStyle = cxcbsNone
-                  Legend.Title.Visible = False
-                  Titles = <>
-                  object chartctrl_ContactChart: TdxChartSimpleDiagram
-                    Title.Visible = False
-                    Layout = Horizontal
-                    object chartctrl_ContactSeries: TdxChartSimpleSeries
-                      Caption = 'Wert'
-                      DataBindingType = 'DB'
-                      DataBinding.ArgumentField.FieldName = 'Privat'
-                      DataBinding.ValueField.FieldName = 'Wert'
-                      ViewType = 'Pie'
-                      View.ExplodedValueOptions.Mode = Max
-                      View.SweepDirection = Counterclockwise
-                      View.ValueLabels.LineLength = 5.000000000000000000
-                      View.ValueLabels.TextAlignment = Far
-                      View.ValueLabels.Visible = True
-                      View.ValueLabels.Position = Outside
-                      SortBy = Value
-                      SortOrder = soAscending
-                      ColorSchemeIndex = 0
-                    end
-                  end
-                end
-              end
-              object pnl_Contactright: TcxGroupBox
-                Left = 494
-                Top = 313
-                Align = alClient
-                Caption = 'Adressen Privat und Gesch'#228'ftlich'
-                Style.BorderStyle = ebsFlat
-                Style.Edges = [bLeft, bTop, bRight, bBottom]
-                TabOrder = 3
-                Height = 375
-                Width = 561
-                object chartctrl_Adresses: TdxChartControl
-                  Left = 8
-                  Top = 15
-                  Width = 550
-                  Height = 351
-                  Align = alClient
-                  BorderStyle = cxcbsNone
-                  Legend.Title.Visible = False
-                  Titles = <>
-                  object chartctrl_AdressesChart: TdxChartSimpleDiagram
-                    Title.Visible = False
-                    Layout = Horizontal
-                    object chartctrl_AdressesSeries: TdxChartSimpleSeries
-                      Caption = 'Wert'
-                      DataBindingType = 'DB'
-                      DataBinding.ArgumentField.FieldName = 'Privat'
-                      DataBinding.ValueField.FieldName = 'Wert'
-                      ViewType = 'Pie'
-                      View.ExplodedValueOptions.Mode = Max
-                      View.SweepDirection = Counterclockwise
-                      View.ValueLabels.Appearance.FontOptions.Bold = True
-                      View.ValueLabels.Appearance.FontOptions.Size = 9
-                      View.ValueLabels.Appearance.FillOptions.Mode = Clear
-                      View.ValueLabels.LineLength = 5.000000000000000000
-                      View.ValueLabels.LineVisible = bTrue
-                      View.ValueLabels.TextAlignment = Far
-                      View.ValueLabels.Visible = True
-                      View.ValueLabels.Position = Outside
-                      SortBy = Value
-                      SortOrder = soAscending
-                      ColorSchemeIndex = 0
-                    end
-                  end
-                end
-                object spl_ChartContactsLeft: TcxSplitter
-                  Left = 3
-                  Top = 15
-                  Width = 5
-                  Height = 351
-                  Control = pnl_Contactmiddle
-                end
+          LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+          OptionsImage.Images = dm_PCM.imglst_16x16
+          ExplicitWidth = 600
+          ExplicitHeight = 600
+          object chartctrl_Birthday: TdxChartControl
+            Left = 31
+            Top = 79
+            Width = 1000
+            Height = 243
+            BorderStyle = cxcbsNone
+            Legend.Title.Visible = False
+            Titles = <>
+            object chartctrl_BirthdayChart: TdxChartSimpleDiagram
+              Title.Visible = False
+              Layout = Horizontal
+              object chartctrl_BirthdaySeries: TdxChartSimpleSeries
+                Caption = 'Wert'
+                DataBindingType = 'DB'
+                DataBinding.ArgumentField.FieldName = 'Monatbes'
+                DataBinding.ValueField.FieldName = 'Wert'
+                ViewType = 'Pie'
+                View.SweepDirection = Counterclockwise
+                View.ValueLabels.LineLength = 10.000000000000000000
+                View.ValueLabels.Visible = True
+                View.ValueLabels.Position = Outside
+                SortBy = Value
+                ColorSchemeIndex = 0
               end
             end
           end
-          object ts_B_Cal_TodoChart: TcxTabSheet
-            AllowCloseButton = False
-            Caption = 'Aufgaben / Termine'
-            ImageIndex = 58
-            object pnl_DashboardCalToDO: TcxGroupBox
-              Left = 0
-              Top = 0
-              Align = alClient
-              PanelStyle.Active = True
-              Style.BorderStyle = ebsNone
-              Style.Edges = [bLeft, bTop, bRight, bBottom]
-              TabOrder = 0
-              Height = 691
-              Width = 1058
-              object pnl_CalToDOMiddle: TcxGroupBox
-                Left = 3
-                Top = 294
-                Align = alLeft
-                Caption = 'Kalender'
-                Style.BorderStyle = ebsFlat
-                Style.Edges = [bLeft, bTop, bRight, bBottom]
-                TabOrder = 0
-                Height = 394
-                Width = 491
-                object chartctrl_Cal: TdxChartControl
-                  Left = 3
-                  Top = 15
-                  Width = 485
-                  Height = 370
-                  Align = alClient
-                  BorderStyle = cxcbsNone
-                  Legend.Title.Visible = False
-                  Titles = <>
-                  object chartctrl_Calchart: TdxChartSimpleDiagram
-                    Title.Visible = False
-                    Layout = Horizontal
-                    object chartctrl_CalSeries: TdxChartSimpleSeries
-                      Caption = 'Wert'
-                      DataBindingType = 'DB'
-                      DataBinding.ArgumentField.FieldName = 'heute'
-                      DataBinding.ValueField.FieldName = 'Wert'
-                      ViewType = 'Pie'
-                      View.ExplodedValueOptions.Mode = Max
-                      View.SweepDirection = Counterclockwise
-                      View.ValueLabels.LineLength = 5.000000000000000000
-                      View.ValueLabels.TextAlignment = Far
-                      View.ValueLabels.Visible = True
-                      View.ValueLabels.Position = Outside
-                      SortBy = Value
-                      SortOrder = soAscending
-                      ColorSchemeIndex = 0
-                    end
-                  end
-                end
-              end
-              object pnl_CalToDORight: TcxGroupBox
-                Left = 494
-                Top = 294
-                Align = alClient
-                Caption = 'Kalenderkategorien'
-                Style.BorderStyle = ebsFlat
-                Style.Edges = [bLeft, bTop, bRight, bBottom]
-                TabOrder = 1
-                Height = 394
-                Width = 561
-                object chartctrl_CalCategories: TdxChartControl
-                  Left = 8
-                  Top = 15
-                  Width = 550
-                  Height = 370
-                  Align = alClient
-                  BorderStyle = cxcbsNone
-                  Legend.Title.Visible = False
-                  Titles = <>
-                  object chartctrl_CalCategoriesChart: TdxChartSimpleDiagram
-                    Title.Visible = False
-                    Layout = Horizontal
-                    object chartctrl_CalCategoriesSeries: TdxChartSimpleSeries
-                      Caption = 'Wert'
-                      DataBindingType = 'DB'
-                      DataBinding.ArgumentField.FieldName = 'Kategorie'
-                      DataBinding.ValueField.FieldName = 'Wert'
-                      ViewType = 'Pie'
-                      View.ExplodedValueOptions.Mode = Max
-                      View.SweepDirection = Counterclockwise
-                      View.ValueLabels.Appearance.FontOptions.Bold = True
-                      View.ValueLabels.Appearance.FontOptions.Size = 9
-                      View.ValueLabels.Appearance.FillOptions.Mode = Clear
-                      View.ValueLabels.LineLength = 5.000000000000000000
-                      View.ValueLabels.LineVisible = bTrue
-                      View.ValueLabels.TextAlignment = Far
-                      View.ValueLabels.Visible = True
-                      View.ValueLabels.Position = Outside
-                      SortBy = Value
-                      SortOrder = soAscending
-                      ColorSchemeIndex = 0
-                    end
-                  end
-                end
-                object spl_ChartCalToDoLeft: TcxSplitter
-                  Left = 3
-                  Top = 15
-                  Width = 5
-                  Height = 370
-                  Control = pnl_CalToDOMiddle
-                end
-              end
-              object pnl_CalToDOtop: TcxGroupBox
-                Left = 3
-                Top = 3
-                Align = alTop
-                Caption = 'Aufgaben'
-                Style.BorderStyle = ebsFlat
-                Style.Edges = [bLeft, bTop, bRight, bBottom]
-                TabOrder = 2
-                Height = 286
-                Width = 1052
-                object chartctrl_ToDo: TdxChartControl
-                  Left = 3
-                  Top = 15
-                  Width = 1046
-                  Height = 262
-                  Align = alClient
-                  BorderStyle = cxcbsNone
-                  Legend.Title.Visible = False
-                  Titles = <>
-                  object chartctrl_ToDoChart: TdxChartSimpleDiagram
-                    Title.Visible = False
-                    Layout = Horizontal
-                    object chartctrl_ToDoSeries: TdxChartSimpleSeries
-                      Caption = 'Wert'
-                      DataBindingType = 'DB'
-                      DataBinding.DataSource = dm_PCM.ds_ChartAufgabe
-                      DataBinding.ArgumentField.FieldName = 'ungelesen'
-                      DataBinding.ValueField.FieldName = 'Wert'
-                      ViewType = 'Pie'
-                      View.ExplodedValueOptions.Mode = Max
-                      View.SweepDirection = Counterclockwise
-                      View.ValueLabels.Appearance.FontOptions.Bold = True
-                      View.ValueLabels.Appearance.FontOptions.Size = 9
-                      View.ValueLabels.Appearance.FillOptions.Mode = Clear
-                      View.ValueLabels.LineLength = 5.000000000000000000
-                      View.ValueLabels.LineVisible = bTrue
-                      View.ValueLabels.TextAlignment = Far
-                      View.ValueLabels.Visible = True
-                      View.ValueLabels.Position = Outside
-                      SortBy = Value
-                      SortOrder = soAscending
-                      ColorSchemeIndex = 0
-                    end
-                  end
-                end
-              end
-              object spl_ChartCalToDoMain: TcxSplitter
-                Left = 3
-                Top = 289
-                Width = 1052
-                Height = 5
-                AlignSplitter = salBottom
-                Control = pnl_CalToDOtop
+          object chartctrl_Contact: TdxChartControl
+            Left = 31
+            Top = 382
+            Width = 452
+            Height = 305
+            BorderStyle = cxcbsNone
+            Legend.Title.Visible = False
+            Titles = <>
+            object chartctrl_ContactChart: TdxChartSimpleDiagram
+              Title.Visible = False
+              Layout = Horizontal
+              object chartctrl_ContactSeries: TdxChartSimpleSeries
+                Caption = 'Wert'
+                DataBindingType = 'DB'
+                DataBinding.ArgumentField.FieldName = 'Privat'
+                DataBinding.ValueField.FieldName = 'Wert'
+                ViewType = 'Pie'
+                View.ExplodedValueOptions.Mode = Max
+                View.SweepDirection = Counterclockwise
+                View.ValueLabels.LineLength = 5.000000000000000000
+                View.ValueLabels.TextAlignment = Far
+                View.ValueLabels.Visible = True
+                View.ValueLabels.Position = Outside
+                SortBy = Value
+                SortOrder = soAscending
+                ColorSchemeIndex = 0
               end
             end
           end
-          object ts_C_PasswortChart: TcxTabSheet
-            AllowCloseButton = False
-            Caption = 'Passw'#246'rter / Serials'
-            ImageIndex = 9
-            object pnl_DashboardPWDSerial: TcxGroupBox
-              Left = 0
-              Top = 0
-              Align = alClient
-              PanelStyle.Active = True
-              Style.BorderStyle = ebsNone
-              Style.Edges = [bLeft, bTop, bRight, bBottom]
-              TabOrder = 0
-              Height = 691
-              Width = 1058
-              object pnl_PWDSerialmiddle: TcxGroupBox
-                Left = 3
-                Top = 294
-                Align = alLeft
-                Caption = 'Passwort Kategorien'
-                Style.BorderStyle = ebsFlat
-                Style.Edges = [bLeft, bTop, bRight, bBottom]
-                TabOrder = 0
-                Height = 394
-                Width = 491
-                object chartctrl_PWDCategories: TdxChartControl
-                  Left = 3
-                  Top = 15
-                  Width = 485
-                  Height = 370
-                  Align = alClient
-                  BorderStyle = cxcbsNone
-                  Legend.Title.Visible = False
-                  Titles = <>
-                  object chartctrl_PWDCategoriesChart: TdxChartSimpleDiagram
-                    Title.Visible = False
-                    Layout = Horizontal
-                    object chartctrl_PWDCategoriesSeries: TdxChartSimpleSeries
-                      Caption = 'Wert'
-                      DataBindingType = 'DB'
-                      DataBinding.ArgumentField.FieldName = 'Bezeichnung'
-                      DataBinding.ValueField.FieldName = 'Wert'
-                      ViewType = 'Pie'
-                      View.ExplodedValueOptions.Mode = Max
-                      View.SweepDirection = Counterclockwise
-                      View.ValueLabels.LineLength = 5.000000000000000000
-                      View.ValueLabels.TextAlignment = Far
-                      View.ValueLabels.Visible = True
-                      View.ValueLabels.Position = Outside
-                      SortBy = Value
-                      SortOrder = soAscending
-                      ColorSchemeIndex = 0
-                    end
-                  end
-                end
-              end
-              object pnl_PWDSerialright: TcxGroupBox
-                Left = 494
-                Top = 294
-                Align = alClient
-                Caption = 'Serials Kategorien'
-                Style.BorderStyle = ebsFlat
-                Style.Edges = [bLeft, bTop, bRight, bBottom]
-                TabOrder = 1
-                Height = 394
-                Width = 561
-                object spl_ChartPWDSerialLeft: TcxSplitter
-                  Left = 3
-                  Top = 15
-                  Width = 5
-                  Height = 370
-                  Control = pnl_PWDSerialmiddle
-                end
-                object chartctrl_SerialsCategories: TdxChartControl
-                  Left = 8
-                  Top = 15
-                  Width = 550
-                  Height = 370
-                  Align = alClient
-                  BorderStyle = cxcbsNone
-                  Legend.Title.Visible = False
-                  Titles = <>
-                  object chartctrl_SerialsCategoriesChart: TdxChartSimpleDiagram
-                    Title.Visible = False
-                    Layout = Horizontal
-                    object chartctrl_SerialsCategoriesSeries: TdxChartSimpleSeries
-                      Caption = 'Wert'
-                      DataBindingType = 'DB'
-                      DataBinding.ArgumentField.FieldName = 'Bezeichnung'
-                      DataBinding.ValueField.FieldName = 'Wert'
-                      ViewType = 'Pie'
-                      View.ExplodedValueOptions.Mode = Max
-                      View.SweepDirection = Counterclockwise
-                      View.ValueLabels.LineLength = 5.000000000000000000
-                      View.ValueLabels.TextAlignment = Far
-                      View.ValueLabels.Visible = True
-                      View.ValueLabels.Position = Outside
-                      SortBy = Value
-                      SortOrder = soAscending
-                      ColorSchemeIndex = 0
-                    end
-                  end
-                end
-              end
-              object pnl_PWDSerialTop: TcxGroupBox
-                Left = 3
-                Top = 3
-                Align = alTop
-                Caption = 'Passw'#246'rter / Serials'
-                Style.BorderStyle = ebsFlat
-                Style.Edges = [bLeft, bTop, bRight, bBottom]
-                TabOrder = 2
-                Height = 286
-                Width = 1052
-                object chartctrl_PWDSerials: TdxChartControl
-                  Left = 3
-                  Top = 15
-                  Width = 1046
-                  Height = 262
-                  Align = alClient
-                  BorderStyle = cxcbsNone
-                  Legend.Title.Visible = False
-                  Titles = <>
-                  object chartctrl_PWDSerialsChart: TdxChartSimpleDiagram
-                    Title.Visible = False
-                    Layout = Horizontal
-                    object chartctrl_PWDSerialsSeries: TdxChartSimpleSeries
-                      Caption = 'Wert'
-                      DataBindingType = 'DB'
-                      DataBinding.ArgumentField.FieldName = 'BEZ'
-                      DataBinding.ValueField.FieldName = 'Wert'
-                      ViewType = 'Pie'
-                      View.ExplodedValueOptions.Mode = Max
-                      View.SweepDirection = Counterclockwise
-                      View.ValueLabels.Appearance.FontOptions.Bold = True
-                      View.ValueLabels.Appearance.FontOptions.Size = 9
-                      View.ValueLabels.Appearance.FillOptions.Mode = Clear
-                      View.ValueLabels.LineLength = 5.000000000000000000
-                      View.ValueLabels.LineVisible = bTrue
-                      View.ValueLabels.TextAlignment = Far
-                      View.ValueLabels.Visible = True
-                      View.ValueLabels.Position = Outside
-                      SortBy = Value
-                      SortOrder = soAscending
-                      ColorSchemeIndex = 0
-                    end
-                  end
-                end
-              end
-              object spl_ChartPWDSerialMain: TcxSplitter
-                Left = 3
-                Top = 289
-                Width = 1052
-                Height = 5
-                AlignSplitter = salBottom
-                Control = pnl_PWDSerialTop
+          object chartctrl_Adresses: TdxChartControl
+            Left = 518
+            Top = 382
+            Width = 513
+            Height = 305
+            BorderStyle = cxcbsNone
+            Legend.Title.Visible = False
+            Titles = <>
+            object chartctrl_AdressesChart: TdxChartSimpleDiagram
+              Title.Visible = False
+              Layout = Horizontal
+              object chartctrl_AdressesSeries: TdxChartSimpleSeries
+                Caption = 'Wert'
+                DataBindingType = 'DB'
+                DataBinding.ArgumentField.FieldName = 'Privat'
+                DataBinding.ValueField.FieldName = 'Wert'
+                ViewType = 'Pie'
+                View.ExplodedValueOptions.Mode = Max
+                View.SweepDirection = Counterclockwise
+                View.ValueLabels.Appearance.FontOptions.Bold = True
+                View.ValueLabels.Appearance.FontOptions.Size = 9
+                View.ValueLabels.Appearance.FillOptions.Mode = Clear
+                View.ValueLabels.LineLength = 5.000000000000000000
+                View.ValueLabels.LineVisible = bTrue
+                View.ValueLabels.TextAlignment = Far
+                View.ValueLabels.Visible = True
+                View.ValueLabels.Position = Outside
+                SortBy = Value
+                SortOrder = soAscending
+                ColorSchemeIndex = 0
               end
             end
           end
-          object ts_E_FinanceChart: TcxTabSheet
-            AllowCloseButton = False
-            Caption = 'Finanzen'
-            ImageIndex = 3
-            object pnl_chartBottom: TcxGroupBox
-              AlignWithMargins = True
-              Left = 6
-              Top = 3
-              Margins.Left = 6
-              Margins.Right = 6
-              Margins.Bottom = 0
-              Align = alClient
-              Caption = 'Finanzen'
-              Style.BorderStyle = ebsFlat
-              Style.Edges = [bLeft, bTop, bRight, bBottom]
-              Style.Shadow = False
-              TabOrder = 0
-              Height = 423
-              Width = 1046
-              object chartctrl_Finance: TdxChartControl
-                Left = 3
-                Top = 15
-                Width = 1040
-                Height = 399
-                Align = alClient
-                BorderStyle = cxcbsNone
-                Legend.Visible = False
-                Titles = <
-                  item
-                    Text = 'Finanz'#252'bersicht'
-                  end>
-                object chartctrl_FinanceChart: TdxChartXYDiagram
-                  Legend.Appearance.Border = bTrue
-                  Axes.AxisY.Interlaced = True
-                  Axes.AxisY.Title.Visible = False
-                  Axes.AxisY.Title.Text = 'Betrag'
-                  object chartctrl_FinanceSeries1: TdxChartXYSeries
-                    Caption = 'Soll'
-                    DataBindingType = 'DB'
-                    DataBinding.ArgumentField.FieldName = 'Bezeichung'
-                    DataBinding.ValueField.FieldName = 'Soll'
-                    ViewType = 'Bar'
-                    View.Appearance.FillOptions.Color = -8323200
-                    View.Appearance.StrokeOptions.Color = -8323200
-                    View.ValueLabels.Appearance.FontOptions.Bold = True
-                    View.ValueLabels.Appearance.FontOptions.Size = 9
-                    View.ValueLabels.Appearance.FillOptions.Mode = Clear
-                    View.ValueLabels.Appearance.TextColor = -16777216
-                    View.ValueLabels.Visible = True
-                    ShowInLegend = Diagram
-                    ColorSchemeIndex = 0
-                  end
-                  object chartctrl_FinanceSeries2: TdxChartXYSeries
-                    Caption = 'Ist'
-                    DataBindingType = 'DB'
-                    DataBinding.ArgumentField.FieldName = 'Bezeichung'
-                    DataBinding.ValueField.FieldName = 'Ist'
-                    ViewType = 'Bar'
-                    View.Appearance.FillOptions.Color = -32640
-                    View.Appearance.StrokeOptions.Color = -32640
-                    View.ValueLabels.Appearance.FontOptions.Bold = True
-                    View.ValueLabels.Appearance.FontOptions.Size = 9
-                    View.ValueLabels.Appearance.FillOptions.Mode = Clear
-                    View.ValueLabels.Appearance.TextColor = -16777216
-                    View.ValueLabels.Visible = True
-                    ShowInLegend = Diagram
-                    ColorSchemeIndex = 1
-                  end
-                end
+          object chartctrl_Cal: TdxChartControl
+            Left = 10000
+            Top = 10000
+            Width = 485
+            Height = 312
+            BorderStyle = cxcbsNone
+            Legend.Title.Visible = False
+            Titles = <>
+            Visible = False
+            object chartctrl_Calchart: TdxChartSimpleDiagram
+              Title.Visible = False
+              Layout = Horizontal
+              object chartctrl_CalSeries: TdxChartSimpleSeries
+                Caption = 'Wert'
+                DataBindingType = 'DB'
+                DataBinding.ArgumentField.FieldName = 'heute'
+                DataBinding.ValueField.FieldName = 'Wert'
+                ViewType = 'Pie'
+                View.ExplodedValueOptions.Mode = Max
+                View.SweepDirection = Counterclockwise
+                View.ValueLabels.LineLength = 5.000000000000000000
+                View.ValueLabels.TextAlignment = Far
+                View.ValueLabels.Visible = True
+                View.ValueLabels.Position = Outside
+                SortBy = Value
+                SortOrder = soAscending
+                ColorSchemeIndex = 0
               end
             end
-            object grpbx_FinanzenUebersicht: TcxGroupBox
-              AlignWithMargins = True
-              Left = 6
-              Top = 426
-              Margins.Left = 6
-              Margins.Top = 0
-              Margins.Right = 6
-              Margins.Bottom = 0
-              Align = alBottom
-              PanelStyle.Active = True
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -13
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = [fsBold]
-              Style.IsFontAssigned = True
-              TabOrder = 1
-              Height = 265
-              Width = 1046
-              object grpbx_FinanzenUebersicht_Left: TcxGroupBox
-                Left = 3
-                Top = 3
-                Margins.Left = 0
-                Margins.Top = 0
-                Margins.Right = 0
-                Margins.Bottom = 0
-                Align = alLeft
-                PanelStyle.Active = True
-                ParentFont = False
-                Style.BorderStyle = ebsNone
-                Style.Font.Charset = DEFAULT_CHARSET
-                Style.Font.Color = clWindowText
-                Style.Font.Height = -13
-                Style.Font.Name = 'Tahoma'
-                Style.Font.Style = [fsBold]
-                Style.IsFontAssigned = True
-                TabOrder = 0
-                Height = 259
-                Width = 300
-                object pnl_EinSoll: TcxGroupBox
-                  AlignWithMargins = True
-                  Left = 3
-                  Top = 3
-                  Margins.Left = 0
-                  Margins.Top = 0
-                  Margins.Right = 0
-                  Margins.Bottom = 0
-                  Align = alTop
-                  Caption = 'Einnahmen Soll:'
-                  ParentFont = False
-                  Style.BorderStyle = ebsNone
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = [fsBold]
-                  Style.IsFontAssigned = True
-                  TabOrder = 0
-                  Height = 45
-                  Width = 294
-                  object lbl_EinSoll: TcxLabel
-                    AlignWithMargins = True
-                    Left = 206
-                    Top = 16
-                    Margins.Left = 0
-                    Margins.Top = 1
-                    Margins.Right = 5
-                    Align = alRight
-                    AutoSize = False
-                    Caption = '0,00 '#8364
-                    ParentFont = False
-                    Style.Font.Charset = DEFAULT_CHARSET
-                    Style.Font.Color = clWindowText
-                    Style.Font.Height = -11
-                    Style.Font.Name = 'Tahoma'
-                    Style.Font.Style = []
-                    Style.IsFontAssigned = True
-                    Properties.Alignment.Horz = taRightJustify
-                    Transparent = True
-                    Height = 17
-                    Width = 80
-                    AnchorX = 286
-                  end
-                  object lbl_EinSollLabel: TcxLabel
-                    AlignWithMargins = True
-                    Left = 16
-                    Top = 16
-                    Margins.Left = 13
-                    Margins.Top = 1
-                    Margins.Right = 4
-                    Align = alLeft
-                    Caption = 'Einnahmen'
-                    ParentFont = False
-                    Style.Font.Charset = DEFAULT_CHARSET
-                    Style.Font.Color = clWindowText
-                    Style.Font.Height = -11
-                    Style.Font.Name = 'Tahoma'
-                    Style.Font.Style = []
-                    Style.IsFontAssigned = True
-                    Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
-                  end
-                end
-                object pnl_FixSoll: TcxGroupBox
-                  AlignWithMargins = True
-                  Left = 3
-                  Top = 93
-                  Margins.Left = 0
-                  Margins.Top = 0
-                  Margins.Right = 0
-                  Margins.Bottom = 0
-                  Align = alTop
-                  Caption = 'fixe Kosten Soll:'
-                  ParentFont = False
-                  Style.BorderStyle = ebsNone
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = [fsBold]
-                  Style.IsFontAssigned = True
-                  TabOrder = 1
-                  Height = 45
-                  Width = 294
-                  object lbl_AusFixSoll: TcxLabel
-                    AlignWithMargins = True
-                    Left = 206
-                    Top = 16
-                    Margins.Left = 0
-                    Margins.Top = 1
-                    Margins.Right = 5
-                    Align = alRight
-                    AutoSize = False
-                    Caption = '0,00 '#8364
-                    ParentFont = False
-                    Style.Font.Charset = DEFAULT_CHARSET
-                    Style.Font.Color = clWindowText
-                    Style.Font.Height = -11
-                    Style.Font.Name = 'Tahoma'
-                    Style.Font.Style = []
-                    Style.IsFontAssigned = True
-                    Properties.Alignment.Horz = taRightJustify
-                    Transparent = True
-                    Height = 17
-                    Width = 80
-                    AnchorX = 286
-                  end
-                  object lbl_AusFixSollLabel: TcxLabel
-                    AlignWithMargins = True
-                    Left = 16
-                    Top = 16
-                    Margins.Left = 13
-                    Margins.Top = 1
-                    Margins.Right = 4
-                    Align = alLeft
-                    Caption = 'fixe Kosten'
-                    ParentFont = False
-                    Style.Font.Charset = DEFAULT_CHARSET
-                    Style.Font.Color = clWindowText
-                    Style.Font.Height = -11
-                    Style.Font.Name = 'Tahoma'
-                    Style.Font.Style = []
-                    Style.IsFontAssigned = True
-                    Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
-                  end
-                end
-                object pnl_VarISoll: TcxGroupBox
-                  AlignWithMargins = True
-                  Left = 3
-                  Top = 48
-                  Margins.Left = 0
-                  Margins.Top = 0
-                  Margins.Right = 0
-                  Margins.Bottom = 0
-                  Align = alTop
-                  Caption = 'variable Kosten Soll:'
-                  ParentFont = False
-                  Style.BorderStyle = ebsNone
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = [fsBold]
-                  Style.IsFontAssigned = True
-                  TabOrder = 2
-                  Height = 45
-                  Width = 294
-                  object lbl_AusVarSoll: TcxLabel
-                    AlignWithMargins = True
-                    Left = 206
-                    Top = 16
-                    Margins.Left = 0
-                    Margins.Top = 1
-                    Margins.Right = 5
-                    Align = alRight
-                    AutoSize = False
-                    Caption = '0,00 '#8364
-                    ParentFont = False
-                    Style.Font.Charset = DEFAULT_CHARSET
-                    Style.Font.Color = clWindowText
-                    Style.Font.Height = -11
-                    Style.Font.Name = 'Tahoma'
-                    Style.Font.Style = []
-                    Style.IsFontAssigned = True
-                    Properties.Alignment.Horz = taRightJustify
-                    Transparent = True
-                    Height = 17
-                    Width = 80
-                    AnchorX = 286
-                  end
-                  object lbl_AusVarSollLabel: TcxLabel
-                    AlignWithMargins = True
-                    Left = 16
-                    Top = 16
-                    Margins.Left = 13
-                    Margins.Top = 1
-                    Margins.Right = 4
-                    Align = alLeft
-                    Caption = 'variable Kosten'
-                    ParentFont = False
-                    Style.Font.Charset = DEFAULT_CHARSET
-                    Style.Font.Color = clWindowText
-                    Style.Font.Height = -11
-                    Style.Font.Name = 'Tahoma'
-                    Style.Font.Style = []
-                    Style.IsFontAssigned = True
-                    Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
-                  end
-                end
-                object pnl_GesSoll: TcxGroupBox
-                  AlignWithMargins = True
-                  Left = 3
-                  Top = 138
-                  Margins.Left = 0
-                  Margins.Top = 0
-                  Margins.Right = 0
-                  Margins.Bottom = 0
-                  Align = alTop
-                  Caption = 'verf'#252'gbare Restsumme Soll:'
-                  ParentFont = False
-                  Style.BorderStyle = ebsNone
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = [fsBold]
-                  Style.IsFontAssigned = True
-                  TabOrder = 3
-                  Height = 121
-                  Width = 294
-                  object pnl_VerfSoll: TcxGroupBox
-                    Left = 3
-                    Top = 86
-                    Margins.Left = 0
-                    Margins.Top = 0
-                    Margins.Right = 0
-                    Margins.Bottom = 0
-                    Align = alTop
-                    PanelStyle.Active = True
-                    Style.BorderStyle = ebsNone
-                    TabOrder = 0
-                    Height = 23
-                    Width = 288
-                    object lbl_SollSumLabel: TcxLabel
-                      AlignWithMargins = True
-                      Left = 13
-                      Top = 3
-                      Margins.Left = 10
-                      Margins.Top = 0
-                      Margins.Bottom = 0
-                      Align = alLeft
-                      Caption = '= verf'#252'gbare Restsumme Soll'
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = [fsBold]
-                      Style.IsFontAssigned = True
-                      Transparent = True
-                    end
-                    object lbl_SollSum: TcxLabel
-                      AlignWithMargins = True
-                      Left = 200
-                      Top = 3
-                      Margins.Left = 0
-                      Margins.Top = 0
-                      Margins.Right = 5
-                      Margins.Bottom = 0
-                      Align = alRight
-                      AutoSize = False
-                      Caption = '0,00 '#8364
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = [fsBold]
-                      Style.IsFontAssigned = True
-                      Properties.Alignment.Horz = taRightJustify
-                      Transparent = True
-                      Height = 17
-                      Width = 80
-                      AnchorX = 280
-                    end
-                  end
-                  object pnl_VerfEinSoll: TcxGroupBox
-                    Left = 3
-                    Top = 15
-                    Margins.Left = 0
-                    Margins.Top = 0
-                    Margins.Right = 0
-                    Margins.Bottom = 0
-                    Align = alTop
-                    PanelStyle.Active = True
-                    Style.BorderStyle = ebsNone
-                    TabOrder = 1
-                    Height = 23
-                    Width = 288
-                    object lbl_EinSollSumLabel: TcxLabel
-                      AlignWithMargins = True
-                      Left = 13
-                      Top = 3
-                      Margins.Left = 10
-                      Margins.Top = 0
-                      Margins.Bottom = 0
-                      Align = alLeft
-                      Caption = 'Einnahmen'
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = []
-                      Style.IsFontAssigned = True
-                      Transparent = True
-                    end
-                    object lbl_EinSollSum: TcxLabel
-                      AlignWithMargins = True
-                      Left = 200
-                      Top = 3
-                      Margins.Left = 0
-                      Margins.Top = 0
-                      Margins.Right = 5
-                      Margins.Bottom = 0
-                      Align = alRight
-                      AutoSize = False
-                      Caption = '0,00 '#8364
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = []
-                      Style.IsFontAssigned = True
-                      Properties.Alignment.Horz = taRightJustify
-                      Transparent = True
-                      Height = 17
-                      Width = 80
-                      AnchorX = 280
-                    end
-                  end
-                  object pnl_VerfvarSoll: TcxGroupBox
-                    Left = 3
-                    Top = 38
-                    Margins.Left = 0
-                    Margins.Top = 0
-                    Margins.Right = 0
-                    Margins.Bottom = 0
-                    Align = alTop
-                    PanelStyle.Active = True
-                    Style.BorderStyle = ebsNone
-                    TabOrder = 2
-                    Height = 23
-                    Width = 288
-                    object lbl_AusVarSollSumLabel: TcxLabel
-                      AlignWithMargins = True
-                      Left = 13
-                      Top = 3
-                      Margins.Left = 10
-                      Margins.Top = 0
-                      Margins.Bottom = 0
-                      Align = alLeft
-                      Caption = '- variable Kosten'
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = []
-                      Style.IsFontAssigned = True
-                      Transparent = True
-                    end
-                    object lbl_AusVarSollSum: TcxLabel
-                      AlignWithMargins = True
-                      Left = 200
-                      Top = 3
-                      Margins.Left = 0
-                      Margins.Top = 0
-                      Margins.Right = 5
-                      Margins.Bottom = 0
-                      Align = alRight
-                      AutoSize = False
-                      Caption = '0,00 '#8364
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = []
-                      Style.IsFontAssigned = True
-                      Properties.Alignment.Horz = taRightJustify
-                      Transparent = True
-                      Height = 17
-                      Width = 80
-                      AnchorX = 280
-                    end
-                  end
-                  object pnl_TrennSoll: TPanel
-                    AlignWithMargins = True
-                    Left = 16
-                    Top = 84
-                    Width = 275
-                    Height = 2
-                    Margins.Left = 13
-                    Margins.Top = 0
-                    Margins.Right = 0
-                    Margins.Bottom = 0
-                    Align = alTop
-                    BevelInner = bvLowered
-                    TabOrder = 3
-                  end
-                  object pnl_VerffixSoll: TcxGroupBox
-                    Left = 3
-                    Top = 61
-                    Margins.Left = 0
-                    Margins.Top = 0
-                    Margins.Right = 0
-                    Margins.Bottom = 0
-                    Align = alTop
-                    PanelStyle.Active = True
-                    Style.BorderStyle = ebsNone
-                    TabOrder = 4
-                    Height = 23
-                    Width = 288
-                    object lbl_AusFixSollSumLabel: TcxLabel
-                      AlignWithMargins = True
-                      Left = 13
-                      Top = 3
-                      Margins.Left = 10
-                      Margins.Top = 0
-                      Margins.Bottom = 0
-                      Align = alLeft
-                      Caption = '- fixe Kosten'
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = []
-                      Style.IsFontAssigned = True
-                      Transparent = True
-                    end
-                    object lbl_AusFixSollSum: TcxLabel
-                      AlignWithMargins = True
-                      Left = 200
-                      Top = 3
-                      Margins.Left = 0
-                      Margins.Top = 0
-                      Margins.Right = 5
-                      Margins.Bottom = 0
-                      Align = alRight
-                      AutoSize = False
-                      Caption = '0,00 '#8364
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = []
-                      Style.IsFontAssigned = True
-                      Properties.Alignment.Horz = taRightJustify
-                      Transparent = True
-                      Height = 17
-                      Width = 80
-                      AnchorX = 280
-                    end
-                  end
-                end
-              end
-              object grpbx_FinanzenUebersicht_Right: TcxGroupBox
-                Left = 303
-                Top = 3
-                Margins.Left = 0
-                Margins.Top = 0
-                Margins.Right = 0
-                Margins.Bottom = 0
-                Align = alClient
-                PanelStyle.Active = True
-                ParentFont = False
-                Style.BorderStyle = ebsNone
-                Style.Font.Charset = DEFAULT_CHARSET
-                Style.Font.Color = clWindowText
-                Style.Font.Height = -13
-                Style.Font.Name = 'Tahoma'
-                Style.Font.Style = [fsBold]
-                Style.IsFontAssigned = True
-                TabOrder = 1
-                Height = 259
-                Width = 548
-                object pnl_EinIst: TcxGroupBox
-                  AlignWithMargins = True
-                  Left = 3
-                  Top = 3
-                  Margins.Left = 0
-                  Margins.Top = 0
-                  Margins.Right = 0
-                  Margins.Bottom = 0
-                  Align = alTop
-                  Caption = 'Einnahmen Ist:'
-                  ParentFont = False
-                  Style.BorderStyle = ebsNone
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = [fsBold]
-                  Style.IsFontAssigned = True
-                  TabOrder = 0
-                  Height = 45
-                  Width = 542
-                  object lbl_EinIst: TcxLabel
-                    AlignWithMargins = True
-                    Left = 454
-                    Top = 16
-                    Margins.Left = 0
-                    Margins.Top = 1
-                    Margins.Right = 5
-                    Align = alRight
-                    AutoSize = False
-                    Caption = '0,00 '#8364
-                    ParentFont = False
-                    Style.Font.Charset = DEFAULT_CHARSET
-                    Style.Font.Color = clWindowText
-                    Style.Font.Height = -11
-                    Style.Font.Name = 'Tahoma'
-                    Style.Font.Style = []
-                    Style.IsFontAssigned = True
-                    Properties.Alignment.Horz = taRightJustify
-                    Transparent = True
-                    Height = 17
-                    Width = 80
-                    AnchorX = 534
-                  end
-                  object lbl_EinIstLabel: TcxLabel
-                    AlignWithMargins = True
-                    Left = 16
-                    Top = 16
-                    Margins.Left = 13
-                    Margins.Top = 1
-                    Margins.Right = 4
-                    Align = alLeft
-                    Caption = 'Einnahmen'
-                    ParentFont = False
-                    Style.Font.Charset = DEFAULT_CHARSET
-                    Style.Font.Color = clWindowText
-                    Style.Font.Height = -11
-                    Style.Font.Name = 'Tahoma'
-                    Style.Font.Style = []
-                    Style.IsFontAssigned = True
-                    Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
-                  end
-                end
-                object pnl_FixIst: TcxGroupBox
-                  AlignWithMargins = True
-                  Left = 3
-                  Top = 93
-                  Margins.Left = 0
-                  Margins.Top = 0
-                  Margins.Right = 0
-                  Margins.Bottom = 0
-                  Align = alTop
-                  Caption = 'fixe Kosten Ist:'
-                  ParentFont = False
-                  Style.BorderStyle = ebsNone
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = [fsBold]
-                  Style.IsFontAssigned = True
-                  TabOrder = 1
-                  Height = 45
-                  Width = 542
-                  object lbl_AusFixIst: TcxLabel
-                    AlignWithMargins = True
-                    Left = 454
-                    Top = 16
-                    Margins.Left = 0
-                    Margins.Top = 1
-                    Margins.Right = 5
-                    Align = alRight
-                    AutoSize = False
-                    Caption = '0,00 '#8364
-                    ParentFont = False
-                    Style.Font.Charset = DEFAULT_CHARSET
-                    Style.Font.Color = clWindowText
-                    Style.Font.Height = -11
-                    Style.Font.Name = 'Tahoma'
-                    Style.Font.Style = []
-                    Style.IsFontAssigned = True
-                    Properties.Alignment.Horz = taRightJustify
-                    Transparent = True
-                    Height = 17
-                    Width = 80
-                    AnchorX = 534
-                  end
-                  object lbl_AusFixIstLabel: TcxLabel
-                    AlignWithMargins = True
-                    Left = 16
-                    Top = 16
-                    Margins.Left = 13
-                    Margins.Top = 1
-                    Margins.Right = 4
-                    Align = alLeft
-                    Caption = 'fixe Kosten'
-                    ParentFont = False
-                    Style.Font.Charset = DEFAULT_CHARSET
-                    Style.Font.Color = clWindowText
-                    Style.Font.Height = -11
-                    Style.Font.Name = 'Tahoma'
-                    Style.Font.Style = []
-                    Style.IsFontAssigned = True
-                    Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
-                  end
-                end
-                object pnl_VarISt: TcxGroupBox
-                  AlignWithMargins = True
-                  Left = 3
-                  Top = 48
-                  Margins.Left = 0
-                  Margins.Top = 0
-                  Margins.Right = 0
-                  Margins.Bottom = 0
-                  Align = alTop
-                  Caption = 'variable Kosten Ist:'
-                  ParentFont = False
-                  Style.BorderStyle = ebsNone
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = [fsBold]
-                  Style.IsFontAssigned = True
-                  TabOrder = 2
-                  Height = 45
-                  Width = 542
-                  object lbl_AusvarIst: TcxLabel
-                    AlignWithMargins = True
-                    Left = 454
-                    Top = 16
-                    Margins.Left = 0
-                    Margins.Top = 1
-                    Margins.Right = 5
-                    Align = alRight
-                    AutoSize = False
-                    Caption = '0,00 '#8364
-                    ParentFont = False
-                    Style.Font.Charset = DEFAULT_CHARSET
-                    Style.Font.Color = clWindowText
-                    Style.Font.Height = -11
-                    Style.Font.Name = 'Tahoma'
-                    Style.Font.Style = []
-                    Style.IsFontAssigned = True
-                    Properties.Alignment.Horz = taRightJustify
-                    Transparent = True
-                    Height = 17
-                    Width = 80
-                    AnchorX = 534
-                  end
-                  object lbl_AusVarIstLabel: TcxLabel
-                    AlignWithMargins = True
-                    Left = 16
-                    Top = 16
-                    Margins.Left = 13
-                    Margins.Top = 1
-                    Margins.Right = 4
-                    Align = alLeft
-                    Caption = 'variable Kosten'
-                    ParentFont = False
-                    Style.Font.Charset = DEFAULT_CHARSET
-                    Style.Font.Color = clWindowText
-                    Style.Font.Height = -11
-                    Style.Font.Name = 'Tahoma'
-                    Style.Font.Style = []
-                    Style.IsFontAssigned = True
-                    Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
-                  end
-                end
-                object pnl_GesIst: TcxGroupBox
-                  AlignWithMargins = True
-                  Left = 3
-                  Top = 138
-                  Margins.Left = 0
-                  Margins.Top = 0
-                  Margins.Right = 0
-                  Margins.Bottom = 0
-                  Align = alTop
-                  Caption = 'verf'#252'gbare Restsumme Ist:'
-                  ParentFont = False
-                  Style.BorderStyle = ebsNone
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = [fsBold]
-                  Style.IsFontAssigned = True
-                  TabOrder = 3
-                  Height = 121
-                  Width = 542
-                  object pnl_VerfIst: TcxGroupBox
-                    Left = 3
-                    Top = 86
-                    Margins.Left = 0
-                    Margins.Top = 0
-                    Margins.Right = 0
-                    Margins.Bottom = 0
-                    Align = alTop
-                    PanelStyle.Active = True
-                    Style.BorderStyle = ebsNone
-                    TabOrder = 0
-                    Height = 23
-                    Width = 536
-                    object lbl_IstSumLabel: TcxLabel
-                      AlignWithMargins = True
-                      Left = 13
-                      Top = 3
-                      Margins.Left = 10
-                      Margins.Top = 0
-                      Margins.Bottom = 0
-                      Align = alLeft
-                      Caption = '= verf'#252'gbare Restsumme Ist'
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = [fsBold]
-                      Style.IsFontAssigned = True
-                      Transparent = True
-                    end
-                    object lbl_IstSum: TcxLabel
-                      AlignWithMargins = True
-                      Left = 448
-                      Top = 3
-                      Margins.Left = 0
-                      Margins.Top = 0
-                      Margins.Right = 5
-                      Margins.Bottom = 0
-                      Align = alRight
-                      AutoSize = False
-                      Caption = '0,00 '#8364
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = [fsBold]
-                      Style.IsFontAssigned = True
-                      Properties.Alignment.Horz = taRightJustify
-                      Transparent = True
-                      Height = 17
-                      Width = 80
-                      AnchorX = 528
-                    end
-                  end
-                  object pnl_VerfEinIst: TcxGroupBox
-                    Left = 3
-                    Top = 15
-                    Margins.Left = 0
-                    Margins.Top = 0
-                    Margins.Right = 0
-                    Margins.Bottom = 0
-                    Align = alTop
-                    PanelStyle.Active = True
-                    Style.BorderStyle = ebsNone
-                    TabOrder = 1
-                    Height = 23
-                    Width = 536
-                    object lbl_EinIstSumLabel: TcxLabel
-                      AlignWithMargins = True
-                      Left = 13
-                      Top = 3
-                      Margins.Left = 10
-                      Margins.Top = 0
-                      Margins.Bottom = 0
-                      Align = alLeft
-                      Caption = 'Einnahmen'
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = []
-                      Style.IsFontAssigned = True
-                      Transparent = True
-                    end
-                    object lbl_EinIstSum: TcxLabel
-                      AlignWithMargins = True
-                      Left = 448
-                      Top = 3
-                      Margins.Left = 0
-                      Margins.Top = 0
-                      Margins.Right = 5
-                      Margins.Bottom = 0
-                      Align = alRight
-                      AutoSize = False
-                      Caption = '0,00 '#8364
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = []
-                      Style.IsFontAssigned = True
-                      Properties.Alignment.Horz = taRightJustify
-                      Transparent = True
-                      Height = 17
-                      Width = 80
-                      AnchorX = 528
-                    end
-                  end
-                  object pnl_VerfvarIst: TcxGroupBox
-                    Left = 3
-                    Top = 38
-                    Margins.Left = 0
-                    Margins.Top = 0
-                    Margins.Right = 0
-                    Margins.Bottom = 0
-                    Align = alTop
-                    PanelStyle.Active = True
-                    Style.BorderStyle = ebsNone
-                    TabOrder = 2
-                    Height = 23
-                    Width = 536
-                    object lbl_AusvarIstSumLabel: TcxLabel
-                      AlignWithMargins = True
-                      Left = 13
-                      Top = 3
-                      Margins.Left = 10
-                      Margins.Top = 0
-                      Margins.Bottom = 0
-                      Align = alLeft
-                      Caption = '- variable Kosten'
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = []
-                      Style.IsFontAssigned = True
-                      Transparent = True
-                    end
-                    object lbl_AusvarIstSum: TcxLabel
-                      AlignWithMargins = True
-                      Left = 448
-                      Top = 3
-                      Margins.Left = 0
-                      Margins.Top = 0
-                      Margins.Right = 5
-                      Margins.Bottom = 0
-                      Align = alRight
-                      AutoSize = False
-                      Caption = '0,00 '#8364
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = []
-                      Style.IsFontAssigned = True
-                      Properties.Alignment.Horz = taRightJustify
-                      Transparent = True
-                      Height = 17
-                      Width = 80
-                      AnchorX = 528
-                    end
-                  end
-                  object pnl_TrennIst: TPanel
-                    AlignWithMargins = True
-                    Left = 16
-                    Top = 84
-                    Width = 523
-                    Height = 2
-                    Margins.Left = 13
-                    Margins.Top = 0
-                    Margins.Right = 0
-                    Margins.Bottom = 0
-                    Align = alTop
-                    BevelInner = bvLowered
-                    TabOrder = 3
-                  end
-                  object pnl_VerffixIst: TcxGroupBox
-                    Left = 3
-                    Top = 61
-                    Margins.Left = 0
-                    Margins.Top = 0
-                    Margins.Right = 0
-                    Margins.Bottom = 0
-                    Align = alTop
-                    PanelStyle.Active = True
-                    Style.BorderStyle = ebsNone
-                    TabOrder = 4
-                    Height = 23
-                    Width = 536
-                    object lbl_AusFixIstSumLabel: TcxLabel
-                      AlignWithMargins = True
-                      Left = 13
-                      Top = 3
-                      Margins.Left = 10
-                      Margins.Top = 0
-                      Margins.Bottom = 0
-                      Align = alLeft
-                      Caption = '- fixe Kosten'
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = []
-                      Style.IsFontAssigned = True
-                      Transparent = True
-                    end
-                    object lbl_AusFixIstSum: TcxLabel
-                      AlignWithMargins = True
-                      Left = 448
-                      Top = 3
-                      Margins.Left = 0
-                      Margins.Top = 0
-                      Margins.Right = 5
-                      Margins.Bottom = 0
-                      Align = alRight
-                      AutoSize = False
-                      Caption = '0,00 '#8364
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = []
-                      Style.IsFontAssigned = True
-                      Properties.Alignment.Horz = taRightJustify
-                      Transparent = True
-                      Height = 17
-                      Width = 80
-                      AnchorX = 528
-                    end
-                  end
-                end
-              end
-              object grpbx_FinanzenUebersicht_middle: TcxGroupBox
-                Left = 851
-                Top = 3
-                Margins.Left = 0
-                Margins.Top = 0
-                Margins.Right = 0
-                Margins.Bottom = 0
-                Align = alRight
-                PanelStyle.Active = True
-                ParentFont = False
-                Style.BorderStyle = ebsNone
-                Style.Font.Charset = DEFAULT_CHARSET
-                Style.Font.Color = clWindowText
-                Style.Font.Height = -13
-                Style.Font.Name = 'Tahoma'
-                Style.Font.Style = [fsBold]
-                Style.IsFontAssigned = True
-                TabOrder = 2
-                Height = 259
-                Width = 192
-                object pnl_EinDiff: TcxGroupBox
-                  AlignWithMargins = True
-                  Left = 3
-                  Top = 3
-                  Margins.Left = 0
-                  Margins.Top = 0
-                  Margins.Right = 0
-                  Margins.Bottom = 0
-                  Align = alTop
-                  Caption = 'Einnahmen Differenz:'
-                  ParentFont = False
-                  Style.BorderStyle = ebsNone
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = [fsBold]
-                  Style.IsFontAssigned = True
-                  TabOrder = 0
-                  Height = 45
-                  Width = 186
-                  object lbl_EinDiff: TcxLabel
-                    AlignWithMargins = True
-                    Left = 98
-                    Top = 16
-                    Margins.Left = 0
-                    Margins.Top = 1
-                    Margins.Right = 5
-                    Align = alRight
-                    AutoSize = False
-                    Caption = '0,00 '#8364
-                    ParentFont = False
-                    Style.Font.Charset = DEFAULT_CHARSET
-                    Style.Font.Color = clWindowText
-                    Style.Font.Height = -11
-                    Style.Font.Name = 'Tahoma'
-                    Style.Font.Style = []
-                    Style.IsFontAssigned = True
-                    Properties.Alignment.Horz = taRightJustify
-                    Transparent = True
-                    Height = 17
-                    Width = 80
-                    AnchorX = 178
-                  end
-                  object lbl_EinDiffLabel: TcxLabel
-                    AlignWithMargins = True
-                    Left = 16
-                    Top = 16
-                    Margins.Left = 13
-                    Margins.Top = 1
-                    Margins.Right = 4
-                    Align = alLeft
-                    Caption = 'Einnahmen'
-                    ParentFont = False
-                    Style.Font.Charset = DEFAULT_CHARSET
-                    Style.Font.Color = clWindowText
-                    Style.Font.Height = -11
-                    Style.Font.Name = 'Tahoma'
-                    Style.Font.Style = []
-                    Style.IsFontAssigned = True
-                    Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
-                  end
-                end
-                object pnl_FixDiff: TcxGroupBox
-                  AlignWithMargins = True
-                  Left = 3
-                  Top = 93
-                  Margins.Left = 0
-                  Margins.Top = 0
-                  Margins.Right = 0
-                  Margins.Bottom = 0
-                  Align = alTop
-                  Caption = 'fixe Kosten Differenz:'
-                  ParentFont = False
-                  Style.BorderStyle = ebsNone
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = [fsBold]
-                  Style.IsFontAssigned = True
-                  TabOrder = 1
-                  Height = 45
-                  Width = 186
-                  object lbl_AusFixDiff: TcxLabel
-                    AlignWithMargins = True
-                    Left = 98
-                    Top = 16
-                    Margins.Left = 0
-                    Margins.Top = 1
-                    Margins.Right = 5
-                    Align = alRight
-                    AutoSize = False
-                    Caption = '0,00 '#8364
-                    ParentFont = False
-                    Style.Font.Charset = DEFAULT_CHARSET
-                    Style.Font.Color = clWindowText
-                    Style.Font.Height = -11
-                    Style.Font.Name = 'Tahoma'
-                    Style.Font.Style = []
-                    Style.IsFontAssigned = True
-                    Properties.Alignment.Horz = taRightJustify
-                    Transparent = True
-                    Height = 17
-                    Width = 80
-                    AnchorX = 178
-                  end
-                  object lbl_AusFixDiffLabel: TcxLabel
-                    AlignWithMargins = True
-                    Left = 16
-                    Top = 16
-                    Margins.Left = 13
-                    Margins.Top = 1
-                    Margins.Right = 4
-                    Align = alLeft
-                    Caption = 'fixe Kosten'
-                    ParentFont = False
-                    Style.Font.Charset = DEFAULT_CHARSET
-                    Style.Font.Color = clWindowText
-                    Style.Font.Height = -11
-                    Style.Font.Name = 'Tahoma'
-                    Style.Font.Style = []
-                    Style.IsFontAssigned = True
-                    Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
-                  end
-                end
-                object pnl_VarIDiff: TcxGroupBox
-                  AlignWithMargins = True
-                  Left = 3
-                  Top = 48
-                  Margins.Left = 0
-                  Margins.Top = 0
-                  Margins.Right = 0
-                  Margins.Bottom = 0
-                  Align = alTop
-                  Caption = 'variable Kosten Differenz:'
-                  ParentFont = False
-                  Style.BorderStyle = ebsNone
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = [fsBold]
-                  Style.IsFontAssigned = True
-                  TabOrder = 2
-                  Height = 45
-                  Width = 186
-                  object lbl_AusvarDiff: TcxLabel
-                    AlignWithMargins = True
-                    Left = 98
-                    Top = 16
-                    Margins.Left = 0
-                    Margins.Top = 1
-                    Margins.Right = 5
-                    Align = alRight
-                    AutoSize = False
-                    Caption = '0,00 '#8364
-                    ParentFont = False
-                    Style.Font.Charset = DEFAULT_CHARSET
-                    Style.Font.Color = clWindowText
-                    Style.Font.Height = -11
-                    Style.Font.Name = 'Tahoma'
-                    Style.Font.Style = []
-                    Style.IsFontAssigned = True
-                    Properties.Alignment.Horz = taRightJustify
-                    Transparent = True
-                    Height = 17
-                    Width = 80
-                    AnchorX = 178
-                  end
-                  object lbl_AusVarDiffLabel: TcxLabel
-                    AlignWithMargins = True
-                    Left = 16
-                    Top = 16
-                    Margins.Left = 13
-                    Margins.Top = 1
-                    Margins.Right = 4
-                    Align = alLeft
-                    Caption = 'variable Kosten'
-                    ParentFont = False
-                    Style.Font.Charset = DEFAULT_CHARSET
-                    Style.Font.Color = clWindowText
-                    Style.Font.Height = -11
-                    Style.Font.Name = 'Tahoma'
-                    Style.Font.Style = []
-                    Style.IsFontAssigned = True
-                    Transparent = True
-                    ExplicitTop = -3
-                    ExplicitHeight = 36
-                  end
-                end
-                object pnl_GesDiff: TcxGroupBox
-                  AlignWithMargins = True
-                  Left = 3
-                  Top = 138
-                  Margins.Left = 0
-                  Margins.Top = 0
-                  Margins.Right = 0
-                  Margins.Bottom = 0
-                  Align = alTop
-                  Caption = 'verf'#252'gbare Restsumme Differenz:'
-                  ParentFont = False
-                  Style.BorderStyle = ebsNone
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = [fsBold]
-                  Style.IsFontAssigned = True
-                  TabOrder = 3
-                  Height = 121
-                  Width = 186
-                  object pnl_VerfDiff: TcxGroupBox
-                    Left = 3
-                    Top = 86
-                    Margins.Left = 0
-                    Margins.Top = 0
-                    Margins.Right = 0
-                    Margins.Bottom = 0
-                    Align = alTop
-                    PanelStyle.Active = True
-                    Style.BorderStyle = ebsNone
-                    TabOrder = 0
-                    Height = 23
-                    Width = 180
-                    object lbl_SollDiff: TcxLabel
-                      AlignWithMargins = True
-                      Left = 13
-                      Top = 3
-                      Margins.Left = 10
-                      Margins.Top = 0
-                      Margins.Bottom = 0
-                      Align = alLeft
-                      Caption = '= verf'#252'gbare Restsumme Differenz'
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = [fsBold]
-                      Style.IsFontAssigned = True
-                      Transparent = True
-                    end
-                    object lbl_DiffSum: TcxLabel
-                      AlignWithMargins = True
-                      Left = 92
-                      Top = 3
-                      Margins.Left = 0
-                      Margins.Top = 0
-                      Margins.Right = 5
-                      Margins.Bottom = 0
-                      Align = alRight
-                      AutoSize = False
-                      Caption = '0,00 '#8364
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = [fsBold]
-                      Style.IsFontAssigned = True
-                      Properties.Alignment.Horz = taRightJustify
-                      Transparent = True
-                      Height = 17
-                      Width = 80
-                      AnchorX = 172
-                    end
-                  end
-                  object pnl_VerfEinDiff: TcxGroupBox
-                    Left = 3
-                    Top = 15
-                    Margins.Left = 0
-                    Margins.Top = 0
-                    Margins.Right = 0
-                    Margins.Bottom = 0
-                    Align = alTop
-                    PanelStyle.Active = True
-                    Style.BorderStyle = ebsNone
-                    TabOrder = 1
-                    Height = 23
-                    Width = 180
-                    object lbl_EinDiffSumLabel: TcxLabel
-                      AlignWithMargins = True
-                      Left = 13
-                      Top = 3
-                      Margins.Left = 10
-                      Margins.Top = 0
-                      Margins.Bottom = 0
-                      Align = alLeft
-                      Caption = 'Einnahmen'
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = []
-                      Style.IsFontAssigned = True
-                      Transparent = True
-                    end
-                    object lbl_EinDiffSum: TcxLabel
-                      AlignWithMargins = True
-                      Left = 92
-                      Top = 3
-                      Margins.Left = 0
-                      Margins.Top = 0
-                      Margins.Right = 5
-                      Margins.Bottom = 0
-                      Align = alRight
-                      AutoSize = False
-                      Caption = '0,00 '#8364
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = []
-                      Style.IsFontAssigned = True
-                      Properties.Alignment.Horz = taRightJustify
-                      Transparent = True
-                      Height = 17
-                      Width = 80
-                      AnchorX = 172
-                    end
-                  end
-                  object pnl_VerfvarDiff: TcxGroupBox
-                    Left = 3
-                    Top = 38
-                    Margins.Left = 0
-                    Margins.Top = 0
-                    Margins.Right = 0
-                    Margins.Bottom = 0
-                    Align = alTop
-                    PanelStyle.Active = True
-                    Style.BorderStyle = ebsNone
-                    TabOrder = 2
-                    Height = 23
-                    Width = 180
-                    object lbl_AusvarDiffSumLabel: TcxLabel
-                      AlignWithMargins = True
-                      Left = 13
-                      Top = 3
-                      Margins.Left = 10
-                      Margins.Top = 0
-                      Margins.Bottom = 0
-                      Align = alLeft
-                      Caption = '- variable Kosten'
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = []
-                      Style.IsFontAssigned = True
-                      Transparent = True
-                    end
-                    object lbl_AusvarDiffSum: TcxLabel
-                      AlignWithMargins = True
-                      Left = 92
-                      Top = 3
-                      Margins.Left = 0
-                      Margins.Top = 0
-                      Margins.Right = 5
-                      Margins.Bottom = 0
-                      Align = alRight
-                      AutoSize = False
-                      Caption = '0,00 '#8364
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = []
-                      Style.IsFontAssigned = True
-                      Properties.Alignment.Horz = taRightJustify
-                      Transparent = True
-                      Height = 17
-                      Width = 80
-                      AnchorX = 172
-                    end
-                  end
-                  object pnl_TrennDiff: TPanel
-                    AlignWithMargins = True
-                    Left = 16
-                    Top = 84
-                    Width = 167
-                    Height = 2
-                    Margins.Left = 13
-                    Margins.Top = 0
-                    Margins.Right = 0
-                    Margins.Bottom = 0
-                    Align = alTop
-                    BevelInner = bvLowered
-                    TabOrder = 3
-                  end
-                  object pnl_VerffixDiff: TcxGroupBox
-                    Left = 3
-                    Top = 61
-                    Margins.Left = 0
-                    Margins.Top = 0
-                    Margins.Right = 0
-                    Margins.Bottom = 0
-                    Align = alTop
-                    PanelStyle.Active = True
-                    Style.BorderStyle = ebsNone
-                    TabOrder = 4
-                    Height = 23
-                    Width = 180
-                    object lbl_AusFixDiffSumLabel: TcxLabel
-                      AlignWithMargins = True
-                      Left = 13
-                      Top = 3
-                      Margins.Left = 10
-                      Margins.Top = 0
-                      Margins.Bottom = 0
-                      Align = alLeft
-                      Caption = '- fixe Kosten'
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = []
-                      Style.IsFontAssigned = True
-                      Transparent = True
-                    end
-                    object lbl_AusFixDiffSum: TcxLabel
-                      AlignWithMargins = True
-                      Left = 92
-                      Top = 3
-                      Margins.Left = 0
-                      Margins.Top = 0
-                      Margins.Right = 5
-                      Margins.Bottom = 0
-                      Align = alRight
-                      AutoSize = False
-                      Caption = '0,00 '#8364
-                      ParentFont = False
-                      Style.Font.Charset = DEFAULT_CHARSET
-                      Style.Font.Color = clWindowText
-                      Style.Font.Height = -11
-                      Style.Font.Name = 'Tahoma'
-                      Style.Font.Style = []
-                      Style.IsFontAssigned = True
-                      Properties.Alignment.Horz = taRightJustify
-                      Transparent = True
-                      Height = 17
-                      Width = 80
-                      AnchorX = 172
-                    end
-                  end
-                end
+          end
+          object chartctrl_CalCategories: TdxChartControl
+            Left = 10000
+            Top = 10000
+            Width = 550
+            Height = 312
+            Align = alClient
+            BorderStyle = cxcbsNone
+            Legend.Title.Visible = False
+            Titles = <>
+            Visible = False
+            object chartctrl_CalCategoriesChart: TdxChartSimpleDiagram
+              Title.Visible = False
+              Layout = Horizontal
+              object chartctrl_CalCategoriesSeries: TdxChartSimpleSeries
+                Caption = 'Wert'
+                DataBindingType = 'DB'
+                DataBinding.ArgumentField.FieldName = 'Kategorie'
+                DataBinding.ValueField.FieldName = 'Wert'
+                ViewType = 'Pie'
+                View.ExplodedValueOptions.Mode = Max
+                View.SweepDirection = Counterclockwise
+                View.ValueLabels.Appearance.FontOptions.Bold = True
+                View.ValueLabels.Appearance.FontOptions.Size = 9
+                View.ValueLabels.Appearance.FillOptions.Mode = Clear
+                View.ValueLabels.LineLength = 5.000000000000000000
+                View.ValueLabels.LineVisible = bTrue
+                View.ValueLabels.TextAlignment = Far
+                View.ValueLabels.Visible = True
+                View.ValueLabels.Position = Outside
+                SortBy = Value
+                SortOrder = soAscending
+                ColorSchemeIndex = 0
               end
             end
+          end
+          object chartctrl_ToDo: TdxChartControl
+            Left = 10000
+            Top = 10000
+            Width = 1070
+            Height = 219
+            BorderStyle = cxcbsNone
+            Legend.Title.Visible = False
+            Titles = <>
+            Visible = False
+            object chartctrl_ToDoChart: TdxChartSimpleDiagram
+              Title.Visible = False
+              Layout = Horizontal
+              object chartctrl_ToDoSeries: TdxChartSimpleSeries
+                Caption = 'Wert'
+                DataBindingType = 'DB'
+                DataBinding.DataSource = dm_PCM.ds_ChartAufgabe
+                DataBinding.ArgumentField.FieldName = 'ungelesen'
+                DataBinding.ValueField.FieldName = 'Wert'
+                ViewType = 'Pie'
+                View.ExplodedValueOptions.Mode = Max
+                View.SweepDirection = Counterclockwise
+                View.ValueLabels.Appearance.FontOptions.Bold = True
+                View.ValueLabels.Appearance.FontOptions.Size = 9
+                View.ValueLabels.Appearance.FillOptions.Mode = Clear
+                View.ValueLabels.LineLength = 5.000000000000000000
+                View.ValueLabels.LineVisible = bTrue
+                View.ValueLabels.TextAlignment = Far
+                View.ValueLabels.Visible = True
+                View.ValueLabels.Position = Outside
+                SortBy = Value
+                SortOrder = soAscending
+                ColorSchemeIndex = 0
+              end
+            end
+          end
+          object chartctrl_PWDCategories: TdxChartControl
+            Left = 10022
+            Top = 10000
+            Width = 485
+            Height = 312
+            BorderStyle = cxcbsNone
+            Legend.Title.Visible = False
+            Titles = <>
+            Visible = False
+            object chartctrl_PWDCategoriesChart: TdxChartSimpleDiagram
+              Title.Visible = False
+              Layout = Horizontal
+              object chartctrl_PWDCategoriesSeries: TdxChartSimpleSeries
+                Caption = 'Wert'
+                DataBindingType = 'DB'
+                DataBinding.ArgumentField.FieldName = 'Bezeichnung'
+                DataBinding.ValueField.FieldName = 'Wert'
+                ViewType = 'Pie'
+                View.ExplodedValueOptions.Mode = Max
+                View.SweepDirection = Counterclockwise
+                View.ValueLabels.LineLength = 5.000000000000000000
+                View.ValueLabels.TextAlignment = Far
+                View.ValueLabels.Visible = True
+                View.ValueLabels.Position = Outside
+                SortBy = Value
+                SortOrder = soAscending
+                ColorSchemeIndex = 0
+              end
+            end
+          end
+          object chartctrl_SerialsCategories: TdxChartControl
+            Left = 10022
+            Top = 10000
+            Width = 550
+            Height = 312
+            BorderStyle = cxcbsNone
+            Legend.Title.Visible = False
+            Titles = <>
+            Visible = False
+            object chartctrl_SerialsCategoriesChart: TdxChartSimpleDiagram
+              Title.Visible = False
+              Layout = Horizontal
+              object chartctrl_SerialsCategoriesSeries: TdxChartSimpleSeries
+                Caption = 'Wert'
+                DataBindingType = 'DB'
+                DataBinding.ArgumentField.FieldName = 'Bezeichnung'
+                DataBinding.ValueField.FieldName = 'Wert'
+                ViewType = 'Pie'
+                View.ExplodedValueOptions.Mode = Max
+                View.SweepDirection = Counterclockwise
+                View.ValueLabels.LineLength = 5.000000000000000000
+                View.ValueLabels.TextAlignment = Far
+                View.ValueLabels.Visible = True
+                View.ValueLabels.Position = Outside
+                SortBy = Value
+                SortOrder = soAscending
+                ColorSchemeIndex = 0
+              end
+            end
+          end
+          object chartctrl_PWDSerials: TdxChartControl
+            Left = 10022
+            Top = 10000
+            Width = 1070
+            Height = 219
+            BorderStyle = cxcbsNone
+            Legend.Title.Visible = False
+            Titles = <>
+            Visible = False
+            object chartctrl_PWDSerialsChart: TdxChartSimpleDiagram
+              Title.Visible = False
+              Layout = Horizontal
+              object chartctrl_PWDSerialsSeries: TdxChartSimpleSeries
+                Caption = 'Wert'
+                DataBindingType = 'DB'
+                DataBinding.ArgumentField.FieldName = 'BEZ'
+                DataBinding.ValueField.FieldName = 'Wert'
+                ViewType = 'Pie'
+                View.ExplodedValueOptions.Mode = Max
+                View.SweepDirection = Counterclockwise
+                View.ValueLabels.Appearance.FontOptions.Bold = True
+                View.ValueLabels.Appearance.FontOptions.Size = 9
+                View.ValueLabels.Appearance.FillOptions.Mode = Clear
+                View.ValueLabels.LineLength = 5.000000000000000000
+                View.ValueLabels.LineVisible = bTrue
+                View.ValueLabels.TextAlignment = Far
+                View.ValueLabels.Visible = True
+                View.ValueLabels.Position = Outside
+                SortBy = Value
+                SortOrder = soAscending
+                ColorSchemeIndex = 0
+              end
+            end
+          end
+          object chartctrl_Finance: TdxChartControl
+            Left = 10022
+            Top = 10000
+            Width = 1070
+            Height = 300
+            BorderStyle = cxcbsNone
+            Legend.Visible = False
+            Titles = <
+              item
+                Text = 'Finanz'#252'bersicht'
+              end>
+            Visible = False
+            object chartctrl_FinanceChart: TdxChartXYDiagram
+              Legend.Appearance.Border = bTrue
+              Axes.AxisY.Interlaced = True
+              Axes.AxisY.Title.Visible = False
+              Axes.AxisY.Title.Text = 'Betrag'
+              object chartctrl_FinanceSeries1: TdxChartXYSeries
+                Caption = 'Soll'
+                DataBindingType = 'DB'
+                DataBinding.ArgumentField.FieldName = 'Bezeichung'
+                DataBinding.ValueField.FieldName = 'Soll'
+                ViewType = 'Bar'
+                View.Appearance.FillOptions.Color = -8323200
+                View.Appearance.StrokeOptions.Color = -8323200
+                View.ValueLabels.Appearance.FontOptions.Bold = True
+                View.ValueLabels.Appearance.FontOptions.Size = 9
+                View.ValueLabels.Appearance.FillOptions.Mode = Clear
+                View.ValueLabels.Appearance.TextColor = -16777216
+                View.ValueLabels.Visible = True
+                ShowInLegend = Diagram
+                ColorSchemeIndex = 0
+              end
+              object chartctrl_FinanceSeries2: TdxChartXYSeries
+                Caption = 'Ist'
+                DataBindingType = 'DB'
+                DataBinding.ArgumentField.FieldName = 'Bezeichung'
+                DataBinding.ValueField.FieldName = 'Ist'
+                ViewType = 'Bar'
+                View.Appearance.FillOptions.Color = -32640
+                View.Appearance.StrokeOptions.Color = -32640
+                View.ValueLabels.Appearance.FontOptions.Bold = True
+                View.ValueLabels.Appearance.FontOptions.Size = 9
+                View.ValueLabels.Appearance.FillOptions.Mode = Clear
+                View.ValueLabels.Appearance.TextColor = -16777216
+                View.ValueLabels.Visible = True
+                ShowInLegend = Diagram
+                ColorSchemeIndex = 1
+              end
+            end
+          end
+          object lbl_EinSoll: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 1
+            Margins.Right = 5
+            Caption = '0,00 '#8364
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            AnchorX = 10307
+          end
+          object lbl_AusFixSoll: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 1
+            Margins.Right = 5
+            Caption = '0,00 '#8364
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            AnchorX = 10307
+          end
+          object lbl_AusVarSoll: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 1
+            Margins.Right = 5
+            Caption = '0,00 '#8364
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            AnchorX = 10307
+          end
+          object lbl_SollSum: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 5
+            Margins.Bottom = 0
+            AutoSize = False
+            Caption = '0,00 '#8364
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            Height = 17
+            Width = 285
+            AnchorX = 10307
+          end
+          object lbl_EinSollSum: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 5
+            Margins.Bottom = 0
+            Caption = '0,00 '#8364
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            AnchorX = 10307
+          end
+          object lbl_AusVarSollSum: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 5
+            Margins.Bottom = 0
+            AutoSize = False
+            Caption = '0,00 '#8364
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            Height = 17
+            Width = 285
+            AnchorX = 10307
+          end
+          object lbl_AusFixSollSum: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 5
+            Margins.Bottom = 0
+            AutoSize = False
+            Caption = '0,00 '#8364
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            Height = 17
+            Width = 285
+            AnchorX = 10307
+          end
+          object lbl_EinIst: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 1
+            Margins.Right = 5
+            Caption = '0,00 '#8364
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            AnchorX = 10140
+          end
+          object lbl_AusFixIst: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 1
+            Margins.Right = 5
+            Caption = '0,00 '#8364
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            AnchorX = 10140
+          end
+          object lbl_AusvarIst: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 1
+            Margins.Right = 5
+            Caption = '0,00 '#8364
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            AnchorX = 10140
+          end
+          object lbl_IstSum: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 5
+            Margins.Bottom = 0
+            AutoSize = False
+            Caption = '0,00 '#8364
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            Height = 17
+            Width = 118
+            AnchorX = 10140
+          end
+          object lbl_EinIstSum: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 5
+            Margins.Bottom = 0
+            AutoSize = False
+            Caption = '0,00 '#8364
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            Height = 17
+            Width = 118
+            AnchorX = 10140
+          end
+          object lbl_AusvarIstSum: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 5
+            Margins.Bottom = 0
+            AutoSize = False
+            Caption = '0,00 '#8364
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            Height = 17
+            Width = 118
+            AnchorX = 10140
+          end
+          object lbl_AusFixIstSum: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 5
+            Margins.Bottom = 0
+            AutoSize = False
+            Caption = '0,00 '#8364
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            Height = 17
+            Width = 118
+            AnchorX = 10140
+          end
+          object lbl_EinDiff: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 1
+            Margins.Right = 5
+            BiDiMode = bdLeftToRight
+            Caption = '0,00 '#8364
+            ParentBiDiMode = False
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            AnchorX = 10141
+          end
+          object lbl_AusFixDiff: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 1
+            Margins.Right = 5
+            BiDiMode = bdLeftToRight
+            Caption = '0,00 '#8364
+            ParentBiDiMode = False
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            AnchorX = 10141
+          end
+          object lbl_AusvarDiff: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 1
+            Margins.Right = 5
+            Caption = '0,00 '#8364
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            AnchorX = 10141
+          end
+          object lbl_DiffSum: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 5
+            Margins.Bottom = 0
+            AutoSize = False
+            Caption = '0,00 '#8364
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = [fsBold]
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            Height = 17
+            Width = 119
+            AnchorX = 10141
+          end
+          object lbl_EinDiffSum: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 5
+            Margins.Bottom = 0
+            AutoSize = False
+            Caption = '0,00 '#8364
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            Height = 17
+            Width = 119
+            AnchorX = 10141
+          end
+          object lbl_AusvarDiffSum: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 5
+            Margins.Bottom = 0
+            AutoSize = False
+            Caption = '0,00 '#8364
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            Height = 17
+            Width = 119
+            AnchorX = 10141
+          end
+          object lbl_AusFixDiffSum: TcxLabel
+            AlignWithMargins = True
+            Left = 10022
+            Top = 10000
+            Margins.Left = 0
+            Margins.Top = 0
+            Margins.Right = 5
+            Margins.Bottom = 0
+            AutoSize = False
+            Caption = '0,00 '#8364
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -11
+            Style.Font.Name = 'Tahoma'
+            Style.Font.Style = []
+            Style.HotTrack = False
+            Style.TransparentBorder = False
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Transparent = True
+            Visible = False
+            Height = 17
+            Width = 293
+            AnchorX = 10315
+          end
+          object dxLayoutControl1Group_Root: TdxLayoutGroup
+            AlignHorz = ahClient
+            AlignVert = avClient
+            SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
+            SizeOptions.SizableHorz = False
+            SizeOptions.SizableVert = False
+            Hidden = True
+            LayoutDirection = ldHorizontal
+            ShowBorder = False
+            Index = -1
+          end
+          object lagrp_Dashboard: TdxLayoutGroup
+            Parent = dxLayoutControl1Group_Root
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'New Group'
+            SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
+            SizeOptions.SizableHorz = True
+            SizeOptions.SizableVert = True
+            LayoutDirection = ldTabbed
+            ShowBorder = False
+            Index = 0
+          end
+          object lagrp_Kontakte: TdxLayoutGroup
+            Parent = lagrp_Dashboard
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.ImageIndex = 11
+            CaptionOptions.Text = 'Kontakte'
+            ItemIndex = 2
+            Index = 0
+          end
+          object lagrp_AufgabenTermine: TdxLayoutGroup
+            Parent = lagrp_Dashboard
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.ImageIndex = 58
+            CaptionOptions.Text = 'Aufgaben / Termine'
+            Index = 1
+          end
+          object lagrp_Passwords: TdxLayoutGroup
+            Parent = lagrp_Dashboard
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.ImageIndex = 9
+            CaptionOptions.Text = 'Passw'#246'rter / Serials'
+            Index = 2
+          end
+          object lagrp_Finance: TdxLayoutGroup
+            Parent = lagrp_Dashboard
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.ImageIndex = 3
+            CaptionOptions.Text = 'Finanzen'
+            Index = 3
+          end
+          object lagrp_Geburtsstage: TdxLayoutGroup
+            Parent = lagrp_Kontakte
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'Geburtstage'
+            SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
+            SizeOptions.SizableHorz = True
+            SizeOptions.SizableVert = True
+            ButtonOptions.ShowExpandButton = True
+            Index = 0
+          end
+          object lagrp_KontakteKontakte: TdxLayoutGroup
+            Parent = dxLayoutGroup1
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'Kontakte'
+            SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
+            SizeOptions.SizableHorz = False
+            SizeOptions.SizableVert = False
+            ButtonOptions.ShowExpandButton = True
+            Index = 0
+          end
+          object lagrp_KontakteAdressen: TdxLayoutGroup
+            Parent = dxLayoutGroup1
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'Adressen Privat und Gesch'#228'ftlich'
+            SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
+            SizeOptions.SizableHorz = False
+            SizeOptions.SizableVert = False
+            ButtonOptions.ShowExpandButton = True
+            Index = 2
+          end
+          object itm_Geburtstage: TdxLayoutItem
+            Parent = lagrp_Geburtsstage
+            AlignHorz = ahClient
+            AlignVert = avClient
+            Control = chartctrl_Birthday
+            ControlOptions.OriginalHeight = 281
+            ControlOptions.OriginalWidth = 1046
+            ControlOptions.ShowBorder = False
+            Index = 0
+          end
+          object itm_KontakteKontakte: TdxLayoutItem
+            Parent = lagrp_KontakteKontakte
+            AlignHorz = ahClient
+            AlignVert = avClient
+            Control = chartctrl_Contact
+            ControlOptions.OriginalHeight = 351
+            ControlOptions.OriginalWidth = 485
+            ControlOptions.ShowBorder = False
+            Index = 0
+          end
+          object itm_KontakteAdressen: TdxLayoutItem
+            Parent = lagrp_KontakteAdressen
+            AlignHorz = ahClient
+            AlignVert = avClient
+            Control = chartctrl_Adresses
+            ControlOptions.OriginalHeight = 351
+            ControlOptions.OriginalWidth = 550
+            ControlOptions.ShowBorder = False
+            Index = 0
+          end
+          object lagrp_Aufgaben: TdxLayoutGroup
+            Parent = lagrp_AufgabenTermine
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'Aufgaben'
+            ButtonOptions.ShowExpandButton = True
+            Index = 0
+          end
+          object lagrp_Kalenderkategorien: TdxLayoutGroup
+            Parent = dxLayoutGroup7
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'Kalenderkategorien'
+            ButtonOptions.ShowExpandButton = True
+            Index = 2
+          end
+          object lagrp_KalenderKalender: TdxLayoutGroup
+            Parent = dxLayoutGroup7
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'Kalender'
+            ButtonOptions.ShowExpandButton = True
+            Index = 0
+          end
+          object itm_Aufgaben: TdxLayoutItem
+            Parent = lagrp_Aufgaben
+            AlignHorz = ahClient
+            AlignVert = avClient
+            Control = chartctrl_ToDo
+            ControlOptions.OriginalHeight = 262
+            ControlOptions.OriginalWidth = 1046
+            ControlOptions.ShowBorder = False
+            Index = 0
+          end
+          object itm_Kalenderkategorien: TdxLayoutItem
+            Parent = lagrp_Kalenderkategorien
+            AlignHorz = ahClient
+            AlignVert = avClient
+            Control = chartctrl_CalCategories
+            ControlOptions.OriginalHeight = 370
+            ControlOptions.OriginalWidth = 550
+            ControlOptions.ShowBorder = False
+            Index = 0
+          end
+          object itm_KalenderKalender: TdxLayoutItem
+            Parent = lagrp_KalenderKalender
+            AlignHorz = ahClient
+            AlignVert = avClient
+            Control = chartctrl_Cal
+            ControlOptions.OriginalHeight = 370
+            ControlOptions.OriginalWidth = 485
+            ControlOptions.ShowBorder = False
+            Index = 0
+          end
+          object dxLayoutGroup9: TdxLayoutGroup
+            Parent = lagrp_Passwords
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'Passw'#246'rter / Serials'
+            ButtonOptions.ShowExpandButton = True
+            Index = 0
+          end
+          object dxLayoutGroup10: TdxLayoutGroup
+            Parent = dxLayoutGroup6
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'Passwort Kategorien'
+            ButtonOptions.ShowExpandButton = True
+            Index = 0
+          end
+          object dxLayoutGroup11: TdxLayoutGroup
+            Parent = dxLayoutGroup6
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'Serials Kategorien'
+            ButtonOptions.ShowExpandButton = True
+            Index = 2
+          end
+          object dxLayoutItem7: TdxLayoutItem
+            Parent = dxLayoutGroup9
+            AlignVert = avClient
+            Control = chartctrl_PWDSerials
+            ControlOptions.OriginalHeight = 262
+            ControlOptions.OriginalWidth = 1046
+            ControlOptions.ShowBorder = False
+            Index = 0
+          end
+          object dxLayoutItem8: TdxLayoutItem
+            Parent = dxLayoutGroup10
+            AlignHorz = ahClient
+            AlignVert = avClient
+            Control = chartctrl_PWDCategories
+            ControlOptions.OriginalHeight = 370
+            ControlOptions.OriginalWidth = 485
+            ControlOptions.ShowBorder = False
+            Index = 0
+          end
+          object dxLayoutItem9: TdxLayoutItem
+            Parent = dxLayoutGroup11
+            AlignHorz = ahClient
+            AlignVert = avClient
+            Control = chartctrl_SerialsCategories
+            ControlOptions.OriginalHeight = 370
+            ControlOptions.OriginalWidth = 550
+            ControlOptions.ShowBorder = False
+            Index = 0
+          end
+          object dxLayoutGroup12: TdxLayoutGroup
+            Parent = lagrp_Finance
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'Finanzen'
+            Index = 0
+          end
+          object dxLayoutItem10: TdxLayoutItem
+            Parent = dxLayoutGroup12
+            AlignHorz = ahClient
+            AlignVert = avClient
+            Control = chartctrl_Finance
+            ControlOptions.OriginalHeight = 399
+            ControlOptions.OriginalWidth = 1040
+            ControlOptions.ShowBorder = False
+            Index = 0
+          end
+          object dxLayoutItem11: TdxLayoutItem
+            Parent = dxLayoutGroup4
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = 'Einnahmen'
+            Control = lbl_EinSoll
+            ControlOptions.OriginalHeight = 13
+            ControlOptions.OriginalWidth = 80
+            ControlOptions.ShowBorder = False
+            Index = 1
+          end
+          object dxLayoutItem12: TdxLayoutItem
+            Parent = dxLayoutGroup3
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = 'Einnahmen'
+            Control = lbl_EinIst
+            ControlOptions.OriginalHeight = 13
+            ControlOptions.OriginalWidth = 80
+            ControlOptions.ShowBorder = False
+            Index = 1
+          end
+          object dxLayoutItem13: TdxLayoutItem
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = 'Einnahmen'
+            Control = lbl_EinDiff
+            ControlOptions.OriginalHeight = 13
+            ControlOptions.OriginalWidth = 80
+            ControlOptions.ShowBorder = False
+            Index = 1
+          end
+          object dxLayoutLabeledItem1: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup4
+            AlignHorz = ahClient
+            AlignVert = avTop
+            CaptionOptions.Text = '[B]Einnahmen Soll[/B]'
+            CaptionOptions.Width = 170
+            Index = 0
+          end
+          object dxLayoutLabeledItem2: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup3
+            AlignHorz = ahClient
+            AlignVert = avTop
+            Offsets.Left = 16
+            CaptionOptions.Text = '[B]Einnahmen Ist[/B]'
+            Index = 0
+          end
+          object dxLayoutLabeledItem3: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avTop
+            Offsets.Left = 16
+            CaptionOptions.Text = '[B]Einnahmen Diff[/B]'
+            Index = 0
+          end
+          object dxLayoutLabeledItem4: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup4
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = '[B]variable Kosten Soll[/B]'
+            Index = 3
+          end
+          object dxLayoutLabeledItem5: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup3
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = '[B]variable Kosten Ist[/B]'
+            Index = 3
+          end
+          object dxLayoutLabeledItem6: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = '[B]variable Kosten Diff[/B]'
+            Index = 3
+          end
+          object splt_Geburtstage: TdxLayoutSplitterItem
+            Parent = lagrp_Kontakte
+            AlignHorz = ahClient
+            AlignVert = avTop
+            SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
+            SizeOptions.SizableHorz = False
+            SizeOptions.SizableVert = False
+            CaptionOptions.Text = 'Splitter'
+            Index = 1
+          end
+          object splt_Kontakte: TdxLayoutSplitterItem
+            Parent = dxLayoutGroup1
+            AlignHorz = ahLeft
+            AlignVert = avClient
+            SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
+            SizeOptions.SizableHorz = False
+            SizeOptions.SizableVert = False
+            CaptionOptions.Text = 'Splitter'
+            Index = 1
+          end
+          object splt_Aufgaben: TdxLayoutSplitterItem
+            Parent = lagrp_AufgabenTermine
+            AlignHorz = ahClient
+            AlignVert = avTop
+            SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
+            SizeOptions.SizableHorz = False
+            SizeOptions.SizableVert = False
+            CaptionOptions.Text = 'Splitter'
+            Index = 1
+          end
+          object splt_Kalender: TdxLayoutSplitterItem
+            Parent = dxLayoutGroup7
+            AlignHorz = ahLeft
+            AlignVert = avClient
+            SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
+            SizeOptions.SizableHorz = False
+            SizeOptions.SizableVert = False
+            CaptionOptions.Text = 'Splitter'
+            Index = 1
+          end
+          object dxLayoutSplitterItem1: TdxLayoutSplitterItem
+            Parent = lagrp_Passwords
+            SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
+            SizeOptions.SizableHorz = False
+            SizeOptions.SizableVert = False
+            CaptionOptions.Text = 'Splitter'
+            Index = 1
+          end
+          object dxLayoutSplitterItem2: TdxLayoutSplitterItem
+            Parent = dxLayoutGroup6
+            AlignHorz = ahLeft
+            AlignVert = avClient
+            SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
+            SizeOptions.SizableHorz = False
+            SizeOptions.SizableVert = False
+            CaptionOptions.Text = 'Splitter'
+            Index = 1
+          end
+          object dxLayoutItem1: TdxLayoutItem
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.AlignHorz = taRightJustify
+            CaptionOptions.Text = 'variable Kosten'
+            Control = lbl_AusvarDiff
+            ControlOptions.OriginalHeight = 13
+            ControlOptions.OriginalWidth = 80
+            ControlOptions.ShowBorder = False
+            Index = 4
+          end
+          object dxLayoutItem2: TdxLayoutItem
+            Parent = dxLayoutGroup3
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = 'variable Kosten'
+            Control = lbl_AusvarIst
+            ControlOptions.OriginalHeight = 13
+            ControlOptions.OriginalWidth = 80
+            ControlOptions.ShowBorder = False
+            Index = 4
+          end
+          object dxLayoutItem3: TdxLayoutItem
+            Parent = dxLayoutGroup4
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = 'variable Kosten'
+            Control = lbl_AusVarSoll
+            ControlOptions.OriginalHeight = 13
+            ControlOptions.OriginalWidth = 80
+            ControlOptions.ShowBorder = False
+            Index = 4
+          end
+          object dxLayoutLabeledItem7: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup4
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = '[B]fixe Kosten Soll[/B]'
+            Index = 6
+          end
+          object dxLayoutLabeledItem8: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = '[B]fixe Kosten Diff[/B]'
+            Index = 6
+          end
+          object dxLayoutLabeledItem9: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup3
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = '[B]fixe Kosten Ist[/B]'
+            Index = 6
+          end
+          object dxLayoutItem5: TdxLayoutItem
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = 'fixe Kosten'
+            Control = lbl_AusFixDiff
+            ControlOptions.OriginalHeight = 13
+            ControlOptions.OriginalWidth = 80
+            ControlOptions.ShowBorder = False
+            Index = 7
+          end
+          object dxLayoutItem6: TdxLayoutItem
+            Parent = dxLayoutGroup3
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = 'fixe Kosten'
+            Control = lbl_AusFixIst
+            ControlOptions.OriginalHeight = 13
+            ControlOptions.OriginalWidth = 80
+            ControlOptions.ShowBorder = False
+            Index = 7
+          end
+          object dxLayoutLabeledItem10: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup4
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = '[B]verf'#252'gbare Restsumme Soll[/B]'
+            CaptionOptions.Width = 160
+            Index = 9
+          end
+          object dxLayoutLabeledItem11: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup3
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = '[B]verf'#252'gbare Restsumme Ist[/B]'
+            CaptionOptions.Width = 160
+            Index = 9
+          end
+          object dxLayoutLabeledItem12: TdxLayoutLabeledItem
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = '[B]verf'#252'gbare Restsumme Diff[/B]'
+            CaptionOptions.Width = 160
+            Index = 9
+          end
+          object dxLayoutItem14: TdxLayoutItem
+            Parent = dxLayoutGroup4
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = 'Einnahmen'
+            Control = lbl_EinSollSum
+            ControlOptions.OriginalHeight = 13
+            ControlOptions.OriginalWidth = 80
+            ControlOptions.ShowBorder = False
+            Index = 10
+          end
+          object dxLayoutItem15: TdxLayoutItem
+            Parent = dxLayoutGroup3
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = '- variable Kosten'
+            CaptionOptions.Width = 160
+            Control = lbl_AusvarIstSum
+            ControlOptions.OriginalHeight = 17
+            ControlOptions.OriginalWidth = 80
+            ControlOptions.ShowBorder = False
+            Index = 11
+          end
+          object dxLayoutItem16: TdxLayoutItem
+            Parent = dxLayoutGroup3
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = '- fixe Kosten'
+            CaptionOptions.Width = 160
+            CaptionOptions.WordWrap = True
+            Control = lbl_AusFixIstSum
+            ControlOptions.OriginalHeight = 17
+            ControlOptions.OriginalWidth = 80
+            ControlOptions.ShowBorder = False
+            Index = 12
+          end
+          object dxLayoutItem17: TdxLayoutItem
+            Parent = dxLayoutGroup4
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = '- fixe Kosten'
+            Control = lbl_AusFixSollSum
+            ControlOptions.OriginalHeight = 17
+            ControlOptions.OriginalWidth = 80
+            ControlOptions.ShowBorder = False
+            Index = 12
+          end
+          object dxLayoutItem18: TdxLayoutItem
+            Parent = dxLayoutGroup4
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = '- variable Kosten'
+            Control = lbl_AusVarSollSum
+            ControlOptions.OriginalHeight = 17
+            ControlOptions.OriginalWidth = 80
+            ControlOptions.ShowBorder = False
+            Index = 11
+          end
+          object dxLayoutItem19: TdxLayoutItem
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = 'Einnahmen'
+            Control = lbl_EinDiffSum
+            ControlOptions.OriginalHeight = 17
+            ControlOptions.OriginalWidth = 80
+            ControlOptions.ShowBorder = False
+            Index = 10
+          end
+          object dxLayoutItem20: TdxLayoutItem
+            Parent = dxLayoutGroup3
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = 'Einnahmen'
+            CaptionOptions.Width = 160
+            Control = lbl_EinIstSum
+            ControlOptions.OriginalHeight = 17
+            ControlOptions.OriginalWidth = 80
+            ControlOptions.ShowBorder = False
+            Index = 10
+          end
+          object dxLayoutSeparatorItem1: TdxLayoutSeparatorItem
+            Parent = dxLayoutGroup4
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = 'Separator'
+            Index = 13
+          end
+          object dxLayoutSeparatorItem2: TdxLayoutSeparatorItem
+            Parent = dxLayoutGroup3
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = 'Separator'
+            Index = 13
+          end
+          object dxLayoutItem21: TdxLayoutItem
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = '- variable Kosten'
+            Control = lbl_AusvarDiffSum
+            ControlOptions.OriginalHeight = 17
+            ControlOptions.OriginalWidth = 80
+            ControlOptions.ShowBorder = False
+            Index = 11
+          end
+          object dxLayoutItem22: TdxLayoutItem
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = '- fixe Kosten'
+            CaptionOptions.Visible = False
+            Control = lbl_AusFixDiffSum
+            ControlOptions.OriginalHeight = 17
+            ControlOptions.OriginalWidth = 80
+            ControlOptions.ShowBorder = False
+            Index = 12
+          end
+          object dxLayoutSeparatorItem3: TdxLayoutSeparatorItem
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = 'Separator'
+            Index = 13
+          end
+          object dxLayoutItem23: TdxLayoutItem
+            Parent = dxLayoutGroup4
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = '[B]= verf'#252'gbare Restsumme Soll[/B]'
+            CaptionOptions.Width = 170
+            Control = lbl_SollSum
+            ControlOptions.OriginalHeight = 17
+            ControlOptions.OriginalWidth = 80
+            ControlOptions.ShowBorder = False
+            Index = 14
+          end
+          object dxLayoutItem24: TdxLayoutItem
+            Parent = dxLayoutGroup3
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = '[B]= verf'#252'gbare Restsumme Ist[/B]'
+            CaptionOptions.Width = 170
+            Control = lbl_IstSum
+            ControlOptions.OriginalHeight = 17
+            ControlOptions.OriginalWidth = 80
+            ControlOptions.ShowBorder = False
+            Index = 14
+          end
+          object dxLayoutItem25: TdxLayoutItem
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            Offsets.Left = 16
+            CaptionOptions.Text = '[B]= verf'#252'gbare Restsumme Diff[/B]'
+            CaptionOptions.Width = 170
+            Control = lbl_DiffSum
+            ControlOptions.OriginalHeight = 17
+            ControlOptions.OriginalWidth = 80
+            ControlOptions.ShowBorder = False
+            Index = 14
+          end
+          object dxLayoutSplitterItem3: TdxLayoutSplitterItem
+            Parent = lagrp_Finance
+            AlignHorz = ahClient
+            AlignVert = avTop
+            SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
+            SizeOptions.SizableHorz = False
+            SizeOptions.SizableVert = False
+            CaptionOptions.Text = 'Splitter'
+            Index = 1
+          end
+          object dxLayoutSeparatorItem4: TdxLayoutSeparatorItem
+            Parent = dxLayoutGroup4
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = 'Separator'
+            Index = 2
+          end
+          object dxLayoutSeparatorItem5: TdxLayoutSeparatorItem
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = 'Separator'
+            Index = 2
+          end
+          object dxLayoutSeparatorItem6: TdxLayoutSeparatorItem
+            Parent = dxLayoutGroup3
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = 'Separator'
+            Index = 2
+          end
+          object dxLayoutSeparatorItem7: TdxLayoutSeparatorItem
+            Parent = dxLayoutGroup4
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = 'Separator'
+            Index = 5
+          end
+          object dxLayoutSeparatorItem8: TdxLayoutSeparatorItem
+            Parent = dxLayoutGroup3
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = 'Separator'
+            Index = 5
+          end
+          object dxLayoutSeparatorItem9: TdxLayoutSeparatorItem
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = 'Separator'
+            Index = 5
+          end
+          object dxLayoutSeparatorItem10: TdxLayoutSeparatorItem
+            Parent = dxLayoutGroup3
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = 'Separator'
+            Index = 8
+          end
+          object dxLayoutSeparatorItem11: TdxLayoutSeparatorItem
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = 'Separator'
+            Index = 8
+          end
+          object dxLayoutSeparatorItem12: TdxLayoutSeparatorItem
+            Parent = dxLayoutGroup4
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = 'Separator'
+            Index = 8
+          end
+          object dxLayoutItem4: TdxLayoutItem
+            Parent = dxLayoutGroup4
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = 'fixe Kosten'
+            Control = lbl_AusFixSoll
+            ControlOptions.OriginalHeight = 13
+            ControlOptions.OriginalWidth = 227
+            ControlOptions.ShowBorder = False
+            Index = 7
+          end
+          object dxLayoutGroup1: TdxLayoutGroup
+            Parent = lagrp_Kontakte
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'New Group'
+            ItemIndex = 2
+            LayoutDirection = ldHorizontal
+            ShowBorder = False
+            Index = 2
+          end
+          object dxLayoutGroup2: TdxLayoutGroup
+            Parent = dxLayoutGroup5
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = 'New Group'
+            ShowBorder = False
+            Index = 2
+          end
+          object dxLayoutGroup3: TdxLayoutGroup
+            Parent = dxLayoutGroup5
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = 'New Group'
+            ShowBorder = False
+            Index = 1
+          end
+          object dxLayoutGroup4: TdxLayoutGroup
+            Parent = dxLayoutGroup5
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = 'New Group'
+            ShowBorder = False
+            Index = 0
+          end
+          object dxLayoutGroup5: TdxLayoutGroup
+            Parent = lagrp_Finance
+            AlignHorz = ahClient
+            AlignVert = avBottom
+            CaptionOptions.Text = 'New Group'
+            ItemIndex = 1
+            LayoutDirection = ldHorizontal
+            ShowBorder = False
+            Index = 2
+          end
+          object dxLayoutGroup6: TdxLayoutGroup
+            Parent = lagrp_Passwords
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'New Group'
+            LayoutDirection = ldHorizontal
+            ShowBorder = False
+            Index = 2
+          end
+          object dxLayoutGroup7: TdxLayoutGroup
+            Parent = lagrp_AufgabenTermine
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'New Group'
+            LayoutDirection = ldHorizontal
+            ShowBorder = False
+            Index = 2
           end
         end
       end

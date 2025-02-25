@@ -14,19 +14,23 @@ object frm_PCM_KalenderFilter: Tfrm_PCM_KalenderFilter
   Position = poScreenCenter
   OnShow = FormShow
   TextHeight = 13
-  object grpbx_Design: TcxGroupBox
+  object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
-    Align = alClient
-    PanelStyle.Active = True
-    Style.BorderStyle = ebsNone
-    TabOrder = 0
-    Height = 298
     Width = 504
+    Height = 298
+    Align = alClient
+    TabOrder = 0
+    AutoSize = True
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    ExplicitLeft = 112
+    ExplicitTop = 40
+    ExplicitWidth = 300
+    ExplicitHeight = 250
     object btn_Ok: TcxButton
-      Left = 3
-      Top = 270
-      Width = 251
+      Left = 10
+      Top = 263
+      Width = 239
       Height = 25
       Caption = 'Ok'
       OptionsImage.ImageIndex = 56
@@ -41,9 +45,9 @@ object frm_PCM_KalenderFilter: Tfrm_PCM_KalenderFilter
       OnClick = btn_OkClick
     end
     object btn_Cancel: TcxButton
-      Left = 262
-      Top = 270
-      Width = 251
+      Left = 255
+      Top = 263
+      Width = 239
       Height = 25
       Caption = 'Abbrechen'
       OptionsImage.ImageIndex = 57
@@ -58,11 +62,10 @@ object frm_PCM_KalenderFilter: Tfrm_PCM_KalenderFilter
       OnClick = btn_CancelClick
     end
     object grd_Stundenplanuebersicht: TcxGrid
-      Left = 3
-      Top = 3
-      Width = 498
-      Height = 263
-      Align = alTop
+      Left = 10
+      Top = 10
+      Width = 484
+      Height = 247
       BevelInner = bvLowered
       BevelKind = bkFlat
       BorderStyle = cxcbsNone
@@ -117,6 +120,69 @@ object frm_PCM_KalenderFilter: Tfrm_PCM_KalenderFilter
       object grdlvl_Stundenplanuebersicht: TcxGridLevel
         GridView = grdDBTblView_Stundenplanuebersicht
       end
+    end
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = -1
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup6
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'grd_Stundenplanuebersicht'
+      CaptionOptions.Visible = False
+      Control = grd_Stundenplanuebersicht
+      ControlOptions.OriginalHeight = 263
+      ControlOptions.OriginalWidth = 498
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avBottom
+      CaptionOptions.Text = 'btn_Ok'
+      CaptionOptions.Visible = False
+      Control = btn_Ok
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 251
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avBottom
+      CaptionOptions.Text = 'btn_Cancel'
+      CaptionOptions.Visible = False
+      Control = btn_Cancel
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 251
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup5: TdxLayoutGroup
+      Parent = dxLayoutGroup6
+      AlignHorz = ahClient
+      AlignVert = avBottom
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup6: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 0
     end
   end
 end

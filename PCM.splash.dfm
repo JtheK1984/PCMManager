@@ -25,9 +25,9 @@ object SplashScreen: TSplashScreen
     Height = 488
     Width = 1000
     object img_Splash: TImage
-      Left = 3
-      Top = 3
-      Width = 994
+      Left = 2
+      Top = 2
+      Width = 996
       Height = 461
       Align = alClient
       Picture.Data = {
@@ -2311,7 +2311,9 @@ object SplashScreen: TSplashScreen
         70381C0E87C3E1703C0238E1EE70381C0E87C3E1703C0238E1EE70381C0E87C3
         E1703C0238E1EE70381C0E87C3E1703C0238E1EE70381C0E87C3E1703C02FCEF
         12C994D5D0AFFDAD0000000049454E44AE426082}
+      ExplicitLeft = 3
       ExplicitTop = -3
+      ExplicitWidth = 994
     end
     object lbl_ProgVersion: TcxLabel
       Left = 464
@@ -2329,8 +2331,8 @@ object SplashScreen: TSplashScreen
       Transparent = True
     end
     object prgbr_Splash: TcxProgressBar
-      Left = 3
-      Top = 464
+      Left = 2
+      Top = 463
       Align = alBottom
       ParentFont = False
       Position = 1.000000000000000000
@@ -2358,7 +2360,7 @@ object SplashScreen: TSplashScreen
       StyleHot.LookAndFeel.NativeStyle = False
       TabOrder = 1
       Transparent = True
-      Width = 994
+      Width = 996
     end
     object ActivityIndicator: TdxActivityIndicator
       Left = 334
@@ -2394,49 +2396,49 @@ object SplashScreen: TSplashScreen
   end
   object Timer1: TTimer
     Enabled = False
-    Interval = 750
+    Interval = 250
     OnTimer = Timer1Timer
     Left = 152
     Top = 144
   end
   object Timer2: TTimer
     Enabled = False
-    Interval = 750
+    Interval = 250
     OnTimer = Timer2Timer
     Left = 152
     Top = 208
   end
   object Timer3: TTimer
     Enabled = False
-    Interval = 750
+    Interval = 250
     OnTimer = Timer3Timer
     Left = 152
     Top = 264
   end
   object Timer4: TTimer
     Enabled = False
-    Interval = 750
+    Interval = 250
     OnTimer = Timer4Timer
     Left = 152
     Top = 320
   end
   object Timer5: TTimer
     Enabled = False
-    Interval = 750
+    Interval = 250
     OnTimer = Timer5Timer
     Left = 152
     Top = 376
   end
   object Timer6: TTimer
     Enabled = False
-    Interval = 750
+    Interval = 250
     OnTimer = Timer6Timer
     Left = 152
     Top = 432
   end
   object Timer11: TTimer
     Enabled = False
-    Interval = 750
+    Interval = 250
     OnTimer = Timer11Timer
     Left = 88
     Top = 144

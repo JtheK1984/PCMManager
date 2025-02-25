@@ -4,8 +4,8 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Neuen Kontakt anlegen'
-  ClientHeight = 130
-  ClientWidth = 342
+  ClientHeight = 140
+  ClientWidth = 372
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,78 +14,47 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
   Font.Style = []
   Position = poScreenCenter
   TextHeight = 13
-  object grpbx_Design: TcxGroupBox
+  object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
+    Width = 372
+    Height = 140
     Align = alClient
-    PanelStyle.Active = True
-    Style.BorderStyle = ebsNone
     TabOrder = 0
-    Height = 130
-    Width = 342
-    object lbl_Anrede: TcxLabel
-      Left = 109
-      Top = 19
-      Caption = 'Anrede:'
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      Transparent = True
-    end
-    object lbl_Name: TcxLabel
-      Left = 109
-      Top = 46
-      Caption = 'Vorname:'
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      Transparent = True
-    end
-    object lbl_SurName: TcxLabel
-      Left = 109
-      Top = 73
-      Caption = 'Nachname:'
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      Transparent = True
-    end
+    AutoSize = True
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    ExplicitLeft = 32
+    ExplicitTop = -40
+    ExplicitWidth = 300
+    ExplicitHeight = 250
     object edt_Name: TcxTextEdit
-      Left = 177
-      Top = 42
+      Left = 153
+      Top = 45
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 1
+      TabOrder = 2
       Text = 'edt_Name'
-      Width = 155
+      Width = 209
     end
     object edt_SurName: TcxTextEdit
-      Left = 177
-      Top = 69
-      TabOrder = 2
+      Left = 153
+      Top = 70
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 3
       Text = 'cxTextEdit1'
-      Width = 155
+      Width = 209
     end
     object img_Contact: TcxImage
-      Left = 8
-      Top = 8
+      Left = 10
+      Top = 10
       TabStop = False
       ParentShowHint = False
       Picture.Data = {
@@ -558,38 +527,156 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
         D98A809B4BC0CDC87BE4EA285AFD3D7F962EE8237B4FEFFDDFF9FFCCA21C487D
         32BB8C0000000049454E44AE426082}
       ShowHint = False
-      TabOrder = 8
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 0
       Height = 88
       Width = 78
     end
     object btn_PCManagerLogin_Cancel: TcxButton
-      Left = 177
-      Top = 102
-      Width = 155
+      Left = 189
+      Top = 104
+      Width = 173
       Height = 25
       Caption = 'Abbrechen'
       OptionsImage.ImageIndex = 57
       OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 4
+      TabOrder = 5
       OnClick = btn_PCManagerLogin_CancelClick
     end
     object btn_PCManagerLogin_Ok: TcxButton
-      Left = 8
-      Top = 102
-      Width = 155
+      Left = 10
+      Top = 104
+      Width = 173
       Height = 25
       Caption = 'Kontakt anlegen'
       OptionsImage.ImageIndex = 56
       OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 3
+      TabOrder = 4
       OnClick = btn_PCManagerLogin_OkClick
     end
     object cmbbx_Anrede: TcxComboBox
-      Left = 177
-      Top = 15
-      TabOrder = 0
+      Left = 153
+      Top = 20
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 1
       Text = 'cmbbx_Anrede'
-      Width = 155
+      Width = 209
+    end
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = -1
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'img_Contact'
+      CaptionOptions.Visible = False
+      Control = img_Contact
+      ControlOptions.OriginalHeight = 88
+      ControlOptions.OriginalWidth = 78
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = dxLayoutGroup1
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_PCManagerLogin_Ok'
+      CaptionOptions.Visible = False
+      Control = btn_PCManagerLogin_Ok
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 155
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Anrede:'
+      Control = cmbbx_Anrede
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 155
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem4: TdxLayoutItem
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Vorname:'
+      Control = edt_Name
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 155
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem5: TdxLayoutItem
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Nachname:'
+      Control = edt_SurName
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 155
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem6: TdxLayoutItem
+      Parent = dxLayoutGroup1
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_PCManagerLogin_Cancel'
+      CaptionOptions.Visible = False
+      Control = btn_PCManagerLogin_Cancel
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 155
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup4: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup5: TdxLayoutGroup
+      Parent = dxLayoutGroup4
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup2: TdxLayoutGroup
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      Offsets.Top = 10
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup1: TdxLayoutGroup
+      Parent = dxLayoutGroup4
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
     end
   end
 end

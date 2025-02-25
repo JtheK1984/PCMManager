@@ -45,7 +45,7 @@ uses
   dxChartXYSeriesLineView, dxChartXYSeriesAreaView, dxChartMarkers,
   dxChartXYSeriesBarView, dxChartDBData, dxCoreClasses, dxChartControl,
   dxStatusBar, cxImageList, dxLayoutContainer, dxLayoutLookAndFeels,
-  dxLayoutControl, dxLayoutcxEditAdapters,PCM.Browser;
+  dxLayoutControl, dxLayoutcxEditAdapters,PCM.Browser, dxLayoutControlAdapters;
 
 
 type
@@ -66,11 +66,6 @@ type
   TSearchType = (stSubject, stMessage, stSubjectMessage);
 
   Tfrm_Calendar = class(TForm)
-    pc_Kalender: TcxPageControl;
-    ts_A_kalender: TcxTabSheet;
-    spl_Kalender: TcxSplitter;
-    ts_D_Stundenplan: TcxTabSheet;
-    grpbx_Stundenplanuebersicht: TcxGroupBox;
     edt_Stundenplan_Klasse: TcxDBTextEdit;
     edt_Stundenplan_Schule: TcxDBTextEdit;
     edt_Stundenplan_Schuljahr: TcxDBTextEdit;
@@ -81,19 +76,6 @@ type
     grdDBTblView_StundenplanuebersichtSchuljahr: TcxGridDBColumn;
     grdDBTblView_StundenplanuebersichtID_Benutzer: TcxGridDBColumn;
     grdlvl_Stundenplanuebersicht: TcxGridLevel;
-    lbl_Stundenplan_Klasse: TcxLabel;
-    lbl_Stundenplan_Schule: TcxLabel;
-    lbl_Stundenplan_Schuljahr: TcxLabel;
-    grpbx_Schulstunde: TcxGroupBox;
-    pnl_Stundenplandetail: TcxGroupBox;
-    lbl_Stundenplan_Bis: TcxLabel;
-    lbl_Stundenplan_Dienstag: TcxLabel;
-    lbl_Stundenplan_Donnerstag: TcxLabel;
-    lbl_Stundenplan_Freitag: TcxLabel;
-    lbl_Stundenplan_Mittwoch: TcxLabel;
-    lbl_Stundenplan_Montag: TcxLabel;
-    lbl_Stundenplan_Samstag: TcxLabel;
-    lbl_Stundenplan_Von: TcxLabel;
     lucmbbx_Stundenplan_Dienstag: TcxDBLookupComboBox;
     lucmbbx_Stundenplan_Donnerstag: TcxDBLookupComboBox;
     lucmbbx_Stundenplan_Freitag: TcxDBLookupComboBox;
@@ -170,7 +152,6 @@ type
     btn_StundeDelete: TdxBarLargeButton;
     btn_StundeCancel: TdxBarLargeButton;
     btn_StundeSave: TdxBarLargeButton;
-    ts_B_Aufgaben: TcxTabSheet;
     brdckctrl_Aufgaben: TdxBarDockControl;
     tb_Aufgaben: TdxBar;
     cxGrid1: TcxGrid;
@@ -187,19 +168,10 @@ type
     cxGrid5DBTableView1DateinameSave: TcxGridDBColumn;
     cxGrid5Level1: TcxGridLevel;
     cxDBMemo1: TcxDBRichEdit;
-    cxSplitter4: TcxSplitter;
-    pnl_Search: TcxGroupBox;
     img_search: TcxImage;
-    pnl_Details: TcxGroupBox;
-    cxGroupBox8: TcxGroupBox;
-    pAnhaenge: TcxGroupBox;
     Image1: TcxImage;
-    lTypeName: TcxLabel;
-    cxGroupBox11: TcxGroupBox;
-    spl_Grid: TcxSplitter;
     btn_AttachementSave: TcxButton;
     btn_AttachementOpen: TcxButton;
-    pnl_Aufgaben: TcxGroupBox;
     btn_NewTask: TdxBarLargeButton;
     btn_ReadJob: TdxBarLargeButton;
     btn_DoneJob: TdxBarLargeButton;
@@ -267,7 +239,6 @@ type
     rstrsp_Main: TRESTResponse;
     httpBasAut_Main: THTTPBasicAuthenticator;
     btn_CalRefresh: TdxBarLargeButton;
-    pnl_Design: TcxGroupBox;
     qWF_Nachrichten_Anhaenge: TFDQuery;
     qWF_Nachrichten_AnhaengeID: TFDAutoIncField;
     qWF_Nachrichten_AnhaengeID_IC_Nachrichten: TIntegerField;
@@ -276,86 +247,81 @@ type
     qWF_Nachrichten_AnhaengeDateiname: TStringField;
     qWF_Nachrichten_AnhaengeDateinameSave: TStringField;
     sched_Kalender: TcxScheduler;
-    Label5: TcxLabel;
-    Label2: TcxLabel;
-    Label6: TcxLabel;
-    Label8: TcxLabel;
-    ts_C_Jira: TcxTabSheet;
     RESTClient_jira: TRESTClient;
     httpAuth_Jira: THTTPBasicAuthenticator;
-    stbr_main: TdxStatusBar;
     cxGridPopupMenu1: TcxGridPopupMenu;
-    qry_prio: TFDQuery;
-    ds_prio: TDataSource;
     cxImageList1: TcxImageList;
     dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
     dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel;
     dxBarLargeButton2: TdxBarLargeButton;
-    dxBarDockControl4: TdxBarDockControl;
-    brmgr_KalendarBar3: TdxBar;
-    btn_ReadTickets_Priv: TdxBarLargeButton;
-    pc_Jirapriv: TcxPageControl;
-    cxTabSheet3: TcxTabSheet;
-    pnl_BrowserJiraPriv: TcxGroupBox;
-    dxBarDockControl5: TdxBarDockControl;
-    cxTabSheet4: TcxTabSheet;
-    cxComboBox2: TcxComboBox;
-    dxChartControl1: TdxChartControl;
-    dxChartSimpleDiagram1: TdxChartSimpleDiagram;
-    dxChartSimpleSeries1: TdxChartSimpleSeries;
-    cxTabSheet5: TcxTabSheet;
-    cxGrid3: TcxGrid;
-    cxGridDBTableView1: TcxGridDBTableView;
-    cxGridDBColumn1: TcxGridDBColumn;
-    cxGridDBColumn2: TcxGridDBColumn;
-    cxGridDBColumn3: TcxGridDBColumn;
-    cxGridDBColumn4: TcxGridDBColumn;
-    cxGridDBColumn5: TcxGridDBColumn;
-    cxGridDBColumn6: TcxGridDBColumn;
-    cxGridDBColumn7: TcxGridDBColumn;
-    cxGridDBColumn8: TcxGridDBColumn;
-    cxGridDBColumn10: TcxGridDBColumn;
-    cxGridDBColumn11: TcxGridDBColumn;
-    cxGridDBColumn12: TcxGridDBColumn;
-    cxGridDBColumn13: TcxGridDBColumn;
-    cxGridDBColumn14: TcxGridDBColumn;
-    cxGridDBColumn21: TcxGridDBColumn;
-    cxGridLevel1: TcxGridLevel;
-    cxSplitter1: TcxSplitter;
-    dxLayoutControl2: TdxLayoutControl;
-    cxDBImageComboBox2: TcxDBImageComboBox;
-    cxDBTextEdit18: TcxDBTextEdit;
-    cxDBTextEdit19: TcxDBTextEdit;
-    cxDBTextEdit21: TcxDBTextEdit;
-    cxRichEdit1: TcxRichEdit;
-    cxDBTextEdit22: TcxDBTextEdit;
-    cxDBTextEdit23: TcxDBTextEdit;
-    dxLayoutGroup5: TdxLayoutGroup;
-    dxLayoutGroup6: TdxLayoutGroup;
-    dxLayoutGroup7: TdxLayoutGroup;
-    grpbx_Ticketspriv: TdxLayoutGroup;
+    lactrl_KalenderGroup_Root: TdxLayoutGroup;
+    lactrl_Kalender: TdxLayoutControl;
+    lagrp_KalenderTab: TdxLayoutGroup;
+    lagrp_Kalender: TdxLayoutGroup;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
+    lagrp_Aufgaben: TdxLayoutGroup;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutGroup8: TdxLayoutGroup;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutItem6: TdxLayoutItem;
+    dxLayoutItem7: TdxLayoutItem;
+    dxLayoutItem8: TdxLayoutItem;
+    dxLayoutItem9: TdxLayoutItem;
+    dxLayoutItem10: TdxLayoutItem;
+    dxLayoutItem12: TdxLayoutItem;
+    dxLayoutItem13: TdxLayoutItem;
+    dxLayoutItem14: TdxLayoutItem;
+    dxLayoutItem15: TdxLayoutItem;
+    dxLayoutItem16: TdxLayoutItem;
+    dxLayoutItem17: TdxLayoutItem;
+    lagrp_Stundenplan: TdxLayoutGroup;
+    dxLayoutGroup23: TdxLayoutGroup;
+    dxLayoutItem18: TdxLayoutItem;
+    dxLayoutItem19: TdxLayoutItem;
     dxLayoutItem20: TdxLayoutItem;
     dxLayoutItem21: TdxLayoutItem;
-    dxLayoutGroup9: TdxLayoutGroup;
     dxLayoutItem22: TdxLayoutItem;
+    dxLayoutGroup28: TdxLayoutGroup;
     dxLayoutItem23: TdxLayoutItem;
+    dxLayoutGroup29: TdxLayoutGroup;
     dxLayoutItem24: TdxLayoutItem;
-    dxLayoutAutoCreatedGroup2: TdxLayoutAutoCreatedGroup;
+    dxLayoutItem25: TdxLayoutItem;
+    dxLayoutItem26: TdxLayoutItem;
     dxLayoutItem27: TdxLayoutItem;
     dxLayoutItem28: TdxLayoutItem;
+    dxLayoutItem29: TdxLayoutItem;
     dxLayoutItem30: TdxLayoutItem;
+    dxLayoutItem31: TdxLayoutItem;
     dxLayoutItem32: TdxLayoutItem;
-    btn_Board_priv: TdxBarLargeButton;
-    brmgr_KalendarBar4: TdxBar;
-    btn_MinMaxBrowserPriv: TdxBarLargeButton;
-    qry_Tickets_priv: TFDQuery;
-    ds_Tickets_priv: TDataSource;
-    cxGridDBTableView1Land: TcxGridDBColumn;
-    cxTabSheet6: TcxTabSheet;
-    cxComboBox3: TcxComboBox;
-    dxChartControl2: TdxChartControl;
-    dxChartSimpleDiagram2: TdxChartSimpleDiagram;
-    dxChartSimpleSeries2: TdxChartSimpleSeries;
+    dxLayoutItem11: TdxLayoutItem;
+    dxLayoutGroup1: TdxLayoutGroup;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutGroup4: TdxLayoutGroup;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutGroup9: TdxLayoutGroup;
+    dxLayoutGroup10: TdxLayoutGroup;
+    dxLayoutGroup6: TdxLayoutGroup;
+    dxLayoutGroup7: TdxLayoutGroup;
+    dxLayoutGroup11: TdxLayoutGroup;
+    dxLayoutGroup12: TdxLayoutGroup;
+    dxLayoutLabeledItem1: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem2: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem3: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem4: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem5: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem6: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem7: TdxLayoutLabeledItem;
+    dxLayoutGroup13: TdxLayoutGroup;
+    dxLayoutGroup14: TdxLayoutGroup;
+    dxLayoutGroup15: TdxLayoutGroup;
+    dxLayoutGroup16: TdxLayoutGroup;
+    dxLayoutGroup17: TdxLayoutGroup;
+    dxLayoutGroup18: TdxLayoutGroup;
+    dxLayoutGroup19: TdxLayoutGroup;
+    dxLayoutLabeledItem8: TdxLayoutLabeledItem;
+    lTypeName: TdxLayoutLabeledItem;
     procedure btn_CalNewClick(Sender: TObject);
     procedure btn_CalArbeitswocheClick(Sender: TObject);
     procedure btn_CalWocheClick(Sender: TObject);
@@ -448,18 +414,8 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btn_CalTagClick(Sender: TObject);
-    procedure btn_Board_privClick(Sender: TObject);
-    procedure btn_ReadTickets_PrivClick(Sender: TObject);
-    procedure btn_MinMaxBrowserPrivClick(Sender: TObject);
-    procedure qry_Tickets_privAfterScroll(DataSet: TDataSet);
-    procedure pc_JiraprivChange(Sender: TObject);
-    procedure cxGridDBTableView1CellDblClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;     AShift: TShiftState; var AHandled: Boolean);
   private
     { Private-Deklarationen }
-
-    AURL: String;
-    FWebBrowser: TAbstractWebBrowser;
-    sTicketNr_Ges: String;
     FKalenderDateButton : Boolean;
     defaultLabelColor: integer;
     defaultFontColor: integer;
@@ -467,7 +423,6 @@ type
     sColordef,sFontcolordef: string;
     SaveGridViewAufgaben,SaveGridViewNachrichten,
     SaveGridViewStundenplan,SaveGridViewStundenplanDetail: TSavedGridView;
-    procedure InitializeBrowser(AParent: TWinControl);
     procedure SetGridViews(Show:boolean);
     procedure OpenEvent(ID_kalender: Integer; bReminder: Boolean);
     procedure NachrichtenAnhaengeLaden(ID_IC_Nachrichten: Integer);
@@ -488,7 +443,6 @@ type
     procedure ReadICSAutomatic;
     procedure WriteICSAutomatic;
     procedure RefreshTerminundAUfgaben;
-    procedure Loadjirastatus;
   end;
 
 var
@@ -654,78 +608,6 @@ begin
       Result := 'Findet ' + Result + GetDateBounds(APattern) + GetTimeBounds(APattern) + ' statt.'
     else
       Result := Result + GetTimeBounds(APattern);
-  end;
-end;
-procedure Tfrm_Calendar.InitializeBrowser(AParent: TWinControl);
-begin
-  if not Assigned(FWebBrowser) then
-  begin
-    FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
-    FWebBrowser.Parent := AParent;
-    FWebBrowser.Align := alClient;
-    FWebBrowser.OnBeforeNavigate := nil;
-  end
-  else
-  begin
-    FreeAndNil(FWebBrowser);
-    FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
-    FWebBrowser.Parent := AParent;
-    FWebBrowser.Align := alClient;
-    FWebBrowser.OnBeforeNavigate := nil;
-  end;
-  AURL:= 'https://pcm-software.atlassian.net/jira/software/projects/PCM/boards/1';
-  FWebBrowser.Navigate(AURL)
-end;
-procedure Tfrm_Calendar.Loadjirastatus;
-begin
-  dm_PCM.qry_Work.SQL.Text:= 'Select DISTINCT(Sprint) as Sprint FROM manager_tickets_priv where Board = ''PCM Desktopapp'' and Sprint <> '''' ORDER BY Sprint asc';
-  dm_PCM.qry_Work.open;
-  while not dm_PCM.qry_Work.eof do
-  begin
-    cxComboBox2.Properties.Items.Add(dm_PCM.qry_Work.FieldByName('Sprint').AsString);
-    dm_PCM.qry_Work.next;
-    try
-      cxComboBox2.ItemIndex:= 0;
-    except
-    end;
-  end;
-  dm_PCM.qry_Work.Close;
-  if cxComboBox2.ItemIndex > -1 then
-  begin
-    dm_Pcm.FDQuery3.sql.Text:= 'SELECT ''offen'',COUNT(*)  AS  Wert FROM manager_tickets_priv WHERE Sprint = :Sprint and (STATUS = ''Offen'' or Status =''Zu erledigen'' or Status = ''Input Queue'') AND Board = ''PCM Desktopapp'' ' +
-                               'Union ALL '+
-                               'SELECT ''In Arbeit'',COUNT(*)  AS Wert FROM manager_tickets_priv WHERE Sprint = :Sprint and STATUS = ''In Arbeit'' AND Board = ''PCM Desktopapp'' ' +
-                               'Union ALL '+
-                               'SELECT ''Testung'',COUNT(*)  AS Wert FROM manager_tickets_priv WHERE Sprint = :Sprint and STATUS = ''QM'' AND Board = ''PCM Desktopapp'' ' +
-                               'Union ALL '+
-                               'SELECT ''Bug occured'',COUNT(*)  AS Wert FROM manager_tickets_priv WHERE Sprint = :Sprint and STATUS = ''Bug occured''  AND Board = ''PCM Desktopapp''';
-    dm_Pcm.FDQuery3.ParamByName('Sprint').AsString:= cxComboBox2.Properties.Items[cxComboBox2.ItemIndex];
-    dm_Pcm.FDQuery3.open;
-  end;
-
-  dm_PCM.qry_Work.SQL.Text:= 'Select DISTINCT(Sprint) as Sprint FROM manager_tickets_priv where Board = ''PCM MobileApp'' and Sprint <> '''' ORDER BY Sprint asc';
-  dm_PCM.qry_Work.open;
-  while not dm_PCM.qry_Work.eof do
-  begin
-    cxComboBox3.Properties.Items.Add(dm_PCM.qry_Work.FieldByName('Sprint').AsString);
-    dm_PCM.qry_Work.next;
-    try
-      cxComboBox3.ItemIndex:= 0;
-    except
-    end;
-  end;
-  dm_PCM.qry_Work.Close;
-  if cxComboBox3.ItemIndex > -1 then
-  begin
-    dm_Pcm.FDQuery4.sql.Text:= 'SELECT ''offen'',COUNT(*)  AS  Wert FROM manager_tickets_priv WHERE Sprint = :Sprint and (STATUS = ''Offen'' or Status =''Zu erledigen'' or Status = ''Input Queue'') AND Board = ''PCM MobileApp'' ' +
-                               'Union ALL '+
-                               'SELECT ''In Arbeit'',COUNT(*)  AS Wert FROM manager_tickets_priv WHERE Sprint = :Sprint and STATUS = ''In Arbeit'' AND Board = ''PCM MobileApp'' ' +
-                               'Union ALL '+
-                               'SELECT ''Testung'',COUNT(*)  AS Wert FROM manager_tickets_priv WHERE Sprint = :Sprint and STATUS = ''QM'' AND Board = ''PCM MobileApp'' ' +
-                               'Union ALL '+
-                               'SELECT ''Bug occured'',COUNT(*)  AS Wert FROM manager_tickets_priv WHERE Sprint = :Sprint and STATUS = ''Bug occured''  AND Board = ''PCM MobileApp''';
-    dm_Pcm.FDQuery4.ParamByName('Sprint').AsString:= cxComboBox3.Properties.Items[cxComboBox3.ItemIndex];
-    dm_Pcm.FDQuery4.open;
   end;
 end;
 function Tfrm_Calendar.GetRecurrence(var Rule, Start:  string) : Ansistring;
@@ -922,26 +804,6 @@ begin
   qWF_Nachrichten_Anhaenge.SQL.Text:= 'SELECT ina.ID, ina.ID_IC_Nachrichten, ina.Dateiname, ina.DateinameSave FROM manager_Aufgaben_Anhaenge ina WHERE ina.ID_IC_Nachrichten = :ID_IC_Nachrichten';
   qWF_Nachrichten_Anhaenge.Params[0].AsInteger := ID_IC_Nachrichten;
   qWF_Nachrichten_Anhaenge.Open;
-end;
-procedure Tfrm_Calendar.qry_Tickets_privAfterScroll(DataSet: TDataSet);
-var
-  slBeschreibung: TStringlist;
-  i: Integer;
-begin
-  grpbx_Ticketspriv.CaptionOptions.Text:= 'Projekte / ' + qry_Tickets_priv.FieldByName('Epic').asString + ' / ' + qry_Tickets_priv.FieldByName('Ticket_nr').asString;
-  dxLayoutItem21.CaptionOptions.Text:=qry_Tickets_priv.FieldByName('Betreff').asString;
-  dm_PCm.qry_work.SQL.Text:= 'SELECT Beschreibung FROM manager_tickets_priv Where Ticket_nr = :Ticket_nr';
-  dm_PCm.qry_work.ParamByName('Ticket_nr').AsString:= qry_Tickets_priv.FieldByName('Ticket_nr').asString;
-  dm_PCm.qry_work.OPen;
-  slBeschreibung:= TStringlist.Create;
-  slBeschreibung.Text:= dm_PCm.qry_work.FieldByname('Beschreibung').AsString;
-  dm_PCm.qry_work.Close;
-  cxRichEdit1.Clear;
-  cxRichEdit1.Height:= Round(slBeschreibung.Count * 14 * dm_PCM.iScale);
-  for i := 0 to slBeschreibung.Count - 1 do
-  begin
-    cxRichEdit1.Lines.Add(slBeschreibung.Strings[i]);
-  end;
 end;
 procedure Tfrm_Calendar.qry_StundenplanAfterScroll(DataSet: TDataSet);
 var
@@ -2646,7 +2508,6 @@ begin
     bol_VollBildCal:= true;
     frm_PCM_main.navbr_main.Width:= 0;
     frm_PCM_main.pc_main.properties.HideTabs:= true;
-    pc_kalender.properties.HideTabs:= true;
     btn_CalAnsicht.Caption:= rs_PCMManager_normAnsicht;
     btn_CalAnsicht.LargeImageIndex:= 31;
 //    nbk_main.Left:= 0;
@@ -2656,7 +2517,6 @@ begin
     bol_VollBildCal:= false;
     frm_PCM_main.navbr_main.Width:= 200;
     frm_PCM_main.pc_main.properties.HideTabs:= false;
-    pc_kalender.properties.HideTabs:= false;
     btn_CalAnsicht.Caption:= rs_PCMManager_maxAnsicht;
     btn_CalAnsicht.LargeImageIndex:= 32;
 //    nbk_Main.Left:= 200;
@@ -3721,7 +3581,6 @@ begin
     bol_VollBildCal:= true;
     frm_PCM_main.navbr_main.Width:= 0;
     frm_PCM_main.pc_main.properties.HideTabs:= true;
-    pc_kalender.properties.HideTabs:= true;
     btn_CalAnsicht.Caption:= rs_PCMManager_normAnsicht;
     btn_CalAnsicht.LargeImageIndex:= 31;
     trlst_Aufgaben.Height:= 107;
@@ -3730,7 +3589,6 @@ begin
     bol_VollBildCal:= false;
     frm_PCM_main.navbr_main.Width:= 200;
     frm_PCM_main.pc_main.properties.HideTabs:= false;
-    pc_kalender.properties.HideTabs:= false;
     btn_CalAnsicht.Caption:= rs_PCMManager_maxAnsicht;
     btn_CalAnsicht.LargeImageIndex:= 32;
     trlst_Aufgaben.Height:= 107;
@@ -3956,363 +3814,10 @@ end;
 
 {$EndRegion}
 {$Region TabJira}
-////////////////////////////////////////////////////////////////////////////////
-// TAB Jira                                                                   //
-////////////////////////////////////////////////////////////////////////////////
-// ID
-procedure Tfrm_Calendar.cxGridDBTableView1CellDblClick( Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
-var
-  hittest : TcxCustomGridHitTest;
-begin
-  hittest := cxGridDBTableView1.GetHitTest(cxgrid3.ScreenToClient(Mouse.CursorPos));
-  if hittest.HitTestCode = htCell then
-  begin
-    if qry_Tickets_priv.FieldByName('Ticket_Nr').AsString <> '' then
-    begin
-      AURL:= 'https://pcm-software.atlassian.net/browse/' + qry_Tickets_priv.FieldByName('Ticket_Nr').AsString;
-      FWebBrowser.Navigate('https://pcm-software.atlassian.net/browse/' + qry_Tickets_priv.FieldByName('Ticket_Nr').AsString);
-      pc_Jirapriv.ActivePageIndex:= 0;
-    end;
-  end;
-end;
-procedure Tfrm_Calendar.btn_ReadTickets_PrivClick(Sender: TObject);
-  function API_Auth_Jira(ABaseUrl,AUser,APassword: String; AMethod: TRESTRequestMethod = rmPost): TJSONObject;
-  var
-    RestRequest: TRESTRequest;
-    joLogin: TJSONObject;
-  begin
-    RESTClient_Jira.BaseURL := ABaseUrl;
-    HTTPAuth_Jira.Password := APassword;
-    httpAuth_Jira.Username := AUser;
-    joLogin := TJSONObject.Create;
-    joLogin.AddPair(TJSONPair.Create('username', AUser));
-    joLogin.AddPair(TJSONPair.Create('password', APassword));
-    RestRequest := TRESTRequest.Create(nil);
-    try
-      RestRequest.Client := RESTClient_Jira;
-      RestRequest.Method := rmGet;
-      RestRequest.Timeout := 600000;
-      if joLogin <> nil then
-      begin
-        RestRequest.Body.Add(joLogin);
-      end;
-      RestRequest.Execute;
-      result := TJSONObject.ParseJSONValue(RestRequest.Response.JSONText) as TJSONObject;
-    finally
-      RestRequest.Free;
-    end;
-  end;
-  function RestRequest(ABaseUrl: String; ArestClient: TRestClient; ARequestBody: TJSONObject; AResource: String; AGETPOST: TRESTRequestMethod = rmPost): TJSONObject;
-  var
-    RestRequest: TRESTRequest;
-    sTest: String;
-    joResult: TJSONObject;
-  begin
-    ArestClient.BaseURL := ABaseURl;
-    RestRequest := TRESTRequest.Create(nil);
-    try
-      RestRequest.Client := ArestClient;
-      RestRequest.Method := AGETPOST;
-      RestRequest.Resource := AResource;
-      RestRequest.Timeout := 600000;
-      if ARequestBody <> nil then
-      begin
-        RestRequest.Body.Add(ARequestBody);
-      end;
-      RestRequest.Execute;
-      joResult := TJSONObject.ParseJSONValue(RestRequest.Response.JSONText) as TJSONObject;
-      sTest:= joResult.ToString;
-      Result := joResult;
-    finally
-      RestRequest.Free;
-    end;
-  end;
-  procedure WriteInDB(ATicketInt: Integer;ATicket,AStatus,ABetreff,AType,AEpic,ASprint,APrio,AFixVersion,AApp,ALabel,Adesc,AAssignee,AReporter,ATester,Atester2,AMelder,AStorypoint,AUHD,ALand,AKDNR,ABetrifft: String);
-  var
-    iID,iCounter,iCounterEpic,iIDEpic,iIDPrio: Integer;
-  begin
-    if (AEpic <> '') and (AEpic <> 'kein Epic') then
-    begin
-      dm_PCM.qry_Work.SQL.Text:= 'Select Count(*) as Anzahl From  manager_tickets_priv Where Ticket_Nr = :Ticket_Nr';
-      dm_PCM.qry_Work.ParamByName('Ticket_Nr').asString:= AEpic;
-      dm_PCM.qry_Work.open;
-      iCounterEpic:= dm_PCM.qry_Work.FieldByName('Anzahl').AsInteger;
-      dm_PCM.qry_Work.Close;
-      if iCounterEpic > 0 then
-      begin
-        dm_PCM.qry_Work.SQL.Text:= 'Select ID From  manager_tickets_priv Where Ticket_Nr = :Ticket_Nr';
-        dm_PCM.qry_Work.ParamByName('Ticket_Nr').asString:= AEpic;
-        dm_PCM.qry_Work.open;
-        iIDEpic:= dm_PCM.qry_Work.FieldByName('ID').AsInteger;
-        dm_PCM.qry_Work.Close;
-      end
-      else begin
-        iIDEpic:= 0;
-      end;
-    end
-    else begin
-      iIDEpic:= 0;
-    end;
-    dm_PCM.qry_Work.SQL.Text:= 'Select ID From  manager_tickets_priority Where Bezeichnung = :Bezeichnung';
-    dm_PCM.qry_Work.ParamByName('Bezeichnung').asString:= APrio;
-    dm_PCM.qry_Work.open;
-    iIDPrio:= dm_PCM.qry_Work.FieldByName('ID').AsInteger;
-    dm_PCM.qry_Work.Close;
-
-
-
-    dm_PCM.qry_Work.SQL.Text:= 'Select Count(*) as Anzahl From manager_tickets_priv Where Ticket_Nr = :Ticket_Nr';
-    dm_PCM.qry_Work.ParamByName('Ticket_Nr').asString:= ATicket;
-    dm_PCM.qry_Work.open;
-    iCounter:= dm_PCM.qry_Work.FieldByName('Anzahl').AsInteger;
-    dm_PCM.qry_Work.Close;
-    if iCounter = 0 then
-    begin
-      dm_PCM.qry_Work.SQL.Text:= 'Insert into manager_tickets_priv ' +
-                                 ' (Ticket_Nr,Nr,STATUS,ID_tickets_priority,Epic,Board,Betreff,Stichwort,TYPE,App,FixVersion,Beschreibung,ID_Ticket,Sprint,Assignee,Reporter,Tester,Tester2,Melder,UHD,Land,KDNR,BetrifftVerison) ' +
-                                 'Values' +
-                                 ' (:Ticket_Nr,:Nr,:STATUS,:ID_tickets_priority,:Epic,:Board,:Betreff,:Stichwort,:TYPE,:App,:FixVersion,:Beschreibung,:ID_Ticket,:Sprint,:Zugewiesen,:Reporter,:Tester,:Tester2,:Melder,:UHD,:Land,:KDNR,:BetrifftVerison)';
-      dm_PCM.qry_Work.ParamByName('Ticket_Nr').AsString:= ATicket;
-      dm_PCM.qry_Work.ParamByName('Nr').AsInteger:= ATicketInt;
-      dm_PCM.qry_Work.ParamByName('ID_Ticket').AsInteger:= iIDEpic;
-      dm_PCM.qry_Work.ParamByName('STATUS').AsString:= AStatus;
-      dm_PCM.qry_Work.ParamByName('ID_tickets_priority').asInteger:= iIDPrio;
-      dm_PCM.qry_Work.ParamByName('Epic').AsString:= AEpic;
-      dm_PCM.qry_Work.ParamByName('Betreff').AsString:= ABetreff;
-      dm_PCM.qry_Work.ParamByName('TYPE').AsString:= AType;
-      dm_PCM.qry_Work.ParamByName('Sprint').AsString:= ASprint;
-      dm_PCM.qry_Work.ParamByName('FixVersion').AsString:= AFixVersion;
-      dm_PCM.qry_Work.ParamByName('App').AsString:= AApp;
-      dm_PCM.qry_Work.ParamByName('Stichwort').AsString:= ALabel;
-      dm_PCM.qry_Work.ParamByName('Beschreibung').AsMemo:= ADesc;
-      dm_PCM.qry_Work.ParamByName('Zugewiesen').AsString:= AAssignee;
-      dm_PCM.qry_Work.ParamByName('Board').AsString:= AKDNR;
-      dm_PCM.qry_Work.ParamByName('Reporter').AsString:= AReporter;
-      dm_PCM.qry_Work.ParamByName('Tester').AsString:= ATester;
-      dm_PCM.qry_Work.ParamByName('Tester2').AsString:= ATester2;
-      dm_PCM.qry_Work.ParamByName('Melder').AsString:= AMelder;
-      dm_PCM.qry_Work.ParamByName('UHD').AsString:= AUHD;
-      dm_PCM.qry_Work.ParamByName('Land').AsString:= ALand;
-      dm_PCM.qry_Work.ParamByName('KDNR').AsString:= AKDNR;
-      dm_PCM.qry_Work.ParamByName('BetrifftVerison').AsString:= ABetrifft;
-      dm_PCM.qry_Work.ExecSQL;
-    end
-    else
-    begin
-      dm_PCM.qry_Work.SQL.Text:= 'Select ID From manager_tickets_priv Where Ticket_Nr = :Ticket_Nr';
-      dm_PCM.qry_Work.ParamByName('Ticket_Nr').AsString:= ATicket;
-      dm_PCM.qry_Work.open;
-      iID:= dm_PCM.qry_Work.FieldByName('ID').AsInteger;
-      dm_PCM.qry_Work.Close;
-      dm_PCM.qry_Work.SQL.Text:= 'Update manager_tickets_priv ' +
-      ' Set Ticket_Nr = :Ticket_Nr,' +
-      'Nr = :Nr,'  +
-      'ID_Ticket = :ID_Ticket, ' +
-      'STATUS = :STATUS,' +
-      'Betreff = :Betreff,' +
-      'Epic = :Epic, ' +
-      'ID_tickets_priority = :ID_tickets_priority, ' +
-      'TYPE = :TYPE, ' +
-      'Sprint = :Sprint, ' +
-
-      'FixVersion = :FixVersion, ' +
-      'App = :App, ' +
-      'Stichwort = :Stichwort, ' +
-      'Beschreibung = :Beschreibung, ' +
-      'Assignee = :Zugewiesen, ' +
-      'Tester = :Tester, ' +
-      'Tester2 = :Tester2, ' +
-      'Board = :Board, ' +
-      'Reporter = :Reporter, '   +
-      'Melder = :Melder, ' +
-      'UHD = :UHD, ' +
-      'Land = :Land, ' +
-      'KDNR = :KDNR,' +
-      'BetrifftVerison = :BetrifftVerison ' +
-      'Where ID = :ID';
-      dm_PCM.qry_Work.ParamByName('Ticket_Nr').AsString:= ATicket;
-      dm_PCM.qry_Work.ParamByName('Nr').AsInteger:= ATicketInt;
-      dm_PCM.qry_Work.ParamByName('ID_Ticket').AsInteger:= iIDEpic;
-      dm_PCM.qry_Work.ParamByName('STATUS').AsString:= AStatus;
-      dm_PCM.qry_Work.ParamByName('ID_tickets_priority').asInteger:= iIDPrio;
-      dm_PCM.qry_Work.ParamByName('Epic').AsString:= AEpic;
-      dm_PCM.qry_Work.ParamByName('Betreff').AsString:= ABetreff;
-      dm_PCM.qry_Work.ParamByName('TYPE').AsString:= AType;
-      dm_PCM.qry_Work.ParamByName('Sprint').AsString:= ASprint;
-      dm_PCM.qry_Work.ParamByName('FixVersion').AsString:= AFixVersion;
-      dm_PCM.qry_Work.ParamByName('App').AsString:= AApp;
-      dm_PCM.qry_Work.ParamByName('Stichwort').AsString:= ALabel;
-      dm_PCM.qry_Work.ParamByName('Beschreibung').AsMemo:= ADesc;
-      dm_PCM.qry_Work.ParamByName('Zugewiesen').AsString:= AAssignee;
-      dm_PCM.qry_Work.ParamByName('Board').AsString:= AKDNR;
-      dm_PCM.qry_Work.ParamByName('Reporter').AsString:= AReporter;
-      dm_PCM.qry_Work.ParamByName('Tester').AsString:= ATester;
-      dm_PCM.qry_Work.ParamByName('Tester2').AsString:= ATester2;
-      dm_PCM.qry_Work.ParamByName('Melder').AsString:= AMelder;
-      dm_PCM.qry_Work.ParamByName('UHD').AsString:= AUHD;
-      dm_PCM.qry_Work.ParamByName('Land').AsString:= ALand;
-      dm_PCM.qry_Work.ParamByName('KDNR').AsString:= AKDNR;
-      dm_PCM.qry_Work.ParamByName('BetrifftVerison').AsString:= ABetrifft;
-      dm_PCM.qry_Work.ParamByName('ID').AsInteger:= iID;
-      dm_PCM.qry_Work.ExecSQL;
-    end;
-    qry_Tickets_priv.refresh;
-  end;
-var
-  jarIssues,jarComponent,jarFixVersion: TJSONArray;
-  joFields1,joLand, joUHD, joMelder, joTester2, joTester,joReporter,joAssignee,joComponent,joFixVersion,jopriority,josprint,joStatus,joIssuetype, joParent,joFields,joBody, joResult: TJSONObject;
-  jaLand, jaCustom1,  jaSprint: TJSONArray;
-  sBetrifftV1, sBetrifftV, sVersion, sKDNR, sLand1, sLand, sUHD, sDesc,sStorypoint, sMelder,sTester2, sTester, sactive,sReporter,sApp1,sSprintstate,sAssi,sname,sApp,sFixVersion,sPrio, sEpic,sType, sBetreff,sStatus, sSprint, sTicket: String;
-  i,i1, iTicket: integer;
-  sJText,sJsonString: string;
-begin
-  qry_Tickets_priv.AfterScroll:= nil;
-  sTicketNr_Ges:= '';
-  Screen.Cursor := crHourGlass;
-  API_Auth_Jira('https://pcm-software.atlassian.net/rest/auth/1/session',sPCMUser,sPCMPassword);
-  Application.ProcessMessages;
-  sJText:='{"fields": ["summary","status","issuetype","components","parent","customfield_10036","customfield_10020","priority",'+
-    '"fixVersions","labels","assignee","reporter","versions","description"],'+
-    '"jql": "assignee = ''jens.henske@outlook.com'' and status in (10000,10001,10003,10011,10007) ORDER BY issue ASC","startAt": 0, "maxResults": 100 }';
-
-  joBody := TJSONObject.ParseJSONValue(sJText) as TJSONObject;
-  joResult := RestRequest('https://pcm-software.atlassian.net/rest',RESTClient_jira,joBody, '/api/2/search');
-  joResult.TryGetValue<TJSONArray>('issues', jarIssues);
-  for i := 0 to jarIssues.Count - 1 do
-  begin
-    joResult := TJSONObject.ParseJSONValue(jarIssues.Items[i].ToString) as TJSONObject;
-    // Ticketnummer
-    Application.ProcessMessages;
-    if (joResult.GetValue('key').Null) OR (not joResult.TryGetValue<String>('key', sTicket)) then
-      sTicket:= '';
-    iTicket:= StrToInt(StringReplace(StringReplace(sTicket,'APP-','',[rfReplaceAll, rfIgnoreCase]),'PCM-','',[rfReplaceAll, rfIgnoreCase]));
-    sTicketNr_Ges:= sTicketNr_Ges + ',' + StringReplace(StringReplace(sTicket,'APP-','',[rfReplaceAll, rfIgnoreCase]),'PCM-','',[rfReplaceAll, rfIgnoreCase]);
-    // Summary
-    Application.ProcessMessages;
-    joResult.TryGetValue<TJSONObject>('fields', joFields);
-    if (joFields.GetValue('summary').null) or (not joFields.TryGetValue<String>('summary', sBetreff)) then
-      sBetreff:= '';
-    // Status
-    Application.ProcessMessages;
-    joFields.TryGetValue<TJSONObject>('status', joStatus);
-    if (joStatus.GetValue('name').null) or (not joStatus.TryGetValue<String>('name', sStatus)) then
-      sStatus := '';
-    // Tickettyp
-    Application.ProcessMessages;
-    joFields.TryGetValue<TJSONObject>('issuetype',joIssuetype);
-    if (joFields.GetValue('summary').null) or (not joIssuetype.TryGetValue<String>('name', sType)) then
-      sType := '';
-    // EPIC
-    Application.ProcessMessages;
-    joParent:= nil;
-    joFields.TryGetValue<TJSONObject>('parent',joParent);
-    sEpic:='';
-    if joParent <> nil then
-      joParent.TryGetValue<String>('key', sEpic)
-    else
-      sEpic:= 'kein Epic';
-    if (sType = 'Epic') or (sEpic = '') then
-      sEpic:= 'Ohne';
-    // Priorität
-    Application.ProcessMessages;
-    joFields.TryGetValue<TJSONObject>('priority',jopriority);
-    if jopriority <> nil  then
-      jopriority.TryGetValue<String>('name', sPrio)
-    else
-      sPrio:= '';
-    // LösungsVersion
-    Application.ProcessMessages;
-    sFixVersion:= '';
-    joFields.TryGetValue<TJSonArray>('fixVersions',jarFixVersion);
-    for i1 := 0 to jarFixVersion.Count - 1 do
-    begin
-      joFixVersion := TJSONObject.ParseJSONValue(jarFixVersion.Items[i1].ToString) as TJSONObject;
-      joFixVersion.TryGetValue<String>('name',sFixVersion);
-    end;
-    // Stichwort
-    Application.ProcessMessages;
-    joFields.TryGetValue<TJSonArray>('labels',jaCustom1);
-    sname:= '';
-    for i1 := 0 to jaCustom1.Count - 1 do
-    begin
-      sname:= sname + ';' + StringReplace(jaCustom1.Items[i1].ToString,'"','',[rfreplaceall]);
-    end;
-    if sname = ''  then
-      sname := 'kein Wert'
-    else
-      sname := Copy(sname, 2, Length(sname));
-    // Beschreibung
-    Application.ProcessMessages;
-    joFields.TryGetValue<String>('description', sDesc);
-    // Zugewiesen
-    Application.ProcessMessages;
-    joFields.TryGetValue<TJSONObject>('assignee',joAssignee);
-    joAssignee.TryGetValue<String>('displayName', sAssi);
-//  Länderversion
-    Application.ProcessMessages;
-    sLand:= '';
-    if (not joFields.GetValue('customfield_10036').null) then
-    begin
-      joFields.TryGetValue<TJSONObject>('customfield_10036',joMelder);
-      if joMelder <> nil then
-        joMelder.TryGetValue<String>('value', sLand);
-    end;
-    // Sprint
-    sSprint:= '';
-    sSprintstate:= '';
-    sJsonString:=joFields.ToString;
-    sJsonString:= StringReplace(sJsonString,'"customfield_10020":null','"customfield_10020":[]',[rfreplaceall,rfIgnorecase]);
-    joFields:=TJSONObject.ParseJSONValue(sJsonString) as TJSONObject;
-    joFields.TryGetValue<TJSonArray>('customfield_10020',jaSprint);
-    for i1 := 0 to jaSprint.Count - 1 do
-    begin
-       joSprint := TJSONObject.ParseJSONValue(jaSprint.Items[i1].ToString) as TJSONObject;
-       joSprint.TryGetValue<String>('state',sSprintstate);
-       if sSprintstate = 'active' then
-         joSprint.TryGetValue<String>('name',sSprint);
-    end;
-    Application.ProcessMessages;
-    stbr_main.Panels[1].Text:= 'Tickets ' + IntToStr(i + 1) + ' von ' + IntToStr(jarIssues.Count) + ' wird eingelesen';
-    stbr_main.Panels[2].Text:= 'aktuelles Tickets: ' + sTicket + ' - ' + sBetreff;
-    if Pos('APP',sTicket) > 0 then
-      sKDNR:= 'PCM MobileApp'
-    else
-      sKDNR:= 'PCM Desktopapp';
-    WriteInDB(iTicket,sTicket,sStatus,sBetreff,sType,sEpic,sSprint,sPrio,sFixVersion,sApp,sName,sdesc,Sassi,sReporter,sTester,sTester2,sMelder,sStorypoint,sUHD,sLand,sKDNR,sBetrifftV);
-  end;
-  sTicketNr_ges:= Copy(sTicketNr_ges, 2, Length(sTicketNr_ges));
-  dm_PCM.qry_Work.SQL.Text:= 'Delete From manager_tickets where nr not in (' + sTicketNr_ges + ')';
-  try
-    dm_PCM.qry_Work.ExecSQL;
-  except
-  end;
-  qry_Tickets_priv.refresh;
-  LoadJiraStatus;
-  qry_Tickets_priv.AfterScroll:= qry_Tickets_privAfterScroll;
-  Screen.Cursor := crDefault;
-end;
-procedure Tfrm_Calendar.btn_MinMaxBrowserPrivClick(Sender: TObject);
-begin
-  Application.CreateForm(Tfrm_Browser_FullScreen, frm_Browser_FullScreen);
-  frm_Browser_FullScreen.Execute(True,'Jira - PCM',Aurl);
-end;
-procedure Tfrm_Calendar.btn_Board_privClick(Sender: TObject);
-begin
-  AURL:= 'https://pcm-software.atlassian.net/jira/software/projects/PCM/boards/1';
-  FWebBrowser.Navigate(AURL);
-end;
-procedure Tfrm_Calendar.pc_JiraprivChange(Sender: TObject);
-begin
-  if pc_Jirapriv.ActivePage = cxtabsheet5 then
-  begin
-    qry_Tickets_priv.AfterScroll:= qry_Tickets_privAfterScroll;
-    qry_Tickets_priv.First;
-  end;
-end;
 procedure Tfrm_Calendar.pc_KalenderClick(Sender: TObject);
 begin
   schedDBStrg_Kalender.Reminders.Active:= false;
-  if pc_Kalender.Properties.ActivePage = ts_A_kalender then
+  if lagrp_KalenderTab.ItemIndex = 0 then
   begin
     Application.ProcessMessages;
     schedDBStrg_Kalender.Reminders.Active:= true;
@@ -4344,10 +3849,6 @@ begin
     btn_CalMonat.LargeImageIndex:= 42;
     btn_CalJahr.LargeImageIndex:= 44;
     schedDBStrg_Kalender.Reminders.Active:= true;
-  end;
-  if pc_Kalender.Properties.ActivePage = ts_C_Jira then
-  begin
-    InitializeBrowser(pnl_BrowserJirapriv);
   end;
   FormResize(Self);
 end;
@@ -4803,9 +4304,8 @@ end;
 procedure Tfrm_Calendar.FormShow(Sender: TObject);
   procedure InitializeRights;
   begin
-    ts_A_kalender.TabVisible:= dm_PCM.iKalender >= SetRead;
-    ts_B_Aufgaben.TabVisible:= dm_PCM.iKalender >= SetRead;
-    ts_c_Jira.TabVisible:= dm_PCM.iKalender >= SetRead;
+    lagrp_Kalender.Visible:= dm_PCM.iKalender >= SetRead;
+    lagrp_Aufgaben.Visible:= dm_PCM.iKalender >= SetRead;
     btn_CalNew.Enabled:= dm_PCM.iKalender >= SetReadWrite;
     btn_CalTerminImport.Enabled:= dm_PCM.iKalender >= SetReadWrite;
     btn_TerminNeu.Enabled:= dm_PCM.iKalender >= SetReadWrite;
@@ -4829,10 +4329,7 @@ procedure Tfrm_Calendar.FormShow(Sender: TObject);
     btn_JobsDone.Enabled:= dm_PCM.iKalender >= SetReadWrite;
     pmmbtn_JobsImportOutlook.Enabled:= dm_PCM.iKalender >= SetReadWrite;
     pmmbtn_JobsExportOutlook.Enabled:= dm_PCM.iKalender >= SetReadWrite;
-
-
-
-    ts_D_Stundenplan.TabVisible:= dm_PCM.iStundenplan >= SetRead;
+    lagrp_Stundenplan.Visible:= dm_PCM.iStundenplan >= SetRead;
     // Toolbar
     btn_StundenplanNew.Enabled:= dm_PCM.iStundenplan >= SetReadWrite;
     btn_StundenplanSave.Enabled:= dm_PCM.iStundenplan >= SetReadWrite;
@@ -4897,20 +4394,17 @@ procedure Tfrm_Calendar.FormShow(Sender: TObject);
     grdDBTblView_StundenplanMittwoch.Caption:= rs_PCM_Mittwoch;
     grdDBTblView_StundenplanMontag.Caption:= rs_PCM_Montag;
     grdDBTblView_StundenplanSamstag.Caption:= rs_PCM_Samstag;
-    qry_Tickets_priv.AfterScroll:= Nil;
-    qry_Tickets_priv.open;
   end;
 begin
   case dm_PCM.iModulTab of
-  1: pc_Kalender.ActivePage:= ts_A_kalender;
-  2: pc_Kalender.ActivePage:= ts_B_Aufgaben;
-  3: pc_Kalender.ActivePage:= ts_C_jira;
-  4: pc_Kalender.ActivePage:= ts_D_Stundenplan;
+  1: lagrp_KalenderTab.ItemIndex:= 0;
+  2: lagrp_KalenderTab.ItemIndex:= 1;
+  3: lagrp_KalenderTab.ItemIndex:= 2;
+  4: lagrp_KalenderTab.ItemIndex:= 2;
   end;
   OpenData;
   InitializeRights;
   SetButtons;
-  Loadjirastatus;
   dm_PCM.qry_Work.SQL.Text:=  'UPDATE manager_kalender ' +
                             'SET START = TIMESTAMPADD(Year, Year(NOW()) - Year(START) , START), ' +
                             'Finish = TIMESTAMPADD(Year, Year(NOW()) - Year(Finish) , Finish), ' +
@@ -4965,7 +4459,7 @@ begin
     btn_CalMonat.LargeImageIndex:= 42;
     btn_CalJahr.LargeImageIndex:= 44;
     schedDBStrg_Kalender.Reminders.Active:= true;
-    pc_Kalender.ActivePage:= ts_A_kalender;
+    lagrp_KalenderTab.ItemIndex:= 0;
   end;
 //  tvauf.DataController.Filter.Active:= false;
 //  tvauf.DataController.Filter.Root.Clear;
@@ -4974,14 +4468,6 @@ begin
 //  tvauf.DataController.Filter.EndUpdate;
 //  tvauf.DataController.Filter.Active:= true;
   SetGridViews(True);
-  if (dm_PCM.iModulTab = 3) then
-  begin
-    pc_JiraPriv.activepage:= cxTabsheet3;
-    InitializeBrowser(pnl_BrowserJiraPriv);
-    AURL:= 'https://pcm-software.atlassian.net/jira/software/projects/PCM/boards/1';
-    FWebBrowser.Navigate(AURL)
-  end;
-  ts_C_jira.Visible:= frm_PCM_main.iJira.visible;
 end;
 {$EndRegion}
 end.

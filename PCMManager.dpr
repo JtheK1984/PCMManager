@@ -37,13 +37,6 @@ uses
   PCMManager.Helper.Calendar.Neu.Wiederholung in 'Helper\PCMManager.Helper.Calendar.Neu.Wiederholung.pas',
   PCMManager.Helper.Calendar.ReminderCustomited in 'Helper\PCMManager.Helper.Calendar.ReminderCustomited.pas',
   PCMManager.Helper.Calendar.Reminder in 'Helper\PCMManager.Helper.Calendar.Reminder.pas' {cxSchedulerReminderForm},
-  PCMManager.Modul.H_ZE in 'Modules\PCMManager.Modul.H_ZE.pas' {frm_ZE},
-  PCMManager.Modul.H_ZE.Booking in 'Modules\PCMManager.Modul.H_ZE.Booking.pas' {frm_Booking},
-  PCMManager.Modul.H_ZE.ChooseMonth in 'Modules\PCMManager.Modul.H_ZE.ChooseMonth.pas' {frm_ChooseDate},
-  PCMManager.Modul.H_ZE.Monatswerte in 'Modules\PCMManager.Modul.H_ZE.Monatswerte.pas' {frm_monatswerte},
-  PCMManager.Modul.H_ZE.Feiertage in 'Modules\PCMManager.Modul.H_ZE.Feiertage.pas' {frm_Feiertage},
-  PCMManager.Modul.H_ZE.Fehltage.Edit in 'Modules\PCMManager.Modul.H_ZE.Fehltage.Edit.pas' {frm_Fehltageeintragen},
-  PCMManager.Modul.H_ZE.Fehltage in 'Modules\PCMManager.Modul.H_ZE.Fehltage.pas' {frm_Fehltage},
   PCM.splash in 'PCM.splash.pas' {SplashScreen};
 
 {$R *.res}

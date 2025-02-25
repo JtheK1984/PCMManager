@@ -1,4 +1,4 @@
-﻿object frm_Contact: Tfrm_Contact
+object frm_Contact: Tfrm_Contact
   Left = 0
   Top = 0
   BorderStyle = bsDialog
@@ -16,2290 +16,2256 @@
   OnDestroy = FormDestroy
   OnShow = FormShow
   TextHeight = 13
-  object pnl_Design: TcxGroupBox
+  object lactrl_Contacts: TdxLayoutControl
     Left = 0
-    Top = 0
-    Align = alClient
-    PanelStyle.Active = True
-    Style.BorderStyle = ebsNone
-    TabOrder = 0
-    Height = 900
+    Top = 63
     Width = 1600
-  end
-  object cxPageControl1: TcxPageControl
-    Left = 0
-    Top = 0
-    Width = 1600
-    Height = 900
+    Height = 837
+    Margins.Left = 0
+    Margins.Top = 0
+    Margins.Right = 0
+    Margins.Bottom = 0
     Align = alClient
-    Color = clBtnFace
-    ParentBackground = False
-    ParentColor = False
-    TabOrder = 1
-    Properties.ActivePage = cxTabSheet1
-    Properties.CustomButtons.Buttons = <>
-    Properties.Images = dm_PCM.imglst_16x16
-    Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
-    Properties.TabSlants.Kind = skCutCorner
-    Properties.TabWidth = 100
-    OnChange = pc_Kontakte_KontakteChange
-    ClientRectBottom = 900
-    ClientRectRight = 1600
-    ClientRectTop = 25
-    object cxTabSheet1: TcxTabSheet
-      Caption = 'Kontakte'
-      ImageIndex = 64
-      object pc_Kontakte_Kontakte: TcxPageControl
-        AlignWithMargins = True
-        Left = 0
-        Top = 58
-        Width = 1600
-        Height = 817
-        Margins.Left = 0
-        Margins.Top = 0
-        Margins.Right = 0
-        Margins.Bottom = 0
-        Align = alClient
-        Color = clBtnFace
-        ParentBackground = False
-        ParentColor = False
-        TabOrder = 0
-        Properties.ActivePage = ts_A_Kontakte_Kontakte_Suche
-        Properties.CustomButtons.Buttons = <>
-        Properties.Images = dm_PCM.imglst_16x16
-        Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
-        Properties.TabSlants.Kind = skCutCorner
-        Properties.TabWidth = 100
-        OnChange = pc_Kontakte_KontakteChange
-        ClientRectBottom = 817
-        ClientRectRight = 1600
-        ClientRectTop = 25
-        object ts_A_Kontakte_Kontakte_Suche: TcxTabSheet
-          Caption = 'Suche'
-          ImageIndex = 25
-          object grd_Kontaktesuche: TcxGrid
-            Left = 0
-            Top = 148
-            Width = 1600
-            Height = 644
-            Align = alClient
-            BevelInner = bvNone
-            BevelOuter = bvNone
-            BorderStyle = cxcbsNone
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 2
-            LockedStateImageOptions.Effect = lsieDark
-            LookAndFeel.ScrollbarMode = sbmDefault
-            object grdDBTblView_Kontakte: TcxGridDBTableView
-              Navigator.Buttons.CustomButtons = <>
-              ScrollbarAnnotations.CustomAnnotations = <>
-              OnCellDblClick = grdDBTblView_KontakteCellDblClick
-              DataController.DataSource = ds_Kontakte
-              DataController.Filter.Options = [fcoCaseInsensitive]
-              DataController.Filter.PercentWildcard = '*'
-              DataController.Filter.UnderscoreWildcard = '?'
-              DataController.KeyFieldNames = 'ID'
-              DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-              DataController.Summary.DefaultGroupSummaryItems = <>
-              DataController.Summary.FooterSummaryItems = <
-                item
-                  Kind = skCount
-                end>
-              DataController.Summary.SummaryGroups = <
-                item
-                  Links = <
-                    item
-                    end>
-                  SummaryItems = <
-                    item
-                    end>
-                end>
-              OptionsBehavior.IncSearch = True
-              OptionsCustomize.ColumnsQuickCustomization = True
-              OptionsData.Deleting = False
-              OptionsData.Editing = False
-              OptionsData.Inserting = False
-              OptionsSelection.CellSelect = False
-              OptionsSelection.MultiSelect = True
-              OptionsView.CellEndEllipsis = True
-              OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-              OptionsView.HeaderFilterButtonShowMode = fbmButton
-              OptionsView.IndicatorWidth = 14
-              object grdDBTblView_KontakteID: TcxGridDBColumn
-                DataBinding.FieldName = 'ID'
-                Visible = False
-              end
-              object grdDBTblView_KontakteID_Anrede: TcxGridDBColumn
-                Caption = 'Anrede'
-                DataBinding.FieldName = 'ID_Anrede'
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Bezeichnung'
-                  end>
-                Properties.ListSource = dm_PCM.ds_Contact_Anrede
-                FixedKind = fkLeft
-              end
-              object grdDBTblView_KontakteVorname: TcxGridDBColumn
-                DataBinding.FieldName = 'Vorname'
-                FixedKind = fkLeft
-                SortIndex = 0
-                SortOrder = soAscending
-                Width = 200
-              end
-              object grdDBTblView_KontakteNachname: TcxGridDBColumn
-                DataBinding.FieldName = 'Nachname'
-                FixedKind = fkLeft
-                SortIndex = 1
-                SortOrder = soAscending
-                Width = 200
-              end
-              object grdDBTblView_KontakteGeburtsname: TcxGridDBColumn
-                DataBinding.FieldName = 'Geburtsname'
-                Visible = False
-                Width = 200
-              end
-              object grdDBTblView_KontakteGeburtsland: TcxGridDBColumn
-                DataBinding.FieldName = 'Geburtsland'
-                Visible = False
-                Width = 200
-              end
-              object grdDBTblView_KontakteZusatz: TcxGridDBColumn
-                DataBinding.FieldName = 'Zusatz'
-                Visible = False
-                Width = 200
-              end
-              object grdDBTblView_KontakteBild: TcxGridDBColumn
-                DataBinding.FieldName = 'Bild'
-                PropertiesClassName = 'TcxImageProperties'
-                Properties.GraphicClassName = 'TdxPNGImage'
-              end
-              object grdDBTblView_KontakteStrasse_Privat: TcxGridDBColumn
-                Caption = 'Strasse Privat'
-                DataBinding.FieldName = 'Strasse_Privat'
-                Width = 200
-              end
-              object grdDBTblView_KontaktePLZ_Privat: TcxGridDBColumn
-                Caption = 'PLZ Privat'
-                DataBinding.FieldName = 'PLZ_Privat'
-                Width = 90
-              end
-              object grdDBTblView_KontakteOrt_Privat: TcxGridDBColumn
-                Caption = 'Ort Privat'
-                DataBinding.FieldName = 'Ort_Privat'
-                Width = 200
-              end
-              object grdDBTblView_KontakteID_Kontaktart: TcxGridDBColumn
-                Caption = 'Kontaktart'
-                DataBinding.FieldName = 'ID_Kontaktart'
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Bezeichnung'
-                  end>
-                Properties.ListSource = dm_PCM.ds_Contact_Kontaktart
-                Width = 120
-              end
-              object grdDBTblView_KontakteTelefon_Privat: TcxGridDBColumn
-                Caption = 'Telefon Privat'
-                DataBinding.FieldName = 'Telefon_Privat'
-                Width = 150
-              end
-              object grdDBTblView_KontakteTelefon_Privat1: TcxGridDBColumn
-                Caption = 'Telefon Privat 1'
-                DataBinding.FieldName = 'Telefon_Privat1'
-                Visible = False
-                Width = 150
-              end
-              object grdDBTblView_KontakteHandy_privat: TcxGridDBColumn
-                Caption = 'Mobil Privat'
-                DataBinding.FieldName = 'Handy_privat'
-                Width = 150
-              end
-              object grdDBTblView_KontakteE_Mail_Privat: TcxGridDBColumn
-                Caption = 'E-Mail Privat'
-                DataBinding.FieldName = 'E_Mail_Privat'
-                Width = 150
-              end
-              object grdDBTblView_KontakteE_Mail_Privat1: TcxGridDBColumn
-                Caption = 'E-Mail Privat 1'
-                DataBinding.FieldName = 'E_Mail_Privat1'
-                Visible = False
-                Width = 180
-              end
-              object grdDBTblView_KontakteInternet_Privat: TcxGridDBColumn
-                Caption = 'Internet Privat'
-                DataBinding.FieldName = 'Internet_Privat'
-                Visible = False
-                Width = 200
-              end
-              object grdDBTblView_KontakteGeburtsdatum: TcxGridDBColumn
-                DataBinding.FieldName = 'Geburtsdatum'
-                Visible = False
-                Width = 100
-              end
-              object grdDBTblView_KontakteID_Geschlecht: TcxGridDBColumn
-                Caption = 'Geschlecht'
-                DataBinding.FieldName = 'ID_Geschlecht'
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Bezeichnung'
-                  end>
-                Properties.ListSource = dm_PCM.ds_Contact_Geschlecht
-                Visible = False
-                Width = 80
-              end
-              object grdDBTblView_KontakteID_Familienstand: TcxGridDBColumn
-                Caption = 'Familienstand'
-                DataBinding.FieldName = 'ID_Familienstand'
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Bezeichnung'
-                  end>
-                Properties.ListSource = dm_PCM.ds_Contact_Familienstand
-                Visible = False
-                Width = 90
-              end
-              object grdDBTblView_KontakteID_Staatsangehoerigkeit: TcxGridDBColumn
-                Caption = 'Staatsangehoerigkeit'
-                DataBinding.FieldName = 'ID_Staatsangehoerigkeit'
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Bezeichnung'
-                  end>
-                Properties.ListSource = dm_PCM.ds_Contact_Staatsangehoerigkeit
-                Visible = False
-                Width = 120
-              end
-              object grdDBTblView_KontakteID_Konfession: TcxGridDBColumn
-                Caption = 'Konfession'
-                DataBinding.FieldName = 'ID_Konfession'
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Bezeichnung'
-                  end>
-                Properties.ListSource = dm_PCM.ds_Contact_Konfession
-                Visible = False
-                Width = 80
-              end
-              object grdDBTblView_KontakteInfo: TcxGridDBColumn
-                DataBinding.FieldName = 'Info'
-                Visible = False
-                Width = 100
-              end
-              object grdDBTblView_KontakteFirma: TcxGridDBColumn
-                DataBinding.FieldName = 'Firma'
-                Visible = False
-                Width = 200
-              end
-              object grdDBTblView_KontakteStrasse_Ges: TcxGridDBColumn
-                Caption = 'Strasse Gesch'#228'ftlich'
-                DataBinding.FieldName = 'Strasse_Ges'
-                Visible = False
-                Width = 200
-              end
-              object grdDBTblView_KontaktePLZ_Ges: TcxGridDBColumn
-                Caption = 'PLZ Gesch'#228'ftlich'
-                DataBinding.FieldName = 'PLZ_Ges'
-                Visible = False
-                Width = 90
-              end
-              object grdDBTblView_KontakteOrt_Ges: TcxGridDBColumn
-                Caption = 'Ort Gesch'#228'ftlich'
-                DataBinding.FieldName = 'Ort_Ges'
-                Visible = False
-                Width = 200
-              end
-              object grdDBTblView_KontakteAbteilung_Ges: TcxGridDBColumn
-                Caption = 'Abteilung'
-                DataBinding.FieldName = 'Abteilung_Ges'
-                Visible = False
-                Width = 200
-              end
-              object grdDBTblView_KontakteFunktion_Ges: TcxGridDBColumn
-                Caption = 'Funktion'
-                DataBinding.FieldName = 'Funktion_Ges'
-                Visible = False
-                Width = 200
-              end
-              object grdDBTblView_KontakteZentrale_Ges: TcxGridDBColumn
-                Caption = 'Zentrale'
-                DataBinding.FieldName = 'Zentrale_Ges'
-                Visible = False
-                Width = 200
-              end
-              object grdDBTblView_KontakteTelefon_Ges: TcxGridDBColumn
-                Caption = 'Durchwahl'
-                DataBinding.FieldName = 'Telefon_Ges'
-                Visible = False
-                Width = 200
-              end
-              object grdDBTblView_KontakteHandy_Ges: TcxGridDBColumn
-                Caption = 'Handy Gesch'#228'ftlich'
-                DataBinding.FieldName = 'Handy_Ges'
-                Visible = False
-                Width = 200
-              end
-              object grdDBTblView_KontakteE_Mail_Ges: TcxGridDBColumn
-                Caption = 'E-Mail Gesch'#228'ftlich'
-                DataBinding.FieldName = 'E_Mail_Ges'
-                Visible = False
-                Width = 200
-              end
-              object grdDBTblView_KontakteInternet_Ges: TcxGridDBColumn
-                Caption = 'Internet Gesch'#228'ftlich'
-                DataBinding.FieldName = 'Internet_Ges'
-                Visible = False
-                Width = 200
-              end
-              object grdDBTblView_KontakteFacebook: TcxGridDBColumn
-                DataBinding.FieldName = 'Facebook'
-                Visible = False
-                Width = 200
-              end
-              object grdDBTblView_KontakteSkype: TcxGridDBColumn
-                DataBinding.FieldName = 'Skype'
-                Visible = False
-                Width = 200
-              end
-              object grdDBTblView_KontakteLive_Messanger: TcxGridDBColumn
-                Caption = 'Microsoft Teams'
-                DataBinding.FieldName = 'Live_Messanger'
-                Visible = False
-                Width = 200
-              end
-            end
-            object grdLvl_Kontakte: TcxGridLevel
-              GridView = grdDBTblView_Kontakte
-            end
-          end
-          object grpbx_KontakteSuche: TcxGroupBox
-            Left = 0
-            Top = 0
-            Align = alTop
-            Caption = 'Filterkriterien'
-            TabOrder = 0
-            Height = 109
-            Width = 1600
-            object cmbbx_KontaktSucheArt: TcxComboBox
-              Left = 100
-              Top = 75
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 2
-              OnKeyDown = edt_KontaktSucheNachnameKeyDown
-              Width = 234
-            end
-            object edt_KontaktSucheAbteilung: TcxTextEdit
-              Left = 820
-              Top = 48
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 7
-              OnKeyDown = edt_KontaktSucheNachnameKeyDown
-              Width = 234
-            end
-            object edt_KontaktSucheFirma: TcxTextEdit
-              Left = 820
-              Top = 21
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 6
-              OnKeyDown = edt_KontaktSucheNachnameKeyDown
-              Width = 234
-            end
-            object edt_KontaktSucheFunktion: TcxTextEdit
-              Left = 820
-              Top = 75
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 8
-              OnKeyDown = edt_KontaktSucheNachnameKeyDown
-              Width = 234
-            end
-            object edt_KontaktSucheNachname: TcxTextEdit
-              Left = 100
-              Top = 21
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.LookAndFeel.NativeStyle = False
-              Style.IsFontAssigned = True
-              StyleDisabled.LookAndFeel.NativeStyle = False
-              StyleDisabled.TextColor = clBtnShadow
-              StyleDisabled.TextStyle = []
-              StyleFocused.LookAndFeel.NativeStyle = False
-              StyleFocused.TextStyle = []
-              StyleHot.LookAndFeel.NativeStyle = False
-              StyleHot.TextStyle = []
-              TabOrder = 0
-              OnKeyDown = edt_KontaktSucheNachnameKeyDown
-              Width = 234
-            end
-            object edt_KontaktSucheOrt: TcxTextEdit
-              Left = 460
-              Top = 75
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 5
-              OnKeyDown = edt_KontaktSucheNachnameKeyDown
-              Width = 234
-            end
-            object edt_KontaktSuchePLZ: TcxTextEdit
-              Left = 460
-              Top = 48
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 4
-              OnKeyDown = edt_KontaktSucheNachnameKeyDown
-              Width = 234
-            end
-            object edt_KontaktSucheStrasse: TcxTextEdit
-              Left = 460
-              Top = 21
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 3
-              OnKeyDown = edt_KontaktSucheNachnameKeyDown
-              Width = 234
-            end
-            object edt_KontaktSucheVorname: TcxTextEdit
-              Left = 100
-              Top = 48
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 1
-              OnKeyDown = edt_KontaktSucheNachnameKeyDown
-              Width = 234
-            end
-            object lbl_KontaktSucheAbteilung: TcxLabel
-              Left = 728
-              Top = 51
-              AutoSize = False
-              Caption = 'Abteilung:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-              Height = 17
-              Width = 90
-            end
-            object lbl_KontaktSucheArt: TcxLabel
-              Left = 8
-              Top = 78
-              AutoSize = False
-              Caption = 'Kontaktart:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-              Height = 17
-              Width = 90
-            end
-            object lbl_KontaktSucheFirma: TcxLabel
-              Left = 728
-              Top = 24
-              AutoSize = False
-              Caption = 'Firma:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-              Height = 17
-              Width = 90
-            end
-            object lbl_KontaktSucheFunktion: TcxLabel
-              Left = 728
-              Top = 78
-              AutoSize = False
-              Caption = 'Funktion:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-              Height = 17
-              Width = 90
-            end
-            object lbl_KontaktSucheNachname: TcxLabel
-              Left = 8
-              Top = 24
-              AutoSize = False
-              Caption = 'Nachname:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-              Height = 17
-              Width = 90
-            end
-            object lbl_KontaktSucheOrt: TcxLabel
-              Left = 368
-              Top = 78
-              AutoSize = False
-              Caption = 'Ort:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-              Height = 17
-              Width = 90
-            end
-            object lbl_KontaktSuchePLZ: TcxLabel
-              Left = 368
-              Top = 51
-              AutoSize = False
-              Caption = 'Postleitzahl:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-              Height = 17
-              Width = 90
-            end
-            object lbl_KontaktSucheStrasse: TcxLabel
-              Left = 368
-              Top = 24
-              AutoSize = False
-              Caption = 'Stra'#223'e:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-              Height = 17
-              Width = 90
-            end
-            object lbl_KontaktSucheVorname: TcxLabel
-              Left = 8
-              Top = 51
-              AutoSize = False
-              Caption = 'Vorname:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-              Height = 17
-              Width = 90
-            end
-          end
-          object pnl_KontakteButtons: TcxGroupBox
-            Left = 0
-            Top = 109
-            Align = alTop
-            PanelStyle.Active = True
-            Style.BorderStyle = ebsNone
-            TabOrder = 1
-            Height = 39
-            Width = 1600
-            object btn_kontaktDeletefilter: TcxButton
-              Left = 151
-              Top = 6
-              Width = 137
-              Height = 27
-              Caption = 'Filter l'#246'schen'
-              OptionsImage.ImageIndex = 24
-              OptionsImage.Images = dm_PCM.imglst_16x16
-              TabOrder = 1
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-              OnClick = btn_kontaktDeletefilterClick
-            end
-            object btn_kontaktsuchen: TcxButton
-              Left = 8
-              Top = 6
-              Width = 137
-              Height = 27
-              Caption = 'Kontakt suchen'
-              OptionsImage.ImageIndex = 25
-              OptionsImage.Images = dm_PCM.imglst_16x16
-              TabOrder = 0
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-              OnClick = btn_kontaktsuchenClick
-            end
-          end
+    TabOrder = 4
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    OptionsImage.Images = dm_PCM.imglst_16x16
+    object cmbbx_KontaktSucheArt: TcxComboBox
+      Left = 91
+      Top = 133
+      AutoSize = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 2
+      OnKeyDown = edt_KontaktSucheNachnameKeyDown
+      Height = 21
+      Width = 234
+    end
+    object edt_KontaktSucheAbteilung: TcxTextEdit
+      Left = 784
+      Top = 106
+      AutoSize = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 7
+      OnKeyDown = edt_KontaktSucheNachnameKeyDown
+      Height = 21
+      Width = 234
+    end
+    object edt_KontaktSucheFirma: TcxTextEdit
+      Left = 784
+      Top = 79
+      AutoSize = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 6
+      OnKeyDown = edt_KontaktSucheNachnameKeyDown
+      Height = 21
+      Width = 234
+    end
+    object edt_KontaktSucheFunktion: TcxTextEdit
+      Left = 784
+      Top = 133
+      AutoSize = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 8
+      OnKeyDown = edt_KontaktSucheNachnameKeyDown
+      Height = 21
+      Width = 234
+    end
+    object edt_KontaktSucheNachname: TcxTextEdit
+      Left = 91
+      Top = 79
+      AutoSize = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.LookAndFeel.NativeStyle = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleDisabled.TextColor = clBtnShadow
+      StyleDisabled.TextStyle = []
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleFocused.TextStyle = []
+      StyleHot.LookAndFeel.NativeStyle = False
+      StyleHot.TextStyle = []
+      TabOrder = 0
+      OnKeyDown = edt_KontaktSucheNachnameKeyDown
+      Height = 21
+      Width = 234
+    end
+    object edt_KontaktSucheOrt: TcxTextEdit
+      Left = 442
+      Top = 133
+      AutoSize = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 5
+      OnKeyDown = edt_KontaktSucheNachnameKeyDown
+      Height = 21
+      Width = 234
+    end
+    object edt_KontaktSuchePLZ: TcxTextEdit
+      Left = 442
+      Top = 106
+      AutoSize = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 4
+      OnKeyDown = edt_KontaktSucheNachnameKeyDown
+      Height = 21
+      Width = 234
+    end
+    object edt_KontaktSucheStrasse: TcxTextEdit
+      Left = 442
+      Top = 79
+      AutoSize = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 3
+      OnKeyDown = edt_KontaktSucheNachnameKeyDown
+      Height = 21
+      Width = 234
+    end
+    object edt_KontaktSucheVorname: TcxTextEdit
+      Left = 91
+      Top = 106
+      AutoSize = False
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 1
+      OnKeyDown = edt_KontaktSucheNachnameKeyDown
+      Height = 21
+      Width = 234
+    end
+    object cmbbx_Anrede: TcxDBLookupComboBox
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'ID_Anrede'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          SortOrder = soAscending
+          FieldName = 'Bezeichnung'
+        end>
+      Properties.ListOptions.AnsiSort = True
+      Properties.ListSource = dm_PCM.ds_Contact_Anrede
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 12
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 289
+    end
+    object edt_Email2: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'E_Mail_Privat1'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 27
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 260
+    end
+    object edt_Geburtsland: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Geburtsland'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 16
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 289
+    end
+    object edt_KontaktGeburtsname: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Geburtsname'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 15
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 289
+    end
+    object edt_KontaktHandy: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Handy_privat'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 24
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 289
+    end
+    object edt_KontaktNachname: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Nachname'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Color = clInfoBk
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TextColor = clInfoText
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 14
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 289
+    end
+    object edt_KontaktName: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Vorname'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Color = clInfoBk
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TextColor = clInfoText
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 13
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 289
+    end
+    object edt_KontaktOrt: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Ort_Privat'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 20
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 185
+    end
+    object edt_KontaktPLZ: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'PLZ_Privat'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 19
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 69
+    end
+    object edt_KontaktStrasse: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Strasse_Privat'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 18
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 289
+    end
+    object edt_KontaktTelefon1: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Telefon_Privat'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 22
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 289
+    end
+    object edt_KontaktTelefon2: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Telefon_Privat1'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 23
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 289
+    end
+    object edt_KontaktZusatz: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Zusatz'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 17
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 289
+    end
+    object dtEdt_KontaktZusatzGeburtsdatum: TcxDBDateEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Geburtsdatum'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 33
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 879
+    end
+    object lucmbbx_KontaktZusatzFamilienstand: TcxDBLookupComboBox
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'ID_Familienstand'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          SortOrder = soAscending
+          FieldName = 'Bezeichnung'
+        end>
+      Properties.ListSource = dm_PCM.ds_Contact_Familienstand
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 35
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 879
+    end
+    object lucmbbx_KontaktZusatzGeschlecht: TcxDBLookupComboBox
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'ID_Geschlecht'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          SortOrder = soAscending
+          FieldName = 'Bezeichnung'
+        end>
+      Properties.ListOptions.AnsiSort = True
+      Properties.ListSource = dm_PCM.ds_Contact_Geschlecht
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 34
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 879
+    end
+    object lucmbbx_Konfession: TcxDBLookupComboBox
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'ID_Konfession'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          SortOrder = soAscending
+          FieldName = 'Bezeichnung'
+        end>
+      Properties.ListSource = dm_PCM.ds_Contact_Konfession
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 38
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 852
+    end
+    object lucmbbx_Staatsanghoerigkeit: TcxDBLookupComboBox
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'ID_Staatsangehoerigkeit'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          SortOrder = soAscending
+          FieldName = 'Bezeichnung'
+        end>
+      Properties.ListSource = dm_PCM.ds_Contact_Staatsangehoerigkeit
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 36
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 852
+    end
+    object img_Picture: TcxDBImage
+      Left = 10000
+      Top = 10000
+      TabStop = False
+      DataBinding.DataField = 'Bild'
+      DataBinding.DataSource = ds_Kontakte
+      Properties.FitMode = ifmProportionalStretch
+      Properties.GraphicClassName = 'TdxSmartImage'
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 32
+      Visible = False
+      Height = 150
+      Width = 150
+    end
+    object edt_KontaktGeschaeftlichAbteilung: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Abteilung_Ges'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 46
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 1068
+    end
+    object edt_KontaktGeschaeftlichEMail: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'E_Mail_Ges'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 51
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 1041
+    end
+    object edt_KontaktGeschaeftlichFirma: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      OnFocusChanged = btn_KontaktSaveClick
+      AutoSize = False
+      DataBinding.DataField = 'Firma'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 41
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 1068
+    end
+    object edt_KontaktGeschaeftlichInternet: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Internet_Ges'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 53
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 1041
+    end
+    object edt_KontaktGeschaeftlichOrt: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Ort_Ges'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 44
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 966
+    end
+    object edt_KontaktGeschaeftlichPLZ: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'PLZ_Ges'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 43
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 69
+    end
+    object edt_KontaktGeschaeftlichStrasse: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Strasse_Ges'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 42
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 1068
+    end
+    object edt_KontaktGeschaeftlichTelefonZentrale: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Zentrale_Ges'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 48
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 1068
+    end
+    object edt_KontaktGeschaeftlichTelefonDurchwahl: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Telefon_Ges'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 49
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 1068
+    end
+    object btn_MapPrivate: TcxButton
+      Left = 10000
+      Top = 10000
+      Width = 21
+      Height = 21
+      OptionsImage.ImageIndex = 85
+      OptionsImage.Images = dm_PCM.imglst_16x16
+      PaintStyle = bpsGlyph
+      TabOrder = 21
+      Visible = False
+      OnClick = btn_MapPrivateClick
+    end
+    object edt_Email1: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'E_Mail_Privat'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 25
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 260
+    end
+    object mem_Sonstige: TcxDBMemo
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Info'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 40
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 585
+      Width = 1150
+    end
+    object btn_Mail1Private: TcxButton
+      Left = 10000
+      Top = 10000
+      Width = 21
+      Height = 21
+      Caption = 'btn_Mail1Private'
+      OptionsImage.ImageIndex = 15
+      OptionsImage.Images = dm_PCM.imglst_16x16
+      PaintStyle = bpsGlyph
+      TabOrder = 26
+      Visible = False
+      OnClick = btn_KontaktEmail1SendClick
+    end
+    object btn_Mail2Private: TcxButton
+      Left = 10000
+      Top = 10000
+      Width = 21
+      Height = 21
+      Caption = 'cxButton1'
+      OptionsImage.ImageIndex = 15
+      OptionsImage.Images = dm_PCM.imglst_16x16
+      PaintStyle = bpsGlyph
+      TabOrder = 28
+      Visible = False
+      OnClick = btn_KontaktEmail2SendClick
+    end
+    object grd_Suche: TcxGrid
+      Left = 22
+      Top = 205
+      Width = 1552
+      Height = 606
+      BevelInner = bvNone
+      BevelOuter = bvNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 11
+      LockedStateImageOptions.Effect = lsieDark
+      LookAndFeel.ScrollbarMode = sbmDefault
+      object grdDBTblView_Suche: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        ScrollbarAnnotations.CustomAnnotations = <>
+        OnCellDblClick = grdDBTblView_KontakteCellDblClick
+        DataController.DataSource = ds_Kontakte
+        DataController.Filter.Options = [fcoCaseInsensitive]
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.KeyFieldNames = 'ID'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skCount
+          end>
+        DataController.Summary.SummaryGroups = <
+          item
+            Links = <
+              item
+              end>
+            SummaryItems = <
+              item
+              end>
+          end>
+        OptionsBehavior.IncSearch = True
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsSelection.MultiSelect = True
+        OptionsView.CellEndEllipsis = True
+        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.IndicatorWidth = 14
+        object grdDBTblView_SucheID: TcxGridDBColumn
+          DataBinding.FieldName = 'ID'
+          Visible = False
         end
-        object ts_B_Kontakte_Kontakte_Detail: TcxTabSheet
-          Caption = 'Kontakte'
-          ImageIndex = 11
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
-          object pc_Kontakte_Kontakte_Adressen: TcxPageControl
-            Left = 394
-            Top = 0
-            Width = 1206
-            Height = 792
-            Align = alClient
-            BiDiMode = bdLeftToRight
-            Color = clBtnFace
-            ParentBackground = False
-            ParentBiDiMode = False
-            ParentColor = False
-            TabOrder = 1
-            Properties.ActivePage = ts_D_ZE
-            Properties.CustomButtons.Buttons = <>
-            Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
-            Properties.TabSlants.Kind = skCutCorner
-            Properties.TabWidth = 100
-            ClientRectBottom = 792
-            ClientRectRight = 1206
-            ClientRectTop = 24
-            object ts_A_Zusatz: TcxTabSheet
-              Caption = 'Zusatz'
-              ImageIndex = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
-              object grpbx_KontakteZusatzSonstige: TcxGroupBox
-                Left = 0
-                Top = 187
-                Align = alClient
-                Caption = 'Sonstige Informationen'
-                TabOrder = 1
-                Height = 581
-                Width = 1206
-                object mem_KontakteZusatzSonstige: TcxDBMemo
-                  Left = 8
-                  Top = 24
-                  DataBinding.DataField = 'Info'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Style.BorderStyle = ebsNone
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 0
-                  OnExit = btn_KontaktSaveClick
-                  Height = 57
-                  Width = 640
-                end
-              end
-              object grpbx_KontakteZusatz: TcxGroupBox
-                Left = 0
-                Top = 0
-                Align = alTop
-                Caption = 'Zusatzinformation'
-                TabOrder = 0
-                Height = 187
-                Width = 1206
-                object lbl_KontaktZusatzFamilienstand: TcxLabel
-                  Left = 184
-                  Top = 91
-                  Caption = 'Familienstand:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object lbl_KontaktZusatzGeburtsdatum: TcxLabel
-                  Left = 184
-                  Top = 37
-                  Caption = 'Geburtsdatum:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object lbl_KontaktZusatzGeschlecht: TcxLabel
-                  Left = 184
-                  Top = 64
-                  Caption = 'Geschlecht:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object lbl_KontaktZusatzkonfession: TcxLabel
-                  Left = 184
-                  Top = 145
-                  Caption = 'Konfession:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object lbl_KontaktZusatzStaatsanghoerigkeit: TcxLabel
-                  Left = 184
-                  Top = 118
-                  Caption = 'Staatsangeh'#246'rigkeit:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object dtEdt_KontaktZusatzGeburtsdatum: TcxDBDateEdit
-                  Left = 288
-                  Top = 34
-                  DataBinding.DataField = 'Geburtsdatum'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 0
-                  OnExit = btn_KontaktSaveClick
-                  Width = 360
-                end
-                object lucmbbx_KontaktZusatzFamilienstand: TcxDBLookupComboBox
-                  Left = 288
-                  Top = 88
-                  DataBinding.DataField = 'ID_Familienstand'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Properties.KeyFieldNames = 'ID'
-                  Properties.ListColumns = <
-                    item
-                      SortOrder = soAscending
-                      FieldName = 'Bezeichnung'
-                    end>
-                  Properties.ListSource = dm_PCM.ds_Contact_Familienstand
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 2
-                  OnExit = btn_KontaktSaveClick
-                  Width = 360
-                end
-                object lucmbbx_KontaktZusatzGeschlecht: TcxDBLookupComboBox
-                  Left = 288
-                  Top = 61
-                  DataBinding.DataField = 'ID_Geschlecht'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Properties.KeyFieldNames = 'ID'
-                  Properties.ListColumns = <
-                    item
-                      SortOrder = soAscending
-                      FieldName = 'Bezeichnung'
-                    end>
-                  Properties.ListOptions.AnsiSort = True
-                  Properties.ListSource = dm_PCM.ds_Contact_Geschlecht
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 1
-                  OnExit = btn_KontaktSaveClick
-                  Width = 360
-                end
-                object lucmbbx_KontaktZusatzkonfession: TcxDBLookupComboBox
-                  Left = 288
-                  Top = 142
-                  DataBinding.DataField = 'ID_Konfession'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Properties.KeyFieldNames = 'ID'
-                  Properties.ListColumns = <
-                    item
-                      SortOrder = soAscending
-                      FieldName = 'Bezeichnung'
-                    end>
-                  Properties.ListSource = dm_PCM.ds_Contact_Konfession
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 4
-                  OnExit = btn_KontaktSaveClick
-                  Width = 333
-                end
-                object lucmbbx_KontaktZusatzStaatsanghoerigkeit: TcxDBLookupComboBox
-                  Left = 288
-                  Top = 115
-                  DataBinding.DataField = 'ID_Staatsangehoerigkeit'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Properties.KeyFieldNames = 'ID'
-                  Properties.ListColumns = <
-                    item
-                      SortOrder = soAscending
-                      FieldName = 'Bezeichnung'
-                    end>
-                  Properties.ListSource = dm_PCM.ds_Contact_Staatsangehoerigkeit
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 3
-                  OnExit = btn_KontaktSaveClick
-                  Width = 333
-                end
-                object btn_KontaktKonfessionEdit: TcxButton
-                  Left = 627
-                  Top = 142
-                  Width = 21
-                  Height = 21
-                  OptionsImage.ImageIndex = 74
-                  OptionsImage.Images = dm_PCM.imglst_16x16
-                  TabOrder = 10
-                  TabStop = False
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -11
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  OnClick = btn_KontaktKonfessionEditClick
-                end
-                object btn_KontaktStaatsangehörigkeitEdit: TcxButton
-                  Left = 627
-                  Top = 115
-                  Width = 21
-                  Height = 21
-                  OptionsImage.ImageIndex = 74
-                  OptionsImage.Images = dm_PCM.imglst_16x16
-                  TabOrder = 11
-                  TabStop = False
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -11
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  OnClick = btn_KontaktStaatsangehörigkeitEditClick
-                end
-                object pnl_KontaktZusatzPicture: TcxGroupBox
-                  Left = 8
-                  Top = 24
-                  PanelStyle.Active = True
-                  Style.BorderStyle = ebsNone
-                  TabOrder = 12
-                  Height = 150
-                  Width = 150
-                  object img_KontaktZusatzPicture: TcxDBImage
-                    Left = -4
-                    Top = 1
-                    TabStop = False
-                    DataBinding.DataField = 'Bild'
-                    DataBinding.DataSource = ds_Kontakte
-                    Properties.FitMode = ifmProportionalStretch
-                    Properties.GraphicClassName = 'TdxSmartImage'
-                    Style.BorderStyle = ebsFlat
-                    TabOrder = 0
-                    Height = 150
-                    Width = 150
-                  end
-                end
-              end
-            end
-            object ts_B_Geschaeftlich: TcxTabSheet
-              Caption = 'Gesch'#228'ftlich'
-              ImageIndex = 2
-              object grpbx_KontakteGeschaeftlich: TcxGroupBox
-                Left = 0
-                Top = 0
-                Align = alClient
-                Caption = 'Kontakdaten Gesch'#228'ftlich'
-                TabOrder = 0
-                Height = 768
-                Width = 1206
-                object btn_KontaktGeschaeftlichSendMail: TcxButton
-                  Left = 627
-                  Top = 236
-                  Width = 21
-                  Height = 21
-                  OptionsImage.ImageIndex = 15
-                  OptionsImage.Images = dm_PCM.imglst_16x16
-                  TabOrder = 11
-                  TabStop = False
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -11
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  OnClick = btn_KontaktGeschaeftlichSendMailClick
-                end
-                object edt_KontaktGeschaeftlichAbteilung: TcxDBTextEdit
-                  Left = 113
-                  Top = 101
-                  DataBinding.DataField = 'Abteilung_Ges'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 4
-                  OnExit = btn_KontaktSaveClick
-                  Width = 535
-                end
-                object edt_KontaktGeschaeftlichEMail: TcxDBTextEdit
-                  Left = 113
-                  Top = 236
-                  DataBinding.DataField = 'E_Mail_Ges'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 9
-                  OnExit = btn_KontaktSaveClick
-                  Width = 507
-                end
-                object edt_KontaktGeschaeftlichFirma: TcxDBTextEdit
-                  Left = 113
-                  Top = 20
-                  DataBinding.DataField = 'Firma'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 0
-                  OnExit = btn_KontaktSaveClick
-                  Width = 535
-                end
-                object edt_KontaktGeschaeftlichFunktion: TcxDBTextEdit
-                  Left = 113
-                  Top = 128
-                  DataBinding.DataField = 'Funktion_Ges'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 5
-                  OnExit = btn_KontaktSaveClick
-                  Width = 535
-                end
-                object edt_KontaktGeschaeftlichHandy: TcxDBTextEdit
-                  Left = 113
-                  Top = 209
-                  DataBinding.DataField = 'Handy_Ges'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 8
-                  OnExit = btn_KontaktSaveClick
-                  Width = 535
-                end
-                object edt_KontaktGeschaeftlichInternet: TcxDBTextEdit
-                  Left = 113
-                  Top = 263
-                  DataBinding.DataField = 'Internet_Ges'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 10
-                  OnExit = btn_KontaktSaveClick
-                  Width = 507
-                end
-                object edt_KontaktGeschaeftlichOrt: TcxDBTextEdit
-                  Left = 191
-                  Top = 74
-                  DataBinding.DataField = 'Ort_Ges'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 3
-                  OnExit = btn_KontaktSaveClick
-                  Width = 457
-                end
-                object edt_KontaktGeschaeftlichPLZ: TcxDBTextEdit
-                  Left = 113
-                  Top = 74
-                  DataBinding.DataField = 'PLZ_Ges'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 2
-                  OnExit = btn_KontaktSaveClick
-                  Width = 72
-                end
-                object edt_KontaktGeschaeftlichStrasse: TcxDBTextEdit
-                  Left = 113
-                  Top = 47
-                  DataBinding.DataField = 'Strasse_Ges'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 1
-                  OnExit = btn_KontaktSaveClick
-                  Width = 535
-                end
-                object edt_KontaktGeschaeftlichTelefonDurchwahl: TcxDBTextEdit
-                  Left = 113
-                  Top = 182
-                  DataBinding.DataField = 'Telefon_Ges'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 7
-                  OnExit = btn_KontaktSaveClick
-                  Width = 535
-                end
-                object edt_KontaktGeschaeftlichTelefonZentrale: TcxDBTextEdit
-                  Left = 113
-                  Top = 155
-                  DataBinding.DataField = 'Zentrale_Ges'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 6
-                  OnExit = btn_KontaktSaveClick
-                  Width = 535
-                end
-                object lbl_KontaktGeschaeftlichAbteilung: TcxLabel
-                  Left = 8
-                  Top = 104
-                  Caption = 'Abteilung:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object lbl_KontaktGeschaeftlichEMail: TcxLabel
-                  Left = 8
-                  Top = 239
-                  Caption = 'E-Mail:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object lbl_KontaktGeschaeftlichFirma: TcxLabel
-                  Left = 8
-                  Top = 23
-                  Caption = 'Firma:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object lbl_KontaktGeschaeftlichFunktion: TcxLabel
-                  Left = 8
-                  Top = 131
-                  Caption = 'Funktion:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object lbl_KontaktGeschaeftlichHandy: TcxLabel
-                  Left = 8
-                  Top = 212
-                  Caption = 'Handy:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object lbl_KontaktGeschaeftlichInternet: TcxLabel
-                  Left = 8
-                  Top = 266
-                  Caption = 'Internet:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object lbl_KontaktGeschaeftlichPLZOrt: TcxLabel
-                  Left = 8
-                  Top = 77
-                  Caption = 'Plz - Ort:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object lbl_KontaktGeschaeftlichStrasse: TcxLabel
-                  Left = 8
-                  Top = 50
-                  Caption = 'Stra'#223'e:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object lbl_KontaktGeschaeftlichTelefonDurchwahl: TcxLabel
-                  Left = 8
-                  Top = 185
-                  Caption = 'Telefon Durchwahl:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object lbl_KontaktGeschaeftlichTelefonZentrale: TcxLabel
-                  Left = 8
-                  Top = 158
-                  Caption = 'Telefon Zentrale:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object btn_KontaktGesOpenWebsite: TcxButton
-                  Left = 627
-                  Top = 263
-                  Width = 21
-                  Height = 21
-                  OptionsImage.ImageIndex = 75
-                  OptionsImage.Images = dm_PCM.imglst_16x16
-                  TabOrder = 22
-                  TabStop = False
-                  Font.Charset = DEFAULT_CHARSET
-                  Font.Color = clWindowText
-                  Font.Height = -11
-                  Font.Name = 'Tahoma'
-                  Font.Style = []
-                  ParentFont = False
-                  OnClick = btn_KontaktGesOpenWebsiteClick
-                end
-              end
-            end
-            object ts_C_Sonstiges: TcxTabSheet
-              Caption = 'Sonstige Info'
-              ImageIndex = 3
-              object grpbx_KontakteSonstiges: TcxGroupBox
-                Left = 0
-                Top = 0
-                Align = alClient
-                Caption = 'Messenger / Soziale Netzwerke'
-                TabOrder = 0
-                Height = 768
-                Width = 1206
-                object edt_KontakteSonstigesFacebook: TcxDBTextEdit
-                  Left = 113
-                  Top = 21
-                  DataBinding.DataField = 'Facebook'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 0
-                  OnExit = btn_KontaktSaveClick
-                  Width = 535
-                end
-                object edt_KontakteSonstigesSkype: TcxDBTextEdit
-                  Left = 113
-                  Top = 48
-                  DataBinding.DataField = 'Skype'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 1
-                  OnExit = btn_KontaktSaveClick
-                  Width = 535
-                end
-                object edt_KontakteSonstigesTeams: TcxDBTextEdit
-                  Left = 113
-                  Top = 75
-                  DataBinding.DataField = 'Live_Messanger'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 2
-                  OnExit = btn_KontaktSaveClick
-                  Width = 535
-                end
-                object lbl_KontakteSonstigesFacebook: TcxLabel
-                  Left = 9
-                  Top = 24
-                  Caption = 'Facebook:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object lbl_KontakteSonstigesSkype: TcxLabel
-                  Left = 8
-                  Top = 51
-                  Caption = 'Skype:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object lbl_KontakteSonstigesTeams: TcxLabel
-                  Left = 8
-                  Top = 78
-                  Caption = 'Microsoft Teams:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-              end
-            end
-            object ts_D_ZE: TcxTabSheet
-              Caption = 'Zeiterfassung'
-              ImageIndex = 3
-              object grpbx_ZE: TcxGroupBox
-                Left = 0
-                Top = 0
-                Align = alClient
-                Caption = 'Zeiterfassung'
-                TabOrder = 0
-                Height = 768
-                Width = 1206
-                object lbl_Sollstunden: TcxLabel
-                  Left = 8
-                  Top = 21
-                  Caption = 'Sollstunden:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object lbl_CalWork: TcxLabel
-                  Left = 8
-                  Top = 75
-                  Caption = 'Kalender Arbeitszeit:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object lbl_CalBreak: TcxLabel
-                  Left = 8
-                  Top = 129
-                  Caption = 'Kalender Pause:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object tedt_Sollstunden: TcxDBTimeEdit
-                  Left = 113
-                  Top = 20
-                  DataBinding.DataField = 'Sollstunden'
-                  DataBinding.DataSource = ds_Kontakte
-                  Properties.SpinButtons.Visible = False
-                  Properties.TimeFormat = tfHourMin
-                  TabOrder = 3
-                  Width = 535
-                end
-                object colcmbbx_CalWork: TcxDBColorComboBox
-                  Left = 113
-                  Top = 74
-                  DataBinding.DataField = 'ColCalWork'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Properties.AllowSelectColor = True
-                  Properties.CustomColors = <>
-                  Properties.PrepareList = cxplHTML4
-                  Properties.ShowDescriptions = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 4
-                  Width = 535
-                end
-                object colcmbbx_CalBreak: TcxDBColorComboBox
-                  Left = 113
-                  Top = 128
-                  DataBinding.DataField = 'ColCalBreak'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Properties.AllowSelectColor = True
-                  Properties.CustomColors = <>
-                  Properties.PrepareList = cxplHTML4
-                  Properties.ShowDescriptions = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 5
-                  Width = 535
-                end
-                object colcmbbx_FontBreak: TcxDBColorComboBox
-                  Left = 113
-                  Top = 101
-                  DataBinding.DataField = 'ColFontBreak'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Properties.AllowSelectColor = True
-                  Properties.CustomColors = <>
-                  Properties.PrepareList = cxplHTML4
-                  Properties.ShowDescriptions = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 6
-                  Width = 535
-                end
-                object colcmbbx_FontWork: TcxDBColorComboBox
-                  Left = 113
-                  Top = 47
-                  DataBinding.DataField = 'ColFontWork'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Properties.AllowSelectColor = True
-                  Properties.CustomColors = <>
-                  Properties.PrepareList = cxplHTML4
-                  Properties.ShowDescriptions = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 7
-                  Width = 535
-                end
-                object lbl_FontBreak: TcxLabel
-                  Left = 8
-                  Top = 102
-                  Caption = 'Schrift Pause:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object lbl_FontWork: TcxLabel
-                  Left = 8
-                  Top = 48
-                  Caption = 'Schrift Arbeitszeit:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object cxLabel1: TcxLabel
-                  Left = 8
-                  Top = 156
-                  Caption = 'Benutzer:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object cxDBLookupComboBox1: TcxDBLookupComboBox
-                  Left = 113
-                  Top = 155
-                  DataBinding.DataField = 'ID_Zeiterfasser'
-                  DataBinding.DataSource = ds_Kontakte
-                  Properties.KeyFieldNames = 'ID'
-                  Properties.ListColumns = <
-                    item
-                      FieldName = 'Name'
-                    end>
-                  Properties.ListSource = dm_PCM.ds_Kalender_Benutzer
-                  TabOrder = 11
-                  Width = 535
-                end
-                object cxLabel6: TcxLabel
-                  Left = 8
-                  Top = 186
-                  Caption = 'Urlaubsanspruch:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object cxDBSpinEdit1: TcxDBSpinEdit
-                  Left = 113
-                  Top = 184
-                  DataBinding.DataField = 'Urlaub'
-                  DataBinding.DataSource = ds_Kontakte
-                  Properties.SpinButtons.Visible = False
-                  TabOrder = 13
-                  Width = 535
-                end
-                object cxLabel5: TcxLabel
-                  Left = 8
-                  Top = 214
-                  Caption = 'Eintritt:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                end
-                object cxDBDateEdit1: TcxDBDateEdit
-                  Left = 113
-                  Top = 213
-                  DataBinding.DataField = 'Eintritt'
-                  DataBinding.DataSource = ds_Kontakte
-                  ParentFont = False
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 15
-                  Width = 535
-                end
-              end
-            end
-          end
-          object grpbx_KontaktAllgemein: TcxGroupBox
-            Left = 0
-            Top = 0
-            TabStop = True
-            Align = alLeft
-            Caption = 'Kontakt'
-            TabOrder = 0
-            Height = 792
-            Width = 394
-            object btn_KontaktEmail1Send: TcxButton
-              Left = 364
-              Top = 317
-              Width = 21
-              Height = 21
-              OptionsImage.ImageIndex = 15
-              OptionsImage.Images = dm_PCM.imglst_16x16
-              TabOrder = 16
-              TabStop = False
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-              OnClick = btn_KontaktEmail1SendClick
-            end
-            object btn_KontaktEmail2Send: TcxButton
-              Left = 364
-              Top = 344
-              Width = 21
-              Height = 21
-              OptionsImage.ImageIndex = 15
-              OptionsImage.Images = dm_PCM.imglst_16x16
-              TabOrder = 17
-              TabStop = False
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-              OnClick = btn_KontaktEmail2SendClick
-            end
-            object cmbbx_KontaktAnrede: TcxDBLookupComboBox
-              Left = 96
-              Top = 20
-              DataBinding.DataField = 'ID_Anrede'
-              DataBinding.DataSource = ds_Kontakte
-              ParentFont = False
-              Properties.KeyFieldNames = 'ID'
-              Properties.ListColumns = <
-                item
-                  SortOrder = soAscending
-                  FieldName = 'Bezeichnung'
-                end>
-              Properties.ListOptions.AnsiSort = True
-              Properties.ListSource = dm_PCM.ds_Contact_Anrede
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 0
-              OnExit = btn_KontaktSaveClick
-              Width = 289
-            end
-            object cmbbx_KontaktArt: TcxDBLookupComboBox
-              Left = 96
-              Top = 398
-              DataBinding.DataField = 'ID_Kontaktart'
-              DataBinding.DataSource = ds_Kontakte
-              ParentFont = False
-              Properties.KeyFieldNames = 'ID'
-              Properties.ListColumns = <
-                item
-                  SortOrder = soAscending
-                  FieldName = 'Bezeichnung'
-                end>
-              Properties.ListSource = dm_PCM.ds_Contact_Kontaktart
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 15
-              OnExit = btn_KontaktSaveClick
-              Width = 289
-            end
-            object edt_KontaktEmail1: TcxDBTextEdit
-              Left = 96
-              Top = 317
-              DataBinding.DataField = 'E_Mail_Privat'
-              DataBinding.DataSource = ds_Kontakte
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 12
-              OnExit = btn_KontaktSaveClick
-              Width = 262
-            end
-            object edt_KontaktEmail2: TcxDBTextEdit
-              Left = 96
-              Top = 344
-              DataBinding.DataField = 'E_Mail_Privat1'
-              DataBinding.DataSource = ds_Kontakte
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 13
-              OnExit = btn_KontaktSaveClick
-              Width = 262
-            end
-            object edt_KontaktGeburtsland: TcxDBTextEdit
-              Left = 96
-              Top = 130
-              DataBinding.DataField = 'Geburtsland'
-              DataBinding.DataSource = ds_Kontakte
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 4
-              OnExit = btn_KontaktSaveClick
-              Width = 289
-            end
-            object edt_KontaktGeburtsname: TcxDBTextEdit
-              Left = 96
-              Top = 103
-              DataBinding.DataField = 'Geburtsname'
-              DataBinding.DataSource = ds_Kontakte
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 3
-              OnExit = btn_KontaktSaveClick
-              Width = 289
-            end
-            object edt_KontaktHandy: TcxDBTextEdit
-              Left = 96
-              Top = 290
-              DataBinding.DataField = 'Handy_privat'
-              DataBinding.DataSource = ds_Kontakte
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 11
-              OnExit = btn_KontaktSaveClick
-              Width = 289
-            end
-            object edt_KontaktInternet: TcxDBTextEdit
-              Left = 96
-              Top = 371
-              DataBinding.DataField = 'Internet_Privat'
-              DataBinding.DataSource = ds_Kontakte
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 14
-              OnExit = btn_KontaktSaveClick
-              Width = 262
-            end
-            object edt_KontaktNachname: TcxDBTextEdit
-              Left = 96
-              Top = 74
-              DataBinding.DataField = 'Nachname'
-              DataBinding.DataSource = ds_Kontakte
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Color = clInfoBk
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.TextColor = clInfoText
-              Style.IsFontAssigned = True
-              TabOrder = 2
-              OnExit = btn_KontaktSaveClick
-              Width = 289
-            end
-            object edt_KontaktName: TcxDBTextEdit
-              Left = 96
-              Top = 47
-              DataBinding.DataField = 'Vorname'
-              DataBinding.DataSource = ds_Kontakte
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Color = clInfoBk
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.TextColor = clInfoText
-              Style.IsFontAssigned = True
-              TabOrder = 1
-              OnExit = btn_KontaktSaveClick
-              Width = 289
-            end
-            object edt_KontaktOrt: TcxDBTextEdit
-              Left = 174
-              Top = 209
-              DataBinding.DataField = 'Ort_Privat'
-              DataBinding.DataSource = ds_Kontakte
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 8
-              OnExit = btn_KontaktSaveClick
-              Width = 211
-            end
-            object edt_KontaktPLZ: TcxDBTextEdit
-              Left = 96
-              Top = 209
-              DataBinding.DataField = 'PLZ_Privat'
-              DataBinding.DataSource = ds_Kontakte
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 7
-              OnExit = btn_KontaktSaveClick
-              Width = 72
-            end
-            object edt_KontaktStrasse: TcxDBTextEdit
-              Left = 96
-              Top = 182
-              DataBinding.DataField = 'Strasse_Privat'
-              DataBinding.DataSource = ds_Kontakte
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 6
-              OnExit = btn_KontaktSaveClick
-              Width = 289
-            end
-            object edt_KontaktTelefon1: TcxDBTextEdit
-              Left = 96
-              Top = 236
-              DataBinding.DataField = 'Telefon_Privat'
-              DataBinding.DataSource = ds_Kontakte
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 9
-              OnExit = btn_KontaktSaveClick
-              Width = 289
-            end
-            object edt_KontaktTelefon2: TcxDBTextEdit
-              Left = 96
-              Top = 263
-              DataBinding.DataField = 'Telefon_Privat1'
-              DataBinding.DataSource = ds_Kontakte
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 10
-              OnExit = btn_KontaktSaveClick
-              Width = 289
-            end
-            object edt_KontaktZusatz: TcxDBTextEdit
-              Left = 96
-              Top = 157
-              DataBinding.DataField = 'Zusatz'
-              DataBinding.DataSource = ds_Kontakte
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 5
-              OnExit = btn_KontaktSaveClick
-              Width = 289
-            end
-            object lbl_KontaktAnrede: TcxLabel
-              Left = 8
-              Top = 23
-              Caption = 'Anrede:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_KontaktArt: TcxLabel
-              Left = 8
-              Top = 401
-              Caption = 'Kontaktart:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_KontaktEmail1: TcxLabel
-              Left = 8
-              Top = 320
-              Caption = 'E-Mail 1:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_KontaktEmail2: TcxLabel
-              Left = 8
-              Top = 347
-              Caption = 'E-Mail 2:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_KontaktGeburtsland: TcxLabel
-              Left = 8
-              Top = 133
-              Caption = 'Geburtsland:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_KontaktGeburtsname: TcxLabel
-              Left = 8
-              Top = 106
-              Caption = 'Geburtsname:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_KontaktHandy: TcxLabel
-              Left = 8
-              Top = 293
-              Caption = 'Handy:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_KontaktInternet: TcxLabel
-              Left = 8
-              Top = 374
-              Caption = 'Internet:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_KontaktNachname: TcxLabel
-              Left = 9
-              Top = 77
-              Caption = 'Nachname:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_KontaktName: TcxLabel
-              Left = 9
-              Top = 50
-              Caption = 'Vorname:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_KontaktPLZOrt: TcxLabel
-              Left = 8
-              Top = 212
-              Caption = 'Plz - Ort:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_KontaktStrasse: TcxLabel
-              Left = 8
-              Top = 185
-              Caption = 'Stra'#223'e:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_KontaktTelefon1: TcxLabel
-              Left = 8
-              Top = 239
-              Caption = 'Telefon 1:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_KontaktTelefon2: TcxLabel
-              Left = 8
-              Top = 266
-              Caption = 'Telefon 2:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_KontaktZusatz: TcxLabel
-              Left = 8
-              Top = 160
-              Caption = 'Zusatz:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object btn_KontaktPrivOpenWebsite: TcxButton
-              Left = 364
-              Top = 371
-              Width = 21
-              Height = 21
-              OptionsImage.ImageIndex = 75
-              OptionsImage.Images = dm_PCM.imglst_16x16
-              TabOrder = 33
-              TabStop = False
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-              OnClick = btn_KontaktPrivOpenWebsiteClick
-            end
-          end
+        object grdDBTblView_SucheID_Anrede: TcxGridDBColumn
+          Caption = 'Anrede'
+          DataBinding.FieldName = 'ID_Anrede'
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Bezeichnung'
+            end>
+          Properties.ListSource = dm_PCM.ds_Contact_Anrede
+          FixedKind = fkLeft
+        end
+        object grdDBTblView_SucheVorname: TcxGridDBColumn
+          DataBinding.FieldName = 'Vorname'
+          FixedKind = fkLeft
+          SortIndex = 0
+          SortOrder = soAscending
+          Width = 200
+        end
+        object grdDBTblView_SucheNachname: TcxGridDBColumn
+          DataBinding.FieldName = 'Nachname'
+          FixedKind = fkLeft
+          SortIndex = 1
+          SortOrder = soAscending
+          Width = 200
+        end
+        object grdDBTblView_SucheGeburtsname: TcxGridDBColumn
+          DataBinding.FieldName = 'Geburtsname'
+          Visible = False
+          Width = 200
+        end
+        object grdDBTblView_SucheGeburtsland: TcxGridDBColumn
+          DataBinding.FieldName = 'Geburtsland'
+          Visible = False
+          Width = 200
+        end
+        object grdDBTblView_SucheZusatz: TcxGridDBColumn
+          DataBinding.FieldName = 'Zusatz'
+          Visible = False
+          Width = 200
+        end
+        object grdDBTblView_SucheBild: TcxGridDBColumn
+          DataBinding.FieldName = 'Bild'
+          PropertiesClassName = 'TcxImageProperties'
+          Properties.GraphicClassName = 'TdxPNGImage'
+        end
+        object grdDBTblView_SucheStrasse_Privat: TcxGridDBColumn
+          Caption = 'Strasse Privat'
+          DataBinding.FieldName = 'Strasse_Privat'
+          Width = 200
+        end
+        object grdDBTblView_SuchePLZ_Privat: TcxGridDBColumn
+          Caption = 'PLZ Privat'
+          DataBinding.FieldName = 'PLZ_Privat'
+          Width = 90
+        end
+        object grdDBTblView_SucheOrt_Privat: TcxGridDBColumn
+          Caption = 'Ort Privat'
+          DataBinding.FieldName = 'Ort_Privat'
+          Width = 200
+        end
+        object grdDBTblView_SucheID_Kontaktart: TcxGridDBColumn
+          Caption = 'Kontaktart'
+          DataBinding.FieldName = 'ID_Kontaktart'
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Bezeichnung'
+            end>
+          Properties.ListSource = dm_PCM.ds_Contact_Kontaktart
+          Width = 120
+        end
+        object grdDBTblView_SucheTelefon_Privat: TcxGridDBColumn
+          Caption = 'Telefon Privat'
+          DataBinding.FieldName = 'Telefon_Privat'
+          Width = 150
+        end
+        object grdDBTblView_SucheTelefon_Privat1: TcxGridDBColumn
+          Caption = 'Telefon Privat 1'
+          DataBinding.FieldName = 'Telefon_Privat1'
+          Visible = False
+          Width = 150
+        end
+        object grdDBTblView_SucheHandy_privat: TcxGridDBColumn
+          Caption = 'Mobil Privat'
+          DataBinding.FieldName = 'Handy_privat'
+          Width = 150
+        end
+        object grdDBTblView_SucheE_Mail_Privat: TcxGridDBColumn
+          Caption = 'E-Mail Privat'
+          DataBinding.FieldName = 'E_Mail_Privat'
+          Width = 150
+        end
+        object grdDBTblView_SucheE_Mail_Privat1: TcxGridDBColumn
+          Caption = 'E-Mail Privat 1'
+          DataBinding.FieldName = 'E_Mail_Privat1'
+          Visible = False
+          Width = 180
+        end
+        object grdDBTblView_SucheInternet_Privat: TcxGridDBColumn
+          Caption = 'Internet Privat'
+          DataBinding.FieldName = 'Internet_Privat'
+          Visible = False
+          Width = 200
+        end
+        object grdDBTblView_SucheGeburtsdatum: TcxGridDBColumn
+          DataBinding.FieldName = 'Geburtsdatum'
+          Visible = False
+          Width = 100
+        end
+        object grdDBTblView_SucheID_Geschlecht: TcxGridDBColumn
+          Caption = 'Geschlecht'
+          DataBinding.FieldName = 'ID_Geschlecht'
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Bezeichnung'
+            end>
+          Properties.ListSource = dm_PCM.ds_Contact_Geschlecht
+          Visible = False
+          Width = 80
+        end
+        object grdDBTblView_SucheID_Familienstand: TcxGridDBColumn
+          Caption = 'Familienstand'
+          DataBinding.FieldName = 'ID_Familienstand'
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Bezeichnung'
+            end>
+          Properties.ListSource = dm_PCM.ds_Contact_Familienstand
+          Visible = False
+          Width = 90
+        end
+        object grdDBTblView_SucheID_Staatsangehoerigkeit: TcxGridDBColumn
+          Caption = 'Staatsangehoerigkeit'
+          DataBinding.FieldName = 'ID_Staatsangehoerigkeit'
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Bezeichnung'
+            end>
+          Properties.ListSource = dm_PCM.ds_Contact_Staatsangehoerigkeit
+          Visible = False
+          Width = 120
+        end
+        object grdDBTblView_SucheID_Konfession: TcxGridDBColumn
+          Caption = 'Konfession'
+          DataBinding.FieldName = 'ID_Konfession'
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Bezeichnung'
+            end>
+          Properties.ListSource = dm_PCM.ds_Contact_Konfession
+          Visible = False
+          Width = 80
+        end
+        object grdDBTblView_SucheInfo: TcxGridDBColumn
+          DataBinding.FieldName = 'Info'
+          Visible = False
+          Width = 100
+        end
+        object grdDBTblView_SucheFirma: TcxGridDBColumn
+          DataBinding.FieldName = 'Firma'
+          Visible = False
+          Width = 200
+        end
+        object grdDBTblView_SucheStrasse_Ges: TcxGridDBColumn
+          Caption = 'Strasse Gesch'#228'ftlich'
+          DataBinding.FieldName = 'Strasse_Ges'
+          Visible = False
+          Width = 200
+        end
+        object grdDBTblView_SuchePLZ_Ges: TcxGridDBColumn
+          Caption = 'PLZ Gesch'#228'ftlich'
+          DataBinding.FieldName = 'PLZ_Ges'
+          Visible = False
+          Width = 90
+        end
+        object grdDBTblView_SucheOrt_Ges: TcxGridDBColumn
+          Caption = 'Ort Gesch'#228'ftlich'
+          DataBinding.FieldName = 'Ort_Ges'
+          Visible = False
+          Width = 200
+        end
+        object grdDBTblView_SucheAbteilung_Ges: TcxGridDBColumn
+          Caption = 'Abteilung'
+          DataBinding.FieldName = 'Abteilung_Ges'
+          Visible = False
+          Width = 200
+        end
+        object grdDBTblView_SucheFunktion_Ges: TcxGridDBColumn
+          Caption = 'Funktion'
+          DataBinding.FieldName = 'Funktion_Ges'
+          Visible = False
+          Width = 200
+        end
+        object grdDBTblView_SucheZentrale_Ges: TcxGridDBColumn
+          Caption = 'Zentrale'
+          DataBinding.FieldName = 'Zentrale_Ges'
+          Visible = False
+          Width = 200
+        end
+        object grdDBTblView_SucheTelefon_Ges: TcxGridDBColumn
+          Caption = 'Durchwahl'
+          DataBinding.FieldName = 'Telefon_Ges'
+          Visible = False
+          Width = 200
+        end
+        object grdDBTblView_SucheHandy_Ges: TcxGridDBColumn
+          Caption = 'Handy Gesch'#228'ftlich'
+          DataBinding.FieldName = 'Handy_Ges'
+          Visible = False
+          Width = 200
+        end
+        object grdDBTblView_SucheE_Mail_Ges: TcxGridDBColumn
+          Caption = 'E-Mail Gesch'#228'ftlich'
+          DataBinding.FieldName = 'E_Mail_Ges'
+          Visible = False
+          Width = 200
+        end
+        object grdDBTblView_SucheInternet_Ges: TcxGridDBColumn
+          Caption = 'Internet Gesch'#228'ftlich'
+          DataBinding.FieldName = 'Internet_Ges'
+          Visible = False
+          Width = 200
+        end
+        object grdDBTblView_SucheFacebook: TcxGridDBColumn
+          DataBinding.FieldName = 'Facebook'
+          Visible = False
+          Width = 200
+        end
+        object grdDBTblView_SucheSkype: TcxGridDBColumn
+          DataBinding.FieldName = 'Skype'
+          Visible = False
+          Width = 200
+        end
+        object grdDBTblView_SucheLive_Messanger: TcxGridDBColumn
+          Caption = 'Microsoft Teams'
+          DataBinding.FieldName = 'Live_Messanger'
+          Visible = False
+          Width = 200
         end
       end
-      object dxBarDockControl1: TdxBarDockControl
-        Left = 0
-        Top = 0
-        Width = 1600
-        Height = 58
-        Align = dalTop
-        BarManager = brmgr_Contacts
+      object grdLvl_Suche: TcxGridLevel
+        GridView = grdDBTblView_Suche
       end
+    end
+    object btn_ClearFilter: TcxButton
+      Left = 165
+      Top = 172
+      Width = 137
+      Height = 27
+      Caption = 'Filter l'#246'schen'
+      OptionsImage.ImageIndex = 24
+      OptionsImage.Images = dm_PCM.imglst_16x16
+      TabOrder = 10
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object btn_kontaktsuchen: TcxButton
+      Left = 22
+      Top = 172
+      Width = 137
+      Height = 27
+      Caption = 'Kontakt suchen'
+      OptionsImage.ImageIndex = 25
+      OptionsImage.Images = dm_PCM.imglst_16x16
+      TabOrder = 9
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      OnClick = btn_kontaktsuchenClick
+    end
+    object edt_KontakteSonstigesFacebook: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Facebook'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 55
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 1111
+    end
+    object edt_KontakteSonstigesSkype: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Skype'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 56
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 1111
+    end
+    object edt_KontakteSonstigesTeams: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Live_Messanger'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 57
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 1111
+    end
+    object edt_KontaktInternet: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Internet_Privat'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 29
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 260
+    end
+    object btn_WebPrivate: TcxButton
+      Left = 10000
+      Top = 10000
+      Width = 21
+      Height = 21
+      OptionsImage.ImageIndex = 75
+      OptionsImage.Images = dm_PCM.imglst_16x16
+      TabOrder = 30
+      TabStop = False
+      Visible = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      OnClick = btn_KontaktPrivOpenWebsiteClick
+    end
+    object edt_KontaktGeschaeftlichFunktion: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Funktion_Ges'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 47
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 1068
+    end
+    object btn_EditStaatsangehoerigkeit: TcxButton
+      Left = 10000
+      Top = 10000
+      Width = 21
+      Height = 21
+      Caption = 'btn_EditStaatsangehoerigkeit'
+      OptionsImage.ImageIndex = 74
+      OptionsImage.Images = dm_PCM.imglst_16x16
+      PaintStyle = bpsGlyph
+      TabOrder = 37
+      Visible = False
+    end
+    object btn_EditKonfession: TcxButton
+      Left = 10000
+      Top = 10000
+      Width = 21
+      Height = 21
+      Caption = 'cxButton3'
+      OptionsImage.ImageIndex = 74
+      OptionsImage.Images = dm_PCM.imglst_16x16
+      PaintStyle = bpsGlyph
+      TabOrder = 39
+      Visible = False
+    end
+    object btn_WebBusiness: TcxButton
+      Left = 10000
+      Top = 10000
+      Width = 21
+      Height = 21
+      OptionsImage.ImageIndex = 75
+      OptionsImage.Images = dm_PCM.imglst_16x16
+      TabOrder = 54
+      TabStop = False
+      Visible = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      OnClick = btn_KontaktGesOpenWebsiteClick
+    end
+    object btn_MapBusiness: TcxButton
+      Left = 10000
+      Top = 10000
+      Width = 21
+      Height = 21
+      OptionsImage.ImageIndex = 85
+      OptionsImage.Images = dm_PCM.imglst_16x16
+      PaintStyle = bpsGlyph
+      TabOrder = 45
+      Visible = False
+      OnClick = btn_MapBusinessClick
+    end
+    object btn_MailBusiness: TcxButton
+      Left = 10000
+      Top = 10000
+      Width = 21
+      Height = 21
+      Caption = 'cxButton1'
+      OptionsImage.ImageIndex = 15
+      OptionsImage.Images = dm_PCM.imglst_16x16
+      PaintStyle = bpsGlyph
+      TabOrder = 52
+      Visible = False
+      OnClick = btn_KontaktGeschaeftlichSendMailClick
+    end
+    object edt_GeschaeftlichHandy: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'Handy_Ges'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 50
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 1068
+    end
+    object cmbbx_KontaktArt: TcxDBLookupComboBox
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      DataBinding.DataField = 'ID_Kontaktart'
+      DataBinding.DataSource = ds_Kontakte
+      ParentFont = False
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          SortOrder = soAscending
+          FieldName = 'Bezeichnung'
+        end>
+      Properties.ListOptions.AnsiSort = True
+      Properties.ListSource = dm_PCM.ds_Contact_Kontaktart
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 31
+      Visible = False
+      OnExit = btn_KontaktSaveClick
+      Height = 21
+      Width = 289
+    end
+    object lagrp_Personal: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      ShowBorder = False
+      Index = -1
+    end
+    object lagrp_MitarbeiterInfo: TdxLayoutGroup
+      Parent = lagrp_Mitarbeiter
+      AlignHorz = ahLeft
+      AlignVert = avClient
+      CaptionOptions.Text = 'Kontaktdaten '
+      ItemIndex = 14
+      ShowBorder = False
+      Index = 0
+    end
+    object lagrp_MitarbeiterInfoDetails: TdxLayoutGroup
+      Parent = lagrp_Mitarbeiter
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Zus'#228'tzlich Informationen'
+      LayoutDirection = ldTabbed
+      ShowBorder = False
+      Index = 1
+    end
+    object lagrp_Zusatz: TdxLayoutGroup
+      Parent = lagrp_MitarbeiterInfoDetails
+      CaptionOptions.Text = 'Zusatz'
+      Index = 0
+    end
+    object lagrp_Sonstige: TdxLayoutGroup
+      Parent = lagrp_MitarbeiterInfoDetails
+      CaptionOptions.Text = 'Sonstiges'
+      ItemIndex = 2
+      Index = 2
+    end
+    object lagrp_Business: TdxLayoutGroup
+      Parent = lagrp_MitarbeiterInfoDetails
+      CaptionOptions.Text = 'Gesch'#228'ftlich'
+      ItemIndex = 8
+      Index = 1
+    end
+    object itm_Anrede: TdxLayoutItem
+      Parent = lagrp_MitarbeiterInfo
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'Anrede:'
+      CaptionOptions.Width = 75
+      Control = cmbbx_Anrede
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 289
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object itm_Vorname: TdxLayoutItem
+      Parent = lagrp_MitarbeiterInfo
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'Vorname:'
+      CaptionOptions.Width = 75
+      Control = edt_KontaktName
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 289
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object itm_Geburtsname: TdxLayoutItem
+      Parent = lagrp_MitarbeiterInfo
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'Geburtsname:'
+      CaptionOptions.Width = 75
+      Control = edt_KontaktGeburtsname
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 289
+      ControlOptions.ShowBorder = False
+      Index = 3
+    end
+    object itm_Nachname: TdxLayoutItem
+      Parent = lagrp_MitarbeiterInfo
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'Nachname:'
+      CaptionOptions.Width = 75
+      Control = edt_KontaktNachname
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 289
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object itm_Geburtsland: TdxLayoutItem
+      Parent = lagrp_MitarbeiterInfo
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'Geburtsland:'
+      Control = edt_Geburtsland
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 289
+      ControlOptions.ShowBorder = False
+      Index = 4
+    end
+    object itm_HandyPrivat: TdxLayoutItem
+      Parent = lagrp_MitarbeiterInfo
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'Handy:'
+      Control = edt_KontaktHandy
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 289
+      ControlOptions.ShowBorder = False
+      Index = 10
+    end
+    object itm_Telefon2: TdxLayoutItem
+      Parent = lagrp_MitarbeiterInfo
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'Telefon 2:'
+      Control = edt_KontaktTelefon2
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 289
+      ControlOptions.ShowBorder = False
+      Index = 9
+    end
+    object itm_Telefon1: TdxLayoutItem
+      Parent = lagrp_MitarbeiterInfo
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'Telefon 1:'
+      Control = edt_KontaktTelefon1
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 289
+      ControlOptions.ShowBorder = False
+      Index = 8
+    end
+    object itm_MapPrivat: TdxLayoutItem
+      Parent = lagrp_PLZOrtPrivat
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = btn_MapPrivate
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 21
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object itm_OrtPrivat: TdxLayoutItem
+      Parent = lagrp_PLZOrtPrivat
+      AlignVert = avClient
+      Control = edt_KontaktOrt
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 185
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object itm_PLZPrivat: TdxLayoutItem
+      Parent = lagrp_PLZOrtPrivat
+      AlignVert = avClient
+      CaptionOptions.Text = 'PLZ- Ort:'
+      CaptionOptions.Width = 75
+      Control = edt_KontaktPLZ
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 69
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object lagrp_PLZOrtPrivat: TdxLayoutAutoCreatedGroup
+      Parent = lagrp_MitarbeiterInfo
+      LayoutDirection = ldHorizontal
+      Index = 7
+    end
+    object itm_Zusatz: TdxLayoutItem
+      Parent = lagrp_MitarbeiterInfo
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'Zusatz:'
+      Control = edt_KontaktZusatz
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 289
+      ControlOptions.ShowBorder = False
+      Index = 5
+    end
+    object itm_StrassePrivat: TdxLayoutItem
+      Parent = lagrp_MitarbeiterInfo
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'Stra'#223'e:'
+      Control = edt_KontaktStrasse
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 289
+      ControlOptions.ShowBorder = False
+      Index = 6
+    end
+    object itm_Mail1PrivatBtn: TdxLayoutItem
+      Parent = lagrp_Mail1Privat
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = btn_Mail1Private
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 21
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object itm_Mail2PrivatBtn: TdxLayoutItem
+      Parent = lagrp_Mail2Privat
+      SizeOptions.MaxHeight = 21
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = btn_Mail2Private
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 21
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object lagrp_Mail1Privat: TdxLayoutAutoCreatedGroup
+      Parent = lagrp_MitarbeiterInfo
+      AlignVert = avTop
+      LayoutDirection = ldHorizontal
+      Index = 11
+    end
+    object itm_WebPrivatText: TdxLayoutItem
+      Parent = lagrp_InternetPrivat
+      AlignHorz = ahLeft
+      CaptionOptions.Text = 'Internet:'
+      Control = edt_KontaktInternet
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 260
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object itm_Mail1PrivatText: TdxLayoutItem
+      Parent = lagrp_Mail1Privat
+      AlignVert = avClient
+      CaptionOptions.Text = 'E-Mail 1:'
+      Control = edt_Email1
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 260
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object itm_Mail2PrivatText: TdxLayoutItem
+      Parent = lagrp_Mail2Privat
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'E-Mail 2:'
+      Control = edt_Email2
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 260
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object itm_Geburtsdatum: TdxLayoutItem
+      Parent = lagrp_Details
+      AlignHorz = ahClient
+      Offsets.Left = 16
+      CaptionOptions.Text = 'Geburtsdatum:'
+      Control = dtEdt_KontaktZusatzGeburtsdatum
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 360
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object itm_Familienstand: TdxLayoutItem
+      Parent = lagrp_Details
+      AlignHorz = ahClient
+      Offsets.Left = 16
+      CaptionOptions.Text = 'Familienstand:'
+      Control = lucmbbx_KontaktZusatzFamilienstand
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 360
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object itm_Geschlecht: TdxLayoutItem
+      Parent = lagrp_Details
+      AlignHorz = ahClient
+      Offsets.Left = 16
+      CaptionOptions.Text = 'Geschlecht:'
+      Control = lucmbbx_KontaktZusatzGeschlecht
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 360
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object itm_Konfession: TdxLayoutItem
+      Parent = lagrp_Konfession
+      AlignHorz = ahClient
+      Offsets.Left = 16
+      CaptionOptions.Text = 'Konfession:'
+      Control = lucmbbx_Konfession
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 360
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object itm_Staatsangehoerigkeit: TdxLayoutItem
+      Parent = lagrp_Staatsangehoerigkeit
+      AlignHorz = ahClient
+      Offsets.Left = 16
+      CaptionOptions.Text = 'Staatsangh'#246'rigkeit:'
+      Control = lucmbbx_Staatsanghoerigkeit
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 360
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object itm_Picture: TdxLayoutItem
+      Parent = lagrp_ZusatzDetails
+      Control = img_Picture
+      ControlOptions.OriginalHeight = 150
+      ControlOptions.OriginalWidth = 150
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object lagrp_ZusatzDetails: TdxLayoutAutoCreatedGroup
+      Parent = lagrp_Zusatz
+      LayoutDirection = ldHorizontal
+      Index = 0
+    end
+    object lagrp_Details: TdxLayoutAutoCreatedGroup
+      Parent = lagrp_ZusatzDetails
+      AlignHorz = ahClient
+      Index = 1
+    end
+    object itm_ZusatzSeperator: TdxLayoutSeparatorItem
+      Parent = lagrp_Zusatz
+      AlignHorz = ahClient
+      CaptionOptions.Text = 'Separator'
+      Index = 1
+    end
+    object itm_Sonstiges: TdxLayoutItem
+      Parent = lagrp_Zusatz
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Control = mem_Sonstige
+      ControlOptions.OriginalHeight = 97
+      ControlOptions.OriginalWidth = 1120
+      ControlOptions.ShowBorder = False
+      Index = 3
+    end
+    object lbl_Sonstiges: TdxLayoutLabeledItem
+      Parent = lagrp_Zusatz
+      AlignHorz = ahClient
+      CaptionOptions.Text = 'Sonstige Informationen'
+      Index = 2
+    end
+    object itm_StaatsangehoerigkeitBtn: TdxLayoutItem
+      Parent = lagrp_Staatsangehoerigkeit
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = btn_EditStaatsangehoerigkeit
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 21
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object itm_KonfessionBtn: TdxLayoutItem
+      Parent = lagrp_Konfession
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = btn_EditKonfession
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 21
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object lagrp_Staatsangehoerigkeit: TdxLayoutAutoCreatedGroup
+      Parent = lagrp_Details
+      LayoutDirection = ldHorizontal
+      Index = 3
+    end
+    object lagrp_Konfession: TdxLayoutAutoCreatedGroup
+      Parent = lagrp_Details
+      LayoutDirection = ldHorizontal
+      Index = 4
+    end
+    object lagrp_Mail2Privat: TdxLayoutAutoCreatedGroup
+      Parent = lagrp_MitarbeiterInfo
+      AlignVert = avTop
+      LayoutDirection = ldHorizontal
+      Index = 12
+    end
+    object itm_WebPrivatBtn: TdxLayoutItem
+      Parent = lagrp_InternetPrivat
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = btn_WebPrivate
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 21
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object lagrp_InternetPrivat: TdxLayoutAutoCreatedGroup
+      Parent = lagrp_MitarbeiterInfo
+      LayoutDirection = ldHorizontal
+      Index = 13
+    end
+    object lagrp_PersonalTab: TdxLayoutGroup
+      Parent = lagrp_Personal
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      SizeOptions.Height = 800
+      LayoutDirection = ldTabbed
+      Locked = True
+      ShowBorder = False
+      TabbedOptions.HotTrack = True
+      OnTabChanged = lagrp_PersonalTabTabChanged
+      Index = 0
+    end
+    object lagrp_Suche: TdxLayoutGroup
+      Parent = lagrp_PersonalTab
+      CaptionOptions.ImageIndex = 25
+      CaptionOptions.Text = 'Suche'
+      TabbedOptions.HotTrack = True
+      TabbedOptions.MultiLineTabCaptions = True
+      TabbedOptions.ShowFrame = True
+      Index = 0
+    end
+    object lagrp_Mitarbeiter: TdxLayoutGroup
+      Parent = lagrp_PersonalTab
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.ImageIndex = 11
+      CaptionOptions.Text = 'Kontakt'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      Index = 1
+    end
+    object lagrp_SucheFilter: TdxLayoutGroup
+      Parent = lagrp_Suche
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Filterkriterien'
+      LayoutDirection = ldHorizontal
+      Index = 0
+    end
+    object itm_SucheErgebnis: TdxLayoutItem
+      Parent = lagrp_Suche
+      AlignHorz = ahClient
+      AlignVert = avClient
+      SizeOptions.Height = 570
+      Control = grd_Suche
+      ControlOptions.OriginalHeight = 200
+      ControlOptions.OriginalWidth = 200
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object itm_Funktion: TdxLayoutItem
+      Parent = lagrp_Business
+      AlignHorz = ahClient
+      CaptionOptions.Text = 'Funktion:'
+      Control = edt_KontaktGeschaeftlichFunktion
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 535
+      ControlOptions.ShowBorder = False
+      Index = 4
+    end
+    object itm_SucheFilterLoeschen: TdxLayoutItem
+      Parent = lagroup_SucheFilterButtons
+      AlignVert = avClient
+      CaptionOptions.Text = 'btn_kontaktDeletefilter'
+      CaptionOptions.Visible = False
+      Control = btn_ClearFilter
+      ControlOptions.OriginalHeight = 27
+      ControlOptions.OriginalWidth = 137
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object itm_SucheFiltersetzen: TdxLayoutItem
+      Parent = lagroup_SucheFilterButtons
+      AlignHorz = ahLeft
+      CaptionOptions.Text = 'btn_kontaktsuchen'
+      CaptionOptions.Visible = False
+      Control = btn_kontaktsuchen
+      ControlOptions.OriginalHeight = 27
+      ControlOptions.OriginalWidth = 137
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object lagroup_SucheFilterButtons: TdxLayoutAutoCreatedGroup
+      Parent = lagrp_Suche
+      LayoutDirection = ldHorizontal
+      Index = 1
+    end
+    object itm_StrasseBusiness: TdxLayoutItem
+      Parent = lagrp_Business
+      AlignHorz = ahClient
+      CaptionOptions.Text = 'Stra'#223'e:'
+      Control = edt_KontaktGeschaeftlichStrasse
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 535
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object itm_Abteilung: TdxLayoutItem
+      Parent = lagrp_Business
+      AlignHorz = ahClient
+      CaptionOptions.Text = 'Abteilung:'
+      Control = edt_KontaktGeschaeftlichAbteilung
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 535
+      ControlOptions.ShowBorder = False
+      Index = 3
+    end
+    object itm_MailBusinessText: TdxLayoutItem
+      Parent = dxLayoutAutoCreatedGroup2
+      AlignHorz = ahClient
+      CaptionOptions.Text = 'E-Mail:'
+      Control = edt_KontaktGeschaeftlichEMail
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 535
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object itm_Firma: TdxLayoutItem
+      Parent = lagrp_Business
+      AlignHorz = ahClient
+      CaptionOptions.Text = 'Firma:'
+      Control = edt_KontaktGeschaeftlichFirma
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 535
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object itm_WebBusinessText: TdxLayoutItem
+      Parent = lagrp_InternetBusiness
+      AlignHorz = ahClient
+      CaptionOptions.Text = 'Internet:'
+      Control = edt_KontaktGeschaeftlichInternet
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 535
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object itm_OrtBusiness: TdxLayoutItem
+      Parent = lagrp_PLZOrtBusiness
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Control = edt_KontaktGeschaeftlichOrt
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 457
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object itm_PLZBusiness: TdxLayoutItem
+      Parent = lagrp_PLZOrtBusiness
+      AlignHorz = ahLeft
+      CaptionOptions.Text = 'Plz - Ort:'
+      Control = edt_KontaktGeschaeftlichPLZ
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 69
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object itm_TelefonDurchwahl: TdxLayoutItem
+      Parent = lagrp_Business
+      AlignHorz = ahClient
+      CaptionOptions.Text = 'Telefon Durchwahl:'
+      Control = edt_KontaktGeschaeftlichTelefonDurchwahl
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 535
+      ControlOptions.ShowBorder = False
+      Index = 6
+    end
+    object itm_TelefonZentrale: TdxLayoutItem
+      Parent = lagrp_Business
+      AlignHorz = ahClient
+      CaptionOptions.Text = 'Telefon Zentrale:'
+      Control = edt_KontaktGeschaeftlichTelefonZentrale
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 535
+      ControlOptions.ShowBorder = False
+      Index = 5
+    end
+    object itm_KontaktartSuche: TdxLayoutItem
+      Parent = lagrp_SucheMitarbeiter
+      CaptionOptions.Text = 'Kontaktart:'
+      Control = cmbbx_KontaktSucheArt
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 234
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object itm_AbteilungSuche: TdxLayoutItem
+      Parent = lagrp_SucheFirma
+      Offsets.Left = 48
+      CaptionOptions.Text = 'Abteilung:'
+      Control = edt_KontaktSucheAbteilung
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 234
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object itm_FirmaSuche: TdxLayoutItem
+      Parent = lagrp_SucheFirma
+      Offsets.Left = 48
+      CaptionOptions.Text = 'Firma:'
+      Control = edt_KontaktSucheFirma
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 234
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object itm_FunktionSuche: TdxLayoutItem
+      Parent = lagrp_SucheFirma
+      Offsets.Left = 48
+      CaptionOptions.Text = 'Funktion:'
+      Control = edt_KontaktSucheFunktion
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 234
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object itm_NachnameSuche: TdxLayoutItem
+      Parent = lagrp_SucheMitarbeiter
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'Nachname:'
+      Control = edt_KontaktSucheNachname
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 234
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object itm_OrtSuche: TdxLayoutItem
+      Parent = lagrp_SucheOrt
+      Offsets.Left = 48
+      CaptionOptions.Text = 'Ort:'
+      Control = edt_KontaktSucheOrt
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 234
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object itm_PLZSuche: TdxLayoutItem
+      Parent = lagrp_SucheOrt
+      Offsets.Left = 48
+      CaptionOptions.Text = 'Postleitzahl:'
+      Control = edt_KontaktSuchePLZ
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 234
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object itm_StrasseSuche: TdxLayoutItem
+      Parent = lagrp_SucheOrt
+      Offsets.Left = 48
+      CaptionOptions.Text = 'Strasse:'
+      Control = edt_KontaktSucheStrasse
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 234
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object itm_VornameSuche: TdxLayoutItem
+      Parent = lagrp_SucheMitarbeiter
+      AlignHorz = ahLeft
+      CaptionOptions.Text = 'Vorname:'
+      Control = edt_KontaktSucheVorname
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 234
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object lagrp_SucheMitarbeiter: TdxLayoutAutoCreatedGroup
+      Parent = lagrp_SucheFilter
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      Index = 0
+    end
+    object lagrp_SucheOrt: TdxLayoutAutoCreatedGroup
+      Parent = lagrp_SucheFilter
+      AlignHorz = ahLeft
+      AlignVert = avClient
+      Index = 1
+    end
+    object lagrp_SucheFirma: TdxLayoutAutoCreatedGroup
+      Parent = lagrp_SucheFilter
+      AlignHorz = ahLeft
+      AlignVert = avClient
+      Index = 2
+    end
+    object itm_Facebook: TdxLayoutItem
+      Parent = lagrp_Sonstige
+      AlignHorz = ahClient
+      CaptionOptions.Text = 'Facebook:'
+      Control = edt_KontakteSonstigesFacebook
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 535
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object itm_Skype: TdxLayoutItem
+      Parent = lagrp_Sonstige
+      AlignHorz = ahClient
+      CaptionOptions.Text = 'Skype:'
+      Control = edt_KontakteSonstigesSkype
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 535
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object itm_Teams: TdxLayoutItem
+      Parent = lagrp_Sonstige
+      AlignHorz = ahClient
+      CaptionOptions.Text = 'Teams:'
+      Control = edt_KontakteSonstigesTeams
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 535
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object lagrp_PLZOrtBusiness: TdxLayoutAutoCreatedGroup
+      Parent = lagrp_Business
+      LayoutDirection = ldHorizontal
+      Index = 2
+    end
+    object itm_WebBusinessBtn: TdxLayoutItem
+      Parent = lagrp_InternetBusiness
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = btn_WebBusiness
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 21
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object itm_MailBusinessBtn: TdxLayoutItem
+      Parent = dxLayoutAutoCreatedGroup2
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = btn_MailBusiness
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 21
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object lagrp_InternetBusiness: TdxLayoutAutoCreatedGroup
+      Parent = lagrp_Business
+      LayoutDirection = ldHorizontal
+      Index = 9
+    end
+    object itm_MapBusiness: TdxLayoutItem
+      Parent = lagrp_PLZOrtBusiness
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = btn_MapBusiness
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 21
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object itm_Kontaktart: TdxLayoutItem
+      Parent = lagrp_MitarbeiterInfo
+      CaptionOptions.Text = 'New Item'
+      Control = cmbbx_KontaktArt
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 289
+      ControlOptions.ShowBorder = False
+      Index = 14
+    end
+    object itm_HandyBusiness: TdxLayoutItem
+      Parent = lagrp_Business
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Handy:'
+      Control = edt_GeschaeftlichHandy
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 1041
+      ControlOptions.ShowBorder = False
+      Index = 7
+    end
+    object dxLayoutAutoCreatedGroup2: TdxLayoutAutoCreatedGroup
+      Parent = lagrp_Business
+      AlignHorz = ahClient
+      AlignVert = avTop
+      LayoutDirection = ldHorizontal
+      Index = 8
     end
   end
   object ds_Kontakte: TDataSource
@@ -2339,13 +2305,18 @@
     Left = 112
     Top = 488
     PixelsPerInch = 96
+    DockControlHeights = (
+      0
+      0
+      63
+      0)
     object brmgrContactsBar1: TdxBar
       Caption = 'tb_Contacts'
       CaptionButtons = <>
-      DockControl = dxBarDockControl1
-      DockedDockControl = dxBarDockControl1
+      DockedDockingStyle = dsTop
       DockedLeft = 0
       DockedTop = 0
+      DockingStyle = dsTop
       FloatLeft = 1133
       FloatTop = 2
       FloatClientWidth = 0
@@ -2566,10 +2537,8 @@
     PixelsPerInch = 96
   end
   object grdpmm_Personal: TcxGridPopupMenu
-    Grid = grd_Kontaktesuche
     PopupMenus = <
       item
-        GridView = grdDBTblView_Kontakte
         HitTypes = [gvhtCell, gvhtRecord, gvhtIndicator]
         Index = 0
         PopupMenu = brpmm_Kontakt
@@ -2607,6 +2576,7 @@
     Top = 287
   end
   object qry_Kontakte: TFDQuery
+    Active = True
     AfterOpen = SetButtonsEnabledVisible
     AfterInsert = SetButtonsEnabledVisible
     AfterEdit = SetButtonsEnabledVisible

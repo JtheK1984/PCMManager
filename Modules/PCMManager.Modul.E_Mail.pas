@@ -20,7 +20,8 @@ uses
   cxGridDBTableView, cxGrid, Vcl.Menus, Vcl.StdCtrls, cxButtons, cxGroupBox,
   System.ImageList, Vcl.ImgList, Vcl.OleCtrls,
   SHDocVw, dxBar,System.UITypes, IdTCPConnection, IdTCPClient,IdAttachmentFile,
-  cxSplitter, cxGridCustomPopupMenu, cxGridPopupMenu, cxCurrencyEdit,PCm.Functions;
+  cxSplitter, cxGridCustomPopupMenu, cxGridPopupMenu, cxCurrencyEdit,PCm.Functions,
+  dxLayoutContainer, dxLayoutControl, dxLayoutcxEditAdapters, PCM.Browser,dxChartControl,WebView2, uWVBrowserBase, uWVBrowser;
 
 type
   Tfrm_Mail = class(TForm)
@@ -38,11 +39,7 @@ type
     grdDBTblView_MailsGroesse: TcxGridDBColumn;
     grdDBTblView_MailsUID: TcxGridDBColumn;
     grdDBTblView_Mailsread: TcxGridDBColumn;
-    grpbx_Mail: TcxGroupBox;
-    grpbx_Postfach: TcxGroupBox;
-    webbwr_Mail: TWebBrowser;
     cxTreeList1Column2: TcxTreeListColumn;
-    grpbx_MailVorschau: TcxGroupBox;
     qry_Mail: TFDQuery;
     grdDBTblView_MailsID: TcxGridDBColumn;
     grdDBTblView_MailsUIDL: TcxGridDBColumn;
@@ -59,7 +56,6 @@ type
     dxBarLargeButton7: TdxBarLargeButton;
     dxBarLargeButton8: TdxBarLargeButton;
     idImap_Mail: TIdIMAP4;
-    cxSplitter1: TcxSplitter;
     pm_Einnahmen: TcxGridPopupMenu;
     dxBarPopupMenu1: TdxBarPopupMenu;
     NeueEMail1: TdxBarButton;
@@ -69,10 +65,19 @@ type
     Antworten2: TdxBarButton;
     EMailweiterleiten1: TdxBarButton;
     Alsgelesenmarkieren1: TdxBarButton;
-    pnl_Design: TcxGroupBox;
-    cxPageControl1: TcxPageControl;
-    cxTabSheet1: TcxTabSheet;
     dxBarDockControl1: TdxBarDockControl;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutGroup1: TdxLayoutGroup;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutGroup4: TdxLayoutGroup;
+    dxLayoutItem4: TdxLayoutItem;
+    grpbx_MailVorschau: TdxLayoutItem;
+    pnl_Browser: TcxGroupBox;
+    dxLayoutSplitterItem1: TdxLayoutSplitterItem;
     procedure FormShow(Sender: TObject);
     procedure tl_EmailFolderChange(Sender: TObject);
     procedure grdDBTblView_MailsCustomDrawCell(Sender: TcxCustomGridTableView;  ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
@@ -89,6 +94,7 @@ type
     sAccount: string;
     sMailBoxName: string;
     SaveGridViewMail: TSavedGridView;
+    FWebBrowser: TAbstractWebBrowser;
     procedure SetGridViews(Show:boolean);
     procedure IMAPStart;
     procedure ShowFolders;
@@ -121,6 +127,8 @@ implementation
 
 uses  PCM.Data,
       PCMManager.Modul.E_Mail.Show,
+      PCM.Browser.FullScreen,
+      uwvLoader,
       PCMManager.Modul.E_Mail.Mailbox, PCM.Strings;
 
 procedure Tfrm_Mail.SetGridViews(Show:boolean);
@@ -633,8 +641,7 @@ begin
     sl.Clear;
     sl.free;
     grpbx_MailVorschau.visible:= true;
-    webbwr_Mail.Navigate(folder + '\mail.html');
-
+    FWebBrowser.Navigate(folder + '\mail.html');
 
 
 
@@ -882,7 +889,7 @@ begin
       sl.Clear;
       sl.free;
       grpbx_MailVorschau.visible:= true;
-      webbwr_Mail.Navigate(folder + '\mail.html');
+      FWebBrowser.Navigate(folder + '\mail.html');
 
 //      if Maila.From.Name = '' then
 //      begin
@@ -1182,12 +1189,39 @@ begin
   SetGridViews(false);
 end;
 procedure Tfrm_Mail.FormShow(Sender: TObject);
+  procedure InitializeBrowser(AParent: TWinControl);
+  begin
+    if not Assigned(FWebBrowser) then
+    begin
+      FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
+      FWebBrowser.Parent := AParent;
+      FWebBrowser.Align := alClient;
+      FWebBrowser.OnBeforeNavigate := nil;
+    end
+    else
+    begin
+      FreeAndNil(FWebBrowser);
+      FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
+      FWebBrowser.Parent := AParent;
+      FWebBrowser.Align := alClient;
+      FWebBrowser.OnBeforeNavigate := nil;
+    end;
+  end;
 begin
   grdDBTblView_MailsBetreff.Caption:= rs_PCMManager_Betreff;
   grdDBTblView_MailsErhalten.Caption:= rs_PCMManager_Erhalten;
   grdDBTblView_MailsGroesse.Caption:= rs_PCMManager_Groeﬂe;
   grdDBTblView_MailsVon.Caption:= rs_PCMManager_Absender;
   AAccount:= '';
+  if GlobalWebView2Loader.Initialized then
+    GlobalWebView2Loader.Destroy;
+  GlobalWebView2Loader:= TWVLoader.Create(nil);
+  GlobalWebView2Loader.UserDataFolder := GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\CustomCache';
+  GlobalWebView2Loader.StartWebView2;
+  InitializeBrowser(pnl_Browser);
+
+
+
   dm_PCM.qry_Work.SQL.Text:= 'DELETE FROM manager_emails where ID_Benutzer = :ID_Benutzer';
   dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= dm_pcm.iIDBenutzerPCM;
   dm_PCM.qry_Work.ExecSQL;

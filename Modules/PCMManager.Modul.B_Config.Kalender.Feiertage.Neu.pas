@@ -14,7 +14,9 @@ uses
   dxGDIPlusClasses, dxDateRanges, dxScrollbarAnnotations, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client,Variants,cxGroupBox,system.math, system.UITypes, dxmdaset;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client,Variants,cxGroupBox,system.math, system.UITypes, dxmdaset,
+  dxLayoutcxEditAdapters, dxLayoutControlAdapters, dxLayoutContainer,
+  dxLayoutControl;
 
 type
   TcxGridSiteAccess = class (TcxGridSite);
@@ -23,8 +25,6 @@ type
 type
   TfFeiertageBerechnen = class(TForm)
     dsmFeiertage: TDataSource;
-    Bevel1: TBevel;
-    Bevel2: TBevel;
     btn_OK: TcxButton;
     btn_Abort: TcxButton;
     btn_Berechnen: TcxButton;
@@ -32,9 +32,6 @@ type
     edt_Jahr: TcxSpinEdit;
     cxStyleRepository1: TcxStyleRepository;
     cxStyleFT: TcxStyle;
-    grpbx_Design: TcxGroupBox;
-    Label1: TcxLabel;
-    Label2: TcxLabel;
     memData_Feiertage: TdxMemData;
     memData_FeiertageMonat: TIntegerField;
     memData_FeiertageTag: TIntegerField;
@@ -52,6 +49,17 @@ type
     tvFeiertageKategorie: TcxGridDBColumn;
     tvFeiertageBezeichnung: TcxGridDBColumn;
     cxGridLevel1: TcxGridLevel;
+    lactrl_FeiertageNewGroup_Root: TdxLayoutGroup;
+    lactrl_FeiertageNew: TdxLayoutControl;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutItem6: TdxLayoutItem;
+    dxLayoutGroup4: TdxLayoutGroup;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutGroup5: TdxLayoutGroup;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure btn_BerechnenClick(Sender: TObject);

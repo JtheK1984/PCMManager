@@ -23,7 +23,9 @@ uses
   cxNavigator, dxBar, cxGroupBox, cxLabel, cxImage,
   System.ImageList, dxStatusBar,cxSchedulerDBStorage,
   DateUtils, CommCtrl,  ShellApi, dxShellDialogs,
-  PCMManager.Helper.Calendar.Neu.Wiederholung, System.uitypes;
+  PCMManager.Helper.Calendar.Neu.Wiederholung, System.uitypes,
+  dxLayoutContainer, dxLayoutcxEditAdapters, dxLayoutControlAdapters,
+  dxLayoutControl;
 
 type
   Tfrm_Calendar_new = class(TForm)
@@ -52,15 +54,10 @@ type
     cbReminderAufgabe: TcxCheckBox;
     icbReminderAufgabe: TcxImageComboBox;
     mNachricht: TcxRichEdit;
-    dxDockingManager1: TdxDockingManager;
-    dsHost: TdxDockSite;
-    dxLayoutDockSite1: TdxLayoutDockSite;
-    dxDockPanel1: TdxDockPanel;
     cxGrid1: TcxGrid;
     cxGrid1DBTableView1: TcxGridDBTableView;
     cxGrid1DBTableView1Dateiname: TcxGridDBColumn;
     cxGrid1Level1: TcxGridLevel;
-    cxSplitter1: TcxSplitter;
     edtJiraTicket: TcxTextEdit;
     btnGoToJira: TcxButton;
     teBetreff: TcxTextEdit;
@@ -68,42 +65,94 @@ type
     dxBarManager1Bar1: TdxBar;
     bSend: TdxBarLargeButton;
     bCancel: TdxBarLargeButton;
-    ptop: TcxGroupBox;
-    Label14: TcxLabel;
-    Label15: TcxLabel;
-    Label17: TcxLabel;
-    lblAufgabe: TcxLabel;
-    lFaelligAm: TcxLabel;
-    Label6: TcxLabel;
-    Label10: TcxLabel;
-    Label7: TcxLabel;
-    lArt: TcxLabel;
-    lblDauer: TcxLabel;
-    Label18: TcxLabel;
-    Label2: TcxLabel;
-    Label3: TcxLabel;
-    Label9: TcxLabel;
     lTypeName: TcxLabel;
-    Label11: TcxLabel;
-    panel6: TcxGroupBox;
-    pAnhaengeView: TcxGroupBox;
     Image1: TcxImage;
     btnAnhangOeffnen: TcxButton;
     btnAnhangLoeschen: TcxButton;
     btnAnhangHinzufuegen: TcxButton;
-    pAll: TcxGroupBox;
-    pAufgabeTermin: TcxGroupBox;
     pDauerFormat: TcxGroupBox;
     cmbbx_Ort: TcxComboBox;
-    lbl_ort: TcxLabel;
-    btn_SetRecurringEv: TcxButton;
-    btn_DelRecurringEv: TcxButton;
-    chkbx_CompleteDay: TcxCheckBox;
+    btn_SetRecurringEv1: TcxButton;
+    btn_DelRecurringEv1: TcxButton;
+    chkbx_CompleteDay1: TcxCheckBox;
     stbr_New: TdxStatusBar;
     odAnhang: TdxOpenFileDialog;
-    pnClient: TcxGroupBox;
-    pnlTopLeft: TcxGroupBox;
-    pnlTop: TcxGroupBox;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutGroup1: TdxLayoutGroup;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutGroup4: TdxLayoutGroup;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutItem6: TdxLayoutItem;
+    dxLayoutItem7: TdxLayoutItem;
+    dxLayoutGroup6: TdxLayoutGroup;
+    dxLayoutGroup7: TdxLayoutGroup;
+    dxLayoutItem8: TdxLayoutItem;
+    dxLayoutItem9: TdxLayoutItem;
+    dxLayoutItem10: TdxLayoutItem;
+    dxLayoutItem11: TdxLayoutItem;
+    dxLayoutGroup8: TdxLayoutGroup;
+    dxLayoutGroup9: TdxLayoutGroup;
+    dxLayoutItem12: TdxLayoutItem;
+    dxLayoutGroup10: TdxLayoutGroup;
+    dxLayoutItem13: TdxLayoutItem;
+    dxLayoutItem14: TdxLayoutItem;
+    dxLayoutItem15: TdxLayoutItem;
+    dxLayoutItem16: TdxLayoutItem;
+    dxLayoutItem17: TdxLayoutItem;
+    dxLayoutGroup11: TdxLayoutGroup;
+    dxBarDockControl1: TdxBarDockControl;
+    dxLayoutGroup12: TdxLayoutGroup;
+    pnlTopLeft: TdxLayoutGroup;
+    dxLayoutItem18: TdxLayoutItem;
+    dxLayoutLabeledItem1: TdxLayoutLabeledItem;
+    btn_SetRecurringEv: TdxLayoutItem;
+    btn_DelRecurringEv: TdxLayoutItem;
+    dxLayoutGroup13: TdxLayoutGroup;
+    dxLayoutLabeledItem2: TdxLayoutLabeledItem;
+    lbl_Dauer: TdxLayoutLabeledItem;
+    Label6: TdxLayoutLabeledItem;
+    itmstart: TdxLayoutGroup;
+    dxLayoutItem21: TdxLayoutItem;
+    itmUm: TdxLayoutGroup;
+    itmteStart: TdxLayoutItem;
+    itmDauer: TdxLayoutGroup;
+    dxLayoutItem22: TdxLayoutItem;
+    pAufgabeTermin: TdxLayoutGroup;
+    dxLayoutGroup14: TdxLayoutGroup;
+    itemAufgabenstatus: TdxLayoutGroup;
+    label10: TdxLayoutLabeledItem;
+    dxLayoutItem19: TdxLayoutItem;
+    dxLayoutGroup15: TdxLayoutGroup;
+    dxLayoutLabeledItem3: TdxLayoutLabeledItem;
+    dxLayoutItem20: TdxLayoutItem;
+    dxLayoutGroup16: TdxLayoutGroup;
+    dxLayoutItem23: TdxLayoutItem;
+    lart: TdxLayoutLabeledItem;
+    dxLayoutGroup17: TdxLayoutGroup;
+    itmEnde: TdxLayoutGroup;
+    itmUmEnde: TdxLayoutGroup;
+    dxLayoutItem24: TdxLayoutItem;
+    dxLayoutItem25: TdxLayoutItem;
+    dxLayoutLabeledItem4: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem5: TdxLayoutLabeledItem;
+    dxLayoutGroup18: TdxLayoutGroup;
+    dxLayoutItem26: TdxLayoutItem;
+    dxLayoutLabeledItem6: TdxLayoutLabeledItem;
+    dxLayoutGroup19: TdxLayoutGroup;
+    dxLayoutItem27: TdxLayoutItem;
+    dxLayoutLabeledItem7: TdxLayoutLabeledItem;
+    dxLayoutGroup20: TdxLayoutGroup;
+    dxLayoutItem28: TdxLayoutItem;
+    dxLayoutItem29: TdxLayoutItem;
+    lblAufgabe: TdxLayoutLabeledItem;
+    chkbx_CompleteDay: TdxLayoutGroup;
+    dxLayoutItem30: TdxLayoutItem;
+    dxLayoutSeparatorItem1: TdxLayoutSeparatorItem;
     procedure bSendClick(Sender: TObject);
     procedure btnAnhangHinzufuegenClick(Sender: TObject);
     procedure btnAnhangLoeschenClick(Sender: TObject);
@@ -132,8 +181,8 @@ type
     procedure teStartPropertiesEditValueChanged(Sender: TObject);
     procedure teEndeAufgabePropertiesEditValueChanged(Sender: TObject);
     procedure chkbx_CompleteDayPropertiesChange(Sender: TObject);
-    procedure btn_SetRecurringEvClick(Sender: TObject);
-    procedure btn_DelRecurringEvClick(Sender: TObject);
+    procedure btn_SetRecurringEv1Click(Sender: TObject);
+    procedure btn_DelRecurringEv1Click(Sender: TObject);
     procedure tAnhaengeAfterScroll(DataSet: TDataSet);
 
   private
@@ -524,53 +573,39 @@ end;
 procedure Tfrm_Calendar_new.TypAenderung;
 var
   Typ: integer;
-//  dtBis : TDateTime;
 begin
   Typ := cbTyp.EditValue;
   pAufgabeTermin.Visible := Typ in [ntAufgabe,ntTermin];
-  if (Typ = ntAufgabe) or (Typ = ntTermin) then
-  begin
-    pTop.Height:= Round(268 * dm_PCM.iScale);
-    pnlTop.Height:= Round(132 * dm_PCM.iScale);
-    chkbx_CompleteDay.Visible:= False;
-    btn_SetRecurringEv.Visible:= False;
-    btn_DelRecurringEv.Visible:= False;
-    if (Typ = ntTermin) then
+  case Typ of
+  ntNachricht:
     begin
-      chkbx_CompleteDay.Visible:= true;
+      Caption := rs_PCMManager_Nachrichtbearbeiten;
+      btn_SetRecurringEv.Visible:= false;
+      btn_DelRecurringEv.Visible:= false;
+      chkbx_CompleteDay.Visible:= false;
+    end;
+  ntAufgabe:
+    begin
+      Caption := rs_PCMManager_Aufgabebearbeiten;
+      lArt.Caption := rs_PCMManager_artderAufgabe;
+      cbReminderAufgabe.Caption:= rs_PCMManager_anAufgabeerinnern;
+      Label10.Caption:= rs_PCMManager_Aufgabenstatus;
+      lblAufgabe.Caption:= rs_PCMManager_vorAufgabe;
+      btn_SetRecurringEv.Visible:= false;
+      btn_DelRecurringEv.Visible:= false;
+      chkbx_CompleteDay.Visible:= false;
+    end;
+  ntTermin:
+    begin
+      Caption := rs_PCMManager_Terminbearbeiten;
+      lArt.Caption := rs_PCMManager_ArtTermin;
       btn_SetRecurringEv.Visible:= true;
       btn_DelRecurringEv.Visible:= true;
+      chkbx_CompleteDay.Visible:= true;
+      cbReminderAufgabe.Caption:= rs_PCMManager_anTerminerinnern;
+      Label10.Caption:= rs_PCMManager_Terminstatus;
+      lblAufgabe.Caption:= rs_PCMManager_vorTermin;
     end;
-
-  end
-  else
-  begin
-//    pAll.Top := 50;//pAufgabeTermin.Top + pAufgabeTermin.Height + 4;
-    pnlTop.Height:= Round(48 * dm_PCM.iScale);
-  end;
-  //pTop.Height := pAll.Top + pAll.Height + 8;
-
-  case Typ of
-    ntNachricht:
-      begin
-        Caption := rs_PCMManager_Nachrichtbearbeiten;
-      end;
-    ntAufgabe:
-      begin
-        Caption := rs_PCMManager_Aufgabebearbeiten;
-        lArt.Caption := rs_PCMManager_artderAufgabe;
-        cbReminderAufgabe.Caption:= rs_PCMManager_anAufgabeerinnern;
-        Label10.Caption:= rs_PCMManager_Aufgabenstatus;
-        lblAufgabe.Caption:= rs_PCMManager_vorAufgabe;
-      end;
-    ntTermin:
-      begin
-        Caption := rs_PCMManager_Terminbearbeiten;
-        lArt.Caption := rs_PCMManager_ArtTermin;
-        cbReminderAufgabe.Caption:= rs_PCMManager_anTerminerinnern;
-        Label10.Caption:= rs_PCMManager_Terminstatus;
-        lblAufgabe.Caption:= rs_PCMManager_vorTermin;
-      end;
   end;
 
   // 5.9.6.4
@@ -583,7 +618,6 @@ begin
   end;
   // Zeitformat auf Minunten ändern
 end;
-
 function Tfrm_Calendar_new.Execute(AKalenderStorage:TcxSchedulerDBStorage;Typ : Integer; ID_Adr_Wurzel, ID_Ansprechpartner: integer;Betreff, Nachricht: string; ID_WF_Nachrichten_Ursprung: Integer;Start, Faellig: TDateTime; Status2: Integer; Rueckfrage: Boolean; ID_WF_Prioritaeten,ID_WF_AufgabenArten, Dauer, OrtTyp, ID_Firma, ID_Adr_Firmen_Adressen: Integer;Reminder, GanzerTag : Boolean; ReminderBeforeStart: Integer; PrivaterTermin : Boolean;Zeitformat : integer; Erledigungsgrad : double;Event: TcxSchedulerControlEvent; Jira_Ticket, Wiederholung: String;var NewId : Integer;bStandardFaelligkeitAufgabe: Boolean = False; bCallFromReminder: Boolean = False): Boolean;
   function WFAddAttachment(AttachmentName: string; FilePath: string; ID_WF_Nachrichten: Integer): Boolean; stdcall;
   var
@@ -713,17 +747,17 @@ begin
     0:
     begin
       rbDauerInMinuten.Checked := true;
-      lblDauer.Caption := rs_PCMManager_Dauermin;
+      lbl_Dauer.Caption := rs_PCMManager_Dauermin;
     end;
     1:
     begin
       rbDauerInStunden.Checked := true;
-      lblDauer.Caption := rs_PCMManager_DauerStd;
+      lbl_Dauer.Caption := rs_PCMManager_DauerStd;
     end;
     2:
     begin
       rbDauerInTagen.Checked := true;
-      lblDauer.Caption := rs_PCMManager_DauerTag;
+      lbl_Dauer.Caption := rs_PCMManager_DauerTag;
     end;
   end;
 
@@ -734,7 +768,7 @@ begin
     deEndeAufgabe.Date := DateOf(Faellig);
     teEndeAufgabe.time := TimeOf(Faellig);
   end;
-  chkbx_CompleteDay.EditValue := GanzerTag;
+  chkbx_CompleteDay1.EditValue := GanzerTag;
   if ganzertag then
   begin
     deEndeAufgabe.Date:= IncDay(DateOf(Faellig),-1);
@@ -796,12 +830,12 @@ begin
 
   cbReminderAufgabe.EditValue := Reminder;
   icbReminderAufgabe.EditValue := ReminderBeforeStart;
-  chkbx_CompleteDay.Checked:= GanzerTag;
+  chkbx_CompleteDay1.Checked:= GanzerTag;
 
   if ShowModal = mrOk then
   begin
     tAnhaenge.AfterScroll:= tAnhaengeAfterScroll;
-    if chkbx_CompleteDay.Checked= True then
+    if chkbx_CompleteDay1.Checked = True then
     begin
       JahrBegin:=Copy(DateTimeToStr(deStart.Date),7,4);
       MonatBegin:=Copy(DateTimeToStr(deStart.Date),4,2);
@@ -1353,36 +1387,22 @@ begin
 end;
 procedure Tfrm_Calendar_new.chkbx_CompleteDayPropertiesChange(Sender: TObject);
 begin
-  if chkbx_CompleteDay.Checked then
+  if chkbx_CompleteDay1.Checked then
   begin
-    teStart.visible:= false;
-    teEndeAufgabe.visible:= false;
-    deStart.Width:= 145;
-    deEndeAufgabe.Width:= 145;
-    label6.Visible:= false;
-    label15.Visible:= false;
-
-    medauer.Visible:= false;
-    lblDauer.Visible:= false;
-    label10.left:= 152;
-    cbAufgabenStatus.left:= 152;
-    label10.Width:= 168;
-    cbAufgabenStatus.Width:= 168;
+    itmstart.Width:= 145;
+    itmUm.Visible:= false;
+    itmEnde.Width:= 145;
+    itmUmEnde.Visible:= false;
+    itmDauer.Visible:= false;
+    itemAufgabenstatus.Width:= 168;
   end
   else begin
-    teStart.visible:= true;
-    teEndeAufgabe.visible:= true;
-    deStart.Width:= 81;
-    deEndeAufgabe.Width:= 81;
-    label6.Visible:= true;
-    label15.Visible:= true;
-
-    medauer.Visible:= true;
-    lblDauer.Visible:= true;
-    label10.left:= 222;
-    cbAufgabenStatus.left:= 222;
-    label10.Width:= 98;
-    cbAufgabenStatus.Width:= 98;
+    itmstart.Width:= 81;
+    itmUm.Visible:= true;
+    itmEnde.Width:= 81;
+    itmUmEnde.Visible:= true;
+    itmDauer.Visible:= true;
+    itemAufgabenstatus.Width:= 98;
   end;
 end;
 procedure Tfrm_Calendar_new.cbAufgabenArtPropertiesCloseUp(Sender: TObject);
@@ -1445,17 +1465,17 @@ begin
   if rbDauerInMinuten.Checked then
   begin
     meDauer.tag := round(dauerUmrechnenInMinute(0, fCalc));
-    lblDauer.Caption := rs_PCMManager_DauerMin;
+    lbl_Dauer.Caption := rs_PCMManager_DauerMin;
   end
   else if rbDauerInStunden.Checked then
   begin
     meDauer.tag := round(dauerUmrechnenInMinute(1, fCalc));
-    lblDauer.Caption := rs_PCMManager_DauerStd;
+    lbl_Dauer.Caption := rs_PCMManager_DauerStd;
   end
   else
   begin
     meDauer.tag := round(dauerUmrechnenInMinute(2, fCalc));
-    lblDauer.Caption := rs_PCMManager_DauerTag;
+    lbl_Dauer.Caption := rs_PCMManager_DauerTag;
   end;
 
 end;
@@ -1524,7 +1544,7 @@ begin
   fAdressSuche.Free;
   edtFirma.Text := FFirma;//qryWork.FieldByName('Name').AsString;
 end;
-procedure Tfrm_Calendar_new.btn_DelRecurringEvClick(Sender: TObject);
+procedure Tfrm_Calendar_new.btn_DelRecurringEv1Click(Sender: TObject);
 begin
   if AEvent <> nil then
   begin
@@ -1533,7 +1553,7 @@ begin
     btn_DelRecurringEv.Enabled := False;
   end;
 end;
-procedure Tfrm_Calendar_new.btn_SetRecurringEvClick(Sender: TObject);
+procedure Tfrm_Calendar_new.btn_SetRecurringEv1Click(Sender: TObject);
 var
   f : TcxSchedulerRecurrenceEventEditorForm;
 begin

@@ -7,7 +7,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons,
   cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus,
   cxButtons, System.ImageList, Vcl.ImgList, cxControls, cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
-  cxLabel, cxGroupBox,system.UITypes;
+  cxLabel, cxGroupBox,system.UITypes, dxLayoutcxEditAdapters,
+  dxLayoutControlAdapters, dxLayoutContainer, cxClasses, dxLayoutControl;
 
 type
   Tfrm_PCManagerChooseDate = class(TForm)
@@ -15,9 +16,15 @@ type
     btn_PCManagerChooseDate_Cancel: TcxButton;
     cbx_PCManagerChooseDate_Year: TcxComboBox;
     cbx_PCManagerChooseDate_Month: TcxComboBox;
-    cxGroupBox1: TcxGroupBox;
-    lbl_PCManagerChooseDate_Month: TcxLabel;
-    lbl_PCManagerChooseDate_Year: TcxLabel;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutGroup4: TdxLayoutGroup;
+    dxLayoutGroup6: TdxLayoutGroup;
     procedure btn_PCManagerChooseDate_CancelClick(Sender: TObject);
     procedure btn_PCManagerChooseDate_OkClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -62,18 +69,10 @@ function Tfrm_PCManagerChooseDate.Execute(const AShowModal,AOnlyYear: Boolean;ou
 begin
   if AOnlyYear then
   begin
-    lbl_PCManagerChooseDate_Month.Visible:= false;
-    cbx_PCManagerChooseDate_Month.Visible:= false;
-    lbl_PCManagerChooseDate_Year.Left:= 8;
-    cbx_PCManagerChooseDate_Year.left:= 8;
-    cbx_PCManagerChooseDate_Year.Width:= 258;
+    dxLayoutItem1.Visible:= false;
   end
   else begin
-    lbl_PCManagerChooseDate_Month.Visible:= true;
-    cbx_PCManagerChooseDate_Month.Visible:= true;
-    lbl_PCManagerChooseDate_Year.Left:= 140;
-    cbx_PCManagerChooseDate_Year.left:= 140;
-    cbx_PCManagerChooseDate_Year.Width:= 126;
+    dxLayoutItem1.Visible:= true;
   end;
   Ajahr:= StrToInt(cbx_PCManagerChooseDate_Year.properties.Items[cbx_PCManagerChooseDate_Year.ItemIndex]);
   FShowModal := AShowModal;

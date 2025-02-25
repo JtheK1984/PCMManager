@@ -14,13 +14,11 @@ uses
   dxBar, cxClasses, cxDBEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
   cxDBLookupEdit, cxLabel, cxGridLevel, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGridCustomView, cxGrid, Vcl.StdCtrls, cxButtons,
-  cxGroupBox, cxPC,PCM.Functions;
+  cxGroupBox, cxPC,PCM.Functions, dxLayoutContainer, dxLayoutcxEditAdapters,
+  dxLayoutControlAdapters, dxLayoutControl;
 
 type
   Tfrm_password = class(TForm)
-    pc_passwoerter: TcxPageControl;
-    ts_A_PW: TcxTabSheet;
-    grpbx_Passwort: TcxGroupBox;
     grd_Passwort: TcxGrid;
     tv_Passwort: TcxGridDBTableView;
     tv_PasswortBezeichnung: TcxGridDBColumn;
@@ -38,15 +36,6 @@ type
     tv_PasswortMAIL_PostausgangsPort: TcxGridDBColumn;
     tv_PasswortMAIL_PostausgangsVerschluesselung: TcxGridDBColumn;
     grdlvl_Passwort: TcxGridLevel;
-    pnl_Passwort: TcxGroupBox;
-    lbl_Passwort_Benutzer: TcxLabel;
-    lbl_Passwort_Bezeichnung: TcxLabel;
-    lbl_Passwort_Link: TcxLabel;
-    lbl_Passwort_Passwort: TcxLabel;
-    lbl_Passwort_EmailInboxPort: TcxLabel;
-    lbl_Passwort_EmailInboxSSL: TcxLabel;
-    lbl_Passwort_EmailOutboxPort: TcxLabel;
-    lbl_Passwort_VPN: TcxLabel;
     btn_Passwort_PasswortShow: TcxButton;
     cbx_PWTyp: TcxDBLookupComboBox;
     edt_Passwort_APPPort: TcxDBTextEdit;
@@ -63,15 +52,6 @@ type
     edt_Passwort_Passwort: TcxDBTextEdit;
     edt_Passwort_VPN: TcxDBTextEdit;
     edt_Passwort_VPN_APP: TcxDBTextEdit;
-    lbl_Passwort_EmailOutboxSSL: TcxLabel;
-    lbl_PWTyp: TcxLabel;
-    lbl_Passwort_VPN_APP: TcxLabel;
-    lbl_Passwort_APPPort: TcxLabel;
-    lbl_Passwort_APPSSL: TcxLabel;
-    lbl_Passwort_EmailInboxServer: TcxLabel;
-    lbl_Passwort_EmailOutboxServer: TcxLabel;
-    ts_B_Serials1: TcxTabSheet;
-    grpbx_Programs: TcxGroupBox;
     grd_Programs: TcxGrid;
     tv_Programs: TcxGridDBTableView;
     tv_ProgramsAPP: TcxGridDBColumn;
@@ -79,19 +59,13 @@ type
     grdlvl_Programs: TcxGridLevel;
     edt_Programs_Bez: TcxDBTextEdit;
     lucbx_Programs_Typ: TcxDBLookupComboBox;
-    lbl_Programs_Bez: TcxLabel;
-    lbl_Programs_Typ: TcxLabel;
-    grpbx_Serials: TcxGroupBox;
     cxGrid1: TcxGrid;
     cxGridDBTableView1: TcxGridDBTableView;
     cxGridDBTableView1USer: TcxGridDBColumn;
     cxGridDBTableView1Serial: TcxGridDBColumn;
     cxGridLevel1: TcxGridLevel;
-    cxGroupBox1: TcxGroupBox;
     edt_SerialsBez: TcxDBTextEdit;
     edt_SerialsSerial: TcxDBTextEdit;
-    Label3: TcxLabel;
-    Label4: TcxLabel;
     brmgr_Passwort: TdxBarManager;
     dxBarDockControl1: TdxBarDockControl;
     dxBarDockControl2: TdxBarDockControl;
@@ -120,7 +94,50 @@ type
     grd_ProgramsDBTableView1: TcxGridDBTableView;
     grd_ProgramsDBTableView1USer: TcxGridDBColumn;
     grd_ProgramsDBTableView1Serial: TcxGridDBColumn;
-    pnl_Design: TcxGroupBox;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutItem6: TdxLayoutItem;
+    dxLayoutItem8: TdxLayoutItem;
+    dxLayoutItem9: TdxLayoutItem;
+    dxLayoutItem10: TdxLayoutItem;
+    dxLayoutItem11: TdxLayoutItem;
+    dxLayoutItem12: TdxLayoutItem;
+    dxLayoutItem13: TdxLayoutItem;
+    dxLayoutItem14: TdxLayoutItem;
+    dxLayoutItem15: TdxLayoutItem;
+    dxLayoutItem16: TdxLayoutItem;
+    dxLayoutItem17: TdxLayoutItem;
+    dxLayoutItem18: TdxLayoutItem;
+    dxLayoutItem19: TdxLayoutItem;
+    dxLayoutGroup15: TdxLayoutGroup;
+    dxLayoutGroup16: TdxLayoutGroup;
+    dxLayoutItem20: TdxLayoutItem;
+    dxLayoutItem21: TdxLayoutItem;
+    dxLayoutItem22: TdxLayoutItem;
+    dxLayoutItem23: TdxLayoutItem;
+    dxLayoutGroup21: TdxLayoutGroup;
+    dxLayoutItem24: TdxLayoutItem;
+    dxLayoutItem25: TdxLayoutItem;
+    dxLayoutItem26: TdxLayoutItem;
+    dxLayoutItem27: TdxLayoutItem;
+    dxLayoutGroup1: TdxLayoutGroup;
+    dxLayoutGroup17: TdxLayoutGroup;
+    dxLayoutGroup4: TdxLayoutGroup;
+    dxLayoutGroup18: TdxLayoutGroup;
+    dxLayoutGroup8: TdxLayoutGroup;
+    dxLayoutGroup9: TdxLayoutGroup;
+    dxLayoutGroup10: TdxLayoutGroup;
+    dxLayoutGroup14: TdxLayoutGroup;
+    dxLayoutGroup19: TdxLayoutGroup;
+    dxLayoutGroup20: TdxLayoutGroup;
     procedure FormShow(Sender: TObject);
     procedure qry_SerialAfterScroll(DataSet: TDataSet);
     procedure btn_Passwort_PasswortShowClick(Sender: TObject);
@@ -197,7 +214,7 @@ begin
 end;
 procedure Tfrm_password.pc_passwoerterClick(Sender: TObject);
 begin
-  if pc_Passwoerter.Properties.ActivePage = ts_A_pw then
+  if dxLayoutGroup2.ItemIndex = 0 then
   begin
     bol_PWDShow:= false;
     edt_Passwort_Passwort.Properties.EchoMode:= eemPassword;
@@ -390,8 +407,8 @@ end;
 procedure Tfrm_password.FormShow(Sender: TObject);
 begin
   case dm_PCM.iModulTab of
-  1: pc_passwoerter.ActivePage:= ts_A_pw;
-  2: pc_passwoerter.ActivePage:= ts_B_Serials1;
+  1: dxLayoutGroup2.ItemIndex:= 0;
+  2: dxLayoutGroup2.ItemIndex:= 1;
   end;
   OpenData;
   InitializeRights;

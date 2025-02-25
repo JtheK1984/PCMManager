@@ -8,7 +8,8 @@ uses
   cxLookAndFeelPainters, cxContainer, cxEdit, Vcl.Menus, System.ImageList,
   Vcl.ImgList, Vcl.StdCtrls, cxButtons, cxMaskEdit, cxDropDownEdit, cxTextEdit,
   dxGDIPlusClasses, Vcl.ExtCtrls,Data.DB,
-  cxImage, cxLabel, cxGroupBox, system.UITypes;
+  cxImage, cxLabel, cxGroupBox, system.UITypes, dxLayoutcxEditAdapters,
+  dxLayoutControlAdapters, dxLayoutContainer, cxClasses, dxLayoutControl;
 
 type
   Tfrm_PCManagerNewContact = class(TForm)
@@ -18,10 +19,18 @@ type
     btn_PCManagerLogin_Cancel: TcxButton;
     btn_PCManagerLogin_Ok: TcxButton;
     img_Contact: TcxImage;
-    grpbx_Design: TcxGroupBox;
-    lbl_Anrede: TcxLabel;
-    lbl_Name: TcxLabel;
-    lbl_SurName: TcxLabel;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutItem6: TdxLayoutItem;
+    dxLayoutGroup4: TdxLayoutGroup;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutGroup1: TdxLayoutGroup;
     procedure btn_PCManagerLogin_CancelClick(Sender: TObject);
     procedure btn_PCManagerLogin_OkClick(Sender: TObject);
   private

@@ -32,6 +32,8 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
     LockedStateImageOptions.Effect = lsieDark
     LookAndFeel.Kind = lfFlat
     LookAndFeel.NativeStyle = False
+    ExplicitTop = 0
+    ExplicitHeight = 243
     object grdDBTblView_Konfession: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       FilterBox.CustomizeDialog = False
@@ -67,7 +69,6 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
       object grdDBTblView_KonfessionBezeichnung: TcxGridDBColumn
         Caption = 'Konfession'
         DataBinding.FieldName = 'Bezeichnung'
-        DataBinding.IsNullValueType = True
         Width = 494
       end
     end

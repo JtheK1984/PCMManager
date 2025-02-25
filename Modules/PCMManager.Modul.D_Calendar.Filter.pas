@@ -13,7 +13,8 @@ uses
   cxContainer, cxGroupBox, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, dxLayoutContainer,
+  dxLayoutControlAdapters, dxLayoutControl;
 
 type
   Tfrm_PCM_KalenderFilter = class(TForm)
@@ -23,7 +24,13 @@ type
     btn_Ok: TcxButton;
     btn_Cancel: TcxButton;
     grdDBTblView_StundenplanuebersichtKalendername: TcxGridDBColumn;
-    grpbx_Design: TcxGroupBox;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutGroup6: TdxLayoutGroup;
     procedure btn_CancelClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btn_OkClick(Sender: TObject);

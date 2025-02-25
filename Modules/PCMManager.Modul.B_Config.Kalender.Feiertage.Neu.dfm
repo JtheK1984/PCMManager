@@ -16,43 +16,29 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
   OnClose = FormClose
   OnShow = FormShow
   TextHeight = 13
-  object grpbx_Design: TcxGroupBox
+  object lactrl_FeiertageNew: TdxLayoutControl
     Left = 0
     Top = 0
-    Align = alClient
-    PanelStyle.Active = True
-    Style.BorderStyle = ebsNone
-    TabOrder = 0
-    Height = 459
     Width = 472
-    object Bevel1: TBevel
-      Left = 16
-      Top = 416
-      Width = 445
-      Height = 2
-      Shape = bsTopLine
-    end
-    object Bevel2: TBevel
-      Left = 16
-      Top = 40
-      Width = 445
-      Height = 2
-      Shape = bsTopLine
-    end
+    Height = 459
+    Align = alClient
+    TabOrder = 0
+    AutoSize = True
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     object btn_Abort: TcxButton
-      Left = 371
+      Left = 321
       Top = 424
-      Width = 90
+      Width = 141
       Height = 25
       Caption = 'Abbrechen'
       OptionsImage.ImageIndex = 57
       OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 4
+      TabOrder = 5
       OnClick = btn_AbortClick
     end
     object btn_Berechnen: TcxButton
       Left = 378
-      Top = 12
+      Top = 10
       Width = 84
       Height = 21
       Caption = 'Berechnen'
@@ -61,19 +47,20 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
       OnClick = btn_BerechnenClick
     end
     object btn_OK: TcxButton
-      Left = 170
+      Left = 10
       Top = 424
-      Width = 195
+      Width = 305
       Height = 25
       Caption = 'Gew'#228'hlte Feiertage '#252'bernehmen'
       OptionsImage.ImageIndex = 56
       OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 3
+      TabOrder = 4
       OnClick = btn_OKClick
     end
     object cmbbx_Bundesland: TcxComboBox
-      Left = 177
-      Top = 12
+      Left = 167
+      Top = 10
+      AutoSize = False
       Properties.Items.Strings = (
         'Baden-W'#252'rttemberg'
         'Bayern'
@@ -91,106 +78,202 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
         'Sachsen-Anhalt'
         'Schleswig-Holstein'
         'Th'#252'ringen')
-      Style.BorderStyle = ebsFlat
+      Style.HotTrack = False
+      Style.TransparentBorder = False
       TabOrder = 1
-      Width = 195
+      Height = 21
+      Width = 205
     end
     object edt_Jahr: TcxSpinEdit
-      Left = 45
-      Top = 12
-      Style.BorderStyle = ebsFlat
+      Left = 40
+      Top = 10
+      Style.HotTrack = False
+      Style.TransparentBorder = False
       TabOrder = 0
       Width = 57
     end
-    object Label1: TcxLabel
-      Left = 16
-      Top = 13
-      Caption = 'Jahr:'
-      Transparent = True
-    end
-    object Label2: TcxLabel
-      Left = 112
-      Top = 13
-      Caption = 'Bundesland:'
-      Transparent = True
-    end
-  end
-  object grd_FT: TcxGrid
-    Left = 16
-    Top = 48
-    Width = 445
-    Height = 362
-    Align = alCustom
-    TabOrder = 1
-    object tvFeiertage: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      ScrollbarAnnotations.CustomAnnotations = <>
-      DataController.DataSource = dsmFeiertage
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-      OptionsBehavior.FocusCellOnTab = True
-      OptionsCustomize.ColumnFiltering = False
-      OptionsCustomize.ColumnGrouping = False
-      OptionsCustomize.ColumnSorting = False
-      OptionsData.Deleting = False
-      OptionsData.Inserting = False
-      OptionsView.GridLines = glVertical
-      OptionsView.GroupByBox = False
-      OptionsView.HeaderFilterButtonShowMode = fbmButton
-      OptionsView.Indicator = True
-      object tvFeiertageMarked: TcxGridDBColumn
-        DataBinding.FieldName = 'Uebernehmen'
-        PropertiesClassName = 'TcxCheckBoxProperties'
-        MinWidth = 22
-        Options.HorzSizing = False
-        Options.Moving = False
-        Width = 22
-        IsCaptionAssigned = True
+    object grd_FT: TcxGrid
+      Left = 10
+      Top = 37
+      Width = 452
+      Height = 381
+      TabOrder = 3
+      object tvFeiertage: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = dsmFeiertage
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsBehavior.FocusCellOnTab = True
+        OptionsCustomize.ColumnFiltering = False
+        OptionsCustomize.ColumnGrouping = False
+        OptionsCustomize.ColumnSorting = False
+        OptionsData.Deleting = False
+        OptionsData.Inserting = False
+        OptionsView.GridLines = glVertical
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.Indicator = True
+        object tvFeiertageMarked: TcxGridDBColumn
+          DataBinding.FieldName = 'Uebernehmen'
+          PropertiesClassName = 'TcxCheckBoxProperties'
+          MinWidth = 22
+          Options.HorzSizing = False
+          Options.Moving = False
+          Width = 22
+          IsCaptionAssigned = True
+        end
+        object tvFeiertageFT: TcxGridDBColumn
+          Caption = 'FT'
+          DataBinding.FieldName = 'Typ'
+          PropertiesClassName = 'TcxLabelProperties'
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          MinWidth = 35
+          Options.Editing = False
+          Options.HorzSizing = False
+          Options.Moving = False
+          Styles.Content = cxStyleFT
+          Width = 35
+        end
+        object tvFeiertageTag: TcxGridDBColumn
+          DataBinding.FieldName = 'Tag'
+          MinWidth = 50
+          Options.Editing = False
+          Options.HorzSizing = False
+          Options.Moving = False
+          Width = 50
+        end
+        object tvFeiertageMonat: TcxGridDBColumn
+          DataBinding.FieldName = 'Monat'
+          MinWidth = 50
+          Options.Editing = False
+          Options.HorzSizing = False
+          Options.Moving = False
+          Width = 50
+        end
+        object tvFeiertageKategorie: TcxGridDBColumn
+          DataBinding.FieldName = 'Kategorie'
+        end
+        object tvFeiertageBezeichnung: TcxGridDBColumn
+          DataBinding.FieldName = 'Bezeichnung'
+          MinWidth = 200
+          Options.Editing = False
+          Options.HorzSizing = False
+          Options.Moving = False
+          Width = 200
+        end
       end
-      object tvFeiertageFT: TcxGridDBColumn
-        Caption = 'FT'
-        DataBinding.FieldName = 'Typ'
-        PropertiesClassName = 'TcxLabelProperties'
-        Properties.Alignment.Horz = taCenter
-        Properties.Alignment.Vert = taVCenter
-        MinWidth = 35
-        Options.Editing = False
-        Options.HorzSizing = False
-        Options.Moving = False
-        Styles.Content = cxStyleFT
-        Width = 35
-      end
-      object tvFeiertageTag: TcxGridDBColumn
-        DataBinding.FieldName = 'Tag'
-        MinWidth = 50
-        Options.Editing = False
-        Options.HorzSizing = False
-        Options.Moving = False
-        Width = 50
-      end
-      object tvFeiertageMonat: TcxGridDBColumn
-        DataBinding.FieldName = 'Monat'
-        MinWidth = 50
-        Options.Editing = False
-        Options.HorzSizing = False
-        Options.Moving = False
-        Width = 50
-      end
-      object tvFeiertageKategorie: TcxGridDBColumn
-        DataBinding.FieldName = 'Kategorie'
-      end
-      object tvFeiertageBezeichnung: TcxGridDBColumn
-        DataBinding.FieldName = 'Bezeichnung'
-        MinWidth = 200
-        Options.Editing = False
-        Options.HorzSizing = False
-        Options.Moving = False
-        Width = 200
+      object cxGridLevel1: TcxGridLevel
+        GridView = tvFeiertage
       end
     end
-    object cxGridLevel1: TcxGridLevel
-      GridView = tvFeiertage
+    object lactrl_FeiertageNewGroup_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = -1
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup4
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'Jahr:'
+      Control = edt_Jahr
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 57
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = dxLayoutGroup4
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Bundesland:'
+      Control = cmbbx_Bundesland
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 195
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = dxLayoutGroup4
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_Berechnen'
+      CaptionOptions.Visible = False
+      Control = btn_Berechnen
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 84
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem4: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avBottom
+      CaptionOptions.Text = 'btn_OK'
+      CaptionOptions.Visible = False
+      Control = btn_OK
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 195
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem5: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avBottom
+      CaptionOptions.Text = 'btn_Abort'
+      CaptionOptions.Visible = False
+      Control = btn_Abort
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 90
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem6: TdxLayoutItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'grd_FT'
+      CaptionOptions.Visible = False
+      Control = grd_FT
+      ControlOptions.OriginalHeight = 362
+      ControlOptions.OriginalWidth = 445
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup4: TdxLayoutGroup
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup3: TdxLayoutGroup
+      Parent = lactrl_FeiertageNewGroup_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 2
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup5: TdxLayoutGroup
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avBottom
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 2
     end
   end
   object dsmFeiertage: TDataSource

@@ -18,13 +18,12 @@ uses
   cxPCdxBarPopupMenu, 
   cxNavigator, dxBarBuiltInMenu, dxDateRanges,
   dxScrollbarAnnotations,
-  dxBar, cxLabel,pcm.Functions, System.UITypes;
+  dxBar, cxLabel,pcm.Functions, System.UITypes, dxLayoutcxEditAdapters,
+  dxLayoutControlAdapters, dxLayoutContainer, dxLayoutControl;
 
 type
   TAdressSucheTyp = (astAdressen, astAnsprechpartner);
   TfAdressSuche = class(TForm)
-    pcTyp: TcxPageControl;
-    tshAdresssuche: TcxTabSheet;
     cxGrid1: TcxGrid;
     tvAdressen: TcxGridDBTableView;
     tvAdressenName: TcxGridDBColumn;
@@ -33,7 +32,6 @@ type
     tvAdressenOrt: TcxGridDBColumn;
     cxGrid1Level1: TcxGridLevel;
     bAdressenZeigen: TcxButton;
-    cxGroupBox2: TcxGroupBox;
     teName: TcxTextEdit;
     teStrasse: TcxTextEdit;
     tePLZ: TcxTextEdit;
@@ -44,12 +42,23 @@ type
     dxBarManager1Bar1: TdxBar;
     btnOK: TdxBarLargeButton;
     dxBarLargeButton2: TdxBarLargeButton;
-    cxGroupBox1: TcxGroupBox;
-    Label63: TcxLabel;
-    Label64: TcxLabel;
-    Label65: TcxLabel;
-    Label66: TcxLabel;
-    lCount: TcxLabel;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutGroup1: TdxLayoutGroup;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutItem6: TdxLayoutItem;
+    lCount: TdxLayoutLabeledItem;
+    dxLayoutItem7: TdxLayoutItem;
+    dxLayoutItem8: TdxLayoutItem;
+    dxLayoutGroup11: TdxLayoutGroup;
+    dxLayoutGroup12: TdxLayoutGroup;
+    dxLayoutGroup13: TdxLayoutGroup;
+    dxBarDockControl1: TdxBarDockControl;
     procedure bAdressenZeigenClick(Sender: TObject);
     procedure tvAdressenCellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
@@ -121,7 +130,7 @@ begin
   dm_PCM.Qry_work.Open;
 
   lCount.Caption := IntToStr(dm_PCM.Qry_work.RecordCount) + rs_PCMManager_Adresseengefunden;
-  lCount.Show;
+  lCount.Visible:= True;
 end;
 procedure TfAdressSuche.bFilterLoeschenClick(Sender: TObject);
 begin

@@ -4,8 +4,8 @@ object frm_PCM_Import: Tfrm_PCM_Import
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Kalender importieren'
-  ClientHeight = 224
-  ClientWidth = 562
+  ClientHeight = 235
+  ClientWidth = 600
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,28 +16,34 @@ object frm_PCM_Import: Tfrm_PCM_Import
   OnShow = FormShow
   TextHeight = 13
   object lstbx_CalNewEvents: TListBox
-    Left = 7
-    Top = 376
+    Left = 362
+    Top = 8
     Width = 366
-    Height = 257
+    Height = 253
+    BevelInner = bvNone
+    BevelKind = bkFlat
+    BevelOuter = bvSpace
+    BorderStyle = bsNone
     ItemHeight = 13
-    TabOrder = 0
+    TabOrder = 1
+    Visible = False
   end
-  object grpbx_Design: TcxGroupBox
+  object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
+    Width = 600
+    Height = 235
     Align = alClient
-    Style.BorderStyle = ebsNone
-    TabOrder = 1
-    Height = 224
-    Width = 562
+    TabOrder = 0
+    AutoSize = True
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     object btn_CAlImportNew: TcxButton
-      Left = 537
-      Top = 8
+      Left = 569
+      Top = 10
       Width = 21
       Height = 21
       Caption = '...'
-      TabOrder = 1
+      TabOrder = 2
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -47,30 +53,30 @@ object frm_PCM_Import: Tfrm_PCM_Import
       OnClick = btn_CAlImportNewClick
     end
     object btn_CalNewCancel: TcxButton
-      Left = 287
-      Top = 195
-      Width = 271
+      Left = 303
+      Top = 197
+      Width = 287
       Height = 25
       Caption = 'Abbrechen'
       OptionsImage.ImageIndex = 57
       OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 9
+      TabOrder = 11
       OnClick = btn_CalNewCancelClick
     end
     object btn_CalNewSave: TcxButton
-      Left = 8
-      Top = 195
-      Width = 271
+      Left = 10
+      Top = 197
+      Width = 287
       Height = 25
       Caption = 'Speichern'
       OptionsImage.ImageIndex = 56
       OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 8
+      TabOrder = 10
       OnClick = btn_CalNewSaveClick
     end
     object cmbbx_CalNewReminderminutes: TcxImageComboBox
-      Left = 319
-      Top = 143
+      Left = 308
+      Top = 137
       EditValue = '15'
       ParentFont = False
       Properties.Items = <
@@ -175,39 +181,42 @@ object frm_PCM_Import: Tfrm_PCM_Import
           Description = '2 Wochen vor Termin'
           Value = 20160
         end>
-      Style.BorderStyle = ebsFlat
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 7
-      Width = 239
+      TabOrder = 8
+      Width = 282
     end
     object cmbbx_CalNewType: TcxComboBox
-      Left = 319
-      Top = 116
+      Left = 308
+      Top = 112
       Properties.Items.Strings = (
         'Sonstiger Kalender'
         'AbfuhrKalender')
       Properties.OnChange = cbx_CalNewTypePropertiesChange
-      Style.BorderStyle = ebsFlat
-      TabOrder = 5
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 6
       Text = 'Sonstiger Kalender'
-      Width = 239
+      Width = 282
     end
     object chkbx_CalNewReminder: TcxCheckBox
-      Left = 170
-      Top = 144
+      Left = 172
+      Top = 137
       Caption = 'an den Termin erinnern:'
-      Style.BorderStyle = ebsFlat
-      TabOrder = 6
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 7
       Transparent = True
     end
     object colcmbbx_CalNewCal: TcxColorComboBox
-      Left = 319
-      Top = 35
+      Left = 308
+      Top = 37
       ParentFont = False
       Properties.AllowSelectColor = True
       Properties.ColorDialogShowFull = True
@@ -215,19 +224,19 @@ object frm_PCM_Import: Tfrm_PCM_Import
       Properties.DefaultDescription = 'Keine Farbe gew'#228'hlt'
       Properties.NamingConvention = cxncHTML4
       Properties.PrepareList = cxplHTML4
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebsFlat
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 2
-      Width = 239
+      TabOrder = 3
+      Width = 282
     end
     object colcmbbx_CalNewFont: TcxColorComboBox
-      Left = 319
+      Left = 308
       Top = 62
       ParentFont = False
       Properties.AllowSelectColor = True
@@ -236,51 +245,52 @@ object frm_PCM_Import: Tfrm_PCM_Import
       Properties.DefaultDescription = 'Keine Farbe gew'#228'hlt'
       Properties.NamingConvention = cxncHTML4
       Properties.PrepareList = cxplHTML4
-      Style.BorderColor = clWindowFrame
-      Style.BorderStyle = ebsFlat
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
-      Style.ButtonStyle = btsDefault
-      Style.IsFontAssigned = True
-      TabOrder = 3
-      Width = 239
-    end
-    object edt_CalNewName: TcxTextEdit
-      Left = 319
-      Top = 89
-      ParentFont = False
-      Style.BorderStyle = ebsFlat
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 4
-      TextHint = 'Kalendername'
-      Width = 239
+      Width = 282
     end
-    object edt_CalNewPfad: TcxTextEdit
-      Left = 319
-      Top = 8
+    object edt_CalNewName: TcxTextEdit
+      Left = 308
+      Top = 87
       ParentFont = False
-      Style.BorderStyle = ebsFlat
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 0
+      TabOrder = 5
+      TextHint = 'Kalendername'
+      Width = 282
+    end
+    object edt_CalNewPfad: TcxTextEdit
+      Left = 308
+      Top = 10
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 1
       TextHint = 'Pfad w'#228'hlen'
-      Width = 209
+      Width = 255
     end
     object img_CalNew: TcxImage
-      Left = 8
-      Top = 8
+      Left = 10
+      Top = 10
       TabStop = False
       Picture.Data = {
         0B546478504E47496D61676589504E470D0A1A0A0000000D494844520000009C
@@ -1288,98 +1298,333 @@ object frm_PCM_Import: Tfrm_PCM_Import
         8789FF67E81BC0FD1FA12BAEFAB52B60F64D76D89C473A1C96C5D5FBD6AC7AE5
         95F9D132F71BFA86BEA16FE81BFA0A49E4FF01767888F1FA35C15B0000000049
         454E44AE426082}
-      Style.BorderStyle = ebsFlat
-      TabOrder = 10
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 0
       Height = 156
       Width = 156
     end
     object prgbr_CalNew: TcxProgressBar
-      Left = 8
-      Top = 170
+      Left = 10
+      Top = 172
       ParentFont = False
-      Style.BorderStyle = ebsFlat
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWhite
       Style.Font.Height = -11
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
+      Style.TransparentBorder = False
       Style.IsFontAssigned = True
       StyleDisabled.Color = clSilver
       StyleDisabled.TextColor = clWhite
       StyleFocused.Color = clSilver
       StyleHot.Color = clSilver
-      TabOrder = 11
-      Width = 550
+      TabOrder = 9
+      Width = 580
     end
-    object lbl_CalNewDatei: TcxLabel
-      Left = 170
-      Top = 11
-      Caption = 'Datei w'#228'hlen:'
-      ParentFont = False
-      Style.BorderStyle = ebsNone
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      Transparent = True
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avTop
+      Hidden = True
+      ShowBorder = False
+      Index = -1
     end
-    object lbl_CalNewKalenderFarbe: TcxLabel
-      Left = 170
-      Top = 39
-      Caption = 'Kalenderfarbe:'
-      ParentFont = False
-      Style.BorderStyle = ebsNone
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      Transparent = True
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup12
+      CaptionOptions.Text = 'img_CalNew'
+      CaptionOptions.Visible = False
+      Control = img_CalNew
+      ControlOptions.OriginalHeight = 156
+      ControlOptions.OriginalWidth = 156
+      ControlOptions.ShowBorder = False
+      Index = 0
     end
-    object lbl_CalNewKalenderFontFarbe: TcxLabel
-      Left = 170
-      Top = 66
-      Caption = 'Schriftfarbe:'
-      ParentFont = False
-      Style.BorderStyle = ebsNone
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      Transparent = True
+    object dxLayoutItem4: TdxLayoutItem
+      Parent = dxLayoutGroup21
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      SizeOptions.Width = 130
+      CaptionOptions.Text = 'Kalendertyp:'
+      CaptionOptions.Visible = False
+      CaptionOptions.Layout = clTop
+      Control = chkbx_CalNewReminder
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 137
+      ControlOptions.ShowBorder = False
+      Index = 0
     end
-    object lbl_CalNewKalenderName: TcxLabel
-      Left = 170
-      Top = 92
-      Caption = 'Kalendername:'
-      ParentFont = False
-      Style.BorderStyle = ebsNone
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      Transparent = True
+    object dxLayoutItem5: TdxLayoutItem
+      Parent = dxLayoutGroup16
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'edt_CalNewPfad'
+      CaptionOptions.Visible = False
+      Control = edt_CalNewPfad
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 209
+      ControlOptions.ShowBorder = False
+      Index = 1
     end
-    object lbl_CalNewKalenderTyp: TcxLabel
-      Left = 170
-      Top = 119
-      Caption = 'Kalendertyp:'
-      ParentFont = False
-      Style.BorderStyle = ebsNone
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      Transparent = True
+    object dxLayoutItem6: TdxLayoutItem
+      Parent = dxLayoutGroup16
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_CAlImportNew'
+      CaptionOptions.Visible = False
+      Control = btn_CAlImportNew
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 21
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem7: TdxLayoutItem
+      Parent = dxLayoutGroup17
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'colcmbbx_CalNewCal'
+      CaptionOptions.Visible = False
+      Control = colcmbbx_CalNewCal
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 239
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem8: TdxLayoutItem
+      Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'colcmbbx_CalNewFont'
+      CaptionOptions.Visible = False
+      Control = colcmbbx_CalNewFont
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 239
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem9: TdxLayoutItem
+      Parent = dxLayoutGroup19
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'edt_CalNewName'
+      CaptionOptions.Visible = False
+      Control = edt_CalNewName
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 239
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem10: TdxLayoutItem
+      Parent = dxLayoutGroup20
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'cmbbx_CalNewType'
+      CaptionOptions.Visible = False
+      Control = cmbbx_CalNewType
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 239
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem11: TdxLayoutItem
+      Parent = dxLayoutGroup21
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'cmbbx_CalNewReminderminutes'
+      CaptionOptions.Visible = False
+      CaptionOptions.Layout = clTop
+      Control = cmbbx_CalNewReminderminutes
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 239
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem12: TdxLayoutItem
+      Parent = dxLayoutGroup11
+      CaptionOptions.Text = 'prgbr_CalNew'
+      CaptionOptions.Visible = False
+      Control = prgbr_CalNew
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 550
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem13: TdxLayoutItem
+      Parent = dxLayoutGroup15
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_CalNewSave'
+      CaptionOptions.Visible = False
+      Control = btn_CalNewSave
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 271
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem14: TdxLayoutItem
+      Parent = dxLayoutGroup15
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_CalNewCancel'
+      CaptionOptions.Visible = False
+      Control = btn_CalNewCancel
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 271
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup11: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup12: TdxLayoutGroup
+      Parent = dxLayoutGroup11
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup13: TdxLayoutGroup
+      Parent = dxLayoutGroup12
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup14: TdxLayoutGroup
+      Parent = dxLayoutGroup13
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutLabeledItem1: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup16
+      AlignHorz = ahLeft
+      AlignVert = avClient
+      SizeOptions.Width = 130
+      CaptionOptions.Text = 'Datei w'#228'hlen:'
+      CaptionOptions.Width = 80
+      Index = 0
+    end
+    object dxLayoutLabeledItem2: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup17
+      AlignHorz = ahLeft
+      AlignVert = avClient
+      SizeOptions.Width = 130
+      CaptionOptions.Text = 'Kalenderfarbe:'
+      CaptionOptions.Width = 80
+      Index = 0
+    end
+    object dxLayoutLabeledItem3: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup18
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      SizeOptions.Width = 130
+      CaptionOptions.Text = 'Schriftfarbe:'
+      CaptionOptions.Width = 80
+      Index = 0
+    end
+    object dxLayoutLabeledItem4: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup19
+      AlignHorz = ahLeft
+      AlignVert = avClient
+      SizeOptions.Width = 130
+      CaptionOptions.Text = 'Kalendername:'
+      Index = 0
+    end
+    object dxLayoutLabeledItem5: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup20
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      SizeOptions.Width = 130
+      CaptionOptions.Text = 'Kalendertyp:'
+      Index = 0
+    end
+    object dxLayoutGroup16: TdxLayoutGroup
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 2
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup8: TdxLayoutGroup
+      Parent = dxLayoutGroup14
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 5
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup17: TdxLayoutGroup
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup18: TdxLayoutGroup
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup19: TdxLayoutGroup
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 3
+    end
+    object dxLayoutGroup20: TdxLayoutGroup
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 4
+    end
+    object dxLayoutGroup21: TdxLayoutGroup
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 5
+    end
+    object dxLayoutGroup15: TdxLayoutGroup
+      Parent = dxLayoutGroup11
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 2
     end
   end
   object dlgOPen_ICS: TOpenDialog

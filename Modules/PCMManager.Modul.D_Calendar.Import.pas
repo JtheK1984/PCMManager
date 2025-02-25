@@ -13,7 +13,9 @@ uses
   cxImage, cxLabel, cxGroupBox, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,cxdateutils,system.UItypes;
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client,cxdateutils,system.UItypes,
+  dxLayoutcxEditAdapters, dxLayoutControlAdapters, dxLayoutContainer, cxClasses,
+  dxLayoutControl;
 
 type
   Tfrm_PCM_Import = class(TForm)
@@ -31,12 +33,37 @@ type
     edt_CalNewName: TcxTextEdit;
     img_CalNew: TcxImage;
     btn_CAlImportNew: TcxButton;
-    grpbx_Design: TcxGroupBox;
-    lbl_CalNewDatei: TcxLabel;
-    lbl_CalNewKalenderFarbe: TcxLabel;
-    lbl_CalNewKalenderFontFarbe: TcxLabel;
-    lbl_CalNewKalenderName: TcxLabel;
-    lbl_CalNewKalenderTyp: TcxLabel;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutItem6: TdxLayoutItem;
+    dxLayoutItem7: TdxLayoutItem;
+    dxLayoutItem8: TdxLayoutItem;
+    dxLayoutItem9: TdxLayoutItem;
+    dxLayoutItem10: TdxLayoutItem;
+    dxLayoutItem11: TdxLayoutItem;
+    dxLayoutItem12: TdxLayoutItem;
+    dxLayoutItem13: TdxLayoutItem;
+    dxLayoutItem14: TdxLayoutItem;
+    dxLayoutGroup11: TdxLayoutGroup;
+    dxLayoutGroup12: TdxLayoutGroup;
+    dxLayoutGroup13: TdxLayoutGroup;
+    dxLayoutGroup14: TdxLayoutGroup;
+    dxLayoutLabeledItem1: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem2: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem3: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem4: TdxLayoutLabeledItem;
+    dxLayoutLabeledItem5: TdxLayoutLabeledItem;
+    dxLayoutGroup16: TdxLayoutGroup;
+    dxLayoutGroup8: TdxLayoutGroup;
+    dxLayoutGroup17: TdxLayoutGroup;
+    dxLayoutGroup18: TdxLayoutGroup;
+    dxLayoutGroup19: TdxLayoutGroup;
+    dxLayoutGroup20: TdxLayoutGroup;
+    dxLayoutGroup21: TdxLayoutGroup;
+    dxLayoutGroup15: TdxLayoutGroup;
     procedure btn_CAlImportNewClick(Sender: TObject);
     procedure ReadICS(Sender: TObject);
     procedure FormShow(Sender: TObject);

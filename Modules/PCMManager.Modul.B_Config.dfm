@@ -3,8 +3,8 @@ object frm_Config: Tfrm_Config
   Top = 0
   BorderStyle = bsNone
   Caption = 'frm_Config'
-  ClientHeight = 800
-  ClientWidth = 1280
+  ClientHeight = 900
+  ClientWidth = 1137
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,2728 +15,3181 @@ object frm_Config: Tfrm_Config
   OnDestroy = FormDestroy
   OnShow = FormShow
   TextHeight = 13
-  object pnl_Design: TcxGroupBox
+  object lactrl_Config: TdxLayoutControl
     Left = 0
     Top = 0
+    Width = 1137
+    Height = 900
     Align = alClient
-    PanelStyle.Active = True
-    Style.BorderStyle = ebsNone
     TabOrder = 0
-    Height = 800
-    Width = 1280
-    object pc_Options: TcxPageControl
-      Left = 3
-      Top = 3
-      Width = 1274
-      Height = 794
-      Align = alClient
-      Color = clBtnFace
+    AutoSize = True
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    OptionsImage.Images = dm_PCM.imglst_16x16
+    object edt_CalConfigFTP_Benutzer: TcxDBTextEdit
+      Left = 136
+      Top = 768
+      DataBinding.DataField = 'user'
+      DataBinding.DataSource = ds_CalConfigFTP
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 15
+      OnExit = btn_CalConfigFTPSaveClick
+      Width = 453
+    end
+    object edt_CalConfigFTP_Datei: TcxDBTextEdit
+      Left = 655
+      Top = 743
+      AutoSize = False
+      DataBinding.DataField = 'kalendername'
+      DataBinding.DataSource = ds_CalConfigFTP
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 16
+      OnExit = btn_CalConfigFTPSaveClick
+      Height = 19
+      Width = 447
+    end
+    object edt_CalConfigFTP_Passwort: TcxDBTextEdit
+      Left = 655
+      Top = 768
+      DataBinding.DataField = 'passwort'
+      DataBinding.DataSource = ds_CalConfigFTP
+      ParentFont = False
+      Properties.EchoMode = eemPassword
+      Properties.PasswordChar = '*'
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 17
+      OnExit = btn_CalConfigFTPSaveClick
+      Width = 447
+    end
+    object edt_CalConfigFTP_URL: TcxDBTextEdit
+      Left = 136
+      Top = 743
+      AutoSize = False
+      DataBinding.DataField = 'url'
+      DataBinding.DataSource = ds_CalConfigFTP
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 14
+      OnExit = btn_CalConfigFTPSaveClick
+      Height = 19
+      Width = 453
+    end
+    object grd_FTPConfig: TcxGrid
+      Left = 31
+      Top = 793
+      Width = 1071
+      Height = 69
+      BorderStyle = cxcbsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 13
+      LockedStateImageOptions.Effect = lsieDark
+      object grdDBTblView_FTPConfig: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        FilterBox.CustomizeDialog = False
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = ds_CalConfigFTP
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skCount
+          end>
+        DataController.Summary.SummaryGroups = <
+          item
+            Links = <
+              item
+              end>
+            SummaryItems = <
+              item
+              end>
+          end>
+        OptionsBehavior.IncSearch = True
+        OptionsBehavior.ShowHourglassCursor = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.CellEndEllipsis = True
+        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.IndicatorWidth = 14
+        object grdDBTblView_FTPConfigurl: TcxGridDBColumn
+          Caption = 'Host'
+          DataBinding.FieldName = 'url'
+          DataBinding.IsNullValueType = True
+          SortIndex = 0
+          SortOrder = soAscending
+          Width = 300
+        end
+        object grdDBTblView_FTPConfigkalendername: TcxGridDBColumn
+          Caption = 'Dateiname'
+          DataBinding.FieldName = 'kalendername'
+          DataBinding.IsNullValueType = True
+          Width = 300
+        end
+        object grdDBTblView_FTPConfiguser: TcxGridDBColumn
+          Caption = 'Benutzer'
+          DataBinding.FieldName = 'user'
+          DataBinding.IsNullValueType = True
+          Width = 100
+        end
+        object grdDBTblView_FTPConfigpasswort: TcxGridDBColumn
+          Caption = 'Passwort'
+          DataBinding.FieldName = 'passwort'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxTextEditProperties'
+          Properties.EchoMode = eemPassword
+          Properties.PasswordChar = '*'
+          Width = 100
+        end
+      end
+      object grdlvl_FTPConfig: TcxGridLevel
+        GridView = grdDBTblView_FTPConfig
+      end
+    end
+    object brdckctrl_FTP: TdxBarDockControl
+      Left = 31
+      Top = 674
+      Width = 1071
+      Height = 63
+      Align = dalNone
+      BarManager = brmgr_Config
+    end
+    object edt_CalConfig_Benutzer: TcxDBTextEdit
+      Left = 657
+      Top = 148
+      DataBinding.DataField = 'Benutzer'
+      DataBinding.DataSource = ds_CalConfig
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 6
+      OnExit = btn_CalConfigSave1Click
+      Width = 445
+    end
+    object edt_CalConfig_Kalender: TcxDBTextEdit
+      Left = 136
+      Top = 148
+      DataBinding.DataField = 'Kalender'
+      DataBinding.DataSource = ds_CalConfig
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 1
+      OnExit = btn_CalConfigSave1Click
+      Width = 449
+    end
+    object edt_CalConfig_Link: TcxDBTextEdit
+      Left = 136
+      Top = 173
+      DataBinding.DataField = 'Link'
+      DataBinding.DataSource = ds_CalConfig
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 2
+      OnExit = btn_CalConfigSave1Click
+      Width = 449
+    end
+    object edt_CalConfig_Passwort: TcxDBTextEdit
+      Left = 657
+      Top = 173
+      DataBinding.DataField = 'Passwort'
+      DataBinding.DataSource = ds_CalConfig
+      ParentFont = False
+      Properties.EchoMode = eemPassword
+      Properties.PasswordChar = '*'
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 7
+      OnExit = btn_CalConfigSave1Click
+      Width = 445
+    end
+    object grd_CalConfig: TcxGrid
+      Left = 31
+      Top = 248
+      Width = 1071
+      Height = 68
+      BorderStyle = cxcbsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 9
+      TabStop = False
+      LockedStateImageOptions.Effect = lsieDark
+      object grdDBTblView_calconfig: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        FilterBox.CustomizeDialog = False
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = ds_CalConfig
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skCount
+          end>
+        DataController.Summary.SummaryGroups = <
+          item
+            Links = <
+              item
+              end>
+            SummaryItems = <
+              item
+              end>
+          end>
+        OptionsBehavior.IncSearch = True
+        OptionsBehavior.ShowHourglassCursor = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.CellEndEllipsis = True
+        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.IndicatorWidth = 14
+        object grdDBTblView_calconfigKalender: TcxGridDBColumn
+          DataBinding.FieldName = 'Kalender'
+          DataBinding.IsNullValueType = True
+          SortIndex = 0
+          SortOrder = soAscending
+          Width = 100
+        end
+        object grdDBTblView_calconfigLink: TcxGridDBColumn
+          DataBinding.FieldName = 'Link'
+          DataBinding.IsNullValueType = True
+          Width = 250
+        end
+        object grdDBTblView_calconfigBenutzer: TcxGridDBColumn
+          DataBinding.FieldName = 'Benutzer'
+          DataBinding.IsNullValueType = True
+          Width = 100
+        end
+        object grdDBTblView_calconfigPasswort: TcxGridDBColumn
+          DataBinding.FieldName = 'Passwort'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxTextEditProperties'
+          Properties.EchoMode = eemPassword
+          Width = 100
+        end
+        object grdDBTblView_calconfigErinnerung: TcxGridDBColumn
+          DataBinding.FieldName = 'Erinnerung'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxCheckBoxProperties'
+          Properties.ValueChecked = 'true'
+          Properties.ValueUnchecked = 'false'
+        end
+        object grdDBTblView_calconfigErinnerungVor: TcxGridDBColumn
+          Caption = 'Erinnerung in Minuten'
+          DataBinding.FieldName = 'ErinnerungVor'
+          DataBinding.IsNullValueType = True
+          Width = 100
+        end
+        object grdDBTblView_calconfigLabelColor: TcxGridDBColumn
+          Caption = 'Terminfarbe'
+          DataBinding.FieldName = 'LabelColor'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxColorComboBoxProperties'
+          Properties.CustomColors = <>
+          Width = 80
+        end
+        object grdDBTblView_calconfigFontcolor: TcxGridDBColumn
+          Caption = 'Schriftfarbe'
+          DataBinding.FieldName = 'Fontcolor'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxColorComboBoxProperties'
+          Properties.CustomColors = <>
+          Width = 80
+        end
+        object grdDBTblView_calconfigID_Benutzer: TcxGridDBColumn
+          Caption = 'Benutzer'
+          DataBinding.FieldName = 'ID_Benutzer'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Benutzer'
+            end>
+          Width = 100
+        end
+      end
+      object grdlvl_CalConfig: TcxGridLevel
+        GridView = grdDBTblView_calconfig
+      end
+    end
+    object cmbbx_CalConfigReminderVal: TcxDBImageComboBox
+      Left = 157
+      Top = 223
+      DataBinding.DataField = 'ErinnerungVor'
+      DataBinding.DataSource = ds_CalConfig
+      ParentFont = False
+      Properties.Items = <
+        item
+          Description = '0 Minuten vor Termin'
+          ImageIndex = 0
+          Value = 0
+        end
+        item
+          Description = '5 Minuten vor Termin'
+          Value = 5
+        end
+        item
+          Description = '10 Minuten vor Termin'
+          Value = 10
+        end
+        item
+          Description = '15 Minuten vor Termin'
+          Value = 15
+        end
+        item
+          Description = '20 Minuten vor Termin'
+          Value = 20
+        end
+        item
+          Description = '30 Minuten vor Termin'
+          Value = 30
+        end
+        item
+          Description = '1 Stunde vor Termin'
+          Value = 60
+        end
+        item
+          Description = '2 Stunden vor Termin'
+          Value = 120
+        end
+        item
+          Description = '3 Stunden vor Termin'
+          Value = 180
+        end
+        item
+          Description = '4 Stunden vor Termin'
+          Value = 240
+        end
+        item
+          Description = '5 Stunden vor Termin'
+          Value = 300
+        end
+        item
+          Description = '6 Stunden vor Termin'
+          Value = 360
+        end
+        item
+          Description = '7 Stunden vor Termin'
+          Value = 420
+        end
+        item
+          Description = '8 Stunden vor Termin'
+          Value = 480
+        end
+        item
+          Description = '9 Stunden vor Termin'
+          Value = '540'
+        end
+        item
+          Description = '10 Stunden vor Termin'
+          Value = '600'
+        end
+        item
+          Description = '11 Stunden vor Termin'
+          Value = '660'
+        end
+        item
+          Description = '12 Stunden vor Termin'
+          Value = '720'
+        end
+        item
+          Description = '18 Stunden vor Termin'
+          Value = '1080'
+        end
+        item
+          Description = '1 Tag vor Termin'
+          Value = '1440'
+        end
+        item
+          Description = '2 Tage vor Termin'
+          Value = '2880'
+        end
+        item
+          Description = '3 Tage vor Termin'
+          Value = '4320'
+        end
+        item
+          Description = '4 Tage vor Termin'
+          Value = '5760'
+        end
+        item
+          Description = '1 Woche vor Termin'
+          Value = '10080'
+        end
+        item
+          Description = '2 Wochen vor Termin'
+          Value = '20160'
+        end>
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 5
+      OnExit = btn_CalConfigSave1Click
+      Width = 428
+    end
+    object chkbx_CalConfigReminder: TcxDBCheckBox
+      Left = 136
+      Top = 223
+      BiDiMode = bdRightToLeft
+      DataBinding.DataField = 'Erinnerung'
+      DataBinding.DataSource = ds_CalConfig
       ParentBackground = False
+      ParentBiDiMode = False
       ParentColor = False
-      TabOrder = 0
-      Properties.ActivePage = ts_A_KalenderConfig
-      Properties.CustomButtons.Buttons = <>
-      Properties.Images = dm_PCM.imglst_16x16
-      Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
-      Properties.TabSlants.Kind = skCutCorner
-      Properties.TabWidth = 100
-      ClientRectBottom = 788
-      ClientRectLeft = 2
-      ClientRectRight = 1268
-      ClientRectTop = 28
-      object ts_A_KalenderConfig: TcxTabSheet
-        Caption = 'Kalender'
-        ImageIndex = 10
-        object grpbx_FTPConfig: TcxGroupBox
-          Left = 0
-          Top = 533
-          Align = alBottom
-          Caption = 'FTP-Zugangsdaten'
-          TabOrder = 2
-          Height = 227
-          Width = 1266
-          object edt_CalConfigFTP_Benutzer: TcxDBTextEdit
-            Left = 81
-            Top = 122
-            DataBinding.DataField = 'user'
-            DataBinding.DataSource = ds_CalConfigFTP
-            ParentFont = False
-            Style.BorderStyle = ebsFlat
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            TabOrder = 2
-            OnExit = btn_CalConfigFTPSaveClick
-            Width = 390
-          end
-          object edt_CalConfigFTP_Datei: TcxDBTextEdit
-            Left = 638
-            Top = 97
-            DataBinding.DataField = 'kalendername'
-            DataBinding.DataSource = ds_CalConfigFTP
-            ParentFont = False
-            Style.BorderStyle = ebsFlat
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            TabOrder = 1
-            OnExit = btn_CalConfigFTPSaveClick
-            Width = 390
-          end
-          object edt_CalConfigFTP_Passwort: TcxDBTextEdit
-            Left = 638
-            Top = 122
-            DataBinding.DataField = 'passwort'
-            DataBinding.DataSource = ds_CalConfigFTP
-            ParentFont = False
-            Properties.EchoMode = eemPassword
-            Properties.PasswordChar = '*'
-            Style.BorderStyle = ebsFlat
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            TabOrder = 3
-            OnExit = btn_CalConfigFTPSaveClick
-            Width = 390
-          end
-          object edt_CalConfigFTP_URL: TcxDBTextEdit
-            Left = 81
-            Top = 97
-            DataBinding.DataField = 'url'
-            DataBinding.DataSource = ds_CalConfigFTP
-            ParentFont = False
-            Style.BorderStyle = ebsFlat
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            TabOrder = 0
-            OnExit = btn_CalConfigFTPSaveClick
-            Width = 390
-          end
-          object grd_FTPConfig: TcxGrid
-            Left = 3
-            Top = 149
-            Width = 1260
-            Height = 69
-            Align = alBottom
-            BorderStyle = cxcbsNone
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 4
-            LockedStateImageOptions.Effect = lsieDark
-            object grdDBTblView_FTPConfig: TcxGridDBTableView
-              Navigator.Buttons.CustomButtons = <>
-              FilterBox.CustomizeDialog = False
-              ScrollbarAnnotations.CustomAnnotations = <>
-              DataController.DataSource = ds_CalConfigFTP
-              DataController.Filter.PercentWildcard = '*'
-              DataController.Filter.UnderscoreWildcard = '?'
-              DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-              DataController.Summary.DefaultGroupSummaryItems = <>
-              DataController.Summary.FooterSummaryItems = <
-                item
-                  Kind = skCount
-                end>
-              DataController.Summary.SummaryGroups = <
-                item
-                  Links = <
-                    item
-                    end>
-                  SummaryItems = <
-                    item
-                    end>
-                end>
-              OptionsBehavior.IncSearch = True
-              OptionsBehavior.ShowHourglassCursor = False
-              OptionsCustomize.ColumnsQuickCustomization = True
-              OptionsData.Deleting = False
-              OptionsData.Editing = False
-              OptionsData.Inserting = False
-              OptionsSelection.CellSelect = False
-              OptionsView.CellEndEllipsis = True
-              OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-              OptionsView.GroupByBox = False
-              OptionsView.HeaderFilterButtonShowMode = fbmButton
-              OptionsView.IndicatorWidth = 14
-              object grdDBTblView_FTPConfigurl: TcxGridDBColumn
-                Caption = 'Host'
-                DataBinding.FieldName = 'url'
-                DataBinding.IsNullValueType = True
-                SortIndex = 0
-                SortOrder = soAscending
-                Width = 300
-              end
-              object grdDBTblView_FTPConfigkalendername: TcxGridDBColumn
-                Caption = 'Dateiname'
-                DataBinding.FieldName = 'kalendername'
-                DataBinding.IsNullValueType = True
-                Width = 300
-              end
-              object grdDBTblView_FTPConfiguser: TcxGridDBColumn
-                Caption = 'Benutzer'
-                DataBinding.FieldName = 'user'
-                DataBinding.IsNullValueType = True
-                Width = 100
-              end
-              object grdDBTblView_FTPConfigpasswort: TcxGridDBColumn
-                Caption = 'Passwort'
-                DataBinding.FieldName = 'passwort'
-                DataBinding.IsNullValueType = True
-                PropertiesClassName = 'TcxTextEditProperties'
-                Properties.EchoMode = eemPassword
-                Properties.PasswordChar = '*'
-                Width = 100
-              end
-            end
-            object grdlvl_FTPConfig: TcxGridLevel
-              GridView = grdDBTblView_FTPConfig
-            end
-          end
-          object lbl_CalConfigFTP_Benutzer: TcxLabel
-            Left = 8
-            Top = 123
-            Caption = 'Benutzer:'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            Transparent = True
-          end
-          object lbl_CalConfigFTP_Datei: TcxLabel
-            Left = 571
-            Top = 98
-            Caption = 'Dateiname:'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            Transparent = True
-          end
-          object lbl_CalConfigFTP_INFO: TcxLabel
-            Left = 8
-            Top = 79
-            Caption = 
-              'FTP-Zugangsdaten f'#252'r die Ablage der Kalenderdateien im ICS-Forma' +
-              't'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = [fsBold]
-            Style.HotTrack = False
-            Style.IsFontAssigned = True
-            Transparent = True
-          end
-          object lbl_CalConfigFTP_Passwort: TcxLabel
-            Left = 571
-            Top = 123
-            Caption = 'Passwort:'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            Transparent = True
-          end
-          object lbl_CalConfigFTP_URL: TcxLabel
-            Left = 8
-            Top = 98
-            Caption = 'Host:'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            Transparent = True
-          end
-          object brdckctrl_FTP: TdxBarDockControl
-            Left = 3
-            Top = 15
-            Width = 1260
-            Height = 63
-            Align = dalTop
-            BarManager = brmgr_Config
-          end
-        end
-        object grpbx_CalcConfig: TcxGroupBox
-          Left = 0
-          Top = 0
-          Align = alTop
-          Caption = 'abonnierte Kalender'
-          TabOrder = 0
-          Height = 266
-          Width = 1266
-          object lbl_CalConfig_Benutzer: TcxLabel
-            Left = 571
-            Top = 84
-            Caption = 'Benutzer:'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            Transparent = True
-          end
-          object lbl_CalConfig_FontColor: TcxLabel
-            Left = 571
-            Top = 139
-            Caption = 'Schriftfarbe:'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            Transparent = True
-          end
-          object lbl_CalConfig_Kalender: TcxLabel
-            Left = 8
-            Top = 84
-            Caption = 'Kalender:'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            Transparent = True
-          end
-          object lbl_CalConfig_LabelColor: TcxLabel
-            Left = 8
-            Top = 139
-            Caption = 'Terminfarbe:'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            Transparent = True
-          end
-          object lbl_CalConfig_Link: TcxLabel
-            Left = 8
-            Top = 111
-            Caption = 'Link:'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            Transparent = True
-          end
-          object lbl_CalConfig_Passwort: TcxLabel
-            Left = 571
-            Top = 111
-            Caption = 'Passwort:'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            Transparent = True
-          end
-          object edt_CalConfig_Benutzer: TcxDBTextEdit
-            Left = 638
-            Top = 83
-            DataBinding.DataField = 'Benutzer'
-            DataBinding.DataSource = ds_CalConfig
-            ParentFont = False
-            Style.BorderStyle = ebsFlat
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            TabOrder = 1
-            OnExit = btn_CalConfigSave1Click
-            Width = 390
-          end
-          object edt_CalConfig_Kalender: TcxDBTextEdit
-            Left = 81
-            Top = 83
-            DataBinding.DataField = 'Kalender'
-            DataBinding.DataSource = ds_CalConfig
-            ParentFont = False
-            Style.BorderStyle = ebsFlat
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            TabOrder = 0
-            OnExit = btn_CalConfigSave1Click
-            Width = 390
-          end
-          object edt_CalConfig_Link: TcxDBTextEdit
-            Left = 81
-            Top = 110
-            DataBinding.DataField = 'Link'
-            DataBinding.DataSource = ds_CalConfig
-            ParentFont = False
-            Style.BorderStyle = ebsFlat
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            TabOrder = 2
-            OnExit = btn_CalConfigSave1Click
-            Width = 390
-          end
-          object edt_CalConfig_Passwort: TcxDBTextEdit
-            Left = 638
-            Top = 110
-            DataBinding.DataField = 'Passwort'
-            DataBinding.DataSource = ds_CalConfig
-            ParentFont = False
-            Properties.EchoMode = eemPassword
-            Properties.PasswordChar = '*'
-            Style.BorderStyle = ebsFlat
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            TabOrder = 3
-            OnExit = btn_CalConfigSave1Click
-            Width = 390
-          end
-          object grd_CalConfig: TcxGrid
-            Left = 3
-            Top = 189
-            Width = 1260
-            Height = 68
-            Align = alBottom
-            BorderStyle = cxcbsNone
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 14
-            TabStop = False
-            LockedStateImageOptions.Effect = lsieDark
-            object grdDBTblView_calconfig: TcxGridDBTableView
-              Navigator.Buttons.CustomButtons = <>
-              FilterBox.CustomizeDialog = False
-              ScrollbarAnnotations.CustomAnnotations = <>
-              DataController.DataSource = ds_CalConfig
-              DataController.Filter.PercentWildcard = '*'
-              DataController.Filter.UnderscoreWildcard = '?'
-              DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-              DataController.Summary.DefaultGroupSummaryItems = <>
-              DataController.Summary.FooterSummaryItems = <
-                item
-                  Kind = skCount
-                end>
-              DataController.Summary.SummaryGroups = <
-                item
-                  Links = <
-                    item
-                    end>
-                  SummaryItems = <
-                    item
-                    end>
-                end>
-              OptionsBehavior.IncSearch = True
-              OptionsBehavior.ShowHourglassCursor = False
-              OptionsCustomize.ColumnsQuickCustomization = True
-              OptionsData.Deleting = False
-              OptionsData.Editing = False
-              OptionsData.Inserting = False
-              OptionsSelection.CellSelect = False
-              OptionsView.CellEndEllipsis = True
-              OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-              OptionsView.GroupByBox = False
-              OptionsView.HeaderFilterButtonShowMode = fbmButton
-              OptionsView.IndicatorWidth = 14
-              object grdDBTblView_calconfigKalender: TcxGridDBColumn
-                DataBinding.FieldName = 'Kalender'
-                DataBinding.IsNullValueType = True
-                SortIndex = 0
-                SortOrder = soAscending
-                Width = 100
-              end
-              object grdDBTblView_calconfigLink: TcxGridDBColumn
-                DataBinding.FieldName = 'Link'
-                DataBinding.IsNullValueType = True
-                Width = 250
-              end
-              object grdDBTblView_calconfigBenutzer: TcxGridDBColumn
-                DataBinding.FieldName = 'Benutzer'
-                DataBinding.IsNullValueType = True
-                Width = 100
-              end
-              object grdDBTblView_calconfigPasswort: TcxGridDBColumn
-                DataBinding.FieldName = 'Passwort'
-                DataBinding.IsNullValueType = True
-                PropertiesClassName = 'TcxTextEditProperties'
-                Properties.EchoMode = eemPassword
-                Width = 100
-              end
-              object grdDBTblView_calconfigErinnerung: TcxGridDBColumn
-                DataBinding.FieldName = 'Erinnerung'
-                DataBinding.IsNullValueType = True
-                PropertiesClassName = 'TcxCheckBoxProperties'
-                Properties.ValueChecked = 'true'
-                Properties.ValueUnchecked = 'false'
-              end
-              object grdDBTblView_calconfigErinnerungVor: TcxGridDBColumn
-                Caption = 'Erinnerung in Minuten'
-                DataBinding.FieldName = 'ErinnerungVor'
-                DataBinding.IsNullValueType = True
-                Width = 100
-              end
-              object grdDBTblView_calconfigLabelColor: TcxGridDBColumn
-                Caption = 'Terminfarbe'
-                DataBinding.FieldName = 'LabelColor'
-                DataBinding.IsNullValueType = True
-                PropertiesClassName = 'TcxColorComboBoxProperties'
-                Properties.CustomColors = <>
-                Width = 80
-              end
-              object grdDBTblView_calconfigFontcolor: TcxGridDBColumn
-                Caption = 'Schriftfarbe'
-                DataBinding.FieldName = 'Fontcolor'
-                DataBinding.IsNullValueType = True
-                PropertiesClassName = 'TcxColorComboBoxProperties'
-                Properties.CustomColors = <>
-                Width = 80
-              end
-              object grdDBTblView_calconfigID_Benutzer: TcxGridDBColumn
-                Caption = 'Benutzer'
-                DataBinding.FieldName = 'ID_Benutzer'
-                DataBinding.IsNullValueType = True
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Benutzer'
-                  end>
-                Width = 100
-              end
-            end
-            object grdlvl_CalConfig: TcxGridLevel
-              GridView = grdDBTblView_calconfig
-            end
-          end
-          object cmbbx_CalConfigReminderVal: TcxDBImageComboBox
-            Left = 130
-            Top = 164
-            DataBinding.DataField = 'ErinnerungVor'
-            DataBinding.DataSource = ds_CalConfig
-            ParentFont = False
-            Properties.Items = <
+      ParentFont = False
+      Style.Color = clWindowFrame
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 4
+      Transparent = True
+      OnExit = btn_CalConfigSave1Click
+    end
+    object colcmbbx_CalConfigFontColor: TcxDBColorComboBox
+      Left = 657
+      Top = 198
+      DataBinding.DataField = 'Fontcolor'
+      DataBinding.DataSource = ds_CalConfig
+      ParentFont = False
+      Properties.AllowSelectColor = True
+      Properties.CustomColors = <>
+      Properties.PrepareList = cxplHTML4
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 8
+      OnExit = btn_CalConfigSave1Click
+      Width = 445
+    end
+    object colcmbbx_CalConfigLabelColor: TcxDBColorComboBox
+      Left = 136
+      Top = 198
+      DataBinding.DataField = 'LabelColor'
+      DataBinding.DataSource = ds_CalConfig
+      ParentFont = False
+      Properties.AllowSelectColor = True
+      Properties.CustomColors = <>
+      Properties.PrepareList = cxplHTML4
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 3
+      OnExit = btn_CalConfigSave1Click
+      Width = 449
+    end
+    object bardckctrl_Kalender: TdxBarDockControl
+      Left = 31
+      Top = 79
+      Width = 1071
+      Height = 63
+      Align = dalNone
+      AllowDocking = False
+      BarManager = brmgr_Config
+    end
+    object grd_Feiertage: TcxGrid
+      Left = 31
+      Top = 434
+      Width = 1071
+      Height = 191
+      BorderStyle = cxcbsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 11
+      TabStop = False
+      LockedStateImageOptions.Effect = lsieDark
+      object grdDBTblView_Feiertage: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        FilterBox.CustomizeDialog = False
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = ds_FT
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skCount
+          end>
+        DataController.Summary.SummaryGroups = <
+          item
+            Links = <
               item
-                Description = '0 Minuten vor Termin'
-                ImageIndex = 0
-                Value = 0
-              end
-              item
-                Description = '5 Minuten vor Termin'
-                Value = 5
-              end
-              item
-                Description = '10 Minuten vor Termin'
-                Value = 10
-              end
-              item
-                Description = '15 Minuten vor Termin'
-                Value = 15
-              end
-              item
-                Description = '20 Minuten vor Termin'
-                Value = 20
-              end
-              item
-                Description = '30 Minuten vor Termin'
-                Value = 30
-              end
-              item
-                Description = '1 Stunde vor Termin'
-                Value = 60
-              end
-              item
-                Description = '2 Stunden vor Termin'
-                Value = 120
-              end
-              item
-                Description = '3 Stunden vor Termin'
-                Value = 180
-              end
-              item
-                Description = '4 Stunden vor Termin'
-                Value = 240
-              end
-              item
-                Description = '5 Stunden vor Termin'
-                Value = 300
-              end
-              item
-                Description = '6 Stunden vor Termin'
-                Value = 360
-              end
-              item
-                Description = '7 Stunden vor Termin'
-                Value = 420
-              end
-              item
-                Description = '8 Stunden vor Termin'
-                Value = 480
-              end
-              item
-                Description = '9 Stunden vor Termin'
-                Value = '540'
-              end
-              item
-                Description = '10 Stunden vor Termin'
-                Value = '600'
-              end
-              item
-                Description = '11 Stunden vor Termin'
-                Value = '660'
-              end
-              item
-                Description = '12 Stunden vor Termin'
-                Value = '720'
-              end
-              item
-                Description = '18 Stunden vor Termin'
-                Value = '1080'
-              end
-              item
-                Description = '1 Tag vor Termin'
-                Value = '1440'
-              end
-              item
-                Description = '2 Tage vor Termin'
-                Value = '2880'
-              end
-              item
-                Description = '3 Tage vor Termin'
-                Value = '4320'
-              end
-              item
-                Description = '4 Tage vor Termin'
-                Value = '5760'
-              end
-              item
-                Description = '1 Woche vor Termin'
-                Value = '10080'
-              end
-              item
-                Description = '2 Wochen vor Termin'
-                Value = '20160'
               end>
-            Style.BorderStyle = ebsFlat
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            TabOrder = 7
-            OnExit = btn_CalConfigSave1Click
-            Width = 341
-          end
-          object chkbx_CalConfigReminder: TcxDBCheckBox
-            Left = 114
-            Top = 165
-            BiDiMode = bdRightToLeft
-            DataBinding.DataField = 'Erinnerung'
-            DataBinding.DataSource = ds_CalConfig
-            ParentBackground = False
-            ParentBiDiMode = False
-            ParentColor = False
-            ParentFont = False
-            Style.BorderStyle = ebsFlat
-            Style.Color = clWindowFrame
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.TransparentBorder = False
-            Style.IsFontAssigned = True
-            TabOrder = 6
-            Transparent = True
-            OnExit = btn_CalConfigSave1Click
-          end
-          object colcmbbx_CalConfigFontColor: TcxDBColorComboBox
-            Left = 638
-            Top = 137
-            DataBinding.DataField = 'Fontcolor'
-            DataBinding.DataSource = ds_CalConfig
-            ParentFont = False
-            Properties.AllowSelectColor = True
-            Properties.CustomColors = <>
-            Properties.PrepareList = cxplHTML4
-            Style.BorderStyle = ebsFlat
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            TabOrder = 5
-            OnExit = btn_CalConfigSave1Click
-            Width = 390
-          end
-          object colcmbbx_CalConfigLabelColor: TcxDBColorComboBox
-            Left = 81
-            Top = 137
-            DataBinding.DataField = 'LabelColor'
-            DataBinding.DataSource = ds_CalConfig
-            ParentFont = False
-            Properties.AllowSelectColor = True
-            Properties.CustomColors = <>
-            Properties.PrepareList = cxplHTML4
-            Style.BorderStyle = ebsFlat
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            TabOrder = 4
-            OnExit = btn_CalConfigSave1Click
-            Width = 390
-          end
-          object lbl_CalConfigReminder: TcxLabel
-            Left = 8
-            Top = 166
-            Caption = 'an Termine erinnern:'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            Transparent = True
-          end
-          object bardckctrl_Kalender: TdxBarDockControl
-            Left = 3
-            Top = 15
-            Width = 1260
-            Height = 63
-            Align = dalTop
-            AllowDocking = False
-            BarManager = brmgr_Config
-          end
+            SummaryItems = <
+              item
+              end>
+          end>
+        OptionsBehavior.IncSearch = True
+        OptionsBehavior.ShowHourglassCursor = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.CellEndEllipsis = True
+        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.IndicatorWidth = 14
+        object grdDBTblView_FeiertageJahr: TcxGridDBColumn
+          DataBinding.FieldName = 'Jahr'
+          DataBinding.IsNullValueType = True
+          SortIndex = 0
+          SortOrder = soAscending
+          Width = 80
         end
-        object grpbx_Feiertage: TcxGroupBox
-          Left = 0
-          Top = 266
-          Align = alClient
-          Caption = 'Feiertage'
-          TabOrder = 1
-          Height = 267
-          Width = 1266
-          object grd_Feiertage: TcxGrid
-            Left = 3
-            Top = 78
-            Width = 1260
-            Height = 180
-            Align = alClient
-            BorderStyle = cxcbsNone
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 0
-            TabStop = False
-            LockedStateImageOptions.Effect = lsieDark
-            object grdDBTblView_Feiertage: TcxGridDBTableView
-              Navigator.Buttons.CustomButtons = <>
-              FilterBox.CustomizeDialog = False
-              ScrollbarAnnotations.CustomAnnotations = <>
-              DataController.DataSource = ds_FT
-              DataController.Filter.PercentWildcard = '*'
-              DataController.Filter.UnderscoreWildcard = '?'
-              DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-              DataController.Summary.DefaultGroupSummaryItems = <>
-              DataController.Summary.FooterSummaryItems = <
-                item
-                  Kind = skCount
-                end>
-              DataController.Summary.SummaryGroups = <
-                item
-                  Links = <
-                    item
-                    end>
-                  SummaryItems = <
-                    item
-                    end>
-                end>
-              OptionsBehavior.IncSearch = True
-              OptionsBehavior.ShowHourglassCursor = False
-              OptionsCustomize.ColumnsQuickCustomization = True
-              OptionsData.Deleting = False
-              OptionsData.Editing = False
-              OptionsData.Inserting = False
-              OptionsSelection.CellSelect = False
-              OptionsView.CellEndEllipsis = True
-              OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-              OptionsView.GroupByBox = False
-              OptionsView.HeaderFilterButtonShowMode = fbmButton
-              OptionsView.IndicatorWidth = 14
-              object grdDBTblView_FeiertageJahr: TcxGridDBColumn
-                DataBinding.FieldName = 'Jahr'
-                DataBinding.IsNullValueType = True
-                SortIndex = 0
-                SortOrder = soAscending
-                Width = 80
-              end
-              object grdDBTblView_FeiertageMonat: TcxGridDBColumn
-                DataBinding.FieldName = 'Monat'
-                DataBinding.IsNullValueType = True
-                SortIndex = 1
-                SortOrder = soAscending
-                Width = 80
-              end
-              object grdDBTblView_FeiertageTag: TcxGridDBColumn
-                DataBinding.FieldName = 'Tag'
-                DataBinding.IsNullValueType = True
-                SortIndex = 2
-                SortOrder = soAscending
-                Width = 80
-              end
-              object grdDBTblView_FeiertageKategorie: TcxGridDBColumn
-                DataBinding.FieldName = 'Kategorie'
-                DataBinding.IsNullValueType = True
-              end
-              object grdDBTblView_FeiertageBezeichnung: TcxGridDBColumn
-                DataBinding.FieldName = 'Bezeichnung'
-                DataBinding.IsNullValueType = True
-                Width = 742
-              end
-            end
-            object grdlvl_Feiertage: TcxGridLevel
-              GridView = grdDBTblView_Feiertage
-            end
-          end
-          object brdckctrl_Feiertage: TdxBarDockControl
-            Left = 3
-            Top = 15
-            Width = 1260
-            Height = 63
-            Align = dalTop
-            AllowDocking = False
-            BarManager = brmgr_Config
-          end
+        object grdDBTblView_FeiertageMonat: TcxGridDBColumn
+          DataBinding.FieldName = 'Monat'
+          DataBinding.IsNullValueType = True
+          SortIndex = 1
+          SortOrder = soAscending
+          Width = 80
+        end
+        object grdDBTblView_FeiertageTag: TcxGridDBColumn
+          DataBinding.FieldName = 'Tag'
+          DataBinding.IsNullValueType = True
+          SortIndex = 2
+          SortOrder = soAscending
+          Width = 80
+        end
+        object grdDBTblView_FeiertageKategorie: TcxGridDBColumn
+          DataBinding.FieldName = 'Kategorie'
+          DataBinding.IsNullValueType = True
+        end
+        object grdDBTblView_FeiertageBezeichnung: TcxGridDBColumn
+          DataBinding.FieldName = 'Bezeichnung'
+          DataBinding.IsNullValueType = True
+          Width = 300
         end
       end
-      object ts_B_Aufgaben: TcxTabSheet
-        Caption = 'Aufgaben'
-        ImageIndex = 58
-        object pnl_AufgabenPrio: TcxGroupBox
-          Left = 0
-          Top = 300
-          Align = alClient
+      object grdlvl_Feiertage: TcxGridLevel
+        GridView = grdDBTblView_Feiertage
+      end
+    end
+    object brdckctrl_Feiertage: TdxBarDockControl
+      Left = 31
+      Top = 365
+      Width = 1071
+      Height = 63
+      Align = dalNone
+      AllowDocking = False
+      BarManager = brmgr_Config
+    end
+    object grd_AufgabenPrio: TcxGrid
+      Left = 10000
+      Top = 10000
+      Width = 1054
+      Height = 140
+      BorderStyle = cxcbsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 25
+      TabStop = False
+      Visible = False
+      LockedStateImageOptions.Effect = lsieDark
+      object grdDBTblView_AufgabenPrio: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        FilterBox.CustomizeDialog = False
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = ds_prio
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skCount
+          end>
+        DataController.Summary.SummaryGroups = <
+          item
+            Links = <
+              item
+              end>
+            SummaryItems = <
+              item
+              end>
+          end>
+        OptionsBehavior.IncSearch = True
+        OptionsBehavior.ShowHourglassCursor = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.CellEndEllipsis = True
+        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.IndicatorWidth = 14
+        object grdDBTblView_AufgabenPrioPrioritaet: TcxGridDBColumn
           Caption = 'Priorit'#228't'
-          TabOrder = 1
-          Height = 259
-          Width = 1266
-          object grd_AufgabenPrio: TcxGrid
-            Left = 3
-            Top = 113
-            Width = 1260
-            Height = 137
-            Align = alClient
-            BorderStyle = cxcbsNone
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 1
-            TabStop = False
-            LockedStateImageOptions.Effect = lsieDark
-            ExplicitLeft = 2
-            ExplicitTop = 111
-            ExplicitWidth = 1272
-            ExplicitHeight = 157
-            object grdDBTblView_AufgabenPrio: TcxGridDBTableView
-              Navigator.Buttons.CustomButtons = <>
-              FilterBox.CustomizeDialog = False
-              ScrollbarAnnotations.CustomAnnotations = <>
-              DataController.DataSource = ds_prio
-              DataController.Filter.PercentWildcard = '*'
-              DataController.Filter.UnderscoreWildcard = '?'
-              DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-              DataController.Summary.DefaultGroupSummaryItems = <>
-              DataController.Summary.FooterSummaryItems = <
-                item
-                  Kind = skCount
-                end>
-              DataController.Summary.SummaryGroups = <
-                item
-                  Links = <
-                    item
-                    end>
-                  SummaryItems = <
-                    item
-                    end>
-                end>
-              OptionsBehavior.IncSearch = True
-              OptionsBehavior.ShowHourglassCursor = False
-              OptionsCustomize.ColumnsQuickCustomization = True
-              OptionsData.Deleting = False
-              OptionsData.Editing = False
-              OptionsData.Inserting = False
-              OptionsSelection.CellSelect = False
-              OptionsView.CellEndEllipsis = True
-              OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-              OptionsView.GroupByBox = False
-              OptionsView.HeaderFilterButtonShowMode = fbmButton
-              OptionsView.IndicatorWidth = 14
-              object grdDBTblView_AufgabenPrioPrioritaet: TcxGridDBColumn
-                Caption = 'Priorit'#228't'
-                DataBinding.FieldName = 'Prioritaet'
-                DataBinding.IsNullValueType = True
-                Width = 200
-              end
-              object grdDBTblView_AufgabenPrioBezeichnung: TcxGridDBColumn
-                DataBinding.FieldName = 'Bezeichnung'
-                DataBinding.IsNullValueType = True
-                Width = 700
-              end
-            end
-            object grdlvl_AufgabenPrio: TcxGridLevel
-              GridView = grdDBTblView_AufgabenPrio
-            end
-          end
-          object bardckctrl_AufgabenPrio: TdxBarDockControl
-            Left = 3
-            Top = 15
-            Width = 1260
-            Height = 63
-            Align = dalTop
-            AllowDocking = False
-            BarManager = brmgr_Config
-          end
-          object grd_AufgabenPrioValues: TcxGroupBox
-            Left = 3
-            Top = 78
-            Align = alTop
-            PanelStyle.Active = True
-            Style.BorderStyle = ebsNone
-            TabOrder = 0
-            ExplicitTop = 59
-            Height = 35
-            Width = 1260
-            object lbl_AufgabenPrioBezeichnung: TcxLabel
-              Left = 546
-              Top = 7
-              Caption = 'Bezeichnung:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_AufgabenPrioPrio: TcxLabel
-              Left = 6
-              Top = 7
-              Caption = 'Priorit'#228't:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object edt_PrioBez: TcxDBTextEdit
-              Left = 638
-              Top = 6
-              DataBinding.DataField = 'Bezeichnung'
-              DataBinding.DataSource = ds_prio
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 2
-              OnExit = btn_AufgabenPrioSaveClick
-              Width = 390
-            end
-            object edt_PrioNumber: TcxDBTextEdit
-              Left = 89
-              Top = 6
-              DataBinding.DataField = 'Prioritaet'
-              DataBinding.DataSource = ds_prio
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 0
-              OnExit = btn_AufgabenPrioSaveClick
-              Width = 390
-            end
-          end
+          DataBinding.FieldName = 'Prioritaet'
+          DataBinding.IsNullValueType = True
+          Width = 200
         end
-        object pnl_Aufgabenarten: TcxGroupBox
-          Left = 0
-          Top = 0
-          Align = alTop
-          Caption = 'Aufgabenarten'
-          TabOrder = 0
-          Height = 300
-          Width = 1266
-          object lbl_AufgabenartenColor: TcxLabel
-            Left = 546
-            Top = 84
-            Caption = 'Aufgaben Farbe:'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            Transparent = True
-          end
-          object lbl_Aufgabenart: TcxLabel
-            Left = 8
-            Top = 84
-            Caption = 'Bezeichnung:'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            Transparent = True
-          end
-          object edt_Aufgabenart: TcxDBTextEdit
-            Left = 91
-            Top = 83
-            DataBinding.DataField = 'Bezeichnung'
-            DataBinding.DataSource = ds_Aufgabenarten
-            ParentFont = False
-            Style.BorderStyle = ebsFlat
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            TabOrder = 0
-            OnExit = btn_AufgabenSaveClick
-            Width = 390
-          end
-          object grd_Aufgabenarten: TcxGrid
-            Left = 3
-            Top = 105
-            Width = 1260
-            Height = 186
-            Align = alBottom
-            BorderStyle = cxcbsNone
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 2
-            TabStop = False
-            LockedStateImageOptions.Effect = lsieDark
-            ExplicitLeft = 2
-            ExplicitTop = 112
-            ExplicitWidth = 1272
-            object grdDBTblView_Aufgabenarten: TcxGridDBTableView
-              Navigator.Buttons.CustomButtons = <>
-              FilterBox.CustomizeDialog = False
-              ScrollbarAnnotations.CustomAnnotations = <>
-              DataController.DataSource = ds_Aufgabenarten
-              DataController.Filter.PercentWildcard = '*'
-              DataController.Filter.UnderscoreWildcard = '?'
-              DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-              DataController.Summary.DefaultGroupSummaryItems = <>
-              DataController.Summary.FooterSummaryItems = <
-                item
-                  Kind = skCount
-                end>
-              DataController.Summary.SummaryGroups = <
-                item
-                  Links = <
-                    item
-                    end>
-                  SummaryItems = <
-                    item
-                    end>
-                end>
-              OptionsBehavior.IncSearch = True
-              OptionsBehavior.ShowHourglassCursor = False
-              OptionsCustomize.ColumnsQuickCustomization = True
-              OptionsData.Deleting = False
-              OptionsData.Editing = False
-              OptionsData.Inserting = False
-              OptionsSelection.CellSelect = False
-              OptionsView.CellEndEllipsis = True
-              OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-              OptionsView.GroupByBox = False
-              OptionsView.HeaderFilterButtonShowMode = fbmButton
-              OptionsView.IndicatorWidth = 14
-              object grdDBTblView_AufgabenartenBezeichnung: TcxGridDBColumn
-                DataBinding.FieldName = 'Bezeichnung'
-                DataBinding.IsNullValueType = True
-                Width = 700
-              end
-              object grdDBTblView_AufgabenartenFarbe: TcxGridDBColumn
-                DataBinding.FieldName = 'Farbe'
-                DataBinding.IsNullValueType = True
-                PropertiesClassName = 'TcxColorComboBoxProperties'
-                Properties.CustomColors = <>
-                Properties.ShowDescriptions = False
-                Width = 200
-              end
-            end
-            object grdLvl_Aufgabenarten: TcxGridLevel
-              GridView = grdDBTblView_Aufgabenarten
-            end
-          end
-          object colcmbbx_Aufgabenart: TcxDBColorComboBox
-            Left = 638
-            Top = 82
-            DataBinding.DataField = 'Farbe'
-            DataBinding.DataSource = ds_Aufgabenarten
-            ParentFont = False
-            Properties.AllowSelectColor = True
-            Properties.CustomColors = <>
-            Properties.PrepareList = cxplHTML4
-            Properties.ShowDescriptions = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            TabOrder = 1
-            OnExit = btn_AufgabenSaveClick
-            Width = 390
-          end
-          object bardckctrl_Aufgabenarten: TdxBarDockControl
-            Left = 3
-            Top = 15
-            Width = 1260
-            Height = 63
-            Align = dalTop
-            AllowDocking = False
-            BarManager = brmgr_Config
-          end
-        end
-        object pnl_AufgabenSonstiges: TcxGroupBox
-          Left = 0
-          Top = 559
-          Align = alBottom
-          Caption = 'Sonstige Einstellungen'
-          TabOrder = 2
-          Height = 201
-          Width = 1266
-          object cmbbx_AufgabenSonstigesAdresseFirma: TcxDBLookupComboBox
-            AlignWithMargins = True
-            Left = 638
-            Top = 109
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
-            DataBinding.DataField = 'Adresse_firma'
-            DataBinding.DataSource = ds_option
-            Properties.KeyFieldNames = 'ID'
-            Properties.ListColumns = <
-              item
-                FieldName = 'Name'
-              end>
-            Properties.ListSource = dm_PCM.ds_Config_Firmen
-            Style.BorderStyle = ebsFlat
-            TabOrder = 3
-            Width = 390
-          end
-          object cmbbx_AufgabenSonstigesAdresseEigen: TcxDBLookupComboBox
-            AlignWithMargins = True
-            Left = 91
-            Top = 109
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
-            DataBinding.DataField = 'Adresse_eigene'
-            DataBinding.DataSource = ds_option
-            Properties.KeyFieldNames = 'ID'
-            Properties.ListColumns = <
-              item
-                FieldName = 'Name'
-              end>
-            Properties.ListSource = dm_PCM.ds_Config_Ansprechpartner
-            Style.BorderStyle = ebsFlat
-            TabOrder = 2
-            Width = 390
-          end
-          object bardckctrl_AufgabenSonstiges: TdxBarDockControl
-            Left = 3
-            Top = 15
-            Width = 1260
-            Height = 63
-            Align = dalTop
-            BarManager = brmgr_Config
-          end
-          object lbl_AufgabenSonstigesStunden: TcxLabel
-            Left = 546
-            Top = 84
-            Caption = 'Stunden pro Tag:'
-            Transparent = True
-          end
-          object lbl_AufgabenSonstigesJira: TcxLabel
-            Left = 8
-            Top = 84
-            Caption = 'Jira-Basic-Url:'
-            Transparent = True
-          end
-          object lbl_AufgabenSonstigesAdresseFirma: TcxLabel
-            Left = 546
-            Top = 110
-            Caption = 'Adresse Firma:'
-            Transparent = True
-          end
-          object lbl_AufgabenSonstigesAdresseEigen: TcxLabel
-            Left = 8
-            Top = 110
-            Caption = 'Adresse Selbst:'
-            Transparent = True
-          end
-          object edt_AufgabenSonstigesJira: TcxDBTextEdit
-            Left = 91
-            Top = 83
-            DataBinding.DataField = 'Jira_Basic_url'
-            DataBinding.DataSource = ds_option
-            TabOrder = 0
-            Width = 390
-          end
-          object mskedt_AufgabenSonstigesStunden: TcxDBCurrencyEdit
-            Left = 638
-            Top = 83
-            DataBinding.DataField = 'StundenProArbeitstag'
-            DataBinding.DataSource = ds_option
-            Properties.DisplayFormat = ',0.0'
-            TabOrder = 1
-            Width = 390
-          end
-          object cmbbx_AufgabenSonstigesBundeslandFirma: TcxDBLookupComboBox
-            Left = 638
-            Top = 137
-            DataBinding.DataField = 'Adresse_firmaBL'
-            DataBinding.DataSource = ds_option
-            Properties.KeyFieldNames = 'ID'
-            Properties.ListColumns = <
-              item
-                FieldName = 'Bezeichnung'
-              end>
-            Properties.ListSource = dm_PCM.ds_Config_Bundesland
-            TabOrder = 5
-            Width = 390
-          end
-          object cmbbx_AufgabenSonstigesBundeslandEigen: TcxDBLookupComboBox
-            AlignWithMargins = True
-            Left = 91
-            Top = 137
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
-            DataBinding.DataField = 'Adresse_eigeneBL'
-            DataBinding.DataSource = ds_option
-            Properties.KeyFieldNames = 'ID'
-            Properties.ListColumns = <
-              item
-                FieldName = 'Bezeichnung'
-              end>
-            Properties.ListSource = dm_PCM.ds_Config_Bundesland
-            Style.BorderStyle = ebsFlat
-            TabOrder = 4
-            Width = 390
-          end
-          object lbl_AufgabenSonstigesBundeslandEigen: TcxLabel
-            Left = 8
-            Top = 138
-            Caption = 'Bundesland:'
-            Transparent = True
-          end
-          object lbl_AufgabenSonstigesBundeslandFirma: TcxLabel
-            Left = 546
-            Top = 138
-            Caption = 'Bundesland:'
-            Transparent = True
-          end
-          object edt_AufgabenSonstigesAccToDo: TcxDBTextEdit
-            Left = 91
-            Top = 166
-            DataBinding.DataField = 'Account_Privat'
-            DataBinding.DataSource = ds_option
-            TabOrder = 6
-            Width = 390
-          end
-          object lbl_AufgabenSonstigesAccMail: TcxLabel
-            Left = 546
-            Top = 167
-            Caption = 'Account-Mails:'
-            Transparent = True
-          end
-          object lbl_AufgabenSonstigesAccToDo: TcxLabel
-            Left = 8
-            Top = 167
-            Caption = 'Account-ToDo:'
-            Transparent = True
-          end
-          object edt_AufgabenSonstigesAccMail: TcxDBTextEdit
-            Left = 638
-            Top = 166
-            DataBinding.DataField = 'Account_Geschaeftlich'
-            DataBinding.DataSource = ds_option
-            TabOrder = 7
-            Width = 390
-          end
+        object grdDBTblView_AufgabenPrioBezeichnung: TcxGridDBColumn
+          DataBinding.FieldName = 'Bezeichnung'
+          DataBinding.IsNullValueType = True
+          Width = 700
         end
       end
-      object ts_C_StundenplanConfig: TcxTabSheet
-        Caption = 'Stundenplan'
-        ImageIndex = 14
-        object grpbx_Fach: TcxGroupBox
-          Left = 0
-          Top = 0
-          Align = alClient
-          Caption = 'Anzeige Schulf'#228'cher'
-          TabOrder = 0
-          Height = 565
-          Width = 1266
-          object grd_StundenplanConfig: TcxGrid
-            Left = 3
-            Top = 142
-            Width = 1260
-            Height = 414
-            Align = alClient
-            BorderStyle = cxcbsNone
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 1
-            TabStop = False
-            LockedStateImageOptions.Effect = lsieDark
-            ExplicitLeft = 2
-            ExplicitTop = 140
-            ExplicitWidth = 1272
-            ExplicitHeight = 434
-            object grdDBTblView_StundenplanConfig: TcxGridDBTableView
-              Navigator.Buttons.CustomButtons = <>
-              FilterBox.CustomizeDialog = False
-              ScrollbarAnnotations.CustomAnnotations = <>
-              DataController.DataSource = ds_SchulFaecher
-              DataController.Filter.PercentWildcard = '*'
-              DataController.Filter.UnderscoreWildcard = '?'
-              DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-              DataController.Summary.DefaultGroupSummaryItems = <>
-              DataController.Summary.FooterSummaryItems = <
-                item
-                  Kind = skCount
-                end>
-              DataController.Summary.SummaryGroups = <
-                item
-                  Links = <
-                    item
-                    end>
-                  SummaryItems = <
-                    item
-                    end>
-                end>
-              OptionsBehavior.IncSearch = True
-              OptionsBehavior.ShowHourglassCursor = False
-              OptionsCustomize.ColumnsQuickCustomization = True
-              OptionsData.Deleting = False
-              OptionsData.Editing = False
-              OptionsData.Inserting = False
-              OptionsSelection.CellSelect = False
-              OptionsView.CellEndEllipsis = True
-              OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-              OptionsView.GroupByBox = False
-              OptionsView.HeaderFilterButtonShowMode = fbmButton
-              OptionsView.IndicatorWidth = 14
-              object grdDBTblView_StundenplanConfigBezeichnung: TcxGridDBColumn
-                DataBinding.FieldName = 'Bezeichnung'
-                DataBinding.IsNullValueType = True
-                SortIndex = 0
-                SortOrder = soAscending
-                Width = 300
-              end
-              object grdDBTblView_StundenplanConfigFarbe: TcxGridDBColumn
-                DataBinding.FieldName = 'Farbe'
-                DataBinding.IsNullValueType = True
-                PropertiesClassName = 'TcxColorComboBoxProperties'
-                Properties.CustomColors = <>
-                Properties.NamingConvention = cxncHTML4
-                Properties.ShowDescriptions = False
-                Width = 150
-              end
-              object grdDBTblView_StundenplanConfigSchriftfarbe: TcxGridDBColumn
-                DataBinding.FieldName = 'Schriftfarbe'
-                DataBinding.IsNullValueType = True
-                PropertiesClassName = 'TcxColorComboBoxProperties'
-                Properties.CustomColors = <>
-                Properties.NamingConvention = cxncHTML4
-                Properties.PrepareList = cxplHTML4
-                Properties.ShowDescriptions = False
-                Width = 150
-              end
-            end
-            object grdlvl_StundenplanConfig: TcxGridLevel
-              GridView = grdDBTblView_StundenplanConfig
-            end
-          end
-          object pnl_StundenplanConfig: TcxGroupBox
-            Left = 3
-            Top = 78
-            Align = alTop
-            PanelStyle.Active = True
-            Style.BorderStyle = ebsNone
-            TabOrder = 0
-            ExplicitTop = 59
-            Height = 64
-            Width = 1260
-            object colcmbbx_StundenplanConfig_FontColor: TcxDBColorComboBox
-              Left = 638
-              Top = 35
-              DataBinding.DataField = 'Schriftfarbe'
-              DataBinding.DataSource = ds_SchulFaecher
-              ParentFont = False
-              Properties.AllowSelectColor = True
-              Properties.CustomColors = <>
-              Properties.PrepareList = cxplHTML4
-              Properties.ShowDescriptions = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 2
-              OnExit = btn_FachSaveClick
-              Width = 390
-            end
-            object colcmbbx_StundenplanConfig_LabelColor: TcxDBColorComboBox
-              Left = 81
-              Top = 35
-              DataBinding.DataField = 'Farbe'
-              DataBinding.DataSource = ds_SchulFaecher
-              ParentFont = False
-              Properties.AllowSelectColor = True
-              Properties.CustomColors = <>
-              Properties.PrepareList = cxplHTML4
-              Properties.ShowDescriptions = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 1
-              OnExit = btn_FachSaveClick
-              Width = 390
-            end
-            object edt_StundenplanConfig_FachBezeichnung: TcxDBTextEdit
-              Left = 81
-              Top = 10
-              DataBinding.DataField = 'Bezeichnung'
-              DataBinding.DataSource = ds_SchulFaecher
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 0
-              OnExit = btn_FachSaveClick
-              Width = 950
-            end
-            object lbl_StundenplanConfig_FachBezeichnung: TcxLabel
-              Left = 8
-              Top = 9
-              Caption = 'Schulfach:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_StundenplanConfig_FontColor: TcxLabel
-              Left = 571
-              Top = 37
-              Caption = 'Schriftfarbe:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_StundenplanConfig_LabelColor: TcxLabel
-              Left = 8
-              Top = 37
-              Caption = 'Hintergrund:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-          end
-          object brdckctrl_Schulfach: TdxBarDockControl
-            Left = 3
-            Top = 15
-            Width = 1260
-            Height = 63
-            Align = dalTop
-            BarManager = brmgr_Config
-          end
+      object grdlvl_AufgabenPrio: TcxGridLevel
+        GridView = grdDBTblView_AufgabenPrio
+      end
+    end
+    object bardckctrl_AufgabenPrio: TdxBarDockControl
+      Left = 10000
+      Top = 10000
+      Width = 1054
+      Height = 63
+      Align = dalNone
+      AllowDocking = False
+      BarManager = brmgr_Config
+      Visible = False
+    end
+    object edt_PrioBez: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Bezeichnung'
+      DataBinding.DataSource = ds_prio
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 24
+      Visible = False
+      OnExit = btn_AufgabenPrioSaveClick
+      Width = 449
+    end
+    object edt_PrioNumber: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Prioritaet'
+      DataBinding.DataSource = ds_prio
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 23
+      Visible = False
+      OnExit = btn_AufgabenPrioSaveClick
+      Width = 450
+    end
+    object edt_Aufgabenart: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Bezeichnung'
+      DataBinding.DataSource = ds_Aufgabenarten
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 19
+      Visible = False
+      OnExit = btn_AufgabenSaveClick
+      Width = 440
+    end
+    object grd_Aufgabenarten: TcxGrid
+      Left = 10000
+      Top = 10000
+      Width = 1054
+      Height = 189
+      BorderStyle = cxcbsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 21
+      TabStop = False
+      Visible = False
+      LockedStateImageOptions.Effect = lsieDark
+      object grdDBTblView_Aufgabenarten: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        FilterBox.CustomizeDialog = False
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = ds_Aufgabenarten
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skCount
+          end>
+        DataController.Summary.SummaryGroups = <
+          item
+            Links = <
+              item
+              end>
+            SummaryItems = <
+              item
+              end>
+          end>
+        OptionsBehavior.IncSearch = True
+        OptionsBehavior.ShowHourglassCursor = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.CellEndEllipsis = True
+        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.IndicatorWidth = 14
+        object grdDBTblView_AufgabenartenBezeichnung: TcxGridDBColumn
+          DataBinding.FieldName = 'Bezeichnung'
+          DataBinding.IsNullValueType = True
+          Width = 700
         end
-        object grpbx_FachUhr: TcxGroupBox
-          Left = 0
-          Top = 565
-          Align = alBottom
-          Caption = 'Anzeige Uhrzeiten'
-          TabOrder = 1
-          Height = 195
-          Width = 1266
-          object colcmbbx_StundenplanConfigUhr_FontColor: TcxDBColorComboBox
-            Left = 638
-            Top = 83
-            DataBinding.DataField = 'Schriftfarbe'
-            DataBinding.DataSource = ds_SchulFaecher_Config
-            ParentFont = False
-            Properties.AllowSelectColor = True
-            Properties.CustomColors = <>
-            Properties.PrepareList = cxplHTML4
-            Properties.ShowDescriptions = False
-            Style.BorderStyle = ebsNone
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            TabOrder = 1
-            OnExit = btn_FachUSaveClick
-            Width = 390
-          end
-          object colcmbbx_StundenplanConfigUhr_LabelColor: TcxDBColorComboBox
-            Left = 81
-            Top = 83
-            DataBinding.DataField = 'Farbe'
-            DataBinding.DataSource = ds_SchulFaecher_Config
-            ParentFont = False
-            Properties.AllowSelectColor = True
-            Properties.CustomColors = <>
-            Properties.PrepareList = cxplHTML4
-            Properties.ShowDescriptions = False
-            Style.BorderStyle = ebsNone
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            TabOrder = 0
-            OnExit = btn_FachUSaveClick
-            Width = 390
-          end
-          object grd_StundenplanConfigUhr: TcxGrid
-            Left = 3
-            Top = 111
-            Width = 1260
-            Height = 75
-            Align = alBottom
-            BorderStyle = cxcbsNone
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 2
-            TabStop = False
-            LockedStateImageOptions.Effect = lsieDark
-            ExplicitLeft = 2
-            ExplicitTop = 118
-            ExplicitWidth = 1272
-            object grdDBTblView_StundenplanConfigUhr: TcxGridDBTableView
-              Navigator.Buttons.CustomButtons = <>
-              FilterBox.CustomizeDialog = False
-              ScrollbarAnnotations.CustomAnnotations = <>
-              DataController.DataSource = ds_SchulFaecher_Config
-              DataController.Filter.PercentWildcard = '*'
-              DataController.Filter.UnderscoreWildcard = '?'
-              DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-              DataController.Summary.DefaultGroupSummaryItems = <>
-              DataController.Summary.FooterSummaryItems = <
-                item
-                  Kind = skCount
-                end>
-              DataController.Summary.SummaryGroups = <
-                item
-                  Links = <
-                    item
-                    end>
-                  SummaryItems = <
-                    item
-                    end>
-                end>
-              OptionsBehavior.IncSearch = True
-              OptionsBehavior.ShowHourglassCursor = False
-              OptionsCustomize.ColumnsQuickCustomization = True
-              OptionsData.Deleting = False
-              OptionsData.Editing = False
-              OptionsData.Inserting = False
-              OptionsSelection.CellSelect = False
-              OptionsView.CellEndEllipsis = True
-              OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-              OptionsView.GroupByBox = False
-              OptionsView.HeaderFilterButtonShowMode = fbmButton
-              OptionsView.IndicatorWidth = 14
-              object grdDBTblView_StundenplanConfigUhrFarbe: TcxGridDBColumn
-                DataBinding.FieldName = 'Farbe'
-                DataBinding.IsNullValueType = True
-                PropertiesClassName = 'TcxColorComboBoxProperties'
-                Properties.CustomColors = <>
-                Properties.ShowDescriptions = False
-                Width = 500
-              end
-              object grdDBTblView_StundenplanConfigUhrSchriftfarbe: TcxGridDBColumn
-                DataBinding.FieldName = 'Schriftfarbe'
-                DataBinding.IsNullValueType = True
-                PropertiesClassName = 'TcxColorComboBoxProperties'
-                Properties.CustomColors = <>
-                Properties.ShowDescriptions = False
-                Width = 500
-              end
-            end
-            object grdlvl_StundenplanConfigUhr: TcxGridLevel
-              GridView = grdDBTblView_StundenplanConfigUhr
-            end
-          end
-          object lbl_StundenplanConfigUhr_FontColor: TcxLabel
-            Left = 571
-            Top = 85
-            Caption = 'Schriftfarbe:'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            Transparent = True
-          end
-          object lbl_StundenplanConfigUhr_LabelColor: TcxLabel
-            Left = 8
-            Top = 85
-            Caption = 'Hintergrund:'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            Transparent = True
-          end
-          object brdckctrl_SchulfachUhr: TdxBarDockControl
-            Left = 3
-            Top = 15
-            Width = 1260
-            Height = 63
-            Align = dalTop
-            BarManager = brmgr_Config
-          end
+        object grdDBTblView_AufgabenartenFarbe: TcxGridDBColumn
+          DataBinding.FieldName = 'Farbe'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxColorComboBoxProperties'
+          Properties.CustomColors = <>
+          Properties.ShowDescriptions = False
+          Width = 200
         end
       end
-      object ts_D_Email: TcxTabSheet
-        Caption = 'E-Mail'
-        ImageIndex = 15
-        object grpbx_EmailConfig: TcxGroupBox
-          Left = 0
-          Top = 63
-          Align = alClient
-          Caption = 'E-Mailkonfiguration'
-          TabOrder = 0
-          Height = 301
-          Width = 1266
-          object grd_EmailConfig: TcxGrid
-            Left = 3
-            Top = 249
-            Width = 1260
-            Height = 43
-            Align = alClient
-            BorderStyle = cxcbsNone
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 1
-            TabStop = False
-            LockedStateImageOptions.Effect = lsieDark
-            ExplicitLeft = 2
-            ExplicitTop = 252
-            ExplicitWidth = 1272
-            ExplicitHeight = 63
-            object grdDBTblView_emailConfig: TcxGridDBTableView
-              Navigator.Buttons.CustomButtons = <>
-              FilterBox.CustomizeDialog = False
-              ScrollbarAnnotations.CustomAnnotations = <>
-              DataController.DataSource = ds_EmailConfig
-              DataController.Filter.PercentWildcard = '*'
-              DataController.Filter.UnderscoreWildcard = '?'
-              DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-              DataController.Summary.DefaultGroupSummaryItems = <>
-              DataController.Summary.FooterSummaryItems = <
-                item
-                  Kind = skCount
-                end>
-              DataController.Summary.SummaryGroups = <
-                item
-                  Links = <
-                    item
-                    end>
-                  SummaryItems = <
-                    item
-                    end>
-                end>
-              OptionsBehavior.IncSearch = True
-              OptionsBehavior.ShowHourglassCursor = False
-              OptionsCustomize.ColumnsQuickCustomization = True
-              OptionsData.Deleting = False
-              OptionsData.Editing = False
-              OptionsData.Inserting = False
-              OptionsSelection.CellSelect = False
-              OptionsView.CellEndEllipsis = True
-              OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-              OptionsView.GroupByBox = False
-              OptionsView.HeaderFilterButtonShowMode = fbmButton
-              OptionsView.IndicatorWidth = 14
-              object grdDBTblView_emailConfigEMail: TcxGridDBColumn
-                Caption = 'E-Mailadresse'
-                DataBinding.FieldName = 'EMail'
-                DataBinding.IsNullValueType = True
-                SortIndex = 0
-                SortOrder = soAscending
-                Width = 200
-              end
-              object grdDBTblView_emailConfigKontotyp: TcxGridDBColumn
-                DataBinding.FieldName = 'Kontotyp'
-                DataBinding.IsNullValueType = True
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Bezeichnung'
-                  end>
-                Width = 90
-              end
-              object grdDBTblView_emailConfigPostEingangsserver: TcxGridDBColumn
-                Caption = 'Posteingangsserver'
-                DataBinding.FieldName = 'PostEingangsserver'
-                DataBinding.IsNullValueType = True
-                Width = 200
-              end
-              object grdDBTblView_emailConfigPortEingangsserver: TcxGridDBColumn
-                Caption = 'Port Eingang'
-                DataBinding.FieldName = 'PortEingangsserver'
-                DataBinding.IsNullValueType = True
-                Width = 90
-              end
-              object grdDBTblView_emailConfigBenutzer: TcxGridDBColumn
-                DataBinding.FieldName = 'Benutzer'
-                DataBinding.IsNullValueType = True
-                Width = 150
-              end
-              object grdDBTblView_emailConfigSSLActive: TcxGridDBColumn
-                Caption = 'SSL Aktiv'
-                DataBinding.FieldName = 'SSLActive'
-                DataBinding.IsNullValueType = True
-                PropertiesClassName = 'TcxCheckBoxProperties'
-                Width = 91
-              end
-            end
-            object grdlvl_EmailConfig: TcxGridLevel
-              GridView = grdDBTblView_emailConfig
-            end
-          end
-          object pnl_EmailConfig: TcxGroupBox
-            Left = 3
-            Top = 15
-            Align = alTop
-            PanelStyle.Active = True
-            Style.BorderStyle = ebsNone
-            TabOrder = 0
-            ExplicitTop = -4
-            Height = 234
-            Width = 1260
-            object btn_EmailConfig_Test: TcxButton
-              Left = 3
-              Top = 161
-              Width = 1025
-              Height = 27
-              Caption = 'Verbindung Testen'
-              TabOrder = 9
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-              OnClick = btn_EmailConfig_TestClick
-            end
-            object chxbx_EmailConfig_SSL: TcxDBCheckBox
-              Left = 132
-              Top = 135
-              Caption = 'SSL-Verschl'#252'sselung'
-              DataBinding.DataField = 'SSLActive'
-              DataBinding.DataSource = ds_EmailConfig
-              Style.BorderColor = clWindowFrame
-              Style.BorderStyle = ebsFlat
-              Style.TransparentBorder = False
-              TabOrder = 4
-              Transparent = True
-              OnExit = btn_EmailConfigSaveClick
-            end
-            object edt_EmailConfig_Benutzer: TcxDBTextEdit
-              Left = 678
-              Top = 27
-              DataBinding.DataField = 'Benutzer'
-              DataBinding.DataSource = ds_EmailConfig
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 5
-              OnExit = btn_EmailConfigSaveClick
-              Width = 350
-            end
-            object edt_EmailConfig_Emailadresse: TcxDBTextEdit
-              Left = 132
-              Top = 27
-              DataBinding.DataField = 'EMail'
-              DataBinding.DataSource = ds_EmailConfig
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 0
-              OnExit = btn_EmailConfigSaveClick
-              Width = 350
-            end
-            object edt_EmailConfig_Kennwort: TcxDBTextEdit
-              Left = 678
-              Top = 54
-              DataBinding.DataField = 'Passwort'
-              DataBinding.DataSource = ds_EmailConfig
-              ParentFont = False
-              Properties.EchoMode = eemPassword
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 6
-              OnExit = btn_EmailConfigSaveClick
-              Width = 350
-            end
-            object edt_EmailConfig_PortAusgang: TcxDBTextEdit
-              Left = 678
-              Top = 108
-              DataBinding.DataField = 'PortAusgangsserver'
-              DataBinding.DataSource = ds_EmailConfig
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 8
-              OnExit = btn_EmailConfigSaveClick
-              Width = 350
-            end
-            object edt_EmailConfig_PortEingang: TcxDBTextEdit
-              Left = 132
-              Top = 108
-              DataBinding.DataField = 'PortEingangsserver'
-              DataBinding.DataSource = ds_EmailConfig
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 3
-              OnExit = btn_EmailConfigSaveClick
-              Width = 350
-            end
-            object edt_EmailConfig_PostAusgangServer: TcxDBTextEdit
-              Left = 678
-              Top = 81
-              DataBinding.DataField = 'PostAusgangsserver'
-              DataBinding.DataSource = ds_EmailConfig
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 7
-              Width = 350
-            end
-            object edt_EmailConfig_PostEingangServer: TcxDBTextEdit
-              Left = 132
-              Top = 81
-              DataBinding.DataField = 'PostEingangsserver'
-              DataBinding.DataSource = ds_EmailConfig
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 2
-              OnExit = btn_EmailConfigSaveClick
-              Width = 350
-            end
-            object lbl_EmailConfig_Anmeldeinformationen: TcxLabel
-              Left = 539
-              Top = 5
-              Caption = 'Anmeldeinformationen'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = [fsBold]
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_EmailConfig_Benutzer: TcxLabel
-              Left = 539
-              Top = 30
-              Caption = 'Benutzername:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_EmailConfig_Emailadresse: TcxLabel
-              Left = 8
-              Top = 30
-              Caption = 'E-Mail-Adresse:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_EmailConfig_Kennwort: TcxLabel
-              Left = 539
-              Top = 57
-              Caption = 'Kennwort:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_EmailConfig_Kontptyp: TcxLabel
-              Left = 8
-              Top = 57
-              Caption = 'Kontotyp:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_EmailConfig_PortAusgang: TcxLabel
-              Left = 539
-              Top = 111
-              Caption = 'Port (SMTP):'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-              Visible = False
-            end
-            object lbl_EmailConfig_PortAusgangTest: TcxLabel
-              Left = 8
-              Top = 213
-              Caption = 'Postausgang:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-              Visible = False
-            end
-            object lbl_EmailConfig_PortEingang: TcxLabel
-              Left = 8
-              Top = 111
-              Caption = 'Port: '
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_EmailConfig_PortEingangTest: TcxLabel
-              Left = 8
-              Top = 194
-              Caption = 'E-Mail-Account:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_EmailConfig_PostAusgangServer: TcxLabel
-              Left = 539
-              Top = 84
-              Caption = 'Postausgangsserver:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_EmailConfig_PostEingangServer: TcxLabel
-              Left = 8
-              Top = 84
-              Caption = 'Posteingangsserver:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_EmailConfig_Serverinformationen: TcxLabel
-              Left = 8
-              Top = 5
-              Caption = 'Serverinformationen'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = [fsBold]
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lucmbbx_EmailConfig_Kontptyp: TcxDBLookupComboBox
-              Left = 132
-              Top = 54
-              DataBinding.DataField = 'Kontotyp'
-              DataBinding.DataSource = ds_EmailConfig
-              ParentFont = False
-              Properties.KeyFieldNames = 'ID'
-              Properties.ListColumns = <
-                item
-                  FieldName = 'Bezeichnung'
-                end>
-              Properties.ListSource = dm_PCM.ds_Config_EmailConfigTyp
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 1
-              OnExit = btn_EmailConfigSaveClick
-              Width = 350
-            end
-            object imgcmbbx_Server: TcxDBImageComboBox
-              Left = 678
-              Top = 135
-              DataBinding.DataField = 'Synch'
-              DataBinding.DataSource = ds_EmailConfig
-              Properties.Items = <
-                item
-                  Description = 'die letzten 7 Tage'
-                  ImageIndex = 0
-                  Value = 0
-                end
-                item
-                  Description = 'die letzten 30 Tage'
-                  Value = 1
-                end
-                item
-                  Description = 'die letzten 60 Tage'
-                  Value = 2
-                end
-                item
-                  Description = 'die letzten 90 Tage'
-                  Value = 3
-                end
-                item
-                  Description = 'Alle'
-                  Value = 4
-                end>
-              Style.BorderStyle = ebsFlat
-              TabOrder = 22
-              Visible = False
-              OnExit = btn_EmailConfigSaveClick
-              Width = 350
-            end
-          end
+      object grdLvl_Aufgabenarten: TcxGridLevel
+        GridView = grdDBTblView_Aufgabenarten
+      end
+    end
+    object colcmbbx_Aufgabenart: TcxDBColorComboBox
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Farbe'
+      DataBinding.DataSource = ds_Aufgabenarten
+      ParentFont = False
+      Properties.AllowSelectColor = True
+      Properties.CustomColors = <>
+      Properties.PrepareList = cxplHTML4
+      Properties.ShowDescriptions = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 20
+      Visible = False
+      OnExit = btn_AufgabenSaveClick
+      Width = 441
+    end
+    object bardckctrl_Aufgabenarten: TdxBarDockControl
+      Left = 10000
+      Top = 10000
+      Width = 1054
+      Height = 63
+      Align = dalNone
+      AllowDocking = False
+      BarManager = brmgr_Config
+      Visible = False
+    end
+    object cmbbx_AufgabenSonstigesAdresseFirma: TcxDBLookupComboBox
+      AlignWithMargins = True
+      Left = 10000
+      Top = 10000
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
+      DataBinding.DataField = 'Adresse_firma'
+      DataBinding.DataSource = ds_option
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Name'
+        end>
+      Properties.ListSource = dm_PCM.ds_Config_Firmen
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 32
+      Visible = False
+      Width = 440
+    end
+    object cmbbx_AufgabenSonstigesAdresseEigen: TcxDBLookupComboBox
+      AlignWithMargins = True
+      Left = 10000
+      Top = 10000
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
+      DataBinding.DataField = 'Adresse_eigene'
+      DataBinding.DataSource = ds_option
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Name'
+        end>
+      Properties.ListSource = dm_PCM.ds_Config_Ansprechpartner
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 28
+      Visible = False
+      Width = 439
+    end
+    object bardckctrl_AufgabenSonstiges: TdxBarDockControl
+      Left = 10000
+      Top = 10000
+      Width = 1054
+      Height = 63
+      Align = dalNone
+      BarManager = brmgr_Config
+      Visible = False
+    end
+    object edt_AufgabenSonstigesJira: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Jira_Basic_url'
+      DataBinding.DataSource = ds_option
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 27
+      Visible = False
+      Width = 439
+    end
+    object mskedt_AufgabenSonstigesStunden: TcxDBCurrencyEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'StundenProArbeitstag'
+      DataBinding.DataSource = ds_option
+      Properties.DisplayFormat = ',0.0'
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 31
+      Visible = False
+      Width = 440
+    end
+    object cmbbx_AufgabenSonstigesBundeslandFirma: TcxDBLookupComboBox
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Adresse_firmaBL'
+      DataBinding.DataSource = ds_option
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Bezeichnung'
+        end>
+      Properties.ListSource = dm_PCM.ds_Config_Bundesland
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 33
+      Visible = False
+      Width = 440
+    end
+    object cmbbx_AufgabenSonstigesBundeslandEigen: TcxDBLookupComboBox
+      AlignWithMargins = True
+      Left = 10000
+      Top = 10000
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
+      DataBinding.DataField = 'Adresse_eigeneBL'
+      DataBinding.DataSource = ds_option
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Bezeichnung'
+        end>
+      Properties.ListSource = dm_PCM.ds_Config_Bundesland
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 29
+      Visible = False
+      Width = 439
+    end
+    object edt_AufgabenSonstigesAccToDo: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Account_Privat'
+      DataBinding.DataSource = ds_option
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 30
+      Visible = False
+      Width = 439
+    end
+    object edt_AufgabenSonstigesAccMail: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Account_Geschaeftlich'
+      DataBinding.DataSource = ds_option
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 34
+      Visible = False
+      Width = 440
+    end
+    object grd_StundenplanConfig: TcxGrid
+      Left = 10000
+      Top = 10000
+      Width = 1054
+      Height = 398
+      BorderStyle = cxcbsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 43
+      TabStop = False
+      Visible = False
+      LockedStateImageOptions.Effect = lsieDark
+      object grdDBTblView_StundenplanConfig: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        FilterBox.CustomizeDialog = False
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = ds_SchulFaecher
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skCount
+          end>
+        DataController.Summary.SummaryGroups = <
+          item
+            Links = <
+              item
+              end>
+            SummaryItems = <
+              item
+              end>
+          end>
+        OptionsBehavior.IncSearch = True
+        OptionsBehavior.ShowHourglassCursor = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.CellEndEllipsis = True
+        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.IndicatorWidth = 14
+        object grdDBTblView_StundenplanConfigBezeichnung: TcxGridDBColumn
+          DataBinding.FieldName = 'Bezeichnung'
+          DataBinding.IsNullValueType = True
+          SortIndex = 0
+          SortOrder = soAscending
+          Width = 300
         end
-        object brdckctrl_Email: TdxBarDockControl
-          Left = 0
-          Top = 0
-          Width = 1266
-          Height = 63
-          Align = dalTop
-          BarManager = brmgr_Config
+        object grdDBTblView_StundenplanConfigFarbe: TcxGridDBColumn
+          DataBinding.FieldName = 'Farbe'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxColorComboBoxProperties'
+          Properties.CustomColors = <>
+          Properties.NamingConvention = cxncHTML4
+          Properties.ShowDescriptions = False
+          Width = 150
         end
-        object grpbx_postfach: TcxGroupBox
-          Left = 0
-          Top = 364
-          Align = alBottom
-          Caption = 'E-Mail Postf'#228'cher'
-          TabOrder = 1
-          Height = 396
-          Width = 1266
-          object dxBarDockControl1: TdxBarDockControl
-            Left = 3
-            Top = 15
-            Width = 1260
-            Height = 63
-            Align = dalTop
-            BarManager = brmgr_Config
-          end
-          object grpbx_postfachMain: TcxGroupBox
-            Left = 3
-            Top = 87
-            Align = alBottom
-            Caption = 'Hauptpostf'#228'cher'
-            TabOrder = 0
-            Height = 150
-            Width = 1260
-            object grpbx_PostfachMainSort: TcxGroupBox
-              Left = 1231
-              Top = 15
-              Align = alRight
-              PanelStyle.Active = True
-              TabOrder = 0
-              Height = 126
-              Width = 26
-              object btn_PostfachMainbottom: TcxButton
-                Left = 3
-                Top = 63
-                Width = 20
-                Height = 20
-                Align = alTop
-                OptionsImage.Glyph.SourceDPI = 96
-                OptionsImage.Glyph.Data = {
-                  89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
-                  610000000774494D4507D8040F0D0D3173F26F50000000097048597300000B12
-                  00000B1201D2DD7EFC0000000467414D410000B18F0BFC610500000242494441
-                  5478DAB593CB6B135114C6BF998CB149AA99A2CDD384A238538D6834A6582A5A
-                  1F548C74ED46BA69232222F47FD14AEDC68A6BB108428BB8F0D9451656C53023
-                  5AA9B5369126934E924E4C33E3BDB72418D32E5C7808CC90B9BF73BE7BBE7338
-                  90F0274625CB32155816F9997266FA968A4D6257FFB06499A6424E813C65EDE5
-                  7D95F35F1A9508A5446331F0660DA9548A25C9CE8CA9CDF0082B72BC278EBC56
-                  C4A7F47B768E27DF94484F1FA2C19D88EC11211F3A0A5240E93C7F4D6AC06746
-                  C8BBA5C47BFB10703BA1174BB07BE95F96C2D5E587A3A7203A04AC1B65648B15
-                  643ECE329916B916854FF40F40B071D0AB36E86503EAEB2784B7648E56F05DBC
-                  4992900A8343A818BF90CD6928AD19D0DE4E5399E84D5C86512347B76D87C071
-                  987D38CEE0C2AB072A5797E9BD708325393C9884BDAD1DD97C01657D151EB71D
-                  35DE05A7CB0143D730F7E836BB3B8529C7D75DE0789BE2F0EEC3DCD4387402FA
-                  036174F8C2A8B6F9E0F604A01734BC9BBA83F6E001F03641114F0EB11EB5B8F0
-                  616105A525155DE7861194E34CDD62FA0DBECC4CC0159070302436B920345CF0
-                  11A9A461BA51C357733FE69F4E60BDBA46EF8A6FCF26092C23D2D5097FBB8085
-                  C50C73A1F223BDB50B85959F287F5758139DA4F291EEBDFFEE4265F9334B103D
-                  16FB7F2E707F8EAB67E03A99754BE94E24217A42C81556E954A243DC81DCD23C
-                  D28FC75865BA0375A629010D3AC25449AB0B7737E017934D3BD29280C6EEB357
-                  25B26F4AE8F495860B5476FE2F78CB041B0B9464F3419BC8E0E7F7365DF1DF3F
-                  EB7C93A1EABC6E0000000049454E44AE426082}
-                TabOrder = 3
-                OnClick = btn_PostfachMainbottomClick
-                ExplicitLeft = 2
-                ExplicitTop = 62
-                ExplicitWidth = 22
-              end
-              object btn_PostfachMaindown: TcxButton
-                Left = 3
-                Top = 43
-                Width = 20
-                Height = 20
-                Align = alTop
-                OptionsImage.Glyph.SourceDPI = 96
-                OptionsImage.Glyph.Data = {
-                  89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
-                  610000000774494D4507D8040F0D0D3173F26F50000000097048597300000B12
-                  00000B1201D2DD7EFC0000000467414D410000B18F0BFC6105000001AB494441
-                  5478DADD92CB2F035114C6BF69ABDE54506FB19A9110A9502112EF10156B1BB1
-                  D18A8848FC2F4858A9588B44226161E1BDE882483477242C884417EDD4548D47
-                  E7BAF74A453DFE004E6E666EEE9CDF39DFFDCE007F3E24FE28F3CCCA949A0494
-                  B2652A775B73EA4FC9855DE332354DC2B2C0DE8AB6BFA24A6543B332A388ABA9
-                  091633814020208A84B617D454D82B9A34B7B811D162B8089E893C0BFB46EA5A
-                  DAE1AAC8435DA5034A7D23580352DC37297FC0DD5EB6A7C4DDD68EF2FC2CE8B1
-                  07D84BF8112552527EB5AB038E4C1B5E8D3842B127DC9D1F0B99945D8BC3AD5D
-                  FDB05925E82F56E87103EAE126E3A9223C281D9C61455887E1313C19CF088535
-                  3C3C1AD04EB6B84CB479466024586A5A3A6C9284E3B54501470F56552929B364
-                  605A146918F6C19E918350248AB87E0F67BE1D094B36B2B23361E81A4ED7E7C5
-                  DD39FC31856438FBA798CB94D47A7C7038AB108EDE733F50E0C845F8F60AC18D
-                  05D199BB9F32C6CFC1CDE34A6A7AC751A1B8C5D94DF00897DB4BEFF09E3F653A
-                  DF0AF028EA9990D9A44955E7288770BDE317B2235FE05F0BBC8FCE27FE0F6EA2
-                  80779755FCCF7803E8D0E0915AAA27200000000049454E44AE426082}
-                TabOrder = 2
-                OnClick = btn_PostfachMaindownClick
-                ExplicitLeft = 2
-                ExplicitTop = 42
-                ExplicitWidth = 22
-              end
-              object btn_PostfachMainUp: TcxButton
-                Left = 3
-                Top = 23
-                Width = 20
-                Height = 20
-                Align = alTop
-                OptionsImage.Glyph.SourceDPI = 96
-                OptionsImage.Glyph.Data = {
-                  89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
-                  610000000774494D4507D8040F0D0D3173F26F50000000097048597300000B12
-                  00000B1201D2DD7EFC0000000467414D410000B18F0BFC6105000001B6494441
-                  5478DA636018F280119784985B96DAFFFFFF6E82D8FFFFFD537FB377D62D6CEA
-                  98B06BCE046BB6B2306330363464F8FFFFFF4D61C71435A20C8068FE7FD3DCC2
-                  9241579C974184F91F8388B41203C84041FB440C4350BC20EA9AA1065479D3C4
-                  CA81418C8399E1D6F34F0CAF3F7E61F8FAF52B03031B1BC38FA7574106A97F38
-                  BCE816860120CD40BFDE3474F061F8F7F71FC3A75F8C0CDF7FFE063B9183839D
-                  E1E3A74F0C3F7EFF61F870650FD8904F4797DE821B20EA920E76B6BA5B1C0323
-                  231303370F37C3FB0F1F196EEF9807365CCD239141584488E1D5DBCF0C9F81AE
-                  79B61728FEFFBFFAE7132B6E318A38A781FC7553D93B97819B939D4152848FE1
-                  DE83870C37364F67F8CFF05F1DA8101C88DAFE590CCA4ACA0C4FDE7E64F8F4F1
-                  2BC3CDD5AD207175664E45A337528EF10C2A6A1A0CF252220CD7AFDD60B8B165
-                  3ADCAF3F1E5D7CCB2EA3B3FCD5F593B92CC2CA0C067AFA0C6C3CFC0CDFD98419
-                  3EDE3993CB088A1E5008AB7B24036D6462B8B16D06D879C80105023CE6E1C000
-                  FE7753D32B1DE8712686AB9BA6802D018781A05D02D81B4001101743330C709B
-                  8680039A01E43960E2FA7E7E235675430C00005416CE3539D1B3B10000000049
-                  454E44AE426082}
-                TabOrder = 1
-                OnClick = btn_PostfachMainUpClick
-                ExplicitLeft = 2
-                ExplicitTop = 22
-                ExplicitWidth = 22
-              end
-              object btn_PostfachMainTop: TcxButton
-                Left = 3
-                Top = 3
-                Width = 20
-                Height = 20
-                Align = alTop
-                OptionsImage.Glyph.SourceDPI = 96
-                OptionsImage.Glyph.Data = {
-                  89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
-                  610000000774494D4507D8040F0D0D3173F26F50000000097048597300000B12
-                  00000B1201D2DD7EFC0000000467414D410000B18F0BFC610500000234494441
-                  5478DAB5534D6B1351143D93D4496262A5CD24A135626D6A46F1A3468DF9026D
-                  A896A2821BC19D5A2A560BF919FE03A1D245168228B8F20311316E5450889452
-                  633353D166682AC48C261343D2B49DF1BD572D8544A80BEFEABDE19E33F7DC73
-                  1E87BF947B68DC6F18BA44CF86AE8BC5D4A4DCAACFD41A7C8381A3E1E3381A08
-                  C0300CC919BFEADF14C11AD89042E1080E7AB64130EB1076F48212769C1C6922
-                  E1365E5CA7AFFB49A7742C3A00B7D50CF9AB866FE59FA856AB00CFA39ECF5022
-                  B1F4EA8EDC4440C144AB141838077D5587D6E0505B5A66235AAD1694350DF5E5
-                  15943EBC6024DA9BBBF23A81EBD4181B5B1CBA048E33C1EEB0E347A98CFCF46B
-                  46EEED8FC12974A2A0565021D32CA69264B38658797B5FE684C16B5497E43B9B
-                  80DD664197D08ECFF33928E91496D41C23E03B77A22738085FAF0F0B6A195AB9
-                  0AE9C14DBA5CD16CDB7DA4D81DBF8C3EFF5EECEA1630FB310BE5FD1A381609C1
-                  E3F620379741E5BB0A9D6FC7E143FDE01DDB51E39D287F4A27DAE828F9545272
-                  6C198542142B532FD15015842351E2C256CCE78B7079FB5050247C49AF62A551
-                  27C249DFF349B60BB6838E1357980C5BD71E348A390463F1962ED4166660117A
-                  50516658B86A530FE5FFEBC2DCB32423F70F8FFCBB0BD9C713306088A4914579
-                  FFF9F1CDBB907D32B19EB8BA32AD5ABC07EE1566DF25DA9CBE261738FA4868CE
-                  C5E151F24713B24F6FB3F136C69596237491C45C97F69D19632E641EDD6A7681
-                  7CA0D726F09FB2072FB045838AFBEDC22F58E6680A1520C2DE0000000049454E
-                  44AE426082}
-                TabOrder = 0
-                OnClick = btn_PostfachMainTopClick
-                ExplicitLeft = 2
-                ExplicitTop = 2
-                ExplicitWidth = 22
-              end
-            end
-            object grd_Postfachmain: TcxGrid
-              Left = 3
-              Top = 15
-              Width = 1228
-              Height = 126
-              Align = alClient
-              BorderStyle = cxcbsNone
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 1
-              TabStop = False
-              LockedStateImageOptions.Effect = lsieDark
-              ExplicitLeft = 2
-              ExplicitTop = 18
-              ExplicitWidth = 1242
-              ExplicitHeight = 130
-              object grdDBTblViewl_Postfachmain: TcxGridDBTableView
-                Navigator.Buttons.CustomButtons = <>
-                FilterBox.CustomizeDialog = False
-                ScrollbarAnnotations.CustomAnnotations = <>
-                DataController.DataSource = ds_EmailPostfachMain
-                DataController.Filter.PercentWildcard = '*'
-                DataController.Filter.UnderscoreWildcard = '?'
-                DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-                DataController.Summary.DefaultGroupSummaryItems = <>
-                DataController.Summary.FooterSummaryItems = <
-                  item
-                    Kind = skCount
-                  end>
-                DataController.Summary.SummaryGroups = <
-                  item
-                    Links = <
-                      item
-                      end>
-                    SummaryItems = <
-                      item
-                      end>
-                  end>
-                OptionsBehavior.IncSearch = True
-                OptionsBehavior.ShowHourglassCursor = False
-                OptionsCustomize.ColumnsQuickCustomization = True
-                OptionsData.Appending = True
-                OptionsData.Deleting = False
-                OptionsData.Inserting = False
-                OptionsView.CellEndEllipsis = True
-                OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-                OptionsView.GroupByBox = False
-                OptionsView.HeaderFilterButtonShowMode = fbmButton
-                OptionsView.IndicatorWidth = 14
-                object grdDBTblViewl_PostfachmainPostfach: TcxGridDBColumn
-                  DataBinding.FieldName = 'Postfach'
-                  DataBinding.IsNullValueType = True
-                  Options.Editing = False
-                  Options.Sorting = False
-                  Width = 400
-                end
-                object grdDBTblViewl_PostfachmainAnzeige: TcxGridDBColumn
-                  DataBinding.FieldName = 'Anzeige'
-                  DataBinding.IsNullValueType = True
-                  Options.Sorting = False
-                  Width = 400
-                end
-                object grdDBTblViewl_PostfachmainAbonnieren: TcxGridDBColumn
-                  DataBinding.FieldName = 'Abonnieren'
-                  DataBinding.IsNullValueType = True
-                  PropertiesClassName = 'TcxCheckBoxProperties'
-                  Options.Sorting = False
-                  Width = 80
-                end
-                object grdDBTblViewl_PostfachmainSortierung: TcxGridDBColumn
-                  DataBinding.FieldName = 'Sortierung'
-                  DataBinding.IsNullValueType = True
-                  Options.Editing = False
-                  Options.Sorting = False
-                  SortIndex = 0
-                  SortOrder = soAscending
-                  Width = 80
-                end
-              end
-              object grdlvl_Postfachmain: TcxGridLevel
-                GridView = grdDBTblViewl_Postfachmain
-              end
-            end
-          end
-          object grpbx_postfachSub: TcxGroupBox
-            Left = 3
-            Top = 237
-            Align = alBottom
-            Caption = 'Unterpostf'#228'cher'
-            TabOrder = 1
-            Height = 150
-            Width = 1260
-            object grpbx_PostfachMainSub: TcxGroupBox
-              Left = 1231
-              Top = 15
-              Align = alRight
-              PanelStyle.Active = True
-              TabOrder = 0
-              Height = 126
-              Width = 26
-              object btn_PostfachSubbottom: TcxButton
-                Left = 3
-                Top = 63
-                Width = 20
-                Height = 20
-                Align = alTop
-                OptionsImage.Glyph.SourceDPI = 96
-                OptionsImage.Glyph.Data = {
-                  89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
-                  610000000774494D4507D8040F0D0D3173F26F50000000097048597300000B12
-                  00000B1201D2DD7EFC0000000467414D410000B18F0BFC610500000242494441
-                  5478DAB593CB6B135114C6BF998CB149AA99A2CDD384A238538D6834A6582A5A
-                  1F548C74ED46BA69232222F47FD14AEDC68A6BB108428BB8F0D9451656C53023
-                  5AA9B5369126934E924E4C33E3BDB72418D32E5C7808CC90B9BF73BE7BBE7338
-                  90F0274625CB32155816F9997266FA968A4D6257FFB06499A6424E813C65EDE5
-                  7D95F35F1A9508A5446331F0660DA9548A25C9CE8CA9CDF0082B72BC278EBC56
-                  C4A7F47B768E27DF94484F1FA2C19D88EC11211F3A0A5240E93C7F4D6AC06746
-                  C8BBA5C47BFB10703BA1174BB07BE95F96C2D5E587A3A7203A04AC1B65648B15
-                  643ECE329916B916854FF40F40B071D0AB36E86503EAEB2784B7648E56F05DBC
-                  4992900A8343A818BF90CD6928AD19D0DE4E5399E84D5C86512347B76D87C071
-                  987D38CEE0C2AB072A5797E9BD708325393C9884BDAD1DD97C01657D151EB71D
-                  35DE05A7CB0143D730F7E836BB3B8529C7D75DE0789BE2F0EEC3DCD4387402FA
-                  036174F8C2A8B6F9E0F604A01734BC9BBA83F6E001F03641114F0EB11EB5B8F0
-                  616105A525155DE7861194E34CDD62FA0DBECC4CC0159070302436B920345CF0
-                  11A9A461BA51C357733FE69F4E60BDBA46EF8A6FCF26092C23D2D5097FBB8085
-                  C50C73A1F223BDB50B85959F287F5758139DA4F291EEBDFFEE4265F9334B103D
-                  16FB7F2E707F8EAB67E03A99754BE94E24217A42C81556E954A243DC81DCD23C
-                  D28FC75865BA0375A629010D3AC25449AB0B7737E017934D3BD29280C6EEB357
-                  25B26F4AE8F495860B5476FE2F78CB041B0B9464F3419BC8E0E7F7365DF1DF3F
-                  EB7C93A1EABC6E0000000049454E44AE426082}
-                TabOrder = 3
-                OnClick = btn_PostfachSubbottomClick
-                ExplicitLeft = 2
-                ExplicitTop = 62
-                ExplicitWidth = 22
-              end
-              object btn_PostfachSubDown: TcxButton
-                Left = 3
-                Top = 43
-                Width = 20
-                Height = 20
-                Align = alTop
-                OptionsImage.Glyph.SourceDPI = 96
-                OptionsImage.Glyph.Data = {
-                  89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
-                  610000000774494D4507D8040F0D0D3173F26F50000000097048597300000B12
-                  00000B1201D2DD7EFC0000000467414D410000B18F0BFC6105000001AB494441
-                  5478DADD92CB2F035114C6BF69ABDE54506FB19A9110A9502112EF10156B1BB1
-                  D18A8848FC2F4858A9588B44226161E1BDE882483477242C884417EDD4548D47
-                  E7BAF74A453DFE004E6E666EEE9CDF39DFFDCE007F3E24FE28F3CCCA949A0494
-                  B2652A775B73EA4FC9855DE332354DC2B2C0DE8AB6BFA24A6543B332A388ABA9
-                  091633814020208A84B617D454D82B9A34B7B811D162B8089E893C0BFB46EA5A
-                  DAE1AAC8435DA5034A7D23580352DC37297FC0DD5EB6A7C4DDD68EF2FC2CE8B1
-                  07D84BF8112552527EB5AB038E4C1B5E8D3842B127DC9D1F0B99945D8BC3AD5D
-                  FDB05925E82F56E87103EAE126E3A9223C281D9C61455887E1313C19CF088535
-                  3C3C1AD04EB6B84CB479466024586A5A3A6C9284E3B54501470F56552929B364
-                  605A146918F6C19E918350248AB87E0F67BE1D094B36B2B23361E81A4ED7E7C5
-                  DD39FC31856438FBA798CB94D47A7C7038AB108EDE733F50E0C845F8F60AC18D
-                  05D199BB9F32C6CFC1CDE34A6A7AC751A1B8C5D94DF00897DB4BEFF09E3F653A
-                  DF0AF028EA9990D9A44955E7288770BDE317B2235FE05F0BBC8FCE27FE0F6EA2
-                  80779755FCCF7803E8D0E0915AAA27200000000049454E44AE426082}
-                TabOrder = 2
-                OnClick = btn_PostfachSubDownClick
-                ExplicitLeft = 2
-                ExplicitTop = 42
-                ExplicitWidth = 22
-              end
-              object btn_PostfachSubUp: TcxButton
-                Left = 3
-                Top = 23
-                Width = 20
-                Height = 20
-                Align = alTop
-                OptionsImage.Glyph.SourceDPI = 96
-                OptionsImage.Glyph.Data = {
-                  89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
-                  610000000774494D4507D8040F0D0D3173F26F50000000097048597300000B12
-                  00000B1201D2DD7EFC0000000467414D410000B18F0BFC6105000001B6494441
-                  5478DA636018F280119784985B96DAFFFFFF6E82D8FFFFFD537FB377D62D6CEA
-                  98B06BCE046BB6B2306330363464F8FFFFFF4D61C71435A20C8068FE7FD3DCC2
-                  9241579C974184F91F8388B41203C84041FB440C4350BC20EA9AA1065479D3C4
-                  CA81418C8399E1D6F34F0CAF3F7E61F8FAF52B03031B1BC38FA7574106A97F38
-                  BCE816860120CD40BFDE3474F061F8F7F71FC3A75F8C0CDF7FFE063B9183839D
-                  E1E3A74F0C3F7EFF61F870650FD8904F4797DE821B20EA920E76B6BA5B1C0323
-                  231303370F37C3FB0F1F196EEF9807365CCD239141584488E1D5DBCF0C9F81AE
-                  79B61728FEFFBFFAE7132B6E318A38A781FC7553D93B97819B939D4152848FE1
-                  DE83870C37364F67F8CFF05F1DA8101C88DAFE590CCA4ACA0C4FDE7E64F8F4F1
-                  2BC3CDD5AD207175664E45A337528EF10C2A6A1A0CF252220CD7AFDD60B8B165
-                  3ADCAF3F1E5D7CCB2EA3B3FCD5F593B92CC2CA0C067AFA0C6C3CFC0CDFD98419
-                  3EDE3993CB088A1E5008AB7B24036D6462B8B16D06D879C80105023CE6E1C000
-                  FE7753D32B1DE8712686AB9BA6802D018781A05D02D81B4001101743330C709B
-                  8680039A01E43960E2FA7E7E235675430C00005416CE3539D1B3B10000000049
-                  454E44AE426082}
-                TabOrder = 1
-                OnClick = btn_PostfachSubUpClick
-                ExplicitLeft = 2
-                ExplicitTop = 22
-                ExplicitWidth = 22
-              end
-              object btn_PostfachSubTop: TcxButton
-                Left = 3
-                Top = 3
-                Width = 20
-                Height = 20
-                Align = alTop
-                OptionsImage.Glyph.SourceDPI = 96
-                OptionsImage.Glyph.Data = {
-                  89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
-                  610000000774494D4507D8040F0D0D3173F26F50000000097048597300000B12
-                  00000B1201D2DD7EFC0000000467414D410000B18F0BFC610500000234494441
-                  5478DAB5534D6B1351143D93D4496262A5CD24A135626D6A46F1A3468DF9026D
-                  A896A2821BC19D5A2A560BF919FE03A1D245168228B8F20311316E5450889452
-                  633353D166682AC48C261343D2B49DF1BD572D8544A80BEFEABDE19E33F7DC73
-                  1E87BF947B68DC6F18BA44CF86AE8BC5D4A4DCAACFD41A7C8381A3E1E3381A08
-                  C0300CC919BFEADF14C11AD89042E1080E7AB64130EB1076F48212769C1C6922
-                  E1365E5CA7AFFB49A7742C3A00B7D50CF9AB866FE59FA856AB00CFA39ECF5022
-                  B1F4EA8EDC4440C144AB141838077D5587D6E0505B5A66235AAD1694350DF5E5
-                  15943EBC6024DA9BBBF23A81EBD4181B5B1CBA048E33C1EEB0E347A98CFCF46B
-                  46EEED8FC12974A2A0565021D32CA69264B38658797B5FE684C16B5497E43B9B
-                  80DD664197D08ECFF33928E91496D41C23E03B77A22738085FAF0F0B6A195AB9
-                  0AE9C14DBA5CD16CDB7DA4D81DBF8C3EFF5EECEA1630FB310BE5FD1A381609C1
-                  E3F620379741E5BB0A9D6FC7E143FDE01DDB51E39D287F4A27DAE828F9545272
-                  6C198542142B532FD15015842351E2C256CCE78B7079FB5050247C49AF62A551
-                  27C249DFF349B60BB6838E1357980C5BD71E348A390463F1962ED4166660117A
-                  50516658B86A530FE5FFEBC2DCB32423F70F8FFCBB0BD9C713306088A4914579
-                  FFF9F1CDBB907D32B19EB8BA32AD5ABC07EE1566DF25DA9CBE261738FA4868CE
-                  C5E151F24713B24F6FB3F136C69596237491C45C97F69D19632E641EDD6A7681
-                  7CA0D726F09FB2072FB045838AFBEDC22F58E6680A1520C2DE0000000049454E
-                  44AE426082}
-                TabOrder = 0
-                OnClick = btn_PostfachSubTopClick
-                ExplicitLeft = 2
-                ExplicitTop = 2
-                ExplicitWidth = 22
-              end
-            end
-            object grd_postfachSub: TcxGrid
-              Left = 3
-              Top = 15
-              Width = 1228
-              Height = 126
-              Align = alClient
-              BorderStyle = cxcbsNone
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 1
-              TabStop = False
-              LockedStateImageOptions.Effect = lsieDark
-              ExplicitLeft = 2
-              ExplicitTop = 18
-              ExplicitWidth = 1242
-              ExplicitHeight = 130
-              object grdDBTblViewl_PostfachSub: TcxGridDBTableView
-                Navigator.Buttons.CustomButtons = <>
-                FilterBox.CustomizeDialog = False
-                ScrollbarAnnotations.CustomAnnotations = <>
-                DataController.DataSource = ds_EmailPostfachSub
-                DataController.Filter.PercentWildcard = '*'
-                DataController.Filter.UnderscoreWildcard = '?'
-                DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-                DataController.Summary.DefaultGroupSummaryItems = <>
-                DataController.Summary.FooterSummaryItems = <
-                  item
-                    Kind = skCount
-                  end>
-                DataController.Summary.SummaryGroups = <
-                  item
-                    Links = <
-                      item
-                      end>
-                    SummaryItems = <
-                      item
-                      end>
-                  end>
-                OptionsBehavior.IncSearch = True
-                OptionsBehavior.ShowHourglassCursor = False
-                OptionsCustomize.ColumnsQuickCustomization = True
-                OptionsData.Appending = True
-                OptionsData.Deleting = False
-                OptionsData.Inserting = False
-                OptionsView.CellEndEllipsis = True
-                OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-                OptionsView.GroupByBox = False
-                OptionsView.HeaderFilterButtonShowMode = fbmButton
-                OptionsView.IndicatorWidth = 14
-                object grdDBTblViewl_PostfachSubPostfach: TcxGridDBColumn
-                  DataBinding.FieldName = 'Postfach'
-                  DataBinding.IsNullValueType = True
-                  Options.Editing = False
-                  Options.Sorting = False
-                  Width = 265
-                end
-                object grdDBTblViewl_PostfachSubAnzeige: TcxGridDBColumn
-                  DataBinding.FieldName = 'Anzeige'
-                  DataBinding.IsNullValueType = True
-                  Options.Sorting = False
-                  Width = 265
-                end
-                object grdDBTblViewl_PostfachSubParent: TcxGridDBColumn
-                  Caption = 'Hauptpostfach'
-                  DataBinding.FieldName = 'Parent'
-                  DataBinding.IsNullValueType = True
-                  PropertiesClassName = 'TcxLookupComboBoxProperties'
-                  Properties.KeyFieldNames = 'ID'
-                  Properties.ListColumns = <
-                    item
-                      FieldName = 'Anzeige'
-                    end>
-                  Options.Editing = False
-                  Options.Sorting = False
-                  Width = 265
-                end
-                object grdDBTblViewl_PostfachSubAbonnieren: TcxGridDBColumn
-                  DataBinding.FieldName = 'Abonnieren'
-                  DataBinding.IsNullValueType = True
-                  PropertiesClassName = 'TcxCheckBoxProperties'
-                  Options.Sorting = False
-                  Width = 80
-                end
-                object grdDBTblViewl_PostfachSubSortierung: TcxGridDBColumn
-                  DataBinding.FieldName = 'Sortierung'
-                  DataBinding.IsNullValueType = True
-                  Options.Editing = False
-                  Options.Sorting = False
-                  SortIndex = 0
-                  SortOrder = soAscending
-                  Width = 80
-                end
-              end
-              object grdlvl_PostfachSub: TcxGridLevel
-                GridView = grdDBTblViewl_PostfachSub
-              end
-            end
-          end
+        object grdDBTblView_StundenplanConfigSchriftfarbe: TcxGridDBColumn
+          DataBinding.FieldName = 'Schriftfarbe'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxColorComboBoxProperties'
+          Properties.CustomColors = <>
+          Properties.NamingConvention = cxncHTML4
+          Properties.PrepareList = cxplHTML4
+          Properties.ShowDescriptions = False
+          Width = 150
         end
       end
+      object grdlvl_StundenplanConfig: TcxGridLevel
+        GridView = grdDBTblView_StundenplanConfig
+      end
+    end
+    object colcmbbx_StundenplanConfig_FontColor: TcxDBColorComboBox
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Schriftfarbe'
+      DataBinding.DataSource = ds_SchulFaecher
+      ParentFont = False
+      Properties.AllowSelectColor = True
+      Properties.CustomColors = <>
+      Properties.PrepareList = cxplHTML4
+      Properties.ShowDescriptions = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 42
+      Visible = False
+      OnExit = btn_FachSaveClick
+      Width = 449
+    end
+    object colcmbbx_StundenplanConfig_LabelColor: TcxDBColorComboBox
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Farbe'
+      DataBinding.DataSource = ds_SchulFaecher
+      ParentFont = False
+      Properties.AllowSelectColor = True
+      Properties.CustomColors = <>
+      Properties.PrepareList = cxplHTML4
+      Properties.ShowDescriptions = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 41
+      Visible = False
+      OnExit = btn_FachSaveClick
+      Width = 449
+    end
+    object edt_StundenplanConfig_FachBezeichnung: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Bezeichnung'
+      DataBinding.DataSource = ds_SchulFaecher
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 40
+      Visible = False
+      OnExit = btn_FachSaveClick
+      Width = 988
+    end
+    object brdckctrl_Schulfach: TdxBarDockControl
+      Left = 10000
+      Top = 10000
+      Width = 1054
+      Height = 63
+      Align = dalNone
+      BarManager = brmgr_Config
+      Visible = False
+    end
+    object colcmbbx_StundenplanConfigUhr_FontColor: TcxDBColorComboBox
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Schriftfarbe'
+      DataBinding.DataSource = ds_SchulFaecher_Config
+      ParentFont = False
+      Properties.AllowSelectColor = True
+      Properties.CustomColors = <>
+      Properties.PrepareList = cxplHTML4
+      Properties.ShowDescriptions = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 38
+      Visible = False
+      OnExit = btn_FachUSaveClick
+      Width = 458
+    end
+    object colcmbbx_StundenplanConfigUhr_LabelColor: TcxDBColorComboBox
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Farbe'
+      DataBinding.DataSource = ds_SchulFaecher_Config
+      ParentFont = False
+      Properties.AllowSelectColor = True
+      Properties.CustomColors = <>
+      Properties.PrepareList = cxplHTML4
+      Properties.ShowDescriptions = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 37
+      Visible = False
+      OnExit = btn_FachUSaveClick
+      Width = 458
+    end
+    object grd_StundenplanConfigUhr: TcxGrid
+      Left = 10000
+      Top = 10000
+      Width = 1054
+      Height = 75
+      BorderStyle = cxcbsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 36
+      TabStop = False
+      Visible = False
+      LockedStateImageOptions.Effect = lsieDark
+      object grdDBTblView_StundenplanConfigUhr: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        FilterBox.CustomizeDialog = False
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = ds_SchulFaecher_Config
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skCount
+          end>
+        DataController.Summary.SummaryGroups = <
+          item
+            Links = <
+              item
+              end>
+            SummaryItems = <
+              item
+              end>
+          end>
+        OptionsBehavior.IncSearch = True
+        OptionsBehavior.ShowHourglassCursor = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.CellEndEllipsis = True
+        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.IndicatorWidth = 14
+        object grdDBTblView_StundenplanConfigUhrFarbe: TcxGridDBColumn
+          DataBinding.FieldName = 'Farbe'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxColorComboBoxProperties'
+          Properties.CustomColors = <>
+          Properties.ShowDescriptions = False
+          Width = 500
+        end
+        object grdDBTblView_StundenplanConfigUhrSchriftfarbe: TcxGridDBColumn
+          DataBinding.FieldName = 'Schriftfarbe'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxColorComboBoxProperties'
+          Properties.CustomColors = <>
+          Properties.ShowDescriptions = False
+          Width = 500
+        end
+      end
+      object grdlvl_StundenplanConfigUhr: TcxGridLevel
+        GridView = grdDBTblView_StundenplanConfigUhr
+      end
+    end
+    object brdckctrl_SchulfachUhr: TdxBarDockControl
+      Left = 10000
+      Top = 10000
+      Width = 1054
+      Height = 63
+      Align = dalNone
+      BarManager = brmgr_Config
+      Visible = False
+    end
+    object grd_EmailConfig: TcxGrid
+      Left = 10000
+      Top = 10000
+      Width = 1071
+      Height = 100
+      BorderStyle = cxcbsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 55
+      TabStop = False
+      Visible = False
+      LockedStateImageOptions.Effect = lsieDark
+      object grdDBTblView_emailConfig: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        FilterBox.CustomizeDialog = False
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = ds_EmailConfig
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skCount
+          end>
+        DataController.Summary.SummaryGroups = <
+          item
+            Links = <
+              item
+              end>
+            SummaryItems = <
+              item
+              end>
+          end>
+        OptionsBehavior.IncSearch = True
+        OptionsBehavior.ShowHourglassCursor = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.CellEndEllipsis = True
+        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.IndicatorWidth = 14
+        object grdDBTblView_emailConfigEMail: TcxGridDBColumn
+          Caption = 'E-Mailadresse'
+          DataBinding.FieldName = 'EMail'
+          DataBinding.IsNullValueType = True
+          SortIndex = 0
+          SortOrder = soAscending
+          Width = 200
+        end
+        object grdDBTblView_emailConfigKontotyp: TcxGridDBColumn
+          DataBinding.FieldName = 'Kontotyp'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Bezeichnung'
+            end>
+          Width = 90
+        end
+        object grdDBTblView_emailConfigPostEingangsserver: TcxGridDBColumn
+          Caption = 'Posteingangsserver'
+          DataBinding.FieldName = 'PostEingangsserver'
+          DataBinding.IsNullValueType = True
+          Width = 200
+        end
+        object grdDBTblView_emailConfigPortEingangsserver: TcxGridDBColumn
+          Caption = 'Port Eingang'
+          DataBinding.FieldName = 'PortEingangsserver'
+          DataBinding.IsNullValueType = True
+          Width = 90
+        end
+        object grdDBTblView_emailConfigBenutzer: TcxGridDBColumn
+          DataBinding.FieldName = 'Benutzer'
+          DataBinding.IsNullValueType = True
+          Width = 150
+        end
+        object grdDBTblView_emailConfigSSLActive: TcxGridDBColumn
+          Caption = 'SSL Aktiv'
+          DataBinding.FieldName = 'SSLActive'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxCheckBoxProperties'
+          Width = 91
+        end
+      end
+      object grdlvl_EmailConfig: TcxGridLevel
+        GridView = grdDBTblView_emailConfig
+      end
+    end
+    object btn_EmailConfig_Test: TcxButton
+      Left = 10000
+      Top = 10000
+      Width = 1071
+      Height = 27
+      Caption = 'Verbindung Testen'
+      TabOrder = 54
+      Visible = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      OnClick = btn_EmailConfig_TestClick
+    end
+    object chxbx_EmailConfig_SSL: TcxDBCheckBox
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      Caption = 'SSL-Verschl'#252'sselung'
+      DataBinding.DataField = 'SSLActive'
+      DataBinding.DataSource = ds_EmailConfig
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 49
+      Transparent = True
+      Visible = False
+      OnExit = btn_EmailConfigSaveClick
+      Height = 19
+      Width = 531
+    end
+    object edt_EmailConfig_Benutzer: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Benutzer'
+      DataBinding.DataSource = ds_EmailConfig
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 50
+      Visible = False
+      OnExit = btn_EmailConfigSaveClick
+      Width = 534
+    end
+    object edt_EmailConfig_Emailadresse: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'EMail'
+      DataBinding.DataSource = ds_EmailConfig
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 45
+      Visible = False
+      OnExit = btn_EmailConfigSaveClick
+      Width = 427
+    end
+    object edt_EmailConfig_Kennwort: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Passwort'
+      DataBinding.DataSource = ds_EmailConfig
+      ParentFont = False
+      Properties.EchoMode = eemPassword
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 51
+      Visible = False
+      OnExit = btn_EmailConfigSaveClick
+      Width = 534
+    end
+    object edt_EmailConfig_PortAusgang: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'PortAusgangsserver'
+      DataBinding.DataSource = ds_EmailConfig
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 53
+      Visible = False
+      OnExit = btn_EmailConfigSaveClick
+      Width = 534
+    end
+    object edt_EmailConfig_PortEingang: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'PortEingangsserver'
+      DataBinding.DataSource = ds_EmailConfig
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 48
+      Visible = False
+      OnExit = btn_EmailConfigSaveClick
+      Width = 427
+    end
+    object edt_EmailConfig_PostAusgangServer: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'PostAusgangsserver'
+      DataBinding.DataSource = ds_EmailConfig
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 52
+      Visible = False
+      Width = 427
+    end
+    object edt_EmailConfig_PostEingangServer: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'PostEingangsserver'
+      DataBinding.DataSource = ds_EmailConfig
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 47
+      Visible = False
+      OnExit = btn_EmailConfigSaveClick
+      Width = 427
+    end
+    object lucmbbx_EmailConfig_Kontptyp: TcxDBLookupComboBox
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Kontotyp'
+      DataBinding.DataSource = ds_EmailConfig
+      ParentFont = False
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Bezeichnung'
+        end>
+      Properties.ListSource = dm_PCM.ds_Config_EmailConfigTyp
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 46
+      Visible = False
+      OnExit = btn_EmailConfigSaveClick
+      Width = 427
+    end
+    object brdckctrl_Email: TdxBarDockControl
+      Left = 10000
+      Top = 10000
+      Width = 1071
+      Height = 63
+      Align = dalNone
+      BarManager = brmgr_Config
+      Visible = False
+    end
+    object dxBarDockControl1: TdxBarDockControl
+      Left = 10000
+      Top = 10000
+      Width = 1071
+      Height = 63
+      Align = dalNone
+      BarManager = brmgr_Config
+      Visible = False
+    end
+    object btn_PostfachMainbottom: TcxButton
+      Left = 10000
+      Top = 10000
+      Width = 20
+      Height = 20
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+        610000000774494D4507D8040F0D0D3173F26F50000000097048597300000B12
+        00000B1201D2DD7EFC0000000467414D410000B18F0BFC610500000242494441
+        5478DAB593CB6B135114C6BF998CB149AA99A2CDD384A238538D6834A6582A5A
+        1F548C74ED46BA69232222F47FD14AEDC68A6BB108428BB8F0D9451656C53023
+        5AA9B5369126934E924E4C33E3BDB72418D32E5C7808CC90B9BF73BE7BBE7338
+        90F0274625CB32155816F9997266FA968A4D6257FFB06499A6424E813C65EDE5
+        7D95F35F1A9508A5446331F0660DA9548A25C9CE8CA9CDF0082B72BC278EBC56
+        C4A7F47B768E27DF94484F1FA2C19D88EC11211F3A0A5240E93C7F4D6AC06746
+        C8BBA5C47BFB10703BA1174BB07BE95F96C2D5E587A3A7203A04AC1B65648B15
+        643ECE329916B916854FF40F40B071D0AB36E86503EAEB2784B7648E56F05DBC
+        4992900A8343A818BF90CD6928AD19D0DE4E5399E84D5C86512347B76D87C071
+        987D38CEE0C2AB072A5797E9BD708325393C9884BDAD1DD97C01657D151EB71D
+        35DE05A7CB0143D730F7E836BB3B8529C7D75DE0789BE2F0EEC3DCD4387402FA
+        036174F8C2A8B6F9E0F604A01734BC9BBA83F6E001F03641114F0EB11EB5B8F0
+        616105A525155DE7861194E34CDD62FA0DBECC4CC0159070302436B920345CF0
+        11A9A461BA51C357733FE69F4E60BDBA46EF8A6FCF26092C23D2D5097FBB8085
+        C50C73A1F223BDB50B85959F287F5758139DA4F291EEBDFFEE4265F9334B103D
+        16FB7F2E707F8EAB67E03A99754BE94E24217A42C81556E954A243DC81DCD23C
+        D28FC75865BA0375A629010D3AC25449AB0B7737E017934D3BD29280C6EEB357
+        25B26F4AE8F495860B5476FE2F78CB041B0B9464F3419BC8E0E7F7365DF1DF3F
+        EB7C93A1EABC6E0000000049454E44AE426082}
+      TabOrder = 60
+      Visible = False
+      OnClick = btn_PostfachMainbottomClick
+    end
+    object btn_PostfachMaindown: TcxButton
+      Left = 10000
+      Top = 10000
+      Width = 20
+      Height = 20
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+        610000000774494D4507D8040F0D0D3173F26F50000000097048597300000B12
+        00000B1201D2DD7EFC0000000467414D410000B18F0BFC6105000001AB494441
+        5478DADD92CB2F035114C6BF69ABDE54506FB19A9110A9502112EF10156B1BB1
+        D18A8848FC2F4858A9588B44226161E1BDE882483477242C884417EDD4548D47
+        E7BAF74A453DFE004E6E666EEE9CDF39DFFDCE007F3E24FE28F3CCCA949A0494
+        B2652A775B73EA4FC9855DE332354DC2B2C0DE8AB6BFA24A6543B332A388ABA9
+        091633814020208A84B617D454D82B9A34B7B811D162B8089E893C0BFB46EA5A
+        DAE1AAC8435DA5034A7D23580352DC37297FC0DD5EB6A7C4DDD68EF2FC2CE8B1
+        07D84BF8112552527EB5AB038E4C1B5E8D3842B127DC9D1F0B99945D8BC3AD5D
+        FDB05925E82F56E87103EAE126E3A9223C281D9C61455887E1313C19CF088535
+        3C3C1AD04EB6B84CB479466024586A5A3A6C9284E3B54501470F56552929B364
+        605A146918F6C19E918350248AB87E0F67BE1D094B36B2B23361E81A4ED7E7C5
+        DD39FC31856438FBA798CB94D47A7C7038AB108EDE733F50E0C845F8F60AC18D
+        05D199BB9F32C6CFC1CDE34A6A7AC751A1B8C5D94DF00897DB4BEFF09E3F653A
+        DF0AF028EA9990D9A44955E7288770BDE317B2235FE05F0BBC8FCE27FE0F6EA2
+        80779755FCCF7803E8D0E0915AAA27200000000049454E44AE426082}
+      TabOrder = 59
+      Visible = False
+      OnClick = btn_PostfachMaindownClick
+    end
+    object btn_PostfachMainUp: TcxButton
+      Left = 10000
+      Top = 10000
+      Width = 20
+      Height = 20
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+        610000000774494D4507D8040F0D0D3173F26F50000000097048597300000B12
+        00000B1201D2DD7EFC0000000467414D410000B18F0BFC6105000001B6494441
+        5478DA636018F280119784985B96DAFFFFFF6E82D8FFFFFD537FB377D62D6CEA
+        98B06BCE046BB6B2306330363464F8FFFFFF4D61C71435A20C8068FE7FD3DCC2
+        9241579C974184F91F8388B41203C84041FB440C4350BC20EA9AA1065479D3C4
+        CA81418C8399E1D6F34F0CAF3F7E61F8FAF52B03031B1BC38FA7574106A97F38
+        BCE816860120CD40BFDE3474F061F8F7F71FC3A75F8C0CDF7FFE063B9183839D
+        E1E3A74F0C3F7EFF61F870650FD8904F4797DE821B20EA920E76B6BA5B1C0323
+        231303370F37C3FB0F1F196EEF9807365CCD239141584488E1D5DBCF0C9F81AE
+        79B61728FEFFBFFAE7132B6E318A38A781FC7553D93B97819B939D4152848FE1
+        DE83870C37364F67F8CFF05F1DA8101C88DAFE590CCA4ACA0C4FDE7E64F8F4F1
+        2BC3CDD5AD207175664E45A337528EF10C2A6A1A0CF252220CD7AFDD60B8B165
+        3ADCAF3F1E5D7CCB2EA3B3FCD5F593B92CC2CA0C067AFA0C6C3CFC0CDFD98419
+        3EDE3993CB088A1E5008AB7B24036D6462B8B16D06D879C80105023CE6E1C000
+        FE7753D32B1DE8712686AB9BA6802D018781A05D02D81B4001101743330C709B
+        8680039A01E43960E2FA7E7E235675430C00005416CE3539D1B3B10000000049
+        454E44AE426082}
+      TabOrder = 58
+      Visible = False
+      OnClick = btn_PostfachMainUpClick
+    end
+    object btn_PostfachMainTop: TcxButton
+      Left = 10000
+      Top = 10000
+      Width = 20
+      Height = 20
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+        610000000774494D4507D8040F0D0D3173F26F50000000097048597300000B12
+        00000B1201D2DD7EFC0000000467414D410000B18F0BFC610500000234494441
+        5478DAB5534D6B1351143D93D4496262A5CD24A135626D6A46F1A3468DF9026D
+        A896A2821BC19D5A2A560BF919FE03A1D245168228B8F20311316E5450889452
+        633353D166682AC48C261343D2B49DF1BD572D8544A80BEFEABDE19E33F7DC73
+        1E87BF947B68DC6F18BA44CF86AE8BC5D4A4DCAACFD41A7C8381A3E1E3381A08
+        C0300CC919BFEADF14C11AD89042E1080E7AB64130EB1076F48212769C1C6922
+        E1365E5CA7AFFB49A7742C3A00B7D50CF9AB866FE59FA856AB00CFA39ECF5022
+        B1F4EA8EDC4440C144AB141838077D5587D6E0505B5A66235AAD1694350DF5E5
+        15943EBC6024DA9BBBF23A81EBD4181B5B1CBA048E33C1EEB0E347A98CFCF46B
+        46EEED8FC12974A2A0565021D32CA69264B38658797B5FE684C16B5497E43B9B
+        80DD664197D08ECFF33928E91496D41C23E03B77A22738085FAF0F0B6A195AB9
+        0AE9C14DBA5CD16CDB7DA4D81DBF8C3EFF5EECEA1630FB310BE5FD1A381609C1
+        E3F620379741E5BB0A9D6FC7E143FDE01DDB51E39D287F4A27DAE828F9545272
+        6C198542142B532FD15015842351E2C256CCE78B7079FB5050247C49AF62A551
+        27C249DFF349B60BB6838E1357980C5BD71E348A390463F1962ED4166660117A
+        50516658B86A530FE5FFEBC2DCB32423F70F8FFCBB0BD9C713306088A4914579
+        FFF9F1CDBB907D32B19EB8BA32AD5ABC07EE1566DF25DA9CBE261738FA4868CE
+        C5E151F24713B24F6FB3F136C69596237491C45C97F69D19632E641EDD6A7681
+        7CA0D726F09FB2072FB045838AFBEDC22F58E6680A1520C2DE0000000049454E
+        44AE426082}
+      TabOrder = 57
+      Visible = False
+      OnClick = btn_PostfachMainTopClick
+    end
+    object grd_Postfachmain: TcxGrid
+      Left = 10000
+      Top = 10000
+      Width = 1027
+      Height = 107
+      BorderStyle = cxcbsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 61
+      TabStop = False
+      Visible = False
+      LockedStateImageOptions.Effect = lsieDark
+      object grdDBTblViewl_Postfachmain: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        FilterBox.CustomizeDialog = False
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = ds_EmailPostfachMain
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skCount
+          end>
+        DataController.Summary.SummaryGroups = <
+          item
+            Links = <
+              item
+              end>
+            SummaryItems = <
+              item
+              end>
+          end>
+        OptionsBehavior.IncSearch = True
+        OptionsBehavior.ShowHourglassCursor = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Appending = True
+        OptionsData.Deleting = False
+        OptionsData.Inserting = False
+        OptionsView.CellEndEllipsis = True
+        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.IndicatorWidth = 14
+        object grdDBTblViewl_PostfachmainPostfach: TcxGridDBColumn
+          DataBinding.FieldName = 'Postfach'
+          DataBinding.IsNullValueType = True
+          Options.Editing = False
+          Options.Sorting = False
+          Width = 400
+        end
+        object grdDBTblViewl_PostfachmainAnzeige: TcxGridDBColumn
+          DataBinding.FieldName = 'Anzeige'
+          DataBinding.IsNullValueType = True
+          Options.Sorting = False
+          Width = 400
+        end
+        object grdDBTblViewl_PostfachmainAbonnieren: TcxGridDBColumn
+          DataBinding.FieldName = 'Abonnieren'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxCheckBoxProperties'
+          Options.Sorting = False
+          Width = 80
+        end
+        object grdDBTblViewl_PostfachmainSortierung: TcxGridDBColumn
+          DataBinding.FieldName = 'Sortierung'
+          DataBinding.IsNullValueType = True
+          Options.Editing = False
+          Options.Sorting = False
+          SortIndex = 0
+          SortOrder = soAscending
+          Width = 80
+        end
+      end
+      object grdlvl_Postfachmain: TcxGridLevel
+        GridView = grdDBTblViewl_Postfachmain
+      end
+    end
+    object btn_PostfachSubbottom: TcxButton
+      Left = 10000
+      Top = 10000
+      Width = 20
+      Height = 20
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+        610000000774494D4507D8040F0D0D3173F26F50000000097048597300000B12
+        00000B1201D2DD7EFC0000000467414D410000B18F0BFC610500000242494441
+        5478DAB593CB6B135114C6BF998CB149AA99A2CDD384A238538D6834A6582A5A
+        1F548C74ED46BA69232222F47FD14AEDC68A6BB108428BB8F0D9451656C53023
+        5AA9B5369126934E924E4C33E3BDB72418D32E5C7808CC90B9BF73BE7BBE7338
+        90F0274625CB32155816F9997266FA968A4D6257FFB06499A6424E813C65EDE5
+        7D95F35F1A9508A5446331F0660DA9548A25C9CE8CA9CDF0082B72BC278EBC56
+        C4A7F47B768E27DF94484F1FA2C19D88EC11211F3A0A5240E93C7F4D6AC06746
+        C8BBA5C47BFB10703BA1174BB07BE95F96C2D5E587A3A7203A04AC1B65648B15
+        643ECE329916B916854FF40F40B071D0AB36E86503EAEB2784B7648E56F05DBC
+        4992900A8343A818BF90CD6928AD19D0DE4E5399E84D5C86512347B76D87C071
+        987D38CEE0C2AB072A5797E9BD708325393C9884BDAD1DD97C01657D151EB71D
+        35DE05A7CB0143D730F7E836BB3B8529C7D75DE0789BE2F0EEC3DCD4387402FA
+        036174F8C2A8B6F9E0F604A01734BC9BBA83F6E001F03641114F0EB11EB5B8F0
+        616105A525155DE7861194E34CDD62FA0DBECC4CC0159070302436B920345CF0
+        11A9A461BA51C357733FE69F4E60BDBA46EF8A6FCF26092C23D2D5097FBB8085
+        C50C73A1F223BDB50B85959F287F5758139DA4F291EEBDFFEE4265F9334B103D
+        16FB7F2E707F8EAB67E03A99754BE94E24217A42C81556E954A243DC81DCD23C
+        D28FC75865BA0375A629010D3AC25449AB0B7737E017934D3BD29280C6EEB357
+        25B26F4AE8F495860B5476FE2F78CB041B0B9464F3419BC8E0E7F7365DF1DF3F
+        EB7C93A1EABC6E0000000049454E44AE426082}
+      TabOrder = 65
+      Visible = False
+      OnClick = btn_PostfachSubbottomClick
+    end
+    object btn_PostfachSubDown: TcxButton
+      Left = 10000
+      Top = 10000
+      Width = 20
+      Height = 20
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+        610000000774494D4507D8040F0D0D3173F26F50000000097048597300000B12
+        00000B1201D2DD7EFC0000000467414D410000B18F0BFC6105000001AB494441
+        5478DADD92CB2F035114C6BF69ABDE54506FB19A9110A9502112EF10156B1BB1
+        D18A8848FC2F4858A9588B44226161E1BDE882483477242C884417EDD4548D47
+        E7BAF74A453DFE004E6E666EEE9CDF39DFFDCE007F3E24FE28F3CCCA949A0494
+        B2652A775B73EA4FC9855DE332354DC2B2C0DE8AB6BFA24A6543B332A388ABA9
+        091633814020208A84B617D454D82B9A34B7B811D162B8089E893C0BFB46EA5A
+        DAE1AAC8435DA5034A7D23580352DC37297FC0DD5EB6A7C4DDD68EF2FC2CE8B1
+        07D84BF8112552527EB5AB038E4C1B5E8D3842B127DC9D1F0B99945D8BC3AD5D
+        FDB05925E82F56E87103EAE126E3A9223C281D9C61455887E1313C19CF088535
+        3C3C1AD04EB6B84CB479466024586A5A3A6C9284E3B54501470F56552929B364
+        605A146918F6C19E918350248AB87E0F67BE1D094B36B2B23361E81A4ED7E7C5
+        DD39FC31856438FBA798CB94D47A7C7038AB108EDE733F50E0C845F8F60AC18D
+        05D199BB9F32C6CFC1CDE34A6A7AC751A1B8C5D94DF00897DB4BEFF09E3F653A
+        DF0AF028EA9990D9A44955E7288770BDE317B2235FE05F0BBC8FCE27FE0F6EA2
+        80779755FCCF7803E8D0E0915AAA27200000000049454E44AE426082}
+      TabOrder = 64
+      Visible = False
+      OnClick = btn_PostfachSubDownClick
+    end
+    object btn_PostfachSubUp: TcxButton
+      Left = 10000
+      Top = 10000
+      Width = 20
+      Height = 20
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+        610000000774494D4507D8040F0D0D3173F26F50000000097048597300000B12
+        00000B1201D2DD7EFC0000000467414D410000B18F0BFC6105000001B6494441
+        5478DA636018F280119784985B96DAFFFFFF6E82D8FFFFFD537FB377D62D6CEA
+        98B06BCE046BB6B2306330363464F8FFFFFF4D61C71435A20C8068FE7FD3DCC2
+        9241579C974184F91F8388B41203C84041FB440C4350BC20EA9AA1065479D3C4
+        CA81418C8399E1D6F34F0CAF3F7E61F8FAF52B03031B1BC38FA7574106A97F38
+        BCE816860120CD40BFDE3474F061F8F7F71FC3A75F8C0CDF7FFE063B9183839D
+        E1E3A74F0C3F7EFF61F870650FD8904F4797DE821B20EA920E76B6BA5B1C0323
+        231303370F37C3FB0F1F196EEF9807365CCD239141584488E1D5DBCF0C9F81AE
+        79B61728FEFFBFFAE7132B6E318A38A781FC7553D93B97819B939D4152848FE1
+        DE83870C37364F67F8CFF05F1DA8101C88DAFE590CCA4ACA0C4FDE7E64F8F4F1
+        2BC3CDD5AD207175664E45A337528EF10C2A6A1A0CF252220CD7AFDD60B8B165
+        3ADCAF3F1E5D7CCB2EA3B3FCD5F593B92CC2CA0C067AFA0C6C3CFC0CDFD98419
+        3EDE3993CB088A1E5008AB7B24036D6462B8B16D06D879C80105023CE6E1C000
+        FE7753D32B1DE8712686AB9BA6802D018781A05D02D81B4001101743330C709B
+        8680039A01E43960E2FA7E7E235675430C00005416CE3539D1B3B10000000049
+        454E44AE426082}
+      TabOrder = 63
+      Visible = False
+      OnClick = btn_PostfachSubUpClick
+    end
+    object btn_PostfachSubTop: TcxButton
+      Left = 10000
+      Top = 10000
+      Width = 20
+      Height = 20
+      OptionsImage.Glyph.SourceDPI = 96
+      OptionsImage.Glyph.Data = {
+        89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+        610000000774494D4507D8040F0D0D3173F26F50000000097048597300000B12
+        00000B1201D2DD7EFC0000000467414D410000B18F0BFC610500000234494441
+        5478DAB5534D6B1351143D93D4496262A5CD24A135626D6A46F1A3468DF9026D
+        A896A2821BC19D5A2A560BF919FE03A1D245168228B8F20311316E5450889452
+        633353D166682AC48C261343D2B49DF1BD572D8544A80BEFEABDE19E33F7DC73
+        1E87BF947B68DC6F18BA44CF86AE8BC5D4A4DCAACFD41A7C8381A3E1E3381A08
+        C0300CC919BFEADF14C11AD89042E1080E7AB64130EB1076F48212769C1C6922
+        E1365E5CA7AFFB49A7742C3A00B7D50CF9AB866FE59FA856AB00CFA39ECF5022
+        B1F4EA8EDC4440C144AB141838077D5587D6E0505B5A66235AAD1694350DF5E5
+        15943EBC6024DA9BBBF23A81EBD4181B5B1CBA048E33C1EEB0E347A98CFCF46B
+        46EEED8FC12974A2A0565021D32CA69264B38658797B5FE684C16B5497E43B9B
+        80DD664197D08ECFF33928E91496D41C23E03B77A22738085FAF0F0B6A195AB9
+        0AE9C14DBA5CD16CDB7DA4D81DBF8C3EFF5EECEA1630FB310BE5FD1A381609C1
+        E3F620379741E5BB0A9D6FC7E143FDE01DDB51E39D287F4A27DAE828F9545272
+        6C198542142B532FD15015842351E2C256CCE78B7079FB5050247C49AF62A551
+        27C249DFF349B60BB6838E1357980C5BD71E348A390463F1962ED4166660117A
+        50516658B86A530FE5FFEBC2DCB32423F70F8FFCBB0BD9C713306088A4914579
+        FFF9F1CDBB907D32B19EB8BA32AD5ABC07EE1566DF25DA9CBE261738FA4868CE
+        C5E151F24713B24F6FB3F136C69596237491C45C97F69D19632E641EDD6A7681
+        7CA0D726F09FB2072FB045838AFBEDC22F58E6680A1520C2DE0000000049454E
+        44AE426082}
+      TabOrder = 62
+      Visible = False
+      OnClick = btn_PostfachSubTopClick
+    end
+    object grd_postfachSub: TcxGrid
+      Left = 10000
+      Top = 10000
+      Width = 1027
+      Height = 107
+      BorderStyle = cxcbsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 66
+      TabStop = False
+      Visible = False
+      LockedStateImageOptions.Effect = lsieDark
+      object grdDBTblViewl_PostfachSub: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        FilterBox.CustomizeDialog = False
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = ds_EmailPostfachSub
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skCount
+          end>
+        DataController.Summary.SummaryGroups = <
+          item
+            Links = <
+              item
+              end>
+            SummaryItems = <
+              item
+              end>
+          end>
+        OptionsBehavior.IncSearch = True
+        OptionsBehavior.ShowHourglassCursor = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Appending = True
+        OptionsData.Deleting = False
+        OptionsData.Inserting = False
+        OptionsView.CellEndEllipsis = True
+        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.IndicatorWidth = 14
+        object grdDBTblViewl_PostfachSubPostfach: TcxGridDBColumn
+          DataBinding.FieldName = 'Postfach'
+          DataBinding.IsNullValueType = True
+          Options.Editing = False
+          Options.Sorting = False
+          Width = 265
+        end
+        object grdDBTblViewl_PostfachSubAnzeige: TcxGridDBColumn
+          DataBinding.FieldName = 'Anzeige'
+          DataBinding.IsNullValueType = True
+          Options.Sorting = False
+          Width = 265
+        end
+        object grdDBTblViewl_PostfachSubParent: TcxGridDBColumn
+          Caption = 'Hauptpostfach'
+          DataBinding.FieldName = 'Parent'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Anzeige'
+            end>
+          Options.Editing = False
+          Options.Sorting = False
+          Width = 265
+        end
+        object grdDBTblViewl_PostfachSubAbonnieren: TcxGridDBColumn
+          DataBinding.FieldName = 'Abonnieren'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxCheckBoxProperties'
+          Options.Sorting = False
+          Width = 80
+        end
+        object grdDBTblViewl_PostfachSubSortierung: TcxGridDBColumn
+          DataBinding.FieldName = 'Sortierung'
+          DataBinding.IsNullValueType = True
+          Options.Editing = False
+          Options.Sorting = False
+          SortIndex = 0
+          SortOrder = soAscending
+          Width = 80
+        end
+      end
+      object grdlvl_PostfachSub: TcxGridLevel
+        GridView = grdDBTblViewl_PostfachSub
+      end
+    end
+    object lactrl_ConfigGroup_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = -1
+    end
+    object lactrl_ConfigTab: TdxLayoutGroup
+      Parent = lactrl_ConfigGroup_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      LayoutDirection = ldTabbed
+      ShowBorder = False
+      Index = 0
+    end
+    object lagrp_Kalender: TdxLayoutGroup
+      Parent = lactrl_ConfigTab
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.ImageIndex = 10
+      CaptionOptions.Text = 'Kalender'
+      ShowBorder = False
+      Index = 0
+    end
+    object lagrp_KalenderKalender: TdxLayoutGroup
+      Parent = lagrp_Kalender
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'abonnierte Kalender'
+      ItemIndex = 1
+      Index = 0
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = lagrp_KalenderKalender
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'bardckctrl_Kalender'
+      CaptionOptions.Visible = False
+      Control = bardckctrl_Kalender
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalWidth = 1260
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Kalender:'
+      Control = edt_CalConfig_Kalender
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Link:'
+      Control = edt_CalConfig_Link
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem4: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Terminfarbe:'
+      Control = colcmbbx_CalConfigLabelColor
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem5: TdxLayoutItem
+      Parent = dxLayoutGroup6
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'an Termine erinnern:'
+      Control = chkbx_CalConfigReminder
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 15
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem6: TdxLayoutItem
+      Parent = dxLayoutGroup6
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'cmbbx_CalConfigReminderVal'
+      CaptionOptions.Visible = False
+      Control = cmbbx_CalConfigReminderVal
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 341
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem7: TdxLayoutItem
+      Parent = dxLayoutGroup7
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Benutzer:'
+      Control = edt_CalConfig_Benutzer
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem8: TdxLayoutItem
+      Parent = dxLayoutGroup7
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Passwort:'
+      Control = edt_CalConfig_Passwort
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem9: TdxLayoutItem
+      Parent = dxLayoutGroup7
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Schriftfarbe:'
+      Control = colcmbbx_CalConfigFontColor
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem10: TdxLayoutItem
+      Parent = lagrp_KalenderKalender
+      AlignHorz = ahClient
+      AlignVert = avBottom
+      CaptionOptions.Text = 'grd_CalConfig'
+      CaptionOptions.Visible = False
+      Control = grd_CalConfig
+      ControlOptions.OriginalHeight = 68
+      ControlOptions.OriginalWidth = 1260
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup12: TdxLayoutGroup
+      Parent = lagrp_KalenderFeiertage
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Feiertage'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem11: TdxLayoutItem
+      Parent = dxLayoutGroup12
+      AlignHorz = ahClient
+      CaptionOptions.Text = 'brdckctrl_Feiertage'
+      CaptionOptions.Visible = False
+      Control = brdckctrl_Feiertage
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalWidth = 1260
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem12: TdxLayoutItem
+      Parent = dxLayoutGroup12
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'grd_Feiertage'
+      CaptionOptions.Visible = False
+      Control = grd_Feiertage
+      ControlOptions.OriginalHeight = 180
+      ControlOptions.OriginalWidth = 1260
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object lagrp_KalenderFTP: TdxLayoutGroup
+      Parent = lagrp_Kalender
+      AlignHorz = ahClient
+      AlignVert = avBottom
+      CaptionOptions.Text = 'FTP-Zugangsdaten'
+      ItemIndex = 2
+      Index = 2
+    end
+    object dxLayoutItem13: TdxLayoutItem
+      Parent = lagrp_KalenderFTP
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'brdckctrl_FTP'
+      CaptionOptions.Visible = False
+      Control = brdckctrl_FTP
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalWidth = 1260
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem14: TdxLayoutItem
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Host:'
+      Control = edt_CalConfigFTP_URL
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem15: TdxLayoutItem
+      Parent = dxLayoutGroup9
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Dateiname:'
+      Control = edt_CalConfigFTP_Datei
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem16: TdxLayoutItem
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Benutzer:'
+      Control = edt_CalConfigFTP_Benutzer
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem17: TdxLayoutItem
+      Parent = dxLayoutGroup9
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Passwort:'
+      Control = edt_CalConfigFTP_Passwort
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem18: TdxLayoutItem
+      Parent = lagrp_KalenderFTP
+      AlignHorz = ahClient
+      AlignVert = avBottom
+      CaptionOptions.Text = 'grd_FTPConfig'
+      CaptionOptions.Visible = False
+      Control = grd_FTPConfig
+      ControlOptions.OriginalHeight = 69
+      ControlOptions.OriginalWidth = 1260
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object lagrp_Aufgaben: TdxLayoutGroup
+      Parent = lactrl_ConfigTab
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.ImageIndex = 58
+      CaptionOptions.Text = 'Aufgaben'
+      Index = 1
+    end
+    object dxLayoutGroup20: TdxLayoutGroup
+      Parent = lagrp_Aufgaben
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Aufgabenarten'
+      ItemIndex = 1
+      Index = 0
+    end
+    object dxLayoutItem19: TdxLayoutItem
+      Parent = dxLayoutGroup20
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'bardckctrl_Aufgabenarten'
+      CaptionOptions.Visible = False
+      Control = bardckctrl_Aufgabenarten
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalWidth = 1260
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem20: TdxLayoutItem
+      Parent = dxLayoutGroup14
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Bezeichnung:'
+      Control = edt_Aufgabenart
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem21: TdxLayoutItem
+      Parent = dxLayoutGroup14
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Aufgaben Farbe:'
+      Control = colcmbbx_Aufgabenart
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem22: TdxLayoutItem
+      Parent = dxLayoutGroup20
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'grd_Aufgabenarten'
+      CaptionOptions.Visible = False
+      Control = grd_Aufgabenarten
+      ControlOptions.OriginalHeight = 186
+      ControlOptions.OriginalWidth = 1260
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup25: TdxLayoutGroup
+      Parent = lagrp_Aufgaben
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Priorit'#228't'
+      ItemIndex = 2
+      Index = 1
+    end
+    object dxLayoutItem23: TdxLayoutItem
+      Parent = dxLayoutGroup25
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'bardckctrl_AufgabenPrio'
+      CaptionOptions.Visible = False
+      Control = bardckctrl_AufgabenPrio
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalWidth = 1260
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem24: TdxLayoutItem
+      Parent = dxLayoutGroup15
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Priorit'#228't:'
+      Control = edt_PrioNumber
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem25: TdxLayoutItem
+      Parent = dxLayoutGroup15
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Bezeichnung:'
+      Control = edt_PrioBez
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem26: TdxLayoutItem
+      Parent = dxLayoutGroup25
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'grd_AufgabenPrio'
+      CaptionOptions.Visible = False
+      Control = grd_AufgabenPrio
+      ControlOptions.OriginalHeight = 137
+      ControlOptions.OriginalWidth = 1260
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup30: TdxLayoutGroup
+      Parent = lagrp_Aufgaben
+      AlignHorz = ahClient
+      AlignVert = avBottom
+      CaptionOptions.Text = 'Sonstige Einstellungen'
+      ItemIndex = 1
+      Index = 2
+    end
+    object dxLayoutItem27: TdxLayoutItem
+      Parent = dxLayoutGroup30
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'bardckctrl_AufgabenSonstiges'
+      CaptionOptions.Visible = False
+      Control = bardckctrl_AufgabenSonstiges
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalWidth = 1260
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem28: TdxLayoutItem
+      Parent = dxLayoutGroup16
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Jira-Basic-Url:'
+      Control = edt_AufgabenSonstigesJira
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem29: TdxLayoutItem
+      Parent = dxLayoutGroup16
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Adresse Selbst:'
+      Control = cmbbx_AufgabenSonstigesAdresseEigen
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem30: TdxLayoutItem
+      Parent = dxLayoutGroup16
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Bundesland:'
+      Control = cmbbx_AufgabenSonstigesBundeslandEigen
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem31: TdxLayoutItem
+      Parent = dxLayoutGroup16
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Account-ToDo:'
+      Control = edt_AufgabenSonstigesAccToDo
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 3
+    end
+    object dxLayoutItem32: TdxLayoutItem
+      Parent = dxLayoutGroup17
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Stunden pro Tag:'
+      Control = mskedt_AufgabenSonstigesStunden
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem33: TdxLayoutItem
+      Parent = dxLayoutGroup17
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Adresse Firma:'
+      Control = cmbbx_AufgabenSonstigesAdresseFirma
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem34: TdxLayoutItem
+      Parent = dxLayoutGroup17
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Bundesland:'
+      Control = cmbbx_AufgabenSonstigesBundeslandFirma
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem35: TdxLayoutItem
+      Parent = dxLayoutGroup17
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Account-Mails:'
+      Control = edt_AufgabenSonstigesAccMail
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 3
+    end
+    object lagrp_Stundenplan: TdxLayoutGroup
+      Parent = lactrl_ConfigTab
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.ImageIndex = 14
+      CaptionOptions.Text = 'Stundenplan'
+      ItemIndex = 1
+      Index = 2
+    end
+    object dxLayoutGroup36: TdxLayoutGroup
+      Parent = lagrp_Stundenplan
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Anzeige Schulf'#228'cher'
+      ItemIndex = 2
+      Index = 1
+    end
+    object dxLayoutItem36: TdxLayoutItem
+      Parent = dxLayoutGroup36
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'brdckctrl_Schulfach'
+      CaptionOptions.Visible = False
+      Control = brdckctrl_Schulfach
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalWidth = 1260
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem37: TdxLayoutItem
+      Parent = dxLayoutGroup21
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Schulfach:'
+      Control = edt_StundenplanConfig_FachBezeichnung
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 950
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem38: TdxLayoutItem
+      Parent = dxLayoutGroup22
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Hintergrund:'
+      Control = colcmbbx_StundenplanConfig_LabelColor
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem39: TdxLayoutItem
+      Parent = dxLayoutGroup22
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Schriftfarbe:'
+      Control = colcmbbx_StundenplanConfig_FontColor
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem40: TdxLayoutItem
+      Parent = dxLayoutGroup36
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'grd_StundenplanConfig'
+      CaptionOptions.Visible = False
+      Control = grd_StundenplanConfig
+      ControlOptions.OriginalHeight = 414
+      ControlOptions.OriginalWidth = 1260
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup41: TdxLayoutGroup
+      Parent = lagrp_Stundenplan
+      AlignHorz = ahClient
+      AlignVert = avBottom
+      CaptionOptions.Text = 'Anzeige Uhrzeiten'
+      ItemIndex = 2
+      Index = 0
+    end
+    object dxLayoutItem41: TdxLayoutItem
+      Parent = dxLayoutGroup41
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'brdckctrl_SchulfachUhr'
+      CaptionOptions.Visible = False
+      Control = brdckctrl_SchulfachUhr
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalWidth = 1260
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem42: TdxLayoutItem
+      Parent = dxLayoutGroup19
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Hintergrund:'
+      Control = colcmbbx_StundenplanConfigUhr_LabelColor
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem43: TdxLayoutItem
+      Parent = dxLayoutGroup19
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Schriftfarbe:'
+      Control = colcmbbx_StundenplanConfigUhr_FontColor
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem44: TdxLayoutItem
+      Parent = dxLayoutGroup41
+      AlignHorz = ahClient
+      AlignVert = avBottom
+      CaptionOptions.Text = 'grd_StundenplanConfigUhr'
+      CaptionOptions.Visible = False
+      Control = grd_StundenplanConfigUhr
+      ControlOptions.OriginalHeight = 75
+      ControlOptions.OriginalWidth = 1260
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object lagrp_EMail: TdxLayoutGroup
+      Parent = lactrl_ConfigTab
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.ImageIndex = 15
+      CaptionOptions.Text = 'E-Mail'
+      ItemIndex = 1
+      Index = 3
+    end
+    object dxLayoutItem45: TdxLayoutItem
+      Parent = dxLayoutGroup11
+      CaptionOptions.Text = 'brdckctrl_Email'
+      CaptionOptions.Visible = False
+      Control = brdckctrl_Email
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalWidth = 1266
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem46: TdxLayoutItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'E-Mail-Adresse:'
+      Control = edt_EmailConfig_Emailadresse
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 350
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem47: TdxLayoutItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Kontptyp:'
+      Control = lucmbbx_EmailConfig_Kontptyp
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 350
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem48: TdxLayoutItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Posteingangsserver:'
+      Control = edt_EmailConfig_PostEingangServer
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 350
+      ControlOptions.ShowBorder = False
+      Index = 3
+    end
+    object dxLayoutItem49: TdxLayoutItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Port:'
+      Control = edt_EmailConfig_PortEingang
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 350
+      ControlOptions.ShowBorder = False
+      Index = 4
+    end
+    object dxLayoutItem50: TdxLayoutItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'chxbx_EmailConfig_SSL'
+      CaptionOptions.Visible = False
+      Control = chxbx_EmailConfig_SSL
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 119
+      ControlOptions.ShowBorder = False
+      Index = 5
+    end
+    object lbl_EmailConfig_Anmeldeinformationen: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup23
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.AlignVert = tavTop
+      CaptionOptions.Text = '[B]Anmeldeinformationen[/B]'
+      Index = 0
+    end
+    object dxLayoutItem52: TdxLayoutItem
+      Parent = dxLayoutGroup23
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'edt_EmailConfig_Benutzer'
+      CaptionOptions.Visible = False
+      Control = edt_EmailConfig_Benutzer
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 350
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem53: TdxLayoutItem
+      Parent = dxLayoutGroup23
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'edt_EmailConfig_Kennwort'
+      CaptionOptions.Visible = False
+      Control = edt_EmailConfig_Kennwort
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 350
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem54: TdxLayoutItem
+      Parent = dxLayoutGroup23
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Postausgangsserver:'
+      Control = edt_EmailConfig_PostAusgangServer
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 350
+      ControlOptions.ShowBorder = False
+      Index = 3
+    end
+    object dxLayoutItem55: TdxLayoutItem
+      Parent = dxLayoutGroup23
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'edt_EmailConfig_PortAusgang'
+      CaptionOptions.Visible = False
+      Control = edt_EmailConfig_PortAusgang
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 350
+      ControlOptions.ShowBorder = False
+      Index = 4
+    end
+    object dxLayoutItem57: TdxLayoutItem
+      Parent = dxLayoutGroup11
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_EmailConfig_Test'
+      CaptionOptions.Visible = False
+      Control = btn_EmailConfig_Test
+      ControlOptions.OriginalHeight = 27
+      ControlOptions.OriginalWidth = 1025
+      ControlOptions.ShowBorder = False
+      Index = 4
+    end
+    object dxLayoutItem59: TdxLayoutItem
+      Parent = dxLayoutGroup11
+      AlignHorz = ahClient
+      AlignVert = avBottom
+      CaptionOptions.Text = 'grd_EmailConfig'
+      CaptionOptions.Visible = False
+      Control = grd_EmailConfig
+      ControlOptions.OriginalHeight = 100
+      ControlOptions.OriginalWidth = 1260
+      ControlOptions.ShowBorder = False
+      Index = 5
+    end
+    object dxLayoutGroup57: TdxLayoutGroup
+      Parent = lagrp_EMail
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'E-Mail Postf'#228'cher'
+      ItemIndex = 2
+      Index = 1
+    end
+    object dxLayoutItem60: TdxLayoutItem
+      Parent = dxLayoutGroup57
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'dxBarDockControl1'
+      CaptionOptions.Visible = False
+      Control = dxBarDockControl1
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalWidth = 1260
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup59: TdxLayoutGroup
+      Parent = dxLayoutGroup57
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Hauptpostf'#228'cher'
+      LayoutDirection = ldHorizontal
+      Index = 1
+    end
+    object dxLayoutItem61: TdxLayoutItem
+      Parent = dxLayoutGroup59
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'grd_Postfachmain'
+      CaptionOptions.Visible = False
+      Control = grd_Postfachmain
+      ControlOptions.OriginalHeight = 100
+      ControlOptions.OriginalWidth = 1228
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup61: TdxLayoutGroup
+      Parent = dxLayoutGroup59
+      AlignHorz = ahRight
+      AlignVert = avTop
+      ItemIndex = 2
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem62: TdxLayoutItem
+      Parent = dxLayoutGroup61
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_PostfachMainTop'
+      CaptionOptions.Visible = False
+      Control = btn_PostfachMainTop
+      ControlOptions.OriginalHeight = 20
+      ControlOptions.OriginalWidth = 20
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem63: TdxLayoutItem
+      Parent = dxLayoutGroup61
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_PostfachMainUp'
+      CaptionOptions.Visible = False
+      Control = btn_PostfachMainUp
+      ControlOptions.OriginalHeight = 20
+      ControlOptions.OriginalWidth = 20
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem64: TdxLayoutItem
+      Parent = dxLayoutGroup61
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_PostfachMaindown'
+      CaptionOptions.Visible = False
+      Control = btn_PostfachMaindown
+      ControlOptions.OriginalHeight = 20
+      ControlOptions.OriginalWidth = 20
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem65: TdxLayoutItem
+      Parent = dxLayoutGroup61
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_PostfachMainbottom'
+      CaptionOptions.Visible = False
+      Control = btn_PostfachMainbottom
+      ControlOptions.OriginalHeight = 20
+      ControlOptions.OriginalWidth = 20
+      ControlOptions.ShowBorder = False
+      Index = 3
+    end
+    object dxLayoutGroup63: TdxLayoutGroup
+      Parent = dxLayoutGroup57
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Unterpostf'#228'cher'
+      LayoutDirection = ldHorizontal
+      Index = 2
+    end
+    object dxLayoutItem66: TdxLayoutItem
+      Parent = dxLayoutGroup63
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'grd_postfachSub'
+      CaptionOptions.Visible = False
+      Control = grd_postfachSub
+      ControlOptions.OriginalHeight = 100
+      ControlOptions.OriginalWidth = 1228
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup65: TdxLayoutGroup
+      Parent = dxLayoutGroup63
+      AlignHorz = ahRight
+      AlignVert = avTop
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem67: TdxLayoutItem
+      Parent = dxLayoutGroup65
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_PostfachSubTop'
+      CaptionOptions.Visible = False
+      Control = btn_PostfachSubTop
+      ControlOptions.OriginalHeight = 20
+      ControlOptions.OriginalWidth = 20
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem68: TdxLayoutItem
+      Parent = dxLayoutGroup65
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_PostfachSubUp'
+      CaptionOptions.Visible = False
+      Control = btn_PostfachSubUp
+      ControlOptions.OriginalHeight = 20
+      ControlOptions.OriginalWidth = 20
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem69: TdxLayoutItem
+      Parent = dxLayoutGroup65
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_PostfachSubDown'
+      CaptionOptions.Visible = False
+      Control = btn_PostfachSubDown
+      ControlOptions.OriginalHeight = 20
+      ControlOptions.OriginalWidth = 20
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem70: TdxLayoutItem
+      Parent = dxLayoutGroup65
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_PostfachSubbottom'
+      CaptionOptions.Visible = False
+      Control = btn_PostfachSubbottom
+      ControlOptions.OriginalHeight = 20
+      ControlOptions.OriginalWidth = 20
+      ControlOptions.ShowBorder = False
+      Index = 3
+    end
+    object dxLayoutLabeledItem1: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = '[B]Serverinformationen[/B]'
+      Index = 0
+    end
+    object dxLayoutGroup11: TdxLayoutGroup
+      Parent = lagrp_EMail
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Emailkonfiguration'
+      Index = 0
+    end
+    object lagrp_KalenderFeiertage: TdxLayoutGroup
+      Parent = lagrp_Kalender
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Feiertage'
+      Index = 1
+    end
+    object dxLayoutGroup13: TdxLayoutGroup
+      Parent = lagrp_KalenderKalender
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup5: TdxLayoutGroup
+      Parent = dxLayoutGroup13
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup6: TdxLayoutGroup
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 3
+    end
+    object dxLayoutGroup7: TdxLayoutGroup
+      Parent = dxLayoutGroup13
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup8: TdxLayoutGroup
+      Parent = dxLayoutGroup10
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup9: TdxLayoutGroup
+      Parent = dxLayoutGroup10
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup10: TdxLayoutGroup
+      Parent = lagrp_KalenderFTP
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup14: TdxLayoutGroup
+      Parent = dxLayoutGroup20
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup15: TdxLayoutGroup
+      Parent = dxLayoutGroup25
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup16: TdxLayoutGroup
+      Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup17: TdxLayoutGroup
+      Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup18: TdxLayoutGroup
+      Parent = dxLayoutGroup30
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup19: TdxLayoutGroup
+      Parent = dxLayoutGroup41
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup21: TdxLayoutGroup
+      Parent = dxLayoutGroup36
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup22: TdxLayoutGroup
+      Parent = dxLayoutGroup21
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      Index = 1
+    end
+    object dxLayoutGroup2: TdxLayoutGroup
+      Parent = dxLayoutGroup11
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup3: TdxLayoutGroup
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 5
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup23: TdxLayoutGroup
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 1
+    end
+    object lbl_EmailConfigTestEin: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup11
+      AlignHorz = ahClient
+      Index = 2
+    end
+    object lbl_EmailConfigTestAus: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup11
+      AlignHorz = ahClient
+      Index = 3
     end
   end
   object qry_CalConfig: TFDQuery

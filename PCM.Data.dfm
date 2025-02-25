@@ -3339,6 +3339,43 @@ object dm_PCM: Tdm_PCM
           F035FCC455F04950AD1EE0EAF0E699929617048EA1E46D8750BE66A7BFE4C988
           79D99BD5F34A10F978174D66DDCD902D1E782775288493C6750A4870D9C73833
           F8EAD188FF3FD27FF917A44147F36713E5310000000049454E44AE426082}
+      end
+      item
+        Image.Data = {
+          36040000424D3604000000000000360000002800000010000000100000000100
+          2000000000000004000000000000000000000000000000000000000000000303
+          0203000000000000000000000000000000000000000000000000000000000000
+          0000060707070303030300000000000000000000000000000000000000005755
+          537094918BBF64636180353534431B1C1B1F333434355C5D5D618889888FB2B2
+          B0BCD0CEC7E1A19E99CD75747295444442571918182001010101000000006561
+          5E81BC8D53FFBC8F43FFBD975DFFCDAD82F9E4BE86FFE2B569FFE0AD58FFDEA6
+          52FFDA9D47FFBC8A40FFBC924AFFBF9D6CFFB4AFA8E70909080B000000006061
+          61807C99CAFFB38238FFB97F1CFFCA8C2AFFDB9832FFDB9834FFDB9834FFDB98
+          34FFD89634FFBA812AFFB98029FFBA8335FFB6AEA7EA0909090B000000006161
+          5E804EA6C8FF329AE1FF828C94FFC38F43FFDC9832FFDD9721FFDD971AFFDD98
+          25FFD9962EFFBB812AFFB98029FFBA8436FFB6AEA7EA0909090B000000006161
+          5C8070B133FF51A97AFF009DF1FF29AEEEFF6CBCDAFF8DB5C5FFA9ADAAFFC0A6
+          8AFFCC9C66FFBC8112FFB98029FFBA8436FFB6AEA7EA0909090B000000006161
+          5C806FB049FF60AF15FF5DAD37FF41B98FFF31C8BFFF17C5EAFF28C7D9FF1EC6
+          E5FF29C2EAFF5196C9FFA2875AFFBA8435FFB6AEA7EA0909090B000000006161
+          5C806FB048FF5FAE23FF60AE27FF6BBE13FF5CC99CFF42C8A6FF74CD00FF72CD
+          17FF6ECA44FF3BA5BCFF009CFCFF7794BFFFB6AEA6EA0909080B000000006161
+          5C806FB048FF5FAE23FF60AE27FF66BE38FF23C5E7FF66CB58FF5690B1FF64AE
+          68FF70CB28FF61B022FF54AA5AFF3BA4C8FFB0B0B3EA0909080B000000006161
+          5C806FB048FF5FAE23FF60AE24FF50BB69FF42C7CEFF6ABA51FF3940EBFF4C73
+          C6FF72CD00FF61B028FF60AE27FF68AF21FFB1B1A8EA0908090B000000006161
+          5C806FB048FF60AF1AFF5BAC46FF2BB5D4FF6CCE3FFF517FB2FF3C4AE8FF3D4E
+          E6FF61AA86FF62B11AFF60AE27FF67AF34FFB1B1A7EA0908090B000000006161
+          5C806FB049FF5AAC42FF1A9CEEFF31B4C0FF6BBD69FF3D4EE7FF3B49E6FF3C4A
+          E8FF3D51E4FF5EA93AFF60AE27FF67AF34FFB1B1A7EA0908090B000000006262
+          5C816EB05AFF1DA0D2FF179EE2FF60BB46FF4B77CFFF3744DDFF497C94FF3F61
+          B3FF3A45EAFF518C78FF5DAE13FF65AF2BFFB1B1A7EA0908090B00000000605E
+          5A7BBABEC1FF9BB4D4FF8BB481FF82C061FF5069DFFF3043D5FFA4C4ACFF7186
+          BFFF3445E7FF828DC5FFA1BA8DFF88B56FFFB5B5ABEF0908080B000000000707
+          07091B1A192234322E404A48465E63636074484B808C3546E1FB424BD8FF3D4A
+          DDFF3A49DFF61D1F3F482B29293543413F5553514F6A05050506000000000000
+          000000000000000000000000000000000000000000001A21636D3746D5EB303D
+          BACD0A0D282C0000000000000000000000000000000000000000}
       end>
   end
   object imglst_24x24: TcxImageList
@@ -21976,6 +22013,7 @@ object dm_PCM: Tdm_PCM
     Top = 256
   end
   object qry_Contact_Staatsangehoerigkeit: TFDQuery
+    Active = True
     Connection = con_PCM
     SQL.Strings = (
       'Select ID,Bezeichnung From manager_Staatsangehoerigkeit')
@@ -21988,6 +22026,7 @@ object dm_PCM: Tdm_PCM
     Top = 395
   end
   object qry_Contact_Geschlecht: TFDQuery
+    Active = True
     Connection = con_PCM
     SQL.Strings = (
       'Select ID,Bezeichnung From manager_Geschlecht')
@@ -21995,6 +22034,7 @@ object dm_PCM: Tdm_PCM
     Top = 339
   end
   object qry_Contact_Familienstand: TFDQuery
+    Active = True
     Connection = con_PCM
     SQL.Strings = (
       'Select ID,Bezeichnung From manager_familienstand')
@@ -22002,6 +22042,7 @@ object dm_PCM: Tdm_PCM
     Top = 339
   end
   object qry_Contact_Anrede: TFDQuery
+    Active = True
     Connection = con_PCM
     SQL.Strings = (
       'Select ID, Bezeichnung From Manager_Anrede')
@@ -22009,6 +22050,7 @@ object dm_PCM: Tdm_PCM
     Top = 338
   end
   object qry_Contact_Konfession: TFDQuery
+    Active = True
     Connection = con_PCM
     SQL.Strings = (
       'Select ID,Bezeichnung From manager_Konfession')
@@ -22016,6 +22058,7 @@ object dm_PCM: Tdm_PCM
     Top = 338
   end
   object qry_Contact_Kontaktart: TFDQuery
+    Active = True
     Connection = con_PCM
     SQL.Strings = (
       'Select ID,Bezeichnung From manager_Kontaktart'
@@ -22721,74 +22764,6 @@ object dm_PCM: Tdm_PCM
     Left = 408
     Top = 128
   end
-  object DataSource3: TDataSource
-    DataSet = FDQuery3
-    Left = 279
-    Top = 152
-  end
-  object FDQuery3: TFDQuery
-    Connection = con_PCM
-    SQL.Strings = (
-      
-        'SELECT '#39'offen'#39',COUNT(*)  AS  Wert FROM manager_tickets_ges WHERE' +
-        ' STATUS = '#39'offen'#39
-      'Union ALL'
-      '      '
-      
-        'SELECT '#39'In Arbeit'#39',COUNT(*)  AS Wert FROM manager_tickets_ges WH' +
-        'ERE STATUS = '#39'In Arbeit'#39
-      'Union ALL'
-      '      '
-      
-        'SELECT '#39'Implemented'#39',COUNT(*)  AS Wert FROM manager_tickets_ges ' +
-        'WHERE STATUS = '#39'Implemented'#39
-      'Union ALL'
-      ''
-      
-        'SELECT '#39'Ready for QA'#39',COUNT(*)  AS Wert FROM manager_tickets_ges' +
-        ' WHERE STATUS = '#39'Ready for QA'#39
-      'Union ALL'
-      '      '
-      
-        'SELECT '#39'Functional Acceptance'#39',COUNT(*)  AS Wert  FROM manager_t' +
-        'ickets_ges WHERE STATUS = '#39'Functional Acceptance'#39)
-    Left = 184
-    Top = 144
-  end
-  object FDQuery4: TFDQuery
-    Connection = con_PCM
-    SQL.Strings = (
-      
-        'SELECT '#39'offen'#39',COUNT(*)  AS  Wert FROM manager_tickets_ges WHERE' +
-        ' STATUS = '#39'offen'#39
-      'Union ALL'
-      '      '
-      
-        'SELECT '#39'In Arbeit'#39',COUNT(*)  AS Wert FROM manager_tickets_ges WH' +
-        'ERE STATUS = '#39'In Arbeit'#39
-      'Union ALL'
-      '      '
-      
-        'SELECT '#39'Implemented'#39',COUNT(*)  AS Wert FROM manager_tickets_ges ' +
-        'WHERE STATUS = '#39'Implemented'#39
-      'Union ALL'
-      ''
-      
-        'SELECT '#39'Ready for QA'#39',COUNT(*)  AS Wert FROM manager_tickets_ges' +
-        ' WHERE STATUS = '#39'Ready for QA'#39
-      'Union ALL'
-      '      '
-      
-        'SELECT '#39'Functional Acceptance'#39',COUNT(*)  AS Wert  FROM manager_t' +
-        'ickets_ges WHERE STATUS = '#39'Functional Acceptance'#39)
-    Left = 592
-    Top = 136
-  end
-  object DataSource4: TDataSource
-    DataSet = FDQuery4
-    Left = 359
-    Top = 144
-  end
   object qry_Calc: TFDQuery
     Connection = con_PCM
     Left = 888
@@ -22798,5 +22773,13 @@ object dm_PCM: Tdm_PCM
     Connection = con_PCM
     Left = 952
     Top = 560
+  end
+  object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
+    object dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel
+      PixelsPerInch = 96
+    end
+    object dxLayoutSkinLookAndFeel2: TdxLayoutSkinLookAndFeel
+      PixelsPerInch = 96
+    end
   end
 end

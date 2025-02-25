@@ -9,25 +9,25 @@ object frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -19
+  Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
   Position = poScreenCenter
   OnCreate = FormCreate
-  TextHeight = 23
-  object cxGroupBox1: TcxGroupBox
+  TextHeight = 13
+  object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
-    Align = alClient
-    PanelStyle.Active = True
-    Style.BorderStyle = ebsNone
-    TabOrder = 0
-    Height = 83
     Width = 268
+    Height = 83
+    Align = alClient
+    TabOrder = 0
+    AutoSize = True
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     object btn_PCManagerChooseDate_Cancel: TcxButton
-      Left = 140
-      Top = 54
-      Width = 126
+      Left = 129
+      Top = 53
+      Width = 112
       Height = 25
       Caption = 'Abbrechen'
       OptionsImage.ImageIndex = 57
@@ -42,9 +42,9 @@ object frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate
       OnClick = btn_PCManagerChooseDate_CancelClick
     end
     object btn_PCManagerChooseDate_Ok: TcxButton
-      Left = 8
-      Top = 54
-      Width = 126
+      Left = 10
+      Top = 53
+      Width = 113
       Height = 25
       Caption = 'Ok'
       OptionsImage.ImageIndex = 56
@@ -59,8 +59,8 @@ object frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate
       OnClick = btn_PCManagerChooseDate_OkClick
     end
     object cbx_PCManagerChooseDate_Month: TcxComboBox
-      Left = 8
-      Top = 27
+      Left = 10
+      Top = 28
       ParentFont = False
       Properties.Items.Strings = (
         'Januar'
@@ -80,13 +80,15 @@ object frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate
       Style.Font.Height = -11
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 0
-      Width = 126
+      Width = 113
     end
     object cbx_PCManagerChooseDate_Year: TcxComboBox
-      Left = 140
-      Top = 27
+      Left = 129
+      Top = 28
       ParentFont = False
       Properties.Items.Strings = (
         '2020'
@@ -174,35 +176,95 @@ object frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate
       Style.Font.Height = -11
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 1
-      Width = 126
+      Width = 112
     end
-    object lbl_PCManagerChooseDate_Month: TcxLabel
-      Left = 8
-      Top = 8
-      Caption = 'Monat:'
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      Transparent = True
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = -1
     end
-    object lbl_PCManagerChooseDate_Year: TcxLabel
-      Left = 140
-      Top = 8
-      Caption = 'Jahr:'
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      Transparent = True
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup4
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Monat:'
+      CaptionOptions.Layout = clTop
+      Control = cbx_PCManagerChooseDate_Month
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 126
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = dxLayoutGroup4
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Jahr:'
+      CaptionOptions.Layout = clTop
+      Control = cbx_PCManagerChooseDate_Year
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 126
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_PCManagerChooseDate_Ok'
+      CaptionOptions.Visible = False
+      Control = btn_PCManagerChooseDate_Ok
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 126
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem4: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_PCManagerChooseDate_Cancel'
+      CaptionOptions.Visible = False
+      Control = btn_PCManagerChooseDate_Cancel
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 126
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup5: TdxLayoutGroup
+      Parent = dxLayoutGroup6
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup4: TdxLayoutGroup
+      Parent = dxLayoutGroup6
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup6: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 0
     end
   end
 end

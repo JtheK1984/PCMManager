@@ -18,193 +18,130 @@ object fAdressSuche: TfAdressSuche
   OnKeyPress = FormKeyPress
   OnShow = FormShow
   TextHeight = 13
-  object pcTyp: TcxPageControl
+  object dxLayoutControl1: TdxLayoutControl
     Left = 0
-    Top = 173
+    Top = 0
     Width = 946
-    Height = 441
+    Height = 614
     Align = alClient
-    TabOrder = 0
-    Properties.ActivePage = tshAdresssuche
-    Properties.CustomButtons.Buttons = <>
-    Properties.HotTrack = True
-    Properties.Style = 9
-    Properties.TabSlants.Kind = skCutCorner
-    LookAndFeel.Kind = lfUltraFlat
-    ClientRectBottom = 441
-    ClientRectRight = 946
-    ClientRectTop = 20
-    object tshAdresssuche: TcxTabSheet
-      Caption = 'Adressen'
-      ImageIndex = 0
-    end
-  end
-  object cxGrid1: TcxGrid
-    Left = 0
-    Top = 173
-    Width = 946
-    Height = 441
-    Align = alClient
-    TabOrder = 1
-    LookAndFeel.NativeStyle = False
-    object tvAdressen: TcxGridDBTableView
-      Navigator.Buttons.CustomButtons = <>
-      Navigator.Buttons.First.Visible = True
-      Navigator.Buttons.PriorPage.Visible = True
-      Navigator.Buttons.Prior.Visible = True
-      Navigator.Buttons.Next.Visible = True
-      Navigator.Buttons.NextPage.Visible = True
-      Navigator.Buttons.Last.Visible = True
-      Navigator.Buttons.Insert.Visible = True
-      Navigator.Buttons.Delete.Visible = True
-      Navigator.Buttons.Edit.Visible = True
-      Navigator.Buttons.Post.Visible = True
-      Navigator.Buttons.Cancel.Visible = True
-      Navigator.Buttons.Refresh.Visible = True
-      Navigator.Buttons.SaveBookmark.Visible = True
-      Navigator.Buttons.GotoBookmark.Visible = True
-      Navigator.Buttons.Filter.Visible = True
-      ScrollbarAnnotations.CustomAnnotations = <>
-      OnCellDblClick = tvAdressenCellDblClick
-      DataController.DataSource = dm_PCM.ds_KalenderAufgabe_AdressSuche
-      DataController.Filter.Options = [fcoCaseInsensitive]
-      DataController.Filter.PercentWildcard = '*'
-      DataController.Filter.UnderscoreWildcard = '?'
-      DataController.Filter.Active = True
-      DataController.Options = [dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-      DataController.Summary.DefaultGroupSummaryItems = <>
-      DataController.Summary.FooterSummaryItems = <>
-      DataController.Summary.SummaryGroups = <>
-      OptionsBehavior.IncSearch = True
-      OptionsCustomize.ColumnsQuickCustomization = True
-      OptionsData.Deleting = False
-      OptionsData.Editing = False
-      OptionsData.Inserting = False
-      OptionsSelection.MultiSelect = True
-      OptionsView.GridLines = glVertical
-      OptionsView.Indicator = True
-      object tvAdressenName: TcxGridDBColumn
-        Tag = 299140304
-        DataBinding.FieldName = 'Firma'
-        DataBinding.IsNullValueType = True
-        SortIndex = 0
-        SortOrder = soAscending
-        Width = 200
+    TabOrder = 4
+    AutoSize = True
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    ExplicitLeft = 328
+    ExplicitTop = 200
+    ExplicitWidth = 300
+    ExplicitHeight = 250
+    object cxGrid1: TcxGrid
+      Left = 10
+      Top = 206
+      Width = 926
+      Height = 398
+      TabOrder = 7
+      LookAndFeel.NativeStyle = False
+      object tvAdressen: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        Navigator.Buttons.First.Visible = True
+        Navigator.Buttons.PriorPage.Visible = True
+        Navigator.Buttons.Prior.Visible = True
+        Navigator.Buttons.Next.Visible = True
+        Navigator.Buttons.NextPage.Visible = True
+        Navigator.Buttons.Last.Visible = True
+        Navigator.Buttons.Insert.Visible = True
+        Navigator.Buttons.Delete.Visible = True
+        Navigator.Buttons.Edit.Visible = True
+        Navigator.Buttons.Post.Visible = True
+        Navigator.Buttons.Cancel.Visible = True
+        Navigator.Buttons.Refresh.Visible = True
+        Navigator.Buttons.SaveBookmark.Visible = True
+        Navigator.Buttons.GotoBookmark.Visible = True
+        Navigator.Buttons.Filter.Visible = True
+        ScrollbarAnnotations.CustomAnnotations = <>
+        OnCellDblClick = tvAdressenCellDblClick
+        DataController.DataSource = dm_PCM.ds_KalenderAufgabe_AdressSuche
+        DataController.Filter.Options = [fcoCaseInsensitive]
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Filter.Active = True
+        DataController.Options = [dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsBehavior.IncSearch = True
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.MultiSelect = True
+        OptionsView.GridLines = glVertical
+        OptionsView.Indicator = True
+        object tvAdressenName: TcxGridDBColumn
+          Tag = 299140304
+          DataBinding.FieldName = 'Firma'
+          DataBinding.IsNullValueType = True
+          SortIndex = 0
+          SortOrder = soAscending
+          Width = 200
+        end
+        object tvAdressenStrasse: TcxGridDBColumn
+          Tag = 298893800
+          Caption = 'Stra'#223'e'
+          DataBinding.FieldName = 'Strasse_Ges'
+          DataBinding.IsNullValueType = True
+          Width = 200
+        end
+        object tvAdressenplz: TcxGridDBColumn
+          Tag = 298895624
+          Caption = 'PLZ'
+          DataBinding.FieldName = 'PLZ_Ges'
+          DataBinding.IsNullValueType = True
+          Width = 60
+        end
+        object tvAdressenOrt: TcxGridDBColumn
+          Tag = 298896472
+          DataBinding.FieldName = 'Ort_Ges'
+          DataBinding.IsNullValueType = True
+          Width = 200
+        end
       end
-      object tvAdressenStrasse: TcxGridDBColumn
-        Tag = 298893800
-        Caption = 'Stra'#223'e'
-        DataBinding.FieldName = 'Strasse_Ges'
-        DataBinding.IsNullValueType = True
-        Width = 200
-      end
-      object tvAdressenplz: TcxGridDBColumn
-        Tag = 298895624
-        Caption = 'PLZ'
-        DataBinding.FieldName = 'PLZ_Ges'
-        DataBinding.IsNullValueType = True
-        Width = 60
-      end
-      object tvAdressenOrt: TcxGridDBColumn
-        Tag = 298896472
-        DataBinding.FieldName = 'Ort_Ges'
-        DataBinding.IsNullValueType = True
-        Width = 200
+      object cxGrid1Level1: TcxGridLevel
+        GridView = tvAdressen
       end
     end
-    object cxGrid1Level1: TcxGridLevel
-      GridView = tvAdressen
-    end
-  end
-  object cxGroupBox2: TcxGroupBox
-    Left = 0
-    Top = 63
-    Align = alTop
-    Caption = 'Filter-Kriterien'
-    ParentFont = False
-    Style.Font.Charset = DEFAULT_CHARSET
-    Style.Font.Color = clWindowText
-    Style.Font.Height = -11
-    Style.Font.Name = 'Tahoma'
-    Style.Font.Style = []
-    Style.IsFontAssigned = True
-    TabOrder = 2
-    Height = 71
-    Width = 946
     object teName: TcxTextEdit
-      Left = 96
-      Top = 16
-      TabOrder = 0
-      Width = 137
+      Left = 97
+      Top = 110
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 1
+      Width = 369
     end
     object teStrasse: TcxTextEdit
-      Left = 96
-      Top = 40
-      TabOrder = 1
-      Width = 137
+      Left = 97
+      Top = 135
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 2
+      Width = 369
     end
     object tePLZ: TcxTextEdit
-      Left = 328
-      Top = 16
-      TabOrder = 2
-      Width = 137
+      Left = 554
+      Top = 110
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 3
+      Width = 373
     end
     object teOrt: TcxTextEdit
-      Left = 328
-      Top = 40
-      TabOrder = 3
-      Width = 137
+      Left = 554
+      Top = 135
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 4
+      Width = 373
     end
-    object Label63: TcxLabel
-      Left = 8
-      Top = 20
-      Caption = 'Name enth'#228'lt:'
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -12
-      Style.Font.Name = 'Segoe UI'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      Transparent = True
-    end
-    object Label64: TcxLabel
-      Left = 8
-      Top = 44
-      Caption = 'Stra'#223'e enth'#228'lt:'
-      Transparent = True
-    end
-    object Label65: TcxLabel
-      Left = 240
-      Top = 20
-      Caption = 'PLZ beginnt mit:'
-      Transparent = True
-    end
-    object Label66: TcxLabel
-      Left = 240
-      Top = 44
-      Caption = 'Ort enth'#228'lt:'
-      Transparent = True
-    end
-  end
-  object cxGroupBox1: TcxGroupBox
-    Left = 0
-    Top = 134
-    Align = alTop
-    PanelStyle.Active = True
-    ParentFont = False
-    Style.Font.Charset = DEFAULT_CHARSET
-    Style.Font.Color = clWindowText
-    Style.Font.Height = -11
-    Style.Font.Name = 'Tahoma'
-    Style.Font.Style = []
-    Style.IsFontAssigned = True
-    TabOrder = 7
-    Height = 39
-    Width = 946
     object bAdressenZeigen: TcxButton
-      Left = 8
-      Top = 6
+      Left = 10
+      Top = 172
       Width = 225
       Height = 28
       Hint = 
@@ -214,7 +151,7 @@ object fAdressSuche: TfAdressSuche
       LookAndFeel.NativeStyle = False
       OptionsImage.ImageIndex = 25
       OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 0
+      TabOrder = 5
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -224,8 +161,8 @@ object fAdressSuche: TfAdressSuche
       OnClick = bAdressenZeigenClick
     end
     object bFilterLoeschen: TcxButton
-      Left = 240
-      Top = 6
+      Left = 241
+      Top = 172
       Width = 225
       Height = 28
       Hint = 
@@ -235,7 +172,7 @@ object fAdressSuche: TfAdressSuche
       LookAndFeel.NativeStyle = False
       OptionsImage.ImageIndex = 24
       OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 1
+      TabOrder = 6
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -244,19 +181,158 @@ object fAdressSuche: TfAdressSuche
       ParentFont = False
       OnClick = bFilterLoeschenClick
     end
-    object lCount: TcxLabel
-      Left = 473
-      Top = 13
-      Caption = 'Es wurden xxx Adressen gefunden!'
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -12
-      Style.Font.Name = 'Segoe UI'
-      Style.Font.Style = []
-      Style.IsFontAssigned = True
-      Transparent = True
-      Visible = False
+    object dxBarDockControl1: TdxBarDockControl
+      Left = 10
+      Top = 10
+      Width = 926
+      Height = 63
+      Align = dalNone
+      BarManager = dxBarManager1
+    end
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      ShowBorder = False
+      Index = -1
+    end
+    object dxLayoutGroup1: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Filter-Kriterien'
+      ItemIndex = 2
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup11
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Name enth'#228'lt:'
+      Control = teName
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 137
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = dxLayoutGroup12
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'PLZ beginnt mit:'
+      Control = tePLZ
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 137
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = dxLayoutGroup11
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Stra'#223'e enth'#228'lt:'
+      Control = teStrasse
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 137
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem4: TdxLayoutItem
+      Parent = dxLayoutGroup12
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Ort enth'#228'lt:'
+      Control = teOrt
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 137
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup5: TdxLayoutGroup
+      Parent = dxLayoutGroup1
+      AlignHorz = ahClient
+      AlignVert = avTop
+      ItemIndex = 2
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem5: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      CaptionOptions.Text = 'bAdressenZeigen'
+      CaptionOptions.Visible = False
+      Control = bAdressenZeigen
+      ControlOptions.OriginalHeight = 28
+      ControlOptions.OriginalWidth = 225
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem6: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      CaptionOptions.Text = 'bFilterLoeschen'
+      CaptionOptions.Visible = False
+      Control = bFilterLoeschen
+      ControlOptions.OriginalHeight = 28
+      ControlOptions.OriginalWidth = 225
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object lCount: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup5
+      CaptionOptions.AlignVert = tavTop
+      CaptionOptions.Text = 'Es wurden xxx Adressen gefunden!'
+      Index = 2
+    end
+    object dxLayoutItem7: TdxLayoutItem
+      Parent = dxLayoutGroup1
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'cxGrid1'
+      CaptionOptions.Visible = False
+      Control = cxGrid1
+      ControlOptions.OriginalHeight = 504
+      ControlOptions.OriginalWidth = 946
+      ControlOptions.ShowBorder = False
+      Index = 3
+    end
+    object dxLayoutItem8: TdxLayoutItem
+      Parent = dxLayoutGroup1
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = dxBarDockControl1
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalWidth = 946
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup11: TdxLayoutGroup
+      Parent = dxLayoutGroup13
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup12: TdxLayoutGroup
+      Parent = dxLayoutGroup13
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup13: TdxLayoutGroup
+      Parent = dxLayoutGroup1
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Filter-Kriterien'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      Index = 1
     end
   end
   object qAdressSuche1: TFDQuery
@@ -291,18 +367,13 @@ object fAdressSuche: TfAdressSuche
     Left = 472
     Top = 312
     PixelsPerInch = 96
-    DockControlHeights = (
-      0
-      0
-      63
-      0)
     object dxBarManager1Bar1: TdxBar
       Caption = 'Custom 1'
       CaptionButtons = <>
-      DockedDockingStyle = dsTop
+      DockControl = dxBarDockControl1
+      DockedDockControl = dxBarDockControl1
       DockedLeft = 0
       DockedTop = 0
-      DockingStyle = dsTop
       FloatLeft = 986
       FloatTop = 2
       FloatClientWidth = 0

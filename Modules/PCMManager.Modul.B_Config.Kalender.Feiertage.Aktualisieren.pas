@@ -7,20 +7,27 @@ uses
   Dialogs, Menus, cxLookAndFeelPainters, cxTextEdit, cxMaskEdit,
   cxDropDownEdit, cxCalendar, StdCtrls, cxControls, cxContainer, cxEdit,
   cxGroupBox, cxButtons, cxGraphics, cxLookAndFeels, Buttons,
-  Vcl.ComCtrls, dxCore, cxDateUtils, cxLabel, System.UITypes;
+  Vcl.ComCtrls, dxCore, cxDateUtils, cxLabel, System.UITypes,
+  dxLayoutcxEditAdapters, dxLayoutControlAdapters, dxLayoutContainer, cxClasses,
+  dxLayoutControl;
 
 type
   Tfrm_FeiertageAktualisieren = class(TForm)
-    grpbx_Hinweis: TcxGroupBox;
-    grpbx_Data: TcxGroupBox;
     dEdt_Von: TcxDateEdit;
     dEdt_Bis: TcxDateEdit;
     btn_OK: TcxButton;
     btn_Abort: TcxButton;
-    lbl_Von: TcxLabel;
-    lbl_Bis: TcxLabel;
-    lbl_Hinweis: TcxLabel;
-    grpbx_DesignMain: TcxGroupBox;
+    lactrl_FeiertageRefreshGroup_Root: TdxLayoutGroup;
+    lactrl_FeiertageRefresh: TdxLayoutControl;
+    dxLayoutGroup5: TdxLayoutGroup;
+    lbl_Hinweis: TdxLayoutLabeledItem;
+    dxLayoutGroup7: TdxLayoutGroup;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutGroup11: TdxLayoutGroup;
+    dxLayoutGroup6: TdxLayoutGroup;
     procedure btn_OKClick(Sender: TObject);
     procedure btn_AbortClick(Sender: TObject);
   private

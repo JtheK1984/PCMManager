@@ -225,34 +225,6 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <Form>cxSchedulerReminderForm</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.pas">
-            <Form>frm_ZE</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.Booking.pas">
-            <Form>frm_Booking</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.ChooseMonth.pas">
-            <Form>frm_ChooseDate</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.Monatswerte.pas">
-            <Form>frm_monatswerte</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.Feiertage.pas">
-            <Form>frm_Feiertage</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.Fehltage.Edit.pas">
-            <Form>frm_Fehltageeintragen</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.H_ZE.Fehltage.pas">
-            <Form>frm_Fehltage</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="PCM.splash.pas">
             <Form>SplashScreen</Form>
             <FormType>dfm</FormType>
@@ -1283,7 +1255,7 @@ $(PreBuildEvent)]]></PreBuildEvent>
     <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
     <Import Project="$(MSBuildProjectName).deployproj" Condition="Exists('$(MSBuildProjectName).deployproj')"/>
     <PropertyGroup Condition="'$(Config)'=='Debug' And '$(Platform)'=='Win32'">
-        <PreBuildEvent>PCM-Functions\PCMIncrementBuildNumber.exe Versioninfo32.rc &amp;&amp;Del Versioninfo32.res&amp;&amp;BRCC32.exe Versioninfo32.rc</PreBuildEvent>
+        <PreBuildEvent>PCM-Functions\PCMIncrementBuildNumber.exe Versioninfo32.rc &amp;&amp;Del Versioninfo32.res&amp;&amp;BRCC32.exe Versioninfo32.rc</PreBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
@@ -1291,7 +1263,7 @@ $(PreBuildEvent)]]></PreBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Debug' And '$(Platform)'=='Win64'">
-        <PreBuildEvent>PCM-Functions\PCMIncrementBuildNumber.exe Versioninfo64.rc&amp;&amp;Del Versioninfo64.res&amp;&amp;BRCC32.exe Versioninfo64.rc</PreBuildEvent>
+        <PreBuildEvent>PCM-Functions\PCMIncrementBuildNumber.exe Versioninfo64.rc&amp;&amp;Del Versioninfo64.res&amp;&amp;BRCC32.exe Versioninfo64.rc</PreBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
@@ -1299,7 +1271,7 @@ $(PreBuildEvent)]]></PreBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Release' And '$(Platform)'=='Win32'">
-        <PreBuildEvent>PCM-Functions\PCMIncrementBuildNumber.exe Versioninfo32.rc &amp;&amp;Del Versioninfo32.res&amp;&amp;BRCC32.exe Versioninfo32.rc</PreBuildEvent>
+        <PreBuildEvent>PCM-Functions\PCMIncrementBuildNumber.exe Versioninfo32.rc &amp;&amp;Del Versioninfo32.res&amp;&amp;BRCC32.exe Versioninfo32.rc</PreBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
@@ -1307,7 +1279,7 @@ $(PreBuildEvent)]]></PreBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Release' And '$(Platform)'=='Win64'">
-        <PreBuildEvent>PCM-Functions\PCMIncrementBuildNumber.exe Versioninfo64.rc&amp;&amp;Del Versioninfo64.res&amp;&amp;BRCC32.exe Versioninfo64.rc</PreBuildEvent>
+        <PreBuildEvent>PCM-Functions\PCMIncrementBuildNumber.exe Versioninfo64.rc&amp;&amp;Del Versioninfo64.res&amp;&amp;BRCC32.exe Versioninfo64.rc</PreBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>

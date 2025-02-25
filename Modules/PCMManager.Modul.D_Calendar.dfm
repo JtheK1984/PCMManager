@@ -18,2261 +18,1893 @@ object frm_Calendar: Tfrm_Calendar
   OnResize = FormResize
   OnShow = FormShow
   TextHeight = 13
-  object pnl_Design: TcxGroupBox
+  object lactrl_Kalender: TdxLayoutControl
     Left = 0
     Top = 0
-    Align = alClient
-    PanelStyle.Active = True
-    Style.BorderStyle = ebsNone
-    TabOrder = 0
-    Height = 940
     Width = 1070
-    object pc_Kalender: TcxPageControl
-      Left = 2
-      Top = 2
-      Width = 1066
-      Height = 936
-      Align = alClient
-      Color = clBtnFace
+    Height = 940
+    Align = alClient
+    TabOrder = 0
+    AutoSize = True
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    OptionsImage.Images = dm_PCM.imglst_16x16
+    object brdckctrl_Kalender: TdxBarDockControl
+      Left = 22
+      Top = 48
+      Width = 1022
+      Height = 117
+      Align = dalNone
+      BarManager = brmgr_Kalendar
+    end
+    object sched_Kalender: TcxScheduler
+      Left = 22
+      Top = 171
+      Width = 1022
+      Height = 743
+      DateNavigator.RowCount = 5
+      ViewDay.Active = True
+      ViewDay.AlwaysShowEventTime = True
+      ViewDay.TimeRulerMinutes = True
+      ViewDay.WorkTimeOnly = True
+      OnCustomDrawDayHeader = sched_KalenderCustomDrawDayHeader
+      OnCustomDrawEvent = sched_KalenderCustomDrawEvent
+      ContentPopupMenu.PopupMenu = brpmm_ContextCalender
+      ContentPopupMenu.UseBuiltInPopupMenu = False
+      ControlBox.Visible = False
+      EventOperations.Deleting = False
+      EventOperations.DialogEditing = False
+      EventOperations.DialogShowing = False
+      EventOperations.InplaceEditing = False
+      EventOperations.MovingBetweenResources = False
+      EventPopupMenu.PopupMenu = brpmm_EventCalender
+      EventPopupMenu.UseBuiltInPopupMenu = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
-      ParentBackground = False
-      ParentColor = False
-      ParentFont = False
-      TabOrder = 0
-      Properties.ActivePage = ts_A_kalender
-      Properties.CustomButtons.Buttons = <>
-      Properties.Images = dm_PCM.imglst_16x16
-      Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
-      Properties.TabSlants.Kind = skCutCorner
-      Properties.TabWidth = 100
-      OnClick = pc_KalenderClick
-      ClientRectBottom = 936
-      ClientRectRight = 1066
-      ClientRectTop = 25
-      object ts_A_kalender: TcxTabSheet
-        Caption = 'Kalender'
-        ImageIndex = 10
-        object spl_Kalender: TcxSplitter
-          Left = 0
-          Top = 112
-          Width = 8
-          Height = 799
-          HotZoneClassName = 'TcxSimpleStyle'
-          HotZone.ArrowColor = clGrayText
-          HotZone.ArrowHighlightColor = clGrayText
-          HotZone.LightColor = clGrayText
-          HotZone.ShadowColor = clGrayText
-          HotZone.DotsColor = clGrayText
-          HotZone.DotsShadowColor = clGrayText
-          Color = clBlack
-          ParentColor = False
+      OptionsView.DayBorderColor = clActiveBorder
+      OptionsView.EventBorderColor = cl3DDkShadow
+      OptionsView.GroupingKind = gkByResource
+      OptionsView.ResourcesPerPage = 5
+      OptionsView.Style = svsClassic
+      OptionsView.WorkStart = 0.291666666666666700
+      OptionsView.WorkFinish = 0.833333333333333400
+      ResourceNavigator.Buttons.First.Visible = False
+      ResourceNavigator.Buttons.Last.Visible = False
+      ResourceNavigator.Buttons.ShowFewerResources.Visible = False
+      ResourceNavigator.Buttons.ShowMoreResources.Visible = False
+      ResourceNavigator.ShowButtons = False
+      ResourceNavigator.Visibility = snvNever
+      Storage = schedDBStrg_Kalender
+      TabOrder = 1
+      OnBeforeDragEvent = sched_KalenderBeforeDragEvent
+      OnBeforeSizingEvent = sched_KalenderBeforeSizingEvent
+      OnClick = sched_KalenderClick
+      OnDblClick = sched_KalenderDblClick
+      OnGetEventEditProperties = sched_KalenderGetEventEditProperties
+      OnGetEventHintText = sched_KalenderGetEventHintText
+      OnKeyDown = sched_KalenderKeyDown
+      Selection = 7
+      Splitters = {
+        950000007E000000840600008300000069030000010000006E030000E6020000}
+      StoredClientBounds = {0100000001000000FD030000E6020000}
+    end
+    object trlst_Aufgaben: TcxTreeList
+      Left = 10000
+      Top = 10000
+      Width = 1022
+      Height = 107
+      Bands = <
+        item
+        end>
+      Navigator.Buttons.CustomButtons = <>
+      ScrollbarAnnotations.CustomAnnotations = <>
+      TabOrder = 2
+      Visible = False
+      OnClick = trlst_AufgabenClick
+      Data = {
+        00000500430100000F00000044617461436F6E74726F6C6C6572310200000012
+        000000546378537472696E6756616C7565547970651200000054637853747269
+        6E6756616C75655479706504000000445855464D5400000400000041006C006C
+        00650001445855464D540000070000005400650072006D0069006E0065000001
+        0000003000445855464D5400000800000041007500660067006100620065006E
+        0000010000003000445855464D5400000B0000004E0061006300680072006900
+        63006800740065006E00000100000030000400000000000000080A0200000002
+        000000FFFFFFFFFFFFFFFFFFFFFFFF0100000008080400000004000000FFFFFF
+        FFFFFFFFFFFFFFFFFF0200000008080300000003000000FFFFFFFFFFFFFFFFFF
+        FFFFFF03000000080A0000000000000000FFFFFFFFFFFFFFFFFFFFFFFF1A0804
+        000000}
+      object cxTreeList1Column1: TcxTreeListColumn
+        Caption.Text = 'Aufgaben'
+        Options.Sizing = False
+        Options.VertSizing = False
+        Options.Editing = False
+        Options.TabStop = False
+        Width = 801
+        Position.ColIndex = 0
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object cxTreeList1Column2: TcxTreeListColumn
+        Width = 100
+        Position.ColIndex = 1
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+    end
+    object brdckctrl_Aufgaben: TdxBarDockControl
+      Left = 10000
+      Top = 10000
+      Width = 1022
+      Height = 117
+      Align = dalNone
+      BarManager = brmgr_Kalendar
+      Visible = False
+    end
+    object cxGrid1: TcxGrid
+      Left = 10000
+      Top = 10000
+      Width = 1022
+      Height = 298
+      TabOrder = 6
+      Visible = False
+      LookAndFeel.NativeStyle = False
+      object tvNachrichten: TcxGridDBTableView
+        OnDblClick = tvNachrichtenDblClick
+        Navigator.Buttons.CustomButtons = <>
+        Navigator.Buttons.First.Visible = True
+        Navigator.Buttons.PriorPage.Visible = True
+        Navigator.Buttons.Prior.Visible = True
+        Navigator.Buttons.Next.Visible = True
+        Navigator.Buttons.NextPage.Visible = True
+        Navigator.Buttons.Last.Visible = True
+        Navigator.Buttons.Insert.Visible = True
+        Navigator.Buttons.Delete.Visible = True
+        Navigator.Buttons.Edit.Visible = True
+        Navigator.Buttons.Post.Visible = True
+        Navigator.Buttons.Cancel.Visible = True
+        Navigator.Buttons.Refresh.Visible = True
+        Navigator.Buttons.SaveBookmark.Visible = True
+        Navigator.Buttons.GotoBookmark.Visible = True
+        Navigator.Buttons.Filter.Visible = True
+        ScrollbarAnnotations.CustomAnnotations = <>
+        OnCustomDrawCell = tvNachrichtenCustomDrawCell
+        OnFocusedRecordChanged = tvNachrichtenFocusedRecordChanged
+        DataController.DataSource = dm_PCM.ds_Kalender_Aufgaben
+        DataController.Filter.Options = [fcoCaseInsensitive]
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Filter.Active = True
+        DataController.KeyFieldNames = 'ID'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsBehavior.IncSearch = True
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsSelection.MultiSelect = True
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.Indicator = True
+        object tvNachrichtenID: TcxGridDBColumn
+          DataBinding.FieldName = 'ID'
           Visible = False
-          ExplicitTop = 117
-          ExplicitHeight = 783
         end
-        object brdckctrl_Kalender: TdxBarDockControl
-          Left = 0
-          Top = 0
-          Width = 1066
-          Height = 112
-          Align = dalTop
-          BarManager = brmgr_Kalendar
-        end
-        object sched_Kalender: TcxScheduler
-          Left = 8
-          Top = 112
-          Width = 1058
-          Height = 799
-          DateNavigator.RowCount = 6
-          ViewDay.Active = True
-          ViewDay.AlwaysShowEventTime = True
-          ViewDay.TimeRulerMinutes = True
-          ViewDay.WorkTimeOnly = True
-          OnCustomDrawDayHeader = sched_KalenderCustomDrawDayHeader
-          OnCustomDrawEvent = sched_KalenderCustomDrawEvent
-          Align = alClient
-          ContentPopupMenu.PopupMenu = brpmm_ContextCalender
-          ContentPopupMenu.UseBuiltInPopupMenu = False
-          ControlBox.Visible = False
-          EventOperations.Deleting = False
-          EventOperations.DialogEditing = False
-          EventOperations.DialogShowing = False
-          EventOperations.InplaceEditing = False
-          EventOperations.MovingBetweenResources = False
-          EventPopupMenu.PopupMenu = brpmm_EventCalender
-          EventPopupMenu.UseBuiltInPopupMenu = False
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          OptionsView.DayBorderColor = clActiveBorder
-          OptionsView.EventBorderColor = cl3DDkShadow
-          OptionsView.GroupingKind = gkByResource
-          OptionsView.ResourcesPerPage = 5
-          OptionsView.Style = svsClassic
-          OptionsView.WorkStart = 0.291666666666666700
-          OptionsView.WorkFinish = 0.833333333333333400
-          ResourceNavigator.Buttons.First.Visible = False
-          ResourceNavigator.Buttons.Last.Visible = False
-          ResourceNavigator.Buttons.ShowFewerResources.Visible = False
-          ResourceNavigator.Buttons.ShowMoreResources.Visible = False
-          ResourceNavigator.ShowButtons = False
-          ResourceNavigator.Visibility = snvNever
-          Storage = schedDBStrg_Kalender
-          TabOrder = 2
-          OnBeforeDragEvent = sched_KalenderBeforeDragEvent
-          OnBeforeSizingEvent = sched_KalenderBeforeSizingEvent
-          OnClick = sched_KalenderClick
-          OnDblClick = sched_KalenderDblClick
-          OnGetEventEditProperties = sched_KalenderGetEventEditProperties
-          OnGetEventHintText = sched_KalenderGetEventHintText
-          OnKeyDown = sched_KalenderKeyDown
-          ExplicitLeft = 5
-          ExplicitTop = 117
-          ExplicitWidth = 1051
-          ExplicitHeight = 783
-          Selection = 7
-          Splitters = {
-            950000007E000000840600008300000086030000010000008B0300000E030000}
-          StoredClientBounds = {0100000001000000210400001E030000}
-        end
-      end
-      object ts_B_Aufgaben: TcxTabSheet
-        Caption = 'Aufgaben'
-        ImageIndex = 58
-        object trlst_Aufgaben: TcxTreeList
-          Left = 0
-          Top = 0
-          Width = 1066
-          Height = 107
-          Align = alTop
-          Bands = <
+        object tvNachrichtenTyp: TcxGridDBColumn
+          DataBinding.FieldName = 'Typ'
+          PropertiesClassName = 'TcxImageComboBoxProperties'
+          Properties.Alignment.Horz = taLeftJustify
+          Properties.Items = <
             item
+              Description = 'Aufgabe'
+              ImageIndex = 2
+              Value = 1
+            end
+            item
+              Description = 'Nachricht'
+              ImageIndex = 1
+              Value = 0
+            end
+            item
+              Description = 'Termin'
+              ImageIndex = 3
+              Value = 2
             end>
-          Navigator.Buttons.CustomButtons = <>
-          ScrollbarAnnotations.CustomAnnotations = <>
-          TabOrder = 1
-          OnClick = trlst_AufgabenClick
-          ExplicitWidth = 1056
-          Data = {
-            00000500430100000F00000044617461436F6E74726F6C6C6572310200000012
-            000000546378537472696E6756616C7565547970651200000054637853747269
-            6E6756616C75655479706504000000445855464D5400000400000041006C006C
-            00650001445855464D540000070000005400650072006D0069006E0065000001
-            0000003000445855464D5400000800000041007500660067006100620065006E
-            0000010000003000445855464D5400000B0000004E0061006300680072006900
-            63006800740065006E00000100000030000400000000000000080A0200000002
-            000000FFFFFFFFFFFFFFFFFFFFFFFF0100000008080400000004000000FFFFFF
-            FFFFFFFFFFFFFFFFFF0200000008080300000003000000FFFFFFFFFFFFFFFFFF
-            FFFFFF03000000080A0000000000000000FFFFFFFFFFFFFFFFFFFFFFFF1A0804
-            000000}
-          object cxTreeList1Column1: TcxTreeListColumn
-            Caption.Text = 'Aufgaben'
-            Options.Sizing = False
-            Options.VertSizing = False
-            Options.Editing = False
-            Options.TabStop = False
-            Width = 801
-            Position.ColIndex = 0
-            Position.RowIndex = 0
-            Position.BandIndex = 0
-            Summary.FooterSummaryItems = <>
-            Summary.GroupFooterSummaryItems = <>
-          end
-          object cxTreeList1Column2: TcxTreeListColumn
-            Width = 100
-            Position.ColIndex = 1
-            Position.RowIndex = 0
-            Position.BandIndex = 0
-            Summary.FooterSummaryItems = <>
-            Summary.GroupFooterSummaryItems = <>
-          end
+          Width = 86
         end
-        object brdckctrl_Aufgaben: TdxBarDockControl
-          Left = 0
-          Top = 107
-          Width = 1066
-          Height = 112
-          Align = dalTop
-          BarManager = brmgr_Kalendar
+        object tvNachrichtenStatus: TcxGridDBColumn
+          DataBinding.FieldName = 'Status'
+          Width = 86
         end
-        object pnl_Aufgaben: TcxGroupBox
-          Left = 0
-          Top = 219
-          Align = alClient
-          PanelStyle.Active = True
-          Style.BorderStyle = ebsNone
-          TabOrder = 0
-          ExplicitTop = 224
-          ExplicitWidth = 1056
-          ExplicitHeight = 676
-          Height = 692
-          Width = 1066
-          object cxGrid1: TcxGrid
-            Left = 2
-            Top = 32
-            Width = 1062
-            Height = 330
-            Align = alClient
-            TabOrder = 1
-            LookAndFeel.NativeStyle = False
-            ExplicitLeft = 3
-            ExplicitTop = 33
-            ExplicitWidth = 1050
-            ExplicitHeight = 315
-            object tvNachrichten: TcxGridDBTableView
-              OnDblClick = tvNachrichtenDblClick
-              Navigator.Buttons.CustomButtons = <>
-              Navigator.Buttons.First.Visible = True
-              Navigator.Buttons.PriorPage.Visible = True
-              Navigator.Buttons.Prior.Visible = True
-              Navigator.Buttons.Next.Visible = True
-              Navigator.Buttons.NextPage.Visible = True
-              Navigator.Buttons.Last.Visible = True
-              Navigator.Buttons.Insert.Visible = True
-              Navigator.Buttons.Delete.Visible = True
-              Navigator.Buttons.Edit.Visible = True
-              Navigator.Buttons.Post.Visible = True
-              Navigator.Buttons.Cancel.Visible = True
-              Navigator.Buttons.Refresh.Visible = True
-              Navigator.Buttons.SaveBookmark.Visible = True
-              Navigator.Buttons.GotoBookmark.Visible = True
-              Navigator.Buttons.Filter.Visible = True
-              ScrollbarAnnotations.CustomAnnotations = <>
-              OnCustomDrawCell = tvNachrichtenCustomDrawCell
-              OnFocusedRecordChanged = tvNachrichtenFocusedRecordChanged
-              DataController.DataSource = dm_PCM.ds_Kalender_Aufgaben
-              DataController.Filter.Options = [fcoCaseInsensitive]
-              DataController.Filter.PercentWildcard = '*'
-              DataController.Filter.UnderscoreWildcard = '?'
-              DataController.Filter.Active = True
-              DataController.KeyFieldNames = 'ID'
-              DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-              DataController.Summary.DefaultGroupSummaryItems = <>
-              DataController.Summary.FooterSummaryItems = <>
-              DataController.Summary.SummaryGroups = <>
-              OptionsBehavior.IncSearch = True
-              OptionsCustomize.ColumnsQuickCustomization = True
-              OptionsData.Deleting = False
-              OptionsData.Editing = False
-              OptionsData.Inserting = False
-              OptionsSelection.CellSelect = False
-              OptionsSelection.MultiSelect = True
-              OptionsView.GroupByBox = False
-              OptionsView.HeaderFilterButtonShowMode = fbmButton
-              OptionsView.Indicator = True
-              object tvNachrichtenID: TcxGridDBColumn
-                DataBinding.FieldName = 'ID'
-                Visible = False
-              end
-              object tvNachrichtenTyp: TcxGridDBColumn
-                DataBinding.FieldName = 'Typ'
-                PropertiesClassName = 'TcxImageComboBoxProperties'
-                Properties.Alignment.Horz = taLeftJustify
-                Properties.Items = <
-                  item
-                    Description = 'Aufgabe'
-                    ImageIndex = 2
-                    Value = 1
-                  end
-                  item
-                    Description = 'Nachricht'
-                    ImageIndex = 1
-                    Value = 0
-                  end
-                  item
-                    Description = 'Termin'
-                    ImageIndex = 3
-                    Value = 2
-                  end>
-                Width = 86
-              end
-              object tvNachrichtenStatus: TcxGridDBColumn
-                DataBinding.FieldName = 'Status'
-                Width = 86
-              end
-              object tvNachrichtenCaption: TcxGridDBColumn
-                Caption = 'Betreff'
-                DataBinding.FieldName = 'Caption'
-                Width = 250
-              end
-              object tvNachrichtenID_ADR_Wurzel: TcxGridDBColumn
-                Caption = 'Adresse'
-                DataBinding.FieldName = 'ID_Ansprechpartner'
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Name'
-                  end>
-                Properties.ListSource = dm_PCM.ds_Config_Firmen
-                Width = 250
-              end
-              object tvNachrichtenID_Ansprechpartner: TcxGridDBColumn
-                Caption = 'Ansprechpartner'
-                DataBinding.FieldName = 'ID_Ansprechpartner'
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Name'
-                  end>
-                Properties.ListSource = dm_PCM.ds_Config_Ansprechpartner
-                Width = 250
-              end
-              object tvNachrichtenLocation: TcxGridDBColumn
-                DataBinding.FieldName = 'Location'
-                Width = 200
-              end
-              object tvNachrichtenGesendetAm: TcxGridDBColumn
-                DataBinding.FieldName = 'GesendetAm'
-                SortIndex = 0
-                SortOrder = soDescending
-              end
-              object tvNachrichtenGelesenAm: TcxGridDBColumn
-                DataBinding.FieldName = 'GelesenAm'
-              end
-              object tvNachrichtenJira_Ticket: TcxGridDBColumn
-                DataBinding.FieldName = 'Jira_Ticket'
-                Visible = False
-              end
-            end
-            object tvAuf: TcxGridDBTableView
-              OnDblClick = tvAufDblClick
-              Navigator.Buttons.CustomButtons = <>
-              ScrollbarAnnotations.CustomAnnotations = <>
-              OnCustomDrawCell = tvAufCustomDrawCell
-              OnFocusedRecordChanged = tvAufFocusedRecordChanged
-              DataController.DataSource = dm_PCM.ds_Kalender_Aufgaben
-              DataController.Summary.DefaultGroupSummaryItems = <>
-              DataController.Summary.FooterSummaryItems = <>
-              DataController.Summary.SummaryGroups = <>
-              OptionsBehavior.IncSearch = True
-              OptionsCustomize.ColumnsQuickCustomization = True
-              OptionsData.Deleting = False
-              OptionsData.Editing = False
-              OptionsData.Inserting = False
-              OptionsSelection.CellSelect = False
-              OptionsSelection.MultiSelect = True
-              OptionsView.GroupByBox = False
-              OptionsView.HeaderFilterButtonShowMode = fbmButton
-              OptionsView.Indicator = True
-              Styles.Selection = cxStyle1
-              object tvAufID: TcxGridDBColumn
-                DataBinding.FieldName = 'ID'
-                Visible = False
-              end
-              object tvAufStatus: TcxGridDBColumn
-                DataBinding.FieldName = 'Status'
-                Options.Sorting = False
-                Width = 70
-              end
-              object tvAufTyp: TcxGridDBColumn
-                DataBinding.FieldName = 'Typ'
-                PropertiesClassName = 'TcxImageComboBoxProperties'
-                Properties.Alignment.Horz = taLeftJustify
-                Properties.Items = <
-                  item
-                    Description = 'Nachricht'
-                    ImageIndex = 1
-                    Value = 0
-                  end
-                  item
-                    Description = 'Aufgabe'
-                    ImageIndex = 2
-                    Value = 1
-                  end
-                  item
-                    Description = 'Termin'
-                    ImageIndex = 3
-                    Value = 2
-                  end>
-                Options.Sorting = False
-                Width = 86
-              end
-              object tvAufStartdatum: TcxGridDBColumn
-                Caption = 'Start Datum'
-                DataBinding.FieldName = 'Startdatum'
-                Options.Sorting = False
-                Width = 80
-              end
-              object tvAufStartZeit: TcxGridDBColumn
-                Caption = 'Start Uhrzeit'
-                DataBinding.FieldName = 'StartZeit'
-                Options.Sorting = False
-                Width = 80
-              end
-              object tvAufEndedatum: TcxGridDBColumn
-                Caption = 'Ende Datum'
-                DataBinding.FieldName = 'Endedatum'
-                SortIndex = 0
-                SortOrder = soAscending
-                Width = 80
-              end
-              object tvAufEndeZeit: TcxGridDBColumn
-                Caption = 'Ende Uhrzeit'
-                DataBinding.FieldName = 'EndeZeit'
-                SortIndex = 1
-                SortOrder = soAscending
-                Width = 80
-              end
-              object tvAufInTagen: TcxGridDBColumn
-                Caption = 'In Tagen'
-                DataBinding.FieldName = 'InTagen'
-                Options.Sorting = False
-                Width = 60
-              end
-              object tvAufID_IC_AufgabenArten: TcxGridDBColumn
-                Caption = 'Art'
-                DataBinding.FieldName = 'ID_IC_AufgabenArten'
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Bezeichnung'
-                  end>
-                Properties.ListSource = dm_PCM.ds_KalenderAufgaben_Arten
-                Options.Sorting = False
-                Width = 100
-              end
-              object tvAufCaption: TcxGridDBColumn
-                Caption = 'Betreff'
-                DataBinding.FieldName = 'Caption'
-                Options.Sorting = False
-                Width = 250
-              end
-              object tvAufID_ADR_Wurzel: TcxGridDBColumn
-                Caption = 'Adresse'
-                DataBinding.FieldName = 'ID_Ansprechpartner'
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Name'
-                  end>
-                Properties.ListSource = dm_PCM.ds_Config_Firmen
-                Options.Sorting = False
-                Width = 200
-              end
-              object tvAufID_Ansprechpartner: TcxGridDBColumn
-                Caption = 'Ansprechpartner'
-                DataBinding.FieldName = 'ID_Ansprechpartner'
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Name'
-                  end>
-                Properties.ListSource = dm_PCM.ds_Kalender_Ansprechpartner
-                Options.Sorting = False
-                Width = 200
-              end
-              object tvAufAufgabenDauer: TcxGridDBColumn
-                Caption = 'Dauer'
-                DataBinding.FieldName = 'AufgabenDauer'
-                Options.Sorting = False
-                Width = 60
-              end
-              object tvAufID_IC_Prioritaeten: TcxGridDBColumn
-                Caption = 'Priorit'#228't'
-                DataBinding.FieldName = 'ID_IC_Prioritaeten'
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Bezeichnung'
-                  end>
-                Properties.ListSource = dm_PCM.ds_KalenderAufgaben_Prio
-                Options.Sorting = False
-                Width = 100
-              end
-              object tvAufLocation: TcxGridDBColumn
-                Caption = 'Ort'
-                DataBinding.FieldName = 'Location'
-                Options.Sorting = False
-                Width = 100
-              end
-              object tvAufJira_Ticket: TcxGridDBColumn
-                Caption = 'Jira Ticket'
-                DataBinding.FieldName = 'Jira_Ticket'
-                Visible = False
-                Width = 200
-              end
-              object tvAufGesendetAm: TcxGridDBColumn
-                Caption = 'Gesendet am'
-                DataBinding.FieldName = 'GesendetAm'
-                Visible = False
-                Width = 120
-              end
-              object tvAufStart: TcxGridDBColumn
-                DataBinding.FieldName = 'Start'
-                Visible = False
-                VisibleForCustomization = False
-              end
-              object tvAufFinish: TcxGridDBColumn
-                DataBinding.FieldName = 'Finish'
-                Visible = False
-                VisibleForCustomization = False
-              end
-            end
-            object cxGrid1Level1: TcxGridLevel
-              GridView = tvNachrichten
-            end
-          end
-          object spl_Grid: TcxSplitter
-            Left = 2
-            Top = 362
-            Width = 1062
-            Height = 8
-            HotZoneClassName = 'TcxSimpleStyle'
-            AlignSplitter = salBottom
-            Control = pnl_Details
-            ExplicitLeft = 3
-            ExplicitTop = 348
-            ExplicitWidth = 8
-          end
-          object pnl_Details: TcxGroupBox
-            Left = 2
-            Top = 370
-            Align = alBottom
-            PanelStyle.Active = True
-            Style.BorderStyle = ebsNone
-            TabOrder = 2
-            ExplicitLeft = 3
-            ExplicitTop = 353
-            ExplicitWidth = 1050
-            Height = 320
-            Width = 1062
-            object cxGroupBox8: TcxGroupBox
-              Left = 2
-              Top = 2
-              Align = alTop
-              PanelStyle.Active = True
-              Style.BorderStyle = ebsNone
-              TabOrder = 0
-              ExplicitWidth = 1048
-              Height = 62
-              Width = 1058
-              object cxDBTextEdit6: TcxDBTextEdit
-                Left = 81
-                Top = 5
-                TabStop = False
-                DataBinding.DataField = 'Caption'
-                DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
-                ParentFont = False
-                Properties.ReadOnly = True
-                Style.TransparentBorder = True
-                TabOrder = 1
-                Width = 390
-              end
-              object btn_GoToJira: TcxButton
-                Left = 1003
-                Top = 34
-                Width = 25
-                Height = 21
-                OptionsImage.ImageIndex = 47
-                OptionsImage.Images = dm_PCM.imglst_16x16
-                TabOrder = 0
-                OnClick = btn_GoToJiraClick
-              end
-              object edtJiraTicketNr: TcxDBTextEdit
-                Left = 638
-                Top = 34
-                TabStop = False
-                DataBinding.DataField = 'Jira_Ticket'
-                DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
-                ParentFont = False
-                Properties.ReadOnly = True
-                Style.Font.Charset = DEFAULT_CHARSET
-                Style.Font.Color = clWindowText
-                Style.Font.Height = -11
-                Style.Font.Name = 'Tahoma'
-                Style.Font.Style = []
-                Style.LookAndFeel.NativeStyle = False
-                Style.TransparentBorder = True
-                Style.IsFontAssigned = True
-                StyleDisabled.LookAndFeel.NativeStyle = False
-                StyleFocused.LookAndFeel.NativeStyle = False
-                StyleHot.LookAndFeel.NativeStyle = False
-                TabOrder = 4
-                Width = 359
-              end
-              object cxDBTextEdit4: TcxDBLookupComboBox
-                Left = 81
-                Top = 34
-                TabStop = False
-                DataBinding.DataField = 'ID_Ansprechpartner'
-                DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Name'
-                  end>
-                Properties.ListSource = dm_PCM.ds_Kalender_Ansprechpartner
-                Properties.ReadOnly = True
-                Style.LookAndFeel.NativeStyle = False
-                Style.TransparentBorder = True
-                StyleDisabled.LookAndFeel.NativeStyle = False
-                StyleFocused.LookAndFeel.NativeStyle = False
-                StyleHot.LookAndFeel.NativeStyle = False
-                TabOrder = 3
-                Width = 390
-              end
-              object cbxAns: TcxDBLookupComboBox
-                Left = 638
-                Top = 6
-                TabStop = False
-                DataBinding.DataField = 'ID_Ansprechpartner'
-                DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Name'
-                  end>
-                Properties.ListSource = dm_PCM.ds_Kalender_Ansprechpartner
-                Properties.ReadOnly = True
-                Style.TransparentBorder = True
-                TabOrder = 2
-                Width = 390
-              end
-              object Label5: TcxLabel
-                Left = 543
-                Top = 8
-                Caption = 'Ansprechpartner:'
-                Transparent = True
-              end
-              object Label2: TcxLabel
-                Left = 0
-                Top = 8
-                Caption = 'Betreff:'
-                Transparent = True
-              end
-              object Label6: TcxLabel
-                Left = 0
-                Top = 37
-                Caption = 'Adresse:'
-                Transparent = True
-              end
-              object Label8: TcxLabel
-                Left = 555
-                Top = 35
-                Caption = 'Jira Ticket-Nr.:'
-                Transparent = True
-              end
-            end
-            object cxDBMemo1: TcxDBRichEdit
-              Left = 2
-              Top = 64
-              Align = alClient
-              DataBinding.DataField = 'Message'
-              DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
-              ParentFont = False
-              Properties.AutoURLDetect = True
-              Properties.PlainText = True
-              Properties.ScrollBars = ssVertical
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -12
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 1
-              ExplicitLeft = 3
-              ExplicitTop = 65
-              ExplicitWidth = 857
-              ExplicitHeight = 252
-              Height = 254
-              Width = 868
-            end
-            object cxSplitter4: TcxSplitter
-              Left = 870
-              Top = 64
-              Width = 8
-              Height = 254
-              HotZoneClassName = 'TcxSimpleStyle'
-              Control = pAnhaenge
-              ExplicitLeft = 860
-              ExplicitTop = 65
-              ExplicitHeight = 252
-            end
-            object pAnhaenge: TcxGroupBox
-              Left = 878
-              Top = 64
-              Align = alRight
-              PanelStyle.Active = True
-              Style.BorderStyle = ebsNone
-              TabOrder = 3
-              ExplicitLeft = 865
-              ExplicitTop = 65
-              ExplicitHeight = 252
-              Height = 254
-              Width = 182
-              object cxGrid5: TcxGrid
-                Left = 2
-                Top = 2
-                Width = 178
-                Height = 208
-                Align = alClient
-                TabOrder = 0
-                LookAndFeel.NativeStyle = False
-                ExplicitLeft = 3
-                ExplicitTop = 3
-                ExplicitWidth = 176
-                ExplicitHeight = 204
-                object cxGrid5DBTableView1: TcxGridDBTableView
-                  Navigator.Buttons.CustomButtons = <>
-                  Navigator.Buttons.First.Visible = True
-                  Navigator.Buttons.PriorPage.Visible = True
-                  Navigator.Buttons.Prior.Visible = True
-                  Navigator.Buttons.Next.Visible = True
-                  Navigator.Buttons.NextPage.Visible = True
-                  Navigator.Buttons.Last.Visible = True
-                  Navigator.Buttons.Insert.Visible = True
-                  Navigator.Buttons.Delete.Visible = True
-                  Navigator.Buttons.Edit.Visible = True
-                  Navigator.Buttons.Post.Visible = True
-                  Navigator.Buttons.Cancel.Visible = True
-                  Navigator.Buttons.Refresh.Visible = True
-                  Navigator.Buttons.SaveBookmark.Visible = True
-                  Navigator.Buttons.GotoBookmark.Visible = True
-                  Navigator.Buttons.Filter.Visible = True
-                  ScrollbarAnnotations.CustomAnnotations = <>
-                  DataController.DataSource = dsWF_Nachrichten_Anhaenge
-                  DataController.Summary.DefaultGroupSummaryItems = <>
-                  DataController.Summary.FooterSummaryItems = <>
-                  DataController.Summary.SummaryGroups = <>
-                  OptionsBehavior.IncSearch = True
-                  OptionsData.Deleting = False
-                  OptionsData.Editing = False
-                  OptionsData.Inserting = False
-                  OptionsSelection.CellSelect = False
-                  OptionsView.CellEndEllipsis = True
-                  OptionsView.ColumnAutoWidth = True
-                  OptionsView.GroupByBox = False
-                  OptionsView.HeaderFilterButtonShowMode = fbmButton
-                  OptionsView.Indicator = True
-                  object cxGrid5DBTableView1ID: TcxGridDBColumn
-                    Tag = 314104256
-                    DataBinding.FieldName = 'ID'
-                    Visible = False
-                  end
-                  object cxGrid5DBTableView1ID_Adr_Korrespondenz: TcxGridDBColumn
-                    Tag = 313686204
-                    DataBinding.FieldName = 'ID_WF_Nachrichten'
-                    DataBinding.IsNullValueType = True
-                    Visible = False
-                  end
-                  object cxGrid5DBTableView1Dateiname: TcxGridDBColumn
-                    Tag = 315388828
-                    DataBinding.FieldName = 'Dateiname'
-                    SortIndex = 0
-                    SortOrder = soAscending
-                    Width = 139
-                  end
-                  object cxGrid5DBTableView1DateinameSave: TcxGridDBColumn
-                    Tag = 315389660
-                    DataBinding.FieldName = 'DateinameSave'
-                    Visible = False
-                  end
-                end
-                object cxGrid5Level1: TcxGridLevel
-                  GridView = cxGrid5DBTableView1
-                end
-              end
-              object cxGroupBox11: TcxGroupBox
-                Left = 2
-                Top = 210
-                Align = alBottom
-                PanelStyle.Active = True
-                Style.BorderStyle = ebsNone
-                TabOrder = 1
-                ExplicitLeft = 3
-                ExplicitTop = 207
-                ExplicitWidth = 176
-                Height = 42
-                Width = 178
-                object lTypeName: TcxLabel
-                  Left = 34
-                  Top = 2
-                  Align = alLeft
-                  AutoSize = False
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -8
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Properties.WordWrap = True
-                  Transparent = True
-                  Height = 38
-                  Width = 90
-                end
-                object Image1: TcxImage
-                  Left = 2
-                  Top = 2
-                  Align = alLeft
-                  AutoSize = True
-                  Properties.FitMode = ifmNormal
-                  Properties.GraphicTransparency = gtTransparent
-                  Style.BorderStyle = ebsNone
-                  TabOrder = 1
-                  Transparent = True
-                  ExplicitLeft = 3
-                  ExplicitTop = 3
-                  ExplicitHeight = 36
-                  Height = 38
-                  Width = 32
-                end
-                object btn_AttachementSave: TcxButton
-                  AlignWithMargins = True
-                  Left = 153
-                  Top = 8
-                  Width = 23
-                  Height = 26
-                  Margins.Left = 0
-                  Margins.Top = 6
-                  Margins.Right = 0
-                  Margins.Bottom = 6
-                  Align = alRight
-                  OptionsImage.ImageIndex = 27
-                  OptionsImage.Images = dm_PCM.imglst_16x16
-                  PaintStyle = bpsGlyph
-                  TabOrder = 2
-                  OnClick = btn_AttachementSaveClick
-                  ExplicitLeft = 150
-                  ExplicitTop = 9
-                  ExplicitHeight = 24
-                end
-                object btn_AttachementOpen: TcxButton
-                  AlignWithMargins = True
-                  Left = 130
-                  Top = 8
-                  Width = 23
-                  Height = 26
-                  Margins.Left = 0
-                  Margins.Top = 6
-                  Margins.Right = 0
-                  Margins.Bottom = 6
-                  Align = alRight
-                  LookAndFeel.NativeStyle = False
-                  OptionsImage.ImageIndex = 26
-                  OptionsImage.Images = dm_PCM.imglst_16x16
-                  PaintStyle = bpsGlyph
-                  TabOrder = 3
-                  OnClick = btn_AttachementOpenClick
-                  ExplicitLeft = 127
-                  ExplicitTop = 9
-                  ExplicitHeight = 24
-                end
-              end
-            end
-          end
-          object pnl_Search: TcxGroupBox
-            Left = 2
-            Top = 2
-            Align = alTop
-            PanelStyle.Active = True
-            Style.BorderStyle = ebsFlat
-            TabOrder = 0
-            ExplicitLeft = 3
-            ExplicitTop = 3
-            ExplicitWidth = 1050
-            Height = 30
-            Width = 1062
-            object img_search: TcxImage
-              Left = 2
-              Top = 2
-              Align = alLeft
-              AutoSize = True
-              Picture.Data = {
-                0B546478504E47496D61676589504E470D0A1A0A0000000D4948445200000010
-                0000001008060000001FF3FF61000000017352474200AECE1CE9000000046741
-                4D410000B18F0BFC6105000000F249444154384FAD913B0E01611485514A1422
-                9158C08CA15348547A56A0B1825984D882566509A8D5742A4A5A0B9028F94E72
-                88F889479CE4CBCCBDE73E2677327F5514451D58C0114EB0847ED268655DF25A
-                140E6107BD38A9157916A00B6B983024E7D2501468F32E8AE3B25337C5493D8F
-                B782D4A95098FAEC9EC340784DD83B0C8579D4673B7C2A6ACE7E0D85A983151C
-                3ED5BB01BA76D76120BC2A1C5EFE0DCC3EAC7530A76ED2F5F1E630702A942653
-                30015DBBE9F475B39ACF306A8F37155BA1BC2985BD1BC401063052CC8013CCDC
-                F2B9B4D9CD1A227E1A32BB1BF0B721535B9FEB61C8D6E9EFA4CD6A6E8F37A50B
-                8742777EE5CEC36F0000000049454E44AE426082}
-              Properties.ShowFocusRect = False
-              Style.BorderStyle = ebsNone
-              Style.HotTrack = True
-              StyleFocused.BorderStyle = ebsNone
-              StyleHot.BorderStyle = ebsNone
-              TabOrder = 0
-              Transparent = True
-            end
-            object edt_Suche: TcxButtonEdit
-              Left = 22
-              Top = 2
-              Align = alClient
-              AutoSize = False
-              Properties.Buttons = <
-                item
-                  Default = True
-                  ImageIndex = 6
-                  Kind = bkGlyph
-                end>
-              Properties.OnButtonClick = edt_SuchePropertiesButtonClick
-              Properties.OnChange = edt_SuchePropertiesChange
-              Style.ButtonStyle = btsFlat
-              TabOrder = 1
-              OnEnter = edt_SucheEnter
-              OnExit = edt_SucheExit
-              ExplicitLeft = 23
-              ExplicitTop = 3
-              ExplicitWidth = 1024
-              ExplicitHeight = 24
-              Height = 26
-              Width = 1038
-            end
-          end
+        object tvNachrichtenCaption: TcxGridDBColumn
+          Caption = 'Betreff'
+          DataBinding.FieldName = 'Caption'
+          Width = 250
         end
-      end
-      object ts_C_Jira: TcxTabSheet
-        Caption = 'Jira'
-        ImageIndex = 83
-        object stbr_main: TdxStatusBar
-          Left = 0
-          Top = 891
-          Width = 1066
-          Height = 20
-          Panels = <
+        object tvNachrichtenID_ADR_Wurzel: TcxGridDBColumn
+          Caption = 'Adresse'
+          DataBinding.FieldName = 'ID_Ansprechpartner'
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
             item
-              PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
-              Text = 'aktuelles Board: ID Diacos'
-              Width = 300
-            end
-            item
-              PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
-              Text = 'Tickets:'
-              Width = 300
-            end
-            item
-              PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
-              Text = 'aktuelles Ticket:'
-              Width = 300
+              FieldName = 'Name'
             end>
-          PaintStyle = stpsUseLookAndFeel
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -12
-          Font.Name = 'Segoe UI'
-          Font.Style = []
-          ExplicitTop = 880
-          ExplicitWidth = 1056
+          Properties.ListSource = dm_PCM.ds_Config_Firmen
+          Width = 250
         end
-        object dxBarDockControl4: TdxBarDockControl
-          Left = 0
-          Top = 0
-          Width = 1066
-          Height = 58
-          Align = dalTop
-          BarManager = brmgr_Kalendar
+        object tvNachrichtenID_Ansprechpartner: TcxGridDBColumn
+          Caption = 'Ansprechpartner'
+          DataBinding.FieldName = 'ID_Ansprechpartner'
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Name'
+            end>
+          Properties.ListSource = dm_PCM.ds_Config_Ansprechpartner
+          Width = 250
         end
-        object pc_Jirapriv: TcxPageControl
-          Left = 0
-          Top = 58
-          Width = 1066
-          Height = 833
-          Align = alClient
-          TabOrder = 2
-          Properties.ActivePage = cxTabSheet3
-          Properties.CustomButtons.Buttons = <>
-          OnChange = pc_JiraprivChange
-          ClientRectBottom = 833
-          ClientRectRight = 1066
-          ClientRectTop = 24
-          object cxTabSheet3: TcxTabSheet
-            Caption = 'Jira-Browser'
-            ImageIndex = 2
-            object pnl_BrowserJiraPriv: TcxGroupBox
-              Left = 0
-              Top = 0
-              Align = alClient
-              PanelStyle.Active = True
-              TabOrder = 0
-              Height = 809
-              Width = 1066
-              object dxBarDockControl5: TdxBarDockControl
-                Left = 2
-                Top = 2
-                Width = 1062
-                Height = 58
-                Align = dalTop
-                BarManager = brmgr_Kalendar
-              end
-            end
-          end
-          object cxTabSheet4: TcxTabSheet
-            Caption = #220'bersicht Desktop Board'
-            ImageIndex = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
-            object cxComboBox2: TcxComboBox
-              AlignWithMargins = True
-              Left = 6
-              Top = 6
-              Margins.Left = 6
-              Margins.Top = 6
-              Margins.Right = 6
-              Margins.Bottom = 6
-              Align = alTop
-              TabOrder = 0
-              Text = 'cxComboBox1'
-              Width = 1036
-            end
-            object dxChartControl1: TdxChartControl
-              Left = 0
-              Top = 33
-              Width = 1048
-              Height = 751
-              Align = alClient
-              BorderStyle = cxcbsNone
-              Legend.Title.Visible = False
-              Titles = <>
-              object dxChartSimpleDiagram1: TdxChartSimpleDiagram
-                Title.Visible = False
-                Layout = Horizontal
-                object dxChartSimpleSeries1: TdxChartSimpleSeries
-                  Caption = 'Wert'
-                  DataBindingType = 'DB'
-                  DataBinding.DataSource = dm_PCM.DataSource3
-                  DataBinding.ArgumentField.FieldName = 'offen'
-                  DataBinding.ValueField.FieldName = 'Wert'
-                  ViewType = 'Pie'
-                  View.SweepDirection = Counterclockwise
-                  View.ValueLabels.LineLength = 10.000000000000000000
-                  View.ValueLabels.Visible = True
-                  View.ValueLabels.Position = Outside
-                  SortBy = Value
-                  ColorSchemeIndex = 0
-                end
-              end
-            end
-          end
-          object cxTabSheet6: TcxTabSheet
-            Caption = #220'bersicht Mobile Board'
-            ImageIndex = 3
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
-            object cxComboBox3: TcxComboBox
-              AlignWithMargins = True
-              Left = 6
-              Top = 6
-              Margins.Left = 6
-              Margins.Top = 6
-              Margins.Right = 6
-              Margins.Bottom = 6
-              Align = alTop
-              TabOrder = 0
-              Text = 'cxComboBox1'
-              Width = 1036
-            end
-            object dxChartControl2: TdxChartControl
-              Left = 0
-              Top = 33
-              Width = 1048
-              Height = 751
-              Align = alClient
-              BorderStyle = cxcbsNone
-              Legend.Title.Visible = False
-              Titles = <>
-              object dxChartSimpleDiagram2: TdxChartSimpleDiagram
-                Title.Visible = False
-                Layout = Horizontal
-                object dxChartSimpleSeries2: TdxChartSimpleSeries
-                  Caption = 'Wert'
-                  DataBindingType = 'DB'
-                  DataBinding.DataSource = dm_PCM.DataSource4
-                  DataBinding.ArgumentField.FieldName = 'offen'
-                  DataBinding.ValueField.FieldName = 'Wert'
-                  ViewType = 'Pie'
-                  View.SweepDirection = Counterclockwise
-                  View.ValueLabels.LineLength = 10.000000000000000000
-                  View.ValueLabels.Visible = True
-                  View.ValueLabels.Position = Outside
-                  SortBy = Value
-                  ColorSchemeIndex = 0
-                end
-              end
-            end
-          end
-          object cxTabSheet5: TcxTabSheet
-            Caption = 'Details'
-            ImageIndex = 1
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
-            object cxGrid3: TcxGrid
-              Left = 0
-              Top = 0
-              Width = 1066
-              Height = 200
-              Align = alTop
-              TabOrder = 0
-              ExplicitWidth = 1048
-              object cxGridDBTableView1: TcxGridDBTableView
-                Navigator.Buttons.CustomButtons = <>
-                ScrollbarAnnotations.CustomAnnotations = <>
-                OnCellDblClick = cxGridDBTableView1CellDblClick
-                DataController.DataSource = ds_Tickets_priv
-                DataController.Summary.DefaultGroupSummaryItems = <>
-                DataController.Summary.FooterSummaryItems = <>
-                DataController.Summary.SummaryGroups = <>
-                OptionsData.CancelOnExit = False
-                OptionsData.Deleting = False
-                OptionsData.DeletingConfirmation = False
-                OptionsData.Editing = False
-                OptionsData.Inserting = False
-                OptionsSelection.CellSelect = False
-                object cxGridDBColumn1: TcxGridDBColumn
-                  DataBinding.FieldName = 'ID'
-                  Visible = False
-                  VisibleForCustomization = False
-                end
-                object cxGridDBColumn2: TcxGridDBColumn
-                  DataBinding.FieldName = 'Epic'
-                  Width = 70
-                end
-                object cxGridDBColumn3: TcxGridDBColumn
-                  Caption = 'Ticket-Nr.'
-                  DataBinding.FieldName = 'Ticket_Nr'
-                  Width = 70
-                end
-                object cxGridDBColumn4: TcxGridDBColumn
-                  DataBinding.FieldName = 'Betreff'
-                  Width = 400
-                end
-                object cxGridDBColumn5: TcxGridDBColumn
-                  DataBinding.FieldName = 'Nr'
-                  Visible = False
-                  SortIndex = 0
-                  SortOrder = soAscending
-                  VisibleForCustomization = False
-                end
-                object cxGridDBTableView1Land: TcxGridDBColumn
-                  Caption = 'Applikation'
-                  DataBinding.FieldName = 'Land'
-                  Width = 200
-                end
-                object cxGridDBColumn6: TcxGridDBColumn
-                  Caption = 'Priorit'#228't'
-                  DataBinding.FieldName = 'ID_tickets_priority'
-                  PropertiesClassName = 'TcxImageComboBoxProperties'
-                  Properties.Alignment.Horz = taLeftJustify
-                  Properties.Images = cxImageList1
-                  Properties.Items = <
-                    item
-                      Description = 'Blocker'
-                      ImageIndex = 0
-                      Value = 1
-                    end
-                    item
-                      Description = 'Kritisch'
-                      ImageIndex = 1
-                      Value = 2
-                    end
-                    item
-                      Description = 'Schwerwiegend'
-                      ImageIndex = 2
-                      Value = 3
-                    end
-                    item
-                      Description = 'Geringf'#252'gig'
-                      ImageIndex = 3
-                      Value = 4
-                    end
-                    item
-                      Description = 'Unwesentlich'
-                      ImageIndex = 4
-                      Value = 5
-                    end
-                    item
-                      Description = 'Low'
-                      ImageIndex = 5
-                      Value = 9
-                    end
-                    item
-                      Description = 'Medium'
-                      ImageIndex = 6
-                      Value = 10
-                    end
-                    item
-                      Description = 'High'
-                      ImageIndex = 7
-                      Value = 11
-                    end>
-                  Width = 120
-                end
-                object cxGridDBColumn7: TcxGridDBColumn
-                  DataBinding.FieldName = 'Stichwort'
-                  Width = 100
-                end
-                object cxGridDBColumn8: TcxGridDBColumn
-                  DataBinding.FieldName = 'Status'
-                  Width = 70
-                end
-                object cxGridDBColumn10: TcxGridDBColumn
-                  DataBinding.FieldName = 'Type'
-                  Width = 100
-                end
-                object cxGridDBColumn11: TcxGridDBColumn
-                  DataBinding.FieldName = 'FixVersion'
-                  Width = 100
-                end
-                object cxGridDBColumn12: TcxGridDBColumn
-                  DataBinding.FieldName = 'Beschreibung'
-                end
-                object cxGridDBColumn13: TcxGridDBColumn
-                  DataBinding.FieldName = 'Sprint'
-                  Width = 200
-                end
-                object cxGridDBColumn14: TcxGridDBColumn
-                  DataBinding.FieldName = 'Assignee'
-                  Width = 100
-                end
-                object cxGridDBColumn21: TcxGridDBColumn
-                  Caption = 'Kundennummer'
-                  DataBinding.FieldName = 'KDNR'
-                  Width = 100
-                end
-              end
-              object cxGridLevel1: TcxGridLevel
-                GridView = cxGridDBTableView1
-              end
-            end
-            object cxSplitter1: TcxSplitter
-              Left = 0
-              Top = 200
-              Width = 1066
-              Height = 5
-              AlignSplitter = salTop
-              Control = cxGrid3
-              ExplicitWidth = 1048
-            end
-            object dxLayoutControl2: TdxLayoutControl
-              AlignWithMargins = True
-              Left = 0
-              Top = 205
-              Width = 1066
-              Height = 604
-              Margins.Left = 0
-              Margins.Top = 0
-              Margins.Right = 0
-              Margins.Bottom = 0
-              Align = alClient
-              TabOrder = 2
-              AutoSize = True
-              LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
-              ExplicitWidth = 1048
-              ExplicitHeight = 579
-              object cxDBImageComboBox2: TcxDBImageComboBox
-                AlignWithMargins = True
-                Left = 79
-                Top = 65
-                Margins.Left = 8
-                Margins.Top = 1
-                Margins.Right = 8
-                Margins.Bottom = 1
-                AutoSize = False
-                DataBinding.DataField = 'ID_tickets_priority'
-                DataBinding.DataSource = ds_Tickets_priv
-                Properties.Alignment.Horz = taLeftJustify
-                Properties.Images = cxImageList1
-                Properties.Items = <
-                  item
-                    Description = 'Blocker'
-                    ImageIndex = 0
-                    Value = 1
-                  end
-                  item
-                    Description = 'Kritisch'
-                    ImageIndex = 1
-                    Value = 2
-                  end
-                  item
-                    Description = 'Schwerwiegend'
-                    ImageIndex = 2
-                    Value = 3
-                  end
-                  item
-                    Description = 'Geringf'#252'gig'
-                    ImageIndex = 3
-                    Value = 4
-                  end
-                  item
-                    Description = 'Unwesentlich'
-                    ImageIndex = 4
-                    Value = 5
-                  end
-                  item
-                    Description = 'Low'
-                    ImageIndex = 5
-                    Value = 9
-                  end
-                  item
-                    Description = 'Medium'
-                    ImageIndex = 6
-                    Value = 10
-                  end
-                  item
-                    Description = 'High'
-                    ImageIndex = 7
-                    Value = 11
-                  end>
-                Properties.ReadOnly = True
-                Style.HotTrack = False
-                Style.TransparentBorder = False
-                TabOrder = 0
-                Height = 19
-                Width = 559
-              end
-              object cxDBTextEdit18: TcxDBTextEdit
-                AlignWithMargins = True
-                Left = 79
-                Top = 100
-                Margins.Left = 8
-                Margins.Top = 1
-                Margins.Right = 8
-                Margins.Bottom = 1
-                DataBinding.DataField = 'Land'
-                DataBinding.DataSource = ds_Tickets_priv
-                Properties.ReadOnly = True
-                Style.HotTrack = False
-                Style.TransparentBorder = False
-                TabOrder = 1
-                Width = 559
-              end
-              object cxDBTextEdit19: TcxDBTextEdit
-                AlignWithMargins = True
-                Left = 79
-                Top = 160
-                Margins.Left = 8
-                Margins.Top = 1
-                Margins.Right = 8
-                Margins.Bottom = 1
-                DataBinding.DataField = 'Sprint'
-                DataBinding.DataSource = ds_Tickets_priv
-                Properties.ReadOnly = True
-                Style.HotTrack = False
-                Style.TransparentBorder = False
-                TabOrder = 3
-                Width = 559
-              end
-              object cxDBTextEdit21: TcxDBTextEdit
-                AlignWithMargins = True
-                Left = 79
-                Top = 130
-                Margins.Left = 8
-                Margins.Top = 1
-                Margins.Right = 8
-                Margins.Bottom = 1
-                DataBinding.DataField = 'Stichwort'
-                DataBinding.DataSource = ds_Tickets_priv
-                Properties.ReadOnly = True
-                Style.HotTrack = False
-                Style.TransparentBorder = False
-                TabOrder = 2
-                Width = 559
-              end
-              object cxRichEdit1: TcxRichEdit
-                Left = 22
-                Top = 220
-                Properties.AutoURLDetect = True
-                Properties.ReadOnly = True
-                Lines.Strings = (
-                  '1'
-                  '2'
-                  '3'
-                  '4'
-                  '5'
-                  '6'
-                  '7'
-                  '8'
-                  '1'
-                  '2'
-                  '3'
-                  '4'
-                  '5'
-                  '6'
-                  '7'
-                  '8')
-                Style.HotTrack = False
-                Style.Shadow = False
-                Style.TransparentBorder = False
-                StyleDisabled.BorderStyle = ebsNone
-                StyleFocused.BorderStyle = ebsNone
-                StyleHot.BorderStyle = ebsNone
-                TabOrder = 4
-                Height = 14
-                Width = 616
-              end
-              object cxDBTextEdit22: TcxDBTextEdit
-                AlignWithMargins = True
-                Left = 747
-                Top = 35
-                Margins.Left = 8
-                Margins.Top = 1
-                Margins.Right = 8
-                Margins.Bottom = 1
-                DataBinding.DataField = 'FixVersion'
-                DataBinding.DataSource = ds_Tickets_priv
-                Properties.ReadOnly = True
-                Style.HotTrack = False
-                Style.TransparentBorder = False
-                TabOrder = 5
-                Width = 297
-              end
-              object cxDBTextEdit23: TcxDBTextEdit
-                AlignWithMargins = True
-                Left = 747
-                Top = 70
-                Margins.Left = 8
-                Margins.Top = 1
-                Margins.Right = 8
-                Margins.Bottom = 1
-                DataBinding.DataField = 'Assignee'
-                DataBinding.DataSource = ds_Tickets_priv
-                Properties.ReadOnly = True
-                Style.HotTrack = False
-                Style.TransparentBorder = False
-                TabOrder = 6
-                Width = 297
-              end
-              object dxLayoutGroup5: TdxLayoutGroup
-                AlignHorz = ahClient
-                AlignVert = avClient
-                LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
-                SizeOptions.Height = 600
-                Hidden = True
-                LayoutDirection = ldHorizontal
-                ShowBorder = False
-                Index = -1
-              end
-              object dxLayoutGroup6: TdxLayoutGroup
-                Parent = dxLayoutGroup5
-                CaptionOptions.Text = 'New Group'
-                SizeOptions.Height = 300
-                SizeOptions.Width = 300
-                ShowBorder = False
-                Index = 1
-              end
-              object dxLayoutGroup7: TdxLayoutGroup
-                Parent = dxLayoutGroup6
-                AlignHorz = ahRight
-                AlignVert = avTop
-                CaptionOptions.Text = 'Details'
-                SizeOptions.Height = 100
-                SizeOptions.Width = 400
-                ButtonOptions.ShowExpandButton = True
-                ItemIndex = 1
-                Index = 0
-              end
-              object grpbx_Ticketspriv: TdxLayoutGroup
-                Parent = dxLayoutAutoCreatedGroup2
-                AlignVert = avClient
-                CaptionOptions.Text = 'Ticketdetails'
-                LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
-                SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
-                SizeOptions.SizableHorz = False
-                SizeOptions.SizableVert = False
-                SizeOptions.Width = 1200
-                AllowRemove = False
-                ButtonOptions.ShowExpandButton = True
-                ItemIndex = 6
-                Index = 1
-              end
-              object dxLayoutItem20: TdxLayoutItem
-                Parent = grpbx_Ticketspriv
-                AlignHorz = ahClient
-                AlignVert = avTop
-                LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
-                Padding.Bottom = 5
-                Padding.Top = 5
-                Padding.AssignedValues = [lpavBottom, lpavLeft, lpavTop]
-                CaptionOptions.Text = 'Applikation'
-                Control = cxDBTextEdit18
-                ControlOptions.OriginalHeight = 19
-                ControlOptions.OriginalWidth = 1231
-                ControlOptions.ShowBorder = False
-                Index = 2
-              end
-              object dxLayoutItem21: TdxLayoutItem
-                Parent = grpbx_Ticketspriv
-                AlignHorz = ahClient
-                AlignVert = avTop
-                Padding.Bottom = 5
-                Padding.Top = 5
-                Padding.AssignedValues = [lpavBottom, lpavTop]
-                CaptionOptions.Text = 'dsfsdfsdfsdfds'
-                ControlOptions.OriginalWidth = 1000
-                Index = 0
-              end
-              object dxLayoutGroup9: TdxLayoutGroup
-                Parent = dxLayoutAutoCreatedGroup2
-                AlignHorz = ahClient
-                AlignVert = avBottom
-                CaptionOptions.Text = 'New Group'
-                Visible = False
-                Index = 0
-              end
-              object dxLayoutItem22: TdxLayoutItem
-                Parent = grpbx_Ticketspriv
-                AlignVert = avTop
-                LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
-                Padding.Bottom = 5
-                Padding.Top = 5
-                Padding.AssignedValues = [lpavBottom, lpavTop]
-                CaptionOptions.Text = 'Priorit'#228't'
-                Control = cxDBImageComboBox2
-                ControlOptions.OriginalHeight = 19
-                ControlOptions.OriginalWidth = 1131
-                ControlOptions.ShowBorder = False
-                Index = 1
-              end
-              object dxLayoutItem23: TdxLayoutItem
-                Parent = dxLayoutGroup7
-                LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
-                Padding.Bottom = 5
-                Padding.Top = 5
-                Padding.AssignedValues = [lpavBottom, lpavTop]
-                CaptionOptions.Text = 'L'#246'sungsversion'
-                Control = cxDBTextEdit22
-                ControlOptions.OriginalHeight = 19
-                ControlOptions.OriginalWidth = 1131
-                ControlOptions.ShowBorder = False
-                Index = 0
-              end
-              object dxLayoutItem24: TdxLayoutItem
-                Parent = dxLayoutGroup7
-                Padding.Bottom = 5
-                Padding.Top = 5
-                Padding.AssignedValues = [lpavBottom, lpavTop]
-                CaptionOptions.Text = 'Autor'
-                Control = cxDBTextEdit23
-                ControlOptions.OriginalHeight = 19
-                ControlOptions.OriginalWidth = 278
-                ControlOptions.ShowBorder = False
-                Index = 1
-              end
-              object dxLayoutAutoCreatedGroup2: TdxLayoutAutoCreatedGroup
-                Parent = dxLayoutGroup5
-                AlignHorz = ahClient
-                AlignVert = avClient
-                Index = 0
-              end
-              object dxLayoutItem27: TdxLayoutItem
-                Parent = grpbx_Ticketspriv
-                LayoutLookAndFeel = dxLayoutSkinLookAndFeel1
-                CaptionOptions.Text = 'Stichwort'
-                Control = cxDBTextEdit21
-                ControlOptions.OriginalHeight = 19
-                ControlOptions.OriginalWidth = 1250
-                ControlOptions.ShowBorder = False
-                Index = 3
-              end
-              object dxLayoutItem28: TdxLayoutItem
-                Parent = grpbx_Ticketspriv
-                Padding.Bottom = 5
-                Padding.Top = 5
-                Padding.AssignedValues = [lpavBottom, lpavTop]
-                CaptionOptions.Text = 'Sprint'
-                Control = cxDBTextEdit19
-                ControlOptions.OriginalHeight = 19
-                ControlOptions.OriginalWidth = 1332
-                ControlOptions.ShowBorder = False
-                Index = 4
-              end
-              object dxLayoutItem30: TdxLayoutItem
-                Parent = grpbx_Ticketspriv
-                Padding.Bottom = 5
-                Padding.Top = 5
-                Padding.AssignedValues = [lpavBottom, lpavTop]
-                CaptionOptions.Text = 'Beschreibung'
-                Index = 5
-              end
-              object dxLayoutItem32: TdxLayoutItem
-                Parent = grpbx_Ticketspriv
-                Control = cxRichEdit1
-                ControlOptions.OriginalHeight = 14
-                ControlOptions.OriginalWidth = 1231
-                ControlOptions.ShowBorder = False
-                Index = 6
-              end
-            end
-          end
+        object tvNachrichtenLocation: TcxGridDBColumn
+          DataBinding.FieldName = 'Location'
+          Width = 200
+        end
+        object tvNachrichtenGesendetAm: TcxGridDBColumn
+          DataBinding.FieldName = 'GesendetAm'
+          SortIndex = 0
+          SortOrder = soDescending
+        end
+        object tvNachrichtenGelesenAm: TcxGridDBColumn
+          DataBinding.FieldName = 'GelesenAm'
+        end
+        object tvNachrichtenJira_Ticket: TcxGridDBColumn
+          DataBinding.FieldName = 'Jira_Ticket'
+          Visible = False
         end
       end
-      object ts_D_Stundenplan: TcxTabSheet
-        Caption = 'Stundenplan'
-        ImageIndex = 14
-        object grpbx_Stundenplanuebersicht: TcxGroupBox
-          Left = 0
-          Top = 0
-          Align = alTop
-          Caption = 'Stundenplan'#252'bersicht'
-          TabOrder = 0
-          Height = 201
-          Width = 1066
-          object edt_Stundenplan_Klasse: TcxDBTextEdit
-            Left = 762
-            Top = 87
-            DataBinding.DataField = 'Klasse'
-            DataBinding.DataSource = ds_Stundenplan
-            ParentFont = False
-            Style.BorderStyle = ebsFlat
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            TabOrder = 1
-            OnExit = btn_StundenplanSaveClick
-            Width = 50
-          end
-          object edt_Stundenplan_Schule: TcxDBTextEdit
-            Left = 49
-            Top = 87
-            DataBinding.DataField = 'Schule'
-            DataBinding.DataSource = ds_Stundenplan
-            ParentFont = False
-            Style.BorderStyle = ebsFlat
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            TabOrder = 0
-            OnExit = btn_StundenplanSaveClick
-            Width = 640
-          end
-          object edt_Stundenplan_Schuljahr: TcxDBTextEdit
-            Left = 909
-            Top = 87
-            DataBinding.DataField = 'Schuljahr'
-            DataBinding.DataSource = ds_Stundenplan
-            ParentFont = False
-            Style.BorderStyle = ebsFlat
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            TabOrder = 2
-            OnExit = btn_StundenplanSaveClick
-            Width = 100
-          end
-          object grd_Stundenplanuebersicht: TcxGrid
-            Left = 2
-            Top = 118
-            Width = 1062
-            Height = 81
-            Align = alBottom
-            BorderStyle = cxcbsNone
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 3
-            TabStop = False
-            LockedStateImageOptions.Effect = lsieDark
-            LookAndFeel.NativeStyle = False
-            ExplicitLeft = 3
-            ExplicitTop = 111
-            ExplicitWidth = 1050
-            object grdDBTblView_Stundenplanuebersicht: TcxGridDBTableView
-              Navigator.Buttons.CustomButtons = <>
-              FilterBox.CustomizeDialog = False
-              ScrollbarAnnotations.CustomAnnotations = <>
-              DataController.DataSource = ds_Stundenplan
-              DataController.Filter.PercentWildcard = '*'
-              DataController.Filter.UnderscoreWildcard = '?'
-              DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-              DataController.Summary.DefaultGroupSummaryItems = <>
-              DataController.Summary.FooterSummaryItems = <
-                item
-                  Kind = skCount
-                end>
-              DataController.Summary.SummaryGroups = <
-                item
-                  Links = <
-                    item
-                    end>
-                  SummaryItems = <
-                    item
-                    end>
-                end>
-              OptionsBehavior.IncSearch = True
-              OptionsBehavior.ShowHourglassCursor = False
-              OptionsCustomize.ColumnsQuickCustomization = True
-              OptionsData.Deleting = False
-              OptionsData.Editing = False
-              OptionsData.Inserting = False
-              OptionsSelection.CellSelect = False
-              OptionsView.CellEndEllipsis = True
-              OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-              OptionsView.GroupByBox = False
-              OptionsView.HeaderFilterButtonShowMode = fbmButton
-              OptionsView.IndicatorWidth = 14
-              object grdDBTblView_StundenplanuebersichtSchule: TcxGridDBColumn
-                DataBinding.FieldName = 'Schule'
-                DataBinding.IsNullValueType = True
-                SortIndex = 0
-                SortOrder = soAscending
-                Width = 450
-              end
-              object grdDBTblView_StundenplanuebersichtKlasse: TcxGridDBColumn
-                DataBinding.FieldName = 'Klasse'
-                DataBinding.IsNullValueType = True
-                Width = 100
-              end
-              object grdDBTblView_StundenplanuebersichtSchuljahr: TcxGridDBColumn
-                DataBinding.FieldName = 'Schuljahr'
-                DataBinding.IsNullValueType = True
-                Width = 150
-              end
-              object grdDBTblView_StundenplanuebersichtID_Benutzer: TcxGridDBColumn
-                Caption = 'Benutzer'
-                DataBinding.FieldName = 'ID_Benutzer'
-                DataBinding.IsNullValueType = True
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Benutzer'
-                  end>
-                Visible = False
-                VisibleForCustomization = False
-                Width = 250
-              end
-            end
-            object grdlvl_Stundenplanuebersicht: TcxGridLevel
-              GridView = grdDBTblView_Stundenplanuebersicht
-            end
-          end
-          object lbl_Stundenplan_Klasse: TcxLabel
-            Left = 718
-            Top = 88
-            Caption = 'Klasse:'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            Transparent = True
-          end
-          object lbl_Stundenplan_Schule: TcxLabel
-            Left = 8
-            Top = 88
-            Caption = 'Schule:'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            Transparent = True
-          end
-          object lbl_Stundenplan_Schuljahr: TcxLabel
-            Left = 846
-            Top = 88
-            Caption = 'Schuljahr:'
-            ParentFont = False
-            Style.Font.Charset = DEFAULT_CHARSET
-            Style.Font.Color = clWindowText
-            Style.Font.Height = -11
-            Style.Font.Name = 'Tahoma'
-            Style.Font.Style = []
-            Style.IsFontAssigned = True
-            Transparent = True
-          end
-          object brdckctrl_Stundenplan: TdxBarDockControl
-            Left = 2
-            Top = 18
-            Width = 1062
-            Height = 58
-            Align = dalTop
-            BarManager = brmgr_Kalendar
-          end
+      object tvAuf: TcxGridDBTableView
+        OnDblClick = tvAufDblClick
+        Navigator.Buttons.CustomButtons = <>
+        ScrollbarAnnotations.CustomAnnotations = <>
+        OnCustomDrawCell = tvAufCustomDrawCell
+        OnFocusedRecordChanged = tvAufFocusedRecordChanged
+        DataController.DataSource = dm_PCM.ds_Kalender_Aufgaben
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsBehavior.IncSearch = True
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsSelection.MultiSelect = True
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.Indicator = True
+        Styles.Selection = cxStyle1
+        object tvAufID: TcxGridDBColumn
+          DataBinding.FieldName = 'ID'
+          Visible = False
         end
-        object grpbx_Schulstunde: TcxGroupBox
-          Left = 0
-          Top = 201
-          Align = alClient
-          Caption = 'Stundenplan'
-          TabOrder = 1
-          Height = 710
-          Width = 1066
-          object pnl_Stundenplandetail: TcxGroupBox
-            Left = 2
-            Top = 76
-            Align = alTop
-            PanelStyle.Active = True
-            TabOrder = 0
-            ExplicitTop = 81
-            ExplicitWidth = 1052
-            Height = 60
-            Width = 1062
-            object lbl_Stundenplan_Bis: TcxLabel
-              Left = 82
-              Top = 8
-              Caption = 'Ende:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
+        object tvAufStatus: TcxGridDBColumn
+          DataBinding.FieldName = 'Status'
+          Options.Sorting = False
+          Width = 70
+        end
+        object tvAufTyp: TcxGridDBColumn
+          DataBinding.FieldName = 'Typ'
+          PropertiesClassName = 'TcxImageComboBoxProperties'
+          Properties.Alignment.Horz = taLeftJustify
+          Properties.Items = <
+            item
+              Description = 'Nachricht'
+              ImageIndex = 1
+              Value = 0
             end
-            object lbl_Stundenplan_Dienstag: TcxLabel
-              Left = 300
-              Top = 8
-              Caption = 'Dienstag:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
+            item
+              Description = 'Aufgabe'
+              ImageIndex = 2
+              Value = 1
             end
-            object lbl_Stundenplan_Donnerstag: TcxLabel
-              Left = 588
-              Top = 8
-              Caption = 'Donnerstag:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_Stundenplan_Freitag: TcxLabel
-              Left = 732
-              Top = 8
-              Caption = 'Freitag:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_Stundenplan_Mittwoch: TcxLabel
-              Left = 444
-              Top = 8
-              Caption = 'Mittwoch:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_Stundenplan_Montag: TcxLabel
-              Left = 158
-              Top = 8
-              Caption = 'Montag:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_Stundenplan_Samstag: TcxLabel
-              Left = 876
-              Top = 8
-              Caption = 'Samstag:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lbl_Stundenplan_Von: TcxLabel
-              Left = 8
-              Top = 8
-              Caption = 'Beginn:'
-              ParentFont = False
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              Transparent = True
-            end
-            object lucmbbx_Stundenplan_Dienstag: TcxDBLookupComboBox
-              Left = 300
-              Top = 27
-              DataBinding.DataField = 'Dienstag'
-              DataBinding.DataSource = ds_Stundenplan_detail
-              ParentFont = False
-              Properties.KeyFieldNames = 'ID'
-              Properties.ListColumns = <
-                item
-                  FieldName = 'Bezeichnung'
-                end>
-              Properties.ListSource = dsSchulFaecher
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 3
-              OnExit = btn_StundeSaveClick
-              Width = 130
-            end
-            object lucmbbx_Stundenplan_Donnerstag: TcxDBLookupComboBox
-              Left = 588
-              Top = 27
-              DataBinding.DataField = 'Donnerstag'
-              DataBinding.DataSource = ds_Stundenplan_detail
-              ParentFont = False
-              Properties.KeyFieldNames = 'ID'
-              Properties.ListColumns = <
-                item
-                  FieldName = 'Bezeichnung'
-                end>
-              Properties.ListSource = dsSchulFaecher
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 5
-              OnExit = btn_StundeSaveClick
-              Width = 130
-            end
-            object lucmbbx_Stundenplan_Freitag: TcxDBLookupComboBox
-              Left = 732
-              Top = 27
-              DataBinding.DataField = 'Freitag'
-              DataBinding.DataSource = ds_Stundenplan_detail
-              ParentFont = False
-              Properties.KeyFieldNames = 'ID'
-              Properties.ListColumns = <
-                item
-                  FieldName = 'Bezeichnung'
-                end>
-              Properties.ListSource = dsSchulFaecher
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 6
-              OnExit = btn_StundeSaveClick
-              Width = 130
-            end
-            object lucmbbx_Stundenplan_Mittwoch: TcxDBLookupComboBox
-              Left = 444
-              Top = 27
-              DataBinding.DataField = 'Mittwoch'
-              DataBinding.DataSource = ds_Stundenplan_detail
-              ParentFont = False
-              Properties.KeyFieldNames = 'ID'
-              Properties.ListColumns = <
-                item
-                  FieldName = 'Bezeichnung'
-                end>
-              Properties.ListSource = dsSchulFaecher
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 4
-              OnExit = btn_StundeSaveClick
-              Width = 130
-            end
-            object lucmbbx_Stundenplan_Montag: TcxDBLookupComboBox
-              Left = 158
-              Top = 27
-              DataBinding.DataField = 'Montag'
-              DataBinding.DataSource = ds_Stundenplan_detail
-              ParentFont = False
-              Properties.KeyFieldNames = 'ID'
-              Properties.ListColumns = <
-                item
-                  FieldName = 'Bezeichnung'
-                end>
-              Properties.ListSource = dsSchulFaecher
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 2
-              OnExit = btn_StundeSaveClick
-              Width = 130
-            end
-            object lucmbbx_Stundenplan_Samstag: TcxDBLookupComboBox
-              Left = 876
-              Top = 27
-              DataBinding.DataField = 'Samstag'
-              DataBinding.DataSource = ds_Stundenplan_detail
-              ParentFont = False
-              Properties.KeyFieldNames = 'ID'
-              Properties.ListColumns = <
-                item
-                  FieldName = 'Bezeichnung'
-                end>
-              Properties.ListSource = dsSchulFaecher
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 7
-              OnExit = btn_StundeSaveClick
-              Width = 130
-            end
-            object tiEdt_Stundenplan_Bis: TcxDBTimeEdit
-              Left = 82
-              Top = 27
-              DataBinding.DataField = 'End'
-              DataBinding.DataSource = ds_Stundenplan_detail
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 1
-              OnExit = btn_StundeSaveClick
-              Width = 70
-            end
-            object tiEdt_Stundenplan_Von: TcxDBTimeEdit
-              Left = 8
-              Top = 27
-              DataBinding.DataField = 'Begin'
-              DataBinding.DataSource = ds_Stundenplan_detail
-              ParentFont = False
-              Style.BorderStyle = ebsFlat
-              Style.Font.Charset = DEFAULT_CHARSET
-              Style.Font.Color = clWindowText
-              Style.Font.Height = -11
-              Style.Font.Name = 'Tahoma'
-              Style.Font.Style = []
-              Style.IsFontAssigned = True
-              TabOrder = 0
-              OnExit = btn_StundeSaveClick
-              Width = 70
-            end
-          end
-          object grd_StundenplanFach: TcxGrid
-            Left = 2
-            Top = 136
-            Width = 1062
-            Height = 572
-            Align = alClient
-            BorderStyle = cxcbsNone
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'Tahoma'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 1
-            TabStop = False
-            LockedStateImageOptions.Effect = lsieDark
-            LookAndFeel.NativeStyle = False
-            ExplicitLeft = 3
-            ExplicitTop = 138
-            ExplicitWidth = 1050
-            ExplicitHeight = 552
-            object grdDBTblView_Stundenplan: TcxGridDBTableView
-              Navigator.Buttons.CustomButtons = <>
-              FilterBox.CustomizeDialog = False
-              ScrollbarAnnotations.CustomAnnotations = <>
-              DataController.DataSource = ds_Stundenplan_detail
-              DataController.Filter.PercentWildcard = '*'
-              DataController.Filter.UnderscoreWildcard = '?'
-              DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-              DataController.Summary.DefaultGroupSummaryItems = <>
-              DataController.Summary.FooterSummaryItems = <
-                item
-                  Kind = skCount
-                end>
-              DataController.Summary.SummaryGroups = <
-                item
-                  Links = <
-                    item
-                    end>
-                  SummaryItems = <
-                    item
-                    end>
-                end>
-              OptionsBehavior.IncSearch = True
-              OptionsBehavior.ShowHourglassCursor = False
-              OptionsCustomize.ColumnsQuickCustomization = True
-              OptionsData.Deleting = False
-              OptionsData.Editing = False
-              OptionsData.Inserting = False
-              OptionsSelection.CellSelect = False
-              OptionsView.CellEndEllipsis = True
-              OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-              OptionsView.GroupByBox = False
-              OptionsView.HeaderFilterButtonShowMode = fbmButton
-              OptionsView.IndicatorWidth = 14
-              object grdDBTblView_StundenplanBegin: TcxGridDBColumn
-                Caption = 'Beginn'
-                DataBinding.FieldName = 'Begin'
-                DataBinding.IsNullValueType = True
-                OnCustomDrawCell = grdDBTblView_StundenplanBeginCustomDrawCell
-                SortIndex = 0
-                SortOrder = soAscending
-                Width = 70
-              end
-              object grdDBTblView_StundenplanEnd: TcxGridDBColumn
-                Caption = 'Ende'
-                DataBinding.FieldName = 'End'
-                DataBinding.IsNullValueType = True
-                OnCustomDrawCell = grdDBTblView_StundenplanBeginCustomDrawCell
-                Width = 70
-              end
-              object grdDBTblView_StundenplanMontag: TcxGridDBColumn
-                DataBinding.FieldName = 'Montag'
-                DataBinding.IsNullValueType = True
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Bezeichnung'
-                  end>
-                Properties.ListSource = dsSchulFaecher
-                OnCustomDrawCell = grdDBTblView_StundenplanMontagCustomDrawCell
-                Width = 145
-              end
-              object grdDBTblView_StundenplanDienstag: TcxGridDBColumn
-                DataBinding.FieldName = 'Dienstag'
-                DataBinding.IsNullValueType = True
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Bezeichnung'
-                  end>
-                Properties.ListSource = dsSchulFaecher
-                OnCustomDrawCell = grdDBTblView_StundenplanDienstagCustomDrawCell
-                Width = 145
-              end
-              object grdDBTblView_StundenplanMittwoch: TcxGridDBColumn
-                DataBinding.FieldName = 'Mittwoch'
-                DataBinding.IsNullValueType = True
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Bezeichnung'
-                  end>
-                Properties.ListSource = dsSchulFaecher
-                OnCustomDrawCell = grdDBTblView_StundenplanMittwochCustomDrawCell
-                Width = 145
-              end
-              object grdDBTblView_StundenplanDonnerstag: TcxGridDBColumn
-                DataBinding.FieldName = 'Donnerstag'
-                DataBinding.IsNullValueType = True
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Bezeichnung'
-                  end>
-                Properties.ListSource = dsSchulFaecher
-                OnCustomDrawCell = grdDBTblView_StundenplanDonnerstagCustomDrawCell
-                Width = 145
-              end
-              object grdDBTblView_StundenplanFreitag: TcxGridDBColumn
-                DataBinding.FieldName = 'Freitag'
-                DataBinding.IsNullValueType = True
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Bezeichnung'
-                  end>
-                Properties.ListSource = dsSchulFaecher
-                OnCustomDrawCell = grdDBTblView_StundenplanFreitagCustomDrawCell
-                Width = 145
-              end
-              object grdDBTblView_StundenplanSamstag: TcxGridDBColumn
-                DataBinding.FieldName = 'Samstag'
-                DataBinding.IsNullValueType = True
-                PropertiesClassName = 'TcxLookupComboBoxProperties'
-                Properties.KeyFieldNames = 'ID'
-                Properties.ListColumns = <
-                  item
-                    FieldName = 'Bezeichnung'
-                  end>
-                Properties.ListSource = dsSchulFaecher
-                OnCustomDrawCell = grdDBTblView_StundenplanSamstagCustomDrawCell
-                Width = 145
-              end
-            end
-            object grdlvl_Stundenplan: TcxGridLevel
-              GridView = grdDBTblView_Stundenplan
-            end
-          end
-          object brdckCtrl_StundenplanFach: TdxBarDockControl
-            Left = 2
-            Top = 18
-            Width = 1062
-            Height = 58
-            Align = dalTop
-            BarManager = brmgr_Kalendar
-          end
+            item
+              Description = 'Termin'
+              ImageIndex = 3
+              Value = 2
+            end>
+          Options.Sorting = False
+          Width = 86
+        end
+        object tvAufStartdatum: TcxGridDBColumn
+          Caption = 'Start Datum'
+          DataBinding.FieldName = 'Startdatum'
+          Options.Sorting = False
+          Width = 80
+        end
+        object tvAufStartZeit: TcxGridDBColumn
+          Caption = 'Start Uhrzeit'
+          DataBinding.FieldName = 'StartZeit'
+          Options.Sorting = False
+          Width = 80
+        end
+        object tvAufEndedatum: TcxGridDBColumn
+          Caption = 'Ende Datum'
+          DataBinding.FieldName = 'Endedatum'
+          SortIndex = 0
+          SortOrder = soAscending
+          Width = 80
+        end
+        object tvAufEndeZeit: TcxGridDBColumn
+          Caption = 'Ende Uhrzeit'
+          DataBinding.FieldName = 'EndeZeit'
+          SortIndex = 1
+          SortOrder = soAscending
+          Width = 80
+        end
+        object tvAufInTagen: TcxGridDBColumn
+          Caption = 'In Tagen'
+          DataBinding.FieldName = 'InTagen'
+          Options.Sorting = False
+          Width = 60
+        end
+        object tvAufID_IC_AufgabenArten: TcxGridDBColumn
+          Caption = 'Art'
+          DataBinding.FieldName = 'ID_IC_AufgabenArten'
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Bezeichnung'
+            end>
+          Properties.ListSource = dm_PCM.ds_KalenderAufgaben_Arten
+          Options.Sorting = False
+          Width = 100
+        end
+        object tvAufCaption: TcxGridDBColumn
+          Caption = 'Betreff'
+          DataBinding.FieldName = 'Caption'
+          Options.Sorting = False
+          Width = 250
+        end
+        object tvAufID_ADR_Wurzel: TcxGridDBColumn
+          Caption = 'Adresse'
+          DataBinding.FieldName = 'ID_Ansprechpartner'
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Name'
+            end>
+          Properties.ListSource = dm_PCM.ds_Config_Firmen
+          Options.Sorting = False
+          Width = 200
+        end
+        object tvAufID_Ansprechpartner: TcxGridDBColumn
+          Caption = 'Ansprechpartner'
+          DataBinding.FieldName = 'ID_Ansprechpartner'
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Name'
+            end>
+          Properties.ListSource = dm_PCM.ds_Kalender_Ansprechpartner
+          Options.Sorting = False
+          Width = 200
+        end
+        object tvAufAufgabenDauer: TcxGridDBColumn
+          Caption = 'Dauer'
+          DataBinding.FieldName = 'AufgabenDauer'
+          Options.Sorting = False
+          Width = 60
+        end
+        object tvAufID_IC_Prioritaeten: TcxGridDBColumn
+          Caption = 'Priorit'#228't'
+          DataBinding.FieldName = 'ID_IC_Prioritaeten'
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Bezeichnung'
+            end>
+          Properties.ListSource = dm_PCM.ds_KalenderAufgaben_Prio
+          Options.Sorting = False
+          Width = 100
+        end
+        object tvAufLocation: TcxGridDBColumn
+          Caption = 'Ort'
+          DataBinding.FieldName = 'Location'
+          Options.Sorting = False
+          Width = 100
+        end
+        object tvAufJira_Ticket: TcxGridDBColumn
+          Caption = 'Jira Ticket'
+          DataBinding.FieldName = 'Jira_Ticket'
+          Visible = False
+          Width = 200
+        end
+        object tvAufGesendetAm: TcxGridDBColumn
+          Caption = 'Gesendet am'
+          DataBinding.FieldName = 'GesendetAm'
+          Visible = False
+          Width = 120
+        end
+        object tvAufStart: TcxGridDBColumn
+          DataBinding.FieldName = 'Start'
+          Visible = False
+          VisibleForCustomization = False
+        end
+        object tvAufFinish: TcxGridDBColumn
+          DataBinding.FieldName = 'Finish'
+          Visible = False
+          VisibleForCustomization = False
         end
       end
+      object cxGrid1Level1: TcxGridLevel
+        GridView = tvNachrichten
+      end
+    end
+    object cxDBTextEdit6: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      TabStop = False
+      DataBinding.DataField = 'Caption'
+      DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
+      ParentFont = False
+      Properties.ReadOnly = True
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 7
+      Visible = False
+      Width = 437
+    end
+    object btn_GoToJira: TcxButton
+      Left = 10000
+      Top = 10000
+      Width = 25
+      Height = 21
+      OptionsImage.ImageIndex = 47
+      OptionsImage.Images = dm_PCM.imglst_16x16
+      TabOrder = 11
+      Visible = False
+      OnClick = btn_GoToJiraClick
+    end
+    object edtJiraTicketNr: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      TabStop = False
+      DataBinding.DataField = 'Jira_Ticket'
+      DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
+      ParentFont = False
+      Properties.ReadOnly = True
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.LookAndFeel.NativeStyle = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 10
+      Visible = False
+      Width = 410
+    end
+    object cxDBTextEdit4: TcxDBLookupComboBox
+      Left = 10000
+      Top = 10000
+      TabStop = False
+      DataBinding.DataField = 'ID_Ansprechpartner'
+      DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Name'
+        end>
+      Properties.ListSource = dm_PCM.ds_Kalender_Ansprechpartner
+      Properties.ReadOnly = True
+      Style.HotTrack = False
+      Style.LookAndFeel.NativeStyle = False
+      Style.TransparentBorder = False
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 8
+      Visible = False
+      Width = 437
+    end
+    object cbxAns: TcxDBLookupComboBox
+      Left = 10000
+      Top = 10000
+      TabStop = False
+      DataBinding.DataField = 'ID_Ansprechpartner'
+      DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Name'
+        end>
+      Properties.ListSource = dm_PCM.ds_Kalender_Ansprechpartner
+      Properties.ReadOnly = True
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 9
+      Visible = False
+      Width = 441
+    end
+    object cxDBMemo1: TcxDBRichEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Message'
+      DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
+      ParentFont = False
+      Properties.AutoURLDetect = True
+      Properties.PlainText = True
+      Properties.ScrollBars = ssVertical
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -12
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 12
+      Visible = False
+      Height = 238
+      Width = 840
+    end
+    object cxGrid5: TcxGrid
+      Left = 10000
+      Top = 10000
+      Width = 176
+      Height = 200
+      TabOrder = 13
+      Visible = False
+      LookAndFeel.NativeStyle = False
+      object cxGrid5DBTableView1: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        Navigator.Buttons.First.Visible = True
+        Navigator.Buttons.PriorPage.Visible = True
+        Navigator.Buttons.Prior.Visible = True
+        Navigator.Buttons.Next.Visible = True
+        Navigator.Buttons.NextPage.Visible = True
+        Navigator.Buttons.Last.Visible = True
+        Navigator.Buttons.Insert.Visible = True
+        Navigator.Buttons.Delete.Visible = True
+        Navigator.Buttons.Edit.Visible = True
+        Navigator.Buttons.Post.Visible = True
+        Navigator.Buttons.Cancel.Visible = True
+        Navigator.Buttons.Refresh.Visible = True
+        Navigator.Buttons.SaveBookmark.Visible = True
+        Navigator.Buttons.GotoBookmark.Visible = True
+        Navigator.Buttons.Filter.Visible = True
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = dsWF_Nachrichten_Anhaenge
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsBehavior.IncSearch = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.CellEndEllipsis = True
+        OptionsView.ColumnAutoWidth = True
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.Indicator = True
+        object cxGrid5DBTableView1ID: TcxGridDBColumn
+          Tag = 314104256
+          DataBinding.FieldName = 'ID'
+          Visible = False
+        end
+        object cxGrid5DBTableView1ID_Adr_Korrespondenz: TcxGridDBColumn
+          Tag = 313686204
+          DataBinding.FieldName = 'ID_WF_Nachrichten'
+          DataBinding.IsNullValueType = True
+          Visible = False
+        end
+        object cxGrid5DBTableView1Dateiname: TcxGridDBColumn
+          Tag = 315388828
+          DataBinding.FieldName = 'Dateiname'
+          SortIndex = 0
+          SortOrder = soAscending
+          Width = 139
+        end
+        object cxGrid5DBTableView1DateinameSave: TcxGridDBColumn
+          Tag = 315389660
+          DataBinding.FieldName = 'DateinameSave'
+          Visible = False
+        end
+      end
+      object cxGrid5Level1: TcxGridLevel
+        GridView = cxGrid5DBTableView1
+      end
+    end
+    object Image1: TcxImage
+      Left = 10000
+      Top = 10000
+      Properties.FitMode = ifmNormal
+      Properties.GraphicTransparency = gtTransparent
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 14
+      Transparent = True
+      Visible = False
+      Height = 32
+      Width = 32
+    end
+    object btn_AttachementSave: TcxButton
+      AlignWithMargins = True
+      Left = 10000
+      Top = 10000
+      Width = 23
+      Height = 24
+      Margins.Left = 0
+      Margins.Top = 6
+      Margins.Right = 0
+      Margins.Bottom = 6
+      OptionsImage.ImageIndex = 27
+      OptionsImage.Images = dm_PCM.imglst_16x16
+      PaintStyle = bpsGlyph
+      TabOrder = 16
+      Visible = False
+      OnClick = btn_AttachementSaveClick
+    end
+    object btn_AttachementOpen: TcxButton
+      AlignWithMargins = True
+      Left = 10000
+      Top = 10000
+      Width = 23
+      Height = 24
+      Margins.Left = 0
+      Margins.Top = 6
+      Margins.Right = 0
+      Margins.Bottom = 6
+      LookAndFeel.NativeStyle = False
+      OptionsImage.ImageIndex = 26
+      OptionsImage.Images = dm_PCM.imglst_16x16
+      PaintStyle = bpsGlyph
+      TabOrder = 15
+      Visible = False
+      OnClick = btn_AttachementOpenClick
+    end
+    object img_search: TcxImage
+      Left = 10000
+      Top = 10000
+      Picture.Data = {
+        0B546478504E47496D61676589504E470D0A1A0A0000000D4948445200000010
+        0000001008060000001FF3FF61000000017352474200AECE1CE9000000046741
+        4D410000B18F0BFC6105000000F249444154384FAD913B0E01611485514A1422
+        9158C08CA15348547A56A0B1825984D882566509A8D5742A4A5A0B9028F94E72
+        88F889479CE4CBCCBDE73E2677327F5514451D58C0114EB0847ED268655DF25A
+        140E6107BD38A9157916A00B6B983024E7D2501468F32E8AE3B25337C5493D8F
+        B782D4A95098FAEC9EC340784DD83B0C8579D4673B7C2A6ACE7E0D85A983151C
+        3ED5BB01BA76D76120BC2A1C5EFE0DCC3EAC7530A76ED2F5F1E630702A942653
+        30015DBBE9F475B39ACF306A8F37155BA1BC2985BD1BC401063052CC8013CCDC
+        F2B9B4D9CD1A227E1A32BB1BF0B721535B9FEB61C8D6E9EFA4CD6A6E8F37A50B
+        8742777EE5CEC36F0000000049454E44AE426082}
+      Properties.ShowFocusRect = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      StyleFocused.BorderStyle = ebsNone
+      StyleHot.BorderStyle = ebsNone
+      TabOrder = 4
+      Transparent = True
+      Visible = False
+      Height = 16
+      Width = 18
+    end
+    object edt_Suche: TcxButtonEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      Properties.Buttons = <
+        item
+          Default = True
+          ImageIndex = 6
+          Kind = bkGlyph
+        end>
+      Properties.OnButtonClick = edt_SuchePropertiesButtonClick
+      Properties.OnChange = edt_SuchePropertiesChange
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 5
+      Visible = False
+      OnEnter = edt_SucheEnter
+      OnExit = edt_SucheExit
+      Height = 24
+      Width = 980
+    end
+    object edt_Stundenplan_Klasse: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Klasse'
+      DataBinding.DataSource = ds_Stundenplan
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 19
+      Visible = False
+      OnExit = btn_StundenplanSaveClick
+      Width = 50
+    end
+    object edt_Stundenplan_Schule: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Schule'
+      DataBinding.DataSource = ds_Stundenplan
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 18
+      Visible = False
+      OnExit = btn_StundenplanSaveClick
+      Width = 710
+    end
+    object edt_Stundenplan_Schuljahr: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Schuljahr'
+      DataBinding.DataSource = ds_Stundenplan
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 20
+      Visible = False
+      OnExit = btn_StundenplanSaveClick
+      Width = 100
+    end
+    object grd_Stundenplanuebersicht: TcxGrid
+      Left = 10000
+      Top = 10000
+      Width = 1004
+      Height = 81
+      BorderStyle = cxcbsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 21
+      TabStop = False
+      Visible = False
+      LockedStateImageOptions.Effect = lsieDark
+      LookAndFeel.NativeStyle = False
+      object grdDBTblView_Stundenplanuebersicht: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        FilterBox.CustomizeDialog = False
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = ds_Stundenplan
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skCount
+          end>
+        DataController.Summary.SummaryGroups = <
+          item
+            Links = <
+              item
+              end>
+            SummaryItems = <
+              item
+              end>
+          end>
+        OptionsBehavior.IncSearch = True
+        OptionsBehavior.ShowHourglassCursor = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.CellEndEllipsis = True
+        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.IndicatorWidth = 14
+        object grdDBTblView_StundenplanuebersichtSchule: TcxGridDBColumn
+          DataBinding.FieldName = 'Schule'
+          DataBinding.IsNullValueType = True
+          SortIndex = 0
+          SortOrder = soAscending
+          Width = 450
+        end
+        object grdDBTblView_StundenplanuebersichtKlasse: TcxGridDBColumn
+          DataBinding.FieldName = 'Klasse'
+          DataBinding.IsNullValueType = True
+          Width = 100
+        end
+        object grdDBTblView_StundenplanuebersichtSchuljahr: TcxGridDBColumn
+          DataBinding.FieldName = 'Schuljahr'
+          DataBinding.IsNullValueType = True
+          Width = 150
+        end
+        object grdDBTblView_StundenplanuebersichtID_Benutzer: TcxGridDBColumn
+          Caption = 'Benutzer'
+          DataBinding.FieldName = 'ID_Benutzer'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Benutzer'
+            end>
+          Visible = False
+          VisibleForCustomization = False
+          Width = 250
+        end
+      end
+      object grdlvl_Stundenplanuebersicht: TcxGridLevel
+        GridView = grdDBTblView_Stundenplanuebersicht
+      end
+    end
+    object brdckctrl_Stundenplan: TdxBarDockControl
+      Left = 10000
+      Top = 10000
+      Width = 1022
+      Height = 63
+      Align = dalNone
+      BarManager = brmgr_Kalendar
+      Visible = False
+    end
+    object lucmbbx_Stundenplan_Dienstag: TcxDBLookupComboBox
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Dienstag'
+      DataBinding.DataSource = ds_Stundenplan_detail
+      ParentFont = False
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Bezeichnung'
+        end>
+      Properties.ListSource = dsSchulFaecher
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 26
+      Visible = False
+      OnExit = btn_StundeSaveClick
+      Width = 131
+    end
+    object lucmbbx_Stundenplan_Donnerstag: TcxDBLookupComboBox
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Donnerstag'
+      DataBinding.DataSource = ds_Stundenplan_detail
+      ParentFont = False
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Bezeichnung'
+        end>
+      Properties.ListSource = dsSchulFaecher
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 28
+      Visible = False
+      OnExit = btn_StundeSaveClick
+      Width = 131
+    end
+    object lucmbbx_Stundenplan_Freitag: TcxDBLookupComboBox
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Freitag'
+      DataBinding.DataSource = ds_Stundenplan_detail
+      ParentFont = False
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Bezeichnung'
+        end>
+      Properties.ListSource = dsSchulFaecher
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 29
+      Visible = False
+      OnExit = btn_StundeSaveClick
+      Width = 131
+    end
+    object lucmbbx_Stundenplan_Mittwoch: TcxDBLookupComboBox
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Mittwoch'
+      DataBinding.DataSource = ds_Stundenplan_detail
+      ParentFont = False
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Bezeichnung'
+        end>
+      Properties.ListSource = dsSchulFaecher
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 27
+      Visible = False
+      OnExit = btn_StundeSaveClick
+      Width = 131
+    end
+    object lucmbbx_Stundenplan_Montag: TcxDBLookupComboBox
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Montag'
+      DataBinding.DataSource = ds_Stundenplan_detail
+      ParentFont = False
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Bezeichnung'
+        end>
+      Properties.ListSource = dsSchulFaecher
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 25
+      Visible = False
+      OnExit = btn_StundeSaveClick
+      Width = 131
+    end
+    object lucmbbx_Stundenplan_Samstag: TcxDBLookupComboBox
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Samstag'
+      DataBinding.DataSource = ds_Stundenplan_detail
+      ParentFont = False
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Bezeichnung'
+        end>
+      Properties.ListSource = dsSchulFaecher
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 30
+      Visible = False
+      OnExit = btn_StundeSaveClick
+      Width = 131
+    end
+    object tiEdt_Stundenplan_Bis: TcxDBTimeEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'End'
+      DataBinding.DataSource = ds_Stundenplan_detail
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 24
+      Visible = False
+      OnExit = btn_StundeSaveClick
+      Width = 70
+    end
+    object tiEdt_Stundenplan_Von: TcxDBTimeEdit
+      Left = 10000
+      Top = 10000
+      DataBinding.DataField = 'Begin'
+      DataBinding.DataSource = ds_Stundenplan_detail
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 23
+      Visible = False
+      OnExit = btn_StundeSaveClick
+      Width = 70
+    end
+    object grd_StundenplanFach: TcxGrid
+      Left = 10000
+      Top = 10000
+      Width = 986
+      Height = 461
+      BorderStyle = cxcbsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 31
+      TabStop = False
+      Visible = False
+      LockedStateImageOptions.Effect = lsieDark
+      LookAndFeel.NativeStyle = False
+      object grdDBTblView_Stundenplan: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        FilterBox.CustomizeDialog = False
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = ds_Stundenplan_detail
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skCount
+          end>
+        DataController.Summary.SummaryGroups = <
+          item
+            Links = <
+              item
+              end>
+            SummaryItems = <
+              item
+              end>
+          end>
+        OptionsBehavior.IncSearch = True
+        OptionsBehavior.ShowHourglassCursor = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.CellEndEllipsis = True
+        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.IndicatorWidth = 14
+        object grdDBTblView_StundenplanBegin: TcxGridDBColumn
+          Caption = 'Beginn'
+          DataBinding.FieldName = 'Begin'
+          DataBinding.IsNullValueType = True
+          OnCustomDrawCell = grdDBTblView_StundenplanBeginCustomDrawCell
+          SortIndex = 0
+          SortOrder = soAscending
+          Width = 70
+        end
+        object grdDBTblView_StundenplanEnd: TcxGridDBColumn
+          Caption = 'Ende'
+          DataBinding.FieldName = 'End'
+          DataBinding.IsNullValueType = True
+          OnCustomDrawCell = grdDBTblView_StundenplanBeginCustomDrawCell
+          Width = 70
+        end
+        object grdDBTblView_StundenplanMontag: TcxGridDBColumn
+          DataBinding.FieldName = 'Montag'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Bezeichnung'
+            end>
+          Properties.ListSource = dsSchulFaecher
+          OnCustomDrawCell = grdDBTblView_StundenplanMontagCustomDrawCell
+          Width = 145
+        end
+        object grdDBTblView_StundenplanDienstag: TcxGridDBColumn
+          DataBinding.FieldName = 'Dienstag'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Bezeichnung'
+            end>
+          Properties.ListSource = dsSchulFaecher
+          OnCustomDrawCell = grdDBTblView_StundenplanDienstagCustomDrawCell
+          Width = 145
+        end
+        object grdDBTblView_StundenplanMittwoch: TcxGridDBColumn
+          DataBinding.FieldName = 'Mittwoch'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Bezeichnung'
+            end>
+          Properties.ListSource = dsSchulFaecher
+          OnCustomDrawCell = grdDBTblView_StundenplanMittwochCustomDrawCell
+          Width = 145
+        end
+        object grdDBTblView_StundenplanDonnerstag: TcxGridDBColumn
+          DataBinding.FieldName = 'Donnerstag'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Bezeichnung'
+            end>
+          Properties.ListSource = dsSchulFaecher
+          OnCustomDrawCell = grdDBTblView_StundenplanDonnerstagCustomDrawCell
+          Width = 145
+        end
+        object grdDBTblView_StundenplanFreitag: TcxGridDBColumn
+          DataBinding.FieldName = 'Freitag'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Bezeichnung'
+            end>
+          Properties.ListSource = dsSchulFaecher
+          OnCustomDrawCell = grdDBTblView_StundenplanFreitagCustomDrawCell
+          Width = 145
+        end
+        object grdDBTblView_StundenplanSamstag: TcxGridDBColumn
+          DataBinding.FieldName = 'Samstag'
+          DataBinding.IsNullValueType = True
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Bezeichnung'
+            end>
+          Properties.ListSource = dsSchulFaecher
+          OnCustomDrawCell = grdDBTblView_StundenplanSamstagCustomDrawCell
+          Width = 145
+        end
+      end
+      object grdlvl_Stundenplan: TcxGridLevel
+        GridView = grdDBTblView_Stundenplan
+      end
+    end
+    object brdckCtrl_StundenplanFach: TdxBarDockControl
+      Left = 10000
+      Top = 10000
+      Width = 986
+      Height = 63
+      Align = dalNone
+      BarManager = brmgr_Kalendar
+      Visible = False
+    end
+    object lactrl_KalenderGroup_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = -1
+    end
+    object lagrp_KalenderTab: TdxLayoutGroup
+      Parent = lactrl_KalenderGroup_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      LayoutDirection = ldTabbed
+      ShowBorder = False
+      Index = 0
+    end
+    object lagrp_Kalender: TdxLayoutGroup
+      Parent = lagrp_KalenderTab
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.ImageIndex = 10
+      CaptionOptions.Text = 'Kalender'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = lagrp_Kalender
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'brdckctrl_Kalender'
+      CaptionOptions.Visible = False
+      Control = brdckctrl_Kalender
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 117
+      ControlOptions.OriginalWidth = 1056
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = lagrp_Kalender
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'sched_Kalender'
+      CaptionOptions.Visible = False
+      Control = sched_Kalender
+      ControlOptions.OriginalHeight = 783
+      ControlOptions.OriginalWidth = 1056
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object lagrp_Aufgaben: TdxLayoutGroup
+      Parent = lagrp_KalenderTab
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.ImageIndex = 58
+      CaptionOptions.Text = 'Aufgaben'
+      ItemIndex = 5
+      Index = 1
+    end
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = lagrp_Aufgaben
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'trlst_Aufgaben'
+      CaptionOptions.Visible = False
+      Control = trlst_Aufgaben
+      ControlOptions.OriginalHeight = 107
+      ControlOptions.OriginalWidth = 1056
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem4: TdxLayoutItem
+      Parent = lagrp_Aufgaben
+      AlignHorz = ahClient
+      AlignVert = avTop
+      Offsets.Top = -6
+      CaptionOptions.Text = 'brdckctrl_Aufgaben'
+      CaptionOptions.Visible = False
+      Control = brdckctrl_Aufgaben
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 117
+      ControlOptions.OriginalWidth = 1056
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup8: TdxLayoutGroup
+      Parent = lagrp_Aufgaben
+      AlignHorz = ahClient
+      AlignVert = avTop
+      Offsets.Top = -6
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      Index = 2
+    end
+    object dxLayoutItem5: TdxLayoutItem
+      Parent = dxLayoutGroup8
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'img_search'
+      CaptionOptions.Visible = False
+      Control = img_search
+      ControlOptions.OriginalHeight = 16
+      ControlOptions.OriginalWidth = 18
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem6: TdxLayoutItem
+      Parent = dxLayoutGroup8
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'edt_Suche'
+      CaptionOptions.Visible = False
+      Control = edt_Suche
+      ControlOptions.OriginalHeight = 24
+      ControlOptions.OriginalWidth = 1024
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem7: TdxLayoutItem
+      Parent = lagrp_Aufgaben
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Offsets.Top = -6
+      CaptionOptions.Text = 'cxGrid1'
+      CaptionOptions.Visible = False
+      Control = cxGrid1
+      ControlOptions.OriginalHeight = 315
+      ControlOptions.OriginalWidth = 1050
+      ControlOptions.ShowBorder = False
+      Index = 3
+    end
+    object dxLayoutItem8: TdxLayoutItem
+      Parent = dxLayoutGroup4
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Betreff:'
+      Control = cxDBTextEdit6
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem9: TdxLayoutItem
+      Parent = dxLayoutGroup1
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Ansprechpartner:'
+      Control = cbxAns
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem10: TdxLayoutItem
+      Parent = dxLayoutGroup4
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Adresse:'
+      Control = cxDBTextEdit4
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 390
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem12: TdxLayoutItem
+      Parent = dxLayoutGroup6
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_GoToJira'
+      CaptionOptions.Visible = False
+      Control = btn_GoToJira
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 25
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem13: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'cxDBMemo1'
+      CaptionOptions.Visible = False
+      Control = cxDBMemo1
+      ControlOptions.OriginalHeight = 252
+      ControlOptions.OriginalWidth = 1389
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem14: TdxLayoutItem
+      Parent = dxLayoutGroup9
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'cxGrid5'
+      CaptionOptions.Visible = False
+      Control = cxGrid5
+      ControlOptions.OriginalHeight = 204
+      ControlOptions.OriginalWidth = 176
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem15: TdxLayoutItem
+      Parent = dxLayoutGroup10
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'Image1'
+      CaptionOptions.Visible = False
+      Control = Image1
+      ControlOptions.OriginalHeight = 32
+      ControlOptions.OriginalWidth = 32
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem16: TdxLayoutItem
+      Parent = dxLayoutGroup10
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Visible = False
+      Control = btn_AttachementOpen
+      ControlOptions.OriginalHeight = 24
+      ControlOptions.OriginalWidth = 23
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem17: TdxLayoutItem
+      Parent = dxLayoutGroup10
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'btn_AttachementSave'
+      CaptionOptions.Visible = False
+      Control = btn_AttachementSave
+      ControlOptions.OriginalHeight = 24
+      ControlOptions.OriginalWidth = 23
+      ControlOptions.ShowBorder = False
+      Index = 3
+    end
+    object lagrp_Stundenplan: TdxLayoutGroup
+      Parent = lagrp_KalenderTab
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.ImageIndex = 14
+      CaptionOptions.Text = 'Stundenplan'
+      ItemIndex = 1
+      Index = 2
+    end
+    object dxLayoutGroup23: TdxLayoutGroup
+      Parent = lagrp_Stundenplan
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Stundenplan'#252'bersicht'
+      Index = 1
+    end
+    object dxLayoutItem18: TdxLayoutItem
+      Parent = lagrp_Stundenplan
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'brdckctrl_Stundenplan'
+      CaptionOptions.Visible = False
+      Control = brdckctrl_Stundenplan
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalWidth = 1050
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem19: TdxLayoutItem
+      Parent = dxLayoutGroup11
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Schule:'
+      Control = edt_Stundenplan_Schule
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 640
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem20: TdxLayoutItem
+      Parent = dxLayoutGroup11
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'Klasse:'
+      Control = edt_Stundenplan_Klasse
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 50
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem21: TdxLayoutItem
+      Parent = dxLayoutGroup11
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'Schuljahr:'
+      Control = edt_Stundenplan_Schuljahr
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 100
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem22: TdxLayoutItem
+      Parent = dxLayoutGroup7
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'grd_Stundenplanuebersicht'
+      CaptionOptions.Visible = False
+      Control = grd_Stundenplanuebersicht
+      ControlOptions.OriginalHeight = 81
+      ControlOptions.OriginalWidth = 1050
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup28: TdxLayoutGroup
+      Parent = dxLayoutGroup23
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Stundenplan'
+      Index = 2
+    end
+    object dxLayoutItem23: TdxLayoutItem
+      Parent = dxLayoutGroup28
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'brdckCtrl_StundenplanFach'
+      CaptionOptions.Visible = False
+      Control = brdckCtrl_StundenplanFach
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalWidth = 1050
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup29: TdxLayoutGroup
+      Parent = dxLayoutGroup28
+      AlignHorz = ahClient
+      AlignVert = avTop
+      LayoutDirection = ldHorizontal
+      Index = 1
+    end
+    object dxLayoutItem24: TdxLayoutItem
+      Parent = dxLayoutGroup12
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'tiEdt_Stundenplan_Von'
+      CaptionOptions.Visible = False
+      Control = tiEdt_Stundenplan_Von
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 70
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem25: TdxLayoutItem
+      Parent = dxLayoutGroup13
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Ende:'
+      CaptionOptions.Visible = False
+      CaptionOptions.Layout = clTop
+      Control = tiEdt_Stundenplan_Bis
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 70
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem26: TdxLayoutItem
+      Parent = dxLayoutGroup14
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Visible = False
+      CaptionOptions.Layout = clTop
+      Control = lucmbbx_Stundenplan_Montag
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 130
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem27: TdxLayoutItem
+      Parent = dxLayoutGroup15
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Dienstag:'
+      CaptionOptions.Visible = False
+      CaptionOptions.Layout = clTop
+      Control = lucmbbx_Stundenplan_Dienstag
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 130
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem28: TdxLayoutItem
+      Parent = dxLayoutGroup16
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Mittwoch:'
+      CaptionOptions.Visible = False
+      CaptionOptions.Layout = clTop
+      Control = lucmbbx_Stundenplan_Mittwoch
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 130
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem29: TdxLayoutItem
+      Parent = dxLayoutGroup17
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Visible = False
+      CaptionOptions.Layout = clTop
+      Control = lucmbbx_Stundenplan_Donnerstag
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 130
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem30: TdxLayoutItem
+      Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Freitag:'
+      CaptionOptions.Visible = False
+      CaptionOptions.Layout = clTop
+      Control = lucmbbx_Stundenplan_Freitag
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 130
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem31: TdxLayoutItem
+      Parent = dxLayoutGroup19
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Samstag:'
+      CaptionOptions.Visible = False
+      CaptionOptions.Layout = clTop
+      Control = lucmbbx_Stundenplan_Samstag
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 130
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem32: TdxLayoutItem
+      Parent = dxLayoutGroup28
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'grd_StundenplanFach'
+      CaptionOptions.Visible = False
+      Control = grd_StundenplanFach
+      ControlOptions.OriginalHeight = 552
+      ControlOptions.OriginalWidth = 1050
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem11: TdxLayoutItem
+      Parent = dxLayoutGroup6
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      Control = edtJiraTicketNr
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 359
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup1: TdxLayoutGroup
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup3: TdxLayoutGroup
+      Parent = lagrp_Aufgaben
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 4
+    end
+    object dxLayoutGroup4: TdxLayoutGroup
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup5: TdxLayoutGroup
+      Parent = lagrp_Aufgaben
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 5
+    end
+    object dxLayoutGroup9: TdxLayoutGroup
+      Parent = dxLayoutGroup5
+      AlignHorz = ahRight
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup10: TdxLayoutGroup
+      Parent = dxLayoutGroup9
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup6: TdxLayoutGroup
+      Parent = dxLayoutGroup1
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup7: TdxLayoutGroup
+      Parent = dxLayoutGroup23
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup11: TdxLayoutGroup
+      Parent = dxLayoutGroup23
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup12: TdxLayoutGroup
+      Parent = dxLayoutGroup29
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutLabeledItem1: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup12
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Beginn:'
+      Index = 0
+    end
+    object dxLayoutLabeledItem2: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup13
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Ende:'
+      Index = 0
+    end
+    object dxLayoutLabeledItem3: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup14
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Montag:'
+      Index = 0
+    end
+    object dxLayoutLabeledItem4: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup15
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Dienstag:'
+      Index = 0
+    end
+    object dxLayoutLabeledItem5: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup16
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Mittwoch'
+      Index = 0
+    end
+    object dxLayoutLabeledItem6: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup17
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Donnerstag:'
+      Index = 0
+    end
+    object dxLayoutLabeledItem7: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Freitag:'
+      Index = 0
+    end
+    object dxLayoutGroup13: TdxLayoutGroup
+      Parent = dxLayoutGroup29
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup14: TdxLayoutGroup
+      Parent = dxLayoutGroup29
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup15: TdxLayoutGroup
+      Parent = dxLayoutGroup29
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 3
+    end
+    object dxLayoutGroup16: TdxLayoutGroup
+      Parent = dxLayoutGroup29
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 4
+    end
+    object dxLayoutGroup17: TdxLayoutGroup
+      Parent = dxLayoutGroup29
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 5
+    end
+    object dxLayoutGroup18: TdxLayoutGroup
+      Parent = dxLayoutGroup29
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 6
+    end
+    object dxLayoutGroup19: TdxLayoutGroup
+      Parent = dxLayoutGroup29
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 7
+    end
+    object dxLayoutLabeledItem8: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup19
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Samstag:'
+      Index = 0
+    end
+    object lTypeName: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup10
+      AlignHorz = ahClient
+      AlignVert = avTop
+      Index = 1
     end
   end
   object brpmm_ContextCalender: TdxBarPopupMenu
@@ -2621,62 +2253,6 @@ object frm_Calendar: Tfrm_Calendar
           ItemName = 'btn_taskMinMax'
         end>
       MultiLine = True
-      OneOnRow = True
-      Row = 0
-      ShowMark = False
-      SizeGrip = False
-      UseOwnFont = False
-      UseRestSpace = True
-      Visible = True
-      WholeRow = False
-    end
-    object brmgr_KalendarBar3: TdxBar
-      AllowClose = False
-      AllowCustomizing = False
-      Caption = 'Custom 6'
-      CaptionButtons = <>
-      DockControl = dxBarDockControl4
-      DockedDockControl = dxBarDockControl4
-      DockedLeft = 0
-      DockedTop = 0
-      FloatLeft = 1700
-      FloatTop = 2
-      FloatClientWidth = 0
-      FloatClientHeight = 0
-      ItemLinks = <
-        item
-          Visible = True
-          ItemName = 'btn_ReadTickets_Priv'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_Board_priv'
-        end>
-      OneOnRow = True
-      Row = 0
-      ShowMark = False
-      SizeGrip = False
-      UseOwnFont = False
-      UseRestSpace = True
-      Visible = True
-      WholeRow = False
-    end
-    object brmgr_KalendarBar4: TdxBar
-      Caption = 'Custom 7'
-      CaptionButtons = <>
-      DockControl = dxBarDockControl5
-      DockedDockControl = dxBarDockControl5
-      DockedLeft = 0
-      DockedTop = 0
-      FloatLeft = 1700
-      FloatTop = 2
-      FloatClientWidth = 0
-      FloatClientHeight = 0
-      ItemLinks = <
-        item
-          Visible = True
-          ItemName = 'btn_MinMaxBrowserPriv'
-        end>
       OneOnRow = True
       Row = 0
       ShowMark = False
@@ -3140,36 +2716,6 @@ object frm_Calendar: Tfrm_Calendar
       Visible = ivAlways
       AutoGrayScale = False
     end
-    object btn_ReadTickets_Priv: TdxBarLargeButton
-      Caption = 'Aktualisieren'
-      Category = 0
-      Hint = 'Aktualisieren'
-      Visible = ivAlways
-      OnClick = btn_ReadTickets_PrivClick
-      AutoGrayScale = False
-      LargeImageIndex = 6
-      Width = 125
-    end
-    object btn_Board_priv: TdxBarLargeButton
-      Caption = 'Jira-Board'
-      Category = 0
-      Hint = 'Jira-Board'
-      Visible = ivAlways
-      OnClick = btn_Board_privClick
-      AutoGrayScale = False
-      LargeImageIndex = 25
-      Width = 125
-    end
-    object btn_MinMaxBrowserPriv: TdxBarLargeButton
-      Caption = 'Maximieren'
-      Category = 0
-      Hint = 'Maximieren'
-      Visible = ivAlways
-      OnClick = btn_MinMaxBrowserPrivClick
-      AutoGrayScale = False
-      LargeImageIndex = 32
-      Width = 125
-    end
     object btn_CalTerminImport: TdxBarButton
       Caption = 'Importieren (ICAL)'
       Category = 1
@@ -3446,7 +2992,7 @@ object frm_Calendar: Tfrm_Calendar
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 45693.715359340280000000
+      ReportDocument.CreationDate = 45708.543403912040000000
       OptionsSize.AutoWidth = True
       PixelsPerInch = 96
       BuiltInReportLink = True
@@ -3632,18 +3178,6 @@ object frm_Calendar: Tfrm_Calendar
     Left = 951
     Top = 305
   end
-  object qry_prio: TFDQuery
-    Connection = dm_PCM.con_PCM
-    SQL.Strings = (
-      'Select * From manager_tickets_ges')
-    Left = 424
-    Top = 144
-  end
-  object ds_prio: TDataSource
-    DataSet = qry_prio
-    Left = 480
-    Top = 152
-  end
   object cxImageList1: TcxImageList
     SourceDPI = 96
     FormatVersion = 1
@@ -3786,19 +3320,5 @@ object frm_Calendar: Tfrm_Calendar
     object dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel
       PixelsPerInch = 96
     end
-  end
-  object qry_Tickets_priv: TFDQuery
-    Active = True
-    AfterScroll = qry_Tickets_privAfterScroll
-    Connection = dm_PCM.con_PCM
-    SQL.Strings = (
-      'Select * From manager_tickets_priv')
-    Left = 288
-    Top = 192
-  end
-  object ds_Tickets_priv: TDataSource
-    DataSet = qry_Tickets_priv
-    Left = 344
-    Top = 200
   end
 end

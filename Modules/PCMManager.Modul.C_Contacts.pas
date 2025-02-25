@@ -18,124 +18,13 @@ uses
   dxBar, cxGridCustomPopupMenu, cxGridPopupMenu,cxGridExportLink, System.UITypes, strutils,
   IdBaseComponent, IdCoder, IdCoder3to4, IdCoderMIME, IdCoderQuotedPrintable,Soap.EncdDecd,System.netencoding,
   Vcl.ExtCtrls, dxShellDialogs,PCM.Functions,cxSchedulerStorage,
-  cxColorComboBox, cxDBColorComboBox, cxSpinEdit, cxTimeEdit;
+  cxColorComboBox, cxDBColorComboBox, cxSpinEdit, cxTimeEdit,
+  dxLayoutcxEditAdapters, dxLayoutControlAdapters, dxLayoutContainer,
+  dxLayoutControl;
 
 type
   Tfrm_Contact = class(TForm)
     ds_Kontakte: TDataSource;
-    pc_Kontakte_Kontakte: TcxPageControl;
-    ts_A_Kontakte_Kontakte_Suche: TcxTabSheet;
-    grd_Kontaktesuche: TcxGrid;
-    grdDBTblView_Kontakte: TcxGridDBTableView;
-    grdLvl_Kontakte: TcxGridLevel;
-    grpbx_KontakteSuche: TcxGroupBox;
-    cmbbx_KontaktSucheArt: TcxComboBox;
-    edt_KontaktSucheAbteilung: TcxTextEdit;
-    edt_KontaktSucheFirma: TcxTextEdit;
-    edt_KontaktSucheFunktion: TcxTextEdit;
-    edt_KontaktSucheNachname: TcxTextEdit;
-    edt_KontaktSucheOrt: TcxTextEdit;
-    edt_KontaktSuchePLZ: TcxTextEdit;
-    edt_KontaktSucheStrasse: TcxTextEdit;
-    edt_KontaktSucheVorname: TcxTextEdit;
-    lbl_KontaktSucheAbteilung: TcxLabel;
-    lbl_KontaktSucheArt: TcxLabel;
-    lbl_KontaktSucheFirma: TcxLabel;
-    lbl_KontaktSucheFunktion: TcxLabel;
-    lbl_KontaktSucheNachname: TcxLabel;
-    lbl_KontaktSucheOrt: TcxLabel;
-    lbl_KontaktSuchePLZ: TcxLabel;
-    lbl_KontaktSucheStrasse: TcxLabel;
-    lbl_KontaktSucheVorname: TcxLabel;
-    pnl_KontakteButtons: TcxGroupBox;
-    btn_kontaktDeletefilter: TcxButton;
-    btn_kontaktsuchen: TcxButton;
-    ts_B_Kontakte_Kontakte_Detail: TcxTabSheet;
-    pc_Kontakte_Kontakte_Adressen: TcxPageControl;
-    ts_A_Zusatz: TcxTabSheet;
-    grpbx_KontakteZusatzSonstige: TcxGroupBox;
-    mem_KontakteZusatzSonstige: TcxDBMemo;
-    grpbx_KontakteZusatz: TcxGroupBox;
-    lbl_KontaktZusatzFamilienstand: TcxLabel;
-    lbl_KontaktZusatzGeburtsdatum: TcxLabel;
-    lbl_KontaktZusatzGeschlecht: TcxLabel;
-    lbl_KontaktZusatzkonfession: TcxLabel;
-    lbl_KontaktZusatzStaatsanghoerigkeit: TcxLabel;
-    dtEdt_KontaktZusatzGeburtsdatum: TcxDBDateEdit;
-    lucmbbx_KontaktZusatzFamilienstand: TcxDBLookupComboBox;
-    lucmbbx_KontaktZusatzGeschlecht: TcxDBLookupComboBox;
-    lucmbbx_KontaktZusatzkonfession: TcxDBLookupComboBox;
-    lucmbbx_KontaktZusatzStaatsanghoerigkeit: TcxDBLookupComboBox;
-    btn_KontaktKonfessionEdit: TcxButton;
-    btn_KontaktStaatsangehörigkeitEdit: TcxButton;
-    pnl_KontaktZusatzPicture: TcxGroupBox;
-    img_KontaktZusatzPicture: TcxDBImage;
-    ts_B_Geschaeftlich: TcxTabSheet;
-    grpbx_KontakteGeschaeftlich: TcxGroupBox;
-    btn_KontaktGeschaeftlichSendMail: TcxButton;
-    edt_KontaktGeschaeftlichAbteilung: TcxDBTextEdit;
-    edt_KontaktGeschaeftlichEMail: TcxDBTextEdit;
-    edt_KontaktGeschaeftlichFirma: TcxDBTextEdit;
-    edt_KontaktGeschaeftlichFunktion: TcxDBTextEdit;
-    edt_KontaktGeschaeftlichHandy: TcxDBTextEdit;
-    edt_KontaktGeschaeftlichInternet: TcxDBTextEdit;
-    edt_KontaktGeschaeftlichOrt: TcxDBTextEdit;
-    edt_KontaktGeschaeftlichPLZ: TcxDBTextEdit;
-    edt_KontaktGeschaeftlichStrasse: TcxDBTextEdit;
-    edt_KontaktGeschaeftlichTelefonDurchwahl: TcxDBTextEdit;
-    edt_KontaktGeschaeftlichTelefonZentrale: TcxDBTextEdit;
-    lbl_KontaktGeschaeftlichAbteilung: TcxLabel;
-    lbl_KontaktGeschaeftlichEMail: TcxLabel;
-    lbl_KontaktGeschaeftlichFirma: TcxLabel;
-    lbl_KontaktGeschaeftlichFunktion: TcxLabel;
-    lbl_KontaktGeschaeftlichHandy: TcxLabel;
-    lbl_KontaktGeschaeftlichInternet: TcxLabel;
-    lbl_KontaktGeschaeftlichPLZOrt: TcxLabel;
-    lbl_KontaktGeschaeftlichStrasse: TcxLabel;
-    lbl_KontaktGeschaeftlichTelefonDurchwahl: TcxLabel;
-    lbl_KontaktGeschaeftlichTelefonZentrale: TcxLabel;
-    ts_C_Sonstiges: TcxTabSheet;
-    grpbx_KontakteSonstiges: TcxGroupBox;
-    edt_KontakteSonstigesFacebook: TcxDBTextEdit;
-    edt_KontakteSonstigesSkype: TcxDBTextEdit;
-    edt_KontakteSonstigesTeams: TcxDBTextEdit;
-    lbl_KontakteSonstigesFacebook: TcxLabel;
-    lbl_KontakteSonstigesSkype: TcxLabel;
-    lbl_KontakteSonstigesTeams: TcxLabel;
-    grpbx_KontaktAllgemein: TcxGroupBox;
-    btn_KontaktEmail1Send: TcxButton;
-    btn_KontaktEmail2Send: TcxButton;
-    cmbbx_KontaktAnrede: TcxDBLookupComboBox;
-    cmbbx_KontaktArt: TcxDBLookupComboBox;
-    edt_KontaktEmail1: TcxDBTextEdit;
-    edt_KontaktEmail2: TcxDBTextEdit;
-    edt_KontaktGeburtsland: TcxDBTextEdit;
-    edt_KontaktGeburtsname: TcxDBTextEdit;
-    edt_KontaktHandy: TcxDBTextEdit;
-    edt_KontaktInternet: TcxDBTextEdit;
-    edt_KontaktNachname: TcxDBTextEdit;
-    edt_KontaktName: TcxDBTextEdit;
-    edt_KontaktOrt: TcxDBTextEdit;
-    edt_KontaktPLZ: TcxDBTextEdit;
-    edt_KontaktStrasse: TcxDBTextEdit;
-    edt_KontaktTelefon1: TcxDBTextEdit;
-    edt_KontaktTelefon2: TcxDBTextEdit;
-    edt_KontaktZusatz: TcxDBTextEdit;
-    lbl_KontaktAnrede: TcxLabel;
-    lbl_KontaktArt: TcxLabel;
-    lbl_KontaktEmail1: TcxLabel;
-    lbl_KontaktEmail2: TcxLabel;
-    lbl_KontaktGeburtsland: TcxLabel;
-    lbl_KontaktGeburtsname: TcxLabel;
-    lbl_KontaktHandy: TcxLabel;
-    lbl_KontaktInternet: TcxLabel;
-    lbl_KontaktNachname: TcxLabel;
-    lbl_KontaktName: TcxLabel;
-    lbl_KontaktPLZOrt: TcxLabel;
-    lbl_KontaktStrasse: TcxLabel;
-    lbl_KontaktTelefon1: TcxLabel;
-    lbl_KontaktTelefon2: TcxLabel;
-    lbl_KontaktZusatz: TcxLabel;
     brmgr_Contacts: TdxBarManager;
     brpmm_Kontakt: TdxBarPopupMenu;
     grdpmm_Personal: TcxGridPopupMenu;
@@ -157,44 +46,6 @@ type
     ppmbtn_CSVImportiern: TdxBarButton;
     idDecMIMME_Decode: TIdDecoderMIME;
     idDecQuotPrint_Decode: TIdDecoderQuotedPrintable;
-    grdDBTblView_KontakteID: TcxGridDBColumn;
-    grdDBTblView_KontakteID_Anrede: TcxGridDBColumn;
-    grdDBTblView_KontakteVorname: TcxGridDBColumn;
-    grdDBTblView_KontakteNachname: TcxGridDBColumn;
-    grdDBTblView_KontakteZusatz: TcxGridDBColumn;
-    grdDBTblView_KontakteStrasse_Privat: TcxGridDBColumn;
-    grdDBTblView_KontakteOrt_Privat: TcxGridDBColumn;
-    grdDBTblView_KontakteTelefon_Privat: TcxGridDBColumn;
-    grdDBTblView_KontakteTelefon_Privat1: TcxGridDBColumn;
-    grdDBTblView_KontakteHandy_privat: TcxGridDBColumn;
-    grdDBTblView_KontakteE_Mail_Privat: TcxGridDBColumn;
-    grdDBTblView_KontakteE_Mail_Privat1: TcxGridDBColumn;
-    grdDBTblView_KontakteInternet_Privat: TcxGridDBColumn;
-    grdDBTblView_KontakteID_Kontaktart: TcxGridDBColumn;
-    grdDBTblView_KontakteBild: TcxGridDBColumn;
-    grdDBTblView_KontakteGeburtsdatum: TcxGridDBColumn;
-    grdDBTblView_KontakteID_Geschlecht: TcxGridDBColumn;
-    grdDBTblView_KontakteID_Familienstand: TcxGridDBColumn;
-    grdDBTblView_KontakteID_Staatsangehoerigkeit: TcxGridDBColumn;
-    grdDBTblView_KontakteID_Konfession: TcxGridDBColumn;
-    grdDBTblView_KontakteInfo: TcxGridDBColumn;
-    grdDBTblView_KontakteFirma: TcxGridDBColumn;
-    grdDBTblView_KontakteStrasse_Ges: TcxGridDBColumn;
-    grdDBTblView_KontaktePLZ_Ges: TcxGridDBColumn;
-    grdDBTblView_KontakteOrt_Ges: TcxGridDBColumn;
-    grdDBTblView_KontakteAbteilung_Ges: TcxGridDBColumn;
-    grdDBTblView_KontakteFunktion_Ges: TcxGridDBColumn;
-    grdDBTblView_KontakteZentrale_Ges: TcxGridDBColumn;
-    grdDBTblView_KontakteTelefon_Ges: TcxGridDBColumn;
-    grdDBTblView_KontakteHandy_Ges: TcxGridDBColumn;
-    grdDBTblView_KontakteE_Mail_Ges: TcxGridDBColumn;
-    grdDBTblView_KontakteInternet_Ges: TcxGridDBColumn;
-    grdDBTblView_KontakteFacebook: TcxGridDBColumn;
-    grdDBTblView_KontakteSkype: TcxGridDBColumn;
-    grdDBTblView_KontakteLive_Messanger: TcxGridDBColumn;
-    grdDBTblView_KontakteGeburtsname: TcxGridDBColumn;
-    grdDBTblView_KontakteGeburtsland: TcxGridDBColumn;
-    grdDBTblView_KontaktePLZ_Privat: TcxGridDBColumn;
     qry_Kontakte: TFDQuery;
     qry_KontakteID: TFDAutoIncField;
     qry_KontakteID_Anrede: TIntegerField;
@@ -240,33 +91,9 @@ type
     qry_KontakteGeburtsland: TStringField;
     ppmbtn_ExportVCF: TdxBarButton;
     idEncQuotPrint_Main: TIdEncoderQuotedPrintable;
-    btn_KontaktGesOpenWebsite: TcxButton;
-    btn_KontaktPrivOpenWebsite: TcxButton;
-    pnl_Design: TcxGroupBox;
     dlgFOpen_VCF: TdxOpenFileDialog;
     dlgsave_Personal: TdxSaveFileDialog;
     dlgSave_VCF: TdxSaveFileDialog;
-    cxPageControl1: TcxPageControl;
-    cxTabSheet1: TcxTabSheet;
-    dxBarDockControl1: TdxBarDockControl;
-    ts_D_ZE: TcxTabSheet;
-    grpbx_ZE: TcxGroupBox;
-    lbl_Sollstunden: TcxLabel;
-    lbl_CalWork: TcxLabel;
-    lbl_CalBreak: TcxLabel;
-    tedt_Sollstunden: TcxDBTimeEdit;
-    colcmbbx_CalWork: TcxDBColorComboBox;
-    colcmbbx_CalBreak: TcxDBColorComboBox;
-    colcmbbx_FontBreak: TcxDBColorComboBox;
-    colcmbbx_FontWork: TcxDBColorComboBox;
-    lbl_FontBreak: TcxLabel;
-    lbl_FontWork: TcxLabel;
-    cxLabel1: TcxLabel;
-    cxDBLookupComboBox1: TcxDBLookupComboBox;
-    cxLabel6: TcxLabel;
-    cxDBSpinEdit1: TcxDBSpinEdit;
-    cxLabel5: TcxLabel;
-    cxDBDateEdit1: TcxDBDateEdit;
     qry_KontakteSollstunden: TTimeField;
     qry_KontakteColFontWork: TIntegerField;
     qry_KontakteColCalWork: TIntegerField;
@@ -275,9 +102,192 @@ type
     qry_KontakteEintritt: TDateField;
     qry_KontakteColCalBreak: TIntegerField;
     qry_KontakteID_Zeiterfasser: TIntegerField;
+    lactrl_Contacts: TdxLayoutControl;
+    cmbbx_KontaktSucheArt: TcxComboBox;
+    edt_KontaktSucheAbteilung: TcxTextEdit;
+    edt_KontaktSucheFirma: TcxTextEdit;
+    edt_KontaktSucheFunktion: TcxTextEdit;
+    edt_KontaktSucheNachname: TcxTextEdit;
+    edt_KontaktSucheOrt: TcxTextEdit;
+    edt_KontaktSuchePLZ: TcxTextEdit;
+    edt_KontaktSucheStrasse: TcxTextEdit;
+    edt_KontaktSucheVorname: TcxTextEdit;
+    cmbbx_Anrede: TcxDBLookupComboBox;
+    edt_Email2: TcxDBTextEdit;
+    edt_Geburtsland: TcxDBTextEdit;
+    edt_KontaktGeburtsname: TcxDBTextEdit;
+    edt_KontaktHandy: TcxDBTextEdit;
+    edt_KontaktNachname: TcxDBTextEdit;
+    edt_KontaktName: TcxDBTextEdit;
+    edt_KontaktOrt: TcxDBTextEdit;
+    edt_KontaktPLZ: TcxDBTextEdit;
+    edt_KontaktStrasse: TcxDBTextEdit;
+    edt_KontaktTelefon1: TcxDBTextEdit;
+    edt_KontaktTelefon2: TcxDBTextEdit;
+    edt_KontaktZusatz: TcxDBTextEdit;
+    dtEdt_KontaktZusatzGeburtsdatum: TcxDBDateEdit;
+    lucmbbx_KontaktZusatzFamilienstand: TcxDBLookupComboBox;
+    lucmbbx_KontaktZusatzGeschlecht: TcxDBLookupComboBox;
+    lucmbbx_Konfession: TcxDBLookupComboBox;
+    lucmbbx_Staatsanghoerigkeit: TcxDBLookupComboBox;
+    img_Picture: TcxDBImage;
+    edt_KontaktGeschaeftlichAbteilung: TcxDBTextEdit;
+    edt_KontaktGeschaeftlichEMail: TcxDBTextEdit;
+    edt_KontaktGeschaeftlichFirma: TcxDBTextEdit;
+    edt_KontaktGeschaeftlichInternet: TcxDBTextEdit;
+    edt_KontaktGeschaeftlichOrt: TcxDBTextEdit;
+    edt_KontaktGeschaeftlichPLZ: TcxDBTextEdit;
+    edt_KontaktGeschaeftlichStrasse: TcxDBTextEdit;
+    edt_KontaktGeschaeftlichTelefonZentrale: TcxDBTextEdit;
+    edt_KontaktGeschaeftlichTelefonDurchwahl: TcxDBTextEdit;
+    btn_MapPrivate: TcxButton;
+    edt_Email1: TcxDBTextEdit;
+    mem_Sonstige: TcxDBMemo;
+    btn_Mail1Private: TcxButton;
+    btn_Mail2Private: TcxButton;
+    grd_Suche: TcxGrid;
+    grdDBTblView_Suche: TcxGridDBTableView;
+    grdDBTblView_SucheID: TcxGridDBColumn;
+    grdDBTblView_SucheID_Anrede: TcxGridDBColumn;
+    grdDBTblView_SucheVorname: TcxGridDBColumn;
+    grdDBTblView_SucheNachname: TcxGridDBColumn;
+    grdDBTblView_SucheGeburtsname: TcxGridDBColumn;
+    grdDBTblView_SucheGeburtsland: TcxGridDBColumn;
+    grdDBTblView_SucheZusatz: TcxGridDBColumn;
+    grdDBTblView_SucheBild: TcxGridDBColumn;
+    grdDBTblView_SucheStrasse_Privat: TcxGridDBColumn;
+    grdDBTblView_SuchePLZ_Privat: TcxGridDBColumn;
+    grdDBTblView_SucheOrt_Privat: TcxGridDBColumn;
+    grdDBTblView_SucheID_Kontaktart: TcxGridDBColumn;
+    grdDBTblView_SucheTelefon_Privat: TcxGridDBColumn;
+    grdDBTblView_SucheTelefon_Privat1: TcxGridDBColumn;
+    grdDBTblView_SucheHandy_privat: TcxGridDBColumn;
+    grdDBTblView_SucheE_Mail_Privat: TcxGridDBColumn;
+    grdDBTblView_SucheE_Mail_Privat1: TcxGridDBColumn;
+    grdDBTblView_SucheInternet_Privat: TcxGridDBColumn;
+    grdDBTblView_SucheGeburtsdatum: TcxGridDBColumn;
+    grdDBTblView_SucheID_Geschlecht: TcxGridDBColumn;
+    grdDBTblView_SucheID_Familienstand: TcxGridDBColumn;
+    grdDBTblView_SucheID_Staatsangehoerigkeit: TcxGridDBColumn;
+    grdDBTblView_SucheID_Konfession: TcxGridDBColumn;
+    grdDBTblView_SucheInfo: TcxGridDBColumn;
+    grdDBTblView_SucheFirma: TcxGridDBColumn;
+    grdDBTblView_SucheStrasse_Ges: TcxGridDBColumn;
+    grdDBTblView_SuchePLZ_Ges: TcxGridDBColumn;
+    grdDBTblView_SucheOrt_Ges: TcxGridDBColumn;
+    grdDBTblView_SucheAbteilung_Ges: TcxGridDBColumn;
+    grdDBTblView_SucheFunktion_Ges: TcxGridDBColumn;
+    grdDBTblView_SucheZentrale_Ges: TcxGridDBColumn;
+    grdDBTblView_SucheTelefon_Ges: TcxGridDBColumn;
+    grdDBTblView_SucheHandy_Ges: TcxGridDBColumn;
+    grdDBTblView_SucheE_Mail_Ges: TcxGridDBColumn;
+    grdDBTblView_SucheInternet_Ges: TcxGridDBColumn;
+    grdDBTblView_SucheFacebook: TcxGridDBColumn;
+    grdDBTblView_SucheSkype: TcxGridDBColumn;
+    grdDBTblView_SucheLive_Messanger: TcxGridDBColumn;
+    grdLvl_Suche: TcxGridLevel;
+    btn_ClearFilter: TcxButton;
+    btn_kontaktsuchen: TcxButton;
+    edt_KontakteSonstigesFacebook: TcxDBTextEdit;
+    edt_KontakteSonstigesSkype: TcxDBTextEdit;
+    edt_KontakteSonstigesTeams: TcxDBTextEdit;
+    edt_KontaktInternet: TcxDBTextEdit;
+    btn_WebPrivate: TcxButton;
+    edt_KontaktGeschaeftlichFunktion: TcxDBTextEdit;
+    btn_EditStaatsangehoerigkeit: TcxButton;
+    btn_EditKonfession: TcxButton;
+    btn_WebBusiness: TcxButton;
+    btn_MapBusiness: TcxButton;
+    btn_MailBusiness: TcxButton;
+    lagrp_Personal: TdxLayoutGroup;
+    lagrp_MitarbeiterInfo: TdxLayoutGroup;
+    lagrp_MitarbeiterInfoDetails: TdxLayoutGroup;
+    lagrp_Zusatz: TdxLayoutGroup;
+    lagrp_Sonstige: TdxLayoutGroup;
+    lagrp_Business: TdxLayoutGroup;
+    itm_Anrede: TdxLayoutItem;
+    itm_Vorname: TdxLayoutItem;
+    itm_Geburtsname: TdxLayoutItem;
+    itm_Nachname: TdxLayoutItem;
+    itm_Geburtsland: TdxLayoutItem;
+    itm_HandyPrivat: TdxLayoutItem;
+    itm_Telefon2: TdxLayoutItem;
+    itm_Telefon1: TdxLayoutItem;
+    itm_MapPrivat: TdxLayoutItem;
+    itm_OrtPrivat: TdxLayoutItem;
+    itm_PLZPrivat: TdxLayoutItem;
+    lagrp_PLZOrtPrivat: TdxLayoutAutoCreatedGroup;
+    itm_Zusatz: TdxLayoutItem;
+    itm_StrassePrivat: TdxLayoutItem;
+    itm_Mail1PrivatBtn: TdxLayoutItem;
+    itm_Mail2PrivatBtn: TdxLayoutItem;
+    lagrp_Mail1Privat: TdxLayoutAutoCreatedGroup;
+    itm_WebPrivatText: TdxLayoutItem;
+    itm_Mail1PrivatText: TdxLayoutItem;
+    itm_Mail2PrivatText: TdxLayoutItem;
+    itm_Geburtsdatum: TdxLayoutItem;
+    itm_Familienstand: TdxLayoutItem;
+    itm_Geschlecht: TdxLayoutItem;
+    itm_Konfession: TdxLayoutItem;
+    itm_Staatsangehoerigkeit: TdxLayoutItem;
+    itm_Picture: TdxLayoutItem;
+    lagrp_ZusatzDetails: TdxLayoutAutoCreatedGroup;
+    lagrp_Details: TdxLayoutAutoCreatedGroup;
+    itm_ZusatzSeperator: TdxLayoutSeparatorItem;
+    itm_Sonstiges: TdxLayoutItem;
+    lbl_Sonstiges: TdxLayoutLabeledItem;
+    itm_StaatsangehoerigkeitBtn: TdxLayoutItem;
+    itm_KonfessionBtn: TdxLayoutItem;
+    lagrp_Staatsangehoerigkeit: TdxLayoutAutoCreatedGroup;
+    lagrp_Konfession: TdxLayoutAutoCreatedGroup;
+    lagrp_Mail2Privat: TdxLayoutAutoCreatedGroup;
+    itm_WebPrivatBtn: TdxLayoutItem;
+    lagrp_InternetPrivat: TdxLayoutAutoCreatedGroup;
+    lagrp_PersonalTab: TdxLayoutGroup;
+    lagrp_Suche: TdxLayoutGroup;
+    lagrp_Mitarbeiter: TdxLayoutGroup;
+    lagrp_SucheFilter: TdxLayoutGroup;
+    itm_SucheErgebnis: TdxLayoutItem;
+    itm_Funktion: TdxLayoutItem;
+    itm_SucheFilterLoeschen: TdxLayoutItem;
+    itm_SucheFiltersetzen: TdxLayoutItem;
+    lagroup_SucheFilterButtons: TdxLayoutAutoCreatedGroup;
+    itm_StrasseBusiness: TdxLayoutItem;
+    itm_Abteilung: TdxLayoutItem;
+    itm_MailBusinessText: TdxLayoutItem;
+    itm_Firma: TdxLayoutItem;
+    itm_WebBusinessText: TdxLayoutItem;
+    itm_OrtBusiness: TdxLayoutItem;
+    itm_PLZBusiness: TdxLayoutItem;
+    itm_TelefonDurchwahl: TdxLayoutItem;
+    itm_TelefonZentrale: TdxLayoutItem;
+    itm_KontaktartSuche: TdxLayoutItem;
+    itm_AbteilungSuche: TdxLayoutItem;
+    itm_FirmaSuche: TdxLayoutItem;
+    itm_FunktionSuche: TdxLayoutItem;
+    itm_NachnameSuche: TdxLayoutItem;
+    itm_OrtSuche: TdxLayoutItem;
+    itm_PLZSuche: TdxLayoutItem;
+    itm_StrasseSuche: TdxLayoutItem;
+    itm_VornameSuche: TdxLayoutItem;
+    lagrp_SucheMitarbeiter: TdxLayoutAutoCreatedGroup;
+    lagrp_SucheOrt: TdxLayoutAutoCreatedGroup;
+    lagrp_SucheFirma: TdxLayoutAutoCreatedGroup;
+    itm_Facebook: TdxLayoutItem;
+    itm_Skype: TdxLayoutItem;
+    itm_Teams: TdxLayoutItem;
+    lagrp_PLZOrtBusiness: TdxLayoutAutoCreatedGroup;
+    itm_WebBusinessBtn: TdxLayoutItem;
+    itm_MailBusinessBtn: TdxLayoutItem;
+    lagrp_InternetBusiness: TdxLayoutAutoCreatedGroup;
+    itm_MapBusiness: TdxLayoutItem;
+    itm_Kontaktart: TdxLayoutItem;
+    itm_HandyBusiness: TdxLayoutItem;
+    dxLayoutAutoCreatedGroup2: TdxLayoutAutoCreatedGroup;
+    edt_GeschaeftlichHandy: TcxDBTextEdit;
+    cmbbx_KontaktArt: TcxDBLookupComboBox;
     procedure btn_KontaktNewClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure pc_Kontakte_KontakteChange(Sender: TObject);
     procedure btn_KontaktEmail2SendClick(Sender: TObject);
     procedure btn_KontaktGeschaeftlichSendMailClick(Sender: TObject);
     procedure btn_KontaktEmail1SendClick(Sender: TObject);
@@ -302,6 +312,9 @@ type
     procedure btn_KontaktGesOpenWebsiteClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure btn_MapPrivateClick(Sender: TObject);
+    procedure lagrp_PersonalTabTabChanged(Sender: TObject);
+    procedure btn_MapBusinessClick(Sender: TObject);
   private
     { Private-Deklarationen }
     bButtons: boolean;
@@ -356,7 +369,7 @@ procedure Tfrm_Contact.SetGridViews(Show:boolean);
 begin
   if Show then
   begin
-    SaveGridViewContacts := TSavedGridView.Create(GV_Contacs,dm_PCM.iIDBenutzerPCM, grdDBTblView_Kontakte);
+    SaveGridViewContacts := TSavedGridView.Create(GV_Contacs,dm_PCM.iIDBenutzerPCM, grdDBTblView_Suche);
     SaveGridViewContacts.LoadView;
   end
   else begin
@@ -403,7 +416,7 @@ begin
     dm_PCM.qry_work.ParamByName('Message').AsString:= 'Neuer Kontakt ' + sVorname + ' ' + sName + ' wurde angelegt';
     dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
     dm_PCM.qry_work.execsql;
-    pc_Kontakte_Kontakte.ActivePageIndex:= 1;
+    lagrp_PersonalTab.ItemIndex:= 1;
     qry_Kontakte.Refresh;
     qry_Kontakte.Locate('ID',iID_Kontakt,[]);
   end;
@@ -1411,8 +1424,8 @@ begin
   qry_Kontakte.Filter:= str_filter;
   qry_Kontakte.Filtered:= true;
   Screen.Cursor := crDefault;
-  grd_Kontaktesuche.SetFocus;
-  grdDBTblView_Kontakte.Focused := true;
+  grd_Suche.SetFocus;
+  grdDBTblView_Suche.Focused := true;
 end;
 procedure Tfrm_Contact.btn_kontaktDeletefilterClick(Sender: TObject);
 begin
@@ -1428,9 +1441,9 @@ begin
   btn_kontaktsuchen.Click;
 end;
 // Pagecontrol
-procedure Tfrm_Contact.pc_Kontakte_KontakteChange(Sender: TObject);
+procedure Tfrm_Contact.lagrp_PersonalTabTabChanged(Sender: TObject);
 begin
-if pc_Kontakte_Kontakte.ActivePageIndex = 0 then
+  if lagrp_PersonalTab.ItemIndex = 0 then
   begin
     btn_KontaktSave.Enabled:= false;
     btn_KontaktDelete.Enabled:= false;
@@ -1447,7 +1460,7 @@ if pc_Kontakte_Kontakte.ActivePageIndex = 0 then
       if qry_Kontakte.RecordCount > 0 then
       begin
         qry_Kontakte.First;
-        pc_Kontakte_Kontakte_Adressen.ActivePage:= ts_A_zusatz;
+        lagrp_MitarbeiterInfoDetails.ItemIndex:=0;
         if bButtons then
         begin
           btn_KontaktDelete.Enabled:= true;
@@ -1465,14 +1478,14 @@ if pc_Kontakte_Kontakte.ActivePageIndex = 0 then
         end;
       end
       else begin
-        pc_Kontakte_Kontakte.ActivePage:= ts_A_Kontakte_Kontakte_Suche;
+        lagrp_PersonalTab.ItemIndex:= 0;
         MessageDlg(rs_PCMManager_KeineKontakte, mtWarning,[mbOk],0);
       end;
     end
     else begin
       if qry_Kontakte.RecordCount > 0 then
       begin
-        pc_Kontakte_Kontakte_Adressen.ActivePage:= ts_A_zusatz;
+        lagrp_MitarbeiterInfoDetails.ItemIndex:=0;
         if bButtons then
         begin
           btn_KontaktDelete.Enabled:= true;
@@ -1490,14 +1503,14 @@ if pc_Kontakte_Kontakte.ActivePageIndex = 0 then
         end;
       end
       else begin
-        pc_Kontakte_Kontakte.ActivePageIndex := 0;
+        lagrp_PersonalTab.ItemIndex:= 0;
+        lagrp_PersonalTab.ItemIndex:= 0;
         MessageDlg(rs_PCMManager_KeineKontakte, mtWarning,[mbOk],0);
       end;
     end;
   end;
   bButtons:= false;
 end;
-
 // Suche
 procedure Tfrm_Contact.edt_KontaktSucheNachnameKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
@@ -1509,7 +1522,7 @@ procedure Tfrm_Contact.ppmbtn_NachExcelexportierenClick(Sender: TObject);
 begin
   if dlgsave_Personal.Execute then
   begin
-    ExportGridToExcel(dlgsave_Personal.FileName, grd_Kontaktesuche);
+    ExportGridToExcel(dlgsave_Personal.FileName, grd_Suche);
     MessageDlg(rs_PCMManager_GridExport1 + dlgsave_Personal.FileName +  rs_PCMManager_GridExport2, mtInformation, [mbOk], 0);
   end;
 end;
@@ -1517,12 +1530,12 @@ procedure Tfrm_Contact.grdDBTblView_KontakteCellDblClick(Sender: TcxCustomGridTa
 var
   hittest : TcxCustomGridHitTest;
 begin
-  hittest := grdDBTblView_Kontakte.GetHitTest(grd_Kontaktesuche.ScreenToClient(Mouse.CursorPos));
+  hittest := grdDBTblView_Suche.GetHitTest(grd_Suche.ScreenToClient(Mouse.CursorPos));
   if hittest.HitTestCode = htCell then
   begin
     if qry_Kontakte.FieldByName('ID').AsInteger > 0 then
     begin
-      pc_Kontakte_Kontakte.ActivePageIndex:= 1;
+      lagrp_PersonalTab.ItemIndex:= 1;
     end;
   end;
 end;
@@ -1553,6 +1566,28 @@ begin
   begin
     sURL := edt_KontaktInternet.text;
     ShellExecute(self.WindowHandle,'open', PWideChar(sURL) ,nil,nil, SW_SHOWNORMAL);
+  end;
+end;
+procedure Tfrm_Contact.btn_MapBusinessClick(Sender: TObject);
+begin
+  if (edt_KontaktGeschaeftlichStrasse.Text <> '') and (edt_KontaktGeschaeftlichPLZ.Text <> '') and (edt_KontaktGeschaeftlichOrt.Text <> '') then
+  begin
+    var sLink:= 'http://maps.google.de/maps?q=' + edt_KontaktGeschaeftlichStrasse.Text + ',' + edt_KontaktGeschaeftlichPLZ.Text + '+' + edt_KontaktGeschaeftlichOrt.Text + '&z=12';
+    ShellExecute(0, 'open', PChar(sLink), nil, nil, SW_SHOWNORMAL);
+  end
+  else begin
+    MessageDlg('Adresse unvollständig',mtWarning,[mbOk],0);
+  end;
+end;
+procedure Tfrm_Contact.btn_MapPrivateClick(Sender: TObject);
+begin
+  if (edt_KontaktStrasse.Text <> '') and (edt_KontaktPLZ.Text <> '') and (edt_KontaktOrt.Text <> '') then
+  begin
+    var sLink:= 'http://maps.google.de/maps?q=' + edt_KontaktStrasse.Text + ',' + edt_KontaktPLZ.Text + '+' + edt_KontaktOrt.Text + '&z=12';
+    ShellExecute(0, 'open', PChar(sLink), nil, nil, SW_SHOWNORMAL);
+  end
+  else begin
+    MessageDlg('Adresse unvollständig',mtWarning,[mbOk],0);
   end;
 end;
 procedure Tfrm_Contact.btn_KontaktStaatsangehörigkeitEditClick(Sender: TObject);
@@ -1608,40 +1643,40 @@ procedure Tfrm_Contact.FormShow(Sender: TObject);
     dm_PCM.qry_Contact_Konfession.Open;
     qry_Kontakte.SQL.Text:= 'SELECT * From Manager_kontakte Where ID_Benutzer = :ID_Benutzer order by Vorname,nachname asc';
     qry_Kontakte.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-    grdDBTblView_KontakteID_Anrede.Caption:= rs_PCMManager_Anrede;
-    grdDBTblView_KontakteVorname.Caption:= rs_PCMManager_Vorname1;
-    grdDBTblView_KontakteNachname.Caption:= rs_PCMManager_Nachname1;
-    grdDBTblView_KontakteGeburtsname.Caption:= rs_PCMManager_Geburtsname;
-    grdDBTblView_KontakteGeburtsland.Caption:= rs_PCMManager_Geburtsland;
-    grdDBTblView_KontakteZusatz.Caption:= rs_PCMManager_Zusatz;
-    grdDBTblView_KontakteBild.Caption:= rs_PCMManager_Bild;
-    grdDBTblView_KontakteStrasse_Privat.Caption:= rs_PCMManager_StrassePrivat;
-    grdDBTblView_KontaktePLZ_Privat.Caption:= rs_PCMManager_PlzPrivat;
-    grdDBTblView_KontakteOrt_Privat.Caption:= rs_PCMManager_OrtPrivat;
-    grdDBTblView_KontakteID_Kontaktart.Caption:= rs_PCMManager_Kontaktart;
-    grdDBTblView_KontakteTelefon_Privat.Caption:= rs_PCMManager_TelefonPrivat;
-    grdDBTblView_KontakteTelefon_Privat1.Caption:= rs_PCMManager_TelefonPrivat1;
-    grdDBTblView_KontakteHandy_privat.Caption:= rs_PCMManager_HandyPrivat;
-    grdDBTblView_KontakteE_Mail_Privat.Caption:= rs_PCMManager_MailPrivat;
-    grdDBTblView_KontakteE_Mail_Privat1.Caption:= rs_PCMManager_MailPrivat1;
-    grdDBTblView_KontakteInternet_Privat.Caption:= rs_PCMManager_InternetPrivat;
-    grdDBTblView_KontakteGeburtsdatum.Caption:= rs_PCMManager_Geburtsdatum;
-    grdDBTblView_KontakteID_Geschlecht.Caption:= rs_PCMManager_Geschlecht;
-    grdDBTblView_KontakteID_Familienstand.Caption:= rs_PCMManager_Familienstand;
-    grdDBTblView_KontakteID_Staatsangehoerigkeit.Caption:= rs_PCMManager_Staatsangehoerigkeit;
-    grdDBTblView_KontakteID_Konfession.Caption:= rs_PCMManager_Konfession;
-    grdDBTblView_KontakteInfo.Caption:= rs_PCMManager_Info;
-    grdDBTblView_KontakteFirma.Caption:= rs_PCMManager_Firma;
-    grdDBTblView_KontakteStrasse_Ges.Caption:= rs_PCMManager_StrasseGes;
-    grdDBTblView_KontaktePLZ_Ges.Caption:= rs_PCMManager_PLZGes;
-    grdDBTblView_KontakteOrt_Ges.Caption:= rs_PCMManager_OrtGes;
-    grdDBTblView_KontakteAbteilung_Ges.Caption:= rs_PCMManager_Abteilung;
-    grdDBTblView_KontakteFunktion_Ges.Caption:= rs_PCMManager_Funktion;
-    grdDBTblView_KontakteZentrale_Ges.Caption:= rs_PCMManager_Zentrale;
-    grdDBTblView_KontakteTelefon_Ges.Caption:= rs_PCMManager_Durchwahl;
-    grdDBTblView_KontakteHandy_Ges.Caption:= rs_PCMManager_HandyGes;
-    grdDBTblView_KontakteE_Mail_Ges.Caption:= rs_PCMManager_MailGes;
-    grdDBTblView_KontakteInternet_Ges.Caption:= rs_PCMManager_InternetGes;
+    grdDBTblView_SucheID_Anrede.Caption:= rs_PCMManager_Anrede;
+    grdDBTblView_SucheVorname.Caption:= rs_PCMManager_Vorname1;
+    grdDBTblView_SucheNachname.Caption:= rs_PCMManager_Nachname1;
+    grdDBTblView_SucheGeburtsname.Caption:= rs_PCMManager_Geburtsname;
+    grdDBTblView_SucheGeburtsland.Caption:= rs_PCMManager_Geburtsland;
+    grdDBTblView_SucheZusatz.Caption:= rs_PCMManager_Zusatz;
+    grdDBTblView_SucheBild.Caption:= rs_PCMManager_Bild;
+    grdDBTblView_SucheStrasse_Privat.Caption:= rs_PCMManager_StrassePrivat;
+    grdDBTblView_SuchePLZ_Privat.Caption:= rs_PCMManager_PlzPrivat;
+    grdDBTblView_SucheOrt_Privat.Caption:= rs_PCMManager_OrtPrivat;
+    grdDBTblView_SucheID_Kontaktart.Caption:= rs_PCMManager_Kontaktart;
+    grdDBTblView_SucheTelefon_Privat.Caption:= rs_PCMManager_TelefonPrivat;
+    grdDBTblView_SucheTelefon_Privat1.Caption:= rs_PCMManager_TelefonPrivat1;
+    grdDBTblView_SucheHandy_privat.Caption:= rs_PCMManager_HandyPrivat;
+    grdDBTblView_SucheE_Mail_Privat.Caption:= rs_PCMManager_MailPrivat;
+    grdDBTblView_SucheE_Mail_Privat1.Caption:= rs_PCMManager_MailPrivat1;
+    grdDBTblView_SucheInternet_Privat.Caption:= rs_PCMManager_InternetPrivat;
+    grdDBTblView_SucheGeburtsdatum.Caption:= rs_PCMManager_Geburtsdatum;
+    grdDBTblView_SucheID_Geschlecht.Caption:= rs_PCMManager_Geschlecht;
+    grdDBTblView_SucheID_Familienstand.Caption:= rs_PCMManager_Familienstand;
+    grdDBTblView_SucheID_Staatsangehoerigkeit.Caption:= rs_PCMManager_Staatsangehoerigkeit;
+    grdDBTblView_SucheID_Konfession.Caption:= rs_PCMManager_Konfession;
+    grdDBTblView_SucheInfo.Caption:= rs_PCMManager_Info;
+    grdDBTblView_SucheFirma.Caption:= rs_PCMManager_Firma;
+    grdDBTblView_SucheStrasse_Ges.Caption:= rs_PCMManager_StrasseGes;
+    grdDBTblView_SuchePLZ_Ges.Caption:= rs_PCMManager_PLZGes;
+    grdDBTblView_SucheOrt_Ges.Caption:= rs_PCMManager_OrtGes;
+    grdDBTblView_SucheAbteilung_Ges.Caption:= rs_PCMManager_Abteilung;
+    grdDBTblView_SucheFunktion_Ges.Caption:= rs_PCMManager_Funktion;
+    grdDBTblView_SucheZentrale_Ges.Caption:= rs_PCMManager_Zentrale;
+    grdDBTblView_SucheTelefon_Ges.Caption:= rs_PCMManager_Durchwahl;
+    grdDBTblView_SucheHandy_Ges.Caption:= rs_PCMManager_HandyGes;
+    grdDBTblView_SucheE_Mail_Ges.Caption:= rs_PCMManager_MailGes;
+    grdDBTblView_SucheInternet_Ges.Caption:= rs_PCMManager_InternetGes;
   end;
   procedure InitializeRights;
   begin
@@ -1658,7 +1693,7 @@ procedure Tfrm_Contact.FormShow(Sender: TObject);
     ppmbtn_CSVImportiern.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     ppmbtn_ExportVCF.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     // Editfelder
-    cmbbx_KontaktAnrede.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
+    cmbbx_Anrede.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     edt_KontaktName.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     edt_KontaktNachname.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     edt_KontaktZusatz.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
@@ -1668,17 +1703,17 @@ procedure Tfrm_Contact.FormShow(Sender: TObject);
     edt_KontaktTelefon1.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     edt_KontaktTelefon2.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     edt_KontaktHandy.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
-    edt_KontaktEmail1.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
-    edt_KontaktEmail2.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
+    edt_Email1.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
+    edt_Email2.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     edt_KontaktInternet.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     cmbbx_KontaktArt.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     dtEdt_KontaktZusatzGeburtsdatum.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     lucmbbx_KontaktZusatzGeschlecht.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     lucmbbx_KontaktZusatzFamilienstand.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
-    lucmbbx_KontaktZusatzStaatsanghoerigkeit.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
-    lucmbbx_KontaktZusatzkonfession.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
-    mem_KontakteZusatzSonstige.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
-    img_KontaktZusatzPicture.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
+    lucmbbx_Staatsanghoerigkeit.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
+    lucmbbx_konfession.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
+    mem_Sonstige.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
+    img_Picture.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     edt_KontaktGeschaeftlichFirma.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     edt_KontaktGeschaeftlichStrasse.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     edt_KontaktGeschaeftlichPLZ.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
@@ -1687,14 +1722,14 @@ procedure Tfrm_Contact.FormShow(Sender: TObject);
     edt_KontaktGeschaeftlichFunktion.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     edt_KontaktGeschaeftlichTelefonZentrale.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     edt_KontaktGeschaeftlichTelefonDurchwahl.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
-    edt_KontaktGeschaeftlichHandy.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
+    edt_GeschaeftlichHandy.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     edt_KontaktGeschaeftlichEMail.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     edt_KontaktGeschaeftlichInternet.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     edt_KontakteSonstigesFacebook.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     edt_KontakteSonstigesSkype.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
     edt_KontakteSonstigesTeams.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
-    btn_KontaktStaatsangehörigkeitEdit.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
-    btn_KontaktKonfessionEdit.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
+    btn_EditStaatsangehoerigkeit.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
+    btn_EditKonfession.Enabled:= dm_PCM.iKontakte >= SetReadWrite;
   end;
 begin
   cmbbx_KontaktSucheArt.clear;
@@ -1717,8 +1752,8 @@ begin
   btn_KontaktPrev.Enabled:= false;
   btn_KontaktNext.Enabled:= false;
   btn_KontaktImport.Enabled := true;
-//  pc_Kontakte_Kontakte.ActivePage:= ts_A_Kontakte_Kontakte_Suche;
-//  pc_Kontakte_Kontakte_Adressen.ActivePage:= ts_A_zusatz;
+  lagrp_PersonalTab.ItemIndex:= 0;
+  lagrp_MitarbeiterInfoDetails.ItemIndex:= 0;
 	SetGridViews(True);
 end;
 {$EndRegion}
