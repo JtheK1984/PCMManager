@@ -84,7 +84,8 @@ uses
   VCLTee.TeEngine,
   VCLTee.TeeProcs,
   Winapi.Messages,
-  Winapi.Windows, dxLayoutContainer, dxLayoutControl, dxLayoutcxEditAdapters;
+  Winapi.Windows, dxLayoutContainer, dxLayoutControl, dxLayoutcxEditAdapters,
+  dxUIAClasses, dxChartPalette;
   {$EndRegion Uses}
 type
   {$Region Types}

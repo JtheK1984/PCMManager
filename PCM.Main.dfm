@@ -4013,8 +4013,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
         AllowCloseButton = False
         Caption = 'Dashboard'
         ImageIndex = 79
-        ExplicitLeft = 3
-        ExplicitTop = 31
         object dxLayoutControl1: TdxLayoutControl
           Left = 0
           Top = 0
@@ -4024,13 +4022,11 @@ object frm_PCM_Main: Tfrm_PCM_Main
           TabOrder = 0
           LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
           OptionsImage.Images = dm_PCM.imglst_16x16
-          ExplicitWidth = 600
-          ExplicitHeight = 600
           object chartctrl_Birthday: TdxChartControl
-            Left = 31
-            Top = 79
-            Width = 1000
-            Height = 243
+            Left = 33
+            Top = 78
+            Width = 996
+            Height = 245
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -4053,10 +4049,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
             end
           end
           object chartctrl_Contact: TdxChartControl
-            Left = 31
-            Top = 382
-            Width = 452
-            Height = 305
+            Left = 33
+            Top = 381
+            Width = 448
+            Height = 307
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -4082,10 +4078,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
             end
           end
           object chartctrl_Adresses: TdxChartControl
-            Left = 518
-            Top = 382
-            Width = 513
-            Height = 305
+            Left = 520
+            Top = 381
+            Width = 509
+            Height = 307
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -4117,8 +4113,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
           object chartctrl_Cal: TdxChartControl
             Left = 10000
             Top = 10000
-            Width = 485
-            Height = 312
+            Width = 448
+            Height = 324
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -4147,9 +4143,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
           object chartctrl_CalCategories: TdxChartControl
             Left = 10000
             Top = 10000
-            Width = 550
-            Height = 312
-            Align = alClient
+            Width = 509
+            Height = 324
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -4182,8 +4177,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
           object chartctrl_ToDo: TdxChartControl
             Left = 10000
             Top = 10000
-            Width = 1070
-            Height = 219
+            Width = 996
+            Height = 228
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -4215,10 +4210,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
             end
           end
           object chartctrl_PWDCategories: TdxChartControl
-            Left = 10022
+            Left = 10000
             Top = 10000
-            Width = 485
-            Height = 312
+            Width = 448
+            Height = 324
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -4245,10 +4240,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
             end
           end
           object chartctrl_SerialsCategories: TdxChartControl
-            Left = 10022
+            Left = 10000
             Top = 10000
-            Width = 550
-            Height = 312
+            Width = 509
+            Height = 324
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -4275,10 +4270,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
             end
           end
           object chartctrl_PWDSerials: TdxChartControl
-            Left = 10022
+            Left = 10000
             Top = 10000
-            Width = 1070
-            Height = 219
+            Width = 996
+            Height = 228
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -4309,10 +4304,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
             end
           end
           object chartctrl_Finance: TdxChartControl
-            Left = 10022
+            Left = 10000
             Top = 10000
-            Width = 1070
-            Height = 300
+            Width = 996
+            Height = 319
             BorderStyle = cxcbsNone
             Legend.Visible = False
             Titles = <
@@ -4361,7 +4356,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_EinSoll: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4377,13 +4372,14 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 10
             Transparent = True
             Visible = False
-            AnchorX = 10307
+            AnchorX = 10255
           end
           object lbl_AusFixSoll: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4399,13 +4395,14 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 12
             Transparent = True
             Visible = False
-            AnchorX = 10307
+            AnchorX = 10255
           end
           object lbl_AusVarSoll: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4421,13 +4418,14 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 11
             Transparent = True
             Visible = False
-            AnchorX = 10307
+            AnchorX = 10255
           end
           object lbl_SollSum: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 0
@@ -4445,15 +4443,16 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 16
             Transparent = True
             Visible = False
             Height = 17
-            Width = 285
-            AnchorX = 10307
+            Width = 255
+            AnchorX = 10255
           end
           object lbl_EinSollSum: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 0
@@ -4470,13 +4469,14 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 13
             Transparent = True
             Visible = False
-            AnchorX = 10307
+            AnchorX = 10255
           end
           object lbl_AusVarSollSum: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 0
@@ -4494,15 +4494,16 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 14
             Transparent = True
             Visible = False
             Height = 17
-            Width = 285
-            AnchorX = 10307
+            Width = 255
+            AnchorX = 10255
           end
           object lbl_AusFixSollSum: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 0
@@ -4520,15 +4521,16 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 15
             Transparent = True
             Visible = False
             Height = 17
-            Width = 285
-            AnchorX = 10307
+            Width = 255
+            AnchorX = 10255
           end
           object lbl_EinIst: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4544,13 +4546,14 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 17
             Transparent = True
             Visible = False
-            AnchorX = 10140
+            AnchorX = 10098
           end
           object lbl_AusFixIst: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4566,13 +4569,14 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 19
             Transparent = True
             Visible = False
-            AnchorX = 10140
+            AnchorX = 10098
           end
           object lbl_AusvarIst: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4588,13 +4592,14 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 18
             Transparent = True
             Visible = False
-            AnchorX = 10140
+            AnchorX = 10098
           end
           object lbl_IstSum: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 0
@@ -4612,15 +4617,16 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 23
             Transparent = True
             Visible = False
             Height = 17
-            Width = 118
-            AnchorX = 10140
+            Width = 98
+            AnchorX = 10098
           end
           object lbl_EinIstSum: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 0
@@ -4638,15 +4644,16 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 20
             Transparent = True
             Visible = False
             Height = 17
-            Width = 118
-            AnchorX = 10140
+            Width = 98
+            AnchorX = 10098
           end
           object lbl_AusvarIstSum: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 0
@@ -4664,15 +4671,16 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 21
             Transparent = True
             Visible = False
             Height = 17
-            Width = 118
-            AnchorX = 10140
+            Width = 98
+            AnchorX = 10098
           end
           object lbl_AusFixIstSum: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 0
@@ -4690,15 +4698,16 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 22
             Transparent = True
             Visible = False
             Height = 17
-            Width = 118
-            AnchorX = 10140
+            Width = 98
+            AnchorX = 10098
           end
           object lbl_EinDiff: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4716,13 +4725,14 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 24
             Transparent = True
             Visible = False
-            AnchorX = 10141
+            AnchorX = 10099
           end
           object lbl_AusFixDiff: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4740,13 +4750,14 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 26
             Transparent = True
             Visible = False
-            AnchorX = 10141
+            AnchorX = 10099
           end
           object lbl_AusvarDiff: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4762,13 +4773,14 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 25
             Transparent = True
             Visible = False
-            AnchorX = 10141
+            AnchorX = 10099
           end
           object lbl_DiffSum: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 0
@@ -4786,15 +4798,16 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 30
             Transparent = True
             Visible = False
             Height = 17
-            Width = 119
-            AnchorX = 10141
+            Width = 99
+            AnchorX = 10099
           end
           object lbl_EinDiffSum: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 0
@@ -4812,15 +4825,16 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 27
             Transparent = True
             Visible = False
             Height = 17
-            Width = 119
-            AnchorX = 10141
+            Width = 99
+            AnchorX = 10099
           end
           object lbl_AusvarDiffSum: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 0
@@ -4838,15 +4852,16 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 28
             Transparent = True
             Visible = False
             Height = 17
-            Width = 119
-            AnchorX = 10141
+            Width = 99
+            AnchorX = 10099
           end
           object lbl_AusFixDiffSum: TcxLabel
             AlignWithMargins = True
-            Left = 10022
+            Left = 10000
             Top = 10000
             Margins.Left = 0
             Margins.Top = 0
@@ -4864,11 +4879,12 @@ object frm_PCM_Main: Tfrm_PCM_Main
             Style.TransparentBorder = False
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
+            TabOrder = 29
             Transparent = True
             Visible = False
             Height = 17
-            Width = 293
-            AnchorX = 10315
+            Width = 273
+            AnchorX = 10273
           end
           object dxLayoutControl1Group_Root: TdxLayoutGroup
             AlignHorz = ahClient
@@ -4908,6 +4924,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignVert = avClient
             CaptionOptions.ImageIndex = 58
             CaptionOptions.Text = 'Aufgaben / Termine'
+            ItemIndex = 2
             Index = 1
           end
           object lagrp_Passwords: TdxLayoutGroup
@@ -4916,6 +4933,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignVert = avClient
             CaptionOptions.ImageIndex = 9
             CaptionOptions.Text = 'Passw'#246'rter / Serials'
+            ItemIndex = 2
             Index = 2
           end
           object lagrp_Finance: TdxLayoutGroup
@@ -4934,7 +4952,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
             SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
             SizeOptions.SizableHorz = True
             SizeOptions.SizableVert = True
-            ButtonOptions.ShowExpandButton = True
             Index = 0
           end
           object lagrp_KontakteKontakte: TdxLayoutGroup
@@ -4945,7 +4962,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
             SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
             SizeOptions.SizableHorz = False
             SizeOptions.SizableVert = False
-            ButtonOptions.ShowExpandButton = True
             Index = 0
           end
           object lagrp_KontakteAdressen: TdxLayoutGroup
@@ -4956,7 +4972,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
             SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
             SizeOptions.SizableHorz = False
             SizeOptions.SizableVert = False
-            ButtonOptions.ShowExpandButton = True
             Index = 2
           end
           object itm_Geburtstage: TdxLayoutItem
@@ -4994,7 +5009,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignHorz = ahClient
             AlignVert = avClient
             CaptionOptions.Text = 'Aufgaben'
-            ButtonOptions.ShowExpandButton = True
             Index = 0
           end
           object lagrp_Kalenderkategorien: TdxLayoutGroup
@@ -5002,7 +5016,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignHorz = ahClient
             AlignVert = avClient
             CaptionOptions.Text = 'Kalenderkategorien'
-            ButtonOptions.ShowExpandButton = True
             Index = 2
           end
           object lagrp_KalenderKalender: TdxLayoutGroup
@@ -5010,7 +5023,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignHorz = ahClient
             AlignVert = avClient
             CaptionOptions.Text = 'Kalender'
-            ButtonOptions.ShowExpandButton = True
             Index = 0
           end
           object itm_Aufgaben: TdxLayoutItem
@@ -5048,7 +5060,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignHorz = ahClient
             AlignVert = avClient
             CaptionOptions.Text = 'Passw'#246'rter / Serials'
-            ButtonOptions.ShowExpandButton = True
             Index = 0
           end
           object dxLayoutGroup10: TdxLayoutGroup
@@ -5056,7 +5067,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignHorz = ahClient
             AlignVert = avClient
             CaptionOptions.Text = 'Passwort Kategorien'
-            ButtonOptions.ShowExpandButton = True
             Index = 0
           end
           object dxLayoutGroup11: TdxLayoutGroup
@@ -5064,7 +5074,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignHorz = ahClient
             AlignVert = avClient
             CaptionOptions.Text = 'Serials Kategorien'
-            ButtonOptions.ShowExpandButton = True
             Index = 2
           end
           object dxLayoutItem7: TdxLayoutItem
@@ -5203,6 +5212,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             SizeOptions.SizableHorz = False
             SizeOptions.SizableVert = False
             CaptionOptions.Text = 'Splitter'
+            AllowCloseOnClick = True
             Index = 1
           end
           object splt_Kontakte: TdxLayoutSplitterItem
@@ -5223,6 +5233,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             SizeOptions.SizableHorz = False
             SizeOptions.SizableVert = False
             CaptionOptions.Text = 'Splitter'
+            AllowCloseOnClick = True
             Index = 1
           end
           object splt_Kalender: TdxLayoutSplitterItem
@@ -5241,6 +5252,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             SizeOptions.SizableHorz = False
             SizeOptions.SizableVert = False
             CaptionOptions.Text = 'Splitter'
+            AllowCloseOnClick = True
             Index = 1
           end
           object dxLayoutSplitterItem2: TdxLayoutSplitterItem
@@ -5541,6 +5553,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             SizeOptions.SizableHorz = False
             SizeOptions.SizableVert = False
             CaptionOptions.Text = 'Splitter'
+            AllowCloseOnClick = True
             Index = 1
           end
           object dxLayoutSeparatorItem4: TdxLayoutSeparatorItem
@@ -5622,7 +5635,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignHorz = ahClient
             AlignVert = avClient
             CaptionOptions.Text = 'New Group'
-            ItemIndex = 2
             LayoutDirection = ldHorizontal
             ShowBorder = False
             Index = 2
@@ -5666,6 +5678,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignHorz = ahClient
             AlignVert = avClient
             CaptionOptions.Text = 'New Group'
+            ItemIndex = 2
             LayoutDirection = ldHorizontal
             ShowBorder = False
             Index = 2

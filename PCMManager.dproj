@@ -216,7 +216,6 @@ $(PreBuildEvent)]]></PreBuildEvent>
         <DCCReference Include="Modules\PCMManager.Modul.G_Finanzen.Filter.Date.pas">
             <Form>frm_PCManagerChooseDate</Form>
         </DCCReference>
-        <DCCReference Include="Helper\cxSchedulerStorage.pas"/>
         <DCCReference Include="Helper\PCMManager.Helper.Contacts.VCF.pas"/>
         <DCCReference Include="Helper\PCMManager.Helper.Calendar.ICAL.pas"/>
         <DCCReference Include="Helper\PCMManager.Helper.Calendar.Neu.Wiederholung.pas"/>

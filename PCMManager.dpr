@@ -31,7 +31,6 @@ uses
   PCMManager.Modul.F_Passwort in 'Modules\PCMManager.Modul.F_Passwort.pas' {frm_password},
   PCMManager.Modul.G_Finanzen in 'Modules\PCMManager.Modul.G_Finanzen.pas' {frm_finanzen},
   PCMManager.Modul.G_Finanzen.Filter.Date in 'Modules\PCMManager.Modul.G_Finanzen.Filter.Date.pas' {frm_PCManagerChooseDate},
-  cxSchedulerStorage in 'Helper\cxSchedulerStorage.pas',
   PCMManager.Helper.Contacts.VCF in 'Helper\PCMManager.Helper.Contacts.VCF.pas',
   PCMManager.Helper.Calendar.ICAL in 'Helper\PCMManager.Helper.Calendar.ICAL.pas',
   PCMManager.Helper.Calendar.Neu.Wiederholung in 'Helper\PCMManager.Helper.Calendar.Neu.Wiederholung.pas',
