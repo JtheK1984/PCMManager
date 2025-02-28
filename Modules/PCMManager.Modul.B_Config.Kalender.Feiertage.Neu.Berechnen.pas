@@ -6,12 +6,12 @@ var
   Feiertag: array[1..366] of ShortInt;
 
 const
-  Feiertage: array[1..19] of string[25] =
+  Feiertage: array[1..20] of string[25] =
     ('Neujahr', 'Maifeiertag', 'Tag der Deutschen Einheit', 'Allerheiligen',
     'Totensonntag', 'Volkstrauertag', '1. Weihnachtstag', '2. Weihnachtstag',
     'Karfreitag', 'Ostersonntag', 'Ostermontag', 'Christi Himmelfahrt',
     'Pfingstsonntag', 'Pfingstmontag', 'Fronleichnam', 'Heilige 3 Könige',
-    'Mariä Himmelfahrt', 'Reformationstag', 'Buß- und Bettag');
+    'Mariä Himmelfahrt', 'Reformationstag', 'Buß- und Bettag', 'Weltfrauentag');
   Sondertage: array[1..29] of string[25] =
     ('Mariä Lichtmeß', 'Valentinstag', 'Weiberfastnacht', 'Rosenmontag', 'Fastnacht',
     'Aschermittwoch', 'Mariä Verkündigung', 'Palmsonntag', 'Gründonnerstag', 'Muttertag',
@@ -233,7 +233,6 @@ begin
   {Christi Himmelfahrt}
   Feiertag[TagImJahr(dtOstern) + 39] := 12;
   {Pfingstsonntag}
-  // 6.0.0.38
   if Land = L_Brandenburg then
     Feiertag[TagImJahr(dtOstern) + 49] := 13
   else

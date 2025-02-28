@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, Vcl.ExtCtrls,
   dxGDIPlusClasses, dxActivityIndicator, cxContainer, cxEdit, cxProgressBar,
-  cxImage, cxLabel, cxGroupBox, cxClasses, inifiles;
+  cxImage, cxLabel, cxGroupBox, cxClasses, inifiles, dxUIAClasses;
 
 type
   TSplashScreen = class(TForm)

@@ -4005,6 +4005,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Properties.Images = dm_PCM.imglst_16x16
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
       OnPageChanging = pc_mainPageChanging
+      ExplicitLeft = 2
+      ExplicitTop = 2
+      ExplicitWidth = 1076
+      ExplicitHeight = 761
       ClientRectBottom = 753
       ClientRectLeft = 2
       ClientRectRight = 1068
@@ -4013,6 +4017,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
         AllowCloseButton = False
         Caption = 'Dashboard'
         ImageIndex = 79
+        ExplicitLeft = 4
+        ExplicitTop = 25
+        ExplicitWidth = 1068
+        ExplicitHeight = 732
         object dxLayoutControl1: TdxLayoutControl
           Left = 0
           Top = 0
@@ -4022,6 +4030,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
           TabOrder = 0
           LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
           OptionsImage.Images = dm_PCM.imglst_16x16
+          ExplicitWidth = 1068
+          ExplicitHeight = 732
           object chartctrl_Birthday: TdxChartControl
             Left = 33
             Top = 78
@@ -4356,7 +4366,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_EinSoll: TcxLabel
             AlignWithMargins = True
-            Left = 10000
+            Left = 10224
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4379,7 +4389,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_AusFixSoll: TcxLabel
             AlignWithMargins = True
-            Left = 10000
+            Left = 10224
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4402,7 +4412,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_AusVarSoll: TcxLabel
             AlignWithMargins = True
-            Left = 10000
+            Left = 10224
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4452,7 +4462,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_EinSollSum: TcxLabel
             AlignWithMargins = True
-            Left = 10000
+            Left = 10224
             Top = 10000
             Margins.Left = 0
             Margins.Top = 0
@@ -4530,7 +4540,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_EinIst: TcxLabel
             AlignWithMargins = True
-            Left = 10000
+            Left = 10067
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4553,7 +4563,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_AusFixIst: TcxLabel
             AlignWithMargins = True
-            Left = 10000
+            Left = 10067
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4576,7 +4586,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_AusvarIst: TcxLabel
             AlignWithMargins = True
-            Left = 10000
+            Left = 10067
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4707,7 +4717,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_EinDiff: TcxLabel
             AlignWithMargins = True
-            Left = 10000
+            Left = 10068
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4732,7 +4742,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_AusFixDiff: TcxLabel
             AlignWithMargins = True
-            Left = 10000
+            Left = 10068
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4757,7 +4767,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_AusvarDiff: TcxLabel
             AlignWithMargins = True
-            Left = 10000
+            Left = 10068
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -5978,6 +5988,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
   end
   object lafCtrl_Main: TcxLookAndFeelController
     Kind = lfFlat
+    NativeStyle = False
     ScrollbarMode = sbmClassic
     ScrollMode = scmClassic
     SkinName = 'DevExpressDarkStyle'
@@ -9815,7 +9826,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
     MenusShowRecentItemsFirst = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 472
     Top = 192

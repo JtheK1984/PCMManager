@@ -25,9 +25,9 @@ object SplashScreen: TSplashScreen
     Height = 488
     Width = 1000
     object img_Splash: TImage
-      Left = 2
-      Top = 2
-      Width = 996
+      Left = 3
+      Top = 3
+      Width = 994
       Height = 461
       Align = alClient
       Picture.Data = {
@@ -2311,9 +2311,7 @@ object SplashScreen: TSplashScreen
         70381C0E87C3E1703C0238E1EE70381C0E87C3E1703C0238E1EE70381C0E87C3
         E1703C0238E1EE70381C0E87C3E1703C0238E1EE70381C0E87C3E1703C02FCEF
         12C994D5D0AFFDAD0000000049454E44AE426082}
-      ExplicitLeft = 3
       ExplicitTop = -3
-      ExplicitWidth = 994
     end
     object lbl_ProgVersion: TcxLabel
       Left = 464
@@ -2328,11 +2326,12 @@ object SplashScreen: TSplashScreen
       Style.Font.Name = 'Segoe UI'
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
+      TabOrder = 0
       Transparent = True
     end
     object prgbr_Splash: TcxProgressBar
-      Left = 2
-      Top = 463
+      Left = 3
+      Top = 464
       Align = alBottom
       ParentFont = False
       Position = 1.000000000000000000
@@ -2360,7 +2359,10 @@ object SplashScreen: TSplashScreen
       StyleHot.LookAndFeel.NativeStyle = False
       TabOrder = 1
       Transparent = True
-      Width = 996
+      ExplicitLeft = 2
+      ExplicitTop = 463
+      ExplicitWidth = 996
+      Width = 994
     end
     object ActivityIndicator: TdxActivityIndicator
       Left = 334
@@ -2391,6 +2393,7 @@ object SplashScreen: TSplashScreen
       Style.Font.Name = 'Segoe UI'
       Style.Font.Style = [fsBold]
       Style.IsFontAssigned = True
+      TabOrder = 3
       Transparent = True
     end
   end

@@ -16,7 +16,7 @@ uses
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
   FireDAC.Comp.DataSet, FireDAC.Comp.Client,Variants,cxGroupBox,system.math, system.UITypes, dxmdaset,
   dxLayoutcxEditAdapters, dxLayoutControlAdapters, dxLayoutContainer,
-  dxLayoutControl;
+  dxLayoutControl, dxUIAClasses;
 
 type
   TcxGridSiteAccess = class (TcxGridSite);
@@ -220,7 +220,7 @@ begin
         end
         else
         begin
-          memData_FeiertageBezeichnung.AsString := String(Sondertage[-Feiertag[i]]);
+          memData_FeiertageBezeichnung.AsString := String(Sondertage[-Feiertag[i]])+ ' ('+ cmbbx_Bundesland.Properties.Items[cmbbx_Bundesland.ItemIndex] +')';
           memData_FeiertageTyp.Value := '';
         end;
 

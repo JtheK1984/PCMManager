@@ -36,7 +36,8 @@ uses
   PCMManager.Helper.Calendar.Neu.Wiederholung in 'Helper\PCMManager.Helper.Calendar.Neu.Wiederholung.pas',
   PCMManager.Helper.Calendar.ReminderCustomited in 'Helper\PCMManager.Helper.Calendar.ReminderCustomited.pas',
   PCMManager.Helper.Calendar.Reminder in 'Helper\PCMManager.Helper.Calendar.Reminder.pas' {cxSchedulerReminderForm},
-  PCM.splash in 'PCM.splash.pas' {SplashScreen};
+  PCM.splash in 'PCM.splash.pas' {SplashScreen},
+  PCMManager.dxSettings in 'PCMManager.dxSettings.pas';
 
 {$R *.res}
 

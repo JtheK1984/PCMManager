@@ -25,7 +25,7 @@ uses
   IdSMTPBase, cxCurrencyEdit, Vcl.OleServer, OutlookXP,PCM.Functions, dxSkinWXI,
   Vcl.VirtualImage, Vcl.BaseImageCollection, Vcl.ImageCollection,
   dxLayoutContainer, dxLayoutcxEditAdapters, dxLayoutControlAdapters,
-  dxLayoutControl;
+  dxLayoutControl, dxUIAClasses;
 
 type
   Tfrm_Config = class(TForm)
@@ -916,7 +916,7 @@ begin
   Application.CreateForm(Tfrm_FeiertageAktualisieren, frm_FeiertageAktualisieren);
   if frm_FeiertageAktualisieren.Execute(datTimVon, datTimbis) then
   begin
-    dm_PCM.qry_work1.SQL.text := 'SELECT Jahr, Datum, Bezeichnung From manager_feiertage Where ID_Benutzer = :ID and Datum >= :Von AND Datum <= :Bis';
+    dm_PCM.qry_work1.SQL.text := 'SELECT Jahr, Datum, Bezeichnung, kategorie From manager_feiertage Where ID_Benutzer = :ID and Datum >= :Von AND Datum <= :Bis';
     dm_PCM.qry_work1.ParamByName('ID').asInteger := dm_PCM.iIDBenutzerPCM;
     dm_PCM.qry_work1.ParamByName('Von').AsDateTime := datTimVon;
     dm_PCM.qry_work1.ParamByName('Bis').AsDateTime := datTimbis;
