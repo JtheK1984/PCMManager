@@ -30,8 +30,8 @@ object frm_Contact: Tfrm_Contact
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
     object cmbbx_KontaktSucheArt: TcxComboBox
-      Left = 91
-      Top = 133
+      Left = 93
+      Top = 132
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -48,8 +48,8 @@ object frm_Contact: Tfrm_Contact
       Width = 234
     end
     object edt_KontaktSucheAbteilung: TcxTextEdit
-      Left = 784
-      Top = 106
+      Left = 786
+      Top = 105
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -66,8 +66,8 @@ object frm_Contact: Tfrm_Contact
       Width = 234
     end
     object edt_KontaktSucheFirma: TcxTextEdit
-      Left = 784
-      Top = 79
+      Left = 786
+      Top = 78
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -84,8 +84,8 @@ object frm_Contact: Tfrm_Contact
       Width = 234
     end
     object edt_KontaktSucheFunktion: TcxTextEdit
-      Left = 784
-      Top = 133
+      Left = 786
+      Top = 132
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -102,8 +102,8 @@ object frm_Contact: Tfrm_Contact
       Width = 234
     end
     object edt_KontaktSucheNachname: TcxTextEdit
-      Left = 91
-      Top = 79
+      Left = 93
+      Top = 78
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -122,14 +122,15 @@ object frm_Contact: Tfrm_Contact
       StyleFocused.TextStyle = []
       StyleHot.LookAndFeel.NativeStyle = False
       StyleHot.TextStyle = []
+      StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 0
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 234
     end
     object edt_KontaktSucheOrt: TcxTextEdit
-      Left = 442
-      Top = 133
+      Left = 444
+      Top = 132
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -146,8 +147,8 @@ object frm_Contact: Tfrm_Contact
       Width = 234
     end
     object edt_KontaktSuchePLZ: TcxTextEdit
-      Left = 442
-      Top = 106
+      Left = 444
+      Top = 105
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -164,8 +165,8 @@ object frm_Contact: Tfrm_Contact
       Width = 234
     end
     object edt_KontaktSucheStrasse: TcxTextEdit
-      Left = 442
-      Top = 79
+      Left = 444
+      Top = 78
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -182,8 +183,8 @@ object frm_Contact: Tfrm_Contact
       Width = 234
     end
     object edt_KontaktSucheVorname: TcxTextEdit
-      Left = 91
-      Top = 106
+      Left = 93
+      Top = 105
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -873,7 +874,7 @@ object frm_Contact: Tfrm_Contact
       TabOrder = 40
       Visible = False
       OnExit = btn_KontaktSaveClick
-      Height = 585
+      Height = 522
       Width = 1150
     end
     object btn_Mail1Private: TcxButton
@@ -904,9 +905,9 @@ object frm_Contact: Tfrm_Contact
     end
     object grd_Suche: TcxGrid
       Left = 22
-      Top = 205
+      Top = 203
       Width = 1552
-      Height = 606
+      Height = 608
       BevelInner = bvNone
       BevelOuter = bvNone
       Font.Charset = DEFAULT_CHARSET
@@ -1213,7 +1214,7 @@ object frm_Contact: Tfrm_Contact
     end
     object btn_ClearFilter: TcxButton
       Left = 165
-      Top = 172
+      Top = 170
       Width = 137
       Height = 27
       Caption = 'Filter l'#246'schen'
@@ -1229,7 +1230,7 @@ object frm_Contact: Tfrm_Contact
     end
     object btn_kontaktsuchen: TcxButton
       Left = 22
-      Top = 172
+      Top = 170
       Width = 137
       Height = 27
       Caption = 'Kontakt suchen'
@@ -2242,7 +2243,7 @@ object frm_Contact: Tfrm_Contact
     end
     object itm_Kontaktart: TdxLayoutItem
       Parent = lagrp_MitarbeiterInfo
-      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Text = 'Kontaktart:'
       Control = cmbbx_KontaktArt
       ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 289
@@ -2300,7 +2301,6 @@ object frm_Contact: Tfrm_Contact
     ImageOptions.UseLargeImagesForLargeIcons = True
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 112
     Top = 488

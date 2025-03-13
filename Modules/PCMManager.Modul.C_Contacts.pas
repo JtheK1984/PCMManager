@@ -20,7 +20,7 @@ uses
   Vcl.ExtCtrls, dxShellDialogs,PCM.Functions,cxSchedulerStorage,
   cxColorComboBox, cxDBColorComboBox, cxSpinEdit, cxTimeEdit,
   dxLayoutcxEditAdapters, dxLayoutControlAdapters, dxLayoutContainer,
-  dxLayoutControl;
+  dxLayoutControl, dxUIAClasses;
 
 type
   Tfrm_Contact = class(TForm)

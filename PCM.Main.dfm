@@ -4005,10 +4005,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Properties.Images = dm_PCM.imglst_16x16
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
       OnPageChanging = pc_mainPageChanging
-      ExplicitLeft = 2
-      ExplicitTop = 2
-      ExplicitWidth = 1076
-      ExplicitHeight = 761
       ClientRectBottom = 753
       ClientRectLeft = 2
       ClientRectRight = 1068
@@ -4017,10 +4013,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
         AllowCloseButton = False
         Caption = 'Dashboard'
         ImageIndex = 79
-        ExplicitLeft = 4
-        ExplicitTop = 25
-        ExplicitWidth = 1068
-        ExplicitHeight = 732
         object dxLayoutControl1: TdxLayoutControl
           Left = 0
           Top = 0
@@ -4030,8 +4022,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
           TabOrder = 0
           LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
           OptionsImage.Images = dm_PCM.imglst_16x16
-          ExplicitWidth = 1068
-          ExplicitHeight = 732
           object chartctrl_Birthday: TdxChartControl
             Left = 33
             Top = 78
@@ -4046,6 +4036,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
               object chartctrl_BirthdaySeries: TdxChartSimpleSeries
                 Caption = 'Wert'
                 DataBindingType = 'DB'
+                DataBinding.DataSource = dm_PCM.ds_ChartGeburtstage
                 DataBinding.ArgumentField.FieldName = 'Monatbes'
                 DataBinding.ValueField.FieldName = 'Wert'
                 ViewType = 'Pie'
@@ -4072,6 +4063,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
               object chartctrl_ContactSeries: TdxChartSimpleSeries
                 Caption = 'Wert'
                 DataBindingType = 'DB'
+                DataBinding.DataSource = dm_PCM.ds_ChartAdressen
                 DataBinding.ArgumentField.FieldName = 'Privat'
                 DataBinding.ValueField.FieldName = 'Wert'
                 ViewType = 'Pie'
@@ -4101,6 +4093,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
               object chartctrl_AdressesSeries: TdxChartSimpleSeries
                 Caption = 'Wert'
                 DataBindingType = 'DB'
+                DataBinding.DataSource = dm_PCM.ds_ChartKontaktart
                 DataBinding.ArgumentField.FieldName = 'Privat'
                 DataBinding.ValueField.FieldName = 'Wert'
                 ViewType = 'Pie'
