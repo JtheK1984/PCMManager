@@ -26,8 +26,8 @@ object frm_Config: Tfrm_Config
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
     object edt_CalConfigFTP_Benutzer: TcxDBTextEdit
-      Left = 138
-      Top = 769
+      Left = 141
+      Top = 768
       DataBinding.DataField = 'user'
       DataBinding.DataSource = ds_CalConfigFTP
       ParentFont = False
@@ -41,11 +41,11 @@ object frm_Config: Tfrm_Config
       Style.IsFontAssigned = True
       TabOrder = 15
       OnExit = btn_CalConfigFTPSaveClick
-      Width = 451
+      Width = 450
     end
     object edt_CalConfigFTP_Datei: TcxDBTextEdit
-      Left = 655
-      Top = 744
+      Left = 657
+      Top = 743
       AutoSize = False
       DataBinding.DataField = 'kalendername'
       DataBinding.DataSource = ds_CalConfigFTP
@@ -61,11 +61,11 @@ object frm_Config: Tfrm_Config
       TabOrder = 16
       OnExit = btn_CalConfigFTPSaveClick
       Height = 19
-      Width = 445
+      Width = 444
     end
     object edt_CalConfigFTP_Passwort: TcxDBTextEdit
-      Left = 655
-      Top = 769
+      Left = 657
+      Top = 768
       DataBinding.DataField = 'passwort'
       DataBinding.DataSource = ds_CalConfigFTP
       ParentFont = False
@@ -81,11 +81,11 @@ object frm_Config: Tfrm_Config
       Style.IsFontAssigned = True
       TabOrder = 17
       OnExit = btn_CalConfigFTPSaveClick
-      Width = 445
+      Width = 444
     end
     object edt_CalConfigFTP_URL: TcxDBTextEdit
-      Left = 138
-      Top = 744
+      Left = 141
+      Top = 743
       AutoSize = False
       DataBinding.DataField = 'url'
       DataBinding.DataSource = ds_CalConfigFTP
@@ -101,12 +101,12 @@ object frm_Config: Tfrm_Config
       TabOrder = 14
       OnExit = btn_CalConfigFTPSaveClick
       Height = 19
-      Width = 451
+      Width = 450
     end
     object grd_FTPConfig: TcxGrid
-      Left = 33
-      Top = 794
-      Width = 1067
+      Left = 36
+      Top = 795
+      Width = 1065
       Height = 69
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
@@ -186,16 +186,16 @@ object frm_Config: Tfrm_Config
       end
     end
     object brdckctrl_FTP: TdxBarDockControl
-      Left = 33
-      Top = 675
-      Width = 1067
-      Height = 63
+      Left = 36
+      Top = 679
+      Width = 1065
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Config
     end
     object edt_CalConfig_Benutzer: TcxDBTextEdit
-      Left = 657
-      Top = 147
+      Left = 659
+      Top = 129
       DataBinding.DataField = 'Benutzer'
       DataBinding.DataSource = ds_CalConfig
       ParentFont = False
@@ -209,11 +209,11 @@ object frm_Config: Tfrm_Config
       Style.IsFontAssigned = True
       TabOrder = 6
       OnExit = btn_CalConfigSave1Click
-      Width = 443
+      Width = 442
     end
     object edt_CalConfig_Kalender: TcxDBTextEdit
-      Left = 138
-      Top = 147
+      Left = 141
+      Top = 129
       DataBinding.DataField = 'Kalender'
       DataBinding.DataSource = ds_CalConfig
       ParentFont = False
@@ -227,11 +227,11 @@ object frm_Config: Tfrm_Config
       Style.IsFontAssigned = True
       TabOrder = 1
       OnExit = btn_CalConfigSave1Click
-      Width = 447
+      Width = 446
     end
     object edt_CalConfig_Link: TcxDBTextEdit
-      Left = 138
-      Top = 172
+      Left = 141
+      Top = 156
       DataBinding.DataField = 'Link'
       DataBinding.DataSource = ds_CalConfig
       ParentFont = False
@@ -245,11 +245,11 @@ object frm_Config: Tfrm_Config
       Style.IsFontAssigned = True
       TabOrder = 2
       OnExit = btn_CalConfigSave1Click
-      Width = 447
+      Width = 446
     end
     object edt_CalConfig_Passwort: TcxDBTextEdit
-      Left = 657
-      Top = 172
+      Left = 659
+      Top = 156
       DataBinding.DataField = 'Passwort'
       DataBinding.DataSource = ds_CalConfig
       ParentFont = False
@@ -265,12 +265,12 @@ object frm_Config: Tfrm_Config
       Style.IsFontAssigned = True
       TabOrder = 7
       OnExit = btn_CalConfigSave1Click
-      Width = 443
+      Width = 442
     end
     object grd_CalConfig: TcxGrid
-      Left = 33
-      Top = 247
-      Width = 1067
+      Left = 36
+      Top = 237
+      Width = 1065
       Height = 68
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
@@ -387,8 +387,8 @@ object frm_Config: Tfrm_Config
       end
     end
     object cmbbx_CalConfigReminderVal: TcxDBImageComboBox
-      Left = 159
-      Top = 222
+      Left = 160
+      Top = 210
       DataBinding.DataField = 'ErinnerungVor'
       DataBinding.DataSource = ds_CalConfig
       ParentFont = False
@@ -504,11 +504,11 @@ object frm_Config: Tfrm_Config
       Style.IsFontAssigned = True
       TabOrder = 5
       OnExit = btn_CalConfigSave1Click
-      Width = 426
+      Width = 427
     end
     object chkbx_CalConfigReminder: TcxDBCheckBox
-      Left = 138
-      Top = 222
+      Left = 141
+      Top = 210
       BiDiMode = bdRightToLeft
       DataBinding.DataField = 'Erinnerung'
       DataBinding.DataSource = ds_CalConfig
@@ -530,8 +530,8 @@ object frm_Config: Tfrm_Config
       OnExit = btn_CalConfigSave1Click
     end
     object colcmbbx_CalConfigFontColor: TcxDBColorComboBox
-      Left = 657
-      Top = 197
+      Left = 659
+      Top = 183
       DataBinding.DataField = 'Fontcolor'
       DataBinding.DataSource = ds_CalConfig
       ParentFont = False
@@ -548,11 +548,11 @@ object frm_Config: Tfrm_Config
       Style.IsFontAssigned = True
       TabOrder = 8
       OnExit = btn_CalConfigSave1Click
-      Width = 443
+      Width = 442
     end
     object colcmbbx_CalConfigLabelColor: TcxDBColorComboBox
-      Left = 138
-      Top = 197
+      Left = 141
+      Top = 183
       DataBinding.DataField = 'LabelColor'
       DataBinding.DataSource = ds_CalConfig
       ParentFont = False
@@ -569,22 +569,22 @@ object frm_Config: Tfrm_Config
       Style.IsFontAssigned = True
       TabOrder = 3
       OnExit = btn_CalConfigSave1Click
-      Width = 447
+      Width = 446
     end
     object bardckctrl_Kalender: TdxBarDockControl
-      Left = 33
-      Top = 78
-      Width = 1067
-      Height = 63
+      Left = 36
+      Top = 65
+      Width = 1065
+      Height = 58
       Align = dalNone
       AllowDocking = False
       BarManager = brmgr_Config
     end
     object grd_Feiertage: TcxGrid
-      Left = 33
-      Top = 431
-      Width = 1067
-      Height = 197
+      Left = 36
+      Top = 407
+      Width = 1065
+      Height = 234
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -665,10 +665,10 @@ object frm_Config: Tfrm_Config
       end
     end
     object brdckctrl_Feiertage: TdxBarDockControl
-      Left = 33
-      Top = 362
-      Width = 1067
-      Height = 63
+      Left = 36
+      Top = 343
+      Width = 1065
+      Height = 58
       Align = dalNone
       AllowDocking = False
       BarManager = brmgr_Config
@@ -676,8 +676,8 @@ object frm_Config: Tfrm_Config
     object grd_AufgabenPrio: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1067
-      Height = 145
+      Width = 1065
+      Height = 161
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -742,8 +742,8 @@ object frm_Config: Tfrm_Config
     object bardckctrl_AufgabenPrio: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1067
-      Height = 63
+      Width = 1065
+      Height = 58
       Align = dalNone
       AllowDocking = False
       BarManager = brmgr_Config
@@ -766,7 +766,7 @@ object frm_Config: Tfrm_Config
       TabOrder = 24
       Visible = False
       OnExit = btn_AufgabenPrioSaveClick
-      Width = 455
+      Width = 454
     end
     object edt_PrioNumber: TcxDBTextEdit
       Left = 10000
@@ -785,7 +785,7 @@ object frm_Config: Tfrm_Config
       TabOrder = 23
       Visible = False
       OnExit = btn_AufgabenPrioSaveClick
-      Width = 457
+      Width = 456
     end
     object edt_Aufgabenart: TcxDBTextEdit
       Left = 10000
@@ -804,13 +804,13 @@ object frm_Config: Tfrm_Config
       TabOrder = 19
       Visible = False
       OnExit = btn_AufgabenSaveClick
-      Width = 447
+      Width = 446
     end
     object grd_Aufgabenarten: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1067
-      Height = 195
+      Width = 1065
+      Height = 214
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -895,13 +895,13 @@ object frm_Config: Tfrm_Config
       TabOrder = 20
       Visible = False
       OnExit = btn_AufgabenSaveClick
-      Width = 447
+      Width = 446
     end
     object bardckctrl_Aufgabenarten: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1067
-      Height = 63
+      Width = 1065
+      Height = 58
       Align = dalNone
       AllowDocking = False
       BarManager = brmgr_Config
@@ -927,7 +927,7 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       TabOrder = 32
       Visible = False
-      Width = 447
+      Width = 446
     end
     object cmbbx_AufgabenSonstigesAdresseEigen: TcxDBLookupComboBox
       AlignWithMargins = True
@@ -949,13 +949,13 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       TabOrder = 28
       Visible = False
-      Width = 445
+      Width = 444
     end
     object bardckctrl_AufgabenSonstiges: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1067
-      Height = 63
+      Width = 1065
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Config
       Visible = False
@@ -969,7 +969,7 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       TabOrder = 27
       Visible = False
-      Width = 445
+      Width = 444
     end
     object mskedt_AufgabenSonstigesStunden: TcxDBCurrencyEdit
       Left = 10000
@@ -981,7 +981,7 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       TabOrder = 31
       Visible = False
-      Width = 447
+      Width = 446
     end
     object cmbbx_AufgabenSonstigesBundeslandFirma: TcxDBLookupComboBox
       Left = 10000
@@ -998,7 +998,7 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       TabOrder = 33
       Visible = False
-      Width = 447
+      Width = 446
     end
     object cmbbx_AufgabenSonstigesBundeslandEigen: TcxDBLookupComboBox
       AlignWithMargins = True
@@ -1020,7 +1020,7 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       TabOrder = 29
       Visible = False
-      Width = 445
+      Width = 444
     end
     object edt_AufgabenSonstigesAccToDo: TcxDBTextEdit
       Left = 10000
@@ -1031,7 +1031,7 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       TabOrder = 30
       Visible = False
-      Width = 445
+      Width = 444
     end
     object edt_AufgabenSonstigesAccMail: TcxDBTextEdit
       Left = 10000
@@ -1042,12 +1042,12 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       TabOrder = 34
       Visible = False
-      Width = 447
+      Width = 446
     end
     object grd_StundenplanConfig: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1067
+      Width = 1065
       Height = 414
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
@@ -1146,7 +1146,7 @@ object frm_Config: Tfrm_Config
       TabOrder = 38
       Visible = False
       OnExit = btn_FachSaveClick
-      Width = 464
+      Width = 463
     end
     object colcmbbx_StundenplanConfig_LabelColor: TcxDBColorComboBox
       Left = 10000
@@ -1169,7 +1169,7 @@ object frm_Config: Tfrm_Config
       TabOrder = 37
       Visible = False
       OnExit = btn_FachSaveClick
-      Width = 465
+      Width = 464
     end
     object edt_StundenplanConfig_FachBezeichnung: TcxDBTextEdit
       Left = 10000
@@ -1188,13 +1188,13 @@ object frm_Config: Tfrm_Config
       TabOrder = 36
       Visible = False
       OnExit = btn_FachSaveClick
-      Width = 1001
+      Width = 999
     end
     object brdckctrl_Schulfach: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1067
-      Height = 63
+      Width = 1065
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Config
       Visible = False
@@ -1220,7 +1220,7 @@ object frm_Config: Tfrm_Config
       TabOrder = 43
       Visible = False
       OnExit = btn_FachUSaveClick
-      Width = 464
+      Width = 463
     end
     object colcmbbx_StundenplanConfigUhr_LabelColor: TcxDBColorComboBox
       Left = 10000
@@ -1243,12 +1243,12 @@ object frm_Config: Tfrm_Config
       TabOrder = 42
       Visible = False
       OnExit = btn_FachUSaveClick
-      Width = 465
+      Width = 464
     end
     object grd_StundenplanConfigUhr: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1067
+      Width = 1065
       Height = 75
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
@@ -1319,8 +1319,8 @@ object frm_Config: Tfrm_Config
     object brdckctrl_SchulfachUhr: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1067
-      Height = 63
+      Width = 1065
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Config
       Visible = False
@@ -1328,7 +1328,7 @@ object frm_Config: Tfrm_Config
     object grd_EmailConfig: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1067
+      Width = 1065
       Height = 100
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
@@ -1426,7 +1426,7 @@ object frm_Config: Tfrm_Config
     object btn_EmailConfig_Test: TcxButton
       Left = 10000
       Top = 10000
-      Width = 1067
+      Width = 1065
       Height = 27
       Caption = 'Verbindung Testen'
       TabOrder = 54
@@ -1453,7 +1453,7 @@ object frm_Config: Tfrm_Config
       Visible = False
       OnExit = btn_EmailConfigSaveClick
       Height = 19
-      Width = 529
+      Width = 528
     end
     object edt_EmailConfig_Benutzer: TcxDBTextEdit
       Left = 10000
@@ -1472,7 +1472,7 @@ object frm_Config: Tfrm_Config
       TabOrder = 50
       Visible = False
       OnExit = btn_EmailConfigSaveClick
-      Width = 532
+      Width = 531
     end
     object edt_EmailConfig_Emailadresse: TcxDBTextEdit
       Left = 10000
@@ -1491,7 +1491,7 @@ object frm_Config: Tfrm_Config
       TabOrder = 45
       Visible = False
       OnExit = btn_EmailConfigSaveClick
-      Width = 425
+      Width = 424
     end
     object edt_EmailConfig_Kennwort: TcxDBTextEdit
       Left = 10000
@@ -1511,7 +1511,7 @@ object frm_Config: Tfrm_Config
       TabOrder = 51
       Visible = False
       OnExit = btn_EmailConfigSaveClick
-      Width = 532
+      Width = 531
     end
     object edt_EmailConfig_PortAusgang: TcxDBTextEdit
       Left = 10000
@@ -1530,7 +1530,7 @@ object frm_Config: Tfrm_Config
       TabOrder = 53
       Visible = False
       OnExit = btn_EmailConfigSaveClick
-      Width = 532
+      Width = 531
     end
     object edt_EmailConfig_PortEingang: TcxDBTextEdit
       Left = 10000
@@ -1549,7 +1549,7 @@ object frm_Config: Tfrm_Config
       TabOrder = 48
       Visible = False
       OnExit = btn_EmailConfigSaveClick
-      Width = 425
+      Width = 424
     end
     object edt_EmailConfig_PostAusgangServer: TcxDBTextEdit
       Left = 10000
@@ -1567,7 +1567,7 @@ object frm_Config: Tfrm_Config
       Style.IsFontAssigned = True
       TabOrder = 52
       Visible = False
-      Width = 425
+      Width = 424
     end
     object edt_EmailConfig_PostEingangServer: TcxDBTextEdit
       Left = 10000
@@ -1586,7 +1586,7 @@ object frm_Config: Tfrm_Config
       TabOrder = 47
       Visible = False
       OnExit = btn_EmailConfigSaveClick
-      Width = 425
+      Width = 424
     end
     object lucmbbx_EmailConfig_Kontptyp: TcxDBLookupComboBox
       Left = 10000
@@ -1611,13 +1611,13 @@ object frm_Config: Tfrm_Config
       TabOrder = 46
       Visible = False
       OnExit = btn_EmailConfigSaveClick
-      Width = 425
+      Width = 424
     end
     object brdckctrl_Email: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1067
-      Height = 63
+      Width = 1065
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Config
       Visible = False
@@ -1625,8 +1625,8 @@ object frm_Config: Tfrm_Config
     object dxBarDockControl1: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1067
-      Height = 63
+      Width = 1065
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Config
       Visible = False
@@ -1757,8 +1757,8 @@ object frm_Config: Tfrm_Config
     object grd_Postfachmain: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1019
-      Height = 111
+      Width = 1015
+      Height = 135
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1963,8 +1963,8 @@ object frm_Config: Tfrm_Config
     object grd_postfachSub: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1019
-      Height = 111
+      Width = 1015
+      Height = 134
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -2089,7 +2089,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'abonnierte Kalender'
       ButtonOptions.ShowExpandButton = True
-      ItemIndex = 1
+      ItemIndex = 2
       Index = 0
     end
     object dxLayoutItem1: TdxLayoutItem
@@ -2100,7 +2100,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = bardckctrl_Kalender
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2111,7 +2111,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Kalender:'
       Control = edt_CalConfig_Kalender
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2122,7 +2122,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Link:'
       Control = edt_CalConfig_Link
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 1
@@ -2133,7 +2133,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Terminfarbe:'
       Control = colcmbbx_CalConfigLabelColor
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 2
@@ -2144,8 +2144,8 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'an Termine erinnern:'
       Control = chkbx_CalConfigReminder
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 15
+      ControlOptions.OriginalHeight = 17
+      ControlOptions.OriginalWidth = 13
       ControlOptions.ShowBorder = False
       Index = 0
     end
@@ -2156,7 +2156,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Text = 'cmbbx_CalConfigReminderVal'
       CaptionOptions.Visible = False
       Control = cmbbx_CalConfigReminderVal
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 341
       ControlOptions.ShowBorder = False
       Index = 1
@@ -2167,7 +2167,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Benutzer:'
       Control = edt_CalConfig_Benutzer
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2178,7 +2178,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Passwort:'
       Control = edt_CalConfig_Passwort
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 1
@@ -2189,7 +2189,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Schriftfarbe:'
       Control = colcmbbx_CalConfigFontColor
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 2
@@ -2211,18 +2211,18 @@ object frm_Config: Tfrm_Config
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Feiertage'
-      ItemIndex = 1
       ShowBorder = False
-      Index = 0
+      Index = 1
     end
     object dxLayoutItem11: TdxLayoutItem
-      Parent = dxLayoutGroup12
+      Parent = lagrp_KalenderFeiertage
       AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'brdckctrl_Feiertage'
       CaptionOptions.Visible = False
       Control = brdckctrl_Feiertage
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2237,7 +2237,7 @@ object frm_Config: Tfrm_Config
       ControlOptions.OriginalHeight = 180
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
-      Index = 1
+      Index = 0
     end
     object lagrp_KalenderFTP: TdxLayoutGroup
       Parent = lagrp_Kalender
@@ -2245,7 +2245,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'FTP-Zugangsdaten'
       ButtonOptions.ShowExpandButton = True
-      ItemIndex = 2
+      ItemIndex = 1
       Index = 2
     end
     object dxLayoutItem13: TdxLayoutItem
@@ -2256,7 +2256,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = brdckctrl_FTP
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2289,7 +2289,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Benutzer:'
       Control = edt_CalConfigFTP_Benutzer
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 1
@@ -2300,7 +2300,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Passwort:'
       Control = edt_CalConfigFTP_Passwort
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 1
@@ -2323,7 +2323,6 @@ object frm_Config: Tfrm_Config
       AlignVert = avClient
       CaptionOptions.ImageIndex = 58
       CaptionOptions.Text = 'Aufgaben'
-      ItemIndex = 2
       Index = 1
     end
     object dxLayoutGroup20: TdxLayoutGroup
@@ -2332,7 +2331,6 @@ object frm_Config: Tfrm_Config
       AlignVert = avClient
       CaptionOptions.Text = 'Aufgabenarten'
       ButtonOptions.ShowExpandButton = True
-      ItemIndex = 1
       Index = 0
     end
     object dxLayoutItem19: TdxLayoutItem
@@ -2343,7 +2341,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = bardckctrl_Aufgabenarten
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2354,7 +2352,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Bezeichnung:'
       Control = edt_Aufgabenart
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2365,7 +2363,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Aufgaben Farbe:'
       Control = colcmbbx_Aufgabenart
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 1
@@ -2388,7 +2386,6 @@ object frm_Config: Tfrm_Config
       AlignVert = avClient
       CaptionOptions.Text = 'Priorit'#228't'
       ButtonOptions.ShowExpandButton = True
-      ItemIndex = 2
       Index = 1
     end
     object dxLayoutItem23: TdxLayoutItem
@@ -2399,7 +2396,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = bardckctrl_AufgabenPrio
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2410,7 +2407,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Priorit'#228't:'
       Control = edt_PrioNumber
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2421,7 +2418,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Bezeichnung:'
       Control = edt_PrioBez
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 1
@@ -2444,7 +2441,6 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Sonstige Einstellungen'
       ButtonOptions.ShowExpandButton = True
-      ItemIndex = 1
       Index = 2
     end
     object dxLayoutItem27: TdxLayoutItem
@@ -2455,7 +2451,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = bardckctrl_AufgabenSonstiges
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2466,7 +2462,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Jira-Basic-Url:'
       Control = edt_AufgabenSonstigesJira
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2477,7 +2473,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Adresse Selbst:'
       Control = cmbbx_AufgabenSonstigesAdresseEigen
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 1
@@ -2488,7 +2484,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Bundesland:'
       Control = cmbbx_AufgabenSonstigesBundeslandEigen
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 2
@@ -2499,7 +2495,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Account-ToDo:'
       Control = edt_AufgabenSonstigesAccToDo
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 3
@@ -2510,7 +2506,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Stunden pro Tag:'
       Control = mskedt_AufgabenSonstigesStunden
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2521,7 +2517,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Adresse Firma:'
       Control = cmbbx_AufgabenSonstigesAdresseFirma
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 1
@@ -2532,7 +2528,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Bundesland:'
       Control = cmbbx_AufgabenSonstigesBundeslandFirma
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 2
@@ -2543,7 +2539,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Account-Mails:'
       Control = edt_AufgabenSonstigesAccMail
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 3
@@ -2574,7 +2570,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = brdckctrl_Schulfach
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2585,7 +2581,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Schulfach:'
       Control = edt_StundenplanConfig_FachBezeichnung
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 950
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2596,7 +2592,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Hintergrund:'
       Control = colcmbbx_StundenplanConfig_LabelColor
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2607,7 +2603,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Schriftfarbe:'
       Control = colcmbbx_StundenplanConfig_FontColor
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 1
@@ -2641,7 +2637,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = brdckctrl_SchulfachUhr
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2652,7 +2648,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Hintergrund:'
       Control = colcmbbx_StundenplanConfigUhr_LabelColor
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2663,7 +2659,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Schriftfarbe:'
       Control = colcmbbx_StundenplanConfigUhr_FontColor
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 1
@@ -2695,7 +2691,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = brdckctrl_Email
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1266
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2706,7 +2702,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'E-Mail-Adresse:'
       Control = edt_EmailConfig_Emailadresse
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 350
       ControlOptions.ShowBorder = False
       Index = 1
@@ -2717,7 +2713,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Kontptyp:'
       Control = lucmbbx_EmailConfig_Kontptyp
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 350
       ControlOptions.ShowBorder = False
       Index = 2
@@ -2728,7 +2724,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Posteingangsserver:'
       Control = edt_EmailConfig_PostEingangServer
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 350
       ControlOptions.ShowBorder = False
       Index = 3
@@ -2739,7 +2735,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Port:'
       Control = edt_EmailConfig_PortEingang
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 350
       ControlOptions.ShowBorder = False
       Index = 4
@@ -2771,7 +2767,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Text = 'edt_EmailConfig_Benutzer'
       CaptionOptions.Visible = False
       Control = edt_EmailConfig_Benutzer
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 350
       ControlOptions.ShowBorder = False
       Index = 1
@@ -2783,7 +2779,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Text = 'edt_EmailConfig_Kennwort'
       CaptionOptions.Visible = False
       Control = edt_EmailConfig_Kennwort
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 350
       ControlOptions.ShowBorder = False
       Index = 2
@@ -2794,7 +2790,7 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Postausgangsserver:'
       Control = edt_EmailConfig_PostAusgangServer
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 350
       ControlOptions.ShowBorder = False
       Index = 3
@@ -2806,7 +2802,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Text = 'edt_EmailConfig_PortAusgang'
       CaptionOptions.Visible = False
       Control = edt_EmailConfig_PortAusgang
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 350
       ControlOptions.ShowBorder = False
       Index = 4
@@ -2852,7 +2848,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = dxBarDockControl1
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -3087,8 +3083,6 @@ object frm_Config: Tfrm_Config
     end
     object dxLayoutGroup10: TdxLayoutGroup
       Parent = lagrp_KalenderFTP
-      AlignHorz = ahClient
-      AlignVert = avTop
       CaptionOptions.Text = 'New Group'
       LayoutDirection = ldHorizontal
       ShowBorder = False

@@ -27,7 +27,7 @@ object frm_finanzen: Tfrm_finanzen
     object btn_FinanzenDrucken: TcxButton
       Left = 10000
       Top = 10000
-      Width = 1199
+      Width = 1210
       Height = 31
       Caption = 'detailierten Bericht drucken'
       TabOrder = 0
@@ -41,8 +41,8 @@ object frm_finanzen: Tfrm_finanzen
       OnClick = btn_FinanzenDruckenClick
     end
     object edt_FinEinAbsender: TcxDBTextEdit
-      Left = 9793
-      Top = 10000
+      Left = 117
+      Top = 176
       DataBinding.DataField = 'Quelle'
       DataBinding.DataSource = dsEinnahmen
       ParentFont = False
@@ -55,13 +55,12 @@ object frm_finanzen: Tfrm_finanzen
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 2
-      Visible = False
       OnExit = btn_FinEinSaveClick
-      Width = 532
+      Width = 529
     end
     object edt_FinEinBetrag: TcxDBCurrencyEdit
-      Left = 9793
-      Top = 10000
+      Left = 117
+      Top = 226
       DataBinding.DataField = 'Betrag'
       DataBinding.DataSource = dsEinnahmen
       ParentFont = False
@@ -74,13 +73,12 @@ object frm_finanzen: Tfrm_finanzen
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 4
-      Visible = False
       OnExit = btn_FinEinSaveClick
-      Width = 532
+      Width = 529
     end
     object edt_FinEinBEz: TcxDBTextEdit
-      Left = 9793
-      Top = 10000
+      Left = 117
+      Top = 201
       DataBinding.DataField = 'Bezeichnung'
       DataBinding.DataSource = dsEinnahmen
       ParentFont = False
@@ -93,23 +91,21 @@ object frm_finanzen: Tfrm_finanzen
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 3
-      Visible = False
       OnExit = btn_FinEinSaveClick
-      Width = 532
+      Width = 529
     end
     object cxButton2: TcxButton
-      Left = 9793
-      Top = 10000
-      Width = 581
+      Left = 652
+      Top = 201
+      Width = 580
       Height = 21
       Caption = 'Fixbetrag '#252'bernehmen'
       TabOrder = 6
-      Visible = False
       OnClick = cxButton2Click
     end
     object cxDBCurrencyEdit1: TcxDBCurrencyEdit
-      Left = 9793
-      Top = 10000
+      Left = 707
+      Top = 176
       DataBinding.DataField = 'FixBetrag'
       DataBinding.DataSource = dsEinnahmen
       ParentFont = False
@@ -122,15 +118,14 @@ object frm_finanzen: Tfrm_finanzen
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 5
-      Visible = False
       OnExit = btn_FinEinSaveClick
-      Width = 526
+      Width = 525
     end
     object grd_Finanzen_Einnahmen: TcxGrid
-      Left = 9793
-      Top = 10000
-      Width = 1216
-      Height = 552
+      Left = 33
+      Top = 262
+      Width = 1210
+      Height = 516
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -140,7 +135,6 @@ object frm_finanzen: Tfrm_finanzen
       ParentFont = False
       TabOrder = 7
       TabStop = False
-      Visible = False
       LockedStateImageOptions.Effect = lsieDark
       object tv_Einnahmen: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -207,17 +201,16 @@ object frm_finanzen: Tfrm_finanzen
       end
     end
     object dxBarDockControl1: TdxBarDockControl
-      Left = 9793
-      Top = 10000
-      Width = 1240
-      Height = 58
+      Left = 33
+      Top = 77
+      Width = 1210
+      Height = 63
       Align = dalNone
       BarManager = dxBarManager1
-      Visible = False
     end
     object cbx_FinAusJahr: TcxDBComboBox
       Left = 10000
-      Top = 10008
+      Top = 10000
       DataBinding.DataField = 'Gueltig_Jahr'
       DataBinding.DataSource = dsAusgaben
       Properties.DropDownListStyle = lsFixedList
@@ -307,11 +300,11 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 19
       Visible = False
       OnExit = btn_FinAusSaveClick
-      Width = 271
+      Width = 275
     end
     object cbx_FinAusMonat: TcxDBImageComboBox
       Left = 10000
-      Top = 10008
+      Top = 10000
       DataBinding.DataField = 'Gueltig_monat'
       DataBinding.DataSource = dsAusgaben
       ParentFont = False
@@ -376,11 +369,11 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 18
       Visible = False
       OnExit = btn_FinAusSaveClick
-      Width = 271
+      Width = 275
     end
     object chkbx_FinAusFixkosten: TcxDBCheckBox
       Left = 10000
-      Top = 10008
+      Top = 10000
       DataBinding.DataField = 'fixkosten'
       DataBinding.DataSource = dsAusgaben
       ParentBackground = False
@@ -403,7 +396,7 @@ object frm_finanzen: Tfrm_finanzen
     end
     object edt_FinAusBetrag: TcxDBCurrencyEdit
       Left = 10000
-      Top = 10008
+      Top = 10000
       DataBinding.DataField = 'betrag'
       DataBinding.DataSource = dsAusgaben
       ParentFont = False
@@ -418,11 +411,11 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 10
       Visible = False
       OnExit = btn_FinAusSaveClick
-      Width = 328
+      Width = 331
     end
     object edt_FinAusBez: TcxDBTextEdit
       Left = 10000
-      Top = 10008
+      Top = 10000
       DataBinding.DataField = 'Beschreibung'
       DataBinding.DataSource = dsAusgaben
       ParentFont = False
@@ -437,11 +430,11 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 13
       Visible = False
       OnExit = btn_FinAusSaveClick
-      Width = 338
+      Width = 342
     end
     object edt_FinAusBIC: TcxDBTextEdit
       Left = 10000
-      Top = 10008
+      Top = 10000
       DataBinding.DataField = 'Bankleitzahl'
       DataBinding.DataSource = dsAusgaben
       ParentFont = False
@@ -456,11 +449,11 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 16
       Visible = False
       OnExit = btn_FinAusSaveClick
-      Width = 338
+      Width = 342
     end
     object edt_FinAusIBAN: TcxDBTextEdit
       Left = 10000
-      Top = 10008
+      Top = 10000
       DataBinding.DataField = 'Kontonummer'
       DataBinding.DataSource = dsAusgaben
       ParentFont = False
@@ -475,11 +468,11 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 15
       Visible = False
       OnExit = btn_FinAusSaveClick
-      Width = 338
+      Width = 342
     end
     object edt_FinAusName: TcxDBTextEdit
       Left = 10000
-      Top = 10008
+      Top = 10000
       DataBinding.DataField = 'Name'
       DataBinding.DataSource = dsAusgaben
       ParentFont = False
@@ -494,11 +487,11 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 9
       Visible = False
       OnExit = btn_FinAusSaveClick
-      Width = 328
+      Width = 331
     end
     object edt_FinAusVerwendung: TcxDBTextEdit
       Left = 10000
-      Top = 10008
+      Top = 10000
       DataBinding.DataField = 'verwendungszweck'
       DataBinding.DataSource = dsAusgaben
       ParentFont = False
@@ -513,12 +506,12 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 14
       Visible = False
       OnExit = btn_FinAusSaveClick
-      Width = 338
+      Width = 342
     end
     object cxButton1: TcxButton
       Left = 10000
-      Top = 10008
-      Width = 389
+      Top = 10000
+      Width = 392
       Height = 21
       Caption = 'Fixbetrag '#252'bernehmen'
       TabOrder = 12
@@ -527,7 +520,7 @@ object frm_finanzen: Tfrm_finanzen
     end
     object edt_FinAusFixBetrag: TcxDBCurrencyEdit
       Left = 10000
-      Top = 10008
+      Top = 10000
       DataBinding.DataField = 'FixBetrag'
       DataBinding.DataSource = dsAusgaben
       ParentFont = False
@@ -542,13 +535,13 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 11
       Visible = False
       OnExit = btn_FinAusSaveClick
-      Width = 328
+      Width = 331
     end
     object grd_Finanzen_Ausgaben: TcxGrid
       Left = 10000
-      Top = 10008
-      Width = 1223
-      Height = 583
+      Top = 10000
+      Width = 1232
+      Height = 530
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -716,16 +709,16 @@ object frm_finanzen: Tfrm_finanzen
     end
     object dxBarDockControl2: TdxBarDockControl
       Left = 10000
-      Top = 10008
-      Width = 1223
-      Height = 58
+      Top = 10000
+      Width = 1210
+      Height = 63
       Align = dalNone
       BarManager = dxBarManager1
       Visible = False
     end
     object DBEdit1: TDBEdit
       Left = 10000
-      Top = 10008
+      Top = 10000
       Width = 150
       Height = 17
       BevelInner = bvNone
@@ -744,7 +737,7 @@ object frm_finanzen: Tfrm_finanzen
     end
     object DBEdit2: TDBEdit
       Left = 10000
-      Top = 10008
+      Top = 10000
       Width = 150
       Height = 17
       BevelInner = bvNone
@@ -763,7 +756,7 @@ object frm_finanzen: Tfrm_finanzen
     end
     object DBEdit3: TDBEdit
       Left = 10000
-      Top = 10008
+      Top = 10000
       Width = 150
       Height = 17
       BevelInner = bvNone
@@ -782,7 +775,7 @@ object frm_finanzen: Tfrm_finanzen
     end
     object cxDBDateEdit1: TcxDBDateEdit
       Left = 10000
-      Top = 10008
+      Top = 10000
       DataBinding.DataField = 'Eingegangen_Ausgegangen_am'
       ParentFont = False
       Properties.DateButtons = [btnClear, btnToday]
@@ -808,7 +801,7 @@ object frm_finanzen: Tfrm_finanzen
     end
     object ComboBox1: TComboBox
       Left = 10000
-      Top = 10008
+      Top = 10000
       Width = 145
       Height = 21
       Style = csDropDownList
@@ -836,7 +829,7 @@ object frm_finanzen: Tfrm_finanzen
     end
     object ComboBox2: TComboBox
       Left = 10000
-      Top = 10008
+      Top = 10000
       Width = 145
       Height = 21
       Style = csDropDownList
@@ -952,9 +945,9 @@ object frm_finanzen: Tfrm_finanzen
     end
     object cxGrid1: TcxGrid
       Left = 10000
-      Top = 10008
-      Width = 1223
-      Height = 637
+      Top = 10000
+      Width = 1232
+      Height = 567
       BevelInner = bvLowered
       BevelKind = bkFlat
       BorderStyle = cxcbsNone
@@ -1061,16 +1054,17 @@ object frm_finanzen: Tfrm_finanzen
       end
     end
     object dxBarDockControl3: TdxBarDockControl
-      Left = 20
-      Top = 44
-      Width = 1240
-      Height = 58
+      Left = 10000
+      Top = 10000
+      Width = 1210
+      Height = 63
       Align = dalNone
       BarManager = dxBarManager1
+      Visible = False
     end
     object cx_BelegJahr: TcxDBComboBox
-      Left = 998
-      Top = 176
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Jahr'
       DataBinding.DataSource = dsBelege
       Properties.DropDownListStyle = lsFixedList
@@ -1158,12 +1152,13 @@ object frm_finanzen: Tfrm_finanzen
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 35
+      Visible = False
       OnExit = btn_BelegeSaveClick
-      Width = 250
+      Width = 249
     end
     object cx_BelegMonat: TcxDBImageComboBox
-      Left = 699
-      Top = 176
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Monat'
       DataBinding.DataSource = dsBelege
       ParentFont = False
@@ -1226,12 +1221,13 @@ object frm_finanzen: Tfrm_finanzen
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 34
+      Visible = False
       OnExit = btn_BelegeSaveClick
-      Width = 263
+      Width = 261
     end
     object edt_BelegeNummer: TcxDBTextEdit
-      Left = 88
-      Top = 126
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Nummer'
       DataBinding.DataSource = dsBelege
       ParentFont = False
@@ -1244,23 +1240,25 @@ object frm_finanzen: Tfrm_finanzen
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 29
+      Visible = False
       OnExit = btn_BelegeSaveClick
-      Width = 550
+      Width = 547
     end
     object edt_BelegeBetrag: TcxDBCurrencyEdit
-      Left = 699
-      Top = 126
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Betrag'
       DataBinding.DataSource = dsBelege
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 32
+      Visible = False
       OnExit = btn_BelegeSaveClick
-      Width = 549
+      Width = 546
     end
     object edt_BelegeAussteller: TcxDBTextEdit
-      Left = 88
-      Top = 176
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Aussteller'
       DataBinding.DataSource = dsBelege
       ParentFont = False
@@ -1273,12 +1271,13 @@ object frm_finanzen: Tfrm_finanzen
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 31
+      Visible = False
       OnExit = btn_BelegeSaveClick
-      Width = 550
+      Width = 547
     end
     object cbx_BelegeKategorie: TcxDBImageComboBox
-      Left = 699
-      Top = 151
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Kategorie'
       DataBinding.DataSource = dsBelege
       Properties.Items = <
@@ -1318,12 +1317,13 @@ object frm_finanzen: Tfrm_finanzen
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 33
+      Visible = False
       OnExit = btn_BelegeSaveClick
-      Width = 549
+      Width = 546
     end
     object edt_BelegDatum: TcxDBDateEdit
-      Left = 88
-      Top = 151
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Datum'
       DataBinding.DataSource = dsBelege
       ParentFont = False
@@ -1336,14 +1336,15 @@ object frm_finanzen: Tfrm_finanzen
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 30
+      Visible = False
       OnExit = btn_BelegeSaveClick
-      Width = 550
+      Width = 547
     end
     object grd_Finanzen_Belege: TcxGrid
-      Left = 32
-      Top = 201
-      Width = 1216
-      Height = 582
+      Left = 10000
+      Top = 10000
+      Width = 1210
+      Height = 557
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1353,6 +1354,7 @@ object frm_finanzen: Tfrm_finanzen
       ParentFont = False
       TabOrder = 36
       TabStop = False
+      Visible = False
       LockedStateImageOptions.Effect = lsieDark
       object tv_Belege: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -1518,8 +1520,8 @@ object frm_finanzen: Tfrm_finanzen
     object dxBarDockControl4: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1223
-      Height = 58
+      Width = 1210
+      Height = 63
       Align = dalNone
       BarManager = dxBarManager1
       Visible = False
@@ -1527,8 +1529,8 @@ object frm_finanzen: Tfrm_finanzen
     object grd_Finanzen_Gutscheine: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1199
-      Height = 610
+      Width = 1210
+      Height = 557
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1633,7 +1635,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 38
       Visible = False
       OnExit = btn_GutscheinSaveClick
-      Width = 537
+      Width = 542
     end
     object edt_GutscheinWert: TcxDBCurrencyEdit
       Left = 10000
@@ -1645,7 +1647,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 41
       Visible = False
       OnExit = btn_GutscheinSaveClick
-      Width = 538
+      Width = 544
     end
     object edt_GutscheinAussteller: TcxDBTextEdit
       Left = 10000
@@ -1664,7 +1666,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 39
       Visible = False
       OnExit = btn_GutscheinSaveClick
-      Width = 537
+      Width = 542
     end
     object edt_GutscheinDatum: TcxDBDateEdit
       Left = 10000
@@ -1683,7 +1685,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 40
       Visible = False
       OnExit = btn_GutscheinSaveClick
-      Width = 537
+      Width = 542
     end
     object edt_GutscheinRestwert: TcxDBCurrencyEdit
       Left = 10000
@@ -1695,7 +1697,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 42
       Visible = False
       OnExit = btn_GutscheinSaveClick
-      Width = 538
+      Width = 544
     end
     object edt_GutscheinPin: TcxDBTextEdit
       Left = 10000
@@ -1714,7 +1716,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 43
       Visible = False
       OnExit = btn_GutscheinSaveClick
-      Width = 538
+      Width = 544
     end
     object dxLayoutControl1Group_Root: TdxLayoutGroup
       AlignHorz = ahClient
@@ -1728,7 +1730,7 @@ object frm_finanzen: Tfrm_finanzen
       Parent = dxLayoutControl1Group_Root
       AlignHorz = ahClient
       AlignVert = avClient
-      ItemIndex = 4
+      ItemIndex = 1
       LayoutDirection = ldTabbed
       ShowBorder = False
       Index = 0
@@ -1879,18 +1881,15 @@ object frm_finanzen: Tfrm_finanzen
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Einnahmen'
-      ItemIndex = 1
       Index = 1
     end
     object dxLayoutItem4: TdxLayoutItem
-      Parent = dxLayoutGroup22
-      AlignHorz = ahClient
-      AlignVert = avTop
+      Parent = dxLayoutGroup24
       CaptionOptions.Text = 'dxBarDockControl1'
       CaptionOptions.Visible = False
       Control = dxBarDockControl1
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1276
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1900,8 +1899,7 @@ object frm_finanzen: Tfrm_finanzen
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Einnahmequellen:'
-      ItemIndex = 1
-      Index = 1
+      Index = 0
     end
     object dxLayoutItem5: TdxLayoutItem
       Parent = dxLayoutGroup7
@@ -1969,25 +1967,22 @@ object frm_finanzen: Tfrm_finanzen
       ControlOptions.OriginalHeight = 610
       ControlOptions.OriginalWidth = 1272
       ControlOptions.ShowBorder = False
-      Index = 1
+      Index = 2
     end
     object dxLayoutGroup31: TdxLayoutGroup
       Parent = dxLayoutGroup2
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Ausgaben'
-      ItemIndex = 1
       Index = 2
     end
     object dxLayoutItem11: TdxLayoutItem
-      Parent = dxLayoutGroup31
-      AlignHorz = ahClient
-      AlignVert = avTop
+      Parent = dxLayoutGroup33
       CaptionOptions.Text = 'dxBarDockControl2'
       CaptionOptions.Visible = False
       Control = dxBarDockControl2
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1276
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1997,7 +1992,7 @@ object frm_finanzen: Tfrm_finanzen
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Ausgaben'
-      Index = 1
+      Index = 0
     end
     object dxLayoutItem12: TdxLayoutItem
       Parent = dxLayoutGroup13
@@ -2027,7 +2022,7 @@ object frm_finanzen: Tfrm_finanzen
       AlignVert = avTop
       CaptionOptions.Text = 'Fixkosten:'
       Control = chkbx_FinAusFixkosten
-      ControlOptions.OriginalHeight = 17
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 13
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2129,7 +2124,7 @@ object frm_finanzen: Tfrm_finanzen
       ControlOptions.OriginalHeight = 586
       ControlOptions.OriginalWidth = 1272
       ControlOptions.ShowBorder = False
-      Index = 2
+      Index = 1
     end
     object dxLayoutGroup41: TdxLayoutGroup
       Parent = dxLayoutGroup2
@@ -2274,18 +2269,15 @@ object frm_finanzen: Tfrm_finanzen
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Belege'
-      ItemIndex = 1
       Index = 4
     end
     object dxLayoutItem32: TdxLayoutItem
-      Parent = dxLayoutGroup50
-      AlignHorz = ahClient
-      AlignVert = avTop
+      Parent = dxLayoutGroup52
       CaptionOptions.Text = 'dxBarDockControl3'
       CaptionOptions.Visible = False
       Control = dxBarDockControl3
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1276
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2295,8 +2287,7 @@ object frm_finanzen: Tfrm_finanzen
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Belege'
-      ItemIndex = 1
-      Index = 1
+      Index = 0
     end
     object dxLayoutItem33: TdxLayoutItem
       Parent = dxLayoutGroup20
@@ -2386,25 +2377,22 @@ object frm_finanzen: Tfrm_finanzen
       ControlOptions.OriginalHeight = 610
       ControlOptions.OriginalWidth = 1272
       ControlOptions.ShowBorder = False
-      Index = 1
+      Index = 2
     end
     object dxLayoutGroup59: TdxLayoutGroup
       Parent = dxLayoutGroup2
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Gutscheine'
-      ItemIndex = 1
       Index = 5
     end
     object dxLayoutItem41: TdxLayoutItem
-      Parent = dxLayoutGroup59
-      AlignHorz = ahClient
-      AlignVert = avTop
+      Parent = dxLayoutGroup61
       CaptionOptions.Text = 'dxBarDockControl4'
       CaptionOptions.Visible = False
       Control = dxBarDockControl4
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1276
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2414,8 +2402,7 @@ object frm_finanzen: Tfrm_finanzen
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Gutscheine'
-      ItemIndex = 1
-      Index = 1
+      Index = 0
     end
     object dxLayoutItem42: TdxLayoutItem
       Parent = dxLayoutGroup27
@@ -2493,7 +2480,7 @@ object frm_finanzen: Tfrm_finanzen
       ControlOptions.OriginalHeight = 610
       ControlOptions.OriginalWidth = 1272
       ControlOptions.ShowBorder = False
-      Index = 1
+      Index = 2
     end
     object dxLayoutGroup1: TdxLayoutGroup
       Parent = dxLayoutGroup14
@@ -2580,7 +2567,7 @@ object frm_finanzen: Tfrm_finanzen
       CaptionOptions.Text = 'New Group'
       ItemIndex = 1
       LayoutDirection = ldHorizontal
-      Index = 0
+      Index = 1
     end
     object dxLayoutGroup10: TdxLayoutGroup
       Parent = dxLayoutGroup9
@@ -2598,7 +2585,7 @@ object frm_finanzen: Tfrm_finanzen
       ItemIndex = 2
       LayoutDirection = ldHorizontal
       ShowBorder = False
-      Index = 0
+      Index = 1
     end
     object dxLayoutGroup13: TdxLayoutGroup
       Parent = dxLayoutGroup12
@@ -2643,7 +2630,7 @@ object frm_finanzen: Tfrm_finanzen
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
-      Index = 0
+      Index = 1
     end
     object dxLayoutGroup20: TdxLayoutGroup
       Parent = dxLayoutGroup19
@@ -2685,7 +2672,7 @@ object frm_finanzen: Tfrm_finanzen
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
-      Index = 0
+      Index = 1
     end
     object dxLayoutGroup27: TdxLayoutGroup
       Parent = dxLayoutGroup26
@@ -2810,7 +2797,6 @@ object frm_finanzen: Tfrm_finanzen
     ImageOptions.UseLargeImagesForLargeIcons = True
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 616
     Top = 392

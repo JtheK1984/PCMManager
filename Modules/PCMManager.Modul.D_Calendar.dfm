@@ -150,7 +150,7 @@ object frm_Calendar: Tfrm_Calendar
       Left = 10000
       Top = 10000
       Width = 1022
-      Height = 298
+      Height = 299
       TabOrder = 6
       Visible = False
       LookAndFeel.NativeStyle = False
@@ -498,6 +498,7 @@ object frm_Calendar: Tfrm_Calendar
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
+      StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 10
       Visible = False
       Width = 410
@@ -521,6 +522,7 @@ object frm_Calendar: Tfrm_Calendar
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
+      StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 8
       Visible = False
       Width = 437
@@ -563,14 +565,14 @@ object frm_Calendar: Tfrm_Calendar
       Style.IsFontAssigned = True
       TabOrder = 12
       Visible = False
-      Height = 238
+      Height = 239
       Width = 840
     end
     object cxGrid5: TcxGrid
       Left = 10000
       Top = 10000
       Width = 176
-      Height = 200
+      Height = 201
       TabOrder = 13
       Visible = False
       LookAndFeel.NativeStyle = False
@@ -727,7 +729,7 @@ object frm_Calendar: Tfrm_Calendar
       OnEnter = edt_SucheEnter
       OnExit = edt_SucheExit
       Height = 24
-      Width = 980
+      Width = 976
     end
     object edt_Stundenplan_Klasse: TcxDBTextEdit
       Left = 10000
@@ -765,7 +767,7 @@ object frm_Calendar: Tfrm_Calendar
       TabOrder = 18
       Visible = False
       OnExit = btn_StundenplanSaveClick
-      Width = 710
+      Width = 706
     end
     object edt_Stundenplan_Schuljahr: TcxDBTextEdit
       Left = 10000
@@ -789,7 +791,7 @@ object frm_Calendar: Tfrm_Calendar
     object grd_Stundenplanuebersicht: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1004
+      Width = 1000
       Height = 81
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
@@ -876,7 +878,7 @@ object frm_Calendar: Tfrm_Calendar
     object brdckctrl_Stundenplan: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1022
+      Width = 1000
       Height = 63
       Align = dalNone
       BarManager = brmgr_Kalendar
@@ -905,7 +907,7 @@ object frm_Calendar: Tfrm_Calendar
       TabOrder = 26
       Visible = False
       OnExit = btn_StundeSaveClick
-      Width = 131
+      Width = 129
     end
     object lucmbbx_Stundenplan_Donnerstag: TcxDBLookupComboBox
       Left = 10000
@@ -930,7 +932,7 @@ object frm_Calendar: Tfrm_Calendar
       TabOrder = 28
       Visible = False
       OnExit = btn_StundeSaveClick
-      Width = 131
+      Width = 129
     end
     object lucmbbx_Stundenplan_Freitag: TcxDBLookupComboBox
       Left = 10000
@@ -955,7 +957,7 @@ object frm_Calendar: Tfrm_Calendar
       TabOrder = 29
       Visible = False
       OnExit = btn_StundeSaveClick
-      Width = 131
+      Width = 129
     end
     object lucmbbx_Stundenplan_Mittwoch: TcxDBLookupComboBox
       Left = 10000
@@ -980,7 +982,7 @@ object frm_Calendar: Tfrm_Calendar
       TabOrder = 27
       Visible = False
       OnExit = btn_StundeSaveClick
-      Width = 131
+      Width = 129
     end
     object lucmbbx_Stundenplan_Montag: TcxDBLookupComboBox
       Left = 10000
@@ -1005,7 +1007,7 @@ object frm_Calendar: Tfrm_Calendar
       TabOrder = 25
       Visible = False
       OnExit = btn_StundeSaveClick
-      Width = 131
+      Width = 129
     end
     object lucmbbx_Stundenplan_Samstag: TcxDBLookupComboBox
       Left = 10000
@@ -1030,7 +1032,7 @@ object frm_Calendar: Tfrm_Calendar
       TabOrder = 30
       Visible = False
       OnExit = btn_StundeSaveClick
-      Width = 131
+      Width = 129
     end
     object tiEdt_Stundenplan_Bis: TcxDBTimeEdit
       Left = 10000
@@ -1073,8 +1075,8 @@ object frm_Calendar: Tfrm_Calendar
     object grd_StundenplanFach: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 986
-      Height = 461
+      Width = 978
+      Height = 467
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1223,7 +1225,7 @@ object frm_Calendar: Tfrm_Calendar
     object brdckCtrl_StundenplanFach: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 986
+      Width = 978
       Height = 63
       Align = dalNone
       BarManager = brmgr_Kalendar
@@ -1471,7 +1473,6 @@ object frm_Calendar: Tfrm_Calendar
       AlignVert = avClient
       CaptionOptions.ImageIndex = 14
       CaptionOptions.Text = 'Stundenplan'
-      ItemIndex = 1
       Index = 2
     end
     object dxLayoutGroup23: TdxLayoutGroup
@@ -1479,12 +1480,10 @@ object frm_Calendar: Tfrm_Calendar
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Stundenplan'#252'bersicht'
-      Index = 1
+      Index = 0
     end
     object dxLayoutItem18: TdxLayoutItem
-      Parent = lagrp_Stundenplan
-      AlignHorz = ahClient
-      AlignVert = avTop
+      Parent = dxLayoutGroup23
       CaptionOptions.Text = 'brdckctrl_Stundenplan'
       CaptionOptions.Visible = False
       Control = brdckctrl_Stundenplan
@@ -1544,7 +1543,7 @@ object frm_Calendar: Tfrm_Calendar
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Stundenplan'
-      Index = 2
+      Index = 3
     end
     object dxLayoutItem23: TdxLayoutItem
       Parent = dxLayoutGroup28
@@ -1763,7 +1762,7 @@ object frm_Calendar: Tfrm_Calendar
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
       ShowBorder = False
-      Index = 1
+      Index = 2
     end
     object dxLayoutGroup11: TdxLayoutGroup
       Parent = dxLayoutGroup23
@@ -1772,7 +1771,7 @@ object frm_Calendar: Tfrm_Calendar
       CaptionOptions.Text = 'New Group'
       LayoutDirection = ldHorizontal
       ShowBorder = False
-      Index = 0
+      Index = 1
     end
     object dxLayoutGroup12: TdxLayoutGroup
       Parent = dxLayoutGroup29
@@ -2026,7 +2025,6 @@ object frm_Calendar: Tfrm_Calendar
     ImageOptions.UseLargeImagesForLargeIcons = True
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseF10ForMenu = False
     UseSystemFont = True
     Left = 1205
@@ -2992,7 +2990,7 @@ object frm_Calendar: Tfrm_Calendar
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 45708.543403912040000000
+      ReportDocument.CreationDate = 45729.690312569440000000
       OptionsSize.AutoWidth = True
       PixelsPerInch = 96
       BuiltInReportLink = True

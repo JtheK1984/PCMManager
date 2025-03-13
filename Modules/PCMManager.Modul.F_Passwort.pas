@@ -15,7 +15,7 @@ uses
   cxDBLookupEdit, cxLabel, cxGridLevel, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGridCustomView, cxGrid, Vcl.StdCtrls, cxButtons,
   cxGroupBox, cxPC,PCM.Functions, dxLayoutContainer, dxLayoutcxEditAdapters,
-  dxLayoutControlAdapters, dxLayoutControl;
+  dxLayoutControlAdapters, dxLayoutControl, dxUIAClasses;
 
 type
   Tfrm_password = class(TForm)

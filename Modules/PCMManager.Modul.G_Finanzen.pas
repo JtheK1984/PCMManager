@@ -20,7 +20,7 @@ uses
   FireDAC.Comp.Client, dxBar,System.UITypes, Xml.XMLIntf,Xml.XMLDoc, Xml.xmldom,
   Xml.Win.msxmldom,cxGridExportLink,PCM.Functions, dxBarCode, Xml.adomxmldom,
   dxLayoutcxEditAdapters, dxLayoutControlAdapters, dxLayoutContainer,
-  dxLayoutControl;
+  dxLayoutControl, dxUIAClasses;
 
 type
   Tfrm_finanzen = class(TForm)

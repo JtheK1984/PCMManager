@@ -45,7 +45,8 @@ uses
   dxChartXYSeriesLineView, dxChartXYSeriesAreaView, dxChartMarkers,
   dxChartXYSeriesBarView, dxChartDBData, dxCoreClasses, dxChartControl,
   dxStatusBar, cxImageList, dxLayoutContainer, dxLayoutLookAndFeels,
-  dxLayoutControl, dxLayoutcxEditAdapters,PCM.Browser, dxLayoutControlAdapters;
+  dxLayoutControl, dxLayoutcxEditAdapters,PCM.Browser, dxLayoutControlAdapters,
+  dxUIAClasses;
 
 
 type
@@ -470,10 +471,10 @@ uses  PCM.Main,
       PCM.Strings,
       uwvLoader;
 
-{$Region Hilfsfunktionen}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktionen}
 function Tfrm_Calendar.SearchTypeToStr(ASearchType : TSearchType) : String;
 begin
   case ASearchType of
@@ -1539,10 +1540,10 @@ begin
   end;
 end;
 {$EndRegion}
-{$Region TABKalender}
 ////////////////////////////////////////////////////////////////////////////////
 // TABKalender                                                                //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region TABKalender}
 procedure Tfrm_Calendar.btn_CalNewClick(Sender: TObject);
 var
   iNewId: integer;
@@ -3853,10 +3854,10 @@ begin
   FormResize(Self);
 end;
 {$Endregion}
-{$Region Stundenplan}
 ////////////////////////////////////////////////////////////////////////////////
 // TAB Stundenplan                                                            //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Stundenplan}
 procedure Tfrm_Calendar.btn_StundenplanNewClick(Sender: TObject);
 begin
    if qry_Stundenplan.State in [dsInsert, dsedit] then
@@ -4285,10 +4286,11 @@ begin
   end;
 end;
 {$EndRegion}
+
+////////////////////////////////////////////////////////////////////////////////
+// Formfunctions                                                              //
+////////////////////////////////////////////////////////////////////////////////
 {$Region Formfunctions}
-////////////////////////////////////////////////////////////////////////////////
-// TAB Formfunctions                                                            //
-////////////////////////////////////////////////////////////////////////////////
 procedure Tfrm_Calendar.FormActivate(Sender: TObject);
 begin
   FormShow(Self);

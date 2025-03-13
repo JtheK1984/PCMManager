@@ -959,7 +959,7 @@ begin
           end;
         6:
           begin
-            sModul:= 'Kalender_AuKalender_Aufgaben_Jira_Stundenplanfgaben_Stundenplan';
+            sModul:= 'Kalender_Aufgaben_Jira_Stundenplan';
             sModulCaption := 'i'  + rs_PCMManager_KalenderStundenplan;
             dm_PCM.iModulTab:= 4;
           end;
