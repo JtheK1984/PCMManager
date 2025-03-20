@@ -26,10 +26,10 @@ object frm_password: Tfrm_password
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
     object grd_Passwort: TcxGrid
-      Left = 33
-      Top = 301
-      Width = 1102
-      Height = 411
+      Left = 32
+      Top = 281
+      Width = 1108
+      Height = 436
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -175,8 +175,8 @@ object frm_password: Tfrm_password
       end
     end
     object btn_Passwort_PasswortShow: TcxButton
-      Left = 1112
-      Top = 147
+      Left = 1117
+      Top = 127
       Width = 23
       Height = 23
       OptionsImage.ImageIndex = 23
@@ -186,8 +186,8 @@ object frm_password: Tfrm_password
       OnClick = btn_Passwort_PasswortShowClick
     end
     object cbx_PWTyp: TcxDBLookupComboBox
-      Left = 197
-      Top = 197
+      Left = 196
+      Top = 177
       DataBinding.DataField = 'ID_typ'
       DataBinding.DataSource = dsPWD
       ParentFont = False
@@ -207,11 +207,11 @@ object frm_password: Tfrm_password
       Style.IsFontAssigned = True
       TabOrder = 3
       OnExit = btn_PasswortSaveClick
-      Width = 427
+      Width = 430
     end
     object edt_Passwort_APPPort: TcxDBTextEdit
-      Left = 655
-      Top = 226
+      Left = 656
+      Top = 206
       DataBinding.DataField = 'APP_Port'
       DataBinding.DataSource = dsPWD
       ParentFont = False
@@ -225,11 +225,11 @@ object frm_password: Tfrm_password
       Style.IsFontAssigned = True
       TabOrder = 9
       OnExit = btn_PasswortSaveClick
-      Width = 124
+      Width = 126
     end
     object edt_Passwort_APPSSL: TcxDBTextEdit
-      Left = 949
-      Top = 226
+      Left = 952
+      Top = 206
       DataBinding.DataField = 'APP_Verschluesselung'
       DataBinding.DataSource = dsPWD
       ParentFont = False
@@ -243,11 +243,11 @@ object frm_password: Tfrm_password
       Style.IsFontAssigned = True
       TabOrder = 10
       OnExit = btn_PasswortSaveClick
-      Width = 186
+      Width = 188
     end
     object edt_Passwort_Benutzer: TcxDBTextEdit
-      Left = 197
-      Top = 172
+      Left = 196
+      Top = 152
       DataBinding.DataField = 'user'
       DataBinding.DataSource = dsPWD
       ParentFont = False
@@ -261,11 +261,11 @@ object frm_password: Tfrm_password
       Style.IsFontAssigned = True
       TabOrder = 2
       OnExit = btn_PasswortSaveClick
-      Width = 427
+      Width = 430
     end
     object edt_Passwort_Bezeichnung: TcxDBTextEdit
-      Left = 197
-      Top = 147
+      Left = 196
+      Top = 127
       DataBinding.DataField = 'Bezeichnung'
       DataBinding.DataSource = dsPWD
       ParentFont = False
@@ -279,11 +279,11 @@ object frm_password: Tfrm_password
       Style.IsFontAssigned = True
       TabOrder = 1
       OnExit = btn_PasswortSaveClick
-      Width = 427
+      Width = 430
     end
     object edt_Passwort_EmailInboxPort: TcxDBTextEdit
-      Left = 655
-      Top = 251
+      Left = 656
+      Top = 231
       DataBinding.DataField = 'MAIL_PosteingangsPort'
       DataBinding.DataSource = dsPWD
       ParentFont = False
@@ -297,11 +297,11 @@ object frm_password: Tfrm_password
       Style.IsFontAssigned = True
       TabOrder = 12
       OnExit = btn_PasswortSaveClick
-      Width = 124
+      Width = 126
     end
     object edt_Passwort_EmailInboxServer: TcxDBTextEdit
-      Left = 197
-      Top = 251
+      Left = 196
+      Top = 231
       DataBinding.DataField = 'MAIL_Posteingangsserver'
       DataBinding.DataSource = dsPWD
       ParentFont = False
@@ -315,11 +315,11 @@ object frm_password: Tfrm_password
       Style.IsFontAssigned = True
       TabOrder = 11
       OnExit = btn_PasswortSaveClick
-      Width = 288
+      Width = 290
     end
     object edt_Passwort_EmailInboxSSL: TcxDBTextEdit
-      Left = 949
-      Top = 251
+      Left = 952
+      Top = 231
       DataBinding.DataField = 'MAIL_PosteingangsVerschluesselung'
       DataBinding.DataSource = dsPWD
       ParentFont = False
@@ -333,11 +333,11 @@ object frm_password: Tfrm_password
       Style.IsFontAssigned = True
       TabOrder = 13
       OnExit = btn_PasswortSaveClick
-      Width = 186
+      Width = 188
     end
     object edt_Passwort_EmailOutboxPort: TcxDBTextEdit
-      Left = 655
-      Top = 276
+      Left = 656
+      Top = 256
       DataBinding.DataField = 'MAIL_PostausgangsPort'
       DataBinding.DataSource = dsPWD
       ParentFont = False
@@ -351,11 +351,11 @@ object frm_password: Tfrm_password
       Style.IsFontAssigned = True
       TabOrder = 15
       OnExit = btn_PasswortSaveClick
-      Width = 124
+      Width = 126
     end
     object edt_Passwort_EmailOutboxServer: TcxDBTextEdit
-      Left = 197
-      Top = 276
+      Left = 196
+      Top = 256
       DataBinding.DataField = 'MAIL_Postausgangsserver'
       DataBinding.DataSource = dsPWD
       ParentFont = False
@@ -369,11 +369,11 @@ object frm_password: Tfrm_password
       Style.IsFontAssigned = True
       TabOrder = 14
       OnExit = btn_PasswortSaveClick
-      Width = 288
+      Width = 290
     end
     object edt_Passwort_EmailOutboxSSL: TcxDBTextEdit
-      Left = 949
-      Top = 276
+      Left = 952
+      Top = 256
       DataBinding.DataField = 'MAIL_PostausgangsVerschluesselung'
       DataBinding.DataSource = dsPWD
       ParentFont = False
@@ -387,11 +387,11 @@ object frm_password: Tfrm_password
       Style.IsFontAssigned = True
       TabOrder = 16
       OnExit = btn_PasswortSaveClick
-      Width = 186
+      Width = 188
     end
     object edt_Passwort_Link: TcxDBTextEdit
-      Left = 729
-      Top = 176
+      Left = 731
+      Top = 156
       DataBinding.DataField = 'link'
       DataBinding.DataSource = dsPWD
       ParentFont = False
@@ -405,11 +405,11 @@ object frm_password: Tfrm_password
       Style.IsFontAssigned = True
       TabOrder = 6
       OnExit = btn_PasswortSaveClick
-      Width = 406
+      Width = 409
     end
     object edt_Passwort_Passwort: TcxDBTextEdit
-      Left = 729
-      Top = 147
+      Left = 731
+      Top = 127
       DataBinding.DataField = 'password'
       DataBinding.DataSource = dsPWD
       ParentFont = False
@@ -425,11 +425,11 @@ object frm_password: Tfrm_password
       Style.IsFontAssigned = True
       TabOrder = 4
       OnExit = btn_PasswortSaveClick
-      Width = 377
+      Width = 380
     end
     object edt_Passwort_VPN: TcxDBTextEdit
-      Left = 729
-      Top = 201
+      Left = 731
+      Top = 181
       DataBinding.DataField = 'VPN_SharedSecret'
       DataBinding.DataSource = dsPWD
       ParentFont = False
@@ -443,11 +443,11 @@ object frm_password: Tfrm_password
       Style.IsFontAssigned = True
       TabOrder = 7
       OnExit = btn_PasswortSaveClick
-      Width = 406
+      Width = 409
     end
     object edt_Passwort_VPN_APP: TcxDBTextEdit
-      Left = 197
-      Top = 226
+      Left = 196
+      Top = 206
       DataBinding.DataField = 'APP_IP'
       DataBinding.DataSource = dsPWD
       ParentFont = False
@@ -461,13 +461,13 @@ object frm_password: Tfrm_password
       Style.IsFontAssigned = True
       TabOrder = 8
       OnExit = btn_PasswortSaveClick
-      Width = 288
+      Width = 290
     end
     object dxBarDockControl1: TdxBarDockControl
-      Left = 33
-      Top = 78
-      Width = 1102
-      Height = 63
+      Left = 32
+      Top = 63
+      Width = 1108
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Passwort
     end
@@ -612,7 +612,7 @@ object frm_password: Tfrm_password
       Left = 10000
       Top = 10000
       Width = 1102
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Passwort
       Visible = False
@@ -725,7 +725,7 @@ object frm_password: Tfrm_password
       Left = 10000
       Top = 10000
       Width = 1102
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Passwort
       Visible = False
@@ -760,7 +760,7 @@ object frm_password: Tfrm_password
       CaptionOptions.Visible = False
       Control = dxBarDockControl1
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1168
       ControlOptions.ShowBorder = False
       Index = 0
@@ -985,7 +985,7 @@ object frm_password: Tfrm_password
       CaptionOptions.Visible = False
       Control = dxBarDockControl2
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1164
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1037,7 +1037,7 @@ object frm_password: Tfrm_password
       CaptionOptions.Visible = False
       Control = dxBarDockControl3
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1164
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1188,8 +1188,10 @@ object frm_password: Tfrm_password
     ImageOptions.LargeImages = dm_PCM.imglst_32x32
     ImageOptions.LargeIcons = True
     ImageOptions.UseLargeImagesForLargeIcons = True
+    LookAndFeel.NativeStyle = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 576
     Top = 360

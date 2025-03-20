@@ -9,7 +9,7 @@ uses
   cxGroupBox, cxButtons, cxGraphics, cxLookAndFeels, Buttons,
   Vcl.ComCtrls, dxCore, cxDateUtils, cxLabel, System.UITypes,
   dxLayoutcxEditAdapters, dxLayoutControlAdapters, dxLayoutContainer, cxClasses,
-  dxLayoutControl;
+  dxLayoutControl, dxUIAClasses;
 
 type
   Tfrm_FeiertageAktualisieren = class(TForm)

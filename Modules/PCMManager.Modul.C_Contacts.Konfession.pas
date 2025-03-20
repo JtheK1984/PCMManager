@@ -11,7 +11,8 @@ uses
   cxLookAndFeelPainters, ComCtrls, ToolWin, dxBar, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, cxNavigator, dxDateRanges, dxScrollbarAnnotations;
+  FireDAC.Comp.Client, cxNavigator, dxDateRanges, dxScrollbarAnnotations,
+  dxUIAClasses;
 
 type
   Tfrm_PCM_Konfession = class(TForm)

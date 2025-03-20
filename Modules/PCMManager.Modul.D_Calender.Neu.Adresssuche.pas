@@ -19,7 +19,7 @@ uses
   cxNavigator, dxBarBuiltInMenu, dxDateRanges,
   dxScrollbarAnnotations,
   dxBar, cxLabel,pcm.Functions, System.UITypes, dxLayoutcxEditAdapters,
-  dxLayoutControlAdapters, dxLayoutContainer, dxLayoutControl;
+  dxLayoutControlAdapters, dxLayoutContainer, dxLayoutControl, dxUIAClasses;
 
 type
   TAdressSucheTyp = (astAdressen, astAnsprechpartner);

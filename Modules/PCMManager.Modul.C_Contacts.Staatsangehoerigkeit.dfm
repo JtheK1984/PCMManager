@@ -32,8 +32,8 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
     LockedStateImageOptions.Effect = lsieDark
     LookAndFeel.Kind = lfFlat
     LookAndFeel.NativeStyle = False
-    ExplicitTop = 0
-    ExplicitHeight = 244
+    ExplicitWidth = 652
+    ExplicitHeight = 164
     object grdDBTblView_Staatsangehoerigkeit: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       FilterBox.CustomizeDialog = False
@@ -91,6 +91,7 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
     ImageOptions.LargeImages = dm_PCM.imglst_32x32
     ImageOptions.LargeIcons = True
     ImageOptions.UseLargeImagesForLargeIcons = True
+    LookAndFeel.NativeStyle = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
     Style = bmsUseLookAndFeel

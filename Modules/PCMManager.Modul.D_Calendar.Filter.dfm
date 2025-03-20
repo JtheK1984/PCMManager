@@ -23,10 +23,8 @@ object frm_PCM_KalenderFilter: Tfrm_PCM_KalenderFilter
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitLeft = 112
-    ExplicitTop = 40
-    ExplicitWidth = 300
-    ExplicitHeight = 250
+    ExplicitWidth = 498
+    ExplicitHeight = 281
     object btn_Ok: TcxButton
       Left = 10
       Top = 263

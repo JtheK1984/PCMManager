@@ -20,17 +20,13 @@ object frm_Mail: Tfrm_Mail
     Width = 1240
     Height = 813
     Align = alClient
-    TabOrder = 4
+    TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitLeft = 472
-    ExplicitTop = 280
-    ExplicitWidth = 300
-    ExplicitHeight = 250
     object dxBarDockControl1: TdxBarDockControl
       Left = 10
       Top = 10
       Width = 1220
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Email
     end
@@ -76,12 +72,13 @@ object frm_Mail: Tfrm_Mail
       Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
+      ParentFont = False
     end
     object grd_Mail: TcxGrid
       Left = 266
-      Top = 79
+      Top = 74
       Width = 964
-      Height = 420
+      Height = 426
       BorderStyle = cxcbsNone
       TabOrder = 2
       object grdDBTblView_Mails: TcxGridDBTableView
@@ -177,9 +174,9 @@ object frm_Mail: Tfrm_Mail
     end
     object trlst_EmailFolder: TcxTreeList
       Left = 10
-      Top = 79
+      Top = 74
       Width = 250
-      Height = 698
+      Height = 703
       Bands = <
         item
         end>
@@ -219,14 +216,14 @@ object frm_Mail: Tfrm_Mail
     end
     object pnl_Browser: TcxGroupBox
       Left = 266
-      Top = 516
+      Top = 513
       PanelStyle.Active = True
       ParentBackground = False
       ParentColor = False
-      Style.Color = 7566195
+      Style.Color = clBtnFace
       Style.TransparentBorder = False
       TabOrder = 3
-      Height = 261
+      Height = 264
       Width = 964
     end
     object dxLayoutControl1Group_Root: TdxLayoutGroup
@@ -262,7 +259,7 @@ object frm_Mail: Tfrm_Mail
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = dxBarDockControl1
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1220
       ControlOptions.ShowBorder = False
       Index = 0
@@ -367,6 +364,7 @@ object frm_Mail: Tfrm_Mail
     ImageOptions.LargeImages = dm_PCM.imglst_32x32
     ImageOptions.LargeIcons = True
     ImageOptions.UseLargeImagesForLargeIcons = True
+    LookAndFeel.NativeStyle = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
     Style = bmsUseLookAndFeel

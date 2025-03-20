@@ -23,7 +23,13 @@ object frm_PCM_MailShow_Ordner: Tfrm_PCM_MailShow_Ordner
     Margins.Right = 8
     Margins.Bottom = 8
     Align = alTop
+    Style.LookAndFeel.NativeStyle = False
+    StyleDisabled.LookAndFeel.NativeStyle = False
+    StyleFocused.LookAndFeel.NativeStyle = False
+    StyleHot.LookAndFeel.NativeStyle = False
+    StyleReadOnly.LookAndFeel.NativeStyle = False
     TabOrder = 0
+    ExplicitWidth = 598
     Width = 604
   end
   object cxButton1: TcxButton
@@ -32,6 +38,7 @@ object frm_PCM_MailShow_Ordner: Tfrm_PCM_MailShow_Ordner
     Width = 150
     Height = 25
     Caption = 'Verschieben'
+    LookAndFeel.NativeStyle = False
     TabOrder = 1
     OnClick = cxButton1Click
   end
@@ -41,6 +48,7 @@ object frm_PCM_MailShow_Ordner: Tfrm_PCM_MailShow_Ordner
     Width = 150
     Height = 25
     Caption = 'Abbrechen'
+    LookAndFeel.NativeStyle = False
     TabOrder = 2
     OnClick = cxButton2Click
   end

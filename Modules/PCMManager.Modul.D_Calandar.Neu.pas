@@ -25,7 +25,7 @@ uses
   DateUtils, CommCtrl,  ShellApi, dxShellDialogs,
   PCMManager.Helper.Calendar.Neu.Wiederholung, System.uitypes,
   dxLayoutContainer, dxLayoutcxEditAdapters, dxLayoutControlAdapters,
-  dxLayoutControl;
+  dxLayoutControl, dxUIAClasses;
 
 type
   Tfrm_Calendar_new = class(TForm)

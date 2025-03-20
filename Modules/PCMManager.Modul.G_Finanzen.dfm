@@ -42,7 +42,7 @@ object frm_finanzen: Tfrm_finanzen
     end
     object edt_FinEinAbsender: TcxDBTextEdit
       Left = 117
-      Top = 176
+      Top = 144
       DataBinding.DataField = 'Quelle'
       DataBinding.DataSource = dsEinnahmen
       ParentFont = False
@@ -56,11 +56,11 @@ object frm_finanzen: Tfrm_finanzen
       Style.IsFontAssigned = True
       TabOrder = 2
       OnExit = btn_FinEinSaveClick
-      Width = 529
+      Width = 532
     end
     object edt_FinEinBetrag: TcxDBCurrencyEdit
       Left = 117
-      Top = 226
+      Top = 194
       DataBinding.DataField = 'Betrag'
       DataBinding.DataSource = dsEinnahmen
       ParentFont = False
@@ -74,11 +74,11 @@ object frm_finanzen: Tfrm_finanzen
       Style.IsFontAssigned = True
       TabOrder = 4
       OnExit = btn_FinEinSaveClick
-      Width = 529
+      Width = 532
     end
     object edt_FinEinBEz: TcxDBTextEdit
       Left = 117
-      Top = 201
+      Top = 169
       DataBinding.DataField = 'Bezeichnung'
       DataBinding.DataSource = dsEinnahmen
       ParentFont = False
@@ -92,20 +92,20 @@ object frm_finanzen: Tfrm_finanzen
       Style.IsFontAssigned = True
       TabOrder = 3
       OnExit = btn_FinEinSaveClick
-      Width = 529
+      Width = 532
     end
     object cxButton2: TcxButton
-      Left = 652
-      Top = 201
-      Width = 580
+      Left = 655
+      Top = 169
+      Width = 581
       Height = 21
       Caption = 'Fixbetrag '#252'bernehmen'
       TabOrder = 6
       OnClick = cxButton2Click
     end
     object cxDBCurrencyEdit1: TcxDBCurrencyEdit
-      Left = 707
-      Top = 176
+      Left = 710
+      Top = 144
       DataBinding.DataField = 'FixBetrag'
       DataBinding.DataSource = dsEinnahmen
       ParentFont = False
@@ -119,13 +119,13 @@ object frm_finanzen: Tfrm_finanzen
       Style.IsFontAssigned = True
       TabOrder = 5
       OnExit = btn_FinEinSaveClick
-      Width = 525
+      Width = 526
     end
     object grd_Finanzen_Einnahmen: TcxGrid
-      Left = 33
-      Top = 262
-      Width = 1210
-      Height = 516
+      Left = 32
+      Top = 231
+      Width = 1216
+      Height = 552
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -201,10 +201,10 @@ object frm_finanzen: Tfrm_finanzen
       end
     end
     object dxBarDockControl1: TdxBarDockControl
-      Left = 33
-      Top = 77
-      Width = 1210
-      Height = 63
+      Left = 32
+      Top = 62
+      Width = 1216
+      Height = 58
       Align = dalNone
       BarManager = dxBarManager1
     end
@@ -711,7 +711,7 @@ object frm_finanzen: Tfrm_finanzen
       Left = 10000
       Top = 10000
       Width = 1210
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = dxBarManager1
       Visible = False
@@ -1057,7 +1057,7 @@ object frm_finanzen: Tfrm_finanzen
       Left = 10000
       Top = 10000
       Width = 1210
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = dxBarManager1
       Visible = False
@@ -1521,7 +1521,7 @@ object frm_finanzen: Tfrm_finanzen
       Left = 10000
       Top = 10000
       Width = 1210
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = dxBarManager1
       Visible = False
@@ -1889,7 +1889,7 @@ object frm_finanzen: Tfrm_finanzen
       CaptionOptions.Visible = False
       Control = dxBarDockControl1
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1276
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1982,7 +1982,7 @@ object frm_finanzen: Tfrm_finanzen
       CaptionOptions.Visible = False
       Control = dxBarDockControl2
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1276
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2022,7 +2022,7 @@ object frm_finanzen: Tfrm_finanzen
       AlignVert = avTop
       CaptionOptions.Text = 'Fixkosten:'
       Control = chkbx_FinAusFixkosten
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 17
       ControlOptions.OriginalWidth = 13
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2277,7 +2277,7 @@ object frm_finanzen: Tfrm_finanzen
       CaptionOptions.Visible = False
       Control = dxBarDockControl3
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1276
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2392,7 +2392,7 @@ object frm_finanzen: Tfrm_finanzen
       CaptionOptions.Visible = False
       Control = dxBarDockControl4
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1276
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2795,8 +2795,10 @@ object frm_finanzen: Tfrm_finanzen
     ImageOptions.LargeImages = dm_PCM.imglst_32x32
     ImageOptions.LargeIcons = True
     ImageOptions.UseLargeImagesForLargeIcons = True
+    LookAndFeel.NativeStyle = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 616
     Top = 392

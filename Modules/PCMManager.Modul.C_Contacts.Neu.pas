@@ -9,7 +9,8 @@ uses
   Vcl.ImgList, Vcl.StdCtrls, cxButtons, cxMaskEdit, cxDropDownEdit, cxTextEdit,
   dxGDIPlusClasses, Vcl.ExtCtrls,Data.DB,
   cxImage, cxLabel, cxGroupBox, system.UITypes, dxLayoutcxEditAdapters,
-  dxLayoutControlAdapters, dxLayoutContainer, cxClasses, dxLayoutControl;
+  dxLayoutControlAdapters, dxLayoutContainer, cxClasses, dxLayoutControl,
+  dxUIAClasses;
 
 type
   Tfrm_PCManagerNewContact = class(TForm)

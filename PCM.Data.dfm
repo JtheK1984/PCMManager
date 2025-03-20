@@ -22771,10 +22771,21 @@ object dm_PCM: Tdm_PCM
   end
   object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
     object dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel
-      PixelsPerInch = 96
+      Offsets.ControlOffsetHorz = 5
+      Offsets.ControlOffsetVert = 5
+      Offsets.ItemOffset = 6
+      Offsets.RootItemsAreaOffsetHorz = 11
+      Offsets.RootItemsAreaOffsetVert = 11
+      LookAndFeel.NativeStyle = False
+      PixelsPerInch = 144
     end
     object dxLayoutSkinLookAndFeel2: TdxLayoutSkinLookAndFeel
-      PixelsPerInch = 96
+      Offsets.ControlOffsetHorz = 5
+      Offsets.ControlOffsetVert = 5
+      Offsets.ItemOffset = 6
+      Offsets.RootItemsAreaOffsetHorz = 11
+      Offsets.RootItemsAreaOffsetVert = 11
+      PixelsPerInch = 144
     end
   end
   object qry_Contact_Land: TFDQuery

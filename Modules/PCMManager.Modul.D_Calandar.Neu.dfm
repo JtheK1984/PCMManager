@@ -20,16 +20,12 @@ object frm_Calendar_new: Tfrm_Calendar_new
     Width = 920
     Height = 788
     Align = alClient
-    TabOrder = 4
+    TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitLeft = 320
-    ExplicitTop = 288
-    ExplicitWidth = 300
-    ExplicitHeight = 250
     object btnEraseFirma: TcxButton
       Left = 426
-      Top = 235
+      Top = 238
       Width = 25
       Height = 21
       LookAndFeel.NativeStyle = False
@@ -40,7 +36,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object btnGoToJira: TcxButton
       Left = 885
-      Top = 268
+      Top = 271
       Width = 25
       Height = 21
       LookAndFeel.NativeStyle = False
@@ -51,7 +47,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object btnSearchFirma: TcxButton
       Left = 395
-      Top = 235
+      Top = 238
       Width = 25
       Height = 21
       LookAndFeel.NativeStyle = False
@@ -62,7 +58,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object cbAnsprechpartner: TcxLookupComboBox
       Left = 547
-      Top = 235
+      Top = 238
       Properties.DropDownRows = 20
       Properties.KeyFieldNames = 'ID'
       Properties.ListColumns = <
@@ -78,12 +74,13 @@ object frm_Calendar_new: Tfrm_Calendar_new
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
+      StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 20
       Width = 363
     end
     object edtFirma: TcxTextEdit
       Left = 82
-      Top = 235
+      Top = 238
       Properties.ReadOnly = True
       Properties.OnEditValueChanged = edtFirmaPropertiesEditValueChanged
       Style.HotTrack = False
@@ -92,30 +89,33 @@ object frm_Calendar_new: Tfrm_Calendar_new
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
+      StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 17
       Width = 307
     end
     object edtJiraTicket: TcxTextEdit
       Left = 82
-      Top = 268
+      Top = 271
       Style.HotTrack = False
       Style.LookAndFeel.NativeStyle = False
       Style.TransparentBorder = False
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
+      StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 21
       Width = 797
     end
     object teBetreff: TcxTextEdit
       Left = 82
-      Top = 295
+      Top = 298
       Style.HotTrack = False
       Style.LookAndFeel.NativeStyle = False
       Style.TransparentBorder = False
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
+      StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 23
       Width = 828
     end
@@ -165,6 +165,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
+      StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 1
       Width = 121
     end
@@ -188,6 +189,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
+      StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 9
       Width = 213
     end
@@ -219,6 +221,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
+      StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 7
       Width = 98
     end
@@ -238,6 +241,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
+      StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 8
       Width = 200
     end
@@ -255,6 +259,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
+      StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 4
       Width = 81
     end
@@ -271,6 +276,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
+      StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 6
       Text = '10'
       OnEnter = meDauerEnter
@@ -291,6 +297,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
+      StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 5
       Width = 57
     end
@@ -320,6 +327,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
+      StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 11
       Width = 57
     end
@@ -346,6 +354,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
+      StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 12
       Text = '0%'
       Width = 169
@@ -474,6 +483,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
+      StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 15
       Width = 169
     end
@@ -515,7 +525,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object mNachricht: TcxRichEdit
       Left = 10
-      Top = 320
+      Top = 323
       ParentFont = False
       Properties.AutoURLDetect = True
       Properties.PlainText = True
@@ -530,14 +540,14 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 24
-      Height = 430
+      Height = 427
       Width = 709
     end
     object cxGrid1: TcxGrid
       Left = 725
-      Top = 320
+      Top = 323
       Width = 185
-      Height = 390
+      Height = 387
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -626,6 +636,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       Properties.WordWrap = True
+      TabOrder = 27
       Transparent = True
       Height = 19
       Width = 60
@@ -709,11 +720,6 @@ object frm_Calendar_new: Tfrm_Calendar_new
           PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
         end>
       PaintStyle = stpsUseLookAndFeel
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
     end
     object dxBarDockControl1: TdxBarDockControl
       Left = 10
@@ -1418,7 +1424,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     Top = 75
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
-    TabOrder = 5
+    TabOrder = 1
     Visible = False
     Height = 56
     Width = 99
@@ -1486,6 +1492,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     Categories.Visibles = (
       True)
     ImageOptions.LargeImages = dm_PCM.imglst_32x32
+    LookAndFeel.NativeStyle = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
     Style = bmsUseLookAndFeel

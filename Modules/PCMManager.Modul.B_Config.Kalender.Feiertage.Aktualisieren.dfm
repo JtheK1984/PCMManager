@@ -4,7 +4,7 @@ object frm_FeiertageAktualisieren: Tfrm_FeiertageAktualisieren
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Feiertage aktualisieren'
-  ClientHeight = 210
+  ClientHeight = 220
   ClientWidth = 345
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
@@ -18,36 +18,38 @@ object frm_FeiertageAktualisieren: Tfrm_FeiertageAktualisieren
     Left = 0
     Top = 0
     Width = 345
-    Height = 210
+    Height = 220
     Align = alClient
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    ExplicitWidth = 339
+    ExplicitHeight = 193
     object dEdt_Von: TcxDateEdit
-      Left = 46
-      Top = 138
+      Left = 49
+      Top = 146
       Properties.SaveTime = False
       Properties.ShowTime = False
       Properties.WeekNumbers = True
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 0
-      Width = 126
+      Width = 123
     end
     object dEdt_Bis: TcxDateEdit
       Left = 200
-      Top = 138
+      Top = 146
       Properties.SaveTime = False
       Properties.ShowTime = False
       Properties.WeekNumbers = True
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 1
-      Width = 126
+      Width = 123
     end
     object btn_Abort: TcxButton
       Left = 176
-      Top = 175
+      Top = 183
       Width = 159
       Height = 25
       Caption = 'Abbrechen'
@@ -58,7 +60,7 @@ object frm_FeiertageAktualisieren: Tfrm_FeiertageAktualisieren
     end
     object btn_OK: TcxButton
       Left = 10
-      Top = 175
+      Top = 183
       Width = 160
       Height = 25
       Caption = 'Ok'

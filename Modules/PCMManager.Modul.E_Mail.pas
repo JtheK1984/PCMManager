@@ -21,7 +21,8 @@ uses
   System.ImageList, Vcl.ImgList, Vcl.OleCtrls,
   SHDocVw, dxBar,System.UITypes, IdTCPConnection, IdTCPClient,IdAttachmentFile,
   cxSplitter, cxGridCustomPopupMenu, cxGridPopupMenu, cxCurrencyEdit,PCm.Functions,
-  dxLayoutContainer, dxLayoutControl, dxLayoutcxEditAdapters, PCM.Browser,dxChartControl,WebView2, uWVBrowserBase, uWVBrowser;
+  dxLayoutContainer, dxLayoutControl, dxLayoutcxEditAdapters, PCM.Browser,dxChartControl,WebView2, uWVBrowserBase, uWVBrowser,
+  dxUIAClasses;
 
 type
   Tfrm_Mail = class(TForm)

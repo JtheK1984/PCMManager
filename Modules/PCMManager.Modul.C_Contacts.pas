@@ -380,11 +380,18 @@ type
     procedure btn_addGeburtslandClick(Sender: TObject);
     procedure dxLayoutGroup6Button0Click(Sender: TObject);
     procedure dxBarLargeButton1Click(Sender: TObject);
+    procedure btn_Tel1Click(Sender: TObject);
+    procedure btn_Tel2Click(Sender: TObject);
+    procedure btn_HandyClick(Sender: TObject);
+    procedure cxButton5Click(Sender: TObject);
+    procedure cxButton6Click(Sender: TObject);
+    procedure cxButton7Click(Sender: TObject);
   private
     { Private-Deklarationen }
     bButtons: boolean;
     SaveGridViewContacts: TSavedGridView;
     FWebBrowser: TAbstractWebBrowser;
+    procedure MakeCall(Number: String);
     procedure OpenUrl(AURL: String);
     procedure SetGridViews(Show:boolean);
     procedure SetButtons;
@@ -416,6 +423,18 @@ uses  PCM.Data,
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Hilfsfunktionen}
+procedure Tfrm_Contact.MakeCall(Number: String);
+var
+  sPAram: String;
+begin
+  qry_work.SQL.Text:= 'SELECT Path From manager_phone';
+  qry_work.open;
+  sParam:= 'callto:' + StringReplace(Number,' ','',[rfIgnoreCase,rfReplaceAll]);
+  ShellExecute(0,'open', PChar('C:\Program Files\PhonerLite\PhonerLite.exe'),PChar(sParam), NIL, SW_SHOWNORMAL);
+  ShellExecute(0,'open', PChar('C:\Program Files\PhonerLite\PhonerLite.exe callto:+49 160 95460312'), NIL, NIL, SW_SHOWNORMAL);
+  qry_work.Close;
+end;
+
 procedure Tfrm_Contact.OpenUrl(AURL: String);
 begin
   lagrp_Browser.Visible:= true;
@@ -698,6 +717,11 @@ begin
   edt_KontaktSucheFunktion.Text:= '';
   btn_kontaktsuchen.Click;
 end;
+procedure Tfrm_Contact.btn_HandyClick(Sender: TObject);
+begin
+  MakeCall(edt_KontaktHandy.text);
+end;
+
 procedure Tfrm_Contact.btn_KontaktCancelClick(Sender: TObject);
 begin
   qry_Kontakte.Cancel;
@@ -1938,7 +1962,6 @@ begin
 end;
 procedure Tfrm_Contact.btn_MapPrivateClick(Sender: TObject);
 begin
-
   if (edt_KontaktStrasse.Text <> '') and (edt_KontaktPLZ.Text <> '') and (edt_KontaktOrt.Text <> '') then
   begin
     var sLink:= 'http://maps.google.de/maps?q=' + edt_KontaktStrasse.Text + ',' + edt_KontaktPLZ.Text + '+' + edt_KontaktOrt.Text + '&z=12';
@@ -1949,6 +1972,31 @@ begin
     MessageDlg('Adresse unvollständig',mtWarning,[mbOk],0);
   end;
 end;
+procedure Tfrm_Contact.btn_Tel1Click(Sender: TObject);
+begin
+  MakeCall(edt_KontaktTelefon1.text);
+end;
+
+procedure Tfrm_Contact.btn_Tel2Click(Sender: TObject);
+begin
+  MakeCall(edt_KontaktTelefon2.text);
+end;
+
+procedure Tfrm_Contact.cxButton5Click(Sender: TObject);
+begin
+  MakeCall(edt_KontaktGeschaeftlichTelefonZentrale.text);
+end;
+
+procedure Tfrm_Contact.cxButton6Click(Sender: TObject);
+begin
+  MakeCall(edt_KontaktGeschaeftlichTelefonDurchwahl.text);
+end;
+
+procedure Tfrm_Contact.cxButton7Click(Sender: TObject);
+begin
+  MakeCall(edt_GeschaeftlichHandy.text);
+end;
+
 procedure Tfrm_Contact.dxBarLargeButton1Click(Sender: TObject);
 const
   olFolderContacts = $0000000A;
@@ -2311,4 +2359,4 @@ end;
 end.
 
 
-//C:\Program Files\PhonerLite\PhonerLite.exe callto:+49 160 95460312
+

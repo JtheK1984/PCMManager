@@ -8,7 +8,8 @@ uses
   cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus,
   cxButtons, System.ImageList, Vcl.ImgList, cxControls, cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit,
   cxLabel, cxGroupBox,system.UITypes, dxLayoutcxEditAdapters,
-  dxLayoutControlAdapters, dxLayoutContainer, cxClasses, dxLayoutControl;
+  dxLayoutControlAdapters, dxLayoutContainer, cxClasses, dxLayoutControl,
+  dxUIAClasses;
 
 type
   Tfrm_PCManagerChooseDate = class(TForm)

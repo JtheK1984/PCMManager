@@ -24,18 +24,14 @@ object fAdressSuche: TfAdressSuche
     Width = 946
     Height = 614
     Align = alClient
-    TabOrder = 4
+    TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitLeft = 328
-    ExplicitTop = 200
-    ExplicitWidth = 300
-    ExplicitHeight = 250
     object cxGrid1: TcxGrid
       Left = 10
-      Top = 206
+      Top = 210
       Width = 926
-      Height = 398
+      Height = 394
       TabOrder = 7
       LookAndFeel.NativeStyle = False
       object tvAdressen: TcxGridDBTableView
@@ -108,40 +104,40 @@ object fAdressSuche: TfAdressSuche
       end
     end
     object teName: TcxTextEdit
-      Left = 97
-      Top = 110
+      Left = 100
+      Top = 114
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 1
-      Width = 369
+      Width = 366
     end
     object teStrasse: TcxTextEdit
-      Left = 97
-      Top = 135
+      Left = 100
+      Top = 139
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 2
-      Width = 369
+      Width = 366
     end
     object tePLZ: TcxTextEdit
       Left = 554
-      Top = 110
+      Top = 114
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 3
-      Width = 373
+      Width = 370
     end
     object teOrt: TcxTextEdit
       Left = 554
-      Top = 135
+      Top = 139
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 4
-      Width = 373
+      Width = 370
     end
     object bAdressenZeigen: TcxButton
       Left = 10
-      Top = 172
+      Top = 176
       Width = 225
       Height = 28
       Hint = 
@@ -162,7 +158,7 @@ object fAdressSuche: TfAdressSuche
     end
     object bFilterLoeschen: TcxButton
       Left = 241
-      Top = 172
+      Top = 176
       Width = 225
       Height = 28
       Hint = 
@@ -359,6 +355,7 @@ object fAdressSuche: TfAdressSuche
       True)
     ImageOptions.Images = dm_PCM.imglst_16x16
     ImageOptions.LargeImages = dm_PCM.imglst_32x32
+    LookAndFeel.NativeStyle = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
     Style = bmsUseLookAndFeel
