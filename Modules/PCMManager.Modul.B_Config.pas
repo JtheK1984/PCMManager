@@ -25,7 +25,7 @@ uses
   IdSMTPBase, cxCurrencyEdit, Vcl.OleServer, OutlookXP,PCM.Functions, dxSkinWXI,
   Vcl.VirtualImage, Vcl.BaseImageCollection, Vcl.ImageCollection,
   dxLayoutContainer, dxLayoutcxEditAdapters, dxLayoutControlAdapters,
-  dxLayoutControl, dxUIAClasses;
+  dxLayoutControl, dxUIAClasses, cxButtonEdit;
 
 type
   Tfrm_Config = class(TForm)
@@ -337,6 +337,59 @@ type
     dxLayoutGroup23: TdxLayoutGroup;
     lbl_EmailConfigTestEin: TdxLayoutLabeledItem;
     lbl_EmailConfigTestAus: TdxLayoutLabeledItem;
+    lagrp_Contacts: TdxLayoutGroup;
+    dxLayoutGroup1: TdxLayoutGroup;
+    dxLayoutItem51: TdxLayoutItem;
+    dxLayoutGroup24: TdxLayoutGroup;
+    dxLayoutItem58: TdxLayoutItem;
+    dxLayoutGroup26: TdxLayoutGroup;
+    dxLayoutItem71: TdxLayoutItem;
+    dxBarDockControl2: TdxBarDockControl;
+    dxBarDockControl4: TdxBarDockControl;
+    dxBarDockControl5: TdxBarDockControl;
+    tb_KontaktAnrede: TdxBar;
+    tb_KontaktLand: TdxBar;
+    tb_KontaktSchnittstelle: TdxBar;
+    btn_PhoneSave: TdxBarLargeButton;
+    btn_AnredeNew: TdxBarLargeButton;
+    dxBarLargeButton3: TdxBarLargeButton;
+    btn_LandNew: TdxBarLargeButton;
+    dxLayoutItem72: TdxLayoutItem;
+    dxLayoutItem73: TdxLayoutItem;
+    dxLayoutItem74: TdxLayoutItem;
+    edt_Anrede: TcxDBTextEdit;
+    edt_Land: TcxDBTextEdit;
+    edt_Phone: TcxDBButtonEdit;
+    btn_AnredeSave: TdxBarLargeButton;
+    btn_AnredeCancel: TdxBarLargeButton;
+    btn_AnredeDelete: TdxBarLargeButton;
+    dxBarLargeButton8: TdxBarLargeButton;
+    dxBarLargeButton9: TdxBarLargeButton;
+    dxBarLargeButton10: TdxBarLargeButton;
+    btn_LandSave: TdxBarLargeButton;
+    btn_LandCancel: TdxBarLargeButton;
+    btn_LandDelete: TdxBarLargeButton;
+    cxGrid1: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridLevel1: TcxGridLevel;
+    cxGrid2: TcxGrid;
+    cxGridDBTableView2: TcxGridDBTableView;
+    cxGridLevel2: TcxGridLevel;
+    cxGrid3: TcxGrid;
+    cxGridDBTableView3: TcxGridDBTableView;
+    cxGridLevel3: TcxGridLevel;
+    dxLayoutItem76: TdxLayoutItem;
+    dxLayoutItem77: TdxLayoutItem;
+    dxLayoutItem78: TdxLayoutItem;
+    qry_Anrede: TFDQuery;
+    ds_Anrede: TDataSource;
+    cxGridDBTableView3Bezeichnung: TcxGridDBColumn;
+    qry_Land: TFDQuery;
+    ds_Land: TDataSource;
+    cxGridDBTableView2Bezeichnung: TcxGridDBColumn;
+    ds_phone: TDataSource;
+    qry_phone: TFDQuery;
+    cxGridDBTableView1Path: TcxGridDBColumn;
     procedure FormShow(Sender: TObject);
     procedure btn_CalConfigNew1Click(Sender: TObject);
     procedure btn_CalConfigSave1Click(Sender: TObject);
@@ -385,6 +438,15 @@ type
     procedure btn_AufgabenOptionenSaveClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure btn_PhoneSaveClick(Sender: TObject);
+    procedure btn_AnredeNewClick(Sender: TObject);
+    procedure btn_LandNewClick(Sender: TObject);
+    procedure btn_AnredeCancelClick(Sender: TObject);
+    procedure btn_LandCancelClick(Sender: TObject);
+    procedure btn_AnredeSaveClick(Sender: TObject);
+    procedure btn_LandSaveClick(Sender: TObject);
+    procedure btn_AnredeDeleteClick(Sender: TObject);
+    procedure btn_LandDeleteClick(Sender: TObject);
   private
     { Private-Deklarationen }
 //    m_bCancel: WordBool;
@@ -480,6 +542,11 @@ begin
   // AB_Optionen
   if dm_PCM.iKonfiguration >= 2 then
   begin
+    btn_AnredeSave.enabled := qry_Anrede.State in [dsInsert, dsEdit];
+    btn_AnredeCancel.enabled := qry_Anrede.State in [dsInsert, dsEdit];
+    btn_LandSave.enabled := qry_Land.State in [dsInsert, dsEdit];
+    btn_LandCancel.enabled := qry_Land.State in [dsInsert, dsEdit];
+    btn_PhoneSave.enabled := qry_phone.State in [dsInsert, dsEdit];
     // Option Kalender
     btn_CalConfigSave.enabled := qry_CalConfig.State in [dsInsert, dsEdit];
     btn_CalConfigCancel.enabled := qry_CalConfig.State in [dsInsert, dsEdit];
@@ -517,6 +584,8 @@ begin
   end;
   if dm_PCM.iKonfiguration = 3 then
   begin
+    btn_AnredeDelete.enabled := qry_Anrede.State in [dsInsert, dsEdit];
+    btn_LandDelete.enabled := qry_Land.State in [dsInsert, dsEdit];
     // Option Kalender
     btn_CalConfigDelete.enabled := (not qry_CalConfig.Eof) and not(qry_CalConfig.State in [dsInsert, dsEdit]);
     // Option Aufgaben Arten
@@ -1055,6 +1124,41 @@ begin
   end;
 
 end;
+procedure Tfrm_Config.btn_AnredeCancelClick(Sender: TObject);
+begin
+  qry_Anrede.Cancel;
+end;
+
+procedure Tfrm_Config.btn_AnredeDeleteClick(Sender: TObject);
+begin
+  if qry_Anrede.FieldByName('ID').asInteger > 0 then
+  begin
+    qry_Anrede.Delete;
+  end;
+end;
+
+procedure Tfrm_Config.btn_AnredeNewClick(Sender: TObject);
+begin
+  if qry_Anrede.State in [dsInsert, dsEdit] then
+    qry_Anrede.Post;
+  qry_Anrede.Append;
+  qry_Anrede.Insert;
+  if not edt_Anrede.enabled then
+  begin
+    edt_Anrede.enabled := true;
+  end;
+  edt_Anrede.SetFocus;
+end;
+
+procedure Tfrm_Config.btn_AnredeSaveClick(Sender: TObject);
+begin
+  if qry_Anrede.State in [dsInsert, dsEdit] then
+  begin
+    edt_Anrede.PostEditValue;
+    qry_Anrede.Post;
+  end;
+end;
+
 procedure Tfrm_Config.btn_AufgabenCancelClick(Sender: TObject);
 begin
   qry_AufgabenArten.Cancel;
@@ -1162,6 +1266,41 @@ begin
     qry_SchulFaecher_Config.Post;
   end;
 end;
+procedure Tfrm_Config.btn_LandCancelClick(Sender: TObject);
+begin
+  qry_Land.Cancel;
+end;
+
+procedure Tfrm_Config.btn_LandDeleteClick(Sender: TObject);
+begin
+  if qry_Land.FieldByName('ID').asInteger > 0 then
+  begin
+    qry_Land.Delete;
+  end;
+end;
+
+procedure Tfrm_Config.btn_LandNewClick(Sender: TObject);
+begin
+  if qry_Land.State in [dsInsert, dsEdit] then
+    qry_Land.Post;
+  qry_Land.Append;
+  qry_Land.Insert;
+  if not edt_Land.enabled then
+  begin
+    edt_Land.enabled := true;
+  end;
+  edt_Land.SetFocus;
+end;
+
+procedure Tfrm_Config.btn_LandSaveClick(Sender: TObject);
+begin
+  if qry_land.State in [dsInsert, dsEdit] then
+  begin
+    edt_land.PostEditValue;
+    qry_land.Post;
+  end;
+end;
+
 procedure Tfrm_Config.btn_FachUCancelClick(Sender: TObject);
 begin
   qry_SchulFaecher_Config.Cancel;
@@ -1417,6 +1556,15 @@ begin
   if qry_EmailPostfachSub.State in [dsInsert, dsEdit] then
     qry_EmailPostfachSub.Post;
 end;
+procedure Tfrm_Config.btn_PhoneSaveClick(Sender: TObject);
+begin
+  if qry_phone.State in [dsInsert, dsEdit] then
+  begin
+    edt_Phone.PostEditValue;
+    qry_phone.Post;
+  end;
+end;
+
 procedure Tfrm_Config.btn_PostfachCancelClick(Sender: TObject);
 begin
   qry_EmailPostfachMain.Cancel;
@@ -1515,6 +1663,9 @@ procedure Tfrm_Config.FormShow(Sender: TObject);
     qry_Konfiguration_Kalender_Optionen.Open;
     qry_Konfiguration_Kalender_Optionen.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
     qry_Konfiguration_Kalender_Optionen.Filtered := true;
+    qry_Anrede.Open;
+    qry_Land.Open;
+    qry_Phone.Open;
     grdDBTblView_calconfigKalender.Caption := rs_PCM_Kalender;
     grdDBTblView_calconfigLink.Caption := rs_PCMManager_Link;
     grdDBTblView_calconfigBenutzer.Caption := rs_PCMBenutzerverwaltung_Benutzer;

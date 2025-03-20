@@ -192,6 +192,8 @@ type
     dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
     dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel;
     dxLayoutSkinLookAndFeel2: TdxLayoutSkinLookAndFeel;
+    qry_Contact_Land: TFDQuery;
+    ds_Contact_Land: TDataSource;
     procedure con_PCMBeforeConnect(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
   private

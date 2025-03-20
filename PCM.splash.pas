@@ -24,6 +24,7 @@ type
     Timer5: TTimer;
     Timer6: TTimer;
     Timer11: TTimer;
+    cxImage1: TcxImage;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Timer1Timer(Sender: TObject);
     procedure Timer2Timer(Sender: TObject);

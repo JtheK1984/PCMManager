@@ -90,15 +90,10 @@ uses
 type
   {$Region Types}
   TdxBarControlAccess = class(TdxBarControl);
-
   TdxBarAccess = class(TdxBar);
-
   TdxBarManagerAccess = class(TdxBarManager);
-
   TMethod = procedure of object;
-
   TModuleType = (mtForm, mtEvent);
-
   TModule = class(TCollectionItem)
   protected
     FFormClass: TFormClass;
@@ -108,7 +103,6 @@ type
     FRight: Integer;
     FModuleName: String;
     FImageIndex: Integer;
-
     procedure SetFormClass(Value: TFormClass);
     procedure SetEvent(Value: TMethod);
   public
@@ -120,7 +114,6 @@ type
     property ModuleName: String read FModuleName write FModuleName;
     property ImageIndex: Integer read FImageIndex write FImageIndex;
   end;
-
   TIC_Options = record
     StundenProArbeitstag: Double;
     Jira_Basic_URL: String;
@@ -179,7 +172,6 @@ type
     iGutscheine: TdxNavBarItem;
     iHandbuch: TdxNavBarItem;
     iInfo: TdxNavBarItem;
-    iJira: TdxNavBarItem;
     iKalender: TdxNavBarItem;
     iKonfiguration: TdxNavBarItem;
     iKontakte: TdxNavBarItem;
@@ -213,7 +205,6 @@ type
     lbl_IstSum: TcxLabel;
     lbl_SollSum: TcxLabel;
     loc_Lang: TcxLocalizer;
-    Menuezurueck: TdxBarButton;
     navbr_main: TdxNavBar;
     navbrgrp_Finanzen: TdxNavBarGroup;
     navbrgrp_Info: TdxNavBarGroup;
@@ -543,7 +534,6 @@ procedure Tfrm_PCM_Main.LoadData;
     ADataBinding := chartctrl_AdressesSeries.DataBinding as TdxChartSimpleSeriesDBDataBinding;
     ADataBinding.DataSource := dm_PCM.ds_ChartAdressen;
 
-
     ADataBinding := chartctrl_ToDoSeries.DataBinding as TdxChartSimpleSeriesDBDataBinding;
     ADataBinding.DataSource := dm_PCM.ds_ChartAufgabe;
     ADataBinding := chartctrl_CalSeries.DataBinding as TdxChartSimpleSeriesDBDataBinding;
@@ -785,7 +775,6 @@ begin
   RegisterForm('iKontakte',Tfrm_Contact, @frm_Contact, 1);
   RegisterForm('iKalender',Tfrm_Calendar, @frm_Calendar, 1);
   RegisterForm('iAufgaben',Tfrm_Calendar, @frm_Calendar, 1);
-  RegisterForm('iJira',Tfrm_Calendar, @frm_Calendar, 1);
   RegisterForm('iStundenplan',Tfrm_Calendar, @frm_Calendar, 1);
   RegisterForm('iEMails',Tfrm_mail, @frm_mail, 1);
   RegisterForm('iPasswoerter',Tfrm_password, @frm_password, 1);
@@ -1224,8 +1213,6 @@ begin
     end
     else begin
       WriteLog(PCM_Logname,rs_PCM_Start,0);
-      if paramstr(1) = '/jira'  then
-        iJira.Visible:= true;
     end;
   end;
 end;

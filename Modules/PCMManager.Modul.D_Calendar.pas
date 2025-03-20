@@ -1014,259 +1014,263 @@ begin
       rstclt_main.BaseURL:= sLink;
       HTTPBasAut_Main.username:= sBenutzer;
       HTTPBasAut_Main.Password:= sPasswort;
-      rstreq_main.Execute;
-      strlstICal:= TStringList.Create;
-      strlstICal.Text:= rstRsp_main.Content;
-      strlstICal.SaveToFile(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\'+ dm_PCM.qry_work.FieldByName('Kalender').asString + '.ics',TEncoding.UTF8);
-      strlstICal.Free;
-      ASnot:='\n';
-      asmem:= '\,';
-      aData1 := TiCalPackage.Create(sFile,frm_Calendar);
-//      aList := TStringList.Create;
-      aList := aData1.iCalList;
-      schedDBStrg_Kalender.BeginUpdate;
-      if aList.Count > 0 then
+      if sLink <> '' then
       begin
-        dm_PCM.qry_work1.SQL.Text:= 'Delete From manager_Kalender where Kalendername = :Kalender and ID_Benutzer = :ID_Benutzer';
-        dm_PCM.qry_work1.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-        dm_PCM.qry_work1.ParamByName('Kalender').AsString:= sKalender;
-        dm_PCM.qry_work1.ExecSQL;
-        dm_PCM.qry_work1.close;
-        ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineImportieren), alist.Count-1, 417, 65);
-        Application.ProcessMessages;
-        Screen.Cursor:= crHourGlass;
-        Application.ProcessMessages;
-        for i := 0 to alist.Count -1 do begin
-          aData := riCalItem.create;
-          aData := alist.Objects[i] as riCalItem;
-          if Length(aData.DTSTART) < 9 then
-          begin
-            sJahrBegin:= Copy(aData.DTSTART,Length(aData.DTSTART) - 8,4);
-            sMonatBegin:=Copy(aData.DTSTART,Length(aData.DTSTART) - 3,2);
-            sTagBegin:=Copy(aData.DTSTART,Length(aData.DTSTART) - 1,2);
-            if aData.DTEND = '' then
-            begin
-              sJahrEnd:= Copy(DateToStr(aData.DTStartd + 1), 7,4);
-              sMonatEnd:=Copy(DateToStr(aData.DTStartd + 1), 4,2);
-              sTagEnd:=Copy(DateToStr(aData.DTStartd + 1), 1,2);
-            end
-            else begin
-              sJahrEnd:= Copy(aData.DTEND,1,4);
-              sMonatEnd:=Copy(aData.DTEND,5,2);
-              sTagEnd:=Copy(aData.DTEND,7,2);
-            end;
+        rstreq_main.Execute;
 
-            if sErinnerung = 'true' then
-            begin
-              sReminder:= 'true';
-              sReminderDate:= DateTimeToStr(IncMinute(StrToDateTime(
-              sTagBegin +'.' + sMonatBegin + '.' + sJahrBegin + ' 00:00:00'),iErinnerungVor *-1));
-              sReminderDate:= Copy(sReminderDate,7,4) + '-' + Copy(sReminderDate,4,2) + '-'
-              + Copy(sReminderDate,1,2) + ' ' + Copy(sReminderDate,12,8);
-              iReminderMinutes:= iErinnerungVor;
-              iOptions:= 6;
-              datTimTermin := EncodeDateTime(StrToInt(sJahrBegin),StrToInt(sMonatBegin),
-                 StrToInt(sTagBegin),StrToInt(sStundeBegin),StrToInt(sMinuteBegin),
-                 StrToInt(sSekundeBegin),0);
-              dtNow:= now();
-              if datTimTermin < dtNow then
-              begin
-                sReminder:= 'false';
-                sReminderDate:= 'NULL';
-                iReminderMinutes:= 0;
-                iOptions:= 2;
-              end;
-            end
-            else begin
-              sReminder:= 'false';
-              sReminderDate:= 'NULL';
-              iReminderMinutes:= 0;
-              iOptions:= 2;
-            end;
-
-            sDateBegin:= sJahrBegin + '-' + sMonatBegin + '-' + sTagBegin + ' 00:00:00';
-            sDateEnd:= sJahrEnd + '-' + sMonatEnd + '-' + sTagEnd + ' 00:00:00';
-            sGanzerTag:= 'true';
-          end
-          else begin
-            sJahrBegin:=Copy(aData.DTSTART,Length(aData.DTSTART) - 15,4);
-            sMonatBegin:=Copy(aData.DTSTART,Length(aData.DTSTART) - 10,2);
-            sTagBegin:=Copy(aData.DTSTART,Length(aData.DTSTART) - 8,2);
-            sJahrEnd:= Copy(aData.DTEND,Length(aData.DTEND) - 15,4);
-            sMonatEnd:=Copy(aData.DTEND,Length(aData.DTEND) - 10,2);
-            sTagEnd:=Copy(aData.DTEND,Length(aData.DTEND) - 8,2);
-            sStundeBegin:= Copy(aData.DTSTART,Length(aData.DTSTART) - 5,2);
-            sMinuteBegin:= Copy(aData.DTSTART,Length(aData.DTSTART) - 3,2);
-            sSekundeBegin:= Copy(aData.DTSTART,Length(aData.DTSTART) - 1,2);
-            sStundeEnd:= Copy(aData.DTEND,Length(aData.DTEND) - 5,2);
-            sMinuteEnd:= Copy(aData.DTEND,Length(aData.DTEND) - 3,2);
-            sSekundeEnd:= Copy(aData.DTEND,Length(aData.DTEND) - 1,2);
-            sDateBegin:= sJahrBegin + '-' + sMonatBegin + '-' + sTagBegin + ' ' + sStundeBegin + ':' +
-            sMinuteBegin + ':' + sSekundeBegin;
-            sDateEnd:= sJahrEnd + '-' + sMonatEnd + '-' + sTagEnd + ' ' + sStundeEnd + ':' +
-            sMinuteEnd + ':' + sSekundeEnd;
-
-            if sErinnerung = 'true' then
-            begin
-              sReminder:= 'true';
-              sReminderDate:= DateTimeToStr(IncMinute(StrToDateTime(
-              sTagBegin +'.' + sMonatBegin + '.' + sJahrBegin + ' '
-              + sStundeBegin + ':' + sMinuteBegin + ':' + sSekundeBegin),iErinnerungVor *-1));
-              sReminderDate:= Copy(sReminderDate,7,4) + '-' + Copy(sReminderDate,4,2) + '-'
-              + Copy(sReminderDate,1,2) + ' ' + Copy(sReminderDate,12,8);
-              iReminderMinutes:= iErinnerungVor;
-              iOptions:= 6;
-
-              datTimTermin := EncodeDateTime(StrToInt(sJahrBegin),StrToInt(sMonatBegin),
-                 StrToInt(sTagBegin),StrToInt(sStundeBegin),StrToInt(sMinuteBegin),
-                 StrToInt(sSekundeBegin),0);
-              dtNow:= now();
-              if datTimTermin < dtNow then
-              begin
-                sReminder:= 'false';
-                sReminderDate:= 'NULL';
-                iReminderMinutes:= 0;
-                iOptions:= 2;
-              end;
-
-            end
-            else begin
-              sReminder:= 'false';
-              sReminderDate:= 'NULL';
-              iReminderMinutes:= 0;
-              iOptions:= 2;
-            end;
-            sGanzerTag:= 'false';
-          end;
-          asBeschreibung := AnsiString(ReplaceStr(ReplaceStr(String(aData.DESCRIPTION),String(ASnot),String(slinebreak)),String(asmem),','));
-          if Length(asBeschreibung) < 4 then
-            asBeschreibung:= '-';
-
-          if aData.Location = '97725\, Elfershausen\, Adolf-Kolping-Str. 11' then
-          begin
-            aData.Location:= 'im Büro'
-          end
-          else begin
-            if (aData.Location = '\, \, ') or (aData.Location = 'ohne Angabe') then
-            begin
-              aData.Location:= 'sonstiges';
-            end
-            else begin
-              aData.Location:= 'beim Kunden';
-            end;
-          end;
-          if aData.Location = 'beim Kunden' then
-          begin
-            sColordef := IntToStr(12566527);
-            sFontcolordef := sFontColor;
-          end
-          else begin
-            sColordef := sColor;
-            sFontcolordef := sFontColor;
-
-            case AnsiIndexStr(String(aData.SUMMARY), ['Biomüll', 'Restmüll','Papier','Gelber Sack','Giftmobil']) of
-              // BioMüll
-              0:
-              begin
-                sFontcolordef:= IntToStr(clWhite);
-                sColordef := IntToStr(944838);
-              end;
-              // RestMüll
-              1:
-              begin
-                sFontcolordef:= IntToStr(clWhite);
-                sColordef := IntToStr(5658199);
-              end;
-              // Papier
-              2:
-              begin
-                sFontcolordef:= IntToStr(clWhite);
-                sColordef := IntToStr(13214474);
-              end;
-              // Gelber Sack
-              3:
-              begin
-                sFontcolordef:= IntToStr(clBlack);
-                sColordef := IntToStr(56831);
-              end;
-              // Giftmobil
-              4:
-              begin
-                sFontcolordef:= IntToStr(clWhite);
-                sColordef := IntToStr(7679146);
-              end;
-            end;
-          end;
-
-          iEventtpye:= 0;
-          if AData.Rule <> '' then
-          begin
-            iEventtpye:= 1;
-            asRecurrence:= GetRecurrence(AData.Rule,sDateBegin);
-            swiederholungtext:= AData.Rule;//String(asRecurrence);
-            sReminder:= 'true';
-            iOptions:= 6;
-            sReminderDate:= sDateBegin;
-          end;
-          if sReminderDate = 'NULL' then
-          begin
-            dm_PCM.qry_work1.SQL.Text:='Insert into manager_Kalender (EventType,Caption,Location,Message,'
-            + 'Start,Finish,Options,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'
-            + 'ReminderMinutesBeforeStart,LabelColor,FontColor,ID_Benutzer,Kalendername,CompleteDay,wiederholung_text) Values ('
-            + ':Eventtype,:SUMMARY,:Location,:Beschreibung,:DateBegin,:DateEnd,:Options,0,-1,:RecurrenceInfo,:Reminder,'
-            + 'NULL,0,:Color,:FontColor,:ID,:Kalender,:ganzerTag,:wiederholung_text)';
-          end
-          else begin
-            dm_PCM.qry_work1.SQL.Text:='Insert into manager_Kalender (EventType,Caption,Location,Message,'
-            + 'Start,Finish,Options,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'
-            + 'ReminderMinutesBeforeStart,LabelColor,FontColor,ID_Benutzer,Kalendername,CompleteDay,wiederholung_text) Values ('
-            + ':Eventtype,:SUMMARY,:Location,:Beschreibung,:DateBegin,:DateEnd,:Options,0,-1,:RecurrenceInfo,:Reminder,'
-            + ':ReminderDate,:ReminderMinutes,:Color,:FontColor,:ID,:Kalender,:ganzerTag,:wiederholung_text)';
-            dm_PCM.qry_work1.ParamByName('ReminderDate').AsString:= sReminderDate;
-            dm_PCM.qry_work1.ParamByName('ReminderMinutes').AsInteger:= iReminderMinutes;
-          end;
-          dm_PCM.qry_work1.ParamByName('Eventtype').ASinteger:= iEventtpye;
-          dm_PCM.qry_work1.ParamByName('SUMMARY').AsAnsiString:= aData.SUMMARY;
-          dm_PCM.qry_work1.ParamByName('Location').AsString:= StringReplace(String(aData.Location),'\','',[rfIgnoreCase,rfReplaceAll]);
-          dm_PCM.qry_work1.ParamByName('Beschreibung').AsString:= String(asBeschreibung);
-          dm_PCM.qry_work1.ParamByName('DateBegin').AsString:= sDateBegin;
-          dm_PCM.qry_work1.ParamByName('DateEnd').AsString:= sDateEnd;
-          dm_PCM.qry_work1.ParamByName('Options').AsInteger:= iOptions;
-          dm_PCM.qry_work1.ParamByName('Reminder').AsString:= sReminder;
-          dm_PCM.qry_work1.ParamByName('RecurrenceInfo').AsAnsiString:= asRecurrence;
-          dm_PCM.qry_work1.ParamByName('Color').AsString:= IntToStr(16777215);
-          dm_PCM.qry_work1.ParamByName('FontColor').AsString:= IntToStr(16777215);
-          dm_PCM.qry_work1.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
+        strlstICal:= TStringList.Create;
+        strlstICal.Text:= rstRsp_main.Content;
+        strlstICal.SaveToFile(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\'+ dm_PCM.qry_work.FieldByName('Kalender').asString + '.ics',TEncoding.UTF8);
+        strlstICal.Free;
+        ASnot:='\n';
+        asmem:= '\,';
+        aData1 := TiCalPackage.Create(sFile,frm_Calendar);
+  //      aList := TStringList.Create;
+        aList := aData1.iCalList;
+        schedDBStrg_Kalender.BeginUpdate;
+        if aList.Count > 0 then
+        begin
+          dm_PCM.qry_work1.SQL.Text:= 'Delete From manager_Kalender where Kalendername = :Kalender and ID_Benutzer = :ID_Benutzer';
+          dm_PCM.qry_work1.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
           dm_PCM.qry_work1.ParamByName('Kalender').AsString:= sKalender;
-          dm_PCM.qry_work1.ParamByName('ganzerTag').AsString:= sGanzerTag;
-          dm_PCM.qry_work1.ParamByName('wiederholung_text').AsString:= swiederholungtext;
           dm_PCM.qry_work1.ExecSQL;
           dm_PCM.qry_work1.close;
+          ShowWaitForm(TForm(Self), PWideChar(rs_PCMManager_TermineImportieren), alist.Count-1, 417, 65);
+          Application.ProcessMessages;
+          Screen.Cursor:= crHourGlass;
+          Application.ProcessMessages;
+          for i := 0 to alist.Count -1 do begin
+            aData := riCalItem.create;
+            aData := alist.Objects[i] as riCalItem;
+            if Length(aData.DTSTART) < 9 then
+            begin
+              sJahrBegin:= Copy(aData.DTSTART,Length(aData.DTSTART) - 8,4);
+              sMonatBegin:=Copy(aData.DTSTART,Length(aData.DTSTART) - 3,2);
+              sTagBegin:=Copy(aData.DTSTART,Length(aData.DTSTART) - 1,2);
+              if aData.DTEND = '' then
+              begin
+                sJahrEnd:= Copy(DateToStr(aData.DTStartd + 1), 7,4);
+                sMonatEnd:=Copy(DateToStr(aData.DTStartd + 1), 4,2);
+                sTagEnd:=Copy(DateToStr(aData.DTStartd + 1), 1,2);
+              end
+              else begin
+                sJahrEnd:= Copy(aData.DTEND,1,4);
+                sMonatEnd:=Copy(aData.DTEND,5,2);
+                sTagEnd:=Copy(aData.DTEND,7,2);
+              end;
 
-          WaitFormStep;
+              if sErinnerung = 'true' then
+              begin
+                sReminder:= 'true';
+                sReminderDate:= DateTimeToStr(IncMinute(StrToDateTime(
+                sTagBegin +'.' + sMonatBegin + '.' + sJahrBegin + ' 00:00:00'),iErinnerungVor *-1));
+                sReminderDate:= Copy(sReminderDate,7,4) + '-' + Copy(sReminderDate,4,2) + '-'
+                + Copy(sReminderDate,1,2) + ' ' + Copy(sReminderDate,12,8);
+                iReminderMinutes:= iErinnerungVor;
+                iOptions:= 6;
+                datTimTermin := EncodeDateTime(StrToInt(sJahrBegin),StrToInt(sMonatBegin),
+                   StrToInt(sTagBegin),StrToInt(sStundeBegin),StrToInt(sMinuteBegin),
+                   StrToInt(sSekundeBegin),0);
+                dtNow:= now();
+                if datTimTermin < dtNow then
+                begin
+                  sReminder:= 'false';
+                  sReminderDate:= 'NULL';
+                  iReminderMinutes:= 0;
+                  iOptions:= 2;
+                end;
+              end
+              else begin
+                sReminder:= 'false';
+                sReminderDate:= 'NULL';
+                iReminderMinutes:= 0;
+                iOptions:= 2;
+              end;
+
+              sDateBegin:= sJahrBegin + '-' + sMonatBegin + '-' + sTagBegin + ' 00:00:00';
+              sDateEnd:= sJahrEnd + '-' + sMonatEnd + '-' + sTagEnd + ' 00:00:00';
+              sGanzerTag:= 'true';
+            end
+            else begin
+              sJahrBegin:=Copy(aData.DTSTART,Length(aData.DTSTART) - 15,4);
+              sMonatBegin:=Copy(aData.DTSTART,Length(aData.DTSTART) - 10,2);
+              sTagBegin:=Copy(aData.DTSTART,Length(aData.DTSTART) - 8,2);
+              sJahrEnd:= Copy(aData.DTEND,Length(aData.DTEND) - 15,4);
+              sMonatEnd:=Copy(aData.DTEND,Length(aData.DTEND) - 10,2);
+              sTagEnd:=Copy(aData.DTEND,Length(aData.DTEND) - 8,2);
+              sStundeBegin:= Copy(aData.DTSTART,Length(aData.DTSTART) - 5,2);
+              sMinuteBegin:= Copy(aData.DTSTART,Length(aData.DTSTART) - 3,2);
+              sSekundeBegin:= Copy(aData.DTSTART,Length(aData.DTSTART) - 1,2);
+              sStundeEnd:= Copy(aData.DTEND,Length(aData.DTEND) - 5,2);
+              sMinuteEnd:= Copy(aData.DTEND,Length(aData.DTEND) - 3,2);
+              sSekundeEnd:= Copy(aData.DTEND,Length(aData.DTEND) - 1,2);
+              sDateBegin:= sJahrBegin + '-' + sMonatBegin + '-' + sTagBegin + ' ' + sStundeBegin + ':' +
+              sMinuteBegin + ':' + sSekundeBegin;
+              sDateEnd:= sJahrEnd + '-' + sMonatEnd + '-' + sTagEnd + ' ' + sStundeEnd + ':' +
+              sMinuteEnd + ':' + sSekundeEnd;
+
+              if sErinnerung = 'true' then
+              begin
+                sReminder:= 'true';
+                sReminderDate:= DateTimeToStr(IncMinute(StrToDateTime(
+                sTagBegin +'.' + sMonatBegin + '.' + sJahrBegin + ' '
+                + sStundeBegin + ':' + sMinuteBegin + ':' + sSekundeBegin),iErinnerungVor *-1));
+                sReminderDate:= Copy(sReminderDate,7,4) + '-' + Copy(sReminderDate,4,2) + '-'
+                + Copy(sReminderDate,1,2) + ' ' + Copy(sReminderDate,12,8);
+                iReminderMinutes:= iErinnerungVor;
+                iOptions:= 6;
+
+                datTimTermin := EncodeDateTime(StrToInt(sJahrBegin),StrToInt(sMonatBegin),
+                   StrToInt(sTagBegin),StrToInt(sStundeBegin),StrToInt(sMinuteBegin),
+                   StrToInt(sSekundeBegin),0);
+                dtNow:= now();
+                if datTimTermin < dtNow then
+                begin
+                  sReminder:= 'false';
+                  sReminderDate:= 'NULL';
+                  iReminderMinutes:= 0;
+                  iOptions:= 2;
+                end;
+
+              end
+              else begin
+                sReminder:= 'false';
+                sReminderDate:= 'NULL';
+                iReminderMinutes:= 0;
+                iOptions:= 2;
+              end;
+              sGanzerTag:= 'false';
+            end;
+            asBeschreibung := AnsiString(ReplaceStr(ReplaceStr(String(aData.DESCRIPTION),String(ASnot),String(slinebreak)),String(asmem),','));
+            if Length(asBeschreibung) < 4 then
+              asBeschreibung:= '-';
+
+            if aData.Location = '97725\, Elfershausen\, Adolf-Kolping-Str. 11' then
+            begin
+              aData.Location:= 'im Büro'
+            end
+            else begin
+              if (aData.Location = '\, \, ') or (aData.Location = 'ohne Angabe') then
+              begin
+                aData.Location:= 'sonstiges';
+              end
+              else begin
+                aData.Location:= 'beim Kunden';
+              end;
+            end;
+            if aData.Location = 'beim Kunden' then
+            begin
+              sColordef := IntToStr(12566527);
+              sFontcolordef := sFontColor;
+            end
+            else begin
+              sColordef := sColor;
+              sFontcolordef := sFontColor;
+
+              case AnsiIndexStr(String(aData.SUMMARY), ['Biomüll', 'Restmüll','Papier','Gelber Sack','Giftmobil']) of
+                // BioMüll
+                0:
+                begin
+                  sFontcolordef:= IntToStr(clWhite);
+                  sColordef := IntToStr(944838);
+                end;
+                // RestMüll
+                1:
+                begin
+                  sFontcolordef:= IntToStr(clWhite);
+                  sColordef := IntToStr(5658199);
+                end;
+                // Papier
+                2:
+                begin
+                  sFontcolordef:= IntToStr(clWhite);
+                  sColordef := IntToStr(13214474);
+                end;
+                // Gelber Sack
+                3:
+                begin
+                  sFontcolordef:= IntToStr(clBlack);
+                  sColordef := IntToStr(56831);
+                end;
+                // Giftmobil
+                4:
+                begin
+                  sFontcolordef:= IntToStr(clWhite);
+                  sColordef := IntToStr(7679146);
+                end;
+              end;
+            end;
+
+            iEventtpye:= 0;
+            if AData.Rule <> '' then
+            begin
+              iEventtpye:= 1;
+              asRecurrence:= GetRecurrence(AData.Rule,sDateBegin);
+              swiederholungtext:= AData.Rule;//String(asRecurrence);
+              sReminder:= 'true';
+              iOptions:= 6;
+              sReminderDate:= sDateBegin;
+            end;
+            if sReminderDate = 'NULL' then
+            begin
+              dm_PCM.qry_work1.SQL.Text:='Insert into manager_Kalender (EventType,Caption,Location,Message,'
+              + 'Start,Finish,Options,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'
+              + 'ReminderMinutesBeforeStart,LabelColor,FontColor,ID_Benutzer,Kalendername,CompleteDay,wiederholung_text) Values ('
+              + ':Eventtype,:SUMMARY,:Location,:Beschreibung,:DateBegin,:DateEnd,:Options,0,-1,:RecurrenceInfo,:Reminder,'
+              + 'NULL,0,:Color,:FontColor,:ID,:Kalender,:ganzerTag,:wiederholung_text)';
+            end
+            else begin
+              dm_PCM.qry_work1.SQL.Text:='Insert into manager_Kalender (EventType,Caption,Location,Message,'
+              + 'Start,Finish,Options,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'
+              + 'ReminderMinutesBeforeStart,LabelColor,FontColor,ID_Benutzer,Kalendername,CompleteDay,wiederholung_text) Values ('
+              + ':Eventtype,:SUMMARY,:Location,:Beschreibung,:DateBegin,:DateEnd,:Options,0,-1,:RecurrenceInfo,:Reminder,'
+              + ':ReminderDate,:ReminderMinutes,:Color,:FontColor,:ID,:Kalender,:ganzerTag,:wiederholung_text)';
+              dm_PCM.qry_work1.ParamByName('ReminderDate').AsString:= sReminderDate;
+              dm_PCM.qry_work1.ParamByName('ReminderMinutes').AsInteger:= iReminderMinutes;
+            end;
+            dm_PCM.qry_work1.ParamByName('Eventtype').ASinteger:= iEventtpye;
+            dm_PCM.qry_work1.ParamByName('SUMMARY').AsAnsiString:= aData.SUMMARY;
+            dm_PCM.qry_work1.ParamByName('Location').AsString:= StringReplace(String(aData.Location),'\','',[rfIgnoreCase,rfReplaceAll]);
+            dm_PCM.qry_work1.ParamByName('Beschreibung').AsString:= String(asBeschreibung);
+            dm_PCM.qry_work1.ParamByName('DateBegin').AsString:= sDateBegin;
+            dm_PCM.qry_work1.ParamByName('DateEnd').AsString:= sDateEnd;
+            dm_PCM.qry_work1.ParamByName('Options').AsInteger:= iOptions;
+            dm_PCM.qry_work1.ParamByName('Reminder').AsString:= sReminder;
+            dm_PCM.qry_work1.ParamByName('RecurrenceInfo').AsAnsiString:= asRecurrence;
+            dm_PCM.qry_work1.ParamByName('Color').AsString:= IntToStr(16777215);
+            dm_PCM.qry_work1.ParamByName('FontColor').AsString:= IntToStr(16777215);
+            dm_PCM.qry_work1.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
+            dm_PCM.qry_work1.ParamByName('Kalender').AsString:= sKalender;
+            dm_PCM.qry_work1.ParamByName('ganzerTag').AsString:= sGanzerTag;
+            dm_PCM.qry_work1.ParamByName('wiederholung_text').AsString:= swiederholungtext;
+            dm_PCM.qry_work1.ExecSQL;
+            dm_PCM.qry_work1.close;
+
+            WaitFormStep;
+            Application.ProcessMessages;
+          end;
+          Screen.Cursor:= crDefault;
           Application.ProcessMessages;
         end;
-        Screen.Cursor:= crDefault;
-        Application.ProcessMessages;
+        aData.Free;
+        dm_PCM.qry_work.SQL.Text:=  'SELECT MAX(ID) as ID FROM manager_kalender ' +
+                          'GROUP BY EventType,Caption,Location,Message,Start,Finish,Options,CompleteDay,' +
+                          'Parent_ID,RecurrenceIndex,Reminder,ReminderDate,ReminderMinutesBeforeStart,'+
+                          'LabelColor,FontColor,ID_Benutzer,Kalendername ' +
+                          'Having Count(ID) > 1';
+        dm_PCM.qry_work.open;
+        while not dm_PCM.qry_work.Eof do
+        begin
+          dm_PCM.qry_work1.SQL.Text:= 'DELETE FROM Manager_kalender WHERE ID = :ID';
+          dm_PCM.qry_work1.ParamByName('ID').AsInteger:= dm_PCM.qry_work.FieldByName('ID').AsInteger;
+          dm_PCM.qry_work1.ExecSQL;
+          dm_PCM.qry_work.Next;
+        end;
+        dm_PCM.qry_work.Close;
+        RefreshTerminundAUfgaben;
+        schedDBStrg_Kalender.FullRefresh;
+        schedDBStrg_Kalender.EndUpdate;
       end;
-      aData.Free;
-      dm_PCM.qry_work.SQL.Text:=  'SELECT MAX(ID) as ID FROM manager_kalender ' +
-                        'GROUP BY EventType,Caption,Location,Message,Start,Finish,Options,CompleteDay,' +
-                        'Parent_ID,RecurrenceIndex,Reminder,ReminderDate,ReminderMinutesBeforeStart,'+
-                        'LabelColor,FontColor,ID_Benutzer,Kalendername ' +
-                        'Having Count(ID) > 1';
-      dm_PCM.qry_work.open;
-      while not dm_PCM.qry_work.Eof do
-      begin
-        dm_PCM.qry_work1.SQL.Text:= 'DELETE FROM Manager_kalender WHERE ID = :ID';
-        dm_PCM.qry_work1.ParamByName('ID').AsInteger:= dm_PCM.qry_work.FieldByName('ID').AsInteger;
-        dm_PCM.qry_work1.ExecSQL;
-        dm_PCM.qry_work.Next;
-      end;
-      dm_PCM.qry_work.Close;
-      RefreshTerminundAUfgaben;
-      schedDBStrg_Kalender.FullRefresh;
-      schedDBStrg_Kalender.EndUpdate;
     except
       on e:system.sysutils.Exception do
       begin

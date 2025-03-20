@@ -29,19 +29,19 @@ object frm_Calendar: Tfrm_Calendar
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
     object brdckctrl_Kalender: TdxBarDockControl
-      Left = 22
-      Top = 48
+      Left = 24
+      Top = 45
       Width = 1022
-      Height = 117
+      Height = 112
       Align = dalNone
       BarManager = brmgr_Kalendar
     end
     object sched_Kalender: TcxScheduler
-      Left = 22
-      Top = 171
+      Left = 24
+      Top = 163
       Width = 1022
-      Height = 743
-      DateNavigator.RowCount = 5
+      Height = 753
+      DateNavigator.RowCount = 6
       ViewDay.Active = True
       ViewDay.AlwaysShowEventTime = True
       ViewDay.TimeRulerMinutes = True
@@ -87,8 +87,8 @@ object frm_Calendar: Tfrm_Calendar
       OnKeyDown = sched_KalenderKeyDown
       Selection = 7
       Splitters = {
-        950000007E000000840600008300000069030000010000006E030000E6020000}
-      StoredClientBounds = {0100000001000000FD030000E6020000}
+        950000007E000000840600008300000069030000010000006E030000F0020000}
+      StoredClientBounds = {0100000001000000FD030000F0020000}
     end
     object trlst_Aufgaben: TcxTreeList
       Left = 10000
@@ -141,7 +141,7 @@ object frm_Calendar: Tfrm_Calendar
       Left = 10000
       Top = 10000
       Width = 1022
-      Height = 117
+      Height = 112
       Align = dalNone
       BarManager = brmgr_Kalendar
       Visible = False
@@ -879,7 +879,7 @@ object frm_Calendar: Tfrm_Calendar
       Left = 10000
       Top = 10000
       Width = 1000
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Kalendar
       Visible = False
@@ -1226,7 +1226,7 @@ object frm_Calendar: Tfrm_Calendar
       Left = 10000
       Top = 10000
       Width = 978
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Kalendar
       Visible = False
@@ -1265,7 +1265,7 @@ object frm_Calendar: Tfrm_Calendar
       CaptionOptions.Visible = False
       Control = brdckctrl_Kalender
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 117
+      ControlOptions.OriginalHeight = 112
       ControlOptions.OriginalWidth = 1056
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1312,7 +1312,7 @@ object frm_Calendar: Tfrm_Calendar
       CaptionOptions.Visible = False
       Control = brdckctrl_Aufgaben
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 117
+      ControlOptions.OriginalHeight = 112
       ControlOptions.OriginalWidth = 1056
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1369,7 +1369,7 @@ object frm_Calendar: Tfrm_Calendar
       AlignVert = avTop
       CaptionOptions.Text = 'Betreff:'
       Control = cxDBTextEdit6
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 23
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1380,7 +1380,7 @@ object frm_Calendar: Tfrm_Calendar
       AlignVert = avTop
       CaptionOptions.Text = 'Ansprechpartner:'
       Control = cbxAns
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1488,7 +1488,7 @@ object frm_Calendar: Tfrm_Calendar
       CaptionOptions.Visible = False
       Control = brdckctrl_Stundenplan
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1050
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1499,7 +1499,7 @@ object frm_Calendar: Tfrm_Calendar
       AlignVert = avTop
       CaptionOptions.Text = 'Schule:'
       Control = edt_Stundenplan_Schule
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 640
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1510,7 +1510,7 @@ object frm_Calendar: Tfrm_Calendar
       AlignVert = avTop
       CaptionOptions.Text = 'Klasse:'
       Control = edt_Stundenplan_Klasse
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 50
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1521,7 +1521,7 @@ object frm_Calendar: Tfrm_Calendar
       AlignVert = avTop
       CaptionOptions.Text = 'Schuljahr:'
       Control = edt_Stundenplan_Schuljahr
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 100
       ControlOptions.ShowBorder = False
       Index = 2
@@ -1553,7 +1553,7 @@ object frm_Calendar: Tfrm_Calendar
       CaptionOptions.Visible = False
       Control = brdckCtrl_StundenplanFach
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1050
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1572,7 +1572,7 @@ object frm_Calendar: Tfrm_Calendar
       CaptionOptions.Text = 'tiEdt_Stundenplan_Von'
       CaptionOptions.Visible = False
       Control = tiEdt_Stundenplan_Von
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 70
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1585,7 +1585,7 @@ object frm_Calendar: Tfrm_Calendar
       CaptionOptions.Visible = False
       CaptionOptions.Layout = clTop
       Control = tiEdt_Stundenplan_Bis
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 70
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1597,7 +1597,7 @@ object frm_Calendar: Tfrm_Calendar
       CaptionOptions.Visible = False
       CaptionOptions.Layout = clTop
       Control = lucmbbx_Stundenplan_Montag
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 130
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1610,7 +1610,7 @@ object frm_Calendar: Tfrm_Calendar
       CaptionOptions.Visible = False
       CaptionOptions.Layout = clTop
       Control = lucmbbx_Stundenplan_Dienstag
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 130
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1623,7 +1623,7 @@ object frm_Calendar: Tfrm_Calendar
       CaptionOptions.Visible = False
       CaptionOptions.Layout = clTop
       Control = lucmbbx_Stundenplan_Mittwoch
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 130
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1635,7 +1635,7 @@ object frm_Calendar: Tfrm_Calendar
       CaptionOptions.Visible = False
       CaptionOptions.Layout = clTop
       Control = lucmbbx_Stundenplan_Donnerstag
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 130
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1648,7 +1648,7 @@ object frm_Calendar: Tfrm_Calendar
       CaptionOptions.Visible = False
       CaptionOptions.Layout = clTop
       Control = lucmbbx_Stundenplan_Freitag
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 130
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1661,7 +1661,7 @@ object frm_Calendar: Tfrm_Calendar
       CaptionOptions.Visible = False
       CaptionOptions.Layout = clTop
       Control = lucmbbx_Stundenplan_Samstag
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 130
       ControlOptions.ShowBorder = False
       Index = 1
@@ -2990,7 +2990,7 @@ object frm_Calendar: Tfrm_Calendar
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 45729.690312569440000000
+      ReportDocument.CreationDate = 45730.495845960650000000
       OptionsSize.AutoWidth = True
       PixelsPerInch = 96
       BuiltInReportLink = True

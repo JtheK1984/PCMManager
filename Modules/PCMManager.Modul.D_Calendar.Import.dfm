@@ -54,7 +54,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
     end
     object btn_CalNewCancel: TcxButton
       Left = 303
-      Top = 197
+      Top = 199
       Width = 287
       Height = 25
       Caption = 'Abbrechen'
@@ -65,7 +65,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
     end
     object btn_CalNewSave: TcxButton
       Left = 10
-      Top = 197
+      Top = 199
       Width = 287
       Height = 25
       Caption = 'Speichern'
@@ -76,7 +76,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
     end
     object cmbbx_CalNewReminderminutes: TcxImageComboBox
       Left = 308
-      Top = 137
+      Top = 145
       EditValue = '15'
       ParentFont = False
       Properties.Items = <
@@ -194,7 +194,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
     end
     object cmbbx_CalNewType: TcxComboBox
       Left = 308
-      Top = 112
+      Top = 118
       Properties.Items.Strings = (
         'Sonstiger Kalender'
         'AbfuhrKalender')
@@ -207,7 +207,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
     end
     object chkbx_CalNewReminder: TcxCheckBox
       Left = 172
-      Top = 137
+      Top = 145
       Caption = 'an den Termin erinnern:'
       Style.HotTrack = False
       Style.TransparentBorder = False
@@ -237,7 +237,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
     end
     object colcmbbx_CalNewFont: TcxColorComboBox
       Left = 308
-      Top = 62
+      Top = 64
       ParentFont = False
       Properties.AllowSelectColor = True
       Properties.ColorDialogShowFull = True
@@ -258,7 +258,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
     end
     object edt_CalNewName: TcxTextEdit
       Left = 308
-      Top = 87
+      Top = 91
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
@@ -1348,8 +1348,8 @@ object frm_PCM_Import: Tfrm_PCM_Import
       CaptionOptions.Visible = False
       CaptionOptions.Layout = clTop
       Control = chkbx_CalNewReminder
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 137
+      ControlOptions.OriginalHeight = 17
+      ControlOptions.OriginalWidth = 133
       ControlOptions.ShowBorder = False
       Index = 0
     end
@@ -1360,7 +1360,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
       CaptionOptions.Text = 'edt_CalNewPfad'
       CaptionOptions.Visible = False
       Control = edt_CalNewPfad
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 209
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1384,7 +1384,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
       CaptionOptions.Text = 'colcmbbx_CalNewCal'
       CaptionOptions.Visible = False
       Control = colcmbbx_CalNewCal
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 239
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1396,7 +1396,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
       CaptionOptions.Text = 'colcmbbx_CalNewFont'
       CaptionOptions.Visible = False
       Control = colcmbbx_CalNewFont
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 239
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1408,7 +1408,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
       CaptionOptions.Text = 'edt_CalNewName'
       CaptionOptions.Visible = False
       Control = edt_CalNewName
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 239
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1420,7 +1420,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
       CaptionOptions.Text = 'cmbbx_CalNewType'
       CaptionOptions.Visible = False
       Control = cmbbx_CalNewType
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 239
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1433,7 +1433,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
       CaptionOptions.Visible = False
       CaptionOptions.Layout = clTop
       Control = cmbbx_CalNewReminderminutes
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 239
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1443,7 +1443,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
       CaptionOptions.Text = 'prgbr_CalNew'
       CaptionOptions.Visible = False
       Control = prgbr_CalNew
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 550
       ControlOptions.ShowBorder = False
       Index = 1

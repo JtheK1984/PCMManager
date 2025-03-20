@@ -3705,9 +3705,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
   TextHeight = 13
   object navbr_main: TdxNavBar
     Left = 0
-    Top = 35
+    Top = 30
     Width = 200
-    Height = 765
+    Height = 770
     Align = alLeft
     ActiveGroupIndex = 0
     TabOrder = 0
@@ -3715,6 +3715,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
     View = 14
     OptionsImage.SmallImages = dm_PCM.imglst_16x16
     OptionsStyle.CustomStyles.Background = navbrStyleIt_main
+    ExplicitTop = 35
+    ExplicitHeight = 765
     object navbrgrp_Optionen: TdxNavBarGroup
       Caption = 'Optionen'
       SelectedLinkIndex = -1
@@ -3749,9 +3751,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
         end
         item
           Item = iAufgaben
-        end
-        item
-          Item = iJira
         end
         item
           Item = iStundenplan
@@ -3955,12 +3954,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
       SmallImageIndex = 82
       OnClick = NavBarClick
     end
-    object iJira: TdxNavBarItem
-      Caption = 'Jira'
-      SmallImageIndex = 83
-      Visible = False
-      OnClick = NavBarClick
-    end
     object iZeiterfassung: TdxNavBarItem
       Caption = 'Zeiterfassung'
       SmallImageIndex = 84
@@ -3979,18 +3972,20 @@ object frm_PCM_Main: Tfrm_PCM_Main
   end
   object grpbx_Design: TcxGroupBox
     Left = 200
-    Top = 35
+    Top = 30
     Align = alClient
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 1
-    Height = 765
+    ExplicitTop = 35
+    ExplicitHeight = 765
+    Height = 770
     Width = 1080
     object pc_main: TcxPageControl
-      Left = 3
-      Top = 3
-      Width = 1074
-      Height = 759
+      Left = 2
+      Top = 2
+      Width = 1076
+      Height = 766
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -4005,28 +4000,38 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Properties.Images = dm_PCM.imglst_16x16
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
       OnPageChanging = pc_mainPageChanging
-      ClientRectBottom = 753
-      ClientRectLeft = 2
-      ClientRectRight = 1068
-      ClientRectTop = 28
+      ExplicitLeft = 3
+      ExplicitTop = 3
+      ExplicitWidth = 1074
+      ExplicitHeight = 759
+      ClientRectBottom = 762
+      ClientRectLeft = 4
+      ClientRectRight = 1072
+      ClientRectTop = 25
       object ts_Dashboard: TcxTabSheet
         AllowCloseButton = False
         Caption = 'Dashboard'
         ImageIndex = 79
+        ExplicitLeft = 2
+        ExplicitTop = 28
+        ExplicitWidth = 1066
+        ExplicitHeight = 725
         object dxLayoutControl1: TdxLayoutControl
           Left = 0
           Top = 0
-          Width = 1066
-          Height = 725
+          Width = 1068
+          Height = 737
           Align = alClient
           TabOrder = 0
           LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
           OptionsImage.Images = dm_PCM.imglst_16x16
+          ExplicitWidth = 1066
+          ExplicitHeight = 725
           object chartctrl_Birthday: TdxChartControl
-            Left = 33
-            Top = 78
+            Left = 36
+            Top = 63
             Width = 996
-            Height = 245
+            Height = 264
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -4050,10 +4055,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
             end
           end
           object chartctrl_Contact: TdxChartControl
-            Left = 33
-            Top = 381
-            Width = 448
-            Height = 307
+            Left = 36
+            Top = 371
+            Width = 449
+            Height = 330
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -4080,10 +4085,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
             end
           end
           object chartctrl_Adresses: TdxChartControl
-            Left = 520
-            Top = 381
+            Left = 523
+            Top = 371
             Width = 509
-            Height = 307
+            Height = 330
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -5980,12 +5985,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
     Top = 232
   end
   object lafCtrl_Main: TcxLookAndFeelController
-    Kind = lfFlat
-    NativeStyle = False
-    ScrollbarMode = sbmClassic
-    ScrollMode = scmClassic
-    SkinName = 'DevExpressDarkStyle'
-    RenderMode = rmGDIPlus
     Left = 88
     Top = 104
   end
@@ -9826,7 +9825,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     DockControlHeights = (
       0
       0
-      35
+      30
       0)
     object tb_Main: TdxBar
       AllowClose = False
@@ -9924,12 +9923,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Hint = 'User'
       Visible = ivAlways
       Width = 150
-    end
-    object Menuezurueck: TdxBarButton
-      Caption = 'Men'#252' zur'#252'cksetzen'
-      Category = 1
-      Hint = 'Men'#252' zur'#252'cksetzen'
-      Visible = ivAlways
     end
   end
 end

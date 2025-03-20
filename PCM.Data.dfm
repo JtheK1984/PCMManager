@@ -1,7 +1,8 @@
 object dm_PCM: Tdm_PCM
   OnCreate = DataModuleCreate
-  Height = 797
-  Width = 1135
+  Height = 1196
+  Width = 1703
+  PixelsPerInch = 144
   object con_PCM: TFDConnection
     Params.Strings = (
       'Database=pcm'
@@ -15,8 +16,8 @@ object dm_PCM: Tdm_PCM
     Connected = True
     LoginPrompt = False
     BeforeConnect = con_PCMBeforeConnect
-    Left = 32
-    Top = 8
+    Left = 48
+    Top = 12
   end
   object qry_ChartKalender: TFDQuery
     Connection = con_PCM
@@ -35,8 +36,8 @@ object dm_PCM: Tdm_PCM
       
         'SELECT '#39#252'berf'#228'llig'#39',COUNT(*)  AS Wert,Cast(ID_benutzer AS UNSIGN' +
         'ED ) AS ID_Benutzer FROM manager_kalender WHERE Finish < NOW()')
-    Left = 319
-    Top = 16
+    Left = 479
+    Top = 24
   end
   object qry_ChartKategorie: TFDQuery
     Connection = con_PCM
@@ -51,23 +52,23 @@ object dm_PCM: Tdm_PCM
       'WHERE mak.ID_IC_Aufgabenarten IS NOT NULL'
       'GROUP BY mak.ID_IC_Aufgabenarten'
       'ORDER BY Kategorie')
-    Left = 427
-    Top = 16
+    Left = 641
+    Top = 24
   end
   object ds_ChartKategorie: TDataSource
     DataSet = qry_ChartKategorie
-    Left = 427
-    Top = 72
+    Left = 641
+    Top = 108
   end
   object ds_ChartKalender: TDataSource
     DataSet = qry_ChartKalender
-    Left = 319
-    Top = 72
+    Left = 479
+    Top = 108
   end
   object ds_ChartAufgabe: TDataSource
     DataSet = qry_ChartAufgabe
-    Left = 112
-    Top = 72
+    Left = 168
+    Top = 108
   end
   object qry_ChartAufgabe: TFDQuery
     Connection = con_PCM
@@ -95,16 +96,16 @@ object dm_PCM: Tdm_PCM
         'ED ) AS ID_Benutzer  FROM manager_kalender WHERE Bearbeitetam IS' +
         ' not NULL'
       '')
-    Left = 112
-    Top = 16
+    Left = 168
+    Top = 24
   end
   object FDPhysADSDriverLink1: TFDPhysADSDriverLink
-    Left = 952
-    Top = 168
+    Left = 1428
+    Top = 252
   end
   object FDPhysMSSQLDriverLink1: TFDPhysMSSQLDriverLink
-    Left = 840
-    Top = 168
+    Left = 1260
+    Top = 252
   end
   object qry_ChartFinance: TFDQuery
     Connection = con_PCM
@@ -123,38 +124,38 @@ object dm_PCM: Tdm_PCM
         'SELECT '#39'Fixkosten fix'#39',SUM(Betrag) AS Ist, SUM(Fixbetrag) AS Sol' +
         'l,ID_Benutzer FROM manager_finanzen_ausgaben Where Fixkosten = '#39 +
         'true'#39)
-    Left = 215
-    Top = 16
+    Left = 323
+    Top = 24
   end
   object ds_ChartFinance: TDataSource
     DataSet = qry_ChartFinance
-    Left = 215
-    Top = 72
+    Left = 323
+    Top = 108
   end
   object ds_Kalender_Filter: TDataSource
     DataSet = qry_Kalender_Filter
-    Left = 208
-    Top = 513
+    Left = 312
+    Top = 770
   end
   object qry_Kalender_Filter: TFDQuery
     Connection = con_PCM
     SQL.Strings = (
       'Select DISTINCT Kalendername FROM manager_Kalender '
       'ORDER BY Kalendername')
-    Left = 208
-    Top = 457
+    Left = 312
+    Top = 686
   end
   object qry_work: TFDQuery
     Connection = con_PCM
     SQL.Strings = (
       '')
-    Left = 967
-    Top = 648
+    Left = 1451
+    Top = 972
   end
   object imglst_16x16: TcxImageList
     SourceDPI = 96
     FormatVersion = 1
-    DesignInfo = 16778168
+    DesignInfo = 25167252
     ImageInfo = <
       item
         ImageClass = 'TBitmap'
@@ -3383,7 +3384,7 @@ object dm_PCM: Tdm_PCM
     Height = 24
     Width = 24
     FormatVersion = 1
-    DesignInfo = 20448184
+    DesignInfo = 30672276
     ImageInfo = <
       item
         ImageClass = 'TBitmap'
@@ -4483,7 +4484,7 @@ object dm_PCM: Tdm_PCM
     Height = 32
     Width = 32
     FormatVersion = 1
-    DesignInfo = 24118200
+    DesignInfo = 36177300
     ImageInfo = <
       item
         ImageClass = 'TBitmap'
@@ -21854,33 +21855,33 @@ object dm_PCM: Tdm_PCM
       
         'SELECT StundenProArbeitstag,Standard_Faelligkeit_Aufgaben_In_Tag' +
         'en,Jira_Basic_URL, ID_Benutzer FROM manager_Kalender_optionen')
-    Left = 32
-    Top = 72
+    Left = 48
+    Top = 108
   end
   object qry_Aufgabe_Ansprechpartner: TFDQuery
     Connection = con_PCM
     SQL.Strings = (
       '')
-    Left = 566
-    Top = 16
+    Left = 849
+    Top = 24
   end
   object ds_Aufgabe_Ansprechpartner: TDataSource
     DataSet = qry_Aufgabe_Ansprechpartner
-    Left = 566
-    Top = 72
+    Left = 849
+    Top = 108
   end
   object qry_KalenderAufgaben_Arten: TFDQuery
     Connection = con_PCM
     SQL.Strings = (
       'Select ID,Bezeichnung, Farbe From manager_aufgaben_arten '
       '')
-    Left = 444
-    Top = 457
+    Left = 666
+    Top = 686
   end
   object ds_KalenderAufgaben_Arten: TDataSource
     DataSet = qry_KalenderAufgaben_Arten
-    Left = 447
-    Top = 513
+    Left = 671
+    Top = 770
   end
   object qry_KalenderAufgaben_Prio: TFDQuery
     Connection = con_PCM
@@ -21889,25 +21890,25 @@ object dm_PCM: Tdm_PCM
         'Select ID,Prioritaet,Bezeichnung From manager_aufgaben_Prioritae' +
         'ten '
       '')
-    Left = 339
-    Top = 457
+    Left = 509
+    Top = 686
   end
   object ds_KalenderAufgaben_Prio: TDataSource
     DataSet = qry_KalenderAufgaben_Prio
-    Left = 338
-    Top = 513
+    Left = 507
+    Top = 770
   end
   object ds_KalenderAufgabe_AdressSuche: TDataSource
     DataSet = qry_work
-    Left = 968
-    Top = 712
+    Left = 1452
+    Top = 1068
   end
   object qry_work1: TFDQuery
     Connection = con_PCM
     SQL.Strings = (
       '')
-    Left = 919
-    Top = 656
+    Left = 1379
+    Top = 984
   end
   object qry_Config_Firmen: TFDQuery
     Connection = con_PCM
@@ -21915,20 +21916,20 @@ object dm_PCM: Tdm_PCM
       'Select ID,Firma as Name from manager_kontakte'
       'Where Firma <> '#39#39
       'order by Firma')
-    Left = 229
-    Top = 200
+    Left = 344
+    Top = 300
   end
   object ds_Config_Firmen: TDataSource
     DataSet = qry_Config_Firmen
-    Left = 230
-    Top = 256
+    Left = 345
+    Top = 384
   end
   object qry_Config_Bundesland: TFDQuery
     Connection = con_PCM
     SQL.Strings = (
       'Select ID,Bezeichnung from manager_Bundesland')
-    Left = 341
-    Top = 200
+    Left = 512
+    Top = 300
     object FDAutoIncField1: TFDAutoIncField
       FieldName = 'ID'
       Origin = 'ID'
@@ -21941,8 +21942,8 @@ object dm_PCM: Tdm_PCM
   end
   object ds_Config_Bundesland: TDataSource
     DataSet = qry_Config_Bundesland
-    Left = 342
-    Top = 256
+    Left = 513
+    Top = 384
   end
   object qry_Config_Ansprechpartner: TFDQuery
     Connection = con_PCM
@@ -21951,8 +21952,8 @@ object dm_PCM: Tdm_PCM
       ' ID,'
       'Concat(Nachname,'#39', '#39',Vorname) as Name from manager_kontakte'
       'Order by Nachname, Vorname')
-    Left = 99
-    Top = 200
+    Left = 149
+    Top = 300
     object qry_Config_AnsprechpartnerID: TFDAutoIncField
       FieldName = 'ID'
       Origin = 'ID'
@@ -21969,33 +21970,33 @@ object dm_PCM: Tdm_PCM
   end
   object ds_Config_Ansprechpartner: TDataSource
     DataSet = qry_Config_Ansprechpartner
-    Left = 99
-    Top = 256
+    Left = 149
+    Top = 384
   end
   object ds_Config_Benutzer: TDataSource
     DataSet = qry_Config_Benutzer
-    Left = 445
-    Top = 256
+    Left = 668
+    Top = 384
   end
   object qry_Config_Benutzer: TFDQuery
     Connection = con_PCM
     SQL.Strings = (
       'Select ID, Benutzer From Benutzer'
       '')
-    Left = 442
-    Top = 200
+    Left = 663
+    Top = 300
   end
   object qry_Config_EmailConfigTyp: TFDQuery
     Connection = con_PCM
     SQL.Strings = (
       'Select ID, Bezeichnung From manager_emails_typ')
-    Left = 547
-    Top = 200
+    Left = 821
+    Top = 300
   end
   object ds_Config_EmailConfigTyp: TDataSource
     DataSet = qry_Config_EmailConfigTyp
-    Left = 547
-    Top = 256
+    Left = 821
+    Top = 384
   end
   object qry_Config_EmailPostfachLU: TFDQuery
     Connection = con_PCM
@@ -22004,92 +22005,86 @@ object dm_PCM: Tdm_PCM
         'SELECT ID,Postfach,Anzeige,Sortierung, Typ, Parent, Abonnieren, ' +
         'ID_manager_email FROM manager_email_postfach'
       '')
-    Left = 667
-    Top = 199
+    Left = 1001
+    Top = 299
   end
   object ds_Config_EmailPostfachLU: TDataSource
     DataSet = qry_Config_EmailPostfachLU
-    Left = 667
-    Top = 256
+    Left = 1001
+    Top = 384
   end
   object qry_Contact_Staatsangehoerigkeit: TFDQuery
-    Active = True
     Connection = con_PCM
     SQL.Strings = (
       'Select ID,Bezeichnung From manager_Staatsangehoerigkeit')
-    Left = 93
-    Top = 339
+    Left = 140
+    Top = 509
   end
   object ds_Contact_Staatsangehoerigkeit: TDataSource
     DataSet = qry_Contact_Staatsangehoerigkeit
-    Left = 93
-    Top = 395
+    Left = 140
+    Top = 593
   end
   object qry_Contact_Geschlecht: TFDQuery
-    Active = True
     Connection = con_PCM
     SQL.Strings = (
       'Select ID,Bezeichnung From manager_Geschlecht')
-    Left = 221
-    Top = 339
+    Left = 332
+    Top = 509
   end
   object qry_Contact_Familienstand: TFDQuery
-    Active = True
     Connection = con_PCM
     SQL.Strings = (
       'Select ID,Bezeichnung From manager_familienstand')
-    Left = 341
-    Top = 339
+    Left = 512
+    Top = 509
   end
   object qry_Contact_Anrede: TFDQuery
-    Active = True
     Connection = con_PCM
     SQL.Strings = (
       'Select ID, Bezeichnung From Manager_Anrede')
-    Left = 445
-    Top = 338
+    Left = 668
+    Top = 507
   end
   object qry_Contact_Konfession: TFDQuery
-    Active = True
     Connection = con_PCM
     SQL.Strings = (
       'Select ID,Bezeichnung From manager_Konfession')
-    Left = 661
-    Top = 338
+    Left = 992
+    Top = 507
   end
   object qry_Contact_Kontaktart: TFDQuery
-    Active = True
     Connection = con_PCM
     SQL.Strings = (
       'Select ID,Bezeichnung From manager_Kontaktart'
       '')
-    Left = 541
-    Top = 338
+    Left = 812
+    Top = 507
   end
   object ds_Contact_Kontaktart: TDataSource
     DataSet = qry_Contact_Kontaktart
-    Left = 549
-    Top = 395
+    Left = 824
+    Top = 593
   end
   object ds_Contact_Konfession: TDataSource
     DataSet = qry_Contact_Konfession
-    Left = 661
-    Top = 395
+    Left = 992
+    Top = 593
   end
   object ds_Contact_Anrede: TDataSource
     DataSet = qry_Contact_Anrede
-    Left = 445
-    Top = 395
+    Left = 668
+    Top = 593
   end
   object ds_Contact_Familienstand: TDataSource
     DataSet = qry_Contact_Familienstand
-    Left = 341
-    Top = 395
+    Left = 512
+    Top = 593
   end
   object ds_Contact_Geschlecht: TDataSource
     DataSet = qry_Contact_Geschlecht
-    Left = 221
-    Top = 395
+    Left = 332
+    Top = 593
   end
   object qry_Kalender_Kalender: TFDQuery
     Connection = con_PCM
@@ -22099,8 +22094,8 @@ object dm_PCM: Tdm_PCM
         's,CompleteDay,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,' +
         'ReminderDate,ReminderMinutesBeforeStart,LabelColor,FontColor,ID_' +
         'Benutzer,ID_Kontakte From manager_Kalender Where Typ = 2 ')
-    Left = 91
-    Top = 456
+    Left = 137
+    Top = 684
     object qry_Kalender_KalenderID: TFDAutoIncField
       FieldName = 'ID'
       Origin = 'ID'
@@ -22204,8 +22199,8 @@ object dm_PCM: Tdm_PCM
   end
   object ds_Kalender_Kalender: TDataSource
     DataSet = qry_Kalender_Kalender
-    Left = 91
-    Top = 512
+    Left = 137
+    Top = 768
   end
   object qry_Kalender_Ansprechpartner: TFDQuery
     Connection = con_PCM
@@ -22213,8 +22208,8 @@ object dm_PCM: Tdm_PCM
       'Select'
       ' ID,'
       'Concat(Nachname,'#39', '#39',Vorname) as Name from manager_kontakte')
-    Left = 549
-    Top = 457
+    Left = 824
+    Top = 686
     object qry_Kalender_AnsprechpartnerID: TFDAutoIncField
       FieldName = 'ID'
       Origin = 'ID'
@@ -22231,8 +22226,8 @@ object dm_PCM: Tdm_PCM
   end
   object ds_Kalender_Ansprechpartner: TDataSource
     DataSet = qry_Kalender_Ansprechpartner
-    Left = 550
-    Top = 513
+    Left = 825
+    Top = 770
   end
   object qry_Kalender_Aufgaben: TFDQuery
     Filtered = True
@@ -22305,8 +22300,8 @@ object dm_PCM: Tdm_PCM
       'From manager_Kalender'
       'order by InTagen, Finish'
       '')
-    Left = 659
-    Top = 457
+    Left = 989
+    Top = 686
     object FDAutoIncField2: TFDAutoIncField
       FieldName = 'ID'
       Origin = 'ID'
@@ -22540,13 +22535,13 @@ object dm_PCM: Tdm_PCM
   end
   object ds_Kalender_Aufgaben: TDataSource
     DataSet = qry_Kalender_Aufgaben
-    Left = 659
-    Top = 513
+    Left = 989
+    Top = 770
   end
   object ds_Kalender_Benutzer: TDataSource
     DataSet = qry_Kalender_Benutzer
-    Left = 755
-    Top = 513
+    Left = 1133
+    Top = 770
   end
   object qry_Kalender_Benutzer: TFDQuery
     Connection = con_PCM
@@ -22554,15 +22549,15 @@ object dm_PCM: Tdm_PCM
       
         'Select ID, CONCAT(Nachname,'#39', '#39' ,Vorname) as Name From Benutzer ' +
         'Where ID > 1')
-    Left = 755
-    Top = 457
+    Left = 1133
+    Top = 686
   end
   object qry_PasswortSerial_SerialTyp: TFDQuery
     Connection = con_PCM
     SQL.Strings = (
       'Select ID, Bezeichnung From manager_Serials_typ')
-    Left = 208
-    Top = 576
+    Left = 312
+    Top = 864
   end
   object qry_PasswortSerial_PWDTyp: TFDQuery
     Connection = con_PCM
@@ -22570,18 +22565,18 @@ object dm_PCM: Tdm_PCM
       'Select ID, Bezeichnung'
       'From manager_passwoerter_typ'
       '')
-    Left = 84
-    Top = 576
+    Left = 126
+    Top = 864
   end
   object ds_PasswortSerial_SerialTyp: TDataSource
     DataSet = qry_PasswortSerial_SerialTyp
-    Left = 208
-    Top = 632
+    Left = 312
+    Top = 948
   end
   object ds_PasswortSerial_PWDTyp: TDataSource
     DataSet = qry_PasswortSerial_PWDTyp
-    Left = 84
-    Top = 632
+    Left = 126
+    Top = 948
   end
   object qry_ChartKontaktart: TFDQuery
     Connection = con_PCM
@@ -22604,13 +22599,13 @@ object dm_PCM: Tdm_PCM
         'SELECT '#39'Sonstige'#39',COUNT(*)  AS Wert,Cast(ID_benutzer AS UNSIGNED' +
         ' ) AS ID_Benutzer  FROM manager_kontakte WHERE ID_kontaktart = 4'
       '')
-    Left = 688
-    Top = 16
+    Left = 1032
+    Top = 24
   end
   object ds_ChartKontaktart: TDataSource
     DataSet = qry_ChartKontaktart
-    Left = 688
-    Top = 72
+    Left = 1032
+    Top = 108
   end
   object qry_ChartAdressen: TFDQuery
     Connection = con_PCM
@@ -22623,13 +22618,13 @@ object dm_PCM: Tdm_PCM
         'SELECT '#39'Gesch'#228'ftlich'#39',COUNT(*)  AS Wert ,Cast(ID_benutzer AS UNS' +
         'IGNED ) AS ID_Benutzer FROM manager_kontakte WHERE Firma <> '#39#39
       '')
-    Left = 776
-    Top = 16
+    Left = 1164
+    Top = 24
   end
   object ds_ChartAdressen: TDataSource
     DataSet = qry_ChartAdressen
-    Left = 776
-    Top = 72
+    Left = 1164
+    Top = 108
   end
   object qry_ChartGeburtstage: TFDQuery
     Connection = con_PCM
@@ -22655,13 +22650,13 @@ object dm_PCM: Tdm_PCM
       'Group by Month(Geburtsdatum)'
       'Order by Monat ASC'
       '')
-    Left = 864
-    Top = 16
+    Left = 1296
+    Top = 24
   end
   object ds_ChartGeburtstage: TDataSource
     DataSet = qry_ChartGeburtstage
-    Left = 864
-    Top = 72
+    Left = 1296
+    Top = 108
   end
   object qry_ChartPWDSerials: TFDQuery
     Connection = con_PCM
@@ -22673,18 +22668,18 @@ object dm_PCM: Tdm_PCM
       
         'Select Count(*) as Wert, '#39'Serials'#39'  as BEZ ,Cast(ID_benutzer AS ' +
         'UNSIGNED ) AS ID_Benutzer From manager_Serials ')
-    Left = 944
-    Top = 16
+    Left = 1416
+    Top = 24
   end
   object ds_ChartPWDSerials: TDataSource
     DataSet = qry_ChartPWDSerials
-    Left = 944
-    Top = 72
+    Left = 1416
+    Top = 108
   end
   object ds_ChartPWD_Kategorie: TDataSource
     DataSet = qry_ChartPWD_Kategorie
-    Left = 1031
-    Top = 72
+    Left = 1547
+    Top = 108
   end
   object qry_ChartPWD_Kategorie: TFDQuery
     Connection = con_PCM
@@ -22700,13 +22695,13 @@ object dm_PCM: Tdm_PCM
       'ORDER BY pwdt.Bezeichnung'
       ''
       '')
-    Left = 1031
-    Top = 16
+    Left = 1547
+    Top = 24
   end
   object ds_ChartSerialKategorie: TDataSource
     DataSet = qry_ChartSerialKategorie
-    Left = 1055
-    Top = 192
+    Left = 1583
+    Top = 288
   end
   object qry_ChartSerialKategorie: TFDQuery
     Connection = con_PCM
@@ -22720,20 +22715,20 @@ object dm_PCM: Tdm_PCM
       'ORDER BY pwdt.Bezeichnung'
       ''
       '')
-    Left = 1055
-    Top = 136
+    Left = 1583
+    Top = 204
   end
   object qry_work2: TFDQuery
     Connection = con_PCM
     SQL.Strings = (
       '')
-    Left = 767
-    Top = 648
+    Left = 1151
+    Top = 972
   end
   object DataSource1: TDataSource
     DataSet = FDQuery1
-    Left = 496
-    Top = 128
+    Left = 744
+    Top = 192
   end
   object FDQuery1: TFDQuery
     Connection = con_PCM
@@ -22761,18 +22756,18 @@ object dm_PCM: Tdm_PCM
         'ED ) AS ID_Benutzer  FROM manager_kalender WHERE Bearbeitetam IS' +
         ' not NULL'
       '')
-    Left = 408
-    Top = 128
+    Left = 612
+    Top = 192
   end
   object qry_Calc: TFDQuery
     Connection = con_PCM
-    Left = 888
-    Top = 560
+    Left = 1332
+    Top = 840
   end
   object qry_timer: TFDQuery
     Connection = con_PCM
-    Left = 952
-    Top = 560
+    Left = 1428
+    Top = 840
   end
   object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
     object dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel
@@ -22781,5 +22776,17 @@ object dm_PCM: Tdm_PCM
     object dxLayoutSkinLookAndFeel2: TdxLayoutSkinLookAndFeel
       PixelsPerInch = 96
     end
+  end
+  object qry_Contact_Land: TFDQuery
+    Connection = con_PCM
+    SQL.Strings = (
+      'Select ID,Bezeichnung From manager_land')
+    Left = 1148
+    Top = 533
+  end
+  object ds_Contact_Land: TDataSource
+    DataSet = qry_Contact_Land
+    Left = 1148
+    Top = 617
   end
 end
