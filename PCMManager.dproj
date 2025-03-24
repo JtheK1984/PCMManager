@@ -229,6 +229,10 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="PCMManager.dxSettings.pas"/>
+        <DCCReference Include="Helper\PCMManager.Helper.Email.OAuth.pas"/>
+        <DCCReference Include="..\..\GmailAuthSMTP-master\IdSASL.OAuth.XOAUTH2.pas"/>
+        <DCCReference Include="..\..\GmailAuthSMTP-master\IdSASL.OAuth.OAuth2Bearer.pas"/>
+        <DCCReference Include="..\..\GmailAuthSMTP-master\IdSASL.OAuth.Base.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

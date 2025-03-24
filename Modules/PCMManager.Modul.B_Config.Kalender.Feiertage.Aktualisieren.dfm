@@ -24,32 +24,32 @@ object frm_FeiertageAktualisieren: Tfrm_FeiertageAktualisieren
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     ExplicitWidth = 339
-    ExplicitHeight = 193
+    ExplicitHeight = 203
     object dEdt_Von: TcxDateEdit
-      Left = 49
-      Top = 146
+      Left = 46
+      Top = 103
       Properties.SaveTime = False
       Properties.ShowTime = False
       Properties.WeekNumbers = True
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 0
-      Width = 123
+      Width = 126
     end
     object dEdt_Bis: TcxDateEdit
       Left = 200
-      Top = 146
+      Top = 103
       Properties.SaveTime = False
       Properties.ShowTime = False
       Properties.WeekNumbers = True
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 1
-      Width = 123
+      Width = 126
     end
     object btn_Abort: TcxButton
       Left = 176
-      Top = 183
+      Top = 137
       Width = 159
       Height = 25
       Caption = 'Abbrechen'
@@ -60,7 +60,7 @@ object frm_FeiertageAktualisieren: Tfrm_FeiertageAktualisieren
     end
     object btn_OK: TcxButton
       Left = 10
-      Top = 183
+      Top = 137
       Width = 160
       Height = 25
       Caption = 'Ok'
@@ -77,16 +77,16 @@ object frm_FeiertageAktualisieren: Tfrm_FeiertageAktualisieren
       ShowBorder = False
       Index = -1
     end
-    object dxLayoutGroup5: TdxLayoutGroup
-      Parent = dxLayoutGroup6
+    object lactrl_FeiertageRefreshHinweis: TdxLayoutGroup
+      Parent = lactrl_FeiertageRefreshGroup
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Hinweis'
       LayoutDirection = ldHorizontal
       Index = 0
     end
-    object lbl_Hinweis: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup5
+    object laitem_FeiertageRefreshGroupHinweis: TdxLayoutLabeledItem
+      Parent = lactrl_FeiertageRefreshHinweis
       AlignHorz = ahClient
       AlignVert = avTop
       SizeOptions.Height = 48
@@ -99,16 +99,16 @@ object frm_FeiertageAktualisieren: Tfrm_FeiertageAktualisieren
       CaptionOptions.WordWrap = True
       Index = 0
     end
-    object dxLayoutGroup7: TdxLayoutGroup
-      Parent = dxLayoutGroup6
+    object lactrl_FeiertageRefreshGroupZeitraum: TdxLayoutGroup
+      Parent = lactrl_FeiertageRefreshGroup
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Zeitraum f'#252'r Aktualisierung der Feiertage'
       LayoutDirection = ldHorizontal
       Index = 1
     end
-    object dxLayoutItem1: TdxLayoutItem
-      Parent = dxLayoutGroup7
+    object laitem_FeiertageRefreshGroupVon: TdxLayoutItem
+      Parent = lactrl_FeiertageRefreshGroupZeitraum
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'von:'
@@ -118,8 +118,8 @@ object frm_FeiertageAktualisieren: Tfrm_FeiertageAktualisieren
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem2: TdxLayoutItem
-      Parent = dxLayoutGroup7
+    object laitem_FeiertageRefreshGroupBis: TdxLayoutItem
+      Parent = lactrl_FeiertageRefreshGroupZeitraum
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'bis:'
@@ -129,8 +129,8 @@ object frm_FeiertageAktualisieren: Tfrm_FeiertageAktualisieren
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem3: TdxLayoutItem
-      Parent = dxLayoutGroup11
+    object laitem_FeiertageRefreshGroupOk: TdxLayoutItem
+      Parent = lactrl_FeiertageRefreshGroupButtons
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'btn_OK'
@@ -141,8 +141,8 @@ object frm_FeiertageAktualisieren: Tfrm_FeiertageAktualisieren
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem4: TdxLayoutItem
-      Parent = dxLayoutGroup11
+    object laitem_FeiertageRefreshGroupCancel: TdxLayoutItem
+      Parent = lactrl_FeiertageRefreshGroupButtons
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'btn_Abort'
@@ -153,8 +153,8 @@ object frm_FeiertageAktualisieren: Tfrm_FeiertageAktualisieren
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutGroup11: TdxLayoutGroup
-      Parent = dxLayoutGroup6
+    object lactrl_FeiertageRefreshGroupButtons: TdxLayoutGroup
+      Parent = lactrl_FeiertageRefreshGroup
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
@@ -162,7 +162,7 @@ object frm_FeiertageAktualisieren: Tfrm_FeiertageAktualisieren
       ShowBorder = False
       Index = 2
     end
-    object dxLayoutGroup6: TdxLayoutGroup
+    object lactrl_FeiertageRefreshGroup: TdxLayoutGroup
       Parent = lactrl_FeiertageRefreshGroup_Root
       AlignHorz = ahClient
       AlignVert = avTop

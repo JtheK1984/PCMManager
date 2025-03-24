@@ -25,6 +25,8 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    ExplicitWidth = 466
+    ExplicitHeight = 442
     object btn_Abort: TcxButton
       Left = 321
       Top = 424
@@ -101,7 +103,7 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
       object tvFeiertage: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         ScrollbarAnnotations.CustomAnnotations = <>
-        DataController.DataSource = dsmFeiertage
+        DataController.DataSource = ds_Feiertage
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>
         DataController.Summary.SummaryGroups = <>
@@ -177,8 +179,8 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
       ShowBorder = False
       Index = -1
     end
-    object dxLayoutItem1: TdxLayoutItem
-      Parent = dxLayoutGroup4
+    object laitm_FeiertageNewJahr: TdxLayoutItem
+      Parent = lagrp_FeiertageNewDetail
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'Jahr:'
@@ -188,8 +190,8 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem2: TdxLayoutItem
-      Parent = dxLayoutGroup4
+    object laitm_FeiertageNewBundesland: TdxLayoutItem
+      Parent = lagrp_FeiertageNewDetail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Bundesland:'
@@ -199,8 +201,8 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem3: TdxLayoutItem
-      Parent = dxLayoutGroup4
+    object laitm_FeiertageNewBerechnen: TdxLayoutItem
+      Parent = lagrp_FeiertageNewDetail
       AlignHorz = ahRight
       AlignVert = avTop
       CaptionOptions.Text = 'btn_Berechnen'
@@ -211,8 +213,8 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object dxLayoutItem4: TdxLayoutItem
-      Parent = dxLayoutGroup5
+    object laitm_FeiertageNewUebernehmen: TdxLayoutItem
+      Parent = lagrp_FeiertageNewButtons
       AlignHorz = ahClient
       AlignVert = avBottom
       CaptionOptions.Text = 'btn_OK'
@@ -223,8 +225,8 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem5: TdxLayoutItem
-      Parent = dxLayoutGroup5
+    object laitm_FeiertageNewAbbrechen: TdxLayoutItem
+      Parent = lagrp_FeiertageNewButtons
       AlignHorz = ahClient
       AlignVert = avBottom
       CaptionOptions.Text = 'btn_Abort'
@@ -235,8 +237,8 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem6: TdxLayoutItem
-      Parent = dxLayoutGroup3
+    object laitm_FeiertageNewGrid: TdxLayoutItem
+      Parent = lagrp_FeiertageNew
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'grd_FT'
@@ -247,41 +249,40 @@ object fFeiertageBerechnen: TfFeiertageBerechnen
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutGroup4: TdxLayoutGroup
-      Parent = dxLayoutGroup3
+    object lagrp_FeiertageNewDetail: TdxLayoutGroup
+      Parent = lagrp_FeiertageNew
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup3: TdxLayoutGroup
+    object lagrp_FeiertageNew: TdxLayoutGroup
       Parent = lactrl_FeiertageNewGroup_Root
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 2
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup5: TdxLayoutGroup
-      Parent = dxLayoutGroup3
+    object lagrp_FeiertageNewButtons: TdxLayoutGroup
+      Parent = lagrp_FeiertageNew
       AlignHorz = ahClient
       AlignVert = avBottom
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 2
     end
   end
-  object dsmFeiertage: TDataSource
+  object ds_Feiertage: TDataSource
     DataSet = memData_Feiertage
     Left = 104
     Top = 352
   end
-  object cxStyleRepository1: TcxStyleRepository
+  object stylerep_FT: TcxStyleRepository
     Left = 336
     Top = 112
     PixelsPerInch = 96

@@ -3,56 +3,88 @@ unit PCMManager.Modul.B_Config.Kalender.Feiertage.Aktualisieren;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, Menus, cxLookAndFeelPainters, cxTextEdit, cxMaskEdit,
-  cxDropDownEdit, cxCalendar, StdCtrls, cxControls, cxContainer, cxEdit,
-  cxGroupBox, cxButtons, cxGraphics, cxLookAndFeels, Buttons,
-  Vcl.ComCtrls, dxCore, cxDateUtils, cxLabel, System.UITypes,
-  dxLayoutcxEditAdapters, dxLayoutControlAdapters, dxLayoutContainer, cxClasses,
-  dxLayoutControl, dxUIAClasses;
-
+  {$Region Uses}
+  Buttons,
+  Classes,
+  Controls,
+  cxButtons,
+  cxCalendar,
+  cxClasses,
+  cxContainer,
+  cxControls,
+  cxDateUtils,
+  cxDropDownEdit,
+  cxEdit,
+  cxGraphics,
+  cxGroupBox,
+  cxLabel,
+  cxLookAndFeelPainters,
+  cxLookAndFeels,
+  cxMaskEdit,
+  cxTextEdit,
+  Dialogs,
+  dxCore,
+  dxLayoutContainer,
+  dxLayoutControl,
+  dxLayoutControlAdapters,
+  dxLayoutcxEditAdapters,
+  dxUIAClasses,
+  Forms,
+  Graphics,
+  Menus,
+  Messages,
+  StdCtrls,
+  System.UITypes,
+  SysUtils,
+  Variants,
+  Vcl.ComCtrls,
+  Windows;
+  {$EndRegion Uses}
 type
+  {$Region Type}
   Tfrm_FeiertageAktualisieren = class(TForm)
-    dEdt_Von: TcxDateEdit;
-    dEdt_Bis: TcxDateEdit;
-    btn_OK: TcxButton;
     btn_Abort: TcxButton;
-    lactrl_FeiertageRefreshGroup_Root: TdxLayoutGroup;
+    btn_OK: TcxButton;
+    dEdt_Bis: TcxDateEdit;
+    dEdt_Von: TcxDateEdit;
     lactrl_FeiertageRefresh: TdxLayoutControl;
-    dxLayoutGroup5: TdxLayoutGroup;
-    lbl_Hinweis: TdxLayoutLabeledItem;
-    dxLayoutGroup7: TdxLayoutGroup;
-    dxLayoutItem1: TdxLayoutItem;
-    dxLayoutItem2: TdxLayoutItem;
-    dxLayoutItem3: TdxLayoutItem;
-    dxLayoutItem4: TdxLayoutItem;
-    dxLayoutGroup11: TdxLayoutGroup;
-    dxLayoutGroup6: TdxLayoutGroup;
-    procedure btn_OKClick(Sender: TObject);
+    lactrl_FeiertageRefreshGroup: TdxLayoutGroup;
+    lactrl_FeiertageRefreshGroup_Root: TdxLayoutGroup;
+    lactrl_FeiertageRefreshGroupButtons: TdxLayoutGroup;
+    lactrl_FeiertageRefreshGroupZeitraum: TdxLayoutGroup;
+    lactrl_FeiertageRefreshHinweis: TdxLayoutGroup;
+    laitem_FeiertageRefreshGroupBis: TdxLayoutItem;
+    laitem_FeiertageRefreshGroupCancel: TdxLayoutItem;
+    laitem_FeiertageRefreshGroupHinweis: TdxLayoutLabeledItem;
+    laitem_FeiertageRefreshGroupOk: TdxLayoutItem;
+    laitem_FeiertageRefreshGroupVon: TdxLayoutItem;
     procedure btn_AbortClick(Sender: TObject);
+    procedure btn_OKClick(Sender: TObject);
   private
     { Private-Deklarationen }
   public
     { Public-Deklarationen }
     function Execute(out von, bis: TDateTime): Boolean;
   end;
-
+  {$EndRegion Type}
 var
+  {$Region var}
   frm_FeiertageAktualisieren: Tfrm_FeiertageAktualisieren;
-
+  {$EndRegion var}
 implementation
 
 {$R *.dfm}
 
 uses
-  PCM.Data,
+  {$Region uses}
   DateUtils,
+  PCM.Data,
   PCM.Strings;
-
-{$Region Formfunctions}
+  {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
-// Formfunctions                                                               //
+// Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktionen}
 function Tfrm_FeiertageAktualisieren.Execute(out von, bis: TDateTime): Boolean;
 begin
   dEdt_Von.Date := StartOfTheYear(Date);
@@ -66,6 +98,15 @@ begin
   else
     Result := False;
 end;
+{$EndRegion Hilfsfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Buttonfunktionen                                                           //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Buttonfunktionen}
+procedure Tfrm_FeiertageAktualisieren.btn_AbortClick(Sender: TObject);
+begin
+  ModalResult := mrCancel;
+end;
 procedure Tfrm_FeiertageAktualisieren.btn_OKClick(Sender: TObject);
 begin
   if (dedt_Von.EditValue = Null) or (dEdt_Bis.EditValue = Null) then
@@ -75,10 +116,6 @@ begin
   else
     MessageDlg(rs_PCMManager_DatumUngueltig + rs_PCMManager_DatumBisVon,mtWarning, [mbOk],0);
 end;
-procedure Tfrm_FeiertageAktualisieren.btn_AbortClick(Sender: TObject);
-begin
-  ModalResult := mrCancel;
-end;
-{$EndRegion}
+{$EndRegion Buttonfunktionen}
 end.
 

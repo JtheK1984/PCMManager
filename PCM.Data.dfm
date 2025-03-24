@@ -22612,7 +22612,8 @@ object dm_PCM: Tdm_PCM
     SQL.Strings = (
       
         'SELECT '#39'Privat'#39',COUNT(*)  AS  Wert,Cast(ID_benutzer AS UNSIGNED ' +
-        ') AS ID_Benutzer  FROM manager_kontakte WHERE Firma = '#39#39
+        ') AS ID_Benutzer  FROM manager_kontakte WHERE Firma = '#39#39' OR Firm' +
+        'a IS null'
       'Union ALL '
       
         'SELECT '#39'Gesch'#228'ftlich'#39',COUNT(*)  AS Wert ,Cast(ID_benutzer AS UNS' +

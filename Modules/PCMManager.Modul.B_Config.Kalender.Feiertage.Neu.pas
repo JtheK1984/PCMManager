@@ -3,72 +3,127 @@ unit PCMManager.Modul.B_Config.Kalender.Feiertage.Neu;
 interface
 
 uses
-  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  Db, Grids, DBGrids, StdCtrls, ComCtrls, Mask, DBCtrls,
-  dbcgrids, ExtCtrls, Buttons, cxGraphics, cxLookAndFeels,
-  cxLookAndFeelPainters, Menus, cxButtons, cxControls, cxContainer, cxEdit,
-  cxTextEdit, cxMaskEdit, cxDropDownEdit, cxSpinEdit, cxStyles, cxCustomData,
-  cxFilter, cxData, cxDataStorage, cxDBData, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGridLevel, cxClasses, cxGridCustomView,
-  cxGrid, cxCheckBox, cxLabel, cxNavigator, system.dateutils,
-  dxGDIPlusClasses, dxDateRanges, dxScrollbarAnnotations, FireDAC.Stan.Intf,
-  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
-  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client,Variants,cxGroupBox,system.math, system.UITypes, dxmdaset,
-  dxLayoutcxEditAdapters, dxLayoutControlAdapters, dxLayoutContainer,
-  dxLayoutControl, dxUIAClasses;
+  {$Region Uses}
+  Buttons,
+  Classes,
+  ComCtrls,
+  Controls,
+  cxButtons,
+  cxCheckBox,
+  cxClasses,
+  cxContainer,
+  cxControls,
+  cxCustomData,
+  cxData,
+  cxDataStorage,
+  cxDBData,
+  cxDropDownEdit,
+  cxEdit,
+  cxFilter,
+  cxGraphics,
+  cxGrid,
+  cxGridCustomTableView,
+  cxGridCustomView,
+  cxGridDBTableView,
+  cxGridLevel,
+  cxGridTableView,
+  cxGroupBox,system.math,
+  cxLabel,
+  cxLookAndFeelPainters,
+  cxLookAndFeels,
+  cxMaskEdit,
+  cxNavigator,
+  cxSpinEdit,
+  cxStyles,
+  cxTextEdit,
+  Db,
+  dbcgrids,
+  DBCtrls,
+  DBGrids,
+  Dialogs,
+  dxDateRanges,
+  dxGDIPlusClasses,
+  dxLayoutContainer,
+  dxLayoutControl,
+  dxLayoutControlAdapters,
+  dxLayoutcxEditAdapters,
+  dxmdaset,
+  dxScrollbarAnnotations,
+  dxUIAClasses,
+  ExtCtrls,
+  FireDAC.Comp.Client,Variants,
+  FireDAC.Comp.DataSet,
+  FireDAC.DApt,
+  FireDAC.DApt.Intf,
+  FireDAC.DatS,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Async,
+  FireDAC.Stan.Error,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+  Forms,
+  Graphics,
+  Grids,
+  Mask,
+  Menus,
+  Messages,
+  StdCtrls,
+  system.dateutils,
+  system.UITypes,
+  SysUtils,
+  Windows;
+  {$EndRegion Uses}
+
 
 type
+  {$Region type}
   TcxGridSiteAccess = class (TcxGridSite);
   TcxControlScrollBarsAccess = class (TcxControlScrollBars);
-
-type
   TfFeiertageBerechnen = class(TForm)
-    dsmFeiertage: TDataSource;
-    btn_OK: TcxButton;
     btn_Abort: TcxButton;
     btn_Berechnen: TcxButton;
+    btn_OK: TcxButton;
     cmbbx_Bundesland: TcxComboBox;
-    edt_Jahr: TcxSpinEdit;
-    cxStyleRepository1: TcxStyleRepository;
+    cxGridLevel1: TcxGridLevel;
     cxStyleFT: TcxStyle;
+    ds_Feiertage: TDataSource;
+    edt_Jahr: TcxSpinEdit;
+    grd_FT: TcxGrid;
+    lactrl_FeiertageNew: TdxLayoutControl;
+    lactrl_FeiertageNewGroup_Root: TdxLayoutGroup;
+    lagrp_FeiertageNew: TdxLayoutGroup;
+    lagrp_FeiertageNewButtons: TdxLayoutGroup;
+    lagrp_FeiertageNewDetail: TdxLayoutGroup;
+    laitm_FeiertageNewAbbrechen: TdxLayoutItem;
+    laitm_FeiertageNewBerechnen: TdxLayoutItem;
+    laitm_FeiertageNewBundesland: TdxLayoutItem;
+    laitm_FeiertageNewGrid: TdxLayoutItem;
+    laitm_FeiertageNewJahr: TdxLayoutItem;
+    laitm_FeiertageNewUebernehmen: TdxLayoutItem;
     memData_Feiertage: TdxMemData;
-    memData_FeiertageMonat: TIntegerField;
-    memData_FeiertageTag: TIntegerField;
+    memData_FeiertageBezeichnung: TStringField;
     memData_FeiertageJahr: TIntegerField;
     memData_FeiertageKategorie: TIntegerField;
-    memData_FeiertageBezeichnung: TStringField;
-    memData_FeiertageUebernehmen: TBooleanField;
+    memData_FeiertageMonat: TIntegerField;
+    memData_FeiertageTag: TIntegerField;
     memData_FeiertageTyp: TStringField;
-    grd_FT: TcxGrid;
+    memData_FeiertageUebernehmen: TBooleanField;
+    stylerep_FT: TcxStyleRepository;
     tvFeiertage: TcxGridDBTableView;
-    tvFeiertageMarked: TcxGridDBColumn;
-    tvFeiertageFT: TcxGridDBColumn;
-    tvFeiertageTag: TcxGridDBColumn;
-    tvFeiertageMonat: TcxGridDBColumn;
-    tvFeiertageKategorie: TcxGridDBColumn;
     tvFeiertageBezeichnung: TcxGridDBColumn;
-    cxGridLevel1: TcxGridLevel;
-    lactrl_FeiertageNewGroup_Root: TdxLayoutGroup;
-    lactrl_FeiertageNew: TdxLayoutControl;
-    dxLayoutItem1: TdxLayoutItem;
-    dxLayoutItem2: TdxLayoutItem;
-    dxLayoutItem3: TdxLayoutItem;
-    dxLayoutItem4: TdxLayoutItem;
-    dxLayoutItem5: TdxLayoutItem;
-    dxLayoutItem6: TdxLayoutItem;
-    dxLayoutGroup4: TdxLayoutGroup;
-    dxLayoutGroup3: TdxLayoutGroup;
-    dxLayoutGroup5: TdxLayoutGroup;
+    tvFeiertageFT: TcxGridDBColumn;
+    tvFeiertageKategorie: TcxGridDBColumn;
+    tvFeiertageMarked: TcxGridDBColumn;
+    tvFeiertageMonat: TcxGridDBColumn;
+    tvFeiertageTag: TcxGridDBColumn;
+    procedure btn_AbortClick(Sender: TObject);
+    procedure btn_BerechnenClick(Sender: TObject);
+    procedure btn_OKClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
-    procedure btn_BerechnenClick(Sender: TObject);
-    procedure tmFeiertageMonatGetText(Sender: TField; var Text: string;
-      DisplayText: Boolean);
-    procedure tmFeiertageTagGetText(Sender: TField; var Text: string;
-      DisplayText: Boolean);
-    procedure btn_OKClick(Sender: TObject);
-    procedure btn_AbortClick(Sender: TObject);
+    procedure tmFeiertageMonatGetText(Sender: TField; var Text: string; DisplayText: Boolean);
+    procedure tmFeiertageTagGetText(Sender: TField; var Text: string; DisplayText: Boolean);
   private
     { Private-Deklarationen }
   public
@@ -76,108 +131,46 @@ type
     function Execute(AModal: Boolean; AID: Integer) : boolean;
     { Public-Deklarationen }
   end;
-
+  {$EndRegion type}
 var
+  {$Region var}
   fFeiertageBerechnen: TfFeiertageBerechnen;
-
+  {$EndRegion var}
 implementation
 
 {$R *.DFM}
 
-uses  PCMManager.Modul.B_Config,
-      PCMManager.Modul.B_Config.Kalender.Feiertage.Neu.Berechnen,
-      PCM.Data,PCM.Strings;
-
-{$Region Formfunctions}
+uses
+  {$Region uses}
+  PCMManager.Modul.B_Config,
+  PCMManager.Modul.B_Config.Kalender.Feiertage.Neu.Berechnen,
+  PCM.Data,PCM.Strings;
+  {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
-// Formfunctions                                                               //
+// Helperfunctions                                                            //
 ////////////////////////////////////////////////////////////////////////////////
-procedure TfFeiertageBerechnen.FormClose(Sender: TObject; var Action: TCloseAction);
+{$Region Helperfunctions}
+function TfFeiertageBerechnen.Execute(AModal: Boolean; AID: Integer) : boolean;
 begin
-  memData_Feiertage.Close;
+  Result:= false;
+  AID_Benutzer:= AID;
+  if AModal then
+  begin
+    ShowModal;
+    if ModalResult = mrOk then
+      Result:= true
+    else
+      Result:= true;
+  end;
 end;
-procedure TfFeiertageBerechnen.FormShow(Sender: TObject);
-var
-  Jahr, Monat, Tag: Word;
-begin
-  DecodeDate(Date, Jahr, Monat, Tag);
-
-  // 6.0.0.84
-  edt_Jahr.Properties.MaxValue := Jahr + 50;
-  edt_Jahr.Properties.MinValue := Jahr - 20;
-  edt_Jahr.EditValue := Jahr + 1;
-
-  memData_Feiertage.Open;
-  tvFeiertageTag.Caption := rs_PCM_Tag;
-  tvFeiertageMonat.Caption := rs_PCM_Monat;
-  tvFeiertageBezeichnung.Caption := rs_PCM_Bezeichnung;
-end;
-{$EndRegion}
-{$Region Buttons}
+{$EndRegion Helperfunctions}
 ////////////////////////////////////////////////////////////////////////////////
 // Buttons                                                                    //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Buttons}
 procedure TfFeiertageBerechnen.btn_AbortClick(Sender: TObject);
 begin
   ModalResult := mrCancel;
-end;
-procedure TfFeiertageBerechnen.btn_OKClick(Sender: TObject);
-var
-  iID_Feiertag: Integer;
-begin
-  memData_Feiertage.DisableControls;
-  memData_Feiertage.First;
-  while not memData_Feiertage.Eof do
-  begin
-    if memData_FeiertageUebernehmen.AsBoolean then
-    begin
-      dm_PCM.qry_Work.SQL.Text := 'SELECT ID FROM manager_Feiertage WHERE Jahr = :Jahr AND Monat = :Monat AND Tag = :Tag AND ID_Benutzer = :ID_Benutzer and BL = :BL';
-      dm_PCM.qry_Work.ParamByName('Jahr').AsInteger := memData_FeiertageJahr.AsInteger;
-      dm_PCM.qry_Work.ParamByName('Monat').AsInteger := memData_FeiertageMonat.AsInteger;
-      dm_PCM.qry_Work.ParamByName('Tag').AsInteger := memData_FeiertageTag.AsInteger;
-      dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger := AID_Benutzer;
-      dm_PCM.qry_Work.ParamByName('BL').AsInteger := cmbbx_Bundesland.ItemIndex;
-      dm_PCM.qry_Work.Open;
-      if dm_PCM.qry_Work.RecordCount > 0 then
-      begin
-        iID_Feiertag := dm_PCM.qry_Work.FieldByName('ID').AsInteger;
-        // UPDATE
-        dm_PCM.qry_Work.SQL.Text := 'UPDATE manager_Feiertage SET Jahr = :Jahr, Monat = :Monat, Tag = :Tag, '
-                        + ' Bezeichnung = :Bezeichnung, Uebertragen = :Uebertragen, '
-                        + ' Datum = :Datum, ID_Benutzer = :ID_Benutzer, Kategorie = :Kategorie  WHERE ID = :ID';
-        dm_PCM.qry_Work.ParamByName('Jahr').AsInteger := memData_FeiertageJahr.AsInteger;
-        dm_PCM.qry_Work.ParamByName('Monat').AsInteger := memData_FeiertageMonat.AsInteger;
-        dm_PCM.qry_Work.ParamByName('Tag').AsInteger := memData_FeiertageTag.AsInteger;
-        dm_PCM.qry_Work.ParamByName('Kategorie').AsInteger := memData_FeiertageKategorie.AsInteger;
-        dm_PCM.qry_Work.ParamByName('Bezeichnung').Asstring := memData_FeiertageBezeichnung.AsString;
-        dm_PCM.qry_Work.ParamByName('Datum').AsDate := EncodeDate(memData_FeiertageJahr.AsInteger,memData_FeiertageMonat.AsInteger,memData_FeiertageTag.AsInteger);
-        dm_PCM.qry_Work.ParamByName('Uebertragen').AsString := 'true';
-        dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger := AID_Benutzer;
-        dm_PCM.qry_Work.ParamByName('ID').AsInteger := iID_Feiertag;
-        dm_PCM.qry_Work.ExecSQL;
-      end else
-      begin
-        // INSERT
-        dm_PCM.qry_Work.SQL.Text := 'INSERT INTO manager_Feiertage(Jahr, Monat, Tag, Bezeichnung, '
-                        + ' Uebertragen, Datum, ID_Benutzer,BL,Kategorie) VALUES '
-                        + ' (:Jahr, :Monat, :Tag, :Bezeichnung, '
-                        + ' :Uebertragen, :Datum,  :ID_Benutzer,:BL,:Kategorie)';
-        dm_PCM.qry_Work.ParamByName('Jahr').AsInteger := memData_FeiertageJahr.AsInteger;
-        dm_PCM.qry_Work.ParamByName('Monat').AsInteger := memData_FeiertageMonat.AsInteger;
-        dm_PCM.qry_Work.ParamByName('Tag').AsInteger := memData_FeiertageTag.AsInteger;
-        dm_PCM.qry_Work.ParamByName('Kategorie').AsInteger := memData_FeiertageKategorie.AsInteger;
-        dm_PCM.qry_Work.ParamByName('Bezeichnung').Asstring := memData_FeiertageBezeichnung.AsString;
-        dm_PCM.qry_Work.ParamByName('Datum').AsDate := EncodeDate(memData_FeiertageJahr.AsInteger,memData_FeiertageMonat.AsInteger,memData_FeiertageTag.AsInteger);
-        dm_PCM.qry_Work.ParamByName('Uebertragen').AsString := 'true';
-        dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger := AID_Benutzer;
-        dm_PCM.qry_Work.ParamByName('BL').AsInteger := cmbbx_Bundesland.ItemIndex;
-        dm_PCM.qry_Work.ExecSQL;
-      end;
-    end;
-    memData_Feiertage.Next;
-  end;
-  memData_Feiertage.EnableControls;
-  ModalResult := mrOK;
 end;
 procedure TfFeiertageBerechnen.btn_BerechnenClick(Sender: TObject);
 var
@@ -245,11 +238,69 @@ begin
   memData_Feiertage.EnableControls;
   grd_Ft.SetFocus;
 end;
+procedure TfFeiertageBerechnen.btn_OKClick(Sender: TObject);
+var
+  iID_Feiertag: Integer;
+begin
+  memData_Feiertage.DisableControls;
+  memData_Feiertage.First;
+  while not memData_Feiertage.Eof do
+  begin
+    if memData_FeiertageUebernehmen.AsBoolean then
+    begin
+      dm_PCM.qry_Work.SQL.Text := 'SELECT ID FROM manager_Feiertage WHERE Jahr = :Jahr AND Monat = :Monat AND Tag = :Tag AND ID_Benutzer = :ID_Benutzer and BL = :BL';
+      dm_PCM.qry_Work.ParamByName('Jahr').AsInteger := memData_FeiertageJahr.AsInteger;
+      dm_PCM.qry_Work.ParamByName('Monat').AsInteger := memData_FeiertageMonat.AsInteger;
+      dm_PCM.qry_Work.ParamByName('Tag').AsInteger := memData_FeiertageTag.AsInteger;
+      dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger := AID_Benutzer;
+      dm_PCM.qry_Work.ParamByName('BL').AsInteger := cmbbx_Bundesland.ItemIndex;
+      dm_PCM.qry_Work.Open;
+      if dm_PCM.qry_Work.RecordCount > 0 then
+      begin
+        iID_Feiertag := dm_PCM.qry_Work.FieldByName('ID').AsInteger;
+        // UPDATE
+        dm_PCM.qry_Work.SQL.Text := 'UPDATE manager_Feiertage SET Jahr = :Jahr, Monat = :Monat, Tag = :Tag, '
+                        + ' Bezeichnung = :Bezeichnung, Uebertragen = :Uebertragen, '
+                        + ' Datum = :Datum, ID_Benutzer = :ID_Benutzer, Kategorie = :Kategorie  WHERE ID = :ID';
+        dm_PCM.qry_Work.ParamByName('Jahr').AsInteger := memData_FeiertageJahr.AsInteger;
+        dm_PCM.qry_Work.ParamByName('Monat').AsInteger := memData_FeiertageMonat.AsInteger;
+        dm_PCM.qry_Work.ParamByName('Tag').AsInteger := memData_FeiertageTag.AsInteger;
+        dm_PCM.qry_Work.ParamByName('Kategorie').AsInteger := memData_FeiertageKategorie.AsInteger;
+        dm_PCM.qry_Work.ParamByName('Bezeichnung').Asstring := memData_FeiertageBezeichnung.AsString;
+        dm_PCM.qry_Work.ParamByName('Datum').AsDate := EncodeDate(memData_FeiertageJahr.AsInteger,memData_FeiertageMonat.AsInteger,memData_FeiertageTag.AsInteger);
+        dm_PCM.qry_Work.ParamByName('Uebertragen').AsString := 'true';
+        dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger := AID_Benutzer;
+        dm_PCM.qry_Work.ParamByName('ID').AsInteger := iID_Feiertag;
+        dm_PCM.qry_Work.ExecSQL;
+      end else
+      begin
+        // INSERT
+        dm_PCM.qry_Work.SQL.Text := 'INSERT INTO manager_Feiertage(Jahr, Monat, Tag, Bezeichnung, '
+                        + ' Uebertragen, Datum, ID_Benutzer,BL,Kategorie) VALUES '
+                        + ' (:Jahr, :Monat, :Tag, :Bezeichnung, '
+                        + ' :Uebertragen, :Datum,  :ID_Benutzer,:BL,:Kategorie)';
+        dm_PCM.qry_Work.ParamByName('Jahr').AsInteger := memData_FeiertageJahr.AsInteger;
+        dm_PCM.qry_Work.ParamByName('Monat').AsInteger := memData_FeiertageMonat.AsInteger;
+        dm_PCM.qry_Work.ParamByName('Tag').AsInteger := memData_FeiertageTag.AsInteger;
+        dm_PCM.qry_Work.ParamByName('Kategorie').AsInteger := memData_FeiertageKategorie.AsInteger;
+        dm_PCM.qry_Work.ParamByName('Bezeichnung').Asstring := memData_FeiertageBezeichnung.AsString;
+        dm_PCM.qry_Work.ParamByName('Datum').AsDate := EncodeDate(memData_FeiertageJahr.AsInteger,memData_FeiertageMonat.AsInteger,memData_FeiertageTag.AsInteger);
+        dm_PCM.qry_Work.ParamByName('Uebertragen').AsString := 'true';
+        dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger := AID_Benutzer;
+        dm_PCM.qry_Work.ParamByName('BL').AsInteger := cmbbx_Bundesland.ItemIndex;
+        dm_PCM.qry_Work.ExecSQL;
+      end;
+    end;
+    memData_Feiertage.Next;
+  end;
+  memData_Feiertage.EnableControls;
+  ModalResult := mrOK;
+end;
 {$EndRegion}
-{$Region Grid}
-////////////////////////////////////////////////////////////////////////////////
+ ////////////////////////////////////////////////////////////////////////////////
 // Grid                                                                       //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Grid}
 procedure TfFeiertageBerechnen.tmFeiertageMonatGetText(Sender: TField; var Text: string; DisplayText: Boolean);
 begin
   if DisplayText then
@@ -268,24 +319,27 @@ begin
       Text := Format('%.2d.', [Sender.AsInteger]);
 end;
 {$EndRegion}
-{$Region Execute}
 ////////////////////////////////////////////////////////////////////////////////
-// Execute                                                                    //
+// Formfunctions                                                              //
 ////////////////////////////////////////////////////////////////////////////////
-function TfFeiertageBerechnen.Execute(AModal: Boolean; AID: Integer) : boolean;
+{$Region Formfunctions}
+procedure TfFeiertageBerechnen.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  Result:= false;
-  AID_Benutzer:= AID;
-  if AModal then
-  begin
-    ShowModal;
-    if ModalResult = mrOk then
-      Result:= true
-    else
-      Result:= true;
-  end;
+  memData_Feiertage.Close;
+end;
+procedure TfFeiertageBerechnen.FormShow(Sender: TObject);
+var
+  Jahr, Monat, Tag: Word;
+begin
+  DecodeDate(Date, Jahr, Monat, Tag);
+  edt_Jahr.Properties.MaxValue := Jahr + 50;
+  edt_Jahr.Properties.MinValue := Jahr - 20;
+  edt_Jahr.EditValue := Jahr + 1;
+  memData_Feiertage.Open;
+  tvFeiertageTag.Caption := rs_PCM_Tag;
+  tvFeiertageMonat.Caption := rs_PCM_Monat;
+  tvFeiertageBezeichnung.Caption := rs_PCM_Bezeichnung;
 end;
 {$EndRegion}
-
 end.
 

@@ -37,7 +37,11 @@ uses
   PCMManager.Helper.Calendar.ReminderCustomited in 'Helper\PCMManager.Helper.Calendar.ReminderCustomited.pas',
   PCMManager.Helper.Calendar.Reminder in 'Helper\PCMManager.Helper.Calendar.Reminder.pas' {cxSchedulerReminderForm},
   PCM.splash in 'PCM.splash.pas' {SplashScreen},
-  PCMManager.dxSettings in 'PCMManager.dxSettings.pas';
+  PCMManager.dxSettings in 'PCMManager.dxSettings.pas',
+  PCMManager.Helper.Email.OAuth in 'Helper\PCMManager.Helper.Email.OAuth.pas',
+  IdSASL.OAuth.XOAUTH2 in '..\..\GmailAuthSMTP-master\IdSASL.OAuth.XOAUTH2.pas',
+  IdSASL.OAuth.OAuth2Bearer in '..\..\GmailAuthSMTP-master\IdSASL.OAuth.OAuth2Bearer.pas',
+  IdSASL.OAuth.Base in '..\..\GmailAuthSMTP-master\IdSASL.OAuth.Base.pas';
 
 {$R *.res}
 

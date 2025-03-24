@@ -3,6 +3,7 @@
 interface
 
 uses
+  {$Region Uses}
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, dxBarBuiltInMenu, cxGraphics,
   cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage,
@@ -21,8 +22,9 @@ uses
   cxColorComboBox, cxDBColorComboBox, cxSpinEdit, cxTimeEdit,
   dxLayoutcxEditAdapters, dxLayoutControlAdapters, dxLayoutContainer,
   dxLayoutControl, dxUIAClasses,PCM.Browser, Vcl.OleServer, OutlookXP;
-
+  {$EndRegion Uses}
 type
+  {$Region Types}
   Tfrm_Contact = class(TForm)
     ds_Kontakte: TDataSource;
     brmgr_Contacts: TdxBarManager;
@@ -399,12 +401,15 @@ type
   public
     { Public-Deklarationen }
   end;
-
+  {$EndRegion Types}
 var
+  {$Region var}
   frm_Contact: Tfrm_Contact;
-
+  {$Region var}
 const
+  {$Region Const}
   arrCont = [1,2];
+  {$EndRegion Const}
 
 implementation
 
@@ -2094,16 +2099,20 @@ begin
     OutlookContact.HomeTelephoneNumber := qry_Kontakte.FieldByName('Telefon_Privat').AsString;
     // Telefon 2 --> PCM - Mananager
     OutlookContact.Home2TelephoneNumber	:= qry_Kontakte.FieldByName('Telefon_Privat1').AsString;
-
-
-
+    // Handy --> PCM - Mananager
+    OutlookContact.MobileTelephoneNumber	:= qry_Kontakte.FieldByName('Handy_Privat').AsString;
+    // Geburtstag
+    if qry_Kontakte.FieldByName('Geburtsdatum').AsString <> '' then
+      OutlookContact.Birthday:= qry_Kontakte.FieldByName('Geburtsdatum').AsDateTime;
     // Telefon Zentrale --> PCM - Mananager
-    OutlookContact.BusinessTelephoneNumber := qry_Kontakte.FieldByName('Zentrale_Ges').AsString;
+    OutlookContact.CompanyMainTelephoneNumber := qry_Kontakte.FieldByName('Zentrale_Ges').AsString;
     // Telefon Durchwahl --> PCM - Mananager
     OutlookContact.Business2TelephoneNumber	:= qry_Kontakte.FieldByName('Telefon_Ges').AsString;
-
-
-    // Privat
+    // Telefon Durchwahl --> PCM - Mananager
+    OutlookContact.BusinessTelephoneNumber := qry_Kontakte.FieldByName('Handy_Ges').AsString;
+    // Email Ansprechpartner --> PCM - Mansnager
+    OutlookContact.Email1Address := qry_Kontakte.FieldByName('E_Mail_Privat').AsString;
+    // Geschäftlich
     // Straße --> PCM - Mananager
     OutlookContact.BusinessAddressStreet:= qry_Kontakte.FieldByName('Strasse_Ges').AsString;
     // PLZ --> PCM - Mananager
@@ -2113,31 +2122,22 @@ begin
     // Land  --> PCM - Mananager
     if qry_Kontakte.FieldByName('Ort_Ges').AsString <> '' then
       OutlookContact.BusinessAddressCountry:= 'Deutschland';
-
-
-
-
-
-
-    //    // EmailAdresse 1 Ansprechpartner --> PCM - Mananager
-//    OutlookContact.Email1Address := qWork2.FieldByName('Email1').AsString;
-//    // EmailAdresse 2 Ansprechpartner --> PCM - Mananager
-//    OutlookContact.Email2Address := qWork2.FieldByName('Email2').AsString;
-//    // EmailAdresse 3 Ansprechpartner --> PCM - Mananager
-//    OutlookContact.Email3Address	:= qWork2.FieldByName('Email3').AsString;
-//    // Funktion Ansprechpartner --> PCM - Mananager
-//    OutlookContact.JobTitle	:= qWork2.FieldByName('JobTitle').AsString;
+    // Email Zentrale --> PCM - Mananager
+    OutlookContact.Email2Address := qry_Kontakte.FieldByName('E_Mail_Zentral').AsString;
+    // Email Geschäftlich --> PCM - Mananager
+    OutlookContact.Email3Address	:= qry_Kontakte.FieldByName('E_Mail_Ges').AsString;
+    // Funktion Ansprechpartner --> PCM - Mananager
+    OutlookContact.JobTitle	:= qry_Kontakte.FieldByName('Funktion_Ges').AsString;
 //    // Abteilung Ansprechpartner --> PCM - Mananager
-//    OutlookContact.Department	:=qWork2.FieldByName('Department').AsString;
-//    // Firmenname Firmenadressen --> PCM - Mananager
-//    OutlookContact.CompanyName :=qWork2.FieldByName('Companyname').AsString;
-//    // Mobil Ansprechpartner --> PCM - Mananager
-//    OutlookContact.HomeTelephoneNumber :=qWork2.FieldByName('HomeTelephoneNumber').AsString;
-//    // Fax Ansprechpartner --> PCM - Mananager
-//    OutlookContact.BusinessFaxNumber :=qWork2.FieldByName('Fax').AsString;
-//    // Straße Firmenadressen --> PCM - Mananager
-//    OutlookContact.MailingAddressStreet	:=qWork2.FieldByName('MailingAddressStreet').AsString;
-    // Kategorie
+    OutlookContact.Department	:=qry_Kontakte.FieldByName('Abteilung_Ges').AsString;
+    // Firmenname Firmenadressen --> PCM - Mananager
+    OutlookContact.CompanyName :=qry_Kontakte.FieldByName('Firma').AsString;
+
+    if qry_Kontakte.FieldByName('Internet_Privat').AsString <> '' then
+      OutlookContact.PersonalHomePage:= qry_Kontakte.FieldByName('Internet_Privat').AsString + ';' + qry_Kontakte.FieldByName('Internet_Ges').AsString
+    else
+      OutlookContact.PersonalHomePage:=qry_Kontakte.FieldByName('Internet_Ges').AsString;
+
     OutlookContact.Categories:= 'PCM_Kontakt';
     OutlookContact.Save;
     qry_Kontakte.Next;

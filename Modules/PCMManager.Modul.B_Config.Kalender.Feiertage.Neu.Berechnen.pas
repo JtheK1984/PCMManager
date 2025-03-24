@@ -3,9 +3,11 @@ unit PCMManager.Modul.B_Config.Kalender.Feiertage.Neu.Berechnen;
 interface
 
 var
+  {$Region Var}
   Feiertag: array[1..366] of ShortInt;
-
+  {$EndRegion Var}
 const
+  {$Region const}
   Feiertage: array[1..20] of string[25] =
     ('Neujahr', 'Maifeiertag', 'Tag der Deutschen Einheit', 'Allerheiligen',
     'Totensonntag', 'Volkstrauertag', '1. Weihnachtstag', '2. Weihnachtstag',
@@ -19,8 +21,6 @@ const
     '1. Advent', '2. Advent', '3. Advent', '4. Advent', 'Heiligabend', 'Frühlingsanfang',
     'Sommmeranfang', 'Herbstanfang', 'Winteranfang', 'Totensonntag', 'Volkstrauertag',
     'Ostersonntag', 'Pfingstsonntag', 'Allerheiligen');
-
-const
   L_BadenWuerttemberg = 0;
   L_Bayern = 1;
   L_Berlin = 2;
@@ -37,6 +37,7 @@ const
   L_SachsenAnhalt = 13;
   L_SchleswigHolstein = 14;
   L_Thueringen = 15;
+  {$EndRegion const}
 
 procedure FeiertageBerechnen(Land: Integer; Y: word);
 

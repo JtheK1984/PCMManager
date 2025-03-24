@@ -3,31 +3,140 @@ unit PCMManager.Modul.B_Config;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, dxBarBuiltInMenu, cxGraphics,
-  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, Vcl.Menus, cxStyles, cxCustomData,
-  cxFilter, cxData, cxDataStorage, cxNavigator, dxDateRanges,
-  dxScrollbarAnnotations, Data.DB, cxDBData, cxTextEdit, cxCheckBox,
-  cxColorComboBox, cxDBLookupComboBox, cxDropDownEdit, Vcl.StdCtrls,
-  cxRadioGroup, dxGDIPlusClasses, cxImage, cxLookupEdit, cxDBLookupEdit,
-  cxDBColorComboBox, cxDBEdit, cxMaskEdit, cxImageComboBox, cxLabel,
-  cxGridLevel, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
-  cxClasses, cxGridCustomView, cxGrid, cxButtons, cxGroupBox, cxPC,
-  System.ImageList, Vcl.ImgList, cxImageList, FireDAC.Stan.Intf,
-  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
-  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, IniFiles, Vcl.Themes, dateutils,
-  IdIMAP4, IDpop3, IdSMTP, IdSSLOpenSSL, IdMessage,
-  IdExplicitTLSClientServerBase,System.UITypes,
-  dxBar, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL,
-  IdBaseComponent, IdComponent, IdTCPConnection, IdTCPClient, IdMessageClient,
-  IdSMTPBase, cxCurrencyEdit, Vcl.OleServer, OutlookXP,PCM.Functions, dxSkinWXI,
-  Vcl.VirtualImage, Vcl.BaseImageCollection, Vcl.ImageCollection,
-  dxLayoutContainer, dxLayoutcxEditAdapters, dxLayoutControlAdapters,
-  dxLayoutControl, dxUIAClasses, cxButtonEdit;
-
+  {$Region uses}
+  cxButtonEdit,
+  cxButtons,
+  cxCheckBox,
+  cxClasses,
+  cxColorComboBox,
+  cxContainer,
+  cxControls,
+  cxCurrencyEdit,
+  cxCustomData,
+  cxData,
+  cxDataStorage,
+  cxDBColorComboBox,
+  cxDBData,
+  cxDBEdit,
+  cxDBLookupComboBox,
+  cxDBLookupEdit,
+  cxDropDownEdit,
+  cxEdit,
+  cxFilter,
+  cxGraphics,
+  cxGrid,
+  cxGridCustomTableView,
+  cxGridCustomView,
+  cxGridDBTableView,
+  cxGridLevel,
+  cxGridTableView,
+  cxGroupBox,
+  cxImage,
+  cxImageComboBox,
+  cxImageList,
+  cxLabel,
+  cxLookAndFeelPainters,
+  cxLookAndFeels,
+  cxLookupEdit,
+  cxMaskEdit,
+  cxNavigator,
+  cxPC,
+  cxRadioGroup,
+  cxStyles,
+  cxTextEdit,
+  Data.DB,
+  dateutils,
+  dxBar,
+  dxBarBuiltInMenu,
+  dxDateRanges,
+  dxGDIPlusClasses,
+  dxLayoutContainer,
+  dxLayoutControl,
+  dxLayoutControlAdapters,
+  dxLayoutcxEditAdapters,
+  dxScrollbarAnnotations,
+  dxSkinWXI,
+  dxUIAClasses,
+  FireDAC.Comp.Client,
+  FireDAC.Comp.DataSet,
+  FireDAC.DApt,
+  FireDAC.DApt.Intf,
+  FireDAC.DatS,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Async,
+  FireDAC.Stan.Error,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+  IdBaseComponent,
+  IdComponent,
+  IdExplicitTLSClientServerBase,
+  IdIMAP4,
+  IdIOHandler,
+  IdIOHandlerSocket,
+  IdIOHandlerStack,
+  IdMessage,
+  IdMessageClient,
+  IDpop3,
+  IdSMTP,
+  IdSMTPBase,
+  IdSASL.OAuth.Base,
+  IdSASLCollection,
+  IdSSL,
+  IdSSLOpenSSL,
+  IdTCPClient,
+  IdTCPConnection,
+  IniFiles,
+  OutlookXP,
+  PCM.Functions,
+  PCMManager.Helper.Email.OAuth,
+  Shellapi,
+  System.Classes,
+  System.ImageList,
+  System.Net.URLClient,
+  System.SysUtils,
+  System.UITypes,
+  System.Variants,
+  Vcl.BaseImageCollection,
+  Vcl.Controls,
+  Vcl.Dialogs,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.ImageCollection,
+  Vcl.ImgList,
+  Vcl.Menus,
+  Vcl.OleServer,
+  Vcl.StdCtrls,
+  Vcl.Themes,
+  Vcl.VirtualImage,
+  Winapi.Messages,
+  Winapi.Windows, IdContext, IdCustomHTTPServer, IdCustomTCPServer, IdHTTPServer;
+  {$EndRegion uses}
 type
+  TAuthType = class of TIdSASLOAuthBase;
+
+  TMailProviderInfo = record
+    AuthenticationType : TAuthType;
+    AuthorizationEndpoint : string;
+    AccessTokenEndpoint : string;
+    LogoutEndpoint : string;
+    ClientID : String;
+    ClientSecret : string;
+    ClientAccount : string;
+    ClientName : string;
+    Scopes : string;
+    SmtpHost : string;
+    SmtpPort : Integer;
+    PopHost : string;
+    PopPort : Integer;
+    ImapHost : string;
+    ImapPort : Integer;
+    AuthName : string;
+    TLS : TIdUseTLS;
+    TwoLinePOPFormat: Boolean;
+    function TokenName: string;
+  end;
+
   Tfrm_Config = class(TForm)
     edt_CalConfigFTP_Benutzer: TcxDBTextEdit;
     edt_CalConfigFTP_Datei: TcxDBTextEdit;
@@ -147,7 +256,7 @@ type
     btn_EmailConfigCancel: TdxBarLargeButton;
     btn_EmailConfigSave: TdxBarLargeButton;
     btn_EmailConfigNew: TdxBarLargeButton;
-    dxBarDockControl1: TdxBarDockControl;
+    bardckctrl_Postfach: TdxBarDockControl;
     tb_Postfach: TdxBar;
     btn_PostfachNew: TdxBarLargeButton;
     qry_EmailPostfachMain: TFDQuery;
@@ -224,7 +333,6 @@ type
     ds_FT: TDataSource;
     edt_AufgabenSonstigesAccToDo: TcxDBTextEdit;
     edt_AufgabenSonstigesAccMail: TcxDBTextEdit;
-    ImageCollection1: TImageCollection;
     grdDBTblView_FeiertageKategorie: TcxGridDBColumn;
     lactrl_ConfigGroup_Root: TdxLayoutGroup;
     lactrl_Config: TdxLayoutControl;
@@ -285,37 +393,37 @@ type
     dxLayoutItem43: TdxLayoutItem;
     dxLayoutItem44: TdxLayoutItem;
     lagrp_EMail: TdxLayoutGroup;
-    dxLayoutItem45: TdxLayoutItem;
-    dxLayoutItem46: TdxLayoutItem;
-    dxLayoutItem47: TdxLayoutItem;
-    dxLayoutItem48: TdxLayoutItem;
-    dxLayoutItem49: TdxLayoutItem;
-    dxLayoutItem50: TdxLayoutItem;
-    lbl_EmailConfig_Anmeldeinformationen: TdxLayoutLabeledItem;
-    dxLayoutItem52: TdxLayoutItem;
-    dxLayoutItem53: TdxLayoutItem;
-    dxLayoutItem54: TdxLayoutItem;
-    dxLayoutItem55: TdxLayoutItem;
-    dxLayoutItem57: TdxLayoutItem;
-    dxLayoutItem59: TdxLayoutItem;
-    dxLayoutGroup57: TdxLayoutGroup;
-    dxLayoutItem60: TdxLayoutItem;
-    dxLayoutGroup59: TdxLayoutGroup;
-    dxLayoutItem61: TdxLayoutItem;
-    dxLayoutGroup61: TdxLayoutGroup;
-    dxLayoutItem62: TdxLayoutItem;
-    dxLayoutItem63: TdxLayoutItem;
-    dxLayoutItem64: TdxLayoutItem;
-    dxLayoutItem65: TdxLayoutItem;
-    dxLayoutGroup63: TdxLayoutGroup;
-    dxLayoutItem66: TdxLayoutItem;
-    dxLayoutGroup65: TdxLayoutGroup;
-    dxLayoutItem67: TdxLayoutItem;
-    dxLayoutItem68: TdxLayoutItem;
-    dxLayoutItem69: TdxLayoutItem;
-    dxLayoutItem70: TdxLayoutItem;
-    dxLayoutLabeledItem1: TdxLayoutLabeledItem;
-    dxLayoutGroup11: TdxLayoutGroup;
+    laitm_EmailkonfigurationBar: TdxLayoutItem;
+    laitm_Emailadress: TdxLayoutItem;
+    laitm_EmailType: TdxLayoutItem;
+    laitm_EmailPoseingangadress: TdxLayoutItem;
+    laitm_EmailPoseingangPort: TdxLayoutItem;
+    laitm_EmailSSL: TdxLayoutItem;
+    laitm_EmailAnmeldung: TdxLayoutLabeledItem;
+    laitm_EmailBenutzer: TdxLayoutItem;
+    laitm_EmailKennwort: TdxLayoutItem;
+    laitm_EmailPosausgangAdress: TdxLayoutItem;
+    laitm_EmailPosausgangPort: TdxLayoutItem;
+    laitm_EmailCheck: TdxLayoutItem;
+    laitm_EmailGrid: TdxLayoutItem;
+    lagrp_EmailPostfaecherkonfiguration: TdxLayoutGroup;
+    laitm_EmailPostfaecherkonfigurationBar: TdxLayoutItem;
+    lagrp_EmailPostfaecherkonfigurationMain: TdxLayoutGroup;
+    laitm_EmailPostfaecherkonfigurationMainGrid: TdxLayoutItem;
+    lagrp_EmailPostfaecherkonfigurationMainButtons: TdxLayoutGroup;
+    laitm_EmailPostfaecherkonfigurationMainFirst: TdxLayoutItem;
+    laitm_EmailPostfaecherkonfigurationMainUp: TdxLayoutItem;
+    laitm_EmailPostfaecherkonfigurationMainDown: TdxLayoutItem;
+    laitm_EmailPostfaecherkonfigurationMainLast: TdxLayoutItem;
+    lagrp_EmailPostfaecherkonfigurationSub: TdxLayoutGroup;
+    laitm_EmailPostfaecherkonfigurationSubGrid: TdxLayoutItem;
+    lagrp_EmailPostfaecherkonfigurationSubButtons: TdxLayoutGroup;
+    laitm_EmailPostfaecherkonfigurationSubFirst: TdxLayoutItem;
+    laitm_EmailPostfaecherkonfigurationSubUp: TdxLayoutItem;
+    laitm_EmailPostfaecherkonfigurationSubDown: TdxLayoutItem;
+    laitm_EmailPostfaecherkonfigurationSubLast: TdxLayoutItem;
+    laitm_EmailServer: TdxLayoutLabeledItem;
+    lagrp_Emailkonfiguration: TdxLayoutGroup;
     lagrp_KalenderFeiertage: TdxLayoutGroup;
     dxLayoutGroup13: TdxLayoutGroup;
     dxLayoutGroup5: TdxLayoutGroup;
@@ -332,11 +440,11 @@ type
     dxLayoutGroup19: TdxLayoutGroup;
     dxLayoutGroup21: TdxLayoutGroup;
     dxLayoutGroup22: TdxLayoutGroup;
-    dxLayoutGroup2: TdxLayoutGroup;
-    dxLayoutGroup3: TdxLayoutGroup;
-    dxLayoutGroup23: TdxLayoutGroup;
-    lbl_EmailConfigTestEin: TdxLayoutLabeledItem;
-    lbl_EmailConfigTestAus: TdxLayoutLabeledItem;
+    lagrp_EmailkonfigurationDetails: TdxLayoutGroup;
+    lagrp_EmailkonfigurationDetailsLeft: TdxLayoutGroup;
+    lagrp_EmailkonfigurationDetailsRight: TdxLayoutGroup;
+    laitm_EmailConfigTestEin: TdxLayoutLabeledItem;
+    laitm_EmailConfigTestAus: TdxLayoutLabeledItem;
     lagrp_Contacts: TdxLayoutGroup;
     dxLayoutGroup1: TdxLayoutGroup;
     dxLayoutItem51: TdxLayoutItem;
@@ -344,9 +452,9 @@ type
     dxLayoutItem58: TdxLayoutItem;
     dxLayoutGroup26: TdxLayoutGroup;
     dxLayoutItem71: TdxLayoutItem;
-    dxBarDockControl2: TdxBarDockControl;
-    dxBarDockControl4: TdxBarDockControl;
-    dxBarDockControl5: TdxBarDockControl;
+    bardckctrl_Anrede: TdxBarDockControl;
+    bardckctrl_Geburtsland: TdxBarDockControl;
+    bardckctrl_Phonerlite: TdxBarDockControl;
     tb_KontaktAnrede: TdxBar;
     tb_KontaktLand: TdxBar;
     tb_KontaktSchnittstelle: TdxBar;
@@ -369,27 +477,37 @@ type
     btn_LandSave: TdxBarLargeButton;
     btn_LandCancel: TdxBarLargeButton;
     btn_LandDelete: TdxBarLargeButton;
-    cxGrid1: TcxGrid;
-    cxGridDBTableView1: TcxGridDBTableView;
-    cxGridLevel1: TcxGridLevel;
-    cxGrid2: TcxGrid;
-    cxGridDBTableView2: TcxGridDBTableView;
-    cxGridLevel2: TcxGridLevel;
-    cxGrid3: TcxGrid;
-    cxGridDBTableView3: TcxGridDBTableView;
-    cxGridLevel3: TcxGridLevel;
+    grd_Phonerlite: TcxGrid;
+    grdDBTblView_Phonerlite: TcxGridDBTableView;
+    grdLvl_Phonerlite: TcxGridLevel;
+    grd_Geburtsland: TcxGrid;
+    grdDBTblView_Geburtsland: TcxGridDBTableView;
+    grdLvl_Geburtsland: TcxGridLevel;
+    grd_Anrede: TcxGrid;
+    grdDBTblView_Anrede: TcxGridDBTableView;
+    grdLvl_Anrede: TcxGridLevel;
     dxLayoutItem76: TdxLayoutItem;
     dxLayoutItem77: TdxLayoutItem;
     dxLayoutItem78: TdxLayoutItem;
     qry_Anrede: TFDQuery;
     ds_Anrede: TDataSource;
-    cxGridDBTableView3Bezeichnung: TcxGridDBColumn;
+    grdDBTblView_AnredeBezeichnung: TcxGridDBColumn;
     qry_Land: TFDQuery;
     ds_Land: TDataSource;
-    cxGridDBTableView2Bezeichnung: TcxGridDBColumn;
+    grdDBTblView_GeburtslandBezeichnung: TcxGridDBColumn;
     ds_phone: TDataSource;
     qry_phone: TFDQuery;
-    cxGridDBTableView1Path: TcxGridDBColumn;
+    grdDBTblView_PhonerlitePath: TcxGridDBColumn;
+    laitm_EmialAuth: TdxLayoutItem;
+    cmbbx_Auth: TcxDBImageComboBox;
+    cxDBTextEdit1: TcxDBTextEdit;
+    laitm_EmailClientID: TdxLayoutItem;
+    cxDBTextEdit2: TcxDBTextEdit;
+    laitm_EmailClientSecret: TdxLayoutItem;
+    IdHTTPServer1: TIdHTTPServer;
+    IdSSLIOHandlerSocketIMAP: TIdSSLIOHandlerSocketOpenSSL;
+    IdSSLIOHandlerSocketSMTP: TIdSSLIOHandlerSocketOpenSSL;
+    IDSMTP_Mail: TIdSMTP;
     procedure FormShow(Sender: TObject);
     procedure btn_CalConfigNew1Click(Sender: TObject);
     procedure btn_CalConfigSave1Click(Sender: TObject);
@@ -447,9 +565,15 @@ type
     procedure btn_LandSaveClick(Sender: TObject);
     procedure btn_AnredeDeleteClick(Sender: TObject);
     procedure btn_LandDeleteClick(Sender: TObject);
+    procedure lactrl_ConfigTabTabChanging(Sender: TObject;
+      ANewTabIndex: Integer; var Allow: Boolean);
+    procedure IdHTTPServer1CommandGet(AContext: TIdContext;
+      ARequestInfo: TIdHTTPRequestInfo; AResponseInfo: TIdHTTPResponseInfo);
   private
     { Private-Deklarationen }
-//    m_bCancel: WordBool;
+    FOAuth2_Enhanced : TEnhancedOAuth2Authenticator;
+    Provider : TMailProviderInfo;
+    iMaxSortierung: integer;
     SaveGridViewKalender,
     SaveGridViewFeiertage,
     SaveGridViewFTP,
@@ -460,34 +584,100 @@ type
     SaveGridViewEmail,
     SaveGridViewPostfach,
     SaveGridViewUnterPostfach : TSavedGridView;
+    procedure OpenData(ATab: Integer);
     procedure SetGridViews(Show:boolean);
     procedure SetButtons;
+    procedure SetupAuthenticator;
     procedure SortierungFirstLastMain(bUpDown: Boolean);
     procedure SortierungAendernMain(bUpDown: Boolean);
     procedure SortierungFirstLastSub(bUpDown: Boolean);
     procedure SortierungAendernSub(bUpDown: Boolean);
   public
-    iID_Benutzer: integer;
-    iMaxSortierung: integer;
     { Public-Deklarationen }
+    iID_Benutzer: integer;
   end;
 
 var
+  {$Region var}
   frm_Config: Tfrm_Config;
-
+  {$EndRegion var}
+const
+  clientredirect = 'http://localhost:2132';
 implementation
-
 {$R *.dfm}
-
-uses PCM.Main,
-     PCMManager.Modul.B_Config.Kalender.Feiertage.Neu,
-     PCMManager.Modul.B_Config.Kalender.Feiertage.Aktualisieren,
-     PCM.Functions.Synch.Wait, PCM.Data, PCM.Strings;
-
-{$Region TabAufgaben}
+uses
+  {$Region Uses}
+  PCM.Data,
+  PCM.Main,
+  PCM.Functions.Synch.Wait,
+  PCM.Strings,
+  PCMManager.Modul.B_Config.Kalender.Feiertage.Aktualisieren,
+  PCMManager.Modul.B_Config.Kalender.Feiertage.Neu,
+  IdSASL.OAuth.XOAUTH2;
+  {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktionen}
+function TMailProviderInfo.TokenName: string;
+begin
+  Result := AuthName + 'Token';
+end;
+procedure Tfrm_Config.OpenData(ATab: Integer);
+var
+  iAnzahl: Integer;
+begin
+  case ATab of
+  0:
+    begin
+      qry_Anrede.Open;
+      qry_Land.Open;
+      qry_Phone.Open;
+    end;
+  1:
+    begin
+      qry_CalConfig.Open;
+      qry_CalConfigFTP.Open;
+      qry_CalConfig.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+      qry_CalConfig.Filtered := true;
+      qry_CalConfigFTP.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+      qry_CalConfigFTP.Filtered := true;
+      dm_PCM.qry_Config_Benutzer.Open;
+      qry_FT1.Open;
+      qry_FT1.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+      qry_FT1.Filtered := true;
+    end;
+  2:
+    begin
+      qry_AufgabenArten.Open;
+      qry_Prio.Open;
+      dm_PCM.qry_Config_Ansprechpartner.Open;
+      dm_PCM.qry_Config_Firmen.Open;
+      dm_PCM.qry_Config_Bundesland.Open;
+      qry_Konfiguration_Kalender_Optionen.Open;
+      qry_Konfiguration_Kalender_Optionen.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+      qry_Konfiguration_Kalender_Optionen.Filtered := true;
+    end;
+  3:
+    begin
+      qry_SchulFaecher.Open;
+      qry_SchulFaecher.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+      qry_SchulFaecher.Filtered := true;
+      qry_SchulFaecher_Config.Open;
+      qry_SchulFaecher_Config.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+      qry_SchulFaecher_Config.Filtered := true;
+    end;
+  4:
+    begin
+      dm_PCM.qry_Config_EmailConfigTyp.Open;
+      qry_EmailConfig.Open;
+      qry_EmailConfig.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+      qry_EmailConfig.Filtered := true;
+      qry_EmailPostfachMain.Open;
+      dm_PCM.qry_Config_EmailPostfachLU.Open;
+    end;
+  end;
+end;
 procedure Tfrm_Config.SetGridViews(Show: boolean);
 begin
   if Show then
@@ -698,27 +888,20 @@ procedure Tfrm_Config.SetButtonsEnableVisible(DataSet: TDataSet);
 begin
   SetButtons;
 end;
-procedure Tfrm_Config.qry_EmailConfigAfterScroll(DataSet: TDataSet);
+procedure Tfrm_Config.SetupAuthenticator;
 begin
-  SetButtons;
-  qry_EmailPostfachMain.SQL.text := 'SELECT ID,Postfach,Anzeige,Sortierung, Typ, Parent, Abonnieren, ID_manager_email FROM manager_email_postfach WHERE typ = 0 and ID_MANAGER_Email = :ID';
-  qry_EmailPostfachMain.ParamByName('ID').asInteger := qry_EmailConfig.FieldByName('ID').asInteger;
-  qry_EmailPostfachMain.Open;
-  qry_EmailPostfachSub.SQL.text := 'SELECT ID,Postfach,Anzeige,Sortierung, Typ, Parent, Abonnieren, ID_manager_email FROM manager_email_postfach WHERE parent = :parent and ID_MANAGER_Email = :ID';
-  qry_EmailPostfachSub.ParamByName('parent').asInteger := qry_EmailPostfachMain.FieldByName('ID').asInteger;
-  qry_EmailPostfachSub.ParamByName('ID').asInteger := qry_EmailConfig.FieldByName('ID').asInteger;
-  qry_EmailPostfachSub.Open;
-  dm_PCM.qry_Config_EmailPostfachLU.SQL.text := 'SELECT ID,Postfach,Anzeige,Sortierung, Typ, Parent, Abonnieren, ID_manager_email FROM manager_email_postfach WHERE ID_MANAGER_Email = :ID';
-  dm_PCM.qry_Config_EmailPostfachLU.ParamByName('ID').asInteger := qry_EmailConfig.FieldByName('ID').asInteger;
-  dm_PCM.qry_Config_EmailPostfachLU.Open;
+  FOAuth2_Enhanced.ClientID := qry_EmailConfig.FieldByName('ClientID').AsString;;
+  FOAuth2_Enhanced.ClientSecret := qry_EmailConfig.FieldByName('ClientSecret').AsString;
+  FOAuth2_Enhanced.Scope := qry_EmailConfig.FieldByName('Scopes').AsString;
+  FOAuth2_Enhanced.RedirectionEndpoint := clientredirect;
+  FOAuth2_Enhanced.AuthorizationEndpoint := qry_EmailConfig.FieldByName('AuthorizationEndpoint').AsString;
+  FOAuth2_Enhanced.AccessTokenEndpoint := qry_EmailConfig.FieldByName('AccessTokenEndpoint').AsString;
+  FOAuth2_Enhanced.RefreshToken := qry_EmailConfig.FieldByName('Refreshtoken').AsString;
+  FOAuth2_Enhanced.AccessToken := '';
+  FOAuth2_Enhanced.AccessTokenExpiry := 0;
 end;
-procedure Tfrm_Config.qry_EmailPostfachMainAfterScroll(DataSet: TDataSet);
-begin
-  SetButtons;
-  qry_EmailPostfachSub.SQL.text := 'SELECT ID,Postfach,Anzeige,Sortierung, Typ, Parent, Abonnieren, ID_manager_email FROM manager_email_postfach WHERE parent = :parent';
-  qry_EmailPostfachSub.ParamByName('parent').asInteger := qry_EmailPostfachMain.FieldByName('ID').asInteger;
-  qry_EmailPostfachSub.Open;
-end;
+
+
 procedure Tfrm_Config.SortierungAendernMain(bUpDown: Boolean);
 var
   iTemp, iTemp2, iTempID, iTempID2: Integer;
@@ -910,10 +1093,19 @@ begin
   qry_EmailPostfachSub.Refresh;
 end;
 {$EndRegion}
-{$Region TabKalender}
+////////////////////////////////////////////////////////////////////////////////
+// Tabfunktionen                                                              //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Tabfunktionen}
+procedure Tfrm_Config.lactrl_ConfigTabTabChanging(Sender: TObject; ANewTabIndex: Integer; var Allow: Boolean);
+begin
+  OpenData(ANewTabIndex);
+end;
+{$EndRegion Tabfunktionen}
 ////////////////////////////////////////////////////////////////////////////////
 // TabKalender                                                                //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region TabKalender}
 // Kalender
 procedure Tfrm_Config.btn_CalConfigNew1Click(Sender: TObject);
 begin
@@ -921,7 +1113,6 @@ begin
     qry_CalConfig.Post;
   qry_CalConfig.Append;
   qry_CalConfig.Insert;
-//  qry_CalConfig.FieldByName('Erinnerung').AsBoolean := False;
   qry_CalConfig.FieldByName('LabelColor').asInteger := 13083265;
   qry_CalConfig.FieldByName('FontColor').asInteger := 0;
   qry_CalConfig.FieldByName('ID_Benutzer').asInteger := dm_PCM.iIDBenutzerPCM;
@@ -1128,7 +1319,6 @@ procedure Tfrm_Config.btn_AnredeCancelClick(Sender: TObject);
 begin
   qry_Anrede.Cancel;
 end;
-
 procedure Tfrm_Config.btn_AnredeDeleteClick(Sender: TObject);
 begin
   if qry_Anrede.FieldByName('ID').asInteger > 0 then
@@ -1136,7 +1326,6 @@ begin
     qry_Anrede.Delete;
   end;
 end;
-
 procedure Tfrm_Config.btn_AnredeNewClick(Sender: TObject);
 begin
   if qry_Anrede.State in [dsInsert, dsEdit] then
@@ -1306,11 +1495,56 @@ begin
   qry_SchulFaecher_Config.Cancel;
 end;
 {$EndRegion}
-{$Region TabEmail}
+
 ////////////////////////////////////////////////////////////////////////////////
 // TabEmail                                                                   //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region TabEmail}
 // Emailaccounts
+procedure Tfrm_Config.qry_EmailConfigAfterScroll(DataSet: TDataSet);
+begin
+  SetButtons;
+  if qry_EmailConfig.FieldByName('Authtype').asInteger = 0 then
+  begin
+    laitm_EmailClientID.Visible:= false;
+    laitm_EmailClientSecret.Visible:= false;
+  end
+  else begin
+    laitm_EmailClientID.Visible:= true;
+    laitm_EmailClientSecret.Visible:= true;
+  end;
+  qry_EmailPostfachMain.SQL.text := 'SELECT ID,Postfach,Anzeige,Sortierung, Typ, Parent, Abonnieren, ID_manager_email FROM manager_email_postfach WHERE typ = 0 and ID_MANAGER_Email = :ID';
+  qry_EmailPostfachMain.ParamByName('ID').asInteger := qry_EmailConfig.FieldByName('ID').asInteger;
+  qry_EmailPostfachMain.Open;
+  qry_EmailPostfachSub.SQL.text := 'SELECT ID,Postfach,Anzeige,Sortierung, Typ, Parent, Abonnieren, ID_manager_email FROM manager_email_postfach WHERE parent = :parent and ID_MANAGER_Email = :ID';
+  qry_EmailPostfachSub.ParamByName('parent').asInteger := qry_EmailPostfachMain.FieldByName('ID').asInteger;
+  qry_EmailPostfachSub.ParamByName('ID').asInteger := qry_EmailConfig.FieldByName('ID').asInteger;
+  qry_EmailPostfachSub.Open;
+  dm_PCM.qry_Config_EmailPostfachLU.SQL.text := 'SELECT ID,Postfach,Anzeige,Sortierung, Typ, Parent, Abonnieren, ID_manager_email FROM manager_email_postfach WHERE ID_MANAGER_Email = :ID';
+  dm_PCM.qry_Config_EmailPostfachLU.ParamByName('ID').asInteger := qry_EmailConfig.FieldByName('ID').asInteger;
+  dm_PCM.qry_Config_EmailPostfachLU.Open;
+  Provider.AccessTokenEndpoint:=qry_EmailConfig.FieldByName('AccessTokenEndpoint').AsString;
+  Provider.AuthenticationType:= TIdSASLXOAuth;
+  Provider.AuthName:= 'Microsoft';
+  Provider.AuthorizationEndpoint:= qry_EmailConfig.FieldByName('AuthorizationEndpoint').AsString;
+  Provider.ClientAccount:= qry_EmailConfig.FieldByName('Benutzer').AsString;
+  Provider.ClientID:= qry_EmailConfig.FieldByName('ClientID').AsString;
+  Provider.ClientSecret:= qry_EmailConfig.FieldByName('ClientSecret').AsString;
+  Provider.ImapHost:= qry_EmailConfig.FieldByName('PostEingangsserver').AsString;
+  Provider.ImapPort:= qry_EmailConfig.FieldByName('PortEingangsserver').AsInteger;
+  Provider.Scopes:= qry_EmailConfig.FieldByName('Scopes').AsString;
+  Provider.SmtpHost:= qry_EmailConfig.FieldByName('PostAusgangsserver').AsString;
+  Provider.SmtpPort:= qry_EmailConfig.FieldByName('PortAusgangsserver').AsInteger;
+  Provider.TLS:= utUseExplicitTLS;
+
+end;
+procedure Tfrm_Config.qry_EmailPostfachMainAfterScroll(DataSet: TDataSet);
+begin
+  SetButtons;
+  qry_EmailPostfachSub.SQL.text := 'SELECT ID,Postfach,Anzeige,Sortierung, Typ, Parent, Abonnieren, ID_manager_email FROM manager_email_postfach WHERE parent = :parent';
+  qry_EmailPostfachSub.ParamByName('parent').asInteger := qry_EmailPostfachMain.FieldByName('ID').asInteger;
+  qry_EmailPostfachSub.Open;
+end;
 procedure Tfrm_Config.btn_EmailConfigNewClick(Sender: TObject);
 begin
   if qry_EmailConfig.State in [dsInsert, dsEdit] then
@@ -1362,69 +1596,168 @@ begin
   end;
 end;
 procedure Tfrm_Config.btn_EmailConfig_TestClick(Sender: TObject);
+
+  procedure MailAuthenticate;
+  var
+    uri : TURI;
+  begin
+    uri := TURI.Create(FOAuth2_Enhanced.AuthorizationRequestURI);
+
+    ShellExecute(0,
+      'open',
+      PChar(uri.ToString),
+      nil,
+      nil,
+      0
+    );
+  end;
 var
+  xoauthSASL : TIdSASLListEntry;
+  msgCount : Integer;
+  mailboxes : TStringList;
   idSmtpMail: TIdSMTP;
   idSSLIOHndOPSSLPostfach: TIdSSLIOHandlerSocketOpenSSL;
   idmsgMail: TIdMessage;
   idSSLIOHndOPSSLMail: TIdSSLIOHandlerSocketOpenSSL;
 begin
-  idSSLIOHndOPSSLMail := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
-  idSSLIOHndOPSSLMail.SSLOptions.Method:= sslvSSLv23;
-  IdIMAP_Mail.IOHandler := idSSLIOHndOPSSLMail;
-  IdIMAP_Mail.UseTLS := utUseImplicitTLS;
-  IdIMAP_Mail.Host := qry_EmailConfig.FieldByName('PostEingangsserver').AsString;
-  IdIMAP_Mail.Port := qry_EmailConfig.FieldByName('PortEingangsserver').AsInteger;
-  IdIMAP_Mail.UseTLS := utUseImplicitTLS;
-  IdIMAP_Mail.Username := qry_EmailConfig.FieldByName('Benutzer').AsString;;
-  IdIMAP_Mail.Password := qry_EmailConfig.FieldByName('Passwort').AsString;
-  try
-    IdIMAP_Mail.Connect;
-    lbl_EmailConfigTestEin.CaptionOptions.Text:= '[B][COLOR=#00FF40]' + rs_PCMManager_posteingangerfolgreich + '[/COLOR][/B]';
-    lbl_EmailConfigTestEin.Visible:= true;
-    IdIMAP_Mail.Disconnect;
-  except
-    lbl_EmailConfigTestein.CaptionOptions.Text:= '[B][COLOR=#FF8080]' + rs_PCMManager_posteingangnichterfolgreich +'[/COLOR][/B]';
-    lbl_EmailConfigTestEin.Visible:= true;
-
-
-
-
-  end;
-  idSSLIOHndOPSSLMail.Free;
-
-  idSmtpMail := TIdSMTP.Create(nil);
-  idSSLIOHndOPSSLMail := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
-  idSSLIOHndOPSSLMail.SSLOptions.Method:= sslvSSLv23;
-  idSSLIOHndOPSSLpostfach := TIdSSLIOHandlerSocketOpenSSL.Create(nil);
-  idmsgMail := TIdMessage.Create(nil);
-   try
+  if cmbbx_Auth.EditingValue = 0 then
+  begin
+    IdIMAP_Mail.SASLMechanisms.Clear;
+    IdIMAP_Mail.AuthType:= iatUserPass;
+    idSSLIOHndOPSSLMail := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
+    idSSLIOHndOPSSLMail.SSLOptions.Method:= sslvSSLv23;
+    IdIMAP_Mail.IOHandler := idSSLIOHndOPSSLMail;
+    IdIMAP_Mail.UseTLS := utUseImplicitTLS;
+    IdIMAP_Mail.Host := qry_EmailConfig.FieldByName('PostEingangsserver').AsString;
+    IdIMAP_Mail.Port := qry_EmailConfig.FieldByName('PortEingangsserver').AsInteger;
+    IdIMAP_Mail.UseTLS := utUseImplicitTLS;
+    IdIMAP_Mail.Username := qry_EmailConfig.FieldByName('Benutzer').AsString;;
+    IdIMAP_Mail.Password := qry_EmailConfig.FieldByName('Passwort').AsString;
     try
-      idSmtpMail.Host := qry_EmailConfig.FieldByName('PostAusgangsserver').AsString;
-      idSmtpMail.Port := qry_EmailConfig.FieldByName('PortAusgangsserver').AsInteger;
-      idSmtpMail.Username := qry_EmailConfig.FieldByName('Benutzer').AsString;
-      idSmtpMail.Password := qry_EmailConfig.FieldByName('Passwort').AsString;
-      idSSLIOHndOPSSLpostfach.Host := idSmtpMail.Host;
-      idSSLIOHndOPSSLpostfach.Port := idSmtpMail.Port;
-      idSSLIOHndOPSSLpostfach.SSLOptions.Method := sslvSSLv23;
-      idSmtpMail.IOHandler := idSSLIOHndOPSSLpostfach;
-      idSmtpMail.UseTLS := utUseRequireTLS;
-      idmsgMail.Recipients.EMailAddresses := qry_EmailConfig.FieldByName('Email').AsString;
-      idmsgMail.Subject := rs_PCMManager_Testmail ;
-      idmsgMail.Body.Text := rs_PCMManager_TestmailBody;
-      idmsgMail.From.Address := idSmtpMail.Username;
-      idSmtpMail.Connect;
-      idSmtpMail.Send(idmsgMail);
-      idSmtpMail.Disconnect;
-    finally
-      idmsgMail.Free;
-      idSSLIOHndOPSSLpostfach.Free;
-      idSmtpMail.Free;
-      lbl_EmailConfigTestAus.CaptionOptions.Text:= '[B][COLOR=#00FF40]' + rs_PCMManager_postausgangerfolgreich + '[/COLOR][/B]';
-      lbl_EmailConfigTestAus.Visible:= true;
+      IdIMAP_Mail.Connect;
+      laitm_EmailConfigTestEin.CaptionOptions.Text:= '[B][COLOR=#00FF40]' + rs_PCMManager_posteingangerfolgreich + '[/COLOR][/B]';
+      laitm_EmailConfigTestEin.Visible:= true;
+      IdIMAP_Mail.Disconnect;
+    except
+      laitm_EmailConfigTestEin.CaptionOptions.Text:= '[B][COLOR=#FF8080]' + rs_PCMManager_posteingangnichterfolgreich +'[/COLOR][/B]';
+      laitm_EmailConfigTestEin.Visible:= true;
     end;
-  except
-    lbl_EmailConfigTestAus.CaptionOptions.Text:= '[B][COLOR=#FF8080]' + rs_PCMManager_postausgangnichterfolgreich +'[/COLOR][/B]';
-    lbl_EmailConfigTestAus.Visible:= true;
+    idSSLIOHndOPSSLMail.Free;
+
+    idSmtpMail := TIdSMTP.Create(nil);
+    idSSLIOHndOPSSLMail := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
+    idSSLIOHndOPSSLMail.SSLOptions.Method:= sslvSSLv23;
+    idSSLIOHndOPSSLpostfach := TIdSSLIOHandlerSocketOpenSSL.Create(nil);
+    idmsgMail := TIdMessage.Create(nil);
+     try
+      try
+        idSmtpMail.Host := qry_EmailConfig.FieldByName('PostAusgangsserver').AsString;
+        idSmtpMail.Port := qry_EmailConfig.FieldByName('PortAusgangsserver').AsInteger;
+        idSmtpMail.Username := qry_EmailConfig.FieldByName('Benutzer').AsString;
+        idSmtpMail.Password := qry_EmailConfig.FieldByName('Passwort').AsString;
+        idSSLIOHndOPSSLpostfach.Host := idSmtpMail.Host;
+        idSSLIOHndOPSSLpostfach.Port := idSmtpMail.Port;
+        idSSLIOHndOPSSLpostfach.SSLOptions.Method := sslvSSLv23;
+        idSmtpMail.IOHandler := idSSLIOHndOPSSLpostfach;
+        idSmtpMail.UseTLS := utUseRequireTLS;
+        idmsgMail.Recipients.EMailAddresses := qry_EmailConfig.FieldByName('Email').AsString;
+        idmsgMail.Subject := rs_PCMManager_Testmail ;
+        idmsgMail.Body.Text := rs_PCMManager_TestmailBody;
+        idmsgMail.From.Address := idSmtpMail.Username;
+        idSmtpMail.Connect;
+        idSmtpMail.Send(idmsgMail);
+        idSmtpMail.Disconnect;
+      finally
+        idmsgMail.Free;
+        idSSLIOHndOPSSLpostfach.Free;
+        idSmtpMail.Free;
+        laitm_EmailConfigTestAus.CaptionOptions.Text:= '[B][COLOR=#00FF40]' + rs_PCMManager_postausgangerfolgreich + '[/COLOR][/B]';
+        laitm_EmailConfigTestAus.Visible:= true;
+      end;
+    except
+      laitm_EmailConfigTestAus.CaptionOptions.Text:= '[B][COLOR=#FF8080]' + rs_PCMManager_postausgangnichterfolgreich +'[/COLOR][/B]';
+      laitm_EmailConfigTestAus.Visible:= true;
+    end;
+  end
+  else begin
+    // IMAP
+
+    if qry_EmailConfig.FieldByName('RefreshToken').AsString = '' then
+      MailAuthenticate;
+    SetupAuthenticator;
+    FOAuth2_Enhanced.ClientID := Provider.ClientID;
+    FOAuth2_Enhanced.ClientSecret := Provider.ClientSecret;
+    FOAuth2_Enhanced.RefreshAccessTokenIfRequired;
+    IdIMAP_Mail.Host := qry_EmailConfig.FieldByName('PostEingangsserver').AsString;
+    IdIMAP_Mail.Port := qry_EmailConfig.FieldByName('PortEingangsserver').AsInteger;
+    IdIMAP_Mail.IOHandler:= IdSSLIOHandlerSocketIMAP;
+    IdIMAP_Mail.UseTLS := utUseExplicitTLS;
+    xoauthSASL := IdIMAP_Mail.SASLMechanisms.Add;
+    xoauthSASL.SASL := Provider.AuthenticationType.Create(nil);
+    TIdSASLOAuthBase(xoauthSASL.SASL).Token := FOAuth2_Enhanced.AccessToken;
+    TIdSASLOAuthBase(xoauthSASL.SASL).User := Provider.ClientAccount;
+    IdIMAP_Mail.AuthType := iatSASL;
+    try
+      IdIMAP_Mail.Connect;
+      laitm_EmailConfigTestEin.CaptionOptions.Text:= '[B][COLOR=#00FF40]' + rs_PCMManager_posteingangerfolgreich + '[/COLOR][/B]';
+      laitm_EmailConfigTestEin.Visible:= true;
+      IdIMAP_Mail.Disconnect;
+    except
+      laitm_EmailConfigTestEin.CaptionOptions.Text:= '[B][COLOR=#FF8080]' + rs_PCMManager_posteingangnichterfolgreich +'[/COLOR][/B]';
+      laitm_EmailConfigTestEin.Visible:= true;
+    end;
+    // SMTP
+    FOAuth2_Enhanced.ClientID := Provider.ClientID;
+    FOAuth2_Enhanced.ClientSecret := Provider.ClientSecret;
+    FOAuth2_Enhanced.RefreshAccessTokenIfRequired;
+    if FOAuth2_Enhanced.AccessToken.Length = 0 then
+    begin
+      Exit;
+    end;
+    try
+      IDSMTP_Mail.Host := Provider.SmtpHost;
+      IDSMTP_Mail.UseTLS := Provider.TLS;
+      IDSMTP_Mail.Port := Provider.SmtpPort;
+      IDSMTP_Mail.IOHandler:= IdSSLIOHandlerSocketSMTP;
+      xoauthSASL := IDSMTP_Mail.SASLMechanisms.Add;
+      xoauthSASL.SASL := Provider.AuthenticationType.Create(nil);
+      TIdSASLOAuthBase(xoauthSASL.SASL).Token := FOAuth2_Enhanced.AccessToken;
+      TIdSASLOAuthBase(xoauthSASL.SASL).User := Provider.ClientAccount;
+      IdSSLIOHandlerSocketSMTP.SSLOptions.SSLVersions := [sslvTLSv1_2];
+      IDSMTP_Mail.Connect;
+
+      IDSMTP_Mail.AuthType := satSASL;
+      IDSMTP_Mail.Authenticate;
+      idmsgMail := TIdMessage.Create(Self);
+      idmsgMail.From.Address := Provider.ClientAccount;
+      idmsgMail.From.Name := Provider.ClientName;
+      idmsgMail.ReplyTo.EMailAddresses := idmsgMail.From.Address;
+      idmsgMail.Recipients.Add.Text := Provider.ClientAccount;
+      idmsgMail.Subject := rs_PCMManager_Testmail;
+      idmsgMail.Body.Text := rs_PCMManager_TestmailBody;
+      IDSMTP_Mail.Send(idmsgMail);
+      idmsgMail.Free;
+      IDSMTP_Mail.Disconnect;
+      laitm_EmailConfigTestAus.CaptionOptions.Text:= '[B][COLOR=#00FF40]' + rs_PCMManager_postausgangerfolgreich + '[/COLOR][/B]';
+      laitm_EmailConfigTestAus.Visible:= true;
+    except
+      laitm_EmailConfigTestAus.CaptionOptions.Text:= '[B][COLOR=#FF8080]' + rs_PCMManager_postausgangnichterfolgreich +'[/COLOR][/B]';
+      laitm_EmailConfigTestAus.Visible:= true;
+    end;
+
+//  mailboxes := TStringList.Create;
+//  try
+//    IdIMAP_Mail.ListMailBoxes(mailboxes);
+//  finally
+//    FreeAndNil(mailboxes);
+//  end;
+
+{
+  IdIMAP_Mail.SelectMailBox('[Gmail]/All Mail');
+  msgCount:= IdIMAP_Mail.MailBox.TotalMsgs;
+  ShowMessage(msgCount.ToString + ' Messages available for download');
+}
+
   end;
 end;
 // Postfächer
@@ -1605,10 +1938,11 @@ begin
   SortierungFirstLastSub(false);
 end;
 {$EndRegion}
-{$Region FormFunctions}
+
 ////////////////////////////////////////////////////////////////////////////////
 // FormFunctions                                                              //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region FormFunctions}
 procedure Tfrm_Config.FormActivate(Sender: TObject);
 begin
   FormShow(Self);
@@ -1618,96 +1952,6 @@ begin
   SetGridViews(false);
 end;
 procedure Tfrm_Config.FormShow(Sender: TObject);
-  procedure OpenData;
-  var
-    iAnzahl: Integer;
-  begin
-    dm_PCM.qry_work.sql.Text:= 'Select COunt(*) as  Anzahl From manager_stundenplan_konfiguration Where ID_Benutzer = :ID_Benutzer';
-    dm_PCM.qry_work.ParamByname('ID_Benutzer').asInteger:= dm_PCM.iIDBenutzerPCM;
-    dm_PCM.qry_work.Open;
-    iAnzahl:= dm_PCM.qry_work.FieldByname('Anzahl').asInteger;
-    dm_PCM.qry_work.Close;
-    if iAnzahl = 0  then
-    begin
-      dm_PCM.qry_work.sql.Text:= 'Insert Into manager_stundenplan_konfiguration (Farbe, Schriftfarbe,ID_Benutzer) values (12632256, 0,:ID_Benutzer)';
-      dm_PCM.qry_work.ParamByname('ID_Benutzer').asInteger:= dm_PCM.iIDBenutzerPCM;
-      dm_PCM.qry_work.Execsql;
-    end;
-    qry_CalConfig.Open;
-    qry_CalConfigFTP.Open;
-    qry_CalConfig.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-    qry_CalConfig.Filtered := true;
-    qry_CalConfigFTP.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-    qry_CalConfigFTP.Filtered := true;
-    dm_PCM.qry_Config_Benutzer.Open;
-    qry_FT1.Open;
-    qry_FT1.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-    qry_FT1.Filtered := true;
-    qry_SchulFaecher.Open;
-    qry_SchulFaecher.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-    qry_SchulFaecher.Filtered := true;
-    qry_SchulFaecher_Config.Open;
-    qry_SchulFaecher_Config.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-    qry_SchulFaecher_Config.Filtered := true;
-    dm_PCM.qry_Config_EmailConfigTyp.Open;
-    qry_EmailConfig.Open;
-    qry_EmailConfig.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-    qry_EmailConfig.Filtered := true;
-    qry_EmailPostfachMain.Open;
-    dm_PCM.qry_Config_EmailPostfachLU.Open;
-    qry_AufgabenArten.Open;
-    qry_Prio.Open;
-    dm_PCM.qry_Config_Ansprechpartner.Open;
-    dm_PCM.qry_Config_Firmen.Open;
-    dm_PCM.qry_Config_Bundesland.Open;
-    qry_Konfiguration_Kalender_Optionen.Open;
-    qry_Konfiguration_Kalender_Optionen.Filter := 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-    qry_Konfiguration_Kalender_Optionen.Filtered := true;
-    qry_Anrede.Open;
-    qry_Land.Open;
-    qry_Phone.Open;
-    grdDBTblView_calconfigKalender.Caption := rs_PCM_Kalender;
-    grdDBTblView_calconfigLink.Caption := rs_PCMManager_Link;
-    grdDBTblView_calconfigBenutzer.Caption := rs_PCMBenutzerverwaltung_Benutzer;
-    grdDBTblView_calconfigPasswort.Caption := rs_PCM_Passwort;
-    grdDBTblView_calconfigErinnerung.Caption := rs_PCM_Erinnerung;
-    grdDBTblView_calconfigErinnerungVor.Caption := rs_PCM_ErinnerungVor;
-    grdDBTblView_calconfigLabelColor.Caption := rs_PCM_Terminfarbe;
-    grdDBTblView_calconfigFontcolor.Caption := rs_PCM_Schriftfarbe;
-    grdDBTblView_calconfigID_Benutzer.Caption :=rs_PCMBenutzerverwaltung_Benutzer;
-    grdDBTblView_FeiertageJahr.Caption := rs_PCM_Jahr;
-    grdDBTblView_FeiertageMonat.Caption:= rs_PCM_Monat;
-    grdDBTblView_FeiertageTag.Caption:= rs_PCM_Tag;
-    grdDBTblView_FeiertageBezeichnung.Caption:= rs_PCM_Bezeichnung;
-    grdDBTblView_FTPConfigurl.Caption := rs_PCM_Host;
-    grdDBTblView_FTPConfigkalendername.Caption := rs_PCM_Dateiname;
-    grdDBTblView_FTPConfiguser.Caption := rs_PCMBenutzerverwaltung_Benutzer;
-    grdDBTblView_FTPConfigpasswort.Caption := rs_PCM_Passwort;
-    grdDBTblView_AufgabenartenBezeichnung.Caption:= rs_PCM_Bezeichnung;
-    grdDBTblView_AufgabenartenFarbe.Caption:= rs_PCM_Farbe;
-    grdDBTblView_AufgabenPrioPrioritaet.Caption := rs_PCM_Prioritaet;
-    grdDBTblView_AufgabenPrioBezeichnung.Caption := rs_PCM_Bezeichnung;
-    grdDBTblView_StundenplanConfigBezeichnung.Caption := rs_PCM_Bezeichnung;
-    grdDBTblView_StundenplanConfigFarbe.Caption := rs_PCM_Farbe;
-    grdDBTblView_StundenplanConfigSchriftfarbe.Caption := rs_PCM_Schriftfarbe;
-    grdDBTblView_StundenplanConfigUhrFarbe.Caption :=  rs_PCM_Farbe;
-    grdDBTblView_StundenplanConfigUhrSchriftfarbe.Caption := rs_PCM_Schriftfarbe;
-    grdDBTblView_emailConfigEMail.Caption:= rs_PCM_EMailadresse;
-    grdDBTblView_emailConfigKontotyp.Caption:= rs_PCM_Kontotyp;
-    grdDBTblView_emailConfigPostEingangsserver.Caption:= rs_PCM_Posteingangsserver;
-    grdDBTblView_emailConfigPortEingangsserver.Caption:= rs_PCM_PortEingang;
-    grdDBTblView_emailConfigBenutzer.Caption:= rs_PCMBenutzerverwaltung_Benutzer;
-    grdDBTblView_emailConfigSSLActive.Caption:= rs_PCM_SSLAktiv;
-    grdDBTblViewl_PostfachmainPostfach.Caption:= rs_PCM_Postfach;
-    grdDBTblViewl_PostfachmainAnzeige.Caption:= rs_PCM_anzeige;
-    grdDBTblViewl_PostfachmainAbonnieren.Caption:= rs_PCM_Abonnieren;
-    grdDBTblViewl_PostfachmainSortierung.Caption:= rs_PCM_Sortierung;
-    grdDBTblViewl_PostfachSubPostfach.Caption:= rs_PCM_Postfach;
-    grdDBTblViewl_PostfachSubAnzeige.Caption:= rs_PCM_anzeige;
-    grdDBTblViewl_PostfachSubParent.Caption:= rs_PCM_Hauptpostfach;
-    grdDBTblViewl_PostfachSubAbonnieren.Caption:= rs_PCM_Abonnieren;
-    grdDBTblViewl_PostfachSubSortierung.Caption:= rs_PCM_Sortierung;
-  end;
   procedure InitializeRights;
   begin
     /// / Kalender
@@ -1781,11 +2025,40 @@ procedure Tfrm_Config.FormShow(Sender: TObject);
     btn_EmailConfig_Test.enabled := dm_PCM.iKonfiguration >= SetReadWrite;
   end;
 begin
-  OpenData;
+  OpenData(0);
   InitializeRights;
   SetButtons;
   SetGridViews(True);
+  FOAuth2_Enhanced := TEnhancedOAuth2Authenticator.Create(nil);
+  IdHTTPServer1.Active := True;
 end;
+procedure Tfrm_Config.IdHTTPServer1CommandGet(AContext: TIdContext; ARequestInfo: TIdHTTPRequestInfo; AResponseInfo: TIdHTTPResponseInfo);
+var
+  LCode: string;
+  LURL : TURI;
+  LTokenName : string;
+begin
+  if ARequestInfo.QueryParams = '' then
+    Exit;
+  LURL := TURI.Create('https://localhost/?' + ARequestInfo.QueryParams);
+  try
+    LCode := LURL.ParameterByName['code'];
+  except
+    Exit;
+  end;
+  FOAuth2_Enhanced.AuthCode := LCode;
+  FOAuth2_Enhanced.ChangeAuthCodeToAccesToken;
+  LTokenName := 'MicrosoftToken';
+  dm_PCM.qry_work.SQL.Text:= 'Update manager_emailkonfiguration Set RefreshToken = :RefreshToken Where ID = :ID';
+  dm_PCM.qry_work.ParamByName('RefreshToken').AsString:= FOAuth2_Enhanced.RefreshToken;
+  dm_PCM.qry_work.ParamByName('ID').AsInteger:= qry_EmailConfig.FieldByName('ID').AsInteger;
+  dm_PCM.qry_work.ExecSQL;
+//  qry_EmailConfig.Refresh;
+  SetupAuthenticator;
+  AResponseInfo.ContentText := '<html><body>Successfully Authenticated. You can now close this tab/window.</body></html>';
+
+end;
+
 {$Endregion}
 end.
 

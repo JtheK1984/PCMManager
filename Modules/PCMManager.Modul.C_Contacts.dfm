@@ -212,8 +212,8 @@ object frm_Contact: Tfrm_Contact
       Width = 234
     end
     object cmbbx_Anrede: TcxDBLookupComboBox
-      Left = 99
-      Top = 45
+      Left = 96
+      Top = 42
       AutoSize = False
       DataBinding.DataField = 'ID_Anrede'
       DataBinding.DataSource = ds_Kontakte
@@ -240,8 +240,8 @@ object frm_Contact: Tfrm_Contact
       Width = 289
     end
     object edt_Email2: TcxDBTextEdit
-      Left = 99
-      Top = 396
+      Left = 96
+      Top = 393
       AutoSize = False
       DataBinding.DataField = 'E_Mail_Privat1'
       DataBinding.DataSource = ds_Kontakte
@@ -260,8 +260,8 @@ object frm_Contact: Tfrm_Contact
       Width = 262
     end
     object edt_KontaktGeburtsname: TcxDBTextEdit
-      Left = 99
-      Top = 126
+      Left = 96
+      Top = 123
       AutoSize = False
       DataBinding.DataField = 'Geburtsname'
       DataBinding.DataSource = ds_Kontakte
@@ -280,8 +280,8 @@ object frm_Contact: Tfrm_Contact
       Width = 289
     end
     object edt_KontaktHandy: TcxDBTextEdit
-      Left = 99
-      Top = 342
+      Left = 96
+      Top = 339
       AutoSize = False
       DataBinding.DataField = 'Handy_privat'
       DataBinding.DataSource = ds_Kontakte
@@ -300,8 +300,8 @@ object frm_Contact: Tfrm_Contact
       Width = 262
     end
     object edt_KontaktNachname: TcxDBTextEdit
-      Left = 99
-      Top = 99
+      Left = 96
+      Top = 96
       AutoSize = False
       DataBinding.DataField = 'Nachname'
       DataBinding.DataSource = ds_Kontakte
@@ -322,8 +322,8 @@ object frm_Contact: Tfrm_Contact
       Width = 289
     end
     object edt_KontaktName: TcxDBTextEdit
-      Left = 99
-      Top = 72
+      Left = 96
+      Top = 69
       AutoSize = False
       DataBinding.DataField = 'Vorname'
       DataBinding.DataSource = ds_Kontakte
@@ -344,8 +344,8 @@ object frm_Contact: Tfrm_Contact
       Width = 289
     end
     object edt_KontaktOrt: TcxDBTextEdit
-      Left = 174
-      Top = 261
+      Left = 171
+      Top = 258
       AutoSize = False
       DataBinding.DataField = 'Ort_Privat'
       DataBinding.DataSource = ds_Kontakte
@@ -364,8 +364,8 @@ object frm_Contact: Tfrm_Contact
       Width = 185
     end
     object edt_KontaktPLZ: TcxDBTextEdit
-      Left = 99
-      Top = 261
+      Left = 96
+      Top = 258
       AutoSize = False
       DataBinding.DataField = 'PLZ_Privat'
       DataBinding.DataSource = ds_Kontakte
@@ -384,8 +384,8 @@ object frm_Contact: Tfrm_Contact
       Width = 69
     end
     object edt_KontaktStrasse: TcxDBTextEdit
-      Left = 99
-      Top = 234
+      Left = 96
+      Top = 231
       AutoSize = False
       DataBinding.DataField = 'Strasse_Privat'
       DataBinding.DataSource = ds_Kontakte
@@ -404,8 +404,8 @@ object frm_Contact: Tfrm_Contact
       Width = 289
     end
     object edt_KontaktTelefon1: TcxDBTextEdit
-      Left = 99
-      Top = 288
+      Left = 96
+      Top = 285
       AutoSize = False
       DataBinding.DataField = 'Telefon_Privat'
       DataBinding.DataSource = ds_Kontakte
@@ -424,8 +424,8 @@ object frm_Contact: Tfrm_Contact
       Width = 262
     end
     object edt_KontaktTelefon2: TcxDBTextEdit
-      Left = 99
-      Top = 315
+      Left = 96
+      Top = 312
       AutoSize = False
       DataBinding.DataField = 'Telefon_Privat1'
       DataBinding.DataSource = ds_Kontakte
@@ -444,8 +444,8 @@ object frm_Contact: Tfrm_Contact
       Width = 262
     end
     object edt_KontaktZusatz: TcxDBTextEdit
-      Left = 99
-      Top = 207
+      Left = 96
+      Top = 204
       AutoSize = False
       DataBinding.DataField = 'Zusatz'
       DataBinding.DataSource = ds_Kontakte
@@ -464,8 +464,8 @@ object frm_Contact: Tfrm_Contact
       Width = 289
     end
     object dtEdt_KontaktZusatzGeburtsdatum: TcxDBDateEdit
-      Left = 10000
-      Top = 10000
+      Left = 665
+      Top = 73
       AutoSize = False
       DataBinding.DataField = 'Geburtsdatum'
       DataBinding.DataSource = ds_Kontakte
@@ -479,14 +479,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 41
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 899
+      Width = 911
     end
     object lucmbbx_KontaktZusatzFamilienstand: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
+      Left = 665
+      Top = 154
       AutoSize = False
       DataBinding.DataField = 'ID_Familienstand'
       DataBinding.DataSource = ds_Kontakte
@@ -507,14 +506,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 44
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 899
+      Width = 911
     end
     object lucmbbx_KontaktZusatzGeschlecht: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
+      Left = 665
+      Top = 127
       AutoSize = False
       DataBinding.DataField = 'ID_Geschlecht'
       DataBinding.DataSource = ds_Kontakte
@@ -536,14 +534,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 43
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 899
+      Width = 911
     end
     object lucmbbx_Konfession: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
+      Left = 665
+      Top = 208
       AutoSize = False
       DataBinding.DataField = 'ID_Konfession'
       DataBinding.DataSource = ds_Kontakte
@@ -564,14 +561,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 47
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 872
+      Width = 884
     end
     object lucmbbx_Staatsanghoerigkeit: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
+      Left = 665
+      Top = 181
       AutoSize = False
       DataBinding.DataField = 'ID_Staatsangehoerigkeit'
       DataBinding.DataSource = ds_Kontakte
@@ -592,14 +588,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 45
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 872
+      Width = 884
     end
     object img_Picture: TcxDBImage
-      Left = 10000
-      Top = 10000
+      Left = 398
+      Top = 73
       TabStop = False
       DataBinding.DataField = 'Bild'
       DataBinding.DataSource = ds_Kontakte
@@ -608,13 +603,12 @@ object frm_Contact: Tfrm_Contact
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 40
-      Visible = False
       Height = 156
       Width = 156
     end
     object edt_KontaktGeschaeftlichAbteilung: TcxDBTextEdit
-      Left = 502
-      Top = 241
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Abteilung_Ges'
       DataBinding.DataSource = ds_Kontakte
@@ -628,13 +622,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 62
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 1068
+      Width = 1080
     end
     object edt_KontaktGeschaeftlichEMail: TcxDBTextEdit
-      Left = 502
-      Top = 349
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'E_Mail_Ges'
       DataBinding.DataSource = ds_Kontakte
@@ -648,13 +643,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 69
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 1041
+      Width = 1053
     end
     object edt_KontaktGeschaeftlichFirma: TcxDBTextEdit
-      Left = 654
-      Top = 79
+      Left = 10000
+      Top = 10000
       OnFocusChanged = btn_KontaktSaveClick
       AutoSize = False
       DataBinding.DataField = 'Firma'
@@ -669,13 +665,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 51
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 916
+      Width = 928
     end
     object edt_KontaktGeschaeftlichInternet: TcxDBTextEdit
-      Left = 654
-      Top = 214
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Internet_Ges'
       DataBinding.DataSource = ds_Kontakte
@@ -689,13 +686,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 60
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 889
+      Width = 901
     end
     object edt_KontaktGeschaeftlichOrt: TcxDBTextEdit
-      Left = 729
-      Top = 133
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Ort_Ges'
       DataBinding.DataSource = ds_Kontakte
@@ -709,13 +707,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 54
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 814
+      Width = 826
     end
     object edt_KontaktGeschaeftlichPLZ: TcxDBTextEdit
-      Left = 654
-      Top = 133
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'PLZ_Ges'
       DataBinding.DataSource = ds_Kontakte
@@ -729,13 +728,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 53
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 69
     end
     object edt_KontaktGeschaeftlichStrasse: TcxDBTextEdit
-      Left = 654
-      Top = 106
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Strasse_Ges'
       DataBinding.DataSource = ds_Kontakte
@@ -749,13 +749,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 52
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 916
+      Width = 928
     end
     object edt_KontaktGeschaeftlichTelefonZentrale: TcxDBTextEdit
-      Left = 654
-      Top = 160
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Zentrale_Ges'
       DataBinding.DataSource = ds_Kontakte
@@ -769,13 +770,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 56
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 889
+      Width = 901
     end
     object edt_KontaktGeschaeftlichTelefonDurchwahl: TcxDBTextEdit
-      Left = 502
-      Top = 295
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Telefon_Ges'
       DataBinding.DataSource = ds_Kontakte
@@ -789,13 +791,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 64
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 1041
+      Width = 1053
     end
     object btn_MapPrivate: TcxButton
-      Left = 365
-      Top = 261
+      Left = 362
+      Top = 258
       Width = 21
       Height = 21
       OptionsImage.ImageIndex = 85
@@ -805,8 +808,8 @@ object frm_Contact: Tfrm_Contact
       OnClick = btn_MapPrivateClick
     end
     object edt_Email1: TcxDBTextEdit
-      Left = 99
-      Top = 369
+      Left = 96
+      Top = 366
       AutoSize = False
       DataBinding.DataField = 'E_Mail_Privat'
       DataBinding.DataSource = ds_Kontakte
@@ -825,8 +828,8 @@ object frm_Contact: Tfrm_Contact
       Width = 262
     end
     object mem_Sonstige: TcxDBMemo
-      Left = 10000
-      Top = 10000
+      Left = 398
+      Top = 270
       DataBinding.DataField = 'Info'
       DataBinding.DataSource = ds_Kontakte
       ParentFont = False
@@ -839,14 +842,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 49
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 97
-      Width = 1166
+      Width = 1178
     end
     object btn_Mail1Private: TcxButton
-      Left = 367
-      Top = 369
+      Left = 364
+      Top = 366
       Width = 21
       Height = 21
       Caption = 'btn_Mail1Private'
@@ -857,8 +859,8 @@ object frm_Contact: Tfrm_Contact
       OnClick = btn_KontaktEmail1SendClick
     end
     object btn_Mail2Private: TcxButton
-      Left = 367
-      Top = 396
+      Left = 364
+      Top = 393
       Width = 21
       Height = 21
       Caption = 'cxButton1'
@@ -1278,8 +1280,8 @@ object frm_Contact: Tfrm_Contact
       Width = 1111
     end
     object edt_KontaktInternet: TcxDBTextEdit
-      Left = 99
-      Top = 423
+      Left = 96
+      Top = 420
       AutoSize = False
       DataBinding.DataField = 'Internet_Privat'
       DataBinding.DataSource = ds_Kontakte
@@ -1298,8 +1300,8 @@ object frm_Contact: Tfrm_Contact
       Width = 262
     end
     object btn_WebPrivate: TcxButton
-      Left = 367
-      Top = 423
+      Left = 364
+      Top = 420
       Width = 21
       Height = 21
       OptionsImage.ImageIndex = 75
@@ -1315,8 +1317,8 @@ object frm_Contact: Tfrm_Contact
       OnClick = btn_KontaktPrivOpenWebsiteClick
     end
     object edt_KontaktGeschaeftlichFunktion: TcxDBTextEdit
-      Left = 502
-      Top = 268
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Funktion_Ges'
       DataBinding.DataSource = ds_Kontakte
@@ -1330,13 +1332,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 63
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 1068
+      Width = 1080
     end
     object btn_EditStaatsangehoerigkeit: TcxButton
-      Left = 10000
-      Top = 10000
+      Left = 1555
+      Top = 181
       Width = 21
       Height = 21
       Caption = 'btn_EditStaatsangehoerigkeit'
@@ -1344,11 +1347,10 @@ object frm_Contact: Tfrm_Contact
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
       TabOrder = 46
-      Visible = False
     end
     object btn_EditKonfession: TcxButton
-      Left = 10000
-      Top = 10000
+      Left = 1555
+      Top = 208
       Width = 21
       Height = 21
       Caption = 'cxButton3'
@@ -1356,17 +1358,17 @@ object frm_Contact: Tfrm_Contact
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
       TabOrder = 48
-      Visible = False
     end
     object btn_WebBusiness: TcxButton
-      Left = 1549
-      Top = 214
+      Left = 10000
+      Top = 10000
       Width = 21
       Height = 21
       OptionsImage.ImageIndex = 75
       OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 61
       TabStop = False
+      Visible = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -1376,19 +1378,20 @@ object frm_Contact: Tfrm_Contact
       OnClick = btn_KontaktGesOpenWebsiteClick
     end
     object btn_MapBusiness: TcxButton
-      Left = 1549
-      Top = 133
+      Left = 10000
+      Top = 10000
       Width = 21
       Height = 21
       OptionsImage.ImageIndex = 85
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
       TabOrder = 55
+      Visible = False
       OnClick = btn_MapBusinessClick
     end
     object btn_MailBusiness: TcxButton
-      Left = 1549
-      Top = 349
+      Left = 10000
+      Top = 10000
       Width = 21
       Height = 21
       Caption = 'cxButton1'
@@ -1396,11 +1399,12 @@ object frm_Contact: Tfrm_Contact
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
       TabOrder = 68
+      Visible = False
       OnClick = btn_KontaktGeschaeftlichSendMailClick
     end
     object edt_GeschaeftlichHandy: TcxDBTextEdit
-      Left = 502
-      Top = 322
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Handy_Ges'
       DataBinding.DataSource = ds_Kontakte
@@ -1414,13 +1418,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 66
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 1041
+      Width = 1053
     end
     object cmbbx_KontaktArt: TcxDBLookupComboBox
-      Left = 99
-      Top = 450
+      Left = 96
+      Top = 447
       AutoSize = False
       DataBinding.DataField = 'ID_Kontaktart'
       DataBinding.DataSource = ds_Kontakte
@@ -1447,8 +1452,8 @@ object frm_Contact: Tfrm_Contact
       Width = 289
     end
     object dtEdt_KontaktZusatzTodestag: TcxDBDateEdit
-      Left = 10000
-      Top = 10000
+      Left = 665
+      Top = 100
       AutoSize = False
       DataBinding.DataField = 'Todestag'
       DataBinding.DataSource = ds_Kontakte
@@ -1462,14 +1467,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 42
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 899
+      Width = 911
     end
     object cxDBTextEdit1: TcxDBTextEdit
-      Left = 99
-      Top = 153
+      Left = 96
+      Top = 150
       AutoSize = False
       DataBinding.DataField = 'Geburtsort'
       DataBinding.DataSource = ds_Kontakte
@@ -1501,8 +1505,8 @@ object frm_Contact: Tfrm_Contact
       Width = 1548
     end
     object cxDBImage1: TcxDBImage
-      Left = 404
-      Top = 79
+      Left = 10000
+      Top = 10000
       TabStop = False
       DataBinding.DataField = 'Bild'
       DataBinding.DataSource = ds_Kontakte
@@ -1511,12 +1515,13 @@ object frm_Contact: Tfrm_Contact
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 50
+      Visible = False
       Height = 156
       Width = 156
     end
     object cxDBTextEdit2: TcxDBTextEdit
-      Left = 654
-      Top = 187
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'E_Mail_Zentral'
       DataBinding.DataSource = ds_Kontakte
@@ -1530,13 +1535,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 58
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 889
+      Width = 901
     end
     object btn_MailGesZentral: TcxButton
-      Left = 1549
-      Top = 187
+      Left = 10000
+      Top = 10000
       Width = 21
       Height = 21
       Caption = 'btn_MailGesZentral'
@@ -1544,6 +1550,7 @@ object frm_Contact: Tfrm_Contact
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
       TabOrder = 59
+      Visible = False
       OnClick = btn_KontaktGeschaeftlichSendMailClick
     end
     object cmbbx_KontaktAnrede: TcxComboBox
@@ -1566,8 +1573,8 @@ object frm_Contact: Tfrm_Contact
       Width = 234
     end
     object btn_Tel1: TcxButton
-      Left = 367
-      Top = 288
+      Left = 364
+      Top = 285
       Width = 21
       Height = 21
       OptionsImage.Glyph.SourceDPI = 96
@@ -1585,8 +1592,8 @@ object frm_Contact: Tfrm_Contact
       OnClick = btn_Tel1Click
     end
     object btn_Tel2: TcxButton
-      Left = 367
-      Top = 315
+      Left = 364
+      Top = 312
       Width = 21
       Height = 21
       OptionsImage.Glyph.SourceDPI = 96
@@ -1604,8 +1611,8 @@ object frm_Contact: Tfrm_Contact
       OnClick = btn_Tel2Click
     end
     object btn_Handy: TcxButton
-      Left = 367
-      Top = 342
+      Left = 364
+      Top = 339
       Width = 21
       Height = 21
       OptionsImage.Glyph.SourceDPI = 96
@@ -1623,8 +1630,8 @@ object frm_Contact: Tfrm_Contact
       OnClick = btn_HandyClick
     end
     object cxButton5: TcxButton
-      Left = 1549
-      Top = 160
+      Left = 10000
+      Top = 10000
       Width = 21
       Height = 21
       OptionsImage.Glyph.SourceDPI = 96
@@ -1639,11 +1646,12 @@ object frm_Contact: Tfrm_Contact
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
       TabOrder = 57
+      Visible = False
       OnClick = cxButton5Click
     end
     object cxButton6: TcxButton
-      Left = 1549
-      Top = 295
+      Left = 10000
+      Top = 10000
       Width = 21
       Height = 21
       OptionsImage.Glyph.SourceDPI = 96
@@ -1658,11 +1666,12 @@ object frm_Contact: Tfrm_Contact
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
       TabOrder = 65
+      Visible = False
       OnClick = cxButton6Click
     end
     object cxButton7: TcxButton
-      Left = 1549
-      Top = 322
+      Left = 10000
+      Top = 10000
       Width = 21
       Height = 21
       OptionsImage.Glyph.SourceDPI = 96
@@ -1677,6 +1686,7 @@ object frm_Contact: Tfrm_Contact
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
       TabOrder = 67
+      Visible = False
       OnClick = cxButton7Click
     end
     object edt_KontaktSucheStrasseGes: TcxTextEdit
@@ -1764,8 +1774,8 @@ object frm_Contact: Tfrm_Contact
       Width = 234
     end
     object cxDBLookupComboBox1: TcxDBLookupComboBox
-      Left = 99
-      Top = 180
+      Left = 96
+      Top = 177
       AutoSize = False
       DataBinding.DataField = 'ID_Kontaktart'
       DataBinding.DataSource = ds_Kontakte
@@ -1812,7 +1822,6 @@ object frm_Contact: Tfrm_Contact
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Zus'#228'tzlich Informationen'
-      ItemIndex = 1
       LayoutDirection = ldTabbed
       ShowBorder = False
       Index = 1
@@ -3050,7 +3059,6 @@ object frm_Contact: Tfrm_Contact
     LookAndFeel.NativeStyle = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 112
     Top = 488
@@ -3249,11 +3257,12 @@ object frm_Contact: Tfrm_Contact
       OnClick = dxBarLargeButton1Click
     end
     object dxBarLargeButton2: TdxBarLargeButton
-      Caption = 'New Button'
+      Caption = 'Export (Outlook)'
       Category = 0
-      Hint = 'New Button'
+      Hint = 'Export (Outlook)'
       Visible = ivAlways
       OnClick = dxBarLargeButton1Click
+      LargeImageIndex = 64
     end
     object ppmbtn_NachExcelexportieren: TdxBarButton
       Caption = 'Nach Excel exportieren'
