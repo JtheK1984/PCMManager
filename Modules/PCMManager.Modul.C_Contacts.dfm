@@ -29,11 +29,12 @@ object frm_Contact: Tfrm_Contact
     TabOrder = 4
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
+    ExplicitTop = 46
     ExplicitWidth = 1594
-    ExplicitHeight = 825
+    ExplicitHeight = 837
     object cmbbx_KontaktSucheArt: TcxComboBox
-      Left = 10000
-      Top = 10000
+      Left = 86
+      Top = 111
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -45,14 +46,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 2
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 234
     end
     object edt_KontaktSucheAbteilung: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 779
+      Top = 84
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -64,14 +64,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 8
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 234
     end
     object edt_KontaktSucheFirma: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 779
+      Top = 57
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -83,14 +82,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 7
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 234
     end
     object edt_KontaktSucheFunktion: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 779
+      Top = 111
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -102,14 +100,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 9
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 234
     end
     object edt_KontaktSucheNachname: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 86
+      Top = 57
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -130,14 +127,13 @@ object frm_Contact: Tfrm_Contact
       StyleHot.TextStyle = []
       StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 0
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 234
     end
     object edt_KontaktSucheOrt: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 437
+      Top = 111
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -149,14 +145,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 6
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 234
     end
     object edt_KontaktSuchePLZ: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 437
+      Top = 84
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -168,14 +163,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 5
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 234
     end
     object edt_KontaktSucheStrasse: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 437
+      Top = 57
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -187,14 +181,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 4
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 234
     end
     object edt_KontaktSucheVorname: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 86
+      Top = 84
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -206,14 +199,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 1
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 234
     end
     object cmbbx_Anrede: TcxDBLookupComboBox
-      Left = 96
-      Top = 42
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'ID_Anrede'
       DataBinding.DataSource = ds_Kontakte
@@ -235,13 +227,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 16
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object edt_Email2: TcxDBTextEdit
-      Left = 96
-      Top = 393
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'E_Mail_Privat1'
       DataBinding.DataSource = ds_Kontakte
@@ -255,13 +248,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 35
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 262
     end
     object edt_KontaktGeburtsname: TcxDBTextEdit
-      Left = 96
-      Top = 123
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Geburtsname'
       DataBinding.DataSource = ds_Kontakte
@@ -275,13 +269,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 19
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object edt_KontaktHandy: TcxDBTextEdit
-      Left = 96
-      Top = 339
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Handy_privat'
       DataBinding.DataSource = ds_Kontakte
@@ -295,13 +290,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 31
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 262
     end
     object edt_KontaktNachname: TcxDBTextEdit
-      Left = 96
-      Top = 96
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Nachname'
       DataBinding.DataSource = ds_Kontakte
@@ -317,13 +313,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 18
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object edt_KontaktName: TcxDBTextEdit
-      Left = 96
-      Top = 69
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Vorname'
       DataBinding.DataSource = ds_Kontakte
@@ -339,13 +336,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 17
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object edt_KontaktOrt: TcxDBTextEdit
-      Left = 171
-      Top = 258
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Ort_Privat'
       DataBinding.DataSource = ds_Kontakte
@@ -359,13 +357,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 25
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 185
     end
     object edt_KontaktPLZ: TcxDBTextEdit
-      Left = 96
-      Top = 258
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'PLZ_Privat'
       DataBinding.DataSource = ds_Kontakte
@@ -379,13 +378,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 24
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 69
     end
     object edt_KontaktStrasse: TcxDBTextEdit
-      Left = 96
-      Top = 231
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Strasse_Privat'
       DataBinding.DataSource = ds_Kontakte
@@ -399,13 +399,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 23
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object edt_KontaktTelefon1: TcxDBTextEdit
-      Left = 96
-      Top = 285
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Telefon_Privat'
       DataBinding.DataSource = ds_Kontakte
@@ -419,13 +420,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 27
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 262
     end
     object edt_KontaktTelefon2: TcxDBTextEdit
-      Left = 96
-      Top = 312
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Telefon_Privat1'
       DataBinding.DataSource = ds_Kontakte
@@ -439,13 +441,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 29
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 262
     end
     object edt_KontaktZusatz: TcxDBTextEdit
-      Left = 96
-      Top = 204
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Zusatz'
       DataBinding.DataSource = ds_Kontakte
@@ -459,13 +462,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 22
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object dtEdt_KontaktZusatzGeburtsdatum: TcxDBDateEdit
-      Left = 665
-      Top = 73
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Geburtsdatum'
       DataBinding.DataSource = ds_Kontakte
@@ -479,13 +483,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 41
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 911
     end
     object lucmbbx_KontaktZusatzFamilienstand: TcxDBLookupComboBox
-      Left = 665
-      Top = 154
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'ID_Familienstand'
       DataBinding.DataSource = ds_Kontakte
@@ -506,13 +511,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 44
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 911
     end
     object lucmbbx_KontaktZusatzGeschlecht: TcxDBLookupComboBox
-      Left = 665
-      Top = 127
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'ID_Geschlecht'
       DataBinding.DataSource = ds_Kontakte
@@ -534,13 +540,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 43
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 911
     end
     object lucmbbx_Konfession: TcxDBLookupComboBox
-      Left = 665
-      Top = 208
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'ID_Konfession'
       DataBinding.DataSource = ds_Kontakte
@@ -561,13 +568,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 47
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 884
     end
     object lucmbbx_Staatsanghoerigkeit: TcxDBLookupComboBox
-      Left = 665
-      Top = 181
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'ID_Staatsangehoerigkeit'
       DataBinding.DataSource = ds_Kontakte
@@ -588,13 +596,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 45
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 884
     end
     object img_Picture: TcxDBImage
-      Left = 398
-      Top = 73
+      Left = 10000
+      Top = 10000
       TabStop = False
       DataBinding.DataField = 'Bild'
       DataBinding.DataSource = ds_Kontakte
@@ -603,6 +612,7 @@ object frm_Contact: Tfrm_Contact
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 40
+      Visible = False
       Height = 156
       Width = 156
     end
@@ -797,19 +807,20 @@ object frm_Contact: Tfrm_Contact
       Width = 1053
     end
     object btn_MapPrivate: TcxButton
-      Left = 362
-      Top = 258
+      Left = 10000
+      Top = 10000
       Width = 21
       Height = 21
       OptionsImage.ImageIndex = 85
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
       TabOrder = 26
+      Visible = False
       OnClick = btn_MapPrivateClick
     end
     object edt_Email1: TcxDBTextEdit
-      Left = 96
-      Top = 366
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'E_Mail_Privat'
       DataBinding.DataSource = ds_Kontakte
@@ -823,13 +834,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 33
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 262
     end
     object mem_Sonstige: TcxDBMemo
-      Left = 398
-      Top = 270
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Info'
       DataBinding.DataSource = ds_Kontakte
       ParentFont = False
@@ -842,13 +854,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 49
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 97
       Width = 1178
     end
     object btn_Mail1Private: TcxButton
-      Left = 364
-      Top = 366
+      Left = 10000
+      Top = 10000
       Width = 21
       Height = 21
       Caption = 'btn_Mail1Private'
@@ -856,11 +869,12 @@ object frm_Contact: Tfrm_Contact
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
       TabOrder = 34
+      Visible = False
       OnClick = btn_KontaktEmail1SendClick
     end
     object btn_Mail2Private: TcxButton
-      Left = 364
-      Top = 393
+      Left = 10000
+      Top = 10000
       Width = 21
       Height = 21
       Caption = 'cxButton1'
@@ -868,13 +882,14 @@ object frm_Contact: Tfrm_Contact
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
       TabOrder = 36
+      Visible = False
       OnClick = btn_KontaktEmail2SendClick
     end
     object grd_Suche: TcxGrid
-      Left = 10000
-      Top = 10000
-      Width = 1552
-      Height = 575
+      Left = 17
+      Top = 207
+      Width = 1566
+      Height = 618
       BevelInner = bvNone
       BevelOuter = bvNone
       Font.Charset = DEFAULT_CHARSET
@@ -884,7 +899,6 @@ object frm_Contact: Tfrm_Contact
       Font.Style = []
       ParentFont = False
       TabOrder = 15
-      Visible = False
       LockedStateImageOptions.Effect = lsieDark
       LookAndFeel.ScrollbarMode = sbmClassic
       object grdDBTblView_Suche: TcxGridDBTableView
@@ -1181,15 +1195,14 @@ object frm_Contact: Tfrm_Contact
       end
     end
     object btn_ClearFilter: TcxButton
-      Left = 10000
-      Top = 10000
+      Left = 160
+      Top = 174
       Width = 137
       Height = 27
       Caption = 'Filter l'#246'schen'
       OptionsImage.ImageIndex = 24
       OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 14
-      Visible = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -1199,15 +1212,14 @@ object frm_Contact: Tfrm_Contact
       OnClick = btn_ClearFilterClick
     end
     object btn_kontaktsuchen: TcxButton
-      Left = 10000
-      Top = 10000
+      Left = 17
+      Top = 174
       Width = 137
       Height = 27
       Caption = 'Kontakt suchen'
       OptionsImage.ImageIndex = 25
       OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 13
-      Visible = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -1235,7 +1247,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 1111
+      Width = 1123
     end
     object edt_KontakteSonstigesSkype: TcxDBTextEdit
       Left = 10000
@@ -1256,7 +1268,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 1111
+      Width = 1123
     end
     object edt_KontakteSonstigesTeams: TcxDBTextEdit
       Left = 10000
@@ -1277,11 +1289,11 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 1111
+      Width = 1123
     end
     object edt_KontaktInternet: TcxDBTextEdit
-      Left = 96
-      Top = 420
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Internet_Privat'
       DataBinding.DataSource = ds_Kontakte
@@ -1295,19 +1307,21 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 37
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 262
     end
     object btn_WebPrivate: TcxButton
-      Left = 364
-      Top = 420
+      Left = 10000
+      Top = 10000
       Width = 21
       Height = 21
       OptionsImage.ImageIndex = 75
       OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 38
       TabStop = False
+      Visible = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -1338,8 +1352,8 @@ object frm_Contact: Tfrm_Contact
       Width = 1080
     end
     object btn_EditStaatsangehoerigkeit: TcxButton
-      Left = 1555
-      Top = 181
+      Left = 10000
+      Top = 10000
       Width = 21
       Height = 21
       Caption = 'btn_EditStaatsangehoerigkeit'
@@ -1347,10 +1361,11 @@ object frm_Contact: Tfrm_Contact
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
       TabOrder = 46
+      Visible = False
     end
     object btn_EditKonfession: TcxButton
-      Left = 1555
-      Top = 208
+      Left = 10000
+      Top = 10000
       Width = 21
       Height = 21
       Caption = 'cxButton3'
@@ -1358,6 +1373,7 @@ object frm_Contact: Tfrm_Contact
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
       TabOrder = 48
+      Visible = False
     end
     object btn_WebBusiness: TcxButton
       Left = 10000
@@ -1424,8 +1440,8 @@ object frm_Contact: Tfrm_Contact
       Width = 1053
     end
     object cmbbx_KontaktArt: TcxDBLookupComboBox
-      Left = 96
-      Top = 447
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'ID_Kontaktart'
       DataBinding.DataSource = ds_Kontakte
@@ -1447,13 +1463,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 39
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object dtEdt_KontaktZusatzTodestag: TcxDBDateEdit
-      Left = 665
-      Top = 100
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Todestag'
       DataBinding.DataSource = ds_Kontakte
@@ -1467,13 +1484,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 42
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 911
     end
-    object cxDBTextEdit1: TcxDBTextEdit
-      Left = 96
-      Top = 150
+    object edt_KontakteGeburtsort: TcxDBTextEdit
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Geburtsort'
       DataBinding.DataSource = ds_Kontakte
@@ -1487,6 +1505,7 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 20
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
@@ -1501,10 +1520,10 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = True
       TabOrder = 73
       Visible = False
-      Height = 747
-      Width = 1548
+      Height = 773
+      Width = 1568
     end
-    object cxDBImage1: TcxDBImage
+    object img_PictureGes: TcxDBImage
       Left = 10000
       Top = 10000
       TabStop = False
@@ -1519,7 +1538,7 @@ object frm_Contact: Tfrm_Contact
       Height = 156
       Width = 156
     end
-    object cxDBTextEdit2: TcxDBTextEdit
+    object edt_KontaktGeschaeftlichEMailZentrale: TcxDBTextEdit
       Left = 10000
       Top = 10000
       AutoSize = False
@@ -1554,8 +1573,8 @@ object frm_Contact: Tfrm_Contact
       OnClick = btn_KontaktGeschaeftlichSendMailClick
     end
     object cmbbx_KontaktAnrede: TcxComboBox
-      Left = 10000
-      Top = 10000
+      Left = 86
+      Top = 138
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -1567,14 +1586,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 3
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 234
     end
     object btn_Tel1: TcxButton
-      Left = 364
-      Top = 285
+      Left = 10000
+      Top = 10000
       Width = 21
       Height = 21
       OptionsImage.Glyph.SourceDPI = 96
@@ -1589,11 +1607,12 @@ object frm_Contact: Tfrm_Contact
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
       TabOrder = 28
+      Visible = False
       OnClick = btn_Tel1Click
     end
     object btn_Tel2: TcxButton
-      Left = 364
-      Top = 312
+      Left = 10000
+      Top = 10000
       Width = 21
       Height = 21
       OptionsImage.Glyph.SourceDPI = 96
@@ -1608,11 +1627,12 @@ object frm_Contact: Tfrm_Contact
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
       TabOrder = 30
+      Visible = False
       OnClick = btn_Tel2Click
     end
     object btn_Handy: TcxButton
-      Left = 364
-      Top = 339
+      Left = 10000
+      Top = 10000
       Width = 21
       Height = 21
       OptionsImage.Glyph.SourceDPI = 96
@@ -1627,9 +1647,10 @@ object frm_Contact: Tfrm_Contact
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
       TabOrder = 32
+      Visible = False
       OnClick = btn_HandyClick
     end
-    object cxButton5: TcxButton
+    object btn_KontaktGeschaeftlichTelefonZentrale: TcxButton
       Left = 10000
       Top = 10000
       Width = 21
@@ -1647,9 +1668,9 @@ object frm_Contact: Tfrm_Contact
       PaintStyle = bpsGlyph
       TabOrder = 57
       Visible = False
-      OnClick = cxButton5Click
+      OnClick = btn_KontaktGeschaeftlichTelefonZentraleClick
     end
-    object cxButton6: TcxButton
+    object btn_KontaktGeschaeftlichTelefondurchwahl: TcxButton
       Left = 10000
       Top = 10000
       Width = 21
@@ -1667,9 +1688,9 @@ object frm_Contact: Tfrm_Contact
       PaintStyle = bpsGlyph
       TabOrder = 65
       Visible = False
-      OnClick = cxButton6Click
+      OnClick = btn_KontaktGeschaeftlichTelefondurchwahlClick
     end
-    object cxButton7: TcxButton
+    object btn_KontaktGeschaeftlichHandy: TcxButton
       Left = 10000
       Top = 10000
       Width = 21
@@ -1687,11 +1708,11 @@ object frm_Contact: Tfrm_Contact
       PaintStyle = bpsGlyph
       TabOrder = 67
       Visible = False
-      OnClick = cxButton7Click
+      OnClick = btn_KontaktGeschaeftlichHandyClick
     end
     object edt_KontaktSucheStrasseGes: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 1159
+      Top = 57
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -1712,14 +1733,13 @@ object frm_Contact: Tfrm_Contact
       StyleHot.TextStyle = []
       StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 10
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 234
     end
     object edt_KontaktSuchePLZGes: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 1159
+      Top = 84
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -1740,14 +1760,13 @@ object frm_Contact: Tfrm_Contact
       StyleHot.TextStyle = []
       StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 11
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 234
     end
     object edt_KontaktSucheOrtGes: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 1159
+      Top = 111
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -1768,14 +1787,13 @@ object frm_Contact: Tfrm_Contact
       StyleHot.TextStyle = []
       StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 12
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 234
     end
-    object cxDBLookupComboBox1: TcxDBLookupComboBox
-      Left = 96
-      Top = 177
+    object cmbbx_KontaktGeburtsland: TcxDBLookupComboBox
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'ID_Kontaktart'
       DataBinding.DataSource = ds_Kontakte
@@ -1797,6 +1815,7 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 21
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
@@ -1813,7 +1832,6 @@ object frm_Contact: Tfrm_Contact
       AlignHorz = ahLeft
       AlignVert = avClient
       CaptionOptions.Text = 'Kontaktdaten '
-      ItemIndex = 3
       ShowBorder = False
       Index = 0
     end
@@ -1846,10 +1864,9 @@ object frm_Contact: Tfrm_Contact
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Gesch'#228'ftlich'
-      ItemIndex = 4
       Index = 1
     end
-    object itm_Anrede: TdxLayoutItem
+    object laitm_Anrede: TdxLayoutItem
       Parent = lagrp_MitarbeiterInfo
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -1861,7 +1878,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_Vorname: TdxLayoutItem
+    object laitm_Vorname: TdxLayoutItem
       Parent = lagrp_MitarbeiterInfo
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -1873,7 +1890,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object itm_Geburtsname: TdxLayoutItem
+    object laitm_Geburtsname: TdxLayoutItem
       Parent = lagrp_KontaktPersonal
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -1885,7 +1902,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_Nachname: TdxLayoutItem
+    object laitm_Nachname: TdxLayoutItem
       Parent = lagrp_MitarbeiterInfo
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -1897,19 +1914,19 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object itm_Geburtsland: TdxLayoutItem
+    object laitm_Geburtsland: TdxLayoutItem
       Parent = lagrp_KontaktPersonal
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'Geburtsland:'
-      Control = cxDBLookupComboBox1
+      Control = cmbbx_KontaktGeburtsland
       ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 289
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object itm_HandyPrivat: TdxLayoutItem
-      Parent = dxLayoutGroup2
+    object laitm_HandyPrivatText: TdxLayoutItem
+      Parent = lagrp_KontaktPersonalHandy
       AlignHorz = ahLeft
       AlignVert = avClient
       CaptionOptions.Text = 'Handy:'
@@ -1919,8 +1936,8 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_Telefon2: TdxLayoutItem
-      Parent = dxLayoutGroup1
+    object itm_Telefon2Text: TdxLayoutItem
+      Parent = lagrp_KontaktPersonalTelefon2
       AlignHorz = ahLeft
       AlignVert = avClient
       CaptionOptions.Text = 'Telefon 2:'
@@ -1930,8 +1947,8 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_Telefon1: TdxLayoutItem
-      Parent = lagrp_KontaktPersonalTel1
+    object laitm_Telefon1Text: TdxLayoutItem
+      Parent = lagrp_KontaktPersonalTelefon1
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Telefon 1:'
@@ -1941,7 +1958,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_MapPrivat: TdxLayoutItem
+    object laitm_MapPrivat: TdxLayoutItem
       Parent = lagrp_KontaktPersonalAdress
       AlignHorz = ahRight
       AlignVert = avClient
@@ -1953,7 +1970,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object itm_OrtPrivat: TdxLayoutItem
+    object laitm_OrtPrivat: TdxLayoutItem
       Parent = lagrp_KontaktPersonalAdress
       AlignHorz = ahClient
       AlignVert = avClient
@@ -1963,7 +1980,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object itm_PLZPrivat: TdxLayoutItem
+    object laitm_PLZPrivat: TdxLayoutItem
       Parent = lagrp_KontaktPersonalAdress
       AlignHorz = ahLeft
       AlignVert = avClient
@@ -1975,7 +1992,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_Zusatz: TdxLayoutItem
+    object laitm_Zusatz: TdxLayoutItem
       Parent = lagrp_KontaktPersonal
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -1986,7 +2003,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 3
     end
-    object itm_StrassePrivat: TdxLayoutItem
+    object laitm_StrassePrivat: TdxLayoutItem
       Parent = lagrp_KontaktPersonal
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -1997,7 +2014,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 4
     end
-    object itm_Mail1PrivatBtn: TdxLayoutItem
+    object laitm_Mail1PrivatBtn: TdxLayoutItem
       Parent = lagrp_KontaktPersonalEmail1
       AlignHorz = ahRight
       AlignVert = avClient
@@ -2009,7 +2026,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object itm_Mail2PrivatBtn: TdxLayoutItem
+    object laitm_Mail2PrivatBtn: TdxLayoutItem
       Parent = lagrp_KontaktPersonalEmail2
       AlignHorz = ahRight
       AlignVert = avClient
@@ -2022,8 +2039,8 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object itm_WebPrivatText: TdxLayoutItem
-      Parent = dxLayoutGroup15
+    object laitm_WebPrivatText: TdxLayoutItem
+      Parent = lagrp_KontaktPersonalWeb
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'Internet:'
@@ -2033,7 +2050,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_Mail1PrivatText: TdxLayoutItem
+    object laitm_Mail1PrivatText: TdxLayoutItem
       Parent = lagrp_KontaktPersonalEmail1
       AlignHorz = ahLeft
       AlignVert = avCenter
@@ -2044,7 +2061,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_Mail2PrivatText: TdxLayoutItem
+    object laitm_Mail2PrivatText: TdxLayoutItem
       Parent = lagrp_KontaktPersonalEmail2
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -2066,7 +2083,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_Familienstand: TdxLayoutItem
+    object laitm_Familienstand: TdxLayoutItem
       Parent = lagrp_ZusatzwithoutPic
       AlignHorz = ahClient
       CaptionOptions.Text = 'Familienstand:'
@@ -2076,7 +2093,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 3
     end
-    object itm_Geschlecht: TdxLayoutItem
+    object laitm_Geschlecht: TdxLayoutItem
       Parent = lagrp_ZusatzwithoutPic
       AlignHorz = ahClient
       CaptionOptions.Text = 'Geschlecht:'
@@ -2086,7 +2103,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object itm_Konfession: TdxLayoutItem
+    object laitm_Konfession: TdxLayoutItem
       Parent = lagrp_ZusatzKonfession
       AlignHorz = ahClient
       AlignVert = avTop
@@ -2097,7 +2114,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_Staatsangehoerigkeit: TdxLayoutItem
+    object laitm_Staatsangehoerigkeit: TdxLayoutItem
       Parent = lagrp_ZusatzStaatsangehoerigkeit
       AlignHorz = ahClient
       AlignVert = avTop
@@ -2108,7 +2125,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_Picture: TdxLayoutItem
+    object laitm_Picture: TdxLayoutItem
       Parent = lagrp_ZusatzwithPic
       AlignHorz = ahLeft
       AlignVert = avClient
@@ -2120,14 +2137,14 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_ZusatzSeperator: TdxLayoutSeparatorItem
+    object laitm_ZusatzSeperator: TdxLayoutSeparatorItem
       Parent = lagrp_Zusatz
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Separator'
       Index = 1
     end
-    object itm_Sonstiges: TdxLayoutItem
+    object laitm_Sonstiges: TdxLayoutItem
       Parent = lagrp_Zusatz
       AlignHorz = ahClient
       AlignVert = avTop
@@ -2137,14 +2154,14 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 3
     end
-    object lbl_Sonstiges: TdxLayoutLabeledItem
+    object laitm_Sonstigeslabel: TdxLayoutLabeledItem
       Parent = lagrp_Zusatz
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Sonstige Informationen'
       Index = 2
     end
-    object itm_StaatsangehoerigkeitBtn: TdxLayoutItem
+    object laitm_StaatsangehoerigkeitBtn: TdxLayoutItem
       Parent = lagrp_ZusatzStaatsangehoerigkeit
       AlignHorz = ahRight
       AlignVert = avTop
@@ -2156,7 +2173,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object itm_KonfessionBtn: TdxLayoutItem
+    object laitm_KonfessionBtn: TdxLayoutItem
       Parent = lagrp_ZusatzKonfession
       AlignHorz = ahRight
       AlignVert = avClient
@@ -2168,8 +2185,8 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object itm_WebPrivatBtn: TdxLayoutItem
-      Parent = dxLayoutGroup15
+    object laitm_WebPrivatBtn: TdxLayoutItem
+      Parent = lagrp_KontaktPersonalWeb
       AlignHorz = ahRight
       AlignVert = avClient
       CaptionOptions.Text = 'New Item'
@@ -2186,7 +2203,6 @@ object frm_Contact: Tfrm_Contact
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
       SizeOptions.Height = 800
-      ItemIndex = 1
       LayoutDirection = ldTabbed
       Padding.AssignedValues = [lpavTop]
       ShowBorder = False
@@ -2211,7 +2227,6 @@ object frm_Contact: Tfrm_Contact
       AlignVert = avClient
       CaptionOptions.ImageIndex = 11
       CaptionOptions.Text = 'Kontakt'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       Index = 1
     end
@@ -2220,11 +2235,10 @@ object frm_Contact: Tfrm_Contact
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Filterkriterien'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       Index = 0
     end
-    object itm_SucheErgebnis: TdxLayoutItem
+    object laitm_SucheErgebnis: TdxLayoutItem
       Parent = lagrp_Suche
       AlignHorz = ahClient
       AlignVert = avClient
@@ -2235,7 +2249,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object itm_Funktion: TdxLayoutItem
+    object laitm_Funktion: TdxLayoutItem
       Parent = lagrp_Business
       AlignHorz = ahClient
       AlignVert = avTop
@@ -2246,7 +2260,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object itm_SucheFilterLoeschen: TdxLayoutItem
+    object laitm_SucheFilterLoeschen: TdxLayoutItem
       Parent = lagrp_SucheButtons
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -2258,7 +2272,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object itm_SucheFiltersetzen: TdxLayoutItem
+    object laitm_SucheFiltersetzen: TdxLayoutItem
       Parent = lagrp_SucheButtons
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -2270,7 +2284,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_StrasseBusiness: TdxLayoutItem
+    object laitm_StrasseBusiness: TdxLayoutItem
       Parent = lagrp_GeswithoutPic
       AlignHorz = ahClient
       AlignVert = avTop
@@ -2281,7 +2295,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object itm_Abteilung: TdxLayoutItem
+    object laitm_Abteilung: TdxLayoutItem
       Parent = lagrp_Business
       AlignHorz = ahClient
       AlignVert = avTop
@@ -2292,7 +2306,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object itm_MailBusinessText: TdxLayoutItem
+    object laitm_MailBusinessText: TdxLayoutItem
       Parent = lagrp_MailBusiness
       AlignHorz = ahClient
       AlignVert = avClient
@@ -2303,7 +2317,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object itm_Firma: TdxLayoutItem
+    object laitm_Firma: TdxLayoutItem
       Parent = lagrp_GeswithoutPic
       AlignHorz = ahClient
       AlignVert = avTop
@@ -2314,7 +2328,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_WebBusinessText: TdxLayoutItem
+    object laitm_WebBusinessText: TdxLayoutItem
       Parent = lagrp_GesWeb
       AlignHorz = ahClient
       AlignVert = avTop
@@ -2325,7 +2339,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_OrtBusiness: TdxLayoutItem
+    object laitm_OrtBusiness: TdxLayoutItem
       Parent = lagrp_GesAdress
       AlignHorz = ahClient
       AlignVert = avClient
@@ -2335,7 +2349,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object itm_PLZBusiness: TdxLayoutItem
+    object laitm_PLZBusiness: TdxLayoutItem
       Parent = lagrp_GesAdress
       AlignHorz = ahLeft
       AlignVert = avClient
@@ -2346,8 +2360,8 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_TelefonDurchwahl: TdxLayoutItem
-      Parent = dxLayoutGroup3
+    object laitm_TelefonDurchwahlText: TdxLayoutItem
+      Parent = lagrp_TelefonDurchwahl
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Telefon Durchwahl:'
@@ -2357,8 +2371,8 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_TelefonZentrale: TdxLayoutItem
-      Parent = dxLayoutGroup5
+    object laitm_TelefonZentraleText: TdxLayoutItem
+      Parent = lagrp_TelefonZentraleText
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Telefon Zentrale:'
@@ -2368,7 +2382,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_KontaktartSuche: TdxLayoutItem
+    object laitm_KontaktartSuche: TdxLayoutItem
       Parent = lagrp_SucheKontakt
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -2379,7 +2393,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object itm_AbteilungSuche: TdxLayoutItem
+    object laitm_AbteilungSuche: TdxLayoutItem
       Parent = lagrp_SucheFirma
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -2391,7 +2405,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object itm_FirmaSuche: TdxLayoutItem
+    object laitm_FirmaSuche: TdxLayoutItem
       Parent = lagrp_SucheFirma
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -2403,7 +2417,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_FunktionSuche: TdxLayoutItem
+    object laitm_FunktionSuche: TdxLayoutItem
       Parent = lagrp_SucheFirma
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -2415,7 +2429,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object itm_NachnameSuche: TdxLayoutItem
+    object laitm_NachnameSuche: TdxLayoutItem
       Parent = lagrp_SucheKontakt
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -2426,7 +2440,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_OrtSuche: TdxLayoutItem
+    object laitm_OrtSuche: TdxLayoutItem
       Parent = lagrp_SucheAdressePri
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -2438,7 +2452,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object itm_PLZSuche: TdxLayoutItem
+    object laitm_PLZSuche: TdxLayoutItem
       Parent = lagrp_SucheAdressePri
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -2450,7 +2464,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object itm_StrasseSuche: TdxLayoutItem
+    object laitm_StrasseSuche: TdxLayoutItem
       Parent = lagrp_SucheAdressePri
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -2462,7 +2476,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_VornameSuche: TdxLayoutItem
+    object laitm_VornameSuche: TdxLayoutItem
       Parent = lagrp_SucheKontakt
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -2473,7 +2487,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object itm_Facebook: TdxLayoutItem
+    object laitm_Facebook: TdxLayoutItem
       Parent = lagrp_Sonstige
       AlignHorz = ahClient
       CaptionOptions.Text = 'Facebook:'
@@ -2483,7 +2497,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_Skype: TdxLayoutItem
+    object laitm_Skype: TdxLayoutItem
       Parent = lagrp_Sonstige
       AlignHorz = ahClient
       CaptionOptions.Text = 'Skype:'
@@ -2493,7 +2507,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object itm_Teams: TdxLayoutItem
+    object laitm_Teams: TdxLayoutItem
       Parent = lagrp_Sonstige
       AlignHorz = ahClient
       CaptionOptions.Text = 'Teams:'
@@ -2503,7 +2517,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object itm_WebBusinessBtn: TdxLayoutItem
+    object laitm_WebBusinessBtn: TdxLayoutItem
       Parent = lagrp_GesWeb
       AlignHorz = ahLeft
       AlignVert = avClient
@@ -2515,7 +2529,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object itm_MailBusinessBtn: TdxLayoutItem
+    object laitm_MailBusinessBtn: TdxLayoutItem
       Parent = lagrp_MailBusiness
       AlignHorz = ahRight
       AlignVert = avClient
@@ -2527,7 +2541,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_MapBusiness: TdxLayoutItem
+    object laitm_MapBusiness: TdxLayoutItem
       Parent = lagrp_GesAdress
       AlignHorz = ahLeft
       AlignVert = avClient
@@ -2539,7 +2553,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object itm_Kontaktart: TdxLayoutItem
+    object laitm_Kontaktart: TdxLayoutItem
       Parent = lagrp_MitarbeiterInfo
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -2550,8 +2564,8 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 4
     end
-    object itm_HandyBusiness: TdxLayoutItem
-      Parent = dxLayoutGroup4
+    object laitm_HandyBusinessText: TdxLayoutItem
+      Parent = lagrp_HandyBusiness
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Handy:'
@@ -2573,7 +2587,6 @@ object frm_Contact: Tfrm_Contact
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 4
@@ -2583,7 +2596,6 @@ object frm_Contact: Tfrm_Contact
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 5
@@ -2601,7 +2613,6 @@ object frm_Contact: Tfrm_Contact
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 2
       ShowBorder = False
       Index = 1
     end
@@ -2610,7 +2621,6 @@ object frm_Contact: Tfrm_Contact
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 2
       ShowBorder = False
       Index = 2
     end
@@ -2619,7 +2629,6 @@ object frm_Contact: Tfrm_Contact
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 1
@@ -2644,7 +2653,7 @@ object frm_Contact: Tfrm_Contact
       ShowBorder = False
       Index = 5
     end
-    object itm_Todestag: TdxLayoutItem
+    object laitm_Todestag: TdxLayoutItem
       Parent = lagrp_ZusatzwithoutPic
       AlignHorz = ahClient
       CaptionOptions.Text = 'Todestag:'
@@ -2654,12 +2663,12 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object itm_Geburtsort: TdxLayoutItem
+    object laitm_Geburtsort: TdxLayoutItem
       Parent = lagrp_KontaktPersonal
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'Geburtsort:'
-      Control = cxDBTextEdit1
+      Control = edt_KontakteGeburtsort
       ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 289
       ControlOptions.ShowBorder = False
@@ -2670,7 +2679,6 @@ object frm_Contact: Tfrm_Contact
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Bild'
-      ItemIndex = 5
       ShowBorder = False
       Index = 1
     end
@@ -2696,8 +2704,8 @@ object frm_Contact: Tfrm_Contact
         item
         end>
     end
-    object dxLayoutItem1: TdxLayoutItem
-      Parent = dxLayoutGroup6
+    object laitm_Browser: TdxLayoutItem
+      Parent = lagrp_BrowserDetail
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Item'
@@ -2732,25 +2740,24 @@ object frm_Contact: Tfrm_Contact
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 9
       ShowBorder = False
       Index = 3
     end
-    object dxLayoutGroup15: TdxLayoutGroup
+    object lagrp_KontaktPersonalWeb: TdxLayoutGroup
       Parent = lagrp_KontaktPersonal
       CaptionOptions.Text = 'New Group'
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 11
     end
-    object itm_ImageGes: TdxLayoutItem
+    object laitm_ImageGes: TdxLayoutItem
       Parent = lagrp_GeswithPic
       AlignHorz = ahLeft
       AlignVert = avClient
       Visible = False
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
-      Control = cxDBImage1
+      Control = img_PictureGes
       ControlOptions.OriginalHeight = 156
       ControlOptions.OriginalWidth = 156
       ControlOptions.ShowBorder = False
@@ -2761,7 +2768,6 @@ object frm_Contact: Tfrm_Contact
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 3
       ShowBorder = False
       Index = 1
     end
@@ -2770,7 +2776,6 @@ object frm_Contact: Tfrm_Contact
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 0
@@ -2780,6 +2785,7 @@ object frm_Contact: Tfrm_Contact
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 2
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 2
@@ -2791,7 +2797,7 @@ object frm_Contact: Tfrm_Contact
       ShowBorder = False
       Index = 3
     end
-    object itm_StrasseGesSuche: TdxLayoutItem
+    object laitm_StrasseGesSuche: TdxLayoutItem
       Parent = lagrp_SucheAdresseGes
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -2803,7 +2809,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object itm_PLZGesSuche: TdxLayoutItem
+    object laitm_PLZGesSuche: TdxLayoutItem
       Parent = lagrp_SucheAdresseGes
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -2815,7 +2821,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object itm_OrtGesSuche: TdxLayoutItem
+    object laitm_OrtGesSuche: TdxLayoutItem
       Parent = lagrp_SucheAdresseGes
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -2827,12 +2833,12 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object itm_MailBusinessZentralText: TdxLayoutItem
+    object laitm_MailBusinessZentralText: TdxLayoutItem
       Parent = lagrp_GesMailzentral
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'E-Mail Zentrale:'
-      Control = cxDBTextEdit2
+      Control = edt_KontaktGeschaeftlichEMailZentrale
       ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 535
       ControlOptions.ShowBorder = False
@@ -2843,12 +2849,11 @@ object frm_Contact: Tfrm_Contact
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 4
     end
-    object itm_MailBusinessZentralBtn: TdxLayoutItem
+    object laitm_MailBusinessZentralBtn: TdxLayoutItem
       Parent = lagrp_GesMailzentral
       AlignHorz = ahRight
       AlignVert = avTop
@@ -2860,7 +2865,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object itm_AnredeSuche: TdxLayoutItem
+    object laitm_AnredeSuche: TdxLayoutItem
       Parent = lagrp_SucheKontakt
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -2871,17 +2876,18 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 3
     end
-    object lagrp_KontaktPersonalTel1: TdxLayoutGroup
+    object lagrp_KontaktPersonalTelefon1: TdxLayoutGroup
       Parent = lagrp_KontaktPersonal
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 6
     end
-    object itm_Telefon1Btn: TdxLayoutItem
-      Parent = lagrp_KontaktPersonalTel1
+    object laitm_Telefon1Btn: TdxLayoutItem
+      Parent = lagrp_KontaktPersonalTelefon1
       AlignHorz = ahRight
       AlignVert = avClient
       CaptionOptions.Text = 'New Item'
@@ -2892,16 +2898,17 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutGroup1: TdxLayoutGroup
+    object lagrp_KontaktPersonalTelefon2: TdxLayoutGroup
       Parent = lagrp_KontaktPersonal
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 7
     end
-    object dxLayoutGroup2: TdxLayoutGroup
+    object lagrp_KontaktPersonalHandy: TdxLayoutGroup
       Parent = lagrp_KontaktPersonal
       AlignHorz = ahLeft
       AlignVert = avTop
@@ -2910,8 +2917,8 @@ object frm_Contact: Tfrm_Contact
       ShowBorder = False
       Index = 8
     end
-    object dxLayoutItem3: TdxLayoutItem
-      Parent = dxLayoutGroup1
+    object itm_Telefon2Btn: TdxLayoutItem
+      Parent = lagrp_KontaktPersonalTelefon2
       AlignHorz = ahRight
       AlignVert = avTop
       CaptionOptions.Text = 'New Item'
@@ -2922,8 +2929,8 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem4: TdxLayoutItem
-      Parent = dxLayoutGroup2
+    object laitm_HandyPrivatBtn: TdxLayoutItem
+      Parent = lagrp_KontaktPersonalHandy
       AlignHorz = ahRight
       AlignVert = avClient
       CaptionOptions.Text = 'New Item'
@@ -2934,7 +2941,7 @@ object frm_Contact: Tfrm_Contact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutGroup3: TdxLayoutGroup
+    object lagrp_TelefonDurchwahl: TdxLayoutGroup
       Parent = lagrp_Business
       AlignHorz = ahClient
       AlignVert = avTop
@@ -2944,63 +2951,61 @@ object frm_Contact: Tfrm_Contact
       ShowBorder = False
       Index = 3
     end
-    object dxLayoutGroup4: TdxLayoutGroup
+    object lagrp_HandyBusiness: TdxLayoutGroup
       Parent = lagrp_Business
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 4
     end
-    object dxLayoutGroup5: TdxLayoutGroup
+    object lagrp_TelefonZentraleText: TdxLayoutGroup
       Parent = lagrp_GeswithoutPic
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 3
     end
-    object dxLayoutItem5: TdxLayoutItem
-      Parent = dxLayoutGroup5
+    object laitm_TelefonZentraleBtn: TdxLayoutItem
+      Parent = lagrp_TelefonZentraleText
       AlignHorz = ahRight
       AlignVert = avClient
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
-      Control = cxButton5
+      Control = btn_KontaktGeschaeftlichTelefonZentrale
       ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 21
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem6: TdxLayoutItem
-      Parent = dxLayoutGroup3
+    object laitm_TelefonDurchwahlBtn: TdxLayoutItem
+      Parent = lagrp_TelefonDurchwahl
       AlignHorz = ahRight
       AlignVert = avClient
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
-      Control = cxButton6
+      Control = btn_KontaktGeschaeftlichTelefondurchwahl
       ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 21
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem7: TdxLayoutItem
-      Parent = dxLayoutGroup4
+    object laitm_HandyBusinessBtn: TdxLayoutItem
+      Parent = lagrp_HandyBusiness
       AlignHorz = ahRight
       AlignVert = avClient
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
-      Control = cxButton7
+      Control = btn_KontaktGeschaeftlichHandy
       ControlOptions.OriginalHeight = 21
       ControlOptions.OriginalWidth = 21
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutGroup6: TdxLayoutGroup
+    object lagrp_BrowserDetail: TdxLayoutGroup
       Parent = lagrp_Browser
       AlignHorz = ahClient
       AlignVert = avClient
@@ -3249,19 +3254,12 @@ object frm_Contact: Tfrm_Contact
       AutoGrayScale = False
       LargeImageIndex = 125
     end
-    object dxBarLargeButton1: TdxBarLargeButton
-      Caption = 'New Button'
-      Category = 0
-      Hint = 'New Button'
-      Visible = ivAlways
-      OnClick = dxBarLargeButton1Click
-    end
-    object dxBarLargeButton2: TdxBarLargeButton
+    object ppmbtn_ExportOutlook: TdxBarLargeButton
       Caption = 'Export (Outlook)'
       Category = 0
       Hint = 'Export (Outlook)'
       Visible = ivAlways
-      OnClick = dxBarLargeButton1Click
+      OnClick = ppmbtn_ExportOutlookClick
       LargeImageIndex = 64
     end
     object ppmbtn_NachExcelexportieren: TdxBarButton
@@ -3375,7 +3373,7 @@ object frm_Contact: Tfrm_Contact
       end
       item
         Visible = True
-        ItemName = 'dxBarLargeButton2'
+        ItemName = 'ppmbtn_ExportOutlook'
       end>
     UseOwnFont = False
     Left = 250

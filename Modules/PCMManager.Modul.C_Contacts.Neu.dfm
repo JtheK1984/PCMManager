@@ -14,7 +14,7 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
   Font.Style = []
   Position = poScreenCenter
   TextHeight = 13
-  object dxLayoutControl1: TdxLayoutControl
+  object lactrl_Contact: TdxLayoutControl
     Left = 0
     Top = 0
     Width = 372
@@ -562,7 +562,7 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
       Text = 'cmbbx_Anrede'
       Width = 209
     end
-    object dxLayoutControl1Group_Root: TdxLayoutGroup
+    object lactrl_ContactGroup_Root: TdxLayoutGroup
       AlignHorz = ahClient
       AlignVert = avClient
       Hidden = True
@@ -570,8 +570,8 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
       ShowBorder = False
       Index = -1
     end
-    object dxLayoutItem1: TdxLayoutItem
-      Parent = dxLayoutGroup5
+    object laitm_ContactImage: TdxLayoutItem
+      Parent = lagrp_ContactWithImg
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'img_Contact'
@@ -582,8 +582,8 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem2: TdxLayoutItem
-      Parent = dxLayoutGroup1
+    object laitm_ContactAnlegen: TdxLayoutItem
+      Parent = lagrp_ContactButtons
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'btn_PCManagerLogin_Ok'
@@ -594,8 +594,8 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem3: TdxLayoutItem
-      Parent = dxLayoutGroup2
+    object laitm_ContactAnrede: TdxLayoutItem
+      Parent = lagrp_ContactDetail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Anrede:'
@@ -605,8 +605,8 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem4: TdxLayoutItem
-      Parent = dxLayoutGroup2
+    object laitm_ContactVorname: TdxLayoutItem
+      Parent = lagrp_ContactDetail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Vorname:'
@@ -616,8 +616,8 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem5: TdxLayoutItem
-      Parent = dxLayoutGroup2
+    object laitm_ContactNachname: TdxLayoutItem
+      Parent = lagrp_ContactDetail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Nachname:'
@@ -627,8 +627,8 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object dxLayoutItem6: TdxLayoutItem
-      Parent = dxLayoutGroup1
+    object laitm_ContactAbbrechen: TdxLayoutItem
+      Parent = lagrp_ContactButtons
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'btn_PCManagerLogin_Cancel'
@@ -639,8 +639,8 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutGroup4: TdxLayoutGroup
-      Parent = dxLayoutControl1Group_Root
+    object lagrp_Contact: TdxLayoutGroup
+      Parent = lactrl_ContactGroup_Root
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
@@ -648,8 +648,8 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup5: TdxLayoutGroup
-      Parent = dxLayoutGroup4
+    object lagrp_ContactWithImg: TdxLayoutGroup
+      Parent = lagrp_Contact
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
@@ -658,20 +658,22 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup2: TdxLayoutGroup
-      Parent = dxLayoutGroup5
+    object lagrp_ContactDetail: TdxLayoutGroup
+      Parent = lagrp_ContactWithImg
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
       Offsets.Top = 10
+      ItemIndex = 2
       ShowBorder = False
       Index = 1
     end
-    object dxLayoutGroup1: TdxLayoutGroup
-      Parent = dxLayoutGroup4
+    object lagrp_ContactButtons: TdxLayoutGroup
+      Parent = lagrp_Contact
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 1

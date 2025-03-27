@@ -70,7 +70,11 @@ uses
   FireDAC.Stan.Param,
   IdBaseComponent,
   IdComponent,
+  IdContext,
+  IdCustomHTTPServer,
+  IdCustomTCPServer,
   IdExplicitTLSClientServerBase,
+  IdHTTPServer,
   IdIMAP4,
   IdIOHandler,
   IdIOHandlerSocket,
@@ -100,6 +104,7 @@ uses
   Vcl.BaseImageCollection,
   Vcl.Controls,
   Vcl.Dialogs,
+  Vcl.FileCtrl,
   Vcl.Forms,
   Vcl.Graphics,
   Vcl.ImageCollection,
@@ -110,11 +115,11 @@ uses
   Vcl.Themes,
   Vcl.VirtualImage,
   Winapi.Messages,
-  Winapi.Windows, IdContext, IdCustomHTTPServer, IdCustomTCPServer, IdHTTPServer;
+  Winapi.Windows;
   {$EndRegion uses}
 type
+  {$Region Types}
   TAuthType = class of TIdSASLOAuthBase;
-
   TMailProviderInfo = record
     AuthenticationType : TAuthType;
     AuthorizationEndpoint : string;
@@ -138,71 +143,115 @@ type
   end;
 
   Tfrm_Config = class(TForm)
-    edt_CalConfigFTP_Benutzer: TcxDBTextEdit;
-    edt_CalConfigFTP_Datei: TcxDBTextEdit;
-    edt_CalConfigFTP_Passwort: TcxDBTextEdit;
-    edt_CalConfigFTP_URL: TcxDBTextEdit;
-    grd_FTPConfig: TcxGrid;
-    grdDBTblView_FTPConfig: TcxGridDBTableView;
-    grdDBTblView_FTPConfigurl: TcxGridDBColumn;
-    grdDBTblView_FTPConfigkalendername: TcxGridDBColumn;
-    grdDBTblView_FTPConfiguser: TcxGridDBColumn;
-    grdDBTblView_FTPConfigpasswort: TcxGridDBColumn;
-    grdlvl_FTPConfig: TcxGridLevel;
+    bardckctrl_Anrede: TdxBarDockControl;
+    bardckctrl_Aufgabenarten: TdxBarDockControl;
+    bardckctrl_AufgabenPrio: TdxBarDockControl;
+    bardckctrl_AufgabenSonstiges: TdxBarDockControl;
+    bardckctrl_Geburtsland: TdxBarDockControl;
+    bardckctrl_Kalender: TdxBarDockControl;
+    bardckctrl_Phonerlite: TdxBarDockControl;
+    bardckctrl_Postfach: TdxBarDockControl;
+    brdckctrl_Email: TdxBarDockControl;
+    brdckctrl_Feiertage: TdxBarDockControl;
+    brdckctrl_FTP: TdxBarDockControl;
+    brdckctrl_Schulfach: TdxBarDockControl;
+    brdckctrl_SchulfachUhr: TdxBarDockControl;
+    brmgr_Config: TdxBarManager;
+    btn_AnredeCancel: TdxBarLargeButton;
+    btn_AnredeDelete: TdxBarLargeButton;
+    btn_AnredeNew: TdxBarLargeButton;
+    btn_AnredeSave: TdxBarLargeButton;
+    btn_AufgabenCancel: TdxBarLargeButton;
+    btn_AufgabenDelete: TdxBarLargeButton;
+    btn_AufgabenNew: TdxBarLargeButton;
+    btn_AufgabenOptionenSave: TdxBarLargeButton;
+    btn_AufgabenPrioCancel: TdxBarLargeButton;
+    btn_AufgabenPrioDelete: TdxBarLargeButton;
+    btn_AufgabenPrioNew: TdxBarLargeButton;
+    btn_AufgabenPrioSave: TdxBarLargeButton;
+    btn_AufgabenSave: TdxBarLargeButton;
+    btn_CalConfigCancel: TdxBarLargeButton;
+    btn_CalConfigDelete: TdxBarLargeButton;
+    btn_CalConfigFTPCancel: TdxBarLargeButton;
+    btn_CalConfigFTPDelete: TdxBarLargeButton;
+    btn_CalConfigFTPNew: TdxBarLargeButton;
+    btn_CalConfigFTPSave: TdxBarLargeButton;
+    btn_CalConfigNew: TdxBarLargeButton;
+    btn_CalConfigSave: TdxBarLargeButton;
+    btn_CalFTDelete: TdxBarLargeButton;
+    btn_CalFTinCal: TdxBarLargeButton;
+    btn_CalFTNew: TdxBarLargeButton;
+    btn_EmailConfig_Test: TcxButton;
+    btn_EmailConfigCancel: TdxBarLargeButton;
+    btn_EmailConfigDelete: TdxBarLargeButton;
+    btn_EmailConfigNew: TdxBarLargeButton;
+    btn_EmailConfigSave: TdxBarLargeButton;
+    btn_FachCancel: TdxBarLargeButton;
+    btn_FachDelete: TdxBarLargeButton;
+    btn_FachNew: TdxBarLargeButton;
+    btn_FachSave: TdxBarLargeButton;
+    btn_FachUCancel: TdxBarLargeButton;
+    btn_FachUSave: TdxBarLargeButton;
+    btn_LandCancel: TdxBarLargeButton;
+    btn_LandDelete: TdxBarLargeButton;
+    btn_LandNew: TdxBarLargeButton;
+    btn_LandSave: TdxBarLargeButton;
+    btn_PhoneSave: TdxBarLargeButton;
+    btn_PostfachCancel: TdxBarLargeButton;
+    btn_PostfachMainbottom: TcxButton;
+    btn_PostfachMaindown: TcxButton;
+    btn_PostfachMainTop: TcxButton;
+    btn_PostfachMainUp: TcxButton;
+    btn_PostfachNew: TdxBarLargeButton;
+    btn_PostfachSave: TdxBarLargeButton;
+    btn_PostfachSubbottom: TcxButton;
+    btn_PostfachSubDown: TcxButton;
+    btn_PostfachSubTop: TcxButton;
+    btn_PostfachSubUp: TcxButton;
+    chkbx_CalConfigReminder: TcxDBCheckBox;
+    chxbx_EmailConfig_SSL: TcxDBCheckBox;
+    cmbbx_AufgabenSonstigesAdresseEigen: TcxDBLookupComboBox;
+    cmbbx_AufgabenSonstigesAdresseFirma: TcxDBLookupComboBox;
+    cmbbx_AufgabenSonstigesBundeslandEigen: TcxDBLookupComboBox;
+    cmbbx_AufgabenSonstigesBundeslandFirma: TcxDBLookupComboBox;
+    cmbbx_Auth: TcxDBImageComboBox;
+    cmbbx_CalConfigReminderVal: TcxDBImageComboBox;
+    colcmbbx_Aufgabenart: TcxDBColorComboBox;
+    colcmbbx_CalConfigFontColor: TcxDBColorComboBox;
+    colcmbbx_CalConfigLabelColor: TcxDBColorComboBox;
+    colcmbbx_StundenplanConfig_FontColor: TcxDBColorComboBox;
+    colcmbbx_StundenplanConfig_LabelColor: TcxDBColorComboBox;
+    colcmbbx_StundenplanConfigUhr_FontColor: TcxDBColorComboBox;
+    colcmbbx_StundenplanConfigUhr_LabelColor: TcxDBColorComboBox;
+    cxDBTextEdit1: TcxDBTextEdit;
+    cxDBTextEdit2: TcxDBTextEdit;
+    ds_Anrede: TDataSource;
+    ds_Aufgabenarten: TDataSource;
+    ds_CalConfig: TDataSource;
+    ds_CalConfigFTP: TDataSource;
+    ds_EmailConfig: TDataSource;
+    ds_EmailPostfachMain: TDataSource;
+    ds_EmailPostfachSub: TDataSource;
+    ds_FT: TDataSource;
+    ds_Land: TDataSource;
+    ds_option: TDataSource;
+    ds_phone: TDataSource;
+    ds_prio: TDataSource;
+    ds_SchulFaecher: TDataSource;
+    ds_SchulFaecher_Config: TDataSource;
+    edt_Anrede: TcxDBTextEdit;
+    edt_Aufgabenart: TcxDBTextEdit;
+    edt_AufgabenSonstigesAccMail: TcxDBTextEdit;
+    edt_AufgabenSonstigesAccToDo: TcxDBTextEdit;
+    edt_AufgabenSonstigesJira: TcxDBTextEdit;
     edt_CalConfig_Benutzer: TcxDBTextEdit;
     edt_CalConfig_Kalender: TcxDBTextEdit;
     edt_CalConfig_Link: TcxDBTextEdit;
     edt_CalConfig_Passwort: TcxDBTextEdit;
-    grd_CalConfig: TcxGrid;
-    grdDBTblView_calconfig: TcxGridDBTableView;
-    grdDBTblView_calconfigKalender: TcxGridDBColumn;
-    grdDBTblView_calconfigLink: TcxGridDBColumn;
-    grdDBTblView_calconfigBenutzer: TcxGridDBColumn;
-    grdDBTblView_calconfigPasswort: TcxGridDBColumn;
-    grdDBTblView_calconfigErinnerung: TcxGridDBColumn;
-    grdDBTblView_calconfigErinnerungVor: TcxGridDBColumn;
-    grdDBTblView_calconfigLabelColor: TcxGridDBColumn;
-    grdDBTblView_calconfigFontcolor: TcxGridDBColumn;
-    grdDBTblView_calconfigID_Benutzer: TcxGridDBColumn;
-    grdlvl_CalConfig: TcxGridLevel;
-    cmbbx_CalConfigReminderVal: TcxDBImageComboBox;
-    chkbx_CalConfigReminder: TcxDBCheckBox;
-    colcmbbx_CalConfigFontColor: TcxDBColorComboBox;
-    colcmbbx_CalConfigLabelColor: TcxDBColorComboBox;
-    grd_Feiertage: TcxGrid;
-    grdDBTblView_Feiertage: TcxGridDBTableView;
-    grdDBTblView_FeiertageJahr: TcxGridDBColumn;
-    grdDBTblView_FeiertageMonat: TcxGridDBColumn;
-    grdDBTblView_FeiertageTag: TcxGridDBColumn;
-    grdDBTblView_FeiertageBezeichnung: TcxGridDBColumn;
-    grdlvl_Feiertage: TcxGridLevel;
-    grd_StundenplanConfig: TcxGrid;
-    grdDBTblView_StundenplanConfig: TcxGridDBTableView;
-    grdDBTblView_StundenplanConfigBezeichnung: TcxGridDBColumn;
-    grdDBTblView_StundenplanConfigFarbe: TcxGridDBColumn;
-    grdDBTblView_StundenplanConfigSchriftfarbe: TcxGridDBColumn;
-    grdlvl_StundenplanConfig: TcxGridLevel;
-    colcmbbx_StundenplanConfig_FontColor: TcxDBColorComboBox;
-    colcmbbx_StundenplanConfig_LabelColor: TcxDBColorComboBox;
-    edt_StundenplanConfig_FachBezeichnung: TcxDBTextEdit;
-    colcmbbx_StundenplanConfigUhr_FontColor: TcxDBColorComboBox;
-    colcmbbx_StundenplanConfigUhr_LabelColor: TcxDBColorComboBox;
-    grd_StundenplanConfigUhr: TcxGrid;
-    grdDBTblView_StundenplanConfigUhr: TcxGridDBTableView;
-    grdDBTblView_StundenplanConfigUhrFarbe: TcxGridDBColumn;
-    grdDBTblView_StundenplanConfigUhrSchriftfarbe: TcxGridDBColumn;
-    grdlvl_StundenplanConfigUhr: TcxGridLevel;
-    grd_EmailConfig: TcxGrid;
-    grdDBTblView_emailConfig: TcxGridDBTableView;
-    grdDBTblView_emailConfigEMail: TcxGridDBColumn;
-    grdDBTblView_emailConfigKontotyp: TcxGridDBColumn;
-    grdDBTblView_emailConfigPostEingangsserver: TcxGridDBColumn;
-    grdDBTblView_emailConfigPortEingangsserver: TcxGridDBColumn;
-    grdDBTblView_emailConfigBenutzer: TcxGridDBColumn;
-    grdDBTblView_emailConfigSSLActive: TcxGridDBColumn;
-    grdlvl_EmailConfig: TcxGridLevel;
-    btn_EmailConfig_Test: TcxButton;
-    chxbx_EmailConfig_SSL: TcxDBCheckBox;
+    edt_CalConfigFTP_Benutzer: TcxDBTextEdit;
+    edt_CalConfigFTP_Datei: TcxDBTextEdit;
+    edt_CalConfigFTP_Passwort: TcxDBTextEdit;
+    edt_CalConfigFTP_URL: TcxDBTextEdit;
     edt_EmailConfig_Benutzer: TcxDBTextEdit;
     edt_EmailConfig_Emailadresse: TcxDBTextEdit;
     edt_EmailConfig_Kennwort: TcxDBTextEdit;
@@ -210,365 +259,324 @@ type
     edt_EmailConfig_PortEingang: TcxDBTextEdit;
     edt_EmailConfig_PostAusgangServer: TcxDBTextEdit;
     edt_EmailConfig_PostEingangServer: TcxDBTextEdit;
-    lucmbbx_EmailConfig_Kontptyp: TcxDBLookupComboBox;
-    qry_CalConfig: TFDQuery;
-    qry_CalConfigFTP: TFDQuery;
-    ds_CalConfig: TDataSource;
-    ds_CalConfigFTP: TDataSource;
-    qry_FT1: TFDQuery;
-    qry_SchulFaecher: TFDQuery;
-    qry_SchulFaecher_Config: TFDQuery;
-    ds_SchulFaecher: TDataSource;
-    ds_SchulFaecher_Config: TDataSource;
-    qry_EmailConfig: TFDQuery;
-    ds_EmailConfig: TDataSource;
-    bardckctrl_Kalender: TdxBarDockControl;
-    brmgr_Config: TdxBarManager;
-    tb_Kalender: TdxBar;
-    btn_CalConfigNew: TdxBarLargeButton;
-    btn_CalConfigSave: TdxBarLargeButton;
-    btn_CalConfigCancel: TdxBarLargeButton;
-    btn_CalConfigDelete: TdxBarLargeButton;
-    tb_Feiertage: TdxBar;
-    brdckctrl_Feiertage: TdxBarDockControl;
-    brdckctrl_FTP: TdxBarDockControl;
-    tb_FTP: TdxBar;
-    btn_CalFTNew: TdxBarLargeButton;
-    btn_CalFTinCal: TdxBarLargeButton;
-    btn_CalFTDelete: TdxBarLargeButton;
-    btn_CalConfigFTPNew: TdxBarLargeButton;
-    btn_CalConfigFTPDelete: TdxBarLargeButton;
-    btn_CalConfigFTPCancel: TdxBarLargeButton;
-    btn_CalConfigFTPSave: TdxBarLargeButton;
-    brdckctrl_Schulfach: TdxBarDockControl;
-    brdckctrl_SchulfachUhr: TdxBarDockControl;
-    tb_Schulfach: TdxBar;
-    tb_SchulfachUhr: TdxBar;
-    btn_FachUSave: TdxBarLargeButton;
-    btn_FachUCancel: TdxBarLargeButton;
-    btn_FachNew: TdxBarLargeButton;
-    btn_FachDelete: TdxBarLargeButton;
-    btn_FachCancel: TdxBarLargeButton;
-    btn_FachSave: TdxBarLargeButton;
-    brdckctrl_Email: TdxBarDockControl;
-    tb_email: TdxBar;
-    btn_EmailConfigDelete: TdxBarLargeButton;
-    btn_EmailConfigCancel: TdxBarLargeButton;
-    btn_EmailConfigSave: TdxBarLargeButton;
-    btn_EmailConfigNew: TdxBarLargeButton;
-    bardckctrl_Postfach: TdxBarDockControl;
-    tb_Postfach: TdxBar;
-    btn_PostfachNew: TdxBarLargeButton;
-    qry_EmailPostfachMain: TFDQuery;
-    ds_EmailPostfachMain: TDataSource;
-    grd_Postfachmain: TcxGrid;
-    grdDBTblViewl_Postfachmain: TcxGridDBTableView;
-    grdDBTblViewl_PostfachmainPostfach: TcxGridDBColumn;
-    grdDBTblViewl_PostfachmainAnzeige: TcxGridDBColumn;
-    grdDBTblViewl_PostfachmainAbonnieren: TcxGridDBColumn;
-    grdlvl_Postfachmain: TcxGridLevel;
-    btn_PostfachMainbottom: TcxButton;
-    btn_PostfachMaindown: TcxButton;
-    btn_PostfachMainUp: TcxButton;
-    btn_PostfachMainTop: TcxButton;
-    grdDBTblViewl_PostfachmainSortierung: TcxGridDBColumn;
-    btn_PostfachSubbottom: TcxButton;
-    btn_PostfachSubDown: TcxButton;
-    btn_PostfachSubUp: TcxButton;
-    btn_PostfachSubTop: TcxButton;
-    grd_postfachSub: TcxGrid;
-    grdDBTblViewl_PostfachSub: TcxGridDBTableView;
-    grdlvl_PostfachSub: TcxGridLevel;
-    qry_EmailPostfachSub: TFDQuery;
-    ds_EmailPostfachSub: TDataSource;
-    grdDBTblViewl_PostfachSubPostfach: TcxGridDBColumn;
-    grdDBTblViewl_PostfachSubAnzeige: TcxGridDBColumn;
-    grdDBTblViewl_PostfachSubSortierung: TcxGridDBColumn;
-    grdDBTblViewl_PostfachSubParent: TcxGridDBColumn;
-    grdDBTblViewl_PostfachSubAbonnieren: TcxGridDBColumn;
-    btn_PostfachSave: TdxBarLargeButton;
-    btn_PostfachCancel: TdxBarLargeButton;
-    IdIMAP_Mail: TIdIMAP4;
+    edt_Land: TcxDBTextEdit;
+    edt_Phone: TcxDBButtonEdit;
     edt_PrioBez: TcxDBTextEdit;
     edt_PrioNumber: TcxDBTextEdit;
-    grd_AufgabenPrio: TcxGrid;
-    grdDBTblView_AufgabenPrio: TcxGridDBTableView;
-    grdlvl_AufgabenPrio: TcxGridLevel;
-    bardckctrl_AufgabenPrio: TdxBarDockControl;
-    edt_Aufgabenart: TcxDBTextEdit;
+    edt_StundenplanConfig_FachBezeichnung: TcxDBTextEdit;
+    grd_Anrede: TcxGrid;
     grd_Aufgabenarten: TcxGrid;
+    grd_AufgabenPrio: TcxGrid;
+    grd_CalConfig: TcxGrid;
+    grd_EmailConfig: TcxGrid;
+    grd_Feiertage: TcxGrid;
+    grd_FTPConfig: TcxGrid;
+    grd_Geburtsland: TcxGrid;
+    grd_Phonerlite: TcxGrid;
+    grd_Postfachmain: TcxGrid;
+    grd_postfachSub: TcxGrid;
+    grd_StundenplanConfig: TcxGrid;
+    grd_StundenplanConfigUhr: TcxGrid;
+    grdDBTblView_Anrede: TcxGridDBTableView;
+    grdDBTblView_AnredeBezeichnung: TcxGridDBColumn;
     grdDBTblView_Aufgabenarten: TcxGridDBTableView;
-    grdLvl_Aufgabenarten: TcxGridLevel;
-    colcmbbx_Aufgabenart: TcxDBColorComboBox;
-    bardckctrl_Aufgabenarten: TdxBarDockControl;
-    tb_Aufgabenarten: TdxBar;
-    tb_AufgabenPrio: TdxBar;
-    btn_AufgabenNew: TdxBarLargeButton;
-    btn_AufgabenCancel: TdxBarLargeButton;
-    btn_AufgabenSave: TdxBarLargeButton;
-    btn_AufgabenDelete: TdxBarLargeButton;
-    btn_AufgabenPrioNew: TdxBarLargeButton;
-    btn_AufgabenPrioSave: TdxBarLargeButton;
-    btn_AufgabenPrioCancel: TdxBarLargeButton;
-    btn_AufgabenPrioDelete: TdxBarLargeButton;
-    ds_Aufgabenarten: TDataSource;
-    qry_AufgabenArten: TFDQuery;
     grdDBTblView_AufgabenartenBezeichnung: TcxGridDBColumn;
     grdDBTblView_AufgabenartenFarbe: TcxGridDBColumn;
-    qry_prio: TFDQuery;
-    ds_prio: TDataSource;
-    grdDBTblView_AufgabenPrioPrioritaet: TcxGridDBColumn;
+    grdDBTblView_AufgabenPrio: TcxGridDBTableView;
     grdDBTblView_AufgabenPrioBezeichnung: TcxGridDBColumn;
-    tb_AufgabenConfig: TdxBar;
-    btn_AufgabenOptionenSave: TdxBarLargeButton;
-    cmbbx_AufgabenSonstigesAdresseFirma: TcxDBLookupComboBox;
-    cmbbx_AufgabenSonstigesAdresseEigen: TcxDBLookupComboBox;
-    bardckctrl_AufgabenSonstiges: TdxBarDockControl;
-    edt_AufgabenSonstigesJira: TcxDBTextEdit;
-    qry_Konfiguration_Kalender_Optionen: TFDQuery;
-    ds_option: TDataSource;
-    mskedt_AufgabenSonstigesStunden: TcxDBCurrencyEdit;
-    cmbbx_AufgabenSonstigesBundeslandFirma: TcxDBLookupComboBox;
-    cmbbx_AufgabenSonstigesBundeslandEigen: TcxDBLookupComboBox;
-    ds_FT: TDataSource;
-    edt_AufgabenSonstigesAccToDo: TcxDBTextEdit;
-    edt_AufgabenSonstigesAccMail: TcxDBTextEdit;
+    grdDBTblView_AufgabenPrioPrioritaet: TcxGridDBColumn;
+    grdDBTblView_calconfig: TcxGridDBTableView;
+    grdDBTblView_calconfigBenutzer: TcxGridDBColumn;
+    grdDBTblView_calconfigErinnerung: TcxGridDBColumn;
+    grdDBTblView_calconfigErinnerungVor: TcxGridDBColumn;
+    grdDBTblView_calconfigFontcolor: TcxGridDBColumn;
+    grdDBTblView_calconfigID_Benutzer: TcxGridDBColumn;
+    grdDBTblView_calconfigKalender: TcxGridDBColumn;
+    grdDBTblView_calconfigLabelColor: TcxGridDBColumn;
+    grdDBTblView_calconfigLink: TcxGridDBColumn;
+    grdDBTblView_calconfigPasswort: TcxGridDBColumn;
+    grdDBTblView_emailConfig: TcxGridDBTableView;
+    grdDBTblView_emailConfigBenutzer: TcxGridDBColumn;
+    grdDBTblView_emailConfigEMail: TcxGridDBColumn;
+    grdDBTblView_emailConfigKontotyp: TcxGridDBColumn;
+    grdDBTblView_emailConfigPortEingangsserver: TcxGridDBColumn;
+    grdDBTblView_emailConfigPostEingangsserver: TcxGridDBColumn;
+    grdDBTblView_emailConfigSSLActive: TcxGridDBColumn;
+    grdDBTblView_Feiertage: TcxGridDBTableView;
+    grdDBTblView_FeiertageBezeichnung: TcxGridDBColumn;
+    grdDBTblView_FeiertageJahr: TcxGridDBColumn;
     grdDBTblView_FeiertageKategorie: TcxGridDBColumn;
-    lactrl_ConfigGroup_Root: TdxLayoutGroup;
+    grdDBTblView_FeiertageMonat: TcxGridDBColumn;
+    grdDBTblView_FeiertageTag: TcxGridDBColumn;
+    grdDBTblView_FTPConfig: TcxGridDBTableView;
+    grdDBTblView_FTPConfigkalendername: TcxGridDBColumn;
+    grdDBTblView_FTPConfigpasswort: TcxGridDBColumn;
+    grdDBTblView_FTPConfigurl: TcxGridDBColumn;
+    grdDBTblView_FTPConfiguser: TcxGridDBColumn;
+    grdDBTblView_Geburtsland: TcxGridDBTableView;
+    grdDBTblView_GeburtslandBezeichnung: TcxGridDBColumn;
+    grdDBTblView_Phonerlite: TcxGridDBTableView;
+    grdDBTblView_PhonerlitePath: TcxGridDBColumn;
+    grdDBTblView_StundenplanConfig: TcxGridDBTableView;
+    grdDBTblView_StundenplanConfigBezeichnung: TcxGridDBColumn;
+    grdDBTblView_StundenplanConfigFarbe: TcxGridDBColumn;
+    grdDBTblView_StundenplanConfigSchriftfarbe: TcxGridDBColumn;
+    grdDBTblView_StundenplanConfigUhr: TcxGridDBTableView;
+    grdDBTblView_StundenplanConfigUhrFarbe: TcxGridDBColumn;
+    grdDBTblView_StundenplanConfigUhrSchriftfarbe: TcxGridDBColumn;
+    grdDBTblViewl_Postfachmain: TcxGridDBTableView;
+    grdDBTblViewl_PostfachmainAbonnieren: TcxGridDBColumn;
+    grdDBTblViewl_PostfachmainAnzeige: TcxGridDBColumn;
+    grdDBTblViewl_PostfachmainPostfach: TcxGridDBColumn;
+    grdDBTblViewl_PostfachmainSortierung: TcxGridDBColumn;
+    grdDBTblViewl_PostfachSub: TcxGridDBTableView;
+    grdDBTblViewl_PostfachSubAbonnieren: TcxGridDBColumn;
+    grdDBTblViewl_PostfachSubAnzeige: TcxGridDBColumn;
+    grdDBTblViewl_PostfachSubParent: TcxGridDBColumn;
+    grdDBTblViewl_PostfachSubPostfach: TcxGridDBColumn;
+    grdDBTblViewl_PostfachSubSortierung: TcxGridDBColumn;
+    grdLvl_Anrede: TcxGridLevel;
+    grdLvl_Aufgabenarten: TcxGridLevel;
+    grdlvl_AufgabenPrio: TcxGridLevel;
+    grdlvl_CalConfig: TcxGridLevel;
+    grdlvl_EmailConfig: TcxGridLevel;
+    grdlvl_Feiertage: TcxGridLevel;
+    grdlvl_FTPConfig: TcxGridLevel;
+    grdLvl_Geburtsland: TcxGridLevel;
+    grdLvl_Phonerlite: TcxGridLevel;
+    grdlvl_Postfachmain: TcxGridLevel;
+    grdlvl_PostfachSub: TcxGridLevel;
+    grdlvl_StundenplanConfig: TcxGridLevel;
+    grdlvl_StundenplanConfigUhr: TcxGridLevel;
+    IdHTTPServer1: TIdHTTPServer;
+    IdIMAP_Mail: TIdIMAP4;
+    IDSMTP_Mail: TIdSMTP;
+    IdSSLIOHandlerSocketIMAP: TIdSSLIOHandlerSocketOpenSSL;
+    IdSSLIOHandlerSocketSMTP: TIdSSLIOHandlerSocketOpenSSL;
     lactrl_Config: TdxLayoutControl;
+    lactrl_ConfigGroup_Root: TdxLayoutGroup;
     lactrl_ConfigTab: TdxLayoutGroup;
-    lagrp_Kalender: TdxLayoutGroup;
-    lagrp_KalenderKalender: TdxLayoutGroup;
-    dxLayoutItem1: TdxLayoutItem;
-    dxLayoutItem2: TdxLayoutItem;
-    dxLayoutItem3: TdxLayoutItem;
-    dxLayoutItem4: TdxLayoutItem;
-    dxLayoutItem5: TdxLayoutItem;
-    dxLayoutItem6: TdxLayoutItem;
-    dxLayoutItem7: TdxLayoutItem;
-    dxLayoutItem8: TdxLayoutItem;
-    dxLayoutItem9: TdxLayoutItem;
-    dxLayoutItem10: TdxLayoutItem;
-    dxLayoutGroup12: TdxLayoutGroup;
-    dxLayoutItem11: TdxLayoutItem;
-    dxLayoutItem12: TdxLayoutItem;
-    lagrp_KalenderFTP: TdxLayoutGroup;
-    dxLayoutItem13: TdxLayoutItem;
-    dxLayoutItem14: TdxLayoutItem;
-    dxLayoutItem15: TdxLayoutItem;
-    dxLayoutItem16: TdxLayoutItem;
-    dxLayoutItem17: TdxLayoutItem;
-    dxLayoutItem18: TdxLayoutItem;
+    lagrp_Anrede: TdxLayoutGroup;
     lagrp_Aufgaben: TdxLayoutGroup;
-    dxLayoutGroup20: TdxLayoutGroup;
-    dxLayoutItem19: TdxLayoutItem;
-    dxLayoutItem20: TdxLayoutItem;
-    dxLayoutItem21: TdxLayoutItem;
-    dxLayoutItem22: TdxLayoutItem;
-    dxLayoutGroup25: TdxLayoutGroup;
-    dxLayoutItem23: TdxLayoutItem;
-    dxLayoutItem24: TdxLayoutItem;
-    dxLayoutItem25: TdxLayoutItem;
-    dxLayoutItem26: TdxLayoutItem;
-    dxLayoutGroup30: TdxLayoutGroup;
-    dxLayoutItem27: TdxLayoutItem;
-    dxLayoutItem28: TdxLayoutItem;
-    dxLayoutItem29: TdxLayoutItem;
-    dxLayoutItem30: TdxLayoutItem;
-    dxLayoutItem31: TdxLayoutItem;
-    dxLayoutItem32: TdxLayoutItem;
-    dxLayoutItem33: TdxLayoutItem;
-    dxLayoutItem34: TdxLayoutItem;
-    dxLayoutItem35: TdxLayoutItem;
-    lagrp_Stundenplan: TdxLayoutGroup;
-    dxLayoutGroup36: TdxLayoutGroup;
-    dxLayoutItem36: TdxLayoutItem;
-    dxLayoutItem37: TdxLayoutItem;
-    dxLayoutItem38: TdxLayoutItem;
-    dxLayoutItem39: TdxLayoutItem;
-    dxLayoutItem40: TdxLayoutItem;
-    dxLayoutGroup41: TdxLayoutGroup;
-    dxLayoutItem41: TdxLayoutItem;
-    dxLayoutItem42: TdxLayoutItem;
-    dxLayoutItem43: TdxLayoutItem;
-    dxLayoutItem44: TdxLayoutItem;
+    lagrp_Aufgabenart: TdxLayoutGroup;
+    lagrp_AufgabenartDetail: TdxLayoutGroup;
+    lagrp_Contacts: TdxLayoutGroup;
     lagrp_EMail: TdxLayoutGroup;
-    laitm_EmailkonfigurationBar: TdxLayoutItem;
-    laitm_Emailadress: TdxLayoutItem;
-    laitm_EmailType: TdxLayoutItem;
-    laitm_EmailPoseingangadress: TdxLayoutItem;
-    laitm_EmailPoseingangPort: TdxLayoutItem;
-    laitm_EmailSSL: TdxLayoutItem;
-    laitm_EmailAnmeldung: TdxLayoutLabeledItem;
-    laitm_EmailBenutzer: TdxLayoutItem;
-    laitm_EmailKennwort: TdxLayoutItem;
-    laitm_EmailPosausgangAdress: TdxLayoutItem;
-    laitm_EmailPosausgangPort: TdxLayoutItem;
-    laitm_EmailCheck: TdxLayoutItem;
-    laitm_EmailGrid: TdxLayoutItem;
-    lagrp_EmailPostfaecherkonfiguration: TdxLayoutGroup;
-    laitm_EmailPostfaecherkonfigurationBar: TdxLayoutItem;
-    lagrp_EmailPostfaecherkonfigurationMain: TdxLayoutGroup;
-    laitm_EmailPostfaecherkonfigurationMainGrid: TdxLayoutItem;
-    lagrp_EmailPostfaecherkonfigurationMainButtons: TdxLayoutGroup;
-    laitm_EmailPostfaecherkonfigurationMainFirst: TdxLayoutItem;
-    laitm_EmailPostfaecherkonfigurationMainUp: TdxLayoutItem;
-    laitm_EmailPostfaecherkonfigurationMainDown: TdxLayoutItem;
-    laitm_EmailPostfaecherkonfigurationMainLast: TdxLayoutItem;
-    lagrp_EmailPostfaecherkonfigurationSub: TdxLayoutGroup;
-    laitm_EmailPostfaecherkonfigurationSubGrid: TdxLayoutItem;
-    lagrp_EmailPostfaecherkonfigurationSubButtons: TdxLayoutGroup;
-    laitm_EmailPostfaecherkonfigurationSubFirst: TdxLayoutItem;
-    laitm_EmailPostfaecherkonfigurationSubUp: TdxLayoutItem;
-    laitm_EmailPostfaecherkonfigurationSubDown: TdxLayoutItem;
-    laitm_EmailPostfaecherkonfigurationSubLast: TdxLayoutItem;
-    laitm_EmailServer: TdxLayoutLabeledItem;
     lagrp_Emailkonfiguration: TdxLayoutGroup;
-    lagrp_KalenderFeiertage: TdxLayoutGroup;
-    dxLayoutGroup13: TdxLayoutGroup;
-    dxLayoutGroup5: TdxLayoutGroup;
-    dxLayoutGroup6: TdxLayoutGroup;
-    dxLayoutGroup7: TdxLayoutGroup;
-    dxLayoutGroup8: TdxLayoutGroup;
-    dxLayoutGroup9: TdxLayoutGroup;
-    dxLayoutGroup10: TdxLayoutGroup;
-    dxLayoutGroup14: TdxLayoutGroup;
-    dxLayoutGroup15: TdxLayoutGroup;
-    dxLayoutGroup16: TdxLayoutGroup;
-    dxLayoutGroup17: TdxLayoutGroup;
-    dxLayoutGroup18: TdxLayoutGroup;
-    dxLayoutGroup19: TdxLayoutGroup;
-    dxLayoutGroup21: TdxLayoutGroup;
-    dxLayoutGroup22: TdxLayoutGroup;
     lagrp_EmailkonfigurationDetails: TdxLayoutGroup;
     lagrp_EmailkonfigurationDetailsLeft: TdxLayoutGroup;
     lagrp_EmailkonfigurationDetailsRight: TdxLayoutGroup;
-    laitm_EmailConfigTestEin: TdxLayoutLabeledItem;
+    lagrp_EmailPostfaecherkonfiguration: TdxLayoutGroup;
+    lagrp_EmailPostfaecherkonfigurationMain: TdxLayoutGroup;
+    lagrp_EmailPostfaecherkonfigurationMainButtons: TdxLayoutGroup;
+    lagrp_EmailPostfaecherkonfigurationSub: TdxLayoutGroup;
+    lagrp_EmailPostfaecherkonfigurationSubButtons: TdxLayoutGroup;
+    lagrp_Feiertage: TdxLayoutGroup;
+    lagrp_FTP: TdxLayoutGroup;
+    lagrp_FTPBenutzer: TdxLayoutItem;
+    lagrp_FTPDateiname: TdxLayoutItem;
+    lagrp_FTPDetail: TdxLayoutGroup;
+    lagrp_FTPDetailLeft: TdxLayoutGroup;
+    lagrp_FTPDetailRight: TdxLayoutGroup;
+    lagrp_FTPHost: TdxLayoutItem;
+    lagrp_FTPPasswort: TdxLayoutItem;
+    lagrp_Geburtsland: TdxLayoutGroup;
+    lagrp_Kalender: TdxLayoutGroup;
+    lagrp_KalenderAnTerminerinnern: TdxLayoutGroup;
+    lagrp_KalenderDetail: TdxLayoutGroup;
+    lagrp_KalenderDetailLeft: TdxLayoutGroup;
+    lagrp_KalenderDetailRight: TdxLayoutGroup;
+    lagrp_Kalenders: TdxLayoutGroup;
+    lagrp_Phone: TdxLayoutGroup;
+    lagrp_Prio: TdxLayoutGroup;
+    lagrp_PrioDetail: TdxLayoutGroup;
+    lagrp_Sonstige: TdxLayoutGroup;
+    lagrp_SonstigeBarDetail: TdxLayoutGroup;
+    lagrp_SonstigeDetailLeft: TdxLayoutGroup;
+    lagrp_SonstigeDetailRight: TdxLayoutGroup;
+    lagrp_Stundenplan: TdxLayoutGroup;
+    lagrp_StundenplanFaecher: TdxLayoutGroup;
+    lagrp_StundenplanFaecherDetail: TdxLayoutGroup;
+    lagrp_StundenplanFaecherFarbe: TdxLayoutGroup;
+    lagrp_StundenplanUhrzeit: TdxLayoutGroup;
+    lagrp_StundenplanUhrzeitFarbe: TdxLayoutGroup;
+    laitm_AnredeAnrede: TdxLayoutItem;
+    laitm_AnredeBar: TdxLayoutItem;
+    laitm_AnredeGrid: TdxLayoutItem;
+    laitm_AufgabenartArt: TdxLayoutItem;
+    laitm_AufgabenartBar: TdxLayoutItem;
+    laitm_AufgabenartBeschreibung: TdxLayoutItem;
+    laitm_AufgabenartGrid: TdxLayoutItem;
+    laitm_Emailadress: TdxLayoutItem;
+    laitm_EmailAnmeldung: TdxLayoutLabeledItem;
+    laitm_EmailCheck: TdxLayoutItem;
+    laitm_EmailClientID: TdxLayoutItem;
+    laitm_EmailClientSecret: TdxLayoutItem;
     laitm_EmailConfigTestAus: TdxLayoutLabeledItem;
-    lagrp_Contacts: TdxLayoutGroup;
-    dxLayoutGroup1: TdxLayoutGroup;
-    dxLayoutItem51: TdxLayoutItem;
-    dxLayoutGroup24: TdxLayoutGroup;
-    dxLayoutItem58: TdxLayoutItem;
-    dxLayoutGroup26: TdxLayoutGroup;
-    dxLayoutItem71: TdxLayoutItem;
-    bardckctrl_Anrede: TdxBarDockControl;
-    bardckctrl_Geburtsland: TdxBarDockControl;
-    bardckctrl_Phonerlite: TdxBarDockControl;
+    laitm_EmailConfigTestEin: TdxLayoutLabeledItem;
+    laitm_EmailGrid: TdxLayoutItem;
+    laitm_EmailKennwort: TdxLayoutItem;
+    laitm_EmailkonfigurationBar: TdxLayoutItem;
+    laitm_EmailPosausgangAdress: TdxLayoutItem;
+    laitm_EmailPosausgangPort: TdxLayoutItem;
+    laitm_EmailPoseingangadress: TdxLayoutItem;
+    laitm_EmailPoseingangPort: TdxLayoutItem;
+    laitm_EmailPostfaecherkonfigurationBar: TdxLayoutItem;
+    laitm_EmailPostfaecherkonfigurationMainDown: TdxLayoutItem;
+    laitm_EmailPostfaecherkonfigurationMainFirst: TdxLayoutItem;
+    laitm_EmailPostfaecherkonfigurationMainGrid: TdxLayoutItem;
+    laitm_EmailPostfaecherkonfigurationMainLast: TdxLayoutItem;
+    laitm_EmailPostfaecherkonfigurationMainUp: TdxLayoutItem;
+    laitm_EmailPostfaecherkonfigurationSubDown: TdxLayoutItem;
+    laitm_EmailPostfaecherkonfigurationSubFirst: TdxLayoutItem;
+    laitm_EmailPostfaecherkonfigurationSubGrid: TdxLayoutItem;
+    laitm_EmailPostfaecherkonfigurationSubLast: TdxLayoutItem;
+    laitm_EmailPostfaecherkonfigurationSubUp: TdxLayoutItem;
+    laitm_EmailServer: TdxLayoutLabeledItem;
+    laitm_EmailSSL: TdxLayoutItem;
+    laitm_EmialAuth: TdxLayoutItem;
+    laitm_FeiertageBar: TdxLayoutItem;
+    laitm_FeiertageGrid: TdxLayoutItem;
+    laitm_FTPBar: TdxLayoutItem;
+    laitm_FTPGrid: TdxLayoutItem;
+    laitm_GeburtslandBar: TdxLayoutItem;
+    laitm_GeburtslandGrid: TdxLayoutItem;
+    laitm_GeburtslandLand: TdxLayoutItem;
+    laitm_KalenderAnTerminerinnern: TdxLayoutItem;
+    laitm_KalenderAnTerminerinnernVor: TdxLayoutItem;
+    laitm_KalenderBar: TdxLayoutItem;
+    laitm_KalenderBenutzer: TdxLayoutItem;
+    laitm_KalenderGrid: TdxLayoutItem;
+    laitm_KalenderKalender: TdxLayoutItem;
+    laitm_KalenderLink: TdxLayoutItem;
+    laitm_KalenderPasswort: TdxLayoutItem;
+    laitm_KalenderSchriftfarbe: TdxLayoutItem;
+    laitm_KalenderTerminFarbe: TdxLayoutItem;
+    laitm_PhoneBar: TdxLayoutItem;
+    laitm_PhoneGrid: TdxLayoutItem;
+    laitm_PhonePhonepath: TdxLayoutItem;
+    laitm_PrioBar: TdxLayoutItem;
+    laitm_PrioBeschreibung: TdxLayoutItem;
+    laitm_PrioGrid: TdxLayoutItem;
+    laitm_PrioPrio: TdxLayoutItem;
+    laitm_SonstigeAccMail: TdxLayoutItem;
+    laitm_SonstigeAccTODO: TdxLayoutItem;
+    laitm_SonstigeAdresseFirma: TdxLayoutItem;
+    laitm_SonstigeAdresseSelbst: TdxLayoutItem;
+    laitm_SonstigeBar: TdxLayoutItem;
+    laitm_SonstigeBundesland: TdxLayoutItem;
+    laitm_SonstigeBundeslandFirma: TdxLayoutItem;
+    laitm_SonstigeJira: TdxLayoutItem;
+    laitm_SonstigeStunden: TdxLayoutItem;
+    laitm_StundenplanFaecherBar: TdxLayoutItem;
+    laitm_StundenplanFaecherFach: TdxLayoutItem;
+    laitm_StundenplanFaecherFarbeHintergrund: TdxLayoutItem;
+    laitm_StundenplanFaecherFarbeSchrift: TdxLayoutItem;
+    laitm_StundenplanFaecherGrid: TdxLayoutItem;
+    laitm_StundenplanUhrzeitBar: TdxLayoutItem;
+    laitm_StundenplanUhrzeitFarbeHintergrund: TdxLayoutItem;
+    laitm_StundenplanUhrzeitFarbeSchrift: TdxLayoutItem;
+    laitm_StundenplanUhrzeitGrid: TdxLayoutItem;
+    mskedt_AufgabenSonstigesStunden: TcxDBCurrencyEdit;
+    qry_Anrede: TFDQuery;
+    qry_AufgabenArten: TFDQuery;
+    qry_CalConfig: TFDQuery;
+    qry_CalConfigFTP: TFDQuery;
+    qry_EmailConfig: TFDQuery;
+    qry_EmailPostfachMain: TFDQuery;
+    qry_EmailPostfachSub: TFDQuery;
+    qry_FT1: TFDQuery;
+    qry_Konfiguration_Kalender_Optionen: TFDQuery;
+    qry_Land: TFDQuery;
+    qry_phone: TFDQuery;
+    qry_prio: TFDQuery;
+    qry_SchulFaecher: TFDQuery;
+    qry_SchulFaecher_Config: TFDQuery;
+    tb_Aufgabenarten: TdxBar;
+    tb_AufgabenConfig: TdxBar;
+    tb_AufgabenPrio: TdxBar;
+    tb_email: TdxBar;
+    tb_Feiertage: TdxBar;
+    tb_FTP: TdxBar;
+    tb_Kalender: TdxBar;
     tb_KontaktAnrede: TdxBar;
     tb_KontaktLand: TdxBar;
     tb_KontaktSchnittstelle: TdxBar;
-    btn_PhoneSave: TdxBarLargeButton;
-    btn_AnredeNew: TdxBarLargeButton;
-    dxBarLargeButton3: TdxBarLargeButton;
-    btn_LandNew: TdxBarLargeButton;
-    dxLayoutItem72: TdxLayoutItem;
-    dxLayoutItem73: TdxLayoutItem;
-    dxLayoutItem74: TdxLayoutItem;
-    edt_Anrede: TcxDBTextEdit;
-    edt_Land: TcxDBTextEdit;
-    edt_Phone: TcxDBButtonEdit;
-    btn_AnredeSave: TdxBarLargeButton;
-    btn_AnredeCancel: TdxBarLargeButton;
-    btn_AnredeDelete: TdxBarLargeButton;
-    dxBarLargeButton8: TdxBarLargeButton;
-    dxBarLargeButton9: TdxBarLargeButton;
-    dxBarLargeButton10: TdxBarLargeButton;
-    btn_LandSave: TdxBarLargeButton;
-    btn_LandCancel: TdxBarLargeButton;
-    btn_LandDelete: TdxBarLargeButton;
-    grd_Phonerlite: TcxGrid;
-    grdDBTblView_Phonerlite: TcxGridDBTableView;
-    grdLvl_Phonerlite: TcxGridLevel;
-    grd_Geburtsland: TcxGrid;
-    grdDBTblView_Geburtsland: TcxGridDBTableView;
-    grdLvl_Geburtsland: TcxGridLevel;
-    grd_Anrede: TcxGrid;
-    grdDBTblView_Anrede: TcxGridDBTableView;
-    grdLvl_Anrede: TcxGridLevel;
-    dxLayoutItem76: TdxLayoutItem;
-    dxLayoutItem77: TdxLayoutItem;
-    dxLayoutItem78: TdxLayoutItem;
-    qry_Anrede: TFDQuery;
-    ds_Anrede: TDataSource;
-    grdDBTblView_AnredeBezeichnung: TcxGridDBColumn;
-    qry_Land: TFDQuery;
-    ds_Land: TDataSource;
-    grdDBTblView_GeburtslandBezeichnung: TcxGridDBColumn;
-    ds_phone: TDataSource;
-    qry_phone: TFDQuery;
-    grdDBTblView_PhonerlitePath: TcxGridDBColumn;
-    laitm_EmialAuth: TdxLayoutItem;
-    cmbbx_Auth: TcxDBImageComboBox;
-    cxDBTextEdit1: TcxDBTextEdit;
-    laitm_EmailClientID: TdxLayoutItem;
-    cxDBTextEdit2: TcxDBTextEdit;
-    laitm_EmailClientSecret: TdxLayoutItem;
-    IdHTTPServer1: TIdHTTPServer;
-    IdSSLIOHandlerSocketIMAP: TIdSSLIOHandlerSocketOpenSSL;
-    IdSSLIOHandlerSocketSMTP: TIdSSLIOHandlerSocketOpenSSL;
-    IDSMTP_Mail: TIdSMTP;
-    procedure FormShow(Sender: TObject);
-    procedure btn_CalConfigNew1Click(Sender: TObject);
-    procedure btn_CalConfigSave1Click(Sender: TObject);
-    procedure btn_CalConfigCancel1Click(Sender: TObject);
-    procedure btn_CalConfigDelete1Click(Sender: TObject);
-    procedure btn_CalFTNewClick(Sender: TObject);
-    procedure btn_CalFTDeleteClick(Sender: TObject);
-    procedure btn_CalFTinCalClick(Sender: TObject);
-    procedure btn_CalConfigFTPNewClick(Sender: TObject);
-    procedure btn_CalConfigFTPSaveClick(Sender: TObject);
-    procedure btn_CalConfigFTPCancelClick(Sender: TObject);
-    procedure btn_CalConfigFTPDeleteClick(Sender: TObject);
-    procedure btn_FachNewClick(Sender: TObject);
-    procedure btn_FachSaveClick(Sender: TObject);
-    procedure btn_FachCancelClick(Sender: TObject);
-    procedure btn_FachDeleteClick(Sender: TObject);
-    procedure btn_FachUSaveClick(Sender: TObject);
-    procedure btn_FachUCancelClick(Sender: TObject);
-    procedure btn_EmailConfigDeleteClick(Sender: TObject);
-    procedure btn_EmailConfigCancelClick(Sender: TObject);
-    procedure btn_EmailConfigSaveClick(Sender: TObject);
-    procedure btn_EmailConfigNewClick(Sender: TObject);
-    procedure btn_EmailConfig_TestClick(Sender: TObject);
-    procedure qry_EmailConfigAfterScroll(DataSet: TDataSet);
-    procedure btn_PostfachNewClick(Sender: TObject);
-    procedure btn_PostfachMainTopClick(Sender: TObject);
-    procedure btn_PostfachMainbottomClick(Sender: TObject);
-    procedure btn_PostfachMainUpClick(Sender: TObject);
-    procedure btn_PostfachMaindownClick(Sender: TObject);
-    procedure qry_EmailPostfachMainAfterScroll(DataSet: TDataSet);
-    procedure btn_PostfachSubTopClick(Sender: TObject);
-    procedure btn_PostfachSubbottomClick(Sender: TObject);
-    procedure btn_PostfachSubUpClick(Sender: TObject);
-    procedure btn_PostfachSubDownClick(Sender: TObject);
-    procedure btn_PostfachSaveClick(Sender: TObject);
-    procedure btn_PostfachCancelClick(Sender: TObject);
-    procedure btn_AufgabenNewClick(Sender: TObject);
-    procedure btn_AufgabenSaveClick(Sender: TObject);
+    tb_Postfach: TdxBar;
+    tb_Schulfach: TdxBar;
+    tb_SchulfachUhr: TdxBar;
+    dxLayoutGroup1: TdxLayoutGroup;
+    lagrp_OauthDetail: TdxLayoutGroup;
+    laitm_AuthorizationEndpoint: TdxLayoutItem;
+    cxDBTextEdit3: TcxDBTextEdit;
+    laitm_scopes: TdxLayoutItem;
+    laitm_AccessTokenEndpoint: TdxLayoutItem;
+    cxDBTextEdit4: TcxDBTextEdit;
+    cxDBTextEdit5: TcxDBTextEdit;
+    lucmbbx_EmailConfig_Kontptyp: TcxDBLookupComboBox;
+    laitm_EmailBenutzer: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
+    procedure btn_AnredeCancelClick(Sender: TObject);
+    procedure btn_AnredeDeleteClick(Sender: TObject);
+    procedure btn_AnredeNewClick(Sender: TObject);
+    procedure btn_AnredeSaveClick(Sender: TObject);
     procedure btn_AufgabenCancelClick(Sender: TObject);
     procedure btn_AufgabenDeleteClick(Sender: TObject);
-    procedure SetButtonsEnableVisible(DataSet: TDataSet);
-    procedure btn_AufgabenPrioNewClick(Sender: TObject);
-    procedure btn_AufgabenPrioSaveClick(Sender: TObject);
+    procedure btn_AufgabenNewClick(Sender: TObject);
+    procedure btn_AufgabenOptionenSaveClick(Sender: TObject);
     procedure btn_AufgabenPrioCancelClick(Sender: TObject);
     procedure btn_AufgabenPrioDeleteClick(Sender: TObject);
-    procedure btn_AufgabenOptionenSaveClick(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
-    procedure FormActivate(Sender: TObject);
-    procedure btn_PhoneSaveClick(Sender: TObject);
-    procedure btn_AnredeNewClick(Sender: TObject);
-    procedure btn_LandNewClick(Sender: TObject);
-    procedure btn_AnredeCancelClick(Sender: TObject);
+    procedure btn_AufgabenPrioNewClick(Sender: TObject);
+    procedure btn_AufgabenPrioSaveClick(Sender: TObject);
+    procedure btn_AufgabenSaveClick(Sender: TObject);
+    procedure btn_CalConfigCancel1Click(Sender: TObject);
+    procedure btn_CalConfigDelete1Click(Sender: TObject);
+    procedure btn_CalConfigFTPCancelClick(Sender: TObject);
+    procedure btn_CalConfigFTPDeleteClick(Sender: TObject);
+    procedure btn_CalConfigFTPNewClick(Sender: TObject);
+    procedure btn_CalConfigFTPSaveClick(Sender: TObject);
+    procedure btn_CalConfigNew1Click(Sender: TObject);
+    procedure btn_CalConfigSave1Click(Sender: TObject);
+    procedure btn_CalFTDeleteClick(Sender: TObject);
+    procedure btn_CalFTinCalClick(Sender: TObject);
+    procedure btn_CalFTNewClick(Sender: TObject);
+    procedure btn_EmailConfig_TestClick(Sender: TObject);
+    procedure btn_EmailConfigCancelClick(Sender: TObject);
+    procedure btn_EmailConfigDeleteClick(Sender: TObject);
+    procedure btn_EmailConfigNewClick(Sender: TObject);
+    procedure btn_EmailConfigSaveClick(Sender: TObject);
+    procedure btn_FachCancelClick(Sender: TObject);
+    procedure btn_FachDeleteClick(Sender: TObject);
+    procedure btn_FachNewClick(Sender: TObject);
+    procedure btn_FachSaveClick(Sender: TObject);
+    procedure btn_FachUCancelClick(Sender: TObject);
+    procedure btn_FachUSaveClick(Sender: TObject);
     procedure btn_LandCancelClick(Sender: TObject);
-    procedure btn_AnredeSaveClick(Sender: TObject);
-    procedure btn_LandSaveClick(Sender: TObject);
-    procedure btn_AnredeDeleteClick(Sender: TObject);
     procedure btn_LandDeleteClick(Sender: TObject);
-    procedure lactrl_ConfigTabTabChanging(Sender: TObject;
-      ANewTabIndex: Integer; var Allow: Boolean);
-    procedure IdHTTPServer1CommandGet(AContext: TIdContext;
-      ARequestInfo: TIdHTTPRequestInfo; AResponseInfo: TIdHTTPResponseInfo);
+    procedure btn_LandNewClick(Sender: TObject);
+    procedure btn_LandSaveClick(Sender: TObject);
+    procedure btn_PhoneSaveClick(Sender: TObject);
+    procedure btn_PostfachCancelClick(Sender: TObject);
+    procedure btn_PostfachMainbottomClick(Sender: TObject);
+    procedure btn_PostfachMaindownClick(Sender: TObject);
+    procedure btn_PostfachMainTopClick(Sender: TObject);
+    procedure btn_PostfachMainUpClick(Sender: TObject);
+    procedure btn_PostfachNewClick(Sender: TObject);
+    procedure btn_PostfachSaveClick(Sender: TObject);
+    procedure btn_PostfachSubbottomClick(Sender: TObject);
+    procedure btn_PostfachSubDownClick(Sender: TObject);
+    procedure btn_PostfachSubTopClick(Sender: TObject);
+    procedure btn_PostfachSubUpClick(Sender: TObject);
+    procedure edt_PhonePropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+    procedure edt_PhonePropertiesEditValueChanged(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure IdHTTPServer1CommandGet(AContext: TIdContext; ARequestInfo: TIdHTTPRequestInfo; AResponseInfo: TIdHTTPResponseInfo);
+    procedure lactrl_ConfigTabTabChanging(Sender: TObject; ANewTabIndex: Integer; var Allow: Boolean);
+    procedure qry_EmailConfigAfterScroll(DataSet: TDataSet);
+    procedure qry_EmailPostfachMainAfterScroll(DataSet: TDataSet);
+    procedure SetButtonsEnableVisible(DataSet: TDataSet);
   private
     { Private-Deklarationen }
     FOAuth2_Enhanced : TEnhancedOAuth2Authenticator;
@@ -596,13 +604,15 @@ type
     { Public-Deklarationen }
     iID_Benutzer: integer;
   end;
-
+  {$EndRegion Types}
 var
   {$Region var}
   frm_Config: Tfrm_Config;
   {$EndRegion var}
 const
+  {$Region const}
   clientredirect = 'http://localhost:2132';
+  {$EndRegion const}
 implementation
 {$R *.dfm}
 uses
@@ -900,8 +910,6 @@ begin
   FOAuth2_Enhanced.AccessToken := '';
   FOAuth2_Enhanced.AccessTokenExpiry := 0;
 end;
-
-
 procedure Tfrm_Config.SortierungAendernMain(bUpDown: Boolean);
 var
   iTemp, iTemp2, iTempID, iTempID2: Integer;
@@ -1103,6 +1111,99 @@ begin
 end;
 {$EndRegion Tabfunktionen}
 ////////////////////////////////////////////////////////////////////////////////
+// TabKontakte                                                                //
+////////////////////////////////////////////////////////////////////////////////
+{$Region TabKontakte}
+// Anrede
+procedure Tfrm_Config.btn_AnredeCancelClick(Sender: TObject);
+begin
+  qry_Anrede.Cancel;
+end;
+procedure Tfrm_Config.btn_AnredeDeleteClick(Sender: TObject);
+begin
+  if qry_Anrede.FieldByName('ID').asInteger > 0 then
+  begin
+    qry_Anrede.Delete;
+  end;
+end;
+procedure Tfrm_Config.btn_AnredeNewClick(Sender: TObject);
+begin
+  if qry_Anrede.State in [dsInsert, dsEdit] then
+    qry_Anrede.Post;
+  qry_Anrede.Append;
+  qry_Anrede.Insert;
+  if not edt_Anrede.enabled then
+  begin
+    edt_Anrede.enabled := true;
+  end;
+  edt_Anrede.SetFocus;
+end;
+procedure Tfrm_Config.btn_AnredeSaveClick(Sender: TObject);
+begin
+  if qry_Anrede.State in [dsInsert, dsEdit] then
+  begin
+    edt_Anrede.PostEditValue;
+    qry_Anrede.Post;
+  end;
+end;
+// Geburtsland
+procedure Tfrm_Config.btn_LandCancelClick(Sender: TObject);
+begin
+  qry_Land.Cancel;
+end;
+procedure Tfrm_Config.btn_LandDeleteClick(Sender: TObject);
+begin
+  if qry_Land.FieldByName('ID').asInteger > 0 then
+  begin
+    qry_Land.Delete;
+  end;
+end;
+procedure Tfrm_Config.btn_LandNewClick(Sender: TObject);
+begin
+  if qry_Land.State in [dsInsert, dsEdit] then
+    qry_Land.Post;
+  qry_Land.Append;
+  qry_Land.Insert;
+  if not edt_Land.enabled then
+  begin
+    edt_Land.enabled := true;
+  end;
+  edt_Land.SetFocus;
+end;
+procedure Tfrm_Config.btn_LandSaveClick(Sender: TObject);
+begin
+  if qry_land.State in [dsInsert, dsEdit] then
+  begin
+    edt_land.PostEditValue;
+    qry_land.Post;
+  end;
+end;
+// Phone
+procedure Tfrm_Config.btn_PhoneSaveClick(Sender: TObject);
+begin
+  if qry_phone.State in [dsInsert, dsEdit] then
+  begin
+    edt_Phone.PostEditValue;
+    qry_phone.Post;
+  end;
+end;
+procedure Tfrm_Config.edt_PhonePropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+var
+  sDir: String;
+begin
+  qry_phone.Edit;
+  if SelectDirectory(rs_PCMService_QuellVerzeichnis, '', sDir) then
+  begin
+    edt_Phone.Text := sDir;
+  end;
+
+end;
+procedure Tfrm_Config.edt_PhonePropertiesEditValueChanged(Sender: TObject);
+begin
+  btn_PhoneSaveClick(Sender);
+end;
+{$EndRegion TabKontakte}
+////////////////////////////////////////////////////////////////////////////////
 // TabKalender                                                                //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region TabKalender}
@@ -1286,10 +1387,10 @@ begin
   end;
 end;
 {$EndRegion}
-{$Region TabAufgaben}
 ////////////////////////////////////////////////////////////////////////////////
 // TabAufgaben                                                                //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region TabAufgaben}
 // Aufgabentypen
 procedure Tfrm_Config.btn_AufgabenNewClick(Sender: TObject);
 begin
@@ -1315,39 +1416,6 @@ begin
   end;
 
 end;
-procedure Tfrm_Config.btn_AnredeCancelClick(Sender: TObject);
-begin
-  qry_Anrede.Cancel;
-end;
-procedure Tfrm_Config.btn_AnredeDeleteClick(Sender: TObject);
-begin
-  if qry_Anrede.FieldByName('ID').asInteger > 0 then
-  begin
-    qry_Anrede.Delete;
-  end;
-end;
-procedure Tfrm_Config.btn_AnredeNewClick(Sender: TObject);
-begin
-  if qry_Anrede.State in [dsInsert, dsEdit] then
-    qry_Anrede.Post;
-  qry_Anrede.Append;
-  qry_Anrede.Insert;
-  if not edt_Anrede.enabled then
-  begin
-    edt_Anrede.enabled := true;
-  end;
-  edt_Anrede.SetFocus;
-end;
-
-procedure Tfrm_Config.btn_AnredeSaveClick(Sender: TObject);
-begin
-  if qry_Anrede.State in [dsInsert, dsEdit] then
-  begin
-    edt_Anrede.PostEditValue;
-    qry_Anrede.Post;
-  end;
-end;
-
 procedure Tfrm_Config.btn_AufgabenCancelClick(Sender: TObject);
 begin
   qry_AufgabenArten.Cancel;
@@ -1406,10 +1474,10 @@ begin
   end;
 end;
 {$EndRegion}
-{$Region TabStundenplan}
 ////////////////////////////////////////////////////////////////////////////////
 // TabStundenplan                                                             //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region TabStundenplan}
 // Schulfach
 procedure Tfrm_Config.btn_FachNewClick(Sender: TObject);
 begin
@@ -1455,47 +1523,11 @@ begin
     qry_SchulFaecher_Config.Post;
   end;
 end;
-procedure Tfrm_Config.btn_LandCancelClick(Sender: TObject);
-begin
-  qry_Land.Cancel;
-end;
-
-procedure Tfrm_Config.btn_LandDeleteClick(Sender: TObject);
-begin
-  if qry_Land.FieldByName('ID').asInteger > 0 then
-  begin
-    qry_Land.Delete;
-  end;
-end;
-
-procedure Tfrm_Config.btn_LandNewClick(Sender: TObject);
-begin
-  if qry_Land.State in [dsInsert, dsEdit] then
-    qry_Land.Post;
-  qry_Land.Append;
-  qry_Land.Insert;
-  if not edt_Land.enabled then
-  begin
-    edt_Land.enabled := true;
-  end;
-  edt_Land.SetFocus;
-end;
-
-procedure Tfrm_Config.btn_LandSaveClick(Sender: TObject);
-begin
-  if qry_land.State in [dsInsert, dsEdit] then
-  begin
-    edt_land.PostEditValue;
-    qry_land.Post;
-  end;
-end;
-
 procedure Tfrm_Config.btn_FachUCancelClick(Sender: TObject);
 begin
   qry_SchulFaecher_Config.Cancel;
 end;
 {$EndRegion}
-
 ////////////////////////////////////////////////////////////////////////////////
 // TabEmail                                                                   //
 ////////////////////////////////////////////////////////////////////////////////
@@ -1506,12 +1538,10 @@ begin
   SetButtons;
   if qry_EmailConfig.FieldByName('Authtype').asInteger = 0 then
   begin
-    laitm_EmailClientID.Visible:= false;
-    laitm_EmailClientSecret.Visible:= false;
+    lagrp_OauthDetail.Visible:= false;
   end
   else begin
-    laitm_EmailClientID.Visible:= true;
-    laitm_EmailClientSecret.Visible:= true;
+    lagrp_OauthDetail.Visible:= true;
   end;
   qry_EmailPostfachMain.SQL.text := 'SELECT ID,Postfach,Anzeige,Sortierung, Typ, Parent, Abonnieren, ID_manager_email FROM manager_email_postfach WHERE typ = 0 and ID_MANAGER_Email = :ID';
   qry_EmailPostfachMain.ParamByName('ID').asInteger := qry_EmailConfig.FieldByName('ID').asInteger;
@@ -1596,22 +1626,15 @@ begin
   end;
 end;
 procedure Tfrm_Config.btn_EmailConfig_TestClick(Sender: TObject);
-
   procedure MailAuthenticate;
   var
     uri : TURI;
   begin
     uri := TURI.Create(FOAuth2_Enhanced.AuthorizationRequestURI);
-
-    ShellExecute(0,
-      'open',
-      PChar(uri.ToString),
-      nil,
-      nil,
-      0
-    );
+    ShellExecute(0,'open',PChar(uri.ToString),nil,nil,0);
   end;
 var
+  RtfContent: TStringList;
   xoauthSASL : TIdSASLListEntry;
   msgCount : Integer;
   mailboxes : TStringList;
@@ -1662,7 +1685,7 @@ begin
         idSmtpMail.UseTLS := utUseRequireTLS;
         idmsgMail.Recipients.EMailAddresses := qry_EmailConfig.FieldByName('Email').AsString;
         idmsgMail.Subject := rs_PCMManager_Testmail ;
-        idmsgMail.Body.Text := rs_PCMManager_TestmailBody;
+        idmsgMail.Body.Text := RtfContent.Text;
         idmsgMail.From.Address := idSmtpMail.Username;
         idSmtpMail.Connect;
         idSmtpMail.Send(idmsgMail);
@@ -1706,6 +1729,7 @@ begin
       laitm_EmailConfigTestEin.CaptionOptions.Text:= '[B][COLOR=#FF8080]' + rs_PCMManager_posteingangnichterfolgreich +'[/COLOR][/B]';
       laitm_EmailConfigTestEin.Visible:= true;
     end;
+    xoauthSASL.SASL.Free;
     // SMTP
     FOAuth2_Enhanced.ClientID := Provider.ClientID;
     FOAuth2_Enhanced.ClientSecret := Provider.ClientSecret;
@@ -1734,7 +1758,24 @@ begin
       idmsgMail.ReplyTo.EMailAddresses := idmsgMail.From.Address;
       idmsgMail.Recipients.Add.Text := Provider.ClientAccount;
       idmsgMail.Subject := rs_PCMManager_Testmail;
-      idmsgMail.Body.Text := rs_PCMManager_TestmailBody;
+      idmsgMail.ContentType := 'text/html';
+      idmsgMail.Body.Text := '<p style="font-family: Aptos, sans-serif; font-size: 16px;">Mit freundlichen Gr&uuml;&szlig;en</p>'+
+'<p style="font-family: Aptos, sans-serif; font-size: 16px;">Jens Henske</p>'+
+'<p style="vertical-align:baseline">'+
+'<img width="80" height="80" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wAARCAA+AD4DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDo1iVegFL5Y9KPMCk5xj1p456UxiO0cUTyzMqRoCzOxwAB1JrzzWPHd7cTyDSINlovAkliyX9x6Cum8ZyMNKtrYEhLq5VJMd1ALEfjgVStkjSMAhcY6YoGlc5FfGeoBlF1HBKo4OF2sfxHf8K31u4r6wjngYMj/mD3B96sX2kabcqzS26byPvLwa5zQojBqN7bISI0XcRnjIIAP61LRSujoIlUGQMTz6VHbwEzEkAjbxzU2w/XJ7dqkhK+ec7SdvTPSmgNa9DCTzd7HDj5T0ArRgfJ3Ana1VmAbO4AjPep7chSFxxVEGN4yZz9gCKCI2eUnGecYHH41lafeXMpkWZMqoLAlQOPwNdB4jAEENxkYjbaRjrn/wDVXMW+uNukMVm8yn5QykDHqMdqkuOxKNUeSQxyQKAfu4BB/PoTVLSLVk1HV5eicRqSOp3AmtSC7gnjYhVLr1wOR7Grn2J7bTJJZl2vIw4z+P8AhQDKKTmHcwYHafunvV8vGJEcRj5kz057VF/ZvyCRmHr7GrkEcTsA4wFXjmhAaO3rUkPXmo5i/AiKZ75NSqrjBVQD3zVEFTX4mk0O5KY3ou9c9yO1cxZy2ssIkQqsLqTJ1Ukj6V0XiKOWXSsxniKVHcDuucH+efwrnDpMErFnTv0BIB+tSyokmlm3kuyLdQtuJRvcDjHHAro9b/49APVxVbRtMyqOVC26fdAH3j/hV3VLOe5g/c/MQwbbnFHQHuYkl7K8SoqcZwPepLZyty8cmFdV5zSw2zq+ZIygVudwxTrrabsEYLbOfzoGbsMEUIHloAfXvUp6U1TkA+1OpkEDoZGIP3PT1qmmkxrcgtgwjkJ/T6VpYoI4zQFxY2K/KRx29qeDTaAcUANmiScbXz7EdRWTLpVwlxuXEqkEZVefxFbGeakhPzn6UBc//9k=">'+
+'<div style="font-family: Aptos, sans-serif; font-size: 12px;"><strong><u>Jens Henske&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></strong></div>'+
+'<div style="font-family: Aptos, sans-serif; font-size: 12px;">Crailsheimstra&szlig;e 5</div>'+
+'<div style="font-family: Aptos, sans-serif; font-size: 12px;">97769 Bad Br&uuml;ckenau</div><br>'+
+'<div style="font-family: Aptos, sans-serif; font-size: 12px;">Telefon:&nbsp; +49 9741 9389662</div>'+
+'<div style="font-family: Aptos, sans-serif; font-size: 12px;">Mobil:&nbsp;&nbsp;&nbsp;&nbsp; +49 160 95460312</div>'+
+'<div style="font-family: Aptos, sans-serif; font-size: 12px;">E-Mail: &nbsp;&nbsp;<a href="mailto:Jens.Henske@outlook.com">Jens.Henske@outlook.com</a></div>'+
+'<br>'+
+'<div style="font-family: Aptos, sans-serif; font-size: 10px;">Diese E-Mail enth&auml;lt eventuell vertrauliche und/oder rechtlich gesch&uuml;tzte</div>'+
+'<div style="font-family: Aptos, sans-serif; font-size: 10px;">Informationen. Wenn Sie nicht der richtige Adressat sind oder diese</div>'+
+'<div style="font-family: Aptos, sans-serif; font-size: 10px;">E-Mail irrt&uuml;mlich erhalten haben, informieren Sie bitte sofort den </div>'+
+'<div style="font-family: Aptos, sans-serif; font-size: 10px;">Absender und vernichten Sie diese E-Mail. Das unerlaubte Kopieren </div>'+
+'<div style="font-family: Aptos, sans-serif; font-size: 10px;">sowie die unbefugte Weitergabe dieser E-Mail sind nicht gestattet.</div>';
+//      idmsgMail.Body.Text := rs_PCMManager_TestmailBody;
       IDSMTP_Mail.Send(idmsgMail);
       idmsgMail.Free;
       IDSMTP_Mail.Disconnect;
@@ -1744,7 +1785,7 @@ begin
       laitm_EmailConfigTestAus.CaptionOptions.Text:= '[B][COLOR=#FF8080]' + rs_PCMManager_postausgangnichterfolgreich +'[/COLOR][/B]';
       laitm_EmailConfigTestAus.Visible:= true;
     end;
-
+    xoauthSASL.SASL.Free;
 //  mailboxes := TStringList.Create;
 //  try
 //    IdIMAP_Mail.ListMailBoxes(mailboxes);
@@ -1889,15 +1930,6 @@ begin
   if qry_EmailPostfachSub.State in [dsInsert, dsEdit] then
     qry_EmailPostfachSub.Post;
 end;
-procedure Tfrm_Config.btn_PhoneSaveClick(Sender: TObject);
-begin
-  if qry_phone.State in [dsInsert, dsEdit] then
-  begin
-    edt_Phone.PostEditValue;
-    qry_phone.Post;
-  end;
-end;
-
 procedure Tfrm_Config.btn_PostfachCancelClick(Sender: TObject);
 begin
   qry_EmailPostfachMain.Cancel;
@@ -1937,8 +1969,33 @@ procedure Tfrm_Config.btn_PostfachSubbottomClick(Sender: TObject);
 begin
   SortierungFirstLastSub(false);
 end;
-{$EndRegion}
+procedure Tfrm_Config.IdHTTPServer1CommandGet(AContext: TIdContext; ARequestInfo: TIdHTTPRequestInfo; AResponseInfo: TIdHTTPResponseInfo);
+var
+  LCode: string;
+  LURL : TURI;
+  LTokenName : string;
+begin
+  if ARequestInfo.QueryParams = '' then
+    Exit;
+  LURL := TURI.Create('https://localhost/?' + ARequestInfo.QueryParams);
+  try
+    LCode := LURL.ParameterByName['code'];
+  except
+    Exit;
+  end;
+  FOAuth2_Enhanced.AuthCode := LCode;
+  FOAuth2_Enhanced.ChangeAuthCodeToAccesToken;
+  LTokenName := 'MicrosoftToken';
+  dm_PCM.qry_work.SQL.Text:= 'Update manager_emailkonfiguration Set RefreshToken = :RefreshToken Where ID = :ID';
+  dm_PCM.qry_work.ParamByName('RefreshToken').AsString:= FOAuth2_Enhanced.RefreshToken;
+  dm_PCM.qry_work.ParamByName('ID').AsInteger:= qry_EmailConfig.FieldByName('ID').AsInteger;
+  dm_PCM.qry_work.ExecSQL;
+//  qry_EmailConfig.Refresh;
+  SetupAuthenticator;
+  AResponseInfo.ContentText := '<html><body>Successfully Authenticated. You can now close this tab/window.</body></html>';
 
+end;
+{$EndRegion}
 ////////////////////////////////////////////////////////////////////////////////
 // FormFunctions                                                              //
 ////////////////////////////////////////////////////////////////////////////////
@@ -2032,33 +2089,6 @@ begin
   FOAuth2_Enhanced := TEnhancedOAuth2Authenticator.Create(nil);
   IdHTTPServer1.Active := True;
 end;
-procedure Tfrm_Config.IdHTTPServer1CommandGet(AContext: TIdContext; ARequestInfo: TIdHTTPRequestInfo; AResponseInfo: TIdHTTPResponseInfo);
-var
-  LCode: string;
-  LURL : TURI;
-  LTokenName : string;
-begin
-  if ARequestInfo.QueryParams = '' then
-    Exit;
-  LURL := TURI.Create('https://localhost/?' + ARequestInfo.QueryParams);
-  try
-    LCode := LURL.ParameterByName['code'];
-  except
-    Exit;
-  end;
-  FOAuth2_Enhanced.AuthCode := LCode;
-  FOAuth2_Enhanced.ChangeAuthCodeToAccesToken;
-  LTokenName := 'MicrosoftToken';
-  dm_PCM.qry_work.SQL.Text:= 'Update manager_emailkonfiguration Set RefreshToken = :RefreshToken Where ID = :ID';
-  dm_PCM.qry_work.ParamByName('RefreshToken').AsString:= FOAuth2_Enhanced.RefreshToken;
-  dm_PCM.qry_work.ParamByName('ID').AsInteger:= qry_EmailConfig.FieldByName('ID').AsInteger;
-  dm_PCM.qry_work.ExecSQL;
-//  qry_EmailConfig.Refresh;
-  SetupAuthenticator;
-  AResponseInfo.ContentText := '<html><body>Successfully Authenticated. You can now close this tab/window.</body></html>';
-
-end;
-
 {$Endregion}
 end.
 

@@ -12,7 +12,6 @@ uses
 type
   TSplashScreen = class(TForm)
     ActivityIndicator: TdxActivityIndicator;
-    grpbx_Design: TcxGroupBox;
     img_Splash: TImage;
     lbl_Progname: TcxLabel;
     lbl_ProgVersion: TcxLabel;
@@ -24,7 +23,7 @@ type
     Timer5: TTimer;
     Timer6: TTimer;
     Timer11: TTimer;
-    cxImage1: TcxImage;
+    Panel1: TPanel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Timer1Timer(Sender: TObject);
     procedure Timer2Timer(Sender: TObject);
@@ -67,6 +66,7 @@ var
   dwdDummy: DWord;
   Result: String;
   itest: integer;
+  ipixelWidth: integer;
 begin
   dwVerInfoSize := GetFileVersionInfoSize(PChar(ParamStr(0)), dwdDummy);
   if dwVerInfoSize = 0 then
@@ -84,7 +84,9 @@ begin
   FreeMem(poiVerInfo, dwVerInfoSize);
   lbl_ProgVersion.Caption := 'Version ' + Result;
   lbl_Progname.Caption := PCM_Programmname;
-  lbl_Progname.Left:= Round((1000 - 340) /2);
+  ipixelWidth := Canvas.TextWidth(lbl_Progname.Caption);
+
+  lbl_Progname.Left:= Round((SplashScreen.ClientWidth - ipixelWidth) / 2);
 end;
 function TSplashScreen.Execute(ARestart: boolean): boolean;
 begin

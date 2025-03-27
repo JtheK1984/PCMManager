@@ -3,35 +3,64 @@ unit PCMManager.Modul.C_Contacts.Neu;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxContainer, cxEdit, Vcl.Menus, System.ImageList,
-  Vcl.ImgList, Vcl.StdCtrls, cxButtons, cxMaskEdit, cxDropDownEdit, cxTextEdit,
-  dxGDIPlusClasses, Vcl.ExtCtrls,Data.DB,
-  cxImage, cxLabel, cxGroupBox, system.UITypes, dxLayoutcxEditAdapters,
-  dxLayoutControlAdapters, dxLayoutContainer, cxClasses, dxLayoutControl,
-  dxUIAClasses;
-
+  {$Region Uses}
+  cxButtons,
+  cxClasses,
+  cxContainer,
+  cxControls,
+  cxDropDownEdit,
+  cxEdit,
+  cxGraphics,
+  cxGroupBox,
+  cxImage,
+  cxLabel,
+  cxLookAndFeelPainters,
+  cxLookAndFeels,
+  cxMaskEdit,
+  cxTextEdit,
+  dxGDIPlusClasses,
+  dxLayoutContainer,
+  dxLayoutControl,
+  dxLayoutControlAdapters,
+  dxLayoutcxEditAdapters,
+  dxUIAClasses,
+  System.Classes,
+  System.ImageList,
+  System.SysUtils,
+  system.UITypes,
+  System.Variants,
+  Vcl.Controls,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,Data.DB,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.ImgList,
+  Vcl.Menus,
+  Vcl.StdCtrls,
+  Winapi.Messages,
+  Winapi.Windows;
+  {$EndRegion Uses}
 type
+  {$Region type}
   Tfrm_PCManagerNewContact = class(TForm)
-    edt_Name: TcxTextEdit;
-    edt_SurName: TcxTextEdit;
-    cmbbx_Anrede: TcxComboBox;
     btn_PCManagerLogin_Cancel: TcxButton;
     btn_PCManagerLogin_Ok: TcxButton;
+    cmbbx_Anrede: TcxComboBox;
+    edt_Name: TcxTextEdit;
+    edt_SurName: TcxTextEdit;
     img_Contact: TcxImage;
-    dxLayoutControl1Group_Root: TdxLayoutGroup;
-    dxLayoutControl1: TdxLayoutControl;
-    dxLayoutItem1: TdxLayoutItem;
-    dxLayoutItem2: TdxLayoutItem;
-    dxLayoutItem3: TdxLayoutItem;
-    dxLayoutItem4: TdxLayoutItem;
-    dxLayoutItem5: TdxLayoutItem;
-    dxLayoutItem6: TdxLayoutItem;
-    dxLayoutGroup4: TdxLayoutGroup;
-    dxLayoutGroup5: TdxLayoutGroup;
-    dxLayoutGroup2: TdxLayoutGroup;
-    dxLayoutGroup1: TdxLayoutGroup;
+    lactrl_Contact: TdxLayoutControl;
+    lactrl_ContactGroup_Root: TdxLayoutGroup;
+    lagrp_Contact: TdxLayoutGroup;
+    lagrp_ContactButtons: TdxLayoutGroup;
+    lagrp_ContactDetail: TdxLayoutGroup;
+    lagrp_ContactWithImg: TdxLayoutGroup;
+    laitm_ContactAbbrechen: TdxLayoutItem;
+    laitm_ContactAnlegen: TdxLayoutItem;
+    laitm_ContactAnrede: TdxLayoutItem;
+    laitm_ContactImage: TdxLayoutItem;
+    laitm_ContactNachname: TdxLayoutItem;
+    laitm_ContactVorname: TdxLayoutItem;
     procedure btn_PCManagerLogin_CancelClick(Sender: TObject);
     procedure btn_PCManagerLogin_OkClick(Sender: TObject);
   private
@@ -41,33 +70,22 @@ type
     { Public-Deklarationen }
     function Execute(AModal: boolean; out Anrede : Integer; out Vorname, Name: string): Boolean;
   end;
-
+  {$EndRegion type}
 var
+  {$Region uses}
   frm_PCManagerNewContact: Tfrm_PCManagerNewContact;
-
+  {$EndRegion uses}
 implementation
-
 {$R *.dfm}
-
-uses PCM.Data, PCM.Strings;
-
-{$Region Buttons}
+uses
+  {$Region uses}
+  PCM.Data,
+  PCM.Strings;
+  {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
-// Buttons                                                                    //
+// Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
-procedure Tfrm_PCManagerNewContact.btn_PCManagerLogin_OkClick(Sender: TObject);
-begin
-  ModalResult:= mrOK;
-end;
-procedure Tfrm_PCManagerNewContact.btn_PCManagerLogin_CancelClick(Sender: TObject);
-begin
-  ModalResult:= mrCancel;
-end;
-{$EndRegion}
-{$Region Execute}
-////////////////////////////////////////////////////////////////////////////////
-// Execute                                                                    //
-////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktionen}
 function Tfrm_PCManagerNewContact.Execute(AModal: boolean; out Anrede : Integer; out Vorname, Name: string): Boolean;
 begin
   result:= false;
@@ -112,5 +130,19 @@ begin
   end;
 end;
 {$EndRegion}
+////////////////////////////////////////////////////////////////////////////////
+// Buttons                                                                    //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Buttons}
+procedure Tfrm_PCManagerNewContact.btn_PCManagerLogin_OkClick(Sender: TObject);
+begin
+  ModalResult:= mrOK;
+end;
+procedure Tfrm_PCManagerNewContact.btn_PCManagerLogin_CancelClick(Sender: TObject);
+begin
+  ModalResult:= mrCancel;
+end;
+{$EndRegion}
+
 end.
 

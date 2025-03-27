@@ -39,7 +39,7 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 24
+      TabOrder = 23
       Visible = False
       OnExit = btn_CalConfigFTPSaveClick
       Width = 460
@@ -59,7 +59,7 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 25
+      TabOrder = 24
       Visible = False
       OnExit = btn_CalConfigFTPSaveClick
       Height = 19
@@ -81,7 +81,7 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 26
+      TabOrder = 25
       Visible = False
       OnExit = btn_CalConfigFTPSaveClick
       Width = 454
@@ -101,7 +101,7 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 23
+      TabOrder = 22
       Visible = False
       OnExit = btn_CalConfigFTPSaveClick
       Height = 19
@@ -119,7 +119,7 @@ object frm_Config: Tfrm_Config
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 22
+      TabOrder = 26
       Visible = False
       LockedStateImageOptions.Effect = lsieDark
       object grdDBTblView_FTPConfig: TcxGridDBTableView
@@ -1235,7 +1235,7 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 52
+      TabOrder = 51
       Visible = False
       OnExit = btn_FachUSaveClick
       Width = 473
@@ -1258,7 +1258,7 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 51
+      TabOrder = 50
       Visible = False
       OnExit = btn_FachUSaveClick
       Width = 474
@@ -1275,7 +1275,7 @@ object frm_Config: Tfrm_Config
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 50
+      TabOrder = 52
       TabStop = False
       Visible = False
       LockedStateImageOptions.Effect = lsieDark
@@ -1345,7 +1345,7 @@ object frm_Config: Tfrm_Config
     end
     object grd_EmailConfig: TcxGrid
       Left = 26
-      Top = 317
+      Top = 343
       Width = 1085
       Height = 100
       BorderStyle = cxcbsNone
@@ -1355,7 +1355,7 @@ object frm_Config: Tfrm_Config
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 66
+      TabOrder = 69
       TabStop = False
       LockedStateImageOptions.Effect = lsieDark
       object grdDBTblView_emailConfig: TcxGridDBTableView
@@ -1395,12 +1395,14 @@ object frm_Config: Tfrm_Config
         object grdDBTblView_emailConfigEMail: TcxGridDBColumn
           Caption = 'E-Mailadresse'
           DataBinding.FieldName = 'EMail'
+          DataBinding.IsNullValueType = True
           SortIndex = 0
           SortOrder = soAscending
           Width = 200
         end
         object grdDBTblView_emailConfigKontotyp: TcxGridDBColumn
           DataBinding.FieldName = 'Kontotyp'
+          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxLookupComboBoxProperties'
           Properties.KeyFieldNames = 'ID'
           Properties.ListColumns = <
@@ -1412,20 +1414,24 @@ object frm_Config: Tfrm_Config
         object grdDBTblView_emailConfigPostEingangsserver: TcxGridDBColumn
           Caption = 'Posteingangsserver'
           DataBinding.FieldName = 'PostEingangsserver'
+          DataBinding.IsNullValueType = True
           Width = 200
         end
         object grdDBTblView_emailConfigPortEingangsserver: TcxGridDBColumn
           Caption = 'Port Eingang'
           DataBinding.FieldName = 'PortEingangsserver'
+          DataBinding.IsNullValueType = True
           Width = 90
         end
         object grdDBTblView_emailConfigBenutzer: TcxGridDBColumn
           DataBinding.FieldName = 'Benutzer'
+          DataBinding.IsNullValueType = True
           Width = 150
         end
         object grdDBTblView_emailConfigSSLActive: TcxGridDBColumn
           Caption = 'SSL Aktiv'
           DataBinding.FieldName = 'SSLActive'
+          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxCheckBoxProperties'
           Width = 91
         end
@@ -1436,11 +1442,11 @@ object frm_Config: Tfrm_Config
     end
     object btn_EmailConfig_Test: TcxButton
       Left = 26
-      Top = 435
+      Top = 461
       Width = 1085
       Height = 27
       Caption = 'Verbindung Testen'
-      TabOrder = 67
+      TabOrder = 70
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -1450,23 +1456,23 @@ object frm_Config: Tfrm_Config
       OnClick = btn_EmailConfig_TestClick
     end
     object chxbx_EmailConfig_SSL: TcxDBCheckBox
-      Left = 35
-      Top = 283
+      Left = 140
+      Top = 293
       AutoSize = False
-      Caption = 'SSL-Verschl'#252'sselung'
+      Caption = 'Aktiv'
       DataBinding.DataField = 'SSLActive'
       DataBinding.DataSource = ds_EmailConfig
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 59
+      TabOrder = 60
       Transparent = True
       OnExit = btn_EmailConfigSaveClick
       Height = 19
-      Width = 529
+      Width = 407
     end
     object edt_EmailConfig_Benutzer: TcxDBTextEdit
-      Left = 677
-      Top = 158
+      Left = 697
+      Top = 143
       DataBinding.DataField = 'Benutzer'
       DataBinding.DataSource = ds_EmailConfig
       ParentFont = False
@@ -1478,13 +1484,13 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 60
+      TabOrder = 62
       OnExit = btn_EmailConfigSaveClick
-      Width = 425
+      Width = 414
     end
     object edt_EmailConfig_Emailadresse: TcxDBTextEdit
-      Left = 139
-      Top = 158
+      Left = 140
+      Top = 143
       DataBinding.DataField = 'EMail'
       DataBinding.DataSource = ds_EmailConfig
       ParentFont = False
@@ -1498,11 +1504,11 @@ object frm_Config: Tfrm_Config
       Style.IsFontAssigned = True
       TabOrder = 54
       OnExit = btn_EmailConfigSaveClick
-      Width = 425
+      Width = 407
     end
     object edt_EmailConfig_Kennwort: TcxDBTextEdit
-      Left = 677
-      Top = 183
+      Left = 697
+      Top = 168
       DataBinding.DataField = 'Passwort'
       DataBinding.DataSource = ds_EmailConfig
       ParentFont = False
@@ -1515,13 +1521,13 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 61
+      TabOrder = 63
       OnExit = btn_EmailConfigSaveClick
-      Width = 425
+      Width = 414
     end
     object edt_EmailConfig_PortAusgang: TcxDBTextEdit
-      Left = 677
-      Top = 233
+      Left = 140
+      Top = 268
       DataBinding.DataField = 'PortAusgangsserver'
       DataBinding.DataSource = ds_EmailConfig
       ParentFont = False
@@ -1533,13 +1539,13 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 63
+      TabOrder = 59
       OnExit = btn_EmailConfigSaveClick
-      Width = 425
+      Width = 407
     end
     object edt_EmailConfig_PortEingang: TcxDBTextEdit
-      Left = 139
-      Top = 233
+      Left = 140
+      Top = 218
       DataBinding.DataField = 'PortEingangsserver'
       DataBinding.DataSource = ds_EmailConfig
       ParentFont = False
@@ -1553,11 +1559,11 @@ object frm_Config: Tfrm_Config
       Style.IsFontAssigned = True
       TabOrder = 57
       OnExit = btn_EmailConfigSaveClick
-      Width = 425
+      Width = 407
     end
     object edt_EmailConfig_PostAusgangServer: TcxDBTextEdit
-      Left = 677
-      Top = 208
+      Left = 140
+      Top = 243
       DataBinding.DataField = 'PostAusgangsserver'
       DataBinding.DataSource = ds_EmailConfig
       ParentFont = False
@@ -1569,12 +1575,12 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 62
-      Width = 425
+      TabOrder = 58
+      Width = 407
     end
     object edt_EmailConfig_PostEingangServer: TcxDBTextEdit
-      Left = 139
-      Top = 208
+      Left = 140
+      Top = 193
       DataBinding.DataField = 'PostEingangsserver'
       DataBinding.DataSource = ds_EmailConfig
       ParentFont = False
@@ -1588,31 +1594,7 @@ object frm_Config: Tfrm_Config
       Style.IsFontAssigned = True
       TabOrder = 56
       OnExit = btn_EmailConfigSaveClick
-      Width = 425
-    end
-    object lucmbbx_EmailConfig_Kontptyp: TcxDBLookupComboBox
-      Left = 139
-      Top = 183
-      DataBinding.DataField = 'Kontotyp'
-      DataBinding.DataSource = ds_EmailConfig
-      ParentFont = False
-      Properties.KeyFieldNames = 'ID'
-      Properties.ListColumns = <
-        item
-          FieldName = 'Bezeichnung'
-        end>
-      Properties.ListSource = dm_PCM.ds_Config_EmailConfigTyp
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      TabOrder = 55
-      OnExit = btn_EmailConfigSaveClick
-      Width = 425
+      Width = 407
     end
     object brdckctrl_Email: TdxBarDockControl
       Left = 26
@@ -1624,7 +1606,7 @@ object frm_Config: Tfrm_Config
     end
     object bardckctrl_Postfach: TdxBarDockControl
       Left = 26
-      Top = 494
+      Top = 520
       Width = 1085
       Height = 58
       Align = dalNone
@@ -1632,7 +1614,7 @@ object frm_Config: Tfrm_Config
     end
     object btn_PostfachMainbottom: TcxButton
       Left = 1082
-      Top = 651
+      Top = 677
       Width = 20
       Height = 20
       OptionsImage.Glyph.SourceDPI = 96
@@ -1659,12 +1641,12 @@ object frm_Config: Tfrm_Config
         D28FC75865BA0375A629010D3AC25449AB0B7737E017934D3BD29280C6EEB357
         25B26F4AE8F495860B5476FE2F78CB041B0B9464F3419BC8E0E7F7365DF1DF3F
         EB7C93A1EABC6E0000000049454E44AE426082}
-      TabOrder = 72
+      TabOrder = 75
       OnClick = btn_PostfachMainbottomClick
     end
     object btn_PostfachMaindown: TcxButton
       Left = 1082
-      Top = 625
+      Top = 651
       Width = 20
       Height = 20
       OptionsImage.Glyph.SourceDPI = 96
@@ -1686,12 +1668,12 @@ object frm_Config: Tfrm_Config
         05D199BB9F32C6CFC1CDE34A6A7AC751A1B8C5D94DF00897DB4BEFF09E3F653A
         DF0AF028EA9990D9A44955E7288770BDE317B2235FE05F0BBC8FCE27FE0F6EA2
         80779755FCCF7803E8D0E0915AAA27200000000049454E44AE426082}
-      TabOrder = 71
+      TabOrder = 74
       OnClick = btn_PostfachMaindownClick
     end
     object btn_PostfachMainUp: TcxButton
       Left = 1082
-      Top = 599
+      Top = 625
       Width = 20
       Height = 20
       OptionsImage.Glyph.SourceDPI = 96
@@ -1714,12 +1696,12 @@ object frm_Config: Tfrm_Config
         FE7753D32B1DE8712686AB9BA6802D018781A05D02D81B4001101743330C709B
         8680039A01E43960E2FA7E7E235675430C00005416CE3539D1B3B10000000049
         454E44AE426082}
-      TabOrder = 70
+      TabOrder = 73
       OnClick = btn_PostfachMainUpClick
     end
     object btn_PostfachMainTop: TcxButton
       Left = 1082
-      Top = 573
+      Top = 599
       Width = 20
       Height = 20
       OptionsImage.Glyph.SourceDPI = 96
@@ -1746,14 +1728,14 @@ object frm_Config: Tfrm_Config
         C5E151F24713B24F6FB3F136C69596237491C45C97F69D19632E641EDD6A7681
         7CA0D726F09FB2072FB045838AFBEDC22F58E6680A1520C2DE0000000049454E
         44AE426082}
-      TabOrder = 69
+      TabOrder = 72
       OnClick = btn_PostfachMainTopClick
     end
     object grd_Postfachmain: TcxGrid
       Left = 35
-      Top = 573
+      Top = 599
       Width = 1041
-      Height = 131
+      Height = 118
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1761,7 +1743,7 @@ object frm_Config: Tfrm_Config
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 73
+      TabOrder = 76
       TabStop = False
       LockedStateImageOptions.Effect = lsieDark
       object grdDBTblViewl_Postfachmain: TcxGridDBTableView
@@ -1833,7 +1815,7 @@ object frm_Config: Tfrm_Config
     end
     object btn_PostfachSubbottom: TcxButton
       Left = 1082
-      Top = 812
+      Top = 825
       Width = 20
       Height = 20
       OptionsImage.Glyph.SourceDPI = 96
@@ -1860,12 +1842,12 @@ object frm_Config: Tfrm_Config
         D28FC75865BA0375A629010D3AC25449AB0B7737E017934D3BD29280C6EEB357
         25B26F4AE8F495860B5476FE2F78CB041B0B9464F3419BC8E0E7F7365DF1DF3F
         EB7C93A1EABC6E0000000049454E44AE426082}
-      TabOrder = 77
+      TabOrder = 80
       OnClick = btn_PostfachSubbottomClick
     end
     object btn_PostfachSubDown: TcxButton
       Left = 1082
-      Top = 786
+      Top = 799
       Width = 20
       Height = 20
       OptionsImage.Glyph.SourceDPI = 96
@@ -1887,12 +1869,12 @@ object frm_Config: Tfrm_Config
         05D199BB9F32C6CFC1CDE34A6A7AC751A1B8C5D94DF00897DB4BEFF09E3F653A
         DF0AF028EA9990D9A44955E7288770BDE317B2235FE05F0BBC8FCE27FE0F6EA2
         80779755FCCF7803E8D0E0915AAA27200000000049454E44AE426082}
-      TabOrder = 76
+      TabOrder = 79
       OnClick = btn_PostfachSubDownClick
     end
     object btn_PostfachSubUp: TcxButton
       Left = 1082
-      Top = 760
+      Top = 773
       Width = 20
       Height = 20
       OptionsImage.Glyph.SourceDPI = 96
@@ -1915,12 +1897,12 @@ object frm_Config: Tfrm_Config
         FE7753D32B1DE8712686AB9BA6802D018781A05D02D81B4001101743330C709B
         8680039A01E43960E2FA7E7E235675430C00005416CE3539D1B3B10000000049
         454E44AE426082}
-      TabOrder = 75
+      TabOrder = 78
       OnClick = btn_PostfachSubUpClick
     end
     object btn_PostfachSubTop: TcxButton
       Left = 1082
-      Top = 734
+      Top = 747
       Width = 20
       Height = 20
       OptionsImage.Glyph.SourceDPI = 96
@@ -1947,14 +1929,14 @@ object frm_Config: Tfrm_Config
         C5E151F24713B24F6FB3F136C69596237491C45C97F69D19632E641EDD6A7681
         7CA0D726F09FB2072FB045838AFBEDC22F58E6680A1520C2DE0000000049454E
         44AE426082}
-      TabOrder = 74
+      TabOrder = 77
       OnClick = btn_PostfachSubTopClick
     end
     object grd_postfachSub: TcxGrid
       Left = 35
-      Top = 734
+      Top = 747
       Width = 1041
-      Height = 131
+      Height = 118
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1962,7 +1944,7 @@ object frm_Config: Tfrm_Config
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 78
+      TabOrder = 81
       TabStop = False
       LockedStateImageOptions.Effect = lsieDark
       object grdDBTblViewl_PostfachSub: TcxGridDBTableView
@@ -2105,6 +2087,8 @@ object frm_Config: Tfrm_Config
           Default = True
           Kind = bkEllipsis
         end>
+      Properties.OnButtonClick = edt_PhonePropertiesButtonClick
+      Properties.OnEditValueChanged = edt_PhonePropertiesEditValueChanged
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 7
@@ -2293,8 +2277,9 @@ object frm_Config: Tfrm_Config
       end
     end
     object cmbbx_Auth: TcxDBImageComboBox
-      Left = 139
-      Top = 258
+      Left = 140
+      Top = 318
+      AutoSize = False
       DataBinding.DataField = 'Authtype'
       DataBinding.DataSource = ds_EmailConfig
       Properties.Items = <
@@ -2309,32 +2294,88 @@ object frm_Config: Tfrm_Config
         end>
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 58
-      Width = 425
+      TabOrder = 61
+      Height = 19
+      Width = 407
     end
     object cxDBTextEdit1: TcxDBTextEdit
-      Left = 677
-      Top = 258
-      AutoSize = False
+      Left = 697
+      Top = 193
       DataBinding.DataField = 'ClientID'
       DataBinding.DataSource = ds_EmailConfig
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 64
-      Height = 19
-      Width = 425
+      Width = 414
     end
     object cxDBTextEdit2: TcxDBTextEdit
-      Left = 677
-      Top = 283
-      AutoSize = False
+      Left = 697
+      Top = 218
       DataBinding.DataField = 'ClientSecret'
       DataBinding.DataSource = ds_EmailConfig
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 65
+      Width = 414
+    end
+    object cxDBTextEdit3: TcxDBTextEdit
+      Left = 697
+      Top = 268
+      AutoSize = False
+      DataBinding.DataField = 'AuthorizationEndpoint'
+      DataBinding.DataSource = ds_EmailConfig
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 67
       Height = 19
-      Width = 425
+      Width = 414
+    end
+    object cxDBTextEdit4: TcxDBTextEdit
+      Left = 697
+      Top = 293
+      AutoSize = False
+      DataBinding.DataField = 'AccessTokenEndpoint'
+      DataBinding.DataSource = ds_EmailConfig
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 68
+      Height = 19
+      Width = 414
+    end
+    object cxDBTextEdit5: TcxDBTextEdit
+      Left = 697
+      Top = 243
+      DataBinding.DataField = 'Scopes'
+      DataBinding.DataSource = ds_EmailConfig
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 66
+      Width = 414
+    end
+    object lucmbbx_EmailConfig_Kontptyp: TcxDBLookupComboBox
+      Left = 140
+      Top = 168
+      DataBinding.DataField = 'Kontotyp'
+      DataBinding.DataSource = ds_EmailConfig
+      ParentFont = False
+      Properties.Alignment.Horz = taLeftJustify
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Bezeichnung'
+        end>
+      Properties.ListSource = dm_PCM.ds_Config_EmailConfigTyp
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 55
+      OnExit = btn_EmailConfigSaveClick
+      Width = 407
     end
     object lactrl_ConfigGroup_Root: TdxLayoutGroup
       AlignHorz = ahClient
@@ -2354,27 +2395,26 @@ object frm_Config: Tfrm_Config
       OnTabChanging = lactrl_ConfigTabTabChanging
       Index = 0
     end
-    object lagrp_Kalender: TdxLayoutGroup
+    object lagrp_Kalenders: TdxLayoutGroup
       Parent = lactrl_ConfigTab
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.ImageIndex = 10
       CaptionOptions.Text = 'Kalender'
-      ItemIndex = 2
       ShowBorder = False
       Index = 1
     end
-    object lagrp_KalenderKalender: TdxLayoutGroup
-      Parent = lagrp_Kalender
+    object lagrp_Kalender: TdxLayoutGroup
+      Parent = lagrp_Kalenders
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'abonnierte Kalender'
       ButtonOptions.ShowExpandButton = True
-      ItemIndex = 2
+      ItemIndex = 1
       Index = 0
     end
-    object dxLayoutItem1: TdxLayoutItem
-      Parent = lagrp_KalenderKalender
+    object laitm_KalenderBar: TdxLayoutItem
+      Parent = lagrp_Kalender
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'bardckctrl_Kalender'
@@ -2386,8 +2426,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem2: TdxLayoutItem
-      Parent = dxLayoutGroup5
+    object laitm_KalenderKalender: TdxLayoutItem
+      Parent = lagrp_KalenderDetailLeft
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Kalender:'
@@ -2397,8 +2437,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem3: TdxLayoutItem
-      Parent = dxLayoutGroup5
+    object laitm_KalenderLink: TdxLayoutItem
+      Parent = lagrp_KalenderDetailLeft
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Link:'
@@ -2408,8 +2448,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem4: TdxLayoutItem
-      Parent = dxLayoutGroup5
+    object laitm_KalenderTerminFarbe: TdxLayoutItem
+      Parent = lagrp_KalenderDetailLeft
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Terminfarbe:'
@@ -2419,8 +2459,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object dxLayoutItem5: TdxLayoutItem
-      Parent = dxLayoutGroup6
+    object laitm_KalenderAnTerminerinnern: TdxLayoutItem
+      Parent = lagrp_KalenderAnTerminerinnern
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'an Termine erinnern:'
@@ -2430,8 +2470,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem6: TdxLayoutItem
-      Parent = dxLayoutGroup6
+    object laitm_KalenderAnTerminerinnernVor: TdxLayoutItem
+      Parent = lagrp_KalenderAnTerminerinnern
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'cmbbx_CalConfigReminderVal'
@@ -2442,8 +2482,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem7: TdxLayoutItem
-      Parent = dxLayoutGroup7
+    object laitm_KalenderBenutzer: TdxLayoutItem
+      Parent = lagrp_KalenderDetailRight
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Benutzer:'
@@ -2453,8 +2493,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem8: TdxLayoutItem
-      Parent = dxLayoutGroup7
+    object laitm_KalenderPasswort: TdxLayoutItem
+      Parent = lagrp_KalenderDetailRight
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Passwort:'
@@ -2464,8 +2504,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem9: TdxLayoutItem
-      Parent = dxLayoutGroup7
+    object laitm_KalenderSchriftfarbe: TdxLayoutItem
+      Parent = lagrp_KalenderDetailRight
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Schriftfarbe:'
@@ -2475,8 +2515,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object dxLayoutItem10: TdxLayoutItem
-      Parent = lagrp_KalenderKalender
+    object laitm_KalenderGrid: TdxLayoutItem
+      Parent = lagrp_Kalender
       AlignHorz = ahClient
       AlignVert = avBottom
       CaptionOptions.Text = 'grd_CalConfig'
@@ -2487,16 +2527,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object dxLayoutGroup12: TdxLayoutGroup
-      Parent = lagrp_KalenderFeiertage
-      AlignHorz = ahClient
-      AlignVert = avClient
-      CaptionOptions.Text = 'Feiertage'
-      ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutItem11: TdxLayoutItem
-      Parent = lagrp_KalenderFeiertage
+    object laitm_FeiertageBar: TdxLayoutItem
+      Parent = lagrp_Feiertage
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'brdckctrl_Feiertage'
@@ -2508,8 +2540,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem12: TdxLayoutItem
-      Parent = dxLayoutGroup12
+    object laitm_FeiertageGrid: TdxLayoutItem
+      Parent = lagrp_Feiertage
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'grd_Feiertage'
@@ -2518,10 +2550,10 @@ object frm_Config: Tfrm_Config
       ControlOptions.OriginalHeight = 180
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
-      Index = 0
+      Index = 1
     end
-    object lagrp_KalenderFTP: TdxLayoutGroup
-      Parent = lagrp_Kalender
+    object lagrp_FTP: TdxLayoutGroup
+      Parent = lagrp_Kalenders
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'FTP-Zugangsdaten'
@@ -2529,8 +2561,8 @@ object frm_Config: Tfrm_Config
       ItemIndex = 1
       Index = 2
     end
-    object dxLayoutItem13: TdxLayoutItem
-      Parent = lagrp_KalenderFTP
+    object laitm_FTPBar: TdxLayoutItem
+      Parent = lagrp_FTP
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'brdckctrl_FTP'
@@ -2542,8 +2574,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem14: TdxLayoutItem
-      Parent = dxLayoutGroup8
+    object lagrp_FTPHost: TdxLayoutItem
+      Parent = lagrp_FTPDetailLeft
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Host:'
@@ -2553,8 +2585,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem15: TdxLayoutItem
-      Parent = dxLayoutGroup9
+    object lagrp_FTPDateiname: TdxLayoutItem
+      Parent = lagrp_FTPDetailRight
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Dateiname:'
@@ -2564,8 +2596,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem16: TdxLayoutItem
-      Parent = dxLayoutGroup8
+    object lagrp_FTPBenutzer: TdxLayoutItem
+      Parent = lagrp_FTPDetailLeft
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Benutzer:'
@@ -2575,8 +2607,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem17: TdxLayoutItem
-      Parent = dxLayoutGroup9
+    object lagrp_FTPPasswort: TdxLayoutItem
+      Parent = lagrp_FTPDetailRight
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Passwort:'
@@ -2586,17 +2618,15 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem18: TdxLayoutItem
-      Parent = lagrp_KalenderFTP
-      AlignHorz = ahClient
-      AlignVert = avBottom
+    object laitm_FTPGrid: TdxLayoutItem
+      Parent = lagrp_FTP
       CaptionOptions.Text = 'grd_FTPConfig'
       CaptionOptions.Visible = False
       Control = grd_FTPConfig
       ControlOptions.OriginalHeight = 69
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
-      Index = 1
+      Index = 2
     end
     object lagrp_Aufgaben: TdxLayoutGroup
       Parent = lactrl_ConfigTab
@@ -2606,16 +2636,17 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Text = 'Aufgaben'
       Index = 2
     end
-    object dxLayoutGroup20: TdxLayoutGroup
+    object lagrp_Aufgabenart: TdxLayoutGroup
       Parent = lagrp_Aufgaben
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Aufgabenarten'
       ButtonOptions.ShowExpandButton = True
+      ItemIndex = 1
       Index = 0
     end
-    object dxLayoutItem19: TdxLayoutItem
-      Parent = dxLayoutGroup20
+    object laitm_AufgabenartBar: TdxLayoutItem
+      Parent = lagrp_Aufgabenart
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'bardckctrl_Aufgabenarten'
@@ -2627,8 +2658,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem20: TdxLayoutItem
-      Parent = dxLayoutGroup14
+    object laitm_AufgabenartArt: TdxLayoutItem
+      Parent = lagrp_AufgabenartDetail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Bezeichnung:'
@@ -2638,8 +2669,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem21: TdxLayoutItem
-      Parent = dxLayoutGroup14
+    object laitm_AufgabenartBeschreibung: TdxLayoutItem
+      Parent = lagrp_AufgabenartDetail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Aufgaben Farbe:'
@@ -2649,8 +2680,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem22: TdxLayoutItem
-      Parent = dxLayoutGroup20
+    object laitm_AufgabenartGrid: TdxLayoutItem
+      Parent = lagrp_Aufgabenart
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'grd_Aufgabenarten'
@@ -2661,16 +2692,17 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object dxLayoutGroup25: TdxLayoutGroup
+    object lagrp_Prio: TdxLayoutGroup
       Parent = lagrp_Aufgaben
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Priorit'#228't'
       ButtonOptions.ShowExpandButton = True
+      ItemIndex = 2
       Index = 1
     end
-    object dxLayoutItem23: TdxLayoutItem
-      Parent = dxLayoutGroup25
+    object laitm_PrioBar: TdxLayoutItem
+      Parent = lagrp_Prio
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'bardckctrl_AufgabenPrio'
@@ -2682,8 +2714,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem24: TdxLayoutItem
-      Parent = dxLayoutGroup15
+    object laitm_PrioPrio: TdxLayoutItem
+      Parent = lagrp_PrioDetail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Priorit'#228't:'
@@ -2693,8 +2725,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem25: TdxLayoutItem
-      Parent = dxLayoutGroup15
+    object laitm_PrioBeschreibung: TdxLayoutItem
+      Parent = lagrp_PrioDetail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Bezeichnung:'
@@ -2704,8 +2736,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem26: TdxLayoutItem
-      Parent = dxLayoutGroup25
+    object laitm_PrioGrid: TdxLayoutItem
+      Parent = lagrp_Prio
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'grd_AufgabenPrio'
@@ -2716,16 +2748,17 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object dxLayoutGroup30: TdxLayoutGroup
+    object lagrp_Sonstige: TdxLayoutGroup
       Parent = lagrp_Aufgaben
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Sonstige Einstellungen'
       ButtonOptions.ShowExpandButton = True
+      ItemIndex = 1
       Index = 2
     end
-    object dxLayoutItem27: TdxLayoutItem
-      Parent = dxLayoutGroup30
+    object laitm_SonstigeBar: TdxLayoutItem
+      Parent = lagrp_Sonstige
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'bardckctrl_AufgabenSonstiges'
@@ -2737,8 +2770,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem28: TdxLayoutItem
-      Parent = dxLayoutGroup16
+    object laitm_SonstigeJira: TdxLayoutItem
+      Parent = lagrp_SonstigeDetailLeft
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Jira-Basic-Url:'
@@ -2748,8 +2781,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem29: TdxLayoutItem
-      Parent = dxLayoutGroup16
+    object laitm_SonstigeAdresseSelbst: TdxLayoutItem
+      Parent = lagrp_SonstigeDetailLeft
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Adresse Selbst:'
@@ -2759,8 +2792,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem30: TdxLayoutItem
-      Parent = dxLayoutGroup16
+    object laitm_SonstigeBundesland: TdxLayoutItem
+      Parent = lagrp_SonstigeDetailLeft
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Bundesland:'
@@ -2770,8 +2803,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object dxLayoutItem31: TdxLayoutItem
-      Parent = dxLayoutGroup16
+    object laitm_SonstigeAccTODO: TdxLayoutItem
+      Parent = lagrp_SonstigeDetailLeft
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Account-ToDo:'
@@ -2781,8 +2814,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 3
     end
-    object dxLayoutItem32: TdxLayoutItem
-      Parent = dxLayoutGroup17
+    object laitm_SonstigeStunden: TdxLayoutItem
+      Parent = lagrp_SonstigeDetailRight
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Stunden pro Tag:'
@@ -2792,8 +2825,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem33: TdxLayoutItem
-      Parent = dxLayoutGroup17
+    object laitm_SonstigeAdresseFirma: TdxLayoutItem
+      Parent = lagrp_SonstigeDetailRight
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Adresse Firma:'
@@ -2803,8 +2836,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem34: TdxLayoutItem
-      Parent = dxLayoutGroup17
+    object laitm_SonstigeBundeslandFirma: TdxLayoutItem
+      Parent = lagrp_SonstigeDetailRight
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Bundesland:'
@@ -2814,8 +2847,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object dxLayoutItem35: TdxLayoutItem
-      Parent = dxLayoutGroup17
+    object laitm_SonstigeAccMail: TdxLayoutItem
+      Parent = lagrp_SonstigeDetailRight
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Account-Mails:'
@@ -2831,19 +2864,20 @@ object frm_Config: Tfrm_Config
       AlignVert = avClient
       CaptionOptions.ImageIndex = 14
       CaptionOptions.Text = 'Stundenplan'
+      ItemIndex = 1
       Index = 3
     end
-    object dxLayoutGroup36: TdxLayoutGroup
+    object lagrp_StundenplanFaecher: TdxLayoutGroup
       Parent = lagrp_Stundenplan
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Anzeige Schulf'#228'cher'
       ButtonOptions.ShowExpandButton = True
-      ItemIndex = 1
+      ItemIndex = 2
       Index = 0
     end
-    object dxLayoutItem36: TdxLayoutItem
-      Parent = dxLayoutGroup36
+    object laitm_StundenplanFaecherBar: TdxLayoutItem
+      Parent = lagrp_StundenplanFaecher
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'brdckctrl_Schulfach'
@@ -2855,8 +2889,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem37: TdxLayoutItem
-      Parent = dxLayoutGroup21
+    object laitm_StundenplanFaecherFach: TdxLayoutItem
+      Parent = lagrp_StundenplanFaecherDetail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Schulfach:'
@@ -2866,8 +2900,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem38: TdxLayoutItem
-      Parent = dxLayoutGroup22
+    object laitm_StundenplanFaecherFarbeHintergrund: TdxLayoutItem
+      Parent = lagrp_StundenplanFaecherFarbe
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Hintergrund:'
@@ -2877,8 +2911,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem39: TdxLayoutItem
-      Parent = dxLayoutGroup22
+    object laitm_StundenplanFaecherFarbeSchrift: TdxLayoutItem
+      Parent = lagrp_StundenplanFaecherFarbe
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Schriftfarbe:'
@@ -2888,8 +2922,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem40: TdxLayoutItem
-      Parent = dxLayoutGroup36
+    object laitm_StundenplanFaecherGrid: TdxLayoutItem
+      Parent = lagrp_StundenplanFaecher
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'grd_StundenplanConfig'
@@ -2900,17 +2934,17 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object dxLayoutGroup41: TdxLayoutGroup
+    object lagrp_StundenplanUhrzeit: TdxLayoutGroup
       Parent = lagrp_Stundenplan
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Anzeige Uhrzeiten'
       ButtonOptions.ShowExpandButton = True
-      ItemIndex = 2
+      ItemIndex = 1
       Index = 1
     end
-    object dxLayoutItem41: TdxLayoutItem
-      Parent = dxLayoutGroup41
+    object laitm_StundenplanUhrzeitBar: TdxLayoutItem
+      Parent = lagrp_StundenplanUhrzeit
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'brdckctrl_SchulfachUhr'
@@ -2922,8 +2956,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem42: TdxLayoutItem
-      Parent = dxLayoutGroup19
+    object laitm_StundenplanUhrzeitFarbeHintergrund: TdxLayoutItem
+      Parent = lagrp_StundenplanUhrzeitFarbe
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Hintergrund:'
@@ -2933,8 +2967,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem43: TdxLayoutItem
-      Parent = dxLayoutGroup19
+    object laitm_StundenplanUhrzeitFarbeSchrift: TdxLayoutItem
+      Parent = lagrp_StundenplanUhrzeitFarbe
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Schriftfarbe:'
@@ -2944,17 +2978,15 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem44: TdxLayoutItem
-      Parent = dxLayoutGroup41
-      AlignHorz = ahClient
-      AlignVert = avBottom
+    object laitm_StundenplanUhrzeitGrid: TdxLayoutItem
+      Parent = lagrp_StundenplanUhrzeit
       CaptionOptions.Text = 'grd_StundenplanConfigUhr'
       CaptionOptions.Visible = False
       Control = grd_StundenplanConfigUhr
       ControlOptions.OriginalHeight = 75
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
-      Index = 1
+      Index = 2
     end
     object lagrp_EMail: TdxLayoutGroup
       Parent = lactrl_ConfigTab
@@ -2962,11 +2994,12 @@ object frm_Config: Tfrm_Config
       AlignVert = avClient
       CaptionOptions.ImageIndex = 15
       CaptionOptions.Text = 'E-Mail'
-      ItemIndex = 1
       Index = 4
     end
     object laitm_EmailkonfigurationBar: TdxLayoutItem
       Parent = lagrp_Emailkonfiguration
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'brdckctrl_Email'
       CaptionOptions.Visible = False
       Control = brdckctrl_Email
@@ -2980,23 +3013,12 @@ object frm_Config: Tfrm_Config
       Parent = lagrp_EmailkonfigurationDetailsLeft
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'E-Mail-Adresse:'
+      CaptionOptions.Text = 'E-Mail:'
       Control = edt_EmailConfig_Emailadresse
       ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 350
+      ControlOptions.OriginalWidth = 100
       ControlOptions.ShowBorder = False
       Index = 1
-    end
-    object laitm_EmailType: TdxLayoutItem
-      Parent = lagrp_EmailkonfigurationDetailsLeft
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Kontptyp:'
-      Control = lucmbbx_EmailConfig_Kontptyp
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 350
-      ControlOptions.ShowBorder = False
-      Index = 2
     end
     object laitm_EmailPoseingangadress: TdxLayoutItem
       Parent = lagrp_EmailkonfigurationDetailsLeft
@@ -3005,7 +3027,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Text = 'Posteingangsserver:'
       Control = edt_EmailConfig_PostEingangServer
       ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 350
+      ControlOptions.OriginalWidth = 100
       ControlOptions.ShowBorder = False
       Index = 3
     end
@@ -3016,7 +3038,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Text = 'Port:'
       Control = edt_EmailConfig_PortEingang
       ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 350
+      ControlOptions.OriginalWidth = 100
       ControlOptions.ShowBorder = False
       Index = 4
     end
@@ -3024,32 +3046,20 @@ object frm_Config: Tfrm_Config
       Parent = lagrp_EmailkonfigurationDetailsLeft
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'chxbx_EmailConfig_SSL'
-      CaptionOptions.Visible = False
+      CaptionOptions.Text = 'SSL- Verschl'#252'sselung:'
       Control = chxbx_EmailConfig_SSL
       ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 119
+      ControlOptions.OriginalWidth = 100
       ControlOptions.ShowBorder = False
-      Index = 6
+      Index = 7
     end
     object laitm_EmailAnmeldung: TdxLayoutLabeledItem
       Parent = lagrp_EmailkonfigurationDetailsRight
       AlignHorz = ahClient
-      AlignVert = avTop
       CaptionOptions.AlignVert = tavTop
       CaptionOptions.Text = '[B]Anmeldeinformationen[/B]'
+      CaptionOptions.Width = 135
       Index = 0
-    end
-    object laitm_EmailBenutzer: TdxLayoutItem
-      Parent = lagrp_EmailkonfigurationDetailsRight
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Benutzer:'
-      Control = edt_EmailConfig_Benutzer
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 350
-      ControlOptions.ShowBorder = False
-      Index = 1
     end
     object laitm_EmailKennwort: TdxLayoutItem
       Parent = lagrp_EmailkonfigurationDetailsRight
@@ -3058,31 +3068,32 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Text = 'Kennwort:'
       Control = edt_EmailConfig_Kennwort
       ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 350
+      ControlOptions.OriginalWidth = 300
       ControlOptions.ShowBorder = False
       Index = 2
     end
     object laitm_EmailPosausgangAdress: TdxLayoutItem
-      Parent = lagrp_EmailkonfigurationDetailsRight
+      Parent = lagrp_EmailkonfigurationDetailsLeft
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Postausgangsserver:'
+      CaptionOptions.Width = 110
       Control = edt_EmailConfig_PostAusgangServer
       ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 350
+      ControlOptions.OriginalWidth = 300
       ControlOptions.ShowBorder = False
-      Index = 3
+      Index = 5
     end
     object laitm_EmailPosausgangPort: TdxLayoutItem
-      Parent = lagrp_EmailkonfigurationDetailsRight
+      Parent = lagrp_EmailkonfigurationDetailsLeft
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Port:'
       Control = edt_EmailConfig_PortAusgang
       ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 350
+      ControlOptions.OriginalWidth = 300
       ControlOptions.ShowBorder = False
-      Index = 4
+      Index = 6
     end
     object laitm_EmailCheck: TdxLayoutItem
       Parent = lagrp_Emailkonfiguration
@@ -3098,6 +3109,8 @@ object frm_Config: Tfrm_Config
     end
     object laitm_EmailGrid: TdxLayoutItem
       Parent = lagrp_Emailkonfiguration
+      AlignHorz = ahClient
+      AlignVert = avClient
       CaptionOptions.Text = 'grd_EmailConfig'
       CaptionOptions.Visible = False
       Control = grd_EmailConfig
@@ -3293,37 +3306,38 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'Emailkonfiguration'
       ButtonOptions.ShowExpandButton = True
+      ItemIndex = 1
       Index = 0
     end
-    object lagrp_KalenderFeiertage: TdxLayoutGroup
-      Parent = lagrp_Kalender
+    object lagrp_Feiertage: TdxLayoutGroup
+      Parent = lagrp_Kalenders
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Feiertage'
       ButtonOptions.ShowExpandButton = True
+      ItemIndex = 1
       Index = 1
     end
-    object dxLayoutGroup13: TdxLayoutGroup
-      Parent = lagrp_KalenderKalender
+    object lagrp_KalenderDetail: TdxLayoutGroup
+      Parent = lagrp_Kalender
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 1
     end
-    object dxLayoutGroup5: TdxLayoutGroup
-      Parent = dxLayoutGroup13
+    object lagrp_KalenderDetailLeft: TdxLayoutGroup
+      Parent = lagrp_KalenderDetail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
+      ItemIndex = 3
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup6: TdxLayoutGroup
-      Parent = dxLayoutGroup5
+    object lagrp_KalenderAnTerminerinnern: TdxLayoutGroup
+      Parent = lagrp_KalenderDetailLeft
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
@@ -3331,17 +3345,17 @@ object frm_Config: Tfrm_Config
       ShowBorder = False
       Index = 3
     end
-    object dxLayoutGroup7: TdxLayoutGroup
-      Parent = dxLayoutGroup13
+    object lagrp_KalenderDetailRight: TdxLayoutGroup
+      Parent = lagrp_KalenderDetail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
+      ItemIndex = 2
       ShowBorder = False
       Index = 1
     end
-    object dxLayoutGroup8: TdxLayoutGroup
-      Parent = dxLayoutGroup10
+    object lagrp_FTPDetailLeft: TdxLayoutGroup
+      Parent = lagrp_FTPDetail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
@@ -3349,32 +3363,25 @@ object frm_Config: Tfrm_Config
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup9: TdxLayoutGroup
-      Parent = dxLayoutGroup10
+    object lagrp_FTPDetailRight: TdxLayoutGroup
+      Parent = lagrp_FTPDetail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       ShowBorder = False
       Index = 1
     end
-    object dxLayoutGroup10: TdxLayoutGroup
-      Parent = lagrp_KalenderFTP
+    object lagrp_FTPDetail: TdxLayoutGroup
+      Parent = lagrp_FTP
       CaptionOptions.Text = 'New Group'
-      LayoutDirection = ldHorizontal
-      ShowBorder = False
-      Index = 2
-    end
-    object dxLayoutGroup14: TdxLayoutGroup
-      Parent = dxLayoutGroup20
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 1
     end
-    object dxLayoutGroup15: TdxLayoutGroup
-      Parent = dxLayoutGroup25
+    object lagrp_AufgabenartDetail: TdxLayoutGroup
+      Parent = lagrp_Aufgabenart
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
@@ -3382,24 +3389,36 @@ object frm_Config: Tfrm_Config
       ShowBorder = False
       Index = 1
     end
-    object dxLayoutGroup16: TdxLayoutGroup
-      Parent = dxLayoutGroup18
+    object lagrp_PrioDetail: TdxLayoutGroup
+      Parent = lagrp_Prio
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object lagrp_SonstigeDetailLeft: TdxLayoutGroup
+      Parent = lagrp_SonstigeBarDetail
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 3
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup17: TdxLayoutGroup
-      Parent = dxLayoutGroup18
+    object lagrp_SonstigeDetailRight: TdxLayoutGroup
+      Parent = lagrp_SonstigeBarDetail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 3
       ShowBorder = False
       Index = 1
     end
-    object dxLayoutGroup18: TdxLayoutGroup
-      Parent = dxLayoutGroup30
+    object lagrp_SonstigeBarDetail: TdxLayoutGroup
+      Parent = lagrp_Sonstige
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
@@ -3408,18 +3427,18 @@ object frm_Config: Tfrm_Config
       ShowBorder = False
       Index = 1
     end
-    object dxLayoutGroup19: TdxLayoutGroup
-      Parent = dxLayoutGroup41
+    object lagrp_StundenplanUhrzeitFarbe: TdxLayoutGroup
+      Parent = lagrp_StundenplanUhrzeit
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
-      Index = 2
+      Index = 1
     end
-    object dxLayoutGroup21: TdxLayoutGroup
-      Parent = dxLayoutGroup36
+    object lagrp_StundenplanFaecherDetail: TdxLayoutGroup
+      Parent = lagrp_StundenplanFaecher
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
@@ -3427,30 +3446,32 @@ object frm_Config: Tfrm_Config
       ShowBorder = False
       Index = 1
     end
-    object dxLayoutGroup22: TdxLayoutGroup
-      Parent = dxLayoutGroup21
+    object lagrp_StundenplanFaecherFarbe: TdxLayoutGroup
+      Parent = lagrp_StundenplanFaecherDetail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 1
     end
     object lagrp_EmailkonfigurationDetails: TdxLayoutGroup
-      Parent = lagrp_Emailkonfiguration
+      Parent = dxLayoutGroup1
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
       ItemIndex = 1
       LayoutDirection = ldHorizontal
-      Index = 1
+      ShowBorder = False
+      Index = 0
     end
     object lagrp_EmailkonfigurationDetailsLeft: TdxLayoutGroup
       Parent = lagrp_EmailkonfigurationDetails
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 6
+      ItemIndex = 8
       ShowBorder = False
       Index = 0
     end
@@ -3459,7 +3480,7 @@ object frm_Config: Tfrm_Config
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 5
+      ItemIndex = 1
       ShowBorder = False
       Index = 1
     end
@@ -3479,20 +3500,19 @@ object frm_Config: Tfrm_Config
       AlignVert = avClient
       CaptionOptions.ImageIndex = 11
       CaptionOptions.Text = 'Kontakte'
-      ItemIndex = 2
       Index = 0
     end
-    object dxLayoutGroup1: TdxLayoutGroup
+    object lagrp_Anrede: TdxLayoutGroup
       Parent = lagrp_Contacts
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Anrede'
       ButtonOptions.ShowExpandButton = True
-      ItemIndex = 2
+      ItemIndex = 1
       Index = 0
     end
-    object dxLayoutItem51: TdxLayoutItem
-      Parent = dxLayoutGroup1
+    object laitm_AnredeBar: TdxLayoutItem
+      Parent = lagrp_Anrede
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Item'
@@ -3504,17 +3524,17 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup24: TdxLayoutGroup
+    object lagrp_Geburtsland: TdxLayoutGroup
       Parent = lagrp_Contacts
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Geburtsland'
       ButtonOptions.ShowExpandButton = True
-      ItemIndex = 2
+      ItemIndex = 1
       Index = 1
     end
-    object dxLayoutItem58: TdxLayoutItem
-      Parent = dxLayoutGroup24
+    object laitm_GeburtslandBar: TdxLayoutItem
+      Parent = lagrp_Geburtsland
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Item'
@@ -3526,17 +3546,17 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup26: TdxLayoutGroup
+    object lagrp_Phone: TdxLayoutGroup
       Parent = lagrp_Contacts
       AlignHorz = ahClient
       AlignVert = avBottom
       CaptionOptions.Text = 'Schnittstelle Telefon (PhonerLite)'
       ButtonOptions.ShowExpandButton = True
-      ItemIndex = 1
+      ItemIndex = 2
       Index = 2
     end
-    object dxLayoutItem71: TdxLayoutItem
-      Parent = dxLayoutGroup26
+    object laitm_PhoneBar: TdxLayoutItem
+      Parent = lagrp_Phone
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Item'
@@ -3548,8 +3568,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem72: TdxLayoutItem
-      Parent = dxLayoutGroup1
+    object laitm_AnredeAnrede: TdxLayoutItem
+      Parent = lagrp_Anrede
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Anrede:'
@@ -3559,8 +3579,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem73: TdxLayoutItem
-      Parent = dxLayoutGroup26
+    object laitm_PhonePhonepath: TdxLayoutItem
+      Parent = lagrp_Phone
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Pfad Software:'
@@ -3570,8 +3590,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem74: TdxLayoutItem
-      Parent = dxLayoutGroup24
+    object laitm_GeburtslandLand: TdxLayoutItem
+      Parent = lagrp_Geburtsland
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Land:'
@@ -3581,8 +3601,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem76: TdxLayoutItem
-      Parent = dxLayoutGroup26
+    object laitm_PhoneGrid: TdxLayoutItem
+      Parent = lagrp_Phone
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'cxGrid1'
@@ -3593,8 +3613,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object dxLayoutItem77: TdxLayoutItem
-      Parent = dxLayoutGroup24
+    object laitm_GeburtslandGrid: TdxLayoutItem
+      Parent = lagrp_Geburtsland
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'cxGrid2'
@@ -3605,8 +3625,8 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object dxLayoutItem78: TdxLayoutItem
-      Parent = dxLayoutGroup1
+    object laitm_AnredeGrid: TdxLayoutItem
+      Parent = lagrp_Anrede
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'cxGrid3'
@@ -3624,31 +3644,103 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Text = 'Authentifizierung:'
       Control = cmbbx_Auth
       ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 121
+      ControlOptions.OriginalWidth = 300
       ControlOptions.ShowBorder = False
-      Index = 5
+      Index = 8
     end
     object laitm_EmailClientID: TdxLayoutItem
-      Parent = lagrp_EmailkonfigurationDetailsRight
+      Parent = lagrp_OauthDetail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'ClientID:'
       Control = cxDBTextEdit1
       ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 100
+      ControlOptions.OriginalWidth = 300
       ControlOptions.ShowBorder = False
-      Index = 5
+      Index = 0
     end
     object laitm_EmailClientSecret: TdxLayoutItem
-      Parent = lagrp_EmailkonfigurationDetailsRight
+      Parent = lagrp_OauthDetail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'ClientSecret:'
+      CaptionOptions.Width = 140
       Control = cxDBTextEdit2
       ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 100
+      ControlOptions.OriginalWidth = 300
       ControlOptions.ShowBorder = False
-      Index = 6
+      Index = 1
+    end
+    object dxLayoutGroup1: TdxLayoutGroup
+      Parent = lagrp_Emailkonfiguration
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 1
+    end
+    object lagrp_OauthDetail: TdxLayoutGroup
+      Parent = lagrp_EmailkonfigurationDetailsRight
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'O-Atuth'
+      ShowBorder = False
+      Index = 3
+    end
+    object laitm_AuthorizationEndpoint: TdxLayoutItem
+      Parent = lagrp_OauthDetail
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'AuthorizationEndpoint:'
+      Control = cxDBTextEdit3
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 300
+      ControlOptions.ShowBorder = False
+      Index = 3
+    end
+    object laitm_scopes: TdxLayoutItem
+      Parent = lagrp_OauthDetail
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Scopes:'
+      CaptionOptions.Width = 140
+      Control = cxDBTextEdit5
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 300
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object laitm_AccessTokenEndpoint: TdxLayoutItem
+      Parent = lagrp_OauthDetail
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'AccessTokenEndpoint:'
+      Control = cxDBTextEdit4
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 300
+      ControlOptions.ShowBorder = False
+      Index = 4
+    end
+    object laitm_EmailBenutzer: TdxLayoutItem
+      Parent = lagrp_EmailkonfigurationDetailsRight
+      AlignHorz = ahClient
+      CaptionOptions.Text = 'Benutzer:'
+      Control = edt_EmailConfig_Benutzer
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 300
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = lagrp_EmailkonfigurationDetailsLeft
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      Control = lucmbbx_EmailConfig_Kontptyp
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 300
+      ControlOptions.ShowBorder = False
+      Index = 2
     end
   end
   object qry_CalConfig: TFDQuery
@@ -3755,7 +3847,6 @@ object frm_Config: Tfrm_Config
     Top = 136
   end
   object qry_EmailConfig: TFDQuery
-    Active = True
     AfterOpen = SetButtonsEnableVisible
     AfterInsert = SetButtonsEnableVisible
     AfterEdit = SetButtonsEnableVisible
@@ -4589,12 +4680,6 @@ object frm_Config: Tfrm_Config
       LargeImageIndex = 27
       Width = 125
     end
-    object dxBarLargeButton3: TdxBarLargeButton
-      Caption = 'New Button'
-      Category = 0
-      Hint = 'New Button'
-      Visible = ivAlways
-    end
     object btn_LandNew: TdxBarLargeButton
       Caption = 'Land anlegen'
       Category = 0
@@ -4634,24 +4719,6 @@ object frm_Config: Tfrm_Config
       AutoGrayScale = False
       LargeImageIndex = 24
       Width = 125
-    end
-    object dxBarLargeButton8: TdxBarLargeButton
-      Caption = 'New Button'
-      Category = 0
-      Hint = 'New Button'
-      Visible = ivAlways
-    end
-    object dxBarLargeButton9: TdxBarLargeButton
-      Caption = 'New Button'
-      Category = 0
-      Hint = 'New Button'
-      Visible = ivAlways
-    end
-    object dxBarLargeButton10: TdxBarLargeButton
-      Caption = 'New Button'
-      Category = 0
-      Hint = 'New Button'
-      Visible = ivAlways
     end
     object btn_LandSave: TdxBarLargeButton
       Caption = 'Land speichern'

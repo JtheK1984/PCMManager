@@ -13,170 +13,104 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
   Font.Style = []
   WindowState = wsMaximized
   OnClose = FormClose
+  OnCreate = FormCreate
   OnDestroy = FormDestroy
+  OnShow = FormShow
   TextHeight = 13
   object grpbx_Email: TcxGroupBox
     Left = 0
-    Top = 58
+    Top = 0
     Align = alClient
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     Style.LookAndFeel.NativeStyle = False
     StyleDisabled.LookAndFeel.NativeStyle = False
     TabOrder = 4
+    ExplicitTop = 58
     ExplicitWidth = 1116
     ExplicitHeight = 715
-    Height = 732
+    Height = 790
     Width = 1122
-    object grpbx_Detail: TcxGroupBox
-      Left = 2
-      Top = 2
-      Align = alTop
-      PanelStyle.Active = True
-      Style.BorderStyle = ebsNone
+  end
+  object lactrl_Mail: TdxLayoutControl
+    Left = 0
+    Top = 0
+    Width = 1122
+    Height = 790
+    Align = alClient
+    TabOrder = 5
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    ExplicitLeft = 416
+    ExplicitTop = 288
+    ExplicitWidth = 698
+    ExplicitHeight = 250
+    object lbl_Betreff: TcxLabel
+      Left = 53
+      Top = 134
+      Style.HotTrack = False
       Style.LookAndFeel.NativeStyle = False
+      Style.TransparentBorder = False
       StyleDisabled.LookAndFeel.NativeStyle = False
-      TabOrder = 0
-      ExplicitWidth = 1112
-      Height = 79
-      Width = 1118
-      object grpbx_EmailValues: TcxGroupBox
-        Left = 50
-        Top = 2
-        Align = alClient
-        PanelStyle.Active = True
-        Style.BorderStyle = ebsNone
-        Style.LookAndFeel.NativeStyle = False
-        StyleDisabled.LookAndFeel.NativeStyle = False
-        TabOrder = 0
-        ExplicitWidth = 1060
-        Height = 75
-        Width = 1066
-        object lbl_Betreff: TcxLabel
-          Left = 2
-          Top = 53
-          Align = alTop
-          Style.LookAndFeel.NativeStyle = False
-          StyleDisabled.LookAndFeel.NativeStyle = False
-          StyleFocused.LookAndFeel.NativeStyle = False
-          StyleHot.LookAndFeel.NativeStyle = False
-          TabOrder = 0
-          Transparent = True
-          ExplicitWidth = 1056
-        end
-        object lbl_CC: TcxLabel
-          Left = 2
-          Top = 36
-          Align = alTop
-          Style.LookAndFeel.NativeStyle = False
-          StyleDisabled.LookAndFeel.NativeStyle = False
-          StyleFocused.LookAndFeel.NativeStyle = False
-          StyleHot.LookAndFeel.NativeStyle = False
-          TabOrder = 1
-          Transparent = True
-          ExplicitWidth = 1056
-        end
-        object lbl_AN: TcxLabel
-          Left = 2
-          Top = 19
-          Align = alTop
-          Style.LookAndFeel.NativeStyle = False
-          StyleDisabled.LookAndFeel.NativeStyle = False
-          StyleFocused.LookAndFeel.NativeStyle = False
-          StyleHot.LookAndFeel.NativeStyle = False
-          TabOrder = 2
-          Transparent = True
-          ExplicitWidth = 1056
-        end
-        object lbl_Von: TcxLabel
-          Left = 2
-          Top = 2
-          Align = alTop
-          Style.LookAndFeel.NativeStyle = False
-          StyleDisabled.LookAndFeel.NativeStyle = False
-          StyleFocused.LookAndFeel.NativeStyle = False
-          StyleHot.LookAndFeel.NativeStyle = False
-          TabOrder = 3
-          Transparent = True
-          ExplicitWidth = 1056
-        end
-      end
-      object grpbx_EmailLabel: TcxGroupBox
-        Left = 2
-        Top = 2
-        Align = alLeft
-        PanelStyle.Active = True
-        Style.BorderStyle = ebsNone
-        Style.LookAndFeel.NativeStyle = False
-        StyleDisabled.LookAndFeel.NativeStyle = False
-        TabOrder = 1
-        Height = 75
-        Width = 48
-        object lbl_BetreffLabel: TcxLabel
-          Left = 2
-          Top = 53
-          Align = alTop
-          Caption = 'Betreff:'
-          Style.LookAndFeel.NativeStyle = False
-          StyleDisabled.LookAndFeel.NativeStyle = False
-          StyleFocused.LookAndFeel.NativeStyle = False
-          StyleHot.LookAndFeel.NativeStyle = False
-          TabOrder = 0
-          Transparent = True
-        end
-        object lbl_CCLabel: TcxLabel
-          Left = 2
-          Top = 36
-          Align = alTop
-          Caption = 'CC:'
-          Style.LookAndFeel.NativeStyle = False
-          StyleDisabled.LookAndFeel.NativeStyle = False
-          StyleFocused.LookAndFeel.NativeStyle = False
-          StyleHot.LookAndFeel.NativeStyle = False
-          TabOrder = 1
-          Transparent = True
-        end
-        object lbl_AnLabel: TcxLabel
-          Left = 2
-          Top = 19
-          Align = alTop
-          Caption = 'An:'
-          Style.LookAndFeel.NativeStyle = False
-          StyleDisabled.LookAndFeel.NativeStyle = False
-          StyleFocused.LookAndFeel.NativeStyle = False
-          StyleHot.LookAndFeel.NativeStyle = False
-          TabOrder = 2
-          Transparent = True
-        end
-        object lbl_VonLabel: TcxLabel
-          Left = 2
-          Top = 2
-          Align = alTop
-          Caption = 'Von:'
-          Style.LookAndFeel.NativeStyle = False
-          StyleDisabled.LookAndFeel.NativeStyle = False
-          StyleFocused.LookAndFeel.NativeStyle = False
-          StyleHot.LookAndFeel.NativeStyle = False
-          TabOrder = 3
-          Transparent = True
-        end
-      end
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 5
+      Transparent = True
+    end
+    object lbl_CC: TcxLabel
+      Left = 53
+      Top = 114
+      Style.HotTrack = False
+      Style.LookAndFeel.NativeStyle = False
+      Style.TransparentBorder = False
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 4
+      Transparent = True
+    end
+    object lbl_AN: TcxLabel
+      Left = 53
+      Top = 94
+      Style.HotTrack = False
+      Style.LookAndFeel.NativeStyle = False
+      Style.TransparentBorder = False
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 2
+      Transparent = True
+    end
+    object lbl_Von: TcxLabel
+      Left = 53
+      Top = 74
+      Style.HotTrack = False
+      Style.LookAndFeel.NativeStyle = False
+      Style.TransparentBorder = False
+      StyleDisabled.LookAndFeel.NativeStyle = False
+      StyleFocused.LookAndFeel.NativeStyle = False
+      StyleHot.LookAndFeel.NativeStyle = False
+      TabOrder = 1
+      Transparent = True
     end
     object lstVw_Mail: TcxListView
-      Left = 2
-      Top = 81
-      Width = 1118
-      Height = 41
+      Left = 10
+      Top = 154
+      Width = 1102
+      Height = 87
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
       Margins.Bottom = 0
-      Align = alTop
-      Columns = <>
+      Columns = <
+        item
+          Width = 100
+        end>
       HideSelection = False
+      IconOptions.Arrangement = iaLeft
+      IconOptions.AutoArrange = True
       Items.ItemData = {
-        051C0200000D00000000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF000000
-        00000100000000000000FFFFFFFF00000000FFFFFFFF00000000047300640073
+        05360200000E00000001000000FFFFFFFFFFFFFFFF00000000FFFFFFFF000000
+        00000100000001000000FFFFFFFF00000000FFFFFFFF00000000047300640073
         0064000000000002000000FFFFFFFF00000000FFFFFFFF000000000473006400
         7300640000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF0000000033730064
         0073006400730064006A006B0067006A00680067006A006B006800670068006B
@@ -191,42 +125,182 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
         0000057800630078006300780000000000FFFFFFFFFFFFFFFF00000000FFFFFF
         FF00000000057800630078006300780000000000FFFFFFFFFFFFFFFF00000000
         FFFFFFFF00000000057800630078006300780000000000FFFFFFFFFFFFFFFF00
-        000000FFFFFFFF0000000006780063007800630078006300}
+        000000FFFFFFFF000000000678006300780063007800630000000000FFFFFFFF
+        FFFFFFFF00000000FFFFFFFF0000000000}
       ParentFont = False
       PopupMenu = brpmm_Mail
       SmallImages = imglst_16x16_1
-      Style.BorderStyle = cbsNone
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
       Style.Font.Name = 'Tahoma'
       Style.Font.Style = []
+      Style.HotTrack = False
       Style.LookAndFeel.NativeStyle = False
+      Style.TransparentBorder = False
       Style.IsFontAssigned = True
       StyleDisabled.LookAndFeel.NativeStyle = False
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       StyleReadOnly.LookAndFeel.NativeStyle = False
-      TabOrder = 1
-      ViewStyle = vsList
+      TabOrder = 6
+      ViewStyle = vsSmallIcon
       OnDblClick = lstVw_MailDblClick
-      ExplicitWidth = 1112
     end
-    object webbwr_Mail: TWebBrowser
-      Left = 2
-      Top = 122
-      Width = 1118
-      Height = 608
-      Align = alClient
-      TabOrder = 2
-      ExplicitWidth = 1112
-      ExplicitHeight = 591
-      ControlData = {
-        4C000000084D0000E42900000000000000000000000000000000000000000000
-        000000004C000000000000000000000001000000E0D057007335CF11AE690800
-        2B2E126208000000000000004C0000000114020000000000C000000000000046
-        8000000000000000000000000000000000000000000000000000000000000000
-        00000000000000000100000000000000000000000000000000000000}
+    object dxBarDockControl1: TdxBarDockControl
+      Left = 10
+      Top = 10
+      Width = 1102
+      Height = 58
+      Align = dalNone
+      BarManager = brmgr_Email
+    end
+    object cxLabel1: TcxLabel
+      Left = 1012
+      Top = 94
+      AutoSize = False
+      Caption = 'cxLabel1'
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 3
+      Transparent = True
+      Height = 13
+      Width = 100
+    end
+    object pnl_browser: TcxGroupBox
+      Left = 10
+      Top = 247
+      PanelStyle.Active = True
+      Style.TransparentBorder = False
+      TabOrder = 7
+      Height = 533
+      Width = 1102
+    end
+    object lactrl_MailGroup_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      ShowBorder = False
+      Index = -1
+    end
+    object lagrpl_MailBar: TdxLayoutItem
+      Parent = lagrpl_Mail
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = dxBarDockControl1
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalWidth = 1118
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object lagrpl_Mail: TdxLayoutGroup
+      Parent = lactrl_MailGroup_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 2
+      ShowBorder = False
+      Index = 0
+    end
+    object lagrpl_MailHeader: TdxLayoutGroup
+      Parent = lagrpl_Mail
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 3
+      ShowBorder = False
+      Index = 1
+    end
+    object laitm_MailBetreff: TdxLayoutItem
+      Parent = lagrpl_MailHeader
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Betreff:'
+      Control = lbl_Betreff
+      ControlOptions.OriginalHeight = 13
+      ControlOptions.OriginalWidth = 3
+      ControlOptions.ShowBorder = False
+      Index = 3
+    end
+    object laitm_MailCC: TdxLayoutItem
+      Parent = lagrpl_MailHeader
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'CC:'
+      Control = lbl_CC
+      ControlOptions.OriginalHeight = 13
+      ControlOptions.OriginalWidth = 3
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object laitm_MailAn: TdxLayoutItem
+      Parent = lagrpl_MailANDatum
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'An:'
+      Control = lbl_AN
+      ControlOptions.OriginalHeight = 13
+      ControlOptions.OriginalWidth = 3
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object laitm_MailVon: TdxLayoutItem
+      Parent = lagrpl_MailHeader
+      AlignHorz = ahClient
+      CaptionOptions.Text = 'Von:'
+      Control = lbl_Von
+      ControlOptions.OriginalHeight = 13
+      ControlOptions.OriginalWidth = 3
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object laitm_Anhang: TdxLayoutItem
+      Parent = lagrpl_Mail
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = lstVw_Mail
+      ControlOptions.OriginalHeight = 87
+      ControlOptions.OriginalWidth = 1112
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object lagrpl_MailANDatum: TdxLayoutGroup
+      Parent = lagrpl_MailHeader
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object laitm_MailDatum: TdxLayoutItem
+      Parent = lagrpl_MailANDatum
+      AlignHorz = ahRight
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = cxLabel1
+      ControlOptions.OriginalHeight = 13
+      ControlOptions.OriginalWidth = 100
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object laitm_Mail: TdxLayoutItem
+      Parent = lagrpl_Mail
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = pnl_browser
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 105
+      ControlOptions.OriginalWidth = 185
+      ControlOptions.ShowBorder = False
+      Index = 3
     end
   end
   object brmgr_Email: TdxBarManager
@@ -251,23 +325,17 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
     LookAndFeel.NativeStyle = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 320
     Top = 240
     PixelsPerInch = 96
-    DockControlHeights = (
-      0
-      0
-      58
-      0)
     object tb_Mail: TdxBar
       Caption = 'Custom 1'
       CaptionButtons = <>
-      DockedDockingStyle = dsTop
+      DockControl = dxBarDockControl1
+      DockedDockControl = dxBarDockControl1
       DockedLeft = 0
       DockedTop = 0
-      DockingStyle = dsTop
       FloatLeft = 962
       FloatTop = 2
       FloatClientWidth = 0
@@ -343,12 +411,26 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
       SyncImageIndex = False
       ImageIndex = -1
     end
-    object btn_Open: TdxBarButton
+    object ppmbtn_Open: TdxBarButton
       Caption = #214'ffnen'
       Category = 1
       Visible = ivAlways
       ImageIndex = 26
-      OnClick = btn_OpenClick
+      OnClick = ppmbtn_OpenClick
+    end
+    object ppmbtn_Preview: TdxBarButton
+      Caption = 'Vorschau'
+      Category = 1
+      Hint = 'Vorschau'
+      Visible = ivAlways
+      ImageIndex = 75
+    end
+    object ppmbtn_Save: TdxBarButton
+      Caption = 'Speichern unter'
+      Category = 1
+      Hint = 'Speichern unter'
+      Visible = ivAlways
+      ImageIndex = 27
     end
   end
   object dlgSave_Anhang: TSaveDialog
@@ -391,7 +473,15 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
     ItemLinks = <
       item
         Visible = True
-        ItemName = 'btn_Open'
+        ItemName = 'ppmbtn_Preview'
+      end
+      item
+        Visible = True
+        ItemName = 'ppmbtn_Open'
+      end
+      item
+        Visible = True
+        ItemName = 'ppmbtn_Save'
       end>
     UseOwnFont = False
     Left = 584

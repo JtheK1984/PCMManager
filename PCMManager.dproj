@@ -79,7 +79,7 @@
         <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Build>2</VerInfo_Build>
         <DCC_OutputDRCFile>true</DCC_OutputDRCFile>
-        <DCC_UnitSearchPath>PCM-Functions;PCM-Functions\WebView2;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>PCM-Functions;PCM-Functions\WebView2;PCM-Functions\Synedit;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_NXCompat>false</DCC_NXCompat>
         <DCC_DynamicBase>false</DCC_DynamicBase>
         <DCC_HighEntropyVa>false</DCC_HighEntropyVa>
@@ -230,9 +230,13 @@ $(PreBuildEvent)]]></PreBuildEvent>
         </DCCReference>
         <DCCReference Include="PCMManager.dxSettings.pas"/>
         <DCCReference Include="Helper\PCMManager.Helper.Email.OAuth.pas"/>
-        <DCCReference Include="..\..\GmailAuthSMTP-master\IdSASL.OAuth.XOAUTH2.pas"/>
-        <DCCReference Include="..\..\GmailAuthSMTP-master\IdSASL.OAuth.OAuth2Bearer.pas"/>
-        <DCCReference Include="..\..\GmailAuthSMTP-master\IdSASL.OAuth.Base.pas"/>
+        <DCCReference Include="Helper\IdSASL.OAuth.Base.pas"/>
+        <DCCReference Include="Helper\IdSASL.OAuth.OAuth2Bearer.pas"/>
+        <DCCReference Include="Helper\IdSASL.OAuth.XOAUTH2.pas"/>
+        <DCCReference Include="Modules\PCMManager.Modul.E_Mail.Signaturen.pas">
+            <Form>frm_Signatur</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -254,6 +258,7 @@ $(PreBuildEvent)]]></PreBuildEvent>
                     <Source Name="MainSource">PCMManager.dpr</Source>
                 </Source>
                 <Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\ZMIComponents_Dsgn.bpl">ZMI Komponenten</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k290.bpl">Microsoft Office 2000 Beispiele für gekapselte Komponenten für Automatisierungsserver</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>

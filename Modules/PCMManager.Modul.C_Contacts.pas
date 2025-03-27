@@ -4,24 +4,100 @@ interface
 
 uses
   {$Region Uses}
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, dxBarBuiltInMenu, cxGraphics,
-  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage,
-  cxEdit, cxNavigator, dxDateRanges, dxScrollbarAnnotations, Data.DB, cxDBData,
-  cxDBLookupComboBox, cxContainer, Vcl.Menus, cxDBEdit, Vcl.StdCtrls, cxImage,
-  cxLookupEdit, cxDBLookupEdit, cxDropDownEdit, cxCalendar, cxMemo, cxButtons,
-  cxLabel, cxTextEdit, cxMaskEdit, cxGroupBox, cxGridLevel,
-  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
-  cxGridCustomView, cxGrid, cxPC, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client,shellapi,cxSchedulerRecurrence,system.math,cxDateUtils,dateutils,
-  dxBar, cxGridCustomPopupMenu, cxGridPopupMenu,cxGridExportLink, System.UITypes, strutils,
-  IdBaseComponent, IdCoder, IdCoder3to4, IdCoderMIME, IdCoderQuotedPrintable,Soap.EncdDecd,System.netencoding,
-  Vcl.ExtCtrls, dxShellDialogs,PCM.Functions,cxSchedulerStorage,
-  cxColorComboBox, cxDBColorComboBox, cxSpinEdit, cxTimeEdit,
-  dxLayoutcxEditAdapters, dxLayoutControlAdapters, dxLayoutContainer,
-  dxLayoutControl, dxUIAClasses,PCM.Browser, Vcl.OleServer, OutlookXP;
+  cxButtons,
+  cxCalendar,
+  cxClasses,
+  cxColorComboBox,
+  cxContainer,
+  cxControls,
+  cxCustomData,
+  cxData,
+  cxDataStorage,
+  cxDateUtils,
+  cxDBColorComboBox,
+  cxDBData,
+  cxDBEdit,
+  cxDBLookupComboBox,
+  cxDBLookupEdit,
+  cxDropDownEdit,
+  cxEdit,
+  cxFilter,
+  cxGraphics,
+  cxGrid,
+  cxGridCustomPopupMenu,
+  cxGridCustomTableView,
+  cxGridCustomView,
+  cxGridDBTableView,
+  cxGridExportLink,
+  cxGridLevel,
+  cxGridPopupMenu,
+  cxGridTableView,
+  cxGroupBox,
+  cxImage,
+  cxLabel,
+  cxLookAndFeelPainters,
+  cxLookAndFeels,
+  cxLookupEdit,
+  cxMaskEdit,
+  cxMemo,
+  cxNavigator,
+  cxPC,
+  cxSchedulerRecurrence,
+  cxSchedulerStorage,
+  cxSpinEdit,
+  cxStyles,
+  cxTextEdit,
+  cxTimeEdit,
+  Data.DB,
+  dateutils,
+  dxBar,
+  dxBarBuiltInMenu,
+  dxDateRanges,
+  dxLayoutContainer,
+  dxLayoutControl,
+  dxLayoutControlAdapters,
+  dxLayoutcxEditAdapters,
+  dxScrollbarAnnotations,
+  dxShellDialogs,
+  dxUIAClasses,
+  FireDAC.Comp.Client,
+  FireDAC.Comp.DataSet,
+  FireDAC.DApt,
+  FireDAC.DApt.Intf,
+  FireDAC.DatS,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Async,
+  FireDAC.Stan.Error,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+  IdBaseComponent,
+  IdCoder,
+  IdCoder3to4,
+  IdCoderMIME,
+  IdCoderQuotedPrintable,
+  OutlookXP,
+  PCM.Browser,
+  PCM.Functions,
+  shellapi,
+  Soap.EncdDecd,
+  strutils,
+  System.Classes,
+  system.math,
+  System.netencoding,
+  System.SysUtils,
+  System.UITypes,
+  System.Variants,
+  Vcl.Controls,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.Menus,
+  Vcl.OleServer,
+  Vcl.StdCtrls,
+  Winapi.Messages,
+  Winapi.Windows;
   {$EndRegion Uses}
 type
   {$Region Types}
@@ -205,70 +281,70 @@ type
     lagrp_Zusatz: TdxLayoutGroup;
     lagrp_Sonstige: TdxLayoutGroup;
     lagrp_Business: TdxLayoutGroup;
-    itm_Anrede: TdxLayoutItem;
-    itm_Vorname: TdxLayoutItem;
-    itm_Geburtsname: TdxLayoutItem;
-    itm_Nachname: TdxLayoutItem;
-    itm_Geburtsland: TdxLayoutItem;
-    itm_HandyPrivat: TdxLayoutItem;
-    itm_Telefon2: TdxLayoutItem;
-    itm_Telefon1: TdxLayoutItem;
-    itm_MapPrivat: TdxLayoutItem;
-    itm_OrtPrivat: TdxLayoutItem;
-    itm_PLZPrivat: TdxLayoutItem;
-    itm_Zusatz: TdxLayoutItem;
-    itm_StrassePrivat: TdxLayoutItem;
-    itm_Mail1PrivatBtn: TdxLayoutItem;
-    itm_Mail2PrivatBtn: TdxLayoutItem;
-    itm_WebPrivatText: TdxLayoutItem;
-    itm_Mail1PrivatText: TdxLayoutItem;
-    itm_Mail2PrivatText: TdxLayoutItem;
+    laitm_Anrede: TdxLayoutItem;
+    laitm_Vorname: TdxLayoutItem;
+    laitm_Geburtsname: TdxLayoutItem;
+    laitm_Nachname: TdxLayoutItem;
+    laitm_Geburtsland: TdxLayoutItem;
+    laitm_HandyPrivatText: TdxLayoutItem;
+    itm_Telefon2Text: TdxLayoutItem;
+    laitm_Telefon1Text: TdxLayoutItem;
+    laitm_MapPrivat: TdxLayoutItem;
+    laitm_OrtPrivat: TdxLayoutItem;
+    laitm_PLZPrivat: TdxLayoutItem;
+    laitm_Zusatz: TdxLayoutItem;
+    laitm_StrassePrivat: TdxLayoutItem;
+    laitm_Mail1PrivatBtn: TdxLayoutItem;
+    laitm_Mail2PrivatBtn: TdxLayoutItem;
+    laitm_WebPrivatText: TdxLayoutItem;
+    laitm_Mail1PrivatText: TdxLayoutItem;
+    laitm_Mail2PrivatText: TdxLayoutItem;
     itm_Geburtsdatum: TdxLayoutItem;
-    itm_Familienstand: TdxLayoutItem;
-    itm_Geschlecht: TdxLayoutItem;
-    itm_Konfession: TdxLayoutItem;
-    itm_Staatsangehoerigkeit: TdxLayoutItem;
-    itm_Picture: TdxLayoutItem;
-    itm_ZusatzSeperator: TdxLayoutSeparatorItem;
-    itm_Sonstiges: TdxLayoutItem;
-    lbl_Sonstiges: TdxLayoutLabeledItem;
-    itm_StaatsangehoerigkeitBtn: TdxLayoutItem;
-    itm_KonfessionBtn: TdxLayoutItem;
-    itm_WebPrivatBtn: TdxLayoutItem;
+    laitm_Familienstand: TdxLayoutItem;
+    laitm_Geschlecht: TdxLayoutItem;
+    laitm_Konfession: TdxLayoutItem;
+    laitm_Staatsangehoerigkeit: TdxLayoutItem;
+    laitm_Picture: TdxLayoutItem;
+    laitm_ZusatzSeperator: TdxLayoutSeparatorItem;
+    laitm_Sonstiges: TdxLayoutItem;
+    laitm_Sonstigeslabel: TdxLayoutLabeledItem;
+    laitm_StaatsangehoerigkeitBtn: TdxLayoutItem;
+    laitm_KonfessionBtn: TdxLayoutItem;
+    laitm_WebPrivatBtn: TdxLayoutItem;
     lagrp_PersonalTab: TdxLayoutGroup;
     lagrp_Suche: TdxLayoutGroup;
     lagrp_Mitarbeiter: TdxLayoutGroup;
     lagrp_SucheFilter: TdxLayoutGroup;
-    itm_SucheErgebnis: TdxLayoutItem;
-    itm_Funktion: TdxLayoutItem;
-    itm_SucheFilterLoeschen: TdxLayoutItem;
-    itm_SucheFiltersetzen: TdxLayoutItem;
-    itm_StrasseBusiness: TdxLayoutItem;
-    itm_Abteilung: TdxLayoutItem;
-    itm_MailBusinessText: TdxLayoutItem;
-    itm_Firma: TdxLayoutItem;
-    itm_WebBusinessText: TdxLayoutItem;
-    itm_OrtBusiness: TdxLayoutItem;
-    itm_PLZBusiness: TdxLayoutItem;
-    itm_TelefonDurchwahl: TdxLayoutItem;
-    itm_TelefonZentrale: TdxLayoutItem;
-    itm_KontaktartSuche: TdxLayoutItem;
-    itm_AbteilungSuche: TdxLayoutItem;
-    itm_FirmaSuche: TdxLayoutItem;
-    itm_FunktionSuche: TdxLayoutItem;
-    itm_NachnameSuche: TdxLayoutItem;
-    itm_OrtSuche: TdxLayoutItem;
-    itm_PLZSuche: TdxLayoutItem;
-    itm_StrasseSuche: TdxLayoutItem;
-    itm_VornameSuche: TdxLayoutItem;
-    itm_Facebook: TdxLayoutItem;
-    itm_Skype: TdxLayoutItem;
-    itm_Teams: TdxLayoutItem;
-    itm_WebBusinessBtn: TdxLayoutItem;
-    itm_MailBusinessBtn: TdxLayoutItem;
-    itm_MapBusiness: TdxLayoutItem;
-    itm_Kontaktart: TdxLayoutItem;
-    itm_HandyBusiness: TdxLayoutItem;
+    laitm_SucheErgebnis: TdxLayoutItem;
+    laitm_Funktion: TdxLayoutItem;
+    laitm_SucheFilterLoeschen: TdxLayoutItem;
+    laitm_SucheFiltersetzen: TdxLayoutItem;
+    laitm_StrasseBusiness: TdxLayoutItem;
+    laitm_Abteilung: TdxLayoutItem;
+    laitm_MailBusinessText: TdxLayoutItem;
+    laitm_Firma: TdxLayoutItem;
+    laitm_WebBusinessText: TdxLayoutItem;
+    laitm_OrtBusiness: TdxLayoutItem;
+    laitm_PLZBusiness: TdxLayoutItem;
+    laitm_TelefonDurchwahlText: TdxLayoutItem;
+    laitm_TelefonZentraleText: TdxLayoutItem;
+    laitm_KontaktartSuche: TdxLayoutItem;
+    laitm_AbteilungSuche: TdxLayoutItem;
+    laitm_FirmaSuche: TdxLayoutItem;
+    laitm_FunktionSuche: TdxLayoutItem;
+    laitm_NachnameSuche: TdxLayoutItem;
+    laitm_OrtSuche: TdxLayoutItem;
+    laitm_PLZSuche: TdxLayoutItem;
+    laitm_StrasseSuche: TdxLayoutItem;
+    laitm_VornameSuche: TdxLayoutItem;
+    laitm_Facebook: TdxLayoutItem;
+    laitm_Skype: TdxLayoutItem;
+    laitm_Teams: TdxLayoutItem;
+    laitm_WebBusinessBtn: TdxLayoutItem;
+    laitm_MailBusinessBtn: TdxLayoutItem;
+    laitm_MapBusiness: TdxLayoutItem;
+    laitm_Kontaktart: TdxLayoutItem;
+    laitm_HandyBusinessText: TdxLayoutItem;
     edt_GeschaeftlichHandy: TcxDBTextEdit;
     cmbbx_KontaktArt: TcxDBLookupComboBox;
     lagrp_KontaktPersonalEmail2: TdxLayoutGroup;
@@ -280,56 +356,56 @@ type
     lagrp_SucheButtons: TdxLayoutGroup;
     lagrp_GesWeb: TdxLayoutGroup;
     lagrp_MailBusiness: TdxLayoutGroup;
-    itm_Todestag: TdxLayoutItem;
+    laitm_Todestag: TdxLayoutItem;
     dtEdt_KontaktZusatzTodestag: TcxDBDateEdit;
-    itm_Geburtsort: TdxLayoutItem;
-    cxDBTextEdit1: TcxDBTextEdit;
+    laitm_Geburtsort: TdxLayoutItem;
+    edt_KontakteGeburtsort: TcxDBTextEdit;
     qry_KontakteTodestag: TDateField;
     qry_KontakteGeburtsort: TStringField;
     lagrp_ZusatzwithoutPic: TdxLayoutGroup;
     lagrp_ZusatzwithPic: TdxLayoutGroup;
     lagrp_Browser: TdxLayoutGroup;
-    dxLayoutItem1: TdxLayoutItem;
+    laitm_Browser: TdxLayoutItem;
     pnl_Browser: TcxGroupBox;
     lagrp_KontaktPersonalAdress: TdxLayoutGroup;
     lagrp_KontaktPersonalEmail1: TdxLayoutGroup;
     lagrp_KontaktPersonal: TdxLayoutGroup;
-    dxLayoutGroup15: TdxLayoutGroup;
-    itm_ImageGes: TdxLayoutItem;
+    lagrp_KontaktPersonalWeb: TdxLayoutGroup;
+    laitm_ImageGes: TdxLayoutItem;
     lagrp_GeswithoutPic: TdxLayoutGroup;
     lagrp_GeswithPic: TdxLayoutGroup;
-    cxDBImage1: TcxDBImage;
+    img_PictureGes: TcxDBImage;
     lagrp_GesAdress: TdxLayoutGroup;
     lagrp_SucheAdresseGes: TdxLayoutGroup;
-    itm_StrasseGesSuche: TdxLayoutItem;
-    itm_PLZGesSuche: TdxLayoutItem;
-    itm_OrtGesSuche: TdxLayoutItem;
-    itm_MailBusinessZentralText: TdxLayoutItem;
+    laitm_StrasseGesSuche: TdxLayoutItem;
+    laitm_PLZGesSuche: TdxLayoutItem;
+    laitm_OrtGesSuche: TdxLayoutItem;
+    laitm_MailBusinessZentralText: TdxLayoutItem;
     qry_KontakteE_Mail_Zentral: TStringField;
-    cxDBTextEdit2: TcxDBTextEdit;
+    edt_KontaktGeschaeftlichEMailZentrale: TcxDBTextEdit;
     lagrp_GesMailzentral: TdxLayoutGroup;
-    itm_MailBusinessZentralBtn: TdxLayoutItem;
+    laitm_MailBusinessZentralBtn: TdxLayoutItem;
     btn_MailGesZentral: TcxButton;
-    itm_AnredeSuche: TdxLayoutItem;
+    laitm_AnredeSuche: TdxLayoutItem;
     cmbbx_KontaktAnrede: TcxComboBox;
-    lagrp_KontaktPersonalTel1: TdxLayoutGroup;
-    itm_Telefon1Btn: TdxLayoutItem;
+    lagrp_KontaktPersonalTelefon1: TdxLayoutGroup;
+    laitm_Telefon1Btn: TdxLayoutItem;
     btn_Tel1: TcxButton;
-    dxLayoutGroup1: TdxLayoutGroup;
-    dxLayoutGroup2: TdxLayoutGroup;
-    dxLayoutItem3: TdxLayoutItem;
-    dxLayoutItem4: TdxLayoutItem;
+    lagrp_KontaktPersonalTelefon2: TdxLayoutGroup;
+    lagrp_KontaktPersonalHandy: TdxLayoutGroup;
+    itm_Telefon2Btn: TdxLayoutItem;
+    laitm_HandyPrivatBtn: TdxLayoutItem;
     btn_Tel2: TcxButton;
     btn_Handy: TcxButton;
-    dxLayoutGroup3: TdxLayoutGroup;
-    dxLayoutGroup4: TdxLayoutGroup;
-    dxLayoutGroup5: TdxLayoutGroup;
-    dxLayoutItem5: TdxLayoutItem;
-    dxLayoutItem6: TdxLayoutItem;
-    dxLayoutItem7: TdxLayoutItem;
-    cxButton5: TcxButton;
-    cxButton6: TcxButton;
-    cxButton7: TcxButton;
+    lagrp_TelefonDurchwahl: TdxLayoutGroup;
+    lagrp_HandyBusiness: TdxLayoutGroup;
+    lagrp_TelefonZentraleText: TdxLayoutGroup;
+    laitm_TelefonZentraleBtn: TdxLayoutItem;
+    laitm_TelefonDurchwahlBtn: TdxLayoutItem;
+    laitm_HandyBusinessBtn: TdxLayoutItem;
+    btn_KontaktGeschaeftlichTelefonZentrale: TcxButton;
+    btn_KontaktGeschaeftlichTelefondurchwahl: TcxButton;
+    btn_KontaktGeschaeftlichHandy: TcxButton;
     edt_KontaktSucheStrasseGes: TcxTextEdit;
     edt_KontaktSuchePLZGes: TcxTextEdit;
     edt_KontaktSucheOrtGes: TcxTextEdit;
@@ -339,19 +415,17 @@ type
     btn_addGeburtsort: TdxBarButton;
     btn_addGeburtsland: TdxBarButton;
     btn_addTodestag: TdxBarButton;
-    cxDBLookupComboBox1: TcxDBLookupComboBox;
+    cmbbx_KontaktGeburtsland: TcxDBLookupComboBox;
     qry_KontakteID_Geburtsland: TIntegerField;
-    dxLayoutGroup6: TdxLayoutGroup;
-    dxBarLargeButton1: TdxBarLargeButton;
+    lagrp_BrowserDetail: TdxLayoutGroup;
     Outlook: TOutlookApplication;
     qry_work: TFDQuery;
-    dxBarLargeButton2: TdxBarLargeButton;
+    ppmbtn_ExportOutlook: TdxBarLargeButton;
     procedure btn_KontaktNewClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btn_KontaktEmail2SendClick(Sender: TObject);
     procedure btn_KontaktGeschaeftlichSendMailClick(Sender: TObject);
     procedure btn_KontaktEmail1SendClick(Sender: TObject);
-    procedure btn_kontaktDeletefilterClick(Sender: TObject);
     procedure btn_KontaktKonfessionEditClick(Sender: TObject);
     procedure btn_KontaktCancelClick(Sender: TObject);
     procedure btn_KontaktDeleteClick(Sender: TObject);
@@ -381,13 +455,13 @@ type
     procedure btn_addGeburtsortClick(Sender: TObject);
     procedure btn_addGeburtslandClick(Sender: TObject);
     procedure dxLayoutGroup6Button0Click(Sender: TObject);
-    procedure dxBarLargeButton1Click(Sender: TObject);
+    procedure ppmbtn_ExportOutlookClick(Sender: TObject);
     procedure btn_Tel1Click(Sender: TObject);
     procedure btn_Tel2Click(Sender: TObject);
     procedure btn_HandyClick(Sender: TObject);
-    procedure cxButton5Click(Sender: TObject);
-    procedure cxButton6Click(Sender: TObject);
-    procedure cxButton7Click(Sender: TObject);
+    procedure btn_KontaktGeschaeftlichTelefonZentraleClick(Sender: TObject);
+    procedure btn_KontaktGeschaeftlichTelefondurchwahlClick(Sender: TObject);
+    procedure btn_KontaktGeschaeftlichHandyClick(Sender: TObject);
   private
     { Private-Deklarationen }
     bButtons: boolean;
@@ -405,25 +479,25 @@ type
 var
   {$Region var}
   frm_Contact: Tfrm_Contact;
-  {$Region var}
+  {$EndRegion var}
 const
   {$Region Const}
   arrCont = [1,2];
   {$EndRegion Const}
-
 implementation
 
 {$R *.dfm}
 
-uses  PCM.Data,
-      PCMManager.Modul.C_Contacts.Neu,
-      PCMManager.Modul.C_Contacts.Staatsangehoerigkeit,
-      PCMManager.Modul.C_Contacts.Konfession,
-      PCM.Functions.Synch.Wait,
-      PCMManager.Helper.Contacts.VCF,
-      PCM.Strings;
-
-
+uses
+  {$Region uses}
+  PCM.Data,
+  PCM.Functions.Synch.Wait,
+  PCM.Strings,
+  PCMManager.Helper.Contacts.VCF,
+  PCMManager.Modul.C_Contacts.Konfession,
+  PCMManager.Modul.C_Contacts.Neu,
+  PCMManager.Modul.C_Contacts.Staatsangehoerigkeit;
+  {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
@@ -439,7 +513,6 @@ begin
   ShellExecute(0,'open', PChar('C:\Program Files\PhonerLite\PhonerLite.exe callto:+49 160 95460312'), NIL, NIL, SW_SHOWNORMAL);
   qry_work.Close;
 end;
-
 procedure Tfrm_Contact.OpenUrl(AURL: String);
 begin
   lagrp_Browser.Visible:= true;
@@ -497,81 +570,81 @@ procedure Tfrm_Contact.SetTab;
   begin
     if qry_Kontakte.FieldByName('ID_Anrede').AsInteger in [4,5,6,7,8,9,10,11,12] then
     begin
-      itm_Abteilung.Visible:= false;
-      itm_Funktion.Visible:= false;
-      itm_TelefonDurchwahl.Visible:= false;
-      itm_HandyBusiness.Visible:= false;
+      laitm_Abteilung.Visible:= false;
+      laitm_Funktion.Visible:= false;
+      laitm_TelefonDurchwahlText.Visible:= false;
+      laitm_HandyBusinessText.Visible:= false;
       lagrp_MailBusiness.Visible:= false;
     end
     else begin
-      itm_Abteilung.Visible:= true;
-      itm_Funktion.Visible:= true;
-      itm_TelefonDurchwahl.Visible:= true;
-      itm_HandyBusiness.Visible:= true;
+      laitm_Abteilung.Visible:= true;
+      laitm_Funktion.Visible:= true;
+      laitm_TelefonDurchwahlText.Visible:= true;
+      laitm_HandyBusinessText.Visible:= true;
       lagrp_MailBusiness.Visible:= true;
     end;
   end;
 begin
   if qry_Kontakte.FieldByName('ID_Anrede').AsInteger in arrcont then
   begin
-    itm_HandyBusiness.Visible:= true;
-    itm_TelefonDurchwahl.Visible:= true;
-    itm_ImageGes.Visible:= false;
+    laitm_HandyBusinessText.Visible:= true;
+    laitm_TelefonDurchwahlText.Visible:= true;
+    laitm_ImageGes.Visible:= false;
     lagrp_Zusatz.Visible:= True;
     lagrp_KontaktPersonal.Visible:= True;
     lagrp_MitarbeiterInfoDetails.ItemIndex:= 0;
-    itm_Vorname.Caption:= 'Vorname:';
-    itm_Nachname.Caption:='Nachname:';
+    laitm_Vorname.Caption:= 'Vorname:';
+    laitm_Nachname.Caption:='Nachname:';
     if qry_Kontakte.FieldByName('Geburtsname').AsString <> '' then
     begin
-      itm_Geburtsname.Visible:= true;
+      laitm_Geburtsname.Visible:= true;
       btn_addGeburtsname.Visible:= ivnever;
     end
     else begin
-      itm_Geburtsname.Visible:= false;
+      laitm_Geburtsname.Visible:= false;
       btn_addGeburtsname.Visible:= ivAlways;
     end;
 
     if qry_Kontakte.FieldByName('ID_Geburtsland').AsString <> '' then
     begin
-      itm_Geburtsland.Visible:= true;
+      laitm_Geburtsland.Visible:= true;
       btn_addGeburtsland.Visible:= ivnever;
     end
     else begin
-      itm_Geburtsland.Visible:= false;
+      laitm_Geburtsland.Visible:= false;
       btn_addGeburtsland.Visible:= ivalways;
     end;
 
     if qry_Kontakte.FieldByName('Geburtsort').AsString <> '' then
     begin
-      itm_Geburtsort.Visible:= true;
+      laitm_Geburtsort.Visible:= true;
       btn_addGeburtsort.Visible:= ivnever;
     end
     else begin
-      itm_Geburtsort.Visible:= false;
+      laitm_Geburtsort.Visible:= false;
       btn_addGeburtsort.Visible:= ivalways;
     end;
 
     if qry_Kontakte.FieldByName('Todestag').AsString <> '' then
     begin
-      itm_Todestag.Visible:= true;
+      laitm_Todestag.Visible:= true;
       btn_addTodestag.Visible:= ivnever;
     end
     else begin
-      itm_Todestag.Visible:= false;
+      laitm_Todestag.Visible:= false;
       btn_addTodestag.Visible:= ivalways;
     end;
     SetItems;
   end
   else
   begin
-    itm_TelefonDurchwahl.Visible:= false;
-    itm_HandyBusiness.Visible:= false;
-    itm_ImageGes.Visible:= true;
+    laitm_TelefonDurchwahlText.Visible:= false;
+    laitm_HandyBusinessText.Visible:= false;
+    laitm_ImageGes.Visible:= true;
     lagrp_KontaktPersonal.Visible:= false;
     lagrp_Zusatz.Visible:= false;
-    itm_Vorname.Caption:= 'Firma:';
-    itm_Nachname.Caption:='Ort:';
+    laitm_Vorname.Caption:= 'Firma:';
+    laitm_Nachname.Caption:='Ort:';
     btn_addGeburtsname.Visible:= ivnever;
     btn_addGeburtsort.Visible:= ivnever;
     btn_addGeburtsland.Visible:= ivnever;
@@ -583,6 +656,11 @@ end;
 // Toolbar                                                                    //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Toolbar}
+procedure Tfrm_Contact.dxLayoutGroup6Button0Click(Sender: TObject);
+begin
+  lagrp_Browser.Visible:= false;
+  lagrp_PersonalTab.ItemIndex:= 1;
+end;
 procedure Tfrm_Contact.btn_KontaktNewClick(Sender: TObject);
 var
   iAnrede : Integer;
@@ -705,28 +783,6 @@ begin
     dm_PCM.qry_work.close;
   end;
 end;
-procedure Tfrm_Contact.btn_ClearFilterClick(Sender: TObject);
-begin
-  edt_KontaktSucheNachname.Text:= '';
-  edt_KontaktSucheVorname.Text:= '';
-  cmbbx_KontaktSucheArt.ItemIndex:= -1;
-  cmbbx_KontaktAnrede.ItemIndex:= -1;
-  edt_KontaktSucheStrasse.Text:= '';
-  edt_KontaktSuchePLZ.Text:= '';
-  edt_KontaktSucheOrt.Text:= '';
-  edt_KontaktSucheStrasseGes.Text:= '';
-  edt_KontaktSuchePLZGes.Text:= '';
-  edt_KontaktSucheOrtGes.Text:= '';
-  edt_KontaktSucheFirma.Text:= '';
-  edt_KontaktSucheAbteilung.Text:= '';
-  edt_KontaktSucheFunktion.Text:= '';
-  btn_kontaktsuchen.Click;
-end;
-procedure Tfrm_Contact.btn_HandyClick(Sender: TObject);
-begin
-  MakeCall(edt_KontaktHandy.text);
-end;
-
 procedure Tfrm_Contact.btn_KontaktCancelClick(Sender: TObject);
 begin
   qry_Kontakte.Cancel;
@@ -765,6 +821,337 @@ begin
   btn_KontaktSaveClick(SENDER);
   qry_Kontakte.Last;
   SetTab;
+end;
+procedure Tfrm_Contact.btn_addGeburtslandClick(Sender: TObject);
+begin
+  laitm_Geburtsland.Visible:= true;
+  btn_addGeburtsland.Visible:= ivnever;
+end;
+procedure Tfrm_Contact.btn_addGeburtsnameClick(Sender: TObject);
+begin
+  laitm_Geburtsname.Visible:= true;
+  btn_addGeburtsname.Visible:= ivnever;
+end;
+procedure Tfrm_Contact.btn_addGeburtsortClick(Sender: TObject);
+begin
+  laitm_Geburtsort.Visible:= true;
+  btn_addGeburtsort.Visible:= ivnever;
+end;
+procedure Tfrm_Contact.btn_addTodestagClick(Sender: TObject);
+begin
+  laitm_Todestag.Visible:= true;
+  btn_addTodestag.Visible:= ivnever;
+end;
+// Pagecontrol
+procedure Tfrm_Contact.lagrp_PersonalTabTabChanged(Sender: TObject);
+begin
+  SetTab;
+  if lagrp_PersonalTab.ItemIndex = 0 then
+  begin
+    btn_KontaktSave.Enabled:= false;
+    btn_KontaktDelete.Enabled:= false;
+    btn_KontaktFirst.Enabled:= false;
+    btn_KontaktPrev.Enabled:= false;
+    btn_KontaktNext.Enabled:= false;
+    btn_KontaktLast.Enabled:= false;
+  end
+  else begin
+    if qry_Kontakte.Filter ='id_Benutzer = 0' then
+    begin
+      qry_Kontakte.Filter:= 'id_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+      qry_Kontakte.Filtered:= true;
+      if qry_Kontakte.RecordCount > 0 then
+      begin
+        qry_Kontakte.First;
+        lagrp_MitarbeiterInfoDetails.ItemIndex:=0;
+        if bButtons then
+        begin
+          btn_KontaktDelete.Enabled:= true;
+          btn_KontaktFirst.Enabled:= false;
+          btn_KontaktPrev.Enabled:= false;
+          btn_KontaktNext.Enabled:= false;
+          btn_KontaktLast.Enabled:= false;
+        end
+        else begin
+          btn_KontaktDelete.Enabled:= true;
+          btn_KontaktFirst.Enabled:= true;
+          btn_KontaktPrev.Enabled:= true;
+          btn_KontaktNext.Enabled:= true;
+          btn_KontaktLast.Enabled:= true;
+        end;
+      end
+      else begin
+        lagrp_PersonalTab.ItemIndex:= 0;
+        MessageDlg(rs_PCMManager_KeineKontakte, mtWarning,[mbOk],0);
+      end;
+    end
+    else begin
+      if qry_Kontakte.RecordCount > 0 then
+      begin
+        lagrp_MitarbeiterInfoDetails.ItemIndex:=0;
+        if bButtons then
+        begin
+          btn_KontaktDelete.Enabled:= true;
+          btn_KontaktFirst.Enabled:= false;
+          btn_Kontaktprev.Enabled:= false;
+          btn_KontaktNext.Enabled:= false;
+          btn_KontaktLast.Enabled:= false;
+        end
+        else begin
+          btn_KontaktDelete.Enabled:= true;
+          btn_KontaktFirst.Enabled:= true;
+          btn_Kontaktprev.Enabled:= true;
+          btn_KontaktNext.Enabled:= true;
+          btn_KontaktLast.Enabled:= true;
+        end;
+      end
+      else begin
+        lagrp_PersonalTab.ItemIndex:= 0;
+        lagrp_PersonalTab.ItemIndex:= 0;
+        MessageDlg(rs_PCMManager_KeineKontakte, mtWarning,[mbOk],0);
+      end;
+    end;
+  end;
+  bButtons:= false;
+end;
+// Suche
+procedure Tfrm_Contact.edt_KontaktSucheNachnameKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+  if Key = 13 then
+    btn_kontaktsuchen.Click;
+end;
+procedure Tfrm_Contact.btn_kontaktsuchenClick(Sender: TObject);
+var
+  str_filter: string;
+  str_temp:string;
+begin
+  qry_Kontakte.Open;
+  Screen.Cursor := crHourGlass;
+  qry_Kontakte.Filtered:= false;
+  str_Filter:= 'id_Benutzer = ' +  IntToStr(dm_PCM.iIDBenutzerPCM);
+  if edt_KontaktSucheNachname.text <> '' then
+  begin
+    str_temp:= '%' + lowercase(edt_KontaktSucheNachname.text) + '%';
+    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
+      str_Filter := str_Filter + 'Lower(Nachname) like '+ QuotedStr(str_temp);
+  end;
+  if edt_KontaktSucheVorname.text <> '' then
+  begin
+    str_temp:= '%' + lowercase(edt_KontaktSucheVorname.text) + '%';
+    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
+      str_Filter := str_Filter + 'Lower(Vorname) like ' + QuotedStr(str_temp);
+  end;
+  if cmbbx_KontaktSucheArt.ItemIndex <> -1 then
+  begin
+    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
+        str_Filter := str_Filter + 'ID_Kontaktart = ' + IntToStr(Integer(cmbbx_KontaktSucheArt.Properties.Items.Objects[cmbbx_KontaktSucheArt.ItemIndex]));
+  end;
+  if cmbbx_KontaktAnrede.ItemIndex <> -1 then
+  begin
+    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
+        str_Filter := str_Filter + 'ID_Anrede = ' + IntToStr(Integer(cmbbx_KontaktAnrede.Properties.Items.Objects[cmbbx_KontaktAnrede.ItemIndex]));
+  end;
+  if edt_KontaktSucheStrasse.text <> '' then
+  begin
+    str_temp:= '%' + lowercase(edt_KontaktSucheStrasse.text) + '%';
+    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
+      str_Filter := str_Filter + 'Lower(Strasse_Privat) like ' + QuotedStr(str_temp);
+  end;
+  if edt_KontaktSuchePLZ.text <> '' then
+  begin
+    str_temp:= '%' + lowercase(edt_KontaktSuchePLZ.text) + '%';
+    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
+      str_Filter := str_Filter + 'Lower(PLZ_Privat like) ' + QuotedStr(str_temp);
+  end;
+  if edt_KontaktSucheOrt.text <> '' then
+  begin
+    str_temp:= '%' + lowercase(edt_KontaktSucheOrt.text) + '%';
+    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
+      str_Filter := str_Filter + 'Lower(Ort_Privat) like ' + QuotedStr(str_temp);
+  end;
+  if edt_KontaktSucheStrasseGes.text <> '' then
+  begin
+    str_temp:= '%' + lowercase(edt_KontaktSucheStrasseGes.text) + '%';
+    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
+      str_Filter := str_Filter + 'Lower(Strasse_Ges) like ' + QuotedStr(str_temp);
+  end;
+  if edt_KontaktSuchePLZGes.text <> '' then
+  begin
+    str_temp:= '%' + lowercase(edt_KontaktSuchePLZGes.text) + '%';
+    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
+      str_Filter := str_Filter + 'Lower(PLZ_Ges like) ' + QuotedStr(str_temp);
+  end;
+  if edt_KontaktSucheOrtGes.text <> '' then
+  begin
+    str_temp:= '%' + lowercase(edt_KontaktSucheOrtGes.text) + '%';
+    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
+      str_Filter := str_Filter + 'Lower(Ort_Ges) like ' + QuotedStr(str_temp);
+  end;
+
+
+  if edt_KontaktSucheFirma.text <> '' then
+  begin
+    str_temp:= '%' + lowercase(edt_KontaktSucheFirma.text) + '%';
+    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
+      str_Filter := str_Filter + 'Lower(Firma) like ' + QuotedStr(str_temp);
+  end;
+  if edt_KontaktSucheAbteilung.text <> '' then
+  begin
+    str_temp:= '%' + lowercase(edt_KontaktSucheAbteilung.text) + '%';
+    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
+      str_Filter := str_Filter + 'Lower(Abteilung_Ges) like ' + QuotedStr(str_temp);
+  end;
+  if edt_KontaktSucheFunktion.text <> '' then
+  begin
+    str_temp:= '%' + lowercase(edt_KontaktSucheFunktion.text) + '%';
+    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
+      str_Filter := str_Filter + 'Lower(Funktion_Ges) like ' + QuotedStr(str_temp);
+  end;
+  qry_Kontakte.Filter:= str_filter;
+  qry_Kontakte.Filtered:= true;
+  Screen.Cursor := crDefault;
+  grd_Suche.SetFocus;
+  grdDBTblView_Suche.Focused := true;
+end;
+procedure Tfrm_Contact.btn_ClearFilterClick(Sender: TObject);
+begin
+  edt_KontaktSucheNachname.Text:= '';
+  edt_KontaktSucheVorname.Text:= '';
+  cmbbx_KontaktSucheArt.ItemIndex:= -1;
+  cmbbx_KontaktAnrede.ItemIndex:= -1;
+  edt_KontaktSucheStrasse.Text:= '';
+  edt_KontaktSuchePLZ.Text:= '';
+  edt_KontaktSucheOrt.Text:= '';
+  edt_KontaktSucheStrasseGes.Text:= '';
+  edt_KontaktSuchePLZGes.Text:= '';
+  edt_KontaktSucheOrtGes.Text:= '';
+  edt_KontaktSucheFirma.Text:= '';
+  edt_KontaktSucheAbteilung.Text:= '';
+  edt_KontaktSucheFunktion.Text:= '';
+  btn_kontaktsuchen.Click;
+end;
+// GRID
+procedure Tfrm_Contact.grdDBTblView_KontakteCellDblClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;  AShift: TShiftState; var AHandled: Boolean);
+var
+  hittest : TcxCustomGridHitTest;
+begin
+  hittest := grdDBTblView_Suche.GetHitTest(grd_Suche.ScreenToClient(Mouse.CursorPos));
+  if hittest.HitTestCode = htCell then
+  begin
+    if qry_Kontakte.FieldByName('ID').AsInteger > 0 then
+    begin
+      SetTab;
+      lagrp_PersonalTab.ItemIndex:= 1;
+    end;
+  end;
+end;
+{$EndRegion}
+////////////////////////////////////////////////////////////////////////////////
+// Kontaktdetail                                                              //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Kontaktdetail}
+procedure Tfrm_Contact.btn_KontaktEmail1SendClick(Sender: TObject);
+var
+  ExecStr : String;
+begin
+  ExecStr := Format('mailto:%s?subject=',[qry_Kontakte.FieldByName('E_Mail_Privat').AsString]);
+  ShellExecute(0,'open', PChar(ExecStr), NIL, NIL, SW_SHOWNORMAL);
+end;
+procedure Tfrm_Contact.btn_KontaktEmail2SendClick(Sender: TObject);
+var
+  ExecStr : String;
+begin
+  ExecStr := Format('mailto:%s?subject=',[qry_Kontakte.FieldByName('E_Mail_Privat1').AsString]);
+  ShellExecute(0,'open', PChar(ExecStr), NIL, NIL, SW_SHOWNORMAL);
+end;
+procedure Tfrm_Contact.btn_KontaktPrivOpenWebsiteClick(Sender: TObject);
+var
+  sLink: string;
+begin
+  if edt_KontaktInternet.Text <> '' then
+  begin
+    sLink := edt_KontaktInternet.text;
+    OpenUrl(sLink);
+//    ShellExecute(self.WindowHandle,'open', PWideChar(sLink) ,nil,nil, SW_SHOWNORMAL);
+  end;
+end;
+procedure Tfrm_Contact.btn_MapBusinessClick(Sender: TObject);
+begin
+  if (edt_KontaktGeschaeftlichStrasse.Text <> '') and (edt_KontaktGeschaeftlichPLZ.Text <> '') and (edt_KontaktGeschaeftlichOrt.Text <> '') then
+  begin
+    var sLink:= 'http://maps.google.de/maps?q=' + edt_KontaktGeschaeftlichStrasse.Text + ',' + edt_KontaktGeschaeftlichPLZ.Text + '+' + edt_KontaktGeschaeftlichOrt.Text + '&z=12';
+//    ShellExecute(0, 'open', PChar(sLink), nil, nil, SW_SHOWNORMAL);
+    OpenUrl(sLink);
+  end
+  else begin
+    MessageDlg('Adresse unvollständig',mtWarning,[mbOk],0);
+  end;
+end;
+procedure Tfrm_Contact.btn_MapPrivateClick(Sender: TObject);
+begin
+  if (edt_KontaktStrasse.Text <> '') and (edt_KontaktPLZ.Text <> '') and (edt_KontaktOrt.Text <> '') then
+  begin
+    var sLink:= 'http://maps.google.de/maps?q=' + edt_KontaktStrasse.Text + ',' + edt_KontaktPLZ.Text + '+' + edt_KontaktOrt.Text + '&z=12';
+//    ShellExecute(0, 'open', PChar(sLink), nil, nil, SW_SHOWNORMAL);
+    OpenUrl(sLink);
+  end
+  else begin
+    MessageDlg('Adresse unvollständig',mtWarning,[mbOk],0);
+  end;
+end;
+procedure Tfrm_Contact.btn_Tel1Click(Sender: TObject);
+begin
+  MakeCall(edt_KontaktTelefon1.text);
+end;
+procedure Tfrm_Contact.btn_HandyClick(Sender: TObject);
+begin
+  MakeCall(edt_KontaktHandy.text);
+end;
+procedure Tfrm_Contact.btn_Tel2Click(Sender: TObject);
+begin
+  MakeCall(edt_KontaktTelefon2.text);
+end;
+procedure Tfrm_Contact.btn_KontaktGeschaeftlichTelefonZentraleClick(Sender: TObject);
+begin
+  MakeCall(edt_KontaktGeschaeftlichTelefonZentrale.text);
+end;
+procedure Tfrm_Contact.btn_KontaktGeschaeftlichTelefondurchwahlClick(Sender: TObject);
+begin
+  MakeCall(edt_KontaktGeschaeftlichTelefonDurchwahl.text);
+end;
+procedure Tfrm_Contact.btn_KontaktGeschaeftlichHandyClick(Sender: TObject);
+begin
+  MakeCall(edt_GeschaeftlichHandy.text);
+end;
+procedure Tfrm_Contact.btn_KontaktStaatsangehörigkeitEditClick(Sender: TObject);
+begin
+  Application.CreateForm(Tfrm_PCM_Staatsangehoerigkeit, frm_PCM_Staatsangehoerigkeit);
+  if frm_PCM_Staatsangehoerigkeit.Execute(rs_PCMManager_Staatsangehoerigkeitbearbeiten, dm_PCM.iKontakte) then
+    dm_PCM.qry_Contact_Staatsangehoerigkeit.refresh;
+end;
+procedure Tfrm_Contact.btn_KontaktKonfessionEditClick(Sender: TObject);
+begin
+   Application.CreateForm(Tfrm_PCM_Konfession, frm_PCM_Konfession);
+   if frm_PCM_Konfession.Execute(rs_PCMManager_Konfessionbearbeiten,dm_PCM.iKontakte) then
+     dm_PCM.qry_Contact_Konfession.Refresh;
+end;
+procedure Tfrm_Contact.btn_KontaktGeschaeftlichSendMailClick(Sender: TObject);
+var
+  ExecStr : String;
+begin
+  ExecStr := Format('mailto:%s?subject=',[qry_Kontakte.FieldByName('E_Mail_Ges').AsString]);
+  ShellExecute(0,'open', PChar(ExecStr), NIL, NIL, SW_SHOWNORMAL);
+end;
+procedure Tfrm_Contact.btn_KontaktGesOpenWebsiteClick(Sender: TObject);
+var
+  sLink: string;
+begin
+  if edt_KontaktGeschaeftlichInternet.Text <> '' then
+  begin
+    sLink := edt_KontaktGeschaeftlichInternet.text;
+    OpenUrl(sLink);
+//    ShellExecute(self.WindowHandle,'open', PWideChar(sLink) ,nil,nil, SW_SHOWNORMAL);
+  end;
 end;
 procedure Tfrm_Contact.ppmbtn_VCFImportierenClick(Sender: TObject);
   function BitmapFromBase64(const base64: string): TPicture;
@@ -848,7 +1235,6 @@ var
   i,iIDKontakt: integer;
   sValue: string;
   sNotiz: string;
-  iPos,iPos1,iPos2: integer;
   sName: string;
   sVorname: string;
   sNachname: string;
@@ -1461,7 +1847,7 @@ begin
           if FileExists(sNachname + '_' + sVorname + '.jpeg') then
           begin
             qry_KontakteBild.LoadFromFile(sNachname + '_' + sVorname + '.jpeg');
-            DeleteFile(sNachname + '_' + sVorname + '.jpeg');
+            DeleteFile(PChar(sNachname + '_' + sVorname + '.jpeg'));
           end;
           qry_Kontakte.FieldByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
         end
@@ -1503,7 +1889,7 @@ begin
           if FileExists(sNachname + '_' + sVorname + '.jpeg') then
           begin
             qry_KontakteBild.LoadFromFile(sNachname + '_' + sVorname + '.jpeg');
-            DeleteFile(sNachname + '_' + sVorname + '.jpeg');
+            DeleteFile(Pchar(sNachname + '_' + sVorname + '.jpeg'));
           end;
           qry_Kontakte.FieldByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
           if (sGeburtstag <> '')  then
@@ -1709,7 +2095,7 @@ begin
           bmPicture:= TPicture.Create;
           bmPicture.LoadFromFile(qry_Kontakte.FieldByName('Nachname').AsString + '_' + qry_Kontakte.FieldByName('Vorname').AsString + '.jpeg');
           slExport.add('PHOTO;ENCODING=BASE64;JPEG:'+ String(Base64FromBitmap(bmPicture)));
-          DeleteFile(qry_Kontakte.FieldByName('Nachname').AsString + '_' + qry_Kontakte.FieldByName('Vorname').AsString + '.jpeg');
+          DeleteFile(Pchar(qry_Kontakte.FieldByName('Nachname').AsString + '_' + qry_Kontakte.FieldByName('Vorname').AsString + '.jpeg'));
           bmPicture.Free;
         end;
       except
@@ -1725,182 +2111,6 @@ begin
     MessageDlg(rs_PCMManager_KontakteinVCard, mtInformation, [mbOk], 0);
   end;
 end;
-procedure Tfrm_Contact.btn_kontaktsuchenClick(Sender: TObject);
-var
-  str_filter: string;
-  str_temp:string;
-begin
-  qry_Kontakte.Open;
-  Screen.Cursor := crHourGlass;
-  qry_Kontakte.Filtered:= false;
-  str_Filter:= 'id_Benutzer = ' +  IntToStr(dm_PCM.iIDBenutzerPCM);
-  if edt_KontaktSucheNachname.text <> '' then
-  begin
-    str_temp:= '%' + lowercase(edt_KontaktSucheNachname.text) + '%';
-    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
-      str_Filter := str_Filter + 'Lower(Nachname) like '+ QuotedStr(str_temp);
-  end;
-  if edt_KontaktSucheVorname.text <> '' then
-  begin
-    str_temp:= '%' + lowercase(edt_KontaktSucheVorname.text) + '%';
-    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
-      str_Filter := str_Filter + 'Lower(Vorname) like ' + QuotedStr(str_temp);
-  end;
-  if cmbbx_KontaktSucheArt.ItemIndex <> -1 then
-  begin
-    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
-        str_Filter := str_Filter + 'ID_Kontaktart = ' + IntToStr(Integer(cmbbx_KontaktSucheArt.Properties.Items.Objects[cmbbx_KontaktSucheArt.ItemIndex]));
-  end;
-  if cmbbx_KontaktAnrede.ItemIndex <> -1 then
-  begin
-    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
-        str_Filter := str_Filter + 'ID_Anrede = ' + IntToStr(Integer(cmbbx_KontaktAnrede.Properties.Items.Objects[cmbbx_KontaktAnrede.ItemIndex]));
-  end;
-  if edt_KontaktSucheStrasse.text <> '' then
-  begin
-    str_temp:= '%' + lowercase(edt_KontaktSucheStrasse.text) + '%';
-    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
-      str_Filter := str_Filter + 'Lower(Strasse_Privat) like ' + QuotedStr(str_temp);
-  end;
-  if edt_KontaktSuchePLZ.text <> '' then
-  begin
-    str_temp:= '%' + lowercase(edt_KontaktSuchePLZ.text) + '%';
-    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
-      str_Filter := str_Filter + 'Lower(PLZ_Privat like) ' + QuotedStr(str_temp);
-  end;
-  if edt_KontaktSucheOrt.text <> '' then
-  begin
-    str_temp:= '%' + lowercase(edt_KontaktSucheOrt.text) + '%';
-    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
-      str_Filter := str_Filter + 'Lower(Ort_Privat) like ' + QuotedStr(str_temp);
-  end;
-  if edt_KontaktSucheStrasseGes.text <> '' then
-  begin
-    str_temp:= '%' + lowercase(edt_KontaktSucheStrasseGes.text) + '%';
-    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
-      str_Filter := str_Filter + 'Lower(Strasse_Ges) like ' + QuotedStr(str_temp);
-  end;
-  if edt_KontaktSuchePLZGes.text <> '' then
-  begin
-    str_temp:= '%' + lowercase(edt_KontaktSuchePLZGes.text) + '%';
-    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
-      str_Filter := str_Filter + 'Lower(PLZ_Ges like) ' + QuotedStr(str_temp);
-  end;
-  if edt_KontaktSucheOrtGes.text <> '' then
-  begin
-    str_temp:= '%' + lowercase(edt_KontaktSucheOrtGes.text) + '%';
-    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
-      str_Filter := str_Filter + 'Lower(Ort_Ges) like ' + QuotedStr(str_temp);
-  end;
-
-
-  if edt_KontaktSucheFirma.text <> '' then
-  begin
-    str_temp:= '%' + lowercase(edt_KontaktSucheFirma.text) + '%';
-    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
-      str_Filter := str_Filter + 'Lower(Firma) like ' + QuotedStr(str_temp);
-  end;
-  if edt_KontaktSucheAbteilung.text <> '' then
-  begin
-    str_temp:= '%' + lowercase(edt_KontaktSucheAbteilung.text) + '%';
-    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
-      str_Filter := str_Filter + 'Lower(Abteilung_Ges) like ' + QuotedStr(str_temp);
-  end;
-  if edt_KontaktSucheFunktion.text <> '' then
-  begin
-    str_temp:= '%' + lowercase(edt_KontaktSucheFunktion.text) + '%';
-    if str_Filter <> '' then str_Filter := str_Filter + ' and ';
-      str_Filter := str_Filter + 'Lower(Funktion_Ges) like ' + QuotedStr(str_temp);
-  end;
-  qry_Kontakte.Filter:= str_filter;
-  qry_Kontakte.Filtered:= true;
-  Screen.Cursor := crDefault;
-  grd_Suche.SetFocus;
-  grdDBTblView_Suche.Focused := true;
-end;
-procedure Tfrm_Contact.btn_kontaktDeletefilterClick(Sender: TObject);
-begin
-
-end;
-// Pagecontrol
-procedure Tfrm_Contact.lagrp_PersonalTabTabChanged(Sender: TObject);
-begin
-  SetTab;
-  if lagrp_PersonalTab.ItemIndex = 0 then
-  begin
-    btn_KontaktSave.Enabled:= false;
-    btn_KontaktDelete.Enabled:= false;
-    btn_KontaktFirst.Enabled:= false;
-    btn_KontaktPrev.Enabled:= false;
-    btn_KontaktNext.Enabled:= false;
-    btn_KontaktLast.Enabled:= false;
-  end
-  else begin
-    if qry_Kontakte.Filter ='id_Benutzer = 0' then
-    begin
-      qry_Kontakte.Filter:= 'id_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-      qry_Kontakte.Filtered:= true;
-      if qry_Kontakte.RecordCount > 0 then
-      begin
-        qry_Kontakte.First;
-        lagrp_MitarbeiterInfoDetails.ItemIndex:=0;
-        if bButtons then
-        begin
-          btn_KontaktDelete.Enabled:= true;
-          btn_KontaktFirst.Enabled:= false;
-          btn_KontaktPrev.Enabled:= false;
-          btn_KontaktNext.Enabled:= false;
-          btn_KontaktLast.Enabled:= false;
-        end
-        else begin
-          btn_KontaktDelete.Enabled:= true;
-          btn_KontaktFirst.Enabled:= true;
-          btn_KontaktPrev.Enabled:= true;
-          btn_KontaktNext.Enabled:= true;
-          btn_KontaktLast.Enabled:= true;
-        end;
-      end
-      else begin
-        lagrp_PersonalTab.ItemIndex:= 0;
-        MessageDlg(rs_PCMManager_KeineKontakte, mtWarning,[mbOk],0);
-      end;
-    end
-    else begin
-      if qry_Kontakte.RecordCount > 0 then
-      begin
-        lagrp_MitarbeiterInfoDetails.ItemIndex:=0;
-        if bButtons then
-        begin
-          btn_KontaktDelete.Enabled:= true;
-          btn_KontaktFirst.Enabled:= false;
-          btn_Kontaktprev.Enabled:= false;
-          btn_KontaktNext.Enabled:= false;
-          btn_KontaktLast.Enabled:= false;
-        end
-        else begin
-          btn_KontaktDelete.Enabled:= true;
-          btn_KontaktFirst.Enabled:= true;
-          btn_Kontaktprev.Enabled:= true;
-          btn_KontaktNext.Enabled:= true;
-          btn_KontaktLast.Enabled:= true;
-        end;
-      end
-      else begin
-        lagrp_PersonalTab.ItemIndex:= 0;
-        lagrp_PersonalTab.ItemIndex:= 0;
-        MessageDlg(rs_PCMManager_KeineKontakte, mtWarning,[mbOk],0);
-      end;
-    end;
-  end;
-  bButtons:= false;
-end;
-// Suche
-procedure Tfrm_Contact.edt_KontaktSucheNachnameKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-begin
-  if Key = 13 then
-    btn_kontaktsuchen.Click;
-end;
-// GRID
 procedure Tfrm_Contact.ppmbtn_NachExcelexportierenClick(Sender: TObject);
 begin
   if dlgsave_Personal.Execute then
@@ -1909,142 +2119,39 @@ begin
     MessageDlg(rs_PCMManager_GridExport1 + dlgsave_Personal.FileName +  rs_PCMManager_GridExport2, mtInformation, [mbOk], 0);
   end;
 end;
-procedure Tfrm_Contact.grdDBTblView_KontakteCellDblClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;  AShift: TShiftState; var AHandled: Boolean);
-var
-  hittest : TcxCustomGridHitTest;
-begin
-  hittest := grdDBTblView_Suche.GetHitTest(grd_Suche.ScreenToClient(Mouse.CursorPos));
-  if hittest.HitTestCode = htCell then
-  begin
-    if qry_Kontakte.FieldByName('ID').AsInteger > 0 then
-    begin
-      SetTab;
-      lagrp_PersonalTab.ItemIndex:= 1;
-    end;
-  end;
-end;
-{$EndRegion}
-////////////////////////////////////////////////////////////////////////////////
-// Kontaktdetail                                                              //
-////////////////////////////////////////////////////////////////////////////////
-{$Region Kontaktdetail}
-procedure Tfrm_Contact.btn_KontaktEmail1SendClick(Sender: TObject);
-var
-  ExecStr : String;
-begin
-  ExecStr := Format('mailto:%s?subject=',[qry_Kontakte.FieldByName('E_Mail_Privat').AsString]);
-  ShellExecute(0,'open', PChar(ExecStr), NIL, NIL, SW_SHOWNORMAL);
-end;
-procedure Tfrm_Contact.btn_KontaktEmail2SendClick(Sender: TObject);
-var
-  ExecStr : String;
-begin
-  ExecStr := Format('mailto:%s?subject=',[qry_Kontakte.FieldByName('E_Mail_Privat1').AsString]);
-  ShellExecute(0,'open', PChar(ExecStr), NIL, NIL, SW_SHOWNORMAL);
-end;
-procedure Tfrm_Contact.btn_KontaktPrivOpenWebsiteClick(Sender: TObject);
-var
-  sLink: string;
-begin
-  if edt_KontaktInternet.Text <> '' then
-  begin
-    sLink := edt_KontaktInternet.text;
-    OpenUrl(sLink);
-    ShellExecute(self.WindowHandle,'open', PWideChar(sLink) ,nil,nil, SW_SHOWNORMAL);
-  end;
-end;
-procedure Tfrm_Contact.btn_MapBusinessClick(Sender: TObject);
-begin
-  if (edt_KontaktGeschaeftlichStrasse.Text <> '') and (edt_KontaktGeschaeftlichPLZ.Text <> '') and (edt_KontaktGeschaeftlichOrt.Text <> '') then
-  begin
-    var sLink:= 'http://maps.google.de/maps?q=' + edt_KontaktGeschaeftlichStrasse.Text + ',' + edt_KontaktGeschaeftlichPLZ.Text + '+' + edt_KontaktGeschaeftlichOrt.Text + '&z=12';
-    ShellExecute(0, 'open', PChar(sLink), nil, nil, SW_SHOWNORMAL);
-    OpenUrl(sLink);
-  end
-  else begin
-    MessageDlg('Adresse unvollständig',mtWarning,[mbOk],0);
-  end;
-end;
-procedure Tfrm_Contact.btn_MapPrivateClick(Sender: TObject);
-begin
-  if (edt_KontaktStrasse.Text <> '') and (edt_KontaktPLZ.Text <> '') and (edt_KontaktOrt.Text <> '') then
-  begin
-    var sLink:= 'http://maps.google.de/maps?q=' + edt_KontaktStrasse.Text + ',' + edt_KontaktPLZ.Text + '+' + edt_KontaktOrt.Text + '&z=12';
-    ShellExecute(0, 'open', PChar(sLink), nil, nil, SW_SHOWNORMAL);
-    OpenUrl(sLink);
-  end
-  else begin
-    MessageDlg('Adresse unvollständig',mtWarning,[mbOk],0);
-  end;
-end;
-procedure Tfrm_Contact.btn_Tel1Click(Sender: TObject);
-begin
-  MakeCall(edt_KontaktTelefon1.text);
-end;
-
-procedure Tfrm_Contact.btn_Tel2Click(Sender: TObject);
-begin
-  MakeCall(edt_KontaktTelefon2.text);
-end;
-
-procedure Tfrm_Contact.cxButton5Click(Sender: TObject);
-begin
-  MakeCall(edt_KontaktGeschaeftlichTelefonZentrale.text);
-end;
-
-procedure Tfrm_Contact.cxButton6Click(Sender: TObject);
-begin
-  MakeCall(edt_KontaktGeschaeftlichTelefonDurchwahl.text);
-end;
-
-procedure Tfrm_Contact.cxButton7Click(Sender: TObject);
-begin
-  MakeCall(edt_GeschaeftlichHandy.text);
-end;
-
-procedure Tfrm_Contact.dxBarLargeButton1Click(Sender: TObject);
+procedure Tfrm_Contact.ppmbtn_ExportOutlookClick(Sender: TObject);
 const
   olFolderContacts = $0000000A;
 var
-//  Outlook   : Variant;
   NameSpace     : Variant;
   ContactsRoot,Contacts      : Variant;
   OutlookContact : Variant;
   iCount: integer;
-  sID_ADressen: String;
   i: integer;
 begin
-//  strlstLog.Add(DatetoStr(Date) + ' ' + TimetoStr(Time) + ': Mit Outlook verbinden');
   try
     Outlook.connect;
-//    Outlook := CreateOleObject('Outlook.Application');
    except
     on ep:system.sysutils.Exception do
     begin
-//      strlstLog.Add(DatetoStr(Date) + ' ' + TimetoStr(Time) + ': Fehler: Verbindung mit Outlook kann nicht hergestellt werden,' + e.Message);
       Application.Terminate;
       exit;
     end;
   end;
-//  strlstLog.Add(DatetoStr(Date) + ' ' + TimetoStr(Time) + ': Namespace ermitteln');
   try
     NameSpace := Outlook.GetNameSpace('MAPI');
-//  NameSpace := Outlook.GetNameSpace('MAPI');
   except
     on ep:system.sysutils.Exception do
     begin
-//      strlstLog.Add(DatetoStr(Date) + ' ' + TimetoStr(Time) + ': Namespace konnt nicht ermittelt werden');
       Application.Terminate;
       exit;
     end;
   end;
-//  strlstLog.Add(DatetoStr(Date) + ' ' + TimetoStr(Time) + ': ContactsRoot ermitteln');
   try
     contactsRoot := NameSpace.GetDefaultFolder(olFolderContacts);
   except
     on ep:system.sysutils.Exception do
     begin
-//      strlstLog.Add(DatetoStr(Date) + ' ' + TimetoStr(Time) + ': ContactsRoot konnte nicht ermittelt werden');
       Application.Terminate;
       exit;
     end;
@@ -2067,7 +2174,6 @@ begin
   while not qry_Kontakte.eof do
   begin
     OutlookContact := ContactsRoot.Items.Add;
-    // Anrede Ansprechpartner --> PCM - Manager
     if qry_Kontakte.FieldByName('ID_Anrede').AsString <> '' then
     begin
       qry_work.SQL.Text:= 'Select Bezeichnung From manager_anrede Where ID = :ID';
@@ -2075,135 +2181,46 @@ begin
       qry_work.open;
       OutlookContact.Title := qry_Work.FieldByName('Bezeichnung').AsString;
     end;
-    // Vorname  --> PCM - Mananager
     OutlookContact.FirstName	:= qry_Kontakte.FieldByName('Vorname').AsString;
-    // Nachname --> PCM - Mananager
     OutlookContact.LastName	:= qry_Kontakte.FieldByName('Nachname').AsString;
-    // Bild --> PCM - Mananager
     if not qry_KontakteBild.IsNull then
     begin
       qry_KontakteBild.SaveToFile(ExtractFilePath(ParamStr(0))  + qry_Kontakte.FieldByName('Nachname').AsString + '_' + qry_Kontakte.FieldByName('Vorname').AsString + '.jpeg');
       OutlookContact.AddPicture(ExtractFilePath(ParamStr(0))  +  qry_Kontakte.FieldByName('Nachname').AsString + '_' + qry_Kontakte.FieldByName('Vorname').AsString + '.jpeg');
     end;
-    // Privat
-    // Straße --> PCM - Mananager
     OutlookContact.HomeAddressStreet:= qry_Kontakte.FieldByName('Strasse_Privat').AsString;
-    // PLZ --> PCM - Mananager
     OutlookContact.HomeAddressPostalCode:= qry_Kontakte.FieldByName('PLZ_Privat').AsString;
-    // Ort  --> PCM - Mananager
     OutlookContact.HomeAddressCity :=qry_Kontakte.FieldByName('Ort_Privat').AsString;
-    // Land  --> PCM - Mananager
     if qry_Kontakte.FieldByName('Ort_Privat').AsString <> '' then
       OutlookContact.HomeAddressCountry:= 'Deutschland';
-    // Telefon 1 --> PCM - Mananager
     OutlookContact.HomeTelephoneNumber := qry_Kontakte.FieldByName('Telefon_Privat').AsString;
-    // Telefon 2 --> PCM - Mananager
     OutlookContact.Home2TelephoneNumber	:= qry_Kontakte.FieldByName('Telefon_Privat1').AsString;
-    // Handy --> PCM - Mananager
     OutlookContact.MobileTelephoneNumber	:= qry_Kontakte.FieldByName('Handy_Privat').AsString;
-    // Geburtstag
     if qry_Kontakte.FieldByName('Geburtsdatum').AsString <> '' then
       OutlookContact.Birthday:= qry_Kontakte.FieldByName('Geburtsdatum').AsDateTime;
-    // Telefon Zentrale --> PCM - Mananager
     OutlookContact.CompanyMainTelephoneNumber := qry_Kontakte.FieldByName('Zentrale_Ges').AsString;
-    // Telefon Durchwahl --> PCM - Mananager
     OutlookContact.Business2TelephoneNumber	:= qry_Kontakte.FieldByName('Telefon_Ges').AsString;
-    // Telefon Durchwahl --> PCM - Mananager
     OutlookContact.BusinessTelephoneNumber := qry_Kontakte.FieldByName('Handy_Ges').AsString;
-    // Email Ansprechpartner --> PCM - Mansnager
     OutlookContact.Email1Address := qry_Kontakte.FieldByName('E_Mail_Privat').AsString;
-    // Geschäftlich
-    // Straße --> PCM - Mananager
     OutlookContact.BusinessAddressStreet:= qry_Kontakte.FieldByName('Strasse_Ges').AsString;
-    // PLZ --> PCM - Mananager
     OutlookContact.BusinessAddressPostalCode:= qry_Kontakte.FieldByName('PLZ_Ges').AsString;
-    // Ort  --> PCM - Mananager
     OutlookContact.BusinessAddressCity :=qry_Kontakte.FieldByName('Ort_Ges').AsString;
-    // Land  --> PCM - Mananager
     if qry_Kontakte.FieldByName('Ort_Ges').AsString <> '' then
       OutlookContact.BusinessAddressCountry:= 'Deutschland';
-    // Email Zentrale --> PCM - Mananager
     OutlookContact.Email2Address := qry_Kontakte.FieldByName('E_Mail_Zentral').AsString;
-    // Email Geschäftlich --> PCM - Mananager
     OutlookContact.Email3Address	:= qry_Kontakte.FieldByName('E_Mail_Ges').AsString;
-    // Funktion Ansprechpartner --> PCM - Mananager
     OutlookContact.JobTitle	:= qry_Kontakte.FieldByName('Funktion_Ges').AsString;
-//    // Abteilung Ansprechpartner --> PCM - Mananager
     OutlookContact.Department	:=qry_Kontakte.FieldByName('Abteilung_Ges').AsString;
-    // Firmenname Firmenadressen --> PCM - Mananager
     OutlookContact.CompanyName :=qry_Kontakte.FieldByName('Firma').AsString;
-
     if qry_Kontakte.FieldByName('Internet_Privat').AsString <> '' then
       OutlookContact.PersonalHomePage:= qry_Kontakte.FieldByName('Internet_Privat').AsString + ';' + qry_Kontakte.FieldByName('Internet_Ges').AsString
     else
       OutlookContact.PersonalHomePage:=qry_Kontakte.FieldByName('Internet_Ges').AsString;
-
     OutlookContact.Categories:= 'PCM_Kontakt';
     OutlookContact.Save;
     qry_Kontakte.Next;
   end;
 	Outlook.Disconnect;
-//  Outlook := Unassigned;
-end;
-
-procedure Tfrm_Contact.dxLayoutGroup6Button0Click(Sender: TObject);
-begin
-  lagrp_Browser.Visible:= false;
-  lagrp_PersonalTab.ItemIndex:= 1;
-end;
-
-procedure Tfrm_Contact.btn_addGeburtslandClick(Sender: TObject);
-begin
-  itm_Geburtsland.Visible:= true;
-  btn_addGeburtsland.Visible:= ivnever;
-end;
-
-procedure Tfrm_Contact.btn_addGeburtsnameClick(Sender: TObject);
-begin
-  itm_Geburtsname.Visible:= true;
-  btn_addGeburtsname.Visible:= ivnever;
-end;
-
-procedure Tfrm_Contact.btn_addGeburtsortClick(Sender: TObject);
-begin
-  itm_Geburtsort.Visible:= true;
-  btn_addGeburtsort.Visible:= ivnever;
-end;
-
-procedure Tfrm_Contact.btn_addTodestagClick(Sender: TObject);
-begin
-  itm_Todestag.Visible:= true;
-  btn_addTodestag.Visible:= ivnever;
-end;
-procedure Tfrm_Contact.btn_KontaktStaatsangehörigkeitEditClick(Sender: TObject);
-begin
-  Application.CreateForm(Tfrm_PCM_Staatsangehoerigkeit, frm_PCM_Staatsangehoerigkeit);
-  if frm_PCM_Staatsangehoerigkeit.Execute(rs_PCMManager_Staatsangehoerigkeitbearbeiten, dm_PCM.iKontakte) then
-    dm_PCM.qry_Contact_Staatsangehoerigkeit.refresh;
-end;
-procedure Tfrm_Contact.btn_KontaktKonfessionEditClick(Sender: TObject);
-begin
-   Application.CreateForm(Tfrm_PCM_Konfession, frm_PCM_Konfession);
-   if frm_PCM_Konfession.Execute(rs_PCMManager_Konfessionbearbeiten,dm_PCM.iKontakte) then
-     dm_PCM.qry_Contact_Konfession.Refresh;
-end;
-procedure Tfrm_Contact.btn_KontaktGeschaeftlichSendMailClick(Sender: TObject);
-var
-  ExecStr : String;
-begin
-  ExecStr := Format('mailto:%s?subject=',[qry_Kontakte.FieldByName('E_Mail_Ges').AsString]);
-  ShellExecute(0,'open', PChar(ExecStr), NIL, NIL, SW_SHOWNORMAL);
-end;
-procedure Tfrm_Contact.btn_KontaktGesOpenWebsiteClick(Sender: TObject);
-var
-  sLink: string;
-begin
-  if edt_KontaktGeschaeftlichInternet.Text <> '' then
-  begin
-    sLink := edt_KontaktGeschaeftlichInternet.text;
-    OpenUrl(sLink);
-    ShellExecute(self.WindowHandle,'open', PWideChar(sLink) ,nil,nil, SW_SHOWNORMAL);
-  end;
 end;
 {$EndRegion}
 ////////////////////////////////////////////////////////////////////////////////

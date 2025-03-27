@@ -17,9 +17,9 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
   TextHeight = 25
   object grd_Konfession: TcxGrid
     Left = 0
-    Top = 63
+    Top = 58
     Width = 516
-    Height = 180
+    Height = 185
     Align = alClient
     BorderStyle = cxcbsNone
     Font.Charset = DEFAULT_CHARSET
@@ -33,7 +33,7 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
     LookAndFeel.Kind = lfFlat
     LookAndFeel.NativeStyle = False
     ExplicitWidth = 510
-    ExplicitHeight = 163
+    ExplicitHeight = 168
     object grdDBTblView_Konfession: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       FilterBox.CustomizeDialog = False
@@ -95,7 +95,6 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
     LookAndFeel.NativeStyle = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 288
     Top = 120
@@ -103,7 +102,7 @@ object frm_PCM_Konfession: Tfrm_PCM_Konfession
     DockControlHeights = (
       0
       0
-      63
+      58
       0)
     object tb_konfession: TdxBar
       Caption = 'tb_konfession'

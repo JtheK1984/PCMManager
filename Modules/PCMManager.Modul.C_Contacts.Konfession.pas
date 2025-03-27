@@ -3,30 +3,68 @@ unit PCMManager.Modul.C_Contacts.Konfession;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, cxStyles, cxCustomData, cxGraphics, cxFilter, cxData,
-  cxDataStorage, cxEdit, DB, cxDBData, cxGridLevel, cxClasses, cxControls,
-  cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid, cxLookAndFeels,
-  cxLookAndFeelPainters, ComCtrls, ToolWin, dxBar, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, cxNavigator, dxDateRanges, dxScrollbarAnnotations,
-  dxUIAClasses;
-
+  {$Region Uses}
+  Classes,
+  ComCtrls,
+  Controls,
+  cxClasses,
+  cxControls,
+  cxCustomData,
+  cxData,
+  cxDataStorage,
+  cxDBData,
+  cxEdit,
+  cxFilter,
+  cxGraphics,
+  cxGrid,
+  cxGridCustomTableView,
+  cxGridCustomView,
+  cxGridDBTableView,
+  cxGridLevel,
+  cxGridTableView,
+  cxLookAndFeelPainters,
+  cxLookAndFeels,
+  cxNavigator,
+  cxStyles,
+  DB,
+  Dialogs,
+  dxBar,
+  dxDateRanges,
+  dxScrollbarAnnotations,
+  dxUIAClasses,
+  FireDAC.Comp.Client,
+  FireDAC.Comp.DataSet,
+  FireDAC.DApt,
+  FireDAC.DApt.Intf,
+  FireDAC.DatS,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Async,
+  FireDAC.Stan.Error,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+  Forms,
+  Graphics,
+  Messages,
+  SysUtils,
+  ToolWin,
+  Variants,
+  Windows;
+  {$EndRegion Uses}
 type
+  {$Region Type}
   Tfrm_PCM_Konfession = class(TForm)
-    grd_Konfession: TcxGrid;
-    grdDBTblView_Konfession: TcxGridDBTableView;
-    grdLvl_Konfession: TcxGridLevel;
-    grdDBTblView_KonfessionBezeichnung: TcxGridDBColumn;
     brmgr_Konfession: TdxBarManager;
-    tb_konfession: TdxBar;
+    btn_KonfessionCancel: TdxBarLargeButton;
+    btn_KonfessionClose: TdxBarLargeButton;
+    btn_KonfessionDelete: TdxBarLargeButton;
     btn_KonfessionNew: TdxBarLargeButton;
     btn_KonfessionSave: TdxBarLargeButton;
-    btn_KonfessionClose: TdxBarLargeButton;
-    btn_KonfessionCancel: TdxBarLargeButton;
-    btn_KonfessionDelete: TdxBarLargeButton;
+    grd_Konfession: TcxGrid;
+    grdDBTblView_Konfession: TcxGridDBTableView;
+    grdDBTblView_KonfessionBezeichnung: TcxGridDBColumn;
+    grdLvl_Konfession: TcxGridLevel;
+    tb_konfession: TdxBar;
     procedure btn_KonfessionCloseClick(Sender: TObject);
     procedure btn_KonfessionSaveClick(Sender: TObject);
     procedure btn_KonfessionCancelClick(Sender: TObject);
@@ -39,23 +77,39 @@ type
     { Public-Deklarationen }
     function Execute(Caption: string; Recht: integer):boolean;
   end;
-
+  {$EndRegion Type}
 var
+  {$Region var}
   frm_PCM_Konfession: Tfrm_PCM_Konfession;
   sTable: string;
-
+  {$EndRegion var}
 implementation
-
-
 {$R *.dfm}
-
-uses  PCMManager.Modul.C_Contacts,
-      PCM.Data,PCM.Strings;
-
-{$Region Buttons}
+uses
+  {$Region Uses}
+  PCM.Data,PCM.Strings,
+  PCMManager.Modul.C_Contacts;
+  {$EndRegion Uses}
+////////////////////////////////////////////////////////////////////////////////
+// Hilfsfunktionen                                                            //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktionen}
+function Tfrm_PCM_Konfession.Execute(Caption: string; Recht: integer) :boolean;
+begin
+  Self.Caption := Caption;
+  btn_KonfessionNew.Enabled:= Recht >= SetReadWrite;
+  btn_KonfessionSave.Enabled:= Recht >= SetReadWrite;
+  btn_KonfessionCancel.Enabled:= Recht >= SetReadWrite;
+  btn_KonfessionDelete.Enabled:= Recht > SetReadWrite;
+  ShowModal;
+  result:= true;
+  Release;
+end;
+{$EndRegion}
 ////////////////////////////////////////////////////////////////////////////////
 // Buttons                                                                    //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Buttons}
 procedure Tfrm_PCM_Konfession.btn_KonfessionNewClick(Sender: TObject);
 begin
   if dm_PCM.qry_Contact_Konfession.State in [dsInsert, dsedit] then
@@ -86,26 +140,10 @@ begin
   Close;
 end;
 {$EndRegion}
-{$Region Execute}
 ////////////////////////////////////////////////////////////////////////////////
-// Execute                                                                    //
+// Formfunctions                                                              //
 ////////////////////////////////////////////////////////////////////////////////
-function Tfrm_PCM_Konfession.Execute(Caption: string; Recht: integer) :boolean;
-begin
-  Self.Caption := Caption;
-  btn_KonfessionNew.Enabled:= Recht >= SetReadWrite;
-  btn_KonfessionSave.Enabled:= Recht >= SetReadWrite;
-  btn_KonfessionCancel.Enabled:= Recht >= SetReadWrite;
-  btn_KonfessionDelete.Enabled:= Recht > SetReadWrite;
-  ShowModal;
-  result:= true;
-  Release;
-end;
-{$EndRegion}
 {$Region Formfunctions}
-////////////////////////////////////////////////////////////////////////////////
-// Formfunctions                                                               //
-////////////////////////////////////////////////////////////////////////////////
 procedure Tfrm_PCM_Konfession.FormShow(Sender: TObject);
 begin
   grdDBTblView_KonfessionBezeichnung.Caption := rs_PCMManager_Konfession;

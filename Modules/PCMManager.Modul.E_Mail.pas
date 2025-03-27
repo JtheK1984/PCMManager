@@ -3,28 +3,137 @@ unit PCMManager.Modul.E_Mail;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, dxBarBuiltInMenu, cxGraphics,
-  cxControls, cxLookAndFeels, cxLookAndFeelPainters,
-  Vcl.ComCtrls, Vcl.ToolWin, dxStatusBar, cxContainer,
-  cxEdit, cxListView, Vcl.ExtCtrls, cxPC,IdIMAP4,IdMessage,idAttachment,IdText,
-  IdMessageClient,ShellAPI,dateutils, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client, IdBaseComponent, IdComponent,
-  IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack, IdSSL, IdSSLOpenSSL,IdExplicitTLSClientServerBase,
-  cxCustomData, cxStyles, dxScrollbarAnnotations, cxTL, cxTextEdit,
-  cxTLdxBarBuiltInMenu, cxInplaceContainer,strutils, cxFilter, cxData,
-  cxDataStorage, cxNavigator, dxDateRanges, cxDBData, dxmdaset, cxGridLevel,
-  cxClasses, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid, Vcl.Menus, Vcl.StdCtrls, cxButtons, cxGroupBox,
-  System.ImageList, Vcl.ImgList, Vcl.OleCtrls,
-  SHDocVw, dxBar,System.UITypes, IdTCPConnection, IdTCPClient,IdAttachmentFile,
-  cxSplitter, cxGridCustomPopupMenu, cxGridPopupMenu, cxCurrencyEdit,PCm.Functions,
-  dxLayoutContainer, dxLayoutControl, dxLayoutcxEditAdapters, PCM.Browser,dxChartControl,WebView2, uWVBrowserBase, uWVBrowser,
-  dxUIAClasses;
-
+  {$Region uses}
+  cxButtons,
+  cxClasses,
+  cxContainer,
+  cxControls,
+  cxCurrencyEdit,
+  cxCustomData,
+  cxData,
+  cxDataStorage,
+  cxDBData,
+  cxEdit,
+  cxFilter,
+  cxGraphics,
+  cxGrid,
+  cxGridCustomPopupMenu,
+  cxGridCustomTableView,
+  cxGridCustomView,
+  cxGridDBTableView,
+  cxGridLevel,
+  cxGridPopupMenu,
+  cxGridTableView,
+  cxGroupBox,
+  cxInplaceContainer,
+  cxListView,
+  cxLookAndFeelPainters,
+  cxLookAndFeels,
+  cxNavigator,
+  cxPC,
+  cxSplitter,
+  cxStyles,
+  cxTextEdit,
+  cxTL,
+  cxTLdxBarBuiltInMenu,
+  dateutils,
+  dxBar,
+  dxBarBuiltInMenu,
+  dxChartControl,
+  dxDateRanges,
+  dxLayoutContainer,
+  dxLayoutControl,
+  dxLayoutcxEditAdapters,
+  dxmdaset,
+  dxScrollbarAnnotations,
+  dxStatusBar,
+  dxUIAClasses,
+  FireDAC.Comp.Client,
+  FireDAC.Comp.DataSet,
+  FireDAC.DApt, Data.DB,
+  FireDAC.DApt.Intf,
+  FireDAC.DatS,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Async,
+  FireDAC.Stan.Error,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+  idAttachment,
+  IdAttachmentFile,
+  IdBaseComponent,
+  IdComponent,
+  IdContext,
+  IdCustomHTTPServer,
+  IdCustomTCPServer,
+  IdExplicitTLSClientServerBase,
+  IdHTTPServer,
+  IdIMAP4,
+  IdIOHandler,
+  IdIOHandlerSocket,
+  IdIOHandlerStack,
+  IdMessage,
+  IdMessageClient,
+  IdSASL.OAuth.Base,
+  IdSASLCollection,
+  IdSSL,
+  IdSSLOpenSSL,
+  IdTCPClient,
+  IdTCPConnection,
+  IdText,
+  PCM.Browser,
+  PCm.Functions,
+  PCMManager.Helper.Email.OAuth,
+  SHDocVw,
+  ShellAPI,
+  strutils,
+  System.Classes,
+  System.ImageList,
+  System.Net.URLClient,
+  System.SysUtils,
+  System.UITypes,
+  System.Variants,
+  uWVBrowser,
+  uWVBrowserBase,
+  Vcl.ComCtrls,
+  Vcl.Controls,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.Forms,
+  Vcl.Graphics,
+  Vcl.ImgList,
+  Vcl.Menus,
+  Vcl.OleCtrls,
+  Vcl.StdCtrls,
+  Vcl.ToolWin,
+  WebView2,
+  Winapi.Messages,
+  Winapi.Windows;
+  {$EndRegion uses}
 type
+  {$Region Type}
+  TAuthType = class of TIdSASLOAuthBase;
+  TMailProviderInfo = record
+    AuthenticationType : TAuthType;
+    AuthorizationEndpoint : string;
+    AccessTokenEndpoint : string;
+    LogoutEndpoint : string;
+    ClientID : String;
+    ClientSecret : string;
+    ClientAccount : string;
+    ClientName : string;
+    Scopes : string;
+    SmtpHost : string;
+    SmtpPort : Integer;
+    PopHost : string;
+    PopPort : Integer;
+    ImapHost : string;
+    ImapPort : Integer;
+    AuthName : string;
+    TLS : TIdUseTLS;
+    TwoLinePOPFormat: Boolean;
+    function TokenName: string;
+  end;
   Tfrm_Mail = class(TForm)
     stbr_user: TdxStatusBar;
     trlst_EmailFolder: TcxTreeList;
@@ -48,49 +157,69 @@ type
     grdDBTblView_MailsfileName: TcxGridDBColumn;
     brmgr_Email: TdxBarManager;
     tb_Email: TdxBar;
-    dxBarLargeButton1: TdxBarLargeButton;
-    dxBarLargeButton2: TdxBarLargeButton;
-    dxBarLargeButton3: TdxBarLargeButton;
-    dxBarLargeButton4: TdxBarLargeButton;
-    dxBarLargeButton5: TdxBarLargeButton;
-    dxBarLargeButton6: TdxBarLargeButton;
-    dxBarLargeButton7: TdxBarLargeButton;
-    dxBarLargeButton8: TdxBarLargeButton;
+    btn_EmailNew: TdxBarLargeButton;
+    btn_EmailDelete: TdxBarLargeButton;
+    btn_EmailMove: TdxBarLargeButton;
+    btn_EmailAnswer: TdxBarLargeButton;
+    btn_EmailSendto: TdxBarLargeButton;
+    btn_EmailAnswerAll: TdxBarLargeButton;
+    btn_EmailMarkAsRead: TdxBarLargeButton;
     idImap_Mail: TIdIMAP4;
     pm_Einnahmen: TcxGridPopupMenu;
-    dxBarPopupMenu1: TdxBarPopupMenu;
-    NeueEMail1: TdxBarButton;
-    EMaillschen1: TdxBarButton;
-    EMaillschen2: TdxBarButton;
-    Antworten1: TdxBarButton;
-    Antworten2: TdxBarButton;
-    EMailweiterleiten1: TdxBarButton;
-    Alsgelesenmarkieren1: TdxBarButton;
+    ppm_Email: TdxBarPopupMenu;
+    ppmbtn_EmailNew: TdxBarButton;
+    ppmbtn_EmailDelete: TdxBarButton;
+    ppmbtn_EmailMove: TdxBarButton;
+    ppmbtn_EmailAnswer: TdxBarButton;
+    ppmbtn_EmailAnswerAll: TdxBarButton;
+    ppmbtn_EmailSendTo: TdxBarButton;
+    ppmbtn_EmailMarkasRead: TdxBarButton;
     dxBarDockControl1: TdxBarDockControl;
-    dxLayoutControl1Group_Root: TdxLayoutGroup;
-    dxLayoutControl1: TdxLayoutControl;
-    dxLayoutGroup1: TdxLayoutGroup;
-    dxLayoutGroup2: TdxLayoutGroup;
-    dxLayoutItem1: TdxLayoutItem;
+    lactrl_MailGroup_Root: TdxLayoutGroup;
+    lactrl_Mail: TdxLayoutControl;
+    lagrp_Mail: TdxLayoutGroup;
+    lagrp_MailDetail: TdxLayoutGroup;
+    laitm_MailBar: TdxLayoutItem;
     dxLayoutItem2: TdxLayoutItem;
-    dxLayoutItem3: TdxLayoutItem;
-    dxLayoutGroup4: TdxLayoutGroup;
+    laitm_MailAccounts: TdxLayoutItem;
+    lagrp_MailMails: TdxLayoutGroup;
     dxLayoutItem4: TdxLayoutItem;
     grpbx_MailVorschau: TdxLayoutItem;
     pnl_Browser: TcxGroupBox;
     dxLayoutSplitterItem1: TdxLayoutSplitterItem;
+    IdHTTPServer1: TIdHTTPServer;
+    IdSSLIOHandlerSocketIMAP: TIdSSLIOHandlerSocketOpenSSL;
+    IdSSLIOHandlerSocketSMTP: TIdSSLIOHandlerSocketOpenSSL;
+    idImap_MailOauth: TIdIMAP4;
+    grdDBTblView_MailsCellCTimer: TTimer;
+    dxBarLargeButton1: TdxBarLargeButton;
     procedure FormShow(Sender: TObject);
     procedure tl_EmailFolderChange(Sender: TObject);
     procedure grdDBTblView_MailsCustomDrawCell(Sender: TcxCustomGridTableView;  ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
-    procedure tv_MailsCellClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
-    procedure dxBarLargeButton3Click(Sender: TObject);
-    procedure dxBarLargeButton8Click(Sender: TObject);
+    procedure btn_EmailDeleteClick(Sender: TObject);
     procedure grdDBTblView_MailsCellDblClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
-    procedure qMailAfterScroll(DataSet: TDataSet);
-    procedure dxBarLargeButton4Click(Sender: TObject);
+    procedure btn_EmailMoveClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure grdDBTblView_MailsCellClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
+    procedure grdDBTblView_MailsCellCTimerTimer(Sender: TObject);
+    procedure dxBarLargeButton1Click(Sender: TObject);
   private
     { Private-Deklarationen }
+    iKontotyp: integer;
+    sHost: String;
+    iPort: integer;
+    sUser: String;
+    sPassword: String;
+    sPrevAccount: String;
+    ssl: TIdSSLIOHandlerSocketOpenSSL;
+    m_currentpath: WideString;
+    m_uidlfile: WideString;
+    CurrNode: TcxTreelistnode;
+    FOAuth2_Enhanced : TEnhancedOAuth2Authenticator;
+    xoauthSASL : TIdSASLListEntry;
+    Provider : TMailProviderInfo;
     AAccount: string;
     sAccount: string;
     sMailBoxName: string;
@@ -98,452 +227,54 @@ type
     FWebBrowser: TAbstractWebBrowser;
     procedure SetGridViews(Show:boolean);
     procedure IMAPStart;
+    procedure InitializeBrowser;
     procedure ShowFolders;
+    procedure ConvertFileHTML(AFile:String);
     procedure CreateFullFolder( folder: String );
-//    function GetSelectedFolderNode(includeRoot: Boolean): TcxTreeListNode;
-//    function EmlFileToHtmlRenderPath(filePath: WideString): WideString;
-//    function GetAttachmentTempFolder(filePath: WideString): WideString;
+    procedure MailAuthenticate;
+    procedure SetupAuthenticator(ARefreshToken: String);
   public
     { Public-Deklarationen }
-//    iIDMail: integer;
-    iKontotyp: integer;
-    sHost: String;
-    iPort: integer;
-    sUser: String;
-    sPassword: String;
-    ssl: TIdSSLIOHandlerSocketOpenSSL;
-    m_currentpath: WideString;
-    m_uidlfile: WideString;
-    CurrNode: TcxTreelistnode;
   end;
-
+  {$EndRegion Type}
 var
+  {$Region var}
   frm_Mail: Tfrm_Mail;
-
-  const
+  {$EndRegion var}
+const
+  {$Region const}
+  clientredirect = 'http://localhost:2132';
   GetMailInfos_DateRange = 64;
+  {$EndRegion const}
 implementation
-
 {$R *.dfm}
-
-uses  PCM.Data,
-      PCMManager.Modul.E_Mail.Show,
-      PCM.Browser.FullScreen,
-      uwvLoader,
-      PCMManager.Modul.E_Mail.Mailbox, PCM.Strings;
-
-procedure Tfrm_Mail.SetGridViews(Show:boolean);
+uses
+  {$Region Uses}
+  PCM.Data,
+  PCMManager.Modul.E_Mail.Show,
+  PCM.Browser.FullScreen,
+  uwvLoader,
+  IdSASL.OAuth.XOAUTH2,
+  PCMManager.Modul.E_Mail.Mailbox,
+  PCM.Strings, PCMManager.Modul.E_Mail.Signaturen;
+  {$EndRegion Uses}
+////////////////////////////////////////////////////////////////////////////////
+// Hilfsfunktionen                                                            //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktionen}
+function TMailProviderInfo.TokenName: string;
 begin
-  if Show then
-  begin
-    SaveGridViewMail := TSavedGridView.Create(GV_Mail,dm_PCM.iIDBenutzerPCM, grdDBTblView_Mails);
-    SaveGridViewMail.LoadView;
-  end
-  else begin
-    SaveGridViewMail.SaveView(0);
-    SaveGridViewMail.Free;
-  end;
+  Result := AuthName + 'Token';
 end;
-
-procedure Tfrm_Mail.CreateFullFolder( folder: String );
+procedure Tfrm_Mail.ConvertFileHTML(AFile:String);
 var
-  s: String;
-  npos: integer;
-begin
-    if DirectoryExists(folder) then
-        Exit;
-    npos := 1;
-    while true do
-    begin
-      npos := PosEx('\', folder, npos );
-      if npos > 3 then
-      begin
-        s := MidStr( folder, 1, npos - 1 );
-        if Not DirectoryExists(s) then
-          CreateDir(s);
-      end
-      else if npos < 1 then
-        Break;
-
-      npos := npos + 1;
-    end;
-    if Not DirectoryExists(folder) then
-      CreateDir(folder);
-end;
-procedure Tfrm_Mail.dxBarLargeButton3Click(Sender: TObject);
-var
-//  i,
-iAnzahlCount: integer;
-//  mailInfos: IMailInfoCollection;
-//  oInfo: IMailInfo;
-begin
-  iAnzahlCount:=0;
-  idImap_Mail.UIDDeleteMsg(qry_Mail.FieldByName('UIDL').asString);
-  dm_PCM.qry_Work.sql.Text:= 'Delete From manager_emails Where ID = :ID and ID_Benutzer =:ID_Benutzer';
-  dm_PCM.qry_Work.ParamByName('ID').AsInteger:= qry_Mail.FieldByName('ID').AsInteger;
-  dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-  dm_PCM.qry_Work.ExecSQL;
-  qry_Mail.AfterScroll:= nil;
-  qry_Mail.Refresh;
-//      qAllg.SQL.Text:= 'SELECT COUNT(*) as anzahl FROM manager_emails Where readEmail = :reaaad and ID_Benutzer = :ID_Benutzer';
-//      qAllg.ParamByName('ID_Benutzer').Asinteger:= iIDMail;
-//      qAllg.ParamByName('reaaad').AsString:= '0';
-//      qAllg.open;
-//      iAnzahlCount:= qAllg.FieldByName('anzahl').AsInteger;
-//      qAllg.Close;
-//      sb_user.Panels[1].Text := Format('Anzahl Elemente: %d', [qMail.RecordCount]) + ', ' +Format('Anzahl ungelesener Elemente: %d', [iAnzahlCount]);
-//      if iAnzahlCount > 0 then
-//        tl_EmailFolder.FocusedNode.Values[1]:= iAnzahlCount
-//      else
-//        tl_EmailFolder.FocusedNode.Values[1]:= '';
-//    end;
-//  end;
-
-
-    stbr_user.Panels[1].Text := Format('Anzahl Elemente: %d', [qry_Mail.RecordCount]) + ', ' +Format('Anzahl ungelesener Elemente: %d', [iAnzahlCount]);
-    stbr_user.Panels[2].text := 'Übermittlung abgeschlossen      ';
-    if iAnzahlCount > 0 then
-      trlst_EmailFolder.FocusedNode.Values[1]:= iAnzahlCount
-    else
-      trlst_EmailFolder.FocusedNode.Values[1]:= '';
-    qry_Mail.AfterScroll:= qMailAfterScroll;
-
-
-end;
-procedure Tfrm_Mail.dxBarLargeButton4Click(Sender: TObject);
-var
-  iIDPostfach: integer;
-begin
-  Application.CreateForm(Tfrm_PCM_MailShow_Ordner,frm_PCM_MailShow_Ordner);
-  dm_PCM.qry_Work.SQL.Text:= 'SELECT ID,Anzeige ' +
-                      'FROM manager_email_postfach ' +
-                      'WHERE ID_Manager_email = (SELECT ID FROM manager_emailkonfiguration WHERE Email = :acc) AND abonnieren = TRUE ' +
-                      'ORDER BY ANZEIGE';
-  dm_PCM.qry_Work.ParamByName('acc').AsString:= sAccount;
-  dm_PCM.qry_Work.open;
-
-  while not dm_PCM.qry_Work.eof do
-  begin
-    frm_PCM_MailShow_Ordner.cmbbx_Ordner.Properties.Items.AddObject(dm_PCM.qry_Work.FieldByName('Anzeige').AsString, TObject(dm_PCM.qry_Work.FieldByName('ID').asInteger));
-    dm_PCM.qry_Work.Next;
-  end;
-  dm_PCM.qry_Work.Close;
-  iIDPostfach:= 0;
-
-  if frm_PCM_MailShow_Ordner.Execute(True,iIDPostfach) then
-  begin
-    if iIDPostfach > 0 then
-    begin
-      dm_PCM.qry_Work.SQL.text:= 'SELECT Postfach From manager_email_postfach where ID = :ID';
-      dm_PCM.qry_Work.ParamByName('id').AsInteger:= iIDPostfach;
-      dm_PCM.qry_Work.Open;
-      idImap_Mail.UIDCopyMsg(qry_Mail.FieldByName('UIDL').asString,dm_PCM.qry_Work.FieldByName('Postfach').AsString);
-      idImap_Mail.ExpungeMailBox;
-
-    end;
-  end;
-
-
-
-end;
-procedure Tfrm_Mail.dxBarLargeButton8Click(Sender: TObject);
-//var
-//  i,iAnzahlCount: integer;
-//  mailInfos: IMailInfoCollection;
-//  oInfo: IMailInfo;
-begin
-
-//  if oClient.Connected then
-//  begin
-//    if qMail.FieldByName('ID').AsInteger > 0 then
-//    begin
-//      mailInfos := oClient.GetMailInfoList();
-//      for i:= 0 to mailInfos.Count - 1 do
-//      begin
-//        oInfo := mailInfos.Item[i];
-//        if oInfo.UIDL = qMail.FieldByName('UIDL').AsWideString then
-//          break;
-//      end;
-//      qAllg.SQL.Text:= 'Update manager_emails SET readEmail = :raedd Where ID = :ID';
-//      if oInfo.Read  then
-//      begin
-//        oClient.MarkAsRead(oInfo,  false);
-//        qAllg.ParamByName('raedd').AsString := '0';
-//      end
-//      else
-//      begin
-//        oClient.MarkAsRead(oInfo,  true);
-//        qAllg.ParamByName('raedd').AsString := '-1';
-//      end;
-//      qAllg.ParamByName('ID').AsInteger:= qMail.FieldByName('ID').AsInteger;
-//      qAllg.ExecSQL;
-//      qMail.Refresh;
-//
-//      qAllg.SQL.Text:= 'SELECT COUNT(*) as anzahl FROM manager_emails Where readEmail = :reaaad and ID_Benutzer = :ID_Benutzer';
-//      qAllg.ParamByName('ID_Benutzer').AsInteger:= iIDMail;
-//      qAllg.ParamByName('reaaad').AsString:= '0';
-//      qAllg.open;
-//      iAnzahlCount:= qAllg.FieldByName('anzahl').AsInteger;
-//      qAllg.Close;
-//
-//      sb_user.Panels[1].Text := Format('Anzahl Elemente: %d', [qMail.RecordCount]) + ', ' +Format('Anzahl ungelesener Elemente: %d', [iAnzahlCount]);
-//      if iAnzahlCount > 0 then
-//        tl_EmailFolder.FocusedNode.Values[1]:= iAnzahlCount
-//      else
-//        tl_EmailFolder.FocusedNode.Values[1]:= '';
-//    end;
-//  end;
-end;
-//function Tfrm_Mail.EmlFileToHtmlRenderPath(filePath: WideString): WideString;
-//begin
-//  result := LeftStr(filePath, length(filePath) - 4) + '.html';
-//end;
-//function Tfrm_Mail.GetAttachmentTempFolder(filePath: WideString): WideString;
-//begin
-//  result := LeftStr(filePath, length(filePath) - 4);
-//end;
-procedure Tfrm_Mail.tv_MailsCellClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
-//var
-//  fileName, folder, tempFolder, htmlFile: WideString;
-//  folderNode: TcxTreeListNode;
-//  oFolder: IImap4Folder;
-//  oInfo:IMailInfo;
-//  oUIDLItem: IUIDLItem;
-//  oMail: IMail;
-//  mailInfos: IMailInfoCollection;
-//  i:integer;
-begin
-//
-//  folderNode := GetSelectedFolderNode(false);
-//  if folderNode = nil then
-//    exit;
-//  try
-//    oFolder := IImap4Folder(folderNode.Data);
-//    folder := m_currentPath + '\' + oCurServer.Server + '\' + oCurServer.User +
-//    '\' + oFolder.LocalPath;
-//    oUIDLItem := oUIDLManager.FindUIDL(oCurServer.DefaultInterface, qMail.FieldByName('UIDL').AsWideString);
-//    if oUIDLItem = nil then
-//    begin
-//      exit;
-//    end;
-//    if oClient.Connected then
-//    begin
-//
-//      mailInfos := oClient.GetMailInfoList();
-//      for i:= 0 to mailInfos.Count - 1 do
-//      begin
-//        oInfo := mailInfos.Item[i];
-//        if oInfo.UIDL = qMail.FieldByName('UIDL').AsWideString then
-//          break;
-//      end;
-//    end;
-//    fileName := folder + '\' + oUIDLItem.fileName;
-//    htmlFile := EmlFileToHtmlRenderPath(fileName);
-//    tempFolder := GetAttachmentTempFolder(fileName);
-//    if not oTools.ExistFile(htmlFile) then
-//    begin
-//      sb_user.Panels[2].Text := 'E-Mail herunterladen ...';
-//      oMail := oClient.GetMail(oInfo);
-//      oMail.SaveAs(fileName, true);
-//    end;
-//    sb_user.Panels[2].Text := 'E-Mail herunterladen erfolgreich ...';
-//    ShowMail(fileName);
-//  except
-//  end;
-end;
-procedure Tfrm_Mail.grdDBTblView_MailsCellDblClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
-//var
-//  folderNode: TcxTreeListNode;
-//  oFolder: IImap4Folder;
-//  oInfo:IMailInfo;
-//  oUIDLItem: IUIDLItem;
-//  oMail: TMail;
-//  fileName, folder, tempFolder, htmlFile: WideString;
-//  mailInfos: IMailInfoCollection;
-//  i:integer;
-//  attachments: IAttachmentCollection;
-//  oAttachment: IAttachment;
-//  attachmentName: WideString;
-//begin
-//
-//  folderNode := GetSelectedFolderNode(false);
-//  if folderNode = nil then
-//    exit;
-//
-//  oFolder := IImap4Folder(folderNode.Data);
-//  folder := m_currentPath + '\' + oCurServer.Server + '\' + oCurServer.User +
-//  '\' + oFolder.LocalPath;
-//  oUIDLItem := oUIDLManager.FindUIDL(oCurServer.DefaultInterface, qMail.FieldByName('UIDL').AsWideString);
-//  if oUIDLItem = nil then
-//  begin
-//    exit;
-//  end;
-//  if oClient.Connected then
-//  begin
-//
-//    mailInfos := oClient.GetMailInfoList();
-//    for i:= 0 to mailInfos.Count - 1 do
-//    begin
-//      oInfo := mailInfos.Item[i];
-//      if oInfo.UIDL = qMail.FieldByName('UIDL').AsWideString then
-//        break;
-//    end;
-//  end;
-//  fileName := folder + '\' + oUIDLItem.fileName;
-//  htmlFile := EmlFileToHtmlRenderPath(fileName);
-//  tempFolder := GetAttachmentTempFolder(fileName);
-//
-//  oMail := TMail.Create(Application);
-//  oMail.LicenseCode := 'TryIt';
-//  oMail.LoadFile(fileName, false);
-//
-//  Application.CreateForm(Tfrm_PCM_MailShow, frm_PCM_MailShow);
-//  frm_PCM_MailShow.webMail.Navigate(htmlFile);
-//  frm_PCM_MailShow.lblVon.Caption:= oMail.From.Name + ' <' +  oMail.From.Address + '>';
-//  for i := 0 to oMail.ToList.Count - 1 do
-//  begin
-//    if(oMail.ToList.Item[i].Name = '') then
-//      frm_PCM_MailShow.lblAn.Caption := frm_PCM_MailShow.lblAn.Caption + oMail.ToList.Item[i].Address
-//    else
-//      frm_PCM_MailShow.lblAn.Caption := frm_PCM_MailShow.lblAn.Caption + oMail.ToList.Item[i].Name + ' <' + oMail.ToList.Item[i].Address + '>';
-//
-//    if (i < oMail.ToList.Count - 1) then
-//        frm_PCM_MailShow.lblAn.Caption := frm_PCM_MailShow.lblAn.Caption + '; ';
-//  end;
-//
-//  for i := 0 to oMail.CcList.Count - 1 do
-//  begin
-//    if(oMail.CcList.Item[i].Name = '') then
-//      frm_PCM_MailShow.lblcc.Caption := frm_PCM_MailShow.lblcc.Caption + oMail.CcList.Item[i].Address
-//    else
-//      frm_PCM_MailShow.lblcc.Caption := frm_PCM_MailShow.lblcc.Caption + oMail.CcList.Item[i].Name + ' <' + oMail.CcList.Item[i].Address + '>';
-//
-//    if (i < oMail.CcList.Count - 1) then
-//        frm_PCM_MailShow.lblcc.Caption := frm_PCM_MailShow.lblcc.Caption + '; ';
-//  end;
-//  frm_PCM_MailShow.lblBetreff.Caption := oMail.Subject;
-//  // ANHANAGE
-//  frm_PCM_MailShow.comp_imglst_16x16.Clear;
-//  frm_PCM_MailShow.lstMail.Items.Clear;
-//  attachments := oMail.AttachmentList;
-//  if(attachments.Count > 0) then
-//  begin
-//    // Create a temporal folder to store attachments.
-//    tempFolder := GetAttachmentTempFolder(fileName);
-//    if not oTools.ExistFile(tempFolder) then
-//      oTools.CreateFolder(tempFolder);
-//    for i:= 0 to attachments.Count - 1 do
-//    begin
-//
-//      oAttachment := attachments.Item[i];
-//      attachmentName := tempFolder + '\' + oAttachment.Name;
-//
-//      frm_PCM_MailShow.CreateAnhang(attachmentName,oAttachment.Name);
-//      oAttachment.SaveAs(attachmentName, true);
-//    end;
-//  end;
-//
-//  frm_PCM_MailShow.Caption:= qMail.FieldByName('Betreff').AsString;
-//  frm_PCM_MailShow.ShowModal;
-var
-  fileName, folder : WideString;
-//  iAnzahl: integer;
-//  UUID: string;
-  MailA: TIdMessage;
-  i: integer;
-  ssearch, sreplace: string;
   WinFile: TextFile;
-  Line, sAnhang: String;
-  sl: TStringList;
-//  ImageListHandle: THandle;
-//  Icon: TIcon;
-//  IconH : HICON;
-//  IconHL : HICON;
-//  imageindex: Integer;
-//  FileInfo: TSHFileInfo;
+  Line: String;
+  slC: TStringList;
 begin
-  Application.CreateForm(Tfrm_PCM_MailShow,frm_PCM_MailShow);
-  MailA := TIdMessage.Create(nil);
-  MailA.CharSet:= 'UTF-8';
-  idImap_Mail.UIdRetrieve(qry_Mail.FieldByName('UIDL').asString, MailA);
-  try
-    folder := m_currentpath + '\' + idImap_Mail.host + '\' + idImap_Mail.username +
-      '\' + sMailBoxName + '\' + qry_Mail.FieldByName('UIDL').asString;
-    folder := StringReplace(folder, '/', '.', [rfReplaceAll]);
-    if not FileExists(folder) then
-    begin
-      stbr_user.Panels.Items[0].text := 'E-Mail wird heruntergeladen...';
-    end;
-    if not DirectoryExists(folder) then
-      CreateDIr(folder);
-    frm_PCM_MailShow.lstVw_Mail.Clear;
-//    for i := 0 to MailA.MessageParts.Count - 1 do
-//    begin
-//      if MailA.MessageParts.Items[i] is TIDAttachment then
-//      begin
-//        filename := TIdAttachmentFile(MailA.MessageParts.Items[i]).FileName; //        (MailA.MessageParts.Items[i] as TIDAttachment).Filename;
-////        (MailA.MessageParts.Items[i] as TIDAttachment).SaveToFile(folder + '\' +  filename);
-//        TIdAttachmentFile(MailA.MessageParts.Items[i]).SaveToFile(folder + '\' + filename);
-//        sAnhang := folder + '\' + filename;
-//        frm_PCM_MailShow.CreateAnhang(folder + '\' + filename,filename);
-//      end;
-//    end;
-//    iAnzahl := 0;
-
-    if MailA.MessageParts.Count > 0 then
-    begin
-      for i := 0 to MailA.MessageParts.Count-1 do
-      begin
-        if MailA.MessageParts.Items[i] is TIdText then
-        begin
-          TIdText(MailA.MessageParts.Items[i]).Body.SaveToFile(folder + '\mail.html');
-        end;
-        if MailA.MessageParts.Items[i] is TIDAttachment then
-        begin
-          filename := TIdAttachmentFile(MailA.MessageParts.Items[i]).FileName; //        (MailA.MessageParts.Items[i] as TIDAttachment).Filename;
-  //        (MailA.MessageParts.Items[i] as TIDAttachment).SaveToFile(folder + '\' +  filename);
-          TIdAttachmentFile(MailA.MessageParts.Items[i]).SaveToFile(folder + '\' + filename);
-          sAnhang := folder + '\' + filename;
-          frm_PCM_MailShow.CreateAnhang(folder + '\' + filename,filename);
-        end;
-
-      end;
-    end
-    else begin
-      MailA.Body.SaveToFile(folder + '\mail.html');
-    end;
-
-
-    sl:=TStringList.Create;
-    for i := 0 to Pred(Maila.MessageParts.Count) do
-    begin
-      if (Maila.MessageParts.Items[i] is TIdAttachment) then
-      begin
-        ssearch:= TIdAttachment(Maila.MessageParts.Items[i]).ContentID;
-        ssearch:= '"cid:' + Copy(ssearch,2,Length(ssearch) -2)  + '"';
-        sreplace:= TIdAttachment(Maila.MessageParts.Items[i]).Filename;
-        if Length(ssearch) > 6 then
-        begin
-          AssignFile(WinFile,Folder + '\mail.html');
-          Reset(Winfile);
-          while Not Eof(WinFile) do
-          begin
-            ReadLn(WinFile, Line);
-            Line := StringReplace(Line, ssearch, sreplace, [rfReplaceAll]);
-            sl.Add(Line);
-          end;
-          CloseFile(WinFile);
-          sl.SaveToFile(folder +'\mail.html');
-          sl.Clear;
-        end;
-      end;
-    end;
-//
-//
-    AssignFile(WinFile,folder +'\mail.html');
+  slC:= TStringList.Create;
+    AssignFile(WinFile,AFile);
     Reset(Winfile);
-
-
     while Not Eof(WinFile) do
     begin
       ReadLn(WinFile, Line);
@@ -616,8 +347,6 @@ begin
       Line := StringReplace(Line, '¡','&iexcl;', [rfReplaceAll]);
       Line := StringReplace(Line, '¿','&iquest;', [rfReplaceAll]);
       Line := StringReplace(Line, '¦','&brvbar;', [rfReplaceAll]);
-//        Line := StringReplace(Line, '<','&lt;', [rfReplaceAll]);
-//        Line := StringReplace(Line, '>','&gt;', [rfReplaceAll]);
       Line := StringReplace(Line, '€','&euro;', [rfReplaceAll]);
       Line := StringReplace(Line, '£','&pound;', [rfReplaceAll]);
       Line := StringReplace(Line, '$','&dollar;', [rfReplaceAll]);
@@ -632,98 +361,285 @@ begin
       Line := StringReplace(Line, '?','&phone;', [rfReplaceAll]);
       Line:= StringReplace(Line, 'charset=iso-8859-1', 'charset=utf-8;', [rfReplaceAll]);
       Line:= StringReplace(Line, 'Windows-1252', 'charset=utf-8;', [rfReplaceAll]);
-
-
-//        sl.Add(TNetEncoding.HTML.Encode(Line));
-      sl.Add(Line);
+      slC.Add(Line);
     end;
     CloseFile(WinFile);
-    sl.SaveToFile(folder + '\mail.html');
-    sl.Clear;
-    sl.free;
-    grpbx_MailVorschau.visible:= true;
-    FWebBrowser.Navigate(folder + '\mail.html');
-
-
-
-    if Maila.From.Name = '' then
+    slC.SaveToFile(AFile);
+    slC.Clear;
+    slC.free;
+end;
+procedure Tfrm_Mail.CreateFullFolder( folder: String );
+var
+  s: String;
+  npos: integer;
+begin
+    if DirectoryExists(folder) then
+        Exit;
+    npos := 1;
+    while true do
     begin
-      frm_PCM_MailShow.lbl_Von.Caption:= Maila.From.Address;
-      frm_PCM_MailShow.lbl_Von.Hint:= '';
-    end
-    else begin
-      frm_PCM_MailShow.lbl_Von.Caption:= Maila.From.Name + ' <' + Maila.From.Address + '>';
-      frm_PCM_MailShow.lbl_Von.Hint:= Maila.From.Address;
-    end;
-    frm_PCM_MailShow.lbl_an.Caption:= idImap_Mail.username;//  qEmailConfig.FieldByName('Email').AsString;
-    frm_PCM_MailShow.lbl_an.Hint:= '';
-    frm_PCM_MailShow.lbl_cc.Caption:= MailA.CCList.EMailAddresses;
-    frm_PCM_MailShow.lbl_cc.Hint:= '';
+      npos := PosEx('\', folder, npos );
+      if npos > 3 then
+      begin
+        s := MidStr( folder, 1, npos - 1 );
+        if Not DirectoryExists(s) then
+          CreateDir(s);
+      end
+      else if npos < 1 then
+        Break;
 
-    frm_PCM_MailShow.lbl_Betreff.Caption:= MailA.Subject;
-    frm_PCM_MailShow.Caption:= 'Nachricht: ' + MailA.Subject;
-//      frm_PCM_MailShow.Label5.Caption:= FormatDateTime('dd.MM.yyyy hh:mm',Maila.Date);
-
-    frm_PCM_MailShow.webbwr_Mail.Navigate(folder + '\mail.html');
-    frm_PCM_MailShow.ShowModal;
-//    sb_user.Panels.Items[0].Text := Format( '%d Elemente', [lstMailimap.Items.Count]);
-//    frm_PCM_MailShow.Free;
-    MailA.free;
-  except
-    on ep:Exception do
-    begin
-      MessageDlg('Fehler:'+ep.Message, mtError, [mbOk], 0);
+      npos := npos + 1;
     end;
+    if Not DirectoryExists(folder) then
+      CreateDir(folder);
+end;
+procedure Tfrm_Mail.dxBarLargeButton1Click(Sender: TObject);
+begin
+  Application.CreateForm(Tfrm_Signatur,frm_Signatur);
+  frm_Signatur.ShowModal;
+end;
+
+procedure Tfrm_Mail.IMAPStart;
+begin
+  trlst_EmailFolder.Clear;
+  trlst_EmailFolder.OnChange:= tl_EmailFolderChange;
+  ShowFolders;
+end;
+procedure Tfrm_Mail.InitializeBrowser;
+begin
+  if not Assigned(FWebBrowser) then
+  begin
+    FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
+    FWebBrowser.Parent := pnl_Browser;
+    FWebBrowser.Align := alClient;
+    FWebBrowser.OnBeforeNavigate := nil;
+  end
+  else
+  begin
+    FreeAndNil(FWebBrowser);
+    FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
+    FWebBrowser.Parent := pnl_Browser;
+    FWebBrowser.Align := alClient;
+    FWebBrowser.OnBeforeNavigate := nil;
   end;
 end;
-procedure Tfrm_Mail.grdDBTblView_MailsCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+procedure Tfrm_Mail.MailAuthenticate;
+var
+  uri : TURI;
 begin
-  if AViewInfo.GridRecord.Values[6] = '1' then
+  uri := TURI.Create(FOAuth2_Enhanced.AuthorizationRequestURI);
+  ShellExecute(0,'open',PChar(uri.ToString),nil,nil,0);
+end;
+procedure Tfrm_Mail.SetGridViews(Show:boolean);
+begin
+  if Show then
   begin
-    ACanvas.Font.Style:= ACanvas.Font.Style - [fsBold]
+    SaveGridViewMail := TSavedGridView.Create(GV_Mail,dm_PCM.iIDBenutzerPCM, grdDBTblView_Mails);
+    SaveGridViewMail.LoadView;
   end
   else begin
-    ACanvas.Font.Style:= ACanvas.Font.Style + [fsBold]
+    SaveGridViewMail.SaveView(0);
+    SaveGridViewMail.Free;
   end;
 end;
-//function Tfrm_Mail.GetSelectedFolderNode(includeRoot: Boolean): TcxTreeListNode;
-//var
-//  selectedNode: TcxTreeListNode;
-//begin
-//  result := nil;
-//  selectedNode := trlst_EmailFolder.FocusedNode;
-//  if selectedNode = nil then
-//    exit;
-//
-//   if (not includeRoot) and (selectedNode.Parent = nil) then
-//    exit;
-//
-//    result := selectedNode;
-//end;
-procedure Tfrm_Mail.qMailAfterScroll(DataSet: TDataSet);
+procedure Tfrm_Mail.SetupAuthenticator(ARefreshToken: String);
+begin
+  FOAuth2_Enhanced.ClientID := Provider.ClientID;
+  FOAuth2_Enhanced.ClientSecret := Provider.ClientSecret;
+  FOAuth2_Enhanced.Scope := Provider.Scopes;
+  FOAuth2_Enhanced.RedirectionEndpoint := clientredirect;
+  FOAuth2_Enhanced.AuthorizationEndpoint := Provider.AuthorizationEndpoint;
+  FOAuth2_Enhanced.AccessTokenEndpoint := Provider.AccessTokenEndpoint;
+  FOAuth2_Enhanced.RefreshToken := ARefreshToken;
+  FOAuth2_Enhanced.AccessToken := '';
+  FOAuth2_Enhanced.AccessTokenExpiry := 0;
+end;
+procedure Tfrm_Mail.ShowFolders;
 var
-  fileName, folder: WideString;
-//  iAnzahl: integer;
-//  UUID: string;
-  MailA: TIdMessage;
+  IdSSLIOHandlerSocket : TIdSSLIOHandlerSocketOpenSSL;
+  MainNode: TcxTreeListNode;
+  Tree1Node: TcxTreeListNode;
+  Tree2Node: TcxTreeListNode;
   i: integer;
+
+  UsersFolders: TStringlist;
+begin
+  trlst_EmailFolder.Clear;
+  trlst_EmailFolder.BeginUpdate;
+  dm_pcm.qry_work.SQL.Text:= 'SELECT * From manager_emailkonfiguration where id_Benutzer = :ID';
+  dm_pcm.qry_work.ParamByName('ID').AsInteger:= dm_pcm.iIDBenutzerPCM;
+  dm_pcm.qry_work.Open;
+  while not dm_pcm.qry_work.eof do
+  begin
+    if dm_pcm.qry_work.FieldByName('Authtype').AsInteger = 0 then
+    begin
+      IdIMAP_Mail.SASLMechanisms.Clear;
+      IdIMAP_Mail.AuthType:= iatUserPass;
+      IdSSLIOHandlerSocket := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
+      IdSSLIOHandlerSocket.SSLOptions.Method:= sslvSSLv23;
+      idImap_Mail.IOHandler := IdSSLIOHandlerSocket;
+      idImap_Mail.UseTLS := utUseImplicitTLS;
+      idImap_Mail.Host := dm_pcm.qry_work.FieldByName('PostEingangsserver').AsString;
+      idImap_Mail.Port := dm_pcm.qry_work.FieldByName('PortEingangsserver').AsInteger;
+      idImap_Mail.UseTLS := utUseImplicitTLS;
+      idImap_Mail.Username := dm_pcm.qry_work.FieldByName('Benutzer').AsString;;
+      idImap_Mail.Password := dm_pcm.qry_work.FieldByName('Passwort').AsString;
+      idImap_Mail.Connect;
+    end
+    else begin
+      Provider.AccessTokenEndpoint:=dm_pcm.qry_work.FieldByName('AccessTokenEndpoint').AsString;
+      Provider.AuthenticationType:= TIdSASLXOAuth;
+      Provider.AuthName:= 'Microsoft';
+      Provider.AuthorizationEndpoint:= dm_pcm.qry_work.FieldByName('AuthorizationEndpoint').AsString;
+      Provider.ClientAccount:= dm_pcm.qry_work.FieldByName('Benutzer').AsString;
+      Provider.ClientID:= dm_pcm.qry_work.FieldByName('ClientID').AsString;
+      Provider.ClientSecret:= dm_pcm.qry_work.FieldByName('ClientSecret').AsString;
+      Provider.ImapHost:= dm_pcm.qry_work.FieldByName('PostEingangsserver').AsString;
+      Provider.ImapPort:= dm_pcm.qry_work.FieldByName('PortEingangsserver').AsInteger;
+      Provider.Scopes:= dm_pcm.qry_work.FieldByName('Scopes').AsString;
+      Provider.SmtpHost:= dm_pcm.qry_work.FieldByName('PostAusgangsserver').AsString;
+      Provider.SmtpPort:= dm_pcm.qry_work.FieldByName('PortAusgangsserver').AsInteger;
+      Provider.TLS:= utUseExplicitTLS;
+      if dm_pcm.qry_work.FieldByName('RefreshToken').AsString = '' then
+        MailAuthenticate;
+      SetupAuthenticator(dm_pcm.qry_work.FieldByName('RefreshToken').AsString);
+      FOAuth2_Enhanced.ClientID := Provider.ClientID;
+      FOAuth2_Enhanced.ClientSecret := Provider.ClientSecret;
+      FOAuth2_Enhanced.RefreshAccessTokenIfRequired;
+      IdIMAP_Mail.Host := dm_pcm.qry_work.FieldByName('PostEingangsserver').AsString;
+      IdIMAP_Mail.Port := dm_pcm.qry_work.FieldByName('PortEingangsserver').AsInteger;
+      IdIMAP_Mail.IOHandler:= IdSSLIOHandlerSocketIMAP;
+      IdIMAP_Mail.UseTLS := utUseExplicitTLS;
+      xoauthSASL := IdIMAP_Mail.SASLMechanisms.Add;
+      xoauthSASL.SASL := Provider.AuthenticationType.Create(Nil);
+      TIdSASLOAuthBase(xoauthSASL.SASL).Token := FOAuth2_Enhanced.AccessToken;
+      TIdSASLOAuthBase(xoauthSASL.SASL).User := Provider.ClientAccount;
+      IdIMAP_Mail.AuthType := iatSASL;
+      IdIMAP_Mail.Connect;
+    end;
+    stbr_user.Panels[0].Text:= 'Verbunden mit ' + sUser;
+    UsersFolders := TStringList.Create;
+    idImap_Mail.ListMailBoxes(UsersFolders);
+    MainNode := trlst_EmailFolder.AddChild(trlst_EmailFolder.Root);
+    MainNode.Values[0]:= dm_pcm.qry_work.FieldByName('Benutzer').AsString;
+    Application.ProcessMessages;
+    stbr_user.Panels.Items[0].Text:= 'Ordner werden eingelesen...';
+    dm_pcm.qry_work1.SQL.Text:= 'SELECT ID,Postfach,Anzeige FROM manager_email_postfach where Typ = 0 and Abonnieren = true and ID_Manager_eMail = :ID order by Sortierung';
+    dm_pcm.qry_work1.ParamByName('ID').asInteger:= dm_pcm.qry_work.FieldByName('ID').AsInteger;
+    dm_pcm.qry_work1.open;
+    while not dm_pcm.qry_work1.Eof do
+    begin
+      Tree1Node := trlst_EmailFolder.AddChild(mainNode);
+      Tree1Node.Values[0] := dm_pcm.qry_work1.FieldByName('Anzeige').AsString;
+      for i:= 0 to UsersFolders.Count - 1 do
+      begin
+        if  UsersFolders[i] = dm_pcm.qry_work1.FieldByName('Postfach').AsString then
+        begin
+          break
+        end;
+      end;
+      Application.ProcessMessages;
+      dm_pcm.qry_work2.SQL.Text:= 'SELECT Anzeige,Postfach FROM manager_email_postfach where Parent = :parent and Abonnieren = true order by Sortierung';
+      dm_pcm.qry_work2.ParamByName('parent').asInteger:= dm_pcm.qry_work1.FieldByName('ID').asInteger;
+      dm_pcm.qry_work2.open;
+      while not dm_pcm.qry_work2.Eof do
+      begin
+        Tree2Node := trlst_EmailFolder.AddChild(Tree1Node);
+        Tree2Node.Values[0] := dm_pcm.qry_work2.FieldByName('Anzeige').AsString;;
+        dm_pcm.qry_work2.Next;
+      end;
+      dm_pcm.qry_work2.Close;
+      dm_pcm.qry_work1.Next;
+    end;
+    dm_pcm.qry_work1.Close;
+    IdIMAP_Mail.DisConnect;
+    dm_pcm.qry_work.Next;
+  end;
+  dm_pcm.qry_work.Close;
+  trlst_EmailFolder.EndUpdate;
+  trlst_EmailFolder.FullExpand;
+  Application.ProcessMessages;
+  stbr_user.Panels.Items[0].Text:= 'Online';
+  Application.ProcessMessages;
+end;
+{$EndRegion Hilfsfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Sonstige                                                                   //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Sonstige}
+procedure Tfrm_Mail.btn_EmailDeleteClick(Sender: TObject);
+var
+  iAnzahlCount: integer;
+begin
+  iAnzahlCount:=0;
+  idImap_Mail.UIDDeleteMsg(qry_Mail.FieldByName('UIDL').asString);
+  dm_PCM.qry_Work.sql.Text:= 'Delete From manager_emails Where ID = :ID and ID_Benutzer =:ID_Benutzer';
+  dm_PCM.qry_Work.ParamByName('ID').AsInteger:= qry_Mail.FieldByName('ID').AsInteger;
+  dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+  dm_PCM.qry_Work.ExecSQL;
+  qry_Mail.AfterScroll:= nil;
+  qry_Mail.Refresh;
+  stbr_user.Panels[1].Text := Format('Anzahl Elemente: %d', [qry_Mail.RecordCount]) + ', ' +Format('Anzahl ungelesener Elemente: %d', [iAnzahlCount]);
+  stbr_user.Panels[2].text := 'Übermittlung abgeschlossen      ';
+  if iAnzahlCount > 0 then
+    trlst_EmailFolder.FocusedNode.Values[1]:= iAnzahlCount
+  else
+    trlst_EmailFolder.FocusedNode.Values[1]:= '';
+  grdDBTblView_MailsCellCTimer.Enabled := True;
+end;
+procedure Tfrm_Mail.btn_EmailMoveClick(Sender: TObject);
+var
+  iIDPostfach: integer;
+begin
+  Application.CreateForm(Tfrm_PCM_MailShow_Ordner,frm_PCM_MailShow_Ordner);
+  dm_PCM.qry_Work.SQL.Text:= 'SELECT ID,Anzeige ' +
+                      'FROM manager_email_postfach ' +
+                      'WHERE ID_Manager_email = (SELECT ID FROM manager_emailkonfiguration WHERE Email = :acc) AND abonnieren = TRUE ' +
+                      'ORDER BY ANZEIGE';
+  dm_PCM.qry_Work.ParamByName('acc').AsString:= sAccount;
+  dm_PCM.qry_Work.open;
+
+  while not dm_PCM.qry_Work.eof do
+  begin
+    frm_PCM_MailShow_Ordner.cmbbx_Ordner.Properties.Items.AddObject(dm_PCM.qry_Work.FieldByName('Anzeige').AsString, TObject(dm_PCM.qry_Work.FieldByName('ID').asInteger));
+    dm_PCM.qry_Work.Next;
+  end;
+  dm_PCM.qry_Work.Close;
+  iIDPostfach:= 0;
+
+  if frm_PCM_MailShow_Ordner.Execute(True,iIDPostfach) then
+  begin
+    if iIDPostfach > 0 then
+    begin
+      dm_PCM.qry_Work.SQL.text:= 'SELECT Postfach From manager_email_postfach where ID = :ID';
+      dm_PCM.qry_Work.ParamByName('id').AsInteger:= iIDPostfach;
+      dm_PCM.qry_Work.Open;
+      idImap_Mail.UIDCopyMsg(qry_Mail.FieldByName('UIDL').asString,dm_PCM.qry_Work.FieldByName('Postfach').AsString);
+      idImap_Mail.ExpungeMailBox;
+
+    end;
+  end;
+end;
+procedure Tfrm_Mail.grdDBTblView_MailsCellClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;  AShift: TShiftState; var AHandled: Boolean);
+begin
+  grdDBTblView_MailsCellCTimer.Enabled := True;
+end;
+procedure Tfrm_Mail.grdDBTblView_MailsCellCTimerTimer(Sender: TObject);
+var
+  fileName, folder : WideString;
+  MailA: TIdMessage;
   ssearch, sreplace: string;
   WinFile: TextFile;
   Line, sAnhang: String;
   sl: TStringList;
-//  ImageListHandle: THandle;
-//  Icon: TIcon;
-//  IconH : HICON;
-//  IconHL : HICON;
-//  imageindex: Integer;
-//  FileInfo: TSHFileInfo;
+  i: integer;
 begin
+  grdDBTblView_MailsCellCTimer.Enabled := False;
   MailA := TIdMessage.Create(nil);
   MailA.CharSet:= 'UTF-8';
-
   idImap_Mail.UIdRetrieve(qry_Mail.FieldByName('UIDL').asString, MailA);
   try
-    folder := m_currentpath + '\' + idImap_Mail.host + '\' + idImap_Mail.username +
+    folder := m_currentpath + '\' + idImap_Mail.host + '\' + sPrevAccount +
       '\' + sMailBoxName + '\' + qry_Mail.FieldByName('UIDL').asString;
     folder := StringReplace(folder, '/', '.', [rfReplaceAll]);
     if not FileExists(folder) then
@@ -732,21 +648,6 @@ begin
     end;
     if not DirectoryExists(folder) then
       CreateDIr(folder);
-
-    for i := 0 to MailA.MessageParts.Count - 1 do
-    begin
-      if MailA.MessageParts.Items[i] is TIDAttachment then
-      begin
-        try
-          filename := (MailA.MessageParts.Items[i] as TIDAttachment).Filename;
-          (MailA.MessageParts.Items[i] as TIDAttachment).SaveToFile(folder + '\' +  filename);
-          sAnhang := folder + '\' + filename;
-        except
-        end;
-      end;
-    end;
-//    iAnzahl := 0;
-
     if MailA.MessageParts.Count > 0 then
     begin
       for i := 0 to MailA.MessageParts.Count-1 do
@@ -760,8 +661,6 @@ begin
     else begin
       MailA.Body.SaveToFile(folder + '\mail.html');
     end;
-
-
     sl:=TStringList.Create;
     for i := 0 to Pred(Maila.MessageParts.Count) do
     begin
@@ -786,133 +685,10 @@ begin
         end;
       end;
     end;
-//
-//
-      AssignFile(WinFile,folder +'\mail.html');
-      Reset(Winfile);
-
-
-      while Not Eof(WinFile) do
-      begin
-        ReadLn(WinFile, Line);
-        Line := StringReplace(Line, 'Ä', '&Auml;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'ä', '&auml;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'Ë','&Euml;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'ë','&euml;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'Ï','&Iuml;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'ï','&iuml;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'Ö','&Ouml;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'ö','&ouml;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'Ü','&Uuml;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'ü','&uuml;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'ß','&szlig;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'À','&Agrave;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'à','&agrave;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'Á','&Aacute;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'á','&aacute;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'Â','&Acirc;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'â','&Acirc;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'Ç','&Ccedil;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'ç','&ccedil;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'È','&Egrave;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'è','&egrave;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'É','&Eacute;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'é','&eacute;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'Ê','&Ecirc;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'ê','&ecirc;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'Ñ','&Ntilde;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'ñ','&ntilde;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'Ò','&Ograve;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'ò','&ograve;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'Ó','&Oacute;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'ó','&oacute;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'Ô','&Ocirc;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'ô','&ocirc;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'õ','&otilde;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'Ÿ','&Yuml;', [rfReplaceAll]);
-        Line := StringReplace(Line, 'ÿ','&yuml;', [rfReplaceAll]);
-        Line := StringReplace(Line, '“','&ldquo;', [rfReplaceAll]);
-        Line := StringReplace(Line, '”','&rdquo;', [rfReplaceAll]);
-        Line := StringReplace(Line, '„','&bdquo;', [rfReplaceAll]);
-        Line := StringReplace(Line, '«','&laquo;', [rfReplaceAll]);
-        Line := StringReplace(Line, '»','&raquo;', [rfReplaceAll]);
-        Line := StringReplace(Line, '‹','&lsaquo;', [rfReplaceAll]);
-        Line := StringReplace(Line, '›','&rsaquo;', [rfReplaceAll]);
-        Line := StringReplace(Line, '‘','&lsquo;', [rfReplaceAll]);
-        Line := StringReplace(Line, '’','&rsquo;', [rfReplaceAll]);
-        Line := StringReplace(Line, '‚','&sbquo;', [rfReplaceAll]);
-        Line := StringReplace(Line, '„','&quot;', [rfReplaceAll]);
-        Line := StringReplace(Line, '?','&larr;', [rfReplaceAll]);
-        Line := StringReplace(Line, '?','&uarr;', [rfReplaceAll]);
-        Line := StringReplace(Line, '?','&rarr;', [rfReplaceAll]);
-        Line := StringReplace(Line, '?','&darr;', [rfReplaceAll]);
-        Line := StringReplace(Line, '?','&harr;', [rfReplaceAll]);
-        Line := StringReplace(Line, '?','&varr;', [rfReplaceAll]);
-        Line := StringReplace(Line, '?','&rArr;', [rfReplaceAll]);
-        Line := StringReplace(Line, '?','&hArr;', [rfReplaceAll]);
-        Line := StringReplace(Line, '©','&copy;', [rfReplaceAll]);
-        Line := StringReplace(Line, '®','&reg;', [rfReplaceAll]);
-        Line := StringReplace(Line, '™','&trade;', [rfReplaceAll]);
-        Line := StringReplace(Line, '§','&sect;', [rfReplaceAll]);
-        Line := StringReplace(Line, '•','&bull;', [rfReplaceAll]);
-        Line := StringReplace(Line, '·','&middot;', [rfReplaceAll]);
-        Line := StringReplace(Line, '–','&ndash;', [rfReplaceAll]);
-        Line := StringReplace(Line, '—','&mdash;', [rfReplaceAll]);
-        Line := StringReplace(Line, '…','&hellip;', [rfReplaceAll]);
-        Line := StringReplace(Line, '¨','&uml;', [rfReplaceAll]);
-        Line := StringReplace(Line, '°','&deg;', [rfReplaceAll]);
-        Line := StringReplace(Line, '¡','&iexcl;', [rfReplaceAll]);
-        Line := StringReplace(Line, '¿','&iquest;', [rfReplaceAll]);
-        Line := StringReplace(Line, '¦','&brvbar;', [rfReplaceAll]);
-//        Line := StringReplace(Line, '<','&lt;', [rfReplaceAll]);
-//        Line := StringReplace(Line, '>','&gt;', [rfReplaceAll]);
-        Line := StringReplace(Line, '€','&euro;', [rfReplaceAll]);
-        Line := StringReplace(Line, '£','&pound;', [rfReplaceAll]);
-        Line := StringReplace(Line, '$','&dollar;', [rfReplaceAll]);
-        Line := StringReplace(Line, '¼','&frac14;', [rfReplaceAll]);
-        Line := StringReplace(Line, '½','&frac12;', [rfReplaceAll]);
-        Line := StringReplace(Line, '¾','&frac34;', [rfReplaceAll]);
-        Line := StringReplace(Line, '?','&check;', [rfReplaceAll]);
-        Line := StringReplace(Line, '?','&cross;', [rfReplaceAll]);
-        Line := StringReplace(Line, '?','&sung;', [rfReplaceAll]);
-        Line := StringReplace(Line, '?','&hearts;', [rfReplaceAll]);
-        Line := StringReplace(Line, '?','&bigstar;', [rfReplaceAll]);
-        Line := StringReplace(Line, '?','&phone;', [rfReplaceAll]);
-        Line:= StringReplace(Line, 'charset=iso-8859-1', 'charset=utf-8;', [rfReplaceAll]);
-        Line:= StringReplace(Line, 'Windows-1252', 'charset=utf-8;', [rfReplaceAll]);
-
-
-//        sl.Add(TNetEncoding.HTML.Encode(Line));
-        sl.Add(Line);
-      end;
-      CloseFile(WinFile);
-      sl.SaveToFile(folder + '\mail.html');
-      sl.Clear;
-      sl.free;
-      grpbx_MailVorschau.visible:= true;
-      FWebBrowser.Navigate(folder + '\mail.html');
-
-//      if Maila.From.Name = '' then
-//      begin
-//        frm_PCM_MailShow.lblVon.Caption:= Maila.From.Address;
-//        frm_PCM_MailShow.lblVon.Hint:= '';
-//      end
-//      else begin
-//        frm_PCM_MailShow.lblVon.Caption:= Maila.From.Name;
-//        frm_PCM_MailShow.lblVon.Hint:= Maila.From.Address;
-//      end;
-//      frm_PCM_MailShow.lblan.Caption:= qEmailConfig.FieldByName('Email').AsString;
-//      frm_PCM_MailShow.lblan.Hint:= '';
-//      frm_PCM_MailShow.lblcc.Caption:= MailA.CCList.EMailAddresses;
-//      frm_PCM_MailShow.lblcc.Hint:= '';
-//
-//      frm_PCM_MailShow.lblBetreff.Caption:= MailA.Subject;
-//      frm_PCM_MailShow.Caption:= 'Nachricht: ' + MailA.Subject;
-//      frm_PCM_MailShow.Label5.Caption:= FormatDateTime('dd.MM.yyyy hh:mm',Maila.Date);
-//
-//      frm_PCM_MailShow.webbwr_Mail.Navigate(folder + '\mail.html');
-//      frm_PCM_MailShow.ShowModal;
-//    stbr_user.Panels.Items[0].Text := Format( '%d Elemente', [lstMailimap.Items.Count]);
+    ConvertFileHTML(folder + '\mail.html');
+    grpbx_MailVorschau.visible:= true;
+    InitializeBrowser;
+    FWebBrowser.Navigate(folder + '\mail.html');
     MailA.free;
   except
     on ep:Exception do
@@ -921,15 +697,162 @@ begin
     end;
   end;
 end;
+procedure Tfrm_Mail.grdDBTblView_MailsCellDblClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+  function CheckValidFile(AFileName,APath: String) : boolean;
+  var
+    fileContent: TStringlist;
+    found: Boolean;
+  begin
+    fileContent := TStringList.Create;
+    try
+      fileContent.LoadFromFile(APath);
+      found := Pos(AFileName, fileContent.Text) > 0;
+      if found then
+        Result:= false
+      else
+        Result:= true;
+    finally
+      fileContent.Free;
+    end;
+  end;
+var
+  fileName, folder : WideString;
+  MailA: TIdMessage;
+  i: integer;
+  ssearch, sreplace: string;
+  WinFile: TextFile;
+  Line, sAnhang: String;
+  sl: TStringList;
+begin
+  grdDBTblView_MailsCellCTimer.Enabled := False;
+  Application.CreateForm(Tfrm_PCM_MailShow,frm_PCM_MailShow);
+  MailA := TIdMessage.Create(nil);
+  MailA.CharSet:= 'UTF-8';
+  idImap_Mail.UIdRetrieve(qry_Mail.FieldByName('UIDL').asString, MailA);
+  try
+    folder := m_currentpath + '\' + idImap_Mail.host + '\' + sPrevAccount +
+      '\' + sMailBoxName + '\' + qry_Mail.FieldByName('UIDL').asString;
+    folder := StringReplace(folder, '/', '.', [rfReplaceAll]);
+    if not FileExists(folder) then
+    begin
+      stbr_user.Panels.Items[0].text := 'E-Mail wird heruntergeladen...';
+    end;
+    if not DirectoryExists(folder) then
+      CreateDIr(folder);
+    frm_PCM_MailShow.lstVw_Mail.Clear;
+    if MailA.MessageParts.Count > 0 then
+    begin
+      for i := 0 to MailA.MessageParts.Count-1 do
+      begin
+        if MailA.MessageParts.Items[i] is TIdText then
+        begin
+          TIdText(MailA.MessageParts.Items[i]).Body.SaveToFile(folder + '\mail.html');
+        end;
+        if MailA.MessageParts.Items[i] is TIDAttachment then
+        begin
+          filename := TIdAttachmentFile(MailA.MessageParts.Items[i]).FileName;
+          TIdAttachmentFile(MailA.MessageParts.Items[i]).SaveToFile(folder + '\' + filename);
+          sAnhang := folder + '\' + filename;
+          if CheckValidFile(filename,folder + '\mail.html') then
+          begin
+            SetLength(frm_PCM_MailShow.arAnhang,Length(frm_PCM_MailShow.arAnhang) + 1);
+            frm_PCM_MailShow.arAnhang[High(frm_PCM_MailShow.arAnhang)].sFileName:= filename;
+            frm_PCM_MailShow.arAnhang[High(frm_PCM_MailShow.arAnhang)].sFilePath:= folder + '\' + filename;
+          end;
+        end;
+      end;
+      if High(frm_PCM_MailShow.arAnhang) > -1 then
+      begin
+        frm_PCM_MailShow.CreateAnhang(frm_PCM_MailShow.arAnhang);
+      end;
+    end
+    else begin
+      MailA.Body.SaveToFile(folder + '\mail.html');
+    end;
+    sl:=TStringList.Create;
+    for i := 0 to Pred(Maila.MessageParts.Count) do
+    begin
+      if (Maila.MessageParts.Items[i] is TIdAttachment) then
+      begin
+        ssearch:= TIdAttachment(Maila.MessageParts.Items[i]).ContentID;
+        ssearch:= '"cid:' + Copy(ssearch,2,Length(ssearch) -2)  + '"';
+        sreplace:= TIdAttachment(Maila.MessageParts.Items[i]).Filename;
+        if Length(ssearch) > 6 then
+        begin
+          AssignFile(WinFile,Folder + '\mail.html');
+          Reset(Winfile);
+          while Not Eof(WinFile) do
+          begin
+            ReadLn(WinFile, Line);
+            Line := StringReplace(Line, ssearch, sreplace, [rfReplaceAll]);
+            sl.Add(Line);
+          end;
+          CloseFile(WinFile);
+          sl.SaveToFile(folder +'\mail.html');
+          sl.Clear;
+        end;
+      end;
+    end;
+    ConvertFileHTML(folder + '\mail.html');
+    grpbx_MailVorschau.visible:= true;
+    InitializeBrowser;
+    FWebBrowser.Navigate(folder + '\mail.html');
+    if Maila.From.Name = '' then
+    begin
+      frm_PCM_MailShow.lbl_Von.Caption:= Maila.From.Address;
+      frm_PCM_MailShow.lbl_Von.Hint:= '';
+    end
+    else begin
+      frm_PCM_MailShow.lbl_Von.Caption:= Maila.From.Name + ' <' + Maila.From.Address + '>';
+      frm_PCM_MailShow.lbl_Von.Hint:= Maila.From.Address;
+    end;
+    frm_PCM_MailShow.lbl_an.Caption:= sPrevAccount;
+    frm_PCM_MailShow.lbl_an.Hint:= '';
+    frm_PCM_MailShow.lbl_cc.Caption:= MailA.CCList.EMailAddresses;
+    frm_PCM_MailShow.lbl_cc.Hint:= '';
+
+    frm_PCM_MailShow.lbl_Betreff.Caption:= MailA.Subject;
+    frm_PCM_MailShow.Caption:= 'Nachricht: ' + MailA.Subject;
+    frm_PCM_MailShow.cxLabel1.Caption:= FormatDateTime('dd.MM.yyyy hh:mm',Maila.Date);
+
+//    frm_PCM_MailShow.webbwr_Mail.Navigate(folder + '\mail.html');
+    frm_PCM_MailShow.FWebBrowser.Navigate(folder + '\mail.html');
+    frm_PCM_MailShow.ShowModal;
+    MailA.free;
+  except
+    on ep:Exception do
+    begin
+      MessageDlg('Fehler:'+ep.Message, mtError, [mbOk], 0);
+    end;
+  end;
+end;
+procedure Tfrm_Mail.grdDBTblView_MailsCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+begin
+  if AViewInfo.GridRecord.Values[6] = '1' then
+  begin
+    ACanvas.Font.Style:= ACanvas.Font.Style - [fsBold]
+  end
+  else begin
+    ACanvas.Font.Style:= ACanvas.Font.Style + [fsBold]
+  end;
+end;
 procedure Tfrm_Mail.tl_EmailFolderChange(Sender: TObject);
   function MyGetParentNode(Node: TcxTreeListNode): TcxTreeListNode;
+  var
+    ParentNode: TcxTreeListNode;
   begin
     Result:=nil;
     if Node=nil then
       Exit;
     if Node.Level=0 then
       Exit;
-    Result:=Node.Parent;
+    if Node.Level=2 then
+    begin
+      ParentNode:=Node.Parent;
+      Result:=ParentNode.Parent;
+    end
+    else
+      Result:=Node.Parent;
   end;
 var
   TheFlags: TIdMessageFlagsSet;
@@ -944,7 +867,6 @@ var
   IdSSLIOHandlerSocket: TIdSSLIOHandlerSocketOpenSSL;
   Mail: TIdMessage;
 begin
-//  grdDBTblView_Mails.DataController.DataSource:= nil;
   if trlst_EmailFolder.SelectionCount = 0 then
     exit;
   if trlst_EmailFolder.FocusedNode = CurrNode then
@@ -985,6 +907,8 @@ begin
 
 
   sAccount:= MyGetParentNode(trlst_EmailFolder.FocusedNode).Values[0];
+
+
   dm_PCM.qry_Work.sql.Text:= 'SELECT Count(*)as anzahl FROM manager_email_postfach WHERE id = :Parent';
   dm_PCM.qry_Work.ParambyName('parent').asInteger:=  iparent;
   dm_PCM.qry_Work.OPen;
@@ -995,26 +919,63 @@ begin
     sAccount:= MyGetParentNode(MyGetParentNode(trlst_EmailFolder.FocusedNode)).Values[0];
   except
   end;
-
-  dm_PCM.qry_work.SQL.Text:= 'SELECT ID, EMail,Kontotyp,PostEingangsserver,PortEingangsserver,PostAusgangsserver,PortAusgangsserver,Benutzer,Passwort,SSLActive From manager_emailkonfiguration where Benutzer = :Benutzer and id_Benutzer = :ID';
-  dm_PCM.qry_work.ParamByName('ID').AsInteger:= dm_pcm.iIDBenutzerPCM;
-  dm_PCM.qry_work.ParamByName('Benutzer').AsString:= sAccount;
-  dm_PCM.qry_work.Open;
-  IdSSLIOHandlerSocket := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
-  IdSSLIOHandlerSocket.SSLOptions.Method:= sslvSSLv23;
-  idImap_Mail.IOHandler := IdSSLIOHandlerSocket;
-  idImap_Mail.UseTLS := utUseImplicitTLS;
-  idImap_Mail.Host := dm_PCM.qry_work.FieldByName('PostEingangsserver').AsString;
-  idImap_Mail.Port := dm_PCM.qry_work.FieldByName('PortEingangsserver').AsInteger;
-  idImap_Mail.UseTLS := utUseImplicitTLS;
-  idImap_Mail.Username := dm_PCM.qry_work.FieldByName('Benutzer').AsString;;
-  idImap_Mail.Password := dm_PCM.qry_work.FieldByName('Passwort').AsString;
-  idImap_Mail.Connect;
+  if ((sPrevAccount = '')  or (sPrevAccount <> sAccount)) and (not idImap_Mail.Connected) then
+  begin
+    dm_PCM.qry_work.SQL.Text:= 'SELECT * From manager_emailkonfiguration where Benutzer = :Benutzer and id_Benutzer = :ID';
+    dm_PCM.qry_work.ParamByName('ID').AsInteger:= dm_pcm.iIDBenutzerPCM;
+    dm_PCM.qry_work.ParamByName('Benutzer').AsString:= sAccount;
+    dm_PCM.qry_work.Open;
+    if dm_pcm.qry_work.FieldByName('Authtype').AsInteger = 0 then
+    begin
+      IdIMAP_Mail.SASLMechanisms.Clear;
+      IdIMAP_Mail.AuthType:= iatUserPass;
+      IdSSLIOHandlerSocket := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
+      IdSSLIOHandlerSocket.SSLOptions.Method:= sslvSSLv23;
+      idImap_Mail.IOHandler := IdSSLIOHandlerSocket;
+      idImap_Mail.UseTLS := utUseImplicitTLS;
+      idImap_Mail.Host := dm_pcm.qry_work.FieldByName('PostEingangsserver').AsString;
+      idImap_Mail.Port := dm_pcm.qry_work.FieldByName('PortEingangsserver').AsInteger;
+      idImap_Mail.UseTLS := utUseImplicitTLS;
+      idImap_Mail.Username := dm_pcm.qry_work.FieldByName('Benutzer').AsString;;
+      idImap_Mail.Password := dm_pcm.qry_work.FieldByName('Passwort').AsString;
+      idImap_Mail.Connect;
+    end
+    else begin
+      Provider.AccessTokenEndpoint:=dm_pcm.qry_work.FieldByName('AccessTokenEndpoint').AsString;
+      Provider.AuthenticationType:= TIdSASLXOAuth;
+      Provider.AuthName:= 'Microsoft';
+      Provider.AuthorizationEndpoint:= dm_pcm.qry_work.FieldByName('AuthorizationEndpoint').AsString;
+      Provider.ClientAccount:= dm_pcm.qry_work.FieldByName('Benutzer').AsString;
+      Provider.ClientID:= dm_pcm.qry_work.FieldByName('ClientID').AsString;
+      Provider.ClientSecret:= dm_pcm.qry_work.FieldByName('ClientSecret').AsString;
+      Provider.ImapHost:= dm_pcm.qry_work.FieldByName('PostEingangsserver').AsString;
+      Provider.ImapPort:= dm_pcm.qry_work.FieldByName('PortEingangsserver').AsInteger;
+      Provider.Scopes:= dm_pcm.qry_work.FieldByName('Scopes').AsString;
+      Provider.SmtpHost:= dm_pcm.qry_work.FieldByName('PostAusgangsserver').AsString;
+      Provider.SmtpPort:= dm_pcm.qry_work.FieldByName('PortAusgangsserver').AsInteger;
+      Provider.TLS:= utUseExplicitTLS;
+      if dm_pcm.qry_work.FieldByName('RefreshToken').AsString = '' then
+        MailAuthenticate;
+      SetupAuthenticator(dm_pcm.qry_work.FieldByName('RefreshToken').AsString);
+      FOAuth2_Enhanced.ClientID := Provider.ClientID;
+      FOAuth2_Enhanced.ClientSecret := Provider.ClientSecret;
+      FOAuth2_Enhanced.RefreshAccessTokenIfRequired;
+      IdIMAP_Mail.Host := dm_pcm.qry_work.FieldByName('PostEingangsserver').AsString;
+      IdIMAP_Mail.Port := dm_pcm.qry_work.FieldByName('PortEingangsserver').AsInteger;
+      IdIMAP_Mail.IOHandler:= IdSSLIOHandlerSocketIMAP;
+      IdIMAP_Mail.UseTLS := utUseExplicitTLS;
+      xoauthSASL := IdIMAP_Mail.SASLMechanisms.Add;
+      xoauthSASL.SASL := Provider.AuthenticationType.Create(Nil);
+      TIdSASLOAuthBase(xoauthSASL.SASL).Token := FOAuth2_Enhanced.AccessToken;
+      TIdSASLOAuthBase(xoauthSASL.SASL).User := Provider.ClientAccount;
+      IdIMAP_Mail.AuthType := iatSASL;
+      IdIMAP_Mail.Connect;
+    end;
+  end;
   dm_PCM.qry_work.Close;
   AAccount := sAccount;
   qry_Mail.AfterScroll:= nil;
   iAnzahlCount:= 0;
-
   Flagtemp := 'gelesen';
   imapFolders := TStringList.Create;
   idImap_Mail.ListMailBoxes(imapFolders);
@@ -1029,21 +990,14 @@ begin
   iCount := idImap_Mail.MailBox.TotalMsgs;
   if iCount > 0 then
   begin
-    folder := m_currentpath + '\' + idImap_Mail.Host + '\' + idImap_Mail.Username + '\' + sMailBoxName;
+    folder := m_currentpath + '\' + idImap_Mail.Host + '\' + sAccount + '\' + sMailBoxName;
     folder := StringReplace(folder, '/', '.', [rfReplaceAll]);
     CreateFullFolder( folder );
-
     for i := 0 to iCount-1 do
     begin
       idImap_Mail.GetUID(i+1, TheUID);  // 100 ms
       idImap_Mail.UIDRetrieveFlags(TheUID, TheFlags);
       idImap_Mail.UIDRetrieveHeader(TheUID, Mail);
-
-//      item := TListItem.Create(lstMailImap.Items);
-//        item.SubItems.Add(Mail.From.Address);
-
-
-//
       Application.ProcessMessages;
       if not DirectoryExists(folder + '\' + TheUID) then
         CreateDIr(folder + '\' + TheUID);
@@ -1095,119 +1049,23 @@ begin
       trlst_EmailFolder.FocusedNode.Values[1]:= iAnzahlCount
     else
       trlst_EmailFolder.FocusedNode.Values[1]:= '';
-    qry_Mail.AfterScroll:= qMailAfterScroll;
     Mail.Free;
+//    qry_Mail.AfterScroll:= qry_MailAfterScroll;
+  end;
+  sPrevAccount:=sAccount;
+//  qry_Mail.First;
 
-  end;
-//  grdDBTblView_Mails.DataController.DataSource:= ds_mail;
 end;
-procedure Tfrm_Mail.ShowFolders;
-var
-  IdSSLIOHandlerSocket : TIdSSLIOHandlerSocketOpenSSL;
-  MainNode: TcxTreeListNode;
-  Tree1Node: TcxTreeListNode;
-  Tree2Node: TcxTreeListNode;
-  i: integer;
-//  iIDM : integer;
-//  folder: IFolderCollection;
-//  folderSub: IFolderCollection;
-//  oFolder,oFolderSub: IImap4Folder;
-//  bBreak:boolean;
-  UsersFolders: TStringlist;
-begin
-//  bBreak:= false;
-  trlst_EmailFolder.Clear;
-  trlst_EmailFolder.BeginUpdate;
-  dm_pcm.qry_work.SQL.Text:= 'SELECT ID, EMail,Kontotyp,PostEingangsserver,PortEingangsserver,PostAusgangsserver,PortAusgangsserver,Benutzer,Passwort,SSLActive From manager_emailkonfiguration where id_Benutzer = :ID';
-  dm_pcm.qry_work.ParamByName('ID').AsInteger:= dm_pcm.iIDBenutzerPCM;
-  dm_pcm.qry_work.Open;
-  while not dm_pcm.qry_work.eof do
-  begin
-    IdSSLIOHandlerSocket := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
-    IdSSLIOHandlerSocket.SSLOptions.Method:= sslvSSLv23;
-    idImap_Mail.IOHandler := IdSSLIOHandlerSocket;
-    idImap_Mail.UseTLS := utUseImplicitTLS;
-    idImap_Mail.Host := dm_pcm.qry_work.FieldByName('PostEingangsserver').AsString;
-    idImap_Mail.Port := dm_pcm.qry_work.FieldByName('PortEingangsserver').AsInteger;
-    idImap_Mail.UseTLS := utUseImplicitTLS;
-    idImap_Mail.Username := dm_pcm.qry_work.FieldByName('Benutzer').AsString;;
-    idImap_Mail.Password := dm_pcm.qry_work.FieldByName('Passwort').AsString;
-    idImap_Mail.Connect;
-    stbr_user.Panels[0].Text:= 'Verbunden mit ' + sUser;
-    UsersFolders := TStringList.Create;
-    idImap_Mail.ListMailBoxes(UsersFolders);
-    MainNode := trlst_EmailFolder.AddChild(trlst_EmailFolder.Root);
-    MainNode.Values[0]:= idImap_Mail.Username;
-    Application.ProcessMessages;
-    Application.ProcessMessages;
-    stbr_user.Panels.Items[0].Text:= 'Ordner werden eingelesen...';
-    dm_pcm.qry_work1.SQL.Text:= 'SELECT ID,Postfach,Anzeige FROM manager_email_postfach where Typ = 0 and Abonnieren = true and ID_Manager_eMail = :ID order by Sortierung';
-    dm_pcm.qry_work1.ParamByName('ID').asInteger:= dm_pcm.qry_work.FieldByName('ID').AsInteger;
-    dm_pcm.qry_work1.open;
-    while not dm_pcm.qry_work1.Eof do
-    begin
-      Tree1Node := trlst_EmailFolder.AddChild(mainNode);
-      Tree1Node.Values[0] := dm_pcm.qry_work1.FieldByName('Anzeige').AsString;
-      for i:= 0 to UsersFolders.Count - 1 do
-      begin
-        if  UsersFolders[i] = dm_pcm.qry_work1.FieldByName('Postfach').AsString then
-        begin
-//          Tree1Node.Data:= Pointer(oFolder);
-          break
-        end;
-      end;
-      Application.ProcessMessages;
-      dm_pcm.qry_work2.SQL.Text:= 'SELECT Anzeige,Postfach FROM manager_email_postfach where Parent = :parent order by Sortierung';
-      dm_pcm.qry_work2.ParamByName('parent').asInteger:= dm_pcm.qry_work1.FieldByName('ID').asInteger;
-      dm_pcm.qry_work2.open;
-      while not dm_pcm.qry_work2.Eof do
-      begin
-        Tree2Node := trlst_EmailFolder.AddChild(Tree1Node);
-        Tree2Node.Values[0] := dm_pcm.qry_work2.FieldByName('Anzeige').AsString;;
-        dm_pcm.qry_work2.Next;
-      end;
-      dm_pcm.qry_work2.Close;
-      dm_pcm.qry_work1.Next;
-    end;
-    dm_pcm.qry_work1.Close;;
-    dm_pcm.qry_work.Next;
-  end;
-  dm_pcm.qry_work.Close;
-  trlst_EmailFolder.EndUpdate;
-  trlst_EmailFolder.FullExpand;
-  Application.ProcessMessages;
-  stbr_user.Panels.Items[0].Text:= 'Online';
-  Application.ProcessMessages;
-end;
-procedure Tfrm_Mail.IMAPStart;
-begin
-  trlst_EmailFolder.Clear;
-  trlst_EmailFolder.OnChange:= tl_EmailFolderChange;
-  ShowFolders;
-end;
+{$EndRegion Sonstige}
+////////////////////////////////////////////////////////////////////////////////
+// FormFunctions                                                              //
+////////////////////////////////////////////////////////////////////////////////
+{$Region FormFunctions}
 procedure Tfrm_Mail.FormDestroy(Sender: TObject);
 begin
   SetGridViews(false);
 end;
 procedure Tfrm_Mail.FormShow(Sender: TObject);
-  procedure InitializeBrowser(AParent: TWinControl);
-  begin
-    if not Assigned(FWebBrowser) then
-    begin
-      FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
-      FWebBrowser.Parent := AParent;
-      FWebBrowser.Align := alClient;
-      FWebBrowser.OnBeforeNavigate := nil;
-    end
-    else
-    begin
-      FreeAndNil(FWebBrowser);
-      FWebBrowser := TWebBrowserFactory.CreateWebBrowser(Self);
-      FWebBrowser.Parent := AParent;
-      FWebBrowser.Align := alClient;
-      FWebBrowser.OnBeforeNavigate := nil;
-    end;
-  end;
 begin
   grdDBTblView_MailsBetreff.Caption:= rs_PCMManager_Betreff;
   grdDBTblView_MailsErhalten.Caption:= rs_PCMManager_Erhalten;
@@ -1219,9 +1077,6 @@ begin
   GlobalWebView2Loader:= TWVLoader.Create(nil);
   GlobalWebView2Loader.UserDataFolder := GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\CustomCache';
   GlobalWebView2Loader.StartWebView2;
-  InitializeBrowser(pnl_Browser);
-
-
 
   dm_PCM.qry_Work.SQL.Text:= 'DELETE FROM manager_emails where ID_Benutzer = :ID_Benutzer';
   dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= dm_pcm.iIDBenutzerPCM;
@@ -1232,8 +1087,9 @@ begin
   trlst_EmailFolder.Clear;
   m_currentpath := GetCurrentDir();
   m_uidlfile := m_currentpath + '\uidl.txt';
+  FOAuth2_Enhanced := TEnhancedOAuth2Authenticator.Create(nil);
   IMAPStart;
   SetGridViews(True)
 end;
-
+{$EndRegion FormFunctions}
 end.

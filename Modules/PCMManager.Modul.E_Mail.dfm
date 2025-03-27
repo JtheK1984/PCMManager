@@ -14,7 +14,7 @@ object frm_Mail: Tfrm_Mail
   OnDestroy = FormDestroy
   OnShow = FormShow
   TextHeight = 13
-  object dxLayoutControl1: TdxLayoutControl
+  object lactrl_Mail: TdxLayoutControl
     Left = 0
     Top = 0
     Width = 1240
@@ -85,6 +85,7 @@ object frm_Mail: Tfrm_Mail
         Navigator.Buttons.CustomButtons = <>
         FilterBox.CustomizeDialog = False
         ScrollbarAnnotations.CustomAnnotations = <>
+        OnCellClick = grdDBTblView_MailsCellClick
         OnCellDblClick = grdDBTblView_MailsCellDblClick
         OnCustomDrawCell = grdDBTblView_MailsCustomDrawCell
         DataController.DataSource = ds_Mail
@@ -226,15 +227,15 @@ object frm_Mail: Tfrm_Mail
       Height = 264
       Width = 964
     end
-    object dxLayoutControl1Group_Root: TdxLayoutGroup
+    object lactrl_MailGroup_Root: TdxLayoutGroup
       AlignHorz = ahClient
       AlignVert = avClient
       Hidden = True
       ShowBorder = False
       Index = -1
     end
-    object dxLayoutGroup1: TdxLayoutGroup
-      Parent = dxLayoutControl1Group_Root
+    object lagrp_Mail: TdxLayoutGroup
+      Parent = lactrl_MailGroup_Root
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
@@ -242,8 +243,8 @@ object frm_Mail: Tfrm_Mail
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup2: TdxLayoutGroup
-      Parent = dxLayoutGroup1
+    object lagrp_MailDetail: TdxLayoutGroup
+      Parent = lagrp_Mail
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
@@ -252,8 +253,8 @@ object frm_Mail: Tfrm_Mail
       ShowBorder = False
       Index = 1
     end
-    object dxLayoutItem1: TdxLayoutItem
-      Parent = dxLayoutGroup1
+    object laitm_MailBar: TdxLayoutItem
+      Parent = lagrp_Mail
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Item'
@@ -265,7 +266,7 @@ object frm_Mail: Tfrm_Mail
       Index = 0
     end
     object dxLayoutItem2: TdxLayoutItem
-      Parent = dxLayoutGroup1
+      Parent = lagrp_Mail
       AlignHorz = ahClient
       AlignVert = avBottom
       CaptionOptions.Text = 'New Item'
@@ -276,8 +277,8 @@ object frm_Mail: Tfrm_Mail
       ControlOptions.ShowBorder = False
       Index = 2
     end
-    object dxLayoutItem3: TdxLayoutItem
-      Parent = dxLayoutGroup2
+    object laitm_MailAccounts: TdxLayoutItem
+      Parent = lagrp_MailDetail
       AlignHorz = ahLeft
       AlignVert = avClient
       CaptionOptions.Text = 'New Item'
@@ -288,17 +289,17 @@ object frm_Mail: Tfrm_Mail
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup4: TdxLayoutGroup
-      Parent = dxLayoutGroup2
+    object lagrp_MailMails: TdxLayoutGroup
+      Parent = lagrp_MailDetail
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
+      ItemIndex = 2
       ShowBorder = False
       Index = 1
     end
     object dxLayoutItem4: TdxLayoutItem
-      Parent = dxLayoutGroup4
+      Parent = lagrp_MailMails
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Item'
@@ -310,7 +311,7 @@ object frm_Mail: Tfrm_Mail
       Index = 0
     end
     object grpbx_MailVorschau: TdxLayoutItem
-      Parent = dxLayoutGroup4
+      Parent = lagrp_MailMails
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Item'
@@ -323,7 +324,7 @@ object frm_Mail: Tfrm_Mail
       Index = 2
     end
     object dxLayoutSplitterItem1: TdxLayoutSplitterItem
-      Parent = dxLayoutGroup4
+      Parent = lagrp_MailMails
       AlignHorz = ahClient
       AlignVert = avTop
       SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
@@ -367,7 +368,6 @@ object frm_Mail: Tfrm_Mail
     LookAndFeel.NativeStyle = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 728
     Top = 376
@@ -386,31 +386,35 @@ object frm_Mail: Tfrm_Mail
       ItemLinks = <
         item
           Visible = True
+          ItemName = 'btn_EmailNew'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_EmailDelete'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_EmailMove'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_EmailAnswer'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_EmailAnswerAll'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_EmailSendto'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_EmailMarkAsRead'
+        end
+        item
+          Visible = True
           ItemName = 'dxBarLargeButton1'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarLargeButton3'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarLargeButton4'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarLargeButton5'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarLargeButton7'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarLargeButton6'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarLargeButton8'
         end>
       OneOnRow = True
       Row = 0
@@ -421,7 +425,7 @@ object frm_Mail: Tfrm_Mail
       Visible = True
       WholeRow = False
     end
-    object dxBarLargeButton1: TdxBarLargeButton
+    object btn_EmailNew: TdxBarLargeButton
       Caption = 'Neue E-Mail'
       Category = 0
       Hint = 'Neue E-Mail'
@@ -432,41 +436,31 @@ object frm_Mail: Tfrm_Mail
       SyncImageIndex = False
       ImageIndex = -1
     end
-    object dxBarLargeButton2: TdxBarLargeButton
-      Caption = 'E-Mail archivieren'
-      Category = 0
-      Hint = 'E-Mail archivieren'
-      Visible = ivAlways
-      AutoGrayScale = False
-      LargeImageIndex = 53
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object dxBarLargeButton3: TdxBarLargeButton
+    object btn_EmailDelete: TdxBarLargeButton
       Caption = 'E-Mail l'#246'schen'
       Category = 0
       Hint = 'E-Mail l'#246'schen'
       Visible = ivAlways
-      OnClick = dxBarLargeButton3Click
+      OnClick = btn_EmailDeleteClick
       AutoGrayScale = False
       LargeImageIndex = 50
       Width = 125
       SyncImageIndex = False
       ImageIndex = -1
     end
-    object dxBarLargeButton4: TdxBarLargeButton
+    object btn_EmailMove: TdxBarLargeButton
       Caption = 'E-Mail verschieben'
       Category = 0
       Hint = 'E-Mail verschieben'
       Visible = ivAlways
-      OnClick = dxBarLargeButton4Click
+      OnClick = btn_EmailMoveClick
       AutoGrayScale = False
       LargeImageIndex = 55
       Width = 125
       SyncImageIndex = False
       ImageIndex = -1
     end
-    object dxBarLargeButton5: TdxBarLargeButton
+    object btn_EmailAnswer: TdxBarLargeButton
       Caption = 'Antworten'
       Category = 0
       Hint = 'Antworten'
@@ -477,7 +471,7 @@ object frm_Mail: Tfrm_Mail
       SyncImageIndex = False
       ImageIndex = -1
     end
-    object dxBarLargeButton6: TdxBarLargeButton
+    object btn_EmailSendto: TdxBarLargeButton
       Caption = 'Weiterleiten'
       Category = 0
       Hint = 'Weiterleiten'
@@ -488,7 +482,7 @@ object frm_Mail: Tfrm_Mail
       SyncImageIndex = False
       ImageIndex = -1
     end
-    object dxBarLargeButton7: TdxBarLargeButton
+    object btn_EmailAnswerAll: TdxBarLargeButton
       Caption = 'Allen antworten'
       Category = 0
       Hint = 'Allen antworten'
@@ -499,55 +493,61 @@ object frm_Mail: Tfrm_Mail
       SyncImageIndex = False
       ImageIndex = -1
     end
-    object dxBarLargeButton8: TdxBarLargeButton
+    object btn_EmailMarkAsRead: TdxBarLargeButton
       Caption = 'Als gelesen markieren'
       Category = 0
       Hint = 'Als gelesen markieren'
       Visible = ivAlways
-      OnClick = dxBarLargeButton8Click
       AutoGrayScale = False
       LargeImageIndex = 57
       Width = 125
       SyncImageIndex = False
       ImageIndex = -1
     end
-    object NeueEMail1: TdxBarButton
+    object dxBarLargeButton1: TdxBarLargeButton
+      Caption = 'Signaturen'
+      Category = 0
+      Hint = 'Signaturen'
+      Visible = ivAlways
+      OnClick = dxBarLargeButton1Click
+    end
+    object ppmbtn_EmailNew: TdxBarButton
       Caption = 'Neue E-Mail'
       Category = 1
       Visible = ivAlways
       ImageIndex = 16
     end
-    object EMaillschen1: TdxBarButton
+    object ppmbtn_EmailDelete: TdxBarButton
       Caption = 'E-Mail l'#246'schen'
       Category = 1
       Visible = ivAlways
       ImageIndex = 17
     end
-    object EMaillschen2: TdxBarButton
+    object ppmbtn_EmailMove: TdxBarButton
       Caption = 'E-Mail verschieben'
       Category = 1
       Visible = ivAlways
       ImageIndex = 59
     end
-    object Antworten1: TdxBarButton
+    object ppmbtn_EmailAnswer: TdxBarButton
       Caption = 'Antworten'
       Category = 1
       Visible = ivAlways
       ImageIndex = 18
     end
-    object Antworten2: TdxBarButton
+    object ppmbtn_EmailAnswerAll: TdxBarButton
       Caption = 'Allen antworten'
       Category = 1
       Visible = ivAlways
       ImageIndex = 60
     end
-    object EMailweiterleiten1: TdxBarButton
+    object ppmbtn_EmailSendTo: TdxBarButton
       Caption = 'E-Mail weiterleiten'
       Category = 1
       Visible = ivAlways
       ImageIndex = 62
     end
-    object Alsgelesenmarkieren1: TdxBarButton
+    object ppmbtn_EmailMarkasRead: TdxBarButton
       Caption = 'Als gelesen markieren'
       Category = 1
       Visible = ivAlways
@@ -555,10 +555,7 @@ object frm_Mail: Tfrm_Mail
     end
   end
   object idImap_Mail: TIdIMAP4
-    Password = 'Jh2019+1'
     Port = 993
-    Username = 'Jens.Henske@t-online.de'
-    Host = 'imap.t-online.de'
     SASLMechanisms = <>
     MilliSecsToWaitToClearBuffer = 10
     Left = 416
@@ -571,45 +568,91 @@ object frm_Mail: Tfrm_Mail
         GridView = grdDBTblView_Mails
         HitTypes = [gvhtCell, gvhtRecord, gvhtIndicator]
         Index = 0
-        PopupMenu = dxBarPopupMenu1
+        PopupMenu = ppm_Email
       end>
     Left = 376
     Top = 288
   end
-  object dxBarPopupMenu1: TdxBarPopupMenu
+  object ppm_Email: TdxBarPopupMenu
     BarManager = brmgr_Email
     ItemLinks = <
       item
         Visible = True
-        ItemName = 'NeueEMail1'
+        ItemName = 'ppmbtn_EmailNew'
       end
       item
         Visible = True
-        ItemName = 'EMaillschen1'
+        ItemName = 'ppmbtn_EmailDelete'
       end
       item
         Visible = True
-        ItemName = 'EMaillschen2'
+        ItemName = 'ppmbtn_EmailMove'
       end
       item
         Visible = True
-        ItemName = 'Antworten1'
+        ItemName = 'ppmbtn_EmailAnswer'
       end
       item
         Visible = True
-        ItemName = 'Antworten2'
+        ItemName = 'ppmbtn_EmailAnswerAll'
       end
       item
         Visible = True
-        ItemName = 'EMailweiterleiten1'
+        ItemName = 'ppmbtn_EmailSendTo'
       end
       item
         Visible = True
-        ItemName = 'Alsgelesenmarkieren1'
+        ItemName = 'ppmbtn_EmailMarkasRead'
       end>
     UseOwnFont = False
     Left = 320
     Top = 368
     PixelsPerInch = 96
+  end
+  object IdHTTPServer1: TIdHTTPServer
+    Bindings = <>
+    DefaultPort = 2132
+    Left = 1109
+    Top = 120
+  end
+  object IdSSLIOHandlerSocketIMAP: TIdSSLIOHandlerSocketOpenSSL
+    Destination = ':143'
+    MaxLineAction = maException
+    Port = 143
+    DefaultPort = 0
+    SSLOptions.Method = sslvTLSv1_2
+    SSLOptions.SSLVersions = [sslvTLSv1_2]
+    SSLOptions.Mode = sslmClient
+    SSLOptions.VerifyMode = []
+    SSLOptions.VerifyDepth = 0
+    Left = 1029
+    Top = 354
+  end
+  object IdSSLIOHandlerSocketSMTP: TIdSSLIOHandlerSocketOpenSSL
+    Destination = ':25'
+    MaxLineAction = maException
+    Port = 25
+    DefaultPort = 0
+    SSLOptions.Method = sslvTLSv1_2
+    SSLOptions.SSLVersions = [sslvTLSv1_2]
+    SSLOptions.Mode = sslmClient
+    SSLOptions.VerifyMode = []
+    SSLOptions.VerifyDepth = 0
+    Left = 264
+    Top = 396
+  end
+  object idImap_MailOauth: TIdIMAP4
+    Port = 993
+    SASLMechanisms = <>
+    MilliSecsToWaitToClearBuffer = 10
+    Left = 416
+    Top = 152
+  end
+  object grdDBTblView_MailsCellCTimer: TTimer
+    Enabled = False
+    Interval = 500
+    OnTimer = grdDBTblView_MailsCellCTimerTimer
+    Left = 608
+    Top = 392
   end
 end

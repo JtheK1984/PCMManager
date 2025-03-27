@@ -3,30 +3,68 @@ unit PCMManager.Modul.C_Contacts.Staatsangehoerigkeit;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, cxStyles, cxCustomData, cxGraphics, cxFilter, cxData,
-  cxDataStorage, cxEdit, DB, cxDBData, cxGridLevel, cxClasses, cxControls,
-  cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid, cxLookAndFeels,
-  cxLookAndFeelPainters, ComCtrls, ToolWin, dxBar, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client, cxNavigator, dxDateRanges, dxScrollbarAnnotations,
-  dxUIAClasses;
-
+  {$Region Uses}
+  Classes,
+  ComCtrls,
+  Controls,
+  cxClasses,
+  cxControls,
+  cxCustomData,
+  cxData,
+  cxDataStorage,
+  cxDBData,
+  cxEdit,
+  cxFilter,
+  cxGraphics,
+  cxGrid,
+  cxGridCustomTableView,
+  cxGridCustomView,
+  cxGridDBTableView,
+  cxGridLevel,
+  cxGridTableView,
+  cxLookAndFeelPainters,
+  cxLookAndFeels,
+  cxNavigator,
+  cxStyles,
+  DB,
+  Dialogs,
+  dxBar,
+  dxDateRanges,
+  dxScrollbarAnnotations,
+  dxUIAClasses,
+  FireDAC.Comp.Client,
+  FireDAC.Comp.DataSet,
+  FireDAC.DApt,
+  FireDAC.DApt.Intf,
+  FireDAC.DatS,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Async,
+  FireDAC.Stan.Error,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+  Forms,
+  Graphics,
+  Messages,
+  SysUtils,
+  ToolWin,
+  Variants,
+  Windows;
+  {$EndRegion Uses}
 type
+  {$Region Types}
   Tfrm_PCM_Staatsangehoerigkeit = class(TForm)
-    grd_Staatsangehoerigkeit: TcxGrid;
-    grdDBTblView_Staatsangehoerigkeit: TcxGridDBTableView;
-    grdlvl_Staatsangehoerigkeit: TcxGridLevel;
-    grdDBTblView_StaatsangehoerigkeitBezeichnung: TcxGridDBColumn;
     brmgr_Staatsangehoerigkeit: TdxBarManager;
-    tb_Staatsangehoerigkeit: TdxBar;
-    btn_StaatsangehoerigkeitNew: TdxBarLargeButton;
     btn_StaatsangehoerigkeitCancel: TdxBarLargeButton;
-    btn_StaatsangehoerigkeitSave: TdxBarLargeButton;
     btn_StaatsangehoerigkeitClose: TdxBarLargeButton;
     btn_StaatsangehoerigkeitDelete: TdxBarLargeButton;
+    btn_StaatsangehoerigkeitNew: TdxBarLargeButton;
+    btn_StaatsangehoerigkeitSave: TdxBarLargeButton;
+    grd_Staatsangehoerigkeit: TcxGrid;
+    grdDBTblView_Staatsangehoerigkeit: TcxGridDBTableView;
+    grdDBTblView_StaatsangehoerigkeitBezeichnung: TcxGridDBColumn;
+    grdlvl_Staatsangehoerigkeit: TcxGridLevel;
+    tb_Staatsangehoerigkeit: TdxBar;
     procedure btn_StaatsangehoerigkeitCloseClick(Sender: TObject);
     procedure btn_StaatsangehoerigkeitNewClick(Sender: TObject);
     procedure btn_StaatsangehoerigkeitSaveClick(Sender: TObject);
@@ -39,24 +77,41 @@ type
     { Public-Deklarationen }
     function Execute(Caption: string; Recht: integer) :boolean;
   end;
-
+  {$EndRegion Types}
 var
+  {$Region var}
   frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit;
   sTable: string;
-
+  {$EndRegion var}
 implementation
-
-
 {$R *.dfm}
-
-uses PCMManager.Modul.C_Contacts,
-     PCM.Data,PCM.Strings;
-
-
-{$Region Buttons}
+uses
+  {$Region var}
+  PCM.Data,
+  PCM.Strings,
+  PCMManager.Modul.C_Contacts;
+  {$EndRegion var}
+////////////////////////////////////////////////////////////////////////////////
+// Hilfsfunktion                                                              //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktion}
+function Tfrm_PCM_Staatsangehoerigkeit.Execute(Caption: string; Recht: integer) :boolean;
+begin
+  dm_PCM.qry_Contact_Staatsangehoerigkeit.Open;
+  Self.Caption := Caption;
+  btn_StaatsangehoerigkeitNew.Enabled:= Recht >= SetReadWrite;
+  btn_StaatsangehoerigkeitSave.Enabled:= Recht >= SetReadWrite;
+  btn_StaatsangehoerigkeitCancel.Enabled:= Recht >= SetReadWrite;
+  btn_StaatsangehoerigkeitDelete.Enabled:= Recht > SetReadWrite;
+  ShowModal;
+  result:= true;
+  Release;
+end;
+{$EndRegion}
 ////////////////////////////////////////////////////////////////////////////////
 // Buttons                                                                    //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Buttons}
 procedure Tfrm_PCM_Staatsangehoerigkeit.btn_StaatsangehoerigkeitNewClick(Sender: TObject);
 begin
   if dm_PCM.qry_Contact_Staatsangehoerigkeit.State in [dsInsert, dsedit] then
@@ -87,23 +142,7 @@ begin
   Close;
 end;
 {$EndRegion}
-{$Region Execute}
-////////////////////////////////////////////////////////////////////////////////
-// Execute                                                                    //
-////////////////////////////////////////////////////////////////////////////////
-function Tfrm_PCM_Staatsangehoerigkeit.Execute(Caption: string; Recht: integer) :boolean;
-begin
-  dm_PCM.qry_Contact_Staatsangehoerigkeit.Open;
-  Self.Caption := Caption;
-  btn_StaatsangehoerigkeitNew.Enabled:= Recht >= SetReadWrite;
-  btn_StaatsangehoerigkeitSave.Enabled:= Recht >= SetReadWrite;
-  btn_StaatsangehoerigkeitCancel.Enabled:= Recht >= SetReadWrite;
-  btn_StaatsangehoerigkeitDelete.Enabled:= Recht > SetReadWrite;
-  ShowModal;
-  result:= true;
-  Release;
-end;
-{$EndRegion}
+
 {$Region Formfunctions}
 ////////////////////////////////////////////////////////////////////////////////
 // FormFunctions                                                              //

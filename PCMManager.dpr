@@ -39,9 +39,10 @@ uses
   PCM.splash in 'PCM.splash.pas' {SplashScreen},
   PCMManager.dxSettings in 'PCMManager.dxSettings.pas',
   PCMManager.Helper.Email.OAuth in 'Helper\PCMManager.Helper.Email.OAuth.pas',
-  IdSASL.OAuth.XOAUTH2 in '..\..\GmailAuthSMTP-master\IdSASL.OAuth.XOAUTH2.pas',
-  IdSASL.OAuth.OAuth2Bearer in '..\..\GmailAuthSMTP-master\IdSASL.OAuth.OAuth2Bearer.pas',
-  IdSASL.OAuth.Base in '..\..\GmailAuthSMTP-master\IdSASL.OAuth.Base.pas';
+  IdSASL.OAuth.Base in 'Helper\IdSASL.OAuth.Base.pas',
+  IdSASL.OAuth.OAuth2Bearer in 'Helper\IdSASL.OAuth.OAuth2Bearer.pas',
+  IdSASL.OAuth.XOAUTH2 in 'Helper\IdSASL.OAuth.XOAUTH2.pas',
+  PCMManager.Modul.E_Mail.Signaturen in 'Modules\PCMManager.Modul.E_Mail.Signaturen.pas' {frm_Signatur};
 
 {$R *.res}
 

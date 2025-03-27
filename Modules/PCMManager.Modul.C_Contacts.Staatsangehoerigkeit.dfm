@@ -17,9 +17,9 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
   TextHeight = 25
   object grd_Staatsangehoerigkeit: TcxGrid
     Left = 0
-    Top = 63
+    Top = 58
     Width = 658
-    Height = 181
+    Height = 186
     Align = alClient
     BorderStyle = cxcbsNone
     Font.Charset = DEFAULT_CHARSET
@@ -33,7 +33,7 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
     LookAndFeel.Kind = lfFlat
     LookAndFeel.NativeStyle = False
     ExplicitWidth = 652
-    ExplicitHeight = 164
+    ExplicitHeight = 169
     object grdDBTblView_Staatsangehoerigkeit: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       FilterBox.CustomizeDialog = False
@@ -94,7 +94,6 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
     LookAndFeel.NativeStyle = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 392
     Top = 120
@@ -102,7 +101,7 @@ object frm_PCM_Staatsangehoerigkeit: Tfrm_PCM_Staatsangehoerigkeit
     DockControlHeights = (
       0
       0
-      63
+      58
       0)
     object tb_Staatsangehoerigkeit: TdxBar
       Caption = 'tb_Staatsangehoerigkeit'
