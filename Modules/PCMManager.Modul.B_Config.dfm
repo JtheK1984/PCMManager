@@ -3,7 +3,7 @@ object frm_Config: Tfrm_Config
   Top = 0
   BorderStyle = bsNone
   Caption = 'frm_Config'
-  ClientHeight = 900
+  ClientHeight = 944
   ClientWidth = 1137
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,12 +19,13 @@ object frm_Config: Tfrm_Config
     Left = 0
     Top = 0
     Width = 1137
-    Height = 900
+    Height = 944
     Align = alClient
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
+    ExplicitHeight = 900
     object edt_CalConfigFTP_Benutzer: TcxDBTextEdit
       Left = 10000
       Top = 10000
@@ -194,7 +195,7 @@ object frm_Config: Tfrm_Config
       Left = 10000
       Top = 10000
       Width = 1085
-      Height = 58
+      Height = 63
       Align = dalNone
       BarManager = brmgr_Config
       Visible = False
@@ -590,7 +591,7 @@ object frm_Config: Tfrm_Config
       Left = 10000
       Top = 10000
       Width = 1085
-      Height = 58
+      Height = 63
       Align = dalNone
       AllowDocking = False
       BarManager = brmgr_Config
@@ -685,7 +686,7 @@ object frm_Config: Tfrm_Config
       Left = 10000
       Top = 10000
       Width = 1085
-      Height = 58
+      Height = 63
       Align = dalNone
       AllowDocking = False
       BarManager = brmgr_Config
@@ -761,7 +762,7 @@ object frm_Config: Tfrm_Config
       Left = 10000
       Top = 10000
       Width = 1085
-      Height = 58
+      Height = 63
       Align = dalNone
       AllowDocking = False
       BarManager = brmgr_Config
@@ -919,7 +920,7 @@ object frm_Config: Tfrm_Config
       Left = 10000
       Top = 10000
       Width = 1085
-      Height = 58
+      Height = 63
       Align = dalNone
       AllowDocking = False
       BarManager = brmgr_Config
@@ -973,7 +974,7 @@ object frm_Config: Tfrm_Config
       Left = 10000
       Top = 10000
       Width = 1085
-      Height = 58
+      Height = 63
       Align = dalNone
       BarManager = brmgr_Config
       Visible = False
@@ -1212,7 +1213,7 @@ object frm_Config: Tfrm_Config
       Left = 10000
       Top = 10000
       Width = 1085
-      Height = 58
+      Height = 63
       Align = dalNone
       BarManager = brmgr_Config
       Visible = False
@@ -1338,15 +1339,15 @@ object frm_Config: Tfrm_Config
       Left = 10000
       Top = 10000
       Width = 1085
-      Height = 58
+      Height = 63
       Align = dalNone
       BarManager = brmgr_Config
       Visible = False
     end
     object grd_EmailConfig: TcxGrid
-      Left = 26
-      Top = 343
-      Width = 1085
+      Left = 10000
+      Top = 10000
+      Width = 1077
       Height = 100
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
@@ -1357,6 +1358,7 @@ object frm_Config: Tfrm_Config
       ParentFont = False
       TabOrder = 69
       TabStop = False
+      Visible = False
       LockedStateImageOptions.Effect = lsieDark
       object grdDBTblView_emailConfig: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -1441,12 +1443,13 @@ object frm_Config: Tfrm_Config
       end
     end
     object btn_EmailConfig_Test: TcxButton
-      Left = 26
-      Top = 461
-      Width = 1085
+      Left = 10000
+      Top = 10000
+      Width = 1077
       Height = 27
       Caption = 'Verbindung Testen'
       TabOrder = 70
+      Visible = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -1456,8 +1459,8 @@ object frm_Config: Tfrm_Config
       OnClick = btn_EmailConfig_TestClick
     end
     object chxbx_EmailConfig_SSL: TcxDBCheckBox
-      Left = 140
-      Top = 293
+      Left = 10000
+      Top = 10000
       AutoSize = False
       Caption = 'Aktiv'
       DataBinding.DataField = 'SSLActive'
@@ -1466,13 +1469,14 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       TabOrder = 60
       Transparent = True
+      Visible = False
       OnExit = btn_EmailConfigSaveClick
       Height = 19
-      Width = 407
+      Width = 403
     end
     object edt_EmailConfig_Benutzer: TcxDBTextEdit
-      Left = 697
-      Top = 143
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Benutzer'
       DataBinding.DataSource = ds_EmailConfig
       ParentFont = False
@@ -1485,12 +1489,13 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 62
+      Visible = False
       OnExit = btn_EmailConfigSaveClick
-      Width = 414
+      Width = 410
     end
     object edt_EmailConfig_Emailadresse: TcxDBTextEdit
-      Left = 140
-      Top = 143
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'EMail'
       DataBinding.DataSource = ds_EmailConfig
       ParentFont = False
@@ -1503,12 +1508,13 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 54
+      Visible = False
       OnExit = btn_EmailConfigSaveClick
-      Width = 407
+      Width = 403
     end
     object edt_EmailConfig_Kennwort: TcxDBTextEdit
-      Left = 697
-      Top = 168
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Passwort'
       DataBinding.DataSource = ds_EmailConfig
       ParentFont = False
@@ -1522,12 +1528,13 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 63
+      Visible = False
       OnExit = btn_EmailConfigSaveClick
-      Width = 414
+      Width = 410
     end
     object edt_EmailConfig_PortAusgang: TcxDBTextEdit
-      Left = 140
-      Top = 268
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'PortAusgangsserver'
       DataBinding.DataSource = ds_EmailConfig
       ParentFont = False
@@ -1540,12 +1547,13 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 59
+      Visible = False
       OnExit = btn_EmailConfigSaveClick
-      Width = 407
+      Width = 403
     end
     object edt_EmailConfig_PortEingang: TcxDBTextEdit
-      Left = 140
-      Top = 218
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'PortEingangsserver'
       DataBinding.DataSource = ds_EmailConfig
       ParentFont = False
@@ -1558,12 +1566,13 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 57
+      Visible = False
       OnExit = btn_EmailConfigSaveClick
-      Width = 407
+      Width = 403
     end
     object edt_EmailConfig_PostAusgangServer: TcxDBTextEdit
-      Left = 140
-      Top = 243
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'PostAusgangsserver'
       DataBinding.DataSource = ds_EmailConfig
       ParentFont = False
@@ -1576,11 +1585,12 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 58
-      Width = 407
+      Visible = False
+      Width = 403
     end
     object edt_EmailConfig_PostEingangServer: TcxDBTextEdit
-      Left = 140
-      Top = 193
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'PostEingangsserver'
       DataBinding.DataSource = ds_EmailConfig
       ParentFont = False
@@ -1593,28 +1603,31 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 56
+      Visible = False
       OnExit = btn_EmailConfigSaveClick
-      Width = 407
+      Width = 403
     end
     object brdckctrl_Email: TdxBarDockControl
-      Left = 26
-      Top = 59
-      Width = 1085
-      Height = 58
+      Left = 10000
+      Top = 10000
+      Width = 1077
+      Height = 63
       Align = dalNone
       BarManager = brmgr_Config
+      Visible = False
     end
     object bardckctrl_Postfach: TdxBarDockControl
-      Left = 26
-      Top = 520
-      Width = 1085
-      Height = 58
+      Left = 10000
+      Top = 10000
+      Width = 1077
+      Height = 63
       Align = dalNone
       BarManager = brmgr_Config
+      Visible = False
     end
     object btn_PostfachMainbottom: TcxButton
-      Left = 1082
-      Top = 677
+      Left = 10000
+      Top = 10000
       Width = 20
       Height = 20
       OptionsImage.Glyph.SourceDPI = 96
@@ -1642,11 +1655,12 @@ object frm_Config: Tfrm_Config
         25B26F4AE8F495860B5476FE2F78CB041B0B9464F3419BC8E0E7F7365DF1DF3F
         EB7C93A1EABC6E0000000049454E44AE426082}
       TabOrder = 75
+      Visible = False
       OnClick = btn_PostfachMainbottomClick
     end
     object btn_PostfachMaindown: TcxButton
-      Left = 1082
-      Top = 651
+      Left = 10000
+      Top = 10000
       Width = 20
       Height = 20
       OptionsImage.Glyph.SourceDPI = 96
@@ -1669,11 +1683,12 @@ object frm_Config: Tfrm_Config
         DF0AF028EA9990D9A44955E7288770BDE317B2235FE05F0BBC8FCE27FE0F6EA2
         80779755FCCF7803E8D0E0915AAA27200000000049454E44AE426082}
       TabOrder = 74
+      Visible = False
       OnClick = btn_PostfachMaindownClick
     end
     object btn_PostfachMainUp: TcxButton
-      Left = 1082
-      Top = 625
+      Left = 10000
+      Top = 10000
       Width = 20
       Height = 20
       OptionsImage.Glyph.SourceDPI = 96
@@ -1697,11 +1712,12 @@ object frm_Config: Tfrm_Config
         8680039A01E43960E2FA7E7E235675430C00005416CE3539D1B3B10000000049
         454E44AE426082}
       TabOrder = 73
+      Visible = False
       OnClick = btn_PostfachMainUpClick
     end
     object btn_PostfachMainTop: TcxButton
-      Left = 1082
-      Top = 599
+      Left = 10000
+      Top = 10000
       Width = 20
       Height = 20
       OptionsImage.Glyph.SourceDPI = 96
@@ -1729,13 +1745,14 @@ object frm_Config: Tfrm_Config
         7CA0D726F09FB2072FB045838AFBEDC22F58E6680A1520C2DE0000000049454E
         44AE426082}
       TabOrder = 72
+      Visible = False
       OnClick = btn_PostfachMainTopClick
     end
     object grd_Postfachmain: TcxGrid
-      Left = 35
-      Top = 599
-      Width = 1041
-      Height = 118
+      Left = 10000
+      Top = 10000
+      Width = 1033
+      Height = 99
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1745,6 +1762,7 @@ object frm_Config: Tfrm_Config
       ParentFont = False
       TabOrder = 76
       TabStop = False
+      Visible = False
       LockedStateImageOptions.Effect = lsieDark
       object grdDBTblViewl_Postfachmain: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -1814,8 +1832,8 @@ object frm_Config: Tfrm_Config
       end
     end
     object btn_PostfachSubbottom: TcxButton
-      Left = 1082
-      Top = 825
+      Left = 10000
+      Top = 10000
       Width = 20
       Height = 20
       OptionsImage.Glyph.SourceDPI = 96
@@ -1843,11 +1861,12 @@ object frm_Config: Tfrm_Config
         25B26F4AE8F495860B5476FE2F78CB041B0B9464F3419BC8E0E7F7365DF1DF3F
         EB7C93A1EABC6E0000000049454E44AE426082}
       TabOrder = 80
+      Visible = False
       OnClick = btn_PostfachSubbottomClick
     end
     object btn_PostfachSubDown: TcxButton
-      Left = 1082
-      Top = 799
+      Left = 10000
+      Top = 10000
       Width = 20
       Height = 20
       OptionsImage.Glyph.SourceDPI = 96
@@ -1870,11 +1889,12 @@ object frm_Config: Tfrm_Config
         DF0AF028EA9990D9A44955E7288770BDE317B2235FE05F0BBC8FCE27FE0F6EA2
         80779755FCCF7803E8D0E0915AAA27200000000049454E44AE426082}
       TabOrder = 79
+      Visible = False
       OnClick = btn_PostfachSubDownClick
     end
     object btn_PostfachSubUp: TcxButton
-      Left = 1082
-      Top = 773
+      Left = 10000
+      Top = 10000
       Width = 20
       Height = 20
       OptionsImage.Glyph.SourceDPI = 96
@@ -1898,11 +1918,12 @@ object frm_Config: Tfrm_Config
         8680039A01E43960E2FA7E7E235675430C00005416CE3539D1B3B10000000049
         454E44AE426082}
       TabOrder = 78
+      Visible = False
       OnClick = btn_PostfachSubUpClick
     end
     object btn_PostfachSubTop: TcxButton
-      Left = 1082
-      Top = 747
+      Left = 10000
+      Top = 10000
       Width = 20
       Height = 20
       OptionsImage.Glyph.SourceDPI = 96
@@ -1930,13 +1951,14 @@ object frm_Config: Tfrm_Config
         7CA0D726F09FB2072FB045838AFBEDC22F58E6680A1520C2DE0000000049454E
         44AE426082}
       TabOrder = 77
+      Visible = False
       OnClick = btn_PostfachSubTopClick
     end
     object grd_postfachSub: TcxGrid
-      Left = 35
-      Top = 747
-      Width = 1041
-      Height = 118
+      Left = 10000
+      Top = 10000
+      Width = 1033
+      Height = 98
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1946,6 +1968,7 @@ object frm_Config: Tfrm_Config
       ParentFont = False
       TabOrder = 81
       TabStop = False
+      Visible = False
       LockedStateImageOptions.Effect = lsieDark
       object grdDBTblViewl_PostfachSub: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -2029,57 +2052,52 @@ object frm_Config: Tfrm_Config
       end
     end
     object bardckctrl_Anrede: TdxBarDockControl
-      Left = 10000
-      Top = 10000
-      Width = 1085
-      Height = 58
+      Left = 28
+      Top = 77
+      Width = 1077
+      Height = 63
       Align = dalNone
       BarManager = brmgr_Config
-      Visible = False
     end
     object bardckctrl_Geburtsland: TdxBarDockControl
-      Left = 10000
-      Top = 10000
-      Width = 1085
-      Height = 58
+      Left = 28
+      Top = 414
+      Width = 1077
+      Height = 63
       Align = dalNone
       BarManager = brmgr_Config
-      Visible = False
     end
     object bardckctrl_Phonerlite: TdxBarDockControl
-      Left = 10000
-      Top = 10000
-      Width = 1085
-      Height = 58
+      Left = 28
+      Top = 750
+      Width = 1077
+      Height = 63
       Align = dalNone
       BarManager = brmgr_Config
-      Visible = False
     end
     object edt_Anrede: TcxDBTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 106
+      Top = 146
       DataBinding.DataField = 'Bezeichnung'
       DataBinding.DataSource = ds_Anrede
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 1
-      Visible = False
-      Width = 1007
+      Width = 999
     end
     object edt_Land: TcxDBTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 106
+      Top = 483
       DataBinding.DataField = 'Bezeichnung'
       DataBinding.DataSource = ds_Land
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 4
-      Visible = False
-      Width = 1007
+      Width = 999
     end
     object edt_Phone: TcxDBButtonEdit
-      Left = 10000
-      Top = 10000
+      Left = 106
+      Top = 819
       DataBinding.DataField = 'Path'
       DataBinding.DataSource = ds_phone
       Properties.Buttons = <
@@ -2092,13 +2110,12 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 7
-      Visible = False
-      Width = 1007
+      Width = 999
     end
     object grd_Phonerlite: TcxGrid
-      Left = 10000
-      Top = 10000
-      Width = 1085
+      Left = 28
+      Top = 844
+      Width = 1077
       Height = 68
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
@@ -2109,7 +2126,6 @@ object frm_Config: Tfrm_Config
       ParentFont = False
       TabOrder = 8
       TabStop = False
-      Visible = False
       LockedStateImageOptions.Effect = lsieDark
       object grdDBTblView_Phonerlite: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -2157,10 +2173,10 @@ object frm_Config: Tfrm_Config
       end
     end
     object grd_Geburtsland: TcxGrid
-      Left = 10000
-      Top = 10000
-      Width = 1085
-      Height = 208
+      Left = 28
+      Top = 508
+      Width = 1077
+      Height = 195
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -2170,7 +2186,6 @@ object frm_Config: Tfrm_Config
       ParentFont = False
       TabOrder = 5
       TabStop = False
-      Visible = False
       LockedStateImageOptions.Effect = lsieDark
       object grdDBTblView_Geburtsland: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -2217,10 +2232,10 @@ object frm_Config: Tfrm_Config
       end
     end
     object grd_Anrede: TcxGrid
-      Left = 10000
-      Top = 10000
-      Width = 1085
-      Height = 208
+      Left = 28
+      Top = 171
+      Width = 1077
+      Height = 196
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -2230,7 +2245,6 @@ object frm_Config: Tfrm_Config
       ParentFont = False
       TabOrder = 2
       TabStop = False
-      Visible = False
       LockedStateImageOptions.Effect = lsieDark
       object grdDBTblView_Anrede: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -2277,8 +2291,8 @@ object frm_Config: Tfrm_Config
       end
     end
     object cmbbx_Auth: TcxDBImageComboBox
-      Left = 140
-      Top = 318
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Authtype'
       DataBinding.DataSource = ds_EmailConfig
@@ -2295,66 +2309,72 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 61
+      Visible = False
       Height = 19
-      Width = 407
+      Width = 403
     end
     object cxDBTextEdit1: TcxDBTextEdit
-      Left = 697
-      Top = 193
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'ClientID'
       DataBinding.DataSource = ds_EmailConfig
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 64
-      Width = 414
+      Visible = False
+      Width = 410
     end
     object cxDBTextEdit2: TcxDBTextEdit
-      Left = 697
-      Top = 218
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'ClientSecret'
       DataBinding.DataSource = ds_EmailConfig
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 65
-      Width = 414
+      Visible = False
+      Width = 410
     end
     object cxDBTextEdit3: TcxDBTextEdit
-      Left = 697
-      Top = 268
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'AuthorizationEndpoint'
       DataBinding.DataSource = ds_EmailConfig
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 67
+      Visible = False
       Height = 19
-      Width = 414
+      Width = 410
     end
     object cxDBTextEdit4: TcxDBTextEdit
-      Left = 697
-      Top = 293
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'AccessTokenEndpoint'
       DataBinding.DataSource = ds_EmailConfig
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 68
+      Visible = False
       Height = 19
-      Width = 414
+      Width = 410
     end
     object cxDBTextEdit5: TcxDBTextEdit
-      Left = 697
-      Top = 243
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Scopes'
       DataBinding.DataSource = ds_EmailConfig
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 66
-      Width = 414
+      Visible = False
+      Width = 410
     end
     object lucmbbx_EmailConfig_Kontptyp: TcxDBLookupComboBox
-      Left = 140
-      Top = 168
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Kontotyp'
       DataBinding.DataSource = ds_EmailConfig
       ParentFont = False
@@ -2374,8 +2394,9 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 55
+      Visible = False
       OnExit = btn_EmailConfigSaveClick
-      Width = 407
+      Width = 403
     end
     object lactrl_ConfigGroup_Root: TdxLayoutGroup
       AlignHorz = ahClient
@@ -2389,7 +2410,6 @@ object frm_Config: Tfrm_Config
       Parent = lactrl_ConfigGroup_Root
       AlignHorz = ahClient
       AlignVert = avClient
-      ItemIndex = 4
       LayoutDirection = ldTabbed
       ShowBorder = False
       OnTabChanging = lactrl_ConfigTabTabChanging
@@ -2421,7 +2441,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = bardckctrl_Kalender
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2465,8 +2485,8 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'an Termine erinnern:'
       Control = chkbx_CalConfigReminder
-      ControlOptions.OriginalHeight = 17
-      ControlOptions.OriginalWidth = 13
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 15
       ControlOptions.ShowBorder = False
       Index = 0
     end
@@ -2535,7 +2555,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = brdckctrl_Feiertage
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2569,7 +2589,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = brdckctrl_FTP
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2653,7 +2673,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = bardckctrl_Aufgabenarten
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2709,7 +2729,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = bardckctrl_AufgabenPrio
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2765,7 +2785,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = bardckctrl_AufgabenSonstiges
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2884,7 +2904,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = brdckctrl_Schulfach
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2951,7 +2971,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = brdckctrl_SchulfachUhr
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -3004,7 +3024,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = brdckctrl_Email
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1266
       ControlOptions.ShowBorder = False
       Index = 0
@@ -3136,7 +3156,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = bardckctrl_Postfach
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -3519,7 +3539,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = bardckctrl_Anrede
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1137
       ControlOptions.ShowBorder = False
       Index = 0
@@ -3541,7 +3561,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = bardckctrl_Geburtsland
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1137
       ControlOptions.ShowBorder = False
       Index = 0
@@ -3563,7 +3583,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = bardckctrl_Phonerlite
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1137
       ControlOptions.ShowBorder = False
       Index = 0
@@ -3886,6 +3906,7 @@ object frm_Config: Tfrm_Config
     LookAndFeel.NativeStyle = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 400
     Top = 313

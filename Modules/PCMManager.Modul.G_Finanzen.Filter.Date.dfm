@@ -4,7 +4,7 @@ object frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Bitte Monat und Jahr ausw'#228'hlen...'
-  ClientHeight = 83
+  ClientHeight = 93
   ClientWidth = 268
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,7 +19,7 @@ object frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate
     Left = 0
     Top = 0
     Width = 268
-    Height = 83
+    Height = 93
     Align = alClient
     TabOrder = 0
     AutoSize = True
@@ -27,9 +27,9 @@ object frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate
     ExplicitWidth = 262
     ExplicitHeight = 66
     object btn_PCManagerChooseDate_Cancel: TcxButton
-      Left = 129
+      Left = 137
       Top = 53
-      Width = 112
+      Width = 121
       Height = 25
       Caption = 'Abbrechen'
       OptionsImage.ImageIndex = 57
@@ -46,7 +46,7 @@ object frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate
     object btn_PCManagerChooseDate_Ok: TcxButton
       Left = 10
       Top = 53
-      Width = 113
+      Width = 121
       Height = 25
       Caption = 'Ok'
       OptionsImage.ImageIndex = 56
@@ -86,10 +86,10 @@ object frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 0
-      Width = 113
+      Width = 121
     end
     object cbx_PCManagerChooseDate_Year: TcxComboBox
-      Left = 129
+      Left = 137
       Top = 28
       ParentFont = False
       Properties.Items.Strings = (
@@ -182,7 +182,7 @@ object frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 1
-      Width = 112
+      Width = 121
     end
     object dxLayoutControl1Group_Root: TdxLayoutGroup
       AlignHorz = ahClient

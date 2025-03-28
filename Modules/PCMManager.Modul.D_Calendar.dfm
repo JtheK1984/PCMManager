@@ -29,18 +29,18 @@ object frm_Calendar: Tfrm_Calendar
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
     object brdckctrl_Kalender: TdxBarDockControl
-      Left = 22
-      Top = 48
-      Width = 1022
+      Left = 19
+      Top = 45
+      Width = 1028
       Height = 117
       Align = dalNone
       BarManager = brmgr_Kalendar
     end
     object sched_Kalender: TcxScheduler
-      Left = 22
-      Top = 171
-      Width = 1022
-      Height = 743
+      Left = 19
+      Top = 168
+      Width = 1028
+      Height = 749
       DateNavigator.RowCount = 5
       ViewDay.Active = True
       ViewDay.AlwaysShowEventTime = True
@@ -87,8 +87,8 @@ object frm_Calendar: Tfrm_Calendar
       OnKeyDown = sched_KalenderKeyDown
       Selection = 7
       Splitters = {
-        950000007E000000840600008300000069030000010000006E030000E6020000}
-      StoredClientBounds = {0100000001000000FD030000E6020000}
+        950000007E00000084060000830000006F0300000100000074030000EC020000}
+      StoredClientBounds = {010000000100000003040000EC020000}
     end
     object trlst_Aufgaben: TcxTreeList
       Left = 10000
@@ -2992,7 +2992,7 @@ object frm_Calendar: Tfrm_Calendar
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 45736.587026064820000000
+      ReportDocument.CreationDate = 45744.468860335650000000
       OptionsSize.AutoWidth = True
       PixelsPerInch = 96
       BuiltInReportLink = True

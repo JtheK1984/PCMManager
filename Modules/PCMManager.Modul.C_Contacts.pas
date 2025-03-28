@@ -485,9 +485,7 @@ const
   arrCont = [1,2];
   {$EndRegion Const}
 implementation
-
 {$R *.dfm}
-
 uses
   {$Region uses}
   PCM.Data,

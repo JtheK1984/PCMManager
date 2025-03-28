@@ -200,9 +200,7 @@ type
     procedure grdDBTblView_MailsCellDblClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
     procedure btn_EmailMoveClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure grdDBTblView_MailsCellClick(Sender: TcxCustomGridTableView;
-      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
-      AShift: TShiftState; var AHandled: Boolean);
+    procedure grdDBTblView_MailsCellClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
     procedure grdDBTblView_MailsCellCTimerTimer(Sender: TObject);
     procedure dxBarLargeButton1Click(Sender: TObject);
   private

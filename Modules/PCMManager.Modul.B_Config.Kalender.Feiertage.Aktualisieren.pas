@@ -72,9 +72,7 @@ var
   frm_FeiertageAktualisieren: Tfrm_FeiertageAktualisieren;
   {$EndRegion var}
 implementation
-
 {$R *.dfm}
-
 uses
   {$Region uses}
   DateUtils,

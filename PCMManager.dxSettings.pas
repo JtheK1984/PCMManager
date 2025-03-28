@@ -41,11 +41,11 @@ begin
   ARoot.NativeStyle := True;
   ARoot.ScrollbarMode := sbmDefault;
   ARoot.ScrollMode := scmDefault;
-  ARoot.SkinName := '';
+  ARoot.SkinName := 'DevExpressDarkStyle';
   ARoot.RenderMode := rmDefault;
   ARoot.TouchMode := False;
   ARoot.FormCorners := fcDefault;
-  ARoot.SkinPaletteName := '';
+  ARoot.SkinPaletteName := 'Default';
   ARoot.ShowFormShadow := bDefault;
   ARoot.UseSkins := True;
   ARoot.UseImageSet := imsDefault;

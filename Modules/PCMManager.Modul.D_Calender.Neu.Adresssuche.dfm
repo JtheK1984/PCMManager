@@ -29,9 +29,9 @@ object fAdressSuche: TfAdressSuche
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     object cxGrid1: TcxGrid
       Left = 10
-      Top = 210
+      Top = 204
       Width = 926
-      Height = 394
+      Height = 400
       TabOrder = 7
       LookAndFeel.NativeStyle = False
       object tvAdressen: TcxGridDBTableView
@@ -104,40 +104,40 @@ object fAdressSuche: TfAdressSuche
       end
     end
     object teName: TcxTextEdit
-      Left = 100
-      Top = 114
+      Left = 97
+      Top = 111
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 1
-      Width = 366
+      Width = 369
     end
     object teStrasse: TcxTextEdit
-      Left = 100
-      Top = 139
+      Left = 97
+      Top = 136
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 2
-      Width = 366
+      Width = 369
     end
     object tePLZ: TcxTextEdit
       Left = 554
-      Top = 114
+      Top = 111
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 3
-      Width = 370
+      Width = 373
     end
     object teOrt: TcxTextEdit
       Left = 554
-      Top = 139
+      Top = 136
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 4
-      Width = 370
+      Width = 373
     end
     object bAdressenZeigen: TcxButton
       Left = 10
-      Top = 176
+      Top = 170
       Width = 225
       Height = 28
       Hint = 
@@ -158,7 +158,7 @@ object fAdressSuche: TfAdressSuche
     end
     object bFilterLoeschen: TcxButton
       Left = 241
-      Top = 176
+      Top = 170
       Width = 225
       Height = 28
       Hint = 

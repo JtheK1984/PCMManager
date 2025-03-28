@@ -38,14 +38,18 @@ const
   L_SchleswigHolstein = 14;
   L_Thueringen = 15;
   {$EndRegion const}
-
+// Deklaration
+{$Region Deklaration}
 procedure FeiertageBerechnen(Land: Integer; Y: word);
-
+{$EndRegion Deklaration}
 implementation
 
 uses
+  {$Region uses}
   SysUtils;
-
+  {$EndRegion uses}
+// Procdure
+{$Region Procdure}
 procedure FeiertageBerechnen(Land: Integer; Y: word);
   function TagImJahr(Datum: TDateTime): word;
   var
@@ -266,5 +270,5 @@ begin
 
   // WeltfrauenTag mit aufnehmen / Bundesland Feiertag prüfen ggf. erweitern
 end;
-
+{$EndRegion Procdure}
 end.

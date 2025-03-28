@@ -142,11 +142,10 @@ begin
   Close;
 end;
 {$EndRegion}
-
-{$Region Formfunctions}
 ////////////////////////////////////////////////////////////////////////////////
 // FormFunctions                                                              //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Formfunctions}
 procedure Tfrm_PCM_Staatsangehoerigkeit.FormShow(Sender: TObject);
 begin
   grdDBTblView_StaatsangehoerigkeitBezeichnung.Caption := rs_PCMManager_Staatsangehoerigkeit;

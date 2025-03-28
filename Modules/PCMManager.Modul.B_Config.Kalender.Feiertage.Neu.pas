@@ -74,8 +74,6 @@ uses
   SysUtils,
   Windows;
   {$EndRegion Uses}
-
-
 type
   {$Region type}
   TcxGridSiteAccess = class (TcxGridSite);
@@ -137,9 +135,7 @@ var
   fFeiertageBerechnen: TfFeiertageBerechnen;
   {$EndRegion var}
 implementation
-
 {$R *.DFM}
-
 uses
   {$Region uses}
   PCMManager.Modul.B_Config,

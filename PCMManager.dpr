@@ -37,12 +37,12 @@ uses
   PCMManager.Helper.Calendar.ReminderCustomited in 'Helper\PCMManager.Helper.Calendar.ReminderCustomited.pas',
   PCMManager.Helper.Calendar.Reminder in 'Helper\PCMManager.Helper.Calendar.Reminder.pas' {cxSchedulerReminderForm},
   PCM.splash in 'PCM.splash.pas' {SplashScreen},
-  PCMManager.dxSettings in 'PCMManager.dxSettings.pas',
   PCMManager.Helper.Email.OAuth in 'Helper\PCMManager.Helper.Email.OAuth.pas',
   IdSASL.OAuth.Base in 'Helper\IdSASL.OAuth.Base.pas',
   IdSASL.OAuth.OAuth2Bearer in 'Helper\IdSASL.OAuth.OAuth2Bearer.pas',
   IdSASL.OAuth.XOAUTH2 in 'Helper\IdSASL.OAuth.XOAUTH2.pas',
-  PCMManager.Modul.E_Mail.Signaturen in 'Modules\PCMManager.Modul.E_Mail.Signaturen.pas' {frm_Signatur};
+  PCMManager.Modul.E_Mail.Signaturen in 'Modules\PCMManager.Modul.E_Mail.Signaturen.pas' {frm_Signatur},
+  PCMManager.dxSettings in 'PCMManager.dxSettings.pas';
 
 {$R *.res}
 

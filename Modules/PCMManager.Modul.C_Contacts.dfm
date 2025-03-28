@@ -18,9 +18,9 @@ object frm_Contact: Tfrm_Contact
   TextHeight = 13
   object lactrl_Contacts: TdxLayoutControl
     Left = 0
-    Top = 58
+    Top = 63
     Width = 1600
-    Height = 842
+    Height = 837
     Margins.Left = 0
     Margins.Top = 0
     Margins.Right = 0
@@ -29,12 +29,11 @@ object frm_Contact: Tfrm_Contact
     TabOrder = 4
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
-    ExplicitTop = 46
     ExplicitWidth = 1594
-    ExplicitHeight = 837
+    ExplicitHeight = 820
     object cmbbx_KontaktSucheArt: TcxComboBox
-      Left = 86
-      Top = 111
+      Left = 88
+      Top = 131
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -51,8 +50,8 @@ object frm_Contact: Tfrm_Contact
       Width = 234
     end
     object edt_KontaktSucheAbteilung: TcxTextEdit
-      Left = 779
-      Top = 84
+      Left = 781
+      Top = 104
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -69,8 +68,8 @@ object frm_Contact: Tfrm_Contact
       Width = 234
     end
     object edt_KontaktSucheFirma: TcxTextEdit
-      Left = 779
-      Top = 57
+      Left = 781
+      Top = 77
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -87,8 +86,8 @@ object frm_Contact: Tfrm_Contact
       Width = 234
     end
     object edt_KontaktSucheFunktion: TcxTextEdit
-      Left = 779
-      Top = 111
+      Left = 781
+      Top = 131
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -105,8 +104,8 @@ object frm_Contact: Tfrm_Contact
       Width = 234
     end
     object edt_KontaktSucheNachname: TcxTextEdit
-      Left = 86
-      Top = 57
+      Left = 88
+      Top = 77
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -132,8 +131,8 @@ object frm_Contact: Tfrm_Contact
       Width = 234
     end
     object edt_KontaktSucheOrt: TcxTextEdit
-      Left = 437
-      Top = 111
+      Left = 439
+      Top = 131
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -150,8 +149,8 @@ object frm_Contact: Tfrm_Contact
       Width = 234
     end
     object edt_KontaktSuchePLZ: TcxTextEdit
-      Left = 437
-      Top = 84
+      Left = 439
+      Top = 104
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -168,8 +167,8 @@ object frm_Contact: Tfrm_Contact
       Width = 234
     end
     object edt_KontaktSucheStrasse: TcxTextEdit
-      Left = 437
-      Top = 57
+      Left = 439
+      Top = 77
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -186,8 +185,8 @@ object frm_Contact: Tfrm_Contact
       Width = 234
     end
     object edt_KontaktSucheVorname: TcxTextEdit
-      Left = 86
-      Top = 84
+      Left = 88
+      Top = 104
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -886,10 +885,10 @@ object frm_Contact: Tfrm_Contact
       OnClick = btn_KontaktEmail2SendClick
     end
     object grd_Suche: TcxGrid
-      Left = 17
-      Top = 207
-      Width = 1566
-      Height = 618
+      Left = 19
+      Top = 227
+      Width = 1558
+      Height = 587
       BevelInner = bvNone
       BevelOuter = bvNone
       Font.Charset = DEFAULT_CHARSET
@@ -1195,8 +1194,8 @@ object frm_Contact: Tfrm_Contact
       end
     end
     object btn_ClearFilter: TcxButton
-      Left = 160
-      Top = 174
+      Left = 162
+      Top = 194
       Width = 137
       Height = 27
       Caption = 'Filter l'#246'schen'
@@ -1212,8 +1211,8 @@ object frm_Contact: Tfrm_Contact
       OnClick = btn_ClearFilterClick
     end
     object btn_kontaktsuchen: TcxButton
-      Left = 17
-      Top = 174
+      Left = 19
+      Top = 194
       Width = 137
       Height = 27
       Caption = 'Kontakt suchen'
@@ -1573,8 +1572,8 @@ object frm_Contact: Tfrm_Contact
       OnClick = btn_KontaktGeschaeftlichSendMailClick
     end
     object cmbbx_KontaktAnrede: TcxComboBox
-      Left = 86
-      Top = 138
+      Left = 88
+      Top = 158
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -1711,8 +1710,8 @@ object frm_Contact: Tfrm_Contact
       OnClick = btn_KontaktGeschaeftlichHandyClick
     end
     object edt_KontaktSucheStrasseGes: TcxTextEdit
-      Left = 1159
-      Top = 57
+      Left = 1161
+      Top = 77
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -1738,8 +1737,8 @@ object frm_Contact: Tfrm_Contact
       Width = 234
     end
     object edt_KontaktSuchePLZGes: TcxTextEdit
-      Left = 1159
-      Top = 84
+      Left = 1161
+      Top = 104
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -1765,8 +1764,8 @@ object frm_Contact: Tfrm_Contact
       Width = 234
     end
     object edt_KontaktSucheOrtGes: TcxTextEdit
-      Left = 1159
-      Top = 111
+      Left = 1161
+      Top = 131
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -3064,6 +3063,7 @@ object frm_Contact: Tfrm_Contact
     LookAndFeel.NativeStyle = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
+    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 112
     Top = 488
@@ -3071,7 +3071,7 @@ object frm_Contact: Tfrm_Contact
     DockControlHeights = (
       0
       0
-      58
+      63
       0)
     object brmgrContactsBar1: TdxBar
       Caption = 'tb_Contacts'
