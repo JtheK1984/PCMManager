@@ -25,7 +25,6 @@ object frm_Config: Tfrm_Config
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
-    ExplicitHeight = 900
     object edt_CalConfigFTP_Benutzer: TcxDBTextEdit
       Left = 10000
       Top = 10000
@@ -1356,7 +1355,7 @@ object frm_Config: Tfrm_Config
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 69
+      TabOrder = 70
       TabStop = False
       Visible = False
       LockedStateImageOptions.Effect = lsieDark
@@ -1397,14 +1396,12 @@ object frm_Config: Tfrm_Config
         object grdDBTblView_emailConfigEMail: TcxGridDBColumn
           Caption = 'E-Mailadresse'
           DataBinding.FieldName = 'EMail'
-          DataBinding.IsNullValueType = True
           SortIndex = 0
           SortOrder = soAscending
           Width = 200
         end
         object grdDBTblView_emailConfigKontotyp: TcxGridDBColumn
           DataBinding.FieldName = 'Kontotyp'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxLookupComboBoxProperties'
           Properties.KeyFieldNames = 'ID'
           Properties.ListColumns = <
@@ -1416,24 +1413,20 @@ object frm_Config: Tfrm_Config
         object grdDBTblView_emailConfigPostEingangsserver: TcxGridDBColumn
           Caption = 'Posteingangsserver'
           DataBinding.FieldName = 'PostEingangsserver'
-          DataBinding.IsNullValueType = True
           Width = 200
         end
         object grdDBTblView_emailConfigPortEingangsserver: TcxGridDBColumn
           Caption = 'Port Eingang'
           DataBinding.FieldName = 'PortEingangsserver'
-          DataBinding.IsNullValueType = True
           Width = 90
         end
         object grdDBTblView_emailConfigBenutzer: TcxGridDBColumn
           DataBinding.FieldName = 'Benutzer'
-          DataBinding.IsNullValueType = True
           Width = 150
         end
         object grdDBTblView_emailConfigSSLActive: TcxGridDBColumn
           Caption = 'SSL Aktiv'
           DataBinding.FieldName = 'SSLActive'
-          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxCheckBoxProperties'
           Width = 91
         end
@@ -1448,7 +1441,7 @@ object frm_Config: Tfrm_Config
       Width = 1077
       Height = 27
       Caption = 'Verbindung Testen'
-      TabOrder = 70
+      TabOrder = 71
       Visible = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1467,7 +1460,7 @@ object frm_Config: Tfrm_Config
       DataBinding.DataSource = ds_EmailConfig
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 60
+      TabOrder = 61
       Transparent = True
       Visible = False
       OnExit = btn_EmailConfigSaveClick
@@ -1488,7 +1481,7 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 62
+      TabOrder = 63
       Visible = False
       OnExit = btn_EmailConfigSaveClick
       Width = 410
@@ -1510,7 +1503,7 @@ object frm_Config: Tfrm_Config
       TabOrder = 54
       Visible = False
       OnExit = btn_EmailConfigSaveClick
-      Width = 403
+      Width = 288
     end
     object edt_EmailConfig_Kennwort: TcxDBTextEdit
       Left = 10000
@@ -1527,7 +1520,7 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 63
+      TabOrder = 64
       Visible = False
       OnExit = btn_EmailConfigSaveClick
       Width = 410
@@ -1546,7 +1539,7 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 59
+      TabOrder = 60
       Visible = False
       OnExit = btn_EmailConfigSaveClick
       Width = 403
@@ -1565,7 +1558,7 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 57
+      TabOrder = 58
       Visible = False
       OnExit = btn_EmailConfigSaveClick
       Width = 403
@@ -1584,7 +1577,7 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 58
+      TabOrder = 59
       Visible = False
       Width = 403
     end
@@ -1602,7 +1595,7 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 56
+      TabOrder = 57
       Visible = False
       OnExit = btn_EmailConfigSaveClick
       Width = 403
@@ -1654,7 +1647,7 @@ object frm_Config: Tfrm_Config
         D28FC75865BA0375A629010D3AC25449AB0B7737E017934D3BD29280C6EEB357
         25B26F4AE8F495860B5476FE2F78CB041B0B9464F3419BC8E0E7F7365DF1DF3F
         EB7C93A1EABC6E0000000049454E44AE426082}
-      TabOrder = 75
+      TabOrder = 76
       Visible = False
       OnClick = btn_PostfachMainbottomClick
     end
@@ -1682,7 +1675,7 @@ object frm_Config: Tfrm_Config
         05D199BB9F32C6CFC1CDE34A6A7AC751A1B8C5D94DF00897DB4BEFF09E3F653A
         DF0AF028EA9990D9A44955E7288770BDE317B2235FE05F0BBC8FCE27FE0F6EA2
         80779755FCCF7803E8D0E0915AAA27200000000049454E44AE426082}
-      TabOrder = 74
+      TabOrder = 75
       Visible = False
       OnClick = btn_PostfachMaindownClick
     end
@@ -1711,7 +1704,7 @@ object frm_Config: Tfrm_Config
         FE7753D32B1DE8712686AB9BA6802D018781A05D02D81B4001101743330C709B
         8680039A01E43960E2FA7E7E235675430C00005416CE3539D1B3B10000000049
         454E44AE426082}
-      TabOrder = 73
+      TabOrder = 74
       Visible = False
       OnClick = btn_PostfachMainUpClick
     end
@@ -1744,7 +1737,7 @@ object frm_Config: Tfrm_Config
         C5E151F24713B24F6FB3F136C69596237491C45C97F69D19632E641EDD6A7681
         7CA0D726F09FB2072FB045838AFBEDC22F58E6680A1520C2DE0000000049454E
         44AE426082}
-      TabOrder = 72
+      TabOrder = 73
       Visible = False
       OnClick = btn_PostfachMainTopClick
     end
@@ -1760,7 +1753,7 @@ object frm_Config: Tfrm_Config
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 76
+      TabOrder = 77
       TabStop = False
       Visible = False
       LockedStateImageOptions.Effect = lsieDark
@@ -1860,7 +1853,7 @@ object frm_Config: Tfrm_Config
         D28FC75865BA0375A629010D3AC25449AB0B7737E017934D3BD29280C6EEB357
         25B26F4AE8F495860B5476FE2F78CB041B0B9464F3419BC8E0E7F7365DF1DF3F
         EB7C93A1EABC6E0000000049454E44AE426082}
-      TabOrder = 80
+      TabOrder = 81
       Visible = False
       OnClick = btn_PostfachSubbottomClick
     end
@@ -1888,7 +1881,7 @@ object frm_Config: Tfrm_Config
         05D199BB9F32C6CFC1CDE34A6A7AC751A1B8C5D94DF00897DB4BEFF09E3F653A
         DF0AF028EA9990D9A44955E7288770BDE317B2235FE05F0BBC8FCE27FE0F6EA2
         80779755FCCF7803E8D0E0915AAA27200000000049454E44AE426082}
-      TabOrder = 79
+      TabOrder = 80
       Visible = False
       OnClick = btn_PostfachSubDownClick
     end
@@ -1917,7 +1910,7 @@ object frm_Config: Tfrm_Config
         FE7753D32B1DE8712686AB9BA6802D018781A05D02D81B4001101743330C709B
         8680039A01E43960E2FA7E7E235675430C00005416CE3539D1B3B10000000049
         454E44AE426082}
-      TabOrder = 78
+      TabOrder = 79
       Visible = False
       OnClick = btn_PostfachSubUpClick
     end
@@ -1950,7 +1943,7 @@ object frm_Config: Tfrm_Config
         C5E151F24713B24F6FB3F136C69596237491C45C97F69D19632E641EDD6A7681
         7CA0D726F09FB2072FB045838AFBEDC22F58E6680A1520C2DE0000000049454E
         44AE426082}
-      TabOrder = 77
+      TabOrder = 78
       Visible = False
       OnClick = btn_PostfachSubTopClick
     end
@@ -1966,7 +1959,7 @@ object frm_Config: Tfrm_Config
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 81
+      TabOrder = 82
       TabStop = False
       Visible = False
       LockedStateImageOptions.Effect = lsieDark
@@ -2308,7 +2301,7 @@ object frm_Config: Tfrm_Config
         end>
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 61
+      TabOrder = 62
       Visible = False
       Height = 19
       Width = 403
@@ -2320,7 +2313,7 @@ object frm_Config: Tfrm_Config
       DataBinding.DataSource = ds_EmailConfig
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 64
+      TabOrder = 65
       Visible = False
       Width = 410
     end
@@ -2331,7 +2324,7 @@ object frm_Config: Tfrm_Config
       DataBinding.DataSource = ds_EmailConfig
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 65
+      TabOrder = 66
       Visible = False
       Width = 410
     end
@@ -2343,7 +2336,7 @@ object frm_Config: Tfrm_Config
       DataBinding.DataSource = ds_EmailConfig
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 67
+      TabOrder = 68
       Visible = False
       Height = 19
       Width = 410
@@ -2356,7 +2349,7 @@ object frm_Config: Tfrm_Config
       DataBinding.DataSource = ds_EmailConfig
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 68
+      TabOrder = 69
       Visible = False
       Height = 19
       Width = 410
@@ -2368,7 +2361,7 @@ object frm_Config: Tfrm_Config
       DataBinding.DataSource = ds_EmailConfig
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 66
+      TabOrder = 67
       Visible = False
       Width = 410
     end
@@ -2393,10 +2386,22 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 55
+      TabOrder = 56
       Visible = False
       OnExit = btn_EmailConfigSaveClick
       Width = 403
+    end
+    object cxDBCheckBox1: TcxDBCheckBox
+      Left = 10000
+      Top = 10000
+      Caption = 'Standard-Account'
+      DataBinding.DataField = 'Default'
+      DataBinding.DataSource = ds_EmailConfig
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 55
+      Transparent = True
+      Visible = False
     end
     object lactrl_ConfigGroup_Root: TdxLayoutGroup
       AlignHorz = ahClient
@@ -3030,7 +3035,7 @@ object frm_Config: Tfrm_Config
       Index = 0
     end
     object laitm_Emailadress: TdxLayoutItem
-      Parent = lagrp_EmailkonfigurationDetailsLeft
+      Parent = dxLayoutGroup2
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'E-Mail:'
@@ -3038,7 +3043,7 @@ object frm_Config: Tfrm_Config
       ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 100
       ControlOptions.ShowBorder = False
-      Index = 1
+      Index = 0
     end
     object laitm_EmailPoseingangadress: TdxLayoutItem
       Parent = lagrp_EmailkonfigurationDetailsLeft
@@ -3481,7 +3486,6 @@ object frm_Config: Tfrm_Config
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 0
@@ -3491,7 +3495,7 @@ object frm_Config: Tfrm_Config
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 8
+      ItemIndex = 1
       ShowBorder = False
       Index = 0
     end
@@ -3755,12 +3759,31 @@ object frm_Config: Tfrm_Config
       Parent = lagrp_EmailkonfigurationDetailsLeft
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Text = 'Kontotyp:'
       Control = lucmbbx_EmailConfig_Kontptyp
       ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 300
       ControlOptions.ShowBorder = False
       Index = 2
+    end
+    object dxLayoutGroup2: TdxLayoutGroup
+      Parent = lagrp_EmailkonfigurationDetailsLeft
+      CaptionOptions.Text = 'New Group'
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup2
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'Standardaccount:'
+      CaptionOptions.Visible = False
+      Control = cxDBCheckBox1
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 109
+      ControlOptions.ShowBorder = False
+      Index = 1
     end
   end
   object qry_CalConfig: TFDQuery
@@ -3867,6 +3890,7 @@ object frm_Config: Tfrm_Config
     Top = 136
   end
   object qry_EmailConfig: TFDQuery
+    Active = True
     AfterOpen = SetButtonsEnableVisible
     AfterInsert = SetButtonsEnableVisible
     AfterEdit = SetButtonsEnableVisible

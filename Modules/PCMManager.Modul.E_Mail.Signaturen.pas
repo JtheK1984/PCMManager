@@ -257,8 +257,9 @@ begin
   mem_statement.Lines.Clear;
   mem_statement.Lines.Add('<html>');
   mem_statement.Lines.Add('	<head></head>');
-  mem_statement.Lines.Add('		<body contenteditable="true">');
-  mem_statement.Lines.Add('		<p style="font-family: Aptos, sans-serif; font-size: 16px;"> &nbsp;</p>');
+  mem_statement.Lines.Add('		<body>');
+  mem_statement.Lines.Add('		<div style="font-family: Aptos, sans-serif; font-size: 16px;" contenteditable="true"></div>');
+  mem_statement.Lines.Add('		<footer>');
   // LeerZeile vor Gruﬂformel
   for var i := 1 to qry_Signatur.FieldByName('LeerzeilenVorGruss').AsInteger do
       mem_statement.Lines.Add('		<br>');
@@ -320,6 +321,7 @@ begin
   begin
     mem_statement.Lines.Add('		<div style="font-family: Aptos, sans-serif; font-size: 10px;">' + mem_Abschluss.Lines[i] + '</div>');
   end;
+  mem_statement.Lines.Add('		</footer>');
   mem_statement.Lines.Add('	</body>');
   mem_statement.Lines.Add('</html>');
   mem_statement.Lines.SaveToFile(ExtractFilePath(ParamStr(0)) + 'Signatur.html');

@@ -516,6 +516,9 @@ type
     lucmbbx_EmailConfig_Kontptyp: TcxDBLookupComboBox;
     laitm_EmailBenutzer: TdxLayoutItem;
     dxLayoutItem2: TdxLayoutItem;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutItem1: TdxLayoutItem;
+    cxDBCheckBox1: TcxDBCheckBox;
     procedure btn_AnredeCancelClick(Sender: TObject);
     procedure btn_AnredeDeleteClick(Sender: TObject);
     procedure btn_AnredeNewClick(Sender: TObject);

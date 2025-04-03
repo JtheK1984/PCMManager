@@ -22,11 +22,9 @@ object frm_Signatur: Tfrm_Signatur
     TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OnExit = ValueExit
-    ExplicitWidth = 1926
-    ExplicitHeight = 1093
     object brdckCtrl_Signatur: TdxBarDockControl
       Left = 12
-      Top = 9
+      Top = 12
       Width = 1759
       Height = 63
       Align = dalNone
@@ -34,7 +32,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object pnl_browser: TcxGroupBox
       Left = 12
-      Top = 721
+      Top = 724
       PanelStyle.Active = True
       ParentBackground = False
       ParentColor = False
@@ -46,7 +44,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object mem_statement: TSynMemo
       Left = 13
-      Top = 749
+      Top = 752
       Width = 1757
       Height = 300
       SingleLineMode = False
@@ -106,7 +104,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object grd_Signatur: TcxGrid
       Left = 22
-      Top = 589
+      Top = 592
       Width = 1739
       Height = 100
       Font.Charset = DEFAULT_CHARSET
@@ -211,7 +209,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object edt_SignaturGruss: TcxDBTextEdit
       Left = 167
-      Top = 142
+      Top = 145
       DataBinding.DataField = 'Gruss'
       DataBinding.DataSource = ds_Signatur
       Style.HotTrack = False
@@ -222,7 +220,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object spnedt_SignaturAfterGruss: TcxDBSpinEdit
       Left = 1711
-      Top = 142
+      Top = 145
       AutoSize = False
       DataBinding.DataField = 'LeerzeilenNachGruss'
       DataBinding.DataSource = ds_Signatur
@@ -236,7 +234,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object spnedt_SignaturAfterAbsender: TcxDBSpinEdit
       Left = 1711
-      Top = 170
+      Top = 173
       DataBinding.DataField = 'LeerzeilenNachName'
       DataBinding.DataSource = ds_Signatur
       Properties.Alignment.Horz = taLeftJustify
@@ -248,7 +246,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object edt_SignaturAbsender: TcxDBTextEdit
       Left = 167
-      Top = 170
+      Top = 173
       DataBinding.DataField = 'Absender'
       DataBinding.DataSource = ds_Signatur
       Style.HotTrack = False
@@ -259,7 +257,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object spnedt_SignaturBeforeGruss: TcxDBSpinEdit
       Left = 1711
-      Top = 114
+      Top = 117
       DataBinding.DataField = 'LeerzeilenVorGruss'
       DataBinding.DataSource = ds_Signatur
       Properties.Alignment.Horz = taLeftJustify
@@ -271,7 +269,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object spnedt_SignaturAfterPLZOrt: TcxDBSpinEdit
       Left = 1711
-      Top = 361
+      Top = 364
       DataBinding.DataField = 'LeerzeilenNachAdresse'
       DataBinding.DataSource = ds_Signatur
       Style.HotTrack = False
@@ -282,7 +280,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object edt_SignaturName: TcxDBTextEdit
       Left = 167
-      Top = 305
+      Top = 308
       DataBinding.DataField = 'Name'
       DataBinding.DataSource = ds_Signatur
       Style.HotTrack = False
@@ -293,7 +291,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object edt_SignaturStrasse: TcxDBTextEdit
       Left = 167
-      Top = 333
+      Top = 336
       DataBinding.DataField = 'Strase'
       DataBinding.DataSource = ds_Signatur
       Style.HotTrack = False
@@ -304,7 +302,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object edt_SignaturPLZOrt: TcxDBTextEdit
       Left = 167
-      Top = 361
+      Top = 364
       DataBinding.DataField = 'PLZ_Ort'
       DataBinding.DataSource = ds_Signatur
       Style.HotTrack = False
@@ -315,7 +313,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object spnedt_SignaturAfterEmail: TcxDBSpinEdit
       Left = 1711
-      Top = 445
+      Top = 448
       DataBinding.DataField = 'LeerzeilenNachMail'
       DataBinding.DataSource = ds_Signatur
       Style.HotTrack = False
@@ -326,7 +324,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object edt_SignaturMobil: TcxDBTextEdit
       Left = 167
-      Top = 417
+      Top = 420
       DataBinding.DataField = 'Mobil'
       DataBinding.DataSource = ds_Signatur
       Style.HotTrack = False
@@ -337,7 +335,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object edt_SignaturTelefon: TcxDBTextEdit
       Left = 167
-      Top = 389
+      Top = 392
       DataBinding.DataField = 'Telefon'
       DataBinding.DataSource = ds_Signatur
       Style.HotTrack = False
@@ -348,7 +346,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object edt_SignaturMail: TcxDBTextEdit
       Left = 167
-      Top = 445
+      Top = 448
       DataBinding.DataField = 'EMail'
       DataBinding.DataSource = ds_Signatur
       Style.HotTrack = False
@@ -359,7 +357,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object lucmbbx_SignaturAccount: TcxDBLookupComboBox
       Left = 167
-      Top = 114
+      Top = 117
       AutoSize = False
       DataBinding.DataField = 'ID_Emailkonfiguration'
       DataBinding.DataSource = ds_Signatur
@@ -378,7 +376,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object spnedt_SignaturWitdh: TcxDBSpinEdit
       Left = 469
-      Top = 198
+      Top = 201
       DataBinding.DataField = 'Breite'
       DataBinding.DataSource = ds_Signatur
       Properties.Alignment.Horz = taLeftJustify
@@ -390,7 +388,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object spnedt_SignaturHeight: TcxDBSpinEdit
       Left = 469
-      Top = 226
+      Top = 229
       DataBinding.DataField = 'Hoehe'
       DataBinding.DataSource = ds_Signatur
       Properties.Alignment.Horz = taLeftJustify
@@ -402,7 +400,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object spnedt_SignaturAfterImage: TcxDBSpinEdit
       Left = 469
-      Top = 254
+      Top = 257
       DataBinding.DataField = 'LeerzeilenNachBild'
       DataBinding.DataSource = ds_Signatur
       Properties.Alignment.Horz = taLeftJustify
@@ -414,7 +412,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object mem_Abschluss: TcxDBMemo
       Left = 167
-      Top = 473
+      Top = 476
       DataBinding.DataField = 'Text'
       DataBinding.DataSource = ds_Signatur
       Style.HotTrack = False
@@ -426,7 +424,7 @@ object frm_Signatur: Tfrm_Signatur
     end
     object cxDBImage1: TcxDBImage
       Left = 167
-      Top = 198
+      Top = 201
       DataBinding.DataField = 'Bild'
       DataBinding.DataSource = ds_Signatur
       Properties.GraphicClassName = 'TdxSmartImage'

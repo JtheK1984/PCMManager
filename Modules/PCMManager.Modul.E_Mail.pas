@@ -108,7 +108,7 @@ uses
   Vcl.ToolWin,
   WebView2,
   Winapi.Messages,
-  Winapi.Windows;
+  Winapi.Windows, cxImageComboBox;
   {$EndRegion uses}
 type
   {$Region Type}
@@ -186,13 +186,14 @@ type
     dxLayoutItem4: TdxLayoutItem;
     grpbx_MailVorschau: TdxLayoutItem;
     pnl_Browser: TcxGroupBox;
-    dxLayoutSplitterItem1: TdxLayoutSplitterItem;
+    laitm_Vorschau: TdxLayoutSplitterItem;
     IdHTTPServer1: TIdHTTPServer;
     IdSSLIOHandlerSocketIMAP: TIdSSLIOHandlerSocketOpenSSL;
     IdSSLIOHandlerSocketSMTP: TIdSSLIOHandlerSocketOpenSSL;
     idImap_MailOauth: TIdIMAP4;
     grdDBTblView_MailsCellCTimer: TTimer;
     dxBarLargeButton1: TdxBarLargeButton;
+    grdDBTblView_MailsAnhang: TcxGridDBColumn;
     procedure FormShow(Sender: TObject);
     procedure tl_EmailFolderChange(Sender: TObject);
     procedure grdDBTblView_MailsCustomDrawCell(Sender: TcxCustomGridTableView;  ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
@@ -203,6 +204,7 @@ type
     procedure grdDBTblView_MailsCellClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
     procedure grdDBTblView_MailsCellCTimerTimer(Sender: TObject);
     procedure dxBarLargeButton1Click(Sender: TObject);
+    procedure btn_EmailNewClick(Sender: TObject);
   private
     { Private-Deklarationen }
     iKontotyp: integer;
@@ -224,6 +226,7 @@ type
     SaveGridViewMail: TSavedGridView;
     FWebBrowser: TAbstractWebBrowser;
     procedure SetGridViews(Show:boolean);
+    function CheckValidFile(AFileName,APath: String) : boolean;
     procedure IMAPStart;
     procedure InitializeBrowser;
     procedure ShowFolders;
@@ -254,7 +257,7 @@ uses
   uwvLoader,
   IdSASL.OAuth.XOAUTH2,
   PCMManager.Modul.E_Mail.Mailbox,
-  PCM.Strings, PCMManager.Modul.E_Mail.Signaturen;
+  PCM.Strings, PCMManager.Modul.E_Mail.Signaturen, PCM.SendMail;
   {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -263,6 +266,23 @@ uses
 function TMailProviderInfo.TokenName: string;
 begin
   Result := AuthName + 'Token';
+end;
+function Tfrm_Mail.CheckValidFile(AFileName,APath: String) : boolean;
+var
+  fileContent: TStringlist;
+  found: Boolean;
+begin
+  fileContent := TStringList.Create;
+  try
+    fileContent.LoadFromFile(APath);
+    found := Pos(AFileName, fileContent.Text) > 0;
+    if found then
+      Result:= false
+    else
+      Result:= true;
+  finally
+    fileContent.Free;
+  end;
 end;
 procedure Tfrm_Mail.ConvertFileHTML(AFile:String);
 var
@@ -396,7 +416,6 @@ begin
   Application.CreateForm(Tfrm_Signatur,frm_Signatur);
   frm_Signatur.ShowModal;
 end;
-
 procedure Tfrm_Mail.IMAPStart;
 begin
   trlst_EmailFolder.Clear;
@@ -575,7 +594,6 @@ begin
   dm_PCM.qry_Work.ParamByName('ID').AsInteger:= qry_Mail.FieldByName('ID').AsInteger;
   dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
   dm_PCM.qry_Work.ExecSQL;
-  qry_Mail.AfterScroll:= nil;
   qry_Mail.Refresh;
   stbr_user.Panels[1].Text := Format('Anzahl Elemente: %d', [qry_Mail.RecordCount]) + ', ' +Format('Anzahl ungelesener Elemente: %d', [iAnzahlCount]);
   stbr_user.Panels[2].text := 'Übermittlung abgeschlossen      ';
@@ -583,7 +601,14 @@ begin
     trlst_EmailFolder.FocusedNode.Values[1]:= iAnzahlCount
   else
     trlst_EmailFolder.FocusedNode.Values[1]:= '';
-  grdDBTblView_MailsCellCTimer.Enabled := True;
+  if qry_Mail.RecordCount > 0 then
+  begin
+    grdDBTblView_MailsCellCTimer.Enabled := True;
+  end
+  else begin
+    laitm_Vorschau.visible:= false;
+    grpbx_MailVorschau.visible:= false;
+  end;
 end;
 procedure Tfrm_Mail.btn_EmailMoveClick(Sender: TObject);
 var
@@ -617,6 +642,17 @@ begin
 
     end;
   end;
+end;
+procedure Tfrm_Mail.btn_EmailNewClick(Sender: TObject);
+var
+  sDefaultAcc: String;
+begin
+  dm_PCM.qry_work.SQL.Text:= 'SELECT email,`DEFAULT` from manager_emailkonfiguration WHERE `DEFAULT` = ''True''';
+  dm_PCM.qry_work.Open;
+  sDefaultAcc:= dm_pcm.qry_work.FieldByName('Email').AsString;
+  dm_PCM.qry_work.Close;
+  Application.CreateForm(Tfrm_Sendmail,frm_Sendmail);
+  frm_Sendmail.Execute(sDefaultAcc,'','');
 end;
 procedure Tfrm_Mail.grdDBTblView_MailsCellClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;  AShift: TShiftState; var AHandled: Boolean);
 begin
@@ -684,6 +720,7 @@ begin
       end;
     end;
     ConvertFileHTML(folder + '\mail.html');
+    laitm_Vorschau.visible:= true;
     grpbx_MailVorschau.visible:= true;
     InitializeBrowser;
     FWebBrowser.Navigate(folder + '\mail.html');
@@ -696,23 +733,6 @@ begin
   end;
 end;
 procedure Tfrm_Mail.grdDBTblView_MailsCellDblClick(Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
-  function CheckValidFile(AFileName,APath: String) : boolean;
-  var
-    fileContent: TStringlist;
-    found: Boolean;
-  begin
-    fileContent := TStringList.Create;
-    try
-      fileContent.LoadFromFile(APath);
-      found := Pos(AFileName, fileContent.Text) > 0;
-      if found then
-        Result:= false
-      else
-        Result:= true;
-    finally
-      fileContent.Free;
-    end;
-  end;
 var
   fileName, folder : WideString;
   MailA: TIdMessage;
@@ -792,6 +812,7 @@ begin
       end;
     end;
     ConvertFileHTML(folder + '\mail.html');
+    laitm_Vorschau.visible:= true;
     grpbx_MailVorschau.visible:= true;
     InitializeBrowser;
     FWebBrowser.Navigate(folder + '\mail.html');
@@ -864,13 +885,21 @@ var
   imapFolders: Tstringlist;
   IdSSLIOHandlerSocket: TIdSSLIOHandlerSocketOpenSSL;
   Mail: TIdMessage;
+  iID_Account,iSUb: integer;
+  iCountExistingmails: integer;
+  MailA: TIdMessage;
+  iAnhang: integer;
+  sFilename,sFolder, sAnhang:String;
 begin
   if trlst_EmailFolder.SelectionCount = 0 then
     exit;
   if trlst_EmailFolder.FocusedNode = CurrNode then
     exit;
-
   sCheckUser:=  trlst_EmailFolder.FocusedNode.Values[0];
+  try
+    sAccount:= MyGetParentNode(trlst_EmailFolder.FocusedNode).Values[0];
+  except
+  end;
   dm_PCM.qry_Work.SQL.Text:= 'Select Count(*) as Anzahl FROM manager_emailkonfiguration Where Benutzer = :Benutzer and ID_Benutzer = :ID_Benutzer';
   dm_PCM.qry_Work.ParamByName('Benutzer').AsString:= sCheckUser;
   dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= dm_pcm.iIDBenutzerPCM;
@@ -879,18 +908,15 @@ begin
   dm_PCM.qry_Work.Close;
   if iCount > 0 then
     exit;
-
-  dm_PCM.qry_Work.SQL.Text:= 'DELETE FROM manager_emails where ID_Benutzer = :ID_Benutzer';
-  dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= dm_pcm.iIDBenutzerPCM;
-  dm_PCM.qry_Work.ExecSQL;
-  qry_Mail.Open;
-
-  grpbx_MailVorschau.Visible:= false;
+  laitm_Vorschau.visible:= false;
+  grpbx_MailVorschau.visible:= false;
   CurrNode:= trlst_EmailFolder.FocusedNode;
-  dm_PCM.qry_Work.sql.Text:= 'SELECT Parent,Postfach,Trennzeichen FROM manager_email_postfach WHERE ANzeige = :Anzeige';
+  dm_PCM.qry_Work.sql.Text:= 'SELECT ID,Parent,Postfach,Trennzeichen FROM manager_email_postfach WHERE ANzeige = :Anzeige AND ID_manager_email IN (SELECT ID FROM manager_emailkonfiguration WHERE benutzer = :Account)';
   dm_PCM.qry_Work.ParambyName('Anzeige').asString:=  trlst_EmailFolder.FocusedNode.Values[0];
+  dm_PCM.qry_Work.ParambyName('Account').asString:=  sAccount;
   dm_PCM.qry_Work.OPen;
   sMailBoxName:= dm_PCM.qry_Work.FieldByName('Postfach').AsString;
+  iSub:=dm_PCM.qry_Work.FieldByName('ID').asInteger;
   iparent:=dm_PCM.qry_Work.FieldByName('parent').asInteger;
   sTrennzeichen:= dm_PCM.qry_Work.FieldByName('Trennzeichen').asString;
   dm_PCM.qry_Work.Close;
@@ -902,11 +928,6 @@ begin
     sMailBoxName:= dm_PCM.qry_Work.FieldByName('Postfach').AsString + sTrennzeichen + sMailBoxName;
     dm_PCM.qry_Work.Close;
   end;
-
-
-  sAccount:= MyGetParentNode(trlst_EmailFolder.FocusedNode).Values[0];
-
-
   dm_PCM.qry_Work.sql.Text:= 'SELECT Count(*)as anzahl FROM manager_email_postfach WHERE id = :Parent';
   dm_PCM.qry_Work.ParambyName('parent').asInteger:=  iparent;
   dm_PCM.qry_Work.OPen;
@@ -917,8 +938,24 @@ begin
     sAccount:= MyGetParentNode(MyGetParentNode(trlst_EmailFolder.FocusedNode)).Values[0];
   except
   end;
-  if ((sPrevAccount = '')  or (sPrevAccount <> sAccount)) and (not idImap_Mail.Connected) then
+
+  dm_PCM.qry_work.SQL.Text:= 'SELECT ID From manager_emailkonfiguration where Benutzer = :Benutzer and id_Benutzer = :ID';
+  dm_PCM.qry_work.ParamByName('ID').AsInteger:= dm_pcm.iIDBenutzerPCM;
+  dm_PCM.qry_work.ParamByName('Benutzer').AsString:= sAccount;
+  dm_PCM.qry_work.Open;
+  if dm_PCM.qry_work.RecordCount > 0  then
+    iID_Account:= dm_pcm.qry_work.FieldByName('ID').AsInteger;
+  dm_PCM.qry_work.Close;
+  qry_Mail.SQL.Text:= 'SELECT * FROM manager_emails Where ID_Benutzer = :ID_Benutzer and ID_emailkonfiguration = :ID_Account and id_main = :id_main and id_sub = :id_sub';
+  qry_Mail.ParamByName('ID_Benutzer').AsInteger:= dm_pcm.iIDBenutzerPCM;
+  qry_Mail.ParamByName('ID_Account').AsInteger:= iID_account;
+  qry_Mail.ParamByName('id_main').AsInteger:= iParent;
+  qry_Mail.ParamByName('id_sub').AsInteger:= iSub;
+  qry_Mail.Open;
+  if ((sPrevAccount = '')  or (sPrevAccount <> sAccount)) then //and (not idImap_Mail.Connected) then
   begin
+    if idImap_Mail.Connected then
+      idImap_Mail.Disconnect;
     dm_PCM.qry_work.SQL.Text:= 'SELECT * From manager_emailkonfiguration where Benutzer = :Benutzer and id_Benutzer = :ID';
     dm_PCM.qry_work.ParamByName('ID').AsInteger:= dm_pcm.iIDBenutzerPCM;
     dm_PCM.qry_work.ParamByName('Benutzer').AsString:= sAccount;
@@ -972,7 +1009,6 @@ begin
   end;
   dm_PCM.qry_work.Close;
   AAccount := sAccount;
-  qry_Mail.AfterScroll:= nil;
   iAnzahlCount:= 0;
   Flagtemp := 'gelesen';
   imapFolders := TStringList.Create;
@@ -986,12 +1022,20 @@ begin
   Application.ProcessMessages;
   Mail := TIdMessage.Create(nil);
   iCount := idImap_Mail.MailBox.TotalMsgs;
+  dm_PCM.qry_Work.SQL.Text:= 'Select Count(*) as Anzahl from manager_emails Where ID_Benutzer = :ID_Benutzer and ID_emailkonfiguration = :ID_Account and id_main = :id_main and id_sub = :id_sub';
+  dm_PCM.qry_Work.ParamByName('ID_Account').AsInteger:= iID_account;
+  dm_PCM.qry_Work.ParamByName('id_main').AsInteger:= iParent;
+  dm_PCM.qry_Work.ParamByName('id_sub').AsInteger:= iSub;
+  dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= dm_pcm.iIDBenutzerPCM;
+  dm_PCM.qry_Work.Open;
+  iCountExistingmails := dm_PCM.qry_Work.FieldByName('Anzahl').AsInteger;
+  dm_PCM.qry_Work.Close;;
   if iCount > 0 then
   begin
     folder := m_currentpath + '\' + idImap_Mail.Host + '\' + sAccount + '\' + sMailBoxName;
     folder := StringReplace(folder, '/', '.', [rfReplaceAll]);
     CreateFullFolder( folder );
-    for i := 0 to iCount-1 do
+    for i := iCountExistingmails to iCount-1 do
     begin
       idImap_Mail.GetUID(i+1, TheUID);  // 100 ms
       idImap_Mail.UIDRetrieveFlags(TheUID, TheFlags);
@@ -1007,7 +1051,50 @@ begin
         Flagtemp := 'gelesen'
       else
         Flagtemp := 'ungelesen';
-      dm_PCM.qry_Work.SQL.Text:= 'INSERT INTO manager_emails (Von,Betreff,Erhalten,Groesse,UIDL,readEmail,ID_Benutzer) VALUES(:Von,:Betreff,:Erhalten,:Groesse,:UIDL,:readEmail,:ID_Benutzer)';
+      iAnhang:= 0;
+
+
+      MailA := TIdMessage.Create(nil);
+      MailA.CharSet:= 'UTF-8';
+      idImap_Mail.UIdRetrieve(TheUID, MailA);
+
+      sfolder := m_currentpath + '\' + idImap_Mail.host + '\' + sAccount + '\' + sMailBoxName + '\' + TheUID;
+      sfolder := StringReplace(sfolder, '/', '.', [rfReplaceAll]);
+      if not FileExists(folder) then
+      begin
+        stbr_user.Panels.Items[0].text := 'E-Mail wird heruntergeladen...';
+      end;
+      if not DirectoryExists(folder) then
+        CreateDIr(folder);
+      if MailA.MessageParts.Count > 0 then
+      begin
+        for var iParts := 0 to MailA.MessageParts.Count-1 do
+        begin
+          if MailA.MessageParts.Items[iParts] is TIdText then
+          begin
+            TIdText(MailA.MessageParts.Items[iParts]).Body.SaveToFile(sfolder + '\mail.html');
+          end;
+          if MailA.MessageParts.Items[iParts] is TIDAttachment then
+          begin
+            sfilename := TIdAttachmentFile(MailA.MessageParts.Items[iParts]).FileName;
+            TIdAttachmentFile(MailA.MessageParts.Items[iParts]).SaveToFile(sfolder + '\' + sfilename);
+            sAnhang := sfolder + '\' + sfilename;
+            if CheckValidFile(sfilename,sfolder + '\mail.html') then
+            begin
+              iAnhang:= 1;
+              break;
+            end;
+          end;
+        end;
+      end
+      else begin
+        MailA.Body.SaveToFile(folder + '\mail.html');
+      end;
+      MailA.Free;
+
+
+      dm_PCM.qry_Work.SQL.Text:= 'Select Count(*) as Anzahl from manager_emails Where Von = :Von and Betreff = :Betreff and Erhalten = :Erhalten and Groesse = :Groesse '+
+                                 'and ID_Benutzer = :ID_Benutzer and ID_emailkonfiguration = :ID_Account and id_main = :id_main and id_sub = :id_sub';
       if Mail.From.Name <> '' then
         dm_PCM.qry_Work.ParamByName('Von').AsString:= Mail.From.Name
       else
@@ -1015,13 +1102,35 @@ begin
       dm_PCM.qry_Work.ParamByName('Betreff').AsString:= Mail.Subject;
       dm_PCM.qry_Work.ParamByName('Erhalten').AsDateTime:= Mail.Date;
       dm_PCM.qry_Work.ParamByName('Groesse').AsString:= IntToStr(Round(idImap_Mail.UIDRetrieveMsgSize(TheUID) / 1024)) + ' KB';
-      dm_PCM.qry_Work.ParamByName('UIDL').asString:= TheUID;
-      if Flagtemp = 'ungelesen' then
-        dm_PCM.qry_Work.ParamByName('readEmail').asInteger := 0
-      else
-        dm_PCM.qry_Work.ParamByName('readEmail').asInteger := 1;
-      dm_PCM.qry_Work.ParamByName('ID_Benutzer').asInteger:= dm_pcm.iIDBenutzerPCM;
-      dm_PCM.qry_Work.ExecSQL;
+      dm_PCM.qry_Work.ParamByName('ID_Account').AsInteger:= iID_account;
+      dm_PCM.qry_Work.ParamByName('id_main').AsInteger:= iParent;
+      dm_PCM.qry_Work.ParamByName('id_sub').AsInteger:= iSub;
+      dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= dm_pcm.iIDBenutzerPCM;
+      dm_PCM.qry_Work.Open;
+      iCountExistingmails := dm_PCM.qry_Work.FieldByName('Anzahl').AsInteger;
+      dm_PCM.qry_Work.Close;;
+      if iCountExistingmails = 0 then
+      begin
+        dm_PCM.qry_Work.SQL.Text:= 'INSERT INTO manager_emails (Anhang,Von,Betreff,Erhalten,Groesse,UIDL,readEmail,ID_Benutzer,ID_emailkonfiguration,id_main,id_sub) VALUES(:Anhang,:Von,:Betreff,:Erhalten,:Groesse,:UIDL,:readEmail,:ID_Benutzer,:ID_Account,:id_main,:id_sub)';
+        dm_PCM.qry_Work.ParamByName('Anhang').AsInteger:= iAnhang;
+        if Mail.From.Name <> '' then
+          dm_PCM.qry_Work.ParamByName('Von').AsString:= Mail.From.Name
+        else
+          dm_PCM.qry_Work.ParamByName('Von').AsString:= Mail.From.Address;
+        dm_PCM.qry_Work.ParamByName('Betreff').AsString:= Mail.Subject;
+        dm_PCM.qry_Work.ParamByName('Erhalten').AsDateTime:= Mail.Date;
+        dm_PCM.qry_Work.ParamByName('Groesse').AsString:= IntToStr(Round(idImap_Mail.UIDRetrieveMsgSize(TheUID) / 1024)) + ' KB';
+        dm_PCM.qry_Work.ParamByName('UIDL').asString:= TheUID;
+        if Flagtemp = 'ungelesen' then
+          dm_PCM.qry_Work.ParamByName('readEmail').asInteger := 0
+        else
+          dm_PCM.qry_Work.ParamByName('readEmail').asInteger := 1;
+        dm_PCM.qry_Work.ParamByName('ID_Benutzer').asInteger:= dm_pcm.iIDBenutzerPCM;
+        dm_PCM.qry_Work.ParamByName('ID_Account').AsInteger:= iID_account;
+        dm_PCM.qry_Work.ParamByName('id_main').AsInteger:= iParent;
+        dm_PCM.qry_Work.ParamByName('id_sub').AsInteger:= iSub;
+        dm_PCM.qry_Work.ExecSQL;
+      end;
       qry_Mail.Refresh;
 
       if Flagtemp= 'ungelesen' then
@@ -1034,9 +1143,12 @@ begin
       Application.ProcessMessages;
     end;
 
-    dm_PCM.qry_Work.SQL.Text:= 'SELECT COUNT(*) as anzahl FROM manager_emails Where readEmail = :reaaad and ID_Benutzer = :ID_Benutzer';
+    dm_PCM.qry_Work.SQL.Text:= 'SELECT COUNT(*) as anzahl FROM manager_emails Where readEmail = :reaaad and ID_Benutzer = :ID_Benutzer and ID_emailkonfiguration = :ID_Account and id_main = :id_main and id_sub = :id_sub';
     dm_PCM.qry_Work.ParamByName('reaaad').AsString:= '0';
     dm_PCM.qry_Work.ParamByName('ID_Benutzer').asInteger:= dm_pcm.iIDBenutzerPCM;
+    dm_PCM.qry_Work.ParamByName('ID_Account').AsInteger:= iID_account;
+    dm_PCM.qry_Work.ParamByName('id_main').AsInteger:= iParent;
+    dm_PCM.qry_Work.ParamByName('id_sub').AsInteger:= iSub;
     dm_PCM.qry_Work.open;
     iAnzahlCount:= dm_PCM.qry_Work.FieldByName('anzahl').AsInteger;
     dm_PCM.qry_Work.Close;
@@ -1048,11 +1160,8 @@ begin
     else
       trlst_EmailFolder.FocusedNode.Values[1]:= '';
     Mail.Free;
-//    qry_Mail.AfterScroll:= qry_MailAfterScroll;
   end;
   sPrevAccount:=sAccount;
-//  qry_Mail.First;
-
 end;
 {$EndRegion Sonstige}
 ////////////////////////////////////////////////////////////////////////////////
@@ -1076,12 +1185,12 @@ begin
   GlobalWebView2Loader.UserDataFolder := GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\CustomCache';
   GlobalWebView2Loader.StartWebView2;
 
-  dm_PCM.qry_Work.SQL.Text:= 'DELETE FROM manager_emails where ID_Benutzer = :ID_Benutzer';
-  dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= dm_pcm.iIDBenutzerPCM;
-  dm_PCM.qry_Work.ExecSQL;
-  qry_Mail.SQL.Text:= 'SELECT * FROM manager_emails Where ID_Benutzer = :ID_Benutzer';
-  qry_Mail.ParamByName('ID_Benutzer').AsInteger:= dm_pcm.iIDBenutzerPCM;
-  qry_Mail.open;
+//  dm_PCM.qry_Work.SQL.Text:= 'DELETE FROM manager_emails where ID_Benutzer = :ID_Benutzer';
+//  dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= dm_pcm.iIDBenutzerPCM;
+//  dm_PCM.qry_Work.ExecSQL;
+//  qry_Mail.SQL.Text:= 'SELECT * FROM manager_emails Where ID_Benutzer = :ID_Benutzer';
+//  qry_Mail.ParamByName('ID_Benutzer').AsInteger:= dm_pcm.iIDBenutzerPCM;
+//  qry_Mail.open;
   trlst_EmailFolder.Clear;
   m_currentpath := GetCurrentDir();
   m_uidlfile := m_currentpath + '\uidl.txt';
