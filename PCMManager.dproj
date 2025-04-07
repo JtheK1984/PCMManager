@@ -237,6 +237,15 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="PCMManager.dxSettings.pas"/>
+        <DCCReference Include="Helper\cxSchedulerStorage.pas"/>
+        <DCCReference Include="Helper\cxSchedulerDBStorage.pas"/>
+        <DCCReference Include="Helper\cxSchedulerICalendar.pas"/>
+        <DCCReference Include="Helper\cxSchedulerEventModernInfoContainer.pas">
+            <Form>cxSchedulerEventModernInfoContainer</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TdxForm</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Helper\cxSchedulerCustomControls.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

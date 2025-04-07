@@ -3,7 +3,7 @@
 {           Developer Express Visual Component Library               }
 {           ExpressScheduler                                         }
 {                                                                    }
-{           Copyright (c) 2003-2023 Developer Express Inc.           }
+{           Copyright (c) 2003-2025 Developer Express Inc.           }
 {           ALL RIGHTS RESERVED                                      }
 {                                                                    }
 {   The entire contents of this file is protected by U.S. and        }
@@ -39,8 +39,8 @@ unit cxSchedulerStorage;
 interface
 
 uses
-  Variants, DateUtils, Classes, SysUtils, Windows, Forms, Math, Graphics, Contnrs,
-  Types, ExtCtrls, Controls, ImgList, RTLConsts, Generics.Defaults, Generics.Collections,
+  System.Variants, System.DateUtils, System.Classes, System.SysUtils, Winapi.Windows, Vcl.Forms, System.Math, Vcl.Graphics, System.Contnrs,
+  System.Types, Vcl.ExtCtrls, Vcl.Controls, Vcl.ImgList, System.RTLConsts, System.Generics.Defaults, System.Generics.Collections,
   dxCore, dxGenerics, dxCoreClasses, cxClasses, cxCustomData, cxGraphics, dxThreading,
   cxDataStorage, cxDateUtils, cxDataUtils, cxVariants, cxStorage, cxLookAndFeels,
   cxFormats, cxSchedulerUtils, cxSchedulerHolidays, cxDataConsts, cxSchedulerRecurrence, dxForms;
@@ -178,8 +178,7 @@ type
     Resources: TcxSchedulerReminderResources;
   end;
 
-  TcxDueTimeInfoToTextProc = function (
-    const AInfo: TcxSchedulerReminderDueTimeInfo): string;
+  TcxDueTimeInfoToTextProc = function (const AInfo: TcxSchedulerReminderDueTimeInfo): string;
 
   { IcxSchedulerStorageListener }
 
@@ -193,12 +192,6 @@ type
   ['{4809FF3B-D9F8-4FD5-8647-33F8892599A4}']
     procedure AddEvent(AEvent: TcxSchedulerEvent);
     procedure RemoveEvent(AEvent: TcxSchedulerEvent);
-  end;
-
-  IcxSchedulerStorageListener3 = interface(IcxSchedulerStorageListener2)  // for internal use
-  ['{1F438567-4624-40C4-9A91-99B5B50F1D4D}']
-    procedure StorageBeginSynchronize(ASrorage: TcxCustomSchedulerStorage);
-    procedure StorageEndSynchronize(ASrorage: TcxCustomSchedulerStorage);
   end;
 
   { IcxSchedulerSelectionAdapter }
@@ -890,6 +883,7 @@ type
 
   TcxSchedulerStorageResourceItems = class(TCollection)
   private
+    FNeedUpdateCachedValues: Boolean;
     FVisibleList: TdxFastList;
     FOwner: TcxSchedulerStorageResources;
     function GetItem(AIndex: Integer): TcxSchedulerStorageResourceItem;
@@ -897,10 +891,12 @@ type
     procedure SetItem(AIndex: Integer; AValue: TcxSchedulerStorageResourceItem);
     function GetVisibleResource(AIndex: Integer): TcxSchedulerStorageResourceItem;
     function GetVisibleResourceCount: Integer;
+    procedure UpdateVisibleList;
   protected
     function GetOwner: TPersistent; override;
     procedure Update(Item: TCollectionItem); override;
 
+    property NeedUpdateCachedValues: Boolean read FNeedUpdateCachedValues write FNeedUpdateCachedValues;
     property Resources: TcxSchedulerStorageResources read FOwner;
     property Storage: TcxCustomSchedulerStorage read GetStorage;
   public
@@ -1000,6 +996,7 @@ type
     function GetAreImagesUsed: Boolean;
     procedure SetImages(AValue: TCustomImageList);
     procedure SetItems(AValue: TcxSchedulerStorageResourceItems);
+    procedure UpdateItemsVisibility;
   protected
     function DecodePropertyName(const AName: string; var ASubValue: string): Integer;
     // IcxStoredObject
@@ -1022,6 +1019,7 @@ type
     procedure InitRestore;
     function IsLocked: Boolean; virtual;
     function IsResourceVisible(const AResourceID: Variant): Boolean;
+    procedure Validate;
     //
     property IsNullResourceVisible: Boolean read FIsNullResourceVisible write FIsNullResourceVisible;
   public
@@ -1193,7 +1191,7 @@ type
     FStorage: TcxCustomSchedulerStorage;
 
     function GetActiveEditingEvent: TcxSchedulerControlEvent;
-    function GetItem(AIndex: Integer): TcxSchedulerEditingEventInfo; inline;
+    function GetItem(AIndex: TdxListIndex): TcxSchedulerEditingEventInfo; inline;
   protected
     procedure CloseExceptionEditor(AEvent: TcxSchedulerEvent);
     procedure DoDestroy; virtual;
@@ -1240,7 +1238,7 @@ type
 
     property ActiveEditingEvent: TcxSchedulerControlEvent read GetActiveEditingEvent;
     property Count: Integer read GetCount;
-    property Items[AIndex: Integer]: TcxSchedulerEditingEventInfo read GetItem; default;
+    property Items[AIndex: TdxListIndex]: TcxSchedulerEditingEventInfo read GetItem; default;
   end;
 
   TcxSchedulerEditingEventInfoListClass = class of TcxSchedulerEditingEventInfoList;
@@ -1273,7 +1271,6 @@ type
     FStoreUsingGlobalTime: Boolean;
     FStoringName: string;
     FStructureUpdatingCount: Integer;
-    FSynchronizeCount: Integer;
     FTimeBias: Double;
     FUseActualTimeRange: Boolean;
     FOnEventDeleted: TcxSchedulerNotificationEvent;
@@ -1407,17 +1404,11 @@ type
     procedure SetPostFieldValue(AEvent: TcxSchedulerEvent; AFieldIndex: Integer); virtual;
     procedure SetValue(const ARecordHandle: Pointer; const AFieldIndex: Integer; const AValue: Variant); virtual;
     procedure SetValueBeforePost(AEvent: TcxSchedulerEvent; AItemIndex: Integer); virtual;
-
+    procedure SynchronizeEventsWithRecords; virtual;
     procedure UpdateControl(AInfo: TcxUpdateControlInfo); virtual;
     procedure UpdateData; virtual;
     procedure UpdateItemIndexes;
     procedure UpdateStructure; virtual;
-
-    procedure BeginSynchronizeEventsWithRecords;
-    procedure DoSynchronizeEventsWithRecords; virtual;
-    procedure EndSynchronizeEventsWithRecords;
-    procedure SynchronizeEventsWithRecords;
-
     procedure BeginUpdateDataController; virtual;
     procedure EndUpdateDataController; virtual;
 
@@ -1663,6 +1654,7 @@ type
     function CheckRecurrenceEvent(AEvent: TcxSchedulerEvent; const AResourceID: Variant; AddAll: Boolean): Boolean;
     function CheckSimpleEvent(AEvent: TcxSchedulerEvent; const AResourceID: Variant; AddAll: Boolean): Boolean;
     function CreateControlEvent(AEvent: TcxSchedulerEvent): TcxSchedulerControlEvent; virtual;
+    function GetEventByID(const AID: Variant): TcxSchedulerControlEvent;
     function GetTimeBias: Double; virtual;
     function GetTimeBiasDaylightSavingTime(ATime: TDateTime): TDateTime; virtual;
     procedure Init(const AStart, AFinish: TDateTime; AStorage: TcxCustomSchedulerStorage; AClearItems: Boolean); virtual;
@@ -1938,7 +1930,7 @@ type
 
   TcxSchedulerEventRemindersList = class(TcxObjectList)
   private
-    function GetItem(AIndex: Integer): TcxSchedulerEventReminders; inline;
+    function GetItem(AIndex: TdxListIndex): TcxSchedulerEventReminders; inline;
   public
     function CreateEventReminders(AEvent: TcxSchedulerControlEvent): TcxSchedulerEventReminders;
     function FindForEvent(AEvent: TcxSchedulerControlEvent): TcxSchedulerEventReminders;
@@ -1946,13 +1938,14 @@ type
     procedure Remove(AEventReminders: TcxSchedulerEventReminders);
     procedure RemoveInvalidItems;
 
-    property Items[Index: Integer]: TcxSchedulerEventReminders read GetItem;
+    property Items[Index: TdxListIndex]: TcxSchedulerEventReminders read GetItem;
   end;
 
   { TcxSchedulerReminder }
 
   TcxSchedulerReminder = class
   private
+    FEventID: Variant;
     FEvent: TcxSchedulerControlEvent;
     FEventReminders: TcxSchedulerEventReminders;
     FOwner: TcxSchedulerReminders;
@@ -1990,12 +1983,12 @@ type
   TcxSchedulerReminderList = class(TList)
   private
     FClearing: Boolean;
-    function GetItem(Index: Integer): TcxSchedulerReminder; inline;
+    function GetItem(Index: TdxListIndex): TcxSchedulerReminder; inline;
   public
     procedure Clear; override;
 
     property Clearing: Boolean read FClearing;
-    property Items[Index: Integer]: TcxSchedulerReminder read GetItem; default;
+    property Items[Index: TdxListIndex]: TcxSchedulerReminder read GetItem; default;
   end;
 
   { TcxSchedulerReminders }
@@ -2196,8 +2189,7 @@ function cxGetRecurrenceDescriptionString(ARecurrenceInfo: TcxSchedulerEventRecu
 function cxMinutesToDueTimeInfo(AMinutes: Integer): TcxSchedulerReminderDueTimeInfo;
 function cxDueTimeInfoToText(const AInfo: TcxSchedulerReminderDueTimeInfo): string;
 
-function cxCompareSchedulerControlEvents(
-  AEvent1, AEvent2: TcxSchedulerControlEvent): Integer;
+function cxCompareSchedulerControlEvents(AEvent1, AEvent2: TcxSchedulerControlEvent): Integer;
 
 function cxCompareSelectionKeys(AItem1, AItem2: TcxSchedulerControlEventID): Integer;
 
@@ -2214,11 +2206,9 @@ function GetStreamVersion(const AStream: TStream;
   var AFieldCount: Integer; ACustomFieldCount: Integer = 0): Double;
 
 const
-  cxGetRecurrenceDescriptionStringProc: TcxGetRecurrenceDescriptionStringProc =
-    cxGetRecurrenceDescriptionString;
+  cxGetRecurrenceDescriptionStringProc: TcxGetRecurrenceDescriptionStringProc = cxGetRecurrenceDescriptionString;
   cxDueTimeInfoToTextProc: TcxDueTimeInfoToTextProc = cxDueTimeInfoToText;
-  cxSchedulerEventConflictsInfoClass: TcxSchedulerEventConflictsInfoClass =
-    TcxSchedulerEventConflictsInfo;
+  cxSchedulerEventConflictsInfoClass: TcxSchedulerEventConflictsInfoClass = TcxSchedulerEventConflictsInfo;
 
   cxMaxCheckedDuration: Integer = 30;// div 2; todo:
   cxOriginalEventStates: array[Boolean] of Byte = (tlsBusy, tlsFree);
@@ -2226,11 +2216,11 @@ const
 implementation
 
 uses
-  cxSchedulerStrs, cxSchedulerDialogs, cxSchedulerReminderWindow, Messages, AnsiStrings,
+  cxSchedulerStrs, cxSchedulerDialogs, cxSchedulerReminderWindow, Winapi.Messages, System.AnsiStrings,
   cxSchedulerEditorFormManager, cxSchedulerCustomControls, cxControls;
 
-
-
+const
+  dxThisUnitName = 'cxSchedulerStorage';
 
 type
   TFlashWindowExProc = function (var pfwi: FLASHWINFO): BOOL; stdcall;
@@ -2245,8 +2235,7 @@ type
   end;
 
 const
-  PatternValidStatus: array[Boolean] of TcxRecurrenceValidStatus =
-    (rvsInvalidPattern, rvsValid);
+  PatternValidStatus: array[Boolean] of TcxRecurrenceValidStatus = (rvsInvalidPattern, rvsValid);
   cxSchedulerEventDefaultParentID = -2;
 
   FlashWindowExProc: TFlashWindowExProc = nil;
@@ -2344,8 +2333,10 @@ end;
 function cxGetRecurrenceDescriptionString(
   ARecurrenceInfo: TcxSchedulerEventRecurrenceInfo;
   AFullDescription: Boolean = False): string;
+var
+  APattern: TcxSchedulerEvent;
 
-  function GetTimeBounds(APattern: TcxSchedulerEvent): string;
+  function GetTimeBounds: string;
   begin
     if APattern.AllDayEvent and (APattern.Duration = 1) then Exit;
     Result := ' from ' + FormatDateTime('t', APattern.Start - ARecurrenceInfo.DisplayTimeBias);
@@ -2357,13 +2348,11 @@ function cxGetRecurrenceDescriptionString(
 
   function GetDateBounds: string;
   begin
-    Result := ' effective ' + FormatDateTime('ddddd', ARecurrenceInfo.Start);
+    Result := ' effective ' + FormatDateTime('ddddd', APattern.Start - ARecurrenceInfo.DisplayTimeBias);
     if ARecurrenceInfo.Count >= 0 then
       Result := Result + ' until ' + FormatDateTime('ddddd', ARecurrenceInfo.GetEndDate);
   end;
 
-var
-  APattern: TcxSchedulerEvent;
 begin
   Result := '';
   if not Assigned(ARecurrenceInfo) or not ARecurrenceInfo.Event.IsRecurring then
@@ -2377,10 +2366,12 @@ begin
     if APattern = nil then
       APattern := ARecurrenceInfo.Event;
   end;
+  if APattern is TcxSchedulerControlEvent then
+    ARecurrenceInfo.DisplayTimeBias := 0;
   if AFullDescription then
-    Result := 'Occurs ' + Result + GetDateBounds + GetTimeBounds(APattern) + '.'
+    Result := 'Occurs ' + Result + GetDateBounds + GetTimeBounds + '.'
   else
-    Result := Result + GetTimeBounds(APattern);
+    Result := Result + GetTimeBounds;
 end;
 
 function cxMinutesToDueTimeInfo(AMinutes: Integer): TcxSchedulerReminderDueTimeInfo;
@@ -2428,22 +2419,6 @@ begin
   end;
 end;
 
-//function cxDueTimeInfoToText(const AInfo: TcxSchedulerReminderDueTimeInfo): string;
-//const
-//  PluralPostfix: array[Boolean] of string = ('', 's');
-//  ElementNames: array[TcxSchedulerReminderDueTimeElement] of string  =
-//    ('minute', 'hour', 'day', 'week');
-//  DueInFormatTexts: array[Boolean] of string = ('%d %s%s', '%d %s%s overdue');
-//begin
-//  with AInfo do
-//  begin
-//    if DueKind = dtkNow then
-//      Result := 'Now'
-//    else
-//      Result := Format(DueInFormatTexts[DueKind = dtkOverdue],
-//        [ElementValue, ElementNames[Element], PluralPostfix[ElementValue > 1]]);
-//  end;
-//end;
 function cxDueTimeInfoToText(const AInfo: TcxSchedulerReminderDueTimeInfo): string;
 const
   ElementNames: array[TcxSchedulerReminderDueTimeElement] of string =
@@ -2469,8 +2444,7 @@ begin
   end;
 end;
 
-function cxCompareSchedulerControlEvents(
-  AEvent1, AEvent2: TcxSchedulerControlEvent): Integer;
+function cxCompareSchedulerControlEvents(AEvent1, AEvent2: TcxSchedulerControlEvent): Integer;
 var
   AAllDay1, AAllDay2: Boolean;
 begin
@@ -2604,8 +2578,7 @@ begin
   Result := Storage.FFields.List[Index];
 end;
 
-function TcxSchedulerStorageDataController.GetItemValueSource(
-  AItemIndex: Integer): TcxDataEditValueSource;
+function TcxSchedulerStorageDataController.GetItemValueSource(AItemIndex: Integer): TcxDataEditValueSource;
 begin
   Result := evsValue;
 end;
@@ -2648,8 +2621,7 @@ var
   P: PByte;
 begin
   AEvent.FIndex := Integer(AEvent.RecordHandle);
-  AEvent.RecordHandle := TcxDataStorageHelper.RemoveRecord(
-    DataStorage, Integer(AEvent.RecordHandle));
+  AEvent.RecordHandle := TcxDataStorageHelper.RemoveRecord(DataStorage, Integer(AEvent.RecordHandle));
   P := PByte(AEvent.RecordHandle);
   Inc(P);
   if Storage.FEventIDCounter <= PInteger(P)^ then
@@ -2671,8 +2643,7 @@ end;
 procedure TcxSchedulerStorageDataController.InitializeRecordIndexFromEvent(
   AEvent: TcxSchedulerEvent; AData: Pointer);
 begin
-  AEvent.RecordHandle := Pointer(TcxDataStorageHelper.AppendRecord(
-    DataStorage, AEvent.RecordHandle));
+  AEvent.RecordHandle := Pointer(TcxDataStorageHelper.AppendRecord(DataStorage, AEvent.RecordHandle));
 end;
 
 type
@@ -2682,8 +2653,7 @@ type
     ValueDef: TcxValueDef;
   end;
 
-procedure TcxSchedulerStorageDataController.InsertValueDef(
-  AField: TcxCustomSchedulerStorageField);
+procedure TcxSchedulerStorageDataController.InsertValueDef(AField: TcxCustomSchedulerStorageField);
 var
   AData: TcxSchedulerFieldValueDefData;
 begin
@@ -2693,8 +2663,7 @@ begin
   ForEachEvent(InsertValueDefProc, @AData, True);
 end;
 
-procedure TcxSchedulerStorageDataController.InsertValueDefProc(
-  AEvent: TcxSchedulerEvent; AData: Pointer);
+procedure TcxSchedulerStorageDataController.InsertValueDefProc(AEvent: TcxSchedulerEvent; AData: Pointer);
 var
   PSource: PAnsiChar;
 begin
@@ -2704,8 +2673,7 @@ begin
   FillChar(PSource^, PcxSchedulerFieldValueDefData(AData)^.ValueDef.BufferSize, 0);
 end;
 
-procedure TcxSchedulerStorageDataController.RemoveValueDef(
-  AField: TcxCustomSchedulerStorageField);
+procedure TcxSchedulerStorageDataController.RemoveValueDef(AField: TcxCustomSchedulerStorageField);
 var
   AData: TcxSchedulerFieldValueDefData;
 begin
@@ -2714,8 +2682,7 @@ begin
   AField.FValueDef := nil;
 end;
 
-procedure TcxSchedulerStorageDataController.RemoveValueDefProc(
-  AEvent: TcxSchedulerEvent; AData: Pointer);
+procedure TcxSchedulerStorageDataController.RemoveValueDefProc(AEvent: TcxSchedulerEvent; AData: Pointer);
 var
   AFreeRecord: Boolean;
   ARecordSize: Integer;
@@ -2737,8 +2704,7 @@ begin
     end;
 end;
 
-procedure TcxSchedulerStorageDataController.UpdateControl(
-  AInfo: TcxUpdateControlInfo);
+procedure TcxSchedulerStorageDataController.UpdateControl(AInfo: TcxUpdateControlInfo);
 begin
   Storage.UpdateControl(AInfo);
 end;
@@ -2814,8 +2780,7 @@ begin
   Result := TcxCustomSchedulerStorageFields(Collection).Storage;
 end;
 
-function TcxCustomSchedulerStorageField.GetValue(
-  AEvent: TcxSchedulerEvent): Variant;
+function TcxCustomSchedulerStorageField.GetValue(AEvent: TcxSchedulerEvent): Variant;
 begin
   Result := Storage.GetEventActualValue(AEvent, FIndex);
 end;
@@ -2846,8 +2811,7 @@ begin
   FValueDef := GetValueDef;
 end;
 
-procedure TcxCustomSchedulerStorageField.SetName(
-  const AValue: string);
+procedure TcxCustomSchedulerStorageField.SetName(const AValue: string);
 begin
   if FName <> AValue then
   begin
@@ -2856,21 +2820,18 @@ begin
   end;
 end;
 
-procedure TcxCustomSchedulerStorageField.SetValue(
-  AEvent: TcxSchedulerEvent; const AValue: Variant);
+procedure TcxCustomSchedulerStorageField.SetValue(AEvent: TcxSchedulerEvent; const AValue: Variant);
 begin
   Storage.SetEventValue(AEvent, FIndex, AValue);
 end;
 
-procedure TcxCustomSchedulerStorageField.SetValueType(
-  const AValue: string);
+procedure TcxCustomSchedulerStorageField.SetValueType(const AValue: string);
 begin
   if ValueType <> AValue then
     ValueTypeClass := cxValueTypeClassList.ItemByCaption(AValue);
 end;
 
-procedure TcxCustomSchedulerStorageField.SetValueTypeClass(
-  AValue: TcxValueTypeClass);
+procedure TcxCustomSchedulerStorageField.SetValueTypeClass(AValue: TcxValueTypeClass);
 begin
   DataController.ChangeValueTypeClass(Index, AValue);
 end;
@@ -2922,20 +2883,17 @@ begin
   Result := TcxSchedulerStorageField(inherited Add);
 end;
 
-function TcxSchedulerStorageFields.ItemByName(
-  const AName: string): TcxSchedulerStorageField;
+function TcxSchedulerStorageFields.ItemByName(const AName: string): TcxSchedulerStorageField;
 begin
   Result := TcxSchedulerStorageField(FindFieldByName(AName));
 end;
 
-function TcxSchedulerStorageFields.GetItem(
-  AIndex: Integer): TcxSchedulerStorageField;
+function TcxSchedulerStorageFields.GetItem(AIndex: Integer): TcxSchedulerStorageField;
 begin
   Result := TcxSchedulerStorageField(inherited Items[AIndex]);
 end;
 
-procedure TcxSchedulerStorageFields.SetItem(
-  AIndex: Integer; AValue: TcxSchedulerStorageField);
+procedure TcxSchedulerStorageFields.SetItem(AIndex: Integer; AValue: TcxSchedulerStorageField);
 begin
   inherited Items[AIndex].Assign(AValue);
 end;
@@ -2967,8 +2925,7 @@ begin
     else Result := GetYearlyPatternStatus;
   end;
   if Result = rvsInvalidPattern then Exit;
-  with TcxSchedulerOccurrenceCalculator.Create(Event,
-    Event.RecurrenceInfo.Start, cxMaxDate) do
+  with TcxSchedulerOccurrenceCalculator.Create(Event, Event.RecurrenceInfo.Start, cxMaxDate) do
   try
     // find a first occurrence
     if GetNextOccurrence then
@@ -2996,8 +2953,7 @@ end;
 procedure TcxSchedulerEventRecurrenceInfo.Validate;
 begin
   DisplayTimeBias := Event.TimeBias;
-  with TcxSchedulerOccurrenceCalculator.Create(Event,
-    Event.RecurrenceInfo.Start, cxMaxDate) do
+  with TcxSchedulerOccurrenceCalculator.Create(Event, Event.RecurrenceInfo.Start, cxMaxDate) do
   try
     if GetNextOccurrence then
       Event.MoveTo(OccurrenceStart)
@@ -3018,15 +2974,13 @@ begin
   Result := dxDateOf(Event.Start);
 end;
 
-procedure TcxSchedulerEventRecurrenceInfo.SetFinish(
-  AValue: TDateTime);
+procedure TcxSchedulerEventRecurrenceInfo.SetFinish(AValue: TDateTime);
 begin
   AValue := DateTimeHelper.RoundTime(AValue) + Event.TimeBias;
   SetDataItem(@DefInfoData.Finish, SizeOf(AValue), AValue);
 end;
 
-procedure TcxSchedulerEventRecurrenceInfo.SetStart(
-  const AValue: TDateTime);
+procedure TcxSchedulerEventRecurrenceInfo.SetStart(const AValue: TDateTime);
 begin
   Event.MoveTo(AValue);
 end;
@@ -3065,14 +3019,12 @@ begin
   Result := AList.Count > 0;
 end;
 
-function TcxSchedulerEventRecurrenceInfo.GetValue(
-  var AValue: AnsiString): Boolean;
+function TcxSchedulerEventRecurrenceInfo.GetValue(var AValue: AnsiString): Boolean;
 begin
   Result := Event.GetRecurrenceInfoValue(AValue);
 end;
 
-procedure TcxSchedulerEventRecurrenceInfo.SetDataItem(
-  AOffset: Pointer; ASize: Integer; const AValue);
+procedure TcxSchedulerEventRecurrenceInfo.SetDataItem(AOffset: Pointer; ASize: Integer; const AValue);
 var
   S: AnsiString;
 begin
@@ -3083,8 +3035,7 @@ begin
   SetValue(S);
 end;
 
-procedure TcxSchedulerEventRecurrenceInfo.SetValue(
-  const AValue: AnsiString);
+procedure TcxSchedulerEventRecurrenceInfo.SetValue(const AValue: AnsiString);
 begin
   Event.SetRecurrenceInfoValue(AValue);
 end;
@@ -3119,14 +3070,12 @@ begin
   Result := '(' + cxGetResourceString(sEventRelations[Integer(Relation)]) + ')';
 end;
 
-function TcxSchedulerEventItemLink.CheckLinked(
-  AEvent: TcxSchedulerEvent): Boolean;
+function TcxSchedulerEventItemLink.CheckLinked(AEvent: TcxSchedulerEvent): Boolean;
 begin
   Result := AEvent = Link;
 end;
 
-function TcxSchedulerEventItemLink.CheckLinked(
-  const ID: Variant; ARecurrenceIndex: Integer): Boolean;
+function TcxSchedulerEventItemLink.CheckLinked(const ID: Variant; ARecurrenceIndex: Integer): Boolean;
 begin
   Result := (Link <> nil) and VarEqualsSoft(Link.ID, ID);
   if Result and Link.IsRecurring then
@@ -3144,8 +3093,7 @@ begin
   Result[2] := LinkRecurrenceIndex;
 end;
 
-function TcxSchedulerEventItemLink.IsAllowRelation(
-  ARelation: TcxSchedulerEventRelation): Boolean;
+function TcxSchedulerEventItemLink.IsAllowRelation(ARelation: TcxSchedulerEventRelation): Boolean;
 begin
   Result := ((Link <> nil) and not Link.IsGroup) or
     (ARelation in [trFinishToStart, trStartToStart]);
@@ -3586,8 +3534,7 @@ begin
   end;
 end;
 
-procedure TcxSchedulerEvent.AssignAttributes(
-  ASource: TcxSchedulerEvent; AUseSourceTime: Boolean = True);
+procedure TcxSchedulerEvent.AssignAttributes(ASource: TcxSchedulerEvent; AUseSourceTime: Boolean = True);
 begin
   BeginEditing;
   try
@@ -3606,8 +3553,7 @@ begin
   end;
 end;
 
-procedure TcxSchedulerEvent.ShareWithResource(
-  AResourceItem: TcxSchedulerStorageResourceItem);
+procedure TcxSchedulerEvent.ShareWithResource(AResourceItem: TcxSchedulerStorageResourceItem);
 begin
   if (AResourceItem = nil) then Exit;
   ShareWithResource(AResourceItem.ResourceID);
@@ -3629,8 +3575,7 @@ begin
   ResourceID := ASharedResources;
 end;
 
-function TcxSchedulerEvent.IsSharedWithResource(
-  AResourceItem: TcxSchedulerStorageResourceItem): Boolean;
+function TcxSchedulerEvent.IsSharedWithResource(AResourceItem: TcxSchedulerStorageResourceItem): Boolean;
 var
   AIndex: Integer;
 begin
@@ -3685,8 +3630,7 @@ begin
     end;
 end;
 
-procedure TcxSchedulerEvent.UnshareWithResource(
-  AResourceItem: TcxSchedulerStorageResourceItem);
+procedure TcxSchedulerEvent.UnshareWithResource(AResourceItem: TcxSchedulerStorageResourceItem);
 begin
   if not IsSharedWithResource(AResourceItem) then Exit;
   UnshareWithResource(AResourceItem.ResourceID);
@@ -3895,8 +3839,7 @@ begin
   end;
 end;
 
-function TcxSchedulerEvent.CreateConflictsInfo(
-  AExceptEventsWithoutResources: Boolean): TcxSchedulerEventConflictsInfo;
+function TcxSchedulerEvent.CreateConflictsInfo(AExceptEventsWithoutResources: Boolean): TcxSchedulerEventConflictsInfo;
 begin
   Result := cxSchedulerEventConflictsInfoClass.Create(Self, AExceptEventsWithoutResources);
 end;
@@ -3906,8 +3849,7 @@ begin
   Result := GetValueDefault(TcxCustomSchedulerStorageField(Storage.CustomFields.Items[AIndex]), Null);
 end;
 
-function TcxSchedulerEvent.GetCustomFieldValueByName(
-  const AName: String): Variant;
+function TcxSchedulerEvent.GetCustomFieldValueByName(const AName: String): Variant;
 var
   AField: TcxCustomSchedulerStorageField;
 begin
@@ -3918,8 +3860,7 @@ begin
     cxSchedulerError(scxInvalidFieldName);
 end;
 
-function TcxSchedulerEvent.GetCustomFieldValue(
-  ACustomField: TcxCustomSchedulerStorageField): Variant;
+function TcxSchedulerEvent.GetCustomFieldValue(ACustomField: TcxCustomSchedulerStorageField): Variant;
 begin
   if (ACustomField <> nil) and (ACustomField.Storage = Storage) then
     Result := GetValueByIndex(ACustomField.Index)
@@ -3927,15 +3868,12 @@ begin
     cxSchedulerError(scxInvalidCustomField);
 end;
 
-procedure TcxSchedulerEvent.SetCustomFieldValueByIndex(AIndex: Integer;
-  const AValue: Variant);
+procedure TcxSchedulerEvent.SetCustomFieldValueByIndex(AIndex: Integer; const AValue: Variant);
 begin
-  SetCustomFieldValue(TcxCustomSchedulerStorageField(
-    Storage.CustomFields.Items[AIndex]), AValue);
+  SetCustomFieldValue(TcxCustomSchedulerStorageField(Storage.CustomFields.Items[AIndex]), AValue);
 end;
 
-procedure TcxSchedulerEvent.SetCustomFieldValueByName(const AName: string;
-  const AValue: Variant);
+procedure TcxSchedulerEvent.SetCustomFieldValueByName(const AName: string; const AValue: Variant);
 begin
   SetCustomFieldValue(Storage.CustomFields.FindFieldByName(AName), AValue);
 end;
@@ -4158,7 +4096,7 @@ begin
   Caption := '';
   Enabled := True;
   EventType := etNone;
-  LabelColor := clDefault;
+  LabelColor := clred;
   Location := '';
   Message := '';
   RecurrenceIndex := -1;
@@ -4337,8 +4275,7 @@ begin
   Result := TcxSchedulerEventGroupItems.Create(Self);
 end;
 
-function TcxSchedulerEvent.CheckTimeRange(
-  const AStartDate, AFinishDate: Integer): Boolean;
+function TcxSchedulerEvent.CheckTimeRange(const AStartDate, AFinishDate: Integer): Boolean;
 begin
   if Storage.ActualTimeRangeAvailable then
     Result := (ActualStart <= AFinishDate) and (ActualFinish >= AStartDate)
@@ -4712,6 +4649,7 @@ var
 begin
   if IsDataValid then
     Exit;
+  Storage.Resources.Validate;
   FIsDataValid := True;
   FInfo.EventType := GetValueDefault(FStorage.FEventTypeField, etNone);
   FInfo.State := GetValueDefault(FStorage.FStateField, 0);
@@ -4786,6 +4724,7 @@ var
   I: Integer;
 begin
   Result := LabelColor;
+  SetLabelColor(LabelColor);
   if (Result = clDefault) and (Storage.ResourceCount > 0) then
   begin
     for I := 0 to Storage.ResourceCount - 1 do
@@ -4864,8 +4803,7 @@ end;
 
 function TcxSchedulerEvent.GetLabelColor: Integer;
 begin
-  Result := GetValueDefault(FStorage.FLabelColorField, 0);//clDefault);
-  //Result := GetValueDefault(FStorage.FLabelColorField, clDefault);
+  Result := GetValueDefault(FStorage.FLabelColorField, clDefault);
 end;
 
 function TcxSchedulerEvent.GetLocation: string;
@@ -5688,8 +5626,7 @@ end;
 { TcxSchedulerStorageResourceItems }
 
 constructor TcxSchedulerStorageResourceItems.Create(
-  AOwner: TcxSchedulerStorageResources;
-  AItemClass: TcxSchedulerStorageResourceItemClass);
+  AOwner: TcxSchedulerStorageResources; AItemClass: TcxSchedulerStorageResourceItemClass);
 begin
   FOwner := AOwner;
   FVisibleList := TdxFastList.Create;
@@ -5707,19 +5644,11 @@ begin
   Result := TcxSchedulerStorageResourceItem(inherited Add);
 end;
 
-function TcxSchedulerStorageResourceItems.GetOwner: TPersistent;
-begin
-  Result := FOwner;
-end;
-
-procedure TcxSchedulerStorageResourceItems.Update(Item: TCollectionItem);
+procedure TcxSchedulerStorageResourceItems.UpdateVisibleList;
 var
   I: Integer;
   AItem: TcxSchedulerStorageResourceItem;
 begin
-  if Resources.IsLocked then
-    Exit;
-  inherited Update(Item);
   FVisibleList.Clear;
   FVisibleList.Capacity := Count;
   for I := 0 to Count - 1 do
@@ -5728,11 +5657,27 @@ begin
     if AItem.Visible then
       FVisibleList.Add(AItem);
   end;
+  NeedUpdateCachedValues := False;
+end;
+
+function TcxSchedulerStorageResourceItems.GetOwner: TPersistent;
+begin
+  Result := FOwner;
+end;
+
+procedure TcxSchedulerStorageResourceItems.Update(Item: TCollectionItem);
+begin
+  if Resources.IsLocked then
+  begin
+    NeedUpdateCachedValues := True;
+    Exit;
+  end;
+  inherited Update(Item);
+  UpdateVisibleList;
   Resources.Changed;
 end;
 
-function TcxSchedulerStorageResourceItems.GetItem(
-  AIndex: Integer): TcxSchedulerStorageResourceItem;
+function TcxSchedulerStorageResourceItems.GetItem(AIndex: Integer): TcxSchedulerStorageResourceItem;
 begin
   Result := TcxSchedulerStorageResourceItem(inherited Items[AIndex]);
 end;
@@ -5742,14 +5687,12 @@ begin
   Result := FOwner.Storage;
 end;
 
-procedure TcxSchedulerStorageResourceItems.SetItem(
-  AIndex: Integer; AValue: TcxSchedulerStorageResourceItem);
+procedure TcxSchedulerStorageResourceItems.SetItem(AIndex: Integer; AValue: TcxSchedulerStorageResourceItem);
 begin
   Items[AIndex].Assign(AValue);
 end;
 
-function TcxSchedulerStorageResourceItems.GetVisibleResource(
-  AIndex: Integer): TcxSchedulerStorageResourceItem;
+function TcxSchedulerStorageResourceItems.GetVisibleResource(AIndex: Integer): TcxSchedulerStorageResourceItem;
 begin
   Result := nil;
   if AIndex < FVisibleList.Count then
@@ -5842,23 +5785,20 @@ begin
   Result := FResourceID;
 end;
 
-procedure TcxSchedulerStorageResourceItem.SetName(
-  const AValue: string);
+procedure TcxSchedulerStorageResourceItem.SetName(const AValue: string);
 begin
   if AValue = FName then Exit;
   FName := AValue;
   Changed(True);
 end;
 
-procedure TcxSchedulerStorageResourceItem.SetColor(
-  const AValue: TColor);
+procedure TcxSchedulerStorageResourceItem.SetColor(const AValue: TColor);
 begin
   FColor := AValue;
   Changed(True);
 end;
 
-procedure TcxSchedulerStorageResourceItem.SetImageIndex(
-  const AValue: TcxImageIndex);
+procedure TcxSchedulerStorageResourceItem.SetImageIndex(const AValue: TcxImageIndex);
 begin
   FImageIndex := AValue;
   Changed(True);
@@ -5869,8 +5809,7 @@ begin
   FReadOnly := AValue;
 end;
 
-procedure TcxSchedulerStorageResourceItem.SetResourceID(
-  const AValue: Variant);
+procedure TcxSchedulerStorageResourceItem.SetResourceID(const AValue: Variant);
 begin
   FResourceID := AValue;
   Changed(True);
@@ -6042,6 +5981,21 @@ begin
     Result := DoGetResourceName(AResourceItem);
 end;
 
+procedure TcxSchedulerStorageResources.UpdateItemsVisibility;
+var
+  I: Integer;
+  AItem: TcxSchedulerStorageResourceItem;
+begin
+  FItemsVisibility.Clear;
+  FIsNullResourceVisible := False;
+  for I := 0 to ResourceItems.VisibleResourceCount - 1 do
+  begin
+    AItem := ResourceItems.VisibleResources[I];
+    FIsNullResourceVisible := FIsNullResourceVisible or VarIsNull(AItem.ResourceID);
+    FItemsVisibility.AddOrSetValue(VarToStr(AItem.ResourceID), AItem);
+  end;
+end;
+
 function TcxSchedulerStorageResources.GetObjectName: string;
 begin
   if Storage.StoringName <> '' then
@@ -6050,15 +6004,13 @@ begin
     Result := Storage.Name;
 end;
 
-function TcxSchedulerStorageResources.DecodePropertyName(const AName: string;
-  var ASubValue: string): Integer;
+function TcxSchedulerStorageResources.DecodePropertyName(const AName: string; var ASubValue: string): Integer;
 begin
   Result := StrToIntDef('$' + Copy(AName, 9, 8), -1);
   ASubValue := Copy(AName, 17, Length(AName) - 16);
 end;
 
-function TcxSchedulerStorageResources.GetProperties(
-  AProperties: TStrings): Boolean;
+function TcxSchedulerStorageResources.GetProperties(AProperties: TStrings): Boolean;
 var
   I: Integer;
   APropertyName: string;
@@ -6075,8 +6027,7 @@ begin
     end;
 end;
 
-procedure TcxSchedulerStorageResources.GetPropertyValue(const AName: string;
-  var AValue: Variant);
+procedure TcxSchedulerStorageResources.GetPropertyValue(const AName: string; var AValue: Variant);
 var
   AItem: TcxSchedulerStorageResourceItem;
   ASubValue: string;
@@ -6084,8 +6035,7 @@ begin
   if ResourceItems.Count = 0 then Exit;
   if Pos('Resource', AName) = 1 then
   begin
-    AItem := TcxSchedulerStorageResourceItem(
-      ResourceItems.FindItemID(DecodePropertyName(AName, ASubValue)));
+    AItem := TcxSchedulerStorageResourceItem(ResourceItems.FindItemID(DecodePropertyName(AName, ASubValue)));
     if AItem <> nil then
     begin
       if SameText(ASubValue, 'WorkStart') then
@@ -6102,8 +6052,7 @@ begin
   end;
 end;
 
-procedure TcxSchedulerStorageResources.SetPropertyValue(const AName: string;
-  const AValue: Variant);
+procedure TcxSchedulerStorageResources.SetPropertyValue(const AName: string; const AValue: Variant);
 var
   AItem: TcxSchedulerStorageResourceItem;
   ASubValue: string;
@@ -6134,8 +6083,7 @@ begin
   if ResourceItems.Count = 0 then Exit;
   if Pos('Resource', AName) = 1 then
   begin
-    AItem := TcxSchedulerStorageResourceItem(ResourceItems.FindItemID(
-      DecodePropertyName(AName, ASubValue)));
+    AItem := TcxSchedulerStorageResourceItem(ResourceItems.FindItemID(DecodePropertyName(AName, ASubValue)));
     if AItem <> nil then
     begin
       P := GetRestoreItem(AItem);
@@ -6176,32 +6124,29 @@ begin
   end;
 end;
 
+procedure TcxSchedulerStorageResources.Validate;
+begin
+  if not FItems.NeedUpdateCachedValues then
+    Exit;
+  FItems.UpdateVisibleList;
+  UpdateItemsVisibility;
+end;
+
 procedure TcxSchedulerStorageResources.BeginUpdate;
 begin
   Inc(FLockCount);
 end;
 
 procedure TcxSchedulerStorageResources.Changed;
-var
-  I: Integer;
-  AItem: TcxSchedulerStorageResourceItem;
 begin
-  FItemsVisibility.Clear;
-  FIsNullResourceVisible := False;
-  for I := 0 to ResourceItems.VisibleResourceCount - 1 do
-  begin
-    AItem := ResourceItems.VisibleResources[I];
-    FIsNullResourceVisible := FIsNullResourceVisible or VarIsNull(AItem.ResourceID);
-    FItemsVisibility.AddOrSetValue(VarToStr(AItem.ResourceID), AItem);
-  end;
+  UpdateItemsVisibility;
   Storage.UpdateStructure;
   Storage.Changed;
 end;
 
 function TcxSchedulerStorageResources.CreateItems: TcxSchedulerStorageResourceItems;
 begin
-  Result := TcxSchedulerStorageResourceItems.Create(
-    Self, TcxSchedulerStorageResourceItem);
+  Result := TcxSchedulerStorageResourceItems.Create(Self, TcxSchedulerStorageResourceItem);
 end;
 
 function CompareRestoringItems(Item1, Item2: Pointer): Integer;
@@ -6233,16 +6178,14 @@ begin
   end;
 end;
 
-function TcxSchedulerStorageResources.DoGetResourceImageIndex(
-  AItem: TcxSchedulerStorageResourceItem): TcxImageIndex;
+function TcxSchedulerStorageResources.DoGetResourceImageIndex(AItem: TcxSchedulerStorageResourceItem): TcxImageIndex;
 begin
   Result := AItem.ImageIndex;
   if Assigned(FOnGetResourceImageIndex) then
     FOnGetResourceImageIndex(Storage, AItem, Result);
 end;
 
-function TcxSchedulerStorageResources.DoGetResourceName(
-  AItem: TcxSchedulerStorageResourceItem): string;
+function TcxSchedulerStorageResources.DoGetResourceName(AItem: TcxSchedulerStorageResourceItem): string;
 begin
   Result := '';
   if AItem <> nil then
@@ -6326,8 +6269,7 @@ begin
   end;
 end;
 
-procedure TcxSchedulerStorageResources.SetItems(
-  AValue: TcxSchedulerStorageResourceItems);
+procedure TcxSchedulerStorageResources.SetItems(AValue: TcxSchedulerStorageResourceItems);
 begin
   FItems.Assign(AValue);
 end;
@@ -7096,7 +7038,6 @@ begin
     AEventType := AEvent.EventType;
     ASource := AEvent.Source;
   end;
-  //Result := (AEvent.Source <> nil) and IsEventEditing(ASource, AEvent.RecurrenceIndex, AEventType);
   Result := (ASource <> nil) and IsEventEditing(ASource, AEvent.RecurrenceIndex, AEventType);
 end;
 
@@ -7225,8 +7166,8 @@ begin
   AEvent := GetRootEvent(AEvent);
 
   Result := TcxSchedulerControlEvent.Create(GetRootStorage(AEvent));
-  Result.FTimeBias := AOriginal.TimeBias;
   Result.Assign(ASource);
+  Result.FTimeBias := AOriginal.TimeBias;
   Result.FLockedResource := Null;
   Result.SetSource(AEvent);
   Result.FLink := AOriginal.FLink;
@@ -7260,7 +7201,7 @@ begin
   end;
 end;
 
-function TcxSchedulerEditingEventInfoList.GetItem(AIndex: Integer): TcxSchedulerEditingEventInfo;
+function TcxSchedulerEditingEventInfoList.GetItem(AIndex: TdxListIndex): TcxSchedulerEditingEventInfo;
 begin
   Result := GetItemCore(AIndex);
 end;
@@ -7283,8 +7224,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TcxCustomSchedulerStorage.Assign(
-  Source: TPersistent);
+procedure TcxCustomSchedulerStorage.Assign(Source: TPersistent);
 begin
   if Source is TcxCustomSchedulerStorage then
   begin
@@ -7294,8 +7234,7 @@ begin
   end;
 end;
 
-procedure TcxCustomSchedulerStorage.AddListener(
-  AListener: IcxSchedulerStorageListener);
+procedure TcxCustomSchedulerStorage.AddListener(AListener: IcxSchedulerStorageListener);
 begin
   if FListeners.IndexOf(AListener) = -1 then
     FListeners.Add(AListener);
@@ -7304,6 +7243,7 @@ end;
 procedure TcxCustomSchedulerStorage.BeginUpdate;
 begin
   BeginUpdateDataController;
+  Resources.BeginUpdate;
 end;
 
 procedure TcxCustomSchedulerStorage.Clear;
@@ -7397,6 +7337,7 @@ begin
         DeleteEvents(FDeletedEvents);
       end;
     finally
+      Resources.EndUpdate;
       EndUpdateDataController;
     end;
   finally
@@ -7563,8 +7504,7 @@ begin
     end;
 end;
 
-function TcxCustomSchedulerStorage.GetEvents(
-  AList: TcxSchedulerFilteredEventList;
+function TcxCustomSchedulerStorage.GetEvents(AList: TcxSchedulerFilteredEventList;
   const AStart, AFinish: TDateTime): Boolean;
 begin
   Result := GetEvents(AList, AStart, AFinish, Null);
@@ -7642,8 +7582,7 @@ begin
   Result := AList.Count > 0;
 end;
 
-function TcxCustomSchedulerStorage.GetFieldByName(
-  const AName: string): TcxCustomSchedulerStorageField;
+function TcxCustomSchedulerStorage.GetFieldByName(const AName: string): TcxCustomSchedulerStorageField;
 begin
   Result := CustomFields.FindFieldByName(AName);
 end;
@@ -7713,8 +7652,7 @@ begin
   Result := FCaptionField.IsActive;
 end;
 
-function TcxCustomSchedulerStorage.IsEventEditing(
-  AEvent: TcxSchedulerControlEvent): Boolean;
+function TcxCustomSchedulerStorage.IsEventEditing(AEvent: TcxSchedulerControlEvent): Boolean;
 begin
   Result := EditingEventInfoList.IsEventEditing(AEvent, False);
 end;
@@ -7796,8 +7734,7 @@ begin
     Result := DataController.GetItemValueTypeClass(AField.Index);
 end;
 
-procedure TcxCustomSchedulerStorage.RemoveListener(
-  AListener: IcxSchedulerStorageListener);
+procedure TcxCustomSchedulerStorage.RemoveListener( AListener: IcxSchedulerStorageListener);
 begin
   FListeners.Remove(AListener);
 end;
@@ -7875,8 +7812,7 @@ begin
   Changed;
 end;
 
-function TcxCustomSchedulerStorage.CanGetValueFromPattern(
-  AIndex: Integer): Boolean;
+function TcxCustomSchedulerStorage.CanGetValueFromPattern(AIndex: Integer): Boolean;
 begin
   Result := AIndex in [
     FCaptionField.Index,
@@ -8083,8 +8019,7 @@ begin
   end;
 end;
 
-procedure TcxCustomSchedulerStorage.DoDeleteEvent(
-  AEvent: TcxSchedulerEvent);
+procedure TcxCustomSchedulerStorage.DoDeleteEvent(AEvent: TcxSchedulerEvent);
 var
   I: Integer;
   AChildEvent: TcxSchedulerEvent;
@@ -8120,39 +8055,34 @@ begin
   end;
 end;
 
-procedure TcxCustomSchedulerStorage.DoDestroyEvent(
-  AEvent: TcxSchedulerEvent);
+procedure TcxCustomSchedulerStorage.DoDestroyEvent(AEvent: TcxSchedulerEvent);
 begin
   SendNotification(AEvent, True, False);
   InternalRemove(AEvent);
 end;
 
-function TcxCustomSchedulerStorage.DoEventDeleted(
-  AEvent: TcxSchedulerEvent): Boolean;
+function TcxCustomSchedulerStorage.DoEventDeleted(AEvent: TcxSchedulerEvent): Boolean;
 begin
   Result := False;
   if Assigned(FOnEventDeleted) then
     FOnEventDeleted(Self, AEvent, Result);
 end;
 
-function TcxCustomSchedulerStorage.DoEventInserted(
-  AEvent: TcxSchedulerEvent): Boolean;
+function TcxCustomSchedulerStorage.DoEventInserted(AEvent: TcxSchedulerEvent): Boolean;
 begin
   Result := False;
   if Assigned(FOnEventInserted) then
     FOnEventInserted(Self, AEvent, Result);
 end;
 
-function TcxCustomSchedulerStorage.DoEventIntersect(AEvent1,
-  AEvent2: TcxSchedulerEvent): Boolean;
+function TcxCustomSchedulerStorage.DoEventIntersect(AEvent1, AEvent2: TcxSchedulerEvent): Boolean;
 begin
   Result := False;
   if Assigned(FOnEventIntersect) then
     FOnEventIntersect(Self, AEvent1, AEvent2, Result);
 end;
 
-function TcxCustomSchedulerStorage.DoEventModified(
-  AEvent: TcxSchedulerEvent): Boolean;
+function TcxCustomSchedulerStorage.DoEventModified(AEvent: TcxSchedulerEvent): Boolean;
 begin
   Result := False;
   with AEvent do
@@ -8243,8 +8173,7 @@ begin
   Result := FStoreUsingGlobalTime;
 end;
 
-function TcxCustomSchedulerStorage.GetEventActualValue(
-  AEvent: TcxSchedulerEvent; AIndex: Integer): Variant;
+function TcxCustomSchedulerStorage.GetEventActualValue(AEvent: TcxSchedulerEvent; AIndex: Integer): Variant;
 begin
   if AEvent.IsEditing then
     Result := GetEventValue(AEvent.FEditingRecordHandle, AIndex)
@@ -8252,8 +8181,7 @@ begin
     Result := GetEventValue(AEvent.FRecordHandle, AIndex);
 end;
 
-function TcxCustomSchedulerStorage.GetEventValue(
-  const AHandle: Pointer; AIndex: Integer): Variant;
+function TcxCustomSchedulerStorage.GetEventValue(const AHandle: Pointer; AIndex: Integer): Variant;
 begin
   if AHandle = nil then
     Result := Null
@@ -8266,8 +8194,7 @@ begin
   Result := False;
 end;
 
-function TcxCustomSchedulerStorage.HasEventIntersect(AEvent1,
-  AEvent2: TcxSchedulerEvent): Boolean;
+function TcxCustomSchedulerStorage.HasEventIntersect(AEvent1, AEvent2: TcxSchedulerEvent): Boolean;
 begin
   Result := not DoEventIntersect(AEvent1, AEvent2);
 end;
@@ -8282,8 +8209,7 @@ begin
   Result := AEvent.FIsDeletion or (FDeletedEvents.IndexOf(AEvent) <> -1);
 end;
 
-procedure TcxCustomSchedulerStorage.ItemAdded(
-  AItem: TcxCustomSchedulerStorageField);
+procedure TcxCustomSchedulerStorage.ItemAdded(AItem: TcxCustomSchedulerStorageField);
 begin
   if FFields.IndexOf(AItem) = -1 then
   try
@@ -8306,8 +8232,7 @@ begin
   end;
 end;
 
-procedure TcxCustomSchedulerStorage.ItemRemoved(
-  AItem: TcxCustomSchedulerStorageField);
+procedure TcxCustomSchedulerStorage.ItemRemoved(AItem: TcxCustomSchedulerStorageField);
 begin
   if FFields.Remove(AItem) <> -1 then
   begin
@@ -8341,16 +8266,14 @@ begin
   FullRefresh;
 end;
 
-procedure TcxCustomSchedulerStorage.Notification(
-  AComponent: TComponent; Operation: TOperation);
+procedure TcxCustomSchedulerStorage.Notification(AComponent: TComponent; Operation: TOperation);
 begin
   if (Resources <> Nil) and (Operation = opRemove)and (AComponent = Resources.Images) then
     Resources.Images := nil;
   inherited Notification(AComponent, Operation);
 end;
 
-procedure TcxCustomSchedulerStorage.PostEvent(
-  AEvent: TcxSchedulerEvent);
+procedure TcxCustomSchedulerStorage.PostEvent(AEvent: TcxSchedulerEvent);
 begin
   BeginUpdate;
   try
@@ -8376,8 +8299,7 @@ begin
   end;
 end;
 
-procedure TcxCustomSchedulerStorage.PostEditingData(
-  AEvent: TcxSchedulerEvent);
+procedure TcxCustomSchedulerStorage.PostEditingData(AEvent: TcxSchedulerEvent);
 var
   AFieldIndex: Integer;
 begin
@@ -8455,8 +8377,7 @@ begin
   end;
 end;
 
-procedure TcxCustomSchedulerStorage.SetPostFieldValue(AEvent: TcxSchedulerEvent;
-  AFieldIndex: Integer);
+procedure TcxCustomSchedulerStorage.SetPostFieldValue(AEvent: TcxSchedulerEvent; AFieldIndex: Integer);
 var
   AEventValue, APatternValue, AStoredValue: Variant;
 begin
@@ -8480,56 +8401,16 @@ begin
   TcxDataStorageHelper.SetValue(ARecordHandle, Fields[AFieldIndex].ValueDef, AValue);
 end;
 
-procedure TcxCustomSchedulerStorage.SetValueBeforePost(
-  AEvent: TcxSchedulerEvent; AItemIndex: Integer);
+procedure TcxCustomSchedulerStorage.SetValueBeforePost(AEvent: TcxSchedulerEvent; AItemIndex: Integer);
 begin
  // todo: for DB
 end;
 
-procedure TcxCustomSchedulerStorage.BeginSynchronizeEventsWithRecords;
-var
-  AIntf: IcxSchedulerStorageListener3;
-  I: Integer;
-begin
-  Inc(FSynchronizeCount);
-  for I := FListeners.Count - 1 downto 0 do
-  begin
-    if Supports(FListeners[I], IcxSchedulerStorageListener3, AIntf) then
-      AIntf.StorageBeginSynchronize(Self);
-  end;
-end;
-
-procedure TcxCustomSchedulerStorage.DoSynchronizeEventsWithRecords;
-begin
-end;
-
-procedure TcxCustomSchedulerStorage.EndSynchronizeEventsWithRecords;
-var
-  AIntf: IcxSchedulerStorageListener3;
-  I: Integer;
-begin
-  for I := 0 to FListeners.Count - 1 do
-  begin
-    if Supports(FListeners[I], IcxSchedulerStorageListener3, AIntf) then
-      AIntf.StorageEndSynchronize(Self);
-  end;
-  Dec(FSynchronizeCount);
-end;
-
 procedure TcxCustomSchedulerStorage.SynchronizeEventsWithRecords;
 begin
-  if FSynchronizeCount > 0 then
-    Exit;
-  BeginSynchronizeEventsWithRecords;
-  try
-    DoSynchronizeEventsWithRecords;
-  finally
-    EndSynchronizeEventsWithRecords;
-  end;
 end;
 
-procedure TcxCustomSchedulerStorage.UpdateControl(
-  AInfo: TcxUpdateControlInfo);
+procedure TcxCustomSchedulerStorage.UpdateControl(AInfo: TcxUpdateControlInfo);
 begin
   if (AInfo is TcxDataChangedInfo) or (AInfo is TcxUpdateRecordInfo) then
     FullRefresh;
@@ -8623,14 +8504,12 @@ begin
   RefreshNeeded := False;
 end;
 
-function TcxCustomSchedulerStorage.GetDataField(
-  AIndex: Integer): TcxCustomSchedulerStorageField;
+function TcxCustomSchedulerStorage.GetDataField(AIndex: Integer): TcxCustomSchedulerStorageField;
 begin
   Result := TcxCustomSchedulerStorageField(FFields[AIndex]);
 end;
 
-function TcxCustomSchedulerStorage.GetEvent(
-  AIndex: Integer): TcxSchedulerEvent;
+function TcxCustomSchedulerStorage.GetEvent(AIndex: Integer): TcxSchedulerEvent;
 begin
   Result := FEventsList[AIndex];
 end;
@@ -8733,8 +8612,7 @@ begin
   LayoutChanged;
 end;
 
-procedure TcxCustomSchedulerStorage.SetEvent(
-  AIndex: Integer; AValue: TcxSchedulerEvent);
+procedure TcxCustomSchedulerStorage.SetEvent(AIndex: Integer; AValue: TcxSchedulerEvent);
 begin
   Events[AIndex].Assign(AValue);
 end;
@@ -8752,8 +8630,7 @@ begin
   end;
 end;
 
-procedure TcxCustomSchedulerStorage.SetOnFilterEvent(
-  AValue: TcxSchedulerFilterEventEvent);
+procedure TcxCustomSchedulerStorage.SetOnFilterEvent(AValue: TcxSchedulerFilterEventEvent);
 begin
   if @FOnFilterEvent <> @AValue then
   begin
@@ -8762,14 +8639,12 @@ begin
   end;
 end;
 
-procedure TcxCustomSchedulerStorage.SetReminders(
-  AValue: TcxSchedulerReminders);
+procedure TcxCustomSchedulerStorage.SetReminders(AValue: TcxSchedulerReminders);
 begin
   FReminders.Assign(AValue);
 end;
 
-procedure TcxCustomSchedulerStorage.SetResources(
-  AValue: TcxSchedulerStorageResources);
+procedure TcxCustomSchedulerStorage.SetResources(AValue: TcxSchedulerStorageResources);
 begin
   FResources.Assign(AValue);
 end;
@@ -8810,8 +8685,7 @@ begin
     inherited Assign(Source);
 end;
 
-procedure TcxSchedulerStorage.SaveToFile(
-  const AFileName: string);
+procedure TcxSchedulerStorage.SaveToFile(const AFileName: string);
 var
   AStream: TFileStream;
 begin
@@ -8844,8 +8718,7 @@ begin
   end;
 end;
 
-procedure TcxSchedulerStorage.LoadFromStream(
-  AStream: TStream);
+procedure TcxSchedulerStorage.LoadFromStream(AStream: TStream);
 var
   I, C: Integer;
   AVersion: Double;
@@ -8887,8 +8760,7 @@ begin
   end;
 end;
 
-procedure TcxSchedulerStorage.DefineProperties(
-  Filer: TFiler);
+procedure TcxSchedulerStorage.DefineProperties(Filer: TFiler);
 begin
   inherited DefineProperties(Filer);
   Filer.DefineBinaryProperty('BinaryData', LoadFromStream,
@@ -8911,8 +8783,7 @@ begin
   Result := TcxSchedulerStorageFields(inherited CustomFields)
 end;
 
-procedure TcxSchedulerStorage.SetCustomFields(
-  const AValue: TcxSchedulerStorageFields);
+procedure TcxSchedulerStorage.SetCustomFields(const AValue: TcxSchedulerStorageFields);
 begin
   CustomFields.Assign(AValue);
 end;
@@ -9000,8 +8871,7 @@ begin
   DoEventSelectionChanged(nil);
 end;
 
-function TcxSchedulerEventSelection.IsSelected(
-  AEvent: TcxSchedulerControlEvent): Boolean;
+function TcxSchedulerEventSelection.IsSelected(AEvent: TcxSchedulerControlEvent): Boolean;
 begin
   Result := KeyIndexOf(AEvent) >= 0;
 end;
@@ -9028,21 +8898,18 @@ begin
   FKeys.Clear;
 end;
 
-function TcxSchedulerEventSelection.CreateItem(
-  AEvent: TcxSchedulerEvent): TcxSchedulerControlEventID;
+function TcxSchedulerEventSelection.CreateItem(AEvent: TcxSchedulerEvent): TcxSchedulerControlEventID;
 begin
   Result := TcxSchedulerControlEventID.Create(AEvent);
 end;
 
-procedure TcxSchedulerEventSelection.DoEventSelectionChanged(
-  AEvent: TcxSchedulerControlEvent);
+procedure TcxSchedulerEventSelection.DoEventSelectionChanged(AEvent: TcxSchedulerControlEvent);
 begin
   if Assigned(FOnEventSelectionChanged) then
     FOnEventSelectionChanged(AEvent);
 end;
 
-function TcxSchedulerEventSelection.KeyIndexOf(
-  AEvent: TcxSchedulerControlEvent): Integer;
+function TcxSchedulerEventSelection.KeyIndexOf(AEvent: TcxSchedulerControlEvent): Integer;
 var
   I, L, R, C: Integer;
   AItemForSearch: TcxSchedulerControlEventID;
@@ -9074,8 +8941,7 @@ begin
   end;
 end;
 
-function TcxSchedulerEventSelection.IndexOf(
-  AEvent: TcxSchedulerControlEvent): Integer;
+function TcxSchedulerEventSelection.IndexOf(AEvent: TcxSchedulerControlEvent): Integer;
 begin
   Result := FEvents.IndexOf(AEvent);
 end;
@@ -9107,14 +8973,12 @@ begin
   Result := FEvents.Count;
 end;
 
-function TcxSchedulerEventSelection.GetItem(
-  AIndex: Integer): TcxSchedulerControlEvent;
+function TcxSchedulerEventSelection.GetItem(AIndex: Integer): TcxSchedulerControlEvent;
 begin
   Result := TcxSchedulerControlEvent(FEvents.List[AIndex])
 end;
 
-function TcxSchedulerEventSelection.GetKey(
-  AIndex: Integer): TcxSchedulerControlEventID;
+function TcxSchedulerEventSelection.GetKey(AIndex: Integer): TcxSchedulerControlEventID;
 begin
   Result := FKeys.List[AIndex];
 end;
@@ -9259,8 +9123,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TcxSchedulerFilteredEventList.ValidateTimeBias(
-  AEvent: TcxSchedulerControlEvent);
+procedure TcxSchedulerFilteredEventList.ValidateTimeBias(AEvent: TcxSchedulerControlEvent);
 begin
   if AEvent.Source <> nil then
     AEvent.FTimeBias := GetTimeBias + GetTimeBiasDaylightSavingTime(AEvent.Source.Start)
@@ -9269,8 +9132,7 @@ begin
   AEvent.IsDataValid := False;
 end;
 
-function TcxSchedulerFilteredEventList.AddEvent(
-  AEvent: TcxSchedulerEvent): TcxSchedulerControlEvent;
+function TcxSchedulerFilteredEventList.AddEvent(AEvent: TcxSchedulerEvent): TcxSchedulerControlEvent;
 begin
   Result := CreateControlEvent(AEvent);
   Add(Result);
@@ -9417,8 +9279,7 @@ begin
       end;
 end;
 
-function TcxSchedulerFilteredEventList.CreateControlEvent(
-  AEvent: TcxSchedulerEvent): TcxSchedulerControlEvent;
+function TcxSchedulerFilteredEventList.CreateControlEvent(AEvent: TcxSchedulerEvent): TcxSchedulerControlEvent;
 begin
   Result := TcxSchedulerControlEvent.Create(AEvent);
   Result.InitFromSource(Result.FSource);
@@ -9432,8 +9293,7 @@ begin
   Result := {DateTimeHelper.CurrentTimeZoneBias - }Storage.TimeBias;
 end;
 
-function TcxSchedulerFilteredEventList.GetTimeBiasDaylightSavingTime(
-  ATime: TDateTime): TDateTime;
+function TcxSchedulerFilteredEventList.GetTimeBiasDaylightSavingTime(ATime: TDateTime): TDateTime;
 begin
   Result := 0;
 end;
@@ -9466,10 +9326,23 @@ begin
   FUseTimeRange := AValue;
 end;
 
-function TcxSchedulerFilteredEventList.GetEvent(
-  AIndex: Integer): TcxSchedulerControlEvent;
+function TcxSchedulerFilteredEventList.GetEvent(AIndex: Integer): TcxSchedulerControlEvent;
 begin
   Result := TcxSchedulerControlEvent(FItems.List[AIndex])
+end;
+
+function TcxSchedulerFilteredEventList.GetEventByID(const AID: Variant): TcxSchedulerControlEvent;
+var
+  I: Integer;
+  AEvent: TcxSchedulerControlEvent;
+begin
+  for I := 0 to Count - 1 do
+  begin
+    AEvent := Items[I];
+    if VarEquals(AID, AEvent.ID) then
+      Exit(AEvent);
+  end;
+  Result := nil;
 end;
 
 { TcxSchedulerCachedEventList }
@@ -9506,16 +9379,14 @@ begin
   AEvent.FIsEditing := False;
 end;
 
-procedure TcxSchedulerCachedEventList.BeforeEditing(
-  AEvent: TcxSchedulerControlEvent; AIsInplace: Boolean);
+procedure TcxSchedulerCachedEventList.BeforeEditing(AEvent: TcxSchedulerControlEvent; AIsInplace: Boolean);
 begin
   AEvent.FIsEditing := AIsInplace;
 end;
 
 procedure TcxSchedulerCachedEventList.BeforeUpdate;
 begin
-  FExpandedTimeRange := CalculateNecessaryDate(
-    FMinNecessaryDate, FMaxNecessaryDate);
+  FExpandedTimeRange := CalculateNecessaryDate(FMinNecessaryDate, FMaxNecessaryDate);
 end;
 
 procedure TcxSchedulerCachedEventList.DeleteClone(AClone: TcxSchedulerControlEvent);
@@ -9524,8 +9395,7 @@ begin
   FAbsoluteItems.Remove(AClone);
 end;
 
-procedure TcxSchedulerCachedEventList.DeleteEvent(
-  AEvent: TcxSchedulerControlEvent);
+procedure TcxSchedulerCachedEventList.DeleteEvent(AEvent: TcxSchedulerControlEvent);
 begin
   if (AEvent.Source <> nil) or (AEvent.EventType = etOccurrence) then
     AEvent.Delete
@@ -9537,8 +9407,7 @@ begin
   end;
 end;
 
-procedure TcxSchedulerCachedEventList.CalculateClonesRange(
-  var AMinDate, AMaxDate: TDateTime);
+procedure TcxSchedulerCachedEventList.CalculateClonesRange(var AMinDate, AMaxDate: TDateTime);
 var
   I: Integer;
 begin
@@ -9552,8 +9421,7 @@ begin
   end;
 end;
 
-function TcxSchedulerCachedEventList.CalculateNecessaryDate(
-  var AMinDate, AMaxDate: TDateTime): Boolean;
+function TcxSchedulerCachedEventList.CalculateNecessaryDate(var AMinDate, AMaxDate: TDateTime): Boolean;
 var
   AMin, AMax: TDateTime;
 begin
@@ -9577,8 +9445,7 @@ begin
   end;
 end;
 
-procedure TcxSchedulerCachedEventList.CalculateSelectionRange(
-  var AMinDate, AMaxDate: TDateTime);
+procedure TcxSchedulerCachedEventList.CalculateSelectionRange(var AMinDate, AMaxDate: TDateTime);
 var
   I: Integer;
 begin
@@ -9753,8 +9620,7 @@ begin
   end;
 end;
 
-function TcxSchedulerCachedEventList.PostEvent(
-  AEvent: TcxSchedulerControlEvent): TcxSchedulerEvent;
+function TcxSchedulerCachedEventList.PostEvent(AEvent: TcxSchedulerControlEvent): TcxSchedulerEvent;
 begin
   Result := nil;
   FBeforePostCount := Count;
@@ -9906,8 +9772,7 @@ begin
   inherited DoClear(True);
 end;
 
-procedure TcxSchedulerCachedEventList.EventAdded(
-  AEvent: TcxSchedulerEvent);
+procedure TcxSchedulerCachedEventList.EventAdded(AEvent: TcxSchedulerEvent);
 begin
   TcxSchedulerControlEvent(AEvent).SelectionAdapter := Self;
   inherited EventAdded(AEvent);
@@ -9918,8 +9783,7 @@ begin
   Result := FTimeBias;
 end;
 
-function TcxSchedulerCachedEventList.GetTimeBiasDaylightSavingTime(
-  ATime: TDateTime): TDateTime;
+function TcxSchedulerCachedEventList.GetTimeBiasDaylightSavingTime(ATime: TDateTime): TDateTime;
 begin
   Result := 0;
   if DaylightSaving then
@@ -9938,8 +9802,7 @@ begin
   FAbsoluteItems.Clear;
 end;
 
-procedure TcxSchedulerCachedEventList.InternalPost(
-  AEvent: TcxSchedulerControlEvent; ACopy: Boolean);
+procedure TcxSchedulerCachedEventList.InternalPost(AEvent: TcxSchedulerControlEvent; ACopy: Boolean);
 begin
   if AEvent.EventType = etNone then
     PostCloneForSimpleEvent(AEvent, ACopy, etNone)
@@ -9959,8 +9822,7 @@ begin
   end;
 end;
 
-function TcxSchedulerCachedEventList.IsIntersect(
-  AEvent1, AEvent2: TcxSchedulerEvent): Boolean;
+function TcxSchedulerCachedEventList.IsIntersect(AEvent1, AEvent2: TcxSchedulerEvent): Boolean;
 begin
   Result := not (AEvent1.IsFreeState or AEvent2.IsFreeState);
   if Result then
@@ -9972,8 +9834,7 @@ begin
   Result := Result and Storage.HasEventIntersect(AEvent2, AEvent1);
 end;
 
-function TcxSchedulerCachedEventList.IsSelected(
-  AEvent: TcxSchedulerControlEvent): Boolean;
+function TcxSchedulerCachedEventList.IsSelected(AEvent: TcxSchedulerControlEvent): Boolean;
 begin
   Result := AEvent.IsClone or (Selection.IsSelected(AEvent) and
     (AlwaysShowSelectedEvent or (FClones.Count = 0)));
@@ -10054,8 +9915,7 @@ begin
   end;
 end;
 
-function TcxSchedulerCachedEventList.PostNewEvent(
-  AEvent: TcxSchedulerControlEvent): TcxSchedulerEvent;
+function TcxSchedulerCachedEventList.PostNewEvent(AEvent: TcxSchedulerControlEvent): TcxSchedulerEvent;
 begin
   Result := FNewEvent;
   FBeforePostCount := Count - 1;
@@ -10070,8 +9930,7 @@ begin
   end;
 end;
 
-procedure TcxSchedulerCachedEventList.SelectionAdd(
-  AEvent: TcxSchedulerControlEvent; Shift: TShiftState);
+procedure TcxSchedulerCachedEventList.SelectionAdd(AEvent: TcxSchedulerControlEvent; Shift: TShiftState);
 begin
   Selection.Add(AEvent, Shift);
 end;
@@ -10108,8 +9967,7 @@ begin
   Result := -1;
 end;
 
-function TcxSchedulerCachedEventList.QueryInterface(
-  const IID: TGUID; out Obj): HResult;
+function TcxSchedulerCachedEventList.QueryInterface(const IID: TGUID; out Obj): HResult;
 const
   E_NOINTERFACE = HResult($80004002);
 begin
@@ -10154,8 +10012,7 @@ begin
   Result := FAbsoluteItems.Count;
 end;
 
-function TcxSchedulerCachedEventList.GetAbsoluteItem(
-  AIndex: Integer): TcxSchedulerControlEvent;
+function TcxSchedulerCachedEventList.GetAbsoluteItem(AIndex: Integer): TcxSchedulerControlEvent;
 begin
   Result := TcxSchedulerControlEvent(FAbsoluteItems.List[AIndex])
 end;
@@ -10165,8 +10022,7 @@ begin
   Result := Count + FClones.Count;
 end;
 
-function TcxSchedulerCachedEventList.GetItem(
-  AIndex: Integer): TcxSchedulerControlEvent;
+function TcxSchedulerCachedEventList.GetItem(AIndex: Integer): TcxSchedulerControlEvent;
 begin
   Result := TcxSchedulerControlEvent(FItems.List[AIndex])
 end;
@@ -10307,8 +10163,7 @@ begin
     Result := odsIntersectRange;
 end;
 
-function TcxSchedulerOccurrenceCalculator.GetOccurrenceCount(
-  AEndDate: TDateTime): Integer;
+function TcxSchedulerOccurrenceCalculator.GetOccurrenceCount(AEndDate: TDateTime): Integer;
 begin
   Result := 0;
   InitTimes;
@@ -10605,8 +10460,7 @@ begin
   end;
 end;
 
-procedure TcxSchedulerCustomReminderForm.CreateParams(
-  var Params: TCreateParams);
+procedure TcxSchedulerCustomReminderForm.CreateParams(var Params: TCreateParams);
 begin
   inherited CreateParams(Params);
   Params.ExStyle := Params.ExStyle or WS_EX_APPWINDOW;
@@ -10663,8 +10517,7 @@ procedure TcxSchedulerCustomReminderForm.LayoutChanged;
 begin
 end;
 
-procedure TcxSchedulerCustomReminderForm.OpenEvent(
-  AEvent: TcxSchedulerControlEvent);
+procedure TcxSchedulerCustomReminderForm.OpenEvent(AEvent: TcxSchedulerControlEvent);
 begin
   Reminders.DoOpenEvent(AEvent);
 end;
@@ -10741,8 +10594,7 @@ begin
   inherited Destroy;
 end;
 
-function TcxSchedulerReminderEventID.SameEvent(
-  AEvent: TcxSchedulerControlEvent): Boolean;
+function TcxSchedulerReminderEventID.SameEvent(AEvent: TcxSchedulerControlEvent): Boolean;
 var
   I: Integer;
 begin
@@ -10890,7 +10742,7 @@ begin
       Remove(Items[I]);
 end;
 
-function TcxSchedulerEventRemindersList.GetItem(AIndex: Integer): TcxSchedulerEventReminders;
+function TcxSchedulerEventRemindersList.GetItem(AIndex: TdxListIndex): TcxSchedulerEventReminders;
 begin
   Result := TcxSchedulerEventReminders(inherited Items[AIndex]);
 end;
@@ -10902,6 +10754,7 @@ begin
   inherited Create;
   FOwner := AOwner;
   FEvent := AEvent;
+  FEventID := AEvent.ID;
 end;
 
 destructor TcxSchedulerReminder.Destroy;
@@ -11054,6 +10907,7 @@ procedure TcxSchedulerReminder.Validate(AEvent: TcxSchedulerControlEvent);
 begin
   FInvalid := False;
   FEvent := AEvent;
+  FEventID := AEvent.ID;
 end;
 
 function TcxSchedulerReminder.GetResourcesData: TcxSchedulerReminderResourcesData;
@@ -11079,8 +10933,7 @@ begin
   end;
 end;
 
-function TcxSchedulerReminderList.GetItem(
-  Index: Integer): TcxSchedulerReminder;
+function TcxSchedulerReminderList.GetItem(Index: TdxListIndex): TcxSchedulerReminder;
 begin
   Result := inherited Items[Index];
 end;
@@ -11203,8 +11056,7 @@ begin
   end;
 end;
 
-function TcxSchedulerReminders.GetEventDueTimeText(
-  AReminder: TcxSchedulerReminder; ATime: TDateTime): string;
+function TcxSchedulerReminders.GetEventDueTimeText(AReminder: TcxSchedulerReminder; ATime: TDateTime): string;
 var
   ADueTimeInfo: TcxSchedulerReminderDueTimeInfo;
   AMinutes: Integer;
@@ -11239,10 +11091,9 @@ begin
   Result := ReminderByResource and Storage.IsReminderByResourceAvailable;
 end;
 
-function TcxSchedulerReminders.IsReminderValid(
-  AReminder: TcxSchedulerReminder): Boolean;
+function TcxSchedulerReminders.IsReminderValid(AReminder: TcxSchedulerReminder): Boolean;
 begin
-  Result := FItems.IndexOf(AReminder) >= 0;
+  Result := (FItems.IndexOf(AReminder) >= 0) and (FEvents.GetEventByID(AReminder.FEventID) <> nil);
 end;
 
 function TcxSchedulerReminders.IsReminderWindowShown: Boolean;
@@ -11345,16 +11196,14 @@ begin
     Result := TcxSchedulerReminderForm.Create(Self);
 end;
 
-function TcxSchedulerReminders.DoAlertReminder(
-  AReminder: TcxSchedulerReminder): Boolean;
+function TcxSchedulerReminders.DoAlertReminder(AReminder: TcxSchedulerReminder): Boolean;
 begin
   Result := False;
   if Assigned(FOnAlertReminder) then
     FOnAlertReminder(Self, AReminder, Result);
 end;
 
-function TcxSchedulerReminders.DoDismissReminder(
-  AReminder: TcxSchedulerReminder): Boolean;
+function TcxSchedulerReminders.DoDismissReminder(AReminder: TcxSchedulerReminder): Boolean;
 begin
   Result := False;
   if Assigned(FOnDismissReminder) then
@@ -11368,15 +11217,13 @@ begin
     FOnGetEventDueTimeText(Self, AReminder, ADueTimeInfo, AText);
 end;
 
-procedure TcxSchedulerReminders.DoGetReminderWindowCaption(
-  var ACaption: string);
+procedure TcxSchedulerReminders.DoGetReminderWindowCaption(var ACaption: string);
 begin
   if Assigned(FOnGetReminderWindowCaption) then
     FOnGetReminderWindowCaption(Self, ACaption);
 end;
 
-procedure TcxSchedulerReminders.DoOpenEvent(
-  AEvent: TcxSchedulerControlEvent);
+procedure TcxSchedulerReminders.DoOpenEvent(AEvent: TcxSchedulerControlEvent);
 begin
   if Assigned(FOnOpenEvent) then
     FOnOpenEvent(Self, AEvent);
@@ -11558,8 +11405,7 @@ begin
     ValidateReminderList;
 end;
 
-procedure TcxSchedulerReminders.RemoveEventReminders(
-  AReminder: TcxSchedulerReminder);
+procedure TcxSchedulerReminders.RemoveEventReminders(AReminder: TcxSchedulerReminder);
 begin
   if AReminder.EventReminders = nil then
     AReminder.Free
@@ -11760,8 +11606,7 @@ begin
   Result := FItems.Count;
 end;
 
-function TcxSchedulerReminders.GetItem(
-  Index: Integer): TcxSchedulerReminder;
+function TcxSchedulerReminders.GetItem(Index: Integer): TcxSchedulerReminder;
 begin
   if (Index >= 0) and (Index < Count) then
     Result := FItems[Index]
@@ -11804,8 +11649,7 @@ begin
   end;
 end;
 
-procedure TcxSchedulerReminders.SetReminderWindowLookAndFeel(
-  AValue: TcxLookAndFeel);
+procedure TcxSchedulerReminders.SetReminderWindowLookAndFeel(AValue: TcxLookAndFeel);
 begin
   FReminderWindowLookAndFeel.Assign(AValue);
 end;
@@ -12134,7 +11978,7 @@ begin
   end;
   AStream.Position := APos;
 end;
-
+{$EndRegion TcxSchedulerReminders}
 initialization
   {$IFDEF DX_INITIALIZATION_LOGGING}TdxUnitSectionsLogger.InitializationStarted(dxThisUnitName, SysInit.HInstance);{$ENDIF}
   //

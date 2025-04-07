@@ -153,6 +153,10 @@ type
     chkbx_CompleteDay: TdxLayoutGroup;
     dxLayoutItem30: TdxLayoutItem;
     dxLayoutSeparatorItem1: TdxLayoutSeparatorItem;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutLabeledItem8: TdxLayoutLabeledItem;
+    dxLayoutItem1: TdxLayoutItem;
+    edt_Kalname: TcxTextEdit;
     procedure bSendClick(Sender: TObject);
     procedure btnAnhangHinzufuegenClick(Sender: TObject);
     procedure btnAnhangLoeschenClick(Sender: TObject);
@@ -208,7 +212,7 @@ type
     iCountEvent: Integer;
     AssKalenderStorage:TcxSchedulerDBStorage;
 
-    function Execute(AKalenderStorage:TcxSchedulerDBStorage;Typ : integer; ID_Adr_Wurzel, ID_Ansprechpartner: integer;
+    function Execute(ALabel, AFont: integer;Location, KalName: String ;AKalenderStorage:TcxSchedulerDBStorage;Typ : integer; ID_Adr_Wurzel, ID_Ansprechpartner: integer;
       Betreff, Nachricht: string; ID_WF_Nachrichten_Ursprung: Integer; Start, Faellig:
       TDateTime; Status2: Integer; Rueckfrage: Boolean; ID_WF_Prioritaeten,
       ID_WF_AufgabenArten: Integer; Dauer: Integer; OrtTyp, ID_Firma,
@@ -618,7 +622,7 @@ begin
   end;
   // Zeitformat auf Minunten ändern
 end;
-function Tfrm_Calendar_new.Execute(AKalenderStorage:TcxSchedulerDBStorage;Typ : Integer; ID_Adr_Wurzel, ID_Ansprechpartner: integer;Betreff, Nachricht: string; ID_WF_Nachrichten_Ursprung: Integer;Start, Faellig: TDateTime; Status2: Integer; Rueckfrage: Boolean; ID_WF_Prioritaeten,ID_WF_AufgabenArten, Dauer, OrtTyp, ID_Firma, ID_Adr_Firmen_Adressen: Integer;Reminder, GanzerTag : Boolean; ReminderBeforeStart: Integer; PrivaterTermin : Boolean;Zeitformat : integer; Erledigungsgrad : double;Event: TcxSchedulerControlEvent; Jira_Ticket, Wiederholung: String;var NewId : Integer;bStandardFaelligkeitAufgabe: Boolean = False; bCallFromReminder: Boolean = False): Boolean;
+function Tfrm_Calendar_new.Execute(ALabel, AFont: integer;Location, KalName: String;AKalenderStorage:TcxSchedulerDBStorage;Typ : Integer; ID_Adr_Wurzel, ID_Ansprechpartner: integer;Betreff, Nachricht: string; ID_WF_Nachrichten_Ursprung: Integer;Start, Faellig: TDateTime; Status2: Integer; Rueckfrage: Boolean; ID_WF_Prioritaeten,ID_WF_AufgabenArten, Dauer, OrtTyp, ID_Firma, ID_Adr_Firmen_Adressen: Integer;Reminder, GanzerTag : Boolean; ReminderBeforeStart: Integer; PrivaterTermin : Boolean;Zeitformat : integer; Erledigungsgrad : double;Event: TcxSchedulerControlEvent; Jira_Ticket, Wiederholung: String;var NewId : Integer;bStandardFaelligkeitAufgabe: Boolean = False; bCallFromReminder: Boolean = False): Boolean;
   function WFAddAttachment(AttachmentName: string; FilePath: string; ID_WF_Nachrichten: Integer): Boolean; stdcall;
   var
     fn: string;
@@ -682,7 +686,8 @@ begin
   ID := -1;
   tAnhaenge.AfterScroll:= nil;
   AssKalenderStorage:= AKalenderStorage;
-  cmbbx_Ort.ItemIndex:= 0;
+  cmbbx_Ort.ItemIndex:=  cmbbx_Ort.Properties.Items.IndexOf(Location);
+  edt_Kalname.Text:= KalName;
   dm_PCM.qry_Optionen.Open;
   dm_PCM.qry_Optionen.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
   dm_PCM.qry_Optionen.Filtered:= true;
@@ -951,7 +956,7 @@ begin
       dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
       dm_PCM.qry_work.execsql;
 
-      dm_PCM.qry_work.SQL.Text:= 'Update manager_kalender SEt CompleteDay = :ganzerTag, wiederholung_text:= :wiederholung_text, location = :location, kalendername = ''manuell'',' +
+      dm_PCM.qry_work.SQL.Text:= 'Update manager_kalender SEt LabelColor =:LabelColor, FontColor =:FontColor, completeDay = :ganzerTag, wiederholung_text:= :wiederholung_text, location = :location, kalendername = :kalendername,' +
                          'ID_Benutzer= :ID_Benutzer,ID_Adr_Wurzel= :ID_Adr_Wurzel,' +
                          'ID_Ansprechpartner= :ID_Ansprechpartner,Typ= :Typ,GesendetAm= :GesendetAm,'+
                          'Start= :Start,Finish= :Finish,Caption= :Caption,Message= :Message,'+
@@ -964,7 +969,10 @@ begin
                          'parent_id= :parent_id,Erledigungsgrad= :Erledigungsgrad,'+
                          'Zeitformat= :Zeitformat,AufgabenDauer= :AufgabenDauer Where ID =:ID';
       dm_PCM.qry_work.Parambyname('ID').asInteger := FIdNachricht;
+      dm_PCM.qry_work.Parambyname('LabelColor').AsInteger:= ALabel;
+      dm_PCM.qry_work.Parambyname('FontColor').AsInteger:= AFont;
       dm_PCM.qry_work.Parambyname('location').asString := cmbbx_Ort.Properties.Items[cmbbx_Ort.ItemIndex];
+      dm_PCM.qry_work.Parambyname('Kalendername').asString := edt_kalname.Text;
       dm_PCM.qry_work.Parambyname('ID_Benutzer').asInteger := dm_PCM.iIDBenutzerPCM;
       dm_PCM.qry_work.Parambyname('ID_Adr_Wurzel').asInteger := GetAdressID(edtfirma.text);
       if cbAnsprechpartner.EditValue <> null then
@@ -1035,14 +1043,17 @@ begin
       dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
       dm_PCM.qry_work.execsql;
 
-      dm_PCM.qry_work.SQL.Text:= 'INSERT INTO manager_kalender (CompleteDay,wiederholung_text,location,kalendername,ID_Benutzer,ID_Adr_Wurzel,ID_Ansprechpartner,Typ,GesendetAm,'+
+      dm_PCM.qry_work.SQL.Text:= 'INSERT INTO manager_kalender (LabelColor,FontColor,CompleteDay,wiederholung_text,location,kalendername,ID_Benutzer,ID_Adr_Wurzel,ID_Ansprechpartner,Typ,GesendetAm,'+
                          'Start,Finish,Caption,Message,Aufgabenstatus,Jira_Ticket,ID_IC_Prioritaeten,ID_IC_AufgabenArten,'+
                          'Reminder,ReminderMinutesBeforeStart,ReminderDate,options,EventType,'+
-                         'RecurrenceIndex,RecurrenceInfo,parent_id,Erledigungsgrad,Zeitformat,AufgabenDauer) VALUES (:ganzerTag,:wiederholung_text,:location,''manuell'',:ID_Benutzer,:ID_Adr_Wurzel,:ID_Ansprechpartner,:Typ,:GesendetAm,'+
+                         'RecurrenceIndex,RecurrenceInfo,parent_id,Erledigungsgrad,Zeitformat,AufgabenDauer) VALUES (:LabelColor,:FontColor,:ganzerTag,:wiederholung_text,:location,:kalendername,:ID_Benutzer,:ID_Adr_Wurzel,:ID_Ansprechpartner,:Typ,:GesendetAm,'+
                          ':Start,:Finish,:Caption,:Message,:Aufgabenstatus,:Jira_Ticket,:ID_IC_Prioritaeten,:ID_IC_AufgabenArten,'+
                          ':Reminder,:ReminderMinutesBeforeStart,:ReminderDate,:options,:EventType,'+
                          ':RecurrenceIndex,:RecurrenceInfo,:parent_id,:Erledigungsgrad,:Zeitformat,:AufgabenDauer)';
+      dm_PCM.qry_work.Parambyname('LabelColor').AsInteger:= ALabel;
+      dm_PCM.qry_work.Parambyname('FontColor').AsInteger:= AFont;
       dm_PCM.qry_work.Parambyname('location').asString := cmbbx_Ort.Properties.Items[cmbbx_Ort.ItemIndex];
+      dm_PCM.qry_work.Parambyname('Kalendername').asString := edt_kalname.Text;
       dm_PCM.qry_work.Parambyname('ID_Benutzer').asInteger := dm_PCM.iIDBenutzerPCM;
       dm_PCM.qry_work.Parambyname('ID_Adr_Wurzel').asInteger := GetAdressID(edtFirma.text);
       if cbAnsprechpartner.EditValue <> null then

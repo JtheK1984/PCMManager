@@ -637,8 +637,6 @@ begin
   Result := AuthName + 'Token';
 end;
 procedure Tfrm_Config.OpenData(ATab: Integer);
-var
-  iAnzahl: Integer;
 begin
   case ATab of
   0:
@@ -1639,8 +1637,6 @@ procedure Tfrm_Config.btn_EmailConfig_TestClick(Sender: TObject);
 var
   RtfContent: TStringList;
   xoauthSASL : TIdSASLListEntry;
-  msgCount : Integer;
-  mailboxes : TStringList;
   idSmtpMail: TIdSMTP;
   idSSLIOHndOPSSLPostfach: TIdSSLIOHandlerSocketOpenSSL;
   idmsgMail: TIdMessage;
@@ -1688,7 +1684,7 @@ begin
         idSmtpMail.UseTLS := utUseRequireTLS;
         idmsgMail.Recipients.EMailAddresses := qry_EmailConfig.FieldByName('Email').AsString;
         idmsgMail.Subject := rs_PCMManager_Testmail ;
-        idmsgMail.Body.Text := RtfContent.Text;
+        idmsgMail.Body.Text := rs_PCMManager_TestmailBody;
         idmsgMail.From.Address := idSmtpMail.Username;
         idSmtpMail.Connect;
         idSmtpMail.Send(idmsgMail);
@@ -1761,24 +1757,7 @@ begin
       idmsgMail.ReplyTo.EMailAddresses := idmsgMail.From.Address;
       idmsgMail.Recipients.Add.Text := Provider.ClientAccount;
       idmsgMail.Subject := rs_PCMManager_Testmail;
-      idmsgMail.ContentType := 'text/html';
-      idmsgMail.Body.Text := '<p style="font-family: Aptos, sans-serif; font-size: 16px;">Mit freundlichen Gr&uuml;&szlig;en</p>'+
-'<p style="font-family: Aptos, sans-serif; font-size: 16px;">Jens Henske</p>'+
-'<p style="vertical-align:baseline">'+
-'<img width="80" height="80" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wAARCAA+AD4DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDo1iVegFL5Y9KPMCk5xj1p456UxiO0cUTyzMqRoCzOxwAB1JrzzWPHd7cTyDSINlovAkliyX9x6Cum8ZyMNKtrYEhLq5VJMd1ALEfjgVStkjSMAhcY6YoGlc5FfGeoBlF1HBKo4OF2sfxHf8K31u4r6wjngYMj/mD3B96sX2kabcqzS26byPvLwa5zQojBqN7bISI0XcRnjIIAP61LRSujoIlUGQMTz6VHbwEzEkAjbxzU2w/XJ7dqkhK+ec7SdvTPSmgNa9DCTzd7HDj5T0ArRgfJ3Ana1VmAbO4AjPep7chSFxxVEGN4yZz9gCKCI2eUnGecYHH41lafeXMpkWZMqoLAlQOPwNdB4jAEENxkYjbaRjrn/wDVXMW+uNukMVm8yn5QykDHqMdqkuOxKNUeSQxyQKAfu4BB/PoTVLSLVk1HV5eicRqSOp3AmtSC7gnjYhVLr1wOR7Grn2J7bTJJZl2vIw4z+P8AhQDKKTmHcwYHafunvV8vGJEcRj5kz057VF/ZvyCRmHr7GrkEcTsA4wFXjmhAaO3rUkPXmo5i/AiKZ75NSqrjBVQD3zVEFTX4mk0O5KY3ou9c9yO1cxZy2ssIkQqsLqTJ1Ukj6V0XiKOWXSsxniKVHcDuucH+efwrnDpMErFnTv0BIB+tSyokmlm3kuyLdQtuJRvcDjHHAro9b/49APVxVbRtMyqOVC26fdAH3j/hV3VLOe5g/c/MQwbbnFHQHuYkl7K8SoqcZwPepLZyty8cmFdV5zSw2zq+ZIygVudwxTrrabsEYLbOfzoGbsMEUIHloAfXvUp6U1TkA+1OpkEDoZGIP3PT1qmmkxrcgtgwjkJ/T6VpYoI4zQFxY2K/KRx29qeDTaAcUANmiScbXz7EdRWTLpVwlxuXEqkEZVefxFbGeakhPzn6UBc//9k=">'+
-'<div style="font-family: Aptos, sans-serif; font-size: 12px;"><strong><u>Jens Henske&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></strong></div>'+
-'<div style="font-family: Aptos, sans-serif; font-size: 12px;">Crailsheimstra&szlig;e 5</div>'+
-'<div style="font-family: Aptos, sans-serif; font-size: 12px;">97769 Bad Br&uuml;ckenau</div><br>'+
-'<div style="font-family: Aptos, sans-serif; font-size: 12px;">Telefon:&nbsp; +49 9741 9389662</div>'+
-'<div style="font-family: Aptos, sans-serif; font-size: 12px;">Mobil:&nbsp;&nbsp;&nbsp;&nbsp; +49 160 95460312</div>'+
-'<div style="font-family: Aptos, sans-serif; font-size: 12px;">E-Mail: &nbsp;&nbsp;<a href="mailto:Jens.Henske@outlook.com">Jens.Henske@outlook.com</a></div>'+
-'<br>'+
-'<div style="font-family: Aptos, sans-serif; font-size: 10px;">Diese E-Mail enth&auml;lt eventuell vertrauliche und/oder rechtlich gesch&uuml;tzte</div>'+
-'<div style="font-family: Aptos, sans-serif; font-size: 10px;">Informationen. Wenn Sie nicht der richtige Adressat sind oder diese</div>'+
-'<div style="font-family: Aptos, sans-serif; font-size: 10px;">E-Mail irrt&uuml;mlich erhalten haben, informieren Sie bitte sofort den </div>'+
-'<div style="font-family: Aptos, sans-serif; font-size: 10px;">Absender und vernichten Sie diese E-Mail. Das unerlaubte Kopieren </div>'+
-'<div style="font-family: Aptos, sans-serif; font-size: 10px;">sowie die unbefugte Weitergabe dieser E-Mail sind nicht gestattet.</div>';
-//      idmsgMail.Body.Text := rs_PCMManager_TestmailBody;
+      idmsgMail.Body.Text := rs_PCMManager_TestmailBody;
       IDSMTP_Mail.Send(idmsgMail);
       idmsgMail.Free;
       IDSMTP_Mail.Disconnect;

@@ -571,14 +571,18 @@ procedure Tfrm_Contact.SetTab;
       laitm_Abteilung.Visible:= false;
       laitm_Funktion.Visible:= false;
       laitm_TelefonDurchwahlText.Visible:= false;
+      laitm_TelefonDurchwahlbtn.Visible:= false;
       laitm_HandyBusinessText.Visible:= false;
+      laitm_HandyBusinessbtn.Visible:= false;
       lagrp_MailBusiness.Visible:= false;
     end
     else begin
       laitm_Abteilung.Visible:= true;
       laitm_Funktion.Visible:= true;
       laitm_TelefonDurchwahlText.Visible:= true;
+      laitm_TelefonDurchwahlbtn.Visible:= true;
       laitm_HandyBusinessText.Visible:= true;
+      laitm_HandyBusinessBtn.Visible:= true;
       lagrp_MailBusiness.Visible:= true;
     end;
   end;
@@ -586,7 +590,9 @@ begin
   if qry_Kontakte.FieldByName('ID_Anrede').AsInteger in arrcont then
   begin
     laitm_HandyBusinessText.Visible:= true;
+    laitm_HandyBusinessbtn.Visible:= true;
     laitm_TelefonDurchwahlText.Visible:= true;
+    laitm_TelefonDurchwahlbtn.Visible:= true;
     laitm_ImageGes.Visible:= false;
     lagrp_Zusatz.Visible:= True;
     lagrp_KontaktPersonal.Visible:= True;
@@ -637,7 +643,9 @@ begin
   else
   begin
     laitm_TelefonDurchwahlText.Visible:= false;
-    laitm_HandyBusinessText.Visible:= false;
+    laitm_TelefonDurchwahlbtn.Visible:= false;
+    laitm_HandyBusinessText.Visible:= true;
+    laitm_HandyBusinessbtn.Visible:= true;
     laitm_ImageGes.Visible:= true;
     lagrp_KontaktPersonal.Visible:= false;
     lagrp_Zusatz.Visible:= false;

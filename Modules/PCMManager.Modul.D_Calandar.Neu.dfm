@@ -31,7 +31,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       LookAndFeel.NativeStyle = False
       OptionsImage.ImageIndex = 35
       OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 19
+      TabOrder = 20
       OnClick = btnEraseFirmaClick
     end
     object btnGoToJira: TcxButton
@@ -42,7 +42,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       LookAndFeel.NativeStyle = False
       OptionsImage.ImageIndex = 47
       OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 22
+      TabOrder = 23
       OnClick = btnGoToJiraClick
     end
     object btnSearchFirma: TcxButton
@@ -53,7 +53,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       LookAndFeel.NativeStyle = False
       OptionsImage.ImageIndex = 28
       OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 18
+      TabOrder = 19
       OnClick = btnSearchFirmaClick
     end
     object cbAnsprechpartner: TcxLookupComboBox
@@ -75,7 +75,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       StyleReadOnly.LookAndFeel.NativeStyle = False
-      TabOrder = 20
+      TabOrder = 21
       Width = 363
     end
     object edtFirma: TcxTextEdit
@@ -90,7 +90,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       StyleReadOnly.LookAndFeel.NativeStyle = False
-      TabOrder = 17
+      TabOrder = 18
       Width = 307
     end
     object edtJiraTicket: TcxTextEdit
@@ -103,7 +103,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       StyleReadOnly.LookAndFeel.NativeStyle = False
-      TabOrder = 21
+      TabOrder = 22
       Width = 797
     end
     object teBetreff: TcxTextEdit
@@ -116,7 +116,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       StyleReadOnly.LookAndFeel.NativeStyle = False
-      TabOrder = 23
+      TabOrder = 24
       Width = 828
     end
     object btn_DelRecurringEv1: TcxButton
@@ -366,7 +366,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Caption = 'an die Aufgabe erinnern:'
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 14
+      TabOrder = 15
       Transparent = True
       Height = 19
       Width = 145
@@ -484,7 +484,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       StyleReadOnly.LookAndFeel.NativeStyle = False
-      TabOrder = 15
+      TabOrder = 16
       Width = 169
     end
     object cmbbx_Ort: TcxComboBox
@@ -493,12 +493,18 @@ object frm_Calendar_new: Tfrm_Calendar_new
       AutoSize = False
       Properties.Items.Strings = (
         'im B'#252'ro'
-        'beim Kunden'
         'zu Hause'
+        'beim Arzt'
+        'beim Kunden'
         'Schule'
-        'Kindergarten'
+        'Kita'
+        'M'#252'll'
+        'Feiertag'
+        'Ferien'
+        'Urlaub'
         'Sonstiges'
-        'Geburtstag')
+        'Geburtstag'
+        '')
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 13
@@ -518,7 +524,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Properties.OnChange = chkbx_CompleteDayPropertiesChange
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 16
+      TabOrder = 17
       Transparent = True
       Height = 21
       Width = 638
@@ -539,7 +545,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 24
+      TabOrder = 25
       Height = 427
       Width = 709
     end
@@ -554,7 +560,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 25
+      TabOrder = 26
       LookAndFeel.NativeStyle = False
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -612,7 +618,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Properties.ReadOnly = True
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 26
+      TabOrder = 27
       Transparent = True
       Height = 34
       Width = 32
@@ -636,7 +642,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       Properties.WordWrap = True
-      TabOrder = 27
+      TabOrder = 28
       Transparent = True
       Height = 19
       Width = 60
@@ -655,7 +661,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       OptionsImage.ImageIndex = 26
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
-      TabOrder = 30
+      TabOrder = 31
       OnClick = btnAnhangOeffnenClick
     end
     object btnAnhangLoeschen: TcxButton
@@ -690,7 +696,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
         A08402DA3590950000000049454E44AE426082}
       OptionsImage.ImageIndex = 85
       PaintStyle = bpsGlyph
-      TabOrder = 29
+      TabOrder = 30
       OnClick = btnAnhangLoeschenClick
     end
     object btnAnhangHinzufuegen: TcxButton
@@ -706,7 +712,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       OptionsImage.ImageIndex = 73
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
-      TabOrder = 28
+      TabOrder = 29
       OnClick = btnAnhangHinzufuegenClick
     end
     object stbr_New: TdxStatusBar
@@ -728,6 +734,17 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Height = 63
       Align = dalNone
       BarManager = dxBarManager1
+    end
+    object edt_Kalname: TcxTextEdit
+      Left = 668
+      Top = 144
+      AutoSize = False
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 14
+      Text = 'edt_Kalname'
+      Height = 19
+      Width = 213
     end
     object dxLayoutControl1Group_Root: TdxLayoutGroup
       AlignHorz = ahClient
@@ -785,7 +802,6 @@ object frm_Calendar_new: Tfrm_Calendar_new
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 2
       ShowBorder = False
       Index = 0
     end
@@ -794,7 +810,6 @@ object frm_Calendar_new: Tfrm_Calendar_new
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 4
@@ -804,7 +819,6 @@ object frm_Calendar_new: Tfrm_Calendar_new
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 0
@@ -858,7 +872,6 @@ object frm_Calendar_new: Tfrm_Calendar_new
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 1
@@ -914,7 +927,6 @@ object frm_Calendar_new: Tfrm_Calendar_new
       AlignHorz = ahRight
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       ShowBorder = False
       Index = 1
     end
@@ -943,7 +955,6 @@ object frm_Calendar_new: Tfrm_Calendar_new
       AlignHorz = ahClient
       AlignVert = avBottom
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 4
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 1
@@ -1013,7 +1024,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 2
+      ItemIndex = 1
       ShowBorder = False
       Index = 0
     end
@@ -1032,12 +1043,14 @@ object frm_Calendar_new: Tfrm_Calendar_new
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 2
+      ItemIndex = 3
       ShowBorder = False
       Index = 0
     end
     object dxLayoutItem18: TdxLayoutItem
       Parent = pnlTopLeft
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = cbTyp
@@ -1048,11 +1061,15 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object dxLayoutLabeledItem1: TdxLayoutLabeledItem
       Parent = pnlTopLeft
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Typ:'
       Index = 0
     end
     object btn_SetRecurringEv: TdxLayoutItem
       Parent = pnlTopLeft
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = btn_SetRecurringEv1
@@ -1063,6 +1080,8 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object btn_DelRecurringEv: TdxLayoutItem
       Parent = pnlTopLeft
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = btn_DelRecurringEv1
@@ -1106,6 +1125,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       ShowBorder = False
       Index = 0
     end
@@ -1126,6 +1146,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       ShowBorder = False
       Index = 1
     end
@@ -1146,6 +1167,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       ShowBorder = False
       Index = 2
     end
@@ -1166,7 +1188,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 3
+      ItemIndex = 1
       ShowBorder = False
       Index = 0
     end
@@ -1185,6 +1207,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       ShowBorder = False
       Index = 3
     end
@@ -1212,6 +1235,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       ShowBorder = False
       Index = 4
     end
@@ -1225,6 +1249,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     object dxLayoutItem20: TdxLayoutItem
       Parent = dxLayoutGroup15
       AlignHorz = ahLeft
+      AlignVert = avTop
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = cbPrioritaet
@@ -1238,6 +1263,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       ShowBorder = False
       Index = 5
     end
@@ -1265,7 +1291,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 3
+      ItemIndex = 4
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 1
@@ -1275,7 +1301,6 @@ object frm_Calendar_new: Tfrm_Calendar_new
       AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       ShowBorder = False
       Index = 0
     end
@@ -1289,6 +1314,8 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object dxLayoutItem24: TdxLayoutItem
       Parent = itmEnde
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = deEndeAufgabe
@@ -1299,6 +1326,8 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object dxLayoutItem25: TdxLayoutItem
       Parent = itmUmEnde
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = teEndeAufgabe
@@ -1309,11 +1338,15 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object dxLayoutLabeledItem4: TdxLayoutLabeledItem
       Parent = itmEnde
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Ende am:'
       Index = 0
     end
     object dxLayoutLabeledItem5: TdxLayoutLabeledItem
       Parent = itmUmEnde
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'um:'
       Index = 0
     end
@@ -1327,6 +1360,8 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object dxLayoutItem26: TdxLayoutItem
       Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = cbErledigungsgrad
@@ -1337,18 +1372,23 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object dxLayoutLabeledItem6: TdxLayoutLabeledItem
       Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Erledigungsgrad:'
       Index = 0
     end
     object dxLayoutGroup19: TdxLayoutGroup
       Parent = dxLayoutGroup17
+      AlignHorz = ahLeft
+      AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       ShowBorder = False
       Index = 3
     end
     object dxLayoutItem27: TdxLayoutItem
       Parent = dxLayoutGroup19
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = cmbbx_Ort
@@ -1359,6 +1399,8 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object dxLayoutLabeledItem7: TdxLayoutLabeledItem
       Parent = dxLayoutGroup19
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Ort:'
       Index = 0
     end
@@ -1415,8 +1457,37 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object dxLayoutSeparatorItem1: TdxLayoutSeparatorItem
       Parent = dxLayoutGroup11
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Separator'
       Index = 2
+    end
+    object dxLayoutGroup2: TdxLayoutGroup
+      Parent = dxLayoutGroup17
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 4
+    end
+    object dxLayoutLabeledItem8: TdxLayoutLabeledItem
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Kalendername:'
+      Index = 0
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = edt_Kalname
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 213
+      ControlOptions.ShowBorder = False
+      Index = 1
     end
   end
   object pDauerFormat: TcxGroupBox

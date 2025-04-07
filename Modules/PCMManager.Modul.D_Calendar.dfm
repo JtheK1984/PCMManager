@@ -67,7 +67,6 @@ object frm_Calendar: Tfrm_Calendar
       OptionsView.EventBorderColor = cl3DDkShadow
       OptionsView.GroupingKind = gkByResource
       OptionsView.ResourcesPerPage = 5
-      OptionsView.Style = svsClassic
       OptionsView.WorkStart = 0.291666666666666700
       OptionsView.WorkFinish = 0.833333333333333400
       ResourceNavigator.Buttons.First.Visible = False
@@ -82,8 +81,7 @@ object frm_Calendar: Tfrm_Calendar
       OnBeforeSizingEvent = sched_KalenderBeforeSizingEvent
       OnClick = sched_KalenderClick
       OnDblClick = sched_KalenderDblClick
-      OnGetEventEditProperties = sched_KalenderGetEventEditProperties
-      OnGetEventHintText = sched_KalenderGetEventHintText
+      OnGetEventModernStyleHintInfo = sched_KalenderGetEventModernStyleHintInfo
       OnKeyDown = sched_KalenderKeyDown
       Selection = 7
       Splitters = {
@@ -291,7 +289,6 @@ object frm_Calendar: Tfrm_Calendar
         OptionsView.GroupByBox = False
         OptionsView.HeaderFilterButtonShowMode = fbmButton
         OptionsView.Indicator = True
-        Styles.Selection = cxStyle1
         object tvAufID: TcxGridDBColumn
           DataBinding.FieldName = 'ID'
           Visible = False
@@ -1253,7 +1250,6 @@ object frm_Calendar: Tfrm_Calendar
       AlignVert = avClient
       CaptionOptions.ImageIndex = 10
       CaptionOptions.Text = 'Kalender'
-      ItemIndex = 1
       ShowBorder = False
       Index = 0
     end
@@ -2902,6 +2898,7 @@ object frm_Calendar: Tfrm_Calendar
     FieldNames.EventType = 'EventType'
     FieldNames.Finish = 'Finish'
     FieldNames.ID = 'ID'
+    FieldNames.LabelColor = 'LabelColor'
     FieldNames.Location = 'Location'
     FieldNames.Message = 'Message'
     FieldNames.Options = 'Options'
@@ -2938,13 +2935,6 @@ object frm_Calendar: Tfrm_Calendar
     DataSet = qry_SchulFaecher
     Left = 522
     Top = 512
-  end
-  object comp_EditRepository: TcxEditRepository
-    Left = 1067
-    Top = 88
-    PixelsPerInch = 96
-    object riEvent: TcxEditRepositoryRichItem
-    end
   end
   object compPrint_Cal: TdxComponentPrinter
     CurrentLink = compPrint_CalLink1
@@ -2992,7 +2982,7 @@ object frm_Calendar: Tfrm_Calendar
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 45744.468860335650000000
+      ReportDocument.CreationDate = 45754.397905243060000000
       OptionsSize.AutoWidth = True
       PixelsPerInch = 96
       BuiltInReportLink = True
@@ -3036,20 +3026,6 @@ object frm_Calendar: Tfrm_Calendar
     Left = 1210
     Top = 401
     PixelsPerInch = 96
-  end
-  object cxStyleRepository1: TcxStyleRepository
-    Left = 744
-    Top = 440
-    PixelsPerInch = 96
-    object cxStyle1: TcxStyle
-      AssignedValues = [svColor, svFont]
-      Color = 11556864
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Segoe UI'
-      Font.Style = [fsBold]
-    end
   end
   object pm_Einnahmen: TcxGridPopupMenu
     Grid = cxGrid1

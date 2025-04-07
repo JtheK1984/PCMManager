@@ -3,6 +3,7 @@ unit PCMManager.Modul.D_Calendar;
 interface
 
 uses
+  {$Region Uses}
   Winapi.Windows,
   Winapi.CommCtrl,
   Winapi.Messages,
@@ -178,9 +179,9 @@ uses
   PCM.Browser,
   dxLayoutControlAdapters,
   dxUIAClasses;
-
-
+  {$EndRegion Uses}
 type
+  {$Region Type}
   TPCMDay = record
     DaySA: string;
     DayFR: string;
@@ -245,8 +246,6 @@ type
     schedDBStrg_Kalender: TcxSchedulerDBStorage;
     qry_SchulFaecher: TFDQuery;
     dsSchulFaecher: TDataSource;
-    comp_EditRepository: TcxEditRepository;
-    riEvent: TcxEditRepositoryRichItem;
     compPrint_Cal: TdxComponentPrinter;
     compPrint_CalLink1: TcxSchedulerReportLink;
     compPrint_CalLink2: TdxGridReportLink;
@@ -349,8 +348,6 @@ type
     tvAufFinish: TcxGridDBColumn;
     cxTreeList1Column2: TcxTreeListColumn;
     btn_JobsDone: TdxBarLargeButton;
-    cxStyleRepository1: TcxStyleRepository;
-    cxStyle1: TcxStyle;
     pm_Einnahmen: TcxGridPopupMenu;
     btn_JobsRefresh: TdxBarLargeButton;
     btn_CalImportOutlook: TdxBarButton;
@@ -494,7 +491,6 @@ type
     procedure sched_KalenderCustomDrawEvent(Sender: TObject; ACanvas: TcxCanvas; AViewInfo: TcxSchedulerEventCellViewInfo; var ADone: Boolean);
     procedure sched_KalenderKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure pc_KalenderClick(Sender: TObject);
-    procedure sched_KalenderGetEventHintText(Sender: TObject; AEvent: TcxSchedulerControlEvent; var AText: string);
     procedure grdDBTblView_StundenplanMontagCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
     procedure grdDBTblView_StundenplanDienstagCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
     procedure grdDBTblView_StundenplanBeginCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
@@ -503,7 +499,6 @@ type
     procedure grdDBTblView_StundenplanFreitagCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
     procedure grdDBTblView_StundenplanSamstagCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
     procedure FormShow(Sender: TObject);
-    procedure sched_KalenderGetEventEditProperties(Sender: TObject;  AEvent: TcxSchedulerControlEvent; var AProperties: TcxCustomEditProperties);
     procedure btn_CalAgendaClick(Sender: TObject);
     procedure btn_GoToJiraClick(Sender: TObject);
     procedure edt_SuchePropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
@@ -542,6 +537,7 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure btn_CalTagClick(Sender: TObject);
+    procedure sched_KalenderGetEventModernStyleHintInfo(Sender: TObject; AEvent: TcxSchedulerControlEvent; AInfo: TcxSchedulerEventModernStyleHintInfo);
   private
     { Private-Deklarationen }
     FKalenderDateButton : Boolean;
@@ -549,6 +545,7 @@ type
     defaultFontColor: integer;
     iCurrTableview: integer;
     sColordef,sFontcolordef: string;
+    iFontColor,iLabelColor: Integer;
     SaveGridViewAufgaben,SaveGridViewNachrichten,
     SaveGridViewStundenplan,SaveGridViewStundenplanDetail: TSavedGridView;
     procedure SetGridViews(Show:boolean);
@@ -572,32 +569,26 @@ type
     procedure WriteICSAutomatic;
     procedure RefreshTerminundAUfgaben;
   end;
-
+  {$EndRegion Type}
 var
+  {$Region var}
   frm_Calendar: Tfrm_Calendar;
-
-const
-  sIDUser = 'J.Henske@id-berlin.de';
-  sIDPassword = 'ATATT3xFfGF0aEJ1a-nyUpNVocMIqcMQtlP2mn0HbR_mpaJ5OCy5BYgmIiSYUdLlHgGcXVm7N8dSR8Jqoa06cqRRTOfpwdy2VcX4qgyQkgmD-_tsLmKNv3TjZ92azgm2XC4IeitOjnfQY6Ijz4vc7kDk0iG5T-rb8vWPOcIr2Ea1SROOgc1TnIw=8AA4CA05';
-  sPCMUser = 'Jens.Henske@outlook.com';
-  sPCMPassword = 'ATATT3xFfGF07HMGLsAvw7ShQHo_OHJYzLDS5lGKBGqiKF-LOamh0ZCt_jdYHDojFwIkZ47i5nOqliH7zl8vTrPL5BXZKF3yxjGIFSYqlZ3rrW_7fidxWtv_RxGvs9_G7D75BDdHBr7eJ00v_im-4ec_tEcLS5On_HqJ7kgiNtkw-QFow1j9x9c=F1F05D50';
-
-
+  {$EndRegion var}
 implementation
-
 {$R *.dfm}
-
-uses  PCM.Main,
-      PCMManager.Modul.D_Calandar.Neu,
-      PCMManager.Modul.D_Calendar.Filter,
-      PCMManager.Modul.D_Calendar.Import,
-      PCM.Functions.Synch.Wait,
-      PCMManager.Helper.Calendar.Ical,
-      PCM.Data,
-      PCM.Browser.FullScreen,
-      PCM.Strings,
-      uwvLoader;
-
+uses
+  {$Region uses}
+  PCM.Main,
+  PCMManager.Modul.D_Calandar.Neu,
+  PCMManager.Modul.D_Calendar.Filter,
+  PCMManager.Modul.D_Calendar.Import,
+  PCM.Functions.Synch.Wait,
+  PCMManager.Helper.Calendar.Ical,
+  PCM.Data,
+  PCM.Browser.FullScreen,
+  PCM.Strings,
+  uwvLoader;
+  {$ENdRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
@@ -1056,7 +1047,13 @@ begin
 
 
 
-  if frm_Calendar_new.Execute(schedDBStrg_Kalender,dm_PCM.qry_Kalender_Aufgaben.FieldByName('Typ').asInteger,
+  if frm_Calendar_new.Execute(
+    dm_PCM.qry_Kalender_Aufgaben.FieldByName('LabelColor').asInteger,
+    dm_PCM.qry_Kalender_Aufgaben.FieldByName('FontColor').asInteger,
+    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Location').AsString,
+    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Kalendername').AsString,
+    schedDBStrg_Kalender,
+    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Typ').asInteger,
     dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID_Adr_Wurzel').AsInteger,
     dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID_Ansprechpartner').AsInteger,
     dm_PCM.qry_Kalender_Aufgaben.FieldByName('Caption').AsString,
@@ -1081,6 +1078,7 @@ begin
     schedeventE,
     dm_PCM.qry_Kalender_Aufgaben.FieldByName('Jira_Ticket').AsString,
     dm_PCM.qry_Kalender_Aufgaben.FieldByName('wiederholung_text').AsString,
+
     iNewId) then
   begin
     RefreshTerminundAUfgaben;
@@ -1680,7 +1678,7 @@ var
   iNewId: integer;
 begin
   Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
-  frm_Calendar_new.Execute(schedDBStrg_Kalender,2, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
+  frm_Calendar_new.Execute(iLabelColor,iFontColor,'im Büro','manuell',schedDBStrg_Kalender,2, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
   frm_Calendar_new := nil;
   RefreshTerminundAUfgaben;
 end;
@@ -2660,7 +2658,7 @@ var
   iNewId: integer;
 begin
   Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
-  frm_Calendar_new.Execute(schedDBStrg_Kalender,2, 0, 0, '','',0,sched_Kalender.SelStart,sched_Kalender.SelFinish,0,false,0,0,0,0,0,0,false,false,15,false,0,0,nil,'','',iNewId);
+  frm_Calendar_new.Execute(iLabelColor,iFontColor,'im Büro','manuell',schedDBStrg_Kalender,2, 0, 0, '','',0,sched_Kalender.SelStart,sched_Kalender.SelFinish,0,false,0,0,0,0,0,0,false,false,15,false,0,0,nil,'','',iNewId);
   frm_Calendar_new := nil;
   RefreshTerminundAUfgaben;
 end;
@@ -2768,85 +2766,14 @@ begin
     end;
   end;
 end;
-procedure Tfrm_Calendar.sched_KalenderGetEventEditProperties(Sender: TObject; AEvent: TcxSchedulerControlEvent; var AProperties: TcxCustomEditProperties);
+procedure Tfrm_Calendar.sched_KalenderGetEventModernStyleHintInfo(Sender: TObject; AEvent: TcxSchedulerControlEvent; AInfo: TcxSchedulerEventModernStyleHintInfo);
 begin
-  AProperties := riEvent.Properties;
-end;
-procedure Tfrm_Calendar.sched_KalenderGetEventHintText(Sender: TObject; AEvent: TcxSchedulerControlEvent; var AText: string);
-var
-  i: integer;
-  sBegin: string;
-  sFinish: string;
-  sBetreff: string;
-  slocation: string;
-  sMessage: string;
-  sKalender: string;
-  sName: string;
-  sStrasse: string;
-  sOrt: string;
-  sTelefon: string;
-  sMobil: string;
-  sEmail: string;
-  sFirstline: string;
-begin
-  i:= AEvent.ID;
-  if i > 0 then
-  begin
-    dm_PCM.qry_work.SQL.Text:= 'SELECT mgr_cal.Caption, mgr_cal.Location, ' +
-                        'mgr_cal.Message, mgr_cal.Start, ' +
-                        'mgr_cal.Finish, mgr_cal.Options,mgr_cal.Reminder, ' +
-                        'mgr_cal.ReminderDate, ' +
-                        'mgr_cal.ReminderMinutesBeforeStart,mgr_cal.LabelColor, mgr_cal.CompleteDay, mgr_cal.Kalendername, ' +
-                        'mgr_con.Vorname, mgr_con.Nachname, ' +
-                        'IF(mgr_con.Strasse_Privat = '''',mgr_con.Strasse_Ges,mgr_con.Strasse_Privat) AS Strasse, ' +
-                        'IF(mgr_con.PLZ_Privat = '''',mgr_con.PLZ_Ges,mgr_con.PLZ_Privat) AS PLZ, ' +
-                        'IF(mgr_con.Ort_Privat = '''',mgr_con.Ort_Ges,mgr_con.Ort_Privat) AS Ort, ' +
-                        'IF(mgr_con.Telefon_Privat = '''',mgr_con.Telefon_Ges,mgr_con.Telefon_Privat) AS Telefon, ' +
-                        'IF(mgr_con.Handy_privat = '''',mgr_con.Handy_ges,mgr_con.Handy_privat) AS Handy, ' +
-                        'IF(mgr_con.E_Mail_Privat = '''',mgr_con.E_Mail_ges,mgr_con.E_Mail_Privat) AS Mail ' +
-                        'FROM manager_Kalender mgr_cal ' +
-                        'LEFT OUTER JOIN manager_Kontakte mgr_con ON  mgr_con.ID = mgr_cal.ID_Kontakte ' +
-                        'WHERE mgr_cal.ID = :ID';
-
-    dm_PCM.qry_work.ParamByName('ID').AsInteger:= i;
-    dm_PCM.qry_work.Open;
-    sBegin:= Copy(dm_PCM.qry_work.FieldByName('Start').AsString,12,5);
-    if sBegin = '' then
-      sBegin := '00:00';
-    sFinish:= Copy(dm_PCM.qry_work.FieldByName('Finish').AsString,12,5);
-    if sFinish = '' then
-      sFinish := '00:00';
-
-    if (sBegin = '00:00') and (sBegin = '00:00') then
-      sFirstline:= 'Zeit: ganzer Tag' + Slinebreak
-    else
-      sFirstline:= 'Zeit: ' + sBegin + ' bis ' + sFinish + Slinebreak;
-    sBetreff:= dm_PCM.qry_work.FieldByName('Caption').AsString;
-    slocation:= dm_PCM.qry_work.FieldByName('Location').AsString;
-    sMessage:= dm_PCM.qry_work.FieldByName('Message').AsString;
-    sKalender:= dm_PCM.qry_work.FieldByName('Kalendername').AsString;
-    sName:= dm_PCM.qry_work.FieldByName('Vorname').AsString + ' ' + dm_PCM.qry_work.FieldByName('Nachname').AsString;
-    sStrasse:= dm_PCM.qry_work.FieldByName('Strasse').AsString;
-    sOrt:= dm_PCM.qry_work.FieldByName('PLZ').AsString + ' '+ dm_PCM.qry_work.FieldByName('Ort').AsString;
-    sTelefon:= dm_PCM.qry_work.FieldByName('Telefon').AsString;
-    sMobil:= dm_PCM.qry_work.FieldByName('Handy').AsString;
-    sEmail:=dm_PCM.qry_work.FieldByName('Mail').AsString;
-
-    dm_PCM.qry_work.close;
-
-    AText :=  sFirstline
-              + 'Kalender: ' + sKalender + Slinebreak
-              + 'Betreff: ' + sBetreff + Slinebreak
-              + '___________________________________________' + slinebreak
-              + slinebreak + sMessage + slinebreak
-              + slinebreak
-              + 'Kontakt: ' + Slinebreak + sName + slinebreak
-              + sStrasse + slinebreak + sOrt + Slinebreak
-              + 'Tel: ' +sTelefon + Slinebreak
-              + 'Handy: ' + sMobil + Slinebreak
-              + 'E-Mail: ' + sEmail + Slinebreak;
-  end;
-
+  dm_PCM.qry_work.SQL.Text:= 'SELECT * FROM manager_kalender where ID = :ID';
+  dm_PCM.qry_work.ParamByName('ID').AsInteger:= AEvent.ID;
+  dm_PCM.qry_work.OPen;
+  AInfo.ShowReminder:= true;
+  AInfo.Location:= dm_PCM.qry_work.FieldByName('Location').AsString;
+  dm_PCM.qry_work.Close;
 end;
 procedure Tfrm_Calendar.sched_KalenderKeyDown(Sender: TObject; var Key: Word;  Shift: TShiftState);
   function copyEvent : boolean;
@@ -2894,6 +2821,7 @@ procedure Tfrm_Calendar.sched_KalenderKeyDown(Sender: TObject; var Key: Word;  S
         dm_PCM.qry_work.FieldValues['Finish'] := sched_Kalender.SelFinish;
         // RecurrenceInformation nicht übernehmen
         dm_PCM.qry_work.FieldValues['EventType'] := 0;
+        dm_PCM.qry_work.FieldValues['Typ'] := 2;
         dm_PCM.qry_work.FieldValues['RecurrenceInfo'] := null;
 
         dm_PCM.qry_work.Post;
@@ -3144,7 +3072,7 @@ var
   iNewId : Integer;
 begin
   Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
-  frm_Calendar_new.Execute(schedDBStrg_Kalender,0, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
+  frm_Calendar_new.Execute(iLabelColor,iFontColor,'im Büro','manuell',schedDBStrg_Kalender,0, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
   frm_Calendar_new := nil;
   RefreshTerminundAUfgaben;
 end;
@@ -3153,7 +3081,7 @@ var
   iNewId : Integer;
 begin
   Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
-  frm_Calendar_new.Execute(schedDBStrg_Kalender,1, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
+  frm_Calendar_new.Execute(iLabelColor,iFontColor,'im Büro','manuell',schedDBStrg_Kalender,1, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
   frm_Calendar_new := nil;
   RefreshTerminundAUfgaben;
 end;
@@ -3162,7 +3090,7 @@ var
   iNewId : Integer;
 begin
   Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
-  frm_Calendar_new.Execute(schedDBStrg_Kalender,2, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
+  frm_Calendar_new.Execute(iLabelColor,iFontColor,'im Büro','manuell',schedDBStrg_Kalender,2, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
   frm_Calendar_new := nil;
   RefreshTerminundAUfgaben;
 end;
@@ -3223,7 +3151,12 @@ begin
       end;
       qWF_Nachrichten_Anhaenge.Next;
     end;
-      if frm_Calendar_new.Execute(schedDBStrg_Kalender,dm_PCM.qry_Kalender_Aufgaben.FieldByName('Typ').asInteger,
+      if frm_Calendar_new.Execute(
+      dm_PCM.qry_Kalender_Aufgaben.FieldByName('Labelcolor').AsInteger,
+      dm_PCM.qry_Kalender_Aufgaben.FieldByName('FontColor').AsInteger,
+      dm_PCM.qry_Kalender_Aufgaben.FieldByName('Location').AsString,
+      dm_PCM.qry_Kalender_Aufgaben.FieldByName('Kalendername').AsString,
+      schedDBStrg_Kalender,dm_PCM.qry_Kalender_Aufgaben.FieldByName('Typ').asInteger,
       dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID_Adr_Wurzel').AsInteger,
       dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID_Ansprechpartner').AsInteger,
       dm_PCM.qry_Kalender_Aufgaben.FieldByName('Caption').AsString,
@@ -3736,7 +3669,6 @@ end;
 procedure Tfrm_Calendar.edt_SucheExit(Sender: TObject);
 begin
   edt_Suche.Properties.OnChange := nil;
-  //if edSuche.Text = '' then edSuche.Text := SearchTypeToStr(FSearchType);
   SearchBoxSetStyle();
   edt_Suche.Properties.OnChange := edt_SuchePropertiesChange;
 end;
@@ -3751,7 +3683,6 @@ procedure Tfrm_Calendar.edt_SuchePropertiesChange(Sender: TObject);
     sSearchQuery : String;
   begin
     SearchBoxSetStyle();
-  //  qWF_Nachrichten.Filtered := False;
     if ASearchString = '' then  exit;
       sSearchQuery := 'Message LIKE ' + quotedStr('%' + ASearchString + '%') +
                       ' OR ' + 'Caption LIKE ' + quotedStr('%' + ASearchString + '%') +
@@ -3767,51 +3698,17 @@ end;
 procedure Tfrm_Calendar.tvAufCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 var
   Status: Variant;
-
   EndeDatum: TDateTime;
-//  StartDatum: TDateTime;
-//  Typ: Integer;
-//  InTagen: Integer;
 begin
-  // Wenn alle Benutzer ausgewählt sind, nicht markieren
   if AViewInfo.Selected then
     Exit;
-
-  // Status und An
   Status := AViewInfo.GridRecord.Values[tvaufStatus.Index];
-
   if not VarIsNull(Status) then
   begin
    if (Status = 'Ungelesen') then
       ACanvas.Font.Style := [fsBold];
   end;
-
   ACanvas.Canvas.Brush.Style := bsSolid;
-
-//  Typ := AViewInfo.GridRecord.Values[tvAufTyp.Index];
-//  InTagen := AViewInfo.GridRecord.Values[tvAufInTagen.Index];
-
-
-  {  if InTagen < 0 then
-    begin
-      // Rot
-      ACanvas.Canvas.Brush.Color := RGB(255, 191, 191);
-      ACanvas.Canvas.Font.Color := clBlack;
-    end else
-    begin
-      if InTagen = 1 then
-      begin
-        // Gruen
-        ACanvas.Canvas.Brush.Color := RGB(220, 255, 210);
-        ACanvas.Canvas.Font.Color := clBlack;
-      end else
-      if InTagen = 0 then
-      begin
-        // Gelb
-        ACanvas.Canvas.Brush.Color := RGB(255, 255, 191);
-        ACanvas.Canvas.Font.Color := clBlack;
-      end;
-    end; }
   if not VarIsNull(AViewInfo.GridRecord.Values[tvAufInTagen.Index]) then
   begin
     // EndeDatum
@@ -3833,12 +3730,8 @@ begin
       ACanvas.Canvas.Brush.Color := RGB(204, 255, 210);
       ACanvas.Canvas.Font.Color := clBlack;
     end;
-
-
     ACanvas.Canvas.FillRect(AViewInfo.Bounds);
   end;
-
-
 end;
 procedure Tfrm_Calendar.tvAufDblClick(Sender: TObject);
 var
@@ -3899,7 +3792,7 @@ var
   iNewId : Integer;
 begin
   Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
-  frm_Calendar_new.Execute(schedDBStrg_Kalender,2, 0, 0, '','',0,StrToDateTime(DateToStr(StrToDate(Copy(DateToStr(Date()),1,10))) + ' ' + '08:30:00'),StrToDateTime(DateToStr(StrToDate(Copy(DateToStr(Date()),1,10))) + ' ' + '08:30:00'),0,false,0,0,0,0,0,0,false,false,15,false,0,0,nil,'','',iNewId);
+  frm_Calendar_new.Execute(iLabelColor,iFontColor,'im Büro','manuell',schedDBStrg_Kalender,2, 0, 0, '','',0,StrToDateTime(DateToStr(StrToDate(Copy(DateToStr(Date()),1,10))) + ' ' + '08:30:00'),StrToDateTime(DateToStr(StrToDate(Copy(DateToStr(Date()),1,10))) + ' ' + '08:30:00'),0,false,0,0,0,0,0,0,false,false,15,false,0,0,nil,'','',iNewId);
   frm_Calendar_new := nil;
   RefreshTerminundAUfgaben;
 end;
@@ -3943,7 +3836,6 @@ procedure Tfrm_Calendar.btn_AttachementSaveClick(Sender: TObject);
 begin
   saveAttachement;
 end;
-
 {$EndRegion}
 {$Region TabJira}
 procedure Tfrm_Calendar.pc_KalenderClick(Sender: TObject);
@@ -4592,6 +4484,17 @@ begin
     btn_CalJahr.LargeImageIndex:= 44;
     schedDBStrg_Kalender.Reminders.Active:= true;
     lagrp_KalenderTab.ItemIndex:= 0;
+    dm_PCM.qry_work.SQL.Text:= 'Select ID, Kalender,Link,Benutzer,Passwort, Erinnerung, ErinnerungVor,LabelColor,Fontcolor,ID_Benutzer ' +
+                               'From manager_kalender_konfiguration Where ID_Benutzer = :ID_Benutzer';
+    dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_work.open;
+    while not dm_PCM.qry_work.Eof do
+    begin
+      iFontColor:=dm_PCM.qry_work.FieldByName('Fontcolor').AsInteger;
+      iLabelColor:=dm_PCM.qry_work.FieldByName('LabelColor').AsInteger;
+      dm_PCM.qry_work.Next;
+    end;
+    dm_PCM.qry_work.Close;
   end;
 //  tvauf.DataController.Filter.Active:= false;
 //  tvauf.DataController.Filter.Root.Clear;

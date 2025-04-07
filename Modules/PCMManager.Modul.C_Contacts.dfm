@@ -485,7 +485,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 911
+      Width = 895
     end
     object lucmbbx_KontaktZusatzFamilienstand: TcxDBLookupComboBox
       Left = 10000
@@ -513,7 +513,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 911
+      Width = 895
     end
     object lucmbbx_KontaktZusatzGeschlecht: TcxDBLookupComboBox
       Left = 10000
@@ -542,7 +542,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 911
+      Width = 895
     end
     object lucmbbx_Konfession: TcxDBLookupComboBox
       Left = 10000
@@ -570,7 +570,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 884
+      Width = 868
     end
     object lucmbbx_Staatsanghoerigkeit: TcxDBLookupComboBox
       Left = 10000
@@ -598,7 +598,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 884
+      Width = 868
     end
     object img_Picture: TcxDBImage
       Left = 10000
@@ -634,7 +634,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 1080
+      Width = 1064
     end
     object edt_KontaktGeschaeftlichEMail: TcxDBTextEdit
       Left = 10000
@@ -655,7 +655,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 1053
+      Width = 1037
     end
     object edt_KontaktGeschaeftlichFirma: TcxDBTextEdit
       Left = 10000
@@ -677,7 +677,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 928
+      Width = 912
     end
     object edt_KontaktGeschaeftlichInternet: TcxDBTextEdit
       Left = 10000
@@ -698,7 +698,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 901
+      Width = 885
     end
     object edt_KontaktGeschaeftlichOrt: TcxDBTextEdit
       Left = 10000
@@ -719,7 +719,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 826
+      Width = 810
     end
     object edt_KontaktGeschaeftlichPLZ: TcxDBTextEdit
       Left = 10000
@@ -761,7 +761,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 928
+      Width = 912
     end
     object edt_KontaktGeschaeftlichTelefonZentrale: TcxDBTextEdit
       Left = 10000
@@ -782,7 +782,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 901
+      Width = 885
     end
     object edt_KontaktGeschaeftlichTelefonDurchwahl: TcxDBTextEdit
       Left = 10000
@@ -803,7 +803,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 1053
+      Width = 1037
     end
     object btn_MapPrivate: TcxButton
       Left = 10000
@@ -856,7 +856,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 97
-      Width = 1178
+      Width = 1162
     end
     object btn_Mail1Private: TcxButton
       Left = 10000
@@ -1348,7 +1348,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 1080
+      Width = 1064
     end
     object btn_EditStaatsangehoerigkeit: TcxButton
       Left = 10000
@@ -1436,7 +1436,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 1053
+      Width = 1037
     end
     object cmbbx_KontaktArt: TcxDBLookupComboBox
       Left = 10000
@@ -1486,7 +1486,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 911
+      Width = 895
     end
     object edt_KontakteGeburtsort: TcxDBTextEdit
       Left = 10000
@@ -1556,7 +1556,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 901
+      Width = 885
     end
     object btn_MailGesZentral: TcxButton
       Left = 10000
@@ -1839,6 +1839,7 @@ object frm_Contact: Tfrm_Contact
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Zus'#228'tzlich Informationen'
+      ItemIndex = 1
       LayoutDirection = ldTabbed
       ShowBorder = False
       Index = 1

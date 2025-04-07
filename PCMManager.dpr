@@ -42,7 +42,12 @@ uses
   IdSASL.OAuth.OAuth2Bearer in 'Helper\IdSASL.OAuth.OAuth2Bearer.pas',
   IdSASL.OAuth.XOAUTH2 in 'Helper\IdSASL.OAuth.XOAUTH2.pas',
   PCMManager.Modul.E_Mail.Signaturen in 'Modules\PCMManager.Modul.E_Mail.Signaturen.pas' {frm_Signatur},
-  PCMManager.dxSettings in 'PCMManager.dxSettings.pas';
+  PCMManager.dxSettings in 'PCMManager.dxSettings.pas',
+  cxSchedulerStorage in 'Helper\cxSchedulerStorage.pas',
+  cxSchedulerDBStorage in 'Helper\cxSchedulerDBStorage.pas',
+  cxSchedulerICalendar in 'Helper\cxSchedulerICalendar.pas',
+  cxSchedulerEventModernInfoContainer in 'Helper\cxSchedulerEventModernInfoContainer.pas' {cxSchedulerEventModernInfoContainer: TdxForm},
+  cxSchedulerCustomControls in 'Helper\cxSchedulerCustomControls.pas';
 
 {$R *.res}
 
