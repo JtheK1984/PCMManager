@@ -2280,7 +2280,7 @@ object frm_Calendar: Tfrm_Calendar
       OnClick = btn_MonatsAnsichtClick
     end
     object btn_CalNew: TdxBarLargeButton
-      Caption = 'Neuer Termin'
+      Caption = '&Neuer Termin'
       Category = 0
       Hint = 'Neuer Termin'
       Visible = ivAlways
@@ -2982,7 +2982,7 @@ object frm_Calendar: Tfrm_Calendar
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 45754.397905243060000000
+      ReportDocument.CreationDate = 45755.339034606480000000
       OptionsSize.AutoWidth = True
       PixelsPerInch = 96
       BuiltInReportLink = True

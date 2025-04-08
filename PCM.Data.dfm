@@ -22374,7 +22374,7 @@ object dm_PCM: Tdm_PCM
     Connection = con_PCM
     SQL.Strings = (
       'Select'
-      ' ID,'
+      'ID,'
       'EventType,'
       'Caption,'
       'Location,'
@@ -22403,6 +22403,7 @@ object dm_PCM: Tdm_PCM
       'Jira_Ticket,'
       'ID_IC_Prioritaeten,'
       'ID_IC_AufgabenArten,'
+      'Privat,'
       'GesendetAm,'
       'GelesenAm,'
       'Erledigungsgrad,'
@@ -22671,6 +22672,13 @@ object dm_PCM: Tdm_PCM
       Origin = 'ID_Benutzer'
       ProviderFlags = []
       ReadOnly = True
+    end
+    object qry_Kalender_AufgabenPrivat: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Privat'
+      Origin = 'Privat'
+      FixedChar = True
+      Size = 5
     end
   end
   object ds_Kalender_Aufgaben: TDataSource

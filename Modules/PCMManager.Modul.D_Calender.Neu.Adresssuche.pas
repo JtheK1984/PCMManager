@@ -19,7 +19,8 @@ uses
   cxNavigator, dxBarBuiltInMenu, dxDateRanges,
   dxScrollbarAnnotations,
   dxBar, cxLabel,pcm.Functions, System.UITypes, dxLayoutcxEditAdapters,
-  dxLayoutControlAdapters, dxLayoutContainer, dxLayoutControl, dxUIAClasses;
+  dxLayoutControlAdapters, dxLayoutContainer, dxLayoutControl, dxUIAClasses,
+  cxCheckBox;
 
 type
   TAdressSucheTyp = (astAdressen, astAnsprechpartner);
@@ -59,6 +60,9 @@ type
     dxLayoutGroup12: TdxLayoutGroup;
     dxLayoutGroup13: TdxLayoutGroup;
     dxBarDockControl1: TdxBarDockControl;
+    dxLayoutItem9: TdxLayoutItem;
+    dxLayoutGroup2: TdxLayoutGroup;
+    chkbx_Privat: TcxCheckBox;
     procedure bAdressenZeigenClick(Sender: TObject);
     procedure tvAdressenCellDblClick(Sender: TcxCustomGridTableView;
       ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
@@ -110,27 +114,48 @@ var
   sWhere : String;
 begin
   dm_PCM.qry_work.Close;
+  if chkbx_Privat.Checked then
+  begin
+    dm_PCM.qry_work.SQL.Text := 'SELECT distinct Concat(Vorname, '' '',Nachname) AS Firma,Strasse_Privat as Strasse_ges,plz_Privat as plz_Ges,ort_privat as ort_Ges,Nachname,Vorname FROM Manager_kontakte Where Nachname <>  '''' and Vorname <> ''''';
+    sWhere := ' ';
+    if teName.Text <> '' then
+      sWhere := 'AND (UPPER(Nachname) LIKE UPPER(' + quotedStr('%'+teName.Text+'%')+') OR UPPER(Vorname) LIKE UPPER(' + quotedStr('%'+teName.Text+'%')+'))';
+    if teStrasse.Text <> '' then
+      sWhere := sWhere + 'AND UPPER(Strasse_Privat) LIKE UPPER('  + quotedStr('%'+teStrasse.Text+'%')+')';
 
-  dm_PCM.qry_work.SQL.Text := 'SELECT distinct Firma,Strasse_ges,plz_Ges,ort_Ges FROM Manager_kontakte Where Firma <>  ''''';
+    if tePLZ.Text <> '' then
+      sWhere := sWhere + 'AND UPPER(PLZ_Privat) LIKE UPPER(' + quotedStr(tePLZ.Text+'%')+')';
 
-  sWhere := ' ';
-  if teName.Text <> '' then
-    sWhere := 'AND UPPER(Firma) LIKE UPPER(' + quotedStr('%'+teName.Text+'%')+')';
+    if teOrt.Text <> '' then
+      sWhere := sWhere +'AND UPPER(Ort_Privat) LIKE UPPER(' + quotedStr('%'+teOrt.Text+'%')+')';
 
-  if teStrasse.Text <> '' then
-    sWhere := sWhere + 'AND UPPER(Strasse_Ges) LIKE UPPER('  + quotedStr('%'+teStrasse.Text+'%')+')';
+    dm_PCM.Qry_work.SQL.Text := dm_PCM.Qry_work.SQL.Text + sWhere + ' ORDER BY Vorname,nachname';
+    dm_PCM.Qry_work.Open;
 
-  if tePLZ.Text <> '' then
-    sWhere := sWhere + 'AND UPPER(PLZ_Ges) LIKE UPPER(' + quotedStr(tePLZ.Text+'%')+')';
+    lCount.Caption := IntToStr(dm_PCM.Qry_work.RecordCount) + rs_PCMManager_Adresseengefunden;
+    lCount.Visible:= True;
+  end
+  else begin
+    dm_PCM.qry_work.SQL.Text := 'SELECT distinct Firma,Strasse_ges,plz_Ges,ort_Ges FROM Manager_kontakte Where Firma <>  ''''';
+    sWhere := ' ';
+    if teName.Text <> '' then
+      sWhere := 'AND UPPER(Firma) LIKE UPPER(' + quotedStr('%'+teName.Text+'%')+')';
 
-  if teOrt.Text <> '' then
-    sWhere := sWhere +'AND UPPER(Ort_Ges) LIKE UPPER(' + quotedStr('%'+teOrt.Text+'%')+')';
+    if teStrasse.Text <> '' then
+      sWhere := sWhere + 'AND UPPER(Strasse_Ges) LIKE UPPER('  + quotedStr('%'+teStrasse.Text+'%')+')';
 
-  dm_PCM.Qry_work.SQL.Text := dm_PCM.Qry_work.SQL.Text + sWhere + ' ORDER BY Firma';
-  dm_PCM.Qry_work.Open;
+    if tePLZ.Text <> '' then
+      sWhere := sWhere + 'AND UPPER(PLZ_Ges) LIKE UPPER(' + quotedStr(tePLZ.Text+'%')+')';
 
-  lCount.Caption := IntToStr(dm_PCM.Qry_work.RecordCount) + rs_PCMManager_Adresseengefunden;
-  lCount.Visible:= True;
+    if teOrt.Text <> '' then
+      sWhere := sWhere +'AND UPPER(Ort_Ges) LIKE UPPER(' + quotedStr('%'+teOrt.Text+'%')+')';
+
+    dm_PCM.Qry_work.SQL.Text := dm_PCM.Qry_work.SQL.Text + sWhere + ' ORDER BY Firma';
+    dm_PCM.Qry_work.Open;
+
+    lCount.Caption := IntToStr(dm_PCM.Qry_work.RecordCount) + rs_PCMManager_Adresseengefunden;
+    lCount.Visible:= True;
+  end;
 end;
 procedure TfAdressSuche.bFilterLoeschenClick(Sender: TObject);
 begin
@@ -171,7 +196,11 @@ begin
   begin
     recSelected := True;
     frm_Calendar_new.FFirma:= dm_PCM.Qry_work.Fields[0].asString;
-    modalResult := 1;// dm_PCM.Qry_work.Fields[0].asInteger;
+    frm_Calendar_new.FPrivat:= chkbx_Privat.Checked;
+    frm_Calendar_new.sADSVorname:= dm_PCM.Qry_work.FieldByName('Vorname').AsString;
+    frm_Calendar_new.sADSNachname:= dm_PCM.Qry_work.FieldByName('Nachname').AsString;
+
+    modalResult := 1
 
   end else
   begin
@@ -186,7 +215,10 @@ procedure TfAdressSuche.tvAdressenCellDblClick(Sender: TcxCustomGridTableView; A
 begin
   recSelected := true;
   frm_Calendar_new.FFirma:= dm_PCM.Qry_work.Fields[0].asString;
-  modalResult := 1;//dm_PCM.Qry_work.Fields[0].AsInteger;
+  frm_Calendar_new.FPrivat:= chkbx_Privat.Checked;
+  frm_Calendar_new.sADSVorname:= dm_PCM.Qry_work.FieldByName('Vorname').AsString;
+  frm_Calendar_new.sADSNachname:= dm_PCM.Qry_work.FieldByName('Nachname').AsString;
+  modalResult := 1;
 end;
 
 end.

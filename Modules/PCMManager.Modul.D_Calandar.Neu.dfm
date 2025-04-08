@@ -36,7 +36,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object btnGoToJira: TcxButton
       Left = 885
-      Top = 271
+      Top = 265
       Width = 25
       Height = 21
       LookAndFeel.NativeStyle = False
@@ -95,7 +95,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object edtJiraTicket: TcxTextEdit
       Left = 82
-      Top = 271
+      Top = 265
       Style.HotTrack = False
       Style.LookAndFeel.NativeStyle = False
       Style.TransparentBorder = False
@@ -108,7 +108,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object teBetreff: TcxTextEdit
       Left = 82
-      Top = 298
+      Top = 292
       Style.HotTrack = False
       Style.LookAndFeel.NativeStyle = False
       Style.TransparentBorder = False
@@ -181,6 +181,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
           FieldName = 'Bezeichnung'
         end>
       Properties.ListSource = dm_PCM.ds_KalenderAufgaben_Arten
+      Properties.OnChange = cbAufgabenArtPropertiesChange
       Properties.OnCloseUp = cbAufgabenArtPropertiesCloseUp
       EditValue = 0
       Style.HotTrack = False
@@ -531,7 +532,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object mNachricht: TcxRichEdit
       Left = 10
-      Top = 323
+      Top = 317
       ParentFont = False
       Properties.AutoURLDetect = True
       Properties.PlainText = True
@@ -546,14 +547,14 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 25
-      Height = 427
+      Height = 433
       Width = 709
     end
     object cxGrid1: TcxGrid
       Left = 725
-      Top = 323
+      Top = 317
       Width = 185
-      Height = 387
+      Height = 393
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -782,7 +783,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Parent = dxLayoutGroup6
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'Firma:'#13#10
+      CaptionOptions.Text = 'Kontakt:'
       Control = edtFirma
       ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 383
@@ -802,6 +803,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       ShowBorder = False
       Index = 0
     end
@@ -867,17 +869,18 @@ object frm_Calendar_new: Tfrm_Calendar_new
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup7: TdxLayoutGroup
+    object lagrp_Jira: TdxLayoutGroup
       Parent = dxLayoutGroup3
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      Visible = False
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 1
     end
     object dxLayoutItem8: TdxLayoutItem
-      Parent = dxLayoutGroup7
+      Parent = lagrp_Jira
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Jira Ticket-Nr:'
@@ -888,7 +891,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Index = 0
     end
     object dxLayoutItem9: TdxLayoutItem
-      Parent = dxLayoutGroup7
+      Parent = lagrp_Jira
       AlignHorz = ahRight
       AlignVert = avTop
       CaptionOptions.Text = 'New Item'
@@ -1024,7 +1027,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
+      ItemIndex = 3
       ShowBorder = False
       Index = 0
     end

@@ -194,6 +194,7 @@ type
     dxLayoutSkinLookAndFeel2: TdxLayoutSkinLookAndFeel;
     qry_Contact_Land: TFDQuery;
     ds_Contact_Land: TDataSource;
+    qry_Kalender_AufgabenPrivat: TStringField;
     procedure con_PCMBeforeConnect(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
   private

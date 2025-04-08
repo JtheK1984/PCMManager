@@ -29,10 +29,10 @@ object fAdressSuche: TfAdressSuche
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     object cxGrid1: TcxGrid
       Left = 10
-      Top = 204
+      Top = 229
       Width = 926
-      Height = 400
-      TabOrder = 7
+      Height = 375
+      TabOrder = 8
       LookAndFeel.NativeStyle = False
       object tvAdressen: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -105,29 +105,21 @@ object fAdressSuche: TfAdressSuche
     end
     object teName: TcxTextEdit
       Left = 97
-      Top = 111
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      TabOrder = 1
-      Width = 369
-    end
-    object teStrasse: TcxTextEdit
-      Left = 97
       Top = 136
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 2
       Width = 369
     end
-    object tePLZ: TcxTextEdit
-      Left = 554
-      Top = 111
+    object teStrasse: TcxTextEdit
+      Left = 97
+      Top = 161
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 3
-      Width = 373
+      Width = 369
     end
-    object teOrt: TcxTextEdit
+    object tePLZ: TcxTextEdit
       Left = 554
       Top = 136
       Style.HotTrack = False
@@ -135,9 +127,17 @@ object fAdressSuche: TfAdressSuche
       TabOrder = 4
       Width = 373
     end
+    object teOrt: TcxTextEdit
+      Left = 554
+      Top = 161
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 5
+      Width = 373
+    end
     object bAdressenZeigen: TcxButton
       Left = 10
-      Top = 170
+      Top = 195
       Width = 225
       Height = 28
       Hint = 
@@ -147,7 +147,7 @@ object fAdressSuche: TfAdressSuche
       LookAndFeel.NativeStyle = False
       OptionsImage.ImageIndex = 25
       OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 5
+      TabOrder = 6
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -158,7 +158,7 @@ object fAdressSuche: TfAdressSuche
     end
     object bFilterLoeschen: TcxButton
       Left = 241
-      Top = 170
+      Top = 195
       Width = 225
       Height = 28
       Hint = 
@@ -168,7 +168,7 @@ object fAdressSuche: TfAdressSuche
       LookAndFeel.NativeStyle = False
       OptionsImage.ImageIndex = 24
       OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 6
+      TabOrder = 7
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -185,6 +185,15 @@ object fAdressSuche: TfAdressSuche
       Align = dalNone
       BarManager = dxBarManager1
     end
+    object chkbx_Privat: TcxCheckBox
+      Left = 19
+      Top = 111
+      Caption = 'Private Adresse'
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 1
+      Transparent = True
+    end
     object dxLayoutControl1Group_Root: TdxLayoutGroup
       AlignHorz = ahClient
       AlignVert = avClient
@@ -197,7 +206,7 @@ object fAdressSuche: TfAdressSuche
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Filter-Kriterien'
-      ItemIndex = 2
+      ItemIndex = 1
       ShowBorder = False
       Index = 0
     end
@@ -322,12 +331,31 @@ object fAdressSuche: TfAdressSuche
       Index = 1
     end
     object dxLayoutGroup13: TdxLayoutGroup
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avTop
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem9: TdxLayoutItem
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = chkbx_Privat
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 84
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup2: TdxLayoutGroup
       Parent = dxLayoutGroup1
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Filter-Kriterien'
       ItemIndex = 1
-      LayoutDirection = ldHorizontal
       Index = 1
     end
   end

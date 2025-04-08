@@ -1048,6 +1048,7 @@ begin
 
 
   if frm_Calendar_new.Execute(
+    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Privat').AsBoolean,
     dm_PCM.qry_Kalender_Aufgaben.FieldByName('LabelColor').asInteger,
     dm_PCM.qry_Kalender_Aufgaben.FieldByName('FontColor').asInteger,
     dm_PCM.qry_Kalender_Aufgaben.FieldByName('Location').AsString,
@@ -1678,7 +1679,7 @@ var
   iNewId: integer;
 begin
   Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
-  frm_Calendar_new.Execute(iLabelColor,iFontColor,'im Büro','manuell',schedDBStrg_Kalender,2, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
+  frm_Calendar_new.Execute(false,iLabelColor,iFontColor,'im Büro','manuell',schedDBStrg_Kalender,2, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
   frm_Calendar_new := nil;
   RefreshTerminundAUfgaben;
 end;
@@ -2658,7 +2659,7 @@ var
   iNewId: integer;
 begin
   Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
-  frm_Calendar_new.Execute(iLabelColor,iFontColor,'im Büro','manuell',schedDBStrg_Kalender,2, 0, 0, '','',0,sched_Kalender.SelStart,sched_Kalender.SelFinish,0,false,0,0,0,0,0,0,false,false,15,false,0,0,nil,'','',iNewId);
+  frm_Calendar_new.Execute(false,iLabelColor,iFontColor,'im Büro','manuell',schedDBStrg_Kalender,2, 0, 0, '','',0,sched_Kalender.SelStart,sched_Kalender.SelFinish,0,false,0,0,0,0,0,0,false,false,15,false,0,0,nil,'','',iNewId);
   frm_Calendar_new := nil;
   RefreshTerminundAUfgaben;
 end;
@@ -2699,6 +2700,45 @@ begin
   end;
 
 end;
+procedure Tfrm_Calendar.pc_KalenderClick(Sender: TObject);
+begin
+  schedDBStrg_Kalender.Reminders.Active:= false;
+  if lagrp_KalenderTab.ItemIndex = 0 then
+  begin
+    Application.ProcessMessages;
+    schedDBStrg_Kalender.Reminders.Active:= true;
+    sched_Kalender.SelectDays(Date, Date, True);
+    Application.ProcessMessages;
+    dm_PCM.qry_Kalender_Benutzer.SQL.Text:= 'Select ID, CONCAT(Nachname, ' + QuotedStr(', ') + ' ,Vorname) as Name '+'From Benutzer Where ID = :ID';
+    dm_PCM.qry_Kalender_Benutzer.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_Kalender_Benutzer.Open;
+    Application.ProcessMessages;
+    Application.ProcessMessages;
+    dm_PCM.qry_Kalender_Kalender.SQL.Text:=  'Select ID,EventType,Caption,Location,Message,Start,' +
+                          'Finish,Options,CompleteDay,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'+
+                          'ReminderMinutesBeforeStart,LabelColor,FontColor,ID_Benutzer,ID_kontakte From manager_Kalender ' +
+                          'Where Typ = 2 and ID_Benutzer = :ID';;
+    dm_PCM.qry_Kalender_Kalender.ParamByName('ID').asBlob:= AnsiStrIng(IntToStr(dm_PCM.iIDBenutzerPCM));
+    dm_PCM.qry_Kalender_Kalender.Open;
+    try
+      Application.ProcessMessages;
+      ReadICSAutomatic;
+      Application.ProcessMessages;
+      WriteICSAutomatic;
+    except
+    end;
+    Application.ProcessMessages;
+    btn_CalArbeitswocheClick(Self);
+    btn_CalArbeitswoche.LargeImageIndex:= 16;
+    btn_CalTag.LargeImageIndex:= 39;
+    btn_CalWoche.LargeImageIndex:= 41;
+    btn_CalMonat.LargeImageIndex:= 42;
+    btn_CalJahr.LargeImageIndex:= 44;
+    schedDBStrg_Kalender.Reminders.Active:= true;
+  end;
+  FormResize(Self);
+end;
+
 // Scheduler
 procedure Tfrm_Calendar.sched_KalenderBeforeDragEvent(Sender: TcxCustomScheduler;AEvent: TcxSchedulerControlEvent; X, Y: Integer; var Allow: Boolean);
 begin
@@ -3072,7 +3112,7 @@ var
   iNewId : Integer;
 begin
   Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
-  frm_Calendar_new.Execute(iLabelColor,iFontColor,'im Büro','manuell',schedDBStrg_Kalender,0, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
+  frm_Calendar_new.Execute(false,iLabelColor,iFontColor,'im Büro','manuell',schedDBStrg_Kalender,0, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
   frm_Calendar_new := nil;
   RefreshTerminundAUfgaben;
 end;
@@ -3081,7 +3121,7 @@ var
   iNewId : Integer;
 begin
   Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
-  frm_Calendar_new.Execute(iLabelColor,iFontColor,'im Büro','manuell',schedDBStrg_Kalender,1, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
+  frm_Calendar_new.Execute(false,iLabelColor,iFontColor,'im Büro','manuell',schedDBStrg_Kalender,1, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
   frm_Calendar_new := nil;
   RefreshTerminundAUfgaben;
 end;
@@ -3090,7 +3130,7 @@ var
   iNewId : Integer;
 begin
   Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
-  frm_Calendar_new.Execute(iLabelColor,iFontColor,'im Büro','manuell',schedDBStrg_Kalender,2, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
+  frm_Calendar_new.Execute(false,iLabelColor,iFontColor,'im Büro','manuell',schedDBStrg_Kalender,2, 0, 0, '','',0,0,0,0,false,0,0,0,0,0,0,false,false,0,false,0,0,nil,'','',iNewId);
   frm_Calendar_new := nil;
   RefreshTerminundAUfgaben;
 end;
@@ -3152,6 +3192,7 @@ begin
       qWF_Nachrichten_Anhaenge.Next;
     end;
       if frm_Calendar_new.Execute(
+      dm_PCM.qry_Kalender_Aufgaben.FieldByName('Privat').AsBoolean,
       dm_PCM.qry_Kalender_Aufgaben.FieldByName('Labelcolor').AsInteger,
       dm_PCM.qry_Kalender_Aufgaben.FieldByName('FontColor').AsInteger,
       dm_PCM.qry_Kalender_Aufgaben.FieldByName('Location').AsString,
@@ -3792,7 +3833,7 @@ var
   iNewId : Integer;
 begin
   Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
-  frm_Calendar_new.Execute(iLabelColor,iFontColor,'im Büro','manuell',schedDBStrg_Kalender,2, 0, 0, '','',0,StrToDateTime(DateToStr(StrToDate(Copy(DateToStr(Date()),1,10))) + ' ' + '08:30:00'),StrToDateTime(DateToStr(StrToDate(Copy(DateToStr(Date()),1,10))) + ' ' + '08:30:00'),0,false,0,0,0,0,0,0,false,false,15,false,0,0,nil,'','',iNewId);
+  frm_Calendar_new.Execute(false,iLabelColor,iFontColor,'im Büro','manuell',schedDBStrg_Kalender,2, 0, 0, '','',0,StrToDateTime(DateToStr(StrToDate(Copy(DateToStr(Date()),1,10))) + ' ' + '08:30:00'),StrToDateTime(DateToStr(StrToDate(Copy(DateToStr(Date()),1,10))) + ' ' + '08:30:00'),0,false,0,0,0,0,0,0,false,false,15,false,0,0,nil,'','',iNewId);
   frm_Calendar_new := nil;
   RefreshTerminundAUfgaben;
 end;
@@ -3837,46 +3878,6 @@ begin
   saveAttachement;
 end;
 {$EndRegion}
-{$Region TabJira}
-procedure Tfrm_Calendar.pc_KalenderClick(Sender: TObject);
-begin
-  schedDBStrg_Kalender.Reminders.Active:= false;
-  if lagrp_KalenderTab.ItemIndex = 0 then
-  begin
-    Application.ProcessMessages;
-    schedDBStrg_Kalender.Reminders.Active:= true;
-    sched_Kalender.SelectDays(Date, Date, True);
-    Application.ProcessMessages;
-    dm_PCM.qry_Kalender_Benutzer.SQL.Text:= 'Select ID, CONCAT(Nachname, ' + QuotedStr(', ') + ' ,Vorname) as Name '+'From Benutzer Where ID = :ID';
-    dm_PCM.qry_Kalender_Benutzer.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
-    dm_PCM.qry_Kalender_Benutzer.Open;
-    Application.ProcessMessages;
-    Application.ProcessMessages;
-    dm_PCM.qry_Kalender_Kalender.SQL.Text:=  'Select ID,EventType,Caption,Location,Message,Start,' +
-                          'Finish,Options,CompleteDay,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'+
-                          'ReminderMinutesBeforeStart,LabelColor,FontColor,ID_Benutzer,ID_kontakte From manager_Kalender ' +
-                          'Where Typ = 2 and ID_Benutzer = :ID';;
-    dm_PCM.qry_Kalender_Kalender.ParamByName('ID').asBlob:= AnsiStrIng(IntToStr(dm_PCM.iIDBenutzerPCM));
-    dm_PCM.qry_Kalender_Kalender.Open;
-    try
-      Application.ProcessMessages;
-      ReadICSAutomatic;
-      Application.ProcessMessages;
-      WriteICSAutomatic;
-    except
-    end;
-    Application.ProcessMessages;
-    btn_CalArbeitswocheClick(Self);
-    btn_CalArbeitswoche.LargeImageIndex:= 16;
-    btn_CalTag.LargeImageIndex:= 39;
-    btn_CalWoche.LargeImageIndex:= 41;
-    btn_CalMonat.LargeImageIndex:= 42;
-    btn_CalJahr.LargeImageIndex:= 44;
-    schedDBStrg_Kalender.Reminders.Active:= true;
-  end;
-  FormResize(Self);
-end;
-{$Endregion}
 ////////////////////////////////////////////////////////////////////////////////
 // TAB Stundenplan                                                            //
 ////////////////////////////////////////////////////////////////////////////////
@@ -4464,7 +4465,7 @@ begin
     Application.ProcessMessages;
     dm_PCM.qry_Kalender_Kalender.SQL.Text:=  'Select ID,EventType,Caption,Location,Message,Start,' +
                           'Finish,Options,CompleteDay,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'+
-                          'ReminderMinutesBeforeStart,LabelColor,FontColor,ID_Benutzer,ID_kontakte From manager_Kalender ' +
+                          'ReminderMinutesBeforeStart,LabelColor,FontColor,Privat,ID_Benutzer,ID_kontakte From manager_Kalender ' +
                           'Where Typ = 2 and bearbeitetam is null and ID_Benutzer = :ID';;
     dm_PCM.qry_Kalender_Kalender.ParamByName('ID').asBlob:= AnsiString(IntToStr(dm_PCM.iIDBenutzerPCM));
     dm_PCM.qry_Kalender_Kalender.Open;

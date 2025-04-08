@@ -3,6 +3,7 @@ unit PCMManager.Modul.D_Calandar.Neu;
 interface
 
 uses
+  {$Region uses}
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, DB, cxMemo, cxTextEdit, cxControls,strutils,
   cxContainer, cxEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
@@ -26,8 +27,9 @@ uses
   PCMManager.Helper.Calendar.Neu.Wiederholung, System.uitypes,
   dxLayoutContainer, dxLayoutcxEditAdapters, dxLayoutControlAdapters,
   dxLayoutControl, dxUIAClasses;
-
+  {$EndRegion uses}
 type
+  {$Region type}
   Tfrm_Calendar_new = class(TForm)
     deStart: TcxDateEdit;
     tAnhaenge: TdxMemData;
@@ -90,7 +92,7 @@ type
     dxLayoutItem6: TdxLayoutItem;
     dxLayoutItem7: TdxLayoutItem;
     dxLayoutGroup6: TdxLayoutGroup;
-    dxLayoutGroup7: TdxLayoutGroup;
+    lagrp_Jira: TdxLayoutGroup;
     dxLayoutItem8: TdxLayoutItem;
     dxLayoutItem9: TdxLayoutItem;
     dxLayoutItem10: TdxLayoutItem;
@@ -188,6 +190,7 @@ type
     procedure btn_SetRecurringEv1Click(Sender: TObject);
     procedure btn_DelRecurringEv1Click(Sender: TObject);
     procedure tAnhaengeAfterScroll(DataSet: TDataSet);
+    procedure cbAufgabenArtPropertiesChange(Sender: TObject);
 
   private
     { Private-Deklarationen }
@@ -204,15 +207,17 @@ type
   public
     { Public-Deklarationen }
     // 6.0.1.15 - AM
+    sADSVorname: string;
+    sADSNachname: string;
     FID_Adr_Wurzel: Integer;
+    FPrivat: boolean;
     FFirma: string;
     FID_Vorgaenge: Integer;
     FID_Auftrag: Integer;
     FID_Projekt: Integer;
     iCountEvent: Integer;
     AssKalenderStorage:TcxSchedulerDBStorage;
-
-    function Execute(ALabel, AFont: integer;Location, KalName: String ;AKalenderStorage:TcxSchedulerDBStorage;Typ : integer; ID_Adr_Wurzel, ID_Ansprechpartner: integer;
+    function Execute(APrivat: boolean;ALabel, AFont: integer;Location, KalName: String ;AKalenderStorage:TcxSchedulerDBStorage;Typ : integer; ID_Adr_Wurzel, ID_Ansprechpartner: integer;
       Betreff, Nachricht: string; ID_WF_Nachrichten_Ursprung: Integer; Start, Faellig:
       TDateTime; Status2: Integer; Rueckfrage: Boolean; ID_WF_Prioritaeten,
       ID_WF_AufgabenArten: Integer; Dauer: Integer; OrtTyp, ID_Firma,
@@ -228,23 +233,25 @@ type
     function cxMyGetRecurrenceFreqString(ARecurrenceInfo: TcxSchedulerEventRecurrenceInfo; AFullDescription: Boolean = False): string;
     procedure TypAenderung;
   end;
-
+  {$EndRegion type}
 var
+  {$Region var}
   frm_Calendar_new: Tfrm_Calendar_new;
-
+  {$EndRegion var}
 const
+  {$Region const}
   ntAufgabe = 1;
   ntNachricht = 0;
   ntTermin = 2;
-
+  {$EndRegion const}
 implementation
-
-uses  PCMManager.Modul.D_Calender.Neu.Adresssuche,
-      PCM.Data,
-      PCM.Strings;
-
-
 {$R *.dfm}
+uses
+  {$Region uses}
+  PCMManager.Modul.D_Calender.Neu.Adresssuche,
+  PCM.Data,
+  PCM.Strings;
+  {$EndRegion uses}
 
 function Tfrm_Calendar_new.cxMyGetRecurrenceDescriptionString(ARecurrenceInfo: TcxSchedulerEventRecurrenceInfo; AFullDescription: Boolean = False): string;
 const
@@ -568,7 +575,6 @@ function Tfrm_Calendar_new.minutesBetweenEx(Date1, Date2 : TDateTime) : integer;
 begin
   result := Trunc (0.5 + (Date2 - Date1)*1440);
 end;
-
 procedure Tfrm_Calendar_new.ZeigeWiederholungsInfo();
 begin
   stbr_New.Panels[0].Text:=cxMyGetRecurrenceDescriptionString(AEvent.RecurrenceInfo, true);
@@ -622,19 +628,15 @@ begin
   end;
   // Zeitformat auf Minunten ändern
 end;
-function Tfrm_Calendar_new.Execute(ALabel, AFont: integer;Location, KalName: String;AKalenderStorage:TcxSchedulerDBStorage;Typ : Integer; ID_Adr_Wurzel, ID_Ansprechpartner: integer;Betreff, Nachricht: string; ID_WF_Nachrichten_Ursprung: Integer;Start, Faellig: TDateTime; Status2: Integer; Rueckfrage: Boolean; ID_WF_Prioritaeten,ID_WF_AufgabenArten, Dauer, OrtTyp, ID_Firma, ID_Adr_Firmen_Adressen: Integer;Reminder, GanzerTag : Boolean; ReminderBeforeStart: Integer; PrivaterTermin : Boolean;Zeitformat : integer; Erledigungsgrad : double;Event: TcxSchedulerControlEvent; Jira_Ticket, Wiederholung: String;var NewId : Integer;bStandardFaelligkeitAufgabe: Boolean = False; bCallFromReminder: Boolean = False): Boolean;
+function Tfrm_Calendar_new.Execute(APrivat: boolean;ALabel, AFont: integer;Location, KalName: String;AKalenderStorage:TcxSchedulerDBStorage;Typ : Integer; ID_Adr_Wurzel, ID_Ansprechpartner: integer;Betreff, Nachricht: string; ID_WF_Nachrichten_Ursprung: Integer;Start, Faellig: TDateTime; Status2: Integer; Rueckfrage: Boolean; ID_WF_Prioritaeten,ID_WF_AufgabenArten, Dauer, OrtTyp, ID_Firma, ID_Adr_Firmen_Adressen: Integer;Reminder, GanzerTag : Boolean; ReminderBeforeStart: Integer; PrivaterTermin : Boolean;Zeitformat : integer; Erledigungsgrad : double;Event: TcxSchedulerControlEvent; Jira_Ticket, Wiederholung: String;var NewId : Integer;bStandardFaelligkeitAufgabe: Boolean = False; bCallFromReminder: Boolean = False): Boolean;
   function WFAddAttachment(AttachmentName: string; FilePath: string; ID_WF_Nachrichten: Integer): Boolean; stdcall;
   var
     fn: string;
     path: string;
   begin
     Result:= false;
-    // Dateiname im System
     fn := IntToStr(ID_WF_Nachrichten) + '_' + AttachmentName;
-   // Pfad für Dateiname
     path := ExpandFileName(ExtractFilePath(ParamStr(0)) + 'Files\');
-    // Verzeichnisse erstellen
-    // Temporäre Datei kopieren
     if CopyFile(PChar(FilePath), PChar(Path + fn), False) then
     begin
       dm_PCM.qry_work1.SQL.Text := 'INSERT INTO manager_aufgaben_anhaenge '
@@ -647,15 +649,27 @@ function Tfrm_Calendar_new.Execute(ALabel, AFont: integer;Location, KalName: Str
       Result := True;
     end;
   end;
-  function GetAdressID(AFirma:String): integer;
+  function GetAdressID(AFPrivat: boolean; AFirma,AVorname,ANachname:String): integer;
   begin
     Result:= -1;
-    dm_PCM.qry_work1.SQL.Text:= 'SELECT ID From manager_Kontakte Where Firma = :Firma';
-    dm_PCM.qry_work1.ParamByName('Firma').AsString:= AFirma;
-    dm_PCM.qry_work1.open;
-    if dm_PCM.qry_work1.RecordCount > 0 then
-      Result:= dm_PCM.qry_work1.FieldByName('ID').AsInteger;
-    dm_PCM.qry_work1.Close;
+    if APrivat then
+    begin
+      dm_PCM.qry_work1.SQL.Text:= 'SELECT ID From manager_Kontakte Where nachname = :nachname and Vorname = :vorname';
+      dm_PCM.qry_work1.ParamByName('vorname').AsString:= AVorname;
+      dm_PCM.qry_work1.ParamByName('nachname').AsString:= ANachname;
+      dm_PCM.qry_work1.open;
+      if dm_PCM.qry_work1.RecordCount > 0 then
+        Result:= dm_PCM.qry_work1.FieldByName('ID').AsInteger;
+      dm_PCM.qry_work1.Close;
+    end
+    else begin
+      dm_PCM.qry_work1.SQL.Text:= 'SELECT ID From manager_Kontakte Where Firma = :Firma';
+      dm_PCM.qry_work1.ParamByName('Firma').AsString:= AFirma;
+      dm_PCM.qry_work1.open;
+      if dm_PCM.qry_work1.RecordCount > 0 then
+        Result:= dm_PCM.qry_work1.FieldByName('ID').AsInteger;
+      dm_PCM.qry_work1.Close;
+    end;
   end;
 var
   ID,ipos, options,  iRecurrenceIndex, iEventType, iParentId,ReminderMinutes : Integer;
@@ -705,10 +719,18 @@ begin
   if ID_Adr_Wurzel > 0 then
   begin
     FID_Adr_Wurzel := ID_Adr_Wurzel;
-    dm_PCM.qry_work.SQL.Text := 'SELECT Firma FROM manager_kontakte '
-      + 'WHERE ID = :ID_Adr_Wurzel '
-      + 'ORDER BY Firma';
-    dm_PCM.qry_work.ParamByName('ID_Adr_Wurzel').AsInteger := FID_Adr_Wurzel;
+    if not APrivat then
+    begin
+      dm_PCM.qry_work.SQL.Text := 'SELECT Firma FROM manager_kontakte '
+        + 'WHERE ID = :ID_Adr_Wurzel '
+        + 'ORDER BY Firma';
+      dm_PCM.qry_work.ParamByName('ID_Adr_Wurzel').AsInteger := FID_Adr_Wurzel;
+    end
+    else begin
+      dm_PCM.qry_work.SQL.Text := 'SELECT Concat(Vorname,'' '',Nachname) as Firma FROM manager_kontakte '
+        + 'WHERE ID = :ID_Adr_Wurzel ';
+      dm_PCM.qry_work.ParamByName('ID_Adr_Wurzel').AsInteger := FID_Adr_Wurzel;
+    end;
     dm_PCM.qry_work.Open;
     edtFirma.Text := dm_PCM.qry_work.FieldByName('Firma').AsString;
     dm_PCM.qry_work.Close;
@@ -956,7 +978,7 @@ begin
       dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
       dm_PCM.qry_work.execsql;
 
-      dm_PCM.qry_work.SQL.Text:= 'Update manager_kalender SEt LabelColor =:LabelColor, FontColor =:FontColor, completeDay = :ganzerTag, wiederholung_text:= :wiederholung_text, location = :location, kalendername = :kalendername,' +
+      dm_PCM.qry_work.SQL.Text:= 'Update manager_kalender SEt Privat=:Privat, LabelColor =:LabelColor, FontColor =:FontColor, completeDay = :ganzerTag, wiederholung_text:= :wiederholung_text, location = :location, kalendername = :kalendername,' +
                          'ID_Benutzer= :ID_Benutzer,ID_Adr_Wurzel= :ID_Adr_Wurzel,' +
                          'ID_Ansprechpartner= :ID_Ansprechpartner,Typ= :Typ,GesendetAm= :GesendetAm,'+
                          'Start= :Start,Finish= :Finish,Caption= :Caption,Message= :Message,'+
@@ -969,12 +991,17 @@ begin
                          'parent_id= :parent_id,Erledigungsgrad= :Erledigungsgrad,'+
                          'Zeitformat= :Zeitformat,AufgabenDauer= :AufgabenDauer Where ID =:ID';
       dm_PCM.qry_work.Parambyname('ID').asInteger := FIdNachricht;
+      if  Fprivat then
+        dm_PCM.qry_work.Parambyname('Privat').AsString:= 'True'
+      else
+        dm_PCM.qry_work.Parambyname('Privat').AsString:= 'False';
+
       dm_PCM.qry_work.Parambyname('LabelColor').AsInteger:= ALabel;
       dm_PCM.qry_work.Parambyname('FontColor').AsInteger:= AFont;
       dm_PCM.qry_work.Parambyname('location').asString := cmbbx_Ort.Properties.Items[cmbbx_Ort.ItemIndex];
       dm_PCM.qry_work.Parambyname('Kalendername').asString := edt_kalname.Text;
       dm_PCM.qry_work.Parambyname('ID_Benutzer').asInteger := dm_PCM.iIDBenutzerPCM;
-      dm_PCM.qry_work.Parambyname('ID_Adr_Wurzel').asInteger := GetAdressID(edtfirma.text);
+      dm_PCM.qry_work.Parambyname('ID_Adr_Wurzel').asInteger := GetAdressID(FPrivat,edtfirma.text,sADSVorname,sADSNachname);
       if cbAnsprechpartner.EditValue <> null then
         dm_PCM.qry_work.Parambyname('ID_Ansprechpartner').asInteger := cbAnsprechpartner.EditValue
       else
@@ -1043,19 +1070,23 @@ begin
       dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
       dm_PCM.qry_work.execsql;
 
-      dm_PCM.qry_work.SQL.Text:= 'INSERT INTO manager_kalender (LabelColor,FontColor,CompleteDay,wiederholung_text,location,kalendername,ID_Benutzer,ID_Adr_Wurzel,ID_Ansprechpartner,Typ,GesendetAm,'+
+      dm_PCM.qry_work.SQL.Text:= 'INSERT INTO manager_kalender (Privat,LabelColor,FontColor,CompleteDay,wiederholung_text,location,kalendername,ID_Benutzer,ID_Adr_Wurzel,ID_Ansprechpartner,Typ,GesendetAm,'+
                          'Start,Finish,Caption,Message,Aufgabenstatus,Jira_Ticket,ID_IC_Prioritaeten,ID_IC_AufgabenArten,'+
                          'Reminder,ReminderMinutesBeforeStart,ReminderDate,options,EventType,'+
-                         'RecurrenceIndex,RecurrenceInfo,parent_id,Erledigungsgrad,Zeitformat,AufgabenDauer) VALUES (:LabelColor,:FontColor,:ganzerTag,:wiederholung_text,:location,:kalendername,:ID_Benutzer,:ID_Adr_Wurzel,:ID_Ansprechpartner,:Typ,:GesendetAm,'+
+                         'RecurrenceIndex,RecurrenceInfo,parent_id,Erledigungsgrad,Zeitformat,AufgabenDauer) VALUES (:Privat,:LabelColor,:FontColor,:ganzerTag,:wiederholung_text,:location,:kalendername,:ID_Benutzer,:ID_Adr_Wurzel,:ID_Ansprechpartner,:Typ,:GesendetAm,'+
                          ':Start,:Finish,:Caption,:Message,:Aufgabenstatus,:Jira_Ticket,:ID_IC_Prioritaeten,:ID_IC_AufgabenArten,'+
                          ':Reminder,:ReminderMinutesBeforeStart,:ReminderDate,:options,:EventType,'+
                          ':RecurrenceIndex,:RecurrenceInfo,:parent_id,:Erledigungsgrad,:Zeitformat,:AufgabenDauer)';
+      if  Fprivat then
+        dm_PCM.qry_work.Parambyname('Privat').AsString:= 'True'
+      else
+        dm_PCM.qry_work.Parambyname('Privat').AsString:= 'False';
       dm_PCM.qry_work.Parambyname('LabelColor').AsInteger:= ALabel;
       dm_PCM.qry_work.Parambyname('FontColor').AsInteger:= AFont;
       dm_PCM.qry_work.Parambyname('location').asString := cmbbx_Ort.Properties.Items[cmbbx_Ort.ItemIndex];
       dm_PCM.qry_work.Parambyname('Kalendername').asString := edt_kalname.Text;
       dm_PCM.qry_work.Parambyname('ID_Benutzer').asInteger := dm_PCM.iIDBenutzerPCM;
-      dm_PCM.qry_work.Parambyname('ID_Adr_Wurzel').asInteger := GetAdressID(edtFirma.text);
+      dm_PCM.qry_work.Parambyname('ID_Adr_Wurzel').asInteger := GetAdressID(FPrivat,edtFirma.text,sADSVorname,sADSNAchname);
       if cbAnsprechpartner.EditValue <> null then
         dm_PCM.qry_work.Parambyname('ID_Ansprechpartner').asInteger := cbAnsprechpartner.EditValue
       else
@@ -1416,6 +1447,14 @@ begin
     itemAufgabenstatus.Width:= 98;
   end;
 end;
+procedure Tfrm_Calendar_new.cbAufgabenArtPropertiesChange(Sender: TObject);
+begin
+  if cbAufgabenArt.Text = 'Eigenentwicklung' then
+    lagrp_Jira.Visible:= true
+  else
+    lagrp_Jira.Visible:= false;
+end;
+
 procedure Tfrm_Calendar_new.cbAufgabenArtPropertiesCloseUp(Sender: TObject);
 begin
   if teBetreff.Text = '' then
@@ -1518,9 +1557,18 @@ begin
 end;
 procedure Tfrm_Calendar_new.edtFirmaPropertiesEditValueChanged(Sender: TObject);
 begin
-  dm_PCM.qry_Aufgabe_Ansprechpartner.SQL.Text := 'SELECT ID,Concat(Nachname,'', '', Vorname) as NameVorname FROM manager_kontakte WHERE Firma = :ID_Adr_Wurzel ORDER By Nachname, Vorname';
-  dm_PCM.qry_Aufgabe_Ansprechpartner.ParamByName('ID_Adr_Wurzel').AsString := FFirma;
-  dm_PCM.qry_Aufgabe_Ansprechpartner.Open;
+  if FPrivat then
+  begin
+    dm_PCM.qry_Aufgabe_Ansprechpartner.SQL.Text := 'SELECT ID,Concat(Nachname,'', '', Vorname) as NameVorname FROM manager_kontakte WHERE Nachname = :Nachname and Vorname =:Vorname ORDER By Nachname, Vorname';
+    dm_PCM.qry_Aufgabe_Ansprechpartner.ParamByName('Nachname').AsString := sADSNachname;
+    dm_PCM.qry_Aufgabe_Ansprechpartner.ParamByName('Vorname').AsString := sADSVorname;
+    dm_PCM.qry_Aufgabe_Ansprechpartner.Open;
+  end
+  else begin
+    dm_PCM.qry_Aufgabe_Ansprechpartner.SQL.Text := 'SELECT ID,Concat(Nachname,'', '', Vorname) as NameVorname FROM manager_kontakte WHERE Firma = :ID_Adr_Wurzel ORDER By Nachname, Vorname';
+    dm_PCM.qry_Aufgabe_Ansprechpartner.ParamByName('ID_Adr_Wurzel').AsString := FFirma;
+    dm_PCM.qry_Aufgabe_Ansprechpartner.Open;
+  end;
 end;
 procedure Tfrm_Calendar_new.loescheTempDoks();
 begin
@@ -1553,7 +1601,7 @@ begin
   Application.CreateForm(TfAdressSuche, fAdressSuche);
   FID_Adr_Wurzel := fAdressSuche.ShowModal;
   fAdressSuche.Free;
-  edtFirma.Text := FFirma;//qryWork.FieldByName('Name').AsString;
+  edtFirma.Text := FFirma;
 end;
 procedure Tfrm_Calendar_new.btn_DelRecurringEv1Click(Sender: TObject);
 begin
