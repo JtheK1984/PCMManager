@@ -203,14 +203,9 @@ type
     lucmbbx_Staatsanghoerigkeit: TcxDBLookupComboBox;
     img_Picture: TcxDBImage;
     edt_KontaktGeschaeftlichAbteilung: TcxDBTextEdit;
-    edt_KontaktGeschaeftlichEMail: TcxDBTextEdit;
     edt_KontaktGeschaeftlichFirma: TcxDBTextEdit;
-    edt_KontaktGeschaeftlichInternet: TcxDBTextEdit;
-    edt_KontaktGeschaeftlichOrt: TcxDBTextEdit;
     edt_KontaktGeschaeftlichPLZ: TcxDBTextEdit;
     edt_KontaktGeschaeftlichStrasse: TcxDBTextEdit;
-    edt_KontaktGeschaeftlichTelefonZentrale: TcxDBTextEdit;
-    edt_KontaktGeschaeftlichTelefonDurchwahl: TcxDBTextEdit;
     mem_Sonstige: TcxDBMemo;
     grd_Suche: TcxGrid;
     grdDBTblView_Suche: TcxGridDBTableView;
@@ -262,9 +257,6 @@ type
     edt_KontaktGeschaeftlichFunktion: TcxDBTextEdit;
     btn_EditStaatsangehoerigkeit: TcxButton;
     btn_EditKonfession: TcxButton;
-    btn_WebBusiness: TcxButton;
-    btn_MapBusiness: TcxButton;
-    btn_MailBusiness: TcxButton;
     lagrp_Personal: TdxLayoutGroup;
     lagrp_MitarbeiterInfo: TdxLayoutGroup;
     lagrp_MitarbeiterInfoDetails: TdxLayoutGroup;
@@ -326,12 +318,8 @@ type
     laitm_Facebook: TdxLayoutItem;
     laitm_Skype: TdxLayoutItem;
     laitm_Teams: TdxLayoutItem;
-    laitm_WebBusinessBtn: TdxLayoutItem;
-    laitm_MailBusinessBtn: TdxLayoutItem;
-    laitm_MapBusiness: TdxLayoutItem;
     laitm_Kontaktart: TdxLayoutItem;
     laitm_HandyBusinessText: TdxLayoutItem;
-    edt_GeschaeftlichHandy: TcxDBTextEdit;
     cmbbx_KontaktArt: TcxDBLookupComboBox;
     lagrp_ZusatzStaatsangehoerigkeit: TdxLayoutGroup;
     lagrp_ZusatzKonfession: TdxLayoutGroup;
@@ -339,8 +327,6 @@ type
     lagrp_SucheAdressePri: TdxLayoutGroup;
     lagrp_SucheFirma: TdxLayoutGroup;
     lagrp_SucheButtons: TdxLayoutGroup;
-    lagrp_GesWeb: TdxLayoutGroup;
-    lagrp_MailBusiness: TdxLayoutGroup;
     laitm_Todestag: TdxLayoutItem;
     dtEdt_KontaktZusatzTodestag: TcxDBDateEdit;
     laitm_Geburtsort: TdxLayoutItem;
@@ -365,21 +351,8 @@ type
     laitm_OrtGesSuche: TdxLayoutItem;
     laitm_MailBusinessZentralText: TdxLayoutItem;
     qry_KontakteE_Mail_Zentral: TStringField;
-    edt_KontaktGeschaeftlichEMailZentrale: TcxDBTextEdit;
-    lagrp_GesMailzentral: TdxLayoutGroup;
-    laitm_MailBusinessZentralBtn: TdxLayoutItem;
-    btn_MailGesZentral: TcxButton;
     laitm_AnredeSuche: TdxLayoutItem;
     cmbbx_KontaktAnrede: TcxComboBox;
-    lagrp_TelefonDurchwahl: TdxLayoutGroup;
-    lagrp_HandyBusiness: TdxLayoutGroup;
-    lagrp_TelefonZentraleText: TdxLayoutGroup;
-    laitm_TelefonZentraleBtn: TdxLayoutItem;
-    laitm_TelefonDurchwahlBtn: TdxLayoutItem;
-    laitm_HandyBusinessBtn: TdxLayoutItem;
-    btn_KontaktGeschaeftlichTelefonZentrale: TcxButton;
-    btn_KontaktGeschaeftlichTelefondurchwahl: TcxButton;
-    btn_KontaktGeschaeftlichHandy: TcxButton;
     edt_KontaktSucheStrasseGes: TcxTextEdit;
     edt_KontaktSuchePLZGes: TcxTextEdit;
     edt_KontaktSucheOrtGes: TcxTextEdit;
@@ -398,20 +371,19 @@ type
     edt_KontaktOrt: TcxDBButtonEdit;
     edt_KontaktTelefon1: TcxDBButtonEdit;
     edt_Email2: TcxDBButtonEdit;
-    cxDBButtonEdit6: TcxDBButtonEdit;
-    cxDBButtonEdit7: TcxDBButtonEdit;
-    cxDBButtonEdit2: TcxDBButtonEdit;
+    edt_KontaktGeschaeftlichEMailZentrale: TcxDBButtonEdit;
+    edt_KontaktGeschaeftlichInternet: TcxDBButtonEdit;
+    edt_KontaktGeschaeftlichOrt: TcxDBButtonEdit;
     edt_KontaktTelefon2: TcxDBButtonEdit;
     edt_KontaktHandy: TcxDBButtonEdit;
     edt_Email1: TcxDBButtonEdit;
     edt_KontaktInternet: TcxDBButtonEdit;
-    cxDBButtonEdit11: TcxDBButtonEdit;
-    cxDBButtonEdit12: TcxDBButtonEdit;
-    cxDBButtonEdit13: TcxDBButtonEdit;
-    cxDBButtonEdit14: TcxDBButtonEdit;
+    edt_KontaktGeschaeftlichTelefonZentrale: TcxDBButtonEdit;
+    edt_KontaktGeschaeftlichTelefonDurchwahl: TcxDBButtonEdit;
+    edt_GeschaeftlichHandy: TcxDBButtonEdit;
+    edt_KontaktGeschaeftlichEMail: TcxDBButtonEdit;
     procedure btn_KontaktNewClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure btn_KontaktGeschaeftlichSendMailClick(Sender: TObject);
     procedure btn_KontaktKonfessionEditClick(Sender: TObject);
     procedure btn_KontaktCancelClick(Sender: TObject);
     procedure btn_KontaktDeleteClick(Sender: TObject);
@@ -428,11 +400,9 @@ type
     procedure ppmbtn_VCFImportierenClick(Sender: TObject);
     procedure ppmbtn_ExportVCFClick(Sender: TObject);
     procedure edt_KontaktSucheNachnameKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure btn_KontaktGesOpenWebsiteClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure lagrp_PersonalTabTabChanged(Sender: TObject);
-    procedure btn_MapBusinessClick(Sender: TObject);
     procedure btn_ClearFilterClick(Sender: TObject);
     procedure btn_addTodestagClick(Sender: TObject);
     procedure btn_addGeburtsnameClick(Sender: TObject);
@@ -440,9 +410,6 @@ type
     procedure btn_addGeburtslandClick(Sender: TObject);
     procedure dxLayoutGroup6Button0Click(Sender: TObject);
     procedure ppmbtn_ExportOutlookClick(Sender: TObject);
-    procedure btn_KontaktGeschaeftlichTelefonZentraleClick(Sender: TObject);
-    procedure btn_KontaktGeschaeftlichTelefondurchwahlClick(Sender: TObject);
-    procedure btn_KontaktGeschaeftlichHandyClick(Sender: TObject);
     procedure edt_KontaktOrtPropertiesButtonClick(Sender: TObject;
       AButtonIndex: Integer);
     procedure edt_KontaktTelefon1PropertiesButtonClick(Sender: TObject;
@@ -456,6 +423,16 @@ type
     procedure edt_Email2PropertiesButtonClick(Sender: TObject;
       AButtonIndex: Integer);
     procedure edt_KontaktInternetPropertiesButtonClick(Sender: TObject;
+      AButtonIndex: Integer);
+    procedure edt_KontaktGeschaeftlichTelefonZentralePropertiesButtonClick(
+      Sender: TObject; AButtonIndex: Integer);
+    procedure edt_KontaktGeschaeftlichOrtPropertiesButtonClick(Sender: TObject;
+      AButtonIndex: Integer);
+    procedure edt_KontaktGeschaeftlichInternetPropertiesButtonClick(
+      Sender: TObject; AButtonIndex: Integer);
+    procedure edt_KontaktGeschaeftlichTelefonDurchwahlPropertiesButtonClick(
+      Sender: TObject; AButtonIndex: Integer);
+    procedure edt_GeschaeftlichHandyPropertiesButtonClick(Sender: TObject;
       AButtonIndex: Integer);
   private
     { Private-Deklarationen }
@@ -566,28 +543,22 @@ procedure Tfrm_Contact.SetTab;
       laitm_Abteilung.Visible:= false;
       laitm_Funktion.Visible:= false;
       laitm_TelefonDurchwahlText.Visible:= false;
-      laitm_TelefonDurchwahlbtn.Visible:= false;
       laitm_HandyBusinessText.Visible:= false;
-      laitm_HandyBusinessbtn.Visible:= false;
-      lagrp_MailBusiness.Visible:= false;
+      laitm_MailBusinessText.Visible:= false;
     end
     else begin
       laitm_Abteilung.Visible:= true;
       laitm_Funktion.Visible:= true;
       laitm_TelefonDurchwahlText.Visible:= true;
-      laitm_TelefonDurchwahlbtn.Visible:= true;
       laitm_HandyBusinessText.Visible:= true;
-      laitm_HandyBusinessBtn.Visible:= true;
-      lagrp_MailBusiness.Visible:= true;
+      laitm_MailBusinessText.Visible:= true;
     end;
   end;
 begin
   if qry_Kontakte.FieldByName('ID_Anrede').AsInteger in arrcont then
   begin
     laitm_HandyBusinessText.Visible:= true;
-    laitm_HandyBusinessbtn.Visible:= true;
     laitm_TelefonDurchwahlText.Visible:= true;
-    laitm_TelefonDurchwahlbtn.Visible:= true;
     laitm_ImageGes.Visible:= false;
     lagrp_Zusatz.Visible:= True;
     lagrp_KontaktPersonal.Visible:= True;
@@ -638,9 +609,7 @@ begin
   else
   begin
     laitm_TelefonDurchwahlText.Visible:= false;
-    laitm_TelefonDurchwahlbtn.Visible:= false;
     laitm_HandyBusinessText.Visible:= true;
-    laitm_HandyBusinessbtn.Visible:= true;
     laitm_ImageGes.Visible:= true;
     lagrp_KontaktPersonal.Visible:= false;
     lagrp_Zusatz.Visible:= false;
@@ -930,6 +899,41 @@ begin
   ExecStr := Format('mailto:%s?subject=',[qry_Kontakte.FieldByName('E_Mail_Privat1').AsString]);
   ShellExecute(0,'open', PChar(ExecStr), NIL, NIL, SW_SHOWNORMAL);
 end;
+procedure Tfrm_Contact.edt_GeschaeftlichHandyPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+begin
+  MakeCall(edt_GeschaeftlichHandy.text);
+end;
+procedure Tfrm_Contact.edt_KontaktGeschaeftlichInternetPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+var
+  sLink: string;
+begin
+  if edt_KontaktGeschaeftlichInternet.Text <> '' then
+  begin
+    sLink := edt_KontaktGeschaeftlichInternet.text;
+    OpenUrl(sLink);
+//    ShellExecute(self.WindowHandle,'open', PWideChar(sLink) ,nil,nil, SW_SHOWNORMAL);
+  end;
+end;
+procedure Tfrm_Contact.edt_KontaktGeschaeftlichOrtPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+begin
+  if (edt_KontaktGeschaeftlichStrasse.Text <> '') and (edt_KontaktGeschaeftlichPLZ.Text <> '') and (edt_KontaktGeschaeftlichOrt.Text <> '') then
+  begin
+    var sLink:= 'http://maps.google.de/maps?q=' + edt_KontaktGeschaeftlichStrasse.Text + ',' + edt_KontaktGeschaeftlichPLZ.Text + '+' + edt_KontaktGeschaeftlichOrt.Text + '&z=12';
+//    ShellExecute(0, 'open', PChar(sLink), nil, nil, SW_SHOWNORMAL);
+    OpenUrl(sLink);
+  end
+  else begin
+    MessageDlg('Adresse unvollständig',mtWarning,[mbOk],0);
+  end;
+end;
+procedure Tfrm_Contact.edt_KontaktGeschaeftlichTelefonDurchwahlPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+begin
+  MakeCall(edt_KontaktGeschaeftlichTelefonDurchwahl.text);
+end;
+procedure Tfrm_Contact.edt_KontaktGeschaeftlichTelefonZentralePropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+begin
+  MakeCall(edt_KontaktGeschaeftlichTelefonZentrale.text);
+end;
 procedure Tfrm_Contact.edt_KontaktHandyPropertiesButtonClick(Sender: TObject;AButtonIndex: Integer);
 begin
   MakeCall(edt_KontaktHandy.text);
@@ -970,7 +974,6 @@ procedure Tfrm_Contact.edt_KontaktTelefon2PropertiesButtonClick(Sender: TObject;
 begin
   MakeCall(edt_KontaktTelefon2.text);
 end;
-
 procedure Tfrm_Contact.btn_kontaktsuchenClick(Sender: TObject);
 var
   str_filter: string;
@@ -1101,30 +1104,6 @@ end;
 // Kontaktdetail                                                              //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Kontaktdetail}
-procedure Tfrm_Contact.btn_MapBusinessClick(Sender: TObject);
-begin
-  if (edt_KontaktGeschaeftlichStrasse.Text <> '') and (edt_KontaktGeschaeftlichPLZ.Text <> '') and (edt_KontaktGeschaeftlichOrt.Text <> '') then
-  begin
-    var sLink:= 'http://maps.google.de/maps?q=' + edt_KontaktGeschaeftlichStrasse.Text + ',' + edt_KontaktGeschaeftlichPLZ.Text + '+' + edt_KontaktGeschaeftlichOrt.Text + '&z=12';
-//    ShellExecute(0, 'open', PChar(sLink), nil, nil, SW_SHOWNORMAL);
-    OpenUrl(sLink);
-  end
-  else begin
-    MessageDlg('Adresse unvollständig',mtWarning,[mbOk],0);
-  end;
-end;
-procedure Tfrm_Contact.btn_KontaktGeschaeftlichTelefonZentraleClick(Sender: TObject);
-begin
-  MakeCall(edt_KontaktGeschaeftlichTelefonZentrale.text);
-end;
-procedure Tfrm_Contact.btn_KontaktGeschaeftlichTelefondurchwahlClick(Sender: TObject);
-begin
-  MakeCall(edt_KontaktGeschaeftlichTelefonDurchwahl.text);
-end;
-procedure Tfrm_Contact.btn_KontaktGeschaeftlichHandyClick(Sender: TObject);
-begin
-  MakeCall(edt_GeschaeftlichHandy.text);
-end;
 procedure Tfrm_Contact.btn_KontaktStaatsangehörigkeitEditClick(Sender: TObject);
 begin
   Application.CreateForm(Tfrm_PCM_Staatsangehoerigkeit, frm_PCM_Staatsangehoerigkeit);
@@ -1136,24 +1115,6 @@ begin
    Application.CreateForm(Tfrm_PCM_Konfession, frm_PCM_Konfession);
    if frm_PCM_Konfession.Execute(rs_PCMManager_Konfessionbearbeiten,dm_PCM.iKontakte) then
      dm_PCM.qry_Contact_Konfession.Refresh;
-end;
-procedure Tfrm_Contact.btn_KontaktGeschaeftlichSendMailClick(Sender: TObject);
-var
-  ExecStr : String;
-begin
-  ExecStr := Format('mailto:%s?subject=',[qry_Kontakte.FieldByName('E_Mail_Ges').AsString]);
-  ShellExecute(0,'open', PChar(ExecStr), NIL, NIL, SW_SHOWNORMAL);
-end;
-procedure Tfrm_Contact.btn_KontaktGesOpenWebsiteClick(Sender: TObject);
-var
-  sLink: string;
-begin
-  if edt_KontaktGeschaeftlichInternet.Text <> '' then
-  begin
-    sLink := edt_KontaktGeschaeftlichInternet.text;
-    OpenUrl(sLink);
-//    ShellExecute(self.WindowHandle,'open', PWideChar(sLink) ,nil,nil, SW_SHOWNORMAL);
-  end;
 end;
 procedure Tfrm_Contact.ppmbtn_VCFImportierenClick(Sender: TObject);
   function BitmapFromBase64(const base64: string): TPicture;
