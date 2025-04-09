@@ -447,6 +447,8 @@ type
     dxLayoutGroup19: TdxLayoutGroup;
     dxLayoutLabeledItem8: TdxLayoutLabeledItem;
     lTypeName: TdxLayoutLabeledItem;
+    btn_CalTimegrid: TdxBarLargeButton;
+    dxBarButton1: TdxBarButton;
     procedure btn_CalNewClick(Sender: TObject);
     procedure btn_CalArbeitswocheClick(Sender: TObject);
     procedure btn_CalWocheClick(Sender: TObject);
@@ -538,6 +540,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure btn_CalTagClick(Sender: TObject);
     procedure sched_KalenderGetEventModernStyleHintInfo(Sender: TObject; AEvent: TcxSchedulerControlEvent; AInfo: TcxSchedulerEventModernStyleHintInfo);
+    procedure btn_CalTimegridClick(Sender: TObject);
   private
     { Private-Deklarationen }
     FKalenderDateButton : Boolean;
@@ -1695,6 +1698,7 @@ begin
   btn_CalWoche.LargeImageIndex:= 41;
   btn_CalMonat.LargeImageIndex:= 42;
   btn_CalJahr.LargeImageIndex:= 44;
+  btn_CalTimegrid.LargeImageIndex:= 133;
 end;
 procedure Tfrm_Calendar.btn_CalArbeitswocheClick(Sender: TObject);
 begin
@@ -1708,6 +1712,7 @@ begin
   btn_CalWoche.LargeImageIndex:= 41;
   btn_CalMonat.LargeImageIndex:= 42;
   btn_CalJahr.LargeImageIndex:= 44;
+  btn_CalTimegrid.LargeImageIndex:= 133;
 end;
 procedure Tfrm_Calendar.btn_CalWocheClick(Sender: TObject);
 begin
@@ -1720,6 +1725,7 @@ begin
   btn_CalWoche.LargeImageIndex:= 17;
   btn_CalMonat.LargeImageIndex:= 42;
   btn_CalJahr.LargeImageIndex:= 44;
+  btn_CalTimegrid.LargeImageIndex:= 133;
 end;
 procedure Tfrm_Calendar.btn_CalMonatClick(Sender: TObject);
 begin
@@ -1732,6 +1738,7 @@ begin
   btn_CalWoche.LargeImageIndex:= 41;
   btn_CalMonat.LargeImageIndex:= 18;
   btn_CalJahr.LargeImageIndex:= 44;
+  btn_CalTimegrid.LargeImageIndex:= 133;
 end;
 procedure Tfrm_Calendar.btn_CalJahrClick(Sender: TObject);
 begin
@@ -1744,6 +1751,7 @@ begin
   btn_CalWoche.LargeImageIndex:= 41;
   btn_CalMonat.LargeImageIndex:= 42;
   btn_CalJahr.LargeImageIndex:= 19;
+  btn_CalTimegrid.LargeImageIndex:= 133;
 end;
 procedure Tfrm_Calendar.btn_CalAgendaClick(Sender: TObject);
 begin
@@ -1752,6 +1760,7 @@ begin
   btn_CalWoche.LargeImageIndex:= 41;
   btn_CalMonat.LargeImageIndex:= 42;
   btn_CalJahr.LargeImageIndex:= 44;
+  btn_CalTimegrid.LargeImageIndex:= 133;
   sched_Kalender.ViewAgenda.Active := True;
 end;
 procedure Tfrm_Calendar.btn_CalArbeitszeitClick(Sender: TObject);
@@ -1775,7 +1784,6 @@ procedure Tfrm_Calendar.btn_CalZurueckClick(Sender: TObject);
 begin
   FKalenderDateButton := True;
   if btn_CalTag.LargeImageIndex = 15 then
-   //sched_Kalender.DateNavigator.Date := IncDay(sched_Kalender.DateNavigator.Date, -1);
    sched_Kalender.SelectDays(IncDay(sched_Kalender.DateNavigator.Date, -1), IncDay(sched_Kalender.DateNavigator.Date, -1), True);
   if btn_CalArbeitswoche.LargeImageIndex = 16 then
     sched_Kalender.SelectDays(IncDay(sched_Kalender.DateNavigator.Date, -7), IncDay(sched_Kalender.DateNavigator.Date, -3), True);
@@ -1794,6 +1802,8 @@ begin
 
   if btn_CalJahr.LargeImageIndex = 19 then
     sched_Kalender.SelectDays(IncYear(sched_Kalender.DateNavigator.Date, -1), IncYear(sched_Kalender.DateNavigator.Date, -1 ), True);
+  if btn_CalTimegrid.LargeImageIndex = 132 then
+    sched_Kalender.SelectDays(IncDay(sched_Kalender.DateNavigator.Date, -1), IncDay(sched_Kalender.DateNavigator.Date, -1), True);
 end;
 procedure Tfrm_Calendar.btn_CalVorClick(Sender: TObject);
 begin
@@ -1816,7 +1826,8 @@ begin
 
   if btn_CalJahr.LargeImageIndex = 19 then
     sched_Kalender.SelectDays(IncYear(sched_Kalender.DateNavigator.Date, 1), IncYear(sched_Kalender.DateNavigator.Date, 1), True);
-
+  if btn_CalTimegrid.LargeImageIndex = 132 then
+    sched_Kalender.SelectDays(IncDay(sched_Kalender.DateNavigator.Date, 1), IncDay(sched_Kalender.DateNavigator.Date, 1), True);
 end;
 procedure Tfrm_Calendar.btn_CalFilterClick(Sender: TObject);
 var
@@ -1889,6 +1900,20 @@ begin
   if frm_PCM_Import.Execute(True,dm_PCM.iIDBenutzerPCM) then
     RefreshTerminundAUfgaben;
   frm_PCM_Import.Free;
+end;
+procedure Tfrm_Calendar.btn_CalTimegridClick(Sender: TObject);
+begin
+
+  FKalenderDateButton := True;
+  sched_Kalender.ViewTimeGrid.Active:= true;
+  btn_CalZurueck.Hint := rs_PCMManager_TagZurueck;
+  btn_CalVor.Hint := rs_PCMManager_TagVor;
+  btn_CalTag.LargeImageIndex:= 39;
+  btn_CalArbeitswoche.LargeImageIndex:= 40;
+  btn_CalWoche.LargeImageIndex:= 41;
+  btn_CalMonat.LargeImageIndex:= 42;
+  btn_CalJahr.LargeImageIndex:= 44;
+  btn_CalTimegrid.LargeImageIndex:= 132;
 end;
 procedure Tfrm_Calendar.btn_TerminExportClick(Sender: TObject);
 begin
@@ -2738,7 +2763,6 @@ begin
   end;
   FormResize(Self);
 end;
-
 // Scheduler
 procedure Tfrm_Calendar.sched_KalenderBeforeDragEvent(Sender: TcxCustomScheduler;AEvent: TcxSchedulerControlEvent; X, Y: Integer; var Allow: Boolean);
 begin

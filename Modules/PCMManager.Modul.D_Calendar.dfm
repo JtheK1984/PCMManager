@@ -5,7 +5,7 @@ object frm_Calendar: Tfrm_Calendar
   BorderStyle = bsNone
   Caption = 'frm_Calendar'
   ClientHeight = 940
-  ClientWidth = 1070
+  ClientWidth = 1999
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,27 +21,28 @@ object frm_Calendar: Tfrm_Calendar
   object lactrl_Kalender: TdxLayoutControl
     Left = 0
     Top = 0
-    Width = 1070
+    Width = 1999
     Height = 940
     Align = alClient
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
+    ExplicitWidth = 1070
     object brdckctrl_Kalender: TdxBarDockControl
       Left = 19
       Top = 45
-      Width = 1028
-      Height = 117
+      Width = 1957
+      Height = 63
       Align = dalNone
       BarManager = brmgr_Kalendar
     end
     object sched_Kalender: TcxScheduler
       Left = 19
-      Top = 168
-      Width = 1028
-      Height = 749
-      DateNavigator.RowCount = 5
+      Top = 114
+      Width = 1957
+      Height = 803
+      DateNavigator.RowCount = 6
       ViewDay.Active = True
       ViewDay.AlwaysShowEventTime = True
       ViewDay.TimeRulerMinutes = True
@@ -85,8 +86,8 @@ object frm_Calendar: Tfrm_Calendar
       OnKeyDown = sched_KalenderKeyDown
       Selection = 7
       Splitters = {
-        950000007E00000084060000830000006F0300000100000074030000EC020000}
-      StoredClientBounds = {010000000100000003040000EC020000}
+        950000007E000000840600008300000010070000010000001507000022030000}
+      StoredClientBounds = {0100000001000000A407000022030000}
     end
     object trlst_Aufgaben: TcxTreeList
       Left = 10000
@@ -1261,7 +1262,7 @@ object frm_Calendar: Tfrm_Calendar
       CaptionOptions.Visible = False
       Control = brdckctrl_Kalender
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 117
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1056
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1982,6 +1983,10 @@ object frm_Calendar: Tfrm_Calendar
       item
         Visible = True
         ItemName = 'pmmbtn_Agenda'
+      end
+      item
+        Visible = True
+        ItemName = 'dxBarButton1'
       end>
     UseOwnFont = False
     Left = 1213
@@ -2067,6 +2072,10 @@ object frm_Calendar: Tfrm_Calendar
         item
           Visible = True
           ItemName = 'btn_CalJahr'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_CalTimegrid'
         end
         item
           Visible = True
@@ -2712,6 +2721,22 @@ object frm_Calendar: Tfrm_Calendar
       Visible = ivAlways
       AutoGrayScale = False
     end
+    object btn_CalTimegrid: TdxBarLargeButton
+      Caption = 'Zeitlinie'
+      Category = 0
+      Hint = 'Zeitlinie'
+      Visible = ivAlways
+      OnClick = btn_CalTimegridClick
+      AutoGrayScale = False
+      LargeImageIndex = 133
+      Width = 90
+    end
+    object dxBarButton1: TdxBarButton
+      Caption = 'New Button'
+      Category = 0
+      Hint = 'New Button'
+      Visible = ivAlways
+    end
     object btn_CalTerminImport: TdxBarButton
       Caption = 'Importieren (ICAL)'
       Category = 1
@@ -3291,8 +3316,8 @@ object frm_Calendar: Tfrm_Calendar
       end>
   end
   object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
-    Left = 560
-    Top = 48
+    Left = 600
+    Top = 216
     object dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel
       PixelsPerInch = 96
     end
