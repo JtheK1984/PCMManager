@@ -449,6 +449,10 @@ type
     lTypeName: TdxLayoutLabeledItem;
     btn_CalTimegrid: TdxBarLargeButton;
     dxBarButton1: TdxBarButton;
+    cxBarEditItem1: TcxBarEditItem;
+    cxBarEditItem2: TcxBarEditItem;
+    cxBarEditItem3: TcxBarEditItem;
+    dxBarLargeButton1: TdxBarLargeButton;
     procedure btn_CalNewClick(Sender: TObject);
     procedure btn_CalArbeitswocheClick(Sender: TObject);
     procedure btn_CalWocheClick(Sender: TObject);
@@ -541,6 +545,7 @@ type
     procedure btn_CalTagClick(Sender: TObject);
     procedure sched_KalenderGetEventModernStyleHintInfo(Sender: TObject; AEvent: TcxSchedulerControlEvent; AInfo: TcxSchedulerEventModernStyleHintInfo);
     procedure btn_CalTimegridClick(Sender: TObject);
+    procedure dxBarLargeButton1Click(Sender: TObject);
   private
     { Private-Deklarationen }
     FKalenderDateButton : Boolean;
@@ -590,7 +595,7 @@ uses
   PCM.Data,
   PCM.Browser.FullScreen,
   PCM.Strings,
-  uwvLoader;
+  uwvLoader, PCMManager.Modul.D_Calendar.Terminsuche;
   {$ENdRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -732,6 +737,26 @@ begin
       Result := Result + GetTimeBounds(APattern);
   end;
 end;
+procedure Tfrm_Calendar.dxBarLargeButton1Click(Sender: TObject);
+begin
+  Application.CreateForm(Tfrm_Terminsuche,frm_Terminsuche);
+  if frm_Terminsuche.ShowModal = mrok then
+  begin
+    FKalenderDateButton := True;
+    sched_Kalender.ViewDay.Active := True;
+    sched_Kalender.SelectDays(sched_Kalender.SelectedDays[0], sched_Kalender.SelectedDays[0], True);
+    sched_Kalender.GoToDate(dm_pcm.iKalenderDate);
+    btn_CalZurueck.Hint := rs_PCMManager_TagZurueck;
+    btn_CalVor.Hint := rs_PCMManager_Tagvor;
+    btn_CalTag.LargeImageIndex:= 15;
+    btn_CalArbeitswoche.LargeImageIndex:= 40;
+    btn_CalWoche.LargeImageIndex:= 41;
+    btn_CalMonat.LargeImageIndex:= 42;
+    btn_CalJahr.LargeImageIndex:= 44;
+    btn_CalTimegrid.LargeImageIndex:= 133;
+  end;
+end;
+
 function Tfrm_Calendar.GetRecurrence(var Rule, Start:  string) : Ansistring;
   procedure Check1(ACheckBox: boolean; var AOccurDays: TDays; var DayOfweek);
   begin

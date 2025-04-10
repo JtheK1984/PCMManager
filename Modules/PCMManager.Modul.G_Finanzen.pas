@@ -3,6 +3,7 @@ unit PCMManager.Modul.G_Finanzen;
 interface
 
 uses
+  {$Region uses}
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, dxBarBuiltInMenu, cxGraphics,
   cxControls, cxLookAndFeels, cxLookAndFeelPainters,
@@ -20,9 +21,10 @@ uses
   FireDAC.Comp.Client, dxBar,System.UITypes, Xml.XMLIntf,Xml.XMLDoc, Xml.xmldom,
   Xml.Win.msxmldom,cxGridExportLink,PCM.Functions, dxBarCode, Xml.adomxmldom,
   dxLayoutcxEditAdapters, dxLayoutControlAdapters, dxLayoutContainer,
-  dxLayoutControl, dxUIAClasses;
-
+  dxLayoutControl, dxUIAClasses, dxCoreGraphics, cxButtonEdit;
+  {$EndRegion uses}
 type
+  {$Region type}
   Tfrm_finanzen = class(TForm)
     btn_FinanzenDrucken: TcxButton;
     edt_FinEinAbsender: TcxDBTextEdit;
@@ -69,49 +71,49 @@ type
     cxGridDBColumn4: TcxGridDBColumn;
     cxGridDBColumn5: TcxGridDBColumn;
     cxGridLevel1: TcxGridLevel;
-    qEinnahmen: TFDQuery;
-    dsEinnahmen: TDataSource;
-    qAusgaben: TFDQuery;
-    dsAusgaben: TDataSource;
+    qry_Einnahmen: TFDQuery;
+    ds_Einnahmen: TDataSource;
+    qry_Ausgaben: TFDQuery;
+    ds_Ausgaben: TDataSource;
     pm_Einnahmen: TcxGridPopupMenu;
     pm_Ausgaben: TcxGridPopupMenu;
     sdlg_Ausgaben: TSaveDialog;
     sdlg_Einnahmen: TSaveDialog;
-    dxBarManager1: TdxBarManager;
+    brmgr_Finanzen: TdxBarManager;
     dxBarDockControl1: TdxBarDockControl;
-    dxBarManager1Bar1: TdxBar;
+    tb_Einnahmen: TdxBar;
     btn_FinEinNew: TdxBarLargeButton;
     btn_FinEinDelete: TdxBarLargeButton;
     btn_FinEinCancel: TdxBarLargeButton;
     btn_FinEinSave: TdxBarLargeButton;
     dxBarDockControl2: TdxBarDockControl;
-    dxBarManager1Bar2: TdxBar;
+    tb_Ausgaben: TdxBar;
     btn_FinAusNew: TdxBarLargeButton;
     btn_FinAusDelete: TdxBarLargeButton;
     btn_FinAusCancel: TdxBarLargeButton;
     btn_FinAusSave: TdxBarLargeButton;
     pmm_Einnahmen: TdxBarPopupMenu;
-    NachExcelexportieren1: TdxBarButton;
+    ppmbtn_ExportExcelEIn: TdxBarButton;
     pmm_Ausgaben: TdxBarPopupMenu;
-    MenuItem1: TdxBarButton;
-    cxButton1: TcxButton;
+    ppmbtn_ExportExcelAus: TdxBarButton;
+    btn_FinAusFix: TcxButton;
     edt_FinAusFixBetrag: TcxDBCurrencyEdit;
-    dxBarLargeButton1: TdxBarLargeButton;
-    dxBarLargeButton2: TdxBarLargeButton;
-    cxButton2: TcxButton;
+    btn_FinAusAllFIx: TdxBarLargeButton;
+    btn_FinEinAllFIx: TdxBarLargeButton;
+    btn_FinEinFix: TcxButton;
     cxDBCurrencyEdit1: TcxDBCurrencyEdit;
     tv_EinnahmenFixBetrag: TcxGridDBColumn;
     tv_AusgabenFixBetrag: TcxGridDBColumn;
-    dxBarLargeButton3: TdxBarLargeButton;
-    dxBarLargeButton4: TdxBarLargeButton;
+    btn_FinEinAllNull: TdxBarLargeButton;
+    btn_FinAusAllNull: TdxBarLargeButton;
     dxBarDockControl3: TdxBarDockControl;
     dxBarDockControl4: TdxBarDockControl;
-    dxBarManager1Bar3: TdxBar;
+    tb_Belege: TdxBar;
     btn_BelegeNew: TdxBarLargeButton;
     btn_BelegeSave: TdxBarLargeButton;
     btn_BelegeCancel: TdxBarLargeButton;
     btn_BelegeDelete: TdxBarLargeButton;
-    dxBarManager1Bar4: TdxBar;
+    tb_Gutschein: TdxBar;
     btn_GutscheinNew: TdxBarLargeButton;
     btn_GutscheinSave: TdxBarLargeButton;
     btn_GutscheinCancel: TdxBarLargeButton;
@@ -128,11 +130,11 @@ type
     pm_Belege: TcxGridPopupMenu;
     pm_Gutscheine: TcxGridPopupMenu;
     pmm_Belege: TdxBarPopupMenu;
-    NachEx1: TdxBarButton;
+    ppmbtn_ExportExcelBel: TdxBarButton;
     pmm_Gutscheine: TdxBarPopupMenu;
-    NachExcelexportieren2: TdxBarButton;
-    qBelege: TFDQuery;
-    dsBelege: TDataSource;
+    ppmbtn_ExportExcelGut: TdxBarButton;
+    qry_Belege: TFDQuery;
+    ds_Belege: TDataSource;
     edt_BelegeBetrag: TcxDBCurrencyEdit;
     edt_BelegeAussteller: TcxDBTextEdit;
     cbx_BelegeKategorie: TcxDBImageComboBox;
@@ -150,18 +152,18 @@ type
     edt_GutscheinDatum: TcxDBDateEdit;
     edt_GutscheinRestwert: TcxDBCurrencyEdit;
     edt_GutscheinPin: TcxDBTextEdit;
-    qGutschein: TFDQuery;
-    dsGutschein: TDataSource;
+    qry_Gutschein: TFDQuery;
+    ds_Gutschein: TDataSource;
     cxGridDBTableView2Nummer: TcxGridDBColumn;
     cxGridDBTableView2Bezeichnung: TcxGridDBColumn;
     cxGridDBTableView2Datum: TcxGridDBColumn;
     cxGridDBTableView2Wert: TcxGridDBColumn;
     cxGridDBTableView2Restwert: TcxGridDBColumn;
     cxGridDBTableView2AbfragePin: TcxGridDBColumn;
-    dxLayoutControl1Group_Root: TdxLayoutGroup;
-    dxLayoutControl1: TdxLayoutControl;
+    lactrl_FinanzenGroup_Root: TdxLayoutGroup;
+    lactrl_Finanzen: TdxLayoutControl;
     dxLayoutGroup2: TdxLayoutGroup;
-    dxLayoutGroup3: TdxLayoutGroup;
+    lagrp_FinanzBericht: TdxLayoutGroup;
     grpbx_FinanzenUebersicht: TdxLayoutGroup;
     dxLayoutGroup5: TdxLayoutGroup;
     lbl_Einnahmenlabel: TdxLayoutLabeledItem;
@@ -177,7 +179,7 @@ type
     lbl_Einnahmen_summe: TdxLayoutLabeledItem;
     dxLayoutGroup17: TdxLayoutGroup;
     dxLayoutItem3: TdxLayoutItem;
-    dxLayoutGroup22: TdxLayoutGroup;
+    lagrp_FinanzEinnahmen: TdxLayoutGroup;
     dxLayoutItem4: TdxLayoutItem;
     dxLayoutGroup24: TdxLayoutGroup;
     dxLayoutItem5: TdxLayoutItem;
@@ -186,7 +188,7 @@ type
     dxLayoutItem8: TdxLayoutItem;
     dxLayoutItem9: TdxLayoutItem;
     dxLayoutItem10: TdxLayoutItem;
-    dxLayoutGroup31: TdxLayoutGroup;
+    lagrp_FinanzAusgaben: TdxLayoutGroup;
     dxLayoutItem11: TdxLayoutItem;
     dxLayoutGroup33: TdxLayoutGroup;
     dxLayoutItem12: TdxLayoutItem;
@@ -217,7 +219,7 @@ type
     dxLayoutItem29: TdxLayoutItem;
     dxLayoutItem30: TdxLayoutItem;
     dxLayoutItem31: TdxLayoutItem;
-    dxLayoutGroup50: TdxLayoutGroup;
+    lagrp_FinanzenBelege: TdxLayoutGroup;
     dxLayoutItem32: TdxLayoutItem;
     dxLayoutGroup52: TdxLayoutGroup;
     dxLayoutItem33: TdxLayoutItem;
@@ -263,6 +265,24 @@ type
     dxLayoutGroup26: TdxLayoutGroup;
     dxLayoutGroup27: TdxLayoutGroup;
     dxLayoutGroup28: TdxLayoutGroup;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutItem1: TdxLayoutItem;
+    edt_SucheEin: TcxButtonEdit;
+    edt_SucheAus: TcxButtonEdit;
+    edt_SucheBel: TcxButtonEdit;
+    edt_SucheGut: TcxButtonEdit;
+    dxLayoutGroup22: TdxLayoutGroup;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutGroup29: TdxLayoutGroup;
+    dxLayoutItem17: TdxLayoutItem;
+    dxLayoutItem20: TdxLayoutItem;
+    btn_FinEinNull: TcxButton;
+    dxLayoutItem22: TdxLayoutItem;
+    btn_FinAusNull: TcxButton;
+    dxLayoutGroup30: TdxLayoutGroup;
+    dxLayoutItem49: TdxLayoutItem;
+    sdlg_Gutschein: TSaveDialog;
+    sdlg_Belege: TSaveDialog;
     procedure btn_FinanzenDruckenClick(Sender: TObject);
     procedure SetButtonsEnableVisible(DataSet: TDataSet);
     procedure chkbx_FinAusFixkostenPropertiesChange(Sender: TObject);
@@ -274,20 +294,20 @@ type
     procedure btn_FinAusCancelClick(Sender: TObject);
     procedure btn_FinAusSaveClick(Sender: TObject);
     procedure btn_FinAusNewClick(Sender: TObject);
-    procedure NachExcelexportieren1Click(Sender: TObject);
-    procedure MenuItem1Click(Sender: TObject);
+    procedure ppmbtn_ExportExcelEInClick(Sender: TObject);
+    procedure ppmbtn_ExportExcelAusClick(Sender: TObject);
     procedure AG_pc_FinanzenChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure dxBarLargeButton1Click(Sender: TObject);
-    procedure cxButton1Click(Sender: TObject);
-    procedure dxBarLargeButton2Click(Sender: TObject);
-    procedure cxButton2Click(Sender: TObject);
-    procedure dxBarLargeButton4Click(Sender: TObject);
-    procedure dxBarLargeButton3Click(Sender: TObject);
+    procedure btn_FinAusAllFIxClick(Sender: TObject);
+    procedure btn_FinAusFixClick(Sender: TObject);
+    procedure btn_FinEinAllFIxClick(Sender: TObject);
+    procedure btn_FinEinFixClick(Sender: TObject);
+    procedure btn_FinAusAllNullClick(Sender: TObject);
+    procedure btn_FinEinAllNullClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormActivate(Sender: TObject);
-    procedure NachExcelexportieren2Click(Sender: TObject);
-    procedure NachEx1Click(Sender: TObject);
+    procedure ppmbtn_ExportExcelGutClick(Sender: TObject);
+    procedure ppmbtn_ExportExcelBelClick(Sender: TObject);
     procedure btn_BelegeNewClick(Sender: TObject);
     procedure btn_BelegeSaveClick(Sender: TObject);
     procedure btn_BelegeCancelClick(Sender: TObject);
@@ -296,15 +316,22 @@ type
     procedure btn_GutscheinNewClick(Sender: TObject);
     procedure btn_GutscheinCancelClick(Sender: TObject);
     procedure btn_GutscheinDeleteClick(Sender: TObject);
+    procedure edt_SucheEinPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+    procedure edt_SucheEinPropertiesChange(Sender: TObject);
+    procedure edt_SucheAusPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+    procedure edt_SucheAusPropertiesChange(Sender: TObject);
+    procedure edt_SucheBelPropertiesChange(Sender: TObject);
+    procedure edt_SucheBelPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+    procedure edt_SucheGutPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+    procedure edt_SucheGutPropertiesChange(Sender: TObject);
+    procedure btn_FinEinNullClick(Sender: TObject);
+    procedure btn_FinAusNullClick(Sender: TObject);
   private
     { Private-Deklarationen }
-//    rep: TDmReports;
     bnew: boolean;
     SaveGridViewEin,SaveGridViewAus,SaveGridViewVerf: TSavedGridView;
     procedure SetGridViews(Show:boolean);
-    procedure InitializeRights;
     procedure SetButtons;
-    procedure OpenData;
     procedure SetFinanzUebersicht;
   public
     { Public-Deklarationen }
@@ -312,21 +339,25 @@ type
     iMonat,iJahr: integer;
     procedure Execute(ATag,AActiveTab: integer);
   end;
-
+  {$EndRegion type}
 var
+  {$Region var}
   frm_finanzen: Tfrm_finanzen;
-
+  {$EndRegion var}
 implementation
-
 {$R *.dfm}
-
 uses
+  {$Region uses}
   PCM.Data,
   PCM.Browser.FullScreen,
   PCM.Reports,
   PCMManager.Modul.G_Finanzen.Filter.Date,
   PCM.Strings;
-
+  {$EndRegion uses}
+////////////////////////////////////////////////////////////////////////////////
+// Hilfsfunktionen                                                            //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktionen}
 procedure Tfrm_finanzen.Execute(ATag,AActiveTab: integer);
 begin
   iTag:= ATag;
@@ -340,427 +371,25 @@ begin
   6: dxLayoutGroup2.Itemindex:= 5;
   end;
 end;
-procedure Tfrm_finanzen.SetGridViews(Show:boolean);
-begin
-  if Show then
-  begin
-    SaveGridViewEin := TSavedGridView.Create(GV_Einnahmen,dm_PCM.iIDBenutzerPCM, tv_Einnahmen);
-    SaveGridViewEin.LoadView;
-    SaveGridViewAus := TSavedGridView.Create(GV_Ausgaben,dm_PCM.iIDBenutzerPCM, tv_ausgaben);
-    SaveGridViewAus.LoadView;
-    SaveGridViewVerf := TSavedGridView.Create(GV_Verfuegung,dm_PCM.iIDBenutzerPCM, tv_ausgaben1);
-    SaveGridViewVerf.LoadView;
-  end
-  else begin
-    SaveGridViewEin.SaveView(0);
-    SaveGridViewEin.Free;
-    SaveGridViewAus.SaveView(0);
-    SaveGridViewAus.Free;
-    SaveGridViewVerf.SaveView(0);
-    SaveGridViewVerf.Free;
-  end;
-end;
-procedure Tfrm_finanzen.FormActivate(Sender: TObject);
-begin
-  FormShow(Self);
-end;
-procedure Tfrm_finanzen.FormDestroy(Sender: TObject);
-begin
-  SetGridViews(false);
-end;
-procedure Tfrm_finanzen.FormShow(Sender: TObject);
-begin
-  OpenData;
-  InitializeRights;
-  SetButtons;
-  case dm_PCM.iModulTab of
-  1: dxLayoutGroup2.Itemindex:= 0;
-  2: dxLayoutGroup2.Itemindex:= 1;
-  3: dxLayoutGroup2.Itemindex:= 2;
-  4: dxLayoutGroup2.Itemindex:= 3;
-  5: dxLayoutGroup2.Itemindex:= 4;
-  6: dxLayoutGroup2.Itemindex:= 5;
-  end;
-  dxLayoutGroup2.OnTabChanged:= AG_pc_FinanzenChange;
-  SetFinanzUebersicht;
-  SetGridViews(True);
-end;
-
-procedure Tfrm_finanzen.btn_FinAusCancelClick(Sender: TObject);
-begin
-  bnew:= False;
-  qAusgaben.Cancel;
-end;
-procedure Tfrm_finanzen.btn_FinAusDeleteClick(Sender: TObject);
-begin
-  bNew:= false;
-  if qAusgaben.FieldByName('ID').AsInteger > 0 then
-  begin
-    dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
-    dm_PCM.qry_work.ParamByName('Message').AsString:= 'Ausgabe ' + qAusgaben.FieldByName('Name').asString + ' wurde gelöscht';
-    dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-    dm_PCM.qry_work.execsql;
-    qAusgaben.Delete;
-  end
-end;
-procedure Tfrm_finanzen.btn_FinAusNewClick(Sender: TObject);
-var
-  iJahr, iMonat,iTag : word;
-begin
-  if qAusgaben.State in [dsInsert, dsedit] then
-    qAusgaben.Post;
-  qAusgaben.Append;
-  qAusgaben.Insert;
-  DecodeDate(Now(),iJahr,iMonat,iTag);
-  qAusgaben.FieldByName('Gueltig_Monat').AsInteger:= iMonat;
-  qAusgaben.FieldByName('Gueltig_Jahr').AsInteger:= iJahr;
-    qAusgaben.FieldByName('Fixkosten').AsString:= 'false';
-  qAusgaben.FieldByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-  if not edt_FinAusName.Enabled then
-  begin
-    edt_FinAusName.Enabled:= true;
-    edt_FinAusBez.Enabled:= true;
-    edt_FinAusBetrag.Enabled:= true;
-    edt_FinAusIBAN.Enabled:= true;
-    edt_FinAusBIC.Enabled:= true;
-    edt_FinAusVerwendung.Enabled:= true;
-    chkbx_FinAusFixkosten.Enabled:= true;
-    cbx_FinAusMonat.Enabled:= true;
-    cbx_FinAusJahr.Enabled:= true;
-  end;
-  edt_FinAusName.SetFocus;
-  bNew:= true;
-end;
-procedure Tfrm_finanzen.btn_FinAusSaveClick(Sender: TObject);
-begin
- if qAusgaben.State in [dsInsert, dsEdit] then
-  begin
-    edt_FinAusName.PostEditValue;
-    edt_FinAusBez.PostEditValue;
-    edt_FinAusBetrag.PostEditValue;
-    edt_FinAusFixBetrag.PostEditValue;
-    edt_FinAusIBAN.PostEditValue;
-    edt_FinAusBIC.PostEditValue;
-    edt_FinAusVerwendung.PostEditValue;
-    qAusgaben.Post;
-    if bnew then
-    begin
-      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
-      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Neue Ausgabe ' + qAusgaben.FieldByName('Name').asString + ' wurde angelegt';
-      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-      dm_PCM.qry_work.execsql;
-    end
-    else begin
-      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
-      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Ausgabe ' + qAusgaben.FieldByName('Name').asString + ' wurde geändert';
-      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-      dm_PCM.qry_work.execsql;
-    end;
-    bNew:= false;
-    end;
-end;
-procedure Tfrm_finanzen.btn_FinEinCancelClick(Sender: TObject);
-begin
-  bnew:= False;
-  qEinnahmen.Cancel;
-end;
-procedure Tfrm_finanzen.btn_FinEinDeleteClick(Sender: TObject);
-begin
-  bNew:= false;
-  if qEinnahmen.FieldByName('ID').AsInteger > 0 then
-  begin
-    dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
-    dm_PCM.qry_work.ParamByName('Message').AsString:= 'Einnahme ' + qEinnahmen.FieldByName('Quelle').asString + ' wurde gelöscht';
-    dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-    dm_PCM.qry_work.execsql;
-    qEinnahmen.Delete;
-  end;
-end;
-procedure Tfrm_finanzen.btn_FinEinNewClick(Sender: TObject);
-begin
-  if qEinnahmen.State in [dsInsert, dsedit] then
-    qEinnahmen.Post;
-  qEinnahmen.Append;
-  qEinnahmen.Insert;
-  qEinnahmen.FieldByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-  if not edt_FinEinAbsender.Enabled then
-  begin
-    edt_FinEinAbsender.enabled:= true;
-    edt_FinEinBez.enabled:= true;
-    edt_FinEinBetrag.enabled:= true;
-  end;
-  edt_FinEinAbsender.SetFocus;
-  bNew:= true;
-end;
-procedure Tfrm_finanzen.btn_FinEinSaveClick(Sender: TObject);
-begin
- if qEinnahmen.State in [dsInsert, dsEdit] then
-  begin
-    edt_FinEinAbsender .PostEditValue;
-    edt_FinEinBEz.PostEditValue;
-    edt_FinEinBetrag.PostEditValue;
-    qEinnahmen.Post;
-    if bnew then
-    begin
-      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
-      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Neuer Einnahme ' + qEinnahmen.FieldByName('Quelle').asString + ' wurde angelegt';
-      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-      dm_PCM.qry_work.execsql;
-    end
-    else begin
-      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
-      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Einnahme ' + qEinnahmen.FieldByName('Quelle').asString + ' wurde geändert';
-      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-      dm_PCM.qry_work.execsql;
-    end;
-    bNew:= false;
-  end;
-end;
-procedure Tfrm_finanzen.btn_GutscheinCancelClick(Sender: TObject);
-begin
-  bnew:= False;
-  qGutschein.Cancel;
-end;
-
-procedure Tfrm_finanzen.btn_GutscheinDeleteClick(Sender: TObject);
-begin
-  bNew:= false;
-  if qGutschein.FieldByName('ID').AsInteger > 0 then
-  begin
-    dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
-    dm_PCM.qry_work.ParamByName('Message').AsString:= 'Gutschein ' + qGutschein.FieldByName('Nummer').asString + ' wurde gelöscht';
-    dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-    dm_PCM.qry_work.execsql;
-    qGutschein.Delete;
-  end
-end;
-procedure Tfrm_finanzen.btn_GutscheinNewClick(Sender: TObject);
-begin
-  if qGutschein.State in [dsInsert, dsedit] then
-    qGutschein.Post;
-  qGutschein.Append;
-  qGutschein.Insert;
-  qGutschein.FieldByName('Datum').AsDateTime:= Date();
-  qGutschein.FieldByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-  if not edt_GutscheinNummer.Enabled then
-  begin
-    edt_GutscheinNummer .Enabled:= true;
-    edt_GutscheinAussteller .Enabled:= true;
-    edt_GutscheinDatum .Enabled:= true;
-    edt_GutscheinWert .Enabled:= true;
-    edt_GutscheinRestwert .Enabled:= true;
-    edt_GutscheinPin .Enabled:= true;
-  end;
-  edt_GutscheinNummer.SetFocus;
-  bNew:= true;
-end;
-
-procedure Tfrm_finanzen.btn_GutscheinSaveClick(Sender: TObject);
-begin
- if qGutschein.State in [dsInsert, dsEdit] then
-  begin
-    edt_GutscheinNummer.PostEditValue;
-    edt_GutscheinAussteller.PostEditValue;
-    edt_GutscheinWert.PostEditValue;
-    edt_GutscheinRestwert.PostEditValue;
-    edt_GutscheinPin.PostEditValue;
-    qGutschein.Post;
-    if bnew then
-    begin
-      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
-      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Neuer Gutschein ' + qGutschein.FieldByName('Nummer').asString + ' wurde angelegt';
-      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-      dm_PCM.qry_work.execsql;
-    end
-    else begin
-      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
-      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Gutschein ' + qGutschein.FieldByName('Nummer').asString + ' wurde geändert';
-      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-      dm_PCM.qry_work.execsql;
-    end;
-    bNew:= false;
-  end;
-end;
-
-procedure Tfrm_finanzen.chkbx_FinAusFixkostenPropertiesChange(Sender: TObject);
-begin
-  if chkbx_FinAusFixkosten.Checked then
-  begin
-    lbl_FinAusMonat.Visible:= false;
-    lbl_FinAusJahr.Visible:= false;
-  end
-  else begin
-    lbl_FinAusMonat.Visible:= true;
-    lbl_FinAusJahr.Visible:= true;
-  end;
-end;
-procedure Tfrm_finanzen.cxButton1Click(Sender: TObject);
-begin
-  dm_PCM.qry_work.SQL.Text:= 'Update manager_finanzen_ausgaben Set Betrag = Fixbetrag Where ID = :ID';
-  dm_PCM.qry_work.ParamByName('ID').AsInteger:= qAusgaben.FieldByName('ID').AsInteger;
-  dm_PCM.qry_work.ExecSQL;
-  qAusgaben.Refresh;
-end;
-procedure Tfrm_finanzen.cxButton2Click(Sender: TObject);
-begin
-  dm_PCM.qry_work.SQL.Text:= 'Update manager_finanzen_einnahmen Set Betrag = Fixbetrag Where ID = :ID';
-  dm_PCM.qry_work.ParamByName('ID').AsInteger:= qEinnahmen.FieldByName('ID').AsInteger;
-  dm_PCM.qry_work.ExecSQL;
-  qEinnahmen.Refresh;
-end;
-procedure Tfrm_finanzen.dxBarLargeButton1Click(Sender: TObject);
-begin
-  dm_PCM.qry_work.SQL.Text:= 'Update manager_finanzen_ausgaben Set Betrag = Fixbetrag';
-  dm_PCM.qry_work.ExecSQL;
-  qAusgaben.Refresh;
-end;
-procedure Tfrm_finanzen.dxBarLargeButton2Click(Sender: TObject);
-begin
-  dm_PCM.qry_work.SQL.Text:= 'Update manager_finanzen_einnahmen Set Betrag = Fixbetrag';
-  dm_PCM.qry_work.ExecSQL;
-  qEinnahmen.Refresh;
-end;
-procedure Tfrm_finanzen.dxBarLargeButton3Click(Sender: TObject);
-begin
-  dm_PCM.qry_work.SQL.Text:= 'Update manager_finanzen_einnahmen Set Betrag = 0';
-  dm_PCM.qry_work.ExecSQL;
-  qEinnahmen.Refresh;
-end;
-procedure Tfrm_finanzen.dxBarLargeButton4Click(Sender: TObject);
-begin
-  dm_PCM.qry_work.SQL.Text:= 'Update manager_finanzen_ausgaben Set Betrag = 0';
-  dm_PCM.qry_work.ExecSQL;
-  qAusgaben.Refresh;
-end;
-procedure Tfrm_finanzen.InitializeRights;
-begin
-   // FINANZEN / LeEsen
-  if dm_PCM.iMonatsuebersicht = 1 then
-  begin
-    // Toolbar
-    btn_FinEinNew.Enabled:= false;
-    btn_FinEinSave.Enabled:= false;
-    btn_FinEinCancel.Enabled:= false;
-    btn_FinEinDelete.Enabled:= false;
-    // Editfelder
-    edt_FinEinAbsender.Enabled:= false;
-    edt_FinEinBEz.Enabled:= false;
-    edt_FinEinBetrag.Enabled:= false;
-    //// Ausgaben
-    // Toolbar
-    btn_FinAusNew.Enabled:= false;
-    btn_FinAusSave.Enabled:= false;
-    btn_FinAusCancel.Enabled:= false;
-    btn_FinAusDelete.Enabled:= false;
-    // Editfelder
-    edt_FinAusName.Enabled:= false;
-    edt_FinAusBez.Enabled:= false;
-    edt_FinAusBetrag.Enabled:= false;
-    edt_FinAusIBAN.Enabled:= false;
-    edt_FinAusBIC.Enabled:= false;
-    edt_FinAusVerwendung.Enabled:= false;
-  end;
-
-      // FINANZEN / Schreiben
-  if dm_PCM.iMonatsuebersicht = 2 then
-  begin
-    //// Einnahmen
-    // Toolbar
-    btn_FinEinNew.Enabled:= true;
-    btn_FinEinSave.Enabled:= true;
-    btn_FinEinCancel.Enabled:= true;
-    btn_FinEinDelete.Enabled:= false;
-    // Editfelder
-    edt_FinEinAbsender.Enabled:= true;
-    edt_FinEinBEz.Enabled:= true;
-    edt_FinEinBetrag.Enabled:= true;
-    //// Ausgaben
-    // Toolbar
-    btn_FinAusNew.Enabled:= true;
-    btn_FinAusSave.Enabled:= true;
-    btn_FinAusCancel.Enabled:= true;
-    btn_FinAusDelete.Enabled:= false;
-    // Editfelder
-    edt_FinAusName.Enabled:= true;
-    edt_FinAusBez.Enabled:= true;
-    edt_FinAusBetrag.Enabled:= true;
-    edt_FinAusIBAN.Enabled:= true;
-    edt_FinAusBIC.Enabled:= true;
-    edt_FinAusVerwendung.Enabled:= true;
-  end;
-
-  // FINANZEN / Vollzugriff
-  if dm_PCM.iMonatsuebersicht = 2 then
-  begin
-    // Toolbar
-    btn_FinEinNew.Enabled:= true;
-    btn_FinEinSave.Enabled:= true;
-    btn_FinEinCancel.Enabled:= true;
-    btn_FinEinDelete.Enabled:= True;
-    // Editfelder
-    edt_FinEinAbsender.Enabled:= true;
-    edt_FinEinBEz.Enabled:= true;
-    edt_FinEinBetrag.Enabled:= true;
-    //// Ausgaben
-    // Toolbar
-    btn_FinAusNew.Enabled:= true;
-    btn_FinAusSave.Enabled:= true;
-    btn_FinAusCancel.Enabled:= true;
-    btn_FinAusDelete.Enabled:= True;
-    // Editfelder
-    edt_FinAusName.Enabled:= true;
-    edt_FinAusBez.Enabled:= true;
-    edt_FinAusBetrag.Enabled:= true;
-    edt_FinAusIBAN.Enabled:= true;
-    edt_FinAusBIC.Enabled:= true;
-    edt_FinAusVerwendung.Enabled:= true;
-  end;
-end;
-procedure Tfrm_finanzen.MenuItem1Click(Sender: TObject);
-begin
-  if sdlg_Ausgaben.Execute then
-  begin
-    ExportGridToExcel(sdlg_Ausgaben.FileName, grd_Finanzen_Ausgaben);
-    MessageDlg(rs_PCMManager_GridExport1 + sdlg_Ausgaben.FileName +  rs_PCMManager_GridExport2, mtInformation, [mbOk], 0);
-  end;
-end;
-procedure Tfrm_finanzen.NachEx1Click(Sender: TObject);
-begin
-  ShowMessage('Belege');
-end;
-
-procedure Tfrm_finanzen.NachExcelexportieren1Click(Sender: TObject);
-begin
-  if sdlg_Einnahmen.Execute then
-  begin
-    ExportGridToExcel(sdlg_Einnahmen.FileName, grd_Finanzen_Einnahmen);
-    MessageDlg(rs_PCMManager_GridExport1 + sdlg_Einnahmen.FileName +  rs_PCMManager_GridExport2, mtInformation, [mbOk], 0);
-  end;
-end;
-procedure Tfrm_finanzen.NachExcelexportieren2Click(Sender: TObject);
-begin
-  ShowMessage('Gutschein');
-end;
-
 procedure Tfrm_finanzen.SetButtons;
 begin
   // AG_Finanzeneinnahmen
   if dm_PCM.iEinnahmen >= 2 then
   begin
-    btn_FinEinSave.Enabled := qEinnahmen.State in [dsInsert, dsEdit];
-    btn_FinEinCancel.Enabled := qEinnahmen.State in [dsInsert, dsEdit];
-    btn_BelegeSave.Enabled := qBelege.State in [dsInsert, dsEdit];
-    btn_BelegeCancel.Enabled := qBelege.State in [dsInsert, dsEdit];
-    btn_GutscheinSave.Enabled := qGutschein.State in [dsInsert, dsEdit];
-    btn_GutscheinCancel.Enabled := qGutschein.State in [dsInsert, dsEdit];
+    btn_FinEinSave.Enabled := qry_Einnahmen.State in [dsInsert, dsEdit];
+    btn_FinEinCancel.Enabled := qry_Einnahmen.State in [dsInsert, dsEdit];
+    btn_BelegeSave.Enabled := qry_Belege.State in [dsInsert, dsEdit];
+    btn_BelegeCancel.Enabled := qry_Belege.State in [dsInsert, dsEdit];
+    btn_GutscheinSave.Enabled := qry_Gutschein.State in [dsInsert, dsEdit];
+    btn_GutscheinCancel.Enabled := qry_Gutschein.State in [dsInsert, dsEdit];
   end;
   if dm_PCM.iEinnahmen = 3 then
   begin
-    btn_FinEinDelete.Enabled := (not qEinnahmen.Eof) and not (qEinnahmen.State in [dsInsert, dsEdit]);
-    btn_BelegeDelete.Enabled := (not qBelege.Eof) and not (qBelege.State in [dsInsert, dsEdit]);
-    btn_GutscheinDelete.Enabled := (not qGutschein.Eof) and not (qGutschein.State in [dsInsert, dsEdit]);
+    btn_FinEinDelete.Enabled := (not qry_Einnahmen.Eof) and not (qry_Einnahmen.State in [dsInsert, dsEdit]);
+    btn_BelegeDelete.Enabled := (not qry_Belege.Eof) and not (qry_Belege.State in [dsInsert, dsEdit]);
+    btn_GutscheinDelete.Enabled := (not qry_Gutschein.Eof) and not (qry_Gutschein.State in [dsInsert, dsEdit]);
   end;
-  if qEinnahmen.RecordCount = 0  then
+  if qry_Einnahmen.RecordCount = 0  then
   begin
     edt_FinEinAbsender.enabled:= false;
     edt_FinEinBez.enabled:= false;
@@ -776,7 +405,7 @@ begin
   end;
 
 
-  if qBelege.RecordCount = 0  then
+  if qry_Belege.RecordCount = 0  then
   begin
     edt_BelegeNummer.enabled:= false;
     edt_BelegDatum.enabled:= false;
@@ -799,7 +428,7 @@ begin
     end;
   end;
 
-  if qgutschein.RecordCount = 0  then
+  if qry_Gutschein.RecordCount = 0  then
   begin
     edt_GutscheinNummer.enabled:= false;
     edt_GutscheinAussteller.enabled:= false;
@@ -823,14 +452,14 @@ begin
   // AG_Finanzenausgaben
   if dm_PCM.iAusgaben >= 2 then
   begin
-    btn_FinAusSave.Enabled := qAusgaben.State in [dsInsert, dsEdit];
-    btn_FinAusCancel.Enabled := qAusgaben.State in [dsInsert, dsEdit];
+    btn_FinAusSave.Enabled := qry_Ausgaben.State in [dsInsert, dsEdit];
+    btn_FinAusCancel.Enabled := qry_Ausgaben.State in [dsInsert, dsEdit];
   end;
   if dm_PCM.iAusgaben = 3 then
   begin
-    btn_FinAusDelete.Enabled := (not qAusgaben.Eof) and not (qAusgaben.State in [dsInsert, dsEdit]);
+    btn_FinAusDelete.Enabled := (not qry_Ausgaben.Eof) and not (qry_Ausgaben.State in [dsInsert, dsEdit]);
   end;
-  if qAusgaben.RecordCount = 0 then
+  if qry_Ausgaben.RecordCount = 0 then
   begin
     edt_FinAusName.Enabled:= false;
     edt_FinAusBez.Enabled:= false;
@@ -856,38 +485,6 @@ begin
       cbx_FinAusJahr.Enabled:= true;
     end;
   end;
-end;
-procedure Tfrm_finanzen.OpenData;
-begin
-  qAusgaben.Open;
-  qEinnahmen.Open;
-  qEinnahmen.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-  qEinnahmen.Filtered:= true;
-  qAusgaben.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-  qAusgaben.Filtered:= true;
-  qGutschein.Open;
-  qGutschein.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-  qGutschein.Filtered:= true;
-  qBelege.Open;
-  qBelege.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
-  qBelege.Filtered:= true;
-  tv_AusgabenName.Caption := rs_PCMManager_AusgabenEmpfaenger;
-  tv_AusgabenBeschreibung.Caption := rs_PCM_Beschreibung;
-  tv_Ausgabenverwendungszweck.Caption := rs_PCMManager_Verwendungszweck;
-  tv_Ausgabenbetrag.Caption := rs_PCM_Betrag;
-  tv_AusgabenFixBetrag.Caption := rs_PCM_FixBetrag;
-  tv_Ausgabenfixkosten.Caption := rs_PCM_FixKosten;
-  tv_AusgabenGueltig_monat.Caption := rs_PCM_Monat;
-  tv_AusgabenGueltig_Jahr.Caption := rs_PCM_Jahr;
-  tv_EinnahmenQuelle.Caption := rs_PCM_Absender;
-  tv_EinnahmenBezeichnung.Caption := rs_PCM_Beschreibung;
-  tv_EinnahmenBetrag.Caption := rs_PCM_Betrag;
-  tv_EinnahmenFixBetrag.Caption := rs_PCM_FixBetrag;
-
-end;
-procedure Tfrm_finanzen.SetButtonsEnableVisible(DataSet: TDataSet);
-begin
-  Setbuttons;
 end;
 procedure Tfrm_finanzen.SetFinanzUebersicht;
 var
@@ -925,6 +522,472 @@ begin
   lbl_fixKosten_summe.Caption:= Format('%.2f €',[dm_PCM.qry_work.FieldByName('fixKosten').Asfloat]);
   dm_PCM.qry_work.Close;
   lbl_restsumme.Caption:= '[B]' + Format('%.2f €',[dbl_Einnahmen - dbl_varKosten - dbl_fixKosten]) + '[/B]';
+end;
+procedure Tfrm_finanzen.SetGridViews(Show:boolean);
+begin
+  if Show then
+  begin
+    SaveGridViewEin := TSavedGridView.Create(GV_Einnahmen,dm_PCM.iIDBenutzerPCM, tv_Einnahmen);
+    SaveGridViewEin.LoadView;
+    SaveGridViewAus := TSavedGridView.Create(GV_Ausgaben,dm_PCM.iIDBenutzerPCM, tv_ausgaben);
+    SaveGridViewAus.LoadView;
+    SaveGridViewVerf := TSavedGridView.Create(GV_Verfuegung,dm_PCM.iIDBenutzerPCM, tv_ausgaben1);
+    SaveGridViewVerf.LoadView;
+  end
+  else begin
+    SaveGridViewEin.SaveView(0);
+    SaveGridViewEin.Free;
+    SaveGridViewAus.SaveView(0);
+    SaveGridViewAus.Free;
+    SaveGridViewVerf.SaveView(0);
+    SaveGridViewVerf.Free;
+  end;
+end;
+{$EndRegion Hilfsfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Buttonfunktionen                                                           //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Buttonfunktionen}
+procedure Tfrm_finanzen.btn_BelegeCancelClick(Sender: TObject);
+begin
+  bnew:= False;
+  qry_Belege.Cancel;
+end;
+procedure Tfrm_finanzen.btn_BelegeDeleteClick(Sender: TObject);
+begin
+  bNew:= false;
+  if qry_Belege.FieldByName('ID').AsInteger > 0 then
+  begin
+    dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+    dm_PCM.qry_work.ParamByName('Message').AsString:= 'Belege ' + qry_Belege.FieldByName('Nummer').asString + ' wurde gelöscht';
+    dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_work.execsql;
+    qry_Belege.Delete;
+  end
+end;
+procedure Tfrm_finanzen.btn_BelegeNewClick(Sender: TObject);
+var
+  iJahr, iMonat,iTag : word;
+begin
+  if qry_Belege.State in [dsInsert, dsedit] then
+    qry_Belege.Post;
+  qry_Belege.Append;
+  qry_Belege.Insert;
+  DecodeDate(Now(),iJahr,iMonat,iTag);
+  qry_Belege.FieldByName('Kategorie').AsInteger:=0;
+  qry_Belege.FieldByName('Datum').AsDateTime:= Date();
+  qry_Belege.FieldByName('Monat').AsInteger:= iMonat;
+  qry_Belege.FieldByName('Jahr').AsInteger:= iJahr;
+  qry_Belege.FieldByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+  if not edt_BelegeNummer.Enabled then
+  begin
+    edt_BelegeNummer.Enabled:= true;
+    edt_BelegDatum.Enabled:= true;
+    edt_BelegeAussteller.Enabled:= true;
+    edt_BelegeBetrag.Enabled:= true;
+    cbx_BelegeKategorie.Enabled:= true;
+    cx_BelegMonat.Enabled:= true;
+    cx_BelegJahr.Enabled:= true;
+  end;
+  edt_BelegeNummer.SetFocus;
+  bNew:= true;
+end;
+procedure Tfrm_finanzen.btn_BelegeSaveClick(Sender: TObject);
+begin
+ if qry_Belege.State in [dsInsert, dsEdit] then
+  begin
+    edt_BelegeNummer.PostEditValue;
+    edt_BelegeAussteller.PostEditValue;
+    edt_BelegeBetrag.PostEditValue;
+    qry_Belege.Post;
+    if bnew then
+    begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Neuer Beleg ' + qry_Belege.FieldByName('Nummer').asString + ' wurde angelegt';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+    end
+    else begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Beleg ' + qry_Belege.FieldByName('Nummer').asString + ' wurde geändert';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+    end;
+    bNew:= false;
+  end;
+end;
+procedure Tfrm_finanzen.btn_FinanzenDruckenClick(Sender: TObject);
+begin
+  Application.CreateForm(Tfrm_PCManagerChooseDate,frm_PCManagerChooseDate);
+  frm_PCManagerChooseDate.Execute(True,iMonat,iJahr);
+  Drucke_PCM_Manager_Finanzuebersicht(iMonat,iJahr);
+end;
+procedure Tfrm_finanzen.btn_FinAusCancelClick(Sender: TObject);
+begin
+  bnew:= False;
+  qry_Ausgaben.Cancel;
+end;
+procedure Tfrm_finanzen.btn_FinAusDeleteClick(Sender: TObject);
+begin
+  bNew:= false;
+  if qry_Ausgaben.FieldByName('ID').AsInteger > 0 then
+  begin
+    dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+    dm_PCM.qry_work.ParamByName('Message').AsString:= 'Ausgabe ' + qry_Ausgaben.FieldByName('Name').asString + ' wurde gelöscht';
+    dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_work.execsql;
+    qry_Ausgaben.Delete;
+  end
+end;
+procedure Tfrm_finanzen.btn_FinAusNewClick(Sender: TObject);
+var
+  iJahr, iMonat,iTag : word;
+begin
+  if qry_Ausgaben.State in [dsInsert, dsedit] then
+    qry_Ausgaben.Post;
+  qry_Ausgaben.Append;
+  qry_Ausgaben.Insert;
+  DecodeDate(Now(),iJahr,iMonat,iTag);
+  qry_Ausgaben.FieldByName('Gueltig_Monat').AsInteger:= iMonat;
+  qry_Ausgaben.FieldByName('Gueltig_Jahr').AsInteger:= iJahr;
+    qry_Ausgaben.FieldByName('Fixkosten').AsString:= 'false';
+  qry_Ausgaben.FieldByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+  if not edt_FinAusName.Enabled then
+  begin
+    edt_FinAusName.Enabled:= true;
+    edt_FinAusBez.Enabled:= true;
+    edt_FinAusBetrag.Enabled:= true;
+    edt_FinAusIBAN.Enabled:= true;
+    edt_FinAusBIC.Enabled:= true;
+    edt_FinAusVerwendung.Enabled:= true;
+    chkbx_FinAusFixkosten.Enabled:= true;
+    cbx_FinAusMonat.Enabled:= true;
+    cbx_FinAusJahr.Enabled:= true;
+  end;
+  edt_FinAusName.SetFocus;
+  bNew:= true;
+end;
+procedure Tfrm_finanzen.btn_FinAusNullClick(Sender: TObject);
+begin
+  dm_PCM.qry_work.SQL.Text:= 'Update manager_finanzen_ausgaben Set Betrag = 0 Where ID = :ID';
+  dm_PCM.qry_work.ParamByName('ID').AsInteger:= qry_Ausgaben.FieldByName('ID').AsInteger;
+  dm_PCM.qry_work.ExecSQL;
+  qry_Ausgaben.Refresh;
+end;
+procedure Tfrm_finanzen.btn_FinAusFixClick(Sender: TObject);
+begin
+  dm_PCM.qry_work.SQL.Text:= 'Update manager_finanzen_ausgaben Set Betrag = Fixbetrag Where ID = :ID';
+  dm_PCM.qry_work.ParamByName('ID').AsInteger:= qry_Ausgaben.FieldByName('ID').AsInteger;
+  dm_PCM.qry_work.ExecSQL;
+  qry_Ausgaben.Refresh;
+end;
+procedure Tfrm_finanzen.btn_FinAusSaveClick(Sender: TObject);
+begin
+ if qry_Ausgaben.State in [dsInsert, dsEdit] then
+  begin
+    edt_FinAusName.PostEditValue;
+    edt_FinAusBez.PostEditValue;
+    edt_FinAusBetrag.PostEditValue;
+    edt_FinAusFixBetrag.PostEditValue;
+    edt_FinAusIBAN.PostEditValue;
+    edt_FinAusBIC.PostEditValue;
+    edt_FinAusVerwendung.PostEditValue;
+    qry_Ausgaben.Post;
+    if bnew then
+    begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Neue Ausgabe ' + qry_Ausgaben.FieldByName('Name').asString + ' wurde angelegt';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+    end
+    else begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Ausgabe ' + qry_Ausgaben.FieldByName('Name').asString + ' wurde geändert';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+    end;
+    bNew:= false;
+    end;
+end;
+procedure Tfrm_finanzen.btn_FinEinCancelClick(Sender: TObject);
+begin
+  bnew:= False;
+  qry_Einnahmen.Cancel;
+end;
+procedure Tfrm_finanzen.btn_FinEinDeleteClick(Sender: TObject);
+begin
+  bNew:= false;
+  if qry_Einnahmen.FieldByName('ID').AsInteger > 0 then
+  begin
+    dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+    dm_PCM.qry_work.ParamByName('Message').AsString:= 'Einnahme ' + qry_Einnahmen.FieldByName('Quelle').asString + ' wurde gelöscht';
+    dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_work.execsql;
+    qry_Einnahmen.Delete;
+  end;
+end;
+procedure Tfrm_finanzen.btn_FinEinNewClick(Sender: TObject);
+begin
+  if qry_Einnahmen.State in [dsInsert, dsedit] then
+    qry_Einnahmen.Post;
+  qry_Einnahmen.Append;
+  qry_Einnahmen.Insert;
+  qry_Einnahmen.FieldByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+  if not edt_FinEinAbsender.Enabled then
+  begin
+    edt_FinEinAbsender.enabled:= true;
+    edt_FinEinBez.enabled:= true;
+    edt_FinEinBetrag.enabled:= true;
+  end;
+  edt_FinEinAbsender.SetFocus;
+  bNew:= true;
+end;
+procedure Tfrm_finanzen.btn_FinEinNullClick(Sender: TObject);
+begin
+  dm_PCM.qry_work.SQL.Text:= 'Update manager_finanzen_einnahmen Set Betrag = 0 Where ID = :ID';
+  dm_PCM.qry_work.ParamByName('ID').AsInteger:= qry_Einnahmen.FieldByName('ID').AsInteger;
+  dm_PCM.qry_work.ExecSQL;
+  qry_Einnahmen.Refresh;
+end;
+procedure Tfrm_finanzen.btn_FinEinSaveClick(Sender: TObject);
+begin
+ if qry_Einnahmen.State in [dsInsert, dsEdit] then
+  begin
+    edt_FinEinAbsender .PostEditValue;
+    edt_FinEinBEz.PostEditValue;
+    edt_FinEinBetrag.PostEditValue;
+    qry_Einnahmen.Post;
+    if bnew then
+    begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Neuer Einnahme ' + qry_Einnahmen.FieldByName('Quelle').asString + ' wurde angelegt';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+    end
+    else begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Einnahme ' + qry_Einnahmen.FieldByName('Quelle').asString + ' wurde geändert';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+    end;
+    bNew:= false;
+  end;
+end;
+procedure Tfrm_finanzen.btn_FinAusAllFIxClick(Sender: TObject);
+begin
+  dm_PCM.qry_work.SQL.Text:= 'Update manager_finanzen_ausgaben Set Betrag = Fixbetrag';
+  dm_PCM.qry_work.ExecSQL;
+  qry_Ausgaben.Refresh;
+end;
+procedure Tfrm_finanzen.btn_FinEinAllFIxClick(Sender: TObject);
+begin
+  dm_PCM.qry_work.SQL.Text:= 'Update manager_finanzen_einnahmen Set Betrag = Fixbetrag';
+  dm_PCM.qry_work.ExecSQL;
+  qry_Einnahmen.Refresh;
+end;
+procedure Tfrm_finanzen.btn_FinEinAllNullClick(Sender: TObject);
+begin
+  dm_PCM.qry_work.SQL.Text:= 'Update manager_finanzen_einnahmen Set Betrag = 0';
+  dm_PCM.qry_work.ExecSQL;
+  qry_Einnahmen.Refresh;
+end;
+procedure Tfrm_finanzen.btn_FinAusAllNullClick(Sender: TObject);
+begin
+  dm_PCM.qry_work.SQL.Text:= 'Update manager_finanzen_ausgaben Set Betrag = 0';
+  dm_PCM.qry_work.ExecSQL;
+  qry_Ausgaben.Refresh;
+end;
+procedure Tfrm_finanzen.btn_FinEinFixClick(Sender: TObject);
+begin
+  dm_PCM.qry_work.SQL.Text:= 'Update manager_finanzen_einnahmen Set Betrag = Fixbetrag Where ID = :ID';
+  dm_PCM.qry_work.ParamByName('ID').AsInteger:= qry_Einnahmen.FieldByName('ID').AsInteger;
+  dm_PCM.qry_work.ExecSQL;
+  qry_Einnahmen.Refresh;
+end;
+procedure Tfrm_finanzen.btn_GutscheinCancelClick(Sender: TObject);
+begin
+  bnew:= False;
+  qry_Gutschein.Cancel;
+end;
+procedure Tfrm_finanzen.btn_GutscheinDeleteClick(Sender: TObject);
+begin
+  bNew:= false;
+  if qry_Gutschein.FieldByName('ID').AsInteger > 0 then
+  begin
+    dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+    dm_PCM.qry_work.ParamByName('Message').AsString:= 'Gutschein ' + qry_Gutschein.FieldByName('Nummer').asString + ' wurde gelöscht';
+    dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_work.execsql;
+    qry_Gutschein.Delete;
+  end
+end;
+procedure Tfrm_finanzen.btn_GutscheinNewClick(Sender: TObject);
+begin
+  if qry_Gutschein.State in [dsInsert, dsedit] then
+    qry_Gutschein.Post;
+  qry_Gutschein.Append;
+  qry_Gutschein.Insert;
+  qry_Gutschein.FieldByName('Datum').AsDateTime:= Date();
+  qry_Gutschein.FieldByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+  if not edt_GutscheinNummer.Enabled then
+  begin
+    edt_GutscheinNummer .Enabled:= true;
+    edt_GutscheinAussteller .Enabled:= true;
+    edt_GutscheinDatum .Enabled:= true;
+    edt_GutscheinWert .Enabled:= true;
+    edt_GutscheinRestwert .Enabled:= true;
+    edt_GutscheinPin .Enabled:= true;
+  end;
+  edt_GutscheinNummer.SetFocus;
+  bNew:= true;
+end;
+procedure Tfrm_finanzen.btn_GutscheinSaveClick(Sender: TObject);
+begin
+ if qry_Gutschein.State in [dsInsert, dsEdit] then
+  begin
+    edt_GutscheinNummer.PostEditValue;
+    edt_GutscheinAussteller.PostEditValue;
+    edt_GutscheinWert.PostEditValue;
+    edt_GutscheinRestwert.PostEditValue;
+    edt_GutscheinPin.PostEditValue;
+    qry_Gutschein.Post;
+    if bnew then
+    begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Neuer Gutschein ' + qry_Gutschein.FieldByName('Nummer').asString + ' wurde angelegt';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+    end
+    else begin
+      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
+      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Gutschein ' + qry_Gutschein.FieldByName('Nummer').asString + ' wurde geändert';
+      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_work.execsql;
+    end;
+    bNew:= false;
+  end;
+end;
+procedure Tfrm_finanzen.ppmbtn_ExportExcelAusClick(Sender: TObject);
+begin
+  if sdlg_Ausgaben.Execute then
+  begin
+    ExportGridToExcel(sdlg_Ausgaben.FileName, grd_Finanzen_Ausgaben);
+    MessageDlg(rs_PCMManager_GridExport1 + sdlg_Ausgaben.FileName +  rs_PCMManager_GridExport2, mtInformation, [mbOk], 0);
+  end;
+end;
+procedure Tfrm_finanzen.ppmbtn_ExportExcelBelClick(Sender: TObject);
+begin
+  if sdlg_Belege.Execute then
+  begin
+    ExportGridToExcel(sdlg_Belege.FileName, grd_Finanzen_Belege);
+    MessageDlg(rs_PCMManager_GridExport1 + sdlg_Belege.FileName +  rs_PCMManager_GridExport2, mtInformation, [mbOk], 0);
+  end;
+end;
+procedure Tfrm_finanzen.ppmbtn_ExportExcelEInClick(Sender: TObject);
+begin
+  if sdlg_Einnahmen.Execute then
+  begin
+    ExportGridToExcel(sdlg_Einnahmen.FileName, grd_Finanzen_Einnahmen);
+    MessageDlg(rs_PCMManager_GridExport1 + sdlg_Einnahmen.FileName +  rs_PCMManager_GridExport2, mtInformation, [mbOk], 0);
+  end;
+end;
+procedure Tfrm_finanzen.ppmbtn_ExportExcelGutClick(Sender: TObject);
+begin
+  if sdlg_Gutschein.Execute then
+  begin
+    ExportGridToExcel(sdlg_Gutschein.FileName, grd_Finanzen_Gutscheine);
+    MessageDlg(rs_PCMManager_GridExport1 + sdlg_Gutschein.FileName +  rs_PCMManager_GridExport2, mtInformation, [mbOk], 0);
+  end;
+end;
+{$EndRegion Buttonfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Editfunktionen                                                             //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Editfunktionen}
+procedure Tfrm_finanzen.edt_SucheAusPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+begin
+  edt_SucheAus.text:= '';
+  qry_Ausgaben.Filtered:= False;
+end;
+procedure Tfrm_finanzen.edt_SucheAusPropertiesChange(Sender: TObject);
+begin
+  if Length(edt_SucheAus.text) = 0 then
+  begin
+    qry_Ausgaben.Filtered:= false;
+  end
+  else begin
+    qry_Ausgaben.Filter:= 'lower(Name) like lower(' + QuotedStr('%' + edt_SucheAus.text + '%' ) + ')';
+    qry_Ausgaben.Filtered:= true;
+  end;
+end;
+procedure Tfrm_finanzen.edt_SucheBelPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+begin
+  edt_SucheBel.text:= '';
+  qry_Belege.Filtered:= False;
+end;
+procedure Tfrm_finanzen.edt_SucheBelPropertiesChange(Sender: TObject);
+begin
+  if Length(edt_SucheBel.text) = 0 then
+  begin
+    qry_Belege.Filtered:= false;
+  end
+  else begin
+    qry_Belege.Filter:= 'lower(Nummer) like lower(' + QuotedStr('%' + edt_SucheBel.text + '%' ) + ')';
+    qry_Belege.Filtered:= true;
+  end;
+end;
+procedure Tfrm_finanzen.edt_SucheEinPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+begin
+  edt_SucheEin.text:= '';
+  qry_Einnahmen.Filtered:= False;
+end;
+procedure Tfrm_finanzen.edt_SucheEinPropertiesChange(Sender: TObject);
+begin
+  if Length(edt_SucheEin.text) = 0 then
+  begin
+    qry_Einnahmen.Filtered:= false;
+  end
+  else begin
+    qry_Einnahmen.Filter:= 'lower(Quelle) like lower(' + QuotedStr('%' + edt_SucheEin.text + '%' ) + ')';
+    qry_Einnahmen.Filtered:= true;
+  end;
+end;
+procedure Tfrm_finanzen.edt_SucheGutPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+begin
+  edt_SucheGut.text:= '';
+  qry_Gutschein.Filtered:= False;
+end;
+procedure Tfrm_finanzen.edt_SucheGutPropertiesChange(Sender: TObject);
+begin
+  if Length(edt_SucheBel.text) = 0 then
+  begin
+    qry_Belege.Filtered:= false;
+  end
+  else begin
+    qry_Belege.Filter:= 'lower(Quelle) like lower(' + QuotedStr('%' + edt_SucheBel.text + '%' ) + ')';
+    qry_Belege.Filtered:= true;
+  end;
+end;
+{$EndRegion Editfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Sonstigefunktionen                                                            //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Sonstigefunktionen}
+procedure Tfrm_finanzen.chkbx_FinAusFixkostenPropertiesChange(Sender: TObject);
+begin
+  if chkbx_FinAusFixkosten.Checked then
+  begin
+    lbl_FinAusMonat.Visible:= false;
+    lbl_FinAusJahr.Visible:= false;
+  end
+  else begin
+    lbl_FinAusMonat.Visible:= true;
+    lbl_FinAusJahr.Visible:= true;
+  end;
+end;
+procedure Tfrm_finanzen.SetButtonsEnableVisible(DataSet: TDataSet);
+begin
+  Setbuttons;
 end;
 procedure Tfrm_finanzen.AG_pc_FinanzenChange(Sender: TObject);
 var
@@ -984,82 +1047,147 @@ begin
     frm_PCManagerChooseDate.Free;
   end;
 end;
-procedure Tfrm_finanzen.btn_BelegeCancelClick(Sender: TObject);
-begin
-  bnew:= False;
-  qBelege.Cancel;
-end;
 
-procedure Tfrm_finanzen.btn_BelegeDeleteClick(Sender: TObject);
+{$EndRegion Sonstigefunktionen}
+ ////////////////////////////////////////////////////////////////////////////////
+// Formfunktionen                                                             //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Formfunktionen}
+procedure Tfrm_finanzen.FormActivate(Sender: TObject);
 begin
-  bNew:= false;
-  if qBelege.FieldByName('ID').AsInteger > 0 then
-  begin
-    dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
-    dm_PCM.qry_work.ParamByName('Message').AsString:= 'Belege ' + qBelege.FieldByName('Nummer').asString + ' wurde gelöscht';
-    dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-    dm_PCM.qry_work.execsql;
-    qBelege.Delete;
-  end
+  FormShow(Self);
 end;
-procedure Tfrm_finanzen.btn_BelegeNewClick(Sender: TObject);
-var
-  iJahr, iMonat,iTag : word;
+procedure Tfrm_finanzen.FormDestroy(Sender: TObject);
 begin
-  if qBelege.State in [dsInsert, dsedit] then
-    qBelege.Post;
-  qBelege.Append;
-  qBelege.Insert;
-  DecodeDate(Now(),iJahr,iMonat,iTag);
-  qBelege.FieldByName('Kategorie').AsInteger:=0;
-  qBelege.FieldByName('Datum').AsDateTime:= Date();
-  qBelege.FieldByName('Monat').AsInteger:= iMonat;
-  qBelege.FieldByName('Jahr').AsInteger:= iJahr;
-  qBelege.FieldByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-  if not edt_BelegeNummer.Enabled then
+  SetGridViews(false);
+end;
+procedure Tfrm_finanzen.FormShow(Sender: TObject);
+  procedure OpenData;
   begin
-    edt_BelegeNummer.Enabled:= true;
-    edt_BelegDatum.Enabled:= true;
-    edt_BelegeAussteller.Enabled:= true;
-    edt_BelegeBetrag.Enabled:= true;
-    cbx_BelegeKategorie.Enabled:= true;
-    cx_BelegMonat.Enabled:= true;
-    cx_BelegJahr.Enabled:= true;
+    qry_Ausgaben.Open;
+    qry_Einnahmen.Open;
+    qry_Einnahmen.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+    qry_Einnahmen.Filtered:= true;
+    qry_Ausgaben.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+    qry_Ausgaben.Filtered:= true;
+    qry_Gutschein.Open;
+    qry_Gutschein.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+    qry_Gutschein.Filtered:= true;
+    qry_Belege.Open;
+    qry_Belege.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
+    qry_Belege.Filtered:= true;
+    tv_AusgabenName.Caption := rs_PCMManager_AusgabenEmpfaenger;
+    tv_AusgabenBeschreibung.Caption := rs_PCM_Beschreibung;
+    tv_Ausgabenverwendungszweck.Caption := rs_PCMManager_Verwendungszweck;
+    tv_Ausgabenbetrag.Caption := rs_PCM_Betrag;
+    tv_AusgabenFixBetrag.Caption := rs_PCM_FixBetrag;
+    tv_Ausgabenfixkosten.Caption := rs_PCM_FixKosten;
+    tv_AusgabenGueltig_monat.Caption := rs_PCM_Monat;
+    tv_AusgabenGueltig_Jahr.Caption := rs_PCM_Jahr;
+    tv_EinnahmenQuelle.Caption := rs_PCM_Absender;
+    tv_EinnahmenBezeichnung.Caption := rs_PCM_Beschreibung;
+    tv_EinnahmenBetrag.Caption := rs_PCM_Betrag;
+    tv_EinnahmenFixBetrag.Caption := rs_PCM_FixBetrag;
   end;
-  edt_BelegeNummer.SetFocus;
-  bNew:= true;
-end;
-
-procedure Tfrm_finanzen.btn_BelegeSaveClick(Sender: TObject);
-begin
- if qBelege.State in [dsInsert, dsEdit] then
+  procedure InitializeRights;
   begin
-    edt_BelegeNummer.PostEditValue;
-    edt_BelegeAussteller.PostEditValue;
-    edt_BelegeBetrag.PostEditValue;
-    qBelege.Post;
-    if bnew then
+     // FINANZEN / LeEsen
+    if dm_PCM.iMonatsuebersicht = 1 then
     begin
-      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
-      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Neuer Beleg ' + qBelege.FieldByName('Nummer').asString + ' wurde angelegt';
-      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-      dm_PCM.qry_work.execsql;
-    end
-    else begin
-      dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
-      dm_PCM.qry_work.ParamByName('Message').AsString:= 'Beleg ' + qBelege.FieldByName('Nummer').asString + ' wurde geändert';
-      dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
-      dm_PCM.qry_work.execsql;
+      // Toolbar
+      btn_FinEinNew.Enabled:= false;
+      btn_FinEinSave.Enabled:= false;
+      btn_FinEinCancel.Enabled:= false;
+      btn_FinEinDelete.Enabled:= false;
+      // Editfelder
+      edt_FinEinAbsender.Enabled:= false;
+      edt_FinEinBEz.Enabled:= false;
+      edt_FinEinBetrag.Enabled:= false;
+      //// Ausgaben
+      // Toolbar
+      btn_FinAusNew.Enabled:= false;
+      btn_FinAusSave.Enabled:= false;
+      btn_FinAusCancel.Enabled:= false;
+      btn_FinAusDelete.Enabled:= false;
+      // Editfelder
+      edt_FinAusName.Enabled:= false;
+      edt_FinAusBez.Enabled:= false;
+      edt_FinAusBetrag.Enabled:= false;
+      edt_FinAusIBAN.Enabled:= false;
+      edt_FinAusBIC.Enabled:= false;
+      edt_FinAusVerwendung.Enabled:= false;
     end;
-    bNew:= false;
+
+        // FINANZEN / Schreiben
+    if dm_PCM.iMonatsuebersicht = 2 then
+    begin
+      //// Einnahmen
+      // Toolbar
+      btn_FinEinNew.Enabled:= true;
+      btn_FinEinSave.Enabled:= true;
+      btn_FinEinCancel.Enabled:= true;
+      btn_FinEinDelete.Enabled:= false;
+      // Editfelder
+      edt_FinEinAbsender.Enabled:= true;
+      edt_FinEinBEz.Enabled:= true;
+      edt_FinEinBetrag.Enabled:= true;
+      //// Ausgaben
+      // Toolbar
+      btn_FinAusNew.Enabled:= true;
+      btn_FinAusSave.Enabled:= true;
+      btn_FinAusCancel.Enabled:= true;
+      btn_FinAusDelete.Enabled:= false;
+      // Editfelder
+      edt_FinAusName.Enabled:= true;
+      edt_FinAusBez.Enabled:= true;
+      edt_FinAusBetrag.Enabled:= true;
+      edt_FinAusIBAN.Enabled:= true;
+      edt_FinAusBIC.Enabled:= true;
+      edt_FinAusVerwendung.Enabled:= true;
+    end;
+
+    // FINANZEN / Vollzugriff
+    if dm_PCM.iMonatsuebersicht = 2 then
+    begin
+      // Toolbar
+      btn_FinEinNew.Enabled:= true;
+      btn_FinEinSave.Enabled:= true;
+      btn_FinEinCancel.Enabled:= true;
+      btn_FinEinDelete.Enabled:= True;
+      // Editfelder
+      edt_FinEinAbsender.Enabled:= true;
+      edt_FinEinBEz.Enabled:= true;
+      edt_FinEinBetrag.Enabled:= true;
+      //// Ausgaben
+      // Toolbar
+      btn_FinAusNew.Enabled:= true;
+      btn_FinAusSave.Enabled:= true;
+      btn_FinAusCancel.Enabled:= true;
+      btn_FinAusDelete.Enabled:= True;
+      // Editfelder
+      edt_FinAusName.Enabled:= true;
+      edt_FinAusBez.Enabled:= true;
+      edt_FinAusBetrag.Enabled:= true;
+      edt_FinAusIBAN.Enabled:= true;
+      edt_FinAusBIC.Enabled:= true;
+      edt_FinAusVerwendung.Enabled:= true;
+    end;
   end;
-end;
-
-procedure Tfrm_finanzen.btn_FinanzenDruckenClick(Sender: TObject);
 begin
-  Application.CreateForm(Tfrm_PCManagerChooseDate,frm_PCManagerChooseDate);
-  frm_PCManagerChooseDate.Execute(True,iMonat,iJahr);
-  Drucke_PCM_Manager_Finanzuebersicht(iMonat,iJahr);
+  OpenData;
+  InitializeRights;
+  SetButtons;
+  case dm_PCM.iModulTab of
+  1: dxLayoutGroup2.Itemindex:= 0;
+  2: dxLayoutGroup2.Itemindex:= 1;
+  3: dxLayoutGroup2.Itemindex:= 2;
+  4: dxLayoutGroup2.Itemindex:= 3;
+  5: dxLayoutGroup2.Itemindex:= 4;
+  6: dxLayoutGroup2.Itemindex:= 5;
+  end;
+  dxLayoutGroup2.OnTabChanged:= AG_pc_FinanzenChange;
+  SetFinanzUebersicht;
+  SetGridViews(True);
 end;
-
+{$EndRegion Formfunktionen}
 end.

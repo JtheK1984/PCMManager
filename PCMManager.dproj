@@ -243,6 +243,7 @@ $(PreBuildEvent)]]></PreBuildEvent>
         <DCCReference Include="Modules\PCMManager.Modul.G_Finanzen.Filter.Date.pas">
             <Form>frm_PCManagerChooseDate</Form>
         </DCCReference>
+        <DCCReference Include="Modules\PCMManager.Modul.D_Calendar.Terminsuche.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -271,9 +272,20 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <Deployment Version="5">
                 <DeployFile LocalName="E:\Inno\Setupfiles\Programme\PCMManager\PCMManager.exe" Configuration="Release" Class="ProjectOutput"/>
                 <DeployFile LocalName="Win32\Debug\PCMManager.exe" Configuration="Debug" Class="ProjectOutput"/>
-                <DeployFile LocalName="Win32\Debug\PCMManager.exe" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName="Win64\Debug\PCMManager.exe" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="Win64\Debug\PCMManager.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win64">
+                        <RemoteName>PCMManager.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Win64\Debug\PCMManager.rsm" Configuration="Debug" Class="DebugSymbols"/>
+                <DeployFile LocalName="Win64\Debug\PCMManager.rsm" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win64">
+                        <RemoteName>PCMManager.rsm</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Win64\Release\PCMManager.exe" Configuration="Release" Class="ProjectOutput"/>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="iOSSimulator">

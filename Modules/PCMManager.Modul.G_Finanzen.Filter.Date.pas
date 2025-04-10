@@ -3,6 +3,7 @@ unit PCMManager.Modul.G_Finanzen.Filter.Date;
 interface
 
 uses
+  {$Region uses}
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons,
   cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus,
@@ -10,8 +11,9 @@ uses
   cxLabel, cxGroupBox,system.UITypes, dxLayoutcxEditAdapters,
   dxLayoutControlAdapters, dxLayoutContainer, cxClasses, dxLayoutControl,
   dxUIAClasses;
-
+  {$EndRegion uses}
 type
+  {$Region uses}
   Tfrm_PCManagerChooseDate = class(TForm)
     btn_PCManagerChooseDate_Ok: TcxButton;
     btn_PCManagerChooseDate_Cancel: TcxButton;
@@ -37,18 +39,23 @@ type
     function Execute(const AShowModal: Boolean; out AMonat, AJahr: integer) : boolean; overload;
     function Execute(const AShowModal,AOnlyYear: Boolean; out AJahr: integer) : boolean; overload;
   end;
-
+  {$EndRegion type}
 var
+  {$Region var}
   frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate;
-
+  {$EndRegion var}
 implementation
-
 {$R *.dfm}
-
 uses
-      PCM.Data,
-      PCMManager.Modul.G_Finanzen, PCM.Strings;
-
+  {$Region uses}
+  PCM.Data,
+  PCMManager.Modul.G_Finanzen,
+  PCM.Strings;
+  {$EndRegion uses}
+////////////////////////////////////////////////////////////////////////////////
+// Hilfsfunktionen                                                            //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktionen}
 function Tfrm_PCManagerChooseDate.Execute(const AShowModal: Boolean;out AMonat, AJahr: integer) : boolean;
 begin
   AMonat := cbx_PCManagerChooseDate_Month.ItemIndex;
@@ -88,16 +95,11 @@ begin
     end;
   end;
 end;
-procedure Tfrm_PCManagerChooseDate.FormCreate(Sender: TObject);
-var
-  str_Year: string;
-  str_Month: string;
-begin
-  str_Month:=FormatDateTime('mmmm', now);
-  cbx_PCManagerChooseDate_Month.ItemIndex := cbx_PCManagerChooseDate_Month.properties.Items.IndexOf(str_Month);
-  str_Year:=FormatDateTime('yyyy', now);
-  cbx_PCManagerChooseDate_Year.ItemIndex := cbx_PCManagerChooseDate_Year.properties.Items.IndexOf(str_year);
-end;
+{$EndRegion Hilfsfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Buttonfunktionen                                                           //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Buttonfunktionen}
 procedure Tfrm_PCManagerChooseDate.btn_PCManagerChooseDate_OkClick(Sender: TObject);
 begin
   if cbx_PCManagerChooseDate_Month.ItemIndex = -1 then
@@ -117,4 +119,20 @@ procedure Tfrm_PCManagerChooseDate.btn_PCManagerChooseDate_CancelClick(Sender: T
 begin
   Modalresult:= mrOk;
 end;
+{$EndRegion Buttonfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Formfunktionen                                                             //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Formfunktionen}
+procedure Tfrm_PCManagerChooseDate.FormCreate(Sender: TObject);
+var
+  str_Year: string;
+  str_Month: string;
+begin
+  str_Month:=FormatDateTime('mmmm', now);
+  cbx_PCManagerChooseDate_Month.ItemIndex := cbx_PCManagerChooseDate_Month.properties.Items.IndexOf(str_Month);
+  str_Year:=FormatDateTime('yyyy', now);
+  cbx_PCManagerChooseDate_Year.ItemIndex := cbx_PCManagerChooseDate_Year.properties.Items.IndexOf(str_year);
+end;
+{$EndRegion Formfunktionen}
 end.

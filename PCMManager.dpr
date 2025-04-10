@@ -1,7 +1,7 @@
 program PCMManager;
 
 uses
-  {$Region uses}
+  {$Region}
   cxSchedulerCustomControls in 'Helper\cxSchedulerCustomControls.pas',
   cxSchedulerDBStorage in 'Helper\cxSchedulerDBStorage.pas',
   cxSchedulerEventModernInfoContainer in 'Helper\cxSchedulerEventModernInfoContainer.pas' {cxSchedulerEventModernInfoContainer: TdxForm},
@@ -48,8 +48,10 @@ uses
   Vcl.Forms,
   Vcl.Styles,
   Vcl.Themes,
-  Windows;
-  {$EndRegion uses}
+  Windows,
+  PCMManager.Modul.D_Calendar.Terminsuche in 'Modules\PCMManager.Modul.D_Calendar.Terminsuche.pas';
+
+{$EndRegion uses}
 {$R *.res}
 {$IFDEF WIN64}
   {$R 'Versioninfo64.res'}

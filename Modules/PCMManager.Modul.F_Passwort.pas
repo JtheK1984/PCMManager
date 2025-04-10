@@ -133,7 +133,7 @@ type
     lagrp_PassSerialTab: TdxLayoutGroup;
     lagrp_Passwords: TdxLayoutGroup;
     lagrp_PasswordsApp: TdxLayoutGroup;
-    lagrp_PasswordsDetail: TdxLayoutGroup;
+    lagrp_Serialssuche: TdxLayoutGroup;
     lagrp_PasswordsDetails: TdxLayoutGroup;
     lagrp_PasswordsDetails1: TdxLayoutGroup;
     lagrp_PasswordsDetailsLeft: TdxLayoutGroup;
@@ -202,6 +202,10 @@ type
     tv_ProgramsAPP: TcxGridDBColumn;
     tv_ProgramsiD_typ: TcxGridDBColumn;
     tv_PasswortID_Typ: TcxGridDBColumn;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
+    edt_SucheSer: TcxButtonEdit;
+    cmbbx_serialsTyp: TcxComboBox;
     procedure btn_PasswortCancelClick(Sender: TObject);
     procedure btn_PasswortDeleteClick(Sender: TObject);
     procedure btn_PasswortNewClick(Sender: TObject);
@@ -227,6 +231,10 @@ type
     procedure qry_SerialAfterScroll(DataSet: TDataSet);
     procedure SetButtonsEnabledVisible(DataSet: TDataSet);
     procedure qry_PWDAfterScroll(DataSet: TDataSet);
+    procedure edt_SucheSerPropertiesChange(Sender: TObject);
+    procedure edt_SucheSerPropertiesButtonClick(Sender: TObject;
+      AButtonIndex: Integer);
+    procedure cmbbx_serialsTypPropertiesChange(Sender: TObject);
   private
     { Private-Deklarationen }
     bNew: boolean;
@@ -662,6 +670,33 @@ begin
     qry_Pwd.Filtered:= true;
   end;
 end;
+procedure Tfrm_password.cmbbx_serialsTypPropertiesChange(Sender: TObject);
+begin
+  if cmbbx_serialsTyp.ItemIndex = 0 then
+  begin
+    qry_Serial.Filtered:= false;
+  end
+  else begin
+    qry_Serial.Filter:= 'ID_Typ = ' + IntToStr(Integer(cmbbx_serialsTyp.Properties.Items.Objects[cmbbx_serialsTyp.ItemIndex]));
+    qry_Serial.Filtered:= true;
+  end;
+end;
+procedure Tfrm_password.edt_SucheSerPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+begin
+  edt_sucheSER.Text:= '';
+  qry_Serial.Filtered:= false;
+end;
+procedure Tfrm_password.edt_SucheSerPropertiesChange(Sender: TObject);
+begin
+  if Length(edt_sucheSER.text) = 0 then
+  begin
+    qry_Serial.Filtered:= false;
+  end
+  else begin
+    qry_Serial.Filter:= 'lower(App) like lower(' + QuotedStr('%' + edt_sucheSER.text + '%' ) + ')';
+    qry_Serial.Filtered:= true;
+  end;
+end;
 procedure Tfrm_password.edt_Passwort_BankingPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
 begin
   if qry_PWD.FieldByName('BankingPin').AsString <> '' then
@@ -701,7 +736,6 @@ begin
   ChangeItems(qry_PWD.FieldByName('ID_Typ').asInteger);
   Setbuttons;
 end;
-
 procedure Tfrm_password.qry_SerialAfterScroll(DataSet: TDataSet);
 var
   iID_Serial: integer;
@@ -873,6 +907,17 @@ begin
   while not dm_pcm.qry_work.Eof do
   begin
     cmbbx_SearchPW.Properties.Items.AddObject(dm_pcm.qry_work.FieldByName('Bezeichnung').AsString, TObject(dm_pcm.qry_work.FieldByName('ID').AsInteger));
+    dm_pcm.qry_work.Next;
+  end;
+  dm_pcm.qry_work.close;
+
+  cmbbx_serialsTyp.Properties.Items.Clear;
+  cmbbx_serialsTyp.Properties.Items.Add('');
+  dm_pcm.qry_work.SQL.Text:= 'SELECT ID,Bezeichnung From manager_serials_typ order by Bezeichnung';
+  dm_pcm.qry_work.open;
+  while not dm_pcm.qry_work.Eof do
+  begin
+    cmbbx_serialsTyp.Properties.Items.AddObject(dm_pcm.qry_work.FieldByName('Bezeichnung').AsString, TObject(dm_pcm.qry_work.FieldByName('ID').AsInteger));
     dm_pcm.qry_work.Next;
   end;
   dm_pcm.qry_work.close;

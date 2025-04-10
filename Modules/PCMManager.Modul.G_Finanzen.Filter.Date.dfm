@@ -25,7 +25,7 @@ object frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     ExplicitWidth = 262
-    ExplicitHeight = 66
+    ExplicitHeight = 76
     object btn_PCManagerChooseDate_Cancel: TcxButton
       Left = 137
       Top = 53

@@ -201,6 +201,7 @@ type
     { Private-Deklarationen }
   public
     { Public-Deklarationen }
+    iKalenderDate: TDate;
     iModulTab: integer;
     sServer,sStyle,sDesign: String;
     slocale: String;

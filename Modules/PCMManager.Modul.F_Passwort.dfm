@@ -25,12 +25,11 @@ object frm_password: Tfrm_password
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
-    ExplicitWidth = 1172
     object grd_Passwort: TcxGrid
       Left = 28
-      Top = 387
+      Top = 393
       Width = 1920
-      Height = 330
+      Height = 324
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -76,6 +75,7 @@ object frm_password: Tfrm_password
         OptionsView.IndicatorWidth = 14
         object tv_PasswortBezeichnung: TcxGridDBColumn
           DataBinding.FieldName = 'Bezeichnung'
+          DataBinding.IsNullValueType = True
           SortIndex = 0
           SortOrder = soAscending
           Width = 300
@@ -83,16 +83,19 @@ object frm_password: Tfrm_password
         object tv_Passwortlink: TcxGridDBColumn
           Caption = 'Link'
           DataBinding.FieldName = 'link'
+          DataBinding.IsNullValueType = True
           Width = 230
         end
         object tv_Passwortuser: TcxGridDBColumn
           Caption = 'Benutzer'
           DataBinding.FieldName = 'user'
+          DataBinding.IsNullValueType = True
           Width = 230
         end
         object tv_Passwortpassword: TcxGridDBColumn
           Caption = 'Passwort'
           DataBinding.FieldName = 'password'
+          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxTextEditProperties'
           Properties.EchoMode = eemPassword
           Width = 230
@@ -100,65 +103,76 @@ object frm_password: Tfrm_password
         object tv_PasswortVPN_SharedSecret: TcxGridDBColumn
           Caption = 'VPN SharedSecret'
           DataBinding.FieldName = 'VPN_SharedSecret'
+          DataBinding.IsNullValueType = True
           Visible = False
         end
         object tv_PasswortAPP_IP: TcxGridDBColumn
           Caption = 'APP IP-Adresse'
           DataBinding.FieldName = 'APP_IP'
+          DataBinding.IsNullValueType = True
           Visible = False
           Width = 300
         end
         object tv_PasswortAPP_Port: TcxGridDBColumn
           Caption = 'APP Port'
           DataBinding.FieldName = 'APP_Port'
+          DataBinding.IsNullValueType = True
           Visible = False
           Width = 70
         end
         object tv_PasswortAPP_Verschluesselung: TcxGridDBColumn
           Caption = 'APP Verschl'#252'sselung'
           DataBinding.FieldName = 'APP_Verschluesselung'
+          DataBinding.IsNullValueType = True
           Visible = False
           Width = 150
         end
         object tv_PasswortMAIL_Posteingangsserver: TcxGridDBColumn
           Caption = 'E-Mail Posteingangsserver'
           DataBinding.FieldName = 'MAIL_Posteingangsserver'
+          DataBinding.IsNullValueType = True
           Visible = False
           Width = 200
         end
         object tv_PasswortMAIL_PosteingangsPort: TcxGridDBColumn
           Caption = 'E-Mail Posteingang Port'
           DataBinding.FieldName = 'MAIL_PosteingangsPort'
+          DataBinding.IsNullValueType = True
           Visible = False
           Width = 200
         end
         object tv_PasswortMAIL_PosteingangsVerschluesselung: TcxGridDBColumn
           Caption = 'E-Mail Posteingang Verschl'#252'sselung'
           DataBinding.FieldName = 'MAIL_PosteingangsVerschluesselung'
+          DataBinding.IsNullValueType = True
           Visible = False
           Width = 200
         end
         object tv_PasswortMAIL_Postausgangsserver: TcxGridDBColumn
           Caption = 'E-Mail Postausgangsserver'
           DataBinding.FieldName = 'MAIL_Postausgangsserver'
+          DataBinding.IsNullValueType = True
           Visible = False
           Width = 200
         end
         object tv_PasswortMAIL_PostausgangsPort: TcxGridDBColumn
           Caption = 'E-Mail Postausgang Port'
           DataBinding.FieldName = 'MAIL_PostausgangsPort'
+          DataBinding.IsNullValueType = True
           Visible = False
           Width = 200
         end
         object tv_PasswortMAIL_PostausgangsVerschluesselung: TcxGridDBColumn
           Caption = 'E-Mail Postausgang Verschl'#252'sselung'
           DataBinding.FieldName = 'MAIL_PostausgangsVerschluesselung'
+          DataBinding.IsNullValueType = True
           Visible = False
           Width = 200
         end
         object tv_PasswortID_Typ: TcxGridDBColumn
           Caption = 'Passwort Typ'
           DataBinding.FieldName = 'ID_Typ'
+          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxLookupComboBoxProperties'
           Properties.KeyFieldNames = 'ID'
           Properties.ListColumns = <
@@ -175,7 +189,7 @@ object frm_password: Tfrm_password
     end
     object cmbbx_PWTyp: TcxDBLookupComboBox
       Left = 141
-      Top = 262
+      Top = 268
       AutoSize = False
       DataBinding.DataField = 'ID_typ'
       DataBinding.DataSource = ds_PWD
@@ -202,7 +216,7 @@ object frm_password: Tfrm_password
     end
     object edt_Passwort_APPPort: TcxDBTextEdit
       Left = 141
-      Top = 337
+      Top = 343
       AutoSize = False
       DataBinding.DataField = 'APP_Port'
       DataBinding.DataSource = ds_PWD
@@ -222,7 +236,7 @@ object frm_password: Tfrm_password
     end
     object edt_Passwort_APPSSL: TcxDBTextEdit
       Left = 141
-      Top = 362
+      Top = 368
       AutoSize = False
       DataBinding.DataField = 'APP_Verschluesselung'
       DataBinding.DataSource = ds_PWD
@@ -242,7 +256,7 @@ object frm_password: Tfrm_password
     end
     object edt_Passwort_Benutzer: TcxDBTextEdit
       Left = 141
-      Top = 237
+      Top = 243
       AutoSize = False
       DataBinding.DataField = 'user'
       DataBinding.DataSource = ds_PWD
@@ -262,7 +276,7 @@ object frm_password: Tfrm_password
     end
     object edt_Passwort_Bezeichnung: TcxDBTextEdit
       Left = 141
-      Top = 212
+      Top = 218
       AutoSize = False
       DataBinding.DataField = 'Bezeichnung'
       DataBinding.DataSource = ds_PWD
@@ -282,7 +296,7 @@ object frm_password: Tfrm_password
     end
     object edt_Passwort_EmailInboxPort: TcxDBTextEdit
       Left = 780
-      Top = 337
+      Top = 343
       AutoSize = False
       DataBinding.DataField = 'MAIL_PosteingangsPort'
       DataBinding.DataSource = ds_PWD
@@ -302,7 +316,7 @@ object frm_password: Tfrm_password
     end
     object edt_Passwort_EmailInboxServer: TcxDBTextEdit
       Left = 780
-      Top = 312
+      Top = 318
       AutoSize = False
       DataBinding.DataField = 'MAIL_Posteingangsserver'
       DataBinding.DataSource = ds_PWD
@@ -322,7 +336,7 @@ object frm_password: Tfrm_password
     end
     object edt_Passwort_EmailInboxSSL: TcxDBTextEdit
       Left = 780
-      Top = 362
+      Top = 368
       AutoSize = False
       DataBinding.DataField = 'MAIL_PosteingangsVerschluesselung'
       DataBinding.DataSource = ds_PWD
@@ -342,7 +356,7 @@ object frm_password: Tfrm_password
     end
     object edt_Passwort_EmailOutboxPort: TcxDBTextEdit
       Left = 1449
-      Top = 337
+      Top = 343
       AutoSize = False
       DataBinding.DataField = 'MAIL_PostausgangsPort'
       DataBinding.DataSource = ds_PWD
@@ -362,7 +376,7 @@ object frm_password: Tfrm_password
     end
     object edt_Passwort_EmailOutboxServer: TcxDBTextEdit
       Left = 1449
-      Top = 312
+      Top = 318
       AutoSize = False
       DataBinding.DataField = 'MAIL_Postausgangsserver'
       DataBinding.DataSource = ds_PWD
@@ -382,7 +396,7 @@ object frm_password: Tfrm_password
     end
     object edt_Passwort_EmailOutboxSSL: TcxDBTextEdit
       Left = 1449
-      Top = 362
+      Top = 368
       AutoSize = False
       DataBinding.DataField = 'MAIL_PostausgangsVerschluesselung'
       DataBinding.DataSource = ds_PWD
@@ -402,7 +416,7 @@ object frm_password: Tfrm_password
     end
     object edt_Passwort_Link: TcxDBTextEdit
       Left = 1123
-      Top = 262
+      Top = 268
       AutoSize = False
       DataBinding.DataField = 'link'
       DataBinding.DataSource = ds_PWD
@@ -422,7 +436,7 @@ object frm_password: Tfrm_password
     end
     object edt_Passwort_VPN: TcxDBTextEdit
       Left = 1123
-      Top = 287
+      Top = 293
       AutoSize = False
       DataBinding.DataField = 'VPN_SharedSecret'
       DataBinding.DataSource = ds_PWD
@@ -442,7 +456,7 @@ object frm_password: Tfrm_password
     end
     object edt_Passwort_VPN_APP: TcxDBTextEdit
       Left = 141
-      Top = 312
+      Top = 318
       AutoSize = False
       DataBinding.DataField = 'APP_IP'
       DataBinding.DataSource = ds_PWD
@@ -471,15 +485,15 @@ object frm_password: Tfrm_password
     object grd_Programs: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1112
-      Height = 239
+      Width = 1920
+      Height = 193
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 24
+      TabOrder = 26
       TabStop = False
       Visible = False
       LockedStateImageOptions.Effect = lsieDark
@@ -576,9 +590,9 @@ object frm_password: Tfrm_password
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 22
+      TabOrder = 24
       Visible = False
-      Width = 511
+      Width = 934
     end
     object lucbx_Programs_Typ: TcxDBLookupComboBox
       Left = 10000
@@ -600,15 +614,15 @@ object frm_password: Tfrm_password
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 23
+      TabOrder = 25
       Visible = False
       OnExit = btn_SerialSaveClick
-      Width = 499
+      Width = 884
     end
     object brdckCtrl_Programm: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1112
+      Width = 1920
       Height = 63
       Align = dalNone
       BarManager = brmgr_Passwort
@@ -617,15 +631,15 @@ object frm_password: Tfrm_password
     object grd_SerialDetail: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1112
-      Height = 166
+      Width = 1920
+      Height = 140
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 28
+      TabOrder = 30
       TabStop = False
       Visible = False
       LockedStateImageOptions.Effect = lsieDark
@@ -695,9 +709,9 @@ object frm_password: Tfrm_password
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 26
+      TabOrder = 28
       Visible = False
-      Width = 505
+      Width = 925
     end
     object edt_SerialsSerial: TcxDBTextEdit
       Left = 10000
@@ -713,15 +727,15 @@ object frm_password: Tfrm_password
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 27
+      TabOrder = 29
       Visible = False
       OnExit = btn_SerialSSaveClick
-      Width = 497
+      Width = 885
     end
     object brdckCtrl_SerialDetail: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1112
+      Width = 1920
       Height = 63
       Align = dalNone
       BarManager = brmgr_Passwort
@@ -729,7 +743,7 @@ object frm_password: Tfrm_password
     end
     object edt_Passwort_WLAN: TcxDBTextEdit
       Left = 141
-      Top = 287
+      Top = 293
       AutoSize = False
       DataBinding.DataField = 'WLAN'
       DataBinding.DataSource = ds_PWD
@@ -755,7 +769,7 @@ object frm_password: Tfrm_password
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 2
-      Height = 19
+      Height = 25
       Width = 888
     end
     object edt_searchPW: TcxButtonEdit
@@ -766,17 +780,28 @@ object frm_password: Tfrm_password
         item
           Default = True
           Glyph.SourceDPI = 96
-          Glyph.SourceHeight = 17
-          Glyph.SourceWidth = 17
+          Glyph.SourceHeight = 26
+          Glyph.SourceWidth = 26
           Glyph.Data = {
-            89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
-            6100000011744558745469746C6500436C6F73653B457869743B0519FF850000
-            009549444154785EC5D33B0A84401004D0C904F1738385DD4CC4C03B78130F29
-            C606A686867A0941161D0B99A0719012073178060D55748B2AADB593FDD19785
-            BEE3D182FFF98C17F490402B6635A430B08219BEA02086D6847D33CB60611B54
-            E0994024C201346C03BBC40EF302B9B63C8717D8E1103C59C20A26F888707338
-            2787956DD0C1EF707305098CF4046376F8905EF8179C6CA903753534AA4B6600
-            00000049454E44AE426082}
+            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+            462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+            617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+            2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+            77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+            22307078222076696577426F783D2230203020333220333222207374796C653D
+            22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+            3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+            303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+            63653D227072657365727665223E2E426C75657B66696C6C3A23313137374437
+            3B7D262331333B262331303B2623393B2E5265647B66696C6C3A234431314331
+            433B7D3C2F7374796C653E0D0A3C7061746820636C6173733D22426C75652220
+            643D224D31382C32336C2D342E332C342E35632D302E372C302E372D312E392C
+            302E372D322E362C306C2D362E362D362E36632D302E372D302E372D302E372D
+            312E392C302D322E364C392C31344C31382C32337A222F3E0D0A3C7061746820
+            636C6173733D225265642220643D224D32372E352C31332E374C32302C32316C
+            2D392D396C372E332D372E3563302E372D302E372C312E392D302E372C322E36
+            2C306C362E362C362E364332382E322C31312E382C32382E322C31332C32372E
+            352C31332E377A222F3E0D0A3C2F7376673E0D0A}
           Kind = bkGlyph
         end>
       Properties.OnButtonClick = edt_searchPWPropertiesButtonClick
@@ -784,12 +809,12 @@ object frm_password: Tfrm_password
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 1
-      Height = 19
+      Height = 25
       Width = 865
     end
     object edt_Passwort_Banking: TcxDBButtonEdit
       Left = 1123
-      Top = 237
+      Top = 243
       DataBinding.DataField = 'BankingPin'
       DataBinding.DataSource = ds_PWD
       Properties.Buttons = <
@@ -809,7 +834,7 @@ object frm_password: Tfrm_password
     end
     object edt_Passwort_Passwort: TcxDBButtonEdit
       Left = 1123
-      Top = 212
+      Top = 218
       DataBinding.DataField = 'password'
       DataBinding.DataSource = ds_PWD
       Properties.Buttons = <
@@ -826,6 +851,59 @@ object frm_password: Tfrm_password
       TabOrder = 7
       OnExit = btn_PasswortSaveClick
       Width = 825
+    end
+    object edt_SucheSer: TcxButtonEdit
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      Properties.Buttons = <
+        item
+          Default = True
+          Glyph.SourceDPI = 96
+          Glyph.SourceHeight = 26
+          Glyph.SourceWidth = 26
+          Glyph.Data = {
+            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+            462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+            617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+            2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+            77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+            22307078222076696577426F783D2230203020333220333222207374796C653D
+            22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+            3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+            303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+            63653D227072657365727665223E2E426C75657B66696C6C3A23313137374437
+            3B7D262331333B262331303B2623393B2E5265647B66696C6C3A234431314331
+            433B7D3C2F7374796C653E0D0A3C7061746820636C6173733D22426C75652220
+            643D224D31382C32336C2D342E332C342E35632D302E372C302E372D312E392C
+            302E372D322E362C306C2D362E362D362E36632D302E372D302E372D302E372D
+            312E392C302D322E364C392C31344C31382C32337A222F3E0D0A3C7061746820
+            636C6173733D225265642220643D224D32372E352C31332E374C32302C32316C
+            2D392D396C372E332D372E3563302E372D302E372C312E392D302E372C322E36
+            2C306C362E362C362E364332382E322C31312E382C32382E322C31332C32372E
+            352C31332E377A222F3E0D0A3C2F7376673E0D0A}
+          Kind = bkGlyph
+        end>
+      Properties.OnButtonClick = edt_SucheSerPropertiesButtonClick
+      Properties.OnChange = edt_SucheSerPropertiesChange
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 22
+      Visible = False
+      Height = 25
+      Width = 874
+    end
+    object cmbbx_serialsTyp: TcxComboBox
+      Left = 10000
+      Top = 10000
+      AutoSize = False
+      Properties.OnChange = cmbbx_serialsTypPropertiesChange
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 23
+      Visible = False
+      Height = 25
+      Width = 897
     end
     object lactrl_PassSerialGroup_Root: TdxLayoutGroup
       AlignHorz = ahClient
@@ -863,9 +941,13 @@ object frm_password: Tfrm_password
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object lagrp_PasswordsDetail: TdxLayoutGroup
+    object lagrp_Serialssuche: TdxLayoutGroup
+      Parent = lagrp_SRLProgram
+      AlignHorz = ahClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Passwortdetails'
-      Index = -1
+      LayoutDirection = ldHorizontal
+      Index = 1
     end
     object laitm_PWDBezeichnung: TdxLayoutItem
       Parent = lagrp_PasswordsDetailsLeft
@@ -1050,9 +1132,10 @@ object frm_password: Tfrm_password
     end
     object lagrp_Serials: TdxLayoutGroup
       Parent = lagrp_PassSerialTab
+      AlignHorz = ahCenter
+      AlignVert = avClient
       CaptionOptions.ImageIndex = 12
       CaptionOptions.Text = 'Serials'
-      ItemIndex = 1
       ShowBorder = False
       Index = 1
     end
@@ -1107,7 +1190,7 @@ object frm_password: Tfrm_password
       ControlOptions.OriginalHeight = 286
       ControlOptions.OriginalWidth = 1164
       ControlOptions.ShowBorder = False
-      Index = 2
+      Index = 3
     end
     object lagrp_SRLSerial: TdxLayoutGroup
       Parent = lagrp_Serials
@@ -1170,7 +1253,7 @@ object frm_password: Tfrm_password
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
-      Index = 1
+      Index = 2
     end
     object lagrp_SRLSerialDetail: TdxLayoutGroup
       Parent = lagrp_SRLSerial
@@ -1282,7 +1365,7 @@ object frm_password: Tfrm_password
       AlignVert = avTop
       CaptionOptions.Text = 'Passwort Typ:'
       Control = cmbbx_SearchPW
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 100
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1293,7 +1376,7 @@ object frm_password: Tfrm_password
       AlignVert = avTop
       CaptionOptions.Text = 'Bezeichnung:'
       Control = edt_searchPW
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 25
       ControlOptions.OriginalWidth = 100
       ControlOptions.ShowBorder = False
       Index = 0
@@ -1305,6 +1388,28 @@ object frm_password: Tfrm_password
       CaptionOptions.Text = 'Passwortdetails'
       ItemIndex = 4
       Index = 0
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = lagrp_Serialssuche
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Bezeichnung:'
+      Control = edt_SucheSer
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 865
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = lagrp_Serialssuche
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Serial Typ:'
+      Control = cmbbx_serialsTyp
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 888
+      ControlOptions.ShowBorder = False
+      Index = 1
     end
   end
   object brmgr_Passwort: TdxBarManager
