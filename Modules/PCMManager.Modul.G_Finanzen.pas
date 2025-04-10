@@ -964,7 +964,7 @@ begin
     qry_Belege.Filtered:= false;
   end
   else begin
-    qry_Belege.Filter:= 'lower(Quelle) like lower(' + QuotedStr('%' + edt_SucheBel.text + '%' ) + ')';
+    qry_Belege.Filter:= 'lower(Nummer) like lower(' + QuotedStr('%' + edt_SucheBel.text + '%' ) + ')';
     qry_Belege.Filtered:= true;
   end;
 end;
