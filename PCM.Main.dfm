@@ -3705,9 +3705,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
   TextHeight = 13
   object navbr_main: TdxNavBar
     Left = 0
-    Top = 30
+    Top = 35
     Width = 200
-    Height = 770
+    Height = 765
     Align = alLeft
     ActiveGroupIndex = 0
     TabOrder = 0
@@ -3715,7 +3715,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
     View = 14
     OptionsImage.SmallImages = dm_PCM.imglst_16x16
     OptionsStyle.CustomStyles.Background = navbrStyleIt_main
-    ExplicitTop = 35
     ExplicitHeight = 748
     object navbrgrp_Optionen: TdxNavBarGroup
       Caption = 'Optionen'
@@ -3972,21 +3971,20 @@ object frm_PCM_Main: Tfrm_PCM_Main
   end
   object grpbx_Design: TcxGroupBox
     Left = 200
-    Top = 30
+    Top = 35
     Align = alClient
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 1
-    ExplicitTop = 35
     ExplicitWidth = 1074
     ExplicitHeight = 748
-    Height = 770
+    Height = 765
     Width = 1080
     object pc_main: TcxPageControl
       Left = 2
       Top = 2
       Width = 1076
-      Height = 766
+      Height = 761
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -4004,22 +4002,21 @@ object frm_PCM_Main: Tfrm_PCM_Main
       OnPageChanging = pc_mainPageChanging
       ExplicitWidth = 1070
       ExplicitHeight = 744
-      ClientRectBottom = 766
-      ClientRectRight = 1076
-      ClientRectTop = 25
+      ClientRectBottom = 755
+      ClientRectLeft = 2
+      ClientRectRight = 1070
+      ClientRectTop = 28
       object ts_Dashboard: TcxTabSheet
         AllowCloseButton = False
         Caption = 'Dashboard'
         ImageIndex = 79
-        ExplicitLeft = 2
-        ExplicitTop = 28
         ExplicitWidth = 1062
         ExplicitHeight = 710
         object dxLayoutControl1: TdxLayoutControl
           Left = 0
           Top = 0
-          Width = 1076
-          Height = 741
+          Width = 1068
+          Height = 727
           Align = alClient
           TabOrder = 0
           LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
@@ -4027,10 +4024,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
           ExplicitWidth = 1062
           ExplicitHeight = 710
           object chartctrl_Birthday: TdxChartControl
-            Left = 32
-            Top = 63
-            Width = 1012
-            Height = 268
+            Left = 28
+            Top = 77
+            Width = 1008
+            Height = 247
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -4054,10 +4051,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
             end
           end
           object chartctrl_Contact: TdxChartControl
-            Left = 32
-            Top = 374
-            Width = 457
-            Height = 335
+            Left = 28
+            Top = 385
+            Width = 454
+            Height = 310
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -4084,10 +4081,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
             end
           end
           object chartctrl_Adresses: TdxChartControl
-            Left = 526
-            Top = 374
-            Width = 518
-            Height = 335
+            Left = 520
+            Top = 385
+            Width = 516
+            Height = 310
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -5985,6 +5982,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
   end
   object lafCtrl_Main: TcxLookAndFeelController
     NativeStyle = True
+    SkinName = 'DevExpressDarkStyle'
     Left = 88
     Top = 104
   end
@@ -9826,7 +9824,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     DockControlHeights = (
       0
       0
-      30
+      35
       0)
     object tb_Main: TdxBar
       AllowClose = False

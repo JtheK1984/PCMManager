@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <ProjectGuid>{A4F38396-1DA4-481E-ABE6-879411FC83E8}</ProjectGuid>
-        <ProjectVersion>20.1</ProjectVersion>
+        <ProjectVersion>20.3</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <Program_Compress>E:\Inno\Setupfiles\Programme\PCMService\UPX\UPX.exe</Program_Compress>
         <Program_Soluling>E:\Solu\SoluMake.exe</Program_Soluling>
@@ -11,6 +11,7 @@
         <Platform Condition="'$(Platform)'==''">Win64</Platform>
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Application</AppType>
+        <ProjectName Condition="'$(ProjectName)'==''">PCMManager</ProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -154,43 +155,63 @@ $(PreBuildEvent)]]></PreBuildEvent>
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="PCM.Main.pas">
-            <Form>frm_PCM_Main</Form>
+        <DCCReference Include="Helper\cxSchedulerCustomControls.pas"/>
+        <DCCReference Include="Helper\cxSchedulerDBStorage.pas"/>
+        <DCCReference Include="Helper\cxSchedulerEventModernInfoContainer.pas">
+            <Form>cxSchedulerEventModernInfoContainer</Form>
+            <DesignClass>TdxForm</DesignClass>
         </DCCReference>
+        <DCCReference Include="Helper\cxSchedulerICalendar.pas"/>
+        <DCCReference Include="Helper\cxSchedulerStorage.pas"/>
+        <DCCReference Include="Helper\IdSASL.OAuth.Base.pas"/>
+        <DCCReference Include="Helper\IdSASL.OAuth.OAuth2Bearer.pas"/>
+        <DCCReference Include="Helper\IdSASL.OAuth.XOAUTH2.pas"/>
         <DCCReference Include="PCM.Data.pas">
             <Form>dm_PCM</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="PCM.Main.pas">
+            <Form>frm_PCM_Main</Form>
+        </DCCReference>
+        <DCCReference Include="PCM.splash.pas">
+            <Form>SplashScreen</Form>
+        </DCCReference>
+        <DCCReference Include="PCMManager.dxSettings.pas"/>
+        <DCCReference Include="Helper\PCMManager.Helper.Calendar.ICAL.pas"/>
+        <DCCReference Include="Helper\PCMManager.Helper.Calendar.Neu.Wiederholung.pas"/>
+        <DCCReference Include="Helper\PCMManager.Helper.Calendar.Reminder.pas">
+            <Form>cxSchedulerReminderForm</Form>
+        </DCCReference>
+        <DCCReference Include="Helper\PCMManager.Helper.Calendar.ReminderCustomited.pas"/>
+        <DCCReference Include="Helper\PCMManager.Helper.Contacts.VCF.pas"/>
+        <DCCReference Include="Helper\PCMManager.Helper.Email.OAuth.pas"/>
         <DCCReference Include="Modules\PCMManager.Modul.B_Config.pas">
             <Form>frm_Config</Form>
         </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.B_Config.Kalender.Feiertage.Neu.pas">
-            <Form>fFeiertageBerechnen</Form>
-        </DCCReference>
         <DCCReference Include="Modules\PCMManager.Modul.B_Config.Kalender.Feiertage.Aktualisieren.pas">
             <Form>frm_FeiertageAktualisieren</Form>
+        </DCCReference>
+        <DCCReference Include="Modules\PCMManager.Modul.B_Config.Kalender.Feiertage.Neu.pas">
+            <Form>fFeiertageBerechnen</Form>
         </DCCReference>
         <DCCReference Include="Modules\PCMManager.Modul.B_Config.Kalender.Feiertage.Neu.Berechnen.pas"/>
         <DCCReference Include="Modules\PCMManager.Modul.C_Contacts.pas">
             <Form>frm_Contact</Form>
         </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.C_Contacts.Neu.pas">
-            <Form>frm_PCManagerNewContact</Form>
-        </DCCReference>
         <DCCReference Include="Modules\PCMManager.Modul.C_Contacts.Konfession.pas">
             <Form>frm_PCM_Konfession</Form>
+        </DCCReference>
+        <DCCReference Include="Modules\PCMManager.Modul.C_Contacts.Neu.pas">
+            <Form>frm_PCManagerNewContact</Form>
         </DCCReference>
         <DCCReference Include="Modules\PCMManager.Modul.C_Contacts.Staatsangehoerigkeit.pas">
             <Form>frm_PCM_Staatsangehoerigkeit</Form>
         </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.D_Calendar.pas">
-            <Form>frm_Calendar</Form>
-        </DCCReference>
         <DCCReference Include="Modules\PCMManager.Modul.D_Calandar.Neu.pas">
             <Form>frm_Calendar_new</Form>
         </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.D_Calender.Neu.Adresssuche.pas">
-            <Form>fAdressSuche</Form>
+        <DCCReference Include="Modules\PCMManager.Modul.D_Calendar.pas">
+            <Form>frm_Calendar</Form>
         </DCCReference>
         <DCCReference Include="Modules\PCMManager.Modul.D_Calendar.Filter.pas">
             <Form>frm_PCM_KalenderFilter</Form>
@@ -198,14 +219,20 @@ $(PreBuildEvent)]]></PreBuildEvent>
         <DCCReference Include="Modules\PCMManager.Modul.D_Calendar.Import.pas">
             <Form>frm_PCM_Import</Form>
         </DCCReference>
+        <DCCReference Include="Modules\PCMManager.Modul.D_Calender.Neu.Adresssuche.pas">
+            <Form>fAdressSuche</Form>
+        </DCCReference>
         <DCCReference Include="Modules\PCMManager.Modul.E_Mail.pas">
             <Form>frm_Mail</Form>
+        </DCCReference>
+        <DCCReference Include="Modules\PCMManager.Modul.E_Mail.Mailbox.pas">
+            <Form>frm_PCM_MailShow_Ordner</Form>
         </DCCReference>
         <DCCReference Include="Modules\PCMManager.Modul.E_Mail.Show.pas">
             <Form>frm_PCM_MailShow</Form>
         </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.E_Mail.Mailbox.pas">
-            <Form>frm_PCM_MailShow_Ordner</Form>
+        <DCCReference Include="Modules\PCMManager.Modul.E_Mail.Signaturen.pas">
+            <Form>frm_Signatur</Form>
         </DCCReference>
         <DCCReference Include="Modules\PCMManager.Modul.F_Passwort.pas">
             <Form>frm_password</Form>
@@ -216,36 +243,6 @@ $(PreBuildEvent)]]></PreBuildEvent>
         <DCCReference Include="Modules\PCMManager.Modul.G_Finanzen.Filter.Date.pas">
             <Form>frm_PCManagerChooseDate</Form>
         </DCCReference>
-        <DCCReference Include="Helper\PCMManager.Helper.Contacts.VCF.pas"/>
-        <DCCReference Include="Helper\PCMManager.Helper.Calendar.ICAL.pas"/>
-        <DCCReference Include="Helper\PCMManager.Helper.Calendar.Neu.Wiederholung.pas"/>
-        <DCCReference Include="Helper\PCMManager.Helper.Calendar.ReminderCustomited.pas"/>
-        <DCCReference Include="Helper\PCMManager.Helper.Calendar.Reminder.pas">
-            <Form>cxSchedulerReminderForm</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="PCM.splash.pas">
-            <Form>SplashScreen</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Helper\PCMManager.Helper.Email.OAuth.pas"/>
-        <DCCReference Include="Helper\IdSASL.OAuth.Base.pas"/>
-        <DCCReference Include="Helper\IdSASL.OAuth.OAuth2Bearer.pas"/>
-        <DCCReference Include="Helper\IdSASL.OAuth.XOAUTH2.pas"/>
-        <DCCReference Include="Modules\PCMManager.Modul.E_Mail.Signaturen.pas">
-            <Form>frm_Signatur</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="PCMManager.dxSettings.pas"/>
-        <DCCReference Include="Helper\cxSchedulerStorage.pas"/>
-        <DCCReference Include="Helper\cxSchedulerDBStorage.pas"/>
-        <DCCReference Include="Helper\cxSchedulerICalendar.pas"/>
-        <DCCReference Include="Helper\cxSchedulerEventModernInfoContainer.pas">
-            <Form>cxSchedulerEventModernInfoContainer</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TdxForm</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Helper\cxSchedulerCustomControls.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -271,33 +268,13 @@ $(PreBuildEvent)]]></PreBuildEvent>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k290.bpl">Microsoft Office 2000 Beispiele für gekapselte Komponenten für Automatisierungsserver</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
-            <Deployment Version="4">
+            <Deployment Version="5">
                 <DeployFile LocalName="E:\Inno\Setupfiles\Programme\PCMManager\PCMManager.exe" Configuration="Release" Class="ProjectOutput"/>
                 <DeployFile LocalName="Win32\Debug\PCMManager.exe" Configuration="Debug" Class="ProjectOutput"/>
-                <DeployFile LocalName="Win32\Debug\PCMManager.exe" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>PCMManager.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Win64\Debug\PCMManager.exe" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win64">
-                        <RemoteName>PCMManager.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Win64\Debug\PCMManager.rsm" Configuration="Debug" Class="DebugSymbols">
-                    <Platform Name="Win64">
-                        <RemoteName>PCMManager.rsm</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Win64\Release\PCMManager.exe" Configuration="Release" Class="ProjectOutput">
-                    <Platform Name="Win64">
-                        <RemoteName>PCMManager.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="Win32\Debug\PCMManager.exe" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="Win64\Debug\PCMManager.exe" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="Win64\Debug\PCMManager.rsm" Configuration="Debug" Class="DebugSymbols"/>
+                <DeployFile LocalName="Win64\Release\PCMManager.exe" Configuration="Release" Class="ProjectOutput"/>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
@@ -310,16 +287,6 @@ $(PreBuildEvent)]]></PreBuildEvent>
                         <Operation>0</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="AndroidClasses">
-                    <Platform Name="Android">
-                        <RemoteDir>classes</RemoteDir>
-                        <Operation>64</Operation>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>classes</RemoteDir>
-                        <Operation>64</Operation>
-                    </Platform>
-                </DeployClass>
                 <DeployClass Name="AndroidFileProvider">
                     <Platform Name="Android">
                         <RemoteDir>res\xml</RemoteDir>
@@ -327,12 +294,6 @@ $(PreBuildEvent)]]></PreBuildEvent>
                     </Platform>
                     <Platform Name="Android64">
                         <RemoteDir>res\xml</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="AndroidGDBServer">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -425,6 +386,16 @@ $(PreBuildEvent)]]></PreBuildEvent>
                     </Platform>
                     <Platform Name="Android64">
                         <RemoteDir>res\values-v31</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidSplashStylesV35">
+                    <Platform Name="Android">
+                        <RemoteDir>res\values-v35</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Android64">
+                        <RemoteDir>res\values-v35</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -958,6 +929,9 @@ $(PreBuildEvent)]]></PreBuildEvent>
                     <Platform Name="Win64">
                         <Operation>1</Operation>
                     </Platform>
+                    <Platform Name="Win64x">
+                        <Operation>1</Operation>
+                    </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectiOSDeviceDebug">
                     <Platform Name="iOSDevice32">
@@ -1251,6 +1225,7 @@ $(PreBuildEvent)]]></PreBuildEvent>
                 <ProjectRoot Platform="OSXARM64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="Win64x" Name="$(PROJECTNAME)"/>
             </Deployment>
             <Platforms>
                 <Platform value="Win32">True</Platform>

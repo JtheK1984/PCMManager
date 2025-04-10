@@ -386,9 +386,7 @@ var
   frm_PCM_Main: Tfrm_PCM_Main;
   {$EndRegion var}
 implementation
-
 {$R *.dfm}
-
 uses
   {$Region Uses}
   PCM.Benutzerverwaltung,
@@ -415,7 +413,7 @@ uses
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
-{$Region Hilfsfunktionen }
+{$Region Hilfsfunktionen}
 function Tfrm_PCM_Main.CurrentModule: TForm;
 begin
   if pc_Main.ControlCount > 0 then

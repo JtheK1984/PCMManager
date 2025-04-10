@@ -258,13 +258,16 @@ resourcestring
   {$ENDIF}
   {$EndRegion resourcestring}
 implementation
-
 {%CLASSGROUP 'Vcl.Controls.TControl'}
-
-uses PCM.Main;
-
+uses
+  {$Region uses}
+  PCM.Main;
+  {$EndRegion uses}
 {$R *.dfm}
-
+////////////////////////////////////////////////////////////////////////////////
+// Datamodul                                                                  //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Datamodul}
 procedure Tdm_PCM.con_PCMBeforeConnect(Sender: TObject);
 begin
   con_PCM.LoginPrompt := False;
@@ -302,5 +305,5 @@ procedure Tdm_PCM.DataModuleCreate(Sender: TObject);
 begin
   iScale := Screen.PrimaryMonitor.PixelsPerInch /96;
 end;
-
+{$EndRegion Datamodul}
 end.
