@@ -10,6 +10,7 @@ object frm_Terminsuche: Tfrm_Terminsuche
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  Position = poScreenCenter
   OnShow = FormShow
   TextHeight = 15
   object lactrl_Adressbook: TdxLayoutControl
@@ -46,16 +47,19 @@ object frm_Terminsuche: Tfrm_Terminsuche
         object grdDBTblView_AdressCaption: TcxGridDBColumn
           Caption = 'Termin'
           DataBinding.FieldName = 'Caption'
+          DataBinding.IsNullValueType = True
           Width = 250
         end
         object grdDBTblView_AdressLocation: TcxGridDBColumn
           Caption = 'Ort'
           DataBinding.FieldName = 'Location'
+          DataBinding.IsNullValueType = True
           Width = 150
         end
         object grdDBTblView_AdressBeginn_Datum: TcxGridDBColumn
           Caption = 'Von Datum'
           DataBinding.FieldName = 'Beginn_Datum'
+          DataBinding.IsNullValueType = True
           SortIndex = 0
           SortOrder = soAscending
           Width = 100
@@ -63,6 +67,7 @@ object frm_Terminsuche: Tfrm_Terminsuche
         object grdDBTblView_AdressBeginn_Zeit: TcxGridDBColumn
           Caption = 'Von Zeit'
           DataBinding.FieldName = 'Beginn_Zeit'
+          DataBinding.IsNullValueType = True
           SortIndex = 1
           SortOrder = soAscending
           Width = 100
@@ -70,20 +75,24 @@ object frm_Terminsuche: Tfrm_Terminsuche
         object grdDBTblView_AdressEnde_Datum: TcxGridDBColumn
           Caption = 'Bis Datum'
           DataBinding.FieldName = 'Ende_Datum'
+          DataBinding.IsNullValueType = True
           Width = 100
         end
         object grdDBTblView_AdressEnde_Zeit: TcxGridDBColumn
           Caption = 'Bis Zeit'
           DataBinding.FieldName = 'Ende_Zeit'
+          DataBinding.IsNullValueType = True
           Width = 100
         end
         object grdDBTblView_AdressKalendername: TcxGridDBColumn
           DataBinding.FieldName = 'Kalendername'
+          DataBinding.IsNullValueType = True
           Width = 100
         end
         object grdDBTblView_Adresscompleteday: TcxGridDBColumn
           Caption = 'ganzer Tag'
           DataBinding.FieldName = 'completeday'
+          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxCheckBoxProperties'
           Width = 100
         end
