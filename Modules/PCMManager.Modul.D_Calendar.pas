@@ -285,8 +285,6 @@ type
     tvNachrichten: TcxGridDBTableView;
     cxGrid1Level1: TcxGridLevel;
     cxDBTextEdit6: TcxDBTextEdit;
-    edtJiraTicketNr: TcxDBTextEdit;
-    btn_GoToJira: TcxButton;
     cxGrid5: TcxGrid;
     cxGrid5DBTableView1: TcxGridDBTableView;
     cxGrid5DBTableView1ID: TcxGridDBColumn;
@@ -315,12 +313,9 @@ type
     tvNachrichtenCaption: TcxGridDBColumn;
     tvNachrichtenLocation: TcxGridDBColumn;
     tvNachrichtenID: TcxGridDBColumn;
-    tvNachrichtenID_ADR_Wurzel: TcxGridDBColumn;
-    tvNachrichtenID_Ansprechpartner: TcxGridDBColumn;
     tvNachrichtenTyp: TcxGridDBColumn;
     tvNachrichtenGesendetAm: TcxGridDBColumn;
     tvNachrichtenStatus: TcxGridDBColumn;
-    cxDBTextEdit4: TcxDBLookupComboBox;
     cbxAns: TcxDBLookupComboBox;
     tvAuf: TcxGridDBTableView;
     tvAufID: TcxGridDBColumn;
@@ -394,8 +389,6 @@ type
     dxLayoutItem7: TdxLayoutItem;
     dxLayoutItem8: TdxLayoutItem;
     dxLayoutItem9: TdxLayoutItem;
-    dxLayoutItem10: TdxLayoutItem;
-    dxLayoutItem12: TdxLayoutItem;
     dxLayoutItem13: TdxLayoutItem;
     dxLayoutItem14: TdxLayoutItem;
     dxLayoutItem15: TdxLayoutItem;
@@ -427,7 +420,6 @@ type
     dxLayoutGroup5: TdxLayoutGroup;
     dxLayoutGroup9: TdxLayoutGroup;
     dxLayoutGroup10: TdxLayoutGroup;
-    dxLayoutGroup6: TdxLayoutGroup;
     dxLayoutGroup7: TdxLayoutGroup;
     dxLayoutGroup11: TdxLayoutGroup;
     dxLayoutGroup12: TdxLayoutGroup;
@@ -453,6 +445,11 @@ type
     cxBarEditItem2: TcxBarEditItem;
     cxBarEditItem3: TcxBarEditItem;
     dxBarLargeButton1: TdxBarLargeButton;
+    tvNachrichtenAdresse: TcxGridDBColumn;
+    cxDBTextEdit1: TcxDBTextEdit;
+    dxLayoutItem33: TdxLayoutItem;
+    edtJiraTicketNr: TcxDBButtonEdit;
+    tvNachrichtenAsnprechpartner: TcxGridDBColumn;
     procedure btn_CalNewClick(Sender: TObject);
     procedure btn_CalArbeitswocheClick(Sender: TObject);
     procedure btn_CalWocheClick(Sender: TObject);
@@ -496,7 +493,6 @@ type
     procedure sched_KalenderBeforeSizingEvent(Sender: TcxCustomScheduler; AEvent: TcxSchedulerControlEvent; X, Y: Integer; var Allow: Boolean);
     procedure sched_KalenderCustomDrawEvent(Sender: TObject; ACanvas: TcxCanvas; AViewInfo: TcxSchedulerEventCellViewInfo; var ADone: Boolean);
     procedure sched_KalenderKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
-    procedure pc_KalenderClick(Sender: TObject);
     procedure grdDBTblView_StundenplanMontagCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
     procedure grdDBTblView_StundenplanDienstagCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
     procedure grdDBTblView_StundenplanBeginCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
@@ -506,7 +502,6 @@ type
     procedure grdDBTblView_StundenplanSamstagCustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
     procedure FormShow(Sender: TObject);
     procedure btn_CalAgendaClick(Sender: TObject);
-    procedure btn_GoToJiraClick(Sender: TObject);
     procedure edt_SuchePropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
     procedure edt_SucheEnter(Sender: TObject);
     procedure edt_SucheExit(Sender: TObject);
@@ -546,6 +541,9 @@ type
     procedure sched_KalenderGetEventModernStyleHintInfo(Sender: TObject; AEvent: TcxSchedulerControlEvent; AInfo: TcxSchedulerEventModernStyleHintInfo);
     procedure btn_CalTimegridClick(Sender: TObject);
     procedure dxBarLargeButton1Click(Sender: TObject);
+    procedure lagrp_KalenderTabTabChanged(Sender: TObject);
+    procedure cxDBButtonEdit1PropertiesButtonClick(Sender: TObject;
+      AButtonIndex: Integer);
   private
     { Private-Deklarationen }
     FKalenderDateButton : Boolean;
@@ -612,6 +610,17 @@ begin
       result := 'Nachricht und Betreff';
   end;
 end;
+procedure Tfrm_Calendar.cxDBButtonEdit1PropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+var
+  sURL: string;
+begin
+  if edtJiraTicketNr.Text <> '' then
+  begin
+    sURL := frm_PCM_main.FOptions.Jira_Basic_URL + edtJiraTicketNr.EditValue;
+    ShellExecute(self.WindowHandle,'open', PWideChar(sURL) ,nil,nil, SW_SHOWNORMAL);
+  end;
+end;
+
 function Tfrm_Calendar.cxMyGetRecurrenceDescriptionString(ARecurrenceInfo: TcxSchedulerEventRecurrenceInfo; AFullDescription: Boolean = False): string;
 const
   Weeks: array[1..5] of string = ('ersten', 'zweiten', 'dritten', 'vierten', 'letzten');
@@ -2750,44 +2759,6 @@ begin
   end;
 
 end;
-procedure Tfrm_Calendar.pc_KalenderClick(Sender: TObject);
-begin
-  schedDBStrg_Kalender.Reminders.Active:= false;
-  if lagrp_KalenderTab.ItemIndex = 0 then
-  begin
-    Application.ProcessMessages;
-    schedDBStrg_Kalender.Reminders.Active:= true;
-    sched_Kalender.SelectDays(Date, Date, True);
-    Application.ProcessMessages;
-    dm_PCM.qry_Kalender_Benutzer.SQL.Text:= 'Select ID, CONCAT(Nachname, ' + QuotedStr(', ') + ' ,Vorname) as Name '+'From Benutzer Where ID = :ID';
-    dm_PCM.qry_Kalender_Benutzer.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
-    dm_PCM.qry_Kalender_Benutzer.Open;
-    Application.ProcessMessages;
-    Application.ProcessMessages;
-    dm_PCM.qry_Kalender_Kalender.SQL.Text:=  'Select ID,EventType,Caption,Location,Message,Start,' +
-                          'Finish,Options,CompleteDay,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'+
-                          'ReminderMinutesBeforeStart,LabelColor,FontColor,ID_Benutzer,ID_kontakte From manager_Kalender ' +
-                          'Where Typ = 2 and ID_Benutzer = :ID';;
-    dm_PCM.qry_Kalender_Kalender.ParamByName('ID').asBlob:= AnsiStrIng(IntToStr(dm_PCM.iIDBenutzerPCM));
-    dm_PCM.qry_Kalender_Kalender.Open;
-    try
-      Application.ProcessMessages;
-      ReadICSAutomatic;
-      Application.ProcessMessages;
-      WriteICSAutomatic;
-    except
-    end;
-    Application.ProcessMessages;
-    btn_CalArbeitswocheClick(Self);
-    btn_CalArbeitswoche.LargeImageIndex:= 16;
-    btn_CalTag.LargeImageIndex:= 39;
-    btn_CalWoche.LargeImageIndex:= 41;
-    btn_CalMonat.LargeImageIndex:= 42;
-    btn_CalJahr.LargeImageIndex:= 44;
-    schedDBStrg_Kalender.Reminders.Active:= true;
-  end;
-  FormResize(Self);
-end;
 // Scheduler
 procedure Tfrm_Calendar.sched_KalenderBeforeDragEvent(Sender: TcxCustomScheduler;AEvent: TcxSchedulerControlEvent; X, Y: Integer; var Allow: Boolean);
 begin
@@ -3867,16 +3838,6 @@ procedure Tfrm_Calendar.tvNachrichtenFocusedRecordChanged(Sender: TcxCustomGridT
 begin
   NachrichtenAnhaengeLaden(dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID').AsInteger);
 end;
-procedure Tfrm_Calendar.btn_GoToJiraClick(Sender: TObject);
-var
-  sURL: string;
-begin
-  if edtJiraTicketNr.Text <> '' then
-  begin
-    sURL := frm_PCM_main.FOptions.Jira_Basic_URL + edtJiraTicketNr.EditValue;
-    ShellExecute(self.WindowHandle,'open', PWideChar(sURL) ,nil,nil, SW_SHOWNORMAL);
-  end;
-end;
 procedure Tfrm_Calendar.pmmbtn_CalNewClick(Sender: TObject);
 var
   iNewId : Integer;
@@ -4358,6 +4319,48 @@ begin
   except
   end;
 end;
+procedure Tfrm_Calendar.lagrp_KalenderTabTabChanged(Sender: TObject);
+begin
+  if lagrp_KalenderTab.ItemIndex = 0 then
+  begin
+    schedDBStrg_Kalender.Reminders.Active:= false;
+    if lagrp_KalenderTab.ItemIndex = 0 then
+    begin
+      Application.ProcessMessages;
+      schedDBStrg_Kalender.Reminders.Active:= true;
+      sched_Kalender.SelectDays(Date, Date, True);
+      Application.ProcessMessages;
+      dm_PCM.qry_Kalender_Benutzer.SQL.Text:= 'Select ID, CONCAT(Nachname, ' + QuotedStr(', ') + ' ,Vorname) as Name '+'From Benutzer Where ID = :ID';
+      dm_PCM.qry_Kalender_Benutzer.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
+      dm_PCM.qry_Kalender_Benutzer.Open;
+      Application.ProcessMessages;
+      Application.ProcessMessages;
+      dm_PCM.qry_Kalender_Kalender.SQL.Text:=  'Select ID,EventType,Caption,Location,Message,Start,' +
+                            'Finish,Options,CompleteDay,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'+
+                            'ReminderMinutesBeforeStart,LabelColor,FontColor,ID_Benutzer,ID_kontakte From manager_Kalender ' +
+                            'Where Typ = 2 and ID_Benutzer = :ID';;
+      dm_PCM.qry_Kalender_Kalender.ParamByName('ID').asBlob:= AnsiStrIng(IntToStr(dm_PCM.iIDBenutzerPCM));
+      dm_PCM.qry_Kalender_Kalender.Open;
+      try
+        Application.ProcessMessages;
+        ReadICSAutomatic;
+        Application.ProcessMessages;
+        WriteICSAutomatic;
+      except
+      end;
+      Application.ProcessMessages;
+      btn_CalArbeitswocheClick(Self);
+      btn_CalArbeitswoche.LargeImageIndex:= 16;
+      btn_CalTag.LargeImageIndex:= 39;
+      btn_CalWoche.LargeImageIndex:= 41;
+      btn_CalMonat.LargeImageIndex:= 42;
+      btn_CalJahr.LargeImageIndex:= 44;
+      schedDBStrg_Kalender.Reminders.Active:= true;
+    end;
+    FormResize(Self);
+  end;
+end;
+
 {$EndRegion}
 ////////////////////////////////////////////////////////////////////////////////
 // Formfunctions                                                              //
@@ -4450,8 +4453,8 @@ procedure Tfrm_Calendar.FormShow(Sender: TObject);
     tvNachrichtenCaption.Caption:= rs_PCMManager_Betreff;
     tvNachrichtenGelesenAm.Caption:= rs_PCMManager_GelesenAM;
     tvNachrichtenGesendetAm.Caption:= rs_PCMManager_GesendetAm;
-    tvNachrichtenID_ADR_Wurzel.Caption:= rs_PCMManager_Adresse;
-    tvNachrichtenID_Ansprechpartner.Caption:= rs_PCMManager_Ansprechpartner;
+    tvNachrichtenAdresse.Caption:= rs_PCMManager_Adresse;
+    tvNachrichtenAsnprechpartner.Caption:= rs_PCMManager_Ansprechpartner;
     tvNachrichtenJira_Ticket.Caption:= rs_PCMManager_JiraTicket;
     tvNachrichtenLocation.Caption:= rs_PCMLizenzgenerator_KundeORT;
     tvNachrichtenStatus.Caption:= rs_PCMManager_Status;

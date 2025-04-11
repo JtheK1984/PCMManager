@@ -23,41 +23,8 @@ object frm_Calendar_new: Tfrm_Calendar_new
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    object btnEraseFirma: TcxButton
-      Left = 426
-      Top = 238
-      Width = 25
-      Height = 21
-      LookAndFeel.NativeStyle = False
-      OptionsImage.ImageIndex = 35
-      OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 20
-      OnClick = btnEraseFirmaClick
-    end
-    object btnGoToJira: TcxButton
-      Left = 885
-      Top = 265
-      Width = 25
-      Height = 21
-      LookAndFeel.NativeStyle = False
-      OptionsImage.ImageIndex = 47
-      OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 23
-      OnClick = btnGoToJiraClick
-    end
-    object btnSearchFirma: TcxButton
-      Left = 395
-      Top = 238
-      Width = 25
-      Height = 21
-      LookAndFeel.NativeStyle = False
-      OptionsImage.ImageIndex = 28
-      OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 19
-      OnClick = btnSearchFirmaClick
-    end
     object cbAnsprechpartner: TcxLookupComboBox
-      Left = 547
+      Left = 531
       Top = 238
       Properties.DropDownRows = 20
       Properties.KeyFieldNames = 'ID'
@@ -75,40 +42,12 @@ object frm_Calendar_new: Tfrm_Calendar_new
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       StyleReadOnly.LookAndFeel.NativeStyle = False
-      TabOrder = 21
-      Width = 363
-    end
-    object edtFirma: TcxTextEdit
-      Left = 82
-      Top = 238
-      Properties.ReadOnly = True
-      Properties.OnEditValueChanged = edtFirmaPropertiesEditValueChanged
-      Style.HotTrack = False
-      Style.LookAndFeel.NativeStyle = False
-      Style.TransparentBorder = False
-      StyleDisabled.LookAndFeel.NativeStyle = False
-      StyleFocused.LookAndFeel.NativeStyle = False
-      StyleHot.LookAndFeel.NativeStyle = False
-      StyleReadOnly.LookAndFeel.NativeStyle = False
-      TabOrder = 18
-      Width = 307
-    end
-    object edtJiraTicket: TcxTextEdit
-      Left = 82
-      Top = 265
-      Style.HotTrack = False
-      Style.LookAndFeel.NativeStyle = False
-      Style.TransparentBorder = False
-      StyleDisabled.LookAndFeel.NativeStyle = False
-      StyleFocused.LookAndFeel.NativeStyle = False
-      StyleHot.LookAndFeel.NativeStyle = False
-      StyleReadOnly.LookAndFeel.NativeStyle = False
-      TabOrder = 22
-      Width = 797
+      TabOrder = 19
+      Width = 379
     end
     object teBetreff: TcxTextEdit
       Left = 82
-      Top = 292
+      Top = 288
       Style.HotTrack = False
       Style.LookAndFeel.NativeStyle = False
       Style.TransparentBorder = False
@@ -116,7 +55,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       StyleFocused.LookAndFeel.NativeStyle = False
       StyleHot.LookAndFeel.NativeStyle = False
       StyleReadOnly.LookAndFeel.NativeStyle = False
-      TabOrder = 24
+      TabOrder = 21
       Width = 828
     end
     object btn_DelRecurringEv1: TcxButton
@@ -532,7 +471,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object mNachricht: TcxRichEdit
       Left = 10
-      Top = 317
+      Top = 313
       ParentFont = False
       Properties.AutoURLDetect = True
       Properties.PlainText = True
@@ -546,22 +485,22 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 25
-      Height = 433
+      TabOrder = 22
+      Height = 437
       Width = 709
     end
     object cxGrid1: TcxGrid
       Left = 725
-      Top = 317
+      Top = 313
       Width = 185
-      Height = 393
+      Height = 397
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 26
+      TabOrder = 23
       LookAndFeel.NativeStyle = False
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -619,7 +558,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Properties.ReadOnly = True
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 27
+      TabOrder = 24
       Transparent = True
       Height = 34
       Width = 32
@@ -643,7 +582,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       Properties.WordWrap = True
-      TabOrder = 28
+      TabOrder = 25
       Transparent = True
       Height = 19
       Width = 60
@@ -662,7 +601,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       OptionsImage.ImageIndex = 26
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
-      TabOrder = 31
+      TabOrder = 28
       OnClick = btnAnhangOeffnenClick
     end
     object btnAnhangLoeschen: TcxButton
@@ -697,7 +636,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
         A08402DA3590950000000049454E44AE426082}
       OptionsImage.ImageIndex = 85
       PaintStyle = bpsGlyph
-      TabOrder = 30
+      TabOrder = 27
       OnClick = btnAnhangLoeschenClick
     end
     object btnAnhangHinzufuegen: TcxButton
@@ -713,7 +652,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       OptionsImage.ImageIndex = 73
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
-      TabOrder = 29
+      TabOrder = 26
       OnClick = btnAnhangHinzufuegenClick
     end
     object stbr_New: TdxStatusBar
@@ -747,6 +686,69 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Height = 19
       Width = 213
     end
+    object edtFirma: TcxButtonEdit
+      Left = 82
+      Top = 238
+      AutoSize = False
+      Properties.Buttons = <
+        item
+          Default = True
+          ImageIndex = 28
+          Kind = bkGlyph
+        end
+        item
+          Glyph.SourceDPI = 96
+          Glyph.SourceHeight = 16
+          Glyph.SourceWidth = 16
+          Glyph.Data = {
+            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+            462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+            617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+            2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+            77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+            22307078222076696577426F783D2230203020333220333222207374796C653D
+            22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+            3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+            303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+            63653D227072657365727665223E2E426C75657B66696C6C3A23313137374437
+            3B7D262331333B262331303B2623393B2E5265647B66696C6C3A234431314331
+            433B7D3C2F7374796C653E0D0A3C7061746820636C6173733D22426C75652220
+            643D224D31382C32336C2D342E332C342E35632D302E372C302E372D312E392C
+            302E372D322E362C306C2D362E362D362E36632D302E372D302E372D302E372D
+            312E392C302D322E364C392C31344C31382C32337A222F3E0D0A3C7061746820
+            636C6173733D225265642220643D224D32372E352C31332E374C32302C32316C
+            2D392D396C372E332D372E3563302E372D302E372C312E392D302E372C322E36
+            2C306C362E362C362E364332382E322C31312E382C32382E322C31332C32372E
+            352C31332E377A222F3E0D0A3C2F7376673E0D0A}
+          Kind = bkGlyph
+        end>
+      Properties.Images = dm_PCM.imglst_16x16
+      Properties.ReadOnly = True
+      Properties.OnButtonClick = cxButtonEdit1PropertiesButtonClick
+      Properties.OnEditValueChanged = cxButtonEdit1PropertiesEditValueChanged
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 18
+      Height = 19
+      Width = 353
+    end
+    object edtJiraTicket: TcxButtonEdit
+      Left = 82
+      Top = 263
+      Properties.Buttons = <
+        item
+          Default = True
+          ImageIndex = 47
+          Kind = bkGlyph
+        end>
+      Properties.Images = dm_PCM.imglst_16x16
+      Properties.OnButtonClick = cxDBButtonEdit1PropertiesButtonClick
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 20
+      Text = 'edtJiraTicket'
+      Width = 828
+    end
     object dxLayoutControl1Group_Root: TdxLayoutGroup
       AlignHorz = ahClient
       AlignVert = avClient
@@ -776,17 +778,6 @@ object frm_Calendar_new: Tfrm_Calendar_new
       ControlOptions.AutoColor = True
       ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 920
-      ControlOptions.ShowBorder = False
-      Index = 0
-    end
-    object dxLayoutItem4: TdxLayoutItem
-      Parent = dxLayoutGroup6
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Kontakt:'
-      Control = edtFirma
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 383
       ControlOptions.ShowBorder = False
       Index = 0
     end
@@ -825,30 +816,6 @@ object frm_Calendar_new: Tfrm_Calendar_new
       ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem5: TdxLayoutItem
-      Parent = dxLayoutGroup6
-      AlignHorz = ahRight
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Item'
-      CaptionOptions.Visible = False
-      Control = btnSearchFirma
-      ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 25
-      ControlOptions.ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutItem6: TdxLayoutItem
-      Parent = dxLayoutGroup6
-      AlignHorz = ahRight
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Item'
-      CaptionOptions.Visible = False
-      Control = btnEraseFirma
-      ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 25
-      ControlOptions.ShowBorder = False
-      Index = 2
-    end
     object dxLayoutItem7: TdxLayoutItem
       Parent = dxLayoutGroup5
       AlignHorz = ahClient
@@ -856,49 +823,16 @@ object frm_Calendar_new: Tfrm_Calendar_new
       CaptionOptions.Text = 'Ansprechpartner:'
       Control = cbAnsprechpartner
       ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 441
+      ControlOptions.OriginalWidth = 100
       ControlOptions.ShowBorder = False
       Index = 1
     end
-    object dxLayoutGroup6: TdxLayoutGroup
-      Parent = dxLayoutGroup5
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      LayoutDirection = ldHorizontal
-      ShowBorder = False
-      Index = 0
-    end
-    object lagrp_Jira: TdxLayoutGroup
+    object lagrp_Jira: TdxLayoutItem
       Parent = dxLayoutGroup3
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      Visible = False
-      LayoutDirection = ldHorizontal
-      ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutItem8: TdxLayoutItem
-      Parent = lagrp_Jira
-      AlignHorz = ahClient
-      AlignVert = avTop
       CaptionOptions.Text = 'Jira Ticket-Nr:'
       Control = edtJiraTicket
       ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 383
-      ControlOptions.ShowBorder = False
-      Index = 0
-    end
-    object dxLayoutItem9: TdxLayoutItem
-      Parent = lagrp_Jira
-      AlignHorz = ahRight
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Item'
-      CaptionOptions.Visible = False
-      Control = btnGoToJira
-      ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 25
+      ControlOptions.OriginalWidth = 121
       ControlOptions.ShowBorder = False
       Index = 1
     end
@@ -1491,6 +1425,17 @@ object frm_Calendar_new: Tfrm_Calendar_new
       ControlOptions.OriginalWidth = 213
       ControlOptions.ShowBorder = False
       Index = 1
+    end
+    object dxLayoutItem31: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Kontakt:'
+      Control = edtFirma
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 100
+      ControlOptions.ShowBorder = False
+      Index = 0
     end
   end
   object pDauerFormat: TcxGroupBox

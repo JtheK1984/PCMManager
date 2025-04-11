@@ -195,6 +195,8 @@ type
     qry_Contact_Land: TFDQuery;
     ds_Contact_Land: TDataSource;
     qry_Kalender_AufgabenPrivat: TStringField;
+    qry_Kalender_AufgabenAdresse: TStringField;
+    qry_Kalender_AufgabenAsnprechpartner: TStringField;
     procedure con_PCMBeforeConnect(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
   private

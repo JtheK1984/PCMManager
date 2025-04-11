@@ -22431,55 +22431,59 @@ object dm_PCM: Tdm_PCM
     Filtered = True
     Connection = con_PCM
     SQL.Strings = (
-      'Select'
-      'ID,'
-      'EventType,'
-      'Caption,'
-      'Location,'
-      'Message,'
-      'Start,'
-      'Finish,'
-      'Options,'
-      'CompleteDay,'
-      'Parent_ID,'
-      'RecurrenceIndex,'
-      'RecurrenceInfo,'
-      'Reminder,'
-      'ReminderDate,'
-      'ReminderMinutesBeforeStart,'
-      'LabelColor,'
-      'FontColor,'
-      'Cast(ID_Benutzer as UNSIGNED) as ID_Benutzer,'
-      'Kalendername,'
-      'ID_KalenderAPP,'
-      'wiederholung_text,'
-      'ID_Kontakte,'
-      'ID_ADR_Wurzel,'
-      'ID_Ansprechpartner,'
-      'Typ,'
-      'Aufgabenstatus,'
-      'Jira_Ticket,'
-      'ID_IC_Prioritaeten,'
-      'ID_IC_AufgabenArten,'
-      'Privat,'
-      'GesendetAm,'
-      'GelesenAm,'
-      'Erledigungsgrad,'
-      'Zeitformat,'
-      'AufgabenDauer,'
+      'SELECT'
+      'mkal.ID,'
+      'mkal.EventType,'
+      'mkal.Caption,'
+      'mkal.Location,'
+      'mkal.Message,'
+      'mkal.Start,'
+      'mkal.Finish,'
+      'mkal.Options,'
+      'mkal.CompleteDay,'
+      'mkal.Parent_ID,'
+      'mkal.RecurrenceIndex,'
+      'mkal.RecurrenceInfo,'
+      'mkal.Reminder,'
+      'mkal.ReminderDate,'
+      'mkal.ReminderMinutesBeforeStart,'
+      'mkal.LabelColor,'
+      'mkal.FontColor,'
+      'Cast(mkal.ID_Benutzer as UNSIGNED) as ID_Benutzer,'
+      'mkal.Kalendername,'
+      'mkal.ID_KalenderAPP,'
+      'mkal.wiederholung_text,'
+      'mkal.ID_Kontakte,'
       
-        'if(Bearbeitetam IS NULL,if(GelesenAM IS NULL,'#39'Ungelesen'#39','#39'Gelese' +
-        'n'#39'),'#39'Bearbeitet'#39') AS Status,'
-      'Date(START) AS Startdatum,'
-      'time(START) AS StartZeit,'
-      'Date(Finish) AS Endedatum,'
-      'time(Finish) AS EndeZeit,'
-      'IF(Typ = 2 OR Typ = 1, '
-      'IF(BearbeitetAm is null, '
-      'IF(Date(NOW()) < DATE(Finish), '
+        'if(mkal.Privat = '#39'FALSE'#39',mkon.Firma,Concat(mkon.Vorname,'#39' '#39',mkon' +
+        '.Nachname)) AS Adresse,'
+      'mkal.ID_ADR_Wurzel,'
+      'Concat(mkon.Nachname,'#39', '#39',mkon.Vorname) AS Asnprechpartner,'
+      'mkal.ID_Ansprechpartner,'
+      'mkal.Typ,'
+      'mkal.Aufgabenstatus,'
+      'mkal.Jira_Ticket,'
+      'mkal.ID_IC_Prioritaeten,'
+      'mkal.ID_IC_AufgabenArten,'
+      'mkal.Privat,'
+      'mkal.GesendetAm,'
+      'mkal.GelesenAm,'
+      'mkal.Erledigungsgrad,'
+      'mkal.Zeitformat,'
+      'mkal.AufgabenDauer,'
       
-        'TIMESTAMPDIFF(SQL_TSI_DAY, Date(NOW()), if(CompleteDay = true,DA' +
-        'TE(TIMESTAMPADD(SQL_TSI_DAY,-1,finish)),DATE(Finish))), '
+        'if(mkal.Bearbeitetam IS NULL,if(mkal.GelesenAM IS NULL,'#39'Ungelese' +
+        'n'#39','#39'Gelesen'#39'),'#39'Bearbeitet'#39') AS Status,'
+      'Date(mkal.START) AS Startdatum,'
+      'time(mkal.START) AS StartZeit,'
+      'Date(mkal.Finish) AS Endedatum,'
+      'time(mkal.Finish) AS EndeZeit,'
+      'IF(mkal.Typ = 2 OR Typ = 1, '
+      'IF(mkal.BearbeitetAm is null, '
+      'IF(Date(NOW()) < DATE(mkal.Finish), '
+      
+        'TIMESTAMPDIFF(SQL_TSI_DAY, Date(NOW()), if(mkal.CompleteDay = tr' +
+        'ue,DATE(TIMESTAMPADD(SQL_TSI_DAY,-1,finish)),DATE(Finish))), '
       '-TIMESTAMPDIFF(SQL_TSI_DAY, DATE(Finish), Date(NOW()))), '
       'IF(Date(NOW()) < DATE(Finish),                           '
       'TIMESTAMPDIFF(SQL_TSI_DAY, DATE(Finish), BearbeitetAm), '
@@ -22491,12 +22495,11 @@ object dm_PCM: Tdm_PCM
       'TIMESTAMPDIFF(SQL_TSI_DAY, Date(Start), BearbeitetAm), '
       
         '- TIMESTAMPDIFF(SQL_TSI_DAY, BearbeitetAm, Date(Start))))) AS In' +
-        'Tagen, ID_benutzer,bearbeitetam'
-      ' '
-      ' '
-      ' '
-      ' '
-      'From manager_Kalender'
+        'Tagen, mkal.ID_benutzer,mkal.bearbeitetam'
+      'From manager_kalender mkal'
+      
+        'LEFT OUTER JOIN manager_kontakte mkon ON mkal.ID_ADR_Wurzel = mk' +
+        'on.id'
       'order by InTagen, Finish'
       '')
     Left = 989
@@ -22737,6 +22740,22 @@ object dm_PCM: Tdm_PCM
       Origin = 'Privat'
       FixedChar = True
       Size = 5
+    end
+    object qry_Kalender_AufgabenAdresse: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Adresse'
+      Origin = 'Adresse'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 511
+    end
+    object qry_Kalender_AufgabenAsnprechpartner: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Asnprechpartner'
+      Origin = 'Asnprechpartner'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 512
     end
   end
   object ds_Kalender_Aufgaben: TDataSource

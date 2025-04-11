@@ -197,9 +197,11 @@ begin
     recSelected := True;
     frm_Calendar_new.FFirma:= dm_PCM.Qry_work.Fields[0].asString;
     frm_Calendar_new.FPrivat:= chkbx_Privat.Checked;
-    frm_Calendar_new.sADSVorname:= dm_PCM.Qry_work.FieldByName('Vorname').AsString;
-    frm_Calendar_new.sADSNachname:= dm_PCM.Qry_work.FieldByName('Nachname').AsString;
-
+    if chkbx_Privat.Checked then
+    begin
+      frm_Calendar_new.sADSVorname:= dm_PCM.Qry_work.FieldByName('Vorname').AsString;
+      frm_Calendar_new.sADSNachname:= dm_PCM.Qry_work.FieldByName('Nachname').AsString;
+    end;
     modalResult := 1
 
   end else
@@ -216,8 +218,11 @@ begin
   recSelected := true;
   frm_Calendar_new.FFirma:= dm_PCM.Qry_work.Fields[0].asString;
   frm_Calendar_new.FPrivat:= chkbx_Privat.Checked;
-  frm_Calendar_new.sADSVorname:= dm_PCM.Qry_work.FieldByName('Vorname').AsString;
-  frm_Calendar_new.sADSNachname:= dm_PCM.Qry_work.FieldByName('Nachname').AsString;
+  if chkbx_Privat.Checked then
+  begin
+    frm_Calendar_new.sADSVorname:= dm_PCM.Qry_work.FieldByName('Vorname').AsString;
+    frm_Calendar_new.sADSNachname:= dm_PCM.Qry_work.FieldByName('Nachname').AsString;
+  end;
   modalResult := 1;
 end;
 

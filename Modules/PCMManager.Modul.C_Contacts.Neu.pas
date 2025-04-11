@@ -45,7 +45,6 @@ type
   Tfrm_PCManagerNewContact = class(TForm)
     btn_PCManagerLogin_Cancel: TcxButton;
     btn_PCManagerLogin_Ok: TcxButton;
-    cmbbx_Anrede: TcxComboBox;
     edt_Name: TcxTextEdit;
     edt_SurName: TcxTextEdit;
     img_Contact: TcxImage;
@@ -61,8 +60,10 @@ type
     laitm_ContactImage: TdxLayoutItem;
     laitm_ContactNachname: TdxLayoutItem;
     laitm_ContactVorname: TdxLayoutItem;
+    cmbbx_Anrede: TcxComboBox;
     procedure btn_PCManagerLogin_CancelClick(Sender: TObject);
     procedure btn_PCManagerLogin_OkClick(Sender: TObject);
+    procedure cmbbx_AnredePropertiesChange(Sender: TObject);
   private
     { Private-Deklarationen }
     FShowModal : boolean;
@@ -89,7 +90,7 @@ uses
 function Tfrm_PCManagerNewContact.Execute(AModal: boolean; out Anrede : Integer; out Vorname, Name: string): Boolean;
 begin
   result:= false;
-  cmbbx_Anrede.clear;
+  cmbbx_Anrede.Properties.items.clear;
   dm_PCM.qry_Work.SQL.Text:= 'SELECT ID, Bezeichnung FROM manager_anrede order by Bezeichnung asc';
   dm_PCM.qry_Work.open;
   dm_PCM.qry_Work.First;
@@ -138,11 +139,27 @@ procedure Tfrm_PCManagerNewContact.btn_PCManagerLogin_OkClick(Sender: TObject);
 begin
   ModalResult:= mrOK;
 end;
+procedure Tfrm_PCManagerNewContact.cmbbx_AnredePropertiesChange(
+  Sender: TObject);
+begin
+  case Integer(cmbbx_Anrede.Properties.Items.Objects[cmbbx_Anrede.ItemIndex]) of
+  1,2,3,5:
+    begin
+      laitm_ContactVorname.caption:= 'Vorname:';
+      laitm_ContactNachname.caption:= 'Nachname:';
+    end;
+  4,6,7,8,9,10,11,12:
+    begin
+      laitm_ContactVorname.caption:= 'Firma:';
+      laitm_ContactNachname.caption:= 'Ort:';
+    end;
+  end;
+end;
+
 procedure Tfrm_PCManagerNewContact.btn_PCManagerLogin_CancelClick(Sender: TObject);
 begin
   ModalResult:= mrCancel;
 end;
 {$EndRegion}
-
 end.
 

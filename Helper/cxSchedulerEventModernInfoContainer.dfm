@@ -17,7 +17,6 @@ object cxSchedulerEventModernInfoContainer: TcxSchedulerEventModernInfoContainer
     Top = 0
     Width = 257
     Height = 222
-    Align = alTop
     ParentBackground = True
     TabOrder = 0
     Transparent = True
@@ -25,19 +24,19 @@ object cxSchedulerEventModernInfoContainer: TcxSchedulerEventModernInfoContainer
     LayoutLookAndFeel = dxLayoutCxLookAndFeel1
     object pbEvent: TPaintBox
       Left = 10
-      Top = 10
-      Width = 220
+      Top = -30
+      Width = 237
       Height = 47
       OnPaint = pbEventPaint
     end
     object pbTaskComplete: TcxProgressBar
       Left = 73
-      Top = 231
+      Top = 191
       TabOrder = 0
-      Width = 157
+      Width = 174
     end
     object lcMainGroup_Root: TdxLayoutGroup
-      AlignHorz = ahClient
+      AlignHorz = ahLeft
       AlignVert = avTop
       CaptionOptions.Visible = False
       Hidden = True

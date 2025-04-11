@@ -29,16 +29,17 @@ object frm_Calendar: Tfrm_Calendar
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
     object brdckctrl_Kalender: TdxBarDockControl
-      Left = 19
-      Top = 45
+      Left = 10000
+      Top = 10000
       Width = 1957
       Height = 63
       Align = dalNone
       BarManager = brmgr_Kalendar
+      Visible = False
     end
     object sched_Kalender: TcxScheduler
-      Left = 19
-      Top = 114
+      Left = 10000
+      Top = 10000
       Width = 1957
       Height = 803
       DateNavigator.RowCount = 6
@@ -77,6 +78,7 @@ object frm_Calendar: Tfrm_Calendar
       ResourceNavigator.Visibility = snvNever
       Storage = schedDBStrg_Kalender
       TabOrder = 1
+      Visible = False
       OnBeforeDragEvent = sched_KalenderBeforeDragEvent
       OnBeforeSizingEvent = sched_KalenderBeforeSizingEvent
       OnClick = sched_KalenderClick
@@ -89,9 +91,9 @@ object frm_Calendar: Tfrm_Calendar
       StoredClientBounds = {0100000001000000A407000022030000}
     end
     object trlst_Aufgaben: TcxTreeList
-      Left = 10000
-      Top = 10000
-      Width = 1022
+      Left = 19
+      Top = 45
+      Width = 1957
       Height = 107
       Bands = <
         item
@@ -99,7 +101,6 @@ object frm_Calendar: Tfrm_Calendar
       Navigator.Buttons.CustomButtons = <>
       ScrollbarAnnotations.CustomAnnotations = <>
       TabOrder = 2
-      Visible = False
       OnClick = trlst_AufgabenClick
       Data = {
         00000500430100000F00000044617461436F6E74726F6C6C6572310200000012
@@ -136,21 +137,19 @@ object frm_Calendar: Tfrm_Calendar
       end
     end
     object brdckctrl_Aufgaben: TdxBarDockControl
-      Left = 10000
-      Top = 10000
-      Width = 1022
-      Height = 117
+      Left = 19
+      Top = 152
+      Width = 1957
+      Height = 63
       Align = dalNone
       BarManager = brmgr_Kalendar
-      Visible = False
     end
     object cxGrid1: TcxGrid
-      Left = 10000
-      Top = 10000
-      Width = 1022
-      Height = 299
+      Left = 19
+      Top = 257
+      Width = 1957
+      Height = 334
       TabOrder = 6
-      Visible = False
       LookAndFeel.NativeStyle = False
       object tvNachrichten: TcxGridDBTableView
         OnDblClick = tvNachrichtenDblClick
@@ -228,28 +227,12 @@ object frm_Calendar: Tfrm_Calendar
           DataBinding.FieldName = 'Caption'
           Width = 250
         end
-        object tvNachrichtenID_ADR_Wurzel: TcxGridDBColumn
-          Caption = 'Adresse'
-          DataBinding.FieldName = 'ID_Ansprechpartner'
-          PropertiesClassName = 'TcxLookupComboBoxProperties'
-          Properties.KeyFieldNames = 'ID'
-          Properties.ListColumns = <
-            item
-              FieldName = 'Name'
-            end>
-          Properties.ListSource = dm_PCM.ds_Config_Firmen
+        object tvNachrichtenAdresse: TcxGridDBColumn
+          DataBinding.FieldName = 'Adresse'
           Width = 250
         end
-        object tvNachrichtenID_Ansprechpartner: TcxGridDBColumn
-          Caption = 'Ansprechpartner'
-          DataBinding.FieldName = 'ID_Ansprechpartner'
-          PropertiesClassName = 'TcxLookupComboBoxProperties'
-          Properties.KeyFieldNames = 'ID'
-          Properties.ListColumns = <
-            item
-              FieldName = 'Name'
-            end>
-          Properties.ListSource = dm_PCM.ds_Config_Ansprechpartner
+        object tvNachrichtenAsnprechpartner: TcxGridDBColumn
+          DataBinding.FieldName = 'Asnprechpartner'
           Width = 250
         end
         object tvNachrichtenLocation: TcxGridDBColumn
@@ -451,8 +434,8 @@ object frm_Calendar: Tfrm_Calendar
       end
     end
     object cxDBTextEdit6: TcxDBTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 67
+      Top = 597
       TabStop = False
       DataBinding.DataField = 'Caption'
       DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
@@ -461,72 +444,11 @@ object frm_Calendar: Tfrm_Calendar
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 7
-      Visible = False
-      Width = 437
-    end
-    object btn_GoToJira: TcxButton
-      Left = 10000
-      Top = 10000
-      Width = 25
-      Height = 21
-      OptionsImage.ImageIndex = 47
-      OptionsImage.Images = dm_PCM.imglst_16x16
-      TabOrder = 11
-      Visible = False
-      OnClick = btn_GoToJiraClick
-    end
-    object edtJiraTicketNr: TcxDBTextEdit
-      Left = 10000
-      Top = 10000
-      TabStop = False
-      DataBinding.DataField = 'Jira_Ticket'
-      DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
-      ParentFont = False
-      Properties.ReadOnly = True
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.LookAndFeel.NativeStyle = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      StyleDisabled.LookAndFeel.NativeStyle = False
-      StyleFocused.LookAndFeel.NativeStyle = False
-      StyleHot.LookAndFeel.NativeStyle = False
-      StyleReadOnly.LookAndFeel.NativeStyle = False
-      TabOrder = 10
-      Visible = False
-      Width = 410
-    end
-    object cxDBTextEdit4: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
-      TabStop = False
-      DataBinding.DataField = 'ID_Ansprechpartner'
-      DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
-      Properties.KeyFieldNames = 'ID'
-      Properties.ListColumns = <
-        item
-          FieldName = 'Name'
-        end>
-      Properties.ListSource = dm_PCM.ds_Kalender_Ansprechpartner
-      Properties.ReadOnly = True
-      Style.HotTrack = False
-      Style.LookAndFeel.NativeStyle = False
-      Style.TransparentBorder = False
-      StyleDisabled.LookAndFeel.NativeStyle = False
-      StyleFocused.LookAndFeel.NativeStyle = False
-      StyleHot.LookAndFeel.NativeStyle = False
-      StyleReadOnly.LookAndFeel.NativeStyle = False
-      TabOrder = 8
-      Visible = False
-      Width = 437
+      Width = 883
     end
     object cbxAns: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
+      Left = 1046
+      Top = 597
       TabStop = False
       DataBinding.DataField = 'ID_Ansprechpartner'
       DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
@@ -540,38 +462,35 @@ object frm_Calendar: Tfrm_Calendar
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 9
-      Visible = False
-      Width = 441
+      Width = 930
     end
     object cxDBMemo1: TcxDBRichEdit
-      Left = 10000
-      Top = 10000
+      Left = 19
+      Top = 649
       DataBinding.DataField = 'Message'
       DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
       ParentFont = False
       Properties.AutoURLDetect = True
       Properties.PlainText = True
       Properties.ScrollBars = ssVertical
-      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Charset = ANSI_CHARSET
       Style.Font.Color = clWindowText
-      Style.Font.Height = -12
-      Style.Font.Name = 'Tahoma'
+      Style.Font.Height = -13
+      Style.Font.Name = 'Courier New'
       Style.Font.Style = []
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 12
-      Visible = False
-      Height = 239
-      Width = 840
+      TabOrder = 11
+      Height = 268
+      Width = 1775
     end
     object cxGrid5: TcxGrid
-      Left = 10000
-      Top = 10000
+      Left = 1800
+      Top = 649
       Width = 176
-      Height = 201
-      TabOrder = 13
-      Visible = False
+      Height = 230
+      TabOrder = 12
       LookAndFeel.NativeStyle = False
       object cxGrid5DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -634,22 +553,21 @@ object frm_Calendar: Tfrm_Calendar
       end
     end
     object Image1: TcxImage
-      Left = 10000
-      Top = 10000
+      Left = 1800
+      Top = 885
       Properties.FitMode = ifmNormal
       Properties.GraphicTransparency = gtTransparent
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 14
+      TabOrder = 13
       Transparent = True
-      Visible = False
       Height = 32
       Width = 32
     end
     object btn_AttachementSave: TcxButton
       AlignWithMargins = True
-      Left = 10000
-      Top = 10000
+      Left = 1953
+      Top = 885
       Width = 23
       Height = 24
       Margins.Left = 0
@@ -659,14 +577,13 @@ object frm_Calendar: Tfrm_Calendar
       OptionsImage.ImageIndex = 27
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
-      TabOrder = 16
-      Visible = False
+      TabOrder = 15
       OnClick = btn_AttachementSaveClick
     end
     object btn_AttachementOpen: TcxButton
       AlignWithMargins = True
-      Left = 10000
-      Top = 10000
+      Left = 1924
+      Top = 885
       Width = 23
       Height = 24
       Margins.Left = 0
@@ -677,13 +594,12 @@ object frm_Calendar: Tfrm_Calendar
       OptionsImage.ImageIndex = 26
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
-      TabOrder = 15
-      Visible = False
+      TabOrder = 14
       OnClick = btn_AttachementOpenClick
     end
     object img_search: TcxImage
-      Left = 10000
-      Top = 10000
+      Left = 28
+      Top = 224
       Picture.Data = {
         0B546478504E47496D61676589504E470D0A1A0A0000000D4948445200000010
         0000001008060000001FF3FF61000000017352474200AECE1CE9000000046741
@@ -703,13 +619,12 @@ object frm_Calendar: Tfrm_Calendar
       StyleHot.BorderStyle = ebsNone
       TabOrder = 4
       Transparent = True
-      Visible = False
       Height = 16
       Width = 18
     end
     object edt_Suche: TcxButtonEdit
-      Left = 10000
-      Top = 10000
+      Left = 52
+      Top = 224
       AutoSize = False
       Properties.Buttons = <
         item
@@ -722,11 +637,10 @@ object frm_Calendar: Tfrm_Calendar
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 5
-      Visible = False
       OnEnter = edt_SucheEnter
       OnExit = edt_SucheExit
       Height = 24
-      Width = 976
+      Width = 1915
     end
     object edt_Stundenplan_Klasse: TcxDBTextEdit
       Left = 10000
@@ -742,7 +656,7 @@ object frm_Calendar: Tfrm_Calendar
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 19
+      TabOrder = 18
       Visible = False
       OnExit = btn_StundenplanSaveClick
       Width = 50
@@ -761,7 +675,7 @@ object frm_Calendar: Tfrm_Calendar
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 18
+      TabOrder = 17
       Visible = False
       OnExit = btn_StundenplanSaveClick
       Width = 706
@@ -780,7 +694,7 @@ object frm_Calendar: Tfrm_Calendar
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 20
+      TabOrder = 19
       Visible = False
       OnExit = btn_StundenplanSaveClick
       Width = 100
@@ -797,7 +711,7 @@ object frm_Calendar: Tfrm_Calendar
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 21
+      TabOrder = 20
       TabStop = False
       Visible = False
       LockedStateImageOptions.Effect = lsieDark
@@ -901,7 +815,7 @@ object frm_Calendar: Tfrm_Calendar
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 26
+      TabOrder = 25
       Visible = False
       OnExit = btn_StundeSaveClick
       Width = 129
@@ -926,7 +840,7 @@ object frm_Calendar: Tfrm_Calendar
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 28
+      TabOrder = 27
       Visible = False
       OnExit = btn_StundeSaveClick
       Width = 129
@@ -951,7 +865,7 @@ object frm_Calendar: Tfrm_Calendar
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 29
+      TabOrder = 28
       Visible = False
       OnExit = btn_StundeSaveClick
       Width = 129
@@ -976,7 +890,7 @@ object frm_Calendar: Tfrm_Calendar
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 27
+      TabOrder = 26
       Visible = False
       OnExit = btn_StundeSaveClick
       Width = 129
@@ -1001,7 +915,7 @@ object frm_Calendar: Tfrm_Calendar
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 25
+      TabOrder = 24
       Visible = False
       OnExit = btn_StundeSaveClick
       Width = 129
@@ -1026,7 +940,7 @@ object frm_Calendar: Tfrm_Calendar
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 30
+      TabOrder = 29
       Visible = False
       OnExit = btn_StundeSaveClick
       Width = 129
@@ -1045,7 +959,7 @@ object frm_Calendar: Tfrm_Calendar
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 24
+      TabOrder = 23
       Visible = False
       OnExit = btn_StundeSaveClick
       Width = 70
@@ -1064,7 +978,7 @@ object frm_Calendar: Tfrm_Calendar
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 23
+      TabOrder = 22
       Visible = False
       OnExit = btn_StundeSaveClick
       Width = 70
@@ -1081,7 +995,7 @@ object frm_Calendar: Tfrm_Calendar
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 31
+      TabOrder = 30
       TabStop = False
       Visible = False
       LockedStateImageOptions.Effect = lsieDark
@@ -1228,6 +1142,33 @@ object frm_Calendar: Tfrm_Calendar
       BarManager = brmgr_Kalendar
       Visible = False
     end
+    object cxDBTextEdit1: TcxDBTextEdit
+      Left = 67
+      Top = 624
+      DataBinding.DataField = 'Adresse'
+      DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 8
+      Width = 883
+    end
+    object edtJiraTicketNr: TcxDBButtonEdit
+      Left = 1046
+      Top = 622
+      Properties.Buttons = <
+        item
+          Default = True
+          ImageIndex = 47
+          Kind = bkGlyph
+        end>
+      Properties.Images = dm_PCM.imglst_16x16
+      Properties.ReadOnly = True
+      Properties.OnButtonClick = cxDBButtonEdit1PropertiesButtonClick
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 10
+      Width = 930
+    end
     object lactrl_KalenderGroup_Root: TdxLayoutGroup
       AlignHorz = ahClient
       AlignVert = avClient
@@ -1240,8 +1181,10 @@ object frm_Calendar: Tfrm_Calendar
       Parent = lactrl_KalenderGroup_Root
       AlignHorz = ahClient
       AlignVert = avClient
+      ItemIndex = 1
       LayoutDirection = ldTabbed
       ShowBorder = False
+      OnTabChanged = lagrp_KalenderTabTabChanged
       Index = 0
     end
     object lagrp_Kalender: TdxLayoutGroup
@@ -1284,7 +1227,7 @@ object frm_Calendar: Tfrm_Calendar
       AlignVert = avClient
       CaptionOptions.ImageIndex = 58
       CaptionOptions.Text = 'Aufgaben'
-      ItemIndex = 5
+      ItemIndex = 4
       Index = 1
     end
     object dxLayoutItem3: TdxLayoutItem
@@ -1308,7 +1251,7 @@ object frm_Calendar: Tfrm_Calendar
       CaptionOptions.Visible = False
       Control = brdckctrl_Aufgaben
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 117
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1056
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1380,29 +1323,6 @@ object frm_Calendar: Tfrm_Calendar
       ControlOptions.OriginalWidth = 390
       ControlOptions.ShowBorder = False
       Index = 0
-    end
-    object dxLayoutItem10: TdxLayoutItem
-      Parent = dxLayoutGroup4
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Adresse:'
-      Control = cxDBTextEdit4
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 390
-      ControlOptions.ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutItem12: TdxLayoutItem
-      Parent = dxLayoutGroup6
-      AlignHorz = ahRight
-      AlignVert = avTop
-      CaptionOptions.Text = 'btn_GoToJira'
-      CaptionOptions.Visible = False
-      Control = btn_GoToJira
-      ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 25
-      ControlOptions.ShowBorder = False
-      Index = 1
     end
     object dxLayoutItem13: TdxLayoutItem
       Parent = dxLayoutGroup5
@@ -1675,15 +1595,15 @@ object frm_Calendar: Tfrm_Calendar
       Index = 2
     end
     object dxLayoutItem11: TdxLayoutItem
-      Parent = dxLayoutGroup6
+      Parent = dxLayoutGroup1
       AlignHorz = ahClient
       AlignVert = avTop
-      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Text = 'Jira-Ticketnr.:'
       Control = edtJiraTicketNr
       ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 359
+      ControlOptions.OriginalWidth = 121
       ControlOptions.ShowBorder = False
-      Index = 0
+      Index = 1
     end
     object dxLayoutGroup1: TdxLayoutGroup
       Parent = dxLayoutGroup3
@@ -1734,16 +1654,6 @@ object frm_Calendar: Tfrm_Calendar
     end
     object dxLayoutGroup10: TdxLayoutGroup
       Parent = dxLayoutGroup9
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
-      LayoutDirection = ldHorizontal
-      ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutGroup6: TdxLayoutGroup
-      Parent = dxLayoutGroup1
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
@@ -1899,6 +1809,17 @@ object frm_Calendar: Tfrm_Calendar
       Parent = dxLayoutGroup10
       AlignHorz = ahClient
       AlignVert = avTop
+      Index = 1
+    end
+    object dxLayoutItem33: TdxLayoutItem
+      Parent = dxLayoutGroup4
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Adresse:'
+      Control = cxDBTextEdit1
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 121
+      ControlOptions.ShowBorder = False
       Index = 1
     end
   end
@@ -3119,7 +3040,7 @@ object frm_Calendar: Tfrm_Calendar
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 45757.616141643520000000
+      ReportDocument.CreationDate = 45758.379376770830000000
       OptionsSize.AutoWidth = True
       PixelsPerInch = 96
       BuiltInReportLink = True

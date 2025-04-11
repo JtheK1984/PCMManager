@@ -191,7 +191,7 @@ object fAdressSuche: TfAdressSuche
       Caption = 'Private Adresse'
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 1
+      TabOrder = 0
       Transparent = True
     end
     object dxLayoutControl1Group_Root: TdxLayoutGroup

@@ -454,7 +454,7 @@ var
   {$EndRegion var}
 const
   {$Region Const}
-  arrCont = [1,2];
+  arrCont = [1,2,3,5];
   {$EndRegion Const}
 implementation
 {$R *.dfm}
@@ -538,7 +538,7 @@ end;
 procedure Tfrm_Contact.SetTab;
   procedure SetItems;
   begin
-    if qry_Kontakte.FieldByName('ID_Anrede').AsInteger in [4,5,6,7,8,9,10,11,12] then
+    if qry_Kontakte.FieldByName('ID_Anrede').AsInteger in [4,6,7,8,9,10,11,12] then
     begin
       laitm_Abteilung.Visible:= false;
       laitm_Funktion.Visible:= false;
@@ -561,7 +561,9 @@ begin
     laitm_TelefonDurchwahlText.Visible:= true;
     laitm_ImageGes.Visible:= false;
     lagrp_Zusatz.Visible:= True;
-    lagrp_KontaktPersonal.Visible:= True;
+    if qry_Kontakte.FieldByName('ID_Anrede').AsInteger <> 5 then
+      lagrp_KontaktPersonal.Visible:= True;
+
     lagrp_MitarbeiterInfoDetails.ItemIndex:= 0;
     laitm_Vorname.Caption:= 'Vorname:';
     laitm_Nachname.Caption:='Nachname:';

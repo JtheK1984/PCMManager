@@ -29,9 +29,8 @@ object frm_Contact: Tfrm_Contact
     TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
-    ExplicitTop = 58
     ExplicitWidth = 1594
-    ExplicitHeight = 957
+    ExplicitHeight = 952
     object cmbbx_KontaktSucheArt: TcxComboBox
       Left = 10000
       Top = 10000
@@ -2503,7 +2502,6 @@ object frm_Contact: Tfrm_Contact
       AlignVert = avClient
       CaptionOptions.ImageIndex = 11
       CaptionOptions.Text = 'Kontakt'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       Index = 1
     end

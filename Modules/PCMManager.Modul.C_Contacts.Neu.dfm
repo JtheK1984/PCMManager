@@ -1,10 +1,11 @@
 object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
   Left = 0
   Top = 0
+  AutoSize = True
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Neuen Kontakt anlegen'
-  ClientHeight = 140
+  ClientHeight = 164
   ClientWidth = 372
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -18,7 +19,7 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
     Left = 0
     Top = 0
     Width = 372
-    Height = 140
+    Height = 164
     Align = alClient
     TabOrder = 0
     AutoSize = True
@@ -26,7 +27,7 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
     ExplicitWidth = 366
     ExplicitHeight = 123
     object edt_Name: TcxTextEdit
-      Left = 153
+      Left = 168
       Top = 45
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -38,17 +39,15 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 2
-      Text = 'edt_Name'
-      Width = 209
+      Width = 194
     end
     object edt_SurName: TcxTextEdit
-      Left = 153
+      Left = 168
       Top = 70
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 3
-      Text = 'cxTextEdit1'
-      Width = 209
+      Width = 194
     end
     object img_Contact: TcxImage
       Left = 10
@@ -554,13 +553,13 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
       OnClick = btn_PCManagerLogin_OkClick
     end
     object cmbbx_Anrede: TcxComboBox
-      Left = 153
+      Left = 168
       Top = 20
+      Properties.OnChange = cmbbx_AnredePropertiesChange
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 1
-      Text = 'cmbbx_Anrede'
-      Width = 209
+      Width = 194
     end
     object lactrl_ContactGroup_Root: TdxLayoutGroup
       AlignHorz = ahClient
@@ -621,6 +620,7 @@ object frm_PCManagerNewContact: Tfrm_PCManagerNewContact
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Nachname:'
+      CaptionOptions.Width = 70
       Control = edt_SurName
       ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 155

@@ -26,7 +26,7 @@ uses
   DateUtils, CommCtrl,  ShellApi, dxShellDialogs,
   PCMManager.Helper.Calendar.Neu.Wiederholung, System.uitypes,
   dxLayoutContainer, dxLayoutcxEditAdapters, dxLayoutControlAdapters,
-  dxLayoutControl, dxUIAClasses;
+  dxLayoutControl, dxUIAClasses, dxCoreGraphics, cxButtonEdit, cxDBEdit;
   {$EndRegion uses}
 type
   {$Region type}
@@ -50,9 +50,6 @@ type
     rbDauerInStunden: TcxRadioButton;
     rbDauerInTagen: TcxRadioButton;
     tAnhaengeDeleteOrigFile: TBooleanField;
-    btnSearchFirma: TcxButton;
-    edtFirma: TcxTextEdit;
-    btnEraseFirma: TcxButton;
     cbReminderAufgabe: TcxCheckBox;
     icbReminderAufgabe: TcxImageComboBox;
     mNachricht: TcxRichEdit;
@@ -60,8 +57,6 @@ type
     cxGrid1DBTableView1: TcxGridDBTableView;
     cxGrid1DBTableView1Dateiname: TcxGridDBColumn;
     cxGrid1Level1: TcxGridLevel;
-    edtJiraTicket: TcxTextEdit;
-    btnGoToJira: TcxButton;
     teBetreff: TcxTextEdit;
     dxBarManager1: TdxBarManager;
     dxBarManager1Bar1: TdxBar;
@@ -83,18 +78,12 @@ type
     dxLayoutControl1: TdxLayoutControl;
     dxLayoutItem2: TdxLayoutItem;
     dxLayoutItem3: TdxLayoutItem;
-    dxLayoutItem4: TdxLayoutItem;
     dxLayoutGroup1: TdxLayoutGroup;
     dxLayoutGroup3: TdxLayoutGroup;
     dxLayoutGroup4: TdxLayoutGroup;
     dxLayoutGroup5: TdxLayoutGroup;
-    dxLayoutItem5: TdxLayoutItem;
-    dxLayoutItem6: TdxLayoutItem;
     dxLayoutItem7: TdxLayoutItem;
-    dxLayoutGroup6: TdxLayoutGroup;
-    lagrp_Jira: TdxLayoutGroup;
-    dxLayoutItem8: TdxLayoutItem;
-    dxLayoutItem9: TdxLayoutItem;
+    lagrp_Jira: TdxLayoutItem;
     dxLayoutItem10: TdxLayoutItem;
     dxLayoutItem11: TdxLayoutItem;
     dxLayoutGroup8: TdxLayoutGroup;
@@ -159,6 +148,9 @@ type
     dxLayoutLabeledItem8: TdxLayoutLabeledItem;
     dxLayoutItem1: TdxLayoutItem;
     edt_Kalname: TcxTextEdit;
+    edtFirma: TcxButtonEdit;
+    dxLayoutItem31: TdxLayoutItem;
+    edtJiraTicket: TcxButtonEdit;
     procedure bSendClick(Sender: TObject);
     procedure btnAnhangHinzufuegenClick(Sender: TObject);
     procedure btnAnhangLoeschenClick(Sender: TObject);
@@ -177,13 +169,9 @@ type
     procedure deStartPropertiesEditValueChanged(Sender: TObject);
     procedure btnAnhangDokumentClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure btnSearchFirmaClick(Sender: TObject);
-    procedure btnEraseFirmaClick(Sender: TObject);
-    procedure edtFirmaPropertiesEditValueChanged(Sender: TObject);
     procedure icbReminderAufgabePropertiesEditValueChanged(Sender: TObject);
     procedure cxRichEdit1PropertiesURLClick(Sender: TcxCustomRichEdit; const URLText: string; Button: TMouseButton);
     procedure mNachrichtPropertiesURLClick(Sender: TcxCustomRichEdit; const URLText: string; Button: TMouseButton);
-    procedure btnGoToJiraClick(Sender: TObject);
     procedure teStartPropertiesEditValueChanged(Sender: TObject);
     procedure teEndeAufgabePropertiesEditValueChanged(Sender: TObject);
     procedure chkbx_CompleteDayPropertiesChange(Sender: TObject);
@@ -191,6 +179,11 @@ type
     procedure btn_DelRecurringEv1Click(Sender: TObject);
     procedure tAnhaengeAfterScroll(DataSet: TDataSet);
     procedure cbAufgabenArtPropertiesChange(Sender: TObject);
+    procedure cxButtonEdit1PropertiesButtonClick(Sender: TObject;
+      AButtonIndex: Integer);
+    procedure cxButtonEdit1PropertiesEditValueChanged(Sender: TObject);
+    procedure cxDBButtonEdit1PropertiesButtonClick(Sender: TObject;
+      AButtonIndex: Integer);
 
   private
     { Private-Deklarationen }
@@ -253,6 +246,53 @@ uses
   PCM.Strings;
   {$EndRegion uses}
 
+procedure Tfrm_Calendar_new.cxButtonEdit1PropertiesButtonClick(Sender: TObject;
+  AButtonIndex: Integer);
+begin
+  case AButtonIndex of
+  0:
+    begin
+      Application.CreateForm(TfAdressSuche, fAdressSuche);
+      FID_Adr_Wurzel := fAdressSuche.ShowModal;
+      fAdressSuche.Free;
+      edtFirma.Text := FFirma;
+    end;
+  1:
+    begin
+      FID_Adr_Wurzel := 0;
+      cbAnsprechpartner.ItemIndex := -1;
+      edtFirma.Text := '';
+    end;
+  end;
+
+
+end;
+
+procedure Tfrm_Calendar_new.cxButtonEdit1PropertiesEditValueChanged(Sender: TObject);
+begin
+  if FPrivat then
+  begin
+    dm_PCM.qry_Aufgabe_Ansprechpartner.SQL.Text := 'SELECT ID,Concat(Nachname,'', '', Vorname) as NameVorname FROM manager_kontakte WHERE Nachname = :Nachname and Vorname =:Vorname ORDER By Nachname, Vorname';
+    dm_PCM.qry_Aufgabe_Ansprechpartner.ParamByName('Nachname').AsString := sADSNachname;
+    dm_PCM.qry_Aufgabe_Ansprechpartner.ParamByName('Vorname').AsString := sADSVorname;
+    dm_PCM.qry_Aufgabe_Ansprechpartner.Open;
+  end
+  else begin
+    dm_PCM.qry_Aufgabe_Ansprechpartner.SQL.Text := 'SELECT ID,Concat(Nachname,'', '', Vorname) as NameVorname FROM manager_kontakte WHERE Firma = :ID_Adr_Wurzel ORDER By Nachname, Vorname';
+    dm_PCM.qry_Aufgabe_Ansprechpartner.ParamByName('ID_Adr_Wurzel').AsString := FFirma;
+    dm_PCM.qry_Aufgabe_Ansprechpartner.Open;
+  end;
+end;
+procedure Tfrm_Calendar_new.cxDBButtonEdit1PropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+var
+  sURL: String;
+begin
+//  if (edtJiraTicket.EditValue <> '') and (not VarIsNull(edtJiraTicket.EditValue)) and (fIC_Main.FOptions.Jira_Basic_URL <> '') then
+//  begin
+//    sURL := fIC_Main.FOptions.Jira_Basic_URL + edtJiraTicket.EditValue;
+//    ShellExecute(self.WindowHandle,'open', PWideChar(sURL) ,nil,nil, SW_SHOWNORMAL);
+//  end;
+end;
 function Tfrm_Calendar_new.cxMyGetRecurrenceDescriptionString(ARecurrenceInfo: TcxSchedulerEventRecurrenceInfo; AFullDescription: Boolean = False): string;
 const
   Weeks: array[1..5] of string = (rs_PCM_ersten, rs_PCM_zweiten, rs_PCM_dritten, rs_PCM_vierten, rs_PCM_letzten);
@@ -649,14 +689,22 @@ function Tfrm_Calendar_new.Execute(APrivat: boolean;ALabel, AFont: integer;Locat
       Result := True;
     end;
   end;
-  function GetAdressID(AFPrivat: boolean; AFirma,AVorname,ANachname:String): integer;
+  function GetAdressID(AFPrivat: boolean; AFirma,AVorname,ANachname,ANameKomplett:String ): integer;
   begin
     Result:= -1;
     if APrivat then
     begin
-      dm_PCM.qry_work1.SQL.Text:= 'SELECT ID From manager_Kontakte Where nachname = :nachname and Vorname = :vorname';
-      dm_PCM.qry_work1.ParamByName('vorname').AsString:= AVorname;
-      dm_PCM.qry_work1.ParamByName('nachname').AsString:= ANachname;
+      if (AVorname = '') or (ANachname = '') then
+      begin
+        dm_PCM.qry_work1.SQL.Text:= 'SELECT ID From manager_Kontakte Where NameKomplett = :NameKomplett';
+        dm_PCM.qry_work1.ParamByName('NameKomplett').AsString:= ANameKomplett;
+
+      end
+      else begin
+        dm_PCM.qry_work1.SQL.Text:= 'SELECT ID From manager_Kontakte Where nachname = :nachname and Vorname = :vorname';
+        dm_PCM.qry_work1.ParamByName('vorname').AsString:= AVorname;
+        dm_PCM.qry_work1.ParamByName('nachname').AsString:= ANachname;
+      end;
       dm_PCM.qry_work1.open;
       if dm_PCM.qry_work1.RecordCount > 0 then
         Result:= dm_PCM.qry_work1.FieldByName('ID').AsInteger;
@@ -682,6 +730,7 @@ var
   sganzerTag,TimeBegin, TimeEnd,sWiederHolungCount: String;
   sPushMessage: string;
 begin
+  Fprivat:= APrivat;
   ipos:= Pos('COUNT=',Wiederholung);
   if ipos > 0 then
   begin
@@ -963,8 +1012,20 @@ begin
         sRecurrenceInfo := String(cxRecurrenceInfoDataToString(ARecurrenceInfo));
         sWiederholungText:= cxMyGetRecurrenceFreqString(AEvent.RecurrenceInfo, true);
       end;
-
     end;
+    if (cbAufgabenArt.text <> 'Müll') and (Length(cbAufgabenArt.text) > 0) then
+    begin
+      dm_PCM.qry_work.SQL.Text:= 'Select Farbe AS Label,0 AS Font FROM manager_aufgaben_arten Where Bezeichnung = :Bezeichnung';
+      dm_PCM.qry_work.ParamByName('Bezeichnung').AsString:= cbAufgabenArt.Text;
+      dm_PCM.qry_work.open;
+      ALabel:=dm_PCM.qry_work.FieldByName('Label').AsInteger;
+      AFont:=dm_PCM.qry_work.FieldByName('Font').AsInteger;
+      dm_PCM.qry_work.Close;
+    end;
+
+
+
+
     if FIdNachricht > 0 then
     begin
       if typ = ntNachricht then
@@ -1001,7 +1062,7 @@ begin
       dm_PCM.qry_work.Parambyname('location').asString := cmbbx_Ort.Properties.Items[cmbbx_Ort.ItemIndex];
       dm_PCM.qry_work.Parambyname('Kalendername').asString := edt_kalname.Text;
       dm_PCM.qry_work.Parambyname('ID_Benutzer').asInteger := dm_PCM.iIDBenutzerPCM;
-      dm_PCM.qry_work.Parambyname('ID_Adr_Wurzel').asInteger := GetAdressID(FPrivat,edtfirma.text,sADSVorname,sADSNachname);
+      dm_PCM.qry_work.Parambyname('ID_Adr_Wurzel').asInteger := GetAdressID(FPrivat,edtfirma.text,sADSVorname,sADSNachname,edtfirma.Text);
       if cbAnsprechpartner.EditValue <> null then
         dm_PCM.qry_work.Parambyname('ID_Ansprechpartner').asInteger := cbAnsprechpartner.EditValue
       else
@@ -1086,7 +1147,7 @@ begin
       dm_PCM.qry_work.Parambyname('location').asString := cmbbx_Ort.Properties.Items[cmbbx_Ort.ItemIndex];
       dm_PCM.qry_work.Parambyname('Kalendername').asString := edt_kalname.Text;
       dm_PCM.qry_work.Parambyname('ID_Benutzer').asInteger := dm_PCM.iIDBenutzerPCM;
-      dm_PCM.qry_work.Parambyname('ID_Adr_Wurzel').asInteger := GetAdressID(FPrivat,edtFirma.text,sADSVorname,sADSNAchname);
+      dm_PCM.qry_work.Parambyname('ID_Adr_Wurzel').asInteger := GetAdressID(FPrivat,edtFirma.text,sADSVorname,sADSNAchname,edtfirma.Text);
       if cbAnsprechpartner.EditValue <> null then
         dm_PCM.qry_work.Parambyname('ID_Ansprechpartner').asInteger := cbAnsprechpartner.EditValue
       else
@@ -1238,22 +1299,6 @@ begin
   tAnhaenge.Post;
   except
   end;
-end;
-procedure Tfrm_Calendar_new.btnEraseFirmaClick(Sender: TObject);
-begin
-  FID_Adr_Wurzel := 0;
-  cbAnsprechpartner.ItemIndex := -1;
-  edtFirma.Text := '';
-end;
-procedure Tfrm_Calendar_new.btnGoToJiraClick(Sender: TObject);
-//var
-//  sURL: String;
-begin
-//  if (edtJiraTicket.EditValue <> '') and (not VarIsNull(edtJiraTicket.EditValue)) and (fIC_Main.FOptions.Jira_Basic_URL <> '') then
-//  begin
-//    sURL := fIC_Main.FOptions.Jira_Basic_URL + edtJiraTicket.EditValue;
-//    ShellExecute(self.WindowHandle,'open', PWideChar(sURL) ,nil,nil, SW_SHOWNORMAL);
-//  end;
 end;
 procedure Tfrm_Calendar_new.btnAnhangDokumentClick(Sender: TObject);
 //var
@@ -1555,21 +1600,6 @@ begin
       deEndeAufgabe.Date  := deStart.Date;
   end;
 end;
-procedure Tfrm_Calendar_new.edtFirmaPropertiesEditValueChanged(Sender: TObject);
-begin
-  if FPrivat then
-  begin
-    dm_PCM.qry_Aufgabe_Ansprechpartner.SQL.Text := 'SELECT ID,Concat(Nachname,'', '', Vorname) as NameVorname FROM manager_kontakte WHERE Nachname = :Nachname and Vorname =:Vorname ORDER By Nachname, Vorname';
-    dm_PCM.qry_Aufgabe_Ansprechpartner.ParamByName('Nachname').AsString := sADSNachname;
-    dm_PCM.qry_Aufgabe_Ansprechpartner.ParamByName('Vorname').AsString := sADSVorname;
-    dm_PCM.qry_Aufgabe_Ansprechpartner.Open;
-  end
-  else begin
-    dm_PCM.qry_Aufgabe_Ansprechpartner.SQL.Text := 'SELECT ID,Concat(Nachname,'', '', Vorname) as NameVorname FROM manager_kontakte WHERE Firma = :ID_Adr_Wurzel ORDER By Nachname, Vorname';
-    dm_PCM.qry_Aufgabe_Ansprechpartner.ParamByName('ID_Adr_Wurzel').AsString := FFirma;
-    dm_PCM.qry_Aufgabe_Ansprechpartner.Open;
-  end;
-end;
 procedure Tfrm_Calendar_new.loescheTempDoks();
 begin
   tAnhaenge.First;
@@ -1595,13 +1625,6 @@ end;
 procedure Tfrm_Calendar_new.icbReminderAufgabePropertiesEditValueChanged(Sender: TObject);
 begin
   icbReminderAufgabe.Enabled := cbReminderAufgabe.EditValue = True;
-end;
-procedure Tfrm_Calendar_new.btnSearchFirmaClick(Sender: TObject);
-begin
-  Application.CreateForm(TfAdressSuche, fAdressSuche);
-  FID_Adr_Wurzel := fAdressSuche.ShowModal;
-  fAdressSuche.Free;
-  edtFirma.Text := FFirma;
 end;
 procedure Tfrm_Calendar_new.btn_DelRecurringEv1Click(Sender: TObject);
 begin
