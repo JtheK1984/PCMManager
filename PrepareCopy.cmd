@@ -10,4 +10,4 @@ copy /y /v PCMManager.pdf "e:\Inno\Setupfiles\Programme\PCMManager"
 copy /y /v PCMManager.htm "e:\Inno\Setupfiles\Programme\PCMManager"
 
 echo "Demolizenz erstellen"
-call "E:\Inno\Setupfiles\Programme\PCMLizenzgenerator\PCMLizenzgenerator.exe" /PCM-Manager /1.6 /E:\Inno\Setupfiles\Programme\PCMManager
+call "E:\Inno\Setupfiles\Programme\PCMLizenzgenerator\PCMLizenzgenerator.exe" /PCM-Manager /1.0 /E:\Inno\Setupfiles\Programme\PCMManager
