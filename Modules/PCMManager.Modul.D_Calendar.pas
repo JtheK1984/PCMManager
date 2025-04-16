@@ -341,7 +341,6 @@ type
     procedure sched_KalenderGetEventModernStyleHintInfo(Sender: TObject; AEvent: TcxSchedulerControlEvent; AInfo: TcxSchedulerEventModernStyleHintInfo);
     procedure btn_AnsichtZeitleisteClick(Sender: TObject);
     procedure btn_FilterTerminsucheClick(Sender: TObject);
-    procedure lagrp_KalenderTabTabChanged(Sender: TObject);
     procedure btn_AnsichtGanttClick(Sender: TObject);
   private
     { Private-Deklarationen }
@@ -2695,7 +2694,6 @@ end;
 procedure Tfrm_Calendar.FormShow(Sender: TObject);
   procedure InitializeRights;
   begin
-    lagrp_Kalender.Visible:= dm_PCM.iKalender >= SetRead;
     btn_TerminNew.Enabled:= dm_PCM.iKalender >= SetReadWrite;
     btn_TerminNeu.Enabled:= dm_PCM.iKalender >= SetReadWrite;
     btn_Terminchange.Enabled:= dm_PCM.iKalender >= SetReadWrite;
@@ -2776,7 +2774,6 @@ begin
   btn_AnsichtZeitleiste.down:= false;
   btn_AnsichtGantt.down:= false;
   schedDBStrg_Kalender.Reminders.Active:= true;
-  lagrp_KalenderTab.ItemIndex:= 0;
   dm_PCM.qry_work.SQL.Text:= 'Select ID, Kalender,Link,Benutzer,Passwort, Erinnerung, ErinnerungVor,LabelColor,Fontcolor,ID_Benutzer ' +
                              'From manager_kalender_konfiguration Where ID_Benutzer = :ID_Benutzer';
   dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
