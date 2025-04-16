@@ -3,8 +3,8 @@ object frm_Contact: Tfrm_Contact
   Top = 0
   BorderStyle = bsDialog
   Caption = 'PCM - Manager: Kontakte'
-  ClientHeight = 1032
-  ClientWidth = 1600
+  ClientHeight = 800
+  ClientWidth = 1280
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,9 +18,9 @@ object frm_Contact: Tfrm_Contact
   TextHeight = 13
   object lactrl_Contacts: TdxLayoutControl
     Left = 0
-    Top = 63
-    Width = 1600
-    Height = 969
+    Top = 132
+    Width = 1280
+    Height = 668
     Margins.Left = 0
     Margins.Top = 0
     Margins.Right = 0
@@ -29,11 +29,12 @@ object frm_Contact: Tfrm_Contact
     TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
+    ExplicitTop = 63
     ExplicitWidth = 1594
     ExplicitHeight = 952
     object cmbbx_KontaktSucheArt: TcxComboBox
-      Left = 10000
-      Top = 10000
+      Left = 88
+      Top = 131
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -45,14 +46,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 2
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 234
+      Width = 190
     end
     object edt_KontaktSucheAbteilung: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 693
+      Top = 104
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -64,14 +64,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 8
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 234
+      Width = 190
     end
     object edt_KontaktSucheFirma: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 693
+      Top = 77
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -83,14 +82,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 7
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 234
+      Width = 190
     end
     object edt_KontaktSucheFunktion: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 693
+      Top = 131
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -102,14 +100,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 9
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 234
+      Width = 190
     end
     object edt_KontaktSucheNachname: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 88
+      Top = 77
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -130,14 +127,13 @@ object frm_Contact: Tfrm_Contact
       StyleHot.TextStyle = []
       StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 0
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 234
+      Width = 190
     end
     object edt_KontaktSucheOrt: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 395
+      Top = 131
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -149,14 +145,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 6
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 234
+      Width = 190
     end
     object edt_KontaktSuchePLZ: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 395
+      Top = 104
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -168,14 +163,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 5
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 234
+      Width = 190
     end
     object edt_KontaktSucheStrasse: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 395
+      Top = 77
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -187,14 +181,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 4
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 234
+      Width = 190
     end
     object edt_KontaktSucheVorname: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 88
+      Top = 104
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -206,14 +199,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 1
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 234
+      Width = 190
     end
     object cmbbx_Anrede: TcxDBLookupComboBox
-      Left = 98
-      Top = 45
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'ID_Anrede'
       DataBinding.DataSource = ds_Kontakte
@@ -235,13 +227,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 16
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object edt_KontaktGeburtsname: TcxDBTextEdit
-      Left = 98
-      Top = 126
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Geburtsname'
       DataBinding.DataSource = ds_Kontakte
@@ -255,13 +248,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 19
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object edt_KontaktNachname: TcxDBTextEdit
-      Left = 98
-      Top = 99
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Nachname'
       DataBinding.DataSource = ds_Kontakte
@@ -277,13 +271,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 18
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object edt_KontaktName: TcxDBTextEdit
-      Left = 98
-      Top = 72
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Vorname'
       DataBinding.DataSource = ds_Kontakte
@@ -299,13 +294,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 17
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object edt_KontaktPLZ: TcxDBTextEdit
-      Left = 98
-      Top = 261
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'PLZ_Privat'
       DataBinding.DataSource = ds_Kontakte
@@ -319,13 +315,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 24
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 19
       Width = 69
     end
     object edt_KontaktStrasse: TcxDBTextEdit
-      Left = 98
-      Top = 234
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Strasse_Privat'
       DataBinding.DataSource = ds_Kontakte
@@ -339,13 +336,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 23
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object edt_KontaktZusatz: TcxDBTextEdit
-      Left = 98
-      Top = 207
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Zusatz'
       DataBinding.DataSource = ds_Kontakte
@@ -359,6 +357,7 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 22
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
@@ -513,8 +512,8 @@ object frm_Contact: Tfrm_Contact
       Width = 156
     end
     object edt_KontaktGeschaeftlichAbteilung: TcxDBTextEdit
-      Left = 500
-      Top = 241
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Abteilung_Ges'
       DataBinding.DataSource = ds_Kontakte
@@ -528,13 +527,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 51
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 1064
+      Width = 744
     end
     object edt_KontaktGeschaeftlichFirma: TcxDBTextEdit
-      Left = 652
-      Top = 79
+      Left = 10000
+      Top = 10000
       OnFocusChanged = btn_KontaktSaveClick
       AutoSize = False
       DataBinding.DataField = 'Firma'
@@ -549,13 +549,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 44
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 912
+      Width = 592
     end
     object edt_KontaktGeschaeftlichPLZ: TcxDBTextEdit
-      Left = 652
-      Top = 133
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'PLZ_Ges'
       DataBinding.DataSource = ds_Kontakte
@@ -569,13 +570,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 46
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 69
     end
     object edt_KontaktGeschaeftlichStrasse: TcxDBTextEdit
-      Left = 652
-      Top = 106
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Strasse_Ges'
       DataBinding.DataSource = ds_Kontakte
@@ -589,9 +591,10 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 45
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 912
+      Width = 592
     end
     object mem_Sonstige: TcxDBMemo
       Left = 10000
@@ -614,10 +617,10 @@ object frm_Contact: Tfrm_Contact
       Width = 1162
     end
     object grd_Suche: TcxGrid
-      Left = 10000
-      Top = 10000
-      Width = 1558
-      Height = 719
+      Left = 19
+      Top = 227
+      Width = 1238
+      Height = 418
       BevelInner = bvNone
       BevelOuter = bvNone
       Font.Charset = DEFAULT_CHARSET
@@ -627,7 +630,6 @@ object frm_Contact: Tfrm_Contact
       Font.Style = []
       ParentFont = False
       TabOrder = 15
-      Visible = False
       LockedStateImageOptions.Effect = lsieDark
       LookAndFeel.ScrollbarMode = sbmClassic
       object grdDBTblView_Suche: TcxGridDBTableView
@@ -924,15 +926,14 @@ object frm_Contact: Tfrm_Contact
       end
     end
     object btn_ClearFilter: TcxButton
-      Left = 10000
-      Top = 10000
+      Left = 162
+      Top = 194
       Width = 137
       Height = 27
       Caption = 'Filter l'#246'schen'
       OptionsImage.ImageIndex = 24
       OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 14
-      Visible = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -942,15 +943,14 @@ object frm_Contact: Tfrm_Contact
       OnClick = btn_ClearFilterClick
     end
     object btn_kontaktsuchen: TcxButton
-      Left = 10000
-      Top = 10000
+      Left = 19
+      Top = 194
       Width = 137
       Height = 27
       Caption = 'Kontakt suchen'
       OptionsImage.ImageIndex = 25
       OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 13
-      Visible = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -1023,8 +1023,8 @@ object frm_Contact: Tfrm_Contact
       Width = 1123
     end
     object edt_KontaktGeschaeftlichFunktion: TcxDBTextEdit
-      Left = 500
-      Top = 268
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Funktion_Ges'
       DataBinding.DataSource = ds_Kontakte
@@ -1038,9 +1038,10 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 52
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 1064
+      Width = 744
     end
     object btn_EditStaatsangehoerigkeit: TcxButton
       Left = 10000
@@ -1067,8 +1068,8 @@ object frm_Contact: Tfrm_Contact
       Visible = False
     end
     object cmbbx_KontaktArt: TcxDBLookupComboBox
-      Left = 98
-      Top = 436
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'ID_Kontaktart'
       DataBinding.DataSource = ds_Kontakte
@@ -1090,6 +1091,7 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 32
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
@@ -1116,8 +1118,8 @@ object frm_Contact: Tfrm_Contact
       Width = 895
     end
     object edt_KontakteGeburtsort: TcxDBTextEdit
-      Left = 98
-      Top = 153
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Geburtsort'
       DataBinding.DataSource = ds_Kontakte
@@ -1131,6 +1133,7 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 20
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
@@ -1145,12 +1148,12 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = True
       TabOrder = 59
       Visible = False
-      Height = 773
-      Width = 1568
+      Height = 590
+      Width = 1240
     end
     object img_PictureGes: TcxDBImage
-      Left = 402
-      Top = 79
+      Left = 10000
+      Top = 10000
       TabStop = False
       DataBinding.DataField = 'Bild'
       DataBinding.DataSource = ds_Kontakte
@@ -1159,12 +1162,13 @@ object frm_Contact: Tfrm_Contact
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 43
+      Visible = False
       Height = 156
       Width = 156
     end
     object cmbbx_KontaktAnrede: TcxComboBox
-      Left = 10000
-      Top = 10000
+      Left = 88
+      Top = 158
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -1176,14 +1180,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 3
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 234
+      Width = 190
     end
     object edt_KontaktSucheStrasseGes: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 1029
+      Top = 77
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -1204,14 +1207,13 @@ object frm_Contact: Tfrm_Contact
       StyleHot.TextStyle = []
       StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 10
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 234
+      Width = 190
     end
     object edt_KontaktSuchePLZGes: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 1029
+      Top = 104
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -1232,14 +1234,13 @@ object frm_Contact: Tfrm_Contact
       StyleHot.TextStyle = []
       StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 11
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 234
+      Width = 190
     end
     object edt_KontaktSucheOrtGes: TcxTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 1029
+      Top = 131
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -1260,14 +1261,13 @@ object frm_Contact: Tfrm_Contact
       StyleHot.TextStyle = []
       StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 12
-      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 234
+      Width = 190
     end
     object cmbbx_KontaktGeburtsland: TcxDBLookupComboBox
-      Left = 98
-      Top = 180
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'ID_Kontaktart'
       DataBinding.DataSource = ds_Kontakte
@@ -1289,13 +1289,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 21
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object edt_KontaktOrt: TcxDBButtonEdit
-      Left = 173
-      Top = 261
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Ort_Privat'
       DataBinding.DataSource = ds_Kontakte
@@ -1393,13 +1394,14 @@ object frm_Contact: Tfrm_Contact
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 25
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 19
       Width = 214
     end
     object edt_KontaktTelefon1: TcxDBButtonEdit
-      Left = 98
-      Top = 286
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Telefon_Privat'
       DataBinding.DataSource = ds_Kontakte
       Properties.Buttons = <
@@ -1443,12 +1445,13 @@ object frm_Contact: Tfrm_Contact
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 26
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Width = 289
     end
     object edt_Email2: TcxDBButtonEdit
-      Left = 98
-      Top = 386
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'E_Mail_Privat1'
       DataBinding.DataSource = ds_Kontakte
       Properties.Buttons = <
@@ -1474,12 +1477,13 @@ object frm_Contact: Tfrm_Contact
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 30
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Width = 289
     end
     object edt_KontaktTelefon2: TcxDBButtonEdit
-      Left = 98
-      Top = 311
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Telefon_Privat1'
       DataBinding.DataSource = ds_Kontakte
       Properties.Buttons = <
@@ -1523,12 +1527,13 @@ object frm_Contact: Tfrm_Contact
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 27
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Width = 289
     end
     object edt_KontaktHandy: TcxDBButtonEdit
-      Left = 98
-      Top = 336
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Handy_privat'
       DataBinding.DataSource = ds_Kontakte
       Properties.Buttons = <
@@ -1572,12 +1577,13 @@ object frm_Contact: Tfrm_Contact
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 28
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Width = 289
     end
     object edt_Email1: TcxDBButtonEdit
-      Left = 98
-      Top = 361
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'E_Mail_Privat'
       DataBinding.DataSource = ds_Kontakte
       Properties.Buttons = <
@@ -1603,12 +1609,13 @@ object frm_Contact: Tfrm_Contact
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 29
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Width = 289
     end
     object edt_KontaktInternet: TcxDBButtonEdit
-      Left = 98
-      Top = 411
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Internet_Privat'
       DataBinding.DataSource = ds_Kontakte
       Properties.Buttons = <
@@ -1714,12 +1721,13 @@ object frm_Contact: Tfrm_Contact
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 31
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Width = 289
     end
     object edt_KontaktGeschaeftlichEMailZentrale: TcxDBButtonEdit
-      Left = 652
-      Top = 185
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'E_Mail_Zentral'
       DataBinding.DataSource = ds_Kontakte
       Properties.Buttons = <
@@ -1744,12 +1752,13 @@ object frm_Contact: Tfrm_Contact
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 49
+      Visible = False
       OnExit = btn_KontaktSaveClick
-      Width = 912
+      Width = 592
     end
     object edt_KontaktGeschaeftlichInternet: TcxDBButtonEdit
-      Left = 652
-      Top = 210
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Internet_Ges'
       DataBinding.DataSource = ds_Kontakte
       Properties.Buttons = <
@@ -1855,12 +1864,13 @@ object frm_Contact: Tfrm_Contact
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 50
+      Visible = False
       OnExit = btn_KontaktSaveClick
-      Width = 912
+      Width = 592
     end
     object edt_KontaktGeschaeftlichOrt: TcxDBButtonEdit
-      Left = 727
-      Top = 133
+      Left = 10000
+      Top = 10000
       AutoSize = False
       DataBinding.DataField = 'Ort_Ges'
       DataBinding.DataSource = ds_Kontakte
@@ -1958,13 +1968,14 @@ object frm_Contact: Tfrm_Contact
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 47
+      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 19
-      Width = 837
+      Width = 517
     end
     object edt_KontaktGeschaeftlichTelefonZentrale: TcxDBButtonEdit
-      Left = 652
-      Top = 160
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Zentrale_Ges'
       DataBinding.DataSource = ds_Kontakte
       Properties.Buttons = <
@@ -2008,12 +2019,13 @@ object frm_Contact: Tfrm_Contact
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 48
+      Visible = False
       OnExit = btn_KontaktSaveClick
-      Width = 912
+      Width = 592
     end
     object edt_KontaktGeschaeftlichTelefonDurchwahl: TcxDBButtonEdit
-      Left = 500
-      Top = 295
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Telefon_Ges'
       DataBinding.DataSource = ds_Kontakte
       Properties.Buttons = <
@@ -2057,12 +2069,13 @@ object frm_Contact: Tfrm_Contact
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 53
+      Visible = False
       OnExit = btn_KontaktSaveClick
-      Width = 1064
+      Width = 744
     end
     object edt_GeschaeftlichHandy: TcxDBButtonEdit
-      Left = 500
-      Top = 320
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Handy_Ges'
       DataBinding.DataSource = ds_Kontakte
       Properties.Buttons = <
@@ -2106,12 +2119,13 @@ object frm_Contact: Tfrm_Contact
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 54
+      Visible = False
       OnExit = btn_KontaktSaveClick
-      Width = 1064
+      Width = 744
     end
     object edt_KontaktGeschaeftlichEMail: TcxDBButtonEdit
-      Left = 500
-      Top = 345
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'E_Mail_Ges'
       DataBinding.DataSource = ds_Kontakte
       Properties.Buttons = <
@@ -2136,8 +2150,9 @@ object frm_Contact: Tfrm_Contact
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 55
+      Visible = False
       OnExit = btn_KontaktSaveClick
-      Width = 1064
+      Width = 744
     end
     object lagrp_Personal: TdxLayoutGroup
       AlignHorz = ahClient
@@ -2477,7 +2492,6 @@ object frm_Contact: Tfrm_Contact
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
       SizeOptions.Height = 800
-      ItemIndex = 1
       LayoutDirection = ldTabbed
       Padding.AssignedValues = [lpavTop]
       ShowBorder = False
@@ -2666,7 +2680,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Kontaktart:'
       Control = cmbbx_KontaktSucheArt
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 234
+      ControlOptions.OriginalWidth = 190
       ControlOptions.ShowBorder = False
       Index = 2
     end
@@ -2678,7 +2692,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Abteilung:'
       Control = edt_KontaktSucheAbteilung
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 234
+      ControlOptions.OriginalWidth = 190
       ControlOptions.ShowBorder = False
       Index = 1
     end
@@ -2690,7 +2704,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Firma:'
       Control = edt_KontaktSucheFirma
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 234
+      ControlOptions.OriginalWidth = 190
       ControlOptions.ShowBorder = False
       Index = 0
     end
@@ -2702,7 +2716,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Funktion:'
       Control = edt_KontaktSucheFunktion
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 234
+      ControlOptions.OriginalWidth = 190
       ControlOptions.ShowBorder = False
       Index = 2
     end
@@ -2713,7 +2727,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Nachname:'
       Control = edt_KontaktSucheNachname
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 234
+      ControlOptions.OriginalWidth = 190
       ControlOptions.ShowBorder = False
       Index = 0
     end
@@ -2725,7 +2739,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Ort:'
       Control = edt_KontaktSucheOrt
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 234
+      ControlOptions.OriginalWidth = 190
       ControlOptions.ShowBorder = False
       Index = 2
     end
@@ -2737,7 +2751,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Postleitzahl:'
       Control = edt_KontaktSuchePLZ
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 234
+      ControlOptions.OriginalWidth = 190
       ControlOptions.ShowBorder = False
       Index = 1
     end
@@ -2749,7 +2763,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Strasse:'
       Control = edt_KontaktSucheStrasse
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 234
+      ControlOptions.OriginalWidth = 190
       ControlOptions.ShowBorder = False
       Index = 0
     end
@@ -2760,7 +2774,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Vorname:'
       Control = edt_KontaktSucheVorname
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 234
+      ControlOptions.OriginalWidth = 190
       ControlOptions.ShowBorder = False
       Index = 1
     end
@@ -3005,7 +3019,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Strasse Firma:'
       Control = edt_KontaktSucheStrasseGes
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 234
+      ControlOptions.OriginalWidth = 190
       ControlOptions.ShowBorder = False
       Index = 0
     end
@@ -3017,7 +3031,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Postleitzahl Firma:'
       Control = edt_KontaktSuchePLZGes
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 234
+      ControlOptions.OriginalWidth = 190
       ControlOptions.ShowBorder = False
       Index = 1
     end
@@ -3029,7 +3043,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Ort Firma:'
       Control = edt_KontaktSucheOrtGes
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 234
+      ControlOptions.OriginalWidth = 190
       ControlOptions.ShowBorder = False
       Index = 2
     end
@@ -3051,7 +3065,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Anrede:'
       Control = cmbbx_KontaktAnrede
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 234
+      ControlOptions.OriginalWidth = 190
       ControlOptions.ShowBorder = False
       Index = 3
     end
@@ -3097,6 +3111,50 @@ object frm_Contact: Tfrm_Contact
     Font.Style = []
     ParentFont = False
   end
+  object dxRibbon1: TdxRibbon
+    Left = 0
+    Top = 0
+    Width = 1280
+    Height = 132
+    BarManager = brmgr_Contacts
+    Style = rsOffice365
+    ColorSchemeName = 'Colorful'
+    Contexts = <>
+    TabOrder = 6
+    TabStop = False
+    object dxRibbon1Tab1: TdxRibbonTab
+      Active = True
+      Caption = 'Kontakt'
+      Groups = <
+        item
+          Caption = 'Kontakt'
+          ToolbarName = 'brmgr_ContactsBar1'
+        end
+        item
+          Caption = 'Navigation'
+          ToolbarName = 'brmgr_ContactsBar2'
+        end>
+      Index = 0
+    end
+    object dxRibbon1Tab2: TdxRibbonTab
+      Caption = 'Felder'
+      Groups = <
+        item
+          Caption = 'Zusatzfelder'
+          ToolbarName = 'brmgr_ContactsBar3'
+        end>
+      Index = 1
+    end
+    object dxRibbon1Tab3: TdxRibbonTab
+      Caption = 'Import / Export'
+      Groups = <
+        item
+          Caption = 'Import / Export'
+          ToolbarName = 'brmgr_ContactsBar4'
+        end>
+      Index = 2
+    end
+  end
   object ds_Kontakte: TDataSource
     DataSet = qry_Kontakte
     Left = 509
@@ -3135,20 +3193,13 @@ object frm_Contact: Tfrm_Contact
     Left = 112
     Top = 488
     PixelsPerInch = 96
-    DockControlHeights = (
-      0
-      0
-      63
-      0)
-    object brmgrContactsBar1: TdxBar
-      Caption = 'tb_Contacts'
+    object brmgr_ContactsBar1: TdxBar
+      Caption = 'Custom 1'
       CaptionButtons = <>
-      DockedDockingStyle = dsTop
       DockedLeft = 0
       DockedTop = 0
-      DockingStyle = dsTop
-      FloatLeft = 1133
-      FloatTop = 2
+      FloatLeft = 1309
+      FloatTop = 3
       FloatClientWidth = 0
       FloatClientHeight = 0
       ItemLinks = <
@@ -3167,7 +3218,23 @@ object frm_Contact: Tfrm_Contact
         item
           Visible = True
           ItemName = 'btn_KontaktDelete'
-        end
+        end>
+      OneOnRow = True
+      Row = 1
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object brmgr_ContactsBar2: TdxBar
+      Caption = 'Custom 2'
+      CaptionButtons = <>
+      DockedLeft = 278
+      DockedTop = 0
+      FloatLeft = 1309
+      FloatTop = 3
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
         item
           Visible = True
           ItemName = 'btn_KontaktFirst'
@@ -3183,151 +3250,686 @@ object frm_Contact: Tfrm_Contact
         item
           Visible = True
           ItemName = 'btn_KontaktLast'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_KontaktImport'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_AddFields'
         end>
-      NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
       OneOnRow = True
       Row = 0
-      ShowMark = False
-      SizeGrip = False
       UseOwnFont = False
-      UseRestSpace = True
       Visible = True
       WholeRow = False
     end
-    object btn_KontaktNew: TdxBarLargeButton
-      Caption = 'Kontakt anlegen'
-      Category = 0
-      Hint = 'Kontakt anlegen'
-      Visible = ivAlways
-      OnClick = btn_KontaktNewClick
-      AutoGrayScale = False
-      LargeImageIndex = 27
-      Width = 115
-      SyncImageIndex = False
-      ImageIndex = -1
+    object brmgr_ContactsBar3: TdxBar
+      Caption = 'Custom 3'
+      CaptionButtons = <>
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 1309
+      FloatTop = 3
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btn_addGeburtsname'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_addGeburtsort'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_addGeburtsland'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_addTodestag'
+        end>
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
     end
-    object btn_KontaktNext: TdxBarLargeButton
-      Caption = '&n'#228'chster Kontakt'
-      Category = 0
-      Hint = 'n'#228'chster Kontakt'
-      Visible = ivAlways
-      OnClick = btn_KontaktNextClick
-      AutoGrayScale = False
-      LargeImageIndex = 26
-      Width = 115
-      SyncImageIndex = False
-      ImageIndex = -1
+    object brmgr_ContactsBar4: TdxBar
+      Caption = 'Custom 4'
+      CaptionButtons = <>
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 1309
+      FloatTop = 3
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'ppmbtn_VCFImportieren'
+        end
+        item
+          Visible = True
+          ItemName = 'ppmbtn_CSVImportiern'
+        end
+        item
+          Visible = True
+          ItemName = 'ppmbtn_ExportVCF'
+        end
+        item
+          Visible = True
+          ItemName = 'ppmbtn_ExportOutlook'
+        end>
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
     end
-    object btn_Kontaktprev: TdxBarLargeButton
-      Caption = '&vorheriger Kontakt'
-      Category = 0
-      Hint = 'vorheriger Kontakt'
-      Visible = ivAlways
-      OnClick = btn_KontaktprevClick
-      AutoGrayScale = False
-      LargeImageIndex = 25
-      Width = 115
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_KontaktFirst: TdxBarLargeButton
-      Caption = '&erster Kontakt'
-      Category = 0
-      Hint = 'erster Kontakt'
-      Visible = ivAlways
-      OnClick = btn_KontaktFirstClick
-      AutoGrayScale = False
-      LargeImageIndex = 33
-      Width = 115
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_KontaktDelete: TdxBarLargeButton
-      Caption = 'Kontakt l'#246'schen'
-      Category = 0
-      Hint = 'Kontakt l'#246'schen'
-      Visible = ivAlways
-      OnClick = btn_KontaktDeleteClick
-      AutoGrayScale = False
-      LargeImageIndex = 24
-      Width = 115
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_KontaktCancel: TdxBarLargeButton
-      Caption = 'Abbrechen'
-      Category = 0
-      Hint = 'Abbrechen'
-      Visible = ivAlways
-      OnClick = btn_KontaktCancelClick
-      AutoGrayScale = False
-      LargeImageIndex = 0
-      Width = 115
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_KontaktSave: TdxBarLargeButton
-      Caption = 'Kontakt speichern'
-      Category = 0
-      Hint = 'Kontakt speichern'
-      Visible = ivAlways
-      OnClick = btn_KontaktSaveClick
-      AutoGrayScale = False
-      LargeImageIndex = 12
-      Width = 115
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_KontaktLast: TdxBarLargeButton
-      Caption = '&letzter Kontakt'
-      Category = 0
-      Hint = 'letzter Kontakt'
-      Visible = ivAlways
-      OnClick = btn_KontaktLastClick
-      AutoGrayScale = False
-      LargeImageIndex = 37
-      Width = 115
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_KontaktImport: TdxBarLargeButton
-      Caption = 'Kontakt im/exportieren'
-      Category = 0
-      Hint = 'Kontakt im/exportieren'
-      Visible = ivAlways
-      ButtonStyle = bsDropDown
-      DropDownMenu = brpmm_Contact
-      AutoGrayScale = False
-      LargeImageIndex = 6
-      Width = 130
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_AddFields: TdxBarLargeButton
-      Caption = 'Felder hinzuf'#252'gen'
-      Category = 0
-      Hint = 'Felder hinzuf'#252'gen'
-      Visible = ivAlways
-      ButtonStyle = bsDropDown
-      DropDownMenu = brpmm_Fields
-      AutoGrayScale = False
-      LargeImageIndex = 125
-    end
-    object ppmbtn_ExportOutlook: TdxBarLargeButton
+    object TdxBarLargeButton
       Caption = 'Export (Outlook)'
       Category = 0
       Hint = 'Export (Outlook)'
       Visible = ivAlways
       OnClick = ppmbtn_ExportOutlookClick
       LargeImageIndex = 64
+    end
+    object btn_KontaktNew: TdxBarLargeButton
+      Caption = 'Kontakt anlegen'
+      Category = 0
+      Hint = 'Kontakt anlegen'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E426C61636B7B66696C6C3A233732373237
+        323B7D262331333B262331303B2623393B2E59656C6C6F777B66696C6C3A2346
+        46423131353B7D262331333B262331303B2623393B2E426C75657B66696C6C3A
+        233131373744373B7D262331333B262331303B2623393B2E5265647B66696C6C
+        3A234431314331433B7D262331333B262331303B2623393B2E57686974657B66
+        696C6C3A234646464646463B7D262331333B262331303B2623393B2E47726565
+        6E7B66696C6C3A233033394332333B7D262331333B262331303B2623393B2E73
+        74307B66696C6C3A233732373237323B7D262331333B262331303B2623393B2E
+        7374317B6F7061636974793A302E353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E37353B7D3C2F7374796C653E0D0A3C672069
+        643D2241646446696C65223E0D0A09093C7061746820636C6173733D22426C61
+        636B2220643D224D31362C3236483656346831387631346832563363302D302E
+        352D302E352D312D312D31483543342E352C322C342C322E352C342C33763234
+        63302C302E352C302E352C312C312C316831315632367A222F3E0D0A09093C70
+        6F6C79676F6E20636C6173733D22477265656E2220706F696E74733D2233302C
+        32342032362C32342032362C32302032322C32302032322C32342031382C3234
+        2031382C32382032322C32382032322C33322032362C33322032362C32382033
+        302C3238202623393B222F3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
+      OnClick = btn_KontaktNewClick
+    end
+    object btn_KontaktSave: TdxBarLargeButton
+      Caption = 'Kontakt speichern'
+      Category = 0
+      Hint = 'Kontakt speichern'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D223020302033322033322220656E61626C65
+        2D6261636B67726F756E643D226E6577203020302033322033322220786D6C3A
+        73706163653D227072657365727665223E262331333B262331303B3C706F6C79
+        676F6E2066696C6C3D22233337374142352220706F696E74733D22322C322032
+        2C33302033302C33302033302C362032362C3220222F3E0D0A3C726563742078
+        3D22362220793D223134222066696C6C3D222346464646464622207769647468
+        3D22323022206865696768743D223134222F3E0D0A3C7265637420783D223622
+        20793D223222206F7061636974793D22302E36222066696C6C3D222346464646
+        46462220656E61626C652D6261636B67726F756E643D226E6577202020202220
+        77696474683D22313822206865696768743D223130222F3E0D0A3C7265637420
+        783D2232302220793D2232222066696C6C3D2223333737414235222077696474
+        683D223222206865696768743D2238222F3E0D0A3C2F7376673E0D0A}
+      OnClick = btn_KontaktSaveClick
+    end
+    object btn_KontaktCancel: TdxBarLargeButton
+      Caption = 'Abbrechen'
+      Category = 0
+      Hint = 'Abbrechen'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076696577426F783D222D36202D362033322033
+        322220786D6C6E733D22687474703A2F2F7777772E77332E6F72672F32303030
+        2F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F7777772E7733
+        2E6F72672F313939392F786C696E6B223E0D0A093C672069643D224C61796572
+        5F3122207472616E73666F726D3D227472616E736C617465282D362C202D3629
+        22207374796C653D22656E61626C652D6261636B67726F756E643A6E65772030
+        2030203332203332223E0D0A09093C672069643D2244656C657465223E0D0A09
+        09093C673E0D0A090909093C7061746820643D224D31382E382C2031364C3235
+        2E372C20392E314332362E312C20382E372032362E312C20382E312032352E37
+        2C20372E374C32342E332C20362E334332332E392C20352E392032332E332C20
+        352E392032322E392C20362E334C31362C2031332E324C392E312C20362E3343
+        382E372C20352E3920382E312C20352E3920372E372C20362E334C362E332C20
+        372E3743352E392C20382E3120352E392C20382E3720362E332C20392E314C31
+        332E322C2031364C362E332C2032322E3943352E392C2032332E3320352E392C
+        2032332E3920362E332C2032342E334C372E372C2032352E3743382E312C2032
+        362E3120382E372C2032362E3120392E312C2032352E374C31362C2031382E38
+        4C32322E392C2032352E374332332E332C2032362E312032332E392C2032362E
+        312032342E332C2032352E374C32352E372C2032342E334332362E312C203233
+        2E392032362E312C2032332E332032352E372C2032322E394C31382E382C2031
+        367A222066696C6C3D22233131373744372220636C6173733D22426C7565222F
+        3E0D0A0909093C2F673E0D0A09093C2F673E0D0A093C2F673E0D0A093C672069
+        643D224C617965725F3122207472616E73666F726D3D227472616E736C617465
+        282D362C202D362922207374796C653D22656E61626C652D6261636B67726F75
+        6E643A6E657720302030203332203332223E0D0A09093C672069643D2244656C
+        657465223E0D0A0909093C673E0D0A090909093C7061746820643D224D31382E
+        382C2031364C32352E372C20392E314332362E312C20382E372032362E312C20
+        382E312032352E372C20372E374C32342E332C20362E334332332E392C20352E
+        392032332E332C20352E392032322E392C20362E334C31362C2031332E324C39
+        2E312C20362E3343382E372C20352E3920382E312C20352E3920372E372C2036
+        2E334C362E332C20372E3743352E392C20382E3120352E392C20382E3720362E
+        332C20392E314C31332E322C2031364C362E332C2032322E3943352E392C2032
+        332E3320352E392C2032332E3920362E332C2032342E334C372E372C2032352E
+        3743382E312C2032362E3120382E372C2032362E3120392E312C2032352E374C
+        31362C2031382E384C32322E392C2032352E374332332E332C2032362E312032
+        332E392C2032362E312032342E332C2032352E374C32352E372C2032342E3343
+        32362E312C2032332E392032362E312C2032332E332032352E372C2032322E39
+        4C31382E382C2031367A222066696C6C3D22233131373744372220636C617373
+        3D22426C7565222F3E0D0A0909093C2F673E0D0A09093C2F673E0D0A093C2F67
+        3E0D0A3C2F7376673E0D0A}
+      OnClick = btn_KontaktCancelClick
+    end
+    object btn_KontaktDelete: TdxBarLargeButton
+      Caption = 'Kontakt l'#246'schen'
+      Category = 0
+      Hint = 'Kontakt l'#246'schen'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E426C61636B7B66696C6C3A233732373237
+        323B7D262331333B262331303B2623393B2E59656C6C6F777B66696C6C3A2346
+        46423131353B7D262331333B262331303B2623393B2E426C75657B66696C6C3A
+        233131373744373B7D262331333B262331303B2623393B2E477265656E7B6669
+        6C6C3A233033394332333B7D262331333B262331303B2623393B2E5265647B66
+        696C6C3A234431314331433B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374317B6F7061636974793A302E353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E32353B7D3C2F7374796C653E0D0A3C672069
+        643D2244656C6574654C697374223E0D0A09093C7061746820636C6173733D22
+        426C61636B2220643D224D362C323656346831387631332E326C322D32563363
+        302D302E362D302E342D312D312D31483543342E342C322C342C322E342C342C
+        3376323463302C302E362C302E342C312C312C3168382E326C322D3248367A22
+        2F3E0D0A09093C706F6C79676F6E20636C6173733D225265642220706F696E74
+        733D2232382C32302032362C31382032322C32322031382C31382031362C3230
+        2032302C32342031362C32382031382C33302032322C32362032362C33302032
+        382C32382032342C3234202623393B222F3E0D0A093C2F673E0D0A3C2F737667
+        3E0D0A}
+      OnClick = btn_KontaktDeleteClick
+    end
+    object btn_KontaktFirst: TdxBarLargeButton
+      Caption = '&erster Kontakt'
+      Category = 0
+      Hint = 'erster Kontakt'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E312220786D6C6E73
+        3D22687474703A2F2F7777772E77332E6F72672F323030302F7376672220786D
+        6C6E733A786C696E6B3D22687474703A2F2F7777772E77332E6F72672F313939
+        392F786C696E6B2220783D223070782220793D22307078222076696577426F78
+        3D2230203020333220333222207374796C653D22656E61626C652D6261636B67
+        726F756E643A6E6577203020302033322033323B2220786D6C3A73706163653D
+        227072657365727665223E262331333B262331303B3C7374796C652074797065
+        3D22746578742F637373223E2E426C75657B66696C6C3A233131373744373B7D
+        3C2F7374796C653E0D0A3C672069643D224C617965725F31223E0D0A09093C70
+        61746820636C6173733D22426C75652220643D224D382E332C31352E36632D30
+        2E352D302E332D302E352D302E382C302D312E316C31312E382D372E3356342E
+        3663302D302E362D302E342D302E382D302E392D302E354C322E342C31342E35
+        632D302E352C302E332D302E352C302E382C302C312E3120202623393B262339
+        3B6C31362E382C31302E3363302E352C302E332C302E392C302E312C302E392D
+        302E35762D322E364C382E332C31352E367A222F3E0D0A09093C706174682063
+        6C6173733D22426C75652220643D224D31322E332C31342E35632D302E352C30
+        2E332D302E352C302E382C302C312E316C31362E382C31302E3363302E352C30
+        2E332C302E392C302E312C302E392D302E3556342E3763302D302E362D302E34
+        2D302E382D302E392D302E354C31322E332C31342E357A222F3E0D0A093C2F67
+        3E0D0A3C672069643D224C617965725F32222F3E0D0A3C2F7376673E0D0A}
+      OnClick = btn_KontaktFirstClick
+    end
+    object btn_Kontaktprev: TdxBarLargeButton
+      Caption = '&vorheriger Kontakt'
+      Category = 0
+      Hint = 'vorheriger Kontakt'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E426C75657B66696C6C3A23313137374437
+        3B7D262331333B262331303B2623393B2E59656C6C6F777B66696C6C3A234646
+        423131353B7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A
+        233732373237323B7D262331333B262331303B2623393B2E477265656E7B6669
+        6C6C3A233033394332333B7D262331333B262331303B2623393B2E5265647B66
+        696C6C3A234431314331433B7D262331333B262331303B2623393B2E7374307B
+        6F7061636974793A302E37353B7D262331333B262331303B2623393B2E737431
+        7B6F7061636974793A302E353B7D3C2F7374796C653E0D0A3C672069643D2250
+        726576696F7573223E0D0A09093C706F6C79676F6E20636C6173733D22426C75
+        652220706F696E74733D2232362C342032362C323820362C3136202623393B22
+        2F3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
+      OnClick = btn_KontaktprevClick
+    end
+    object btn_KontaktNext: TdxBarLargeButton
+      Caption = '&n'#228'chster Kontakt'
+      Category = 0
+      Hint = 'n'#228'chster Kontakt'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E426C75657B66696C6C3A23313137374437
+        3B7D262331333B262331303B2623393B2E59656C6C6F777B66696C6C3A234646
+        423131353B7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A
+        233732373237323B7D262331333B262331303B2623393B2E477265656E7B6669
+        6C6C3A233033394332333B7D262331333B262331303B2623393B2E5265647B66
+        696C6C3A234431314331433B7D262331333B262331303B2623393B2E7374307B
+        6F7061636974793A302E37353B7D262331333B262331303B2623393B2E737431
+        7B6F7061636974793A302E353B7D3C2F7374796C653E0D0A3C672069643D224E
+        657874223E0D0A09093C706F6C79676F6E20636C6173733D22426C7565222070
+        6F696E74733D22362C3420362C32382032362C3136202623393B222F3E0D0A09
+        3C2F673E0D0A3C2F7376673E0D0A}
+      OnClick = btn_KontaktNextClick
+    end
+    object btn_KontaktLast: TdxBarLargeButton
+      Caption = '&letzter Kontakt'
+      Category = 0
+      Hint = 'letzter Kontakt'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E312220786D6C6E73
+        3D22687474703A2F2F7777772E77332E6F72672F323030302F7376672220786D
+        6C6E733A786C696E6B3D22687474703A2F2F7777772E77332E6F72672F313939
+        392F786C696E6B2220783D223070782220793D22307078222076696577426F78
+        3D2230203020333220333222207374796C653D22656E61626C652D6261636B67
+        726F756E643A6E6577203020302033322033323B2220786D6C3A73706163653D
+        227072657365727665223E262331333B262331303B3C7374796C652074797065
+        3D22746578742F637373223E2E426C75657B66696C6C3A233131373744373B7D
+        3C2F7374796C653E0D0A3C672069643D224C617965725F31223E0D0A09093C70
+        61746820636C6173733D22426C75652220643D224D32332E372C31342E346330
+        2E352C302E332C302E352C302E382C302C312E316C2D31312E382C372E337632
+        2E3663302C302E362C302E342C302E382C302E392C302E356C31362E382D3130
+        2E3463302E352D302E332C302E352D302E382C302D312E3120202623393B2623
+        393B4C31322E382C342E31632D302E352D302E332D302E392D302E312D302E39
+        2C302E3576322E364C32332E372C31342E347A222F3E0D0A09093C7061746820
+        636C6173733D22426C75652220643D224D31392E372C31352E3563302E352D30
+        2E332C302E352D302E382C302D312E314C322E392C342E3143322E342C332E38
+        2C322C342C322C342E367632302E3663302C302E362C302E342C302E382C302E
+        392C302E354C31392E372C31352E357A222F3E0D0A093C2F673E0D0A3C672069
+        643D224C617965725F32222F3E0D0A3C2F7376673E0D0A}
+      OnClick = btn_KontaktLastClick
+    end
+    object ppmbtn_VCFImportieren: TdxBarLargeButton
+      Caption = 'VCF Importieren'
+      Category = 0
+      Hint = 'VCF Importieren'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E32353B7D3C2F7374796C653E0D0A3C672069
+        643D22496D706F7274223E0D0A09093C7061746820636C6173733D22426C6163
+        6B2220643D224D31302C31324836563668345631327A204D32322C3137763176
+        3963302C302E362D302E342C312D312C314831632D302E362C302D312D302E34
+        2D312D31563763302D302E362C302E342D312C312D31683376386831344C3232
+        2C31377A204D31382C3138483420202623393B2623393B76366831345631387A
+        222F3E0D0A09093C706F6C79676F6E20636C6173733D22477265656E2220706F
+        696E74733D2233302C362032322C362032322C322031342C382032322C313420
+        32322C31302033302C3130202623393B222F3E0D0A093C2F673E0D0A3C2F7376
+        673E0D0A}
+      OnClick = ppmbtn_VCFImportierenClick
+    end
+    object ppmbtn_CSVImportiern: TdxBarLargeButton
+      Caption = 'CSV Importieren'
+      Category = 0
+      Hint = 'CSV Importieren'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E426C61636B7B66696C6C3A233732373237
+        323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A23313137
+        3744373B7D3C2F7374796C653E0D0A3C7061746820636C6173733D22426C6163
+        6B2220643D224D382C3468313876366832563363302D302E352D302E352D312D
+        312D31483743362E352C322C362C322E352C362C337637683256347A222F3E0D
+        0A3C7061746820636C6173733D22426C61636B2220643D224D32362C32384838
+        563138483676313163302C302E352C302E352C312C312C3168323063302E352C
+        302C312D302E352C312D31563138682D325632387A222F3E0D0A3C7061746820
+        636C6173733D22426C75652220643D224D32392C38682D31682D324838483648
+        3543342E342C382C342C382E342C342C3976313063302C302E362C302E342C31
+        2C312C31683168326831386832683163302E362C302C312D302E342C312D3156
+        394333302C382E342C32392E362C382C32392C387A20202623393B204D31322E
+        392C3132632D302E352D302E332D312D302E352D312E362D302E35632D302E37
+        2C302D312E322C302E322D312E362C302E3743392E322C31322E362C392C3133
+        2E332C392C313463302C302E372C302E322C312E332C302E362C312E3873302E
+        392C302E372C312E362C302E3720202623393B63302E362C302C312E322D302E
+        322C312E372D302E3576312E36632D302E352C302E332D312E322C302E342D32
+        2C302E34632D312E312C302D322D302E332D322E362D31632D302E312D302E31
+        2D302E322D302E322D302E322D302E33632D302E352D302E362D302E372D312E
+        352D302E372D322E3420202623393B63302D312C302E322D312E382C302E372D
+        322E3563302E312D302E322C302E322D302E332C302E342D302E3543392E312C
+        31302E342C31302C31302C31312E312C313063302E372C302C312E332C302E31
+        2C312E382C302E335631327A204D31392E322C31362E3820202623393B632D30
+        2E322C302E332D302E342C302E352D302E362C302E37632D302E332C302E322D
+        302E362C302E332D302E392C302E344331372E342C31372E392C31372C31382C
+        31362E362C3138632D302E342C302D302E382C302D312E312D302E31632D302E
+        342D302E312D302E372D302E322D302E392D302E33762D312E3720202623393B
+        63302E332C302E332C302E362C302E352C302E392C302E3663302E332C302E31
+        2C302E372C302E322C312C302E3263302E322C302C302E342C302C302E352D30
+        2E3163302E322C302C302E332D302E312C302E342D302E3263302E312D302E31
+        2C302E322D302E322C302E322D302E3220202623393B63302E312D302E312C30
+        2E312D302E322C302E312D302E3363302D302E322C302D302E332D302E312D30
+        2E34732D302E322D302E322D302E332D302E33732D302E332D302E322D302E35
+        2D302E33732D302E342D302E322D302E362D302E33632D302E362D302E332D31
+        2D302E362D312E322D302E3920202623393B732D302E342D302E382D302E342D
+        312E3363302D302E342C302E312D302E372C302E322D3163302E312D302E332C
+        302E342D302E352C302E362D302E3773302E362D302E332C302E392D302E3463
+        302E332D302E312C302E372D302E312C312E312D302E3163302E342C302C302E
+        372C302C312C302E3120202623393B63302E332C302C302E362C302E312C302E
+        382C302E3276312E36632D302E312D302E312D302E332D302E322D302E342D30
+        2E32632D302E312D302E312D302E332D302E312D302E342D302E32632D302E31
+        2C302D302E332D302E312D302E342D302E31632D302E312C302D302E332C302D
+        302E342C3020202623393B632D302E322C302D302E332C302D302E352C302E31
+        632D302E312C302D302E332C302E312D302E342C302E32632D302E312C302E31
+        2D302E322C302E312D302E322C302E32632D302E312C302E312D302E312C302E
+        322D302E312C302E3363302C302E312C302C302E322C302E312C302E33202026
+        23393B63302E312C302E312C302E322C302E322C302E332C302E3363302E312C
+        302E312C302E332C302E322C302E342C302E3363302E322C302E312C302E342C
+        302E322C302E362C302E3363302E332C302E312C302E352C302E332C302E382C
+        302E3463302E322C302E312C302E342C302E332C302E362C302E352020262339
+        3B63302E322C302E322C302E332C302E342C302E342C302E3663302E312C302E
+        322C302E312C302E352C302E312C302E384331392E352C31362E312C31392E34
+        2C31362E352C31392E322C31362E387A204D32362C31332E326C2D312E352C34
+        2E37682D312E384C32302E332C31304832326C312E352C352E3520202623393B
+        63302E312C302E332C302E312C302E352C302E312C302E38683063302D302E32
+        2C302E312D302E352C302E322D302E386C312E352D352E3548323668314C3236
+        2C31332E327A222F3E0D0A3C2F7376673E0D0A}
+    end
+    object ppmbtn_ExportVCF: TdxBarLargeButton
+      Caption = 'VCard erstellen'
+      Category = 0
+      Hint = 'VCard erstellen'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E426C75657B66696C6C3A23313137374437
+        3B7D262331333B262331303B2623393B2E59656C6C6F777B66696C6C3A234646
+        423131353B7D262331333B262331303B2623393B2E5265647B66696C6C3A2344
+        31314331433B7D262331333B262331303B2623393B2E477265656E7B66696C6C
+        3A233033394332333B7D262331333B262331303B2623393B2E426C61636B7B66
+        696C6C3A233732373237323B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374327B646973706C61793A6E6F6E653B7D262331333B262331303B2623393B
+        2E7374337B646973706C61793A696E6C696E653B66696C6C3A23464642313135
+        3B7D262331333B262331303B2623393B2E7374347B646973706C61793A696E6C
+        696E653B7D262331333B262331303B2623393B2E7374357B646973706C61793A
+        696E6C696E653B6F7061636974793A302E37353B7D262331333B262331303B26
+        23393B2E7374367B646973706C61793A696E6C696E653B6F7061636974793A30
+        2E353B7D262331333B262331303B2623393B2E7374377B646973706C61793A69
+        6E6C696E653B66696C6C3A233033394332333B7D262331333B262331303B2623
+        393B2E7374387B646973706C61793A696E6C696E653B66696C6C3A2344313143
+        31433B7D262331333B262331303B2623393B2E7374397B646973706C61793A69
+        6E6C696E653B66696C6C3A233131373744373B7D262331333B262331303B2623
+        393B2E737431307B646973706C61793A696E6C696E653B66696C6C3A23464646
+        4646463B7D3C2F7374796C653E0D0A3C672069643D22416464726573735F315F
+        223E0D0A09093C6720636C6173733D22737431223E0D0A0909093C7061746820
+        636C6173733D22426C61636B2220643D224D32362C3132483136762D32683130
+        5631327A204D32362C313448313676326831305631347A204D32362C31384831
+        3676326831305631387A222F3E0D0A09093C2F673E0D0A09093C706174682063
+        6C6173733D22426C61636B2220643D224D32392C34483143302E342C342C302C
+        342E352C302C3576323063302C302E352C302E342C312C312C3168323863302E
+        362C302C312D302E352C312D3156354333302C342E352C32392E362C342C3239
+        2C347A204D32382C3234483256366832365632347A222F3E0D0A09093C706174
+        6820636C6173733D22426C75652220643D224D392C3863312E372C302C332C31
+        2E332C332C33732D312E332C332D332C33732D332D312E332D332D3353372E33
+        2C382C392C387A204D31322E322C31342E38632D302E392C302E372D322C312E
+        322D332E322C312E32732D322E332D302E352D332E322D312E3220202623393B
+        2623393B43342C31362E352C342C32322C342C32326831304331342C32322C31
+        342C31362E352C31322E322C31342E387A222F3E0D0A093C2F673E0D0A3C2F73
+        76673E0D0A}
+      OnClick = ppmbtn_ExportVCFClick
+    end
+    object ppmbtn_ExportOutlook: TdxBarLargeButton
+      Caption = 'Export Outlook'
+      Category = 0
+      Hint = 'Export Outlook'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E32353B7D3C2F7374796C653E0D0A3C672069
+        643D224F75746C6F6F6B4578706F7274223E0D0A09093C706F6C79676F6E2063
+        6C6173733D22477265656E2220706F696E74733D2231362C342032342C342032
+        342C302033322C362032342C31322032342C382031362C38202623393B222F3E
+        0D0A09093C7061746820636C6173733D22426C75652220643D224D32352C3134
+        48313456384C302C31322E325632386C31342C34762D3668313163302E352C30
+        2C312D302E352C312D315631354332362C31342E352C32352E352C31342C3235
+        2C31347A204D392E322C32322E3943382E362C32332E362C372E392C32342C37
+        2C323420202623393B2623393B632D302E392C302D312E362D302E342D322E32
+        2D312E3143342E332C32322E322C342C32312E332C342C32302E3163302D312E
+        322C302E332D322E322C302E382D3343352E342C31362E342C362E312C31362C
+        372E312C313663302E392C302C312E362C302E342C322E312C312E3120202623
+        393B2623393B63302E352C302E372C302E382C312E372C302E382C322E384331
+        302C32312E322C392E372C32322E322C392E322C32322E397A204D31342C3136
+        68396C2D362C346C2D332D325631367A204D32342C3234483134762D346C332C
+        326C372D342E365632347A204D382E342C31372E3920202623393B2623393B63
+        302E332C302E352C302E352C312E322C302E352C322E3163302C302E392D302E
+        322C312E362D302E352C322E31632D302E332C302E352D302E382C302E382D31
+        2E342C302E38632D302E362C302D312D302E332D312E342D302E3853352E312C
+        32302E392C352E312C323020202623393B2623393B63302D302E392C302E322D
+        312E362C302E352D322E3143362C31372E342C362E352C31372E312C372C3137
+        2E3143372E362C31372E312C382E312C31372E342C382E342C31372E397A222F
+        3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
+      OnClick = ppmbtn_ExportOutlookClick
+    end
+    object btn_addGeburtsname: TdxBarLargeButton
+      Caption = 'Geburtsname'
+      Category = 0
+      Hint = 'Geburtsname'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E262331333B262331303B2623393B2E426C75
+        657B66696C6C3A233131373744377D262331333B262331303B2623393B2E4772
+        65656E7B66696C6C3A233033394332337D262331333B262331303B3C2F737479
+        6C653E0D0A3C7061746820636C6173733D22426C75652220643D224D31352C31
+        386833762D3363302D302E362C302E342D312C312D316837563563302D302E36
+        2D302E342D312D312D31483543342E342C342C342C342E342C342C3576323063
+        302C302E362C302E342C312C312C316839762D3720202623393B4331342C3138
+        2E342C31342E342C31382C31352C31387A222F3E0D0A3C706F6C79676F6E2063
+        6C6173733D22477265656E2220706F696E74733D2232382C32302032342C3230
+        2032342C31362032302C31362032302C32302031362C32302031362C32342032
+        302C32342032302C32382032342C32382032342C32342032382C323420222F3E
+        0D0A3C2F7376673E0D0A}
+      OnClick = btn_addGeburtsnameClick
+    end
+    object btn_addGeburtsort: TdxBarLargeButton
+      Caption = 'Geburtsort'
+      Category = 0
+      Hint = 'Geburtsort'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E262331333B262331303B2623393B2E426C75
+        657B66696C6C3A233131373744377D262331333B262331303B2623393B2E4772
+        65656E7B66696C6C3A233033394332337D262331333B262331303B3C2F737479
+        6C653E0D0A3C7061746820636C6173733D22426C75652220643D224D31352C31
+        386833762D3363302D302E362C302E342D312C312D316837563563302D302E36
+        2D302E342D312D312D31483543342E342C342C342C342E342C342C3576323063
+        302C302E362C302E342C312C312C316839762D3720202623393B4331342C3138
+        2E342C31342E342C31382C31352C31387A222F3E0D0A3C706F6C79676F6E2063
+        6C6173733D22477265656E2220706F696E74733D2232382C32302032342C3230
+        2032342C31362032302C31362032302C32302031362C32302031362C32342032
+        302C32342032302C32382032342C32382032342C32342032382C323420222F3E
+        0D0A3C2F7376673E0D0A}
+      OnClick = btn_addGeburtsortClick
+    end
+    object btn_addGeburtsland: TdxBarLargeButton
+      Caption = 'Geburtsland'
+      Category = 0
+      Hint = 'Geburtsland'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E262331333B262331303B2623393B2E426C75
+        657B66696C6C3A233131373744377D262331333B262331303B2623393B2E4772
+        65656E7B66696C6C3A233033394332337D262331333B262331303B3C2F737479
+        6C653E0D0A3C7061746820636C6173733D22426C75652220643D224D31352C31
+        386833762D3363302D302E362C302E342D312C312D316837563563302D302E36
+        2D302E342D312D312D31483543342E342C342C342C342E342C342C3576323063
+        302C302E362C302E342C312C312C316839762D3720202623393B4331342C3138
+        2E342C31342E342C31382C31352C31387A222F3E0D0A3C706F6C79676F6E2063
+        6C6173733D22477265656E2220706F696E74733D2232382C32302032342C3230
+        2032342C31362032302C31362032302C32302031362C32302031362C32342032
+        302C32342032302C32382032342C32382032342C32342032382C323420222F3E
+        0D0A3C2F7376673E0D0A}
+      OnClick = btn_addGeburtslandClick
+    end
+    object btn_addTodestag: TdxBarLargeButton
+      Caption = 'Todestag'
+      Category = 0
+      Hint = 'Todestag'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E262331333B262331303B2623393B2E426C75
+        657B66696C6C3A233131373744377D262331333B262331303B2623393B2E4772
+        65656E7B66696C6C3A233033394332337D262331333B262331303B3C2F737479
+        6C653E0D0A3C7061746820636C6173733D22426C75652220643D224D31352C31
+        386833762D3363302D302E362C302E342D312C312D316837563563302D302E36
+        2D302E342D312D312D31483543342E342C342C342C342E342C342C3576323063
+        302C302E362C302E342C312C312C316839762D3720202623393B4331342C3138
+        2E342C31342E342C31382C31352C31387A222F3E0D0A3C706F6C79676F6E2063
+        6C6173733D22477265656E2220706F696E74733D2232382C32302032342C3230
+        2032342C31362032302C31362032302C32302031362C32302031362C32342032
+        302C32342032302C32382032342C32382032342C32342032382C323420222F3E
+        0D0A3C2F7376673E0D0A}
+      OnClick = btn_addTodestagClick
     end
     object ppmbtn_NachExcelexportieren: TdxBarButton
       Caption = 'Nach Excel exportieren'
@@ -3350,51 +3952,6 @@ object frm_Contact: Tfrm_Contact
       Visible = ivAlways
       ImageIndex = 66
     end
-    object ppmbtn_VCFImportieren: TdxBarButton
-      Caption = 'VCF Importieren'
-      Category = 3
-      Visible = ivAlways
-      ImageIndex = 64
-      OnClick = ppmbtn_VCFImportierenClick
-    end
-    object ppmbtn_CSVImportiern: TdxBarButton
-      Caption = 'CSV Importieren'
-      Category = 3
-      Visible = ivAlways
-      ImageIndex = 63
-    end
-    object ppmbtn_ExportVCF: TdxBarButton
-      Caption = 'VCard erstellen'
-      Category = 3
-      Hint = 'VCard erstellen'
-      Visible = ivAlways
-      ImageIndex = 64
-      OnClick = ppmbtn_ExportVCFClick
-    end
-    object btn_addGeburtsname: TdxBarButton
-      Caption = 'Geburtsname '
-      Category = 3
-      Visible = ivAlways
-      OnClick = btn_addGeburtsnameClick
-    end
-    object btn_addGeburtsort: TdxBarButton
-      Caption = 'Geburtsort'
-      Category = 3
-      Visible = ivAlways
-      OnClick = btn_addGeburtsortClick
-    end
-    object btn_addGeburtsland: TdxBarButton
-      Caption = 'Geburtsland'
-      Category = 3
-      Visible = ivAlways
-      OnClick = btn_addGeburtslandClick
-    end
-    object btn_addTodestag: TdxBarButton
-      Caption = 'Todestag'
-      Category = 3
-      Visible = ivAlways
-      OnClick = btn_addTodestagClick
-    end
   end
   object brpmm_Kontakt: TdxBarPopupMenu
     BarManager = brmgr_Contacts
@@ -3402,10 +3959,6 @@ object frm_Contact: Tfrm_Contact
       item
         Visible = True
         ItemName = 'ppmbtn_NachExcelexportieren'
-      end
-      item
-        Visible = True
-        ItemName = 'ppmbtn_ExportVCF'
       end>
     UseOwnFont = False
     Left = 250
@@ -3425,23 +3978,7 @@ object frm_Contact: Tfrm_Contact
   end
   object brpmm_Contact: TdxBarPopupMenu
     BarManager = brmgr_Contacts
-    ItemLinks = <
-      item
-        Visible = True
-        ItemName = 'ppmbtn_VCFImportieren'
-      end
-      item
-        Visible = True
-        ItemName = 'ppmbtn_CSVImportiern'
-      end
-      item
-        Visible = True
-        ItemName = 'ppmbtn_ExportVCF'
-      end
-      item
-        Visible = True
-        ItemName = 'ppmbtn_ExportOutlook'
-      end>
+    ItemLinks = <>
     UseOwnFont = False
     Left = 250
     Top = 351
@@ -3789,30 +4326,6 @@ object frm_Contact: Tfrm_Contact
     FilterIndex = 0
     Left = 370
     Top = 303
-  end
-  object brpmm_Fields: TdxBarPopupMenu
-    BarManager = brmgr_Contacts
-    ItemLinks = <
-      item
-        Visible = True
-        ItemName = 'btn_addGeburtsname'
-      end
-      item
-        Visible = True
-        ItemName = 'btn_addGeburtsort'
-      end
-      item
-        Visible = True
-        ItemName = 'btn_addGeburtsland'
-      end
-      item
-        Visible = True
-        ItemName = 'btn_addTodestag'
-      end>
-    UseOwnFont = False
-    Left = 552
-    Top = 546
-    PixelsPerInch = 96
   end
   object Outlook: TOutlookApplication
     AutoConnect = False

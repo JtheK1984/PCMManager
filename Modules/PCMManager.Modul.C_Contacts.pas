@@ -97,7 +97,8 @@ uses
   Vcl.OleServer,
   Vcl.StdCtrls,
   Winapi.Messages,
-  Winapi.Windows, cxButtonEdit;
+  Winapi.Windows, cxButtonEdit, dxCore, dxRibbonSkins,
+  dxRibbonCustomizationForm, dxRibbon;
   {$EndRegion Uses}
 type
   {$Region Types}
@@ -107,21 +108,9 @@ type
     brpmm_Kontakt: TdxBarPopupMenu;
     grdpmm_Personal: TcxGridPopupMenu;
     ppmbtn_NachExcelexportieren: TdxBarButton;
-    brmgrContactsBar1: TdxBar;
-    btn_KontaktNew: TdxBarLargeButton;
-    btn_KontaktNext: TdxBarLargeButton;
-    btn_Kontaktprev: TdxBarLargeButton;
-    btn_KontaktFirst: TdxBarLargeButton;
-    btn_KontaktDelete: TdxBarLargeButton;
-    btn_KontaktCancel: TdxBarLargeButton;
-    btn_KontaktSave: TdxBarLargeButton;
     btn_import: TdxBarButton;
     btn_Export: TdxBarButton;
-    btn_KontaktLast: TdxBarLargeButton;
-    btn_KontaktImport: TdxBarLargeButton;
     brpmm_Contact: TdxBarPopupMenu;
-    ppmbtn_VCFImportieren: TdxBarButton;
-    ppmbtn_CSVImportiern: TdxBarButton;
     idDecMIMME_Decode: TIdDecoderMIME;
     idDecQuotPrint_Decode: TIdDecoderQuotedPrintable;
     qry_Kontakte: TFDQuery;
@@ -166,7 +155,6 @@ type
     qry_KontakteLive_Messanger: TStringField;
     qry_KontakteID_Benutzer: TIntegerField;
     qry_KontakteGeburtsname: TStringField;
-    ppmbtn_ExportVCF: TdxBarButton;
     idEncQuotPrint_Main: TIdEncoderQuotedPrintable;
     dlgFOpen_VCF: TdxOpenFileDialog;
     dlgsave_Personal: TdxSaveFileDialog;
@@ -356,18 +344,11 @@ type
     edt_KontaktSucheStrasseGes: TcxTextEdit;
     edt_KontaktSuchePLZGes: TcxTextEdit;
     edt_KontaktSucheOrtGes: TcxTextEdit;
-    btn_AddFields: TdxBarLargeButton;
-    brpmm_Fields: TdxBarPopupMenu;
-    btn_addGeburtsname: TdxBarButton;
-    btn_addGeburtsort: TdxBarButton;
-    btn_addGeburtsland: TdxBarButton;
-    btn_addTodestag: TdxBarButton;
     cmbbx_KontaktGeburtsland: TcxDBLookupComboBox;
     qry_KontakteID_Geburtsland: TIntegerField;
     lagrp_BrowserDetail: TdxLayoutGroup;
     Outlook: TOutlookApplication;
     qry_work: TFDQuery;
-    ppmbtn_ExportOutlook: TdxBarLargeButton;
     edt_KontaktOrt: TcxDBButtonEdit;
     edt_KontaktTelefon1: TcxDBButtonEdit;
     edt_Email2: TcxDBButtonEdit;
@@ -382,6 +363,30 @@ type
     edt_KontaktGeschaeftlichTelefonDurchwahl: TcxDBButtonEdit;
     edt_GeschaeftlichHandy: TcxDBButtonEdit;
     edt_KontaktGeschaeftlichEMail: TcxDBButtonEdit;
+    dxRibbon1Tab1: TdxRibbonTab;
+    dxRibbon1: TdxRibbon;
+    brmgr_ContactsBar1: TdxBar;
+    brmgr_ContactsBar2: TdxBar;
+    btn_KontaktNew: TdxBarLargeButton;
+    btn_KontaktSave: TdxBarLargeButton;
+    btn_KontaktCancel: TdxBarLargeButton;
+    btn_KontaktDelete: TdxBarLargeButton;
+    btn_KontaktFirst: TdxBarLargeButton;
+    btn_Kontaktprev: TdxBarLargeButton;
+    btn_KontaktNext: TdxBarLargeButton;
+    btn_KontaktLast: TdxBarLargeButton;
+    dxRibbon1Tab2: TdxRibbonTab;
+    dxRibbon1Tab3: TdxRibbonTab;
+    brmgr_ContactsBar3: TdxBar;
+    brmgr_ContactsBar4: TdxBar;
+    ppmbtn_VCFImportieren: TdxBarLargeButton;
+    ppmbtn_CSVImportiern: TdxBarLargeButton;
+    ppmbtn_ExportVCF: TdxBarLargeButton;
+    ppmbtn_ExportOutlook: TdxBarLargeButton;
+    btn_addGeburtsname: TdxBarLargeButton;
+    btn_addGeburtsort: TdxBarLargeButton;
+    btn_addGeburtsland: TdxBarLargeButton;
+    btn_addTodestag: TdxBarLargeButton;
     procedure btn_KontaktNewClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btn_KontaktKonfessionEditClick(Sender: TObject);
@@ -2330,7 +2335,6 @@ begin
   btn_KontaktLast.Enabled:= false;
   btn_KontaktPrev.Enabled:= false;
   btn_KontaktNext.Enabled:= false;
-  btn_KontaktImport.Enabled := true;
   lagrp_PersonalTab.ItemIndex:= 0;
   lagrp_MitarbeiterInfoDetails.ItemIndex:= 0;
 	SetGridViews(True);

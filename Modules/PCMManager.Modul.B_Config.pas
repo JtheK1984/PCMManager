@@ -519,6 +519,13 @@ type
     dxLayoutGroup2: TdxLayoutGroup;
     dxLayoutItem1: TdxLayoutItem;
     cxDBCheckBox1: TcxDBCheckBox;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutGroup4: TdxLayoutGroup;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutGroup6: TdxLayoutGroup;
+    dxLayoutGroup7: TdxLayoutGroup;
+    dxLayoutGroup8: TdxLayoutGroup;
+    dxLayoutGroup9: TdxLayoutGroup;
     procedure btn_AnredeCancelClick(Sender: TObject);
     procedure btn_AnredeDeleteClick(Sender: TObject);
     procedure btn_AnredeNewClick(Sender: TObject);
