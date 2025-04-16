@@ -404,7 +404,9 @@ uses
   PCM.Strings,
   PCMManager.Modul.B_Config,
   PCMManager.Modul.C_Contacts,
+  PCMManager.Modul.D_Aufgaben,
   PCMManager.Modul.D_Calendar,
+  PCMManager.Modul.D_Stundenplan,
   PCMManager.Modul.E_Mail,
   PCMManager.Modul.F_Passwort,
   PCMManager.Modul.G_Finanzen,
@@ -772,8 +774,8 @@ begin
   RegisterForm('iDesign', Tfrm_Design, @frm_Design, 1);
   RegisterForm('iKontakte',Tfrm_Contact, @frm_Contact, 1);
   RegisterForm('iKalender',Tfrm_Calendar, @frm_Calendar, 1);
-  RegisterForm('iAufgaben',Tfrm_Calendar, @frm_Calendar, 1);
-  RegisterForm('iStundenplan',Tfrm_Calendar, @frm_Calendar, 1);
+  RegisterForm('iAufgaben',Tfrm_Aufgaben, @frm_Aufgaben, 1);
+  RegisterForm('iStundenplan',Tfrm_Stundenplan, @frm_Stundenplan, 1);
   RegisterForm('iEMails',Tfrm_mail, @frm_mail, 1);
   RegisterForm('iPasswoerter',Tfrm_password, @frm_password, 1);
   RegisterForm('iSerials',Tfrm_password, @frm_password, 1);
@@ -934,21 +936,19 @@ begin
           end;
         4:
           begin
-            sModul:= 'Kalender_Aufgaben_Jira_Stundenplan';
-            sModulCaption := 'i'  + rs_PCMManager_KalenderStundenplan;
+            sModulCaption := 'iKalender';
             dm_PCM.iModulTab:= 1;
           end;
         5:
           begin
-            sModul:= 'Kalender_Aufgaben_Jira_Stundenplan';
-            sModulCaption := 'i'  + rs_PCMManager_KalenderStundenplan;
-            dm_PCM.iModulTab:= 2;
+            sModulCaption := 'iAufgaben';
+            dm_PCM.iModulTab:= 1;
           end;
         6:
           begin
-            sModul:= 'Kalender_Aufgaben_Jira_Stundenplan';
-            sModulCaption := 'i'  + rs_PCMManager_KalenderStundenplan;
-            dm_PCM.iModulTab:= 4;
+
+            sModulCaption := 'iStundenplan';
+            dm_PCM.iModulTab:= 1;
           end;
         7:
           begin

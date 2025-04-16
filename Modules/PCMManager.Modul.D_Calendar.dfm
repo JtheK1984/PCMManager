@@ -14,34 +14,23 @@ object frm_Calendar: Tfrm_Calendar
   Font.Style = []
   WindowState = wsMaximized
   OnActivate = FormActivate
-  OnDestroy = FormDestroy
-  OnResize = FormResize
   OnShow = FormShow
   TextHeight = 13
   object lactrl_Kalender: TdxLayoutControl
     Left = 0
-    Top = 0
+    Top = 132
     Width = 1999
-    Height = 940
+    Height = 808
     Align = alClient
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
-    object brdckctrl_Kalender: TdxBarDockControl
-      Left = 10000
-      Top = 10000
-      Width = 1957
-      Height = 63
-      Align = dalNone
-      BarManager = brmgr_Kalendar
-      Visible = False
-    end
     object sched_Kalender: TcxScheduler
-      Left = 10000
-      Top = 10000
-      Width = 1957
-      Height = 803
+      Left = 10
+      Top = 10
+      Width = 1979
+      Height = 788
       DateNavigator.RowCount = 6
       ViewDay.Active = True
       ViewDay.AlwaysShowEventTime = True
@@ -77,8 +66,7 @@ object frm_Calendar: Tfrm_Calendar
       ResourceNavigator.ShowButtons = False
       ResourceNavigator.Visibility = snvNever
       Storage = schedDBStrg_Kalender
-      TabOrder = 1
-      Visible = False
+      TabOrder = 0
       OnBeforeDragEvent = sched_KalenderBeforeDragEvent
       OnBeforeSizingEvent = sched_KalenderBeforeSizingEvent
       OnClick = sched_KalenderClick
@@ -87,1087 +75,8 @@ object frm_Calendar: Tfrm_Calendar
       OnKeyDown = sched_KalenderKeyDown
       Selection = 7
       Splitters = {
-        950000007E000000840600008300000010070000010000001507000022030000}
-      StoredClientBounds = {0100000001000000A407000022030000}
-    end
-    object trlst_Aufgaben: TcxTreeList
-      Left = 19
-      Top = 45
-      Width = 1957
-      Height = 107
-      Bands = <
-        item
-        end>
-      Navigator.Buttons.CustomButtons = <>
-      ScrollbarAnnotations.CustomAnnotations = <>
-      TabOrder = 2
-      OnClick = trlst_AufgabenClick
-      Data = {
-        00000500430100000F00000044617461436F6E74726F6C6C6572310200000012
-        000000546378537472696E6756616C7565547970651200000054637853747269
-        6E6756616C75655479706504000000445855464D5400000400000041006C006C
-        00650001445855464D540000070000005400650072006D0069006E0065000001
-        0000003000445855464D5400000800000041007500660067006100620065006E
-        0000010000003000445855464D5400000B0000004E0061006300680072006900
-        63006800740065006E00000100000030000400000000000000080A0200000002
-        000000FFFFFFFFFFFFFFFFFFFFFFFF0100000008080400000004000000FFFFFF
-        FFFFFFFFFFFFFFFFFF0200000008080300000003000000FFFFFFFFFFFFFFFFFF
-        FFFFFF03000000080A0000000000000000FFFFFFFFFFFFFFFFFFFFFFFF1A0804
-        000000}
-      object cxTreeList1Column1: TcxTreeListColumn
-        Caption.Text = 'Aufgaben'
-        Options.Sizing = False
-        Options.VertSizing = False
-        Options.Editing = False
-        Options.TabStop = False
-        Width = 801
-        Position.ColIndex = 0
-        Position.RowIndex = 0
-        Position.BandIndex = 0
-        Summary.FooterSummaryItems = <>
-        Summary.GroupFooterSummaryItems = <>
-      end
-      object cxTreeList1Column2: TcxTreeListColumn
-        Width = 100
-        Position.ColIndex = 1
-        Position.RowIndex = 0
-        Position.BandIndex = 0
-        Summary.FooterSummaryItems = <>
-        Summary.GroupFooterSummaryItems = <>
-      end
-    end
-    object brdckctrl_Aufgaben: TdxBarDockControl
-      Left = 19
-      Top = 152
-      Width = 1957
-      Height = 63
-      Align = dalNone
-      BarManager = brmgr_Kalendar
-    end
-    object cxGrid1: TcxGrid
-      Left = 19
-      Top = 257
-      Width = 1957
-      Height = 334
-      TabOrder = 6
-      LookAndFeel.NativeStyle = False
-      object tvNachrichten: TcxGridDBTableView
-        OnDblClick = tvNachrichtenDblClick
-        Navigator.Buttons.CustomButtons = <>
-        Navigator.Buttons.First.Visible = True
-        Navigator.Buttons.PriorPage.Visible = True
-        Navigator.Buttons.Prior.Visible = True
-        Navigator.Buttons.Next.Visible = True
-        Navigator.Buttons.NextPage.Visible = True
-        Navigator.Buttons.Last.Visible = True
-        Navigator.Buttons.Insert.Visible = True
-        Navigator.Buttons.Delete.Visible = True
-        Navigator.Buttons.Edit.Visible = True
-        Navigator.Buttons.Post.Visible = True
-        Navigator.Buttons.Cancel.Visible = True
-        Navigator.Buttons.Refresh.Visible = True
-        Navigator.Buttons.SaveBookmark.Visible = True
-        Navigator.Buttons.GotoBookmark.Visible = True
-        Navigator.Buttons.Filter.Visible = True
-        ScrollbarAnnotations.CustomAnnotations = <>
-        OnCustomDrawCell = tvNachrichtenCustomDrawCell
-        OnFocusedRecordChanged = tvNachrichtenFocusedRecordChanged
-        DataController.DataSource = dm_PCM.ds_Kalender_Aufgaben
-        DataController.Filter.Options = [fcoCaseInsensitive]
-        DataController.Filter.PercentWildcard = '*'
-        DataController.Filter.UnderscoreWildcard = '?'
-        DataController.Filter.Active = True
-        DataController.KeyFieldNames = 'ID'
-        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-        DataController.Summary.DefaultGroupSummaryItems = <>
-        DataController.Summary.FooterSummaryItems = <>
-        DataController.Summary.SummaryGroups = <>
-        OptionsBehavior.IncSearch = True
-        OptionsCustomize.ColumnsQuickCustomization = True
-        OptionsData.Deleting = False
-        OptionsData.Editing = False
-        OptionsData.Inserting = False
-        OptionsSelection.CellSelect = False
-        OptionsSelection.MultiSelect = True
-        OptionsView.GroupByBox = False
-        OptionsView.HeaderFilterButtonShowMode = fbmButton
-        OptionsView.Indicator = True
-        object tvNachrichtenID: TcxGridDBColumn
-          DataBinding.FieldName = 'ID'
-          Visible = False
-        end
-        object tvNachrichtenTyp: TcxGridDBColumn
-          DataBinding.FieldName = 'Typ'
-          PropertiesClassName = 'TcxImageComboBoxProperties'
-          Properties.Alignment.Horz = taLeftJustify
-          Properties.Items = <
-            item
-              Description = 'Aufgabe'
-              ImageIndex = 2
-              Value = 1
-            end
-            item
-              Description = 'Nachricht'
-              ImageIndex = 1
-              Value = 0
-            end
-            item
-              Description = 'Termin'
-              ImageIndex = 3
-              Value = 2
-            end>
-          Width = 86
-        end
-        object tvNachrichtenStatus: TcxGridDBColumn
-          DataBinding.FieldName = 'Status'
-          Width = 86
-        end
-        object tvNachrichtenCaption: TcxGridDBColumn
-          Caption = 'Betreff'
-          DataBinding.FieldName = 'Caption'
-          Width = 250
-        end
-        object tvNachrichtenAdresse: TcxGridDBColumn
-          DataBinding.FieldName = 'Adresse'
-          Width = 250
-        end
-        object tvNachrichtenAsnprechpartner: TcxGridDBColumn
-          DataBinding.FieldName = 'Asnprechpartner'
-          Width = 250
-        end
-        object tvNachrichtenLocation: TcxGridDBColumn
-          DataBinding.FieldName = 'Location'
-          Width = 200
-        end
-        object tvNachrichtenGesendetAm: TcxGridDBColumn
-          DataBinding.FieldName = 'GesendetAm'
-          SortIndex = 0
-          SortOrder = soDescending
-        end
-        object tvNachrichtenGelesenAm: TcxGridDBColumn
-          DataBinding.FieldName = 'GelesenAm'
-        end
-        object tvNachrichtenJira_Ticket: TcxGridDBColumn
-          DataBinding.FieldName = 'Jira_Ticket'
-          Visible = False
-        end
-      end
-      object tvAuf: TcxGridDBTableView
-        OnDblClick = tvAufDblClick
-        Navigator.Buttons.CustomButtons = <>
-        ScrollbarAnnotations.CustomAnnotations = <>
-        OnCustomDrawCell = tvAufCustomDrawCell
-        OnFocusedRecordChanged = tvAufFocusedRecordChanged
-        DataController.DataSource = dm_PCM.ds_Kalender_Aufgaben
-        DataController.Summary.DefaultGroupSummaryItems = <>
-        DataController.Summary.FooterSummaryItems = <>
-        DataController.Summary.SummaryGroups = <>
-        OptionsBehavior.IncSearch = True
-        OptionsCustomize.ColumnsQuickCustomization = True
-        OptionsData.Deleting = False
-        OptionsData.Editing = False
-        OptionsData.Inserting = False
-        OptionsSelection.CellSelect = False
-        OptionsSelection.MultiSelect = True
-        OptionsView.GroupByBox = False
-        OptionsView.HeaderFilterButtonShowMode = fbmButton
-        OptionsView.Indicator = True
-        object tvAufID: TcxGridDBColumn
-          DataBinding.FieldName = 'ID'
-          Visible = False
-        end
-        object tvAufStatus: TcxGridDBColumn
-          DataBinding.FieldName = 'Status'
-          Options.Sorting = False
-          Width = 70
-        end
-        object tvAufTyp: TcxGridDBColumn
-          DataBinding.FieldName = 'Typ'
-          PropertiesClassName = 'TcxImageComboBoxProperties'
-          Properties.Alignment.Horz = taLeftJustify
-          Properties.Items = <
-            item
-              Description = 'Nachricht'
-              ImageIndex = 1
-              Value = 0
-            end
-            item
-              Description = 'Aufgabe'
-              ImageIndex = 2
-              Value = 1
-            end
-            item
-              Description = 'Termin'
-              ImageIndex = 3
-              Value = 2
-            end>
-          Options.Sorting = False
-          Width = 86
-        end
-        object tvAufStartdatum: TcxGridDBColumn
-          Caption = 'Start Datum'
-          DataBinding.FieldName = 'Startdatum'
-          Options.Sorting = False
-          Width = 80
-        end
-        object tvAufStartZeit: TcxGridDBColumn
-          Caption = 'Start Uhrzeit'
-          DataBinding.FieldName = 'StartZeit'
-          Options.Sorting = False
-          Width = 80
-        end
-        object tvAufEndedatum: TcxGridDBColumn
-          Caption = 'Ende Datum'
-          DataBinding.FieldName = 'Endedatum'
-          SortIndex = 0
-          SortOrder = soAscending
-          Width = 80
-        end
-        object tvAufEndeZeit: TcxGridDBColumn
-          Caption = 'Ende Uhrzeit'
-          DataBinding.FieldName = 'EndeZeit'
-          SortIndex = 1
-          SortOrder = soAscending
-          Width = 80
-        end
-        object tvAufInTagen: TcxGridDBColumn
-          Caption = 'In Tagen'
-          DataBinding.FieldName = 'InTagen'
-          Options.Sorting = False
-          Width = 60
-        end
-        object tvAufID_IC_AufgabenArten: TcxGridDBColumn
-          Caption = 'Art'
-          DataBinding.FieldName = 'ID_IC_AufgabenArten'
-          PropertiesClassName = 'TcxLookupComboBoxProperties'
-          Properties.KeyFieldNames = 'ID'
-          Properties.ListColumns = <
-            item
-              FieldName = 'Bezeichnung'
-            end>
-          Properties.ListSource = dm_PCM.ds_KalenderAufgaben_Arten
-          Options.Sorting = False
-          Width = 100
-        end
-        object tvAufCaption: TcxGridDBColumn
-          Caption = 'Betreff'
-          DataBinding.FieldName = 'Caption'
-          Options.Sorting = False
-          Width = 250
-        end
-        object tvAufID_ADR_Wurzel: TcxGridDBColumn
-          Caption = 'Adresse'
-          DataBinding.FieldName = 'ID_Ansprechpartner'
-          PropertiesClassName = 'TcxLookupComboBoxProperties'
-          Properties.KeyFieldNames = 'ID'
-          Properties.ListColumns = <
-            item
-              FieldName = 'Name'
-            end>
-          Properties.ListSource = dm_PCM.ds_Config_Firmen
-          Options.Sorting = False
-          Width = 200
-        end
-        object tvAufID_Ansprechpartner: TcxGridDBColumn
-          Caption = 'Ansprechpartner'
-          DataBinding.FieldName = 'ID_Ansprechpartner'
-          PropertiesClassName = 'TcxLookupComboBoxProperties'
-          Properties.KeyFieldNames = 'ID'
-          Properties.ListColumns = <
-            item
-              FieldName = 'Name'
-            end>
-          Properties.ListSource = dm_PCM.ds_Kalender_Ansprechpartner
-          Options.Sorting = False
-          Width = 200
-        end
-        object tvAufAufgabenDauer: TcxGridDBColumn
-          Caption = 'Dauer'
-          DataBinding.FieldName = 'AufgabenDauer'
-          Options.Sorting = False
-          Width = 60
-        end
-        object tvAufID_IC_Prioritaeten: TcxGridDBColumn
-          Caption = 'Priorit'#228't'
-          DataBinding.FieldName = 'ID_IC_Prioritaeten'
-          PropertiesClassName = 'TcxLookupComboBoxProperties'
-          Properties.KeyFieldNames = 'ID'
-          Properties.ListColumns = <
-            item
-              FieldName = 'Bezeichnung'
-            end>
-          Properties.ListSource = dm_PCM.ds_KalenderAufgaben_Prio
-          Options.Sorting = False
-          Width = 100
-        end
-        object tvAufLocation: TcxGridDBColumn
-          Caption = 'Ort'
-          DataBinding.FieldName = 'Location'
-          Options.Sorting = False
-          Width = 100
-        end
-        object tvAufJira_Ticket: TcxGridDBColumn
-          Caption = 'Jira Ticket'
-          DataBinding.FieldName = 'Jira_Ticket'
-          Visible = False
-          Width = 200
-        end
-        object tvAufGesendetAm: TcxGridDBColumn
-          Caption = 'Gesendet am'
-          DataBinding.FieldName = 'GesendetAm'
-          Visible = False
-          Width = 120
-        end
-        object tvAufStart: TcxGridDBColumn
-          DataBinding.FieldName = 'Start'
-          Visible = False
-          VisibleForCustomization = False
-        end
-        object tvAufFinish: TcxGridDBColumn
-          DataBinding.FieldName = 'Finish'
-          Visible = False
-          VisibleForCustomization = False
-        end
-      end
-      object cxGrid1Level1: TcxGridLevel
-        GridView = tvNachrichten
-      end
-    end
-    object cxDBTextEdit6: TcxDBTextEdit
-      Left = 67
-      Top = 597
-      TabStop = False
-      DataBinding.DataField = 'Caption'
-      DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
-      ParentFont = False
-      Properties.ReadOnly = True
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      TabOrder = 7
-      Width = 883
-    end
-    object cbxAns: TcxDBLookupComboBox
-      Left = 1046
-      Top = 597
-      TabStop = False
-      DataBinding.DataField = 'ID_Ansprechpartner'
-      DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
-      Properties.KeyFieldNames = 'ID'
-      Properties.ListColumns = <
-        item
-          FieldName = 'Name'
-        end>
-      Properties.ListSource = dm_PCM.ds_Kalender_Ansprechpartner
-      Properties.ReadOnly = True
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      TabOrder = 9
-      Width = 930
-    end
-    object cxDBMemo1: TcxDBRichEdit
-      Left = 19
-      Top = 649
-      DataBinding.DataField = 'Message'
-      DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
-      ParentFont = False
-      Properties.AutoURLDetect = True
-      Properties.PlainText = True
-      Properties.ScrollBars = ssVertical
-      Style.Font.Charset = ANSI_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -13
-      Style.Font.Name = 'Courier New'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      TabOrder = 11
-      Height = 268
-      Width = 1775
-    end
-    object cxGrid5: TcxGrid
-      Left = 1800
-      Top = 649
-      Width = 176
-      Height = 230
-      TabOrder = 12
-      LookAndFeel.NativeStyle = False
-      object cxGrid5DBTableView1: TcxGridDBTableView
-        Navigator.Buttons.CustomButtons = <>
-        Navigator.Buttons.First.Visible = True
-        Navigator.Buttons.PriorPage.Visible = True
-        Navigator.Buttons.Prior.Visible = True
-        Navigator.Buttons.Next.Visible = True
-        Navigator.Buttons.NextPage.Visible = True
-        Navigator.Buttons.Last.Visible = True
-        Navigator.Buttons.Insert.Visible = True
-        Navigator.Buttons.Delete.Visible = True
-        Navigator.Buttons.Edit.Visible = True
-        Navigator.Buttons.Post.Visible = True
-        Navigator.Buttons.Cancel.Visible = True
-        Navigator.Buttons.Refresh.Visible = True
-        Navigator.Buttons.SaveBookmark.Visible = True
-        Navigator.Buttons.GotoBookmark.Visible = True
-        Navigator.Buttons.Filter.Visible = True
-        ScrollbarAnnotations.CustomAnnotations = <>
-        DataController.DataSource = dsWF_Nachrichten_Anhaenge
-        DataController.Summary.DefaultGroupSummaryItems = <>
-        DataController.Summary.FooterSummaryItems = <>
-        DataController.Summary.SummaryGroups = <>
-        OptionsBehavior.IncSearch = True
-        OptionsData.Deleting = False
-        OptionsData.Editing = False
-        OptionsData.Inserting = False
-        OptionsSelection.CellSelect = False
-        OptionsView.CellEndEllipsis = True
-        OptionsView.ColumnAutoWidth = True
-        OptionsView.GroupByBox = False
-        OptionsView.HeaderFilterButtonShowMode = fbmButton
-        OptionsView.Indicator = True
-        object cxGrid5DBTableView1ID: TcxGridDBColumn
-          Tag = 314104256
-          DataBinding.FieldName = 'ID'
-          Visible = False
-        end
-        object cxGrid5DBTableView1ID_Adr_Korrespondenz: TcxGridDBColumn
-          Tag = 313686204
-          DataBinding.FieldName = 'ID_WF_Nachrichten'
-          DataBinding.IsNullValueType = True
-          Visible = False
-        end
-        object cxGrid5DBTableView1Dateiname: TcxGridDBColumn
-          Tag = 315388828
-          DataBinding.FieldName = 'Dateiname'
-          SortIndex = 0
-          SortOrder = soAscending
-          Width = 139
-        end
-        object cxGrid5DBTableView1DateinameSave: TcxGridDBColumn
-          Tag = 315389660
-          DataBinding.FieldName = 'DateinameSave'
-          Visible = False
-        end
-      end
-      object cxGrid5Level1: TcxGridLevel
-        GridView = cxGrid5DBTableView1
-      end
-    end
-    object Image1: TcxImage
-      Left = 1800
-      Top = 885
-      Properties.FitMode = ifmNormal
-      Properties.GraphicTransparency = gtTransparent
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      TabOrder = 13
-      Transparent = True
-      Height = 32
-      Width = 32
-    end
-    object btn_AttachementSave: TcxButton
-      AlignWithMargins = True
-      Left = 1953
-      Top = 885
-      Width = 23
-      Height = 24
-      Margins.Left = 0
-      Margins.Top = 6
-      Margins.Right = 0
-      Margins.Bottom = 6
-      OptionsImage.ImageIndex = 27
-      OptionsImage.Images = dm_PCM.imglst_16x16
-      PaintStyle = bpsGlyph
-      TabOrder = 15
-      OnClick = btn_AttachementSaveClick
-    end
-    object btn_AttachementOpen: TcxButton
-      AlignWithMargins = True
-      Left = 1924
-      Top = 885
-      Width = 23
-      Height = 24
-      Margins.Left = 0
-      Margins.Top = 6
-      Margins.Right = 0
-      Margins.Bottom = 6
-      LookAndFeel.NativeStyle = False
-      OptionsImage.ImageIndex = 26
-      OptionsImage.Images = dm_PCM.imglst_16x16
-      PaintStyle = bpsGlyph
-      TabOrder = 14
-      OnClick = btn_AttachementOpenClick
-    end
-    object img_search: TcxImage
-      Left = 28
-      Top = 224
-      Picture.Data = {
-        0B546478504E47496D61676589504E470D0A1A0A0000000D4948445200000010
-        0000001008060000001FF3FF61000000017352474200AECE1CE9000000046741
-        4D410000B18F0BFC6105000000F249444154384FAD913B0E01611485514A1422
-        9158C08CA15348547A56A0B1825984D882566509A8D5742A4A5A0B9028F94E72
-        88F889479CE4CBCCBDE73E2677327F5514451D58C0114EB0847ED268655DF25A
-        140E6107BD38A9157916A00B6B983024E7D2501468F32E8AE3B25337C5493D8F
-        B782D4A95098FAEC9EC340784DD83B0C8579D4673B7C2A6ACE7E0D85A983151C
-        3ED5BB01BA76D76120BC2A1C5EFE0DCC3EAC7530A76ED2F5F1E630702A942653
-        30015DBBE9F475B39ACF306A8F37155BA1BC2985BD1BC401063052CC8013CCDC
-        F2B9B4D9CD1A227E1A32BB1BF0B721535B9FEB61C8D6E9EFA4CD6A6E8F37A50B
-        8742777EE5CEC36F0000000049454E44AE426082}
-      Properties.ShowFocusRect = False
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      StyleFocused.BorderStyle = ebsNone
-      StyleHot.BorderStyle = ebsNone
-      TabOrder = 4
-      Transparent = True
-      Height = 16
-      Width = 18
-    end
-    object edt_Suche: TcxButtonEdit
-      Left = 52
-      Top = 224
-      AutoSize = False
-      Properties.Buttons = <
-        item
-          Default = True
-          ImageIndex = 6
-          Kind = bkGlyph
-        end>
-      Properties.OnButtonClick = edt_SuchePropertiesButtonClick
-      Properties.OnChange = edt_SuchePropertiesChange
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      TabOrder = 5
-      OnEnter = edt_SucheEnter
-      OnExit = edt_SucheExit
-      Height = 24
-      Width = 1915
-    end
-    object edt_Stundenplan_Klasse: TcxDBTextEdit
-      Left = 10000
-      Top = 10000
-      DataBinding.DataField = 'Klasse'
-      DataBinding.DataSource = ds_Stundenplan
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      TabOrder = 18
-      Visible = False
-      OnExit = btn_StundenplanSaveClick
-      Width = 50
-    end
-    object edt_Stundenplan_Schule: TcxDBTextEdit
-      Left = 10000
-      Top = 10000
-      DataBinding.DataField = 'Schule'
-      DataBinding.DataSource = ds_Stundenplan
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      TabOrder = 17
-      Visible = False
-      OnExit = btn_StundenplanSaveClick
-      Width = 706
-    end
-    object edt_Stundenplan_Schuljahr: TcxDBTextEdit
-      Left = 10000
-      Top = 10000
-      DataBinding.DataField = 'Schuljahr'
-      DataBinding.DataSource = ds_Stundenplan
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      TabOrder = 19
-      Visible = False
-      OnExit = btn_StundenplanSaveClick
-      Width = 100
-    end
-    object grd_Stundenplanuebersicht: TcxGrid
-      Left = 10000
-      Top = 10000
-      Width = 1000
-      Height = 81
-      BorderStyle = cxcbsNone
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 20
-      TabStop = False
-      Visible = False
-      LockedStateImageOptions.Effect = lsieDark
-      LookAndFeel.NativeStyle = False
-      object grdDBTblView_Stundenplanuebersicht: TcxGridDBTableView
-        Navigator.Buttons.CustomButtons = <>
-        FilterBox.CustomizeDialog = False
-        ScrollbarAnnotations.CustomAnnotations = <>
-        DataController.DataSource = ds_Stundenplan
-        DataController.Filter.PercentWildcard = '*'
-        DataController.Filter.UnderscoreWildcard = '?'
-        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-        DataController.Summary.DefaultGroupSummaryItems = <>
-        DataController.Summary.FooterSummaryItems = <
-          item
-            Kind = skCount
-          end>
-        DataController.Summary.SummaryGroups = <
-          item
-            Links = <
-              item
-              end>
-            SummaryItems = <
-              item
-              end>
-          end>
-        OptionsBehavior.IncSearch = True
-        OptionsBehavior.ShowHourglassCursor = False
-        OptionsCustomize.ColumnsQuickCustomization = True
-        OptionsData.Deleting = False
-        OptionsData.Editing = False
-        OptionsData.Inserting = False
-        OptionsSelection.CellSelect = False
-        OptionsView.CellEndEllipsis = True
-        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-        OptionsView.GroupByBox = False
-        OptionsView.HeaderFilterButtonShowMode = fbmButton
-        OptionsView.IndicatorWidth = 14
-        object grdDBTblView_StundenplanuebersichtSchule: TcxGridDBColumn
-          DataBinding.FieldName = 'Schule'
-          DataBinding.IsNullValueType = True
-          SortIndex = 0
-          SortOrder = soAscending
-          Width = 450
-        end
-        object grdDBTblView_StundenplanuebersichtKlasse: TcxGridDBColumn
-          DataBinding.FieldName = 'Klasse'
-          DataBinding.IsNullValueType = True
-          Width = 100
-        end
-        object grdDBTblView_StundenplanuebersichtSchuljahr: TcxGridDBColumn
-          DataBinding.FieldName = 'Schuljahr'
-          DataBinding.IsNullValueType = True
-          Width = 150
-        end
-        object grdDBTblView_StundenplanuebersichtID_Benutzer: TcxGridDBColumn
-          Caption = 'Benutzer'
-          DataBinding.FieldName = 'ID_Benutzer'
-          DataBinding.IsNullValueType = True
-          PropertiesClassName = 'TcxLookupComboBoxProperties'
-          Properties.KeyFieldNames = 'ID'
-          Properties.ListColumns = <
-            item
-              FieldName = 'Benutzer'
-            end>
-          Visible = False
-          VisibleForCustomization = False
-          Width = 250
-        end
-      end
-      object grdlvl_Stundenplanuebersicht: TcxGridLevel
-        GridView = grdDBTblView_Stundenplanuebersicht
-      end
-    end
-    object brdckctrl_Stundenplan: TdxBarDockControl
-      Left = 10000
-      Top = 10000
-      Width = 1000
-      Height = 63
-      Align = dalNone
-      BarManager = brmgr_Kalendar
-      Visible = False
-    end
-    object lucmbbx_Stundenplan_Dienstag: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
-      DataBinding.DataField = 'Dienstag'
-      DataBinding.DataSource = ds_Stundenplan_detail
-      ParentFont = False
-      Properties.KeyFieldNames = 'ID'
-      Properties.ListColumns = <
-        item
-          FieldName = 'Bezeichnung'
-        end>
-      Properties.ListSource = dsSchulFaecher
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      TabOrder = 25
-      Visible = False
-      OnExit = btn_StundeSaveClick
-      Width = 129
-    end
-    object lucmbbx_Stundenplan_Donnerstag: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
-      DataBinding.DataField = 'Donnerstag'
-      DataBinding.DataSource = ds_Stundenplan_detail
-      ParentFont = False
-      Properties.KeyFieldNames = 'ID'
-      Properties.ListColumns = <
-        item
-          FieldName = 'Bezeichnung'
-        end>
-      Properties.ListSource = dsSchulFaecher
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      TabOrder = 27
-      Visible = False
-      OnExit = btn_StundeSaveClick
-      Width = 129
-    end
-    object lucmbbx_Stundenplan_Freitag: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
-      DataBinding.DataField = 'Freitag'
-      DataBinding.DataSource = ds_Stundenplan_detail
-      ParentFont = False
-      Properties.KeyFieldNames = 'ID'
-      Properties.ListColumns = <
-        item
-          FieldName = 'Bezeichnung'
-        end>
-      Properties.ListSource = dsSchulFaecher
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      TabOrder = 28
-      Visible = False
-      OnExit = btn_StundeSaveClick
-      Width = 129
-    end
-    object lucmbbx_Stundenplan_Mittwoch: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
-      DataBinding.DataField = 'Mittwoch'
-      DataBinding.DataSource = ds_Stundenplan_detail
-      ParentFont = False
-      Properties.KeyFieldNames = 'ID'
-      Properties.ListColumns = <
-        item
-          FieldName = 'Bezeichnung'
-        end>
-      Properties.ListSource = dsSchulFaecher
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      TabOrder = 26
-      Visible = False
-      OnExit = btn_StundeSaveClick
-      Width = 129
-    end
-    object lucmbbx_Stundenplan_Montag: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
-      DataBinding.DataField = 'Montag'
-      DataBinding.DataSource = ds_Stundenplan_detail
-      ParentFont = False
-      Properties.KeyFieldNames = 'ID'
-      Properties.ListColumns = <
-        item
-          FieldName = 'Bezeichnung'
-        end>
-      Properties.ListSource = dsSchulFaecher
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      TabOrder = 24
-      Visible = False
-      OnExit = btn_StundeSaveClick
-      Width = 129
-    end
-    object lucmbbx_Stundenplan_Samstag: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
-      DataBinding.DataField = 'Samstag'
-      DataBinding.DataSource = ds_Stundenplan_detail
-      ParentFont = False
-      Properties.KeyFieldNames = 'ID'
-      Properties.ListColumns = <
-        item
-          FieldName = 'Bezeichnung'
-        end>
-      Properties.ListSource = dsSchulFaecher
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      TabOrder = 29
-      Visible = False
-      OnExit = btn_StundeSaveClick
-      Width = 129
-    end
-    object tiEdt_Stundenplan_Bis: TcxDBTimeEdit
-      Left = 10000
-      Top = 10000
-      DataBinding.DataField = 'End'
-      DataBinding.DataSource = ds_Stundenplan_detail
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      TabOrder = 23
-      Visible = False
-      OnExit = btn_StundeSaveClick
-      Width = 70
-    end
-    object tiEdt_Stundenplan_Von: TcxDBTimeEdit
-      Left = 10000
-      Top = 10000
-      DataBinding.DataField = 'Begin'
-      DataBinding.DataSource = ds_Stundenplan_detail
-      ParentFont = False
-      Style.Font.Charset = DEFAULT_CHARSET
-      Style.Font.Color = clWindowText
-      Style.Font.Height = -11
-      Style.Font.Name = 'Tahoma'
-      Style.Font.Style = []
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      Style.IsFontAssigned = True
-      TabOrder = 22
-      Visible = False
-      OnExit = btn_StundeSaveClick
-      Width = 70
-    end
-    object grd_StundenplanFach: TcxGrid
-      Left = 10000
-      Top = 10000
-      Width = 978
-      Height = 467
-      BorderStyle = cxcbsNone
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 30
-      TabStop = False
-      Visible = False
-      LockedStateImageOptions.Effect = lsieDark
-      LookAndFeel.NativeStyle = False
-      object grdDBTblView_Stundenplan: TcxGridDBTableView
-        Navigator.Buttons.CustomButtons = <>
-        FilterBox.CustomizeDialog = False
-        ScrollbarAnnotations.CustomAnnotations = <>
-        DataController.DataSource = ds_Stundenplan_detail
-        DataController.Filter.PercentWildcard = '*'
-        DataController.Filter.UnderscoreWildcard = '?'
-        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-        DataController.Summary.DefaultGroupSummaryItems = <>
-        DataController.Summary.FooterSummaryItems = <
-          item
-            Kind = skCount
-          end>
-        DataController.Summary.SummaryGroups = <
-          item
-            Links = <
-              item
-              end>
-            SummaryItems = <
-              item
-              end>
-          end>
-        OptionsBehavior.IncSearch = True
-        OptionsBehavior.ShowHourglassCursor = False
-        OptionsCustomize.ColumnsQuickCustomization = True
-        OptionsData.Deleting = False
-        OptionsData.Editing = False
-        OptionsData.Inserting = False
-        OptionsSelection.CellSelect = False
-        OptionsView.CellEndEllipsis = True
-        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-        OptionsView.GroupByBox = False
-        OptionsView.HeaderFilterButtonShowMode = fbmButton
-        OptionsView.IndicatorWidth = 14
-        object grdDBTblView_StundenplanBegin: TcxGridDBColumn
-          Caption = 'Beginn'
-          DataBinding.FieldName = 'Begin'
-          DataBinding.IsNullValueType = True
-          OnCustomDrawCell = grdDBTblView_StundenplanBeginCustomDrawCell
-          SortIndex = 0
-          SortOrder = soAscending
-          Width = 70
-        end
-        object grdDBTblView_StundenplanEnd: TcxGridDBColumn
-          Caption = 'Ende'
-          DataBinding.FieldName = 'End'
-          DataBinding.IsNullValueType = True
-          OnCustomDrawCell = grdDBTblView_StundenplanBeginCustomDrawCell
-          Width = 70
-        end
-        object grdDBTblView_StundenplanMontag: TcxGridDBColumn
-          DataBinding.FieldName = 'Montag'
-          DataBinding.IsNullValueType = True
-          PropertiesClassName = 'TcxLookupComboBoxProperties'
-          Properties.KeyFieldNames = 'ID'
-          Properties.ListColumns = <
-            item
-              FieldName = 'Bezeichnung'
-            end>
-          Properties.ListSource = dsSchulFaecher
-          OnCustomDrawCell = grdDBTblView_StundenplanMontagCustomDrawCell
-          Width = 145
-        end
-        object grdDBTblView_StundenplanDienstag: TcxGridDBColumn
-          DataBinding.FieldName = 'Dienstag'
-          DataBinding.IsNullValueType = True
-          PropertiesClassName = 'TcxLookupComboBoxProperties'
-          Properties.KeyFieldNames = 'ID'
-          Properties.ListColumns = <
-            item
-              FieldName = 'Bezeichnung'
-            end>
-          Properties.ListSource = dsSchulFaecher
-          OnCustomDrawCell = grdDBTblView_StundenplanDienstagCustomDrawCell
-          Width = 145
-        end
-        object grdDBTblView_StundenplanMittwoch: TcxGridDBColumn
-          DataBinding.FieldName = 'Mittwoch'
-          DataBinding.IsNullValueType = True
-          PropertiesClassName = 'TcxLookupComboBoxProperties'
-          Properties.KeyFieldNames = 'ID'
-          Properties.ListColumns = <
-            item
-              FieldName = 'Bezeichnung'
-            end>
-          Properties.ListSource = dsSchulFaecher
-          OnCustomDrawCell = grdDBTblView_StundenplanMittwochCustomDrawCell
-          Width = 145
-        end
-        object grdDBTblView_StundenplanDonnerstag: TcxGridDBColumn
-          DataBinding.FieldName = 'Donnerstag'
-          DataBinding.IsNullValueType = True
-          PropertiesClassName = 'TcxLookupComboBoxProperties'
-          Properties.KeyFieldNames = 'ID'
-          Properties.ListColumns = <
-            item
-              FieldName = 'Bezeichnung'
-            end>
-          Properties.ListSource = dsSchulFaecher
-          OnCustomDrawCell = grdDBTblView_StundenplanDonnerstagCustomDrawCell
-          Width = 145
-        end
-        object grdDBTblView_StundenplanFreitag: TcxGridDBColumn
-          DataBinding.FieldName = 'Freitag'
-          DataBinding.IsNullValueType = True
-          PropertiesClassName = 'TcxLookupComboBoxProperties'
-          Properties.KeyFieldNames = 'ID'
-          Properties.ListColumns = <
-            item
-              FieldName = 'Bezeichnung'
-            end>
-          Properties.ListSource = dsSchulFaecher
-          OnCustomDrawCell = grdDBTblView_StundenplanFreitagCustomDrawCell
-          Width = 145
-        end
-        object grdDBTblView_StundenplanSamstag: TcxGridDBColumn
-          DataBinding.FieldName = 'Samstag'
-          DataBinding.IsNullValueType = True
-          PropertiesClassName = 'TcxLookupComboBoxProperties'
-          Properties.KeyFieldNames = 'ID'
-          Properties.ListColumns = <
-            item
-              FieldName = 'Bezeichnung'
-            end>
-          Properties.ListSource = dsSchulFaecher
-          OnCustomDrawCell = grdDBTblView_StundenplanSamstagCustomDrawCell
-          Width = 145
-        end
-      end
-      object grdlvl_Stundenplan: TcxGridLevel
-        GridView = grdDBTblView_Stundenplan
-      end
-    end
-    object brdckCtrl_StundenplanFach: TdxBarDockControl
-      Left = 10000
-      Top = 10000
-      Width = 978
-      Height = 63
-      Align = dalNone
-      BarManager = brmgr_Kalendar
-      Visible = False
-    end
-    object cxDBTextEdit1: TcxDBTextEdit
-      Left = 67
-      Top = 624
-      DataBinding.DataField = 'Adresse'
-      DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      TabOrder = 8
-      Width = 883
-    end
-    object edtJiraTicketNr: TcxDBButtonEdit
-      Left = 1046
-      Top = 622
-      Properties.Buttons = <
-        item
-          Default = True
-          ImageIndex = 47
-          Kind = bkGlyph
-        end>
-      Properties.Images = dm_PCM.imglst_16x16
-      Properties.ReadOnly = True
-      Properties.OnButtonClick = cxDBButtonEdit1PropertiesButtonClick
-      Style.HotTrack = False
-      Style.TransparentBorder = False
-      TabOrder = 10
-      Width = 930
+        950000007E000000840600008300000026070000010000002B07000013030000}
+      StoredClientBounds = {0100000001000000BA07000013030000}
     end
     object lactrl_KalenderGroup_Root: TdxLayoutGroup
       AlignHorz = ahClient
@@ -1177,40 +86,8 @@ object frm_Calendar: Tfrm_Calendar
       ShowBorder = False
       Index = -1
     end
-    object lagrp_KalenderTab: TdxLayoutGroup
-      Parent = lactrl_KalenderGroup_Root
-      AlignHorz = ahClient
-      AlignVert = avClient
-      ItemIndex = 1
-      LayoutDirection = ldTabbed
-      ShowBorder = False
-      OnTabChanged = lagrp_KalenderTabTabChanged
-      Index = 0
-    end
-    object lagrp_Kalender: TdxLayoutGroup
-      Parent = lagrp_KalenderTab
-      AlignHorz = ahClient
-      AlignVert = avClient
-      CaptionOptions.ImageIndex = 10
-      CaptionOptions.Text = 'Kalender'
-      ShowBorder = False
-      Index = 0
-    end
-    object dxLayoutItem1: TdxLayoutItem
-      Parent = lagrp_Kalender
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'brdckctrl_Kalender'
-      CaptionOptions.Visible = False
-      Control = brdckctrl_Kalender
-      ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
-      ControlOptions.OriginalWidth = 1056
-      ControlOptions.ShowBorder = False
-      Index = 0
-    end
     object dxLayoutItem2: TdxLayoutItem
-      Parent = lagrp_Kalender
+      Parent = lactrl_KalenderGroup_Root
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'sched_Kalender'
@@ -1219,608 +96,71 @@ object frm_Calendar: Tfrm_Calendar
       ControlOptions.OriginalHeight = 783
       ControlOptions.OriginalWidth = 1056
       ControlOptions.ShowBorder = False
-      Index = 1
-    end
-    object lagrp_Aufgaben: TdxLayoutGroup
-      Parent = lagrp_KalenderTab
-      AlignHorz = ahClient
-      AlignVert = avClient
-      CaptionOptions.ImageIndex = 58
-      CaptionOptions.Text = 'Aufgaben'
-      ItemIndex = 4
-      Index = 1
-    end
-    object dxLayoutItem3: TdxLayoutItem
-      Parent = lagrp_Aufgaben
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'trlst_Aufgaben'
-      CaptionOptions.Visible = False
-      Control = trlst_Aufgaben
-      ControlOptions.OriginalHeight = 107
-      ControlOptions.OriginalWidth = 1056
-      ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutItem4: TdxLayoutItem
-      Parent = lagrp_Aufgaben
-      AlignHorz = ahClient
-      AlignVert = avTop
-      Offsets.Top = -6
-      CaptionOptions.Text = 'brdckctrl_Aufgaben'
-      CaptionOptions.Visible = False
-      Control = brdckctrl_Aufgaben
-      ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
-      ControlOptions.OriginalWidth = 1056
-      ControlOptions.ShowBorder = False
+  end
+  object dxRibbon1: TdxRibbon
+    Left = 0
+    Top = 0
+    Width = 1999
+    Height = 132
+    BarManager = brmgr_Kalendar
+    Style = rs2019
+    ColorSchemeName = 'Colorful'
+    Contexts = <>
+    TabOrder = 1
+    TabStop = False
+    object dxRibbonTabHome: TdxRibbonTab
+      Active = True
+      Caption = 'Termin'
+      Groups = <
+        item
+          Caption = 'Termin'
+          ToolbarName = 'tb_termin'
+        end
+        item
+          Caption = 'Navigation'
+          ToolbarName = 'tb_Navigation'
+        end
+        item
+          Caption = 'Ansicht'
+          ToolbarName = 'tb_Ansicht'
+        end
+        item
+          Caption = 'Filter'
+          ToolbarName = 'tb_Filter'
+        end>
+      Index = 0
+    end
+    object dxRibbonTabView: TdxRibbonTab
+      Caption = 'Optionen'
+      Groups = <
+        item
+          Caption = 'Zeitintervall'
+          ToolbarName = 'tb_Zeitintervall'
+        end
+        item
+          Caption = 'Layout'
+          ToolbarName = 'tb_Layout'
+        end>
       Index = 1
     end
-    object dxLayoutGroup8: TdxLayoutGroup
-      Parent = lagrp_Aufgaben
-      AlignHorz = ahClient
-      AlignVert = avTop
-      Offsets.Top = -6
-      ItemIndex = 1
-      LayoutDirection = ldHorizontal
+    object dxRibbonTabFile: TdxRibbonTab
+      Caption = 'Drucken'
+      Groups = <
+        item
+          Caption = 'Drucken'
+          ToolbarName = 'tb_Drucken'
+        end>
       Index = 2
     end
-    object dxLayoutItem5: TdxLayoutItem
-      Parent = dxLayoutGroup8
-      AlignHorz = ahLeft
-      AlignVert = avTop
-      CaptionOptions.Text = 'img_search'
-      CaptionOptions.Visible = False
-      Control = img_search
-      ControlOptions.OriginalHeight = 16
-      ControlOptions.OriginalWidth = 18
-      ControlOptions.ShowBorder = False
-      Index = 0
-    end
-    object dxLayoutItem6: TdxLayoutItem
-      Parent = dxLayoutGroup8
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'edt_Suche'
-      CaptionOptions.Visible = False
-      Control = edt_Suche
-      ControlOptions.OriginalHeight = 24
-      ControlOptions.OriginalWidth = 1024
-      ControlOptions.ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutItem7: TdxLayoutItem
-      Parent = lagrp_Aufgaben
-      AlignHorz = ahClient
-      AlignVert = avClient
-      Offsets.Top = -6
-      CaptionOptions.Text = 'cxGrid1'
-      CaptionOptions.Visible = False
-      Control = cxGrid1
-      ControlOptions.OriginalHeight = 315
-      ControlOptions.OriginalWidth = 1050
-      ControlOptions.ShowBorder = False
+    object dxRibbon1Tab1: TdxRibbonTab
+      Caption = 'Import/Export'
+      Groups = <
+        item
+          ToolbarName = 'tb_ImportExport'
+        end>
       Index = 3
-    end
-    object dxLayoutItem8: TdxLayoutItem
-      Parent = dxLayoutGroup4
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Betreff:'
-      Control = cxDBTextEdit6
-      ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 390
-      ControlOptions.ShowBorder = False
-      Index = 0
-    end
-    object dxLayoutItem9: TdxLayoutItem
-      Parent = dxLayoutGroup1
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Ansprechpartner:'
-      Control = cbxAns
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 390
-      ControlOptions.ShowBorder = False
-      Index = 0
-    end
-    object dxLayoutItem13: TdxLayoutItem
-      Parent = dxLayoutGroup5
-      AlignHorz = ahClient
-      AlignVert = avClient
-      CaptionOptions.Text = 'cxDBMemo1'
-      CaptionOptions.Visible = False
-      Control = cxDBMemo1
-      ControlOptions.OriginalHeight = 252
-      ControlOptions.OriginalWidth = 1389
-      ControlOptions.ShowBorder = False
-      Index = 0
-    end
-    object dxLayoutItem14: TdxLayoutItem
-      Parent = dxLayoutGroup9
-      AlignHorz = ahClient
-      AlignVert = avClient
-      CaptionOptions.Text = 'cxGrid5'
-      CaptionOptions.Visible = False
-      Control = cxGrid5
-      ControlOptions.OriginalHeight = 204
-      ControlOptions.OriginalWidth = 176
-      ControlOptions.ShowBorder = False
-      Index = 0
-    end
-    object dxLayoutItem15: TdxLayoutItem
-      Parent = dxLayoutGroup10
-      AlignHorz = ahLeft
-      AlignVert = avTop
-      CaptionOptions.Text = 'Image1'
-      CaptionOptions.Visible = False
-      Control = Image1
-      ControlOptions.OriginalHeight = 32
-      ControlOptions.OriginalWidth = 32
-      ControlOptions.ShowBorder = False
-      Index = 0
-    end
-    object dxLayoutItem16: TdxLayoutItem
-      Parent = dxLayoutGroup10
-      AlignHorz = ahRight
-      AlignVert = avTop
-      CaptionOptions.Visible = False
-      Control = btn_AttachementOpen
-      ControlOptions.OriginalHeight = 24
-      ControlOptions.OriginalWidth = 23
-      ControlOptions.ShowBorder = False
-      Index = 2
-    end
-    object dxLayoutItem17: TdxLayoutItem
-      Parent = dxLayoutGroup10
-      AlignHorz = ahRight
-      AlignVert = avTop
-      CaptionOptions.Text = 'btn_AttachementSave'
-      CaptionOptions.Visible = False
-      Control = btn_AttachementSave
-      ControlOptions.OriginalHeight = 24
-      ControlOptions.OriginalWidth = 23
-      ControlOptions.ShowBorder = False
-      Index = 3
-    end
-    object lagrp_Stundenplan: TdxLayoutGroup
-      Parent = lagrp_KalenderTab
-      AlignHorz = ahClient
-      AlignVert = avClient
-      CaptionOptions.ImageIndex = 14
-      CaptionOptions.Text = 'Stundenplan'
-      Index = 2
-    end
-    object dxLayoutGroup23: TdxLayoutGroup
-      Parent = lagrp_Stundenplan
-      AlignHorz = ahClient
-      AlignVert = avClient
-      CaptionOptions.Text = 'Stundenplan'#252'bersicht'
-      Index = 0
-    end
-    object dxLayoutItem18: TdxLayoutItem
-      Parent = dxLayoutGroup23
-      CaptionOptions.Text = 'brdckctrl_Stundenplan'
-      CaptionOptions.Visible = False
-      Control = brdckctrl_Stundenplan
-      ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
-      ControlOptions.OriginalWidth = 1050
-      ControlOptions.ShowBorder = False
-      Index = 0
-    end
-    object dxLayoutItem19: TdxLayoutItem
-      Parent = dxLayoutGroup11
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Schule:'
-      Control = edt_Stundenplan_Schule
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 640
-      ControlOptions.ShowBorder = False
-      Index = 0
-    end
-    object dxLayoutItem20: TdxLayoutItem
-      Parent = dxLayoutGroup11
-      AlignHorz = ahRight
-      AlignVert = avTop
-      CaptionOptions.Text = 'Klasse:'
-      Control = edt_Stundenplan_Klasse
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 50
-      ControlOptions.ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutItem21: TdxLayoutItem
-      Parent = dxLayoutGroup11
-      AlignHorz = ahRight
-      AlignVert = avTop
-      CaptionOptions.Text = 'Schuljahr:'
-      Control = edt_Stundenplan_Schuljahr
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 100
-      ControlOptions.ShowBorder = False
-      Index = 2
-    end
-    object dxLayoutItem22: TdxLayoutItem
-      Parent = dxLayoutGroup7
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'grd_Stundenplanuebersicht'
-      CaptionOptions.Visible = False
-      Control = grd_Stundenplanuebersicht
-      ControlOptions.OriginalHeight = 81
-      ControlOptions.OriginalWidth = 1050
-      ControlOptions.ShowBorder = False
-      Index = 0
-    end
-    object dxLayoutGroup28: TdxLayoutGroup
-      Parent = dxLayoutGroup23
-      AlignHorz = ahClient
-      AlignVert = avClient
-      CaptionOptions.Text = 'Stundenplan'
-      Index = 3
-    end
-    object dxLayoutItem23: TdxLayoutItem
-      Parent = dxLayoutGroup28
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'brdckCtrl_StundenplanFach'
-      CaptionOptions.Visible = False
-      Control = brdckCtrl_StundenplanFach
-      ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
-      ControlOptions.OriginalWidth = 1050
-      ControlOptions.ShowBorder = False
-      Index = 0
-    end
-    object dxLayoutGroup29: TdxLayoutGroup
-      Parent = dxLayoutGroup28
-      AlignHorz = ahClient
-      AlignVert = avTop
-      LayoutDirection = ldHorizontal
-      Index = 1
-    end
-    object dxLayoutItem24: TdxLayoutItem
-      Parent = dxLayoutGroup12
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'tiEdt_Stundenplan_Von'
-      CaptionOptions.Visible = False
-      Control = tiEdt_Stundenplan_Von
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 70
-      ControlOptions.ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutItem25: TdxLayoutItem
-      Parent = dxLayoutGroup13
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Ende:'
-      CaptionOptions.Visible = False
-      CaptionOptions.Layout = clTop
-      Control = tiEdt_Stundenplan_Bis
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 70
-      ControlOptions.ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutItem26: TdxLayoutItem
-      Parent = dxLayoutGroup14
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Visible = False
-      CaptionOptions.Layout = clTop
-      Control = lucmbbx_Stundenplan_Montag
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 130
-      ControlOptions.ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutItem27: TdxLayoutItem
-      Parent = dxLayoutGroup15
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Dienstag:'
-      CaptionOptions.Visible = False
-      CaptionOptions.Layout = clTop
-      Control = lucmbbx_Stundenplan_Dienstag
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 130
-      ControlOptions.ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutItem28: TdxLayoutItem
-      Parent = dxLayoutGroup16
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Mittwoch:'
-      CaptionOptions.Visible = False
-      CaptionOptions.Layout = clTop
-      Control = lucmbbx_Stundenplan_Mittwoch
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 130
-      ControlOptions.ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutItem29: TdxLayoutItem
-      Parent = dxLayoutGroup17
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Visible = False
-      CaptionOptions.Layout = clTop
-      Control = lucmbbx_Stundenplan_Donnerstag
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 130
-      ControlOptions.ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutItem30: TdxLayoutItem
-      Parent = dxLayoutGroup18
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Freitag:'
-      CaptionOptions.Visible = False
-      CaptionOptions.Layout = clTop
-      Control = lucmbbx_Stundenplan_Freitag
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 130
-      ControlOptions.ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutItem31: TdxLayoutItem
-      Parent = dxLayoutGroup19
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Samstag:'
-      CaptionOptions.Visible = False
-      CaptionOptions.Layout = clTop
-      Control = lucmbbx_Stundenplan_Samstag
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 130
-      ControlOptions.ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutItem32: TdxLayoutItem
-      Parent = dxLayoutGroup28
-      AlignHorz = ahClient
-      AlignVert = avClient
-      CaptionOptions.Text = 'grd_StundenplanFach'
-      CaptionOptions.Visible = False
-      Control = grd_StundenplanFach
-      ControlOptions.OriginalHeight = 552
-      ControlOptions.OriginalWidth = 1050
-      ControlOptions.ShowBorder = False
-      Index = 2
-    end
-    object dxLayoutItem11: TdxLayoutItem
-      Parent = dxLayoutGroup1
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Jira-Ticketnr.:'
-      Control = edtJiraTicketNr
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 121
-      ControlOptions.ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutGroup1: TdxLayoutGroup
-      Parent = dxLayoutGroup3
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
-      ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutGroup3: TdxLayoutGroup
-      Parent = lagrp_Aufgaben
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
-      LayoutDirection = ldHorizontal
-      ShowBorder = False
-      Index = 4
-    end
-    object dxLayoutGroup4: TdxLayoutGroup
-      Parent = dxLayoutGroup3
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
-      ShowBorder = False
-      Index = 0
-    end
-    object dxLayoutGroup5: TdxLayoutGroup
-      Parent = lagrp_Aufgaben
-      AlignHorz = ahClient
-      AlignVert = avClient
-      CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
-      LayoutDirection = ldHorizontal
-      ShowBorder = False
-      Index = 5
-    end
-    object dxLayoutGroup9: TdxLayoutGroup
-      Parent = dxLayoutGroup5
-      AlignHorz = ahRight
-      AlignVert = avClient
-      CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
-      ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutGroup10: TdxLayoutGroup
-      Parent = dxLayoutGroup9
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
-      LayoutDirection = ldHorizontal
-      ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutGroup7: TdxLayoutGroup
-      Parent = dxLayoutGroup23
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      ShowBorder = False
-      Index = 2
-    end
-    object dxLayoutGroup11: TdxLayoutGroup
-      Parent = dxLayoutGroup23
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      LayoutDirection = ldHorizontal
-      ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutGroup12: TdxLayoutGroup
-      Parent = dxLayoutGroup29
-      AlignHorz = ahLeft
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
-      ShowBorder = False
-      Index = 0
-    end
-    object dxLayoutLabeledItem1: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup12
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Beginn:'
-      Index = 0
-    end
-    object dxLayoutLabeledItem2: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup13
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Ende:'
-      Index = 0
-    end
-    object dxLayoutLabeledItem3: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup14
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Montag:'
-      Index = 0
-    end
-    object dxLayoutLabeledItem4: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup15
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Dienstag:'
-      Index = 0
-    end
-    object dxLayoutLabeledItem5: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup16
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Mittwoch'
-      Index = 0
-    end
-    object dxLayoutLabeledItem6: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup17
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Donnerstag:'
-      Index = 0
-    end
-    object dxLayoutLabeledItem7: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup18
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Freitag:'
-      Index = 0
-    end
-    object dxLayoutGroup13: TdxLayoutGroup
-      Parent = dxLayoutGroup29
-      AlignHorz = ahLeft
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutGroup14: TdxLayoutGroup
-      Parent = dxLayoutGroup29
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
-      ShowBorder = False
-      Index = 2
-    end
-    object dxLayoutGroup15: TdxLayoutGroup
-      Parent = dxLayoutGroup29
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
-      ShowBorder = False
-      Index = 3
-    end
-    object dxLayoutGroup16: TdxLayoutGroup
-      Parent = dxLayoutGroup29
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      ShowBorder = False
-      Index = 4
-    end
-    object dxLayoutGroup17: TdxLayoutGroup
-      Parent = dxLayoutGroup29
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
-      ShowBorder = False
-      Index = 5
-    end
-    object dxLayoutGroup18: TdxLayoutGroup
-      Parent = dxLayoutGroup29
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
-      ShowBorder = False
-      Index = 6
-    end
-    object dxLayoutGroup19: TdxLayoutGroup
-      Parent = dxLayoutGroup29
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
-      ShowBorder = False
-      Index = 7
-    end
-    object dxLayoutLabeledItem8: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup19
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Samstag:'
-      Index = 0
-    end
-    object lTypeName: TdxLayoutLabeledItem
-      Parent = dxLayoutGroup10
-      AlignHorz = ahClient
-      AlignVert = avTop
-      Index = 1
-    end
-    object dxLayoutItem33: TdxLayoutItem
-      Parent = dxLayoutGroup4
-      AlignHorz = ahClient
-      AlignVert = avTop
-      CaptionOptions.Text = 'Adresse:'
-      Control = cxDBTextEdit1
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 121
-      ControlOptions.ShowBorder = False
-      Index = 1
     end
   end
   object brpmm_ContextCalender: TdxBarPopupMenu
@@ -1838,30 +178,6 @@ object frm_Calendar: Tfrm_Calendar
     UseOwnFont = False
     Left = 1208
     Top = 456
-    PixelsPerInch = 96
-  end
-  object brpmm_ImportExport: TdxBarPopupMenu
-    BarManager = brmgr_Kalendar
-    ItemLinks = <
-      item
-        Visible = True
-        ItemName = 'btn_CalTerminImport'
-      end
-      item
-        Visible = True
-        ItemName = 'btn_TerminExport'
-      end
-      item
-        Visible = True
-        ItemName = 'btn_CalImportOutlook'
-      end
-      item
-        Visible = True
-        ItemName = 'btn_CalExporttoOutlook'
-      end>
-    UseOwnFont = False
-    Left = 1205
-    Top = 507
     PixelsPerInch = 96
   end
   object brpmm_EventCalender: TdxBarPopupMenu
@@ -1883,31 +199,7 @@ object frm_Calendar: Tfrm_Calendar
   end
   object brpmm_Print: TdxBarPopupMenu
     BarManager = brmgr_Kalendar
-    ItemLinks = <
-      item
-        Visible = True
-        ItemName = 'btn_TagesAnsicht'
-      end
-      item
-        Visible = True
-        ItemName = 'btn_WochenAnsicht'
-      end
-      item
-        Visible = True
-        ItemName = 'btn_MonatsAnsicht'
-      end
-      item
-        Visible = True
-        ItemName = 'pmmbtn_YearView'
-      end
-      item
-        Visible = True
-        ItemName = 'pmmbtn_Agenda'
-      end
-      item
-        Visible = True
-        ItemName = 'dxBarButton1'
-      end>
+    ItemLinks = <>
     UseOwnFont = False
     Left = 1213
     Top = 667
@@ -1925,8 +217,22 @@ object frm_Calendar: Tfrm_Calendar
       'pmContextCalendar'
       'pmEventCalendar'
       'PopupMenu1'
-      'PopupMenu2')
+      'PopupMenu2'
+      'Home | Event'
+      'Home | Navigation'
+      'Home | Arrange'
+      'Home | Group By'
+      'View | Time Scale'
+      'View | Layout'
+      'File | Print')
     Categories.ItemsVisibles = (
+      2
+      2
+      2
+      2
+      2
+      2
+      2
       2
       2
       2
@@ -1934,6 +240,13 @@ object frm_Calendar: Tfrm_Calendar
       2
       2)
     Categories.Visibles = (
+      True
+      True
+      True
+      True
+      True
+      True
+      True
       True
       True
       True
@@ -1953,776 +266,20 @@ object frm_Calendar: Tfrm_Calendar
     Left = 1205
     Top = 347
     PixelsPerInch = 96
-    object tb_Calendar: TdxBar
-      AllowClose = False
-      AllowCustomizing = False
-      AllowQuickCustomizing = False
-      AllowReset = False
-      Caption = 'Agenda'
+    object tb_termin: TdxBar
+      Caption = 'Event'
       CaptionButtons = <>
-      DockControl = brdckctrl_Kalender
-      DockedDockControl = brdckctrl_Kalender
       DockedLeft = 0
       DockedTop = 0
-      FloatLeft = 1123
+      FloatLeft = 2011
       FloatTop = 2
       FloatClientWidth = 0
       FloatClientHeight = 0
-      ItemLinks = <
-        item
-          Visible = True
-          ItemName = 'btn_CalNew'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_CalTag'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_CalArbeitswoche'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_CalWoche'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_CalMonat'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_CalJahr'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_CalTimegrid'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_CalAgenda'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_CalCompleteday'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_CalZurueck'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_CalVor'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_CalFilter'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_CalPrint'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_CalImport'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_CalRefresh'
-        end
-        item
-          Visible = True
-          ItemName = 'dxBarLargeButton1'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_CalAnsicht'
-        end>
-      MultiLine = True
-      OneOnRow = True
-      Row = 0
-      ShowMark = False
-      SizeGrip = False
-      UseOwnFont = False
-      UseRestSpace = True
-      Visible = True
-      WholeRow = False
-    end
-    object tb_stundenplan: TdxBar
-      Caption = 'Custom 2'
-      CaptionButtons = <>
-      DockControl = brdckctrl_Stundenplan
-      DockedDockControl = brdckctrl_Stundenplan
-      DockedLeft = 0
-      DockedTop = 0
-      FloatLeft = 1123
-      FloatTop = 2
-      FloatClientWidth = 0
-      FloatClientHeight = 0
-      ItemLinks = <
-        item
-          Visible = True
-          ItemName = 'btn_StundenplanNew'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_StundenplanSave'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_StundenplanCancel'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_StundenplanDelete'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_StundenplanPrint'
-        end>
-      OneOnRow = True
-      Row = 0
-      ShowMark = False
-      SizeGrip = False
-      UseOwnFont = False
-      UseRestSpace = True
-      Visible = True
-      WholeRow = False
-    end
-    object tb_stundenplanDetail: TdxBar
-      Caption = 'Custom 3'
-      CaptionButtons = <>
-      DockControl = brdckCtrl_StundenplanFach
-      DockedDockControl = brdckCtrl_StundenplanFach
-      DockedLeft = 0
-      DockedTop = 0
-      FloatLeft = 1123
-      FloatTop = 2
-      FloatClientWidth = 0
-      FloatClientHeight = 0
-      ItemLinks = <
-        item
-          Visible = True
-          ItemName = 'btn_StundeNew'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_StundeSave'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_StundeCancel'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_StundeDelete'
-        end>
-      OneOnRow = True
-      Row = 0
-      ShowMark = False
-      SizeGrip = False
-      UseOwnFont = False
-      UseRestSpace = True
-      Visible = True
-      WholeRow = False
-    end
-    object tb_Aufgaben: TdxBar
-      Caption = 'Custom 1'
-      CaptionButtons = <>
-      DockControl = brdckctrl_Aufgaben
-      DockedDockControl = brdckctrl_Aufgaben
-      DockedLeft = 0
-      DockedTop = 0
-      FloatLeft = 999
-      FloatTop = 2
-      FloatClientWidth = 0
-      FloatClientHeight = 0
-      ItemLinks = <
-        item
-          Visible = True
-          ItemName = 'btn_NewMessage'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_NewTask'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_NewEvent'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_JobChange'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_ReadJob'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_DoneJob'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_JobUndone'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_JobsDone'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_JobsImportExportAufgaben'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_JobsRefresh'
-        end
-        item
-          Visible = True
-          ItemName = 'btn_taskMinMax'
-        end>
-      MultiLine = True
-      OneOnRow = True
-      Row = 0
-      ShowMark = False
-      SizeGrip = False
-      UseOwnFont = False
-      UseRestSpace = True
-      Visible = True
-      WholeRow = False
-    end
-    object btn_TagesAnsicht: TdxBarButton
-      Caption = 'Tagesansicht'
-      Category = 0
-      Visible = ivAlways
-      ImageIndex = 67
-      OnClick = btn_TagesAnsichtClick
-    end
-    object btn_WochenAnsicht: TdxBarButton
-      Caption = 'Wochenansicht'
-      Category = 0
-      Visible = ivAlways
-      ImageIndex = 67
-      OnClick = btn_WochenAnsichtClick
-    end
-    object btn_MonatsAnsicht: TdxBarButton
-      Caption = 'Monatsansicht'
-      Category = 0
-      Visible = ivAlways
-      ImageIndex = 67
-      OnClick = btn_MonatsAnsichtClick
-    end
-    object btn_CalNew: TdxBarLargeButton
-      Caption = '&Neuer Termin'
-      Category = 0
-      Hint = 'Neuer Termin'
-      Visible = ivAlways
-      OnClick = btn_CalNewClick
-      AutoGrayScale = False
-      LargeImageIndex = 13
-      Width = 90
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_CalMonat: TdxBarLargeButton
-      Caption = 'Monat'
-      Category = 0
-      Hint = 'Monat'
-      Visible = ivAlways
-      OnClick = btn_CalMonatClick
-      AutoGrayScale = False
-      LargeImageIndex = 42
-      Width = 90
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_CalWoche: TdxBarLargeButton
-      Caption = 'Woche'
-      Category = 0
-      Hint = 'Woche'
-      Visible = ivAlways
-      OnClick = btn_CalWocheClick
-      AutoGrayScale = False
-      LargeImageIndex = 43
-      Width = 90
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_CalArbeitswoche: TdxBarLargeButton
-      Caption = 'Arbeitswoche'
-      Category = 0
-      Hint = 'Arbeitswoche'
-      Visible = ivAlways
-      OnClick = btn_CalArbeitswocheClick
-      AutoGrayScale = False
-      LargeImageIndex = 40
-      Width = 90
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_CalTag: TdxBarLargeButton
-      Caption = 'Tag'
-      Category = 0
-      Hint = 'Tag'
-      Visible = ivAlways
-      OnClick = btn_CalTagClick
-      AutoGrayScale = False
-      LargeImageIndex = 39
-      Width = 90
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_CalJahr: TdxBarLargeButton
-      Caption = 'Jahr'
-      Category = 0
-      Hint = 'Jahr'
-      Visible = ivAlways
-      OnClick = btn_CalJahrClick
-      AutoGrayScale = False
-      LargeImageIndex = 44
-      Width = 90
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_CalAgenda: TdxBarLargeButton
-      Caption = 'Agenda'
-      Category = 0
-      Hint = 'Agenda'
-      Visible = ivAlways
-      OnClick = btn_CalAgendaClick
-      AutoGrayScale = False
-      LargeImageIndex = 7
-      Width = 90
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_CalCompleteday: TdxBarLargeButton
-      Caption = 'Ganzer Tag'
-      Category = 0
-      Hint = 'Ganzer Tag'
-      Visible = ivAlways
-      OnClick = btn_CalArbeitszeitClick
-      AutoGrayScale = False
-      LargeImageIndex = 21
-      Width = 90
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_CalZurueck: TdxBarLargeButton
-      Caption = 'Zur'#252'ck'
-      Category = 0
-      Hint = 'Zur'#252'ck'
-      Visible = ivAlways
-      OnClick = btn_CalZurueckClick
-      AutoGrayScale = False
-      LargeImageIndex = 25
-      Width = 90
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_CalVor: TdxBarLargeButton
-      Caption = 'Vor'
-      Category = 0
-      Hint = 'Vor'
-      Visible = ivAlways
-      OnClick = btn_CalVorClick
-      AutoGrayScale = False
-      LargeImageIndex = 26
-      Width = 90
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_CalFilter: TdxBarLargeButton
-      Caption = 'Filter'
-      Category = 0
-      Hint = 'Filter'
-      Visible = ivAlways
-      OnClick = btn_CalFilterClick
-      AutoGrayScale = False
-      LargeImageIndex = 38
-      Width = 90
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_CalPrint: TdxBarLargeButton
-      Caption = 'Drucken'
-      Category = 0
-      Hint = 'Drucken'
-      Visible = ivAlways
-      ButtonStyle = bsDropDown
-      DropDownMenu = brpmm_Print
-      AutoGrayScale = False
-      LargeImageIndex = 35
-      Width = 90
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_CalImport: TdxBarLargeButton
-      Caption = 'Import/Export'
-      Category = 0
-      Hint = 'Import/Export'
-      Visible = ivAlways
-      ButtonStyle = bsDropDown
-      DropDownMenu = brpmm_ImportExport
-      AutoGrayScale = False
-      LargeImageIndex = 122
-      Width = 90
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_CalAnsicht: TdxBarLargeButton
-      Align = iaRight
-      Caption = 'max. Ansicht'
-      Category = 0
-      Hint = 'max. Ansicht'
-      Visible = ivAlways
-      OnClick = btn_CalAnsichtClick
-      AutoGrayScale = False
-      LargeImageIndex = 32
-      Width = 80
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_StundenplanNew: TdxBarLargeButton
-      Caption = 'Plan anlegen'
-      Category = 0
-      Hint = 'Plan anlegen'
-      Visible = ivAlways
-      OnClick = btn_StundenplanNewClick
-      AutoGrayScale = False
-      LargeImageIndex = 27
-      Width = 125
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_StundenplanPrint: TdxBarLargeButton
-      Caption = 'Plan &drucken'
-      Category = 0
-      Hint = 'Plan drucken'
-      Visible = ivAlways
-      OnClick = btn_StundenplanPrintClick
-      AutoGrayScale = False
-      LargeImageIndex = 35
-      Width = 125
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_StundenplanDelete: TdxBarLargeButton
-      Caption = 'Plan l'#246'schen'
-      Category = 0
-      Hint = 'Plan l'#246'schen'
-      Visible = ivAlways
-      OnClick = btn_StundenplanDeleteClick
-      AutoGrayScale = False
-      LargeImageIndex = 24
-      Width = 125
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_StundenplanCancel: TdxBarLargeButton
-      Caption = 'Abbrechen'
-      Category = 0
-      Hint = 'Abbrechen'
-      Visible = ivAlways
-      OnClick = btn_StundenplanCancelClick
-      AutoGrayScale = False
-      LargeImageIndex = 0
-      Width = 125
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_StundenplanSave: TdxBarLargeButton
-      Caption = 'Plan speichern'
-      Category = 0
-      Hint = 'Plan speichern'
-      Visible = ivAlways
-      OnClick = btn_StundenplanSaveClick
-      AutoGrayScale = False
-      LargeImageIndex = 12
-      Width = 125
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_StundeNew: TdxBarLargeButton
-      Caption = 'Stunde anlegen'
-      Category = 0
-      Hint = 'Stunde anlegen'
-      Visible = ivAlways
-      OnClick = btn_StundeNewClick
-      AutoGrayScale = False
-      LargeImageIndex = 27
-      Width = 125
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_StundeDelete: TdxBarLargeButton
-      Caption = 'Stunde l'#246'schen'
-      Category = 0
-      Hint = 'Stunde l'#246'schen'
-      Visible = ivAlways
-      OnClick = btn_StundeDeleteClick
-      AutoGrayScale = False
-      LargeImageIndex = 24
-      Width = 125
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_StundeCancel: TdxBarLargeButton
-      Caption = 'Abbrechen'
-      Category = 0
-      Hint = 'Abbrechen'
-      Visible = ivAlways
-      OnClick = btn_StundeCancelClick
-      AutoGrayScale = False
-      LargeImageIndex = 0
-      Width = 125
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_StundeSave: TdxBarLargeButton
-      Caption = 'Stunde speichern'
-      Category = 0
-      Hint = 'Stunde speichern'
-      Visible = ivAlways
-      OnClick = btn_StundeSaveClick
-      AutoGrayScale = False
-      LargeImageIndex = 12
-      Width = 125
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_NewTask: TdxBarLargeButton
-      Caption = 'Neue Aufgabe'
-      Category = 0
-      Hint = 'Neue Aufgabe'
-      Visible = ivAlways
-      DropDownMenu = brpmm_Aufgaben
-      OnClick = btn_NewTaskClick
-      AutoGrayScale = False
-      LargeImageIndex = 128
-      Width = 125
-    end
-    object btn_ReadJob: TdxBarLargeButton
-      Caption = 'Gelesen'
-      Category = 0
-      Hint = 'Gelesen'
-      Visible = ivAlways
-      OnClick = btn_ReadJobClick
-      AutoGrayScale = False
-      LargeImageIndex = 126
-      Width = 125
-    end
-    object btn_DoneJob: TdxBarLargeButton
-      Caption = 'Bearbeitet'
-      Category = 0
-      Hint = 'Bearbeitet'
-      Visible = ivAlways
-      OnClick = btn_DoneJobClick
-      AutoGrayScale = False
-      LargeImageIndex = 123
-      Width = 125
-    end
-    object btn_JobUndone: TdxBarLargeButton
-      Caption = 'Unbearbeitet'
-      Category = 0
-      Enabled = False
-      Hint = 'Unbearbeitet'
-      Visible = ivAlways
-      OnClick = btn_JobUndoneClick
-      AutoGrayScale = False
-      LargeImageIndex = 124
-      Width = 125
-    end
-    object btn_JobChange: TdxBarLargeButton
-      Caption = #196'ndern'
-      Category = 0
-      Hint = #196'ndern'
-      Visible = ivAlways
-      OnClick = btn_JobChangeClick
-      AutoGrayScale = False
-      LargeImageIndex = 125
-      Width = 125
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_taskMinMax: TdxBarLargeButton
-      Align = iaRight
-      Caption = '&max. Ansicht'
-      Category = 0
-      Hint = 'max. Ansicht'
-      Visible = ivNever
-      OnClick = btn_taskMinMaxClick
-      AutoGrayScale = False
-      LargeImageIndex = 32
-      Width = 125
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_NewEvent: TdxBarLargeButton
-      Caption = 'Neuer Termin'
-      Category = 0
-      Hint = 'Neuer Termin'
-      Visible = ivAlways
-      OnClick = btn_NewEventClick
-      AutoGrayScale = False
-      LargeImageIndex = 127
-    end
-    object btn_NewMessage: TdxBarLargeButton
-      Caption = 'Neue Nachricht'
-      Category = 0
-      Hint = 'Neue Nachricht'
-      Visible = ivAlways
-      OnClick = btn_NewMessageClick
-      AutoGrayScale = False
-      LargeImageIndex = 129
-    end
-    object btn_JobsDone: TdxBarLargeButton
-      Caption = 'bearbeitete Aufgaben'
-      Category = 0
-      Hint = 'bearbeitete Aufgaben'
-      Visible = ivAlways
-      OnClick = btn_JobsDoneClick
-      AutoGrayScale = False
-      LargeImageIndex = 123
-      Width = 125
-    end
-    object btn_JobsRefresh: TdxBarLargeButton
-      Align = iaRight
-      Caption = 'Aktualisieren'
-      Category = 0
-      Hint = 'Aktualisieren'
-      Visible = ivAlways
-      OnClick = btn_JobsRefreshClick
-      AutoGrayScale = False
-      LargeImageIndex = 6
-      Width = 125
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object btn_JobsImportExportAufgaben: TdxBarLargeButton
-      Caption = 'Import/Export'
-      Category = 0
-      Hint = 'Import/Export'
-      Visible = ivAlways
-      ButtonStyle = bsDropDown
-      DropDownMenu = brpmm_ImportExportAufgaben
-      AutoGrayScale = False
-      LargeImageIndex = 122
-      Width = 125
-      SyncImageIndex = False
-      ImageIndex = -1
-    end
-    object pmmbtn_YearView: TdxBarButton
-      Caption = 'Jahresansicht'
-      Category = 0
-      Hint = 'Jahresansicht'
-      Visible = ivAlways
-      ImageIndex = 67
-      OnClick = pmmbtn_YearViewClick
-    end
-    object pmmbtn_Agenda: TdxBarButton
-      Caption = 'Agenda'
-      Category = 0
-      Hint = 'Agenda'
-      Visible = ivAlways
-      ImageIndex = 67
-      OnClick = pmmbtn_AgendaClick
-    end
-    object btn_CalRefresh: TdxBarLargeButton
-      Caption = 'Aktualisieren'
-      Category = 0
-      Hint = 'Aktualisieren'
-      Visible = ivAlways
-      OnClick = btn_CalRefreshClick
-      AutoGrayScale = False
-      LargeImageIndex = 6
-    end
-    object dxBarLargeButton2: TdxBarLargeButton
-      Align = iaRight
-      Caption = 'New Button'
-      Category = 0
-      Hint = 'New Button'
-      Visible = ivAlways
-      AutoGrayScale = False
-    end
-    object btn_CalTimegrid: TdxBarLargeButton
-      Caption = 'Zeitlinie'
-      Category = 0
-      Hint = 'Zeitlinie'
-      Visible = ivAlways
-      OnClick = btn_CalTimegridClick
-      AutoGrayScale = False
-      LargeImageIndex = 133
-      Width = 90
-    end
-    object dxBarButton1: TdxBarButton
-      Caption = 'New Button'
-      Category = 0
-      Hint = 'New Button'
-      Visible = ivAlways
-    end
-    object cxBarEditItem1: TcxBarEditItem
-      Caption = 'Suche'
-      Category = 0
-      Hint = 'Suche'
-      Visible = ivAlways
-      PropertiesClassName = 'TcxTextEditProperties'
-    end
-    object cxBarEditItem2: TcxBarEditItem
-      Caption = 'Terminsuche'
-      Category = 0
-      Hint = 'Terminsuche'
-      Visible = ivAlways
-      PropertiesClassName = 'TcxLabelProperties'
-    end
-    object cxBarEditItem3: TcxBarEditItem
-      Caption = 'New Item'
-      Category = 0
-      Hint = 'New Item'
-      Visible = ivAlways
-      Width = 250
-      PropertiesClassName = 'TcxButtonEditProperties'
-      Properties.Buttons = <
-        item
-          Default = True
-          Glyph.SourceDPI = 96
-          Glyph.SourceHeight = 23
-          Glyph.SourceWidth = 23
-          Glyph.Data = {
-            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D227574
-            662D38223F3E0D0A3C212D2D2047656E657261746F723A2041646F626520496C
-            6C7573747261746F722032312E312E302C20535647204578706F727420506C75
-            672D496E202E205356472056657273696F6E3A20362E3030204275696C642030
-            2920202D2D3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
-            617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
-            2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
-            77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
-            22307078220D0A092076696577426F783D223020302033322033322220737479
-            6C653D22656E61626C652D6261636B67726F756E643A6E657720302030203332
-            2033323B2220786D6C3A73706163653D227072657365727665223E0D0A3C7374
-            796C6520747970653D22746578742F637373223E0D0A092E426C75657B66696C
-            6C3A233131373744373B7D0D0A092E5265647B66696C6C3A234431314331433B
-            7D0D0A3C2F7374796C653E0D0A3C7061746820636C6173733D22426C75652220
-            643D224D31382C32336C2D342E332C342E35632D302E372C302E372D312E392C
-            302E372D322E362C306C2D362E362D362E36632D302E372D302E372D302E372D
-            312E392C302D322E364C392C31344C31382C32337A222F3E0D0A3C7061746820
-            636C6173733D225265642220643D224D32372E352C31332E374C32302C32316C
-            2D392D396C372E332D372E3563302E372D302E372C312E392D302E372C322E36
-            2C306C362E362C362E364332382E322C31312E382C32382E322C31332C32372E
-            352C31332E377A222F3E0D0A3C2F7376673E0D0A}
-          Kind = bkGlyph
-        end>
-    end
-    object dxBarLargeButton1: TdxBarLargeButton
-      Caption = 'Terminsuche'
-      Category = 0
-      Hint = 'Terminsuche'
-      Visible = ivAlways
       Glyph.SourceDPI = 96
       Glyph.Data = {
         3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D227574
         662D38223F3E0D0A3C212D2D2047656E657261746F723A2041646F626520496C
-        6C7573747261746F722032302E312E302C20535647204578706F727420506C75
+        6C7573747261746F722032312E312E302C20535647204578706F727420506C75
         672D496E202E205356472056657273696F6E3A20362E3030204275696C642030
         2920202D2D3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
         617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
@@ -2731,18 +288,463 @@ object frm_Calendar: Tfrm_Calendar
         22307078220D0A092076696577426F783D223020302033322033322220737479
         6C653D22656E61626C652D6261636B67726F756E643A6E657720302030203332
         2033323B2220786D6C3A73706163653D227072657365727665223E0D0A3C7374
-        796C6520747970653D22746578742F637373223E0D0A092E426C61636B7B6669
-        6C6C3A233732373237323B7D0D0A092E426C75657B66696C6C3A233131373744
-        373B7D0D0A3C2F7374796C653E0D0A3C672069643D224C617965725F32223E0D
-        0A093C7061746820636C6173733D22426C61636B2220643D224D31332C31374C
-        322C32386C322C326C31312D31316C312D316C2D322D324C31332C31377A222F
-        3E0D0A093C673E0D0A09093C673E0D0A0909093C7061746820636C6173733D22
-        426C75652220643D224D32302C34632D342E342C302D382C332E362D382C3873
-        332E362C382C382C3873382D332E362C382D385332342E342C342C32302C347A
-        204D32302C3138632D332E332C302D362D322E372D362D3673322E372D362C36
-        2D3673362C322E372C362C360D0A090909095332332E332C31382C32302C3138
-        7A222F3E0D0A09093C2F673E0D0A093C2F673E0D0A3C2F673E0D0A3C2F737667
-        3E0D0A}
+        796C6520747970653D22746578742F637373223E0D0A092E5265647B66696C6C
+        3A234431314331433B7D0D0A092E426C61636B7B66696C6C3A23373237323732
+        3B7D0D0A092E426C75657B66696C6C3A233131373744373B7D0D0A092E477265
+        656E7B66696C6C3A233033394332333B7D0D0A092E59656C6C6F777B66696C6C
+        3A234646423131353B7D0D0A092E57686974657B66696C6C3A23464646464646
+        3B7D0D0A092E7374307B6F7061636974793A302E353B7D0D0A092E7374317B6F
+        7061636974793A302E37353B7D0D0A3C2F7374796C653E0D0A3C672069643D22
+        4E65774170706F696E746D656E745F325F223E0D0A093C7061746820636C6173
+        733D22426C61636B2220643D224D302C3576323463302C302E362C302E342C31
+        2C312C3168323863302E362C302C312D302E342C312D31563563302D302E362D
+        302E342D312D312D31483143302E342C342C302C342E342C302C357A204D3238
+        2C3238483256386832365632387A222F3E0D0A093C7265637420783D22313622
+        20793D2231362220636C6173733D22526564222077696474683D223422206865
+        696768743D2234222F3E0D0A093C6720636C6173733D22737430223E0D0A0909
+        3C7061746820636C6173733D22426C61636B2220643D224D382C32364834762D
+        3468345632367A204D31342C3232682D34763468345632327A204D32302C3232
+        682D34763468345632327A204D32362C3232682D34763468345632327A204D32
+        302C3130682D34763468345631307A204D32362C3130682D34763468340D0A09
+        09095631307A204D32362C3136682D34763468345631367A204D31342C313668
+        2D34763468345631367A204D382C31364834763468345631367A204D31342C31
+        30682D34763468345631307A204D382C31304834763468345631307A222F3E0D
+        0A093C2F673E0D0A3C2F673E0D0A3C2F7376673E0D0A}
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btn_TerminNew'
+        end>
+      OneOnRow = False
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object tb_Navigation: TdxBar
+      Caption = 'Navigation'
+      CaptionButtons = <>
+      DockedLeft = 112
+      DockedTop = 0
+      FloatLeft = 2011
+      FloatTop = 2
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      Glyph.SourceDPI = 96
+      Glyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D227574
+        662D38223F3E0D0A3C212D2D2047656E657261746F723A2041646F626520496C
+        6C7573747261746F722032312E312E302C20535647204578706F727420506C75
+        672D496E202E205356472056657273696F6E3A20362E3030204275696C642030
+        2920202D2D3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078220D0A092076696577426F783D223020302033322033322220737479
+        6C653D22656E61626C652D6261636B67726F756E643A6E657720302030203332
+        2033323B2220786D6C3A73706163653D227072657365727665223E0D0A3C7374
+        796C6520747970653D22746578742F637373223E0D0A092E5265647B66696C6C
+        3A234431314331433B7D0D0A092E426C61636B7B66696C6C3A23373237323732
+        3B7D0D0A092E426C75657B66696C6C3A233131373744373B7D0D0A092E477265
+        656E7B66696C6C3A233033394332333B7D0D0A092E59656C6C6F777B66696C6C
+        3A234646423131353B7D0D0A092E57686974657B66696C6C3A23464646464646
+        3B7D0D0A092E7374307B6F7061636974793A302E353B7D0D0A092E7374317B6F
+        7061636974793A302E37353B7D0D0A092E7374327B6F7061636974793A302E32
+        353B7D0D0A3C2F7374796C653E0D0A3C672069643D22476F546F546F64617922
+        3E0D0A093C6720636C6173733D22737430223E0D0A09093C7061746820636C61
+        73733D22426C61636B2220643D224D382C32364834762D3468345632367A204D
+        31342C3232682D34763468345632327A204D382C31364834763468345631367A
+        204D31342C3130682D34763468345631307A204D382C31304834763468345631
+        307A222F3E0D0A093C2F673E0D0A093C7265637420783D22342220793D223136
+        2220636C6173733D22526564222077696474683D223422206865696768743D22
+        34222F3E0D0A093C7061746820636C6173733D22426C61636B2220643D224D32
+        382C323276364832563868323676366832563563302D302E362D302E342D312D
+        312D31483143302E342C342C302C342E342C302C3576323463302C302E362C30
+        2E342C312C312C3168323863302E362C302C312D302E342C312D31762D374832
+        387A222F3E0D0A093C706F6C79676F6E20636C6173733D22477265656E222070
+        6F696E74733D2233322C31362031392E372C31362032352E372C31302032302C
+        31302031322C31382032302C32362032352E372C32362031392E372C32302033
+        322C32302009222F3E0D0A3C2F673E0D0A3C2F7376673E0D0A}
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btn_NavigationZurueck'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_NavigationVor'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'btn_NavigationHeute'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_NavigationGehezumDatum'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'btn_NavigationNaechste7Tage'
+        end>
+      OneOnRow = False
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object tb_Ansicht: TdxBar
+      Caption = 'Arrange'
+      CaptionButtons = <>
+      DockedLeft = 600
+      DockedTop = 0
+      FloatLeft = 2011
+      FloatTop = 2
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      Glyph.SourceDPI = 96
+      Glyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D227574
+        662D38223F3E0D0A3C212D2D2047656E657261746F723A2041646F626520496C
+        6C7573747261746F722032312E312E302C20535647204578706F727420506C75
+        672D496E202E205356472056657273696F6E3A20362E3030204275696C642030
+        2920202D2D3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078220D0A092076696577426F783D223020302033322033322220737479
+        6C653D22656E61626C652D6261636B67726F756E643A6E657720302030203332
+        2033323B2220786D6C3A73706163653D227072657365727665223E0D0A3C7374
+        796C6520747970653D22746578742F637373223E0D0A092E5265647B66696C6C
+        3A234431314331433B7D0D0A092E426C61636B7B66696C6C3A23373237323732
+        3B7D0D0A092E426C75657B66696C6C3A233131373744373B7D0D0A092E477265
+        656E7B66696C6C3A233033394332333B7D0D0A092E59656C6C6F777B66696C6C
+        3A234646423131353B7D0D0A092E57686974657B66696C6C3A23464646464646
+        3B7D0D0A092E7374307B6F7061636974793A302E353B7D0D0A092E7374317B6F
+        7061636974793A302E37353B7D0D0A3C2F7374796C653E0D0A3C672069643D22
+        5765656B56696577223E0D0A093C7061746820636C6173733D22426C61636B22
+        20643D224D302C3576323463302C302E362C302E342C312C312C316832386330
+        2E362C302C312D302E342C312D31563563302D302E362D302E342D312D312D31
+        483143302E342C342C302C342E342C302C357A204D32382C3238483256386832
+        365632387A222F3E0D0A093C7061746820636C6173733D22426C75652220643D
+        224D32302C3230682D34762D3468345632307A204D31342C3136682D34763468
+        345631367A204D382C31364834763468345631367A204D32362C3136682D3476
+        3468345631367A222F3E0D0A093C6720636C6173733D22737430223E0D0A0909
+        3C7061746820636C6173733D22426C61636B2220643D224D382C32364834762D
+        3468345632367A204D31342C3232682D34763468345632327A204D32302C3232
+        682D34763468345632327A204D32362C3232682D34763468345632327A204D32
+        302C3130682D34763468345631307A204D32362C3130682D34763468340D0A09
+        09095631307A204D31342C3130682D34763468345631307A204D382C31304834
+        763468345631307A222F3E0D0A093C2F673E0D0A3C2F673E0D0A3C2F7376673E
+        0D0A}
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btn_AnsichtTag'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_AnsichtArbeitswoche'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_AnsichtWoche'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_AnsichtMonat'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_AnsichtJahr'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_AnsichtZeitleiste'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_AnsichtGantt'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_AnsichtAgenda'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_AnsichtMaxMin'
+        end>
+      OneOnRow = False
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object tb_Zeitintervall: TdxBar
+      Caption = 'Zeitintervall'
+      CaptionButtons = <>
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 2011
+      FloatTop = 2
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      Glyph.SourceDPI = 96
+      Glyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D227574
+        662D38223F3E0D0A3C212D2D2047656E657261746F723A2041646F626520496C
+        6C7573747261746F722032312E312E302C20535647204578706F727420506C75
+        672D496E202E205356472056657273696F6E3A20362E3030204275696C642030
+        2920202D2D3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078220D0A092076696577426F783D223020302033322033322220737479
+        6C653D22656E61626C652D6261636B67726F756E643A6E657720302030203332
+        2033323B2220786D6C3A73706163653D227072657365727665223E0D0A3C7374
+        796C6520747970653D22746578742F637373223E0D0A092E5265647B66696C6C
+        3A234431314331433B7D0D0A092E426C61636B7B66696C6C3A23373237323732
+        3B7D0D0A092E426C75657B66696C6C3A233131373744373B7D0D0A092E477265
+        656E7B66696C6C3A233033394332333B7D0D0A092E59656C6C6F777B66696C6C
+        3A234646423131353B7D0D0A092E57686974657B66696C6C3A23464646464646
+        3B7D0D0A092E7374307B6F7061636974793A302E353B7D0D0A092E7374317B6F
+        7061636974793A302E37353B7D0D0A092E7374327B6F7061636974793A302E32
+        353B7D0D0A3C2F7374796C653E0D0A3C672069643D2254696D655363616C6573
+        223E0D0A093C6720636C6173733D22737430223E0D0A09093C7061746820636C
+        6173733D22426C61636B2220643D224D32302C31342E38563134682D34763468
+        304331372C31362E362C31382E342C31352E352C32302C31342E387A222F3E0D
+        0A09093C7265637420783D2231362220793D22382220636C6173733D22426C61
+        636B222077696474683D223422206865696768743D2234222F3E0D0A09093C72
+        65637420783D2231302220793D22382220636C6173733D22426C61636B222077
+        696474683D223422206865696768743D2234222F3E0D0A09093C726563742078
+        3D2232322220793D22382220636C6173733D22426C61636B222077696474683D
+        223422206865696768743D2234222F3E0D0A09093C7265637420783D22342220
+        793D22382220636C6173733D22426C61636B222077696474683D223422206865
+        696768743D2234222F3E0D0A09093C7265637420783D2231302220793D223230
+        2220636C6173733D22426C61636B222077696474683D22342220686569676874
+        3D2234222F3E0D0A09093C7265637420783D22342220793D2232302220636C61
+        73733D22426C61636B222077696474683D223422206865696768743D2234222F
+        3E0D0A09093C7265637420783D22342220793D2231342220636C6173733D2242
+        6C61636B222077696474683D223422206865696768743D2234222F3E0D0A093C
+        2F673E0D0A093C7061746820636C6173733D225265642220643D224D31342C31
+        38682D34762D3468345631387A204D33322C323463302C342E342D332E362C38
+        2D382C38732D382D332E362D382D3873332E362D382C382D385333322C31392E
+        362C33322C32347A204D33302C323463302D332E332D322E372D362D362D360D
+        0A0909732D362C322E372D362C3673322E372C362C362C365333302C32372E33
+        2C33302C32347A222F3E0D0A093C7061746820636C6173733D22426C61636B22
+        20643D224D31342E382C32384831632D302E362C302D312D302E342D312D3156
+        3363302D302E362C302E342D312C312D3168323863302E362C302C312C302E34
+        2C312C31763133632D302E362D302E352D312E332D302E392D322D312E325636
+        48327632306831322E320D0A09094331342E332C32362E372C31342E362C3237
+        2E342C31342E382C32387A204D32382C32347632682D34682D32762D32762D34
+        683276344832387A222F3E0D0A3C2F673E0D0A3C2F7376673E0D0A}
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btn_ZeitintervallZeitintervall'
+        end>
+      OneOnRow = False
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object tb_Layout: TdxBar
+      Caption = 'Layout'
+      CaptionButtons = <>
+      DockedLeft = 109
+      DockedTop = 0
+      FloatLeft = 2011
+      FloatTop = 2
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      Glyph.SourceDPI = 96
+      Glyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D227574
+        662D38223F3E0D0A3C212D2D2047656E657261746F723A2041646F626520496C
+        6C7573747261746F722032312E312E302C20535647204578706F727420506C75
+        672D496E202E205356472056657273696F6E3A20362E3030204275696C642030
+        2920202D2D3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078220D0A092076696577426F783D223020302033322033322220737479
+        6C653D22656E61626C652D6261636B67726F756E643A6E657720302030203332
+        2033323B2220786D6C3A73706163653D227072657365727665223E0D0A3C7374
+        796C6520747970653D22746578742F637373223E0D0A092E5265647B66696C6C
+        3A234431314331433B7D0D0A092E426C61636B7B66696C6C3A23373237323732
+        3B7D0D0A092E426C75657B66696C6C3A233131373744373B7D0D0A092E477265
+        656E7B66696C6C3A233033394332333B7D0D0A092E59656C6C6F777B66696C6C
+        3A234646423131353B7D0D0A092E57686974657B66696C6C3A23464646464646
+        3B7D0D0A092E7374307B6F7061636974793A302E353B7D0D0A092E7374317B6F
+        7061636974793A302E37353B7D0D0A092E7374327B6F7061636974793A302E32
+        353B7D0D0A3C2F7374796C653E0D0A3C672069643D2253657474696E67223E0D
+        0A093C7061746820636C6173733D22426C75652220643D224D33302C3138762D
+        346C2D342E342D302E37632D302E322D302E382D302E352D312E352D302E392D
+        322E316C322E362D332E366C2D322E382D322E386C2D332E362C322E36632D30
+        2E372D302E342D312E342D302E372D322E312D302E394C31382C32682D340D0A
+        09096C2D302E372C342E34632D302E382C302E322D312E352C302E352D322E31
+        2C302E394C372E352C342E374C342E372C372E356C322E362C332E36632D302E
+        342C302E372D302E372C312E342D302E392C322E314C322C313476346C342E34
+        2C302E3763302E322C302E382C302E352C312E352C302E392C322E310D0A0909
+        6C2D322E362C332E366C322E382C322E386C332E362D322E3663302E372C302E
+        342C312E342C302E372C322E312C302E394C31342C333068346C302E372D342E
+        3463302E382D302E322C312E352D302E352C322E312D302E396C332E362C322E
+        366C322E382D322E386C2D322E362D332E360D0A090963302E342D302E372C30
+        2E372D312E342C302E392D322E314C33302C31387A204D31362C3230632D322E
+        322C302D342D312E382D342D3463302D322E322C312E382D342C342D3473342C
+        312E382C342C344332302C31382E322C31382E322C32302C31362C32307A222F
+        3E0D0A3C2F673E0D0A3C2F7376673E0D0A}
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btn_LayoutKomprimiereWochenende'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_LayoutGanzerTag'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_LayoutEreignisse'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'btn_LayoutDatumsnavigation'
+        end>
+      OneOnRow = False
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object tb_Drucken: TdxBar
+      Caption = 'Drucken'
+      CaptionButtons = <>
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 2011
+      FloatTop = 2
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      Glyph.SourceDPI = 96
+      Glyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D227574
+        662D38223F3E0D0A3C212D2D2047656E657261746F723A2041646F626520496C
+        6C7573747261746F722032312E302E322C20535647204578706F727420506C75
+        672D496E202E205356472056657273696F6E3A20362E3030204275696C642030
+        2920202D2D3E0D0A3C7376672076657273696F6E3D22312E31222069643D2251
+        7569636B5F5072696E742220786D6C6E733D22687474703A2F2F7777772E7733
+        2E6F72672F323030302F7376672220786D6C6E733A786C696E6B3D2268747470
+        3A2F2F7777772E77332E6F72672F313939392F786C696E6B2220783D22307078
+        220D0A0920793D22307078222076696577426F783D2230203020333220333222
+        207374796C653D22656E61626C652D6261636B67726F756E643A6E6577203020
+        302033322033323B2220786D6C3A73706163653D227072657365727665223E0D
+        0A3C7374796C6520747970653D22746578742F637373223E0D0A092E426C6163
+        6B7B66696C6C3A233732373237323B7D0D0A3C2F7374796C653E0D0A3C706174
+        6820636C6173733D22426C61636B2220643D224D31302C326831327638683256
+        304838763130683256327A204D32382C38682D32763363302C302E362D302E34
+        2C312D312C314837632D302E362C302D312D302E342D312D3156384834632D31
+        2E312C302D322C302E392D322C327631320D0A0963302C312E312C302E392C32
+        2C322C3268347636683136762D36683463312E312C302C322D302E392C322D32
+        5631304333302C382E392C32392E312C382C32382C387A204D32322C32327632
+        7634483130762D34762D32762D346831325632327A204D32302C3234682D3876
+        3268385632347A204D32302C3230682D3876320D0A0968385632307A222F3E0D
+        0A3C2F7376673E0D0A}
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btn_DruckeTag'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_DruckeWoche'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_DruckeMonat'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_DruckeJahr'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_DruckeAgenda'
+        end>
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object tb_Filter: TdxBar
+      Caption = 'Custom 1'
+      CaptionButtons = <>
+      DockedLeft = 1432
+      DockedTop = 0
+      FloatLeft = 2011
+      FloatTop = 2
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btn_FilterTerminsuche'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_FilterKalender'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_FilterRefresh'
+        end>
+      OneOnRow = False
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object tb_ImportExport: TdxBar
+      Caption = 'Import / Export'
+      CaptionButtons = <>
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 2011
+      FloatTop = 2
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btn_ImportExportImporttoICAL'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_ImportExportExporttoICAL'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_ImportExportImporttoOutlook'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_ImportExportExporttoOutlook'
+        end>
+      OneOnRow = True
+      Row = 0
+      UseOwnFont = False
+      Visible = True
+      WholeRow = False
+    end
+    object btn_FilterTerminsuche: TdxBarLargeButton
+      Caption = 'Termin suchen'
+      Category = 0
+      Hint = 'Termin suchen'
+      Visible = ivAlways
       LargeGlyph.SourceDPI = 96
       LargeGlyph.Data = {
         3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
@@ -2754,80 +756,773 @@ object frm_Calendar: Tfrm_Calendar
         22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
         3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
         303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
-        63653D227072657365727665223E2E426C61636B7B66696C6C3A233732373237
-        323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A23313137
-        3744373B7D3C2F7374796C653E0D0A3C672069643D224C617965725F32223E0D
-        0A09093C7061746820636C6173733D22426C61636B2220643D224D31332C3137
-        4C322C32386C322C326C31312D31316C312D316C2D322D324C31332C31377A22
-        2F3E0D0A09093C673E0D0A0909093C673E0D0A090909093C7061746820636C61
-        73733D22426C75652220643D224D32302C34632D342E342C302D382C332E362D
-        382C3873332E362C382C382C3873382D332E362C382D385332342E342C342C32
-        302C347A204D32302C3138632D332E332C302D362D322E372D362D3673322E37
-        2D362C362D3673362C322E372C362C3620202623393B2623393B2623393B2623
-        393B5332332E332C31382C32302C31387A222F3E0D0A0909093C2F673E0D0A09
-        093C2F673E0D0A093C2F673E0D0A3C2F7376673E0D0A}
-      OnClick = dxBarLargeButton1Click
-      AutoGrayScale = False
+        63653D227072657365727665223E2E477265656E7B66696C6C3A233033394332
+        333B7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A233732
+        373237323B7D262331333B262331303B2623393B2E5265647B66696C6C3A2344
+        31314331433B7D262331333B262331303B2623393B2E59656C6C6F777B66696C
+        6C3A234646423131353B7D262331333B262331303B2623393B2E426C75657B66
+        696C6C3A233131373744373B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D3C2F7374796C653E0D0A3C67206964
+        3D22456E61626C65536561726368223E0D0A09093C7061746820636C6173733D
+        22426C75652220643D224D31342E352C31372E384331302E382C31372E312C38
+        2C31332E392C382C313063302D342E342C332E362D382C382D3873382C332E36
+        2C382C3863302C312E352D302E342C322E382D312E312C3463302C302C302E31
+        2C302C302E312C3020202623393B2623393B63302E372C302C312E342C302E31
+        2C322E312C302E3263302E362D312E332C302E392D322E372C302E392D342E32
+        63302D352E352D342E352D31302D31302D31304331302E352C302C362C342E35
+        2C362C313063302C322E312C302E372C342E312C312E382C352E376C2D372E35
+        2C372E3620202623393B2623393B632D302E342C302E332D302E342C302E392C
+        302C312E336C312E322C312E3263302E332C302E332C302E392C302E332C312E
+        322C306C372E362D372E3663302E392C302E362C312E392C312E312C322E392C
+        312E344331332E362C31392C31342C31382E342C31342E352C31372E387A222F
+        3E0D0A09093C7061746820636C6173733D22426C61636B2220643D224D32332C
+        3136632D342E342C302D382E312C332D392C3763302E392C342C342E362C372C
+        392C3763342E342C302C382E312D332C392D374333312E312C31392C32372E34
+        2C31362C32332C31367A204D32332C3238632D332E332C302D362E312D322D37
+        2D3520202623393B2623393B63302E392D332C332E372D352C372D3573362E31
+        2C322C372C354332392E312C32362C32362E332C32382C32332C32387A204D32
+        332C3236632D312E372C302D332D312E332D332D3373312E332D332C332D3373
+        332C312E332C332C335332342E372C32362C32332C32367A222F3E0D0A093C2F
+        673E0D0A3C2F7376673E0D0A}
+      OnClick = btn_FilterTerminsucheClick
       Width = 90
     end
-    object btn_CalTerminImport: TdxBarButton
-      Caption = 'Importieren (ICAL)'
-      Category = 1
-      Hint = 'Importieren (ICAL)'
+    object btn_FilterKalender: TdxBarLargeButton
+      Caption = 'Kalender filter'
+      Category = 0
+      Hint = 'Kalender filter'
       Visible = ivAlways
-      ImageIndex = 69
-      OnClick = btn_CalTerminImportClick
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E59656C6C6F777B66696C6C3A2346464231
+        31353B7D262331333B262331303B2623393B2E5265647B66696C6C3A23443131
+        4331433B7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A23
+        3732373237323B7D262331333B262331303B2623393B2E426C75657B66696C6C
+        3A233131373744373B7D262331333B262331303B2623393B2E57686974657B66
+        696C6C3A234646464646463B7D262331333B262331303B2623393B2E47726565
+        6E7B66696C6C3A233033394332333B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374317B6F7061636974793A302E353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E32353B7D262331333B262331303B2623393B
+        2E7374337B66696C6C3A234646423131353B7D3C2F7374796C653E0D0A3C6720
+        69643D2243726F73732D446174612D536F7572636546696C746572696E67223E
+        0D0A09093C7061746820636C6173733D2259656C6C6F772220643D224D322C32
+        68323476344C31362C31367631306C2D342C345631364C322C3656327A204D32
+        342C3330632D332E332C302D362D302E392D362D32763263302C312E312C322E
+        372C322C362C3273362D302E392C362D32762D3220202623393B2623393B4333
+        302C32392E312C32372E332C33302C32342C33307A204D32342C3236632D332E
+        332C302D362D302E392D362D32763263302C312E312C322E372C322C362C3273
+        362D302E392C362D32762D324333302C32352E312C32372E332C32362C32342C
+        32367A204D32342C3136632D332E332C302D362C302E392D362C322020262339
+        3B2623393B763463302C312E312C322E372C322C362C3273362D302E392C362D
+        32762D344333302C31362E392C32372E332C31362C32342C31367A222F3E0D0A
+        093C2F673E0D0A3C2F7376673E0D0A}
+      OnClick = btn_FilterKalenderClick
+      Width = 90
     end
-    object btn_TerminExport: TdxBarButton
-      Caption = 'Exportieren (FTP)'
-      Category = 1
-      Hint = 'Exportieren (FTP)'
+    object btn_AnsichtMaxMin: TdxBarLargeButton
+      Caption = 'max. Ansicht'
+      Category = 0
+      Hint = 'max. Ansicht'
       Visible = ivAlways
-      ImageIndex = 68
-      OnClick = btn_TerminExportClick
+      OnClick = btn_AnsichtMaxMinClick
+      LargeImageIndex = 32
+      Width = 90
     end
-    object btn_CalImportOutlook: TdxBarButton
-      Caption = 'Importieren (Outlook)'
-      Category = 1
-      Hint = 'Importieren (Outlook)'
+    object btn_FilterRefresh: TdxBarLargeButton
+      Caption = 'Kalender aktualisieren'
+      Category = 0
+      Hint = 'Kalender aktualisieren'
       Visible = ivAlways
-      ImageIndex = 69
-      OnClick = btn_CalImportOutlookClick
+      OnClick = btn_FilterRefreshClick
+      LargeImageIndex = 6
     end
-    object btn_CalExporttoOutlook: TdxBarButton
-      Caption = 'Exportieren (Outlook)'
-      Category = 1
-      Hint = 'Exportieren (Outlook)'
+    object btn_ImportExportImporttoICAL: TdxBarLargeButton
+      Caption = 'Importieren ICAL'
+      Category = 0
+      Hint = 'Importieren ICAL'
       Visible = ivAlways
-      ImageIndex = 68
-      OnClick = btn_CalExporttoOutlookClick
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E32353B7D3C2F7374796C653E0D0A3C672069
+        643D226943616C656E646172496D706F7274223E0D0A09093C7061746820636C
+        6173733D225265642220643D224D32312C3132682D317634682D36762D344838
+        76344832762D344831632D302E352C302D312C302E352D312C31763568326831
+        386832762D354332322C31322E352C32312E352C31322C32312C31327A222F3E
+        0D0A09093C7061746820636C6173733D22426C61636B2220643D224D32322C31
+        3876313363302C302E352D302E352C312D312C314831632D302E352C302D312D
+        302E352D312D3156313868327631326831385631384832327A204D362C313048
+        34763468325631307A204D31382C3130682D32763468325631307A204D392C32
+        31763120202623393B2623393B683176366832762D38682D314C392C32317A22
+        2F3E0D0A09093C706F6C79676F6E20636C6173733D22477265656E2220706F69
+        6E74733D2233322C342032342C342032342C302031362C362032342C31322032
+        342C382033322C38202623393B222F3E0D0A093C2F673E0D0A3C2F7376673E0D
+        0A}
+      OnClick = btn_ImportExportImporttoICALClick
+      Width = 90
+    end
+    object btn_ImportExportExporttoICAL: TdxBarLargeButton
+      Caption = 'Exportieren ICAL (FTP)'
+      Category = 0
+      Hint = 'Exportieren ICAL (FTP)'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E32353B7D3C2F7374796C653E0D0A3C672069
+        643D226943616C656E6461724578706F7274223E0D0A09093C7061746820636C
+        6173733D225265642220643D224D32312C3132682D317634682D36762D344838
+        76344832762D344831632D302E352C302D312C302E352D312C31763568326831
+        386832762D354332322C31322E352C32312E352C31322C32312C31327A222F3E
+        0D0A09093C7061746820636C6173733D22426C61636B2220643D224D32322C31
+        3876313363302C302E352D302E352C312D312C314831632D302E352C302D312D
+        302E352D312D3156313868327631326831385631384832327A204D362C313048
+        34763468325631307A204D31382C3130682D32763468325631307A204D392C32
+        31763120202623393B2623393B683176366832762D38682D314C392C32317A22
+        2F3E0D0A09093C706F6C79676F6E20636C6173733D22477265656E2220706F69
+        6E74733D2231362C342032342C342032342C302033322C362032342C31322032
+        342C382031362C38202623393B222F3E0D0A093C2F673E0D0A3C2F7376673E0D
+        0A}
+      OnClick = btn_ImportExportExporttoICALClick
+      Width = 90
+    end
+    object btn_ImportExportImporttoOutlook: TdxBarLargeButton
+      Caption = 'Importieren Outlook'
+      Category = 0
+      Hint = 'Importieren Outlook'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E32353B7D3C2F7374796C653E0D0A3C672069
+        643D224F75746C6F6F6B496D706F7274223E0D0A09093C706F6C79676F6E2063
+        6C6173733D22477265656E2220706F696E74733D2233322C342032342C342032
+        342C302031362C362032342C31322032342C382033322C38202623393B222F3E
+        0D0A09093C7061746820636C6173733D22426C75652220643D224D32352C3134
+        48313456384C302C31322E325632386C31342C34762D3668313163302E352C30
+        2C312D302E352C312D315631354332362C31342E352C32352E352C31342C3235
+        2C31347A204D392E322C32322E3943382E362C32332E362C372E392C32342C37
+        2C323420202623393B2623393B632D302E392C302D312E362D302E342D322E32
+        2D312E3143342E332C32322E322C342C32312E332C342C32302E3163302D312E
+        322C302E332D322E322C302E382D3343352E342C31362E342C362E312C31362C
+        372E312C313663302E392C302C312E362C302E342C322E312C312E3120202623
+        393B2623393B63302E352C302E372C302E382C312E372C302E382C322E384331
+        302C32312E322C392E372C32322E322C392E322C32322E397A204D31342C3136
+        68396C2D362C346C2D332D325631367A204D32342C3234483134762D346C332C
+        326C372D342E365632347A204D382E342C31372E3920202623393B2623393B63
+        302E332C302E352C302E352C312E322C302E352C322E3163302C302E392D302E
+        322C312E362D302E352C322E31632D302E332C302E352D302E382C302E382D31
+        2E342C302E38632D302E362C302D312D302E332D312E342D302E3853352E312C
+        32302E392C352E312C323020202623393B2623393B63302D302E392C302E322D
+        312E362C302E352D322E3143362C31372E342C362E352C31372E312C372C3137
+        2E3143372E362C31372E312C382E312C31372E342C382E342C31372E397A222F
+        3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
+      OnClick = btn_ImportExportImporttoOutlookClick
+      Width = 90
+    end
+    object btn_ImportExportExporttoOutlook: TdxBarLargeButton
+      Caption = 'Exportieren Outlook'
+      Category = 0
+      Hint = 'Exportieren Outlook'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E32353B7D3C2F7374796C653E0D0A3C672069
+        643D224F75746C6F6F6B4578706F7274223E0D0A09093C706F6C79676F6E2063
+        6C6173733D22477265656E2220706F696E74733D2231362C342032342C342032
+        342C302033322C362032342C31322032342C382031362C38202623393B222F3E
+        0D0A09093C7061746820636C6173733D22426C75652220643D224D32352C3134
+        48313456384C302C31322E325632386C31342C34762D3668313163302E352C30
+        2C312D302E352C312D315631354332362C31342E352C32352E352C31342C3235
+        2C31347A204D392E322C32322E3943382E362C32332E362C372E392C32342C37
+        2C323420202623393B2623393B632D302E392C302D312E362D302E342D322E32
+        2D312E3143342E332C32322E322C342C32312E332C342C32302E3163302D312E
+        322C302E332D322E322C302E382D3343352E342C31362E342C362E312C31362C
+        372E312C313663302E392C302C312E362C302E342C322E312C312E3120202623
+        393B2623393B63302E352C302E372C302E382C312E372C302E382C322E384331
+        302C32312E322C392E372C32322E322C392E322C32322E397A204D31342C3136
+        68396C2D362C346C2D332D325631367A204D32342C3234483134762D346C332C
+        326C372D342E365632347A204D382E342C31372E3920202623393B2623393B63
+        302E332C302E352C302E352C312E322C302E352C322E3163302C302E392D302E
+        322C312E362D302E352C322E31632D302E332C302E352D302E382C302E382D31
+        2E342C302E38632D302E362C302D312D302E332D312E342D302E3853352E312C
+        32302E392C352E312C323020202623393B2623393B63302D302E392C302E322D
+        312E362C302E352D322E3143362C31372E342C362E352C31372E312C372C3137
+        2E3143372E362C31372E312C382E312C31372E342C382E342C31372E397A222F
+        3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
+      OnClick = btn_ImportExportExporttoOutlookClick
+      Width = 90
+    end
+    object btn_DruckeTag: TdxBarLargeButton
+      Caption = 'Drucke Tag'
+      Category = 0
+      Hint = 'Drucke Tag'
+      Visible = ivAlways
+      Glyph.SourceDPI = 96
+      Glyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E32353B7D3C2F7374796C653E0D0A3C672069
+        643D225072696E745F315F223E0D0A09093C7061746820636C6173733D22426C
+        61636B2220643D224D31302C346831327638683256324838763130683256347A
+        204D32382C3130682D32763363302C302E362D302E342C312D312C314837632D
+        302E362C302D312D302E342D312D31762D334834632D312E312C302D322C302E
+        392D322C3276313220202623393B2623393B63302C312E312C302E392C322C32
+        2C3268347634683136762D34683463312E312C302C322D302E392C322D325631
+        324333302C31302E392C32392E312C31302C32382C31307A204D32322C323476
+        327632483130762D32762D32762D346831325632347A222F3E0D0A093C2F673E
+        0D0A3C2F7376673E0D0A}
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+        F40000001974455874536F6674776172650041646F626520496D616765526561
+        647971C9653C0000000E744558745469746C65005072696E7465723BE7BF61C5
+        0000060E49444154785EA5575D885655177EF63967DEF9719A19474B25132C8B
+        4253340AEBD31C6FA22ECAFA2C2F0A2A90BAC8E0B32E02454292309A1B2914FA
+        A5FAAE0215ED2AA48B52502B27C902514C4AC2149CE6CF99F7ECFF662DF739FB
+        BC338C32B45F16FBBCFBACB39F673D6B9DF5EE5778EF511D42089E0024FFFFEA
+        E43789487A00A0F4F23EDCF6FC2987033C2F476F7235D61CDEF8F4038F00D0E4
+        35112FC3D423F11E3DCF3EBE14FF667CB2EFC4C301C7C4D51B136005AC7130E3
+        A6ADE77062EC31C24ABCE142A08832CB048C62DC946E4C83009BD0C6C23AC039
+        8702CA5614F4258B08EA4B221E894B417B503000307D02DAC27B22C1092E0119
+        4408A002CA978522E42380D479286510A39F660A9431701EB01CB60F51062270
+        013F824E54C50A571048A64C8110626A05A481731ED64559F9D3081C5411D55A
+        60BF3401A4525505C4F8F0D753403428A00D835BEB0248008D05588245E048D0
+        A6099434054E1A1E7561F65502822D4AD504A04549CDE0C63A5E74938B0E4088
+        3EBEFFC5353F2739059811FA800260825972CA0AE0B7777DB960DEFC85BD499A
+        3E74B2EFE8BC2C4D906B4D05185210A078765172462B6A44444504F8592935FE
+        B775D739E53C962C79E09256F90FA7FA8E6CF974F7F6F3442A23F077DEDFBF78
+        E1ED771CBE7FE96D9D7366B5E3E8B1EFB072CDA3F8B5EF34AC454841D1E97CB8
+        0E33A2228249943A700AB4D6B877E51A7CFFED213CFFE47D73FFBA32F2444747
+        7B4FEB8C8EC776BFFB7A1FE7A6AB7BCE5BF72DB9B573F6CC36B4B664503287CC
+        C748BE5201067200A7A290BF943E10E49548D4596E64BC5F2EEB68AE65987953
+        2BFEB37C61C7E5CBFD6F02788609382FD6D69A520C8DD4D1DED60C994B68A970
+        FEF471BCF4CA31DE3144DC303C1AAA718ACE082C5BB108B22E91652986477334
+        8DCF495A5B0DA0C629D0D677E4B96686843238308081FE2B58D9B3B652A395DD
+        85C06436C14F54FDC063A0BF1F4383039C26671C7265A08D6BA3E0B908294FCA
+        58A469C28D477887F3674E23A3DB2241ADB9B944C9B20C69C68F4594CA30C6C0
+        1A53DE564A722AACD19C3A6D1D943665836205B46646686AF2ECB46CF19D3871
+        F22CB2A65A0CB46CBFF1BBE0B28B5D398AC5BE10A1414955C78A65F7502DB129
+        E3A075242094B630E3A633CB15FFC273EB70E2A79DA88F198E5888099D34961B
+        E2989416EEA25A4B24C260E30BEBB9204B2C6523015A90E39666AC04E6CC9D8B
+        8FF7ECC07B7BBEC0A95FCEA2FFEF01C0314678DD62C40DFDB1580BBD607677D7
+        78E47763F3AB2FA2B3AB93D24CF23396368659730AE80B31CBB2849C98694BDB
+        0C6CDBB2096992909AD31C9188751435171EAF694D249840AC01564019A44440
+        3928BE09D4651455548B7D8A122C1510D552684C9854960B90300B0584739E19
+        266982BAD2CC1055A0384F7F343E4B386CCEFB58032453AE2D92D420CF0DA4B1
+        31E2881CC98809D106867E821F8212A8DCCF35EF0FEF7CAC0147795296F35D57
+        865F93DD1F1CC4D9737FDE30F2C9E9996C772D9A8F4D2FAF2347C2E1343BEFA2
+        028E9B033722D4254B84EEEE0E2C5FBA18BB766CC087C7FBD1DE928640A85780
+        BB9A711E17071545C692F26F86A319181ED1E8FDEF02BCBAE5337475B66234B4
+        62C221730EA502CCC6180B651202E782DCF0D42AEC3DF02388A8B216D288B2B0
+        1CCF1E57256D14081138EF4514F9C3EBAD2D2D58BFEE418C49CD7EFC96595B1C
+        747D025097344363B9E64621B56532172E0FD2CC9129EDB8854AE383919FC768
+        5E9C9A598140C6C3B385C0ACC3854B833C33B8F1A8E70ACE99E1E23C90FFF1DB
+        2FAF8DD5EBBD02C92C78C038032973B4B6B5C107023273C50184A264F9A58E6B
+        0CD8609ED51B1A18C6A71F1D44ADB90D2211EC6BAD19B872F1CC3600578940FD
+        D0FEDEFD00BE06500BC7325A6FDDBC7DEFCF14A1A4E8875579D47200A474C839
+        7CC20F469F401081C8CDB7CCC281CF37AF0230128E62FC387D27CBC2E2552252
+        3917A6005AB4E11CE38D35F318189573A1AD9C4C7DE517C9230E1FD202E0F780
+        618940304B46047C5C2C0693704AE547B6EEDCB7BAE10F072AC064AE7218291D
+        CB53228C564703F868C068E078BD7FC744AE2958FC399C304FBD560AA601E4D3
+        FD77EC2BF95211609209DC78B818F9E4F10F4824A6D94EC853CD000000004945
+        4E44AE426082}
+      OnClick = btn_DruckeTagClick
+      Width = 90
+    end
+    object btn_DruckeWoche: TdxBarLargeButton
+      Caption = 'Drucke Woche'
+      Category = 0
+      Hint = 'Drucke Woche'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+        F40000001974455874536F6674776172650041646F626520496D616765526561
+        647971C9653C0000000E744558745469746C65005072696E7465723BE7BF61C5
+        0000060E49444154785EA5575D885655177EF63967DEF9719A19474B25132C8B
+        4253340AEBD31C6FA22ECAFA2C2F0A2A90BAC8E0B32E02454292309A1B2914FA
+        A5FAAE0215ED2AA48B52502B27C902514C4AC2149CE6CF99F7ECFF662DF739FB
+        BC338C32B45F16FBBCFBACB39F673D6B9DF5EE5778EF511D42089E0024FFFFEA
+        E43789487A00A0F4F23EDCF6FC2987033C2F476F7235D61CDEF8F4038F00D0E4
+        35112FC3D423F11E3DCF3EBE14FF667CB2EFC4C301C7C4D51B136005AC7130E3
+        A6ADE77062EC31C24ABCE142A08832CB048C62DC946E4C83009BD0C6C23AC039
+        8702CA5614F4258B08EA4B221E894B417B503000307D02DAC27B22C1092E0119
+        4408A002CA978522E42380D479286510A39F660A9431701EB01CB60F51062270
+        013F824E54C50A571048A64C8110626A05A481731ED64559F9D3081C5411D55A
+        60BF3401A4525505C4F8F0D753403428A00D835BEB0248008D05588245E048D0
+        A6099434054E1A1E7561F65502822D4AD504A04549CDE0C63A5E74938B0E4088
+        3EBEFFC5353F2739059811FA800260825972CA0AE0B7777DB960DEFC85BD499A
+        3E74B2EFE8BC2C4D906B4D05185210A078765172462B6A44444504F8592935FE
+        B775D739E53C962C79E09256F90FA7FA8E6CF974F7F6F3442A23F077DEDFBF78
+        E1ED771CBE7FE96D9D7366B5E3E8B1EFB072CDA3F8B5EF34AC454841D1E97CB8
+        0E33A2228249943A700AB4D6B877E51A7CFFED213CFFE47D73FFBA32F2444747
+        7B4FEB8C8EC776BFFB7A1FE7A6AB7BCE5BF72DB9B573F6CC36B4B664503287CC
+        C748BE5201067200A7A290BF943E10E49548D4596E64BC5F2EEB68AE65987953
+        2BFEB37C61C7E5CBFD6F02788609382FD6D69A520C8DD4D1DED60C994B68A970
+        FEF471BCF4CA31DE3144DC303C1AAA718ACE082C5BB108B22E91652986477334
+        8DCF495A5B0DA0C629D0D677E4B96686843238308081FE2B58D9B3B652A395DD
+        85C06436C14F54FDC063A0BF1F4383039C26671C7265A08D6BA3E0B908294FCA
+        58A469C28D477887F3674E23A3DB2241ADB9B944C9B20C69C68F4594CA30C6C0
+        1A53DE564A722AACD19C3A6D1D943665836205B46646686AF2ECB46CF19D3871
+        F22CB2A65A0CB46CBFF1BBE0B28B5D398AC5BE10A1414955C78A65F7502DB129
+        E3A075242094B630E3A633CB15FFC273EB70E2A79DA88F198E5888099D34961B
+        E2989416EEA25A4B24C260E30BEBB9204B2C6523015A90E39666AC04E6CC9D8B
+        8FF7ECC07B7BBEC0A95FCEA2FFEF01C0314678DD62C40DFDB1580BBD607677D7
+        78E47763F3AB2FA2B3AB93D24CF23396368659730AE80B31CBB2849C98694BDB
+        0C6CDBB2096992909AD31C9188751435171EAF694D249840AC01564019A44440
+        3928BE09D4651455548B7D8A122C1510D552684C9854960B90300B0584739E19
+        266982BAD2CC1055A0384F7F343E4B386CCEFB58032453AE2D92D420CF0DA4B1
+        31E2881CC98809D106867E821F8212A8DCCF35EF0FEF7CAC0147795296F35D57
+        865F93DD1F1CC4D9737FDE30F2C9E9996C772D9A8F4D2FAF2347C2E1343BEFA2
+        028E9B033722D4254B84EEEE0E2C5FBA18BB766CC087C7FBD1DE928640A85780
+        BB9A711E17071545C692F26F86A319181ED1E8FDEF02BCBAE5337475B66234B4
+        62C221730EA502CCC6180B651202E782DCF0D42AEC3DF02388A8B216D288B2B0
+        1CCF1E57256D14081138EF4514F9C3EBAD2D2D58BFEE418C49CD7EFC96595B1C
+        747D025097344363B9E64621B56532172E0FD2CC9129EDB8854AE383919FC768
+        5E9C9A598140C6C3B385C0ACC3854B833C33B8F1A8E70ACE99E1E23C90FFF1DB
+        2FAF8DD5EBBD02C92C78C038032973B4B6B5C107023273C50184A264F9A58E6B
+        0CD8609ED51B1A18C6A71F1D44ADB90D2211EC6BAD19B872F1CC3600578940FD
+        D0FEDEFD00BE06500BC7325A6FDDBC7DEFCF14A1A4E8875579D47200A474C839
+        7CC20F469F401081C8CDB7CCC281CF37AF0230128E62FC387D27CBC2E2552252
+        3917A6005AB4E11CE38D35F318189573A1AD9C4C7DE517C9230E1FD202E0F780
+        618940304B46047C5C2C0693704AE547B6EEDCB7BAE10F072AC064AE7218291D
+        CB53228C564703F868C068E078BD7FC744AE2958FC399C304FBD560AA601E4D3
+        FD77EC2BF95211609209DC78B818F9E4F10F4824A6D94EC853CD000000004945
+        4E44AE426082}
+      OnClick = btn_DruckeWocheClick
+      Width = 90
+    end
+    object btn_DruckeMonat: TdxBarLargeButton
+      Caption = 'Drucke Monat'
+      Category = 0
+      Hint = 'Drucke Monat'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+        F40000001974455874536F6674776172650041646F626520496D616765526561
+        647971C9653C0000000E744558745469746C65005072696E7465723BE7BF61C5
+        0000060E49444154785EA5575D885655177EF63967DEF9719A19474B25132C8B
+        4253340AEBD31C6FA22ECAFA2C2F0A2A90BAC8E0B32E02454292309A1B2914FA
+        A5FAAE0215ED2AA48B52502B27C902514C4AC2149CE6CF99F7ECFF662DF739FB
+        BC338C32B45F16FBBCFBACB39F673D6B9DF5EE5778EF511D42089E0024FFFFEA
+        E43789487A00A0F4F23EDCF6FC2987033C2F476F7235D61CDEF8F4038F00D0E4
+        35112FC3D423F11E3DCF3EBE14FF667CB2EFC4C301C7C4D51B136005AC7130E3
+        A6ADE77062EC31C24ABCE142A08832CB048C62DC946E4C83009BD0C6C23AC039
+        8702CA5614F4258B08EA4B221E894B417B503000307D02DAC27B22C1092E0119
+        4408A002CA978522E42380D479286510A39F660A9431701EB01CB60F51062270
+        013F824E54C50A571048A64C8110626A05A481731ED64559F9D3081C5411D55A
+        60BF3401A4525505C4F8F0D753403428A00D835BEB0248008D05588245E048D0
+        A6099434054E1A1E7561F65502822D4AD504A04549CDE0C63A5E74938B0E4088
+        3EBEFFC5353F2739059811FA800260825972CA0AE0B7777DB960DEFC85BD499A
+        3E74B2EFE8BC2C4D906B4D05185210A078765172462B6A44444504F8592935FE
+        B775D739E53C962C79E09256F90FA7FA8E6CF974F7F6F3442A23F077DEDFBF78
+        E1ED771CBE7FE96D9D7366B5E3E8B1EFB072CDA3F8B5EF34AC454841D1E97CB8
+        0E33A2228249943A700AB4D6B877E51A7CFFED213CFFE47D73FFBA32F2444747
+        7B4FEB8C8EC776BFFB7A1FE7A6AB7BCE5BF72DB9B573F6CC36B4B664503287CC
+        C748BE5201067200A7A290BF943E10E49548D4596E64BC5F2EEB68AE65987953
+        2BFEB37C61C7E5CBFD6F02788609382FD6D69A520C8DD4D1DED60C994B68A970
+        FEF471BCF4CA31DE3144DC303C1AAA718ACE082C5BB108B22E91652986477334
+        8DCF495A5B0DA0C629D0D677E4B96686843238308081FE2B58D9B3B652A395DD
+        85C06436C14F54FDC063A0BF1F4383039C26671C7265A08D6BA3E0B908294FCA
+        58A469C28D477887F3674E23A3DB2241ADB9B944C9B20C69C68F4594CA30C6C0
+        1A53DE564A722AACD19C3A6D1D943665836205B46646686AF2ECB46CF19D3871
+        F22CB2A65A0CB46CBFF1BBE0B28B5D398AC5BE10A1414955C78A65F7502DB129
+        E3A075242094B630E3A633CB15FFC273EB70E2A79DA88F198E5888099D34961B
+        E2989416EEA25A4B24C260E30BEBB9204B2C6523015A90E39666AC04E6CC9D8B
+        8FF7ECC07B7BBEC0A95FCEA2FFEF01C0314678DD62C40DFDB1580BBD607677D7
+        78E47763F3AB2FA2B3AB93D24CF23396368659730AE80B31CBB2849C98694BDB
+        0C6CDBB2096992909AD31C9188751435171EAF694D249840AC01564019A44440
+        3928BE09D4651455548B7D8A122C1510D552684C9854960B90300B0584739E19
+        266982BAD2CC1055A0384F7F343E4B386CCEFB58032453AE2D92D420CF0DA4B1
+        31E2881CC98809D106867E821F8212A8DCCF35EF0FEF7CAC0147795296F35D57
+        865F93DD1F1CC4D9737FDE30F2C9E9996C772D9A8F4D2FAF2347C2E1343BEFA2
+        028E9B033722D4254B84EEEE0E2C5FBA18BB766CC087C7FBD1DE928640A85780
+        BB9A711E17071545C692F26F86A319181ED1E8FDEF02BCBAE5337475B66234B4
+        62C221730EA502CCC6180B651202E782DCF0D42AEC3DF02388A8B216D288B2B0
+        1CCF1E57256D14081138EF4514F9C3EBAD2D2D58BFEE418C49CD7EFC96595B1C
+        747D025097344363B9E64621B56532172E0FD2CC9129EDB8854AE383919FC768
+        5E9C9A598140C6C3B385C0ACC3854B833C33B8F1A8E70ACE99E1E23C90FFF1DB
+        2FAF8DD5EBBD02C92C78C038032973B4B6B5C107023273C50184A264F9A58E6B
+        0CD8609ED51B1A18C6A71F1D44ADB90D2211EC6BAD19B872F1CC3600578940FD
+        D0FEDEFD00BE06500BC7325A6FDDBC7DEFCF14A1A4E8875579D47200A474C839
+        7CC20F469F401081C8CDB7CCC281CF37AF0230128E62FC387D27CBC2E2552252
+        3917A6005AB4E11CE38D35F318189573A1AD9C4C7DE517C9230E1FD202E0F780
+        618940304B46047C5C2C0693704AE547B6EEDCB7BAE10F072AC064AE7218291D
+        CB53228C564703F868C068E078BD7FC744AE2958FC399C304FBD560AA601E4D3
+        FD77EC2BF95211609209DC78B818F9E4F10F4824A6D94EC853CD000000004945
+        4E44AE426082}
+      OnClick = btn_DruckeMonatClick
+      Width = 90
+    end
+    object btn_DruckeJahr: TdxBarLargeButton
+      Caption = 'Drucke Jahr'
+      Category = 0
+      Hint = 'Drucke Jahr'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+        F40000001974455874536F6674776172650041646F626520496D616765526561
+        647971C9653C0000000E744558745469746C65005072696E7465723BE7BF61C5
+        0000060E49444154785EA5575D885655177EF63967DEF9719A19474B25132C8B
+        4253340AEBD31C6FA22ECAFA2C2F0A2A90BAC8E0B32E02454292309A1B2914FA
+        A5FAAE0215ED2AA48B52502B27C902514C4AC2149CE6CF99F7ECFF662DF739FB
+        BC338C32B45F16FBBCFBACB39F673D6B9DF5EE5778EF511D42089E0024FFFFEA
+        E43789487A00A0F4F23EDCF6FC2987033C2F476F7235D61CDEF8F4038F00D0E4
+        35112FC3D423F11E3DCF3EBE14FF667CB2EFC4C301C7C4D51B136005AC7130E3
+        A6ADE77062EC31C24ABCE142A08832CB048C62DC946E4C83009BD0C6C23AC039
+        8702CA5614F4258B08EA4B221E894B417B503000307D02DAC27B22C1092E0119
+        4408A002CA978522E42380D479286510A39F660A9431701EB01CB60F51062270
+        013F824E54C50A571048A64C8110626A05A481731ED64559F9D3081C5411D55A
+        60BF3401A4525505C4F8F0D753403428A00D835BEB0248008D05588245E048D0
+        A6099434054E1A1E7561F65502822D4AD504A04549CDE0C63A5E74938B0E4088
+        3EBEFFC5353F2739059811FA800260825972CA0AE0B7777DB960DEFC85BD499A
+        3E74B2EFE8BC2C4D906B4D05185210A078765172462B6A44444504F8592935FE
+        B775D739E53C962C79E09256F90FA7FA8E6CF974F7F6F3442A23F077DEDFBF78
+        E1ED771CBE7FE96D9D7366B5E3E8B1EFB072CDA3F8B5EF34AC454841D1E97CB8
+        0E33A2228249943A700AB4D6B877E51A7CFFED213CFFE47D73FFBA32F2444747
+        7B4FEB8C8EC776BFFB7A1FE7A6AB7BCE5BF72DB9B573F6CC36B4B664503287CC
+        C748BE5201067200A7A290BF943E10E49548D4596E64BC5F2EEB68AE65987953
+        2BFEB37C61C7E5CBFD6F02788609382FD6D69A520C8DD4D1DED60C994B68A970
+        FEF471BCF4CA31DE3144DC303C1AAA718ACE082C5BB108B22E91652986477334
+        8DCF495A5B0DA0C629D0D677E4B96686843238308081FE2B58D9B3B652A395DD
+        85C06436C14F54FDC063A0BF1F4383039C26671C7265A08D6BA3E0B908294FCA
+        58A469C28D477887F3674E23A3DB2241ADB9B944C9B20C69C68F4594CA30C6C0
+        1A53DE564A722AACD19C3A6D1D943665836205B46646686AF2ECB46CF19D3871
+        F22CB2A65A0CB46CBFF1BBE0B28B5D398AC5BE10A1414955C78A65F7502DB129
+        E3A075242094B630E3A633CB15FFC273EB70E2A79DA88F198E5888099D34961B
+        E2989416EEA25A4B24C260E30BEBB9204B2C6523015A90E39666AC04E6CC9D8B
+        8FF7ECC07B7BBEC0A95FCEA2FFEF01C0314678DD62C40DFDB1580BBD607677D7
+        78E47763F3AB2FA2B3AB93D24CF23396368659730AE80B31CBB2849C98694BDB
+        0C6CDBB2096992909AD31C9188751435171EAF694D249840AC01564019A44440
+        3928BE09D4651455548B7D8A122C1510D552684C9854960B90300B0584739E19
+        266982BAD2CC1055A0384F7F343E4B386CCEFB58032453AE2D92D420CF0DA4B1
+        31E2881CC98809D106867E821F8212A8DCCF35EF0FEF7CAC0147795296F35D57
+        865F93DD1F1CC4D9737FDE30F2C9E9996C772D9A8F4D2FAF2347C2E1343BEFA2
+        028E9B033722D4254B84EEEE0E2C5FBA18BB766CC087C7FBD1DE928640A85780
+        BB9A711E17071545C692F26F86A319181ED1E8FDEF02BCBAE5337475B66234B4
+        62C221730EA502CCC6180B651202E782DCF0D42AEC3DF02388A8B216D288B2B0
+        1CCF1E57256D14081138EF4514F9C3EBAD2D2D58BFEE418C49CD7EFC96595B1C
+        747D025097344363B9E64621B56532172E0FD2CC9129EDB8854AE383919FC768
+        5E9C9A598140C6C3B385C0ACC3854B833C33B8F1A8E70ACE99E1E23C90FFF1DB
+        2FAF8DD5EBBD02C92C78C038032973B4B6B5C107023273C50184A264F9A58E6B
+        0CD8609ED51B1A18C6A71F1D44ADB90D2211EC6BAD19B872F1CC3600578940FD
+        D0FEDEFD00BE06500BC7325A6FDDBC7DEFCF14A1A4E8875579D47200A474C839
+        7CC20F469F401081C8CDB7CCC281CF37AF0230128E62FC387D27CBC2E2552252
+        3917A6005AB4E11CE38D35F318189573A1AD9C4C7DE517C9230E1FD202E0F780
+        618940304B46047C5C2C0693704AE547B6EEDCB7BAE10F072AC064AE7218291D
+        CB53228C564703F868C068E078BD7FC744AE2958FC399C304FBD560AA601E4D3
+        FD77EC2BF95211609209DC78B818F9E4F10F4824A6D94EC853CD000000004945
+        4E44AE426082}
+      OnClick = btn_DruckeJahrClick
+      Width = 90
+    end
+    object btn_DruckeAgenda: TdxBarLargeButton
+      Caption = 'Drucke Agenda'
+      Category = 0
+      Hint = 'Drucke Agenda'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
+        F40000001974455874536F6674776172650041646F626520496D616765526561
+        647971C9653C0000000E744558745469746C65005072696E7465723BE7BF61C5
+        0000060E49444154785EA5575D885655177EF63967DEF9719A19474B25132C8B
+        4253340AEBD31C6FA22ECAFA2C2F0A2A90BAC8E0B32E02454292309A1B2914FA
+        A5FAAE0215ED2AA48B52502B27C902514C4AC2149CE6CF99F7ECFF662DF739FB
+        BC338C32B45F16FBBCFBACB39F673D6B9DF5EE5778EF511D42089E0024FFFFEA
+        E43789487A00A0F4F23EDCF6FC2987033C2F476F7235D61CDEF8F4038F00D0E4
+        35112FC3D423F11E3DCF3EBE14FF667CB2EFC4C301C7C4D51B136005AC7130E3
+        A6ADE77062EC31C24ABCE142A08832CB048C62DC946E4C83009BD0C6C23AC039
+        8702CA5614F4258B08EA4B221E894B417B503000307D02DAC27B22C1092E0119
+        4408A002CA978522E42380D479286510A39F660A9431701EB01CB60F51062270
+        013F824E54C50A571048A64C8110626A05A481731ED64559F9D3081C5411D55A
+        60BF3401A4525505C4F8F0D753403428A00D835BEB0248008D05588245E048D0
+        A6099434054E1A1E7561F65502822D4AD504A04549CDE0C63A5E74938B0E4088
+        3EBEFFC5353F2739059811FA800260825972CA0AE0B7777DB960DEFC85BD499A
+        3E74B2EFE8BC2C4D906B4D05185210A078765172462B6A44444504F8592935FE
+        B775D739E53C962C79E09256F90FA7FA8E6CF974F7F6F3442A23F077DEDFBF78
+        E1ED771CBE7FE96D9D7366B5E3E8B1EFB072CDA3F8B5EF34AC454841D1E97CB8
+        0E33A2228249943A700AB4D6B877E51A7CFFED213CFFE47D73FFBA32F2444747
+        7B4FEB8C8EC776BFFB7A1FE7A6AB7BCE5BF72DB9B573F6CC36B4B664503287CC
+        C748BE5201067200A7A290BF943E10E49548D4596E64BC5F2EEB68AE65987953
+        2BFEB37C61C7E5CBFD6F02788609382FD6D69A520C8DD4D1DED60C994B68A970
+        FEF471BCF4CA31DE3144DC303C1AAA718ACE082C5BB108B22E91652986477334
+        8DCF495A5B0DA0C629D0D677E4B96686843238308081FE2B58D9B3B652A395DD
+        85C06436C14F54FDC063A0BF1F4383039C26671C7265A08D6BA3E0B908294FCA
+        58A469C28D477887F3674E23A3DB2241ADB9B944C9B20C69C68F4594CA30C6C0
+        1A53DE564A722AACD19C3A6D1D943665836205B46646686AF2ECB46CF19D3871
+        F22CB2A65A0CB46CBFF1BBE0B28B5D398AC5BE10A1414955C78A65F7502DB129
+        E3A075242094B630E3A633CB15FFC273EB70E2A79DA88F198E5888099D34961B
+        E2989416EEA25A4B24C260E30BEBB9204B2C6523015A90E39666AC04E6CC9D8B
+        8FF7ECC07B7BBEC0A95FCEA2FFEF01C0314678DD62C40DFDB1580BBD607677D7
+        78E47763F3AB2FA2B3AB93D24CF23396368659730AE80B31CBB2849C98694BDB
+        0C6CDBB2096992909AD31C9188751435171EAF694D249840AC01564019A44440
+        3928BE09D4651455548B7D8A122C1510D552684C9854960B90300B0584739E19
+        266982BAD2CC1055A0384F7F343E4B386CCEFB58032453AE2D92D420CF0DA4B1
+        31E2881CC98809D106867E821F8212A8DCCF35EF0FEF7CAC0147795296F35D57
+        865F93DD1F1CC4D9737FDE30F2C9E9996C772D9A8F4D2FAF2347C2E1343BEFA2
+        028E9B033722D4254B84EEEE0E2C5FBA18BB766CC087C7FBD1DE928640A85780
+        BB9A711E17071545C692F26F86A319181ED1E8FDEF02BCBAE5337475B66234B4
+        62C221730EA502CCC6180B651202E782DCF0D42AEC3DF02388A8B216D288B2B0
+        1CCF1E57256D14081138EF4514F9C3EBAD2D2D58BFEE418C49CD7EFC96595B1C
+        747D025097344363B9E64621B56532172E0FD2CC9129EDB8854AE383919FC768
+        5E9C9A598140C6C3B385C0ACC3854B833C33B8F1A8E70ACE99E1E23C90FFF1DB
+        2FAF8DD5EBBD02C92C78C038032973B4B6B5C107023273C50184A264F9A58E6B
+        0CD8609ED51B1A18C6A71F1D44ADB90D2211EC6BAD19B872F1CC3600578940FD
+        D0FEDEFD00BE06500BC7325A6FDDBC7DEFCF14A1A4E8875579D47200A474C839
+        7CC20F469F401081C8CDB7CCC281CF37AF0230128E62FC387D27CBC2E2552252
+        3917A6005AB4E11CE38D35F318189573A1AD9C4C7DE517C9230E1FD202E0F780
+        618940304B46047C5C2C0693704AE547B6EEDCB7BAE10F072AC064AE7218291D
+        CB53228C564703F868C068E078BD7FC744AE2958FC399C304FBD560AA601E4D3
+        FD77EC2BF95211609209DC78B818F9E4F10F4824A6D94EC853CD000000004945
+        4E44AE426082}
+      OnClick = btn_DruckeAgendaClick
+      Width = 90
     end
     object btn_TerminNeu: TdxBarButton
-      Caption = 'Termin erstellen'
+      Caption = 'Neuer Termin'
       Category = 2
+      Hint = 'Neuer Termin'
       Visible = ivAlways
+      Glyph.SourceDPI = 96
+      Glyph.SourceHeight = 16
+      Glyph.SourceWidth = 16
+      Glyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E32353B7D3C2F7374796C653E0D0A3C672069
+        643D224E65774170706F696E746D656E745F325F223E0D0A09093C7061746820
+        636C6173733D22426C61636B2220643D224D302C3576323463302C302E362C30
+        2E342C312C312C3168323863302E362C302C312D302E342C312D31563563302D
+        302E362D302E342D312D312D31483143302E342C342C302C342E342C302C357A
+        204D32382C3238483256386832365632387A222F3E0D0A09093C726563742078
+        3D2231362220793D2231362220636C6173733D22526564222077696474683D22
+        3422206865696768743D2234222F3E0D0A09093C6720636C6173733D22737430
+        223E0D0A0909093C7061746820636C6173733D22426C61636B2220643D224D38
+        2C32364834762D3468345632367A204D31342C3232682D34763468345632327A
+        204D32302C3232682D34763468345632327A204D32362C3232682D3476346834
+        5632327A204D32302C3130682D34763468345631307A204D32362C3130682D34
+        7634683420202623393B2623393B2623393B5631307A204D32362C3136682D34
+        763468345631367A204D31342C3136682D34763468345631367A204D382C3136
+        4834763468345631367A204D31342C3130682D34763468345631307A204D382C
+        31304834763468345631307A222F3E0D0A09093C2F673E0D0A093C2F673E0D0A
+        3C2F7376673E0D0A}
       ImageIndex = 78
       OnClick = btn_TerminNeuClick
     end
     object btn_TerminToday: TdxBarButton
+      Action = dxSchedulerGoToToday
       Caption = 'Heute'
       Category = 2
-      Visible = ivAlways
-      ImageIndex = 77
-      OnClick = btn_TerminTodayClick
+      Glyph.SourceDPI = 96
+      Glyph.SourceHeight = 16
+      Glyph.SourceWidth = 16
+      Glyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E477265656E7B66696C6C3A233033394332
+        333B7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A233732
+        373237323B7D262331333B262331303B2623393B2E7374307B6F706163697479
+        3A302E353B7D3C2F7374796C653E0D0A3C672069643D22546F646179223E0D0A
+        09093C7061746820636C6173733D22426C61636B2220643D224D302C35763234
+        63302C302E362C302E342C312C312C3168323863302E362C302C312D302E342C
+        312D31563563302D302E362D302E342D312D312D31483143302E342C342C302C
+        342E342C302C357A204D32382C3238483256386832365632387A222F3E0D0A09
+        093C7265637420783D2231302220793D2231362220636C6173733D2247726565
+        6E222077696474683D223422206865696768743D2234222F3E0D0A09093C6720
+        636C6173733D22737430223E0D0A0909093C7061746820636C6173733D22426C
+        61636B2220643D224D382C32364834762D3468345632367A204D31342C323268
+        2D34763468345632327A204D32302C3232682D34763468345632327A204D3236
+        2C3232682D34763468345632327A204D32302C3130682D34763468345631307A
+        204D32362C3130682D347634683420202623393B2623393B2623393B5631307A
+        204D32362C3136682D34763468345631367A204D32302C3136682D3476346834
+        5631367A204D382C31364834763468345631367A204D31342C3130682D347634
+        68345631307A204D382C31304834763468345631307A222F3E0D0A09093C2F67
+        3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
     end
     object btn_Terminchange: TdxBarButton
       Caption = 'Termin '#228'ndern'
       Category = 3
       Visible = ivAlways
-      ImageIndex = 74
+      Glyph.SourceDPI = 96
+      Glyph.SourceHeight = 16
+      Glyph.SourceWidth = 16
+      Glyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E59656C6C6F777B66696C6C3A2346464231
+        31353B7D262331333B262331303B2623393B2E5265647B66696C6C3A23443131
+        4331433B7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A23
+        3732373237323B7D262331333B262331303B2623393B2E57686974657B66696C
+        6C3A234646464646463B7D3C2F7374796C653E0D0A3C7061746820636C617373
+        3D2259656C6C6F772220643D224D342C32324C31382C386C362C364C31302C32
+        384C342C32327A222F3E0D0A3C7061746820636C6173733D225265642220643D
+        224D31382E312C386C362D366C362C366C2D362C364C31382E312C387A222F3E
+        0D0A3C706F6C79676F6E20636C6173733D2257686974652220706F696E74733D
+        2231302C323620382C323620382C323420362C323420362C323220342C323220
+        332E322C32352E3220362E382C32382E382031302C323820222F3E0D0A3C706F
+        6C79676F6E20636C6173733D22426C61636B2220706F696E74733D22322C3330
+        20362E382C32382E3820332E322C32352E3220222F3E0D0A3C2F7376673E0D0A}
       OnClick = btn_TerminchangeClick
     end
     object btn_TerminDelete: TdxBarButton
       Caption = 'Termin l'#246'schen'
       Category = 3
       Visible = ivAlways
-      ImageIndex = 76
+      Glyph.SourceDPI = 96
+      Glyph.SourceHeight = 16
+      Glyph.SourceWidth = 16
+      Glyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D2244
+        656C6574652220786D6C6E733D22687474703A2F2F7777772E77332E6F72672F
+        323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F7777
+        772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D22
+        307078222076696577426F783D2230203020333220333222207374796C653D22
+        656E61626C652D6261636B67726F756E643A6E6577203020302033322033323B
+        2220786D6C3A73706163653D227072657365727665223E262331333B26233130
+        3B3C7374796C6520747970653D22746578742F637373223E2E5265647B66696C
+        6C3A234431314331433B7D3C2F7374796C653E0D0A3C7061746820636C617373
+        3D225265642220643D224D31382E382C31366C362E392D362E3963302E342D30
+        2E342C302E342D312C302D312E346C2D312E342D312E34632D302E342D302E34
+        2D312D302E342D312E342C304C31362C31332E324C392E312C362E33632D302E
+        342D302E342D312D302E342D312E342C3020202623393B4C362E332C372E3763
+        2D302E342C302E342D302E342C312C302C312E346C362E392C362E396C2D362E
+        392C362E39632D302E342C302E342D302E342C312C302C312E346C312E342C31
+        2E3463302E342C302E342C312C302E342C312E342C306C362E392D362E396C36
+        2E392C362E3920202623393B63302E342C302E342C312C302E342C312E342C30
+        6C312E342D312E3463302E342D302E342C302E342D312C302D312E344C31382E
+        382C31367A222F3E0D0A3C2F7376673E0D0A}
       OnClick = btn_TerminDeleteClick
     end
     object pmmbtn_CalNew: TdxBarButton
@@ -2842,28 +1537,913 @@ object frm_Calendar: Tfrm_Calendar
       Category = 4
       Visible = ivAlways
       ImageIndex = 71
-      OnClick = btn_NewTaskClick
     end
     object pmmbtn_MessageNew: TdxBarButton
       Caption = 'Nachricht'
       Category = 4
       Visible = ivAlways
       ImageIndex = 70
-      OnClick = btn_NewMessageClick
     end
     object pmmbtn_JobsImportOutlook: TdxBarButton
       Caption = 'Import (Outlook)'
       Category = 5
       Visible = ivAlways
       ImageIndex = 69
-      OnClick = pmmbtn_JobsImportOutlookClick
     end
-    object pmmbtn_JobsExportOutlook: TdxBarButton
-      Caption = 'Export (Outlook)'
-      Category = 5
+    object btn_TerminNew: TdxBarLargeButton
+      Caption = '&Neuer Termin'
+      Category = 6
+      Hint = 'Neuer Termin'
       Visible = ivAlways
-      ImageIndex = 68
-      OnClick = pmmbtn_JobsExportOutlookClick
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E32353B7D3C2F7374796C653E0D0A3C672069
+        643D224E65774170706F696E746D656E745F325F223E0D0A09093C7061746820
+        636C6173733D22426C61636B2220643D224D302C3576323463302C302E362C30
+        2E342C312C312C3168323863302E362C302C312D302E342C312D31563563302D
+        302E362D302E342D312D312D31483143302E342C342C302C342E342C302C357A
+        204D32382C3238483256386832365632387A222F3E0D0A09093C726563742078
+        3D2231362220793D2231362220636C6173733D22526564222077696474683D22
+        3422206865696768743D2234222F3E0D0A09093C6720636C6173733D22737430
+        223E0D0A0909093C7061746820636C6173733D22426C61636B2220643D224D38
+        2C32364834762D3468345632367A204D31342C3232682D34763468345632327A
+        204D32302C3232682D34763468345632327A204D32362C3232682D3476346834
+        5632327A204D32302C3130682D34763468345631307A204D32362C3130682D34
+        7634683420202623393B2623393B2623393B5631307A204D32362C3136682D34
+        763468345631367A204D31342C3136682D34763468345631367A204D382C3136
+        4834763468345631367A204D31342C3130682D34763468345631307A204D382C
+        31304834763468345631307A222F3E0D0A09093C2F673E0D0A093C2F673E0D0A
+        3C2F7376673E0D0A}
+      OnClick = btn_TerminNewClick
+      Width = 90
+      SyncImageIndex = False
+      ImageIndex = 87
+    end
+    object btn_NavigationZurueck: TdxBarLargeButton
+      Caption = ' Arbeitswoche zur'#252'ck'
+      Category = 7
+      Hint = ' Arbeitswoche zur'#252'ck'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E32353B7D3C2F7374796C653E0D0A3C672069
+        643D224261636B77617264223E0D0A09093C7061746820636C6173733D224772
+        65656E2220643D224D31362C3243382E332C322C322C382E332C322C31367336
+        2E332C31342C31342C31347331342D362E332C31342D31345332332E372C322C
+        31362C327A204D32342C3138682D3876366C2D382D386C382D38763668385631
+        387A222F3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
+      OnClick = btn_NavigationZurueckClick
+      Width = 90
+      SyncImageIndex = False
+      ImageIndex = 89
+    end
+    object btn_NavigationVor: TdxBarLargeButton
+      Caption = ' Arbeitswoche vor'
+      Category = 7
+      Hint = ' Arbeitswoche vor'
+      Visible = ivAlways
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E32353B7D3C2F7374796C653E0D0A3C672069
+        643D22466F72776172645F315F223E0D0A09093C7061746820636C6173733D22
+        477265656E2220643D224D31362C3243382E332C322C322C382E332C322C3136
+        73362E332C31342C31342C31347331342D362E332C31342D31345332332E372C
+        322C31362C327A204D31362C3234762D364838762D34683856386C382C384C31
+        362C32347A222F3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
+      OnClick = btn_NavigationVorClick
+      Width = 90
+      SyncImageIndex = False
+      ImageIndex = 90
+    end
+    object btn_NavigationHeute: TdxBarLargeButton
+      Action = dxSchedulerGoToToday
+      Caption = 'Heute'
+      Category = 7
+      Hint = 'heutigen Tag aufrufen'
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E477265656E7B66696C6C3A233033394332
+        333B7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A233732
+        373237323B7D262331333B262331303B2623393B2E7374307B6F706163697479
+        3A302E353B7D3C2F7374796C653E0D0A3C672069643D22546F646179223E0D0A
+        09093C7061746820636C6173733D22426C61636B2220643D224D302C35763234
+        63302C302E362C302E342C312C312C3168323863302E362C302C312D302E342C
+        312D31563563302D302E362D302E342D312D312D31483143302E342C342C302C
+        342E342C302C357A204D32382C3238483256386832365632387A222F3E0D0A09
+        093C7265637420783D2231302220793D2231362220636C6173733D2247726565
+        6E222077696474683D223422206865696768743D2234222F3E0D0A09093C6720
+        636C6173733D22737430223E0D0A0909093C7061746820636C6173733D22426C
+        61636B2220643D224D382C32364834762D3468345632367A204D31342C323268
+        2D34763468345632327A204D32302C3232682D34763468345632327A204D3236
+        2C3232682D34763468345632327A204D32302C3130682D34763468345631307A
+        204D32362C3130682D347634683420202623393B2623393B2623393B5631307A
+        204D32362C3136682D34763468345631367A204D32302C3136682D3476346834
+        5631367A204D382C31364834763468345631367A204D31342C3130682D347634
+        68345631307A204D382C31304834763468345631307A222F3E0D0A09093C2F67
+        3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
+      Width = 90
+      SyncImageIndex = False
+      ImageIndex = 91
+    end
+    object btn_NavigationGehezumDatum: TdxBarLargeButton
+      Action = dxSchedulerGoToDate
+      Caption = 'Springe zu Datum'
+      Category = 7
+      Hint = 'bestimmtes Datum aufrufen'
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E32353B7D3C2F7374796C653E0D0A3C672069
+        643D22476F546F546F646179223E0D0A09093C6720636C6173733D2273743022
+        3E0D0A0909093C7061746820636C6173733D22426C61636B2220643D224D382C
+        32364834762D3468345632367A204D31342C3232682D34763468345632327A20
+        4D382C31364834763468345631367A204D31342C3130682D3476346834563130
+        7A204D382C31304834763468345631307A222F3E0D0A09093C2F673E0D0A0909
+        3C7265637420783D22342220793D2231362220636C6173733D22526564222077
+        696474683D223422206865696768743D2234222F3E0D0A09093C706174682063
+        6C6173733D22426C61636B2220643D224D32382C323276364832563868323676
+        366832563563302D302E362D302E342D312D312D31483143302E342C342C302C
+        342E342C302C3576323463302C302E362C302E342C312C312C3168323863302E
+        362C302C312D302E342C312D31762D374832387A222F3E0D0A09093C706F6C79
+        676F6E20636C6173733D22477265656E2220706F696E74733D2233322C313620
+        31392E372C31362032352E372C31302032302C31302031322C31382032302C32
+        362032352E372C32362031392E372C32302033322C3230202623393B222F3E0D
+        0A093C2F673E0D0A3C2F7376673E0D0A}
+      LargeImageIndex = 139
+      Width = 90
+      SyncImageIndex = False
+      ImageIndex = 92
+    end
+    object btn_NavigationNaechste7Tage: TdxBarLargeButton
+      Action = dxSchedulerNextSevenDays
+      Caption = 'N'#228'chste 7 Tage'
+      Category = 7
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E32353B7D3C2F7374796C653E0D0A3C672069
+        643D224E6578743744617973223E0D0A09093C7061746820636C6173733D2242
+        6C61636B2220643D224D302C3576323463302C302E362C302E342C312C312C31
+        68323863302E362C302C312D302E342C312D31563563302D302E362D302E342D
+        312D312D31483143302E342C342C302C342E342C302C357A204D32382C323848
+        3256386832365632387A222F3E0D0A09093C7061746820636C6173733D22426C
+        75652220643D224D382C32304834762D3468345632307A204D31342C3136682D
+        34763468345631367A204D32302C3136682D34763468345631367A204D32362C
+        3136682D34763468345631367A222F3E0D0A09093C7265637420783D22323222
+        20793D2231302220636C6173733D22526564222077696474683D223422206865
+        696768743D2234222F3E0D0A09093C6720636C6173733D22737430223E0D0A09
+        09093C7061746820636C6173733D22426C61636B2220643D224D382C32364834
+        762D3468345632367A204D31342C3232682D34763468345632327A204D32302C
+        3232682D34763468345632327A204D32362C3232682D34763468345632327A20
+        4D32302C3130682D34763468345631307A204D31342C3130682D347634683420
+        202623393B2623393B2623393B5631307A204D382C3130483476346834563130
+        7A222F3E0D0A09093C2F673E0D0A093C2F673E0D0A3C2F7376673E0D0A}
+      LargeImageIndex = 140
+      Width = 90
+      SyncImageIndex = False
+      ImageIndex = 93
+    end
+    object btn_AnsichtTag: TdxBarLargeButton
+      Caption = 'Tag'
+      Category = 8
+      Hint = 'Tag'
+      Visible = ivAlways
+      ButtonStyle = bsChecked
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D3C2F7374796C653E0D0A3C67206964
+        3D2244617956696577223E0D0A09093C7061746820636C6173733D22426C6163
+        6B2220643D224D302C3576323463302C302E362C302E342C312C312C31683238
+        63302E362C302C312D302E342C312D31563563302D302E362D302E342D312D31
+        2D31483143302E342C342C302C342E342C302C357A204D32382C323848325638
+        6832365632387A222F3E0D0A09093C7265637420783D2231362220793D223136
+        2220636C6173733D22426C7565222077696474683D223422206865696768743D
+        2234222F3E0D0A09093C6720636C6173733D22737430223E0D0A0909093C7061
+        746820636C6173733D22426C61636B2220643D224D382C32364834762D346834
+        5632367A204D31342C3232682D34763468345632327A204D32302C3232682D34
+        763468345632327A204D32362C3232682D34763468345632327A204D32302C31
+        30682D34763468345631307A204D32362C3130682D347634683420202623393B
+        2623393B2623393B5631307A204D32362C3136682D34763468345631367A204D
+        31342C3136682D34763468345631367A204D382C31364834763468345631367A
+        204D31342C3130682D34763468345631307A204D382C31304834763468345631
+        307A222F3E0D0A09093C2F673E0D0A093C2F673E0D0A3C2F7376673E0D0A}
+      OnClick = btn_AnsichtTagClick
+      Width = 90
+      SyncImageIndex = False
+      ImageIndex = -1
+    end
+    object btn_AnsichtArbeitswoche: TdxBarLargeButton
+      Caption = 'Arbeitswoche'
+      Category = 8
+      Hint = 'Arbeitswoche'
+      Visible = ivAlways
+      ButtonStyle = bsChecked
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D3C2F7374796C653E0D0A3C67206964
+        3D22576F726B5765656B56696577223E0D0A09093C7061746820636C6173733D
+        22426C61636B2220643D224D302C3576323463302C302E362C302E342C312C31
+        2C3168323863302E362C302C312D302E342C312D31563563302D302E362D302E
+        342D312D312D31483143302E342C342C302C342E342C302C357A204D32382C32
+        38483256386832365632387A222F3E0D0A09093C7061746820636C6173733D22
+        426C75652220643D224D32302C3230682D34762D3468345632307A204D31342C
+        3136682D34763468345631367A204D32362C3136682D34763468345631367A22
+        2F3E0D0A09093C6720636C6173733D22737430223E0D0A0909093C7061746820
+        636C6173733D22426C61636B2220643D224D382C32364834762D346834563236
+        7A204D31342C3232682D34763468345632327A204D32302C3232682D34763468
+        345632327A204D32362C3232682D34763468345632327A204D32302C3130682D
+        34763468345631307A204D32362C3130682D347634683420202623393B262339
+        3B2623393B5631307A204D382C31364834763468345631367A204D31342C3130
+        682D34763468345631307A204D382C31304834763468345631307A222F3E0D0A
+        09093C2F673E0D0A093C2F673E0D0A3C2F7376673E0D0A}
+      OnClick = btn_AnsichtArbeitswocheClick
+      Width = 90
+      SyncImageIndex = False
+      ImageIndex = -1
+    end
+    object btn_AnsichtWoche: TdxBarLargeButton
+      Caption = 'Woche'
+      Category = 8
+      Hint = 'Woche'
+      Visible = ivAlways
+      ButtonStyle = bsChecked
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D3C2F7374796C653E0D0A3C67206964
+        3D225765656B56696577223E0D0A09093C7061746820636C6173733D22426C61
+        636B2220643D224D302C3576323463302C302E362C302E342C312C312C316832
+        3863302E362C302C312D302E342C312D31563563302D302E362D302E342D312D
+        312D31483143302E342C342C302C342E342C302C357A204D32382C3238483256
+        386832365632387A222F3E0D0A09093C7061746820636C6173733D22426C7565
+        2220643D224D32302C3230682D34762D3468345632307A204D31342C3136682D
+        34763468345631367A204D382C31364834763468345631367A204D32362C3136
+        682D34763468345631367A222F3E0D0A09093C6720636C6173733D2273743022
+        3E0D0A0909093C7061746820636C6173733D22426C61636B2220643D224D382C
+        32364834762D3468345632367A204D31342C3232682D34763468345632327A20
+        4D32302C3232682D34763468345632327A204D32362C3232682D347634683456
+        32327A204D32302C3130682D34763468345631307A204D32362C3130682D3476
+        34683420202623393B2623393B2623393B5631307A204D31342C3130682D3476
+        3468345631307A204D382C31304834763468345631307A222F3E0D0A09093C2F
+        673E0D0A093C2F673E0D0A3C2F7376673E0D0A}
+      OnClick = btn_AnsichtWocheClick
+      Width = 90
+      SyncImageIndex = False
+      ImageIndex = 96
+    end
+    object btn_AnsichtMonat: TdxBarLargeButton
+      Caption = 'Monat'
+      Category = 8
+      Hint = 'Monat'
+      Visible = ivAlways
+      ButtonStyle = bsChecked
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D3C2F7374796C653E0D0A3C67206964
+        3D224D6F6E746856696577223E0D0A09093C7061746820636C6173733D22426C
+        61636B2220643D224D302C3576323463302C302E362C302E342C312C312C3168
+        323863302E362C302C312D302E342C312D31563563302D302E362D302E342D31
+        2D312D31483143302E342C342C302C342E342C302C357A204D32382C32384832
+        56386832365632387A222F3E0D0A09093C7061746820636C6173733D22426C75
+        652220643D224D32302C3230682D34762D3468345632307A204D31342C313668
+        2D34763468345631367A204D31342C3130682D34763468345631307A204D3230
+        2C3130682D34763468345631307A204D32362C3130682D34763468345631307A
+        204D32302C3232682D347634683420202623393B2623393B5632327A204D3134
+        2C3232682D34763468345632327A204D382C32324834763468345632327A204D
+        382C31364834763468345631367A204D32362C3136682D34763468345631367A
+        222F3E0D0A09093C6720636C6173733D22737430223E0D0A0909093C70617468
+        20636C6173733D22426C61636B2220643D224D32362C3232682D347634683456
+        32327A204D382C31304834763468345631307A222F3E0D0A09093C2F673E0D0A
+        093C2F673E0D0A3C2F7376673E0D0A}
+      OnClick = btn_AnsichtMonatClick
+      Width = 90
+      SyncImageIndex = False
+      ImageIndex = 97
+    end
+    object btn_AnsichtZeitleiste: TdxBarLargeButton
+      Caption = 'Zeitleiste'
+      Category = 8
+      Hint = 'Zeitleiste'
+      Visible = ivAlways
+      ButtonStyle = bsChecked
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D3C2F7374796C653E0D0A3C67206964
+        3D2254696D656C696E6556696577223E0D0A09093C7061746820636C6173733D
+        225265642220643D224D32342C3134632D342E342C302D382C332E362D382C38
+        73332E362C382C382C3873382D332E362C382D385332382E342C31342C32342C
+        31347A204D32342C3238632D332E332C302D362D322E372D362D3673322E372D
+        362C362D3673362C322E372C362C3620202623393B2623393B5332372E332C32
+        382C32342C32387A222F3E0D0A09093C7061746820636C6173733D22426C6163
+        6B2220643D224D31342E322C3230632D302E312C302E362D302E322C312E332D
+        302E322C324831632D302E352C302D312D302E352D312D31563763302D302E35
+        2C302E352D312C312D3168323463302E352C302C312C302E352C312C3176352E
+        3220202623393B2623393B632D302E362D302E312D312E332D302E322D322D30
+        2E325638682D3476342E38632D302E372C302E332D312E342C302E372D322C31
+        2E3268305638682D347636682D32563848387636483656384832763132483134
+        2E327A204D32342C3232762D34682D327634763268326834762D324832347A22
+        2F3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
+      OnClick = btn_AnsichtZeitleisteClick
+      Width = 90
+      SyncImageIndex = False
+      ImageIndex = 98
+    end
+    object btn_AnsichtJahr: TdxBarLargeButton
+      Caption = 'Jahr'
+      Category = 8
+      Hint = 'Jahr'
+      Visible = ivAlways
+      ButtonStyle = bsChecked
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E426C75657B66696C6C3A23313137374437
+        3B7D262331303B2623393B2E426C61636B7B66696C6C3A233732373237323B7D
+        3C2F7374796C653E0D0A3C7061746820636C6173733D22426C61636B2220643D
+        224D32392C34483143302E342C342C302C342E342C302C3576323463302C302E
+        362C302E342C312C312C3168323863302E362C302C312D302E342C312D315635
+        4333302C342E342C32392E362C342C32392C347A204D322C3238563868323676
+        323048327A222F3E0D0A3C7061746820636C6173733D22426C75652220643D22
+        4D31352C32302E36563232682D35762D312E3468312E36762D362E376C2D322C
+        312E31762D312E376C322E332D312E3368312E3576382E354831355632302E36
+        7A222F3E0D0A3C7061746820636C6173733D22426C75652220643D224D31352E
+        362C32332E3663312E322C302C312E392D302E332C322E332D312E374C31362C
+        31362E31682D302E37762D312E3368332E3176312E33682D302E366C302E392C
+        332E356C302E392D332E35483139762D312E3368332E3176312E33682D302E37
+        202623393B6C2D312E372C352E35632D302E372C322E332D312E322C332E332D
+        342E312C332E334331352E362C32342E392C31352E362C32332E362C31352E36
+        2C32332E367A222F3E0D0A3C2F7376673E0D0A}
+      OnClick = btn_AnsichtJahrClick
+      Width = 90
+      SyncImageIndex = False
+      ImageIndex = 99
+    end
+    object btn_AnsichtGantt: TdxBarLargeButton
+      Caption = 'Gantt Ansicht'
+      Category = 8
+      Hint = 'Gantt Ansicht'
+      Visible = ivAlways
+      ButtonStyle = bsChecked
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D3C2F7374796C653E0D0A3C67206964
+        3D2247616E747456696577223E0D0A09093C7061746820636C6173733D22426C
+        61636B2220643D224D302C3376323463302C302E362C302E342C312C312C3168
+        323863302E362C302C312D302E342C312D31563363302D302E362D302E342D31
+        2D312D31483143302E342C322C302C322E342C302C337A204D32382C32364832
+        56366832365632367A222F3E0D0A09093C7061746820636C6173733D22426C75
+        652220643D224D31342C3132483456386831305631327A204D32362C31344831
+        3276346831345631347A204D32302C3230483876346831325632307A222F3E0D
+        0A093C2F673E0D0A3C2F7376673E0D0A}
+      OnClick = btn_AnsichtGanttClick
+      Width = 90
+      SyncImageIndex = False
+      ImageIndex = 100
+    end
+    object btn_AnsichtAgenda: TdxBarLargeButton
+      Caption = 'Agenda'
+      Category = 8
+      Hint = 'Agenda'
+      Visible = ivAlways
+      ButtonStyle = bsChecked
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D3C2F7374796C653E0D0A3C67206964
+        3D224167656E646156696577223E0D0A09093C7061746820636C6173733D2247
+        7265656E2220643D224D31322C313363302C312E372D312E332C332D332C3373
+        2D332D312E332D332D3373312E332D332C332D335331322C31312E332C31322C
+        31337A204D392C3138632D312E372C302D332C312E332D332C3373312E332C33
+        2C332C3373332D312E332C332D3320202623393B2623393B5331302E372C3138
+        2C392C31387A222F3E0D0A09093C7061746820636C6173733D22426C61636B22
+        20643D224D302C3376323663302C302E362C302E342C312C312C316833306330
+        2E362C302C312D302E342C312D31563363302D302E362D302E342D312D312D31
+        483143302E342C322C302C322E342C302C337A204D33302C3238483256366832
+        385632387A204D32362C313420202623393B2623393B483136762D3268313056
+        31347A204D32362C3232483136762D326831305632327A222F3E0D0A093C2F67
+        3E0D0A3C2F7376673E0D0A}
+      OnClick = btn_AnsichtAgendaClick
+      LargeImageIndex = 101
+      Width = 90
+      SyncImageIndex = False
+      ImageIndex = 101
+    end
+    object btn_ZeitintervallZeitintervall: TdxBarSubItem
+      Caption = 'Anzeige Zeitintervall'
+      Category = 10
+      Visible = ivAlways
+      ImageIndex = 105
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E32353B7D3C2F7374796C653E0D0A3C672069
+        643D2254696D655363616C6573223E0D0A09093C6720636C6173733D22737430
+        223E0D0A0909093C7061746820636C6173733D22426C61636B2220643D224D32
+        302C31342E38563134682D34763468304331372C31362E362C31382E342C3135
+        2E352C32302C31342E387A222F3E0D0A0909093C7265637420783D2231362220
+        793D22382220636C6173733D22426C61636B222077696474683D223422206865
+        696768743D2234222F3E0D0A0909093C7265637420783D2231302220793D2238
+        2220636C6173733D22426C61636B222077696474683D22342220686569676874
+        3D2234222F3E0D0A0909093C7265637420783D2232322220793D22382220636C
+        6173733D22426C61636B222077696474683D223422206865696768743D223422
+        2F3E0D0A0909093C7265637420783D22342220793D22382220636C6173733D22
+        426C61636B222077696474683D223422206865696768743D2234222F3E0D0A09
+        09093C7265637420783D2231302220793D2232302220636C6173733D22426C61
+        636B222077696474683D223422206865696768743D2234222F3E0D0A0909093C
+        7265637420783D22342220793D2232302220636C6173733D22426C61636B2220
+        77696474683D223422206865696768743D2234222F3E0D0A0909093C72656374
+        20783D22342220793D2231342220636C6173733D22426C61636B222077696474
+        683D223422206865696768743D2234222F3E0D0A09093C2F673E0D0A09093C70
+        61746820636C6173733D225265642220643D224D31342C3138682D34762D3468
+        345631387A204D33322C323463302C342E342D332E362C382D382C38732D382D
+        332E362D382D3873332E362D382C382D385333322C31392E362C33322C32347A
+        204D33302C323463302D332E332D322E372D362D362D3620202623393B262339
+        3B732D362C322E372D362C3673322E372C362C362C365333302C32372E332C33
+        302C32347A222F3E0D0A09093C7061746820636C6173733D22426C61636B2220
+        643D224D31342E382C32384831632D302E362C302D312D302E342D312D315633
+        63302D302E362C302E342D312C312D3168323863302E362C302C312C302E342C
+        312C31763133632D302E362D302E352D312E332D302E392D322D312E32563648
+        327632306831322E3220202623393B2623393B4331342E332C32362E372C3134
+        2E362C32372E342C31342E382C32387A204D32382C32347632682D34682D3276
+        2D32762D34683276344832387A222F3E0D0A093C2F673E0D0A3C2F7376673E0D
+        0A}
+      LargeImageIndex = 152
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'btn_Zeitintervall60Minutes'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_Zeitintervall30Minutes'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_Zeitintervall15Minutes'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_Zeitintervall10Minutes'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_Zeitintervall6Minutes'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_Zeitintervall5Minutes'
+        end>
+    end
+    object btn_Zeitintervall60Minutes: TdxBarLargeButton
+      Action = dxSchedulerTimeScale60Minutes
+      Category = 10
+      ButtonStyle = bsChecked
+      SyncImageIndex = False
+      ImageIndex = -1
+    end
+    object btn_Zeitintervall30Minutes: TdxBarLargeButton
+      Action = dxSchedulerTimeScale30Minutes
+      Category = 10
+      ButtonStyle = bsChecked
+      SyncImageIndex = False
+      ImageIndex = -1
+    end
+    object btn_Zeitintervall15Minutes: TdxBarLargeButton
+      Action = dxSchedulerTimeScale15Minutes
+      Category = 10
+      ButtonStyle = bsChecked
+      SyncImageIndex = False
+      ImageIndex = -1
+    end
+    object btn_Zeitintervall10Minutes: TdxBarLargeButton
+      Action = dxSchedulerTimeScale10Minutes
+      Category = 10
+      ButtonStyle = bsChecked
+      SyncImageIndex = False
+      ImageIndex = -1
+    end
+    object btn_Zeitintervall6Minutes: TdxBarLargeButton
+      Action = dxSchedulerTimeScale6Minutes
+      Category = 10
+      ButtonStyle = bsChecked
+      SyncImageIndex = False
+      ImageIndex = -1
+    end
+    object btn_Zeitintervall5Minutes: TdxBarLargeButton
+      Action = dxSchedulerTimeScale5Minutes
+      Category = 10
+      ButtonStyle = bsChecked
+      SyncImageIndex = False
+      ImageIndex = -1
+    end
+    object btn_LayoutKomprimiereWochenende: TdxBarLargeButton
+      Action = dxSchedulerCompressWeekends
+      Caption = 'Komprimierte Wochenenden'
+      Category = 11
+      ButtonStyle = bsChecked
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D3C2F7374796C653E0D0A3C67206964
+        3D22436F6D70726573735765656B656E64223E0D0A09093C6720636C6173733D
+        22737430223E0D0A0909093C7061746820636C6173733D22426C61636B222064
+        3D224D342C3238483056313068345632387A204D31302C313048367631386834
+        5631307A204D31362C3130682D3476313868345631307A222F3E0D0A09093C2F
+        673E0D0A09093C7061746820636C6173733D2259656C6C6F772220643D224D32
+        342C3138682D36762D3868365631387A204D32342C3230682D36763868365632
+        307A222F3E0D0A09093C7061746820636C6173733D22426C61636B2220643D22
+        4D31342C316C342C346C2D342C345636682D345634683456317A204D32382C34
+        56316C2D342C346C342C345636683456344832387A222F3E0D0A093C2F673E0D
+        0A3C2F7376673E0D0A}
+      LargeImageIndex = 153
+      Width = 90
+      SyncImageIndex = False
+      ImageIndex = 106
+    end
+    object btn_LayoutGanzerTag: TdxBarLargeButton
+      Action = dxSchedulerWorkTimeOnly
+      Caption = 'Ganzer Tag'
+      Category = 11
+      ButtonStyle = bsChecked
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+        7374327B6F7061636974793A302E32353B7D3C2F7374796C653E0D0A3C672069
+        643D22576F726B696E67486F757273223E0D0A09093C7061746820636C617373
+        3D22426C75652220643D224D362E322C31384830762D3468362E3243362E312C
+        31342E362C362C31352E332C362C313653362E312C31372E342C362E322C3138
+        7A204D31302C384830763468362E3843372E352C31302E342C382E362C392C31
+        302C387A204D31342C324830763468313456327A20202623393B2623393B204D
+        362E382C32304830763468313043382E362C32332C372E352C32312E362C362E
+        382C32307A204D302C3330683134762D3448305633307A204D32322C3863312E
+        342C312C322E352C322E342C332E322C3448333056384832327A204D32362C31
+        3663302C302E372D302E312C312E342D302E322C32483330762D342020262339
+        3B2623393B682D342E324332352E392C31342E362C32362C31352E332C32362C
+        31367A222F3E0D0A09093C7061746820636C6173733D225265642220643D224D
+        32342C313663302C342E342D332E362C382D382C38732D382D332E362D382D38
+        73332E362D382C382D385332342C31312E362C32342C31367A204D32322C3136
+        63302D332E332D322E372D362D362D36732D362C322E372D362C3673322E372C
+        362C362C3620202623393B2623393B5332322C31392E332C32322C31367A222F
+        3E0D0A09093C7061746820636C6173733D22426C61636B2220643D224D32302C
+        31367632682D34682D32762D32762D34683276344832307A222F3E0D0A09093C
+        6720636C6173733D22737430223E0D0A0909093C7061746820636C6173733D22
+        426C61636B2220643D224D33302C32763448313656324833307A204D31362C33
+        30683134762D344831365633307A204D32322C32346838762D34682D342E3843
+        32342E352C32312E362C32332E342C32332C32322C32347A222F3E0D0A09093C
+        2F673E0D0A093C2F673E0D0A3C2F7376673E0D0A}
+      Width = 90
+      SyncImageIndex = False
+      ImageIndex = 107
+    end
+    object btn_LayoutEreignisse: TdxBarLargeButton
+      Action = dxSchedulerSnapEventsToTimeSlots
+      Caption = 'Ereignisse an Zeitfenstern festhalten'
+      Category = 11
+      Visible = ivNever
+      ButtonStyle = bsChecked
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E5265647B66696C6C3A234431314331433B
+        7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A2337323732
+        37323B7D262331333B262331303B2623393B2E426C75657B66696C6C3A233131
+        373744373B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A
+        233033394332333B7D262331333B262331303B2623393B2E59656C6C6F777B66
+        696C6C3A234646423131353B7D262331333B262331303B2623393B2E57686974
+        657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+        74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+        74317B6F7061636974793A302E37353B7D3C2F7374796C653E0D0A3C67206964
+        3D22536E6170546F43656C6C223E0D0A09093C7265637420783D22342220793D
+        2231342220636C6173733D22477265656E222077696474683D22313422206865
+        696768743D223134222F3E0D0A09093C7061746820636C6173733D22426C6163
+        6B2220643D224D33312C30483143302E352C302C302C302E352C302C31763330
+        63302C302E352C302E352C312C312C3168333063302E352C302C312D302E352C
+        312D3156314333322C302E352C33312E352C302C33312C307A204D33302C3330
+        483256326832385633307A20202623393B2623393B204D32342C31376C342C34
+        6C2D342C34762D33682D34762D3268345631377A204D372C386C342D346C342C
+        34682D337634682D32563848377A222F3E0D0A093C2F673E0D0A3C2F7376673E
+        0D0A}
+      LargeImageIndex = 155
+      Width = 130
+      SyncImageIndex = False
+      ImageIndex = 108
+    end
+    object btn_LayoutDatumsnavigation: TdxBarLargeButton
+      Action = dxSchedulerDateNavigator
+      Caption = 'Datumsnavigation ein/ausblenden'
+      Category = 11
+      ButtonStyle = bsChecked
+      LargeGlyph.SourceDPI = 96
+      LargeGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+        462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078222076696577426F783D2230203020333220333222207374796C653D
+        22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+        3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E426C61636B7B66696C6C3A233732373237
+        323B7D262331333B262331303B2623393B2E7374307B6F7061636974793A302E
+        353B7D3C2F7374796C653E0D0A3C672069643D2243616C656E646172223E0D0A
+        09093C7061746820636C6173733D22426C61636B2220643D224D302C35763234
+        63302C302E362C302E342C312C312C3168323863302E362C302C312D302E342C
+        312D31563563302D302E362D302E342D312D312D31483143302E342C342C302C
+        342E342C302C357A204D32382C3238483256386832365632387A222F3E0D0A09
+        093C6720636C6173733D22737430223E0D0A0909093C7061746820636C617373
+        3D22426C61636B2220643D224D382C32364834762D3468345632367A204D3134
+        2C3232682D34763468345632327A204D32302C3232682D34763468345632327A
+        204D32302C3130682D34763468345631307A204D31342C3130682D3476346834
+        5631307A204D382C313648347634683456313620202623393B2623393B262339
+        3B7A204D31342C3136682D34763468345631367A204D32302C3136682D347634
+        68345631367A204D32362C3130682D34763468345631307A204D32362C313668
+        2D34763468345631367A222F3E0D0A09093C2F673E0D0A093C2F673E0D0A3C2F
+        7376673E0D0A}
+      LargeImageIndex = 156
+      Width = 100
+      SyncImageIndex = False
+      ImageIndex = 109
     end
   end
   object schedDBStrg_Kalenderimport: TcxSchedulerDBStorage
@@ -2893,49 +2473,6 @@ object frm_Calendar: Tfrm_Calendar
     FieldNames.Start = 'Start'
     Left = 1076
     Top = 404
-  end
-  object qry_Stundenplan: TFDQuery
-    AfterOpen = SetButtonsEnabledVisible
-    AfterInsert = SetButtonsEnabledVisible
-    AfterEdit = SetButtonsEnabledVisible
-    AfterPost = SetButtonsEnabledVisible
-    AfterCancel = SetButtonsEnabledVisible
-    AfterDelete = SetButtonsEnabledVisible
-    AfterScroll = qry_StundenplanAfterScroll
-    Connection = dm_PCM.con_PCM
-    SQL.Strings = (
-      
-        'Select ID,Schule,Klasse,Schuljahr,ID_Benutzer From manager_Stund' +
-        'enplan')
-    Left = 287
-    Top = 456
-  end
-  object qry_Stundenplan_detail: TFDQuery
-    AfterOpen = SetButtonsEnabledVisible
-    AfterInsert = SetButtonsEnabledVisible
-    AfterEdit = SetButtonsEnabledVisible
-    AfterPost = SetButtonsEnabledVisible
-    AfterCancel = SetButtonsEnabledVisible
-    AfterDelete = SetButtonsEnabledVisible
-    AfterScroll = SetButtonsEnabledVisible
-    Connection = dm_PCM.con_PCM
-    SQL.Strings = (
-      
-        'Select ID, Begin, End, Montag,Dienstag, Mittwoch, Donnerstag, Fr' +
-        'eitag, Samstag, ID_Stundenplan From manager_Stundenplan_detail'
-      'order by id asc')
-    Left = 404
-    Top = 456
-  end
-  object ds_Stundenplan_detail: TDataSource
-    DataSet = qry_Stundenplan_detail
-    Left = 403
-    Top = 512
-  end
-  object ds_Stundenplan: TDataSource
-    DataSet = qry_Stundenplan
-    Left = 286
-    Top = 512
   end
   object schedDBStrg_Kalender: TcxSchedulerDBStorage
     Reminders.Active = False
@@ -2972,28 +2509,6 @@ object frm_Calendar: Tfrm_Calendar
     Left = 1075
     Top = 346
   end
-  object qry_SchulFaecher: TFDQuery
-    AfterOpen = SetButtonsEnabledVisible
-    AfterInsert = SetButtonsEnabledVisible
-    AfterEdit = SetButtonsEnabledVisible
-    AfterPost = SetButtonsEnabledVisible
-    AfterCancel = SetButtonsEnabledVisible
-    AfterDelete = SetButtonsEnabledVisible
-    AfterScroll = SetButtonsEnabledVisible
-    Connection = dm_PCM.con_PCM
-    SQL.Strings = (
-      'Select ID, Bezeichnung,Farbe,Schriftfarbe, ID_Benutzer'
-      'From manager_Stundenplan_Schulfaecher'
-      'order by Bezeichnung'
-      '')
-    Left = 523
-    Top = 456
-  end
-  object dsSchulFaecher: TDataSource
-    DataSet = qry_SchulFaecher
-    Left = 522
-    Top = 512
-  end
   object compPrint_Cal: TdxComponentPrinter
     CurrentLink = compPrint_CalLink1
     PreviewOptions.WindowState = wsMaximized
@@ -3025,8 +2540,6 @@ object frm_Calendar: Tfrm_Calendar
       BuiltInReportLink = True
     end
     object compPrint_CalLink2: TdxGridReportLink
-      Active = True
-      Component = grd_Stundenplanuebersicht
       PrinterPage.DMPaper = 9
       PrinterPage.Footer = 6350
       PrinterPage.GrayShading = True
@@ -3040,7 +2553,7 @@ object frm_Calendar: Tfrm_Calendar
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 45758.379376770830000000
+      ReportDocument.CreationDate = 45763.453345752310000000
       OptionsSize.AutoWidth = True
       PixelsPerInch = 96
       BuiltInReportLink = True
@@ -3065,52 +2578,14 @@ object frm_Calendar: Tfrm_Calendar
     Left = 1339
     Top = 344
   end
-  object brpmm_Aufgaben: TdxBarPopupMenu
-    BarManager = brmgr_Kalendar
-    ItemLinks = <
-      item
-        Visible = True
-        ItemName = 'pmmbtn_CalNew'
-      end
-      item
-        Visible = True
-        ItemName = 'pmmbtn_JobNew'
-      end
-      item
-        Visible = True
-        ItemName = 'pmmbtn_MessageNew'
-      end>
-    UseOwnFont = False
-    Left = 1210
-    Top = 401
-    PixelsPerInch = 96
-  end
   object pm_Einnahmen: TcxGridPopupMenu
-    Grid = cxGrid1
     PopupMenus = <
       item
         HitTypes = [gvhtCell, gvhtRecord, gvhtIndicator]
         Index = 0
-        PopupMenu = brpmm_Aufgaben
       end>
     Left = 1080
     Top = 464
-  end
-  object brpmm_ImportExportAufgaben: TdxBarPopupMenu
-    BarManager = brmgr_Kalendar
-    ItemLinks = <
-      item
-        Visible = True
-        ItemName = 'pmmbtn_JobsImportOutlook'
-      end
-      item
-        Visible = True
-        ItemName = 'pmmbtn_JobsExportOutlook'
-      end>
-    UseOwnFont = False
-    Left = 1210
-    Top = 617
-    PixelsPerInch = 96
   end
   object Outlook: TOutlookApplication
     AutoConnect = False
@@ -3120,97 +2595,9 @@ object frm_Calendar: Tfrm_Calendar
     Left = 1072
     Top = 32
   end
-  object rstreq_main: TRESTRequest
-    Client = rstClt_Main
-    Params = <>
-    Response = rstrsp_Main
-    SynchronizedEvents = False
-    Left = 152
-    Top = 288
-  end
-  object rstClt_Main: TRESTClient
-    Authenticator = httpBasAut_Main
-    Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
-    AcceptCharset = 'utf-8, *;q=0.8'
-    Params = <>
-    RaiseExceptionOn500 = False
-    SynchronizedEvents = False
-    Left = 152
-    Top = 440
-  end
-  object rstrsp_Main: TRESTResponse
-    ContentType = 'text/html'
-    Left = 152
-    Top = 336
-  end
-  object httpBasAut_Main: THTTPBasicAuthenticator
-    Left = 152
-    Top = 384
-  end
-  object qWF_Nachrichten_Anhaenge: TFDQuery
-    AfterScroll = qWF_Nachrichten_AnhaengeAfterScroll
-    Connection = dm_PCM.con_PCM
-    SQL.Strings = (
-      
-        'SELECT ina.ID, ina.ID_IC_Nachrichten, ina.Dateiname, ina.Dateina' +
-        'meSave '
-      
-        'FROM manager_Aufgaben_Anhaenge ina WHERE ina.ID_IC_Nachrichten =' +
-        ' 0')
-    Left = 40
-    Top = 520
-    object qWF_Nachrichten_AnhaengeID: TFDAutoIncField
-      FieldName = 'ID'
-      Origin = 'ID'
-      ProviderFlags = [pfInWhere, pfInKey]
-    end
-    object qWF_Nachrichten_AnhaengeID_IC_Nachrichten: TIntegerField
-      FieldName = 'ID_IC_Nachrichten'
-      Origin = 'ID_IC_Nachrichten'
-    end
-    object qWF_Nachrichten_AnhaengeDateiname: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'Dateiname'
-      Origin = 'Dateiname'
-      Size = 255
-    end
-    object qWF_Nachrichten_AnhaengeDateinameSave: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'DateinameSave'
-      Origin = 'DateinameSave'
-      Size = 255
-    end
-  end
-  object dsWF_Nachrichten_Anhaenge: TDataSource
-    DataSet = qWF_Nachrichten_Anhaenge
-    Left = 160
-    Top = 520
-  end
   object SaveDialog1: TdxSaveFileDialog
     Left = 365
     Top = 608
-  end
-  object RESTClient_jira: TRESTClient
-    Authenticator = httpAuth_Jira
-    BaseURL = 'http://'#39'https://pcm-software.atlassian.net/rest'
-    Params = <>
-    SynchronizedEvents = False
-    Left = 152
-    Top = 240
-  end
-  object httpAuth_Jira: THTTPBasicAuthenticator
-    Username = 'Jens.Henske@outlook.com'
-    Password = 
-      'ATATT3xFfGF0tVpc1MPdKU2d1603BU3gMBJJmOuwcsnC3Q2lLS9rW4bY_pZU5W2K' +
-      'QCCTQh_z_SEJ88szd3KTfFmsrQwriV9uqVhxaBbWfxIBIQ2lAFzdPV0Nfm99p6F1' +
-      'FgFmjnyx5jJlioraphhrMOFkH_4XOQ6oZNKovYtsk04-Y72oNOzzvSA=C0E898E3'
-    Left = 152
-    Top = 184
-  end
-  object cxGridPopupMenu1: TcxGridPopupMenu
-    PopupMenus = <>
-    Left = 951
-    Top = 305
   end
   object cxImageList1: TcxImageList
     SourceDPI = 96
@@ -3353,6 +2740,112 @@ object frm_Calendar: Tfrm_Calendar
     Top = 216
     object dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel
       PixelsPerInch = 96
+    end
+  end
+  object rstClt_Main: TRESTClient
+    Authenticator = httpBasAut_Main
+    Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
+    AcceptCharset = 'utf-8, *;q=0.8'
+    Params = <>
+    RaiseExceptionOn500 = False
+    SynchronizedEvents = False
+    Left = 152
+    Top = 440
+  end
+  object httpBasAut_Main: THTTPBasicAuthenticator
+    Left = 152
+    Top = 384
+  end
+  object rstrsp_Main: TRESTResponse
+    Left = 152
+    Top = 336
+  end
+  object rstreq_main: TRESTRequest
+    Client = rstClt_Main
+    Params = <>
+    Response = rstrsp_Main
+    SynchronizedEvents = False
+    Left = 152
+    Top = 288
+  end
+  object RESTClient_jira: TRESTClient
+    Authenticator = httpAuth_Jira
+    BaseURL = 'http://'#39'https://pcm-software.atlassian.net/rest'
+    Params = <>
+    SynchronizedEvents = False
+    Left = 152
+    Top = 240
+  end
+  object httpAuth_Jira: THTTPBasicAuthenticator
+    Username = 'Jens.Henske@outlook.com'
+    Password = 
+      'ATATT3xFfGF0tVpc1MPdKU2d1603BU3gMBJJmOuwcsnC3Q2lLS9rW4bY_pZU5W2K' +
+      'QCCTQh_z_SEJ88szd3KTfFmsrQwriV9uqVhxaBbWfxIBIQ2lAFzdPV0Nfm99p6F1' +
+      'FgFmjnyx5jJlioraphhrMOFkH_4XOQ6oZNKovYtsk04-Y72oNOzzvSA=C0E898E3'
+    Left = 264
+    Top = 288
+  end
+  object ActionList1: TActionList
+    Images = dm_PCM.imglst_16x16
+    Left = 390
+    Top = 438
+    object dxSchedulerGoToToday: TdxSchedulerGoToToday
+      Category = 'DevExpress ExpressScheduler.Home.Navigation'
+      ImageIndex = 91
+    end
+    object dxSchedulerGoToDate: TdxSchedulerGoToDate
+      Category = 'DevExpress ExpressScheduler.Home.Navigation'
+      ImageIndex = 92
+    end
+    object dxSchedulerNextSevenDays: TdxSchedulerNextSevenDays
+      Category = 'DevExpress ExpressScheduler.Home.Navigation'
+      ImageIndex = 93
+    end
+    object dxSchedulerTimeScale60Minutes: TdxSchedulerTimeScale60Minutes
+      Category = 'DevExpress ExpressScheduler.View.Time Scale'
+    end
+    object dxSchedulerTimeScale30Minutes: TdxSchedulerTimeScale30Minutes
+      Category = 'DevExpress ExpressScheduler.View.Time Scale'
+    end
+    object dxSchedulerTimeScale15Minutes: TdxSchedulerTimeScale15Minutes
+      Category = 'DevExpress ExpressScheduler.View.Time Scale'
+    end
+    object dxSchedulerTimeScale10Minutes: TdxSchedulerTimeScale10Minutes
+      Category = 'DevExpress ExpressScheduler.View.Time Scale'
+    end
+    object dxSchedulerTimeScale6Minutes: TdxSchedulerTimeScale6Minutes
+      Category = 'DevExpress ExpressScheduler.View.Time Scale'
+    end
+    object dxSchedulerTimeScale5Minutes: TdxSchedulerTimeScale5Minutes
+      Category = 'DevExpress ExpressScheduler.View.Time Scale'
+    end
+    object dxSchedulerCompressWeekends: TdxSchedulerCompressWeekends
+      Category = 'DevExpress ExpressScheduler.View.Layout'
+      ImageIndex = 106
+    end
+    object dxSchedulerWorkTimeOnly: TdxSchedulerWorkTimeOnly
+      Category = 'DevExpress ExpressScheduler.View.Layout'
+      ImageIndex = 107
+    end
+    object dxSchedulerSnapEventsToTimeSlots: TdxSchedulerSnapEventsToTimeSlots
+      Category = 'DevExpress ExpressScheduler.View.Layout'
+      ImageIndex = 108
+    end
+    object dxSchedulerDateNavigator: TdxSchedulerDateNavigator
+      Category = 'DevExpress ExpressScheduler.View.Layout'
+      ImageIndex = 109
+    end
+    object dxSchedulerShowPrintForm: TdxSchedulerShowPrintForm
+      Category = 'DevExpress ExpressScheduler.File.Print'
+      ImageIndex = 111
+    end
+    object dxSchedulerShowPrintPreviewForm: TdxSchedulerShowPrintPreviewForm
+      Category = 'DevExpress ExpressScheduler.File.Print'
+      ImageIndex = 112
+    end
+    object dxSchedulerShowPageSetupForm: TdxSchedulerShowPageSetupForm
+      Category = 'DevExpress ExpressScheduler.File.Print'
+      ImageIndex = 113
     end
   end
 end

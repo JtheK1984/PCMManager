@@ -210,8 +210,8 @@ $(PreBuildEvent)]]></PreBuildEvent>
         <DCCReference Include="Modules\PCMManager.Modul.D_Calandar.Neu.pas">
             <Form>frm_Calendar_new</Form>
         </DCCReference>
-        <DCCReference Include="Modules\PCMManager.Modul.D_Calendar.pas">
-            <Form>frm_Calendar</Form>
+        <DCCReference Include="Modules\PCMManager.Modul.D_Aufgaben.pas">
+            <Form>frm_Aufgaben</Form>
         </DCCReference>
         <DCCReference Include="Modules\PCMManager.Modul.D_Calendar.Filter.pas">
             <Form>frm_PCM_KalenderFilter</Form>
@@ -244,6 +244,14 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <Form>frm_PCManagerChooseDate</Form>
         </DCCReference>
         <DCCReference Include="Modules\PCMManager.Modul.D_Calendar.Terminsuche.pas"/>
+        <DCCReference Include="Modules\PCMManager.Modul.D_Calendar.pas">
+            <Form>frm_Calendar</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Modules\PCMManager.Modul.D_Stundenplan.pas">
+            <Form>frm_Stundenplan</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

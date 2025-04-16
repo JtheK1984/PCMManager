@@ -32,7 +32,7 @@ uses
   PCMManager.Modul.C_Contacts.Neu in 'Modules\PCMManager.Modul.C_Contacts.Neu.pas' {frm_PCManagerNewContact},
   PCMManager.Modul.C_Contacts.Staatsangehoerigkeit in 'Modules\PCMManager.Modul.C_Contacts.Staatsangehoerigkeit.pas' {frm_PCM_Staatsangehoerigkeit},
   PCMManager.Modul.D_Calandar.Neu in 'Modules\PCMManager.Modul.D_Calandar.Neu.pas' {frm_Calendar_new},
-  PCMManager.Modul.D_Calendar in 'Modules\PCMManager.Modul.D_Calendar.pas' {frm_Calendar},
+  PCMManager.Modul.D_Aufgaben in 'Modules\PCMManager.Modul.D_Aufgaben.pas' {frm_Aufgaben},
   PCMManager.Modul.D_Calendar.Filter in 'Modules\PCMManager.Modul.D_Calendar.Filter.pas' {frm_PCM_KalenderFilter},
   PCMManager.Modul.D_Calendar.Import in 'Modules\PCMManager.Modul.D_Calendar.Import.pas' {frm_PCM_Import},
   PCMManager.Modul.D_Calender.Neu.Adresssuche in 'Modules\PCMManager.Modul.D_Calender.Neu.Adresssuche.pas' {fAdressSuche},
@@ -49,7 +49,9 @@ uses
   Vcl.Styles,
   Vcl.Themes,
   Windows,
-  PCMManager.Modul.D_Calendar.Terminsuche in 'Modules\PCMManager.Modul.D_Calendar.Terminsuche.pas';
+  PCMManager.Modul.D_Calendar.Terminsuche in 'Modules\PCMManager.Modul.D_Calendar.Terminsuche.pas',
+  PCMManager.Modul.D_Calendar in 'Modules\PCMManager.Modul.D_Calendar.pas' {frm_Calendar},
+  PCMManager.Modul.D_Stundenplan in 'Modules\PCMManager.Modul.D_Stundenplan.pas' {frm_Stundenplan};
 
 {$EndRegion uses}
 {$R *.res}
