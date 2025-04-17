@@ -2,7 +2,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
   Left = 334
   Top = 97
   Caption = 'Neu'
-  ClientHeight = 788
+  ClientHeight = 700
   ClientWidth = 920
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -18,11 +18,12 @@ object frm_Calendar_new: Tfrm_Calendar_new
     Left = 0
     Top = 0
     Width = 920
-    Height = 788
+    Height = 700
     Align = alClient
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    ExplicitHeight = 788
     object cbAnsprechpartner: TcxLookupComboBox
       Left = 531
       Top = 238
@@ -486,14 +487,14 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 22
-      Height = 437
+      Height = 349
       Width = 709
     end
     object cxGrid1: TcxGrid
       Left = 725
       Top = 313
       Width = 185
-      Height = 397
+      Height = 309
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -549,7 +550,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     object Image1: TcxImage
       AlignWithMargins = True
       Left = 725
-      Top = 716
+      Top = 628
       Margins.Left = 5
       Margins.Top = 2
       Margins.Right = 0
@@ -566,7 +567,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     object lTypeName: TcxLabel
       AlignWithMargins = True
       Left = 763
-      Top = 716
+      Top = 628
       Margins.Left = 4
       Margins.Top = 4
       Margins.Right = 0
@@ -590,7 +591,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     object btnAnhangOeffnen: TcxButton
       AlignWithMargins = True
       Left = 887
-      Top = 716
+      Top = 628
       Width = 23
       Height = 26
       Margins.Left = 0
@@ -607,7 +608,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     object btnAnhangLoeschen: TcxButton
       AlignWithMargins = True
       Left = 858
-      Top = 716
+      Top = 628
       Width = 23
       Height = 26
       Margins.Left = 0
@@ -642,7 +643,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     object btnAnhangHinzufuegen: TcxButton
       AlignWithMargins = True
       Left = 829
-      Top = 716
+      Top = 628
       Width = 23
       Height = 26
       Margins.Left = 0
@@ -657,7 +658,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object stbr_New: TdxStatusBar
       Left = 10
-      Top = 756
+      Top = 668
       Width = 900
       Height = 22
       Color = clBlack

@@ -313,7 +313,6 @@ type
     schedDBStrg_Kalender: TcxSchedulerDBStorage;
     dxRibbon1Tab1: TdxRibbonTab;
     dxRibbon1: TdxRibbon;
-    dxRibbon1Tab3: TdxRibbonTab;
     dxRibbon1Tab4: TdxRibbonTab;
     tb_Aufgaben: TdxBar;
     tb_Filter: TdxBar;
@@ -331,6 +330,9 @@ type
     btn_taskMinMax: TdxBarLargeButton;
     pmmbtn_JobsImportOutlook: TdxBarLargeButton;
     pmmbtn_JobsExportOutlook: TdxBarLargeButton;
+    dxBarLargeButton1: TdxBarLargeButton;
+    dxBarLargeButton2: TdxBarLargeButton;
+    dxBarLargeButton3: TdxBarLargeButton;
     procedure FormShow(Sender: TObject);
     procedure edt_SuchePropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
     procedure edt_SucheEnter(Sender: TObject);

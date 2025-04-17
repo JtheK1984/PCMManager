@@ -28,8 +28,6 @@ object frm_Aufgaben: Tfrm_Aufgaben
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
-    ExplicitTop = 0
-    ExplicitHeight = 940
     object trlst_Aufgaben: TcxTreeList
       Left = 10
       Top = 10
@@ -864,18 +862,13 @@ object frm_Aufgaben: Tfrm_Aufgaben
           ToolbarName = 'tb_Aufgaben'
         end
         item
+          ToolbarName = 'tb_Filter'
+        end
+        item
           Caption = 'Ansicht'
           ToolbarName = 'tb_Ansicht'
         end>
       Index = 0
-    end
-    object dxRibbon1Tab3: TdxRibbonTab
-      Caption = 'Filter'
-      Groups = <
-        item
-          ToolbarName = 'tb_Filter'
-        end>
-      Index = 1
     end
     object dxRibbon1Tab4: TdxRibbonTab
       Caption = 'Import / Export'
@@ -883,7 +876,7 @@ object frm_Aufgaben: Tfrm_Aufgaben
         item
           ToolbarName = 'tb_ImportExport'
         end>
-      Index = 2
+      Index = 1
     end
   end
   object brpmm_ContextCalender: TdxBarPopupMenu
@@ -976,7 +969,7 @@ object frm_Aufgaben: Tfrm_Aufgaben
           Visible = True
           ItemName = 'btn_DoneJob'
         end>
-      OneOnRow = True
+      OneOnRow = False
       Row = 1
       UseOwnFont = False
       Visible = True
@@ -985,7 +978,7 @@ object frm_Aufgaben: Tfrm_Aufgaben
     object tb_Filter: TdxBar
       Caption = 'Filter'
       CaptionButtons = <>
-      DockedLeft = 0
+      DockedLeft = 382
       DockedTop = 0
       FloatLeft = 2011
       FloatTop = 2
@@ -1037,7 +1030,7 @@ object frm_Aufgaben: Tfrm_Aufgaben
     object tb_Ansicht: TdxBar
       Caption = 'Ansicht'
       CaptionButtons = <>
-      DockedLeft = 382
+      DockedLeft = 645
       DockedTop = 0
       FloatLeft = 2011
       FloatTop = 2
@@ -1048,8 +1041,8 @@ object frm_Aufgaben: Tfrm_Aufgaben
           Visible = True
           ItemName = 'btn_taskMinMax'
         end>
-      OneOnRow = True
-      Row = 0
+      OneOnRow = False
+      Row = 1
       UseOwnFont = False
       Visible = True
       WholeRow = False
@@ -1240,6 +1233,26 @@ object frm_Aufgaben: Tfrm_Aufgaben
         2E3143372E362C31372E312C382E312C31372E342C382E342C31372E397A222F
         3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
       OnClick = pmmbtn_JobsExportOutlookClick
+    end
+    object dxBarLargeButton1: TdxBarLargeButton
+      Caption = 'New Button'
+      Category = 0
+      Hint = 'New Button'
+      Visible = ivAlways
+    end
+    object dxBarLargeButton2: TdxBarLargeButton
+      Caption = 'bearbeitete Aufgaben'
+      Category = 0
+      Hint = 'bearbeitete Aufgaben'
+      Visible = ivAlways
+      LargeImageIndex = 123
+    end
+    object dxBarLargeButton3: TdxBarLargeButton
+      Caption = 'Aufgaben &aktualisieren'
+      Category = 0
+      Hint = 'Aufgaben aktualisieren'
+      Visible = ivAlways
+      LargeImageIndex = 6
     end
     object pmmbtn_CalNew: TdxBarButton
       Caption = 'Termin'

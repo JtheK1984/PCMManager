@@ -181,7 +181,6 @@ type
     btn_CalFTDelete: TdxBarLargeButton;
     btn_CalFTinCal: TdxBarLargeButton;
     btn_CalFTNew: TdxBarLargeButton;
-    btn_EmailConfig_Test: TcxButton;
     btn_EmailConfigCancel: TdxBarLargeButton;
     btn_EmailConfigDelete: TdxBarLargeButton;
     btn_EmailConfigNew: TdxBarLargeButton;
@@ -407,7 +406,6 @@ type
     laitm_AufgabenartBeschreibung: TdxLayoutItem;
     laitm_AufgabenartGrid: TdxLayoutItem;
     laitm_Emailadress: TdxLayoutItem;
-    laitm_EmailCheck: TdxLayoutItem;
     laitm_EmailClientID: TdxLayoutItem;
     laitm_EmailClientSecret: TdxLayoutItem;
     laitm_EmailConfigTestAus: TdxLayoutLabeledItem;
@@ -527,6 +525,9 @@ type
     dxLayoutGroup5: TdxLayoutGroup;
     dxLayoutGroup6: TdxLayoutGroup;
     dxLayoutGroup13: TdxLayoutGroup;
+    dxLayoutGroup14: TdxLayoutGroup;
+    dxLayoutGroup15: TdxLayoutGroup;
+    btn_EmailConfig_Test: TdxBarLargeButton;
     procedure btn_AnredeCancelClick(Sender: TObject);
     procedure btn_AnredeDeleteClick(Sender: TObject);
     procedure btn_AnredeNewClick(Sender: TObject);

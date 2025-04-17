@@ -2,8 +2,8 @@ object frm_Terminsuche: Tfrm_Terminsuche
   Left = 0
   Top = 0
   Caption = 'PCM-Manager: Terminsuche'
-  ClientHeight = 869
-  ClientWidth = 1275
+  ClientHeight = 700
+  ClientWidth = 900
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,8 +16,8 @@ object frm_Terminsuche: Tfrm_Terminsuche
   object lactrl_Adressbook: TdxLayoutControl
     Left = 0
     Top = 0
-    Width = 1275
-    Height = 869
+    Width = 900
+    Height = 700
     Align = alClient
     TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
@@ -26,8 +26,8 @@ object frm_Terminsuche: Tfrm_Terminsuche
     object grd_Adress: TcxGrid
       Left = 12
       Top = 44
-      Width = 1251
-      Height = 781
+      Width = 876
+      Height = 612
       TabOrder = 1
       object grdDBTblView_Adress: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -102,8 +102,8 @@ object frm_Terminsuche: Tfrm_Terminsuche
       end
     end
     object btn_Ok: TcxButton
-      Left = 1056
-      Top = 832
+      Left = 681
+      Top = 663
       Width = 100
       Height = 25
       Caption = 'Ok'
@@ -111,8 +111,8 @@ object frm_Terminsuche: Tfrm_Terminsuche
       OnClick = btn_OkClick
     end
     object btn_Abort: TcxButton
-      Left = 1163
-      Top = 832
+      Left = 788
+      Top = 663
       Width = 100
       Height = 25
       Caption = 'Abbrechen'
@@ -156,7 +156,7 @@ object frm_Terminsuche: Tfrm_Terminsuche
       Style.TransparentBorder = False
       TabOrder = 0
       OnKeyDown = edt_sucheKeyDown
-      Width = 1204
+      Width = 829
     end
     object lactrl_AdressbookGroup_Root: TdxLayoutGroup
       AlignHorz = ahClient

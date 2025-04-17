@@ -4,7 +4,7 @@ object fAdressSuche: TfAdressSuche
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'Adresse suchen'
   ClientHeight = 614
-  ClientWidth = 946
+  ClientWidth = 900
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,16 +21,17 @@ object fAdressSuche: TfAdressSuche
   object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
-    Width = 946
+    Width = 900
     Height = 614
     Align = alClient
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    ExplicitWidth = 946
     object cxGrid1: TcxGrid
       Left = 10
       Top = 229
-      Width = 926
+      Width = 880
       Height = 375
       TabOrder = 8
       LookAndFeel.NativeStyle = False
@@ -109,7 +110,7 @@ object fAdressSuche: TfAdressSuche
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 2
-      Width = 369
+      Width = 346
     end
     object teStrasse: TcxTextEdit
       Left = 97
@@ -117,23 +118,23 @@ object fAdressSuche: TfAdressSuche
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 3
-      Width = 369
+      Width = 346
     end
     object tePLZ: TcxTextEdit
-      Left = 554
+      Left = 531
       Top = 136
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 4
-      Width = 373
+      Width = 350
     end
     object teOrt: TcxTextEdit
-      Left = 554
+      Left = 531
       Top = 161
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 5
-      Width = 373
+      Width = 350
     end
     object bAdressenZeigen: TcxButton
       Left = 10
@@ -180,7 +181,7 @@ object fAdressSuche: TfAdressSuche
     object dxBarDockControl1: TdxBarDockControl
       Left = 10
       Top = 10
-      Width = 926
+      Width = 880
       Height = 63
       Align = dalNone
       BarManager = dxBarManager1
@@ -191,7 +192,7 @@ object fAdressSuche: TfAdressSuche
       Caption = 'Private Adresse'
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 0
+      TabOrder = 1
       Transparent = True
     end
     object dxLayoutControl1Group_Root: TdxLayoutGroup
