@@ -211,10 +211,7 @@ type
     compPrint_CalLink2: TdxGridReportLink;
     idFTP_Cal: TIdFTP;
     pmmbtn_CalNew: TdxBarButton;
-    pmmbtn_JobNew: TdxBarButton;
-    pmmbtn_MessageNew: TdxBarButton;
     pm_Einnahmen: TcxGridPopupMenu;
-    pmmbtn_JobsImportOutlook: TdxBarButton;
     Outlook: TOutlookApplication;
     SaveDialog1: TdxSaveFileDialog;
     sched_Kalender: TcxScheduler;
@@ -298,6 +295,7 @@ type
     btn_DruckeMonat: TdxBarLargeButton;
     btn_DruckeJahr: TdxBarLargeButton;
     btn_DruckeAgenda: TdxBarLargeButton;
+    dxRibbon1Tab2: TdxRibbonTab;
     procedure btn_TerminNewClick(Sender: TObject);
     procedure btn_AnsichtArbeitswocheClick(Sender: TObject);
     procedure btn_AnsichtWocheClick(Sender: TObject);

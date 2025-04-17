@@ -414,3 +414,7 @@ modules/
 /Win64/Release/PCMManager.nds
 /Win64/Release/PCMManager.ntr
 /Win64/Release/OLD_PCMManager.ntp
+/Win64/Debug/CustomCache
+/Win64/Debug/imap.gmail.com
+/Win64/Debug/imap.gmx.net
+/Win64/Debug/outlook.office365.com

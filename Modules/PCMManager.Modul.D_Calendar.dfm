@@ -125,12 +125,17 @@ object frm_Calendar: Tfrm_Calendar
         item
           Caption = 'Ansicht'
           ToolbarName = 'tb_Ansicht'
-        end
+        end>
+      Index = 0
+    end
+    object dxRibbon1Tab2: TdxRibbonTab
+      Caption = 'Filter'
+      Groups = <
         item
           Caption = 'Filter'
           ToolbarName = 'tb_Filter'
         end>
-      Index = 0
+      Index = 1
     end
     object dxRibbonTabView: TdxRibbonTab
       Caption = 'Optionen'
@@ -143,7 +148,7 @@ object frm_Calendar: Tfrm_Calendar
           Caption = 'Layout'
           ToolbarName = 'tb_Layout'
         end>
-      Index = 1
+      Index = 2
     end
     object dxRibbonTabFile: TdxRibbonTab
       Caption = 'Drucken'
@@ -152,15 +157,15 @@ object frm_Calendar: Tfrm_Calendar
           Caption = 'Drucken'
           ToolbarName = 'tb_Drucken'
         end>
-      Index = 2
+      Index = 3
     end
     object dxRibbon1Tab1: TdxRibbonTab
-      Caption = 'Import/Export'
+      Caption = 'Import / Export'
       Groups = <
         item
           ToolbarName = 'tb_ImportExport'
         end>
-      Index = 3
+      Index = 4
     end
   end
   object brpmm_ContextCalender: TdxBarPopupMenu
@@ -324,7 +329,7 @@ object frm_Calendar: Tfrm_Calendar
     object tb_Navigation: TdxBar
       Caption = 'Navigation'
       CaptionButtons = <>
-      DockedLeft = 112
+      DockedLeft = 75
       DockedTop = 0
       FloatLeft = 2011
       FloatTop = 2
@@ -397,7 +402,7 @@ object frm_Calendar: Tfrm_Calendar
     object tb_Ansicht: TdxBar
       Caption = 'Arrange'
       CaptionButtons = <>
-      DockedLeft = 600
+      DockedLeft = 469
       DockedTop = 0
       FloatLeft = 2011
       FloatTop = 2
@@ -683,7 +688,7 @@ object frm_Calendar: Tfrm_Calendar
     object tb_Filter: TdxBar
       Caption = 'Custom 1'
       CaptionButtons = <>
-      DockedLeft = 1432
+      DockedLeft = 0
       DockedTop = 0
       FloatLeft = 2011
       FloatTop = 2
@@ -702,7 +707,7 @@ object frm_Calendar: Tfrm_Calendar
           Visible = True
           ItemName = 'btn_FilterRefresh'
         end>
-      OneOnRow = False
+      OneOnRow = True
       Row = 0
       UseOwnFont = False
       Visible = True
@@ -838,7 +843,6 @@ object frm_Calendar: Tfrm_Calendar
       Visible = ivAlways
       OnClick = btn_AnsichtMaxMinClick
       LargeImageIndex = 32
-      Width = 90
     end
     object btn_FilterRefresh: TdxBarLargeButton
       Caption = 'Kalender aktualisieren'
@@ -1532,24 +1536,6 @@ object frm_Calendar: Tfrm_Calendar
       ImageIndex = 72
       OnClick = pmmbtn_CalNewClick
     end
-    object pmmbtn_JobNew: TdxBarButton
-      Caption = 'Aufgabe'
-      Category = 4
-      Visible = ivAlways
-      ImageIndex = 71
-    end
-    object pmmbtn_MessageNew: TdxBarButton
-      Caption = 'Nachricht'
-      Category = 4
-      Visible = ivAlways
-      ImageIndex = 70
-    end
-    object pmmbtn_JobsImportOutlook: TdxBarButton
-      Caption = 'Import (Outlook)'
-      Category = 5
-      Visible = ivAlways
-      ImageIndex = 69
-    end
     object btn_TerminNew: TdxBarLargeButton
       Caption = '&Neuer Termin'
       Category = 6
@@ -1593,7 +1579,6 @@ object frm_Calendar: Tfrm_Calendar
         31304834763468345631307A222F3E0D0A09093C2F673E0D0A093C2F673E0D0A
         3C2F7376673E0D0A}
       OnClick = btn_TerminNewClick
-      Width = 90
       SyncImageIndex = False
       ImageIndex = 87
     end
@@ -1629,7 +1614,6 @@ object frm_Calendar: Tfrm_Calendar
         31362C327A204D32342C3138682D3876366C2D382D386C382D38763668385631
         387A222F3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
       OnClick = btn_NavigationZurueckClick
-      Width = 90
       SyncImageIndex = False
       ImageIndex = 89
     end
@@ -1665,7 +1649,6 @@ object frm_Calendar: Tfrm_Calendar
         322C31362C327A204D31362C3234762D364838762D34683856386C382C384C31
         362C32347A222F3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
       OnClick = btn_NavigationVorClick
-      Width = 90
       SyncImageIndex = False
       ImageIndex = 90
     end
@@ -1704,7 +1687,6 @@ object frm_Calendar: Tfrm_Calendar
         5631367A204D382C31364834763468345631367A204D31342C3130682D347634
         68345631307A204D382C31304834763468345631307A222F3E0D0A09093C2F67
         3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
-      Width = 90
       SyncImageIndex = False
       ImageIndex = 91
     end
@@ -1750,7 +1732,6 @@ object frm_Calendar: Tfrm_Calendar
         362032352E372C32362031392E372C32302033322C3230202623393B222F3E0D
         0A093C2F673E0D0A3C2F7376673E0D0A}
       LargeImageIndex = 139
-      Width = 90
       SyncImageIndex = False
       ImageIndex = 92
     end
@@ -1796,7 +1777,6 @@ object frm_Calendar: Tfrm_Calendar
         202623393B2623393B2623393B5631307A204D382C3130483476346834563130
         7A222F3E0D0A09093C2F673E0D0A093C2F673E0D0A3C2F7376673E0D0A}
       LargeImageIndex = 140
-      Width = 90
       SyncImageIndex = False
       ImageIndex = 93
     end
@@ -1842,7 +1822,6 @@ object frm_Calendar: Tfrm_Calendar
         204D31342C3130682D34763468345631307A204D382C31304834763468345631
         307A222F3E0D0A09093C2F673E0D0A093C2F673E0D0A3C2F7376673E0D0A}
       OnClick = btn_AnsichtTagClick
-      Width = 90
       SyncImageIndex = False
       ImageIndex = -1
     end
@@ -1888,7 +1867,6 @@ object frm_Calendar: Tfrm_Calendar
         682D34763468345631307A204D382C31304834763468345631307A222F3E0D0A
         09093C2F673E0D0A093C2F673E0D0A3C2F7376673E0D0A}
       OnClick = btn_AnsichtArbeitswocheClick
-      Width = 90
       SyncImageIndex = False
       ImageIndex = -1
     end
@@ -1934,7 +1912,6 @@ object frm_Calendar: Tfrm_Calendar
         3468345631307A204D382C31304834763468345631307A222F3E0D0A09093C2F
         673E0D0A093C2F673E0D0A3C2F7376673E0D0A}
       OnClick = btn_AnsichtWocheClick
-      Width = 90
       SyncImageIndex = False
       ImageIndex = 96
     end
@@ -1980,7 +1957,6 @@ object frm_Calendar: Tfrm_Calendar
         32327A204D382C31304834763468345631307A222F3E0D0A09093C2F673E0D0A
         093C2F673E0D0A3C2F7376673E0D0A}
       OnClick = btn_AnsichtMonatClick
-      Width = 90
       SyncImageIndex = False
       ImageIndex = 97
     end
@@ -2025,7 +2001,6 @@ object frm_Calendar: Tfrm_Calendar
         2E327A204D32342C3232762D34682D327634763268326834762D324832347A22
         2F3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
       OnClick = btn_AnsichtZeitleisteClick
-      Width = 90
       SyncImageIndex = False
       ImageIndex = 98
     end
@@ -2063,7 +2038,6 @@ object frm_Calendar: Tfrm_Calendar
         342E312C332E334331352E362C32342E392C31352E362C32332E362C31352E36
         2C32332E367A222F3E0D0A3C2F7376673E0D0A}
       OnClick = btn_AnsichtJahrClick
-      Width = 90
       SyncImageIndex = False
       ImageIndex = 99
     end
@@ -2102,7 +2076,6 @@ object frm_Calendar: Tfrm_Calendar
         3276346831345631347A204D32302C3230483876346831325632307A222F3E0D
         0A093C2F673E0D0A3C2F7376673E0D0A}
       OnClick = btn_AnsichtGanttClick
-      Width = 90
       SyncImageIndex = False
       ImageIndex = 100
     end
@@ -2146,7 +2119,6 @@ object frm_Calendar: Tfrm_Calendar
         3E0D0A3C2F7376673E0D0A}
       OnClick = btn_AnsichtAgendaClick
       LargeImageIndex = 101
-      Width = 90
       SyncImageIndex = False
       ImageIndex = 101
     end

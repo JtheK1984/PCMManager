@@ -524,6 +524,9 @@ type
     dxLayoutGroup10: TdxLayoutGroup;
     dxLayoutGroup11: TdxLayoutGroup;
     dxLayoutGroup12: TdxLayoutGroup;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutGroup6: TdxLayoutGroup;
+    dxLayoutGroup13: TdxLayoutGroup;
     procedure btn_AnredeCancelClick(Sender: TObject);
     procedure btn_AnredeDeleteClick(Sender: TObject);
     procedure btn_AnredeNewClick(Sender: TObject);
