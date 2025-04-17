@@ -2925,6 +2925,7 @@ object frm_Contact: Tfrm_Contact
       AlignVert = avClient
       CaptionOptions.Text = 'Browser'
       LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel2
+      Visible = False
       Padding.AssignedValues = [lpavLeft, lpavRight, lpavTop]
       TabbedOptions.Options = [pcoAlwaysShowGoDialogButton, pcoCloseButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize]
       Index = 2
