@@ -365,7 +365,6 @@ type
     lagrp_Emailkonfiguration: TdxLayoutGroup;
     lagrp_EmailkonfigurationDetails: TdxLayoutGroup;
     lagrp_EmailkonfigurationDetailsLeft: TdxLayoutGroup;
-    lagrp_EmailkonfigurationDetailsRight: TdxLayoutGroup;
     lagrp_EmailPostfaecherkonfiguration: TdxLayoutGroup;
     lagrp_EmailPostfaecherkonfigurationMain: TdxLayoutGroup;
     lagrp_EmailPostfaecherkonfigurationMainButtons: TdxLayoutGroup;
@@ -408,7 +407,6 @@ type
     laitm_AufgabenartBeschreibung: TdxLayoutItem;
     laitm_AufgabenartGrid: TdxLayoutItem;
     laitm_Emailadress: TdxLayoutItem;
-    laitm_EmailAnmeldung: TdxLayoutLabeledItem;
     laitm_EmailCheck: TdxLayoutItem;
     laitm_EmailClientID: TdxLayoutItem;
     laitm_EmailClientSecret: TdxLayoutItem;
@@ -432,7 +430,6 @@ type
     laitm_EmailPostfaecherkonfigurationSubGrid: TdxLayoutItem;
     laitm_EmailPostfaecherkonfigurationSubLast: TdxLayoutItem;
     laitm_EmailPostfaecherkonfigurationSubUp: TdxLayoutItem;
-    laitm_EmailServer: TdxLayoutLabeledItem;
     laitm_EmailSSL: TdxLayoutItem;
     laitm_EmialAuth: TdxLayoutItem;
     laitm_FeiertageBar: TdxLayoutItem;
@@ -521,11 +518,12 @@ type
     cxDBCheckBox1: TcxDBCheckBox;
     dxLayoutGroup3: TdxLayoutGroup;
     dxLayoutGroup4: TdxLayoutGroup;
-    dxLayoutGroup5: TdxLayoutGroup;
-    dxLayoutGroup6: TdxLayoutGroup;
     dxLayoutGroup7: TdxLayoutGroup;
     dxLayoutGroup8: TdxLayoutGroup;
     dxLayoutGroup9: TdxLayoutGroup;
+    dxLayoutGroup10: TdxLayoutGroup;
+    dxLayoutGroup11: TdxLayoutGroup;
+    dxLayoutGroup12: TdxLayoutGroup;
     procedure btn_AnredeCancelClick(Sender: TObject);
     procedure btn_AnredeDeleteClick(Sender: TObject);
     procedure btn_AnredeNewClick(Sender: TObject);

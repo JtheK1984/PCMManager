@@ -29,9 +29,8 @@ object frm_Contact: Tfrm_Contact
     TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
-    ExplicitTop = 63
-    ExplicitWidth = 1594
-    ExplicitHeight = 952
+    ExplicitWidth = 1274
+    ExplicitHeight = 651
     object cmbbx_KontaktSucheArt: TcxComboBox
       Left = 88
       Top = 131
@@ -48,10 +47,10 @@ object frm_Contact: Tfrm_Contact
       TabOrder = 2
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 190
+      Width = 150
     end
     object edt_KontaktSucheAbteilung: TcxTextEdit
-      Left = 693
+      Left = 701
       Top = 104
       AutoSize = False
       ParentFont = False
@@ -66,10 +65,10 @@ object frm_Contact: Tfrm_Contact
       TabOrder = 8
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 190
+      Width = 150
     end
     object edt_KontaktSucheFirma: TcxTextEdit
-      Left = 693
+      Left = 701
       Top = 77
       AutoSize = False
       ParentFont = False
@@ -84,10 +83,10 @@ object frm_Contact: Tfrm_Contact
       TabOrder = 7
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 190
+      Width = 150
     end
     object edt_KontaktSucheFunktion: TcxTextEdit
-      Left = 693
+      Left = 701
       Top = 131
       AutoSize = False
       ParentFont = False
@@ -102,7 +101,7 @@ object frm_Contact: Tfrm_Contact
       TabOrder = 9
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 190
+      Width = 150
     end
     object edt_KontaktSucheNachname: TcxTextEdit
       Left = 88
@@ -129,10 +128,10 @@ object frm_Contact: Tfrm_Contact
       TabOrder = 0
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 190
+      Width = 150
     end
     object edt_KontaktSucheOrt: TcxTextEdit
-      Left = 395
+      Left = 394
       Top = 131
       AutoSize = False
       ParentFont = False
@@ -147,10 +146,10 @@ object frm_Contact: Tfrm_Contact
       TabOrder = 6
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 190
+      Width = 150
     end
     object edt_KontaktSuchePLZ: TcxTextEdit
-      Left = 395
+      Left = 394
       Top = 104
       AutoSize = False
       ParentFont = False
@@ -165,10 +164,10 @@ object frm_Contact: Tfrm_Contact
       TabOrder = 5
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 190
+      Width = 150
     end
     object edt_KontaktSucheStrasse: TcxTextEdit
-      Left = 395
+      Left = 394
       Top = 77
       AutoSize = False
       ParentFont = False
@@ -183,7 +182,7 @@ object frm_Contact: Tfrm_Contact
       TabOrder = 4
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 190
+      Width = 150
     end
     object edt_KontaktSucheVorname: TcxTextEdit
       Left = 88
@@ -201,7 +200,7 @@ object frm_Contact: Tfrm_Contact
       TabOrder = 1
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 190
+      Width = 150
     end
     object cmbbx_Anrede: TcxDBLookupComboBox
       Left = 10000
@@ -1182,10 +1181,10 @@ object frm_Contact: Tfrm_Contact
       TabOrder = 3
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 190
+      Width = 150
     end
     object edt_KontaktSucheStrasseGes: TcxTextEdit
-      Left = 1029
+      Left = 1044
       Top = 77
       AutoSize = False
       ParentFont = False
@@ -1209,10 +1208,10 @@ object frm_Contact: Tfrm_Contact
       TabOrder = 10
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 190
+      Width = 150
     end
     object edt_KontaktSuchePLZGes: TcxTextEdit
-      Left = 1029
+      Left = 1044
       Top = 104
       AutoSize = False
       ParentFont = False
@@ -1236,10 +1235,10 @@ object frm_Contact: Tfrm_Contact
       TabOrder = 11
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 190
+      Width = 150
     end
     object edt_KontaktSucheOrtGes: TcxTextEdit
-      Left = 1029
+      Left = 1044
       Top = 131
       AutoSize = False
       ParentFont = False
@@ -1263,7 +1262,7 @@ object frm_Contact: Tfrm_Contact
       TabOrder = 12
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
-      Width = 190
+      Width = 150
     end
     object cmbbx_KontaktGeburtsland: TcxDBLookupComboBox
       Left = 10000
@@ -2524,6 +2523,7 @@ object frm_Contact: Tfrm_Contact
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'Filterkriterien'
+      ItemIndex = 3
       LayoutDirection = ldHorizontal
       Index = 0
     end
@@ -2680,7 +2680,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Kontaktart:'
       Control = cmbbx_KontaktSucheArt
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 190
+      ControlOptions.OriginalWidth = 150
       ControlOptions.ShowBorder = False
       Index = 2
     end
@@ -2692,7 +2692,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Abteilung:'
       Control = edt_KontaktSucheAbteilung
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 190
+      ControlOptions.OriginalWidth = 150
       ControlOptions.ShowBorder = False
       Index = 1
     end
@@ -2704,7 +2704,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Firma:'
       Control = edt_KontaktSucheFirma
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 190
+      ControlOptions.OriginalWidth = 150
       ControlOptions.ShowBorder = False
       Index = 0
     end
@@ -2716,7 +2716,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Funktion:'
       Control = edt_KontaktSucheFunktion
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 190
+      ControlOptions.OriginalWidth = 150
       ControlOptions.ShowBorder = False
       Index = 2
     end
@@ -2727,7 +2727,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Nachname:'
       Control = edt_KontaktSucheNachname
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 190
+      ControlOptions.OriginalWidth = 150
       ControlOptions.ShowBorder = False
       Index = 0
     end
@@ -2739,7 +2739,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Ort:'
       Control = edt_KontaktSucheOrt
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 190
+      ControlOptions.OriginalWidth = 150
       ControlOptions.ShowBorder = False
       Index = 2
     end
@@ -2751,7 +2751,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Postleitzahl:'
       Control = edt_KontaktSuchePLZ
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 190
+      ControlOptions.OriginalWidth = 150
       ControlOptions.ShowBorder = False
       Index = 1
     end
@@ -2763,7 +2763,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Strasse:'
       Control = edt_KontaktSucheStrasse
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 190
+      ControlOptions.OriginalWidth = 150
       ControlOptions.ShowBorder = False
       Index = 0
     end
@@ -2774,7 +2774,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Vorname:'
       Control = edt_KontaktSucheVorname
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 190
+      ControlOptions.OriginalWidth = 150
       ControlOptions.ShowBorder = False
       Index = 1
     end
@@ -2850,7 +2850,7 @@ object frm_Contact: Tfrm_Contact
     end
     object lagrp_SucheKontakt: TdxLayoutGroup
       Parent = lagrp_SucheFilter
-      AlignHorz = ahLeft
+      AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
       ShowBorder = False
@@ -2858,7 +2858,7 @@ object frm_Contact: Tfrm_Contact
     end
     object lagrp_SucheAdressePri: TdxLayoutGroup
       Parent = lagrp_SucheFilter
-      AlignHorz = ahLeft
+      AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
       ShowBorder = False
@@ -2866,7 +2866,7 @@ object frm_Contact: Tfrm_Contact
     end
     object lagrp_SucheFirma: TdxLayoutGroup
       Parent = lagrp_SucheFilter
-      AlignHorz = ahLeft
+      AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
       ShowBorder = False
@@ -3006,7 +3006,7 @@ object frm_Contact: Tfrm_Contact
     end
     object lagrp_SucheAdresseGes: TdxLayoutGroup
       Parent = lagrp_SucheFilter
-      AlignHorz = ahLeft
+      AlignHorz = ahClient
       AlignVert = avTop
       ShowBorder = False
       Index = 3
@@ -3019,7 +3019,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Strasse Firma:'
       Control = edt_KontaktSucheStrasseGes
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 190
+      ControlOptions.OriginalWidth = 150
       ControlOptions.ShowBorder = False
       Index = 0
     end
@@ -3031,7 +3031,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Postleitzahl Firma:'
       Control = edt_KontaktSuchePLZGes
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 190
+      ControlOptions.OriginalWidth = 150
       ControlOptions.ShowBorder = False
       Index = 1
     end
@@ -3043,7 +3043,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Ort Firma:'
       Control = edt_KontaktSucheOrtGes
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 190
+      ControlOptions.OriginalWidth = 150
       ControlOptions.ShowBorder = False
       Index = 2
     end
@@ -3065,7 +3065,7 @@ object frm_Contact: Tfrm_Contact
       CaptionOptions.Text = 'Anrede:'
       Control = cmbbx_KontaktAnrede
       ControlOptions.OriginalHeight = 21
-      ControlOptions.OriginalWidth = 190
+      ControlOptions.OriginalWidth = 150
       ControlOptions.ShowBorder = False
       Index = 3
     end
@@ -3102,7 +3102,7 @@ object frm_Contact: Tfrm_Contact
     Height = 21
     OptionsImage.ImageIndex = 75
     OptionsImage.Images = dm_PCM.imglst_16x16
-    TabOrder = 5
+    TabOrder = 1
     TabStop = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -3120,7 +3120,7 @@ object frm_Contact: Tfrm_Contact
     Style = rsOffice365
     ColorSchemeName = 'Colorful'
     Contexts = <>
-    TabOrder = 6
+    TabOrder = 2
     TabStop = False
     object dxRibbon1Tab1: TdxRibbonTab
       Active = True
@@ -3219,8 +3219,8 @@ object frm_Contact: Tfrm_Contact
           Visible = True
           ItemName = 'btn_KontaktDelete'
         end>
-      OneOnRow = True
-      Row = 1
+      OneOnRow = False
+      Row = 0
       UseOwnFont = False
       Visible = True
       WholeRow = False
@@ -3251,7 +3251,7 @@ object frm_Contact: Tfrm_Contact
           Visible = True
           ItemName = 'btn_KontaktLast'
         end>
-      OneOnRow = True
+      OneOnRow = False
       Row = 0
       UseOwnFont = False
       Visible = True
