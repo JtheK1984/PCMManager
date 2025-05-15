@@ -884,11 +884,11 @@ procedure Tfrm_password.FormShow(Sender: TObject);
     qry_Serial.Filtered:= true;
     tv_ProgramsAPP.Caption := rs_PCM_Bezeichnung;
     tv_ProgramsiD_typ.Caption := rs_PCMManager_SerialTyp;
-    grdDBTblView_SerialDetailUSer.Caption:=  rs_PCMBenutzerverwaltung_Benutzer;
+    grdDBTblView_SerialDetailUSer.Caption:=  rs_Function_Benutzer_Benutzer;
     grdDBTblView_SerialDetailSerial.Caption:= rs_PCMManager_Serial;
     tv_PasswortBezeichnung.Caption:= rs_PCM_Bezeichnung;
     tv_Passwortlink.Caption:= rs_PCMManager_Link;
-    tv_Passwortuser.Caption:= rs_PCMBenutzerverwaltung_Benutzer;
+    tv_Passwortuser.Caption:= rs_Function_Benutzer_Benutzer;
     tv_Passwortpassword.Caption:= rs_PCM_Passwort;
   end;
 begin

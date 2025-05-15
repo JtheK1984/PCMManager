@@ -3976,8 +3976,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 1
-    ExplicitWidth = 1074
-    ExplicitHeight = 748
     Height = 765
     Width = 1080
     object pc_main: TcxPageControl
@@ -4010,8 +4008,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
         AllowCloseButton = False
         Caption = 'Dashboard'
         ImageIndex = 79
-        ExplicitWidth = 1062
-        ExplicitHeight = 710
         object dxLayoutControl1: TdxLayoutControl
           Left = 0
           Top = 0
@@ -4021,8 +4017,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
           TabOrder = 0
           LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
           OptionsImage.Images = dm_PCM.imglst_16x16
-          ExplicitWidth = 1062
-          ExplicitHeight = 710
           object chartctrl_Birthday: TdxChartControl
             Left = 28
             Top = 77
@@ -4360,7 +4354,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_EinSoll: TcxLabel
             AlignWithMargins = True
-            Left = 10000
+            Left = 10119
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4383,7 +4377,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_AusFixSoll: TcxLabel
             AlignWithMargins = True
-            Left = 10000
+            Left = 10119
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4406,7 +4400,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_AusVarSoll: TcxLabel
             AlignWithMargins = True
-            Left = 10000
+            Left = 10119
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4456,7 +4450,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_EinSollSum: TcxLabel
             AlignWithMargins = True
-            Left = 10000
+            Left = 10119
             Top = 10000
             Margins.Left = 0
             Margins.Top = 0
@@ -4534,7 +4528,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_EinIst: TcxLabel
             AlignWithMargins = True
-            Left = 10000
+            Left = 10124
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4557,7 +4551,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_AusFixIst: TcxLabel
             AlignWithMargins = True
-            Left = 10000
+            Left = 10124
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4580,7 +4574,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_AusvarIst: TcxLabel
             AlignWithMargins = True
-            Left = 10000
+            Left = 10124
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4711,7 +4705,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_EinDiff: TcxLabel
             AlignWithMargins = True
-            Left = 10000
+            Left = 10124
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4736,7 +4730,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_AusFixDiff: TcxLabel
             AlignWithMargins = True
-            Left = 10000
+            Left = 10124
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1
@@ -4761,7 +4755,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object lbl_AusvarDiff: TcxLabel
             AlignWithMargins = True
-            Left = 10000
+            Left = 10124
             Top = 10000
             Margins.Left = 0
             Margins.Top = 1

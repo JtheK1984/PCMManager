@@ -734,8 +734,8 @@ begin
     slFileXML.Add('  </body>');
     slFileXML.Add('</html>');
     slFileXML.SaveToFile(TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Stundenplan.html');
-    Application.CreateForm(Tfrm_Browser_FullScreen, frm_Browser_FullScreen);
-    frm_Browser_FullScreen.Execute(True,'PCM - Manager: Stundenplan',TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Stundenplan.html');
+    Application.CreateForm(Tfrm_PCM_Browser_FullScreen, frm_PCM_Browser_FullScreen);
+    frm_PCM_Browser_FullScreen.Execute(True,'PCM - Manager: Stundenplan',TPath.Combine(TPath.GetDirectoryName(Application.ExeName), 'Report') + '_Stundenplan.html');
   finally
     slFileXML.Free;
   end;
@@ -945,7 +945,7 @@ procedure Tfrm_Stundenplan.FormShow(Sender: TObject);
     qry_SchulFaecher.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
     qry_Stundenplan.Filter:= 'ID_Benutzer = ' + IntToStr(dm_PCM.iIDBenutzerPCM);
     qry_Stundenplan.Filtered:= true;
-    grdDBTblView_StundenplanuebersichtID_Benutzer.Caption:= rs_PCMBenutzerverwaltung_Benutzer;
+    grdDBTblView_StundenplanuebersichtID_Benutzer.Caption:= rs_Function_Benutzer_Benutzer;
     grdDBTblView_StundenplanuebersichtKlasse.Caption:= rs_PCMManager_Klasse;
     grdDBTblView_StundenplanuebersichtSchule.Caption:= rs_PCMManager_Schule;
     grdDBTblView_StundenplanuebersichtSchuljahr.Caption:= rs_PCMManager_Schuljahr;
