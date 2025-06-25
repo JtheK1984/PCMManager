@@ -347,10 +347,10 @@ type
     iCurrTableview: integer;
     sColordef,sFontcolordef: string;
     iFontColor,iLabelColor: Integer;
-    SaveGridViewAufgaben,SaveGridViewNachrichten,
-    SaveGridViewStundenplan,SaveGridViewStundenplanDetail: TSavedGridView;
+//    SaveGridViewAufgaben,SaveGridViewNachrichten,
+//    SaveGridViewStundenplan,SaveGridViewStundenplanDetail: TSavedGridView;
     procedure OpenEvent(ID_kalender: Integer; bReminder: Boolean);
-    function GetAttachmentFilename(s: string): string;
+//    function GetAttachmentFilename(s: string): string;
   public
     { Public-Deklarationen }
     bol_VollBildCal: boolean;
@@ -712,10 +712,10 @@ begin
   RecurrenceInfo:= ARecurrenceInfo;
   Result := cxRecurrenceInfoDataToString(ARecurrenceInfo);
 end;
-function Tfrm_Calendar.GetAttachmentFilename(s: string): string;
-begin
-  Result := ExpandFilename(ExtractFilePath(ParamStr(0)) + 'Files\' + s)
-end;
+//function Tfrm_Calendar.GetAttachmentFilename(s: string): string;
+//begin
+//  Result := ExpandFilename(ExtractFilePath(ParamStr(0)) + 'Files\' + s)
+//end;
 procedure Tfrm_Calendar.RefreshTerminundAUfgaben;
 var
   sfilter: String;

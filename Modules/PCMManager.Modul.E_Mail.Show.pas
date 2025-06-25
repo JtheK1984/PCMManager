@@ -157,13 +157,14 @@ procedure Tfrm_PCM_MailShow.CreateAnhang(AAnhaenge: TAnhaenge);
   end;
 var
   imageindex: Integer;
-  FileInfo: TSHFileInfo;
+//  FileInfo: TSHFileInfo;
   Icon: TIcon;
-  IconH : HICON;
+//  IconH : HICON;
   li: Tlistitem;
   iTemp: integer;
   IconHandle: HICON;
 begin
+  imageindex:= -1;
   for iTemp := 0 to High(arANhang) do
   begin
     IconHandle := GetFileIcon(aranhang[itemp].sFilePath, True);

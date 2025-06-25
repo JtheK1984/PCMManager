@@ -372,16 +372,16 @@ type
       AEvent: TcxSchedulerEvent; var AHandled: Boolean);
   private
     { Private-Deklarationen }
-    FKalenderDateButton : Boolean;
+//    FKalenderDateButton : Boolean;
     defaultLabelColor: integer;
     defaultFontColor: integer;
     iCurrTableview: integer;
-    sColordef,sFontcolordef: string;
+//    sColordef,sFontcolordef: string;
     iFontColor,iLabelColor: Integer;
-    SaveGridViewAufgaben,SaveGridViewNachrichten,
-    SaveGridViewStundenplan,SaveGridViewStundenplanDetail: TSavedGridView;
+    SaveGridViewAufgaben,SaveGridViewNachrichten: TSavedGridView;
+//    SaveGridViewStundenplan,SaveGridViewStundenplanDetail: TSavedGridView;
     procedure SetGridViews(Show:boolean);
-    procedure OpenEvent(ID_kalender: Integer; bReminder: Boolean);
+//    procedure OpenEvent(ID_kalender: Integer; bReminder: Boolean);
     procedure NachrichtenAnhaengeLaden(ID_IC_Nachrichten: Integer);
     function GetAttachmentFilename(s: string): string;
   public
@@ -444,67 +444,67 @@ begin
     ShellExecute(self.WindowHandle,'open', PWideChar(sURL) ,nil,nil, SW_SHOWNORMAL);
   end;
 end;
-procedure Tfrm_Aufgaben.OpenEvent(ID_kalender: Integer; bReminder: Boolean);
-var
-  schedeventE : TcxSchedulerControlEvent;
-  bCompleteDay: boolean;
-  iNewId: integer;
-begin
-  dm_PCM.qry_Kalender_Aufgaben.Locate('ID',ID_kalender,[]);
-  try
-    schedeventE := TcxSchedulerControlEvent(schedDBStrg_Kalender.GetEventByID(ID_kalender));
-  except
-    schedeventE:= nil;
-  end;
-  Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
-
-  if lowercase(dm_PCM.qry_Kalender_Aufgaben.FieldByName('CompleteDay').asString) = lowercase('True') then
-    bCompleteDay:= true
-  else
-    bCompleteDay:= false;
-
-
-
-  if frm_Calendar_new.Execute(
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Privat').AsBoolean,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('LabelColor').asInteger,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('FontColor').asInteger,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Location').AsString,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Kalendername').AsString,
-    schedDBStrg_Kalender,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Typ').asInteger,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID_Adr_Wurzel').AsInteger,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID_Ansprechpartner').AsInteger,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Caption').AsString,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Message').AsString,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID').AsInteger,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Start').AsDateTime,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Finish').AsDateTime,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Aufgabenstatus').AsInteger,
-    False,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID_IC_Prioritaeten').AsInteger,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID_IC_AufgabenArten').AsInteger,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Aufgabendauer').AsInteger,
-    0,
-    0,
-    0,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Reminder').asBoolean,
-    bCompleteday,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('ReminderMinutesBeforeStart').AsInteger,
-    false,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Zeitformat').AsInteger,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Erledigungsgrad').AsInteger,
-    schedeventE,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Jira_Ticket').AsString,
-    dm_PCM.qry_Kalender_Aufgaben.FieldByName('wiederholung_text').AsString,
-
-    iNewId) then
-  begin
-    RefreshTerminundAUfgaben;
-    frm_Calendar_new:= nil;
-  end;
-
-end;
+//procedure Tfrm_Aufgaben.OpenEvent(ID_kalender: Integer; bReminder: Boolean);
+//var
+//  schedeventE : TcxSchedulerControlEvent;
+//  bCompleteDay: boolean;
+//  iNewId: integer;
+//begin
+//  dm_PCM.qry_Kalender_Aufgaben.Locate('ID',ID_kalender,[]);
+//  try
+//    schedeventE := TcxSchedulerControlEvent(schedDBStrg_Kalender.GetEventByID(ID_kalender));
+//  except
+//    schedeventE:= nil;
+//  end;
+//  Application.CreateForm(Tfrm_Calendar_new, frm_Calendar_new);
+//
+//  if lowercase(dm_PCM.qry_Kalender_Aufgaben.FieldByName('CompleteDay').asString) = lowercase('True') then
+//    bCompleteDay:= true
+//  else
+//    bCompleteDay:= false;
+//
+//
+//
+//  if frm_Calendar_new.Execute(
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Privat').AsBoolean,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('LabelColor').asInteger,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('FontColor').asInteger,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Location').AsString,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Kalendername').AsString,
+//    schedDBStrg_Kalender,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Typ').asInteger,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID_Adr_Wurzel').AsInteger,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID_Ansprechpartner').AsInteger,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Caption').AsString,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Message').AsString,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID').AsInteger,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Start').AsDateTime,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Finish').AsDateTime,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Aufgabenstatus').AsInteger,
+//    False,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID_IC_Prioritaeten').AsInteger,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID_IC_AufgabenArten').AsInteger,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Aufgabendauer').AsInteger,
+//    0,
+//    0,
+//    0,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Reminder').asBoolean,
+//    bCompleteday,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('ReminderMinutesBeforeStart').AsInteger,
+//    false,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Zeitformat').AsInteger,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Erledigungsgrad').AsInteger,
+//    schedeventE,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('Jira_Ticket').AsString,
+//    dm_PCM.qry_Kalender_Aufgaben.FieldByName('wiederholung_text').AsString,
+//
+//    iNewId) then
+//  begin
+//    RefreshTerminundAUfgaben;
+//    frm_Calendar_new:= nil;
+//  end;
+//
+//end;
 function Tfrm_Aufgaben.cxMyGetRecurrenceDescriptionString(ARecurrenceInfo: TcxSchedulerEventRecurrenceInfo; AFullDescription: Boolean = False): string;
 const
   Weeks: array[1..5] of string = ('ersten', 'zweiten', 'dritten', 'vierten', 'letzten');

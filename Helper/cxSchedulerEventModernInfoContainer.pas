@@ -131,11 +131,8 @@ type
 { TcxSchedulerAdvancedEventInfo }
 
 constructor TcxSchedulerEventModernInfoContainer.Create(AScheduler: TcxCustomScheduler);
-var
-  mem_Des: TCXMemo;
 begin
   inherited Create(nil);
-
   FScheduler := AScheduler;
 end;
 
@@ -286,7 +283,7 @@ procedure TcxSchedulerEventModernInfoContainer.InitializeInfo;
       dxLayoutLabeledItem3.CaptionOptions.Text:= dm_PCM.qry_work.FieldByName('Message').AsString;
       if dm_PCM.qry_work.FieldByName('ID_Adr_Wurzel').AsString <> '' then
       begin
-        case AnsiIndexStr(dm_PCM.qry_work.FieldByName('location').AsString, ['Kita', 'im Büro','Schule','beim Kunden','beim Arzt']) of
+        case AnsiIndexStr(dm_PCM.qry_work.FieldByName('location').AsAnsiString , ['Kita', 'im Büro','Schule','beim Kunden','beim Arzt']) of
         0,1,2,3,4:
           begin
             dxLayoutLabeledItem3.CaptionOptions.Text:= dxLayoutLabeledItem3.CaptionOptions.Text +

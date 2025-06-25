@@ -284,8 +284,8 @@ begin
   end;
 end;
 procedure Tfrm_Calendar_new.cxDBButtonEdit1PropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
-var
-  sURL: String;
+//var
+//  sURL: String;
 begin
 //  if (edtJiraTicket.EditValue <> '') and (not VarIsNull(edtJiraTicket.EditValue)) and (fIC_Main.FOptions.Jira_Basic_URL <> '') then
 //  begin

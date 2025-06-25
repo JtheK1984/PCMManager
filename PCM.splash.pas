@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, Vcl.ExtCtrls,
   dxGDIPlusClasses, dxActivityIndicator, cxContainer, cxEdit, cxProgressBar,
-  cxImage, cxLabel, cxGroupBox, cxClasses, inifiles, dxUIAClasses;
+  cxImage, cxLabel, cxGroupBox, cxClasses, inifiles, dxUIAClasses, FireDAC.stan.Param;
 
 type
   TSplashScreen = class(TForm)
@@ -65,7 +65,7 @@ var
   ffiVerValue: PVSFixedFileInfo;
   dwdDummy: DWord;
   Result: String;
-  itest: integer;
+//  itest: integer;
   ipixelWidth: integer;
 begin
   dwVerInfoSize := GetFileVersionInfoSize(PChar(ParamStr(0)), dwdDummy);

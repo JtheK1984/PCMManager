@@ -26,7 +26,7 @@ object frm_Mail: Tfrm_Mail
       Left = 10
       Top = 10
       Width = 1220
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Email
     end
@@ -76,9 +76,9 @@ object frm_Mail: Tfrm_Mail
     end
     object grd_Mail: TcxGrid
       Left = 266
-      Top = 79
+      Top = 74
       Width = 964
-      Height = 418
+      Height = 426
       BorderStyle = cxcbsNone
       TabOrder = 2
       object grdDBTblView_Mails: TcxGridDBTableView
@@ -104,6 +104,7 @@ object frm_Mail: Tfrm_Mail
         OptionsView.IndicatorWidth = 14
         object grdDBTblView_MailsAnhang: TcxGridDBColumn
           DataBinding.FieldName = 'Anhang'
+          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxImageComboBoxProperties'
           Properties.Images = dm_PCM.imglst_16x16
           Properties.Items = <
@@ -124,14 +125,17 @@ object frm_Mail: Tfrm_Mail
         end
         object grdDBTblView_MailsVon: TcxGridDBColumn
           DataBinding.FieldName = 'Von'
+          DataBinding.IsNullValueType = True
           Width = 300
         end
         object grdDBTblView_MailsBetreff: TcxGridDBColumn
           DataBinding.FieldName = 'Betreff'
+          DataBinding.IsNullValueType = True
           Width = 500
         end
         object grdDBTblView_MailsErhalten: TcxGridDBColumn
           DataBinding.FieldName = 'Erhalten'
+          DataBinding.IsNullValueType = True
           SortIndex = 0
           SortOrder = soDescending
           Width = 130
@@ -139,6 +143,7 @@ object frm_Mail: Tfrm_Mail
         object grdDBTblView_MailsGroesse: TcxGridDBColumn
           Caption = 'Gr'#246#223'e'
           DataBinding.FieldName = 'Groesse'
+          DataBinding.IsNullValueType = True
           Width = 80
         end
         object grdDBTblView_MailsUID: TcxGridDBColumn
@@ -150,16 +155,19 @@ object frm_Mail: Tfrm_Mail
         end
         object grdDBTblView_Mailsread: TcxGridDBColumn
           DataBinding.FieldName = 'readEmail'
+          DataBinding.IsNullValueType = True
           Visible = False
           VisibleForCustomization = False
         end
         object grdDBTblView_MailsID: TcxGridDBColumn
           DataBinding.FieldName = 'ID'
+          DataBinding.IsNullValueType = True
           Visible = False
           VisibleForCustomization = False
         end
         object grdDBTblView_MailsUIDL: TcxGridDBColumn
           DataBinding.FieldName = 'UIDL'
+          DataBinding.IsNullValueType = True
           Visible = False
           VisibleForCustomization = False
         end
@@ -171,6 +179,7 @@ object frm_Mail: Tfrm_Mail
         end
         object grdDBTblView_MailsfileName: TcxGridDBColumn
           DataBinding.FieldName = 'fileName'
+          DataBinding.IsNullValueType = True
           Visible = False
           VisibleForCustomization = False
           Width = 400
@@ -182,9 +191,9 @@ object frm_Mail: Tfrm_Mail
     end
     object trlst_EmailFolder: TcxTreeList
       Left = 10
-      Top = 79
+      Top = 74
       Width = 250
-      Height = 698
+      Height = 703
       Bands = <
         item
         end>
@@ -224,14 +233,14 @@ object frm_Mail: Tfrm_Mail
     end
     object pnl_Browser: TcxGroupBox
       Left = 266
-      Top = 517
+      Top = 513
       PanelStyle.Active = True
       ParentBackground = False
       ParentColor = False
-      Style.Color = 7566195
+      Style.Color = clBtnFace
       Style.TransparentBorder = False
       TabOrder = 3
-      Height = 260
+      Height = 264
       Width = 964
     end
     object lactrl_MailGroup_Root: TdxLayoutGroup
@@ -267,7 +276,7 @@ object frm_Mail: Tfrm_Mail
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = dxBarDockControl1
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1220
       ControlOptions.ShowBorder = False
       Index = 0

@@ -1644,7 +1644,6 @@ procedure Tfrm_Config.btn_EmailConfig_TestClick(Sender: TObject);
     ShellExecute(0,'open',PChar(uri.ToString),nil,nil,0);
   end;
 var
-  RtfContent: TStringList;
   xoauthSASL : TIdSASLListEntry;
   idSmtpMail: TIdSMTP;
   idSSLIOHndOPSSLPostfach: TIdSSLIOHandlerSocketOpenSSL;

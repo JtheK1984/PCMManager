@@ -207,13 +207,13 @@ type
     procedure btn_EmailNewClick(Sender: TObject);
   private
     { Private-Deklarationen }
-    iKontotyp: integer;
-    sHost: String;
-    iPort: integer;
+//    iKontotyp: integer;
+//    sHost: String;
+//    iPort: integer;
     sUser: String;
-    sPassword: String;
+//    sPassword: String;
     sPrevAccount: String;
-    ssl: TIdSSLIOHandlerSocketOpenSSL;
+//    ssl: TIdSSLIOHandlerSocketOpenSSL;
     m_currentpath: WideString;
     m_uidlfile: WideString;
     CurrNode: TcxTreelistnode;
@@ -660,11 +660,13 @@ begin
 end;
 procedure Tfrm_Mail.grdDBTblView_MailsCellCTimerTimer(Sender: TObject);
 var
-  fileName, folder : WideString;
+//  fileName,
+  folder : WideString;
   MailA: TIdMessage;
   ssearch, sreplace: string;
   WinFile: TextFile;
-  Line, sAnhang: String;
+  Line: String;
+//  sAnhang: String;
   sl: TStringList;
   i: integer;
 begin
@@ -891,6 +893,7 @@ var
   iAnhang: integer;
   sFilename,sFolder, sAnhang:String;
 begin
+  iID_account:= -1;
   if trlst_EmailFolder.SelectionCount = 0 then
     exit;
   if trlst_EmailFolder.FocusedNode = CurrNode then

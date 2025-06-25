@@ -26,7 +26,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     ExplicitHeight = 788
     object cbAnsprechpartner: TcxLookupComboBox
       Left = 531
-      Top = 238
+      Top = 233
       Properties.DropDownRows = 20
       Properties.KeyFieldNames = 'ID'
       Properties.ListColumns = <
@@ -48,7 +48,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object teBetreff: TcxTextEdit
       Left = 82
-      Top = 288
+      Top = 284
       Style.HotTrack = False
       Style.LookAndFeel.NativeStyle = False
       Style.TransparentBorder = False
@@ -61,7 +61,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object btn_DelRecurringEv1: TcxButton
       Left = 10
-      Top = 151
+      Top = 146
       Width = 121
       Height = 21
       Caption = 'Serie entfernen'
@@ -71,7 +71,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object btn_SetRecurringEv1: TcxButton
       Left = 10
-      Top = 124
+      Top = 119
       Width = 121
       Height = 21
       Caption = 'Serie'
@@ -80,7 +80,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object cbTyp: TcxImageComboBox
       Left = 10
-      Top = 99
+      Top = 94
       EditValue = '1'
       Properties.Items = <
         item
@@ -111,7 +111,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object cbAufgabenArt: TcxLookupComboBox
       Left = 668
-      Top = 99
+      Top = 94
       Properties.DropDownRows = 20
       Properties.DropDownWidth = 350
       Properties.KeyFieldNames = 'ID'
@@ -136,7 +136,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object cbAufgabenStatus: TcxImageComboBox
       Left = 358
-      Top = 99
+      Top = 94
       Properties.DropDownRows = 10
       Properties.Items = <
         item
@@ -168,7 +168,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object cbPrioritaet: TcxLookupComboBox
       Left = 462
-      Top = 99
+      Top = 94
       Properties.DropDownWidth = 200
       Properties.KeyFieldNames = 'ID'
       Properties.ListColumns = <
@@ -188,7 +188,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object deStart: TcxDateEdit
       Left = 137
-      Top = 99
+      Top = 94
       EditValue = 38705d
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.ImmediatePost = True
@@ -206,7 +206,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object meDauer: TcxMaskEdit
       Left = 287
-      Top = 99
+      Top = 94
       Properties.Alignment.Horz = taRightJustify
       Properties.MaxLength = 0
       Properties.ValidateOnEnter = False
@@ -227,7 +227,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object teStart: TcxTimeEdit
       Left = 224
-      Top = 99
+      Top = 94
       EditValue = 0.75d
       Properties.ImmediatePost = True
       Properties.TimeFormat = tfHourMin
@@ -244,7 +244,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object deEndeAufgabe: TcxDateEdit
       Left = 137
-      Top = 144
+      Top = 139
       EditValue = 38705d
       Properties.DateButtons = [btnClear, btnNow, btnToday]
       Properties.ImmediatePost = True
@@ -257,7 +257,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object teEndeAufgabe: TcxTimeEdit
       Left = 224
-      Top = 144
+      Top = 139
       EditValue = 0.75d
       Properties.ImmediatePost = True
       Properties.TimeFormat = tfHourMin
@@ -274,7 +274,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object cbErledigungsgrad: TcxComboBox
       Left = 287
-      Top = 144
+      Top = 139
       Properties.DropDownListStyle = lsEditFixedList
       Properties.Items.Strings = (
         '0%'
@@ -302,7 +302,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object cbReminderAufgabe: TcxCheckBox
       Left = 137
-      Top = 171
+      Top = 166
       AutoSize = False
       Caption = 'an die Aufgabe erinnern:'
       Style.HotTrack = False
@@ -314,7 +314,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object icbReminderAufgabe: TcxImageComboBox
       Left = 288
-      Top = 171
+      Top = 166
       EditValue = '1440'
       Properties.Items = <
         item
@@ -430,7 +430,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object cmbbx_Ort: TcxComboBox
       Left = 462
-      Top = 144
+      Top = 139
       AutoSize = False
       Properties.Items.Strings = (
         'im B'#252'ro'
@@ -456,7 +456,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     object chkbx_CompleteDay1: TcxCheckBox
       AlignWithMargins = True
       Left = 137
-      Top = 196
+      Top = 191
       Margins.Left = 134
       Margins.Top = 0
       Margins.Bottom = 0
@@ -472,7 +472,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object mNachricht: TcxRichEdit
       Left = 10
-      Top = 313
+      Top = 309
       ParentFont = False
       Properties.AutoURLDetect = True
       Properties.PlainText = True
@@ -487,14 +487,14 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 22
-      Height = 349
+      Height = 353
       Width = 709
     end
     object cxGrid1: TcxGrid
       Left = 725
-      Top = 313
+      Top = 309
       Width = 185
-      Height = 309
+      Height = 313
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -672,13 +672,13 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Left = 10
       Top = 10
       Width = 900
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = dxBarManager1
     end
     object edt_Kalname: TcxTextEdit
       Left = 668
-      Top = 144
+      Top = 139
       AutoSize = False
       Style.HotTrack = False
       Style.TransparentBorder = False
@@ -689,7 +689,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object edtFirma: TcxButtonEdit
       Left = 82
-      Top = 238
+      Top = 233
       AutoSize = False
       Properties.Buttons = <
         item
@@ -735,7 +735,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
     end
     object edtJiraTicket: TcxButtonEdit
       Left = 82
-      Top = 263
+      Top = 258
       Properties.Buttons = <
         item
           Default = True
@@ -777,7 +777,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       CaptionOptions.Visible = False
       Control = dxBarDockControl1
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 920
       ControlOptions.ShowBorder = False
       Index = 0
@@ -832,7 +832,7 @@ object frm_Calendar_new: Tfrm_Calendar_new
       Parent = dxLayoutGroup3
       CaptionOptions.Text = 'Jira Ticket-Nr:'
       Control = edtJiraTicket
-      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalHeight = 20
       ControlOptions.OriginalWidth = 121
       ControlOptions.ShowBorder = False
       Index = 1

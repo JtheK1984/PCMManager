@@ -40,7 +40,6 @@ object cxSchedulerEventModernInfoContainer: TcxSchedulerEventModernInfoContainer
       AlignVert = avTop
       CaptionOptions.Visible = False
       Hidden = True
-      ItemIndex = 4
       ShowBorder = False
       Index = -1
     end
@@ -156,7 +155,6 @@ object cxSchedulerEventModernInfoContainer: TcxSchedulerEventModernInfoContainer
       Parent = lcMainGroup_Root
       CaptionOptions.Text = 'New Group'
       CaptionOptions.Visible = False
-      ItemIndex = 4
       ShowBorder = False
       Index = 4
     end
@@ -181,7 +179,6 @@ object cxSchedulerEventModernInfoContainer: TcxSchedulerEventModernInfoContainer
     object lgLocation: TdxLayoutGroup
       Parent = lgLocationAndReminder
       CaptionOptions.Visible = False
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 0
@@ -227,14 +224,12 @@ object cxSchedulerEventModernInfoContainer: TcxSchedulerEventModernInfoContainer
     object lgDescription: TdxLayoutGroup
       Parent = lgLocationAndReminder
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       ShowBorder = False
       Index = 4
     end
     object dxLayoutGroup1: TdxLayoutGroup
       Parent = lgLocationAndReminder
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 1

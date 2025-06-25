@@ -26,8 +26,6 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
     Style.LookAndFeel.NativeStyle = False
     StyleDisabled.LookAndFeel.NativeStyle = False
     TabOrder = 0
-    ExplicitWidth = 1116
-    ExplicitHeight = 773
     Height = 790
     Width = 1122
   end
@@ -41,7 +39,7 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     object lbl_Betreff: TcxLabel
       Left = 53
-      Top = 139
+      Top = 134
       Style.HotTrack = False
       Style.LookAndFeel.NativeStyle = False
       Style.TransparentBorder = False
@@ -53,7 +51,7 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
     end
     object lbl_CC: TcxLabel
       Left = 53
-      Top = 119
+      Top = 114
       Style.HotTrack = False
       Style.LookAndFeel.NativeStyle = False
       Style.TransparentBorder = False
@@ -65,7 +63,7 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
     end
     object lbl_AN: TcxLabel
       Left = 53
-      Top = 99
+      Top = 94
       Style.HotTrack = False
       Style.LookAndFeel.NativeStyle = False
       Style.TransparentBorder = False
@@ -77,7 +75,7 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
     end
     object lbl_Von: TcxLabel
       Left = 53
-      Top = 79
+      Top = 74
       Style.HotTrack = False
       Style.LookAndFeel.NativeStyle = False
       Style.TransparentBorder = False
@@ -89,7 +87,7 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
     end
     object lstVw_Mail: TcxListView
       Left = 10
-      Top = 159
+      Top = 154
       Width = 1102
       Height = 87
       Margins.Left = 0
@@ -146,13 +144,13 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
       Left = 10
       Top = 10
       Width = 1102
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Email
     end
     object cxLabel1: TcxLabel
       Left = 1012
-      Top = 99
+      Top = 94
       AutoSize = False
       Caption = 'cxLabel1'
       Style.HotTrack = False
@@ -164,14 +162,14 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
     end
     object pnl_browser: TcxGroupBox
       Left = 10
-      Top = 252
+      Top = 247
       PanelStyle.Active = True
       ParentBackground = False
       ParentColor = False
-      Style.Color = 7566195
+      Style.Color = clBtnFace
       Style.TransparentBorder = False
       TabOrder = 7
-      Height = 528
+      Height = 533
       Width = 1102
     end
     object lactrl_MailGroup_Root: TdxLayoutGroup
@@ -189,7 +187,7 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
       CaptionOptions.Visible = False
       Control = dxBarDockControl1
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1118
       ControlOptions.ShowBorder = False
       Index = 0

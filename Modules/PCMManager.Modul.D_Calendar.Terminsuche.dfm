@@ -198,7 +198,6 @@ object frm_Terminsuche: Tfrm_Terminsuche
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 2

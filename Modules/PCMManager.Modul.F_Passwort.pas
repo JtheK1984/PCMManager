@@ -265,7 +265,7 @@ uses
 {$Region Hilfsfunktionen}
 procedure Tfrm_password.ChangeItems(AValue: string);
 begin
-  case AnsiIndexStr(AValue,['APP Arbeit','APP Mobil','APP PCM','Banking','E-Mail','Internet Arbeit','Internet Privat','VPN Arbeit','VPN Privat','W-Lan / Router','Windows Arbeit','Windows Privat']) of
+  case AnsiIndexStr(Ansistring(AValue),['APP Arbeit','APP Mobil','APP PCM','Banking','E-Mail','Internet Arbeit','Internet Privat','VPN Arbeit','VPN Privat','W-Lan / Router','Windows Arbeit','Windows Privat']) of
   0: // App Arbeit
     begin
       laitm_PWDBankingPin.Visible:= false;

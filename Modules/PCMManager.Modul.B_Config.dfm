@@ -25,7 +25,6 @@ object frm_Config: Tfrm_Config
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
-    ExplicitHeight = 800
     object edt_CalConfigFTP_Benutzer: TcxDBTextEdit
       Left = 10000
       Top = 10000
@@ -195,7 +194,7 @@ object frm_Config: Tfrm_Config
       Left = 10000
       Top = 10000
       Width = 1073
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Config
       Visible = False
@@ -595,7 +594,7 @@ object frm_Config: Tfrm_Config
       Left = 10000
       Top = 10000
       Width = 1073
-      Height = 63
+      Height = 58
       Align = dalNone
       AllowDocking = False
       BarManager = brmgr_Config
@@ -690,7 +689,7 @@ object frm_Config: Tfrm_Config
       Left = 10000
       Top = 10000
       Width = 1073
-      Height = 63
+      Height = 58
       Align = dalNone
       AllowDocking = False
       BarManager = brmgr_Config
@@ -766,7 +765,7 @@ object frm_Config: Tfrm_Config
       Left = 10000
       Top = 10000
       Width = 1073
-      Height = 63
+      Height = 58
       Align = dalNone
       AllowDocking = False
       BarManager = brmgr_Config
@@ -924,7 +923,7 @@ object frm_Config: Tfrm_Config
       Left = 10000
       Top = 10000
       Width = 1073
-      Height = 63
+      Height = 58
       Align = dalNone
       AllowDocking = False
       BarManager = brmgr_Config
@@ -978,7 +977,7 @@ object frm_Config: Tfrm_Config
       Left = 10000
       Top = 10000
       Width = 1077
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Config
       Visible = False
@@ -1217,7 +1216,7 @@ object frm_Config: Tfrm_Config
       Left = 10000
       Top = 10000
       Width = 1077
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Config
       Visible = False
@@ -1343,7 +1342,7 @@ object frm_Config: Tfrm_Config
       Left = 10000
       Top = 10000
       Width = 1077
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Config
       Visible = False
@@ -1603,7 +1602,7 @@ object frm_Config: Tfrm_Config
       Left = 10000
       Top = 10000
       Width = 1077
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Config
       Visible = False
@@ -1612,7 +1611,7 @@ object frm_Config: Tfrm_Config
       Left = 10000
       Top = 10000
       Width = 1077
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Config
       Visible = False
@@ -2044,10 +2043,10 @@ object frm_Config: Tfrm_Config
       end
     end
     object bardckctrl_Anrede: TdxBarDockControl
-      Left = 28
-      Top = 79
-      Width = 1073
-      Height = 63
+      Left = 24
+      Top = 73
+      Width = 1089
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Config
     end
@@ -2055,28 +2054,28 @@ object frm_Config: Tfrm_Config
       Left = 10000
       Top = 10000
       Width = 1073
-      Height = 63
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Config
       Visible = False
     end
     object bardckctrl_Phonerlite: TdxBarDockControl
-      Left = 28
-      Top = 524
-      Width = 1077
-      Height = 63
+      Left = 26
+      Top = 535
+      Width = 1085
+      Height = 58
       Align = dalNone
       BarManager = brmgr_Config
     end
     object edt_Anrede: TcxDBTextEdit
-      Left = 72
-      Top = 148
+      Left = 68
+      Top = 137
       DataBinding.DataField = 'Bezeichnung'
       DataBinding.DataSource = ds_Anrede
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 1
-      Width = 1029
+      Width = 1045
     end
     object edt_Land: TcxDBTextEdit
       Left = 10000
@@ -2090,8 +2089,8 @@ object frm_Config: Tfrm_Config
       Width = 1041
     end
     object edt_Phone: TcxDBButtonEdit
-      Left = 106
-      Top = 593
+      Left = 104
+      Top = 599
       DataBinding.DataField = 'Path'
       DataBinding.DataSource = ds_phone
       Properties.Buttons = <
@@ -2104,12 +2103,12 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 7
-      Width = 999
+      Width = 1007
     end
     object grd_Phonerlite: TcxGrid
-      Left = 28
-      Top = 618
-      Width = 1077
+      Left = 26
+      Top = 624
+      Width = 1085
       Height = 50
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
@@ -2227,10 +2226,10 @@ object frm_Config: Tfrm_Config
       end
     end
     object grd_Anrede: TcxGrid
-      Left = 28
-      Top = 173
-      Width = 1073
-      Height = 300
+      Left = 24
+      Top = 162
+      Width = 1089
+      Height = 343
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -2452,7 +2451,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = bardckctrl_Kalender
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2496,8 +2495,8 @@ object frm_Config: Tfrm_Config
       AlignVert = avTop
       CaptionOptions.Text = 'an Termine erinnern:'
       Control = chkbx_CalConfigReminder
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 15
+      ControlOptions.OriginalHeight = 17
+      ControlOptions.OriginalWidth = 13
       ControlOptions.ShowBorder = False
       Index = 0
     end
@@ -2566,7 +2565,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = brdckctrl_Feiertage
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2600,7 +2599,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = brdckctrl_FTP
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2686,7 +2685,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = bardckctrl_Aufgabenarten
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2742,7 +2741,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = bardckctrl_AufgabenPrio
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2798,7 +2797,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = bardckctrl_AufgabenSonstiges
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2917,7 +2916,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = brdckctrl_Schulfach
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -2984,7 +2983,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = brdckctrl_SchulfachUhr
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -3040,7 +3039,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = brdckctrl_Email
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1266
       ControlOptions.ShowBorder = False
       Index = 0
@@ -3150,7 +3149,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = bardckctrl_Postfach
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1260
       ControlOptions.ShowBorder = False
       Index = 0
@@ -3512,7 +3511,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = bardckctrl_Anrede
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1137
       ControlOptions.ShowBorder = False
       Index = 0
@@ -3532,7 +3531,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = bardckctrl_Geburtsland
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1137
       ControlOptions.ShowBorder = False
       Index = 0
@@ -3554,7 +3553,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Visible = False
       Control = bardckctrl_Phonerlite
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 63
+      ControlOptions.OriginalHeight = 58
       ControlOptions.OriginalWidth = 1137
       ControlOptions.ShowBorder = False
       Index = 0
@@ -3742,8 +3741,8 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Text = 'Standardaccount:'
       CaptionOptions.Visible = False
       Control = cxDBCheckBox1
-      ControlOptions.OriginalHeight = 19
-      ControlOptions.OriginalWidth = 109
+      ControlOptions.OriginalHeight = 17
+      ControlOptions.OriginalWidth = 107
       ControlOptions.ShowBorder = False
       Index = 1
     end
