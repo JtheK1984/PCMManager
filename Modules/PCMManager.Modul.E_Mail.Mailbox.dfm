@@ -29,7 +29,6 @@ object frm_PCM_MailShow_Ordner: Tfrm_PCM_MailShow_Ordner
     StyleHot.LookAndFeel.NativeStyle = False
     StyleReadOnly.LookAndFeel.NativeStyle = False
     TabOrder = 0
-    ExplicitWidth = 598
     Width = 604
   end
   object cxButton1: TcxButton

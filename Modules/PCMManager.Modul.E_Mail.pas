@@ -534,13 +534,13 @@ begin
       IdIMAP_Mail.AuthType := iatSASL;
       IdIMAP_Mail.Connect;
     end;
-    stbr_user.Panels[0].Text:= 'Verbunden mit ' + sUser;
+    stbr_user.Panels[0].Text:= rs_PCMManager_Verbundenmit + sUser;
     UsersFolders := TStringList.Create;
     idImap_Mail.ListMailBoxes(UsersFolders);
     MainNode := trlst_EmailFolder.AddChild(trlst_EmailFolder.Root);
     MainNode.Values[0]:= dm_pcm.qry_work.FieldByName('Benutzer').AsString;
     Application.ProcessMessages;
-    stbr_user.Panels.Items[0].Text:= 'Ordner werden eingelesen...';
+    stbr_user.Panels.Items[0].Text:= rs_PCMManager_Ordnerwerdeneingelesen;
     dm_pcm.qry_work1.SQL.Text:= 'SELECT ID,Postfach,Anzeige FROM manager_email_postfach where Typ = 0 and Abonnieren = true and ID_Manager_eMail = :ID order by Sortierung';
     dm_pcm.qry_work1.ParamByName('ID').asInteger:= dm_pcm.qry_work.FieldByName('ID').AsInteger;
     dm_pcm.qry_work1.open;
@@ -595,8 +595,8 @@ begin
   dm_PCM.qry_Work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
   dm_PCM.qry_Work.ExecSQL;
   qry_Mail.Refresh;
-  stbr_user.Panels[1].Text := Format('Anzahl Elemente: %d', [qry_Mail.RecordCount]) + ', ' +Format('Anzahl ungelesener Elemente: %d', [iAnzahlCount]);
-  stbr_user.Panels[2].text := 'Übermittlung abgeschlossen      ';
+  stbr_user.Panels[1].Text := Format(rs_PCMManager_AnzahlElemente, [qry_Mail.RecordCount]) + ', ' +Format(rs_PCMManager_AnzahlungelesenerElemente, [iAnzahlCount]);
+  stbr_user.Panels[2].text := rs_PCMManager_Uebermittlungabgeschlossen;
   if iAnzahlCount > 0 then
     trlst_EmailFolder.FocusedNode.Values[1]:= iAnzahlCount
   else
@@ -680,7 +680,7 @@ begin
     folder := StringReplace(folder, '/', '.', [rfReplaceAll]);
     if not FileExists(folder) then
     begin
-      stbr_user.Panels.Items[0].text := 'E-Mail wird heruntergeladen...';
+      stbr_user.Panels.Items[0].text := rs_PCMManager_EmailDownload;
     end;
     if not DirectoryExists(folder) then
       CreateDIr(folder);
@@ -730,7 +730,7 @@ begin
   except
     on ep:Exception do
     begin
-      MessageDlg('Fehler:'+ep.Message, mtError, [mbOk], 0);
+      MessageDlg(rs_PCMManager_MSGFehler +ep.Message, mtError, [mbOk], 0);
     end;
   end;
 end;
@@ -755,7 +755,7 @@ begin
     folder := StringReplace(folder, '/', '.', [rfReplaceAll]);
     if not FileExists(folder) then
     begin
-      stbr_user.Panels.Items[0].text := 'E-Mail wird heruntergeladen...';
+      stbr_user.Panels.Items[0].text := rs_PCMManager_EmailDownload;
     end;
     if not DirectoryExists(folder) then
       CreateDIr(folder);
@@ -843,7 +843,7 @@ begin
   except
     on ep:Exception do
     begin
-      MessageDlg('Fehler:'+ep.Message, mtError, [mbOk], 0);
+      MessageDlg(rs_PCMManager_MSGFehler +ep.Message, mtError, [mbOk], 0);
     end;
   end;
 end;
@@ -1021,7 +1021,7 @@ begin
     Exit;
   end;
   Application.ProcessMessages;
-  stbr_user.panels.items[0].text := 'E-Mails aktualisieren...';
+  stbr_user.panels.items[0].text := rs_PCMManager_EmailRefresh;
   Application.ProcessMessages;
   Mail := TIdMessage.Create(nil);
   iCount := idImap_Mail.MailBox.TotalMsgs;
@@ -1046,14 +1046,14 @@ begin
       Application.ProcessMessages;
       if not DirectoryExists(folder + '\' + TheUID) then
         CreateDIr(folder + '\' + TheUID);
-      stbr_user.Panels.Items[2].Text:=  Format( 'Übermittlungsstatus %d', [Round(iAnzahlCount / iCount * 100)]) + '%      ';
-      stbr_user.Panels.Items[2].Text:=  'Übermittlungsstatus: ' + IntToStr(i+1) + ' von ' + IntToStr(iCount) + ' Mails verarbeitet';
+      stbr_user.Panels.Items[2].Text:=  Format( rs_PCMManager_StatuswithValue, [Round(iAnzahlCount / iCount * 100)]) + '%      ';
+      stbr_user.Panels.Items[2].Text:=  rs_PCMManager_StatuswithoutValue + IntToStr(i+1) + rs_PCMManager_StatuswithoutValue1 + IntToStr(iCount) + rs_PCMManager_StatuswithoutValue2;
 //
       Application.ProcessMessages;
       if mfSeen in TheFlags then
-        Flagtemp := 'gelesen'
+        Flagtemp := rs_PCMManager_Flagread
       else
-        Flagtemp := 'ungelesen';
+        Flagtemp := rs_PCMManager_Flagunread;
       iAnhang:= 0;
 
 
@@ -1065,7 +1065,7 @@ begin
       sfolder := StringReplace(sfolder, '/', '.', [rfReplaceAll]);
       if not FileExists(folder) then
       begin
-        stbr_user.Panels.Items[0].text := 'E-Mail wird heruntergeladen...';
+        stbr_user.Panels.Items[0].text := rs_PCMManager_EmailDownload;
       end;
       if not DirectoryExists(folder) then
         CreateDIr(folder);
@@ -1156,8 +1156,8 @@ begin
     iAnzahlCount:= dm_PCM.qry_Work.FieldByName('anzahl').AsInteger;
     dm_PCM.qry_Work.Close;
     Application.ProcessMessages;
-    stbr_user.Panels[1].Text := Format('Anzahl Elemente: %d', [qry_Mail.RecordCount]) + ', ' +Format('Anzahl ungelesener Elemente: %d', [iAnzahlCount]);
-    stbr_user.Panels[2].text := 'Übermittlung abgeschlossen      ';
+    stbr_user.Panels[1].Text := Format(rs_PCMManager_AnzahlElemente, [qry_Mail.RecordCount]) + ', ' +Format(rs_PCMManager_AnzahlungelesenerElemente, [iAnzahlCount]);
+    stbr_user.Panels[2].text := rs_PCMManager_Uebermittlungabgeschlossen;
     if iAnzahlCount > 0 then
       trlst_EmailFolder.FocusedNode.Values[1]:= iAnzahlCount
     else

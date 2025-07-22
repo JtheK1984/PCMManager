@@ -68,7 +68,8 @@ implementation
 {$R *.dfm}
 uses
   {$Region uses}
-  PCM.Data;
+  PCM.Data,
+  PCM.Strings;
   {$EndRegion uses}
 
 procedure Tfrm_Terminsuche.btn_AbortClick(Sender: TObject);
@@ -83,7 +84,7 @@ begin
     modalresult:= mrOk;
   end
   else begin
-    MessageDlg('Bitte einen Termin auswählen!',mtWarning,[mbOk],0);
+    MessageDlg(rs_PCMManager_MSChooseEevent,mtWarning,[mbOk],0);
   end;
 end;
 procedure Tfrm_Terminsuche.edt_sucheKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -124,7 +125,7 @@ begin
       modalresult:= mrOk;
     end
     else begin
-      MessageDlg('Bitte einen Termin auswählen!',mtWarning,[mbOk],0);
+      MessageDlg(rs_PCMManager_MSChooseEevent,mtWarning,[mbOk],0);
     end;
   end;
 end;

@@ -145,13 +145,13 @@ begin
   case Integer(cmbbx_Anrede.Properties.Items.Objects[cmbbx_Anrede.ItemIndex]) of
   1,2,3,5:
     begin
-      laitm_ContactVorname.caption:= 'Vorname:';
-      laitm_ContactNachname.caption:= 'Nachname:';
+      laitm_ContactVorname.caption:= rs_PCMManager_Vorname2;
+      laitm_ContactNachname.caption:= rs_PCMManager_Nachname2;
     end;
   4,6,7,8,9,10,11,12:
     begin
-      laitm_ContactVorname.caption:= 'Firma:';
-      laitm_ContactNachname.caption:= 'Ort:';
+      laitm_ContactVorname.caption:= rs_PCMManager_Firma2;
+      laitm_ContactNachname.caption:= rs_PCMManager_Ort2;
     end;
   end;
 end;

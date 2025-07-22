@@ -26,7 +26,7 @@ object frm_Mail: Tfrm_Mail
       Left = 10
       Top = 10
       Width = 1220
-      Height = 58
+      Height = 63
       Align = dalNone
       BarManager = brmgr_Email
     end
@@ -76,9 +76,9 @@ object frm_Mail: Tfrm_Mail
     end
     object grd_Mail: TcxGrid
       Left = 266
-      Top = 74
+      Top = 79
       Width = 964
-      Height = 426
+      Height = 418
       BorderStyle = cxcbsNone
       TabOrder = 2
       object grdDBTblView_Mails: TcxGridDBTableView
@@ -191,9 +191,9 @@ object frm_Mail: Tfrm_Mail
     end
     object trlst_EmailFolder: TcxTreeList
       Left = 10
-      Top = 74
+      Top = 79
       Width = 250
-      Height = 703
+      Height = 698
       Bands = <
         item
         end>
@@ -233,14 +233,14 @@ object frm_Mail: Tfrm_Mail
     end
     object pnl_Browser: TcxGroupBox
       Left = 266
-      Top = 513
+      Top = 517
       PanelStyle.Active = True
       ParentBackground = False
       ParentColor = False
-      Style.Color = clBtnFace
+      Style.Color = 7566195
       Style.TransparentBorder = False
       TabOrder = 3
-      Height = 264
+      Height = 260
       Width = 964
     end
     object lactrl_MailGroup_Root: TdxLayoutGroup
@@ -276,7 +276,7 @@ object frm_Mail: Tfrm_Mail
       CaptionOptions.Text = 'New Item'
       CaptionOptions.Visible = False
       Control = dxBarDockControl1
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1220
       ControlOptions.ShowBorder = False
       Index = 0

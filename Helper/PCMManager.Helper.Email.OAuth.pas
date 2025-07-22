@@ -158,7 +158,7 @@ begin
   try
     LRequest := TRESTRequest.Create(LClient); // The LClient now "owns" the Request and will free it.
     LRequest.Method := TRESTRequestMethod.rmPOST;
-    url := TURI.Create('http://localhost');
+    url := TURI.Create(AccessTokenEndpoint);
     url.AddParameter('grant_type', 'authorization_code');
     url.AddParameter('code', AuthCode);
     url.AddParameter('client_id', ClientID);

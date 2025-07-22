@@ -1283,8 +1283,8 @@ procedure Tfrm_Calendar.btn_AnsichtTagClick(Sender: TObject);
 begin
   sched_Kalender.ViewDay.Active := True;
   sched_Kalender.SelectDays(sched_Kalender.SelectedDays[0], sched_Kalender.SelectedDays[0], True);
-  btn_NavigationZurueck.Caption := 'Tag zurück';
-  btn_NavigationVor.Caption := 'Tag vor';
+  btn_NavigationZurueck.Caption := rs_PCMManager_Tag + rs_PCMManager_Zurueck;;
+  btn_NavigationVor.Caption := rs_PCMManager_Tag + rs_PCMManager_vor;;
   btn_NavigationZurueck.Hint := rs_PCMManager_TagZurueck;
   btn_NavigationVor.Hint := rs_PCMManager_Tagvor;
   btn_AnsichtTag.Down:= true;
@@ -1301,8 +1301,8 @@ procedure Tfrm_Calendar.btn_AnsichtArbeitswocheClick(Sender: TObject);
 begin
   tag := Round(sched_Kalender.SelectedDays.Count / 2);
   sched_Kalender.SelectWorkDays(sched_Kalender.SelectedDays[tag]);
-  btn_NavigationZurueck.Caption := 'Arbeitswoche zurück';
-  btn_NavigationVor.Caption := 'Arbeitswoche vor';
+  btn_NavigationZurueck.Caption := rs_PCMManager_Arbeitswoche + rs_PCMManager_zurueck;
+  btn_NavigationVor.Caption := rs_PCMManager_Arbeitswoche + rs_PCMManager_vor;
   btn_NavigationZurueck.Hint := rs_PCMManager_ArbWocheZurueck;
   btn_NavigationVor.Hint := rs_PCMManager_ArbWocheVor;
   btn_AnsichtTag.Down:= false;
@@ -1318,8 +1318,8 @@ end;
 procedure Tfrm_Calendar.btn_AnsichtWocheClick(Sender: TObject);
 begin
   sched_Kalender.ViewWeek.Active := True;
-  btn_NavigationZurueck.Caption := 'Woche zurück';
-  btn_NavigationVor.Caption := 'Woche vor';
+  btn_NavigationZurueck.Caption := rs_PCMManager_woche + rs_PCMManager_zurueck;
+  btn_NavigationVor.Caption := rs_PCMManager_woche + rs_PCMManager_vor;
   btn_NavigationZurueck.Hint := rs_PCMManager_WocheZurueck;
   btn_NavigationVor.Hint := rs_PCMManager_Wochevor;
   btn_AnsichtTag.Down:= false;
@@ -1335,8 +1335,8 @@ end;
 procedure Tfrm_Calendar.btn_AnsichtMonatClick(Sender: TObject);
 begin
   sched_Kalender.GoToDate(sched_Kalender.SelectedDays[0], vmMonth);
-  btn_NavigationZurueck.Caption := 'Monat zurück';
-  btn_NavigationVor.Caption := 'Monat vor';
+  btn_NavigationZurueck.Caption := rs_PCMManager_monat + rs_PCMManager_zurueck;
+  btn_NavigationVor.Caption := rs_PCMManager_monat + rs_PCMManager_vor;
   btn_NavigationZurueck.Hint := rs_PCMManager_MonatZurueck;
   btn_NavigationVor.Hint := rs_PCMManager_Monatvor;
   btn_AnsichtTag.Down:= false;
@@ -1352,8 +1352,8 @@ end;
 procedure Tfrm_Calendar.btn_AnsichtJahrClick(Sender: TObject);
 begin
   sched_Kalender.ViewYear.Active := True;
-  btn_NavigationZurueck.Caption := 'Jahr zurück';
-  btn_NavigationVor.Caption := 'Jahr vor';
+  btn_NavigationZurueck.Caption := rs_PCMManager_jahr + rs_PCMManager_zurueck;
+  btn_NavigationVor.Caption := rs_PCMManager_jahr + rs_PCMManager_vor;
   btn_NavigationZurueck.Hint := rs_PCMManager_JahrZurueck;
   btn_NavigationVor.Hint := rs_PCMManager_JahrVor;
   btn_AnsichtTag.Down:= false;
@@ -1369,8 +1369,8 @@ end;
 procedure Tfrm_Calendar.btn_AnsichtZeitleisteClick(Sender: TObject);
 begin
   sched_Kalender.ViewTimeGrid.Active := True;
-  btn_NavigationZurueck.Caption := 'Tag zurück';
-  btn_NavigationVor.Caption := 'Tag vor';
+  btn_NavigationZurueck.Caption := rs_PCMManager_Tag + rs_PCMManager_Zurueck;;
+  btn_NavigationVor.Caption := rs_PCMManager_Tag + rs_PCMManager_vor;;
   btn_NavigationZurueck.Hint := rs_PCMManager_TagZurueck;
   btn_NavigationVor.Hint := rs_PCMManager_TagVor;
   btn_AnsichtTag.Down:= false;
@@ -1386,8 +1386,8 @@ end;
 procedure Tfrm_Calendar.btn_AnsichtGanttClick(Sender: TObject);
 begin
   sched_Kalender.ViewTimeGrid.Active:= true;
-  btn_NavigationZurueck.Caption := 'Tag zurück';
-  btn_NavigationVor.Caption := 'Tag vor';
+  btn_NavigationZurueck.Caption := rs_PCMManager_Tag + rs_PCMManager_Zurueck;;
+  btn_NavigationVor.Caption := rs_PCMManager_Tag + rs_PCMManager_vor;;
   btn_NavigationZurueck.Hint := rs_PCMManager_TagZurueck;
   btn_NavigationVor.Hint := rs_PCMManager_TagVor;
   btn_AnsichtTag.Down:= false;
@@ -1403,8 +1403,8 @@ end;
 procedure Tfrm_Calendar.btn_AnsichtAgendaClick(Sender: TObject);
 begin
   sched_Kalender.ViewAgenda.Active := True;
-  btn_NavigationZurueck.Caption := 'Tag zurück';
-  btn_NavigationVor.Caption := 'Tag vor';
+  btn_NavigationZurueck.Caption := rs_PCMManager_Tag + rs_PCMManager_Zurueck;;
+  btn_NavigationVor.Caption := rs_PCMManager_Tag + rs_PCMManager_vor;;
   btn_NavigationZurueck.Hint := rs_PCMManager_TagZurueck;
   btn_NavigationVor.Hint := rs_PCMManager_TagVor;
   btn_AnsichtTag.Down:= false;
@@ -2336,7 +2336,7 @@ var
 begin
   if sched_Kalender.SelectedEventCount > 0 then
   begin
-    ibuttonSelected := MessageDlg('Möchten sie den Termin wirklich löschen?',mtWarning, mbYesNo, 0);
+    ibuttonSelected := MessageDlg(rs_PCMManager_MSGDeleteevent,mtWarning, mbYesNo, 0);
     if ibuttonSelected = mrYes then
     begin
       dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;

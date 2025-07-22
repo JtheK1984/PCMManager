@@ -1029,11 +1029,11 @@ begin
     if FIdNachricht > 0 then
     begin
       if typ = ntNachricht then
-        sPushMessage:= 'Nachricht ' + teBetreff.Text + ' wurde geändert';
+        sPushMessage:= rs_PCMManager_PushNachricht + teBetreff.Text + rs_PCMManager_PushChange;
       if typ = ntAufgabe then
-        sPushMessage:= 'Aufgabe ' + teBetreff.Text + ' von  '  + DateBegin + ' bis ' + DateEnd + ' wurde geändert';
+        sPushMessage:= rs_PCMManager_PushAufgabe + teBetreff.Text + rs_PCMManager_PushVon  + DateBegin + rs_PCMManager_PushBis + DateEnd + rs_PCMManager_PushChange;
       if typ = ntTermin then
-        sPushMessage:= 'Termin ' + teBetreff.Text + ' von  '  + DateBegin + ' bis ' + DateEnd + ' wurde geändert';
+        sPushMessage:= rs_PCMService_Termin1 + teBetreff.Text + rs_PCMManager_PushVon  + DateBegin + rs_PCMManager_PushBis + DateEnd + rs_PCMManager_PushChange;
       dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
       dm_PCM.qry_work.ParamByName('Message').AsString:= sPushMessage;
       dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
@@ -1121,11 +1121,11 @@ begin
     else
     begin
       if typ = ntNachricht then
-        sPushMessage:= 'Neue Nachricht ' + teBetreff.Text + ' wurde angelegt';
+        sPushMessage:= rs_PCMManager_PushNeue +  rs_PCMManager_PushNachricht + teBetreff.Text + rs_PCMManager_PushNewChange;
       if typ = ntAufgabe then
-        sPushMessage:= 'Neue Aufgabe ' + teBetreff.Text + ' von  '  + DateBegin + ' bis ' + DateEnd + ' wurde angelegt';
+        sPushMessage:= rs_PCMManager_PushNeue  + rs_PCMManager_PushAufgabe + teBetreff.Text + rs_PCMManager_PushVon  + DateBegin + rs_PCMManager_PushBis + DateEnd + rs_PCMManager_PushNewChange;
       if typ = ntTermin then
-        sPushMessage:= 'Neue Termin ' + teBetreff.Text + ' von  '  + DateBegin + ' bis ' + DateEnd + ' wurde angelegt';
+        sPushMessage:= rs_PCMManager_PushNeuer + rs_PCMService_Termin1 + teBetreff.Text + rs_PCMManager_PushVon  + DateBegin + rs_PCMManager_PushBis + DateEnd + rs_PCMManager_PushNewChange;
       dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;
       dm_PCM.qry_work.ParamByName('Message').AsString:= sPushMessage;
       dm_PCM.qry_work.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
@@ -1656,7 +1656,7 @@ begin
 end;
 procedure Tfrm_Calendar_new.cxRichEdit1PropertiesURLClick(Sender: TcxCustomRichEdit; const URLText: string; Button: TMouseButton);
 begin
-  ShowMessage('URL Click');
+//
 end;
 
 end.

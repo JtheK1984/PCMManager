@@ -31,7 +31,7 @@ implementation
 {$R *.dfm}
 
 uses  PCMManager.Modul.E_Mail,
-      PCM.Data;
+      PCM.Data, PCM.Strings;
 
 function Tfrm_PCM_MailShow_Ordner.Execute(AModal: boolean; out Mailbox : Integer): Boolean;
 begin
@@ -48,7 +48,7 @@ begin
       end
       else
       begin
-        MessageDlg('Bitte Ordner auswählen!',mtWarning,[mbOk],0);
+        MessageDlg(rs_PCMManager_MSChooseMailbox,mtWarning,[mbOk],0);
         exit;
       end;
       result:= true;

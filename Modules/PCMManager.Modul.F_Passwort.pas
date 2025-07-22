@@ -294,7 +294,7 @@ begin
       laitm_PWDWLAN.Visible:= false;
       laitm_PWDVPNSharedSec.Visible:= false;
       lagrp_PasswordsApp.Visible:= true;
-      laitm_PWDAPPVPN.CaptionOptions.Text:= 'APP IP-Adresse:';
+      laitm_PWDAPPVPN.CaptionOptions.Text:= rs_PCMManager_APPIPAdresse;
       laitm_PWDAPPPort.Visible:= true;
       laitm_PWDAPPSSL.Visible:= true;
       lagrp_PasswordsEmailEin.Visible:= false;
@@ -350,7 +350,7 @@ begin
       laitm_PWDWLAN.Visible:= false;
       laitm_PWDVPNSharedSec.Visible:= true;
       lagrp_PasswordsApp.Visible:= true;
-      laitm_PWDAPPVPN.CaptionOptions.Text:= 'VPN IP-Adresse:';
+      laitm_PWDAPPVPN.CaptionOptions.Text:= rs_PCMManager_VPNIPAdresse;
       laitm_PWDAPPPort.Visible:= false;
       laitm_PWDAPPSSL.Visible:= false;
       lagrp_PasswordsEmailEin.Visible:= false;
@@ -362,7 +362,7 @@ begin
       laitm_PWDWLAN.Visible:= false;
       laitm_PWDVPNSharedSec.Visible:= true;
       lagrp_PasswordsApp.Visible:= true;
-      laitm_PWDAPPVPN.CaptionOptions.Text:= 'VPN IP-Adresse:';
+      laitm_PWDAPPVPN.CaptionOptions.Text:= rs_PCMManager_VPNIPAdresse;
       laitm_PWDAPPPort.Visible:= false;
       laitm_PWDAPPSSL.Visible:= false;
       lagrp_PasswordsEmailEin.Visible:= false;

@@ -326,6 +326,8 @@ type
     dxLayoutGroup5: TdxLayoutGroup;
     dxLayoutGroup6: TdxLayoutGroup;
     dxLayoutGroup7: TdxLayoutGroup;
+    ppmbtn_Belege: TMenuItem;
+    ppmbtn_Gutscheine: TMenuItem;
     procedure btn_CloseModulClick(Sender: TObject);
     procedure btn_ModulleisteClick(Sender: TObject);
     procedure btn_RefreshRightsClick(Sender: TObject);
@@ -359,6 +361,8 @@ type
     procedure ppmbtn_SpracheClick(Sender: TObject);
     procedure ppmbtn_StundenplanClick(Sender: TObject);
     procedure ppmbtn_SysteminfoClick(Sender: TObject);
+    procedure ppmbtn_GutscheineClick(Sender: TObject);
+    procedure ppmbtn_BelegeClick(Sender: TObject);
   private
     { Private-Deklarationen }
 
@@ -844,24 +848,17 @@ end;
 {$Region Navbarfunktionen}
 procedure Tfrm_PCM_Main.iSpracheClick(Sender: TObject);
 var
-  iniFile: TIniFile;
+  ifINI: TIniFile;
 begin
   Application.CreateForm(Tfrm_PCM_Language,frm_PCM_Language);
   frm_PCM_Language.Position:= poScreenCenter;
-  frm_PCM_Language.ClientHeight:= 214;
   frm_PCM_Language.ShowModal;
-  TNtTranslator.SetNew(dm_PCM.slocale,[],'de');
-  TNtTranslator.TranslateForms;
-  iniFile := TIniFile.Create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
+  ifINI := TIniFile.Create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
   try
-    iniFile.WriteString(PCM_Logname, 'Language', dm_PCm.sLocale);
+    ifINI.WriteString(PCM_Logname, 'Language', dm_PCm.sLocale);
   finally
-    iniFile.Free;
+    ifINI.Free;
   end;
-  Caption:= PCM_Programmname;
-  trayic_Main.popupmenu:= ppm_Main;
-  LoadData;
-  btn_RefreshRightsClick(Self);
 end;
 procedure Tfrm_PCM_Main.NavBarClick(Sender: TObject);
 var
@@ -906,7 +903,7 @@ begin
       begin
         sModul:= Module.ModuleName;
         sModulCaption:= Module.ModuleName;
-        case AnsiIndexStr(sModul, ['iBenutzerverwaltung','iKonfiguration','iDesign','iKontakte','iKalender','iAufgaben','iStundenplan','iEMails','iPasswoerter','iSerials','iMonatsuebersicht','iEinnahmen','iAusgaben','iSysteminfo','iInfo','iHandbuch','iJira','iBelege','iGutscheine','iZeiterfassung']) of
+        case AnsiIndexStr(sModul, ['iBenutzerverwaltung','iKonfiguration','iDesign','iKontakte','iKalender','iAufgaben','iStundenplan','iEMails','iPasswoerter','iSerials','iMonatsuebersicht','iEinnahmen','iAusgaben','iSysteminfo','iInfo','iHandbuch','iJira','iBelege','iGutscheine']) of
         0:
           begin
             sModulCaption := 'i'  + rs_PCM_Benutzerverwaltung;
@@ -929,18 +926,18 @@ begin
           end;
         4:
           begin
-            sModulCaption := 'iKalender';
+            sModulCaption := 'i' + rs_PCM_Kalender;
             dm_PCM.iModulTab:= 1;
           end;
         5:
           begin
-            sModulCaption := 'iAufgaben';
+            sModulCaption := 'i' + rs_PCMManager_Aufgaben1;
             dm_PCM.iModulTab:= 1;
           end;
         6:
           begin
 
-            sModulCaption := 'iStundenplan';
+            sModulCaption := 'i' + rs_PCMManager_Stundenplan;
             dm_PCM.iModulTab:= 1;
           end;
         7:
@@ -1012,12 +1009,6 @@ begin
             sModulCaption := 'i'  + rs_PCMManager_Finanzuebersicht;
             dm_PCM.iModulTab:= 6;
           end;
-        19:
-          begin
-            sModul:= 'Zeiterfassung';
-            sModulCaption := 'i'  + 'Zeiterfassung';
-            dm_PCM.iModulTab:= 1;
-          end;
         end;
         iPageIndex := TabExist('tsh' + sModul);
         if iPageIndex > -1 then
@@ -1037,7 +1028,7 @@ begin
         begin
           Screen.Cursor := crHourglass;
           try
-            ShowWaitForm(TForm(Self), PWideChar('Formular wird geladen'), 1,417, 65);
+            ShowWaitForm(TForm(Self), PWideChar(rs_General_Formload), 1,417, 65);
             Application.ProcessMessages;
             WaitFormStep;
             TForm(Module.Instance^) := Module.FormClass.Create(Nil);
@@ -1260,6 +1251,12 @@ begin
   WindowState:= TWindowState.wsMaximized;
   SetForegroundWindow(frm_PCM_main.Handle);
 end;
+procedure Tfrm_PCM_Main.ppmbtn_GutscheineClick(Sender: TObject);
+begin
+  navbarclick(iGutscheine);
+  WindowState:= TWindowState.wsMaximized;
+  SetForegroundWindow(frm_PCM_main.Handle);
+end;
 procedure Tfrm_PCM_Main.ppmbtn_PasswoerterClick(Sender: TObject);
 begin
   navbarclick(iPasswoerter);
@@ -1310,7 +1307,7 @@ begin
 end;
 procedure Tfrm_PCM_Main.ppmbtn_SpracheClick(Sender: TObject);
 begin
-  navbarclick(iSprache);
+  iSpracheClick(Self);
   WindowState:= TWindowState.wsMaximized;
   SetForegroundWindow(frm_PCM_main.Handle);
 end;
@@ -1322,6 +1319,13 @@ procedure Tfrm_PCM_Main.ppmbtn_BeendenClick(Sender: TObject);
 begin
   Close;
 end;
+procedure Tfrm_PCM_Main.ppmbtn_BelegeClick(Sender: TObject);
+begin
+  navbarclick(iBelege);
+  WindowState:= TWindowState.wsMaximized;
+  SetForegroundWindow(frm_PCM_main.Handle);
+end;
+
 {$EndRegion}
 end.
 

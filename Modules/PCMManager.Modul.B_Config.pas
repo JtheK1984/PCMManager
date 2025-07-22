@@ -612,6 +612,7 @@ type
     procedure SortierungAendernMain(bUpDown: Boolean);
     procedure SortierungFirstLastSub(bUpDown: Boolean);
     procedure SortierungAendernSub(bUpDown: Boolean);
+    procedure ConnectionTest(AFirst: boolean);
   public
     { Public-Deklarationen }
     iID_Benutzer: integer;
@@ -909,8 +910,10 @@ begin
   SetButtons;
 end;
 procedure Tfrm_Config.SetupAuthenticator;
+var
+  iID: integer;
 begin
-  FOAuth2_Enhanced.ClientID := qry_EmailConfig.FieldByName('ClientID').AsString;;
+  FOAuth2_Enhanced.ClientID := qry_EmailConfig.FieldByName('ClientID').AsString;
   FOAuth2_Enhanced.ClientSecret := qry_EmailConfig.FieldByName('ClientSecret').AsString;
   FOAuth2_Enhanced.Scope := qry_EmailConfig.FieldByName('Scopes').AsString;
   FOAuth2_Enhanced.RedirectionEndpoint := clientredirect;
@@ -1109,6 +1112,81 @@ begin
   dm_PCM.qry_Work.ParamByName('ID').asInteger := iTempID;
   dm_PCM.qry_Work.ExecSQL;
   qry_EmailPostfachSub.Refresh;
+end;
+procedure Tfrm_Config.ConnectionTest(AFirst: boolean);
+var
+  xoauthSASL : TIdSASLListEntry;
+  idmsgMail: TIdMessage;
+begin
+  if AFirst then
+  begin
+    dm_PCM.qry_work.SQL.Text:= 'Select RefreshToken From manager_emailkonfiguration Where ID = :ID';
+    dm_PCM.qry_work.ParamByName('ID').AsInteger:= qry_EmailConfig.FieldByName('ID').AsInteger;
+    dm_PCM.qry_work.open;
+    FOAuth2_Enhanced.RefreshToken:= dm_PCM.qry_work.FieldByName('RefreshToken').AsString;
+    dm_PCM.qry_work.close;
+  end;
+  FOAuth2_Enhanced.ClientID := Provider.ClientID;
+  FOAuth2_Enhanced.ClientSecret := Provider.ClientSecret;
+  FOAuth2_Enhanced.RefreshAccessTokenIfRequired;
+  IdIMAP_Mail.Host := qry_EmailConfig.FieldByName('PostEingangsserver').AsString;
+  IdIMAP_Mail.Port := qry_EmailConfig.FieldByName('PortEingangsserver').AsInteger;
+  IdIMAP_Mail.IOHandler:= IdSSLIOHandlerSocketIMAP;
+  IdIMAP_Mail.UseTLS := utUseExplicitTLS;
+  xoauthSASL := IdIMAP_Mail.SASLMechanisms.Add;
+  xoauthSASL.SASL := Provider.AuthenticationType.Create(nil);
+  TIdSASLOAuthBase(xoauthSASL.SASL).Token := FOAuth2_Enhanced.AccessToken;
+  TIdSASLOAuthBase(xoauthSASL.SASL).User := Provider.ClientAccount;
+  IdIMAP_Mail.AuthType := iatSASL;
+  try
+    IdIMAP_Mail.Connect;
+    laitm_EmailConfigTestEin.CaptionOptions.Text:= '[B][COLOR=#00FF40]' + rs_PCMManager_posteingangerfolgreich + '[/COLOR][/B]';
+    laitm_EmailConfigTestEin.Visible:= true;
+    IdIMAP_Mail.Disconnect;
+  except
+    laitm_EmailConfigTestEin.CaptionOptions.Text:= '[B][COLOR=#FF8080]' + rs_PCMManager_posteingangnichterfolgreich +'[/COLOR][/B]';
+    laitm_EmailConfigTestEin.Visible:= true;
+  end;
+  xoauthSASL.SASL.Free;
+  // SMTP
+  FOAuth2_Enhanced.ClientID := Provider.ClientID;
+  FOAuth2_Enhanced.ClientSecret := Provider.ClientSecret;
+  FOAuth2_Enhanced.RefreshAccessTokenIfRequired;
+  if FOAuth2_Enhanced.AccessToken.Length = 0 then
+  begin
+    Exit;
+  end;
+  try
+    IDSMTP_Mail.Host := Provider.SmtpHost;
+    IDSMTP_Mail.UseTLS := Provider.TLS;
+    IDSMTP_Mail.Port := Provider.SmtpPort;
+    IDSMTP_Mail.IOHandler:= IdSSLIOHandlerSocketSMTP;
+    xoauthSASL := IDSMTP_Mail.SASLMechanisms.Add;
+    xoauthSASL.SASL := Provider.AuthenticationType.Create(nil);
+    TIdSASLOAuthBase(xoauthSASL.SASL).Token := FOAuth2_Enhanced.AccessToken;
+    TIdSASLOAuthBase(xoauthSASL.SASL).User := Provider.ClientAccount;
+    IdSSLIOHandlerSocketSMTP.SSLOptions.SSLVersions := [sslvTLSv1_2];
+    IDSMTP_Mail.Connect;
+
+    IDSMTP_Mail.AuthType := satSASL;
+    IDSMTP_Mail.Authenticate;
+    idmsgMail := TIdMessage.Create(Self);
+    idmsgMail.From.Address := Provider.ClientAccount;
+    idmsgMail.From.Name := Provider.ClientName;
+    idmsgMail.ReplyTo.EMailAddresses := idmsgMail.From.Address;
+    idmsgMail.Recipients.Add.Text := Provider.ClientAccount;
+    idmsgMail.Subject := rs_PCMManager_Testmail;
+    idmsgMail.Body.Text := rs_PCMManager_TestmailBody;
+    IDSMTP_Mail.Send(idmsgMail);
+    idmsgMail.Free;
+    IDSMTP_Mail.Disconnect;
+    laitm_EmailConfigTestAus.CaptionOptions.Text:= '[B][COLOR=#00FF40]' + rs_PCMManager_postausgangerfolgreich + '[/COLOR][/B]';
+    laitm_EmailConfigTestAus.Visible:= true;
+  except
+    laitm_EmailConfigTestAus.CaptionOptions.Text:= '[B][COLOR=#FF8080]' + rs_PCMManager_postausgangnichterfolgreich +'[/COLOR][/B]';
+    laitm_EmailConfigTestAus.Visible:= true;
+  end;
+  xoauthSASL.SASL.Free;
 end;
 {$EndRegion}
 ////////////////////////////////////////////////////////////////////////////////
@@ -1641,10 +1719,10 @@ procedure Tfrm_Config.btn_EmailConfig_TestClick(Sender: TObject);
     uri : TURI;
   begin
     uri := TURI.Create(FOAuth2_Enhanced.AuthorizationRequestURI);
-    ShellExecute(0,'open',PChar(uri.ToString),nil,nil,0);
+    ShellExecute(0,'open',PChar(uri.ToString),nil,nil,SW_SHOWNORMAL);
   end;
 var
-  xoauthSASL : TIdSASLListEntry;
+
   idSmtpMail: TIdSMTP;
   idSSLIOHndOPSSLPostfach: TIdSSLIOHandlerSocketOpenSSL;
   idmsgMail: TIdMessage;
@@ -1711,84 +1789,18 @@ begin
   end
   else begin
     // IMAP
-
+    FOAuth2_Enhanced.AuthorizationEndpoint:= qry_EmailConfig.FieldByName('AuthorizationEndpoint').AsString;
+    FOAuth2_Enhanced.ClientID := qry_EmailConfig.FieldByName('ClientID').AsString;;
+    FOAuth2_Enhanced.RedirectionEndpoint := clientredirect;
+    FOAuth2_Enhanced.Scope := qry_EmailConfig.FieldByName('Scopes').AsString;
+    FOAuth2_Enhanced.AccessTokenEndpoint := qry_EmailConfig.FieldByName('AccessTokenEndpoint').AsString;
     if qry_EmailConfig.FieldByName('RefreshToken').AsString = '' then
-      MailAuthenticate;
-    SetupAuthenticator;
-    FOAuth2_Enhanced.ClientID := Provider.ClientID;
-    FOAuth2_Enhanced.ClientSecret := Provider.ClientSecret;
-    FOAuth2_Enhanced.RefreshAccessTokenIfRequired;
-    IdIMAP_Mail.Host := qry_EmailConfig.FieldByName('PostEingangsserver').AsString;
-    IdIMAP_Mail.Port := qry_EmailConfig.FieldByName('PortEingangsserver').AsInteger;
-    IdIMAP_Mail.IOHandler:= IdSSLIOHandlerSocketIMAP;
-    IdIMAP_Mail.UseTLS := utUseExplicitTLS;
-    xoauthSASL := IdIMAP_Mail.SASLMechanisms.Add;
-    xoauthSASL.SASL := Provider.AuthenticationType.Create(nil);
-    TIdSASLOAuthBase(xoauthSASL.SASL).Token := FOAuth2_Enhanced.AccessToken;
-    TIdSASLOAuthBase(xoauthSASL.SASL).User := Provider.ClientAccount;
-    IdIMAP_Mail.AuthType := iatSASL;
-    try
-      IdIMAP_Mail.Connect;
-      laitm_EmailConfigTestEin.CaptionOptions.Text:= '[B][COLOR=#00FF40]' + rs_PCMManager_posteingangerfolgreich + '[/COLOR][/B]';
-      laitm_EmailConfigTestEin.Visible:= true;
-      IdIMAP_Mail.Disconnect;
-    except
-      laitm_EmailConfigTestEin.CaptionOptions.Text:= '[B][COLOR=#FF8080]' + rs_PCMManager_posteingangnichterfolgreich +'[/COLOR][/B]';
-      laitm_EmailConfigTestEin.Visible:= true;
-    end;
-    xoauthSASL.SASL.Free;
-    // SMTP
-    FOAuth2_Enhanced.ClientID := Provider.ClientID;
-    FOAuth2_Enhanced.ClientSecret := Provider.ClientSecret;
-    FOAuth2_Enhanced.RefreshAccessTokenIfRequired;
-    if FOAuth2_Enhanced.AccessToken.Length = 0 then
     begin
-      Exit;
+      MailAuthenticate;
+      exit;
     end;
-    try
-      IDSMTP_Mail.Host := Provider.SmtpHost;
-      IDSMTP_Mail.UseTLS := Provider.TLS;
-      IDSMTP_Mail.Port := Provider.SmtpPort;
-      IDSMTP_Mail.IOHandler:= IdSSLIOHandlerSocketSMTP;
-      xoauthSASL := IDSMTP_Mail.SASLMechanisms.Add;
-      xoauthSASL.SASL := Provider.AuthenticationType.Create(nil);
-      TIdSASLOAuthBase(xoauthSASL.SASL).Token := FOAuth2_Enhanced.AccessToken;
-      TIdSASLOAuthBase(xoauthSASL.SASL).User := Provider.ClientAccount;
-      IdSSLIOHandlerSocketSMTP.SSLOptions.SSLVersions := [sslvTLSv1_2];
-      IDSMTP_Mail.Connect;
-
-      IDSMTP_Mail.AuthType := satSASL;
-      IDSMTP_Mail.Authenticate;
-      idmsgMail := TIdMessage.Create(Self);
-      idmsgMail.From.Address := Provider.ClientAccount;
-      idmsgMail.From.Name := Provider.ClientName;
-      idmsgMail.ReplyTo.EMailAddresses := idmsgMail.From.Address;
-      idmsgMail.Recipients.Add.Text := Provider.ClientAccount;
-      idmsgMail.Subject := rs_PCMManager_Testmail;
-      idmsgMail.Body.Text := rs_PCMManager_TestmailBody;
-      IDSMTP_Mail.Send(idmsgMail);
-      idmsgMail.Free;
-      IDSMTP_Mail.Disconnect;
-      laitm_EmailConfigTestAus.CaptionOptions.Text:= '[B][COLOR=#00FF40]' + rs_PCMManager_postausgangerfolgreich + '[/COLOR][/B]';
-      laitm_EmailConfigTestAus.Visible:= true;
-    except
-      laitm_EmailConfigTestAus.CaptionOptions.Text:= '[B][COLOR=#FF8080]' + rs_PCMManager_postausgangnichterfolgreich +'[/COLOR][/B]';
-      laitm_EmailConfigTestAus.Visible:= true;
-    end;
-    xoauthSASL.SASL.Free;
-//  mailboxes := TStringList.Create;
-//  try
-//    IdIMAP_Mail.ListMailBoxes(mailboxes);
-//  finally
-//    FreeAndNil(mailboxes);
-//  end;
-
-{
-  IdIMAP_Mail.SelectMailBox('[Gmail]/All Mail');
-  msgCount:= IdIMAP_Mail.MailBox.TotalMsgs;
-  ShowMessage(msgCount.ToString + ' Messages available for download');
-}
-
+    SetupAuthenticator;
+    ConnectionTest(False);
   end;
 end;
 // Postfächer
@@ -1976,14 +1988,18 @@ begin
   FOAuth2_Enhanced.AuthCode := LCode;
   FOAuth2_Enhanced.ChangeAuthCodeToAccesToken;
   LTokenName := 'MicrosoftToken';
+//  qry_EmailConfig.AfterScroll:= nil;
+//  qry_EmailConfig.Edit;
+//  qry_EmailConfig.FieldByName('RefreshToken').asString:= FOAuth2_Enhanced.RefreshToken;;
+//  qry_EmailConfig.Post;
+  AResponseInfo.ContentText := '<html><body>Successfully Authenticated. You can now close this tab/window.</body></html>';
   dm_PCM.qry_work.SQL.Text:= 'Update manager_emailkonfiguration Set RefreshToken = :RefreshToken Where ID = :ID';
   dm_PCM.qry_work.ParamByName('RefreshToken').AsString:= FOAuth2_Enhanced.RefreshToken;
   dm_PCM.qry_work.ParamByName('ID').AsInteger:= qry_EmailConfig.FieldByName('ID').AsInteger;
   dm_PCM.qry_work.ExecSQL;
-//  qry_EmailConfig.Refresh;
-  SetupAuthenticator;
-  AResponseInfo.ContentText := '<html><body>Successfully Authenticated. You can now close this tab/window.</body></html>';
+//  SetupAuthenticator;
 
+  ConnectionTest(True);
 end;
 {$EndRegion}
 ////////////////////////////////////////////////////////////////////////////////

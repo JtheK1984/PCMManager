@@ -570,8 +570,8 @@ begin
       lagrp_KontaktPersonal.Visible:= True;
 
     lagrp_MitarbeiterInfoDetails.ItemIndex:= 0;
-    laitm_Vorname.Caption:= 'Vorname:';
-    laitm_Nachname.Caption:='Nachname:';
+    laitm_Vorname.Caption:= rs_PCMManager_Vorname2;
+    laitm_Nachname.Caption:=rs_PCMManager_Nachname2;
     if qry_Kontakte.FieldByName('Geburtsname').AsString <> '' then
     begin
       laitm_Geburtsname.Visible:= true;
@@ -620,8 +620,8 @@ begin
     laitm_ImageGes.Visible:= true;
     lagrp_KontaktPersonal.Visible:= false;
     lagrp_Zusatz.Visible:= false;
-    laitm_Vorname.Caption:= 'Firma:';
-    laitm_Nachname.Caption:='Ort:';
+    laitm_Vorname.Caption:= rs_PCMManager_Firma2;
+    laitm_Nachname.Caption:= rs_PCMManager_Ort2;
     btn_addGeburtsname.Visible:= ivnever;
     btn_addGeburtsort.Visible:= ivnever;
     btn_addGeburtsland.Visible:= ivnever;
@@ -930,7 +930,7 @@ begin
     OpenUrl(sLink);
   end
   else begin
-    MessageDlg('Adresse unvollständig',mtWarning,[mbOk],0);
+    MessageDlg(rs_PCMManager_AdressIncomplete,mtWarning,[mbOk],0);
   end;
 end;
 procedure Tfrm_Contact.edt_KontaktGeschaeftlichTelefonDurchwahlPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
@@ -965,7 +965,7 @@ begin
     OpenUrl(sLink);
   end
   else begin
-    MessageDlg('Adresse unvollständig',mtWarning,[mbOk],0);
+    MessageDlg(rs_PCMManager_AdressIncomplete,mtWarning,[mbOk],0);
   end;
 end;
 procedure Tfrm_Contact.edt_KontaktSucheNachnameKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);

@@ -27,7 +27,6 @@ object fAdressSuche: TfAdressSuche
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitWidth = 946
     object cxGrid1: TcxGrid
       Left = 10
       Top = 229

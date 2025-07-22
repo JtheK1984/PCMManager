@@ -1,7 +1,7 @@
-# Projekt: 
-  PCMManager.exe
+# Projekt:
+  PCMManager.exe Version: 1.0.0.0
 
-# Kurzbeschreibung
+# Kurzbeschreibung:
   Applikation zum Verwalten von Kontakten, Terminen, Aufgaben, Stundenplänen, E-Mails, Passwörtern, Seriennummern, Einnahmen und Ausgaben
 
 # Entwicklungsumgebung:
@@ -9,14 +9,12 @@
 
 # Entwickler:
   Jens Henske
-	
+
 # Abhängigkeiten zu folgenden Sub-Modulen:
   - PCM-Functions
-  (Dokumentation:
-  [Azure DevOps](https://pcmapps.ddns.net:2443/PCM-DEV/PCM/PCMFunctions)
-  [GitHub](https://github.com/JtheK1984/PCMFunctions))
+  (Dokumentation: [Azure DevOps](https://pcmapps.ddns.net:2443/PCM-DEV/PCM/PCMFunctions) [GitHub](https://github.com/JtheK1984/PCMFunctions))
 
-# Abhängigkeiten zu folgenden DLL's:
+# Abhängigkeiten zu folgenden DLLs:
   - 32-Bit 
     - libmysql.dll (DLL für Verbindung zur MySQL-Datenbank)
     - libeay32.dll (DLL für SSL-Verbindungen)
@@ -27,13 +25,14 @@
     - libeay32.dll (DLL für SSL-Verbindungen)
     - ssleay32.dll (DLL für SSL-Verbindungen)
     - WebView2Loader.dll (DLL für Edgebrowser)
-	
+
 # Erforderliche Komponenten (DELPHI-IDE):
-  - Devexpress
-	
-# Erforderliche Scripte (nur für die Buildpipelines in Azure DevOps): 
+  - Devexpress 24.2.4
+  - LockBox VCL and FMX 2025.03 (Getit-Package)
+
+# Erforderliche Scripte (nur für die Buildpipelines in Azure DevOps):
   - PrepareBuild.cmd (Umgebungsvariablen für Delphi anpassen, wird für den Build benötigt)
   - PrepareCopy.cmd (erzeugte Versionen werden in das Inno-Setupverzeichnis abgelgt)
 
 # Stand:
-  01.07.2025
+  21.07.2025

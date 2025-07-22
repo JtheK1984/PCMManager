@@ -4,8 +4,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
   AlphaBlend = True
   BorderStyle = bsSingle
   Caption = 'PCM - Manager'
-  ClientHeight = 800
-  ClientWidth = 1280
+  ClientHeight = 783
+  ClientWidth = 1274
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -3707,7 +3707,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     Left = 0
     Top = 35
     Width = 200
-    Height = 765
+    Height = 748
     Align = alLeft
     ActiveGroupIndex = 0
     TabOrder = 0
@@ -3715,7 +3715,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
     View = 14
     OptionsImage.SmallImages = dm_PCM.imglst_16x16
     OptionsStyle.CustomStyles.Background = navbrStyleIt_main
-    ExplicitHeight = 748
     object navbrgrp_Optionen: TdxNavBarGroup
       Caption = 'Optionen'
       SelectedLinkIndex = -1
@@ -3976,13 +3975,13 @@ object frm_PCM_Main: Tfrm_PCM_Main
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 1
-    Height = 765
-    Width = 1080
+    Height = 748
+    Width = 1074
     object pc_main: TcxPageControl
       Left = 2
       Top = 2
-      Width = 1076
-      Height = 761
+      Width = 1070
+      Height = 744
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -3998,11 +3997,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
       LookAndFeel.NativeStyle = False
       OnPageChanging = pc_mainPageChanging
-      ExplicitWidth = 1070
-      ExplicitHeight = 744
-      ClientRectBottom = 755
+      ClientRectBottom = 738
       ClientRectLeft = 2
-      ClientRectRight = 1070
+      ClientRectRight = 1064
       ClientRectTop = 28
       object ts_Dashboard: TcxTabSheet
         AllowCloseButton = False
@@ -4011,8 +4008,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
         object dxLayoutControl1: TdxLayoutControl
           Left = 0
           Top = 0
-          Width = 1068
-          Height = 727
+          Width = 1062
+          Height = 710
           Align = alClient
           TabOrder = 0
           LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
@@ -4020,8 +4017,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
           object chartctrl_Birthday: TdxChartControl
             Left = 28
             Top = 77
-            Width = 1008
-            Height = 279
+            Width = 1002
+            Height = 270
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -4046,9 +4043,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object chartctrl_Contact: TdxChartControl
             Left = 28
-            Top = 417
-            Width = 485
-            Height = 278
+            Top = 408
+            Width = 482
+            Height = 270
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -4075,10 +4072,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
             end
           end
           object chartctrl_Adresses: TdxChartControl
-            Left = 551
-            Top = 417
-            Width = 485
-            Height = 278
+            Left = 548
+            Top = 408
+            Width = 482
+            Height = 270
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -9749,6 +9746,16 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Caption = 'Ausgaben'
       ImageIndex = 5
       OnClick = ppmbtn_AusgabenClick
+    end
+    object ppmbtn_Belege: TMenuItem
+      Caption = 'Belege'
+      ImageIndex = 5
+      OnClick = ppmbtn_BelegeClick
+    end
+    object ppmbtn_Gutscheine: TMenuItem
+      Caption = 'Gutscheine'
+      ImageIndex = 6
+      OnClick = ppmbtn_GutscheineClick
     end
     object ppmbtn_Trenn5: TMenuItem
       Caption = '-'

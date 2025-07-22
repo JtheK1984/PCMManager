@@ -65,21 +65,18 @@ uses
 var
   {$Region var}
   ifini: TIniFile;
-  sStyle: String;
   slocale: String;
   {$EndRegion var}
 begin
   {$Region Begin}
   Checkinis;
   ifini:=TIniFile.create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
-  sStyle:=ifini.ReadString('PCMManager','Style','Windows');
   slocale:=ifini.ReadString('PCMManager','Language','de');
   ifini.Free;
   GlobalWebView2Loader                := TWVLoader.Create(nil);
   GlobalWebView2Loader.UserDataFolder := ExtractFileDir(Application.ExeName) + '\CustomCache';
   GlobalWebView2Loader.StartWebView2;
   Application.Initialize;
-  TStyleManager.TrySetStyle(sStyle);
   {$IFDEF WIN64}
   Application.Title:= 'PCM - Manager 64-Bit';
   TNtTranslator.SetNew(slocale,[],'de');
