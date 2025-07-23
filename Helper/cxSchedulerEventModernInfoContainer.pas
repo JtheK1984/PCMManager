@@ -44,7 +44,7 @@ uses
   dxCore, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, Vcl.StdCtrls, cxGroupBox,
   cxGeometry, cxSchedulerCustomControls, cxSchedulerCustomResourceView, cxSchedulerStorage, cxSchedulerStrs,
   Vcl.ExtCtrls, cxImage, cxClasses, cxSchedulerUtils, dxLayoutContainer, dxLayoutLookAndFeels, dxLayoutControl,
-  dxLayoutcxEditAdapters, cxProgressBar, dxUIAClasses, cxTextEdit, cxMemo;
+  dxLayoutcxEditAdapters, cxProgressBar, dxUIAClasses, cxTextEdit, cxMemo, FireDac.Stan.Param;
 
 type
   TcxSchedulerEventModernInfoContainer = class(TdxForm)

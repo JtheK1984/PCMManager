@@ -21,7 +21,7 @@ BEGIN
   BEGIN
     BLOCK "040704B0"
     BEGIN
-      VALUE "FileDescription", "Applikation zum Verwalten von Kontakten, Terminen, Aufgaben, Stundenplänen, E-Mails, Passwörtern, Seriennummern, Einnahmen und Ausgaben\0"
+      VALUE "FileDescription", "PCM - Manager\0"
       VALUE "FileVersion", VERSION_STRING_FULL "\0"
       VALUE "InternalName", "PCMManager.exe \0"
       VALUE "LegalCopyright", "PCM (Jens Henske)\0"

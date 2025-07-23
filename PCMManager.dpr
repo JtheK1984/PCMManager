@@ -1,7 +1,7 @@
 program PCMManager;
 
 uses
-  {$Region}
+  {$Region uses}
   cxSchedulerCustomControls in 'Helper\cxSchedulerCustomControls.pas',
   cxSchedulerDBStorage in 'Helper\cxSchedulerDBStorage.pas',
   cxSchedulerEventModernInfoContainer in 'Helper\cxSchedulerEventModernInfoContainer.pas' {cxSchedulerEventModernInfoContainer: TdxForm},
@@ -52,8 +52,7 @@ uses
   PCMManager.Modul.D_Calendar.Terminsuche in 'Modules\PCMManager.Modul.D_Calendar.Terminsuche.pas',
   PCMManager.Modul.D_Calendar in 'Modules\PCMManager.Modul.D_Calendar.pas' {frm_Calendar},
   PCMManager.Modul.D_Stundenplan in 'Modules\PCMManager.Modul.D_Stundenplan.pas' {frm_Stundenplan};
-
-{$EndRegion uses}
+  {$EndRegion uses}
 {$R *.res}
 {$IFDEF WIN64}
   {$R 'Versioninfo64.res'}
@@ -74,15 +73,15 @@ begin
   slocale:=ifini.ReadString('PCMManager','Language','de');
   ifini.Free;
   GlobalWebView2Loader                := TWVLoader.Create(nil);
-  GlobalWebView2Loader.UserDataFolder := ExtractFileDir(Application.ExeName) + '\CustomCache';
+  GlobalWebView2Loader.UserDataFolder := GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\CustomCache';
   GlobalWebView2Loader.StartWebView2;
   Application.Initialize;
   {$IFDEF WIN64}
   Application.Title:= 'PCM - Manager 64-Bit';
-  TNtTranslator.SetNew(slocale,[],'de');
   {$else}
   Application.Title:= 'PCM - Manager 32-Bit';
   {$ENDIF}
+  TNtTranslator.SetNew(slocale,[],'de');										
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tdm_PCM,dm_PCM);
   Application.CreateForm(Tfrm_PCM_Main,frm_PCM_Main);

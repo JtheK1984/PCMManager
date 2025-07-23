@@ -2,6 +2,8 @@ echo "Kopiere Datei ins Setupverzeichnis"
 copy /y /v Win32\Release\PCMManager.exe "e:\Inno\Setupfiles\Programme\PCMManager"
 copy /y /v Win64\Release\PCMManager.exe "e:\Inno\Setupfiles\Programme\PCMManager_x64"
 
+copy /y /v Win64\Release\PCMManager.DE "e:\Inno\Setupfiles\Programme\PCMManager"
+copy /y /v Win64\Release\PCMManager.EN "e:\Inno\Setupfiles\Programme\PCMManager"
 copy /y /v Win64\Release\PCMManager.DE "e:\Inno\Setupfiles\Programme\PCMManager_x64"
 copy /y /v Win64\Release\PCMManager.EN "e:\Inno\Setupfiles\Programme\PCMManager_x64"
 

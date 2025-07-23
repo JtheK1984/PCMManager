@@ -910,8 +910,6 @@ begin
   SetButtons;
 end;
 procedure Tfrm_Config.SetupAuthenticator;
-var
-  iID: integer;
 begin
   FOAuth2_Enhanced.ClientID := qry_EmailConfig.FieldByName('ClientID').AsString;
   FOAuth2_Enhanced.ClientSecret := qry_EmailConfig.FieldByName('ClientSecret').AsString;
