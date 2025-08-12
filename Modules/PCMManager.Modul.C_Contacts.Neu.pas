@@ -80,8 +80,8 @@ implementation
 {$R *.dfm}
 uses
   {$Region uses}
-  PCM.Data,
-  PCM.Strings;
+  PCM.Data, PCM.Helper,
+  PCM.Manager.Strings;
   {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -112,7 +112,7 @@ begin
         Anrede := 0;
       if edt_SurName.Text = '' then
       begin
-        MessageDlg(rs_PCMManager_Vorname,mtWarning,[mbOk],0);
+        SetMessageDialog(2,rs_PCMManager_Vorname,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
         exit;
       end
       else begin
@@ -120,7 +120,7 @@ begin
       end;
       if edt_Name.Text = '' then
       begin
-        MessageDlg(rs_PCMManager_nachname,mtWarning,[mbOk],0);
+        SetMessageDialog(2,rs_PCMManager_nachname,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
         exit;
       end
       else begin

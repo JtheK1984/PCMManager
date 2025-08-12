@@ -257,7 +257,7 @@ implementation
 uses
   {$Region uses}
   PCM.Data,
-  PCM.Strings;
+  PCM.Manager.Strings;
   {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //

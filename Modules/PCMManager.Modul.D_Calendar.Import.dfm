@@ -1348,8 +1348,8 @@ object frm_PCM_Import: Tfrm_PCM_Import
       CaptionOptions.Visible = False
       CaptionOptions.Layout = clTop
       Control = chkbx_CalNewReminder
-      ControlOptions.OriginalHeight = 17
-      ControlOptions.OriginalWidth = 133
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 137
       ControlOptions.ShowBorder = False
       Index = 0
     end
@@ -1360,7 +1360,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
       CaptionOptions.Text = 'edt_CalNewPfad'
       CaptionOptions.Visible = False
       Control = edt_CalNewPfad
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 209
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1384,7 +1384,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
       CaptionOptions.Text = 'colcmbbx_CalNewCal'
       CaptionOptions.Visible = False
       Control = colcmbbx_CalNewCal
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 239
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1396,7 +1396,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
       CaptionOptions.Text = 'colcmbbx_CalNewFont'
       CaptionOptions.Visible = False
       Control = colcmbbx_CalNewFont
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 239
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1408,7 +1408,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
       CaptionOptions.Text = 'edt_CalNewName'
       CaptionOptions.Visible = False
       Control = edt_CalNewName
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 239
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1420,7 +1420,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
       CaptionOptions.Text = 'cmbbx_CalNewType'
       CaptionOptions.Visible = False
       Control = cmbbx_CalNewType
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 239
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1433,7 +1433,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
       CaptionOptions.Visible = False
       CaptionOptions.Layout = clTop
       Control = cmbbx_CalNewReminderminutes
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 239
       ControlOptions.ShowBorder = False
       Index = 1
@@ -1443,7 +1443,7 @@ object frm_PCM_Import: Tfrm_PCM_Import
       CaptionOptions.Text = 'prgbr_CalNew'
       CaptionOptions.Visible = False
       Control = prgbr_CalNew
-      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 550
       ControlOptions.ShowBorder = False
       Index = 1

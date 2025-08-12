@@ -51,7 +51,7 @@ implementation
 {$R *.dfm}
 
 uses  PCMManager.Modul.D_Calendar,
-      PCM.Data,PCM.Strings;
+      PCM.Data,PCM.Manager.Strings;
 
 function Tfrm_PCM_KalenderFilter.Execute(const AShowModal: Boolean; AID: integer; out AKalender: string) : boolean;
 begin

@@ -1,7 +1,7 @@
 program PCMManager;
 
 uses
-  {$Region uses}
+  {$Region}
   cxSchedulerCustomControls in 'Helper\cxSchedulerCustomControls.pas',
   cxSchedulerDBStorage in 'Helper\cxSchedulerDBStorage.pas',
   cxSchedulerEventModernInfoContainer in 'Helper\cxSchedulerEventModernInfoContainer.pas' {cxSchedulerEventModernInfoContainer: TdxForm},
@@ -51,8 +51,10 @@ uses
   Windows,
   PCMManager.Modul.D_Calendar.Terminsuche in 'Modules\PCMManager.Modul.D_Calendar.Terminsuche.pas',
   PCMManager.Modul.D_Calendar in 'Modules\PCMManager.Modul.D_Calendar.pas' {frm_Calendar},
-  PCMManager.Modul.D_Stundenplan in 'Modules\PCMManager.Modul.D_Stundenplan.pas' {frm_Stundenplan};
-  {$EndRegion uses}
+  PCMManager.Modul.D_Stundenplan in 'Modules\PCMManager.Modul.D_Stundenplan.pas' {frm_Stundenplan},
+  PCM.Manager.Strings in 'Modules\PCM.Manager.Strings.pas';
+
+{$EndRegion uses}
 {$R *.res}
 {$IFDEF WIN64}
   {$R 'Versioninfo64.res'}
@@ -83,8 +85,8 @@ begin
   {$ENDIF}
   TNtTranslator.SetNew(slocale,[],'de');										
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(Tdm_PCM,dm_PCM);
-  Application.CreateForm(Tfrm_PCM_Main,frm_PCM_Main);
+  Application.CreateForm(Tdm_PCM, dm_PCM);
+  Application.CreateForm(Tfrm_PCM_Main, frm_PCM_Main);
   Application.Run;
   {$EndRegion Begin}
 end.

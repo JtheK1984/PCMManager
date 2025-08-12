@@ -48,9 +48,9 @@ implementation
 {$R *.dfm}
 uses
   {$Region uses}
-  PCM.Data,
+  PCM.Data,           PCM.Helper,
   PCMManager.Modul.G_Finanzen,
-  PCM.Strings;
+  PCM.Manager.Strings;
   {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -104,13 +104,13 @@ procedure Tfrm_PCManagerChooseDate.btn_PCManagerChooseDate_OkClick(Sender: TObje
 begin
   if cbx_PCManagerChooseDate_Month.ItemIndex = -1 then
   begin
-    MessageDlg(rs_PCMManager_Monatwaehlen, mtWarning, [mbOk], 0);
+    SetMessageDialog(2,rs_PCMManager_Monatwaehlen,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     exit;
   end;
 
   if cbx_PCManagerChooseDate_Year.ItemIndex = -1 then
   begin
-   MessageDlg(rs_PCMManager_Jahrwaehlen, mtWarning, [mbOk], 0);
+   SetMessageDialog(2,rs_PCMManager_Jahrwaehlen,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
    exit;
   end;
   Modalresult:= mrOk;

@@ -465,9 +465,9 @@ implementation
 {$R *.dfm}
 uses
   {$Region uses}
-  PCM.Data,
+  PCM.Data,PCM.Helper,
   PCM.Functions.Synch.Wait,
-  PCM.Strings,
+  PCM.Manager.Strings,
   PCMManager.Helper.Contacts.VCF,
   PCMManager.Modul.C_Contacts.Konfession,
   PCMManager.Modul.C_Contacts.Neu,
@@ -859,7 +859,7 @@ begin
       end
       else begin
         lagrp_PersonalTab.ItemIndex:= 0;
-        MessageDlg(rs_PCMManager_KeineKontakte, mtWarning,[mbOk],0);
+        SetMessageDialog(2,rs_PCMManager_KeineKontakte,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
       end;
     end
     else begin
@@ -885,7 +885,7 @@ begin
       else begin
         lagrp_PersonalTab.ItemIndex:= 0;
         lagrp_PersonalTab.ItemIndex:= 0;
-        MessageDlg(rs_PCMManager_KeineKontakte, mtWarning,[mbOk],0);
+        SetMessageDialog(2,rs_PCMManager_KeineKontakte,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
       end;
     end;
   end;
@@ -930,7 +930,7 @@ begin
     OpenUrl(sLink);
   end
   else begin
-    MessageDlg(rs_PCMManager_AdressIncomplete,mtWarning,[mbOk],0);
+    SetMessageDialog(2,rs_PCMManager_AdressIncomplete,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
   end;
 end;
 procedure Tfrm_Contact.edt_KontaktGeschaeftlichTelefonDurchwahlPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
@@ -965,7 +965,7 @@ begin
     OpenUrl(sLink);
   end
   else begin
-    MessageDlg(rs_PCMManager_AdressIncomplete,mtWarning,[mbOk],0);
+     SetMessageDialog(2,rs_PCMManager_AdressIncomplete,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
   end;
 end;
 procedure Tfrm_Contact.edt_KontaktSucheNachnameKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -2078,7 +2078,7 @@ begin
     end;
     slExport.SaveToFile(sFilename,Tencoding.GetEncoding(1256));
     slExport.Free;
-    MessageDlg(rs_PCMManager_KontakteinVCard, mtInformation, [mbOk], 0);
+    SetMessageDialog(1,rs_PCMManager_KontakteinVCard,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
   end;
 end;
 procedure Tfrm_Contact.ppmbtn_NachExcelexportierenClick(Sender: TObject);
@@ -2086,7 +2086,7 @@ begin
   if dlgsave_Personal.Execute then
   begin
     ExportGridToExcel(dlgsave_Personal.FileName, grd_Suche);
-    MessageDlg(rs_PCMManager_GridExport1 + dlgsave_Personal.FileName +  rs_PCMManager_GridExport2, mtInformation, [mbOk], 0);
+    SetMessageDialog(1,rs_PCMManager_GridExport1 + dlgsave_Personal.FileName +  rs_PCMManager_GridExport2,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
   end;
 end;
 procedure Tfrm_Contact.ppmbtn_ExportOutlookClick(Sender: TObject);

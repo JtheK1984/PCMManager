@@ -5,7 +5,7 @@ object SplashScreen: TSplashScreen
   Caption = 'SplashScreen'
   ClientHeight = 488
   ClientWidth = 1000
-  Color = 9798503
+  Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
@@ -2314,9 +2314,9 @@ object SplashScreen: TSplashScreen
         E1703C0238E1EE70381C0E87C3E1703C0238E1EE70381C0E87C3E1703C02FCEF
         12C994D5D0AFFDAD0000000049454E44AE426082}
       Stretch = True
-      ExplicitLeft = 2
-      ExplicitTop = -4
-      ExplicitWidth = 996
+      ExplicitLeft = 3
+      ExplicitTop = -3
+      ExplicitWidth = 994
       ExplicitHeight = 461
     end
     object ActivityIndicator: TdxActivityIndicator

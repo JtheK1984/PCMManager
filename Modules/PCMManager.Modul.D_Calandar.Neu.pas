@@ -242,8 +242,8 @@ implementation
 uses
   {$Region uses}
   PCMManager.Modul.D_Calender.Neu.Adresssuche,
-  PCM.Data,
-  PCM.Strings;
+  PCM.Data, PCM.Helper,
+  PCM.Manager.Strings;
   {$EndRegion uses}
 
 procedure Tfrm_Calendar_new.cxButtonEdit1PropertiesButtonClick(Sender: TObject;
@@ -1223,7 +1223,7 @@ end;
 procedure Tfrm_Calendar_new.bSendClick(Sender: TObject);
   procedure Hinweis(s: string);
   begin
-    MessageDlg(s,mtwarning, [mbOk],0);
+    SetMessageDialog(2,s,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
   end;
 var
   typ: integer;
@@ -1263,7 +1263,7 @@ begin
     begin
       if (typ = ntAufgabe) AND ((deEndeAufgabe.Date + teEndeAufgabe.Time) < Now) then
       begin
-        if MessageDlg(rs_PCMManager_AufgabeInVergangenheit,mtwarning, [TMsgDlgBtn.mbYes,TMsgDlgBtn.mbNo],0) <> IDYES then
+        if SetMessageDialog(2,rs_PCMManager_AufgabeInVergangenheit,[rs_general_BTN_yes,rs_general_BTN_no,''],[mrYes,mrNo,mrNone]) <> mrYes then
           exit;
       end
       else
@@ -1282,7 +1282,7 @@ begin
 
 
         if s <> '' then
-          if MessageDlg(s,TMsgDlgType.mtWarning,[mbyes,mbno],0) = IDYes then
+          if SetMessageDialog(2,s,[rs_general_BTN_yes,rs_general_BTN_no,''],[mrYes,mrNo,mrNone]) = mrYes then
             exit;
       end;
     end;
@@ -1511,7 +1511,7 @@ begin
   begin
     if cbErledigungsgrad.ItemIndex = 10 then
     begin
-      if (MessageDlg(rs_PCMManager_Erledigungsgrad1 + slinebreak + rs_PCMManager_Erledigungsgrad2 + slinebreak + slinebreak + rs_PCMManager_Fortfahren + slinebreak + rs_PCMManager_Erledigungsgrad3,TMsgDlgType.mtWarning, [mbOk,mbCancel],0) = idOk) then
+      if SetMessageDialog(2,rs_PCMManager_Erledigungsgrad1 + slinebreak + rs_PCMManager_Erledigungsgrad2 + slinebreak + slinebreak + rs_PCMManager_Fortfahren + slinebreak + rs_PCMManager_Erledigungsgrad3,[rs_general_BTN_ok,rs_general_BTN_Cancel,''],[mrOk,mrCancel,mrNone]) = mrOk then
       begin
         //showmessage('aufgabe erledigt');
       end

@@ -348,11 +348,11 @@ implementation
 {$R *.dfm}
 uses
   {$Region uses}
-  PCM.Data,
+  PCM.Data,   PCM.Helper,
   PCM.Browser.FullScreen,
   PCM.Reports,
   PCMManager.Modul.G_Finanzen.Filter.Date,
-  PCM.Strings;
+  PCM.Manager.Strings;
   {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -872,7 +872,7 @@ begin
   if sdlg_Ausgaben.Execute then
   begin
     ExportGridToExcel(sdlg_Ausgaben.FileName, grd_Finanzen_Ausgaben);
-    MessageDlg(rs_PCMManager_GridExport1 + sdlg_Ausgaben.FileName +  rs_PCMManager_GridExport2, mtInformation, [mbOk], 0);
+    SetMessageDialog(1,rs_PCMManager_GridExport1 + sdlg_Ausgaben.FileName +  rs_PCMManager_GridExport2,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
   end;
 end;
 procedure Tfrm_finanzen.ppmbtn_ExportExcelBelClick(Sender: TObject);
@@ -880,7 +880,7 @@ begin
   if sdlg_Belege.Execute then
   begin
     ExportGridToExcel(sdlg_Belege.FileName, grd_Finanzen_Belege);
-    MessageDlg(rs_PCMManager_GridExport1 + sdlg_Belege.FileName +  rs_PCMManager_GridExport2, mtInformation, [mbOk], 0);
+    SetMessageDialog(1,rs_PCMManager_GridExport1 + sdlg_Belege.FileName +  rs_PCMManager_GridExport2,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
   end;
 end;
 procedure Tfrm_finanzen.ppmbtn_ExportExcelEInClick(Sender: TObject);
@@ -888,7 +888,7 @@ begin
   if sdlg_Einnahmen.Execute then
   begin
     ExportGridToExcel(sdlg_Einnahmen.FileName, grd_Finanzen_Einnahmen);
-    MessageDlg(rs_PCMManager_GridExport1 + sdlg_Einnahmen.FileName +  rs_PCMManager_GridExport2, mtInformation, [mbOk], 0);
+    SetMessageDialog(1,rs_PCMManager_GridExport1 + sdlg_Einnahmen.FileName +  rs_PCMManager_GridExport2,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
   end;
 end;
 procedure Tfrm_finanzen.ppmbtn_ExportExcelGutClick(Sender: TObject);
@@ -896,7 +896,7 @@ begin
   if sdlg_Gutschein.Execute then
   begin
     ExportGridToExcel(sdlg_Gutschein.FileName, grd_Finanzen_Gutscheine);
-    MessageDlg(rs_PCMManager_GridExport1 + sdlg_Gutschein.FileName +  rs_PCMManager_GridExport2, mtInformation, [mbOk], 0);
+    SetMessageDialog(1,rs_PCMManager_GridExport1 + sdlg_Gutschein.FileName +  rs_PCMManager_GridExport2,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
   end;
 end;
 {$EndRegion Buttonfunktionen}

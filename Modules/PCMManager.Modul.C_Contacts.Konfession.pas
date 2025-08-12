@@ -87,7 +87,7 @@ implementation
 {$R *.dfm}
 uses
   {$Region Uses}
-  PCM.Data,PCM.Strings,
+  PCM.Data,PCM.Manager.Strings,
   PCMManager.Modul.C_Contacts;
   {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////

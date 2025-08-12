@@ -180,22 +180,26 @@ object frm_finanzen: Tfrm_finanzen
         object tv_EinnahmenQuelle: TcxGridDBColumn
           Caption = 'Absender'
           DataBinding.FieldName = 'Quelle'
+          DataBinding.IsNullValueType = True
           SortIndex = 0
           SortOrder = soAscending
           Width = 440
         end
         object tv_EinnahmenBezeichnung: TcxGridDBColumn
           DataBinding.FieldName = 'Bezeichnung'
+          DataBinding.IsNullValueType = True
           Width = 440
         end
         object tv_EinnahmenBetrag: TcxGridDBColumn
           DataBinding.FieldName = 'Betrag'
+          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Width = 80
         end
         object tv_EinnahmenFixBetrag: TcxGridDBColumn
           Caption = 'Fixbetrag'
           DataBinding.FieldName = 'FixBetrag'
+          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxCurrencyEditProperties'
           Width = 80
         end

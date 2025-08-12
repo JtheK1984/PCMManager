@@ -373,7 +373,7 @@ implementation
 {$R *.dfm}
 uses
   {$Region uses}
-  PCM.Main,
+  PCM.Main,   PCM.Helper,
   PCMManager.Modul.D_Calandar.Neu,
   PCMManager.Modul.D_Calendar.Filter,
   PCMManager.Modul.D_Calendar.Import,
@@ -381,7 +381,7 @@ uses
   PCMManager.Helper.Calendar.Ical,
   PCM.Data,
   PCM.Browser.FullScreen,
-  PCM.Strings,
+  PCM.Manager.Strings,
   uwvLoader, PCMManager.Modul.D_Calendar.Terminsuche;
   {$ENdRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
@@ -2336,7 +2336,7 @@ var
 begin
   if sched_Kalender.SelectedEventCount > 0 then
   begin
-    ibuttonSelected := MessageDlg(rs_PCMManager_MSGDeleteevent,mtWarning, mbYesNo, 0);
+    ibuttonSelected:= SetMessageDialog(2,rs_PCMManager_MSGDeleteevent,[rs_general_BTN_yes,rs_general_BTN_no,''],[mryes,mrNo,mrNone]);
     if ibuttonSelected = mrYes then
     begin
       dm_PCM.qry_work.SQL.Text:= sSQLInsertintoPushNotification;

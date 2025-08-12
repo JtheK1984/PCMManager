@@ -341,7 +341,7 @@ uses
   PCMManager.Helper.Calendar.Ical,
   PCM.Data,
   PCM.Browser.FullScreen,
-  PCM.Strings,
+  PCM.Manager.Strings,
   uwvLoader, PCMManager.Modul.D_Calendar.Terminsuche;
   {$ENdRegion uses}
 ////////////////////////////////////////////////////////////////////////////////

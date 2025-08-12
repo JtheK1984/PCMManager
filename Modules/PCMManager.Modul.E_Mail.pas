@@ -251,13 +251,13 @@ implementation
 {$R *.dfm}
 uses
   {$Region Uses}
-  PCM.Data,
+  PCM.Data,    PCM.Helper,
   PCMManager.Modul.E_Mail.Show,
   PCM.Browser.FullScreen,
   uwvLoader,
   IdSASL.OAuth.XOAUTH2,
   PCMManager.Modul.E_Mail.Mailbox,
-  PCM.Strings, PCMManager.Modul.E_Mail.Signaturen, PCM.SendMail;
+  PCM.Manager.Strings, PCMManager.Modul.E_Mail.Signaturen, PCM.SendMail;
   {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -730,7 +730,7 @@ begin
   except
     on ep:Exception do
     begin
-      MessageDlg(rs_PCMManager_MSGFehler +ep.Message, mtError, [mbOk], 0);
+      SetMessageDialog(3,rs_PCMManager_MSGFehler,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     end;
   end;
 end;
@@ -843,7 +843,7 @@ begin
   except
     on ep:Exception do
     begin
-      MessageDlg(rs_PCMManager_MSGFehler +ep.Message, mtError, [mbOk], 0);
+      SetMessageDialog(3,rs_PCMManager_MSGFehler,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     end;
   end;
 end;

@@ -407,7 +407,7 @@ implementation
 {$R *.dfm}
 uses
   {$Region uses}
-  PCM.Main,
+  PCM.Main,PCM.Helper,
   PCMManager.Modul.D_Calandar.Neu,
   PCMManager.Modul.D_Calendar.Filter,
   PCMManager.Modul.D_Calendar.Import,
@@ -415,7 +415,7 @@ uses
   PCMManager.Helper.Calendar.Ical,
   PCM.Data,
   PCM.Browser.FullScreen,
-  PCM.Strings,
+  PCM.Manager.Strings,
   uwvLoader, PCMManager.Modul.D_Calendar.Terminsuche,
   PCMManager.Modul.D_Calendar;
   {$ENdRegion uses}
@@ -1326,7 +1326,7 @@ begin
   end;
 
   if dm_PCM.qry_Kalender_Aufgaben.FieldByName('GelesenAm').IsNull then
-    if MessageDlg(sMsgDlgMessage + slinebreak + rs_PCMManager_AlsBearbeitet,mtwarning,[mbYes,mbNo],0) = IDNO then
+    if SetMessageDialog(2,sMsgDlgMessage + slinebreak + rs_PCMManager_AlsBearbeitet,[rs_general_BTN_yes,rs_general_BTN_no,''],[mryes,mrNo,mrNone]) = mrNO then
       Exit;
 
   ID := dm_PCM.qry_Kalender_Aufgaben.FieldByName('ID').asInteger;

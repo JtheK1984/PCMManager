@@ -17,8 +17,6 @@ object frm_Aufgaben: Tfrm_Aufgaben
   OnDestroy = FormDestroy
   OnResize = FormResize
   OnShow = FormShow
-  ExplicitWidth = 640
-  ExplicitHeight = 480
   TextHeight = 13
   object lactrl_Kalender: TdxLayoutControl
     Left = 0
@@ -78,9 +76,9 @@ object frm_Aufgaben: Tfrm_Aufgaben
     end
     object cxGrid1: TcxGrid
       Left = 10
-      Top = 165
+      Top = 159
       Width = 1979
-      Height = 319
+      Height = 323
       TabOrder = 3
       LookAndFeel.NativeStyle = False
       object tvNachrichten: TcxGridDBTableView
@@ -367,7 +365,7 @@ object frm_Aufgaben: Tfrm_Aufgaben
     end
     object cxDBTextEdit6: TcxDBTextEdit
       Left = 58
-      Top = 490
+      Top = 488
       TabStop = False
       DataBinding.DataField = 'Caption'
       DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
@@ -380,7 +378,7 @@ object frm_Aufgaben: Tfrm_Aufgaben
     end
     object cbxAns: TcxDBLookupComboBox
       Left = 1047
-      Top = 490
+      Top = 488
       TabStop = False
       DataBinding.DataField = 'ID_Ansprechpartner'
       DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
@@ -398,7 +396,7 @@ object frm_Aufgaben: Tfrm_Aufgaben
     end
     object cxDBMemo1: TcxDBRichEdit
       Left = 10
-      Top = 542
+      Top = 540
       DataBinding.DataField = 'Message'
       DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
       ParentFont = False
@@ -414,14 +412,14 @@ object frm_Aufgaben: Tfrm_Aufgaben
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 8
-      Height = 256
+      Height = 258
       Width = 1797
     end
     object cxGrid5: TcxGrid
       Left = 1813
-      Top = 542
+      Top = 540
       Width = 176
-      Height = 218
+      Height = 220
       TabOrder = 9
       LookAndFeel.NativeStyle = False
       object cxGrid5DBTableView1: TcxGridDBTableView
@@ -531,7 +529,7 @@ object frm_Aufgaben: Tfrm_Aufgaben
     end
     object img_search: TcxImage
       Left = 19
-      Top = 132
+      Top = 126
       Picture.Data = {
         0B546478504E47496D61676589504E470D0A1A0A0000000D4948445200000010
         0000001008060000001FF3FF61000000017352474200AECE1CE9000000046741
@@ -556,7 +554,7 @@ object frm_Aufgaben: Tfrm_Aufgaben
     end
     object edt_Suche: TcxButtonEdit
       Left = 43
-      Top = 132
+      Top = 126
       AutoSize = False
       Properties.Buttons = <
         item
@@ -576,7 +574,7 @@ object frm_Aufgaben: Tfrm_Aufgaben
     end
     object cxDBTextEdit1: TcxDBTextEdit
       Left = 58
-      Top = 517
+      Top = 515
       DataBinding.DataField = 'Adresse'
       DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
       Style.HotTrack = False
@@ -586,7 +584,7 @@ object frm_Aufgaben: Tfrm_Aufgaben
     end
     object edtJiraTicketNr: TcxDBButtonEdit
       Left = 1047
-      Top = 515
+      Top = 513
       Properties.Buttons = <
         item
           Default = True
@@ -764,7 +762,7 @@ object frm_Aufgaben: Tfrm_Aufgaben
       AlignVert = avTop
       CaptionOptions.Text = 'Jira-Ticketnr.:'
       Control = edtJiraTicketNr
-      ControlOptions.OriginalHeight = 20
+      ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 121
       ControlOptions.ShowBorder = False
       Index = 1

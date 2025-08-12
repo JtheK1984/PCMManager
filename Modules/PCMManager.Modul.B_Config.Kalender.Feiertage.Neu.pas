@@ -138,9 +138,9 @@ implementation
 {$R *.DFM}
 uses
   {$Region uses}
-  PCMManager.Modul.B_Config,
+  PCMManager.Modul.B_Config,PCM.Helper,
   PCMManager.Modul.B_Config.Kalender.Feiertage.Neu.Berechnen,
-  PCM.Data,PCM.Strings;
+  PCM.Data,PCM.Manager.Strings;
   {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Helperfunctions                                                            //
@@ -175,7 +175,7 @@ var
   Jahr, Monat, Tag: Word;
 begin
   if cmbbx_Bundesland.ItemIndex = -1 then
-    MessageDlg(rs_PCMManager_Bundeslandwaehlen, mtWarning, [mbOk], 0)
+    SetMessageDialog(2,rs_PCMManager_Bundeslandwaehlen,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone])
   else
   begin
     // Jahr holen

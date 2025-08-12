@@ -94,8 +94,8 @@ implementation
 
 {$R *.DFM}
 
-uses  PCM.Data,
-      PCMManager.Modul.D_Calandar.Neu,PCM.Strings;
+uses  PCM.Data, PCM.Helper,
+      PCMManager.Modul.D_Calandar.Neu,PCM.Manager.Strings;
 
 procedure TfAdressSuche.SetGridViews(Show:boolean);
 begin
@@ -206,7 +206,7 @@ begin
 
   end else
   begin
-    MessageDlg(rs_PCMManager_AdresseWaehlen,mtwarning,[mbOK],0);
+    SetMessageDialog(2,rs_PCMManager_AdresseWaehlen,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
   end;
 end;
 procedure TfAdressSuche.ToolButton2Click(Sender: TObject);

@@ -88,9 +88,9 @@ implementation
 
 {$R *.dfm}
 
-Uses  PCM.Data,
+Uses  PCM.Data, PCM.Helper,
       PCMManager.Helper.Calendar.Ical,
-      PCM.Strings;
+      PCM.Manager.Strings;
 
 
 function Tfrm_PCM_Import.GetRecurrence(var Rule, Start:  string) : string;
@@ -231,12 +231,12 @@ var
 begin
   if edt_CalNewPfad.Text= '' then
   begin
-    MessageDlg(rs_PCMManager_Dateiwaehlen, mtWarning, [mbOk], 0);
+    SetMessageDialog(2,rs_PCMManager_Dateiwaehlen,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     exit;
   end;
   if edt_CalNewName.Text= '' then
   begin
-    MessageDlg(rs_PCMManager_Kalendereingebn, mtWarning, [mbOk], 0);
+    SetMessageDialog(2,rs_PCMManager_Kalendereingebn,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     exit;
   end;
   aData := TiCalPackage.Create(edt_CalNewPfad.Text,frm_PCM_Import);

@@ -398,7 +398,7 @@ uses
   PCM.Handbuch,
   PCM.Helper,
   PCM.SQL,
-  PCM.Strings,
+  PCM.Manager.Strings,
   PCMManager.Modul.B_Config,
   PCMManager.Modul.C_Contacts,
   PCMManager.Modul.D_Aufgaben,
@@ -1028,7 +1028,7 @@ begin
         begin
           Screen.Cursor := crHourglass;
           try
-            ShowWaitForm(TForm(Self), PWideChar(rs_General_Formload), 1,417, 65);
+            ShowWaitForm(TForm(Self), PWideChar(rs_Function_Wait_FormCaption), 1,417, 65);
             Application.ProcessMessages;
             WaitFormStep;
             TForm(Module.Instance^) := Module.FormClass.Create(Nil);

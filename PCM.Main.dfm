@@ -3715,6 +3715,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     View = 14
     OptionsImage.SmallImages = dm_PCM.imglst_16x16
     OptionsStyle.CustomStyles.Background = navbrStyleIt_main
+    ExplicitHeight = 731
     object navbrgrp_Optionen: TdxNavBarGroup
       Caption = 'Optionen'
       SelectedLinkIndex = -1
@@ -3975,6 +3976,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 1
+    ExplicitWidth = 1068
+    ExplicitHeight = 731
     Height = 748
     Width = 1074
     object pc_main: TcxPageControl
@@ -3997,6 +4000,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
       LookAndFeel.NativeStyle = False
       OnPageChanging = pc_mainPageChanging
+      ExplicitWidth = 1064
+      ExplicitHeight = 727
       ClientRectBottom = 738
       ClientRectLeft = 2
       ClientRectRight = 1064
@@ -4005,6 +4010,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
         AllowCloseButton = False
         Caption = 'Dashboard'
         ImageIndex = 79
+        ExplicitWidth = 1056
+        ExplicitHeight = 693
         object dxLayoutControl1: TdxLayoutControl
           Left = 0
           Top = 0
@@ -4014,6 +4021,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
           TabOrder = 0
           LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
           OptionsImage.Images = dm_PCM.imglst_16x16
+          ExplicitWidth = 1056
+          ExplicitHeight = 693
           object chartctrl_Birthday: TdxChartControl
             Left = 28
             Top = 77

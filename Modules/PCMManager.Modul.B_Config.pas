@@ -630,10 +630,10 @@ implementation
 {$R *.dfm}
 uses
   {$Region Uses}
-  PCM.Data,
+  PCM.Data,PCM.Helper,
   PCM.Main,
   PCM.Functions.Synch.Wait,
-  PCM.Strings,
+  PCM.Manager.Strings,
   PCMManager.Modul.B_Config.Kalender.Feiertage.Aktualisieren,
   PCMManager.Modul.B_Config.Kalender.Feiertage.Neu,
   IdSASL.OAuth.XOAUTH2;
@@ -1820,7 +1820,7 @@ procedure Tfrm_Config.btn_PostfachNewClick(Sender: TObject);
       bRet := AIdIMAP41.ListMailBoxes(strlstUsersFolders);
       Application.ProcessMessages;
       if bRet = False then begin
-        MessageDlg(rs_PCMManager_OrdnerNichtGelesen, mtWarning, [mbOk], 0);
+        SetMessageDialog(2,rs_PCMManager_OrdnerNichtGelesen,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
       end;
       Application.ProcessMessages;
       for i := 0 to strlstUsersFolders.Count-1 do begin
@@ -1893,7 +1893,7 @@ procedure Tfrm_Config.btn_PostfachNewClick(Sender: TObject);
     except
       on ep:system.sysutils.Exception do
       begin
-        MessageDlg(rs_PCM_Fehler + ep.Message, mtError, [mbOk], 0);
+        SetMessageDialog(3,rs_PCM_Fehler + ep.Message,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
       end;
     end;
   end;
@@ -1919,7 +1919,7 @@ begin
     on ep:system.sysutils.Exception do
     begin
         IdIMAP_Mail.Disconnect;
-        MessageDlg(rs_PCM_Fehler + ep.Message, mtError, [mbOk], 0);
+        SetMessageDialog(3,rs_PCM_Fehler + ep.Message,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     end;
   end;
 end;

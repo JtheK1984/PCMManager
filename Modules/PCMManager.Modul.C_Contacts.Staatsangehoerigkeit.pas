@@ -88,7 +88,7 @@ implementation
 uses
   {$Region var}
   PCM.Data,
-  PCM.Strings,
+  PCM.Manager.Strings,
   PCMManager.Modul.C_Contacts;
   {$EndRegion var}
 ////////////////////////////////////////////////////////////////////////////////

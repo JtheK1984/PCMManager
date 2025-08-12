@@ -29,8 +29,6 @@ object frm_Contact: Tfrm_Contact
     TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
-    ExplicitWidth = 1274
-    ExplicitHeight = 651
     object cmbbx_KontaktSucheArt: TcxComboBox
       Left = 88
       Top = 131

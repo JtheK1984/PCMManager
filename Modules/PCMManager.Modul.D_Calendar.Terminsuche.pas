@@ -68,8 +68,8 @@ implementation
 {$R *.dfm}
 uses
   {$Region uses}
-  PCM.Data,
-  PCM.Strings;
+  PCM.Data,PCM.Helper,
+  PCM.Manager.Strings;
   {$EndRegion uses}
 
 procedure Tfrm_Terminsuche.btn_AbortClick(Sender: TObject);
@@ -84,7 +84,7 @@ begin
     modalresult:= mrOk;
   end
   else begin
-    MessageDlg(rs_PCMManager_MSChooseEevent,mtWarning,[mbOk],0);
+    SetMessageDialog(2,rs_PCMManager_MSChooseEevent,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
   end;
 end;
 procedure Tfrm_Terminsuche.edt_sucheKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -125,7 +125,7 @@ begin
       modalresult:= mrOk;
     end
     else begin
-      MessageDlg(rs_PCMManager_MSChooseEevent,mtWarning,[mbOk],0);
+      SetMessageDialog(2,rs_PCMManager_MSChooseEevent,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     end;
   end;
 end;

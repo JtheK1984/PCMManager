@@ -30,8 +30,8 @@ implementation
 
 {$R *.dfm}
 
-uses  PCMManager.Modul.E_Mail,
-      PCM.Data, PCM.Strings;
+uses  PCMManager.Modul.E_Mail,  PCM.Helper,
+      PCM.Data, PCM.Manager.Strings;
 
 function Tfrm_PCM_MailShow_Ordner.Execute(AModal: boolean; out Mailbox : Integer): Boolean;
 begin
@@ -48,7 +48,7 @@ begin
       end
       else
       begin
-        MessageDlg(rs_PCMManager_MSChooseMailbox,mtWarning,[mbOk],0);
+        SetMessageDialog(2,rs_PCMManager_MSChooseMailbox,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
         exit;
       end;
       result:= true;

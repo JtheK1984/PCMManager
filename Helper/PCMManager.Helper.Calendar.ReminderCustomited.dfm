@@ -46,6 +46,7 @@ inherited cxSchedulerReminderFormCustomized: TcxSchedulerReminderFormCustomized
     Left = 9
     Top = 51
     Caption = 'Adresse in OrgAuftrag'
+    TabOrder = 1
     Visible = False
   end
   inherited dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList

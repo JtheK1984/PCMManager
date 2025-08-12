@@ -245,7 +245,6 @@ object frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
       Index = 1
@@ -264,7 +263,6 @@ object frm_PCManagerChooseDate: Tfrm_PCManagerChooseDate
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       ShowBorder = False
       Index = 0
     end

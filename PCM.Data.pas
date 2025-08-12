@@ -250,6 +250,7 @@ const
   PCM_Connectionname =  'manager';
   PCM_Programmnummer =  1;
   PCM_Alias = 'manager';
+  PCM_Lizenz = True;
   sSQLInsertintoPushNotification = 'Insert Into service_pushnotifications (ID_Benutzer, Message) values (:ID_Benutzer, :Message)';
   {$EndRegion const}
 resourcestring

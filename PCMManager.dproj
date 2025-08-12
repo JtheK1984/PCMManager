@@ -252,6 +252,7 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <Form>frm_Stundenplan</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Modules\PCM.Manager.Strings.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -280,17 +281,16 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <Deployment Version="5">
                 <DeployFile LocalName="E:\Inno\Setupfiles\Programme\PCMManager\PCMManager.exe" Configuration="Release" Class="ProjectOutput"/>
                 <DeployFile LocalName="Win32\Debug\PCMManager.exe" Configuration="Debug" Class="ProjectOutput"/>
-                <DeployFile LocalName="Win64\Debug\PCMManager.exe" Configuration="Debug" Class="ProjectOutput"/>
-                <DeployFile LocalName="Win64\Debug\PCMManager.exe" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win64">
+                <DeployFile LocalName="Win32\Release\PCMManager.exe" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win32">
                         <RemoteName>PCMManager.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Win64\Debug\PCMManager.rsm" Configuration="Debug" Class="DebugSymbols"/>
-                <DeployFile LocalName="Win64\Debug\PCMManager.rsm" Configuration="Debug" Class="DebugSymbols">
+                <DeployFile LocalName="Win64\Debug\PCMManager.exe" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="Win64\Debug\PCMManager.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win64">
-                        <RemoteName>PCMManager.rsm</RemoteName>
+                        <RemoteName>PCMManager.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
