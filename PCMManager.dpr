@@ -52,9 +52,8 @@ uses
   PCMManager.Modul.D_Calendar.Terminsuche in 'Modules\PCMManager.Modul.D_Calendar.Terminsuche.pas',
   PCMManager.Modul.D_Calendar in 'Modules\PCMManager.Modul.D_Calendar.pas' {frm_Calendar},
   PCMManager.Modul.D_Stundenplan in 'Modules\PCMManager.Modul.D_Stundenplan.pas' {frm_Stundenplan},
-  PCM.Manager.Strings in 'Modules\PCM.Manager.Strings.pas',
-  PCMManager.Modul.E_Mail.Read in 'Modules\PCMManager.Modul.E_Mail.Read.pas';
-
+  PCM.Manager.Strings in 'Modules\PCM.Manager.Strings.pas';
+  
 {$EndRegion uses}
 {$R *.res}
 {$IFDEF WIN64}
