@@ -121,7 +121,7 @@ type
     { Public-Deklarationen }
     arAnhang: TAnhaenge;
     FWebBrowser: TAbstractWebBrowser;
-    procedure CreateAnhang(AAnhaenge: TAnhaenge);
+    procedure CreateAnhang;//(AAnhaenge: TAnhaenge);
   end;
   {$EndRegion types}
 var
@@ -140,7 +140,7 @@ uses
   uwvLoader;
   {$EndRegion uses}
 
-procedure Tfrm_PCM_MailShow.CreateAnhang(AAnhaenge: TAnhaenge);
+procedure Tfrm_PCM_MailShow.CreateAnhang;//(AAnhaenge: TAnhaenge);
   function GetFileIcon(const FileName: string; SmallIcon: Boolean): HICON;
   var
     FileInfo: TSHFileInfo;
@@ -229,6 +229,7 @@ begin
 end;
 procedure Tfrm_PCM_MailShow.FormShow(Sender: TObject);
 begin
+  CreateAnhang;
   if lstVw_Mail.Items.Count = 0 then
     laitm_Anhang.Visible:= false
   else

@@ -3835,7 +3835,6 @@ object frm_Config: Tfrm_Config
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldTabbed
       ShowBorder = False
       Index = 1

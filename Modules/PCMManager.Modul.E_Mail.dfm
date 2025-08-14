@@ -21,19 +21,21 @@ object frm_Mail: Tfrm_Mail
     Height = 813
     Align = alClient
     TabOrder = 0
+    AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     object dxBarDockControl1: TdxBarDockControl
-      Left = 10
-      Top = 10
-      Width = 1220
+      Left = 10000
+      Top = 10000
+      Width = 1204
       Height = 63
       Align = dalNone
       BarManager = brmgr_Email
+      Visible = False
     end
     object stbr_user: TdxStatusBar
-      Left = 10
-      Top = 783
-      Width = 1220
+      Left = 10000
+      Top = 10000
+      Width = 1204
       Height = 20
       Panels = <
         item
@@ -44,7 +46,7 @@ object frm_Mail: Tfrm_Mail
           PanelStyle.Font.Name = 'Segoe UI'
           PanelStyle.Font.Style = []
           PanelStyle.ParentFont = False
-          Width = 200
+          Width = 350
         end
         item
           PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
@@ -54,7 +56,7 @@ object frm_Mail: Tfrm_Mail
           PanelStyle.Font.Name = 'Segoe UI'
           PanelStyle.Font.Style = []
           PanelStyle.ParentFont = False
-          Width = 400
+          Width = 350
         end
         item
           PanelStyleClassName = 'TdxStatusBarTextPanelStyle'
@@ -64,7 +66,7 @@ object frm_Mail: Tfrm_Mail
           PanelStyle.Font.Name = 'Segoe UI'
           PanelStyle.Font.Style = []
           PanelStyle.ParentFont = False
-          Width = 200
+          Width = 300
         end>
       PaintStyle = stpsUseLookAndFeel
       Font.Charset = DEFAULT_CHARSET
@@ -73,14 +75,16 @@ object frm_Mail: Tfrm_Mail
       Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
+      Visible = False
     end
     object grd_Mail: TcxGrid
-      Left = 266
-      Top = 79
-      Width = 964
-      Height = 418
+      Left = 10000
+      Top = 10000
+      Width = 948
+      Height = 408
       BorderStyle = cxcbsNone
       TabOrder = 2
+      Visible = False
       object grdDBTblView_Mails: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         FilterBox.CustomizeDialog = False
@@ -190,10 +194,10 @@ object frm_Mail: Tfrm_Mail
       end
     end
     object trlst_EmailFolder: TcxTreeList
-      Left = 10
-      Top = 79
+      Left = 10000
+      Top = 10000
       Width = 250
-      Height = 698
+      Height = 682
       Bands = <
         item
         end>
@@ -205,14 +209,16 @@ object frm_Mail: Tfrm_Mail
       ScrollbarAnnotations.CustomAnnotations = <>
       TabOrder = 1
       Data = {
-        00000500F40000000F00000044617461436F6E74726F6C6C6572310200000012
+        00000500260100000F00000044617461436F6E74726F6C6C6572310400000012
         000000546378537472696E6756616C7565547970651200000054637853747269
-        6E6756616C75655479706503000000445855464D540000080000007300640073
-        006400730064007300640001445855464D540000040000007300640073006400
-        01445855464D5400000500000073006400730064006400010100000000000000
-        1208020000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFF010000000808
-        0000000000000000FFFFFFFFFFFFFFFFFFFFFFFF02000000080A000000000000
-        0000FFFFFFFFFFFFFFFFFFFFFFFF0A0801000000}
+        6E6756616C75655479706512000000546378537472696E6756616C7565547970
+        6512000000546378537472696E6756616C75655479706503000000445855464D
+        5400000800000073006400730064007300640073006400010101445855464D54
+        0000040000007300640073006400010101445855464D54000005000000730064
+        0073006400640001010101000000000000001208020000000000000000000000
+        FFFFFFFFFFFFFFFFFFFFFFFF0100000008080000000000000000FFFFFFFFFFFF
+        FFFFFFFFFFFF02000000080A0000000000000000FFFFFFFFFFFFFFFFFFFFFFFF
+        0A0801000000}
       object cxTreeList1Column1: TcxTreeListColumn
         Caption.Text = 'E-Mail Konten'
         Width = 200
@@ -230,18 +236,108 @@ object frm_Mail: Tfrm_Mail
         Summary.FooterSummaryItems = <>
         Summary.GroupFooterSummaryItems = <>
       end
+      object trlst_EmailFolderColumn3: TcxTreeListColumn
+        Position.ColIndex = 2
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object trlst_EmailFolderColumn4: TcxTreeListColumn
+        Position.ColIndex = 3
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
     end
     object pnl_Browser: TcxGroupBox
-      Left = 266
-      Top = 517
+      Left = 10000
+      Top = 10000
       PanelStyle.Active = True
       ParentBackground = False
       ParentColor = False
       Style.Color = 7566195
       Style.TransparentBorder = False
       TabOrder = 3
-      Height = 260
-      Width = 964
+      Visible = False
+      Height = 253
+      Width = 948
+    end
+    object cxGroupBox1: TcxGroupBox
+      Left = 411
+      Top = 373
+      PanelStyle.Active = True
+      ParentBackground = False
+      ParentColor = False
+      Style.Color = 7566195
+      Style.TransparentBorder = False
+      TabOrder = 5
+      Height = 66
+      Width = 417
+      object ind_wait: TdxActivityIndicator
+        AlignWithMargins = True
+        Left = 5
+        Top = 12
+        Width = 42
+        Height = 42
+        Margins.Top = 10
+        Margins.Bottom = 10
+        Align = alLeft
+        PropertiesClassName = 'TdxActivityIndicatorCircularDotsProperties'
+        Properties.AnimationTime = 7500
+        Properties.DotSize = 5
+      end
+      object cxGroupBox2: TcxGroupBox
+        Left = 50
+        Top = 2
+        Align = alClient
+        PanelStyle.Active = True
+        ParentBackground = False
+        ParentColor = False
+        Style.BorderStyle = ebsNone
+        Style.Color = 7566195
+        Style.TransparentBorder = False
+        TabOrder = 1
+        Transparent = True
+        Height = 62
+        Width = 365
+        object prgbr_Main: TcxProgressBar
+          AlignWithMargins = True
+          Left = 10
+          Top = 33
+          Margins.Left = 10
+          Margins.Right = 10
+          Margins.Bottom = 10
+          Align = alBottom
+          AutoSize = False
+          Position = 100.000000000000000000
+          Properties.BarStyle = cxbsAnimation
+          Properties.BeginColor = 54056
+          Properties.EndColor = 6750054
+          Properties.PeakValue = 100.000000000000000000
+          Style.BorderStyle = ebsUltraFlat
+          Style.LookAndFeel.SkinName = ''
+          Style.TransparentBorder = False
+          StyleDisabled.LookAndFeel.SkinName = ''
+          StyleFocused.LookAndFeel.SkinName = ''
+          StyleHot.LookAndFeel.SkinName = ''
+          TabOrder = 0
+          Height = 19
+          Width = 345
+        end
+        object cxLabel1: TcxLabel
+          AlignWithMargins = True
+          Left = 10
+          Top = 3
+          Margins.Left = 10
+          Margins.Right = 10
+          Align = alTop
+          Caption = 'Postf'#228'cher werden eingelesen'
+          TabOrder = 1
+          Transparent = True
+        end
+      end
     end
     object lactrl_MailGroup_Root: TdxLayoutGroup
       AlignHorz = ahClient
@@ -251,9 +347,7 @@ object frm_Mail: Tfrm_Mail
       Index = -1
     end
     object lagrp_Mail: TdxLayoutGroup
-      Parent = lactrl_MailGroup_Root
-      AlignHorz = ahClient
-      AlignVert = avClient
+      Parent = dxLayoutGroup3
       CaptionOptions.Text = 'New Group'
       ItemIndex = 1
       ShowBorder = False
@@ -350,6 +444,46 @@ object frm_Mail: Tfrm_Mail
       SizeOptions.SizableVert = False
       CaptionOptions.Text = 'Splitter'
       Index = 1
+    end
+    object dxLayoutGroup3: TdxLayoutGroup
+      Parent = lactrl_MailGroup_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldTabbed
+      ShowBorder = False
+      TabbedOptions.HideTabs = True
+      Index = 0
+    end
+    object dxLayoutGroup4: TdxLayoutGroup
+      Parent = dxLayoutGroup3
+      CaptionOptions.Text = 'New Group'
+      Index = 1
+    end
+    object dxLayoutGroup5: TdxLayoutGroup
+      Parent = dxLayoutGroup4
+      AlignHorz = ahCenter
+      AlignVert = avCenter
+      CaptionOptions.Text = 'New Group'
+      SizeOptions.Height = 65
+      SizeOptions.Width = 417
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem5: TdxLayoutItem
+      Parent = dxLayoutGroup5
+      AlignHorz = ahLeft
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = cxGroupBox1
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 66
+      ControlOptions.OriginalWidth = 417
+      ControlOptions.ShowBorder = False
+      Index = 0
     end
   end
   object ds_Mail: TDataSource

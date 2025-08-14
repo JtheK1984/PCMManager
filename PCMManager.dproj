@@ -7,8 +7,8 @@
         <Program_Soluling>E:\Solu\SoluMake.exe</Program_Soluling>
         <MainSource>PCMManager.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
-        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Platform Condition="'$(Platform)'==''">Win64</Platform>
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Application</AppType>
         <ProjectName Condition="'$(ProjectName)'==''">PCMManager</ProjectName>
@@ -253,6 +253,7 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Modules\PCM.Manager.Strings.pas"/>
+        <DCCReference Include="Modules\PCMManager.Modul.E_Mail.Read.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

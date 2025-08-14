@@ -39,10 +39,42 @@ uses
   Vcl.Dialogs,
   vcl.forms,
   Vcl.ImgList,
-  winapi.Windows, cxClasses, dxLayoutLookAndFeels;
+  winapi.Windows, cxClasses, dxLayoutLookAndFeels,
+
+
+  PCMManager.Helper.Email.OAuth, // Für TEnhancedOAuth2Authenticator
+  IdSASL.OAuth.Base,
+  IdExplicitTLSClientServerBase,
+  IdSASLCollection,
+  IdSSL, IdSSLOpenSSL, IdIMAP4, IdBaseComponent, IdComponent, IdIOHandler,
+  IdIOHandlerSocket, IdIOHandlerStack;
   {$EndRegion Uses}
 type
   {$Region type}
+  TAuthType = class of TIdSASLOAuthBase;
+
+  TMailProviderInfo = record
+    AuthenticationType : TAuthType;
+    AuthorizationEndpoint : string;
+    AccessTokenEndpoint : string;
+    LogoutEndpoint : string;
+    ClientID : String;
+    ClientSecret : string;
+    ClientAccount : string;
+    ClientName : string;
+    Scopes : string;
+    SmtpHost : string;
+    SmtpPort : Integer;
+    PopHost : string;
+    PopPort : Integer;
+    ImapHost : string;
+    ImapPort : Integer;
+    AuthName : string;
+    TLS : TIdUseTLS;
+    TwoLinePOPFormat: Boolean;
+    function TokenName: string;
+  end;
+
   Tdm_PCM = class(TDataModule)
     con_PCM: TFDConnection;
     qry_ChartKalender: TFDQuery;
@@ -197,6 +229,7 @@ type
     qry_Kalender_AufgabenPrivat: TStringField;
     qry_Kalender_AufgabenAdresse: TStringField;
     qry_Kalender_AufgabenAsnprechpartner: TStringField;
+    IdSSLIOHandlerSocketIMAP: TIdSSLIOHandlerSocketOpenSSL;
     procedure con_PCMBeforeConnect(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
   private
@@ -234,6 +267,9 @@ type
     dtGueltig,dtCurrDate: Tdate;
     bAutologin: boolean;
     sUSerAutologin: string;
+    FOAuth2_Enhanced: TEnhancedOAuth2Authenticator;
+    Provider: TMailProviderInfo;
+    function CreateThreadDBConnection: TFDConnection;
   end;
   {$EndRegion type}
 var
@@ -272,6 +308,17 @@ uses
 // Datamodul                                                                  //
 ////////////////////////////////////////////////////////////////////////////////
 {$Region Datamodul}
+function TMailProviderInfo.TokenName: string;
+begin
+  Result := AuthName + 'Token';
+end;
+function Tdm_pcm.CreateThreadDBConnection: TFDConnection;
+begin
+  Result := TFDConnection.Create(nil);
+  Result.Params.Assign(con_pcm.Params);
+  Result.LoginPrompt := False;
+  Result.Connected := True;
+end;
 procedure Tdm_PCM.con_PCMBeforeConnect(Sender: TObject);
 begin
   con_PCM.LoginPrompt := False;
@@ -304,6 +351,7 @@ begin
       con_PCM.Params.Add('DriverID=ADS');
      end;
   end;
+  FOAuth2_Enhanced := TEnhancedOAuth2Authenticator.Create(Self);
 end;
 procedure Tdm_PCM.DataModuleCreate(Sender: TObject);
 begin

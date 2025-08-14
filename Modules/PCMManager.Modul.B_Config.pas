@@ -1899,29 +1899,93 @@ procedure Tfrm_Config.btn_PostfachNewClick(Sender: TObject);
   end;
 var
   idSSLIOHndOPSSL_Postfach : TIdSSLIOHandlerSocketOpenSSL;
+  xoauthSASL : TIdSASLListEntry;
 begin
   dm_PCM.qry_Work.SQL.text := 'Delete From manager_email_postfach Where ID_manager_email = :ID';
   dm_PCM.qry_Work.ParamByName('ID').asInteger := qry_EmailConfig.FieldByName('ID').asInteger;
   dm_PCM.qry_Work.ExecSQL;
-  idSSLIOHndOPSSL_Postfach := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
-  idSSLIOHndOPSSL_Postfach.SSLOptions.Method:= sslvSSLv23;
-  IdIMAP_Mail.IOHandler := idSSLIOHndOPSSL_Postfach;
-  IdIMAP_Mail.UseTLS := utUseImplicitTLS;
-  IdIMAP_Mail.Host := qry_EmailConfig.FieldByName('PostEingangsserver').AsString;
-  IdIMAP_Mail.Port := qry_EmailConfig.FieldByName('PortEingangsserver').AsInteger;
-  IdIMAP_Mail.UseTLS := utUseImplicitTLS;
-  IdIMAP_Mail.Username := qry_EmailConfig.FieldByName('Benutzer').AsString;;
-  IdIMAP_Mail.Password := qry_EmailConfig.FieldByName('Passwort').AsString;
-  try
-    IdIMAP_Mail.Connect;
-    ShowFolders(IdIMAP_Mail);
-  except
-    on ep:system.sysutils.Exception do
-    begin
-        IdIMAP_Mail.Disconnect;
-        SetMessageDialog(3,rs_PCM_Fehler + ep.Message,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
+  if cmbbx_Auth.EditingValue = 0 then
+  begin
+    IdIMAP_Mail.SASLMechanisms.Clear;
+    IdIMAP_Mail.AuthType:= iatUserPass;
+    idSSLIOHndOPSSL_Postfach := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
+    idSSLIOHndOPSSL_Postfach.SSLOptions.Method:= sslvSSLv23;
+    IdIMAP_Mail.IOHandler := idSSLIOHndOPSSL_Postfach;
+    IdIMAP_Mail.UseTLS := utUseImplicitTLS;
+    IdIMAP_Mail.Host := qry_EmailConfig.FieldByName('PostEingangsserver').AsString;
+    IdIMAP_Mail.Port := qry_EmailConfig.FieldByName('PortEingangsserver').AsInteger;
+    IdIMAP_Mail.UseTLS := utUseImplicitTLS;
+    IdIMAP_Mail.Username := qry_EmailConfig.FieldByName('Benutzer').AsString;;
+    IdIMAP_Mail.Password := qry_EmailConfig.FieldByName('Passwort').AsString;
+    try
+      IdIMAP_Mail.Connect;
+      ShowFolders(IdIMAP_Mail);
+      idSSLIOHndOPSSL_Postfach.free;
+    except
+      on ep:system.sysutils.Exception do
+      begin
+          IdIMAP_Mail.Disconnect;
+          SetMessageDialog(3,rs_PCM_Fehler + ep.Message,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
+      end;
     end;
+  end
+  else begin
+    // IMAP
+    FOAuth2_Enhanced.AuthorizationEndpoint:= qry_EmailConfig.FieldByName('AuthorizationEndpoint').AsString;
+    FOAuth2_Enhanced.ClientID := qry_EmailConfig.FieldByName('ClientID').AsString;;
+    FOAuth2_Enhanced.RedirectionEndpoint := clientredirect;
+    FOAuth2_Enhanced.Scope := qry_EmailConfig.FieldByName('Scopes').AsString;
+    FOAuth2_Enhanced.AccessTokenEndpoint := qry_EmailConfig.FieldByName('AccessTokenEndpoint').AsString;
+    if qry_EmailConfig.FieldByName('RefreshToken').AsString = '' then
+      exit;
+    SetupAuthenticator;
+    FOAuth2_Enhanced.ClientID := Provider.ClientID;
+    FOAuth2_Enhanced.ClientSecret := Provider.ClientSecret;
+    FOAuth2_Enhanced.RefreshAccessTokenIfRequired;
+    IdIMAP_Mail.Host := qry_EmailConfig.FieldByName('PostEingangsserver').AsString;
+    IdIMAP_Mail.Port := qry_EmailConfig.FieldByName('PortEingangsserver').AsInteger;
+    IdIMAP_Mail.IOHandler:= IdSSLIOHandlerSocketIMAP;
+    IdIMAP_Mail.UseTLS := utUseExplicitTLS;
+    xoauthSASL := IdIMAP_Mail.SASLMechanisms.Add;
+    xoauthSASL.SASL := Provider.AuthenticationType.Create(nil);
+    TIdSASLOAuthBase(xoauthSASL.SASL).Token := FOAuth2_Enhanced.AccessToken;
+    TIdSASLOAuthBase(xoauthSASL.SASL).User := Provider.ClientAccount;
+    IdIMAP_Mail.AuthType := iatSASL;
+    try
+      IdIMAP_Mail.Connect;
+      ShowFolders(IdIMAP_Mail);
+    except
+      on ep:system.sysutils.Exception do
+      begin
+          IdIMAP_Mail.Disconnect;
+          SetMessageDialog(3,rs_PCM_Fehler + ep.Message,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
+      end;
+    end;
+    xoauthSASL.SASL.Free;
   end;
+
+
+
+
+//  idSSLIOHndOPSSL_Postfach := TIdSSLIOHandlerSocketOpenSSL.Create(Self);
+//  idSSLIOHndOPSSL_Postfach.SSLOptions.Method:= sslvSSLv23;
+//  IdIMAP_Mail.IOHandler := idSSLIOHndOPSSL_Postfach;
+//  IdIMAP_Mail.UseTLS := utUseImplicitTLS;
+//  IdIMAP_Mail.Host := qry_EmailConfig.FieldByName('PostEingangsserver').AsString;
+//  IdIMAP_Mail.Port := qry_EmailConfig.FieldByName('PortEingangsserver').AsInteger;
+//  IdIMAP_Mail.UseTLS := utUseImplicitTLS;
+//  IdIMAP_Mail.Username := qry_EmailConfig.FieldByName('Benutzer').AsString;;
+//  IdIMAP_Mail.Password := qry_EmailConfig.FieldByName('Passwort').AsString;
+//  try
+//    IdIMAP_Mail.Connect;
+//    ShowFolders(IdIMAP_Mail);
+//  except
+//    on ep:system.sysutils.Exception do
+//    begin
+//        IdIMAP_Mail.Disconnect;
+//        SetMessageDialog(3,rs_PCM_Fehler + ep.Message,[rs_general_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
+//    end;
+//  end;
 end;
 procedure Tfrm_Config.btn_PostfachSaveClick(Sender: TObject);
 begin

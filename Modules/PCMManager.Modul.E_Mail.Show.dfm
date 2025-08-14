@@ -26,6 +26,8 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
     Style.LookAndFeel.NativeStyle = False
     StyleDisabled.LookAndFeel.NativeStyle = False
     TabOrder = 0
+    ExplicitWidth = 1116
+    ExplicitHeight = 773
     Height = 790
     Width = 1122
   end
@@ -39,7 +41,7 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     object lbl_Betreff: TcxLabel
       Left = 53
-      Top = 134
+      Top = 139
       Style.HotTrack = False
       Style.LookAndFeel.NativeStyle = False
       Style.TransparentBorder = False
@@ -51,7 +53,7 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
     end
     object lbl_CC: TcxLabel
       Left = 53
-      Top = 114
+      Top = 119
       Style.HotTrack = False
       Style.LookAndFeel.NativeStyle = False
       Style.TransparentBorder = False
@@ -63,7 +65,7 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
     end
     object lbl_AN: TcxLabel
       Left = 53
-      Top = 94
+      Top = 99
       Style.HotTrack = False
       Style.LookAndFeel.NativeStyle = False
       Style.TransparentBorder = False
@@ -75,7 +77,7 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
     end
     object lbl_Von: TcxLabel
       Left = 53
-      Top = 74
+      Top = 79
       Style.HotTrack = False
       Style.LookAndFeel.NativeStyle = False
       Style.TransparentBorder = False
@@ -87,7 +89,7 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
     end
     object lstVw_Mail: TcxListView
       Left = 10
-      Top = 154
+      Top = 159
       Width = 1102
       Height = 87
       Margins.Left = 0
@@ -101,25 +103,6 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
       HideSelection = False
       IconOptions.Arrangement = iaLeft
       IconOptions.AutoArrange = True
-      Items.ItemData = {
-        05360200000E00000001000000FFFFFFFFFFFFFFFF00000000FFFFFFFF000000
-        00000100000001000000FFFFFFFF00000000FFFFFFFF00000000047300640073
-        0064000000000002000000FFFFFFFF00000000FFFFFFFF000000000473006400
-        7300640000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF0000000033730064
-        0073006400730064006A006B0067006A00680067006A006B006800670068006B
-        006A0067006800670068006A0067006A00680067006A0068006B006C0067006A
-        0068006B006C0067006A006B0068006C0067006C006B006A006B0067006C006A
-        00680000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF000000000478006300
-        7800630000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF0000000004780063
-        007800630000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF00000000047800
-        63007800630000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF000000000478
-        0063007800630000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF0000000005
-        7800630078006300630000000000FFFFFFFFFFFFFFFF00000000FFFFFFFF0000
-        0000057800630078006300780000000000FFFFFFFFFFFFFFFF00000000FFFFFF
-        FF00000000057800630078006300780000000000FFFFFFFFFFFFFFFF00000000
-        FFFFFFFF00000000057800630078006300780000000000FFFFFFFFFFFFFFFF00
-        000000FFFFFFFF000000000678006300780063007800630000000000FFFFFFFF
-        FFFFFFFF00000000FFFFFFFF0000000000}
       ParentFont = False
       PopupMenu = brpmm_Mail
       SmallImages = imglst_16x16_1
@@ -144,13 +127,13 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
       Left = 10
       Top = 10
       Width = 1102
-      Height = 58
+      Height = 63
       Align = dalNone
       BarManager = brmgr_Email
     end
     object cxLabel1: TcxLabel
       Left = 1012
-      Top = 94
+      Top = 99
       AutoSize = False
       Caption = 'cxLabel1'
       Style.HotTrack = False
@@ -162,14 +145,14 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
     end
     object pnl_browser: TcxGroupBox
       Left = 10
-      Top = 247
+      Top = 252
       PanelStyle.Active = True
       ParentBackground = False
       ParentColor = False
-      Style.Color = clBtnFace
+      Style.Color = 7566195
       Style.TransparentBorder = False
       TabOrder = 7
-      Height = 533
+      Height = 528
       Width = 1102
     end
     object lactrl_MailGroup_Root: TdxLayoutGroup
@@ -187,7 +170,7 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
       CaptionOptions.Visible = False
       Control = dxBarDockControl1
       ControlOptions.AutoColor = True
-      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalHeight = 63
       ControlOptions.OriginalWidth = 1118
       ControlOptions.ShowBorder = False
       Index = 0
