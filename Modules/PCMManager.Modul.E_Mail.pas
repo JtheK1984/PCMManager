@@ -297,7 +297,6 @@ uses
   PCM.Browser.FullScreen,
   uwvLoader,
   IdSASL.OAuth.XOAUTH2,
-  PCMManager.Modul.E_Mail.Read,
   PCMManager.Modul.E_Mail.Mailbox,
   PCM.Manager.Strings,
   PCMManager.Modul.E_Mail.Signaturen, PCM.SendMail;
