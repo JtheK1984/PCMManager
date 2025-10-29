@@ -76,9 +76,9 @@ object frm_Aufgaben: Tfrm_Aufgaben
     end
     object cxGrid1: TcxGrid
       Left = 10
-      Top = 159
+      Top = 173
       Width = 1979
-      Height = 323
+      Height = 301
       TabOrder = 3
       LookAndFeel.NativeStyle = False
       object tvNachrichten: TcxGridDBTableView
@@ -365,7 +365,7 @@ object frm_Aufgaben: Tfrm_Aufgaben
     end
     object cxDBTextEdit6: TcxDBTextEdit
       Left = 58
-      Top = 488
+      Top = 480
       TabStop = False
       DataBinding.DataField = 'Caption'
       DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
@@ -378,7 +378,7 @@ object frm_Aufgaben: Tfrm_Aufgaben
     end
     object cbxAns: TcxDBLookupComboBox
       Left = 1047
-      Top = 488
+      Top = 480
       TabStop = False
       DataBinding.DataField = 'ID_Ansprechpartner'
       DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
@@ -396,7 +396,7 @@ object frm_Aufgaben: Tfrm_Aufgaben
     end
     object cxDBMemo1: TcxDBRichEdit
       Left = 10
-      Top = 540
+      Top = 546
       DataBinding.DataField = 'Message'
       DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
       ParentFont = False
@@ -412,14 +412,14 @@ object frm_Aufgaben: Tfrm_Aufgaben
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 8
-      Height = 258
+      Height = 252
       Width = 1797
     end
     object cxGrid5: TcxGrid
       Left = 1813
-      Top = 540
+      Top = 546
       Width = 176
-      Height = 220
+      Height = 214
       TabOrder = 9
       LookAndFeel.NativeStyle = False
       object cxGrid5DBTableView1: TcxGridDBTableView
@@ -529,7 +529,7 @@ object frm_Aufgaben: Tfrm_Aufgaben
     end
     object img_search: TcxImage
       Left = 19
-      Top = 126
+      Top = 140
       Picture.Data = {
         0B546478504E47496D61676589504E470D0A1A0A0000000D4948445200000010
         0000001008060000001FF3FF61000000017352474200AECE1CE9000000046741
@@ -549,12 +549,12 @@ object frm_Aufgaben: Tfrm_Aufgaben
       StyleHot.BorderStyle = ebsNone
       TabOrder = 1
       Transparent = True
-      Height = 16
-      Width = 18
+      Height = 24
+      Width = 24
     end
     object edt_Suche: TcxButtonEdit
-      Left = 43
-      Top = 126
+      Left = 49
+      Top = 140
       AutoSize = False
       Properties.Buttons = <
         item
@@ -570,11 +570,11 @@ object frm_Aufgaben: Tfrm_Aufgaben
       OnEnter = edt_SucheEnter
       OnExit = edt_SucheExit
       Height = 24
-      Width = 1937
+      Width = 1931
     end
     object cxDBTextEdit1: TcxDBTextEdit
       Left = 58
-      Top = 515
+      Top = 507
       DataBinding.DataField = 'Adresse'
       DataBinding.DataSource = dm_PCM.ds_Kalender_Aufgaben
       Style.HotTrack = False
@@ -584,7 +584,7 @@ object frm_Aufgaben: Tfrm_Aufgaben
     end
     object edtJiraTicketNr: TcxDBButtonEdit
       Left = 1047
-      Top = 513
+      Top = 505
       Properties.Buttons = <
         item
           Default = True
@@ -613,7 +613,7 @@ object frm_Aufgaben: Tfrm_Aufgaben
       AlignVert = avClient
       CaptionOptions.ImageIndex = 58
       CaptionOptions.Text = 'Aufgaben'
-      ItemIndex = 1
+      ItemIndex = 3
       ShowBorder = False
       Index = 0
     end
@@ -634,9 +634,8 @@ object frm_Aufgaben: Tfrm_Aufgaben
       AlignHorz = ahClient
       AlignVert = avTop
       Offsets.Top = -6
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
-      Index = 1
+      Index = 2
     end
     object dxLayoutItem5: TdxLayoutItem
       Parent = dxLayoutGroup8
@@ -645,8 +644,8 @@ object frm_Aufgaben: Tfrm_Aufgaben
       CaptionOptions.Text = 'img_search'
       CaptionOptions.Visible = False
       Control = img_search
-      ControlOptions.OriginalHeight = 16
-      ControlOptions.OriginalWidth = 18
+      ControlOptions.OriginalHeight = 24
+      ControlOptions.OriginalWidth = 24
       ControlOptions.ShowBorder = False
       Index = 0
     end
@@ -673,7 +672,7 @@ object frm_Aufgaben: Tfrm_Aufgaben
       ControlOptions.OriginalHeight = 315
       ControlOptions.OriginalWidth = 1050
       ControlOptions.ShowBorder = False
-      Index = 2
+      Index = 3
     end
     object dxLayoutItem8: TdxLayoutItem
       Parent = dxLayoutGroup4
@@ -784,7 +783,7 @@ object frm_Aufgaben: Tfrm_Aufgaben
       ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
-      Index = 3
+      Index = 4
     end
     object dxLayoutGroup4: TdxLayoutGroup
       Parent = dxLayoutGroup3
@@ -798,12 +797,11 @@ object frm_Aufgaben: Tfrm_Aufgaben
     object dxLayoutGroup5: TdxLayoutGroup
       Parent = lagrp_Aufgaben
       AlignHorz = ahClient
-      AlignVert = avClient
+      AlignVert = avBottom
       CaptionOptions.Text = 'New Group'
-      ItemIndex = 1
       LayoutDirection = ldHorizontal
       ShowBorder = False
-      Index = 4
+      Index = 6
     end
     object dxLayoutGroup9: TdxLayoutGroup
       Parent = dxLayoutGroup5
@@ -840,6 +838,25 @@ object frm_Aufgaben: Tfrm_Aufgaben
       ControlOptions.OriginalWidth = 121
       ControlOptions.ShowBorder = False
       Index = 1
+    end
+    object dxLayoutSplitterItem1: TdxLayoutSplitterItem
+      Parent = lagrp_Aufgaben
+      SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
+      SizeOptions.SizableHorz = False
+      SizeOptions.SizableVert = False
+      CaptionOptions.Text = 'Splitter'
+      AllowCloseOnClick = True
+      Index = 1
+    end
+    object dxLayoutSplitterItem2: TdxLayoutSplitterItem
+      Parent = lagrp_Aufgaben
+      AlignVert = avBottom
+      SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
+      SizeOptions.SizableHorz = False
+      SizeOptions.SizableVert = False
+      CaptionOptions.Text = 'Splitter'
+      AllowCloseOnClick = True
+      Index = 5
     end
   end
   object dxRibbon1: TdxRibbon
@@ -929,7 +946,6 @@ object frm_Aufgaben: Tfrm_Aufgaben
     LookAndFeel.NativeStyle = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseF10ForMenu = False
     UseSystemFont = True
     Left = 1205

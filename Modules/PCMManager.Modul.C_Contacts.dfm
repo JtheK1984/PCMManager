@@ -29,9 +29,11 @@ object frm_Contact: Tfrm_Contact
     TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     OptionsImage.Images = dm_PCM.imglst_16x16
+    ExplicitWidth = 1274
+    ExplicitHeight = 651
     object cmbbx_KontaktSucheArt: TcxComboBox
-      Left = 88
-      Top = 131
+      Left = 10000
+      Top = 10000
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -43,13 +45,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 2
+      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 150
     end
     object edt_KontaktSucheAbteilung: TcxTextEdit
-      Left = 701
-      Top = 104
+      Left = 10000
+      Top = 10000
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -61,13 +64,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 8
+      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 150
     end
     object edt_KontaktSucheFirma: TcxTextEdit
-      Left = 701
-      Top = 77
+      Left = 10000
+      Top = 10000
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -79,13 +83,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 7
+      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 150
     end
     object edt_KontaktSucheFunktion: TcxTextEdit
-      Left = 701
-      Top = 131
+      Left = 10000
+      Top = 10000
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -97,13 +102,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 9
+      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 150
     end
     object edt_KontaktSucheNachname: TcxTextEdit
-      Left = 88
-      Top = 77
+      Left = 10000
+      Top = 10000
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -124,13 +130,14 @@ object frm_Contact: Tfrm_Contact
       StyleHot.TextStyle = []
       StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 0
+      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 150
     end
     object edt_KontaktSucheOrt: TcxTextEdit
-      Left = 394
-      Top = 131
+      Left = 10000
+      Top = 10000
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -142,13 +149,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 6
+      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 150
     end
     object edt_KontaktSuchePLZ: TcxTextEdit
-      Left = 394
-      Top = 104
+      Left = 10000
+      Top = 10000
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -160,13 +168,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 5
+      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 150
     end
     object edt_KontaktSucheStrasse: TcxTextEdit
-      Left = 394
-      Top = 77
+      Left = 10000
+      Top = 10000
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -178,13 +187,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 4
+      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 150
     end
     object edt_KontaktSucheVorname: TcxTextEdit
-      Left = 88
-      Top = 104
+      Left = 10000
+      Top = 10000
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -196,13 +206,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 1
+      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 150
     end
     object cmbbx_Anrede: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
+      Left = 98
+      Top = 45
       AutoSize = False
       DataBinding.DataField = 'ID_Anrede'
       DataBinding.DataSource = ds_Kontakte
@@ -224,14 +235,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 16
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object edt_KontaktGeburtsname: TcxDBTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 98
+      Top = 126
       AutoSize = False
       DataBinding.DataField = 'Geburtsname'
       DataBinding.DataSource = ds_Kontakte
@@ -245,14 +255,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 19
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object edt_KontaktNachname: TcxDBTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 98
+      Top = 99
       AutoSize = False
       DataBinding.DataField = 'Nachname'
       DataBinding.DataSource = ds_Kontakte
@@ -268,14 +277,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 18
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object edt_KontaktName: TcxDBTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 98
+      Top = 72
       AutoSize = False
       DataBinding.DataField = 'Vorname'
       DataBinding.DataSource = ds_Kontakte
@@ -291,14 +299,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 17
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object edt_KontaktPLZ: TcxDBTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 98
+      Top = 261
       AutoSize = False
       DataBinding.DataField = 'PLZ_Privat'
       DataBinding.DataSource = ds_Kontakte
@@ -312,14 +319,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 24
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 19
       Width = 69
     end
     object edt_KontaktStrasse: TcxDBTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 98
+      Top = 234
       AutoSize = False
       DataBinding.DataField = 'Strasse_Privat'
       DataBinding.DataSource = ds_Kontakte
@@ -333,14 +339,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 23
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object edt_KontaktZusatz: TcxDBTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 98
+      Top = 207
       AutoSize = False
       DataBinding.DataField = 'Zusatz'
       DataBinding.DataSource = ds_Kontakte
@@ -354,18 +359,63 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 22
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object dtEdt_KontaktZusatzGeburtsdatum: TcxDBDateEdit
-      Left = 10000
-      Top = 10000
+      Left = 669
+      Top = 79
       AutoSize = False
       DataBinding.DataField = 'Geburtsdatum'
       DataBinding.DataSource = ds_Kontakte
       ParentFont = False
+      Properties.ButtonGlyph.SourceDPI = 96
+      Properties.ButtonGlyph.SourceHeight = 16
+      Properties.ButtonGlyph.SourceWidth = 16
+      Properties.ButtonGlyph.Data = {
+        3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D227574
+        662D38223F3E0D0A3C212D2D2047656E657261746F723A2041646F626520496C
+        6C7573747261746F722032312E312E302C20535647204578706F727420506C75
+        672D496E202E205356472056657273696F6E3A20362E3030204275696C642030
+        2920202D2D3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+        617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+        2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+        77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+        22307078220D0A092076696577426F783D223020302033322033322220737479
+        6C653D22656E61626C652D6261636B67726F756E643A6E657720302030203332
+        2033323B2220786D6C3A73706163653D227072657365727665223E0D0A3C7374
+        796C6520747970653D22746578742F637373223E0D0A092E426C75657B66696C
+        6C3A233131373744373B7D0D0A092E59656C6C6F777B66696C6C3A2346464231
+        31353B7D0D0A092E426C61636B7B66696C6C3A233732373237323B7D0D0A092E
+        477265656E7B66696C6C3A233033394332333B7D0D0A092E5265647B66696C6C
+        3A234431314331433B7D0D0A092E7374307B6F7061636974793A302E37353B7D
+        0D0A092E7374317B6F7061636974793A302E353B7D0D0A3C2F7374796C653E0D
+        0A3C672069643D2243616C656E646172223E0D0A093C7061746820636C617373
+        3D225265642220643D224D32392C34682D33763363302C302E352D302E352C31
+        2D312C31682D34632D302E352C302D312D302E352D312D315634682D38763363
+        302C302E352D302E352C312D312C31483743362E352C382C362C372E352C362C
+        37563448330D0A090943322E342C342C322C342E342C322C3576356832385635
+        4333302C342E342C32392E362C342C32392C347A222F3E0D0A093C6720636C61
+        73733D22737431223E0D0A09093C7265637420783D22382220793D2231342220
+        636C6173733D22426C61636B222077696474683D223422206865696768743D22
+        34222F3E0D0A09093C7265637420783D2231342220793D2232302220636C6173
+        733D22426C61636B222077696474683D223422206865696768743D2234222F3E
+        0D0A09093C7265637420783D22382220793D2232302220636C6173733D22426C
+        61636B222077696474683D223422206865696768743D2234222F3E0D0A09093C
+        7265637420783D2232302220793D2231342220636C6173733D22426C61636B22
+        2077696474683D223422206865696768743D2234222F3E0D0A09093C72656374
+        20783D2231342220793D2231342220636C6173733D22426C61636B2220776964
+        74683D223422206865696768743D2234222F3E0D0A09093C7265637420783D22
+        32302220793D2232302220636C6173733D22426C61636B222077696474683D22
+        3422206865696768743D2234222F3E0D0A093C2F673E0D0A093C706174682063
+        6C6173733D22426C61636B2220643D224D32382C313076313848345631304832
+        76313963302C302E362C302E342C312C312C3168323663302E362C302C312D30
+        2E342C312D315631304832387A222F3E0D0A093C7265637420783D2232322220
+        793D22322220636C6173733D22426C61636B222077696474683D223222206865
+        696768743D2234222F3E0D0A093C7265637420783D22382220793D2232222063
+        6C6173733D22426C61636B222077696474683D223222206865696768743D2234
+        222F3E0D0A3C2F673E0D0A3C2F7376673E0D0A}
       Style.Font.Charset = DEFAULT_CHARSET
       Style.Font.Color = clWindowText
       Style.Font.Height = -11
@@ -375,14 +425,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 34
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 895
+      Width = 575
     end
     object lucmbbx_KontaktZusatzFamilienstand: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
+      Left = 669
+      Top = 160
       AutoSize = False
       DataBinding.DataField = 'ID_Familienstand'
       DataBinding.DataSource = ds_Kontakte
@@ -403,14 +452,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 37
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 895
+      Width = 575
     end
     object lucmbbx_KontaktZusatzGeschlecht: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
+      Left = 669
+      Top = 133
       AutoSize = False
       DataBinding.DataField = 'ID_Geschlecht'
       DataBinding.DataSource = ds_Kontakte
@@ -432,14 +480,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 36
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 895
+      Width = 575
     end
     object lucmbbx_Konfession: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
+      Left = 669
+      Top = 214
       AutoSize = False
       DataBinding.DataField = 'ID_Konfession'
       DataBinding.DataSource = ds_Kontakte
@@ -460,14 +507,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 40
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 868
+      Width = 548
     end
     object lucmbbx_Staatsanghoerigkeit: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
+      Left = 669
+      Top = 187
       AutoSize = False
       DataBinding.DataField = 'ID_Staatsangehoerigkeit'
       DataBinding.DataSource = ds_Kontakte
@@ -488,14 +534,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 38
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 868
+      Width = 548
     end
     object img_Picture: TcxDBImage
-      Left = 10000
-      Top = 10000
+      Left = 402
+      Top = 79
       TabStop = False
       DataBinding.DataField = 'Bild'
       DataBinding.DataSource = ds_Kontakte
@@ -504,7 +549,6 @@ object frm_Contact: Tfrm_Contact
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 33
-      Visible = False
       Height = 156
       Width = 156
     end
@@ -594,8 +638,8 @@ object frm_Contact: Tfrm_Contact
       Width = 592
     end
     object mem_Sonstige: TcxDBMemo
-      Left = 10000
-      Top = 10000
+      Left = 402
+      Top = 276
       DataBinding.DataField = 'Info'
       DataBinding.DataSource = ds_Kontakte
       ParentFont = False
@@ -608,16 +652,15 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 42
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 97
-      Width = 1162
+      Width = 842
     end
     object grd_Suche: TcxGrid
-      Left = 19
-      Top = 227
-      Width = 1238
-      Height = 418
+      Left = 10000
+      Top = 10000
+      Width = 1240
+      Height = 422
       BevelInner = bvNone
       BevelOuter = bvNone
       Font.Charset = DEFAULT_CHARSET
@@ -627,6 +670,7 @@ object frm_Contact: Tfrm_Contact
       Font.Style = []
       ParentFont = False
       TabOrder = 15
+      Visible = False
       LockedStateImageOptions.Effect = lsieDark
       LookAndFeel.ScrollbarMode = sbmClassic
       object grdDBTblView_Suche: TcxGridDBTableView
@@ -923,14 +967,15 @@ object frm_Contact: Tfrm_Contact
       end
     end
     object btn_ClearFilter: TcxButton
-      Left = 162
-      Top = 194
+      Left = 10000
+      Top = 10000
       Width = 137
       Height = 27
       Caption = 'Filter l'#246'schen'
       OptionsImage.ImageIndex = 24
       OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 14
+      Visible = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -940,14 +985,15 @@ object frm_Contact: Tfrm_Contact
       OnClick = btn_ClearFilterClick
     end
     object btn_kontaktsuchen: TcxButton
-      Left = 19
-      Top = 194
+      Left = 10000
+      Top = 10000
       Width = 137
       Height = 27
       Caption = 'Kontakt suchen'
       OptionsImage.ImageIndex = 25
       OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 13
+      Visible = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -975,7 +1021,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 1123
+      Width = 787
     end
     object edt_KontakteSonstigesSkype: TcxDBTextEdit
       Left = 10000
@@ -996,7 +1042,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 1123
+      Width = 787
     end
     object edt_KontakteSonstigesTeams: TcxDBTextEdit
       Left = 10000
@@ -1017,7 +1063,7 @@ object frm_Contact: Tfrm_Contact
       Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 1123
+      Width = 787
     end
     object edt_KontaktGeschaeftlichFunktion: TcxDBTextEdit
       Left = 10000
@@ -1041,8 +1087,8 @@ object frm_Contact: Tfrm_Contact
       Width = 744
     end
     object btn_EditStaatsangehoerigkeit: TcxButton
-      Left = 10000
-      Top = 10000
+      Left = 1223
+      Top = 187
       Width = 21
       Height = 21
       Caption = 'btn_EditStaatsangehoerigkeit'
@@ -1050,11 +1096,10 @@ object frm_Contact: Tfrm_Contact
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
       TabOrder = 39
-      Visible = False
     end
     object btn_EditKonfession: TcxButton
-      Left = 10000
-      Top = 10000
+      Left = 1223
+      Top = 214
       Width = 21
       Height = 21
       Caption = 'cxButton3'
@@ -1062,11 +1107,10 @@ object frm_Contact: Tfrm_Contact
       OptionsImage.Images = dm_PCM.imglst_16x16
       PaintStyle = bpsGlyph
       TabOrder = 41
-      Visible = False
     end
     object cmbbx_KontaktArt: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
+      Left = 98
+      Top = 436
       AutoSize = False
       DataBinding.DataField = 'ID_Kontaktart'
       DataBinding.DataSource = ds_Kontakte
@@ -1088,14 +1132,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 32
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object dtEdt_KontaktZusatzTodestag: TcxDBDateEdit
-      Left = 10000
-      Top = 10000
+      Left = 669
+      Top = 106
       AutoSize = False
       DataBinding.DataField = 'Todestag'
       DataBinding.DataSource = ds_Kontakte
@@ -1109,14 +1152,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 35
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
-      Width = 895
+      Width = 575
     end
     object edt_KontakteGeburtsort: TcxDBTextEdit
-      Left = 10000
-      Top = 10000
+      Left = 98
+      Top = 153
       AutoSize = False
       DataBinding.DataField = 'Geburtsort'
       DataBinding.DataSource = ds_Kontakte
@@ -1130,7 +1172,6 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 20
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
@@ -1145,8 +1186,8 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = True
       TabOrder = 59
       Visible = False
-      Height = 590
-      Width = 1240
+      Height = 594
+      Width = 1244
     end
     object img_PictureGes: TcxDBImage
       Left = 10000
@@ -1164,8 +1205,8 @@ object frm_Contact: Tfrm_Contact
       Width = 156
     end
     object cmbbx_KontaktAnrede: TcxComboBox
-      Left = 88
-      Top = 158
+      Left = 10000
+      Top = 10000
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -1177,13 +1218,14 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 3
+      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 150
     end
     object edt_KontaktSucheStrasseGes: TcxTextEdit
-      Left = 1044
-      Top = 77
+      Left = 10000
+      Top = 10000
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -1204,13 +1246,14 @@ object frm_Contact: Tfrm_Contact
       StyleHot.TextStyle = []
       StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 10
+      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 150
     end
     object edt_KontaktSuchePLZGes: TcxTextEdit
-      Left = 1044
-      Top = 104
+      Left = 10000
+      Top = 10000
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -1231,13 +1274,14 @@ object frm_Contact: Tfrm_Contact
       StyleHot.TextStyle = []
       StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 11
+      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 150
     end
     object edt_KontaktSucheOrtGes: TcxTextEdit
-      Left = 1044
-      Top = 131
+      Left = 10000
+      Top = 10000
       AutoSize = False
       ParentFont = False
       Style.Font.Charset = DEFAULT_CHARSET
@@ -1258,13 +1302,14 @@ object frm_Contact: Tfrm_Contact
       StyleHot.TextStyle = []
       StyleReadOnly.LookAndFeel.NativeStyle = False
       TabOrder = 12
+      Visible = False
       OnKeyDown = edt_KontaktSucheNachnameKeyDown
       Height = 21
       Width = 150
     end
     object cmbbx_KontaktGeburtsland: TcxDBLookupComboBox
-      Left = 10000
-      Top = 10000
+      Left = 98
+      Top = 180
       AutoSize = False
       DataBinding.DataField = 'ID_Kontaktart'
       DataBinding.DataSource = ds_Kontakte
@@ -1286,14 +1331,13 @@ object frm_Contact: Tfrm_Contact
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 21
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 21
       Width = 289
     end
     object edt_KontaktOrt: TcxDBButtonEdit
-      Left = 10000
-      Top = 10000
+      Left = 173
+      Top = 261
       AutoSize = False
       DataBinding.DataField = 'Ort_Privat'
       DataBinding.DataSource = ds_Kontakte
@@ -1301,424 +1345,482 @@ object frm_Contact: Tfrm_Contact
         item
           Default = True
           Glyph.SourceDPI = 96
-          Glyph.SourceHeight = 17
-          Glyph.SourceWidth = 17
+          Glyph.SourceHeight = 16
+          Glyph.SourceWidth = 16
           Glyph.Data = {
-            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
-            F40000001974455874536F6674776172650041646F626520496D616765526561
-            647971C9653C00000017744558745469746C6500436F6C6F72697A65724D6170
-            3B4D61703B4A3B8C930000098049444154785E9D95797014551EC73F3DD39999
-            5C13729200492009930302261C41504B74A9D255505139D62DBCB6CAC53DAC95
-            5576852D0F645757B9442E4B58C583A04980C400022A4603A1587260B8120221
-            210492C93149663233DDD36FDBD07FB829A296AFEA5BAFA6DEEBFE7C7FDFF77B
-            3D92100249923006B51F3C0248080021C85EF49104980A56DE93949210B14D32
-            893445091CBCD0D2F3C68297F637000140ABDAB6404880260001B9BFCBC718E8
-            0C861A3283462020F8FA50CD9C80C6328496FDE682CC60346AFDDDFDC9631F7F
-            3DCC123E5CEAB95CF378F0C95D8B0EAF9BFBAF251BBF7DFDC4B9366FCE13F91A
-            20546FA3A87AEF397EEE3031D88012C0D3AFE6F7B9FDCF54D475C607C7C73A72
-            A74F8C1A9591136E8B0891CA8A8B213C95710FBD694ECDBB6FF9BA3FDE7A60F9
-            6F272518C548B26DB4A4F8D55F6E405103F8BC8AEB4A87A7655A5E6A7CDE04C7
-            81DC59B3474C5BF87B34D94A5256322F3F308B43EF6F26216736E3663F7BF3DD
-            D3D20FBDFAD894140C13AAEFE71B18DC0312BA9EBB3D69896C3167CD79F0F699
-            1933EE4C0E4DC943C8210008C545F19A959CF8BC82F449B9CCFFC70A14771B27
-            76ACAA5D5D50F9ABD2E3CD5D800A68BF24010990E5B8A83DE1E1A1F302B698E4
-            B0FF837783A796590F463132D1CAB5B335EC5EB1045B44146367DE3FFEF13BC7
-            AE0782013320BD79388B1F0A903074230312607EFEC109A367E5657CFEE40BCF
-            867CF75D13A5DB3F44D33484D205FDA7507A8FA076D573F75DE10C8B90703537
-            7074FB0612B26EC23175FAC35B9FBEF919C00A98FF7AFB6909E0FB599709301B
-            920C0D3640D07447CCD6D4DC69C9F6B1D37862E55A14BFC28A8573A93FB607C5
-            7504DFD573F85B5DC83E3F53B304C1A1828ACA2F58F1C11F381DDB4C5856E88B
-            7FBED731C93061324CE842FEF796432F1E3AD2A000E6211320A0E5581373A44B
-            672E72B1FA0453674E67DE53F7F2E1EAADAC5FBE9BA3BBAFF1DEC61EFE5BD10F
-            4265CAE430A624C5E13FD6C6E9BA56DA1D1653F2626BE9E2B5C9B70241187A6D
-            C3FE17A7E5A42E3F79A6058C146E780BBA5DFD87DCCEAB8C9E3881C8B8307A5B
-            2A71D65590971D8AAFDDCBE91A1F73FE944343B399D0D848A29252C8CECBE037
-            53B33871A48E49A9B7322373516866A6A3E4992D63EE01825FDBB0F7E59BA7A4
-            BF3065C2488480A17A40006AF5C5CED5A7F67EA2E90D4744581BC9633B983849
-            9037299C47E72530669446F1FA2AD2D264221253B1060F4378BCD8642F592166
-            761FDC8364F33073C2C3F2B048FBB66D9F14BD77C72DE3964ECE1E8180817E1A
-            AA0704A0AC3D507FF24CED9937AA0B36E2EF2DC77BAD0EFFD51E7C9DFDB89D6E
-            5213BDCC9D6B63FA5DE958AC3ADCED457577D0D7D549B41C42C3F936AA2F7D85
-            473463D732EDD6B8EAFB5346D9B9D2EB470042882113304CE05F5A747A7DE5D1
-            A69686B22A945617BE0ECF005CF1A97AEC51D72BB745A2B9FBF1EBF0DE8E0E2E
-            77DAE8BA1CE8EE74F6E3ECEEE052472DD109661A9A2A69EFE9A3D9D58FD0049A
-            F6E30600C4D61D5FBE92F3E4AB236B2AACB45F720FC0FD3E8590B8481D9EA2C3
-            BFAFDC83DAA757AEC39B9C361A2ECBD873175CF6B8555C3AB0C9791E9FDC4AD3
-            E5269CAE3E02010D4D80F613099856BEBD6FD998D1894F38D24693BEE8698E9E
-            30E3EC50098DBB5EB9C51A3910BBD2E7D42B77D2D86EE3D405C87EF405A64CBD
-            63BCE233899E1E1F5D3AB4DBE3C4D3E347515494804000625002F2E06B68B104
-            2F9B3A319146E741CCB17D38163FC5A92DDBF1DB60725AC440EC7AE5B8F4CA1B
-            9D219C3CAB60FEF512BA2DC3490C379138DC21B5379F4592A0BB55222A3C0B93
-            594632CEDF380286BA8626DD2102138DDDA574782BB1C78772FBDF5FA155CE65
-            E7C632CE559DA7FD4A1BF52D16AA6ABD98EE5E82293A898F8E5DE342A7CAA30F
-            FC0DEDCA78CA0BFCD099C58CDCA7305943B005A920A41F6D42C9F87302012693
-            19B3594236BBB047453371D1F38C7CEC75AAAE8DA2A8D445E599009639CF63D6
-            E1DFD4F7E0564DE41F6FA7AE2B82C54FAE61C5D2CF98337305F123B2405689B0
-            D603A0096DC8233036083404926422C2164BBC3D93CBDE045CAA202A732A23C7
-            E552F65D8B6ED0843F2053DED083C7273009098F2628AE76929A998C90030464
-            33B24525DC7A066FE018424C1FBA070C494697122A879168CFE5AA924E8FCF82
-            5B51E94322CC6AE1D0790FA830605593D0F168228010923E9B30CB56CC16B09A
-            15860537D3AFC335E1871FDC82A17A401AE8010D12EC3339D33B8E8B5D56DA7B
-            FD68804022DC222369329AA4C3341D8C444068BA40689AAE004812201165EBD6
-            E14750026EDCBE4E840442E32712D0340482B3BD93E8F5A8787C7E00DCA84C1E
-            612631C2C66D8E08CAEABAD02450558100A3BA01E9408D90A01EDC4A057DBE73
-            78150F6AC03FB0260C078624F9864DA8415B97174D000200D2E38219650FA6A5
-            D5454E720CC1E66EBEAAEBC32B420804401501340D4C805B371D63BB4A4F7F39
-            FEC0757852E4FD0881710D8D406FDC032080800608014864E9F0F4E81076141D
-            61EBFB856D8B9F7E2C2E23258DA0A0AFA9BD720167772CAEFE2854C00FD82D6E
-            9440AD0E77EB7085A461F73136663EF98565EC2DF9EC5D4001C48D7A004DD3B8
-            CE16684046AC8D8C981076EE2A67EDBAB72A2B0F6F282C2EDC51D9D8709594E8
-            1938E23CC445ECC6117F8284C84B58AD7D84065DC0AB9C4209F84936E03B0ACA
-            D8FC4EFE4735E55B56193E05206EDC84C6172B332698CCD850F28BBE65EDDA0D
-            C7EBAB77EF07AE94EC5CBDBF64D78EE38D8D6DA4C52C2425663C6E259FE0A042
-            46471FC6ABEEA55F694187EB26E7F1F1A7656CDABCBDF0D4B16D6F03BD80FAA3
-            4700920E0E21EB7B78E137BCB57E53457D4D5129D001F8006B49FEAA624910B8
-            6BF6BC698EC445288A444DF30EBA5D8D7895F103B1A746EBB1EB956FD8F49F92
-            BAAAFC2D4027E031E0E2C65F424DA08BCCB810BD721DFED6E6F2FAEAA202A009
-            68015A8DB9A978E7AA827D259F1EB9D0D44A46E44232E2E7E353351223E6901A
-            396F20F6B7376EDD67C0AF022E8CF887FC3B16424320D85938002FABAF29FC10
-            68002E01D78C175D337E5F28D9F9E607073F2BFAA6B1C5C9F8B847B82F6715A9
-            FA997FFC3D7CC3BBFBEBAB3FD964986F37AA5706018DCC2108885EFACF3D62DD
-            3B9F0BC7C487BE001600B701D98003180D2419B303C836D617CE5EB8F4CB35DB
-            CAC5AE03E7C59ACDFB44DA84874B8159C6BE5820D4609886322003F6E756EE11
-            E939F34B80E9C018603810030C03EC40B8310F03628CF514E096071E5956FA97
-            978AC4D89B16140039C65A186001CC065C1ACA80C9D81866B8B50C7A602849C6
-            CBAD86B12863B602E69F7AFE7FE689AF60A1D1F9C10000000049454E44AE4260
-            82}
+            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+            462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+            617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+            2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+            77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+            22307078222076696577426F783D2230203020333220333222207374796C653D
+            22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+            3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+            303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+            63653D227072657365727665223E2E59656C6C6F777B66696C6C3A2346464231
+            31353B7D262331333B262331303B2623393B2E5265647B66696C6C3A23443131
+            4331433B7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A23
+            3732373237323B7D262331333B262331303B2623393B2E426C75657B66696C6C
+            3A233131373744373B7D262331333B262331303B2623393B2E57686974657B66
+            696C6C3A234646464646463B7D262331333B262331303B2623393B2E47726565
+            6E7B66696C6C3A233033394332333B7D262331333B262331303B2623393B2E73
+            74307B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+            7374317B6F7061636974793A302E353B7D262331333B262331303B2623393B2E
+            7374327B6F7061636974793A302E32353B7D262331333B262331303B2623393B
+            2E7374337B66696C6C3A234646423131353B7D3C2F7374796C653E0D0A3C672F
+            3E0D0A3C672069643D2247656F506F696E4D617073223E0D0A09093C70617468
+            20636C6173733D225265642220643D224D31362C30632D332E332C302D362C32
+            2E372D362C3673362C31302C362C313073362D362E372C362D31305331392E33
+            2C302C31362C307A204D31362C38632D312E312C302D322D302E392D322D3273
+            302E392D322C322D3273322C302E392C322C3220202623393B2623393B533137
+            2E312C382C31362C387A222F3E0D0A09093C7061746820636C6173733D22426C
+            75652220643D224D32332E342C382E36632D302E382C312E392D322E312C342D
+            332E342C352E3776302E355631397631302E326C2D382D38563139762D342E37
+            632D312E352D312E392D332E312D342E342D332E372D362E364C342C31327632
+            306C382D386C382C386C382D38563420202623393B2623393B4C32332E342C38
+            2E367A222F3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
           Kind = bkGlyph
         end>
       Properties.OnButtonClick = edt_KontaktOrtPropertiesButtonClick
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 25
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Height = 19
       Width = 214
     end
     object edt_KontaktTelefon1: TcxDBButtonEdit
-      Left = 10000
-      Top = 10000
+      Left = 98
+      Top = 286
       DataBinding.DataField = 'Telefon_Privat'
       DataBinding.DataSource = ds_Kontakte
       Properties.Buttons = <
         item
           Default = True
           Glyph.SourceDPI = 96
-          Glyph.SourceHeight = 17
-          Glyph.SourceWidth = 17
+          Glyph.SourceHeight = 16
+          Glyph.SourceWidth = 16
           Glyph.Data = {
-            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
-            F40000001974455874536F6674776172650041646F626520496D616765526561
-            647971C9653C0000001D744558745469746C650050686F6E653B4D6F62696C65
-            3B43656C6C50686F6E653BCD5C0E9B000002EB49444154785EA5964D8B1C5514
-            869F5BDD5DAD628C8A08E242518906C409662271236E5CB977E1CE8522FA0FE2
-            2F7025CCA2133F4240C485E0D68D04C485041C61543486D62888E24020F64C64
-            A6BBEE39AFC5C18D4D0D74DF7AE9B369FA3EE7E1DC3E540D25B19CCDCD33E9E4
-            C6F3A7D3603049A40DA0A62C0BA16FE5F6E6D59D2FB6B7B7BF164B19D29D41AA
-            AAF38F3E7662F3AEE3F720122549A8DE9BDD3CF3CBF4DA047816C8AB0A8C206D
-            1C3B7637EE02F47F70829D6FAEB0981F02508F6FE3D4E9B32C0F53C09D2D03D2
-            53C15C4360001A9944579260E3E9B321022011A2E2A8A80E26B0AA409284DC39
-            FEC84952AA3A2CE21311D0D55D7266D7AF222998EB0880C0DD91E0C4930F5192
-            6BDFFF1A0C44642D0149B81B315A1725710F06920A0450D8BB0BEB25E0885201
-            73A24A05E27CA10012EE19732F9E80B90703950A5834EF21108C320149981B9E
-            CB271067DD9054BE05D9855999402EDD02490861D902602ADD020B46D0A4D505
-            A6D3290F3FFECC7F00B5E594C4B28291730EE6CA02FBFBFB4C7FFE8D7BEF7B80
-            3BACC7169833DB0B5630D7DA82DC34FCF1E72EF9FE190F2E9CF1309148AC1221
-            E659FCBE3B63B765B4ACC22DB0CC3F870D376E2DA812AD4445DDD6B04A512911
-            9120BBA216D999B7E522CE9A6524950B5876B209A0851B60AC1ACBDE47C0630B
-            B279F91A5A3082553E0173B27BF19FB0FF15944DA0BF0072CC0CEBB786C1A0F4
-            0ADC32EEC2FBBC0FF4BB02C3F2829DCB5728893C07A34C8010E0E6779F76809D
-            A69993DB0AC868CCA8AD545547B1CA9F865D59CC0F78E3D59779FDB55700B8F0
-            DE2526EF7F4C3DBEBD9B55FE42D22D909B79347FEE859700B8FCD9476C4D2E31
-            1CD674A6700D9B0423736739290D38FFEE45BEFCFC135282C9858BF19D77FC76
-            5055485AAC2B2097FD902A4E258765896A30646BF221EF6C7D403419D60C4775
-            082C374F15B8EC4740EB08D8C1ADBFDFC2F576AAAA278E164D00E4DC447524CB
-            FDA7C383BD7380AD23D0DCF8EBFA57C08BC018489445C01CD8033A0DFF0511EC
-            718FFFDC32660000000049454E44AE426082}
+            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+            462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+            617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+            2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+            77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+            22307078222076696577426F783D2230203020333220333222207374796C653D
+            22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+            3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+            303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+            63653D227072657365727665223E2E426C75657B66696C6C3A23313137374437
+            3B7D262331333B262331303B2623393B2E59656C6C6F777B66696C6C3A234646
+            423131353B7D262331333B262331303B2623393B2E5265647B66696C6C3A2344
+            31314331433B7D262331333B262331303B2623393B2E477265656E7B66696C6C
+            3A233033394332333B7D262331333B262331303B2623393B2E426C61636B7B66
+            696C6C3A233732373237323B7D262331333B262331303B2623393B2E57686974
+            657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+            74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+            74317B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+            7374327B646973706C61793A6E6F6E653B7D262331333B262331303B2623393B
+            2E7374337B646973706C61793A696E6C696E653B66696C6C3A23464642313135
+            3B7D262331333B262331303B2623393B2E7374347B646973706C61793A696E6C
+            696E653B7D262331333B262331303B2623393B2E7374357B646973706C61793A
+            696E6C696E653B6F7061636974793A302E37353B7D262331333B262331303B26
+            23393B2E7374367B646973706C61793A696E6C696E653B6F7061636974793A30
+            2E353B7D262331333B262331303B2623393B2E7374377B646973706C61793A69
+            6E6C696E653B66696C6C3A233033394332333B7D262331333B262331303B2623
+            393B2E7374387B646973706C61793A696E6C696E653B66696C6C3A2344313143
+            31433B7D262331333B262331303B2623393B2E7374397B646973706C61793A69
+            6E6C696E653B66696C6C3A233131373744373B7D262331333B262331303B2623
+            393B2E737431307B646973706C61793A696E6C696E653B66696C6C3A23464646
+            4646463B7D3C2F7374796C653E0D0A3C672069643D2250686F6E65223E0D0A09
+            093C7061746820636C6173733D22426C75652220643D224D32372E372C32332E
+            366C2D352E332D352E33632D302E342D302E342D312D302E342D312E342C306C
+            2D322E382C322E38632D332E322D312E352D352E382D342E312D372E332D372E
+            336C322E382D322E3863302E342D302E342C302E342D312C302D312E34202026
+            23393B2623393B4C382E342C342E33632D302E342D302E342D312D302E342D31
+            2E352C304C342E332C362E3943342E312C372E322C342C372E342C342C372E37
+            43342C31382E392C31332E312C32382C32342E332C323863302E332C302C302E
+            352D302E312C302E372D302E336C322E362D322E3620202623393B2623393B43
+            32382E312C32342E362C32382E312C32342C32372E372C32332E367A222F3E0D
+            0A093C2F673E0D0A3C2F7376673E0D0A}
           Kind = bkGlyph
         end>
       Properties.OnButtonClick = edt_KontaktTelefon1PropertiesButtonClick
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 26
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Width = 289
     end
     object edt_Email2: TcxDBButtonEdit
-      Left = 10000
-      Top = 10000
+      Left = 98
+      Top = 386
       DataBinding.DataField = 'E_Mail_Privat1'
       DataBinding.DataSource = ds_Kontakte
       Properties.Buttons = <
         item
           Default = True
           Glyph.SourceDPI = 96
-          Glyph.SourceHeight = 17
-          Glyph.SourceWidth = 17
+          Glyph.SourceHeight = 16
+          Glyph.SourceWidth = 16
           Glyph.Data = {
-            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
-            F40000001974455874536F6674776172650041646F626520496D616765526561
-            647971C9653C0000001E744558745469746C65004C65747465723B652D6D6169
-            6C3B656D61696C3B6D61696C1A9193DA000000AE49444154785EEDD6B109C340
-            0C85E16C76AD9BAC2470A6F20ADEC3E03114074444D2FC16CF218D8A5709F4BE
-            E38ABB9BBBFF351F830634A001F7C7328EAC47FCEAC4DE41801D0AD4EC04F0C8
-            0B335F01883DEFDD670106886AB915008010CA0B004014CB050022B85C073082
-            CB750023B89C017CB244D05C00D0C91241730180771A089E0B00BC533B399F8B
-            002ECFE49C10554096EBB1CA5BB041819A8D00D3AF9EE4D83BF597EC3B0D6840
-            039E36D3EC54622E2CFC0000000049454E44AE426082}
+            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+            462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+            617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+            2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+            77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+            22307078222076696577426F783D2230203020333220333222207374796C653D
+            22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+            3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+            303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+            63653D227072657365727665223E2E57686974657B66696C6C3A234646464646
+            463B7D262331333B262331303B2623393B2E426C75657B66696C6C3A23313137
+            3744373B7D3C2F7374796C653E0D0A3C672069643D224D61696C223E0D0A0909
+            3C7265637420793D22342220636C6173733D22426C7565222077696474683D22
+            333222206865696768743D223234222F3E0D0A09093C7265637420783D223222
+            20793D22362220636C6173733D225768697465222077696474683D2232382220
+            6865696768743D223230222F3E0D0A09093C706F6C79676F6E20636C6173733D
+            22426C75652220706F696E74733D2233302C382031362C313820322C3820322C
+            31302031302E342C313620322C323220322C32342031312E382C31372031362C
+            32302032302E322C31372033302C32342033302C32322032312E362C31362033
+            302C3130202623393B222F3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
           Kind = bkGlyph
         end>
       Properties.OnButtonClick = edt_Email2PropertiesButtonClick
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 30
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Width = 289
     end
     object edt_KontaktTelefon2: TcxDBButtonEdit
-      Left = 10000
-      Top = 10000
+      Left = 98
+      Top = 311
       DataBinding.DataField = 'Telefon_Privat1'
       DataBinding.DataSource = ds_Kontakte
       Properties.Buttons = <
         item
           Default = True
           Glyph.SourceDPI = 96
-          Glyph.SourceHeight = 17
-          Glyph.SourceWidth = 17
+          Glyph.SourceHeight = 16
+          Glyph.SourceWidth = 16
           Glyph.Data = {
-            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
-            F40000001974455874536F6674776172650041646F626520496D616765526561
-            647971C9653C0000001D744558745469746C650050686F6E653B4D6F62696C65
-            3B43656C6C50686F6E653BCD5C0E9B000002EB49444154785EA5964D8B1C5514
-            869F5BDD5DAD628C8A08E242518906C409662271236E5CB977E1CE8522FA0FE2
-            2F7025CCA2133F4240C485E0D68D04C485041C61543486D62888E24020F64C64
-            A6BBEE39AFC5C18D4D0D74DF7AE9B369FA3EE7E1DC3E540D25B19CCDCD33E9E4
-            C6F3A7D3603049A40DA0A62C0BA16FE5F6E6D59D2FB6B7B7BF164B19D29D41AA
-            AAF38F3E7662F3AEE3F720122549A8DE9BDD3CF3CBF4DA047816C8AB0A8C206D
-            1C3B7637EE02F47F70829D6FAEB0981F02508F6FE3D4E9B32C0F53C09D2D03D2
-            53C15C4360001A9944579260E3E9B321022011A2E2A8A80E26B0AA409284DC39
-            FEC84952AA3A2CE21311D0D55D7266D7AF222998EB0880C0DD91E0C4930F5192
-            6BDFFF1A0C44642D0149B81B315A1725710F06920A0450D8BB0BEB25E0885201
-            73A24A05E27CA10012EE19732F9E80B90703950A5834EF21108C320149981B9E
-            CB271067DD9054BE05D9855999402EDD02490861D902602ADD020B46D0A4D505
-            A6D3290F3FFECC7F00B5E594C4B28291730EE6CA02FBFBFB4C7FFE8D7BEF7B80
-            3BACC7169833DB0B5630D7DA82DC34FCF1E72EF9FE190F2E9CF1309148AC1221
-            E659FCBE3B63B765B4ACC22DB0CC3F870D376E2DA812AD4445DDD6B04A512911
-            9120BBA216D999B7E522CE9A6524950B5876B209A0851B60AC1ACBDE47C0630B
-            B279F91A5A3082553E0173B27BF19FB0FF15944DA0BF0072CC0CEBB786C1A0F4
-            0ADC32EEC2FBBC0FF4BB02C3F2829DCB5728893C07A34C8010E0E6779F76809D
-            A69993DB0AC868CCA8AD545547B1CA9F865D59CC0F78E3D59779FDB55700B8F0
-            DE2526EF7F4C3DBEBD9B55FE42D22D909B79347FEE859700B8FCD9476C4D2E31
-            1CD674A6700D9B0423736739290D38FFEE45BEFCFC135282C9858BF19D77FC76
-            5055485AAC2B2097FD902A4E258765896A30646BF221EF6C7D403419D60C4775
-            082C374F15B8EC4740EB08D8C1ADBFDFC2F576AAAA278E164D00E4DC447524CB
-            FDA7C383BD7380AD23D0DCF8EBFA57C08BC018489445C01CD8033A0DFF0511EC
-            718FFFDC32660000000049454E44AE426082}
+            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+            462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+            617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+            2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+            77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+            22307078222076696577426F783D2230203020333220333222207374796C653D
+            22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+            3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+            303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+            63653D227072657365727665223E2E426C75657B66696C6C3A23313137374437
+            3B7D262331333B262331303B2623393B2E59656C6C6F777B66696C6C3A234646
+            423131353B7D262331333B262331303B2623393B2E5265647B66696C6C3A2344
+            31314331433B7D262331333B262331303B2623393B2E477265656E7B66696C6C
+            3A233033394332333B7D262331333B262331303B2623393B2E426C61636B7B66
+            696C6C3A233732373237323B7D262331333B262331303B2623393B2E57686974
+            657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+            74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+            74317B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+            7374327B646973706C61793A6E6F6E653B7D262331333B262331303B2623393B
+            2E7374337B646973706C61793A696E6C696E653B66696C6C3A23464642313135
+            3B7D262331333B262331303B2623393B2E7374347B646973706C61793A696E6C
+            696E653B7D262331333B262331303B2623393B2E7374357B646973706C61793A
+            696E6C696E653B6F7061636974793A302E37353B7D262331333B262331303B26
+            23393B2E7374367B646973706C61793A696E6C696E653B6F7061636974793A30
+            2E353B7D262331333B262331303B2623393B2E7374377B646973706C61793A69
+            6E6C696E653B66696C6C3A233033394332333B7D262331333B262331303B2623
+            393B2E7374387B646973706C61793A696E6C696E653B66696C6C3A2344313143
+            31433B7D262331333B262331303B2623393B2E7374397B646973706C61793A69
+            6E6C696E653B66696C6C3A233131373744373B7D262331333B262331303B2623
+            393B2E737431307B646973706C61793A696E6C696E653B66696C6C3A23464646
+            4646463B7D3C2F7374796C653E0D0A3C672069643D2250686F6E65223E0D0A09
+            093C7061746820636C6173733D22426C75652220643D224D32372E372C32332E
+            366C2D352E332D352E33632D302E342D302E342D312D302E342D312E342C306C
+            2D322E382C322E38632D332E322D312E352D352E382D342E312D372E332D372E
+            336C322E382D322E3863302E342D302E342C302E342D312C302D312E34202026
+            23393B2623393B4C382E342C342E33632D302E342D302E342D312D302E342D31
+            2E352C304C342E332C362E3943342E312C372E322C342C372E342C342C372E37
+            43342C31382E392C31332E312C32382C32342E332C323863302E332C302C302E
+            352D302E312C302E372D302E336C322E362D322E3620202623393B2623393B43
+            32382E312C32342E362C32382E312C32342C32372E372C32332E367A222F3E0D
+            0A093C2F673E0D0A3C2F7376673E0D0A}
           Kind = bkGlyph
         end>
       Properties.OnButtonClick = edt_KontaktTelefon2PropertiesButtonClick
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 27
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Width = 289
     end
     object edt_KontaktHandy: TcxDBButtonEdit
-      Left = 10000
-      Top = 10000
+      Left = 98
+      Top = 336
       DataBinding.DataField = 'Handy_privat'
       DataBinding.DataSource = ds_Kontakte
       Properties.Buttons = <
         item
           Default = True
           Glyph.SourceDPI = 96
-          Glyph.SourceHeight = 17
-          Glyph.SourceWidth = 17
+          Glyph.SourceHeight = 16
+          Glyph.SourceWidth = 16
           Glyph.Data = {
-            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
-            F40000001974455874536F6674776172650041646F626520496D616765526561
-            647971C9653C0000001D744558745469746C650050686F6E653B4D6F62696C65
-            3B43656C6C50686F6E653BCD5C0E9B000002EB49444154785EA5964D8B1C5514
-            869F5BDD5DAD628C8A08E242518906C409662271236E5CB977E1CE8522FA0FE2
-            2F7025CCA2133F4240C485E0D68D04C485041C61543486D62888E24020F64C64
-            A6BBEE39AFC5C18D4D0D74DF7AE9B369FA3EE7E1DC3E540D25B19CCDCD33E9E4
-            C6F3A7D3603049A40DA0A62C0BA16FE5F6E6D59D2FB6B7B7BF164B19D29D41AA
-            AAF38F3E7662F3AEE3F720122549A8DE9BDD3CF3CBF4DA047816C8AB0A8C206D
-            1C3B7637EE02F47F70829D6FAEB0981F02508F6FE3D4E9B32C0F53C09D2D03D2
-            53C15C4360001A9944579260E3E9B321022011A2E2A8A80E26B0AA409284DC39
-            FEC84952AA3A2CE21311D0D55D7266D7AF222998EB0880C0DD91E0C4930F5192
-            6BDFFF1A0C44642D0149B81B315A1725710F06920A0450D8BB0BEB25E0885201
-            73A24A05E27CA10012EE19732F9E80B90703950A5834EF21108C320149981B9E
-            CB271067DD9054BE05D9855999402EDD02490861D902602ADD020B46D0A4D505
-            A6D3290F3FFECC7F00B5E594C4B28291730EE6CA02FBFBFB4C7FFE8D7BEF7B80
-            3BACC7169833DB0B5630D7DA82DC34FCF1E72EF9FE190F2E9CF1309148AC1221
-            E659FCBE3B63B765B4ACC22DB0CC3F870D376E2DA812AD4445DDD6B04A512911
-            9120BBA216D999B7E522CE9A6524950B5876B209A0851B60AC1ACBDE47C0630B
-            B279F91A5A3082553E0173B27BF19FB0FF15944DA0BF0072CC0CEBB786C1A0F4
-            0ADC32EEC2FBBC0FF4BB02C3F2829DCB5728893C07A34C8010E0E6779F76809D
-            A69993DB0AC868CCA8AD545547B1CA9F865D59CC0F78E3D59779FDB55700B8F0
-            DE2526EF7F4C3DBEBD9B55FE42D22D909B79347FEE859700B8FCD9476C4D2E31
-            1CD674A6700D9B0423736739290D38FFEE45BEFCFC135282C9858BF19D77FC76
-            5055485AAC2B2097FD902A4E258765896A30646BF221EF6C7D403419D60C4775
-            082C374F15B8EC4740EB08D8C1ADBFDFC2F576AAAA278E164D00E4DC447524CB
-            FDA7C383BD7380AD23D0DCF8EBFA57C08BC018489445C01CD8033A0DFF0511EC
-            718FFFDC32660000000049454E44AE426082}
+            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+            462D38223F3E0D0A3C73766720783D223070782220793D223070782220766965
+            77426F783D22302030203332203332222076657273696F6E3D22312E31222078
+            6D6C6E733D22687474703A2F2F7777772E77332E6F72672F323030302F737667
+            2220786D6C6E733A786C696E6B3D22687474703A2F2F7777772E77332E6F7267
+            2F313939392F786C696E6B2220656E61626C652D6261636B67726F756E643D22
+            6E6577203020302033322033322220786D6C3A73706163653D22707265736572
+            7665222069643D224C617965725F31223E262331333B262331303B20203C7374
+            796C6520747970653D22746578742F637373223E2E426C75657B66696C6C3A23
+            3131373744373B7D3C2F7374796C653E0D0A3C7061746820643D224D32332C32
+            483943382E342C322C382C322E342C382C3376323663302C302E362C302E342C
+            312C312C3168313463302E362C302C312D302E342C312D3156334332342C322E
+            342C32332E362C322C32332C327A204D31362C32382020632D312E312C302D32
+            2D302E392D322D3263302D312E312C302E392D322C322D3273322C302E392C32
+            2C324331382C32372E312C31372E312C32382C31362C32387A204D32322C3232
+            48313056346831325632327A222066696C6C3D22233131373744372220636C61
+            73733D22426C7565222F3E0D0A3C2F7376673E0D0A}
           Kind = bkGlyph
         end>
       Properties.OnButtonClick = edt_KontaktHandyPropertiesButtonClick
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 28
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Width = 289
     end
     object edt_Email1: TcxDBButtonEdit
-      Left = 10000
-      Top = 10000
+      Left = 98
+      Top = 361
       DataBinding.DataField = 'E_Mail_Privat'
       DataBinding.DataSource = ds_Kontakte
       Properties.Buttons = <
         item
           Default = True
           Glyph.SourceDPI = 96
-          Glyph.SourceHeight = 17
-          Glyph.SourceWidth = 17
+          Glyph.SourceHeight = 16
+          Glyph.SourceWidth = 16
           Glyph.Data = {
-            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
-            F40000001974455874536F6674776172650041646F626520496D616765526561
-            647971C9653C0000001E744558745469746C65004C65747465723B652D6D6169
-            6C3B656D61696C3B6D61696C1A9193DA000000AE49444154785EEDD6B109C340
-            0C85E16C76AD9BAC2470A6F20ADEC3E03114074444D2FC16CF218D8A5709F4BE
-            E38ABB9BBBFF351F830634A001F7C7328EAC47FCEAC4DE41801D0AD4EC04F0C8
-            0B335F01883DEFDD670106886AB915008010CA0B004014CB050022B85C073082
-            CB750023B89C017CB244D05C00D0C91241730180771A089E0B00BC533B399F8B
-            002ECFE49C10554096EBB1CA5BB041819A8D00D3AF9EE4D83BF597EC3B0D6840
-            039E36D3EC54622E2CFC0000000049454E44AE426082}
+            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+            462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+            617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+            2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+            77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+            22307078222076696577426F783D2230203020333220333222207374796C653D
+            22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+            3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+            303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+            63653D227072657365727665223E2E57686974657B66696C6C3A234646464646
+            463B7D262331333B262331303B2623393B2E426C75657B66696C6C3A23313137
+            3744373B7D3C2F7374796C653E0D0A3C672069643D224D61696C223E0D0A0909
+            3C7265637420793D22342220636C6173733D22426C7565222077696474683D22
+            333222206865696768743D223234222F3E0D0A09093C7265637420783D223222
+            20793D22362220636C6173733D225768697465222077696474683D2232382220
+            6865696768743D223230222F3E0D0A09093C706F6C79676F6E20636C6173733D
+            22426C75652220706F696E74733D2233302C382031362C313820322C3820322C
+            31302031302E342C313620322C323220322C32342031312E382C31372031362C
+            32302032302E322C31372033302C32342033302C32322032312E362C31362033
+            302C3130202623393B222F3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
           Kind = bkGlyph
         end>
       Properties.OnButtonClick = edt_Email1PropertiesButtonClick
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 29
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Width = 289
     end
     object edt_KontaktInternet: TcxDBButtonEdit
-      Left = 10000
-      Top = 10000
+      Left = 98
+      Top = 411
       DataBinding.DataField = 'Internet_Privat'
       DataBinding.DataSource = ds_Kontakte
       Properties.Buttons = <
         item
           Default = True
           Glyph.SourceDPI = 96
-          Glyph.SourceHeight = 17
-          Glyph.SourceWidth = 17
+          Glyph.SourceHeight = 16
+          Glyph.SourceWidth = 16
           Glyph.Data = {
-            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
-            F400000013744558745469746C65005765623B576F726C643B4579650744383A
-            00000ACC49444154785E9595697054D79DC57F6FE9D7BBD4122DB516D4124848
-            960D884D0204028C07B3C82C019330E0095E2655D8717966CAE5D871F0120757
-            ECC92405196383877866EC783CB693716CE238312160CB100C1688D5460BDA41
-            A0ADD56AF5EBEEB74D4F9754A58AF0D4CCA977EA7F3FBCF7CEB9E77F1761CBD3
-            1F20DB24646904235E8760B4224A22D2FF501650EC413CBE65BCF0C03704BE06
-            3BDF386919864924F409BA1643762D4D56135D3752D4B4644DF23F9F5B078065
-            598C410E6B713295CBE4E7B4B3746E29C505F3914425498982B44DA3A27B0460
-            941360EDFA9B2A6B6CFCC7F37BAC8F4F1CA2333417352E611816A669E255646E
-            8A077FFA1D7EF1F1F7A8EFDC4D5DEBE31CB9F230E3C4A4BFFD8745AE777EFFD8
-            FA370E3E7E60E7BE7B4E3FFAD2A3DDCFBDF5A1F5FCAF1ABA7FF44EFDE9A77F79
-            E2170FFDE3931BD66C9EEF01644004849DFFFAF77CEB476FB17EE7FBDCF5E47B
-            6C79F620C058026344DCB4B290A2228BABE1B344B5416E9FFA524ABC7A45D0FE
-            CA6F36ECA859937FC5E91FFCCDB4E9F607EEFFE6CAD9DBBF5191971F384CCD82
-            2979957382B30BF223F77BBD1DEF55AE286E3EF0DBBB77542D2DB003E2AEFB76
-            0BB7068FE1547A1148A9723388FDF10B0C443AB12C8395A5AF0A80F8C37DCBA6
-            6CFFBBD99FFBB3BD2F95DF3A25503CAD9060CE2CBCCA1C8AFDEBB877D94F989F
-            EB65DE641FD5150BB963F53F5158764FE04648F9E7079F5CF0F9533F5F5E0CC8
-            CF6C7F499C5572068FA399AF839830625898AC9BFE7A2AF267F72FADF2E7B88E
-            E54FCE9E595C12C4E3F213746DC56F5B499AA3189BECC1B4044420CD26312DDD
-            C99C402605C105B87D53F16765CD9852EAAB7B6EDFF2F980F4C4D6BDA2694958
-            5F9380F0EF27D6B17DC10702207E77D7DCC2E2D28CCF4BCB0AFD7E7F26769B8B
-            69BE7B51A40C34CD02D18928DA180FACD4435433387CF94BFAAE1DA0BC048E1E
-            6DE9FFF4B0BAF0E8DB47DA007DF3CEF7AD7777AD9FB00B84312E5A93E75EB5A5
-            F8587171EE8CBCBC008AAC909FB6846CD77C1004B024A2310BC59E31411C2C2C
-            0BBEBA7E8D3397F610C836F8E4C4240606A65F38F65F2FD7B49C39340C988035
-            611B8E5669F1DABC47DC698E1999FE340CD348D12D17118E8E904858290F365B
-            3A8231EA7EFC8A1EAD69628819A59339F2458482D2CD44CE774D9FBDF2BE4792
-            065E043460421F6440ACAECDF18AB2F04820373D252C1A3A3D0316B9361159F1
-            60B32785015380B8612058C2F8996301861E4391A1BEA1199B6B31375A5FC0E9
-            98CDB052F4484965ED2BCDA73E1C04525E2718B8AD3AA3D6E992B3154542D775
-            FAFB05DABB4B28CDCBC58D134333100581E4330129035898A68D612D135DD9C8
-            486F1D4B2B4BE8BCD6CE475FFD6E52EED4E1DAE653BC0518374D40B059AB1D2E
-            1B9AAE230A22E72E88E4976DA46B4827E833104546C585B10A58630652F19B49
-            5E8DC824B418933C03185282404060DD9A022E5E685955F736EF00C24D13300D
-            6356EF7517CD4D328A4D44964D34DDA0A537824791712A12E2A8AE200813666F
-            9916AA66A6DE0FF51EA7E4361BA1E1AB842351AEF70ED2D4D1390790000146FF
-            31DE405F8F273F9CA8C1E95B84C3E7C2EDB5134F1898169CED0A5192E5C66DB7
-            A5521893B7183B526124A6D19C141FD17462911E545D273C32C270244A3C1E47
-            8D2572C68EE89BB540B02C7B5A7951132D5D0954FB0A24494CB9B400C3B438DF
-            1D26C3ADE073DA702B52CA886198C96A8125205826E50137920051772DFE4C95
-            A86B9890B39F1EA99D2E9FCD0B37A40906C65C8546EE180E85FA718817514706
-            8846E344A21A5135413CAEA7D2B81E8ED1D813A6A12B4457FF083601DC92806F
-            E84BB23A0FE13FF71A997FFE29B90DBF858FFE8074F8339CE75AC90D7B593873
-            4D02708CBFAC5E5B5D088004D88B2AEFDFA66B37264DCA54198A0630850C482D
-            AC54C1B0527DC6B24C4AB33CE4A729387AEA496B7C970057C9CE900904036417
-            E69333B510FFE41C3233BCB8F50452571BC6F90661BA4FEC3D7A25E91674C07A
-            BF79682C01CC443C7E4ED5CA88AA1A46BC9D989A6024DC46B8FB4D06DA5F27DC
-            7F2595CAB44C17E99286726A3F797D4729BAA588D6A89B7D071B79E8871FB261
-            C71B2CDEFA1A5B1EFF3D4F1CB8CCDB67211AB88D052BAAC56555D35EDCBF6EEA
-            1B15015700B003E237B73F810038E66CFAF1B68C9CE001877718997614A19949
-            99066565362449A2A559273F6713D30A2A48AB7F99D2420F5FF43879F7483B9A
-            A510D1247443C4A6D8B13B9DA86A143512C13235F2B233F1283AAB674894D2C6
-            F143F5C75FF8AC7B4B6B28DE0B2444C0683FFDDE47D191D88028E53262CE4337
-            14A614ABC4CC6E62461733672A5414E948F5AF90A6C478E53338DEE6E4AE8D1B
-            0994CEA5FAF6253CFCD87DDCBD6D2D0B17CC6151F57CE6CC9F47565E90EB619D
-            CA454B38D15BC09BED454CAD28ABDE51E17F06F000B204086AA8DBCC2A5EEC90
-            24C712AFBB1F9FFB0CA2E32A5155251A8B91E92C21DD9011CE7CCE077D33A8AA
-            5EC2F2DB17D27143A5B367800D1B6AC80C4C225018E0DF5EFD25E1C1C1A4E972
-            7CBE346EF487906599B5AB6AC0EEE3C8158B12B16B96438F1DBED817EB110113
-            4834D5FDCBDE7028DC686A0AA661233434C2F0708CA1A12819AEA9844F9FE78F
-            EA3C366C5C4B55D54C7273FD5C1B08E3712A44A33A0E8F9393C7EB19E81BA0B1
-            B189C3870E939B93CD9429412EB774245B9A41C5CC5BF8ABD52B39E9BD432CCB
-            CA780070CA008011B9D13474A3E9B3AD084B3E7604AB32A56818CDBA82650998
-            9AC4D92691AA55CB292B2D42511CC892903419C161B771ADFD3A3F7B712FA150
-            085DD3D00D9DE6A409C5AE90E67531148E627728208A040BF299B9B0860B7D6D
-            B5D0FA3DF1DE9FFDC91A4BA1E3D49B9743DD17BFDDD2EEEF0BF7DD42BABD0853
-            B748244C3A5DAB58BAB8125194B1045267BF2C8AC4620912099D8C742F713546
-            221E434BC4C9CBCB49563D751AA6799C6886050888361BF36657F095B8D46377
-            66D84449147960F7510B308058F3D19F7FDA73E9486D4B7BD95797CE05714985
-            785C3279792A27EABB8825CCA4A09632551CCCA27F30CC606888A5CB6A282CC8
-            438BC7989C145FBF7103FDA1106D6D9D54DC3A0D5D33481D6AAACE89D31D84C3
-            7D07E3EAA02A4A9240928CC200D4EE86772F5EFADDF3CBAF76BB9F3959D7DB7F
-            ECD4096E2919E0F0B1F3745F1D2412891355E32C993F03B068E9E8666858A576
-            ED3ABEFFD4F7D9BC751B23719DCB8DADA81195D5772E428D25888CC4B8DA13E2
-            833F34F4349F7DE7796044D8B1B78E31ECFB6ECD98131190018733CD959E532E
-            AEAA5DB1E9DB19DEA9E5BD43E519772D9F2E0427FB906591CEEEEBEC7BFD2036
-            59223B6B12BE742F03834374765D4BAD8987EEDF4CC1E45CE2718DB68E01DEFB
-            B021F445DD9BF7F4B41F3B0584841977BFCC5FE2FCAF1E1200619C11057001BE
-            C9532BA7CF5DB27DD7FCB9E56595B3F2F17AEC44222A478FD773E9722BD7AEF7
-            E1CF4CA7744A01358BE6E17239523BE9CFF59DC916367ED9D2F0EB47AF779C3C
-            03848084C0FF8EF18948A3463C8ADD9DBDE08E87BF3329B76C6B71913FB3B830
-            8374AF03B747419125D498C650586520A4D2D8DA47534BCF607F4FD37F5C3CF1
-            DA7E5D8BF600C340A27AED6E93FF23C627A200E9C06497C73FBBF2F6077FB07C
-            E38F3FB9F35B7BAEACDAB63FB2E69E57AD3BFF7A6F64D9C69F5CA9AE7DF6D3E9
-            0BEE7BCAE1CA9807148C7EA700C2E2F57B58B46E378265595FAF2ADC34A0F1AD
-            B1034EC0353AB68D5D70800EC40115888E8E75C000C64491F9FFC3028C71222A
-            300488E392B246698EBD3BCA09B3FD6F1383D781A33001EA0000000049454E44
-            AE426082}
+            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+            462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+            617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+            2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+            77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+            22307078222076696577426F783D2230203020333220333222207374796C653D
+            22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+            3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+            303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+            63653D227072657365727665223E2E426C75657B66696C6C3A23313137374437
+            3B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A23303339
+            4332333B7D262331333B262331303B2623393B2E59656C6C6F777B66696C6C3A
+            234646423131353B7D262331333B262331303B2623393B2E426C61636B7B6669
+            6C6C3A233732373237323B7D262331333B262331303B2623393B2E5768697465
+            7B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E5265
+            647B66696C6C3A234431314331433B7D262331333B262331303B2623393B2E73
+            74307B6F7061636974793A302E37353B7D3C2F7374796C653E0D0A3C67206964
+            3D22576F726C645F315F223E0D0A09093C7061746820636C6173733D22426C75
+            652220643D224D31352E382C32632D372E372C302D31342C362E332D31342C31
+            3473362E332C31342C31342C31347331342D362E332C31342D31345332332E36
+            2C322C31352E382C327A204D32302E312C31392E31632D302E352C302E312D30
+            2E352D302E332D302E312D302E3420202623393B2623393B4332302E312C3138
+            2E392C32302E322C31382E382C32302E312C31392E317A204D382E342C31332E
+            3363302D302E312C302D302E312C302D302E3243382E342C31332E322C382E34
+            2C31332E332C382E342C31332E337A204D32322E312C32312E3963302D302E31
+            2D302E312D302E312D302E312D302E3120202623393B2623393B63302E312C30
+            2E332D302E312C302E392D302E312C312E32632D302E312C302E342D302E342C
+            312E332D302E372C312E3363302C302E322D302E342C302D302E332C302E3263
+            2D302E352C302E312D302E382C302E352D302E382C302E3863302C302E312D30
+            2E332C312E312D302E342C312E3120202623393B2623393B63302D302E312C30
+            2E312D302E322C302E312D302E3363302C302E312D302E312C302E312D302E31
+            2C3063302C302E322D302E332C302E382D302E342C302E39632D302E312C302E
+            312D302E332C302E332D302E352C302E32632D302E312C302D302E332D302E32
+            2D302E332D302E3420202623393B2623393B63302C302E332C302E322C302E36
+            2C302E322C302E38632D302E392C302E322D312E382C302E332D322E372C302E
+            33632D302E312C302D302E322C302D302E332C3063302E312D302E332C302E31
+            2D302E352C302E322D302E3863302E322D302E372C302E322D312E352C302E33
+            2D322E3220202623393B2623393B63302E312D302E342C302E332D312E352C30
+            2E312D312E39632D302E312D302E322D302E332D302E322D302E352D302E3463
+            2D302E362D302E342D302E362D302E372D302E382D312E33632D302E312D302E
+            342D302E332D302E352D302E352D302E39632D302E312D302E322D302E322D30
+            2E322D302E322D302E3520202623393B2623393B63302D302E322C302E322D30
+            2E342C302E322D302E3663302C302D302E312C302E312D302E312C302E316330
+            2C302D302E312D302E312D302E312D302E3163302D302E312C302D302E342C30
+            2E312D302E3463302D302E322C302E312D302E372C302E332D302E3763302D30
+            2E332C302E322D302E332C302E312D302E3520202623393B2623393B63302E33
+            2D302E322C302D302E392C302D31632D302E322C302D302E312D302E312D302E
+            332D302E3263302C302E312D302E322C302E312D302E322C302E3263302C302E
+            312C302E312C302C302E312C302E31632D302E332C302D302E342D302E322D30
+            2E362D302E3320202623393B2623393B63302C302E322D302E312D302E322D30
+            2E332D302E3363302E312C302E322D302E322D302E322D302E322D302E33632D
+            302E312D302E322D302E322D302E332D302E322D302E35632D302E352C302D30
+            2E362D302E312D312D302E34632D302E342D302E332D302E372D302E312D312E
+            322D302E3320202623393B2623393B632D302E332D302E312D302E372D302E33
+            2D302E392D302E35632D302E342D302E332D302E332D302E362D302E352D3163
+            2D302E312D302E332D302E372D302E372D302E362D31632D302E362C302D302E
+            352D312E332D312E312D312E3363302C302E322C302E362C312E352C302E382C
+            3220202623393B2623393B632D302E322D302E342D302E382D302E362D302E39
+            2D3163302E352C302D302E322D302E382D302E342D31632D302E322D302E332D
+            302E322D302E362D302E372D302E3663302D302E322D302E322D302E342D302E
+            322D302E37632D302E312C302D302E322D302E312D302E322D302E3220202623
+            393B2623393B63302C302C302E312C302C302E312C3063302D302E312D302E31
+            2D302E312C302D302E32632D302E312C302C302C302D302E312C3063302C302C
+            302C302C302C302E3143362C392E352C352E392C392E332C352E382C392E3263
+            312E312D312E362C322E362D332C342E342D332E3920202623393B2623393B63
+            302E312C302E312C302E312C302E332C302E322C302E3363302D302E312C302D
+            302E322C302D302E3363302E372D302E342C312E352D302E372C322E342D302E
+            3963302E312C302C302E312C302E312C302E322C302E3163302E322C302E312C
+            302E342C302E312C302E362C302E3220202623393B2623393B63302E322C302E
+            312C302E312C302E312C302E322C302E3463302C302E312C302E312C302E322C
+            302E312C302E3363302E312C302C302E312C302C302E322C3063302C302E312D
+            302E312C302E312D302E312C304331342C352E372C31342E322C362C31342E34
+            2C352E3620202623393B2623393B63302E312D302E322D302E322D302E342D30
+            2E312D302E3763302E312D302E322C302E352D302E342C302E352D302E366330
+            2C302C302C302C302C3063302D302E312C302D302E322D302E312D302E334331
+            352C342C31352E342C342C31352E372C3463302E372C302C312E332C302E312C
+            322C302E3220202623393B2623393B63302C302C302C302C302C302E3163302C
+            302D302E312C302D302E322C3063302C302C302C302E322C302C302E3163302E
+            312C302C302E342C302E322C302E332C302E3463302E312C302C302E312C302E
+            312C302E322C302E3163302D302E322C302E332C302E332C302E332C30202026
+            23393B2623393B632D302E312C302C302E312C302E312C302E312C302E316330
+            2C302E312D302E352C302E332D302E362C302E3363302C302E332C302E382D30
+            2E352C302E382C3063302C302C302C302C302E312D302E3163302C302E362D30
+            2E382C302E392D312E312C302E39632D302E322C302D302E362C302D302E382C
+            3020202623393B2623393B632D302E322C302E312D302E342C302E362D302E37
+            2C302E3663302C302E332D302E312C302E332D302E322C302E3463302C302C31
+            2E332D312E332C312E332D302E3663302C302D302E312C302E322D302E332C30
+            2E3363302C302C302D302E312C302D302E31632D302E312C302E312C302C302E
+            312C302C302E3220202623393B2623393B63302E312C302C302E322D302E312C
+            302E322D302E3163302C302E312C302C302E322D302E312C302E3263302C302C
+            302E312C302C302E312C3063302C302E312D302E312C302E332C302E312C302E
+            3363302C302C302C302C302C3063302C302C302C302E312D302E312C302E3163
+            302C302C302C302C302C3020202623393B2623393B63302E322C302C302E322C
+            302C302E342C3063302C302E332C302C302C302E312C302E32632D302E312C30
+            2D302E342C302E332D302E342C302E3363302C302C302D302E312D302E312D30
+            2E3163302C302D302E322C302E332D302E322C302E3363302C302C302C302C30
+            2D302E3120202623393B2623393B632D302E372C302C302E332D302E352C302E
+            332D302E35632D302E352C302D302E322C302E312D302E322D302E3263302C30
+            2D302E312C302D302E312C3063302C302E312D302E312C302E322D302E322C30
+            2E3263302C302C302D302E312C302D302E31632D302E312C302E312D302E312C
+            302E312C302C302E3120202623393B2623393B632D302E312C302E312D302E31
+            2C302D302E322C30632D302E312C302E312C302E312C302E342D302E322C302E
+            3263302C302E312C302C302C302C302E31632D302E312C302C302D302E312D30
+            2E312D302E3163302C302E332D302E362C302E322D302E332C302E37632D302E
+            312C302D302E312C302D302E322C3020202623393B2623393B63302C302E312C
+            302C302E312C302C302E31632D302E312C302D302E322C302E312D302E332C30
+            2E3263302E312C302C302E332C302C302E322C3063302C302E312D302E322C30
+            2E312D302E332C302E314331352E332C392C31352E322C392E322C31352C392E
+            3163302C302E322C302E312C302E332D302E312C302E3520202623393B262339
+            3B63302C302E312C302D302E342C302D302E35632D302E312C302E312D302E33
+            2C302E342D302E322C302E3463302C302E322C302E312C302E312C302E312C30
+            2E32632D302E322C302C302C302E322C302E312C302E33632D302E312C302D30
+            2E312C302D302E312C302E3120202623393B2623393B63302E312C302C302E32
+            2C302E312C302E322C302E31632D302E312C302D302E312C302D302E322C3063
+            302C302E352D302E392C302E372D302E382C312E3463302C302E332C302E342C
+            312C302E312C312E3263302D302E332D302E332D302E342D302E332D302E3763
+            2D302E312C302C302C302E312D302E312C302E3120202623393B2623393B632D
+            302E312D302E312C302D302E332D302E312D302E35632D302E312D302E312D30
+            2E322C302D302E342D302E31632D302E312C302D302E352D302E322D302E352D
+            302E32632D302E312C302D302E332C302D302E342C302E3163302E312C302E32
+            2C302E322C302C302E312C302E3220202623393B2623393B63302E312C302C30
+            2E312C302C302E312C302E31632D302E312C302D302E322D302E312D302E332D
+            302E3263302C302E312C302C302E312C302C302E31632D302E312C302D302E31
+            2C302D302E322C3063302D302E312C302D302E312C302D302E3163302C302D30
+            2E372C302D302E372C3020202623393B2623393B63302C302E322D302E342C30
+            2E352D302E352C302E38632D302E312C302E332C302C302E392C302C312E3363
+            302E312C302C302E322C302E342C302E342C302E3663302E322C302E312C302E
+            372C302E322C302E392C302E3163302E322D302E322C302E322D302E382C302E
+            362D302E3820202623393B2623393B63302E342C302C302C302E352C302E312C
+            302E39632D302E312C302D302E312D302E312D302E312D302E3163302C302E32
+            2D302E312C302E352D302E312C302E3763302E342C302C302E392D302E322C31
+            2E312C302E3263302E312C302E322D302E322C302E352D302E312C302E382020
+            2623393B2623393B63302C302E322C302E322C302E352C302E342C302E356330
+            2E322C302E312C302E322D302E312C302E332D302E3163302E322C302C302E32
+            2C302E312C302E342C302E3163302E312C302C302E312C302E322C302E322C30
+            2E3263302E312D302E352C302E332D302E372C302E372D302E3920202623393B
+            2623393B63302E332D302E312C302E322D302E332C302E312C302E3163302E32
+            2C302D302E312C302E352C302E312C302E3563302D302E322C302D302E352C30
+            2E332D302E3663302D302E312D302E312C302D302E312D302E3163302E312D30
+            2E312C302E352C302E332C302E342C302E3320202623393B2623393B63302C30
+            2E312C302E392C302E312C302E392C3063302C302C302E332C302C302E332C30
+            63302C302E312C302C302D302E312C302E3163302C302E312C302E332C302E32
+            2C302E332C302E31632D302E312C302E332D302E312C302E312D302E332C302E
+            3463302E362C302C302E362D302E322C302E372C302E3420202623393B262339
+            3B63302E312C302C302C302C302E312C3063302D302E332C302E332D302E312C
+            302E332C302E3163302C302C302E352D302E322C302E352C3063302E362C302C
+            302E342C302E372C302E372C302E3963302E312C302D302E312C302C302E312C
+            3063302C302D302E312C302E332D302E312C302E3320202623393B2623393B63
+            302E312C302C302D302E312C302E312D302E3163302C302E312C302C302E312C
+            302C302E3163302C302C302C302C302C302E3163302C302C302C302C302C3063
+            2D302E322C302D302E312C302D302E312D302E3163302C302D302E352C302E35
+            2D302E382C302E3720202623393B2623393B63302E322D302E312C302E332D30
+            2E322C302E362D302E3263302C302E332C302C302E312C302C302E3363302E31
+            2C302C302D302E332C302E322D302E3363302C302E342C302E342C302E312C30
+            2E352C302E3163302C302C302E362D302E332C302E352C302E3163302E322C30
+            2C302E312C302E332C302E332C302E3320202623393B2623393B63302E332D30
+            2E332C312E322C302E332C312E352C302E354332332E322C32302E372C32322E
+            342C32312E312C32322E312C32312E397A204D31372E352C372E336C2D302E31
+            2D302E31632D302E312C302D302E342D302E312D302E312D302E326C302E312C
+            302E3263302C302C302E312C302C302E312C3020202623393B2623393B433137
+            2E342C372E332C31372E342C372E332C31372E352C372E337A204D31372E312C
+            362E3263302E312C302C302E342C302E312C302E352C302E3263302C302C302C
+            302C302C302E314331372E352C362E352C31372E312C362E332C31372E312C36
+            2E327A204D31322E332C31312E3820202623393B2623393B4331322E322C3131
+            2E382C31322E322C31312E372C31322E332C31312E384331322E332C31312E37
+            2C31322E332C31312E372C31322E332C31312E387A204D31392E362C31382E39
+            4331392E362C31382E392C31392E352C31392C31392E362C31382E394C31392E
+            362C31382E397A204D31392E352C313920202623393B2623393B4331392E362C
+            31392C31392E352C31392E312C31392E352C31394C31392E352C31397A222F3E
+            0D0A093C2F673E0D0A3C2F7376673E0D0A}
           Kind = bkGlyph
         end>
       Properties.OnButtonClick = edt_KontaktInternetPropertiesButtonClick
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 31
-      Visible = False
       OnExit = btn_KontaktSaveClick
       Width = 289
     end
@@ -1731,19 +1833,29 @@ object frm_Contact: Tfrm_Contact
         item
           Default = True
           Glyph.SourceDPI = 96
-          Glyph.SourceHeight = 17
-          Glyph.SourceWidth = 17
+          Glyph.SourceHeight = 16
+          Glyph.SourceWidth = 16
           Glyph.Data = {
-            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
-            F40000001974455874536F6674776172650041646F626520496D616765526561
-            647971C9653C0000001E744558745469746C65004C65747465723B652D6D6169
-            6C3B656D61696C3B6D61696C1A9193DA000000AE49444154785EEDD6B109C340
-            0C85E16C76AD9BAC2470A6F20ADEC3E03114074444D2FC16CF218D8A5709F4BE
-            E38ABB9BBBFF351F830634A001F7C7328EAC47FCEAC4DE41801D0AD4EC04F0C8
-            0B335F01883DEFDD670106886AB915008010CA0B004014CB050022B85C073082
-            CB750023B89C017CB244D05C00D0C91241730180771A089E0B00BC533B399F8B
-            002ECFE49C10554096EBB1CA5BB041819A8D00D3AF9EE4D83BF597EC3B0D6840
-            039E36D3EC54622E2CFC0000000049454E44AE426082}
+            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+            462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+            617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+            2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+            77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+            22307078222076696577426F783D2230203020333220333222207374796C653D
+            22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+            3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+            303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+            63653D227072657365727665223E2E57686974657B66696C6C3A234646464646
+            463B7D262331333B262331303B2623393B2E426C75657B66696C6C3A23313137
+            3744373B7D3C2F7374796C653E0D0A3C672069643D224D61696C223E0D0A0909
+            3C7265637420793D22342220636C6173733D22426C7565222077696474683D22
+            333222206865696768743D223234222F3E0D0A09093C7265637420783D223222
+            20793D22362220636C6173733D225768697465222077696474683D2232382220
+            6865696768743D223230222F3E0D0A09093C706F6C79676F6E20636C6173733D
+            22426C75652220706F696E74733D2233302C382031362C313820322C3820322C
+            31302031302E342C313620322C323220322C32342031312E382C31372031362C
+            32302032302E322C31372033302C32342033302C32322032312E362C31362033
+            302C3130202623393B222F3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
           Kind = bkGlyph
         end>
       Style.HotTrack = False
@@ -1762,99 +1874,179 @@ object frm_Contact: Tfrm_Contact
         item
           Default = True
           Glyph.SourceDPI = 96
-          Glyph.SourceHeight = 17
-          Glyph.SourceWidth = 17
+          Glyph.SourceHeight = 16
+          Glyph.SourceWidth = 16
           Glyph.Data = {
-            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
-            F400000013744558745469746C65005765623B576F726C643B4579650744383A
-            00000ACC49444154785E9595697054D79DC57F6FE9D7BBD4122DB516D4124848
-            960D884D0204028C07B3C82C019330E0095E2655D8717966CAE5D871F0120757
-            ECC92405196383877866EC783CB693716CE238312160CB100C1688D5460BDA41
-            A0ADD56AF5EBEEB74D4F9754A58AF0D4CCA977EA7F3FBCF7CEB9E77F1761CBD3
-            1F20DB24646904235E8760B4224A22D2FF501650EC413CBE65BCF0C03704BE06
-            3BDF386919864924F409BA1643762D4D56135D3752D4B4644DF23F9F5B078065
-            598C410E6B713295CBE4E7B4B3746E29C505F3914425498982B44DA3A27B0460
-            941360EDFA9B2A6B6CFCC7F37BAC8F4F1CA2333417352E611816A669E255646E
-            8A077FFA1D7EF1F1F7A8EFDC4D5DEBE31CB9F230E3C4A4BFFD8745AE777EFFD8
-            FA370E3E7E60E7BE7B4E3FFAD2A3DDCFBDF5A1F5FCAF1ABA7FF44EFDE9A77F79
-            E2170FFDE3931BD66C9EEF01644004849DFFFAF77CEB476FB17EE7FBDCF5E47B
-            6C79F620C058026344DCB4B290A2228BABE1B344B5416E9FFA524ABC7A45D0FE
-            CA6F36ECA859937FC5E91FFCCDB4E9F607EEFFE6CAD9DBBF5191971F384CCD82
-            2979957382B30BF223F77BBD1DEF55AE286E3EF0DBBB77542D2DB003E2AEFB76
-            0BB7068FE1547A1148A9723388FDF10B0C443AB12C8395A5AF0A80F8C37DCBA6
-            6CFFBBD99FFBB3BD2F95DF3A25503CAD9060CE2CBCCA1C8AFDEBB877D94F989F
-            EB65DE641FD5150BB963F53F5158764FE04648F9E7079F5CF0F9533F5F5E0CC8
-            CF6C7F499C5572068FA399AF839830625898AC9BFE7A2AF267F72FADF2E7B88E
-            E54FCE9E595C12C4E3F213746DC56F5B499AA3189BECC1B4044420CD26312DDD
-            C99C402605C105B87D53F16765CD9852EAAB7B6EDFF2F980F4C4D6BDA2694958
-            5F9380F0EF27D6B17DC10702207E77D7DCC2E2D28CCF4BCB0AFD7E7F26769B8B
-            69BE7B51A40C34CD02D18928DA180FACD4435433387CF94BFAAE1DA0BC048E1E
-            6DE9FFF4B0BAF0E8DB47DA007DF3CEF7AD7777AD9FB00B84312E5A93E75EB5A5
-            F8587171EE8CBCBC008AAC909FB6846CD77C1004B024A2310BC59E31411C2C2C
-            0BBEBA7E8D3397F610C836F8E4C4240606A65F38F65F2FD7B49C39340C988035
-            611B8E5669F1DABC47DC698E1999FE340CD348D12D17118E8E904858290F365B
-            3A8231EA7EFC8A1EAD69628819A59339F2458482D2CD44CE774D9FBDF2BE4792
-            065E043460421F6440ACAECDF18AB2F04820373D252C1A3A3D0316B9361159F1
-            60B32785015380B8612058C2F8996301861E4391A1BEA1199B6B31375A5FC0E9
-            98CDB052F4484965ED2BCDA73E1C04525E2718B8AD3AA3D6E992B3154542D775
-            FAFB05DABB4B28CDCBC58D134333100581E4330129035898A68D612D135DD9C8
-            486F1D4B2B4BE8BCD6CE475FFD6E52EED4E1DAE653BC0518374D40B059AB1D2E
-            1B9AAE230A22E72E88E4976DA46B4827E833104546C585B10A58630652F19B49
-            5E8DC824B418933C03185282404060DD9A022E5E685955F736EF00C24D13300D
-            6356EF7517CD4D328A4D44964D34DDA0A537824791712A12E2A8AE200813666F
-            9916AA66A6DE0FF51EA7E4361BA1E1AB842351AEF70ED2D4D1390790000146FF
-            31DE405F8F273F9CA8C1E95B84C3E7C2EDB5134F1898169CED0A5192E5C66DB7
-            A5521893B7183B526124A6D19C141FD17462911E545D273C32C270244A3C1E47
-            8D2572C68EE89BB540B02C7B5A7951132D5D0954FB0A24494CB9B400C3B438DF
-            1D26C3ADE073DA702B52CA886198C96A8125205826E50137920051772DFE4C95
-            A86B9890B39F1EA99D2E9FCD0B37A40906C65C8546EE180E85FA718817514706
-            8846E344A21A5135413CAEA7D2B81E8ED1D813A6A12B4457FF083601DC92806F
-            E84BB23A0FE13FF71A997FFE29B90DBF858FFE8074F8339CE75AC90D7B593873
-            4D02708CBFAC5E5B5D088004D88B2AEFDFA66B37264DCA54198A0630850C482D
-            AC54C1B0527DC6B24C4AB33CE4A729387AEA496B7C970057C9CE900904036417
-            E69333B510FFE41C3233BCB8F50452571BC6F90661BA4FEC3D7A25E91674C07A
-            BF79682C01CC443C7E4ED5CA88AA1A46BC9D989A6024DC46B8FB4D06DA5F27DC
-            7F2595CAB44C17E99286726A3F797D4729BAA588D6A89B7D071B79E8871FB261
-            C71B2CDEFA1A5B1EFF3D4F1CB8CCDB67211AB88D052BAAC56555D35EDCBF6EEA
-            1B15015700B003E237B73F810038E66CFAF1B68C9CE001877718997614A19949
-            99066565362449A2A559273F6713D30A2A48AB7F99D2420F5FF43879F7483B9A
-            A510D1247443C4A6D8B13B9DA86A143512C13235F2B233F1283AAB674894D2C6
-            F143F5C75FF8AC7B4B6B28DE0B2444C0683FFDDE47D191D88028E53262CE4337
-            14A614ABC4CC6E62461733672A5414E948F5AF90A6C478E53338DEE6E4AE8D1B
-            0994CEA5FAF6253CFCD87DDCBD6D2D0B17CC6151F57CE6CC9F47565E90EB619D
-            CA454B38D15BC09BED454CAD28ABDE51E17F06F000B204086AA8DBCC2A5EEC90
-            24C712AFBB1F9FFB0CA2E32A5155251A8B91E92C21DD9011CE7CCE077D33A8AA
-            5EC2F2DB17D27143A5B367800D1B6AC80C4C225018E0DF5EFD25E1C1C1A4E972
-            7CBE346EF487906599B5AB6AC0EEE3C8158B12B16B96438F1DBED817EB110113
-            4834D5FDCBDE7028DC686A0AA661233434C2F0708CA1A12819AEA9844F9FE78F
-            EA3C366C5C4B55D54C7273FD5C1B08E3712A44A33A0E8F9393C7EB19E81BA0B1
-            B189C3870E939B93CD9429412EB774245B9A41C5CC5BF8ABD52B39E9BD432CCB
-            CA780070CA008011B9D13474A3E9B3AD084B3E7604AB32A56818CDBA82650998
-            9AC4D92691AA55CB292B2D42511CC892903419C161B771ADFD3A3F7B712FA150
-            085DD3D00D9DE6A409C5AE90E67531148E627728208A040BF299B9B0860B7D6D
-            B5D0FA3DF1DE9FFDC91A4BA1E3D49B9743DD17BFDDD2EEEF0BF7DD42BABD0853
-            B748244C3A5DAB58BAB8125194B1045267BF2C8AC4620912099D8C742F713546
-            221E434BC4C9CBCB49563D751AA6799C6886050888361BF36657F095B8D46377
-            66D84449147960F7510B308058F3D19F7FDA73E9486D4B7BD95797CE05714985
-            785C3279792A27EABB8825CCA4A09632551CCCA27F30CC606888A5CB6A282CC8
-            438BC7989C145FBF7103FDA1106D6D9D54DC3A0D5D33481D6AAACE89D31D84C3
-            7D07E3EAA02A4A9240928CC200D4EE86772F5EFADDF3CBAF76BB9F3959D7DB7F
-            ECD4096E2919E0F0B1F3745F1D2412891355E32C993F03B068E9E8666858A576
-            ED3ABEFFD4F7D9BC751B23719DCB8DADA81195D5772E428D25888CC4B8DA13E2
-            833F34F4349F7DE7796044D8B1B78E31ECFB6ECD98131190018733CD959E532E
-            AEAA5DB1E9DB19DEA9E5BD43E519772D9F2E0427FB906591CEEEEBEC7BFD2036
-            59223B6B12BE742F03834374765D4BAD8987EEDF4CC1E45CE2718DB68E01DEFB
-            B021F445DD9BF7F4B41F3B0584841977BFCC5FE2FCAF1E1200619C11057001BE
-            C9532BA7CF5DB27DD7FCB9E56595B3F2F17AEC44222A478FD773E9722BD7AEF7
-            E1CF4CA7744A01358BE6E17239523BE9CFF59DC916367ED9D2F0EB47AF779C3C
-            03848084C0FF8EF18948A3463C8ADD9DBDE08E87BF3329B76C6B71913FB3B830
-            8374AF03B747419125D498C650586520A4D2D8DA47534BCF607F4FD37F5C3CF1
-            DA7E5D8BF600C340A27AED6E93FF23C627A200E9C06497C73FBBF2F6077FB07C
-            E38F3FB9F35B7BAEACDAB63FB2E69E57AD3BFF7A6F64D9C69F5CA9AE7DF6D3E9
-            0BEE7BCAE1CA9807148C7EA700C2E2F57B58B46E378265595FAF2ADC34A0F1AD
-            B1034EC0353AB68D5D70800EC40115888E8E75C000C64491F9FFC3028C71222A
-            300488E392B246698EBD3BCA09B3FD6F1383D781A33001EA0000000049454E44
-            AE426082}
+            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+            462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+            617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+            2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+            77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+            22307078222076696577426F783D2230203020333220333222207374796C653D
+            22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+            3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+            303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+            63653D227072657365727665223E2E426C75657B66696C6C3A23313137374437
+            3B7D262331333B262331303B2623393B2E477265656E7B66696C6C3A23303339
+            4332333B7D262331333B262331303B2623393B2E59656C6C6F777B66696C6C3A
+            234646423131353B7D262331333B262331303B2623393B2E426C61636B7B6669
+            6C6C3A233732373237323B7D262331333B262331303B2623393B2E5768697465
+            7B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E5265
+            647B66696C6C3A234431314331433B7D262331333B262331303B2623393B2E73
+            74307B6F7061636974793A302E37353B7D3C2F7374796C653E0D0A3C67206964
+            3D22576F726C645F315F223E0D0A09093C7061746820636C6173733D22426C75
+            652220643D224D31352E382C32632D372E372C302D31342C362E332D31342C31
+            3473362E332C31342C31342C31347331342D362E332C31342D31345332332E36
+            2C322C31352E382C327A204D32302E312C31392E31632D302E352C302E312D30
+            2E352D302E332D302E312D302E3420202623393B2623393B4332302E312C3138
+            2E392C32302E322C31382E382C32302E312C31392E317A204D382E342C31332E
+            3363302D302E312C302D302E312C302D302E3243382E342C31332E322C382E34
+            2C31332E332C382E342C31332E337A204D32322E312C32312E3963302D302E31
+            2D302E312D302E312D302E312D302E3120202623393B2623393B63302E312C30
+            2E332D302E312C302E392D302E312C312E32632D302E312C302E342D302E342C
+            312E332D302E372C312E3363302C302E322D302E342C302D302E332C302E3263
+            2D302E352C302E312D302E382C302E352D302E382C302E3863302C302E312D30
+            2E332C312E312D302E342C312E3120202623393B2623393B63302D302E312C30
+            2E312D302E322C302E312D302E3363302C302E312D302E312C302E312D302E31
+            2C3063302C302E322D302E332C302E382D302E342C302E39632D302E312C302E
+            312D302E332C302E332D302E352C302E32632D302E312C302D302E332D302E32
+            2D302E332D302E3420202623393B2623393B63302C302E332C302E322C302E36
+            2C302E322C302E38632D302E392C302E322D312E382C302E332D322E372C302E
+            33632D302E312C302D302E322C302D302E332C3063302E312D302E332C302E31
+            2D302E352C302E322D302E3863302E322D302E372C302E322D312E352C302E33
+            2D322E3220202623393B2623393B63302E312D302E342C302E332D312E352C30
+            2E312D312E39632D302E312D302E322D302E332D302E322D302E352D302E3463
+            2D302E362D302E342D302E362D302E372D302E382D312E33632D302E312D302E
+            342D302E332D302E352D302E352D302E39632D302E312D302E322D302E322D30
+            2E322D302E322D302E3520202623393B2623393B63302D302E322C302E322D30
+            2E342C302E322D302E3663302C302D302E312C302E312D302E312C302E316330
+            2C302D302E312D302E312D302E312D302E3163302D302E312C302D302E342C30
+            2E312D302E3463302D302E322C302E312D302E372C302E332D302E3763302D30
+            2E332C302E322D302E332C302E312D302E3520202623393B2623393B63302E33
+            2D302E322C302D302E392C302D31632D302E322C302D302E312D302E312D302E
+            332D302E3263302C302E312D302E322C302E312D302E322C302E3263302C302E
+            312C302E312C302C302E312C302E31632D302E332C302D302E342D302E322D30
+            2E362D302E3320202623393B2623393B63302C302E322D302E312D302E322D30
+            2E332D302E3363302E312C302E322D302E322D302E322D302E322D302E33632D
+            302E312D302E322D302E322D302E332D302E322D302E35632D302E352C302D30
+            2E362D302E312D312D302E34632D302E342D302E332D302E372D302E312D312E
+            322D302E3320202623393B2623393B632D302E332D302E312D302E372D302E33
+            2D302E392D302E35632D302E342D302E332D302E332D302E362D302E352D3163
+            2D302E312D302E332D302E372D302E372D302E362D31632D302E362C302D302E
+            352D312E332D312E312D312E3363302C302E322C302E362C312E352C302E382C
+            3220202623393B2623393B632D302E322D302E342D302E382D302E362D302E39
+            2D3163302E352C302D302E322D302E382D302E342D31632D302E322D302E332D
+            302E322D302E362D302E372D302E3663302D302E322D302E322D302E342D302E
+            322D302E37632D302E312C302D302E322D302E312D302E322D302E3220202623
+            393B2623393B63302C302C302E312C302C302E312C3063302D302E312D302E31
+            2D302E312C302D302E32632D302E312C302C302C302D302E312C3063302C302C
+            302C302C302C302E3143362C392E352C352E392C392E332C352E382C392E3263
+            312E312D312E362C322E362D332C342E342D332E3920202623393B2623393B63
+            302E312C302E312C302E312C302E332C302E322C302E3363302D302E312C302D
+            302E322C302D302E3363302E372D302E342C312E352D302E372C322E342D302E
+            3963302E312C302C302E312C302E312C302E322C302E3163302E322C302E312C
+            302E342C302E312C302E362C302E3220202623393B2623393B63302E322C302E
+            312C302E312C302E312C302E322C302E3463302C302E312C302E312C302E322C
+            302E312C302E3363302E312C302C302E312C302C302E322C3063302C302E312D
+            302E312C302E312D302E312C304331342C352E372C31342E322C362C31342E34
+            2C352E3620202623393B2623393B63302E312D302E322D302E322D302E342D30
+            2E312D302E3763302E312D302E322C302E352D302E342C302E352D302E366330
+            2C302C302C302C302C3063302D302E312C302D302E322D302E312D302E334331
+            352C342C31352E342C342C31352E372C3463302E372C302C312E332C302E312C
+            322C302E3220202623393B2623393B63302C302C302C302C302C302E3163302C
+            302D302E312C302D302E322C3063302C302C302C302E322C302C302E3163302E
+            312C302C302E342C302E322C302E332C302E3463302E312C302C302E312C302E
+            312C302E322C302E3163302D302E322C302E332C302E332C302E332C30202026
+            23393B2623393B632D302E312C302C302E312C302E312C302E312C302E316330
+            2C302E312D302E352C302E332D302E362C302E3363302C302E332C302E382D30
+            2E352C302E382C3063302C302C302C302C302E312D302E3163302C302E362D30
+            2E382C302E392D312E312C302E39632D302E322C302D302E362C302D302E382C
+            3020202623393B2623393B632D302E322C302E312D302E342C302E362D302E37
+            2C302E3663302C302E332D302E312C302E332D302E322C302E3463302C302C31
+            2E332D312E332C312E332D302E3663302C302D302E312C302E322D302E332C30
+            2E3363302C302C302D302E312C302D302E31632D302E312C302E312C302C302E
+            312C302C302E3220202623393B2623393B63302E312C302C302E322D302E312C
+            302E322D302E3163302C302E312C302C302E322D302E312C302E3263302C302C
+            302E312C302C302E312C3063302C302E312D302E312C302E332C302E312C302E
+            3363302C302C302C302C302C3063302C302C302C302E312D302E312C302E3163
+            302C302C302C302C302C3020202623393B2623393B63302E322C302C302E322C
+            302C302E342C3063302C302E332C302C302C302E312C302E32632D302E312C30
+            2D302E342C302E332D302E342C302E3363302C302C302D302E312D302E312D30
+            2E3163302C302D302E322C302E332D302E322C302E3363302C302C302C302C30
+            2D302E3120202623393B2623393B632D302E372C302C302E332D302E352C302E
+            332D302E35632D302E352C302D302E322C302E312D302E322D302E3263302C30
+            2D302E312C302D302E312C3063302C302E312D302E312C302E322D302E322C30
+            2E3263302C302C302D302E312C302D302E31632D302E312C302E312D302E312C
+            302E312C302C302E3120202623393B2623393B632D302E312C302E312D302E31
+            2C302D302E322C30632D302E312C302E312C302E312C302E342D302E322C302E
+            3263302C302E312C302C302C302C302E31632D302E312C302C302D302E312D30
+            2E312D302E3163302C302E332D302E362C302E322D302E332C302E37632D302E
+            312C302D302E312C302D302E322C3020202623393B2623393B63302C302E312C
+            302C302E312C302C302E31632D302E312C302D302E322C302E312D302E332C30
+            2E3263302E312C302C302E332C302C302E322C3063302C302E312D302E322C30
+            2E312D302E332C302E314331352E332C392C31352E322C392E322C31352C392E
+            3163302C302E322C302E312C302E332D302E312C302E3520202623393B262339
+            3B63302C302E312C302D302E342C302D302E35632D302E312C302E312D302E33
+            2C302E342D302E322C302E3463302C302E322C302E312C302E312C302E312C30
+            2E32632D302E322C302C302C302E322C302E312C302E33632D302E312C302D30
+            2E312C302D302E312C302E3120202623393B2623393B63302E312C302C302E32
+            2C302E312C302E322C302E31632D302E312C302D302E312C302D302E322C3063
+            302C302E352D302E392C302E372D302E382C312E3463302C302E332C302E342C
+            312C302E312C312E3263302D302E332D302E332D302E342D302E332D302E3763
+            2D302E312C302C302C302E312D302E312C302E3120202623393B2623393B632D
+            302E312D302E312C302D302E332D302E312D302E35632D302E312D302E312D30
+            2E322C302D302E342D302E31632D302E312C302D302E352D302E322D302E352D
+            302E32632D302E312C302D302E332C302D302E342C302E3163302E312C302E32
+            2C302E322C302C302E312C302E3220202623393B2623393B63302E312C302C30
+            2E312C302C302E312C302E31632D302E312C302D302E322D302E312D302E332D
+            302E3263302C302E312C302C302E312C302C302E31632D302E312C302D302E31
+            2C302D302E322C3063302D302E312C302D302E312C302D302E3163302C302D30
+            2E372C302D302E372C3020202623393B2623393B63302C302E322D302E342C30
+            2E352D302E352C302E38632D302E312C302E332C302C302E392C302C312E3363
+            302E312C302C302E322C302E342C302E342C302E3663302E322C302E312C302E
+            372C302E322C302E392C302E3163302E322D302E322C302E322D302E382C302E
+            362D302E3820202623393B2623393B63302E342C302C302C302E352C302E312C
+            302E39632D302E312C302D302E312D302E312D302E312D302E3163302C302E32
+            2D302E312C302E352D302E312C302E3763302E342C302C302E392D302E322C31
+            2E312C302E3263302E312C302E322D302E322C302E352D302E312C302E382020
+            2623393B2623393B63302C302E322C302E322C302E352C302E342C302E356330
+            2E322C302E312C302E322D302E312C302E332D302E3163302E322C302C302E32
+            2C302E312C302E342C302E3163302E312C302C302E312C302E322C302E322C30
+            2E3263302E312D302E352C302E332D302E372C302E372D302E3920202623393B
+            2623393B63302E332D302E312C302E322D302E332C302E312C302E3163302E32
+            2C302D302E312C302E352C302E312C302E3563302D302E322C302D302E352C30
+            2E332D302E3663302D302E312D302E312C302D302E312D302E3163302E312D30
+            2E312C302E352C302E332C302E342C302E3320202623393B2623393B63302C30
+            2E312C302E392C302E312C302E392C3063302C302C302E332C302C302E332C30
+            63302C302E312C302C302D302E312C302E3163302C302E312C302E332C302E32
+            2C302E332C302E31632D302E312C302E332D302E312C302E312D302E332C302E
+            3463302E362C302C302E362D302E322C302E372C302E3420202623393B262339
+            3B63302E312C302C302C302C302E312C3063302D302E332C302E332D302E312C
+            302E332C302E3163302C302C302E352D302E322C302E352C3063302E362C302C
+            302E342C302E372C302E372C302E3963302E312C302D302E312C302C302E312C
+            3063302C302D302E312C302E332D302E312C302E3320202623393B2623393B63
+            302E312C302C302D302E312C302E312D302E3163302C302E312C302C302E312C
+            302C302E3163302C302C302C302C302C302E3163302C302C302C302C302C3063
+            2D302E322C302D302E312C302D302E312D302E3163302C302D302E352C302E35
+            2D302E382C302E3720202623393B2623393B63302E322D302E312C302E332D30
+            2E322C302E362D302E3263302C302E332C302C302E312C302C302E3363302E31
+            2C302C302D302E332C302E322D302E3363302C302E342C302E342C302E312C30
+            2E352C302E3163302C302C302E362D302E332C302E352C302E3163302E322C30
+            2C302E312C302E332C302E332C302E3320202623393B2623393B63302E332D30
+            2E332C312E322C302E332C312E352C302E354332332E322C32302E372C32322E
+            342C32312E312C32322E312C32312E397A204D31372E352C372E336C2D302E31
+            2D302E31632D302E312C302D302E342D302E312D302E312D302E326C302E312C
+            302E3263302C302C302E312C302C302E312C3020202623393B2623393B433137
+            2E342C372E332C31372E342C372E332C31372E352C372E337A204D31372E312C
+            362E3263302E312C302C302E342C302E312C302E352C302E3263302C302C302C
+            302C302C302E314331372E352C362E352C31372E312C362E332C31372E312C36
+            2E327A204D31322E332C31312E3820202623393B2623393B4331322E322C3131
+            2E382C31322E322C31312E372C31322E332C31312E384331322E332C31312E37
+            2C31322E332C31312E372C31322E332C31312E387A204D31392E362C31382E39
+            4331392E362C31382E392C31392E352C31392C31392E362C31382E394C31392E
+            362C31382E397A204D31392E352C313920202623393B2623393B4331392E362C
+            31392C31392E352C31392E312C31392E352C31394C31392E352C31397A222F3E
+            0D0A093C2F673E0D0A3C2F7376673E0D0A}
           Kind = bkGlyph
         end>
       Properties.OnButtonClick = edt_KontaktGeschaeftlichInternetPropertiesButtonClick
@@ -1875,90 +2067,40 @@ object frm_Contact: Tfrm_Contact
         item
           Default = True
           Glyph.SourceDPI = 96
-          Glyph.SourceHeight = 17
-          Glyph.SourceWidth = 17
+          Glyph.SourceHeight = 16
+          Glyph.SourceWidth = 16
           Glyph.Data = {
-            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
-            F40000001974455874536F6674776172650041646F626520496D616765526561
-            647971C9653C00000017744558745469746C6500436F6C6F72697A65724D6170
-            3B4D61703B4A3B8C930000098049444154785E9D95797014551EC73F3DD39999
-            5C13729200492009930302261C41504B74A9D255505139D62DBCB6CAC53DAC95
-            5576852D0F645757B9442E4B58C583A04980C400022A4603A1587260B8120221
-            210492C93149663233DDD36FDBD07FB829A296AFEA5BAFA6DEEBFE7C7FDFF77B
-            3D92100249923006B51F3C0248080021C85EF49104980A56DE93949210B14D32
-            893445091CBCD0D2F3C68297F637000140ABDAB6404880260001B9BFCBC718E8
-            0C861A3283462020F8FA50CD9C80C6328496FDE682CC60346AFDDDFDC9631F7F
-            3DCC123E5CEAB95CF378F0C95D8B0EAF9BFBAF251BBF7DFDC4B9366FCE13F91A
-            20546FA3A87AEF397EEE3031D88012C0D3AFE6F7B9FDCF54D475C607C7C73A72
-            A74F8C1A9591136E8B0891CA8A8B213C95710FBD694ECDBB6FF9BA3FDE7A60F9
-            6F272518C548B26DB4A4F8D55F6E405103F8BC8AEB4A87A7655A5E6A7CDE04C7
-            81DC59B3474C5BF87B34D94A5256322F3F308B43EF6F26216736E3663F7BF3DD
-            D3D20FBDFAD894140C13AAEFE71B18DC0312BA9EBB3D69896C3167CD79F0F699
-            1933EE4C0E4DC943C8210008C545F19A959CF8BC82F449B9CCFFC70A14771B27
-            76ACAA5D5D50F9ABD2E3CD5D800A68BF24010990E5B8A83DE1E1A1F302B698E4
-            B0FF837783A796590F463132D1CAB5B335EC5EB1045B44146367DE3FFEF13BC7
-            AE0782013320BD79388B1F0A903074230312607EFEC109A367E5657CFEE40BCF
-            867CF75D13A5DB3F44D33484D205FDA7507A8FA076D573F75DE10C8B90703537
-            7074FB0612B26EC23175FAC35B9FBEF919C00A98FF7AFB6909E0FB599709301B
-            920C0D3640D07447CCD6D4DC69C9F6B1D37862E55A14BFC28A8573A93FB607C5
-            7504DFD573F85B5DC83E3F53B304C1A1828ACA2F58F1C11F381DDB4C5856E88B
-            7FBED731C93061324CE842FEF796432F1E3AD2A000E6211320A0E5581373A44B
-            672E72B1FA0453674E67DE53F7F2E1EAADAC5FBE9BA3BBAFF1DEC61EFE5BD10F
-            4265CAE430A624C5E13FD6C6E9BA56DA1D1653F2626BE9E2B5C9B70241187A6D
-            C3FE17A7E5A42E3F79A6058C146E780BBA5DFD87DCCEAB8C9E3881C8B8307A5B
-            2A71D65590971D8AAFDDCBE91A1F73FE944343B399D0D848A29252C8CECBE037
-            53B33871A48E49A9B7322373516866A6A3E4992D63EE01825FDBB0F7E59BA7A4
-            BF3065C2488480A17A40006AF5C5CED5A7F67EA2E90D4744581BC9633B983849
-            9037299C47E72530669446F1FA2AD2D264221253B1060F4378BCD8642F592166
-            761FDC8364F33073C2C3F2B048FBB66D9F14BD77C72DE3964ECE1E8180817E1A
-            AA0704A0AC3D507FF24CED9937AA0B36E2EF2DC77BAD0EFFD51E7C9DFDB89D6E
-            5213BDCC9D6B63FA5DE958AC3ADCED457577D0D7D549B41C42C3F936AA2F7D85
-            473463D732EDD6B8EAFB5346D9B9D2EB470042882113304CE05F5A747A7DE5D1
-            A69686B22A945617BE0ECF005CF1A97AEC51D72BB745A2B9FBF1EBF0DE8E0E2E
-            77DAE8BA1CE8EE74F6E3ECEEE052472DD109661A9A2A69EFE9A3D9D58FD0049A
-            F6E30600C4D61D5FBE92F3E4AB236B2AACB45F720FC0FD3E8590B8481D9EA2C3
-            BFAFDC83DAA757AEC39B9C361A2ECBD873175CF6B8555C3AB0C9791E9FDC4AD3
-            E5269CAE3E02010D4D80F613099856BEBD6FD998D1894F38D24693BEE8698E9E
-            30E3EC50098DBB5EB9C51A3910BBD2E7D42B77D2D86EE3D405C87EF405A64CBD
-            63BCE233899E1E1F5D3AB4DBE3C4D3E347515494804000625002F2E06B68B104
-            2F9B3A319146E741CCB17D38163FC5A92DDBF1DB60725AC440EC7AE5B8F4CA1B
-            9D219C3CAB60FEF512BA2DC3490C379138DC21B5379F4592A0BB55222A3C0B93
-            594632CEDF380286BA8626DD2102138DDDA574782BB1C78772FBDF5FA155CE65
-            E7C632CE559DA7FD4A1BF52D16AA6ABD98EE5E82293A898F8E5DE342A7CAA30F
-            FC0DEDCA78CA0BFCD099C58CDCA7305943B005A920A41F6D42C9F87302012693
-            19B3594236BBB047453371D1F38C7CEC75AAAE8DA2A8D445E599009639CF63D6
-            E1DFD4F7E0564DE41F6FA7AE2B82C54FAE61C5D2CF98337305F123B2405689B0
-            D603A0096DC8233036083404926422C2164BBC3D93CBDE045CAA202A732A23C7
-            E552F65D8B6ED0843F2053DED083C7273009098F2628AE76929A998C90030464
-            33B24525DC7A066FE018424C1FBA070C494697122A879168CFE5AA924E8FCF82
-            5B51E94322CC6AE1D0790FA830605593D0F168228010923E9B30CB56CC16B09A
-            15860537D3AFC335E1871FDC82A17A401AE8010D12EC3339D33B8E8B5D56DA7B
-            FD68804022DC222369329AA4C3341D8C444068BA40689AAE004812201165EBD6
-            E14750026EDCBE4E840442E32712D0340482B3BD93E8F5A8787C7E00DCA84C1E
-            612631C2C66D8E08CAEABAD02450558100A3BA01E9408D90A01EDC4A057DBE73
-            78150F6AC03FB0260C078624F9864DA8415B97174D000200D2E38219650FA6A5
-            D5454E720CC1E66EBEAAEBC32B420804401501340D4C805B371D63BB4A4F7F39
-            FEC0757852E4FD0881710D8D406FDC032080800608014864E9F0F4E81076141D
-            61EBFB856D8B9F7E2C2E23258DA0A0AFA9BD720167772CAEFE2854C00FD82D6E
-            9440AD0E77EB7085A461F73136663EF98565EC2DF9EC5D4001C48D7A004DD3B8
-            CE16684046AC8D8C981076EE2A67EDBAB72A2B0F6F282C2EDC51D9D8709594E8
-            1938E23CC445ECC6117F8284C84B58AD7D84065DC0AB9C4209F84936E03B0ACA
-            D8FC4EFE4735E55B56193E05206EDC84C6172B332698CCD850F28BBE65EDDA0D
-            C7EBAB77EF07AE94EC5CBDBF64D78EE38D8D6DA4C52C2425663C6E259FE0A042
-            46471FC6ABEEA55F694187EB26E7F1F1A7656CDABCBDF0D4B16D6F03BD80FAA3
-            4700920E0E21EB7B78E137BCB57E53457D4D5129D001F8006B49FEAA624910B8
-            6BF6BC698EC445288A444DF30EBA5D8D7895F103B1A746EBB1EB956FD8F49F92
-            BAAAFC2D4027E031E0E2C65F424DA08BCCB810BD721DFED6E6F2FAEAA202A009
-            68015A8DB9A978E7AA827D259F1EB9D0D44A46E44232E2E7E353351223E6901A
-            396F20F6B7376EDD67C0AF022E8CF887FC3B16424320D85938002FABAF29FC10
-            68002E01D78C175D337E5F28D9F9E607073F2BFAA6B1C5C9F8B847B82F6715A9
-            FA997FFC3D7CC3BBFBEBAB3FD964986F37AA5706018DCC2108885EFACF3D62DD
-            3B9F0BC7C487BE001600B701D98003180D2419B303C836D617CE5EB8F4CB35DB
-            CAC5AE03E7C59ACDFB44DA84874B8159C6BE5820D4609886322003F6E756EE11
-            E939F34B80E9C018603810030C03EC40B8310F03628CF514E096071E5956FA97
-            978AC4D89B16140039C65A186001CC065C1ACA80C9D81866B8B50C7A602849C6
-            CBAD86B12863B602E69F7AFE7FE689AF60A1D1F9C10000000049454E44AE4260
-            82}
+            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+            462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+            617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+            2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+            77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+            22307078222076696577426F783D2230203020333220333222207374796C653D
+            22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+            3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+            303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+            63653D227072657365727665223E2E59656C6C6F777B66696C6C3A2346464231
+            31353B7D262331333B262331303B2623393B2E5265647B66696C6C3A23443131
+            4331433B7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A23
+            3732373237323B7D262331333B262331303B2623393B2E426C75657B66696C6C
+            3A233131373744373B7D262331333B262331303B2623393B2E57686974657B66
+            696C6C3A234646464646463B7D262331333B262331303B2623393B2E47726565
+            6E7B66696C6C3A233033394332333B7D262331333B262331303B2623393B2E73
+            74307B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+            7374317B6F7061636974793A302E353B7D262331333B262331303B2623393B2E
+            7374327B6F7061636974793A302E32353B7D262331333B262331303B2623393B
+            2E7374337B66696C6C3A234646423131353B7D3C2F7374796C653E0D0A3C672F
+            3E0D0A3C672069643D2247656F506F696E4D617073223E0D0A09093C70617468
+            20636C6173733D225265642220643D224D31362C30632D332E332C302D362C32
+            2E372D362C3673362C31302C362C313073362D362E372C362D31305331392E33
+            2C302C31362C307A204D31362C38632D312E312C302D322D302E392D322D3273
+            302E392D322C322D3273322C302E392C322C3220202623393B2623393B533137
+            2E312C382C31362C387A222F3E0D0A09093C7061746820636C6173733D22426C
+            75652220643D224D32332E342C382E36632D302E382C312E392D322E312C342D
+            332E342C352E3776302E355631397631302E326C2D382D38563139762D342E37
+            632D312E352D312E392D332E312D342E342D332E372D362E364C342C31327632
+            306C382D386C382C386C382D38563420202623393B2623393B4C32332E342C38
+            2E367A222F3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
           Kind = bkGlyph
         end>
       Properties.OnButtonClick = edt_KontaktGeschaeftlichOrtPropertiesButtonClick
@@ -1979,37 +2121,50 @@ object frm_Contact: Tfrm_Contact
         item
           Default = True
           Glyph.SourceDPI = 96
-          Glyph.SourceHeight = 17
-          Glyph.SourceWidth = 17
+          Glyph.SourceHeight = 16
+          Glyph.SourceWidth = 16
           Glyph.Data = {
-            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
-            F40000001974455874536F6674776172650041646F626520496D616765526561
-            647971C9653C0000001D744558745469746C650050686F6E653B4D6F62696C65
-            3B43656C6C50686F6E653BCD5C0E9B000002EB49444154785EA5964D8B1C5514
-            869F5BDD5DAD628C8A08E242518906C409662271236E5CB977E1CE8522FA0FE2
-            2F7025CCA2133F4240C485E0D68D04C485041C61543486D62888E24020F64C64
-            A6BBEE39AFC5C18D4D0D74DF7AE9B369FA3EE7E1DC3E540D25B19CCDCD33E9E4
-            C6F3A7D3603049A40DA0A62C0BA16FE5F6E6D59D2FB6B7B7BF164B19D29D41AA
-            AAF38F3E7662F3AEE3F720122549A8DE9BDD3CF3CBF4DA047816C8AB0A8C206D
-            1C3B7637EE02F47F70829D6FAEB0981F02508F6FE3D4E9B32C0F53C09D2D03D2
-            53C15C4360001A9944579260E3E9B321022011A2E2A8A80E26B0AA409284DC39
-            FEC84952AA3A2CE21311D0D55D7266D7AF222998EB0880C0DD91E0C4930F5192
-            6BDFFF1A0C44642D0149B81B315A1725710F06920A0450D8BB0BEB25E0885201
-            73A24A05E27CA10012EE19732F9E80B90703950A5834EF21108C320149981B9E
-            CB271067DD9054BE05D9855999402EDD02490861D902602ADD020B46D0A4D505
-            A6D3290F3FFECC7F00B5E594C4B28291730EE6CA02FBFBFB4C7FFE8D7BEF7B80
-            3BACC7169833DB0B5630D7DA82DC34FCF1E72EF9FE190F2E9CF1309148AC1221
-            E659FCBE3B63B765B4ACC22DB0CC3F870D376E2DA812AD4445DDD6B04A512911
-            9120BBA216D999B7E522CE9A6524950B5876B209A0851B60AC1ACBDE47C0630B
-            B279F91A5A3082553E0173B27BF19FB0FF15944DA0BF0072CC0CEBB786C1A0F4
-            0ADC32EEC2FBBC0FF4BB02C3F2829DCB5728893C07A34C8010E0E6779F76809D
-            A69993DB0AC868CCA8AD545547B1CA9F865D59CC0F78E3D59779FDB55700B8F0
-            DE2526EF7F4C3DBEBD9B55FE42D22D909B79347FEE859700B8FCD9476C4D2E31
-            1CD674A6700D9B0423736739290D38FFEE45BEFCFC135282C9858BF19D77FC76
-            5055485AAC2B2097FD902A4E258765896A30646BF221EF6C7D403419D60C4775
-            082C374F15B8EC4740EB08D8C1ADBFDFC2F576AAAA278E164D00E4DC447524CB
-            FDA7C383BD7380AD23D0DCF8EBFA57C08BC018489445C01CD8033A0DFF0511EC
-            718FFFDC32660000000049454E44AE426082}
+            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+            462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+            617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+            2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+            77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+            22307078222076696577426F783D2230203020333220333222207374796C653D
+            22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+            3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+            303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+            63653D227072657365727665223E2E426C75657B66696C6C3A23313137374437
+            3B7D262331333B262331303B2623393B2E59656C6C6F777B66696C6C3A234646
+            423131353B7D262331333B262331303B2623393B2E5265647B66696C6C3A2344
+            31314331433B7D262331333B262331303B2623393B2E477265656E7B66696C6C
+            3A233033394332333B7D262331333B262331303B2623393B2E426C61636B7B66
+            696C6C3A233732373237323B7D262331333B262331303B2623393B2E57686974
+            657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+            74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+            74317B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+            7374327B646973706C61793A6E6F6E653B7D262331333B262331303B2623393B
+            2E7374337B646973706C61793A696E6C696E653B66696C6C3A23464642313135
+            3B7D262331333B262331303B2623393B2E7374347B646973706C61793A696E6C
+            696E653B7D262331333B262331303B2623393B2E7374357B646973706C61793A
+            696E6C696E653B6F7061636974793A302E37353B7D262331333B262331303B26
+            23393B2E7374367B646973706C61793A696E6C696E653B6F7061636974793A30
+            2E353B7D262331333B262331303B2623393B2E7374377B646973706C61793A69
+            6E6C696E653B66696C6C3A233033394332333B7D262331333B262331303B2623
+            393B2E7374387B646973706C61793A696E6C696E653B66696C6C3A2344313143
+            31433B7D262331333B262331303B2623393B2E7374397B646973706C61793A69
+            6E6C696E653B66696C6C3A233131373744373B7D262331333B262331303B2623
+            393B2E737431307B646973706C61793A696E6C696E653B66696C6C3A23464646
+            4646463B7D3C2F7374796C653E0D0A3C672069643D2250686F6E65223E0D0A09
+            093C7061746820636C6173733D22426C75652220643D224D32372E372C32332E
+            366C2D352E332D352E33632D302E342D302E342D312D302E342D312E342C306C
+            2D322E382C322E38632D332E322D312E352D352E382D342E312D372E332D372E
+            336C322E382D322E3863302E342D302E342C302E342D312C302D312E34202026
+            23393B2623393B4C382E342C342E33632D302E342D302E342D312D302E342D31
+            2E352C304C342E332C362E3943342E312C372E322C342C372E342C342C372E37
+            43342C31382E392C31332E312C32382C32342E332C323863302E332C302C302E
+            352D302E312C302E372D302E336C322E362D322E3620202623393B2623393B43
+            32382E312C32342E362C32382E312C32342C32372E372C32332E367A222F3E0D
+            0A093C2F673E0D0A3C2F7376673E0D0A}
           Kind = bkGlyph
         end>
       Properties.OnButtonClick = edt_KontaktGeschaeftlichTelefonZentralePropertiesButtonClick
@@ -2029,37 +2184,50 @@ object frm_Contact: Tfrm_Contact
         item
           Default = True
           Glyph.SourceDPI = 96
-          Glyph.SourceHeight = 17
-          Glyph.SourceWidth = 17
+          Glyph.SourceHeight = 16
+          Glyph.SourceWidth = 16
           Glyph.Data = {
-            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
-            F40000001974455874536F6674776172650041646F626520496D616765526561
-            647971C9653C0000001D744558745469746C650050686F6E653B4D6F62696C65
-            3B43656C6C50686F6E653BCD5C0E9B000002EB49444154785EA5964D8B1C5514
-            869F5BDD5DAD628C8A08E242518906C409662271236E5CB977E1CE8522FA0FE2
-            2F7025CCA2133F4240C485E0D68D04C485041C61543486D62888E24020F64C64
-            A6BBEE39AFC5C18D4D0D74DF7AE9B369FA3EE7E1DC3E540D25B19CCDCD33E9E4
-            C6F3A7D3603049A40DA0A62C0BA16FE5F6E6D59D2FB6B7B7BF164B19D29D41AA
-            AAF38F3E7662F3AEE3F720122549A8DE9BDD3CF3CBF4DA047816C8AB0A8C206D
-            1C3B7637EE02F47F70829D6FAEB0981F02508F6FE3D4E9B32C0F53C09D2D03D2
-            53C15C4360001A9944579260E3E9B321022011A2E2A8A80E26B0AA409284DC39
-            FEC84952AA3A2CE21311D0D55D7266D7AF222998EB0880C0DD91E0C4930F5192
-            6BDFFF1A0C44642D0149B81B315A1725710F06920A0450D8BB0BEB25E0885201
-            73A24A05E27CA10012EE19732F9E80B90703950A5834EF21108C320149981B9E
-            CB271067DD9054BE05D9855999402EDD02490861D902602ADD020B46D0A4D505
-            A6D3290F3FFECC7F00B5E594C4B28291730EE6CA02FBFBFB4C7FFE8D7BEF7B80
-            3BACC7169833DB0B5630D7DA82DC34FCF1E72EF9FE190F2E9CF1309148AC1221
-            E659FCBE3B63B765B4ACC22DB0CC3F870D376E2DA812AD4445DDD6B04A512911
-            9120BBA216D999B7E522CE9A6524950B5876B209A0851B60AC1ACBDE47C0630B
-            B279F91A5A3082553E0173B27BF19FB0FF15944DA0BF0072CC0CEBB786C1A0F4
-            0ADC32EEC2FBBC0FF4BB02C3F2829DCB5728893C07A34C8010E0E6779F76809D
-            A69993DB0AC868CCA8AD545547B1CA9F865D59CC0F78E3D59779FDB55700B8F0
-            DE2526EF7F4C3DBEBD9B55FE42D22D909B79347FEE859700B8FCD9476C4D2E31
-            1CD674A6700D9B0423736739290D38FFEE45BEFCFC135282C9858BF19D77FC76
-            5055485AAC2B2097FD902A4E258765896A30646BF221EF6C7D403419D60C4775
-            082C374F15B8EC4740EB08D8C1ADBFDFC2F576AAAA278E164D00E4DC447524CB
-            FDA7C383BD7380AD23D0DCF8EBFA57C08BC018489445C01CD8033A0DFF0511EC
-            718FFFDC32660000000049454E44AE426082}
+            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+            462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+            617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+            2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+            77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+            22307078222076696577426F783D2230203020333220333222207374796C653D
+            22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+            3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+            303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+            63653D227072657365727665223E2E426C75657B66696C6C3A23313137374437
+            3B7D262331333B262331303B2623393B2E59656C6C6F777B66696C6C3A234646
+            423131353B7D262331333B262331303B2623393B2E5265647B66696C6C3A2344
+            31314331433B7D262331333B262331303B2623393B2E477265656E7B66696C6C
+            3A233033394332333B7D262331333B262331303B2623393B2E426C61636B7B66
+            696C6C3A233732373237323B7D262331333B262331303B2623393B2E57686974
+            657B66696C6C3A234646464646463B7D262331333B262331303B2623393B2E73
+            74307B6F7061636974793A302E353B7D262331333B262331303B2623393B2E73
+            74317B6F7061636974793A302E37353B7D262331333B262331303B2623393B2E
+            7374327B646973706C61793A6E6F6E653B7D262331333B262331303B2623393B
+            2E7374337B646973706C61793A696E6C696E653B66696C6C3A23464642313135
+            3B7D262331333B262331303B2623393B2E7374347B646973706C61793A696E6C
+            696E653B7D262331333B262331303B2623393B2E7374357B646973706C61793A
+            696E6C696E653B6F7061636974793A302E37353B7D262331333B262331303B26
+            23393B2E7374367B646973706C61793A696E6C696E653B6F7061636974793A30
+            2E353B7D262331333B262331303B2623393B2E7374377B646973706C61793A69
+            6E6C696E653B66696C6C3A233033394332333B7D262331333B262331303B2623
+            393B2E7374387B646973706C61793A696E6C696E653B66696C6C3A2344313143
+            31433B7D262331333B262331303B2623393B2E7374397B646973706C61793A69
+            6E6C696E653B66696C6C3A233131373744373B7D262331333B262331303B2623
+            393B2E737431307B646973706C61793A696E6C696E653B66696C6C3A23464646
+            4646463B7D3C2F7374796C653E0D0A3C672069643D2250686F6E65223E0D0A09
+            093C7061746820636C6173733D22426C75652220643D224D32372E372C32332E
+            366C2D352E332D352E33632D302E342D302E342D312D302E342D312E342C306C
+            2D322E382C322E38632D332E322D312E352D352E382D342E312D372E332D372E
+            336C322E382D322E3863302E342D302E342C302E342D312C302D312E34202026
+            23393B2623393B4C382E342C342E33632D302E342D302E342D312D302E342D31
+            2E352C304C342E332C362E3943342E312C372E322C342C372E342C342C372E37
+            43342C31382E392C31332E312C32382C32342E332C323863302E332C302C302E
+            352D302E312C302E372D302E336C322E362D322E3620202623393B2623393B43
+            32382E312C32342E362C32382E312C32342C32372E372C32332E367A222F3E0D
+            0A093C2F673E0D0A3C2F7376673E0D0A}
           Kind = bkGlyph
         end>
       Properties.OnButtonClick = edt_KontaktGeschaeftlichTelefonDurchwahlPropertiesButtonClick
@@ -2079,37 +2247,26 @@ object frm_Contact: Tfrm_Contact
         item
           Default = True
           Glyph.SourceDPI = 96
-          Glyph.SourceHeight = 17
-          Glyph.SourceWidth = 17
+          Glyph.SourceHeight = 16
+          Glyph.SourceWidth = 16
           Glyph.Data = {
-            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
-            F40000001974455874536F6674776172650041646F626520496D616765526561
-            647971C9653C0000001D744558745469746C650050686F6E653B4D6F62696C65
-            3B43656C6C50686F6E653BCD5C0E9B000002EB49444154785EA5964D8B1C5514
-            869F5BDD5DAD628C8A08E242518906C409662271236E5CB977E1CE8522FA0FE2
-            2F7025CCA2133F4240C485E0D68D04C485041C61543486D62888E24020F64C64
-            A6BBEE39AFC5C18D4D0D74DF7AE9B369FA3EE7E1DC3E540D25B19CCDCD33E9E4
-            C6F3A7D3603049A40DA0A62C0BA16FE5F6E6D59D2FB6B7B7BF164B19D29D41AA
-            AAF38F3E7662F3AEE3F720122549A8DE9BDD3CF3CBF4DA047816C8AB0A8C206D
-            1C3B7637EE02F47F70829D6FAEB0981F02508F6FE3D4E9B32C0F53C09D2D03D2
-            53C15C4360001A9944579260E3E9B321022011A2E2A8A80E26B0AA409284DC39
-            FEC84952AA3A2CE21311D0D55D7266D7AF222998EB0880C0DD91E0C4930F5192
-            6BDFFF1A0C44642D0149B81B315A1725710F06920A0450D8BB0BEB25E0885201
-            73A24A05E27CA10012EE19732F9E80B90703950A5834EF21108C320149981B9E
-            CB271067DD9054BE05D9855999402EDD02490861D902602ADD020B46D0A4D505
-            A6D3290F3FFECC7F00B5E594C4B28291730EE6CA02FBFBFB4C7FFE8D7BEF7B80
-            3BACC7169833DB0B5630D7DA82DC34FCF1E72EF9FE190F2E9CF1309148AC1221
-            E659FCBE3B63B765B4ACC22DB0CC3F870D376E2DA812AD4445DDD6B04A512911
-            9120BBA216D999B7E522CE9A6524950B5876B209A0851B60AC1ACBDE47C0630B
-            B279F91A5A3082553E0173B27BF19FB0FF15944DA0BF0072CC0CEBB786C1A0F4
-            0ADC32EEC2FBBC0FF4BB02C3F2829DCB5728893C07A34C8010E0E6779F76809D
-            A69993DB0AC868CCA8AD545547B1CA9F865D59CC0F78E3D59779FDB55700B8F0
-            DE2526EF7F4C3DBEBD9B55FE42D22D909B79347FEE859700B8FCD9476C4D2E31
-            1CD674A6700D9B0423736739290D38FFEE45BEFCFC135282C9858BF19D77FC76
-            5055485AAC2B2097FD902A4E258765896A30646BF221EF6C7D403419D60C4775
-            082C374F15B8EC4740EB08D8C1ADBFDFC2F576AAAA278E164D00E4DC447524CB
-            FDA7C383BD7380AD23D0DCF8EBFA57C08BC018489445C01CD8033A0DFF0511EC
-            718FFFDC32660000000049454E44AE426082}
+            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+            462D38223F3E0D0A3C73766720783D223070782220793D223070782220766965
+            77426F783D22302030203332203332222076657273696F6E3D22312E31222078
+            6D6C6E733D22687474703A2F2F7777772E77332E6F72672F323030302F737667
+            2220786D6C6E733A786C696E6B3D22687474703A2F2F7777772E77332E6F7267
+            2F313939392F786C696E6B2220656E61626C652D6261636B67726F756E643D22
+            6E6577203020302033322033322220786D6C3A73706163653D22707265736572
+            7665222069643D224C617965725F31223E262331333B262331303B20203C7374
+            796C6520747970653D22746578742F637373223E2E426C75657B66696C6C3A23
+            3131373744373B7D3C2F7374796C653E0D0A3C7061746820643D224D32332C32
+            483943382E342C322C382C322E342C382C3376323663302C302E362C302E342C
+            312C312C3168313463302E362C302C312D302E342C312D3156334332342C322E
+            342C32332E362C322C32332C327A204D31362C32382020632D312E312C302D32
+            2D302E392D322D3263302D312E312C302E392D322C322D3273322C302E392C32
+            2C324331382C32372E312C31372E312C32382C31362C32387A204D32322C3232
+            48313056346831325632327A222066696C6C3D22233131373744372220636C61
+            73733D22426C7565222F3E0D0A3C2F7376673E0D0A}
           Kind = bkGlyph
         end>
       Properties.OnButtonClick = edt_GeschaeftlichHandyPropertiesButtonClick
@@ -2129,19 +2286,29 @@ object frm_Contact: Tfrm_Contact
         item
           Default = True
           Glyph.SourceDPI = 96
-          Glyph.SourceHeight = 17
-          Glyph.SourceWidth = 17
+          Glyph.SourceHeight = 16
+          Glyph.SourceWidth = 16
           Glyph.Data = {
-            89504E470D0A1A0A0000000D4948445200000020000000200806000000737A7A
-            F40000001974455874536F6674776172650041646F626520496D616765526561
-            647971C9653C0000001E744558745469746C65004C65747465723B652D6D6169
-            6C3B656D61696C3B6D61696C1A9193DA000000AE49444154785EEDD6B109C340
-            0C85E16C76AD9BAC2470A6F20ADEC3E03114074444D2FC16CF218D8A5709F4BE
-            E38ABB9BBBFF351F830634A001F7C7328EAC47FCEAC4DE41801D0AD4EC04F0C8
-            0B335F01883DEFDD670106886AB915008010CA0B004014CB050022B85C073082
-            CB750023B89C017CB244D05C00D0C91241730180771A089E0B00BC533B399F8B
-            002ECFE49C10554096EBB1CA5BB041819A8D00D3AF9EE4D83BF597EC3B0D6840
-            039E36D3EC54622E2CFC0000000049454E44AE426082}
+            3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554
+            462D38223F3E0D0A3C7376672076657273696F6E3D22312E31222069643D224C
+            617965725F312220786D6C6E733D22687474703A2F2F7777772E77332E6F7267
+            2F323030302F7376672220786D6C6E733A786C696E6B3D22687474703A2F2F77
+            77772E77332E6F72672F313939392F786C696E6B2220783D223070782220793D
+            22307078222076696577426F783D2230203020333220333222207374796C653D
+            22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
+            3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
+            303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+            63653D227072657365727665223E2E57686974657B66696C6C3A234646464646
+            463B7D262331333B262331303B2623393B2E426C75657B66696C6C3A23313137
+            3744373B7D3C2F7374796C653E0D0A3C672069643D224D61696C223E0D0A0909
+            3C7265637420793D22342220636C6173733D22426C7565222077696474683D22
+            333222206865696768743D223234222F3E0D0A09093C7265637420783D223222
+            20793D22362220636C6173733D225768697465222077696474683D2232382220
+            6865696768743D223230222F3E0D0A09093C706F6C79676F6E20636C6173733D
+            22426C75652220706F696E74733D2233302C382031362C313820322C3820322C
+            31302031302E342C313620322C323220322C32342031312E382C31372031362C
+            32302032302E322C31372033302C32342033302C32322032312E362C31362033
+            302C3130202623393B222F3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
           Kind = bkGlyph
         end>
       Style.HotTrack = False
@@ -2172,7 +2339,6 @@ object frm_Contact: Tfrm_Contact
       AlignHorz = ahClient
       AlignVert = avClient
       CaptionOptions.Text = 'Zus'#228'tzlich Informationen'
-      ItemIndex = 1
       LayoutDirection = ldTabbed
       ShowBorder = False
       Index = 1
@@ -2489,6 +2655,7 @@ object frm_Contact: Tfrm_Contact
       AlignVert = avClient
       CaptionOptions.Text = 'New Group'
       SizeOptions.Height = 800
+      ItemIndex = 1
       LayoutDirection = ldTabbed
       Padding.AssignedValues = [lpavTop]
       ShowBorder = False
@@ -3187,7 +3354,6 @@ object frm_Contact: Tfrm_Contact
     LookAndFeel.NativeStyle = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 112
     Top = 488

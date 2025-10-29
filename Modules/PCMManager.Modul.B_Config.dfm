@@ -620,6 +620,7 @@ object frm_Config: Tfrm_Config
         Navigator.Buttons.CustomButtons = <>
         FilterBox.CustomizeDialog = False
         ScrollbarAnnotations.CustomAnnotations = <>
+        OnCustomDrawCell = grdDBTblView_FeiertageCustomDrawCell
         DataController.DataSource = ds_FT
         DataController.Filter.PercentWildcard = '*'
         DataController.Filter.UnderscoreWildcard = '?'
@@ -826,13 +827,13 @@ object frm_Config: Tfrm_Config
       TabOrder = 28
       Visible = False
       OnExit = btn_AufgabenSaveClick
-      Width = 454
+      Width = 456
     end
     object grd_Aufgabenarten: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1073
-      Height = 281
+      Width = 1077
+      Height = 287
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -917,12 +918,12 @@ object frm_Config: Tfrm_Config
       TabOrder = 29
       Visible = False
       OnExit = btn_AufgabenSaveClick
-      Width = 457
+      Width = 459
     end
     object bardckctrl_Aufgabenarten: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1073
+      Width = 1077
       Height = 63
       Align = dalNone
       AllowDocking = False
@@ -949,7 +950,7 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       TabOrder = 41
       Visible = False
-      Width = 452
+      Width = 454
     end
     object cmbbx_AufgabenSonstigesAdresseEigen: TcxDBLookupComboBox
       AlignWithMargins = True
@@ -971,12 +972,12 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       TabOrder = 37
       Visible = False
-      Width = 450
+      Width = 452
     end
     object bardckctrl_AufgabenSonstiges: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1077
+      Width = 1081
       Height = 63
       Align = dalNone
       BarManager = brmgr_Config
@@ -991,7 +992,7 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       TabOrder = 36
       Visible = False
-      Width = 450
+      Width = 452
     end
     object mskedt_AufgabenSonstigesStunden: TcxDBCurrencyEdit
       Left = 10000
@@ -1003,7 +1004,7 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       TabOrder = 40
       Visible = False
-      Width = 452
+      Width = 454
     end
     object cmbbx_AufgabenSonstigesBundeslandFirma: TcxDBLookupComboBox
       Left = 10000
@@ -1020,7 +1021,7 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       TabOrder = 42
       Visible = False
-      Width = 452
+      Width = 454
     end
     object cmbbx_AufgabenSonstigesBundeslandEigen: TcxDBLookupComboBox
       AlignWithMargins = True
@@ -1042,7 +1043,7 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       TabOrder = 38
       Visible = False
-      Width = 450
+      Width = 452
     end
     object edt_AufgabenSonstigesAccToDo: TcxDBTextEdit
       Left = 10000
@@ -1053,7 +1054,7 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       TabOrder = 39
       Visible = False
-      Width = 450
+      Width = 452
     end
     object edt_AufgabenSonstigesAccMail: TcxDBTextEdit
       Left = 10000
@@ -1064,13 +1065,13 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       TabOrder = 43
       Visible = False
-      Width = 452
+      Width = 454
     end
     object grd_StundenplanConfig: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1077
-      Height = 281
+      Width = 1081
+      Height = 287
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1168,7 +1169,7 @@ object frm_Config: Tfrm_Config
       TabOrder = 47
       Visible = False
       OnExit = btn_FachSaveClick
-      Width = 469
+      Width = 471
     end
     object colcmbbx_StundenplanConfig_LabelColor: TcxDBColorComboBox
       Left = 10000
@@ -1191,7 +1192,7 @@ object frm_Config: Tfrm_Config
       TabOrder = 46
       Visible = False
       OnExit = btn_FachSaveClick
-      Width = 470
+      Width = 472
     end
     object edt_StundenplanConfig_FachBezeichnung: TcxDBTextEdit
       Left = 10000
@@ -1210,12 +1211,12 @@ object frm_Config: Tfrm_Config
       TabOrder = 45
       Visible = False
       OnExit = btn_FachSaveClick
-      Width = 1011
+      Width = 1015
     end
     object brdckctrl_Schulfach: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1077
+      Width = 1081
       Height = 63
       Align = dalNone
       BarManager = brmgr_Config
@@ -1242,7 +1243,7 @@ object frm_Config: Tfrm_Config
       TabOrder = 51
       Visible = False
       OnExit = btn_FachUSaveClick
-      Width = 469
+      Width = 471
     end
     object colcmbbx_StundenplanConfigUhr_LabelColor: TcxDBColorComboBox
       Left = 10000
@@ -1265,12 +1266,12 @@ object frm_Config: Tfrm_Config
       TabOrder = 50
       Visible = False
       OnExit = btn_FachUSaveClick
-      Width = 470
+      Width = 472
     end
     object grd_StundenplanConfigUhr: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1077
+      Width = 1081
       Height = 50
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
@@ -1341,7 +1342,7 @@ object frm_Config: Tfrm_Config
     object brdckctrl_SchulfachUhr: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1077
+      Width = 1081
       Height = 63
       Align = dalNone
       BarManager = brmgr_Config
@@ -1350,7 +1351,7 @@ object frm_Config: Tfrm_Config
     object grd_EmailConfig: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1077
+      Width = 1081
       Height = 100
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
@@ -1493,7 +1494,7 @@ object frm_Config: Tfrm_Config
       TabOrder = 54
       Visible = False
       OnExit = btn_EmailConfigSaveClick
-      Width = 826
+      Width = 832
     end
     object edt_EmailConfig_Kennwort: TcxDBTextEdit
       Left = 10000
@@ -1575,7 +1576,7 @@ object frm_Config: Tfrm_Config
       Style.IsFontAssigned = True
       TabOrder = 60
       Visible = False
-      Width = 826
+      Width = 832
     end
     object edt_EmailConfig_PostEingangServer: TcxDBTextEdit
       Left = 10000
@@ -1596,12 +1597,12 @@ object frm_Config: Tfrm_Config
       Visible = False
       OnExit = btn_EmailConfigSaveClick
       Height = 19
-      Width = 826
+      Width = 832
     end
     object brdckctrl_Email: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1077
+      Width = 1081
       Height = 63
       Align = dalNone
       BarManager = brmgr_Config
@@ -1610,7 +1611,7 @@ object frm_Config: Tfrm_Config
     object bardckctrl_Postfach: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1077
+      Width = 1081
       Height = 63
       Align = dalNone
       BarManager = brmgr_Config
@@ -1742,8 +1743,8 @@ object frm_Config: Tfrm_Config
     object grd_Postfachmain: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1029
-      Height = 100
+      Width = 1035
+      Height = 110
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -2394,7 +2395,7 @@ object frm_Config: Tfrm_Config
       TabOrder = 56
       Visible = False
       OnExit = btn_EmailConfigSaveClick
-      Width = 825
+      Width = 831
     end
     object cxDBCheckBox1: TcxDBCheckBox
       Left = 10000
@@ -4002,7 +4003,6 @@ object frm_Config: Tfrm_Config
     LookAndFeel.NativeStyle = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 400
     Top = 313
@@ -4509,7 +4509,7 @@ object frm_Config: Tfrm_Config
       Visible = ivAlways
       OnClick = btn_CalFTinCalClick
       AutoGrayScale = False
-      LargeImageIndex = 12
+      LargeImageIndex = 135
       Width = 125
     end
     object btn_CalFTDelete: TdxBarLargeButton
@@ -4886,13 +4886,21 @@ object frm_Config: Tfrm_Config
         22307078222076696577426F783D2230203020333220333222207374796C653D
         22656E61626C652D6261636B67726F756E643A6E657720302030203332203332
         3B2220786D6C3A73706163653D227072657365727665223E262331333B262331
-        303B3C7374796C6520747970653D22746578742F637373223E2E426C75657B66
-        696C6C3A233131373744373B7D3C2F7374796C653E0D0A3C672069643D224D61
-        696C5F315F223E0D0A09093C706F6C79676F6E20636C6173733D22426C756522
-        20706F696E74733D22302C313120302C32382033322C32382033322C31312031
-        362C3231202623393B222F3E0D0A09093C706F6C79676F6E20636C6173733D22
-        426C75652220706F696E74733D22302C3420302C382031362C31382033322C38
-        2033322C34202623393B222F3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
+        303B3C7374796C6520747970653D22746578742F6373732220786D6C3A737061
+        63653D227072657365727665223E2E426C75657B66696C6C3A23313137374437
+        3B7D262331333B262331303B2623393B2E59656C6C6F777B66696C6C3A234646
+        423131353B7D262331333B262331303B2623393B2E426C61636B7B66696C6C3A
+        233732373237323B7D262331333B262331303B2623393B2E477265656E7B6669
+        6C6C3A233033394332333B7D262331333B262331303B2623393B2E5265647B66
+        696C6C3A234431314331433B7D262331333B262331303B2623393B2E7374307B
+        6F7061636974793A302E37353B7D262331333B262331303B2623393B2E737431
+        7B6F7061636974793A302E353B7D3C2F7374796C653E0D0A3C672069643D2243
+        6865636B436972636C6564223E0D0A09093C7061746820636C6173733D224772
+        65656E2220643D224D31362C3443392E342C342C342C392E342C342C31366330
+        2C362E362C352E342C31322C31322C31327331322D352E342C31322D31324332
+        382C392E342C32322E362C342C31362C347A204D31342C32326C2D362D366C32
+        2D326C342C346C382D386C322C3220202623393B2623393B4C31342C32327A22
+        2F3E0D0A093C2F673E0D0A3C2F7376673E0D0A}
       OnClick = btn_EmailConfig_TestClick
       AutoGrayScale = False
     end

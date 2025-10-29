@@ -265,7 +265,6 @@ object frm_Calendar: Tfrm_Calendar
     LookAndFeel.NativeStyle = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseF10ForMenu = False
     UseSystemFont = True
     Left = 1205
@@ -795,9 +794,9 @@ object frm_Calendar: Tfrm_Calendar
       Width = 90
     end
     object btn_FilterKalender: TdxBarLargeButton
-      Caption = 'Kalender filter'
+      Caption = 'Kalender filtern'
       Category = 0
-      Hint = 'Kalender filter'
+      Hint = 'Kalender filtern'
       Visible = ivAlways
       LargeGlyph.SourceDPI = 96
       LargeGlyph.Data = {

@@ -21,8 +21,8 @@ object frm_Terminsuche: Tfrm_Terminsuche
     Align = alClient
     TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitWidth = 1269
-    ExplicitHeight = 852
+    ExplicitWidth = 894
+    ExplicitHeight = 683
     object grd_Adress: TcxGrid
       Left = 12
       Top = 44
@@ -107,6 +107,8 @@ object frm_Terminsuche: Tfrm_Terminsuche
       Width = 100
       Height = 25
       Caption = 'Ok'
+      OptionsImage.ImageIndex = 56
+      OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 2
       OnClick = btn_OkClick
     end
@@ -116,6 +118,8 @@ object frm_Terminsuche: Tfrm_Terminsuche
       Width = 100
       Height = 25
       Caption = 'Abbrechen'
+      OptionsImage.ImageIndex = 57
+      OptionsImage.Images = dm_PCM.imglst_16x16
       TabOrder = 3
       OnClick = btn_AbortClick
     end

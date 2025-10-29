@@ -1128,7 +1128,7 @@ var
   strlstICS,strlstListe: TStringList;
   i: integer;
 begin
-  dm_PCM.qry_work1.SQL.Text:= 'Select ID,url,user,passwort,kalendername,ID_Benutzer From manager_kalender_Konfiguration_ftp Where ID_Benutzer = :ID_Benutzer ';;
+  dm_PCM.qry_work1.SQL.Text:= 'Select ID,url,user,passwort,kalendername,ID_Benutzer From manager_kalender_Konfiguration_ftp Where ID_Benutzer = :ID_Benutzer ';
   dm_PCM.qry_work1.ParamByName('ID_Benutzer').AsInteger:= dm_PCM.iIDBenutzerPCM;
   dm_PCM.qry_work1.open;
   sFilename:=  GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\'+ dm_PCM.qry_work1.FieldByName('kalendername').asString + '.ics';
@@ -1506,6 +1506,7 @@ var
 begin
   if btn_FilterKalender.tag = 1 then
   begin
+    btn_FilterKalender.Caption := 'Kalender filtern';
     btn_FilterKalender.tag:= 0;
     dm_PCM.qry_Kalender_Kalender.sql.Text:= 'Select ID,EventType,Caption,Location,Message,Start,' +
                          'Finish,Options,Completeday,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'+
@@ -1523,12 +1524,12 @@ begin
     frm_PCM_KalenderFilter.free;
     if sKalenderFilter <> '' then
     begin
+      btn_FilterKalender.Caption := 'Filter löschen';
       dm_PCM.qry_Kalender_Kalender.sql.Text:= 'Select ID,EventType,Caption,Location,Message,Start,' +
                                   'Finish,Options,Completeday,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'+
                                   'ReminderMinutesBeforeStart,LabelColor,Fontcolor, ID_Benutzer,ID_kontakte From manager_Kalender ' +
-                                  'Where ID_Benutzer = :ID and Kalendername = :Kalender';
+                                  'Where ID_Benutzer = :ID and Kalendername IN (' + sKalenderFilter + ')';
       dm_PCM.qry_Kalender_Kalender.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
-      dm_PCM.qry_Kalender_Kalender.ParamByName('Kalender').asString:= sKalenderFilter;
       dm_PCM.qry_Kalender_Kalender.Open;
     end;
     btn_FilterKalender.tag:= 1;

@@ -333,6 +333,8 @@ type
     dxBarLargeButton1: TdxBarLargeButton;
     dxBarLargeButton2: TdxBarLargeButton;
     dxBarLargeButton3: TdxBarLargeButton;
+    dxLayoutSplitterItem1: TdxLayoutSplitterItem;
+    dxLayoutSplitterItem2: TdxLayoutSplitterItem;
     procedure FormShow(Sender: TObject);
     procedure edt_SuchePropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
     procedure edt_SucheEnter(Sender: TObject);

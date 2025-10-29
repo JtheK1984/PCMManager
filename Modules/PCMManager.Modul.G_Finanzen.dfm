@@ -25,13 +25,12 @@ object frm_finanzen: Tfrm_finanzen
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
     object btn_FinanzenDrucken: TcxButton
-      Left = 10000
-      Top = 10000
-      Width = 1220
+      Left = 26
+      Top = 382
+      Width = 1224
       Height = 31
       Caption = 'detailierten Bericht drucken'
       TabOrder = 0
-      Visible = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -57,7 +56,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 3
       Visible = False
       OnExit = btn_FinEinSaveClick
-      Width = 546
+      Width = 548
     end
     object edt_FinEinBetrag: TcxDBCurrencyEdit
       Left = 10000
@@ -76,7 +75,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 7
       Visible = False
       OnExit = btn_FinEinSaveClick
-      Width = 540
+      Width = 542
     end
     object edt_FinEinBEz: TcxDBTextEdit
       Left = 10000
@@ -95,12 +94,12 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 4
       Visible = False
       OnExit = btn_FinEinSaveClick
-      Width = 546
+      Width = 548
     end
     object btn_FinEinFix: TcxButton
       Left = 10000
       Top = 10000
-      Width = 619
+      Width = 621
       Height = 21
       Caption = 'Fixbetrag '#252'bernehmen'
       TabOrder = 5
@@ -126,13 +125,13 @@ object frm_finanzen: Tfrm_finanzen
       Visible = False
       OnExit = btn_FinEinSaveClick
       Height = 19
-      Width = 540
+      Width = 542
     end
     object grd_Finanzen_Einnahmen: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1220
-      Height = 489
+      Width = 1224
+      Height = 495
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -211,7 +210,7 @@ object frm_finanzen: Tfrm_finanzen
     object dxBarDockControl1: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1220
+      Width = 1224
       Height = 63
       Align = dalNone
       BarManager = brmgr_Finanzen
@@ -309,7 +308,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 22
       Visible = False
       OnExit = btn_FinAusSaveClick
-      Width = 349
+      Width = 351
     end
     object cbx_FinAusMonat: TcxDBImageComboBox
       Left = 10000
@@ -378,7 +377,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 21
       Visible = False
       OnExit = btn_FinAusSaveClick
-      Width = 349
+      Width = 351
     end
     object chkbx_FinAusFixkosten: TcxDBCheckBox
       Left = 10000
@@ -420,7 +419,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 13
       Visible = False
       OnExit = btn_FinAusSaveClick
-      Width = 296
+      Width = 297
     end
     object edt_FinAusBez: TcxDBTextEdit
       Left = 10000
@@ -439,7 +438,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 15
       Visible = False
       OnExit = btn_FinAusSaveClick
-      Width = 296
+      Width = 297
     end
     object edt_FinAusBIC: TcxDBTextEdit
       Left = 10000
@@ -458,7 +457,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 18
       Visible = False
       OnExit = btn_FinAusSaveClick
-      Width = 301
+      Width = 302
     end
     object edt_FinAusIBAN: TcxDBTextEdit
       Left = 10000
@@ -477,7 +476,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 17
       Visible = False
       OnExit = btn_FinAusSaveClick
-      Width = 301
+      Width = 302
     end
     object edt_FinAusName: TcxDBTextEdit
       Left = 10000
@@ -496,7 +495,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 12
       Visible = False
       OnExit = btn_FinAusSaveClick
-      Width = 296
+      Width = 297
     end
     object edt_FinAusVerwendung: TcxDBTextEdit
       Left = 10000
@@ -515,12 +514,12 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 16
       Visible = False
       OnExit = btn_FinAusSaveClick
-      Width = 301
+      Width = 302
     end
     object btn_FinAusFix: TcxButton
       Left = 10000
       Top = 10000
-      Width = 404
+      Width = 405
       Height = 21
       Caption = 'Fixbetrag '#252'bernehmen'
       TabOrder = 19
@@ -544,13 +543,13 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 14
       Visible = False
       OnExit = btn_FinAusSaveClick
-      Width = 296
+      Width = 297
     end
     object grd_Finanzen_Ausgaben: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1238
-      Height = 464
+      Width = 1240
+      Height = 470
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -719,7 +718,7 @@ object frm_finanzen: Tfrm_finanzen
     object dxBarDockControl2: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1220
+      Width = 1224
       Height = 63
       Align = dalNone
       BarManager = brmgr_Finanzen
@@ -955,8 +954,8 @@ object frm_finanzen: Tfrm_finanzen
     object cxGrid1: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1238
-      Height = 573
+      Width = 1240
+      Height = 581
       BevelInner = bvLowered
       BevelKind = bkFlat
       BorderStyle = cxcbsNone
@@ -1065,7 +1064,7 @@ object frm_finanzen: Tfrm_finanzen
     object dxBarDockControl3: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1220
+      Width = 1224
       Height = 63
       Align = dalNone
       BarManager = brmgr_Finanzen
@@ -1163,7 +1162,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 40
       Visible = False
       OnExit = btn_BelegeSaveClick
-      Width = 251
+      Width = 252
     end
     object cx_BelegMonat: TcxDBImageComboBox
       Left = 10000
@@ -1232,7 +1231,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 39
       Visible = False
       OnExit = btn_BelegeSaveClick
-      Width = 264
+      Width = 265
     end
     object edt_BelegeNummer: TcxDBTextEdit
       Left = 10000
@@ -1251,7 +1250,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 34
       Visible = False
       OnExit = btn_BelegeSaveClick
-      Width = 552
+      Width = 554
     end
     object edt_BelegeBetrag: TcxDBCurrencyEdit
       Left = 10000
@@ -1263,7 +1262,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 37
       Visible = False
       OnExit = btn_BelegeSaveClick
-      Width = 551
+      Width = 553
     end
     object edt_BelegeAussteller: TcxDBTextEdit
       Left = 10000
@@ -1282,7 +1281,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 36
       Visible = False
       OnExit = btn_BelegeSaveClick
-      Width = 552
+      Width = 554
     end
     object cbx_BelegeKategorie: TcxDBImageComboBox
       Left = 10000
@@ -1328,7 +1327,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 38
       Visible = False
       OnExit = btn_BelegeSaveClick
-      Width = 551
+      Width = 553
     end
     object edt_BelegDatum: TcxDBDateEdit
       Left = 10000
@@ -1347,13 +1346,13 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 35
       Visible = False
       OnExit = btn_BelegeSaveClick
-      Width = 552
+      Width = 554
     end
     object grd_Finanzen_Belege: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1220
-      Height = 491
+      Width = 1224
+      Height = 497
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1520,18 +1519,19 @@ object frm_finanzen: Tfrm_finanzen
       end
     end
     object dxBarDockControl4: TdxBarDockControl
-      Left = 28
-      Top = 76
-      Width = 1220
+      Left = 10000
+      Top = 10000
+      Width = 1224
       Height = 63
       Align = dalNone
       BarManager = brmgr_Finanzen
+      Visible = False
     end
     object grd_Finanzen_Gutscheine: TcxGrid
-      Left = 28
-      Top = 292
-      Width = 1220
-      Height = 491
+      Left = 10000
+      Top = 10000
+      Width = 1224
+      Height = 497
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1541,6 +1541,7 @@ object frm_finanzen: Tfrm_finanzen
       ParentFont = False
       TabOrder = 50
       TabStop = False
+      Visible = False
       LockedStateImageOptions.Effect = lsieDark
       object cxGridDBTableView2: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -1619,8 +1620,8 @@ object frm_finanzen: Tfrm_finanzen
       end
     end
     object edt_GutscheinNummer: TcxDBTextEdit
-      Left = 84
-      Top = 217
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Nummer'
       DataBinding.DataSource = ds_Gutschein
       ParentFont = False
@@ -1633,23 +1634,25 @@ object frm_finanzen: Tfrm_finanzen
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 44
+      Visible = False
       OnExit = btn_GutscheinSaveClick
-      Width = 547
+      Width = 549
     end
     object edt_GutscheinWert: TcxDBCurrencyEdit
-      Left = 699
-      Top = 217
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Wert'
       DataBinding.DataSource = ds_Gutschein
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 47
+      Visible = False
       OnExit = btn_GutscheinSaveClick
-      Width = 549
+      Width = 551
     end
     object edt_GutscheinAussteller: TcxDBTextEdit
-      Left = 84
-      Top = 242
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Bezeichnung'
       DataBinding.DataSource = ds_Gutschein
       ParentFont = False
@@ -1662,12 +1665,13 @@ object frm_finanzen: Tfrm_finanzen
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 45
+      Visible = False
       OnExit = btn_GutscheinSaveClick
-      Width = 547
+      Width = 549
     end
     object edt_GutscheinDatum: TcxDBDateEdit
-      Left = 84
-      Top = 267
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Datum'
       DataBinding.DataSource = ds_Gutschein
       ParentFont = False
@@ -1680,23 +1684,25 @@ object frm_finanzen: Tfrm_finanzen
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 46
+      Visible = False
       OnExit = btn_GutscheinSaveClick
-      Width = 547
+      Width = 549
     end
     object edt_GutscheinRestwert: TcxDBCurrencyEdit
-      Left = 699
-      Top = 242
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'Restwert'
       DataBinding.DataSource = ds_Gutschein
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 48
+      Visible = False
       OnExit = btn_GutscheinSaveClick
-      Width = 549
+      Width = 551
     end
     object edt_GutscheinPin: TcxDBTextEdit
-      Left = 699
-      Top = 267
+      Left = 10000
+      Top = 10000
       DataBinding.DataField = 'AbfragePin'
       DataBinding.DataSource = ds_Gutschein
       ParentFont = False
@@ -1709,8 +1715,9 @@ object frm_finanzen: Tfrm_finanzen
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 49
+      Visible = False
       OnExit = btn_GutscheinSaveClick
-      Width = 549
+      Width = 551
     end
     object edt_SucheEin: TcxButtonEdit
       Left = 10000
@@ -1751,7 +1758,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 2
       Visible = False
       Height = 25
-      Width = 1147
+      Width = 1153
     end
     object edt_SucheAus: TcxButtonEdit
       Left = 10000
@@ -1792,7 +1799,7 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 11
       Visible = False
       Height = 25
-      Width = 1141
+      Width = 1147
     end
     object edt_SucheBel: TcxButtonEdit
       Left = 10000
@@ -1833,11 +1840,11 @@ object frm_finanzen: Tfrm_finanzen
       TabOrder = 33
       Visible = False
       Height = 25
-      Width = 1154
+      Width = 1160
     end
     object edt_SucheGut: TcxButtonEdit
-      Left = 85
-      Top = 177
+      Left = 10000
+      Top = 10000
       AutoSize = False
       Properties.Buttons = <
         item
@@ -1872,13 +1879,14 @@ object frm_finanzen: Tfrm_finanzen
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 43
+      Visible = False
       Height = 25
-      Width = 1154
+      Width = 1160
     end
     object btn_FinEinNull: TcxButton
       Left = 10000
       Top = 10000
-      Width = 595
+      Width = 597
       Height = 21
       Caption = 'Fixbetrag auf 0 setzen'
       TabOrder = 8
@@ -1888,7 +1896,7 @@ object frm_finanzen: Tfrm_finanzen
     object btn_FinAusNull: TcxButton
       Left = 10000
       Top = 10000
-      Width = 435
+      Width = 437
       Height = 21
       Caption = 'Fixbetrag auf 0 setzen'
       TabOrder = 23
@@ -1907,7 +1915,6 @@ object frm_finanzen: Tfrm_finanzen
       Parent = lactrl_FinanzenGroup_Root
       AlignHorz = ahClient
       AlignVert = avClient
-      ItemIndex = 5
       LayoutDirection = ldTabbed
       ShowBorder = False
       Index = 0
@@ -3073,7 +3080,6 @@ object frm_finanzen: Tfrm_finanzen
     LookAndFeel.NativeStyle = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 616
     Top = 392
@@ -3345,7 +3351,7 @@ object frm_finanzen: Tfrm_finanzen
       Visible = ivAlways
       OnClick = btn_FinAusAllFIxClick
       AutoGrayScale = False
-      LargeImageIndex = 6
+      LargeImageIndex = 134
       SyncImageIndex = False
       ImageIndex = -1
     end
@@ -3356,7 +3362,7 @@ object frm_finanzen: Tfrm_finanzen
       Visible = ivAlways
       OnClick = btn_FinEinAllFIxClick
       AutoGrayScale = False
-      LargeImageIndex = 6
+      LargeImageIndex = 134
       SyncImageIndex = False
       ImageIndex = -1
     end
@@ -3367,7 +3373,7 @@ object frm_finanzen: Tfrm_finanzen
       Visible = ivAlways
       OnClick = btn_FinEinAllNullClick
       AutoGrayScale = False
-      LargeImageIndex = 6
+      LargeImageIndex = 134
       SyncImageIndex = False
       ImageIndex = -1
     end
@@ -3378,7 +3384,7 @@ object frm_finanzen: Tfrm_finanzen
       Visible = ivAlways
       OnClick = btn_FinAusAllNullClick
       AutoGrayScale = False
-      LargeImageIndex = 6
+      LargeImageIndex = 134
       SyncImageIndex = False
       ImageIndex = -1
     end

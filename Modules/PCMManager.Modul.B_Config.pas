@@ -115,6 +115,7 @@ uses
   Vcl.Themes,
   Vcl.VirtualImage,
   Winapi.Messages,
+  System.AnsiStrings,
   Winapi.Windows;
   {$EndRegion uses}
 type
@@ -589,6 +590,9 @@ type
     procedure qry_EmailConfigAfterScroll(DataSet: TDataSet);
     procedure qry_EmailPostfachMainAfterScroll(DataSet: TDataSet);
     procedure SetButtonsEnableVisible(DataSet: TDataSet);
+    procedure grdDBTblView_FeiertageCustomDrawCell(
+      Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
+      AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
   private
     { Private-Deklarationen }
     FOAuth2_Enhanced : TEnhancedOAuth2Authenticator;
@@ -1359,6 +1363,7 @@ var
   iAnzahl: integer;
   sBundesland: string;
   iID_Adresse: integer;
+  sBL: String;
 begin
   Application.CreateForm(Tfrm_FeiertageAktualisieren, frm_FeiertageAktualisieren);
   if frm_FeiertageAktualisieren.Execute(datTimVon, datTimbis) then
@@ -1395,6 +1400,24 @@ begin
 
       if iAnzahl = 0 then
       begin
+        case AnsiIndexStr(sBundesland, ['Baden-Württemberg','Bayern','Berlin','Brandenburg','Bremen','Hamburg','Hessen','Mecklenburg-Vorpommern','Niedersachsen','Nordrhein-Westfalen','Rheinland-Pfalz','Saarland','Sachsen','Sachsen-Anhalt','Schleswig-Holstein','Thüringen']) of
+          0:	sBL:= 'BW';
+          1:	sBL:= 'BY';
+          2:	sBL:= 'BE';
+          3:	sBL:= 'BB';
+          4:	sBL:= 'HB';
+          5:	sBL:= 'HH';
+          6:	sBL:= 'HE';
+          7:	sBL:= 'MV';
+          8:	sBL:= 'NI';
+          9:	sBL:= 'NW';
+          10: sBL:= 'RP';
+          11: sBL:= 'SL';
+          12: sBL:= 'SN';
+          13: sBL:= 'ST';
+          14: sBL:= 'SH';
+          15: sBL:= 'TH';
+        end;
         dm_PCM.qry_Work.SQL.text := 'Insert into manager_Kalender (ID_ADR_Wurzel,ID_Ansprechpartner,EventType,Caption,Location,Message,'
                           + 'Start,Finish,Options,Parent_ID,RecurrenceIndex,RecurrenceInfo,Reminder,ReminderDate,'
                           + 'ReminderMinutesBeforeStart,LabelColor,FontColor,ID_Benutzer,Kalendername,CompleteDay,Typ,GesendetAM,Aufgabenstatus,ID_IC_AufgabenArten,Erledigungsgrad,Zeitformat,ID_IC_Prioritaeten,AufgabenDauer) Values (:ID_ADR_Wurzel,:ID_Ansprechpartner,'
@@ -1418,7 +1441,7 @@ begin
         dm_PCM.qry_Work.ParamByName('FontColor').AsString := IntToStr(clBlack);
         dm_PCM.qry_Work.ParamByName('ID_IC_AufgabenArten').asInteger := 1;
         dm_PCM.qry_Work.ParamByName('ID').asInteger := dm_PCM.iIDBenutzerPCM;
-        dm_PCM.qry_Work.ParamByName('Kalender').AsString := 'Feiertage ' + dm_PCM.qry_work1.FieldByName('Jahr').AsString;
+        dm_PCM.qry_Work.ParamByName('Kalender').AsString := 'Feiertage ' + dm_PCM.qry_work1.FieldByName('Jahr').AsString + ' (' + sBL + ')';
         dm_PCM.qry_Work.ParamByName('ganzerTag').AsString := 'true';
         dm_PCM.qry_Work.ExecSQL;
         dm_PCM.qry_Work.Close;
@@ -2157,6 +2180,22 @@ begin
   FOAuth2_Enhanced := TEnhancedOAuth2Authenticator.Create(nil);
   IdHTTPServer1.Active := True;
 end;
+procedure Tfrm_Config.grdDBTblView_FeiertageCustomDrawCell(
+  Sender: TcxCustomGridTableView; ACanvas: TcxCanvas;
+  AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
+var
+  iJahr,iMonat,iTag: Word;
+begin
+  DecodeDate(Date,iJahr,iMonat,iTag);
+  if AViewInfo.GridRecord.Values[0] = IntToStr(iJahr) then
+  begin
+    ACanvas.Font.Style:= ACanvas.Font.Style + [fsBold]
+  end
+  else begin
+    ACanvas.Font.Style:= ACanvas.Font.Style - [fsBold]
+  end;
+end;
+
 {$Endregion}
 end.
 

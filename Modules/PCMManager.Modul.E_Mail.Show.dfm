@@ -304,7 +304,6 @@ object frm_PCM_MailShow: Tfrm_PCM_MailShow
     LookAndFeel.NativeStyle = False
     NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
     PopupMenuLinks = <>
-    Style = bmsUseLookAndFeel
     UseSystemFont = True
     Left = 320
     Top = 240

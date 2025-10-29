@@ -253,7 +253,6 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Modules\PCM.Manager.Strings.pas"/>
-        <DCCReference Include="Modules\PCMManager.Modul.E_Mail.Read.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -275,7 +274,6 @@ $(PreBuildEvent)]]></PreBuildEvent>
                     <Source Name="MainSource">PCMManager.dpr</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\ZMIComponents_Dsgn.bpl">ZMI Komponenten</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dcloffice2k290.bpl">Microsoft Office 2000 Beispiele für gekapselte Komponenten für Automatisierungsserver</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>

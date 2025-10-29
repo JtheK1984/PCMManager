@@ -78,7 +78,7 @@ uses
   VCLTee.TeeProcs,
   Winapi.Messages,
   Winapi.Windows, dxLayoutContainer, dxLayoutControl, dxLayoutcxEditAdapters,
-  dxUIAClasses, dxChartPalette;
+  dxUIAClasses, dxChartPalette, cxImageList;
   {$EndRegion Uses}
 type
   {$Region Types}
@@ -328,6 +328,7 @@ type
     dxLayoutGroup7: TdxLayoutGroup;
     ppmbtn_Belege: TMenuItem;
     ppmbtn_Gutscheine: TMenuItem;
+    cxImageList1: TcxImageList;
     procedure btn_CloseModulClick(Sender: TObject);
     procedure btn_ModulleisteClick(Sender: TObject);
     procedure btn_RefreshRightsClick(Sender: TObject);
