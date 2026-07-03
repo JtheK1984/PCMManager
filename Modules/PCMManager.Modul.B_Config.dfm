@@ -1351,7 +1351,7 @@ object frm_Config: Tfrm_Config
     object grd_EmailConfig: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1081
+      Width = 1077
       Height = 100
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
@@ -1494,7 +1494,7 @@ object frm_Config: Tfrm_Config
       TabOrder = 54
       Visible = False
       OnExit = btn_EmailConfigSaveClick
-      Width = 832
+      Width = 826
     end
     object edt_EmailConfig_Kennwort: TcxDBTextEdit
       Left = 10000
@@ -1576,7 +1576,7 @@ object frm_Config: Tfrm_Config
       Style.IsFontAssigned = True
       TabOrder = 60
       Visible = False
-      Width = 832
+      Width = 826
     end
     object edt_EmailConfig_PostEingangServer: TcxDBTextEdit
       Left = 10000
@@ -1597,12 +1597,12 @@ object frm_Config: Tfrm_Config
       Visible = False
       OnExit = btn_EmailConfigSaveClick
       Height = 19
-      Width = 832
+      Width = 826
     end
     object brdckctrl_Email: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1081
+      Width = 1077
       Height = 63
       Align = dalNone
       BarManager = brmgr_Config
@@ -1611,7 +1611,7 @@ object frm_Config: Tfrm_Config
     object bardckctrl_Postfach: TdxBarDockControl
       Left = 10000
       Top = 10000
-      Width = 1081
+      Width = 1077
       Height = 63
       Align = dalNone
       BarManager = brmgr_Config
@@ -1743,8 +1743,8 @@ object frm_Config: Tfrm_Config
     object grd_Postfachmain: TcxGrid
       Left = 10000
       Top = 10000
-      Width = 1035
-      Height = 110
+      Width = 1029
+      Height = 100
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -2291,6 +2291,7 @@ object frm_Config: Tfrm_Config
       AutoSize = False
       DataBinding.DataField = 'Authtype'
       DataBinding.DataSource = ds_EmailConfig
+      Properties.Alignment.Horz = taLeftJustify
       Properties.Items = <
         item
           Description = 'Basic Auth'
@@ -2395,7 +2396,7 @@ object frm_Config: Tfrm_Config
       TabOrder = 56
       Visible = False
       OnExit = btn_EmailConfigSaveClick
-      Width = 831
+      Width = 825
     end
     object cxDBCheckBox1: TcxDBCheckBox
       Left = 10000
@@ -3475,6 +3476,7 @@ object frm_Config: Tfrm_Config
       AlignHorz = ahClient
       AlignVert = avTop
       CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
       LayoutDirection = ldTabbed
       ShowBorder = False
       Index = 0
