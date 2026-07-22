@@ -4,6 +4,17 @@
 # Kurzbeschreibung:
   PCM - Manager
 
+# Beschreibung
+  Das Tool Enthält folgende Module:
+  - Kontaktmanagement
+  - Terminmanagement mit Kalender
+  - Stundenplanverwaltung
+  - E-Mail Client
+  - Passwortmanager
+  - Seriennummerverwaltung
+  - Haushaltsbuch mit Budgetplanung
+  - Gutscheinverwaltung (Rewe Guthabenkarte etc.)
+
 # Entwicklungsumgebung:
   DELPHI 12.3 Athens
 
@@ -35,4 +46,4 @@
   - PrepareCopy.cmd (erzeugte Versionen werden in das Inno-Setupverzeichnis abgelgt)
 
 # Stand:
-  12.08.2025
+  12.07.2026
