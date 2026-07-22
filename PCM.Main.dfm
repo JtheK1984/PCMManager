@@ -4024,10 +4024,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
           ExplicitWidth = 1050
           ExplicitHeight = 676
           object chartctrl_Birthday: TdxChartControl
-            Left = 26
-            Top = 75
-            Width = 1000
-            Height = 265
+            Left = 28
+            Top = 77
+            Width = 996
+            Height = 262
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -4051,10 +4051,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
             end
           end
           object chartctrl_Contact: TdxChartControl
-            Left = 26
-            Top = 399
-            Width = 482
-            Height = 264
+            Left = 28
+            Top = 400
+            Width = 479
+            Height = 261
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -4081,10 +4081,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
             end
           end
           object chartctrl_Adresses: TdxChartControl
-            Left = 544
-            Top = 399
-            Width = 482
-            Height = 264
+            Left = 545
+            Top = 400
+            Width = 479
+            Height = 261
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -9942,7 +9942,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     Left = 632
     Top = 392
     Bitmap = {
-      494C010102000800040010001000FFFFFFFF2100FFFFFFFFFFFFFFFF424D3600
+      494C010102000800040010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10078,7 +10078,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
-      00000000000000000000000000000000}
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000}
     DesignInfo = 25690744
     ImageInfo = <
       item
