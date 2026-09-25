@@ -69,13 +69,6 @@ uses
   Vcl.ImgList,
   Vcl.Menus,
   Vcl.Themes,
-  VCLTee.Chart,
-  VCLTee.DBChart,
-  VCLTee.Series,
-  VCLTee.TeeDBCrossTab,
-  VclTee.TeeGDIPlus,
-  VCLTee.TeEngine,
-  VCLTee.TeeProcs,
   Winapi.Messages,
   Winapi.Windows, dxLayoutContainer, dxLayoutControl, dxLayoutcxEditAdapters,
   dxUIAClasses, dxChartPalette, cxImageList;
